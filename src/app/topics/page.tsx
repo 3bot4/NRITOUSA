@@ -1,0 +1,50 @@
+import type { Metadata } from "next";
+import Container from "@/components/Container";
+import TopicCard from "@/components/TopicCard";
+import Newsletter from "@/components/Newsletter";
+import { topics } from "@/lib/topics";
+import { getArticlesByTopic } from "@/lib/articles";
+
+export const metadata: Metadata = {
+  title: "All Topics",
+  description:
+    "Browse every NRITOUSA topic — finance, taxes, credit, housing, cars, investing, 401(k), Roth IRA, India–US transfers, community, and immigrant stories.",
+  alternates: { canonical: "/topics" },
+};
+
+export default function TopicsPage() {
+  return (
+    <>
+      <section className="border-b border-ink-900/5 bg-white py-16 sm:py-20">
+        <Container>
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">
+            Explore
+          </p>
+          <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-ink-900 sm:text-5xl">
+            All topics
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-ink-500">
+            Eleven tracks covering the money and life decisions every NRI faces
+            in the US. Pick one and start reading.
+          </p>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {topics.map((topic) => (
+              <TopicCard
+                key={topic.slug}
+                topic={topic}
+                count={getArticlesByTopic(topic.slug).length}
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <Newsletter />
+    </>
+  );
+}
