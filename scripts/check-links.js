@@ -79,6 +79,7 @@ function slugsFrom(file) {
 
 const articleSlugs = slugsFrom(path.join(SRC, "lib", "articles.ts"));
 const topicSlugs = slugsFrom(path.join(SRC, "lib", "topics.ts"));
+const calculatorSlugs = slugsFrom(path.join(SRC, "lib", "calculators.ts"));
 const routes = staticRoutes();
 
 /* --------------------------------------------------------------- */
@@ -126,6 +127,9 @@ function isValid(link) {
   const topicMatch = link.match(/^\/topics\/([^/]+)$/);
   if (topicMatch) return topicSlugs.has(topicMatch[1]);
 
+  const calcMatch = link.match(/^\/calculators\/([^/]+)$/);
+  if (calcMatch) return calculatorSlugs.has(calcMatch[1]);
+
   return false;
 }
 
@@ -134,7 +138,7 @@ function isValid(link) {
 /* --------------------------------------------------------------- */
 console.log(
   `Checked ${checked} internal links across the codebase.\n` +
-    `Known routes: ${routes.size} static, ${topicSlugs.size} topics, ${articleSlugs.size} articles.\n`
+    `Known routes: ${routes.size} static, ${topicSlugs.size} topics, ${calculatorSlugs.size} calculators, ${articleSlugs.size} articles.\n`
 );
 
 if (broken.length === 0) {

@@ -24,13 +24,13 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     ],
   },
   {
-    title: "Community",
+    title: "Tools & Community",
     links: [
+      { label: "Calculators", href: "/calculators" },
+      { label: "Resources", href: "/resources" },
       { label: "Students", href: "/topics/students" },
       { label: "Families", href: "/topics/families" },
-      { label: "Community & Life", href: "/topics/community" },
       { label: "Immigrant Stories", href: "/topics/stories" },
-      { label: "Resources", href: "/resources" },
     ],
   },
   {

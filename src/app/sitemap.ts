@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { topics } from "@/lib/topics";
 import { articles } from "@/lib/articles";
+import { calculators } from "@/lib/calculators";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -31,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${site.url}/calculators`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${site.url}/privacy-policy`,
@@ -66,5 +73,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...topicRoutes, ...articleRoutes];
+  const calculatorRoutes: MetadataRoute.Sitemap = calculators.map((c) => ({
+    url: `${site.url}/calculators/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...topicRoutes,
+    ...calculatorRoutes,
+    ...articleRoutes,
+  ];
 }

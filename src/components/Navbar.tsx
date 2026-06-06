@@ -9,9 +9,8 @@ import MobileMenu from "./MobileMenu";
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Guides", href: "/topics" },
+  { label: "Calculators", href: "/calculators" },
   { label: "New to USA", href: "/topics/new-to-usa" },
-  { label: "Finance", href: "/topics/finance" },
-  { label: "Housing", href: "/topics/housing" },
   { label: "India-USA Money", href: "/topics/money-transfer" },
   { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
