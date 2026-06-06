@@ -2019,6 +2019,1707 @@ The clean priority order for most NRIs:
 
 An IRA is the quiet workhorse of an immigrant's retirement plan. Open one, automate the contribution, choose low-cost index funds inside it, and let 30 years of tax-free compounding do something remarkable.`,
   },
+  {
+    slug: "cost-of-moving-india-to-usa",
+    title: "Moving From India to the USA: A Realistic Relocation Cost Guide",
+    excerpt:
+      "Flights are the cheap part. Here's the honest breakdown of what relocating to the US actually costs in month one — deposits, setup, and the cash cushion you need.",
+    topic: "finance",
+    author: "Rohan Gupta",
+    date: "2026-06-05",
+    readingTime: 9,
+    featured: true,
+    content: `Everyone budgets for the flight and the visa. Almost nobody budgets for the **first 30 days on the ground**, which is where the real money goes. Between an apartment that wants three months of rent upfront, a phone, furniture, groceries, and a deposit on every utility, a newcomer can burn through **$8,000–$15,000** before their first US paycheck even clears. Underestimating this is the single most common financial mistake new immigrants make. Here's what moving from India to the US actually costs — so you arrive with enough cushion to make good decisions instead of desperate ones.
+
+:::summary
+Beyond flights and visa fees, plan for a **$8,000–$15,000 landing cushion** to cover apartment move-in (often **~3x monthly rent**), utility and phone deposits, furniture, groceries, and transport before your first paycheck. The biggest line item is housing. Arriving with a healthy [emergency fund](/articles/emergency-fund-first-year-usa) in place turns a stressful first month into a manageable one.
+:::
+
+:::key
+- The **first month**, not the flight, is the expensive part of relocating.
+- Apartment move-in alone can be **~3x the monthly rent** (first month + deposit + fees).
+- Budget for **utility and phone deposits** ($100–$300 each) since you have no US credit.
+- Furnishing an empty apartment runs **$1,500–$4,000** even buying secondhand.
+- Carry a **$8,000–$15,000 cushion** so you're covered until your first paycheck.
+- Set up the cheap, no-credit options first: [prepaid phone](/articles/phone-plan-utilities-immigrants) and a [no-fee bank account](/articles/best-bank-account-nri-usa).
+:::
+
+## Why the first month blindsides people
+In India, you had infrastructure: a home, furniture, a phone number, family nearby. In the US you rebuild all of it at once, in dollars, while your salary hasn't started flowing yet. Costs that feel small individually stack up fast, and many require **deposits** precisely because you have no US credit history. The result is a large, front-loaded cash outflow in weeks one to four.
+
+## The realistic cost breakdown
+| Expense | Typical one-time cost | Notes |
+|---|---|---|
+| Apartment move-in | ~3x monthly rent | First month + deposit + application/broker fees |
+| Furniture & household | $1,500–$4,000 | Bed, sofa, kitchen basics — cheaper secondhand |
+| Utility deposits | $100–$300 | Electric/gas often require a deposit with no credit |
+| Internet setup | $50–$150 | Install + first month |
+| Phone (prepaid) | $30–$60 | SIM + first month, no contract |
+| Groceries & essentials | $300–$600 | Stocking an empty kitchen |
+| Local transport / car | $0–$2,000+ | Transit pass, or down payment if buying a car |
+| Health insurance buffer | Varies | Until employer coverage kicks in |
+| **Estimated total** | **$8,000–$15,000** | Before first paycheck |
+
+## Housing is the giant
+Your apartment is the dominant cost. Most leases want **first month's rent plus a security deposit** (often another month), and some cities add **broker fees** of up to a full month's rent. On a $2,500 apartment, that's **$5,000–$7,500 at signing**. Because you have no US credit, expect to lean on income proof or a larger deposit — the full playbook is in [renting without credit history](/articles/rent-apartment-no-credit-history).
+
+## The deposits nobody warns you about
+With no US credit file, providers hedge their risk by asking for refundable deposits:
+
+- **Electricity and gas**: $100–$300, usually returned after ~12 months of on-time payment.
+- **Internet**: sometimes a deposit or a soft credit check.
+- **Phone**: skip the deposit entirely by going [prepaid](/articles/phone-plan-utilities-immigrants).
+
+These are recoverable, but they tie up cash exactly when it's tightest.
+
+## Furnishing without overspending
+An empty apartment is a money pit if you buy everything new. Smart newcomers use **Facebook Marketplace, Craigslist, and end-of-semester student sales** for furniture, and warehouse stores for kitchen basics. Budget **$1,500–$4,000** depending on how much you buy secondhand.
+
+:::note
+**Bring more cash than you think you need.** A common rule among NRIs: land with **at least 3 months of expenses** accessible (in addition to the relocation spend). It buys you breathing room if your first paycheck is delayed or a deposit is bigger than expected. Park it in a [high-yield savings account](/articles/emergency-fund-first-year-usa) once your bank is open.
+:::
+
+## A money-saving sequence for week one
+1. Activate a [prepaid eSIM](/articles/phone-plan-utilities-immigrants) before you land — instant US number, no deposit.
+2. Open a [no-fee bank account](/articles/best-bank-account-nri-usa) so your employer can set up direct deposit.
+3. Secure housing with income proof to minimize the upfront cash hit.
+4. Buy furniture secondhand; stock the kitchen gradually.
+5. Start [building credit](/articles/build-us-credit-score-from-zero) immediately so future deposits disappear.
+
+## Frequently asked questions
+
+### How much money should I bring when moving to the US?
+Plan for a relocation cushion of roughly $8,000–$15,000 for the first month, plus ideally 3 months of living expenses on top as a safety buffer until your salary stabilizes.
+
+### Why do I need so many deposits?
+Without a US credit history, utilities and landlords reduce their risk by collecting refundable deposits. Most are returned after a year of on-time payments.
+
+### What's the single biggest moving cost?
+Housing. Apartment move-in (first month + security deposit + any broker fee) typically equals about three times the monthly rent.
+
+### Can I reduce these costs?
+Yes — buy furniture secondhand, choose prepaid phone plans, use no-fee online banks, and lead with income proof to lower rental deposits.
+
+## The bottom line
+Relocation budgets fail because they stop at the airfare. The real cost is rebuilding an entire life in dollars during the one month you have no income. Plan for an $8,000–$15,000 landing cushion, lead with the no-credit-required options, buy secondhand, and keep a multi-month emergency fund accessible. Arrive financially prepared and your first month becomes an adventure instead of a panic.`,
+  },
+  {
+    slug: "best-secured-credit-cards-immigrants",
+    title: "Top Secured Credit Cards to Build US Credit Fast (2026)",
+    excerpt:
+      "No credit score? A secured card is your fastest on-ramp. Here's how they work, which ones graduate to real cards, and how to hit 700+ in a year.",
+    topic: "credit",
+    author: "Priya Nair",
+    date: "2026-06-04",
+    readingTime: 8,
+    featured: false,
+    content: `When you arrive in the US with no credit history, you're stuck in a frustrating loop: you need credit to get a card, but you need a card to build credit. The **secured credit card** is the key that breaks that loop. You put down a refundable deposit, the bank issues you a real card backed by it, and your responsible use gets reported to the credit bureaus like any other card. Used correctly, a secured card can take you from invisible to a **700+ score in about 12 months**. Here's how to pick the right one and use it well.
+
+:::summary
+A **secured credit card** requires a refundable deposit (usually **$200–$500**) that becomes your credit limit. Approval is near-automatic with no US history. The best cards (**Discover it Secured, Capital One Platinum Secured**) report to all three bureaus, charge **no annual fee**, and **graduate** you to an unsecured card. Pay in full, keep utilization under 10%, and you'll build a strong score within a year.
+:::
+
+:::key
+- A secured card's **deposit is refundable** — you get it back when you graduate or close in good standing.
+- Choose cards with **no annual fee** that **report to all three bureaus**.
+- **Discover it Secured** even pays cashback and reviews you for graduation automatically.
+- Some issuers (Amex) can skip secured cards entirely via **imported Indian credit history** (Nova Credit).
+- Pay the **full balance** every month and keep **utilization under 10%**.
+- Don't close your first card after graduating — **age of accounts** matters.
+:::
+
+## How a secured card actually works
+You deposit, say, $300 with the issuer. That deposit becomes your **credit limit** and sits as collateral — the bank takes no risk, which is why approval doesn't require a credit history. You then use the card like any other, and the issuer reports your payments to **Equifax, Experian, and TransUnion**. After 6–12 months of responsible use, good issuers **"graduate"** you to a standard unsecured card and **refund your deposit**.
+
+## The best secured cards for newcomers
+| Card | Deposit | Annual fee | Standout feature |
+|---|---|---|---|
+| **Discover it Secured** | $200+ | $0 | Cashback + automatic graduation reviews |
+| **Capital One Platinum Secured** | $49–$200 | $0 | Low deposit for the limit; path to unsecured |
+| **Bank of America Customized Cash Secured** | $200+ | $0 | Cashback categories |
+| **U.S. Bank Secured** | $300+ | $0 | Solid reporting, credit-builder focus |
+
+**Discover it Secured** is the perennial newcomer favorite: no annual fee, cashback, reports to all three bureaus, and a clear graduation path.
+
+:::note
+**You may not even need a secured card.** Some issuers — notably **American Express** — can approve newcomers for a *real unsecured card* using your **Indian credit history via Nova Credit**. If that works for you, it's a faster start. Details in our [best bank accounts guide](/articles/best-bank-account-nri-usa).
+:::
+
+## Secured vs. unsecured: the difference
+- **Secured**: requires a deposit; for people with no/poor credit; deposit refunded later.
+- **Unsecured**: no deposit; requires a credit history (or imported one).
+
+A secured card is a *starter*, not a permanent product. The goal is to graduate to unsecured within a year.
+
+## How to build 700+ in 12 months
+The card is only half the equation — your habits are the rest:
+
+1. Put **one small recurring charge** on it (a subscription, your phone bill).
+2. Enable **autopay for the full statement balance** — never carry interest.
+3. Keep **utilization under 10%** (under $30 on a $300 limit).
+4. **Never miss a payment** — payment history is 35% of your score.
+5. After 6–12 months, **graduate** to an unsecured card and keep the account open.
+
+This is the same discipline detailed in our [build a US credit score from zero](/articles/build-us-credit-score-from-zero) playbook.
+
+## Mistakes to avoid
+- **Applying for several cards at once** — each is a hard inquiry on a thin file.
+- **Carrying a balance to "build credit"** — a myth that just costs you interest.
+- **Closing your first card** after upgrading — it shortens your credit age.
+- **Maxing the limit** — high utilization hurts even if you pay it off.
+
+## Frequently asked questions
+
+### Is the deposit on a secured card lost?
+No. It's fully refundable — you get it back when you graduate to an unsecured card or close the account in good standing.
+
+### How fast can a secured card build my credit?
+A score typically appears within 3–6 months, and disciplined use often gets you past 700 within a year.
+
+### Which secured card is best for new immigrants?
+Discover it Secured is the most popular: no annual fee, cashback, all-bureau reporting, and automatic graduation reviews. Capital One Platinum Secured is a strong alternative.
+
+### Can I get a normal credit card without a secured one?
+Sometimes — Amex and a few issuers use Nova Credit to approve newcomers with imported Indian credit history. Otherwise, a secured card is the reliable route.
+
+## The bottom line
+A secured credit card is the cheapest, surest on-ramp to a US credit score. Pick a no-fee card that reports to all three bureaus and graduates you to unsecured — Discover it Secured is the easy default — put one small charge on it, autopay in full, and keep utilization low. Twelve months of that discipline turns a blank file into a 700+ score and unlocks everything from apartments to mortgages.`,
+  },
+  {
+    slug: "buy-car-without-cosigner",
+    title: "How to Buy a Car in the USA Without a Co-signer (Visa Holders)",
+    excerpt:
+      "Dealers love to demand a US co-signer from newcomers. You don't need one. Here's how to finance a car independently using income proof and newcomer programs.",
+    topic: "cars",
+    author: "Rohit Desai",
+    date: "2026-05-28",
+    readingTime: 8,
+    featured: false,
+    content: `A dealership will often tell a new immigrant the same thing: *"You'll need a US citizen or permanent resident to co-sign."* It's frustrating, sometimes pushy, and frequently **not true**. You can finance a car on a work visa with no US credit and no co-signer — but you need to walk in with the right preparation and the right lender, because the dealer's default financing is built to extract the highest rate from people who don't know their options. Here's how to get the keys on your own.
+
+:::summary
+You **don't** need a US co-signer to buy a car on a visa. Get approved independently with a **larger down payment**, **proof of stable employment/income**, **imported Indian credit (Nova Credit)**, **credit-union or manufacturer newcomer programs**, and **pre-arranged financing** so you're not at the dealer's mercy. Expect a higher first rate, then **refinance after 6–12 months** of US credit history.
+:::
+
+:::key
+- A co-signer is **not legally required** to finance a car on a work visa.
+- A **larger down payment** (20%+) shrinks the loan and the lender's risk.
+- **Credit unions** and **manufacturer "new-to-country" programs** are the most newcomer-friendly lenders.
+- **Nova Credit** lets some lenders read your Indian credit history.
+- **Get pre-approved** before visiting the dealer — outside financing is your leverage.
+- **Refinance** after 6–12 months of US credit to drop a high starter rate.
+:::
+
+## Why dealers push for a co-signer
+A co-signer guarantees the loan if you default, which removes the lender's risk entirely — so it's the dealer's easiest path. But "easiest for them" isn't "required for you." If you can demonstrate **repayment ability** another way, you can finance independently. Your job is to bring that evidence.
+
+## Tactic 1 — Lead with a bigger down payment
+Cash talks. A **20%+ down payment** reduces the loan size, lowers the lender's exposure, and often flips a "no" into a "yes" even without credit. It also shrinks your monthly payment and the total interest you'll pay at a high newcomer rate.
+
+## Tactic 2 — Prove income and employment
+Bring the documents that answer the lender's real question — *will this person pay?*
+
+- **Employment offer letter** (title, salary, start date) on company letterhead.
+- **Recent pay stubs**.
+- **Bank statements** showing a healthy balance.
+
+Lenders that work with newcomers weight stable income heavily when there's no credit score.
+
+## Tactic 3 — Use newcomer-friendly lenders
+| Lender type | Why it helps |
+|---|---|
+| **Credit unions** | Often the most flexible; some have explicit newcomer auto loans |
+| **Manufacturer "new-to-country" programs** | Several automakers finance visa holders with no US credit |
+| **Lenders using Nova Credit** | Can read your Indian credit history |
+| **Your employer's credit union** | Relationship-based, forgiving of thin files |
+
+Avoid relying solely on the dealer's in-house financing — it's a profit center, not your best deal.
+
+## Tactic 4 — Get pre-approved before the dealership
+Walk in with a **pre-approved loan** from a bank or credit union. Now the dealer has to *beat* your rate to win your financing, instead of dictating it. Pre-approval also tells you exactly what you can afford and removes the emotional pressure of negotiating financing on the spot.
+
+:::note
+**Expect a high first rate — then refinance.** With no US history you might be quoted **10–18% APR**. Take the car if the deal works, then **refinance after 6–12 months** of on-time payments and a real credit score. Refinancing can cut your rate dramatically. Build that score fast with a [secured credit card](/articles/best-secured-credit-cards-immigrants).
+:::
+
+## Buy used and insure smart
+A lightly used car (2–3 years old) lets someone else absorb the steepest depreciation — usually the financially soundest choice for a newcomer. And don't forget [car insurance with a foreign license](/articles/cheap-car-insurance-foreign-license), where your Indian no-claims history can lower premiums. For the full buy-vs-lease analysis, see [buy vs. lease your first US car](/articles/buy-vs-lease-car-no-credit).
+
+## Frequently asked questions
+
+### Do I really not need a co-signer to buy a car on an H-1B?
+Correct. A co-signer is not required. With a solid down payment, income proof, and the right lender, visa holders finance cars independently every day.
+
+### What interest rate will I get with no US credit?
+Often 10–18% APR initially. Accept it only if the overall deal works, then refinance in 6–12 months once you have a US score.
+
+### Which lenders are best for newcomers without credit?
+Credit unions and manufacturer "new-to-country" programs are the most flexible, and some lenders use Nova Credit to read your Indian history.
+
+### Should I buy new or used?
+A 2–3 year old used car usually wins — you skip the worst depreciation while still getting a reliable vehicle and a financeable price.
+
+## The bottom line
+Don't let a dealer convince you that you need an American co-signer. Bring a strong down payment, document your income, use credit unions or manufacturer newcomer programs, and arrive pre-approved so you hold the leverage. Accept a higher starter rate if you must, then refinance once your US credit is established. Independence at the dealership is entirely achievable — preparation is the price of admission.`,
+  },
+  {
+    slug: "open-us-bank-account-before-arriving",
+    title: "Can You Open a US Bank Account From India Before Arriving?",
+    excerpt:
+      "Yes — you can set up a US-dollar account before your flight even lands. Here are the digital banks and international options that allow pre-arrival setup.",
+    topic: "finance",
+    author: "Rohan Gupta",
+    date: "2026-05-25",
+    readingTime: 7,
+    featured: false,
+    content: `Landing in the US with no bank account means scrambling in your first week — and you can't receive your salary or pay rent until it's sorted. The smart move is to **set up your US banking before you fly**, so you arrive with an account number, a routing number, and (often) a card on the way. It's more possible than most newcomers realize, though the options come with trade-offs. Here's how to get a US-dollar account open from India before you ever clear immigration.
+
+:::summary
+You can open US banking from India in a few ways: **international banks with India-US presence** (ICICI, HDFC, SBI, Citi) that let you start before arrival, **newcomer fintech platforms** built for immigrants, and **digital banks** you can apply to once you have a US address. A full SSN-linked account usually finalizes after you land, but you can have the essentials — account/routing numbers — ready for day one.
+:::
+
+:::key
+- **International banks** (ICICI, HDFC, SBI, Citi) can begin a US account setup from India.
+- **Newcomer fintech platforms** are designed to onboard immigrants pre- or post-arrival.
+- You typically need a **passport, visa, and proof of address** (Indian initially, US later).
+- An **SSN can be added later** — many accounts open on passport/ITIN first.
+- Having **account and routing numbers** ready means **direct deposit on day one**.
+- Compare against fully [no-fee US bank accounts](/articles/best-bank-account-nri-usa) once you're settled.
+:::
+
+## Why set it up before you arrive
+Your first week is chaotic: housing, phone, paperwork. A pre-arranged bank account removes one big stressor and unlocks the rest — your employer needs account and routing numbers to start **direct deposit**, and landlords want to see a funded US account. Walking in with banking already live puts you weeks ahead.
+
+## Option 1 — International banks with both feet in India and the US
+Indian banks with US operations — **ICICI Bank, HDFC, SBI California** — and global banks like **Citi** and **HSBC** specialize in the cross-border transferee. Many let you **initiate a US account from their India branch** and link it to your NRE/NRO setup. If most of your money will move between India and the US, starting here is natural and convenient.
+
+## Option 2 — Newcomer fintech platforms
+A class of fintech services exists specifically to onboard immigrants, often **before arrival**, using your passport and visa. They issue US account details and a debit card quickly, and many integrate credit-building tools. They're built around exactly your situation — no US history, no US address yet.
+
+## Option 3 — Digital banks once you have a US address
+US online banks (**Ally, SoFi, Discover**) are easy to open but usually require a **US address** and sometimes an SSN/ITIN. You generally can't complete these from India, but you can apply the moment you land and have an address. They're worth it for the **zero fees and 4%+ savings rates** — see our [best US bank accounts guide](/articles/best-bank-account-nri-usa).
+
+## What you'll need
+| Document | Pre-arrival | After arrival |
+|---|---|---|
+| Passport | ✓ | ✓ |
+| US visa | ✓ | ✓ |
+| Proof of address | Indian address | US address (to finalize) |
+| SSN / ITIN | Often optional | Add when issued |
+
+## The realistic expectation
+You can usually get the **account opened and funded** and obtain **account/routing numbers** before or right at arrival, but some features (a permanent SSN-linked profile, certain credit products) finalize once you have a US address and SSN. That's fine — the goal is to have functional banking on day one and upgrade later.
+
+:::note
+**Fund it before you fly.** Move some starting capital into the account (mindful of [TCS/LRS rules](/articles/tcs-india-remittance-tax) on the India side) so you land with accessible US dollars for deposits and your [relocation cushion](/articles/cost-of-moving-india-to-usa).
+:::
+
+## Frequently asked questions
+
+### Can I really open a US bank account from India?
+Yes — through international banks with US operations (ICICI, SBI, Citi) and newcomer fintech platforms designed to onboard immigrants before arrival. Pure US online banks usually need a US address.
+
+### Do I need an SSN to open the account?
+Not always. Many accounts open on a passport plus ITIN or visa documentation, and you add the SSN once it's issued.
+
+### Why bother before arriving?
+So your employer can set up direct deposit immediately and you have accessible US dollars for housing deposits in your first week.
+
+### Will this account build my US credit?
+A bank account alone doesn't build credit. Pair it with a [secured credit card](/articles/best-secured-credit-cards-immigrants) to start your credit file.
+
+## The bottom line
+Don't wait until you land to think about banking. Use an international bank or newcomer fintech to get a US-dollar account and routing details before you fly, fund it with a starting cushion, and add a no-fee online account and SSN once you arrive. Banking ready on day one means direct deposit, smoother housing, and one less crisis in a hectic first week.`,
+  },
+  {
+    slug: "h4-l2-dependent-health-insurance",
+    title: "Health Insurance for H-4 and L-2 Dependents: Your Options",
+    excerpt:
+      "A single ER visit can cost five figures uninsured. Here's how employer plans cover dependents, what marketplace and short-term options exist, and how to choose.",
+    topic: "finance",
+    author: "Ananya Iyer",
+    date: "2026-05-21",
+    readingTime: 9,
+    featured: false,
+    content: `Health insurance is the cost newcomers most underestimate and most regret skipping. In the US there is **no universal healthcare**, and a single emergency room visit or hospital stay can cost **tens of thousands of dollars** out of pocket. For families on dependent visas — **H-4** (spouses/children of H-1B holders) and **L-2** (dependents of L-1 holders) — getting coverage right is non-negotiable. The good news: dependents have several solid paths to insurance. Here's how to evaluate them.
+
+:::summary
+The best coverage for most **H-4 and L-2 dependents** is the H-1B/L-1 worker's **employer-sponsored family plan** — it's subsidized and comprehensive. If that's unavailable or expensive, options include the **ACA marketplace**, **short-term plans** (cheap but limited), and **visitor/dependent plans**. Never go uninsured: US medical bills are among the highest in the world and one incident can be financially catastrophic.
+:::
+
+:::key
+- The US has **no free public healthcare** — uninsured medical bills can reach five or six figures.
+- The cheapest, best coverage is usually the worker's **employer family plan**.
+- **L-2 spouses can work** (and may get their own employer coverage); **H-4 spouses** can work only with an approved **EAD**.
+- The **ACA marketplace** offers comprehensive plans; subsidies depend on household income.
+- **Short-term plans** are cheap but exclude pre-existing conditions and cap benefits.
+- Understand **premium, deductible, copay, and out-of-pocket max** before choosing.
+:::
+
+## Why this matters more than you think
+There's no safety net here. A broken arm, an appendix, or a childbirth can each run **$10,000–$50,000+** without insurance. Newcomers sometimes gamble on being healthy for a few months — and a single accident wipes out years of savings. Treat health insurance as mandatory from day one, the same way you'd never drive without [car insurance](/articles/cheap-car-insurance-foreign-license).
+
+## Option 1 — The worker's employer plan (usually best)
+Most H-1B/L-1 employers offer **group health insurance** that the worker can extend to a **spouse and children**. This is typically the best value because:
+
+- The employer **subsidizes** a large share of the premium.
+- Coverage is **comprehensive** (no pre-existing exclusions).
+- Enrollment is simple via the worker's HR.
+
+Adding dependents raises the premium (deducted from the worker's paycheck), but it's almost always cheaper and better than buying separately. Enroll during the worker's **open enrollment** or the **special enrollment** window triggered by the dependent's arrival.
+
+## Option 2 — The dependent's own job (L-2, or H-4 with EAD)
+- **L-2 spouses are authorized to work** and may get their own employer coverage.
+- **H-4 spouses** can work only with an approved **Employment Authorization Document (EAD)**; with a job, they too may access employer insurance.
+
+If both spouses have employer plans, compare them and put the family on whichever offers better coverage for the price.
+
+## Option 3 — The ACA marketplace
+If no employer plan is available, the **Affordable Care Act marketplace** (healthcare.gov) sells comprehensive individual/family plans with no pre-existing-condition exclusions. **Premium subsidies** depend on household income, and lawfully present immigrants are generally eligible. Plans come in metal tiers (Bronze/Silver/Gold) trading premium against out-of-pocket costs.
+
+## Option 4 — Short-term and visitor plans
+| Plan type | Cost | Trade-off |
+|---|---|---|
+| Employer family plan | $$ (subsidized) | Best coverage; needs eligible employer |
+| ACA marketplace | $$–$$$ | Comprehensive; subsidy depends on income |
+| Short-term medical | $ | Cheap; excludes pre-existing, benefit caps |
+| Visitor/dependent plan | $ | Stopgap; limited coverage |
+
+Short-term and visitor plans are **stopgaps** for a coverage gap — useful between arrival and employer enrollment, but not a long-term substitute.
+
+## How to read a US health plan
+Four numbers decide your real cost:
+
+- **Premium** — what you pay monthly regardless of use.
+- **Deductible** — what you pay before insurance starts covering.
+- **Copay/coinsurance** — your share after the deductible.
+- **Out-of-pocket maximum** — the annual cap on what you'll pay; the most important number for catastrophic protection.
+
+A low premium with a sky-high deductible can be a trap if you actually need care.
+
+:::note
+**Mind the coverage gap on arrival.** Employer coverage may not start until your first day or after a waiting period. Bridge any gap with a short-term or visitor plan so your family is never uninsured, even for a week.
+:::
+
+## Frequently asked questions
+
+### Can H-4 dependents get health insurance?
+Yes. The most common route is being added to the H-1B worker's employer family plan. H-4 dependents can also use the ACA marketplace or short-term plans.
+
+### Can an H-4 or L-2 spouse work and get their own insurance?
+L-2 spouses are authorized to work. H-4 spouses need an approved EAD to work. With a job, either may access employer-sponsored coverage.
+
+### Is the ACA marketplace open to visa holders?
+Lawfully present immigrants are generally eligible to buy marketplace plans, and premium subsidies depend on household income.
+
+### What happens if we go uninsured?
+You're personally liable for the full cost of care, which in the US can be financially devastating. Always maintain at least minimal coverage.
+
+## The bottom line
+For H-4 and L-2 families, the safest, most cost-effective choice is usually the worker's employer family plan — enroll the moment you're eligible. If that's not available, the ACA marketplace is the comprehensive fallback, with short-term plans only as a temporary bridge. Learn the four cost numbers, never tolerate a coverage gap, and treat health insurance as the foundation of your US financial safety, right alongside your [emergency fund](/articles/emergency-fund-first-year-usa).`,
+  },
+  {
+    slug: "us-1-percent-remittance-fee",
+    title: "The US 1% Remittance Fee: How to Avoid It When Sending Money",
+    excerpt:
+      "A new US federal excise tax adds 1% to certain money transfers abroad. Here's exactly which transfers are hit, which are exempt, and how to legally avoid it.",
+    topic: "taxes",
+    author: "Arjun Mehta",
+    date: "2026-06-03",
+    readingTime: 8,
+    featured: true,
+    content: `If you send money from the US to India, there's a new line item you need to understand: a **federal excise tax on remittance transfers**. Introduced in 2025 legislation and applying to transfers from 2026, it adds a percentage charge to certain cross-border transfers — but, crucially, **only to specific funding methods**. For most NRIs, the fee is **entirely avoidable** simply by choosing how you pay. Here's the practical breakdown so you don't pay a tax you never needed to.
+
+:::summary
+A new **US federal remittance excise tax (around 1%)** applies to cross-border transfers funded with **cash, money orders, or similar physical instruments**. Transfers funded **electronically from a US bank account or US-issued debit/credit card are exempt**. The fix is simple: **always fund transfers electronically** from your bank account. Verify current rates and effective dates, as rules are new and details can change.
+:::
+
+:::key
+- The fee targets transfers funded by **cash, money order, cashier's check, or similar physical instruments**.
+- Transfers funded from a **US bank account or US-issued card are generally exempt**.
+- The charge is roughly **1%** of the amount sent (confirm the current rate).
+- It applies to **remittance transfers**, effective for transfers from **2026**.
+- Avoidance is **legal and simple**: send electronically, not with cash instruments.
+- This is **separate** from India's [TCS on remittances](/articles/tcs-india-remittance-tax), which hits resident senders.
+:::
+
+## What the new remittance fee is
+US legislation enacted in 2025 created an **excise tax on remittance transfers** sent from the United States. The intent is to tax informal, cash-based money movement. The key design feature — and your escape hatch — is that it applies based on **how the transfer is funded**, not simply that money left the country.
+
+## Which transfers are hit
+The fee applies when you fund a transfer with a **physical cash instrument**:
+
+- **Physical cash** handed over at a money-transfer counter.
+- **Money orders.**
+- **Cashier's checks** and similar paper instruments.
+
+These are the methods the tax is designed to capture.
+
+## Which transfers are exempt
+You generally **avoid the fee entirely** when the transfer is funded **electronically**:
+
+- **ACH / bank transfer** from your US checking or savings account.
+- **US-issued debit card.**
+- **US-issued credit card.**
+
+In other words, the digital methods most NRIs already use — Wise, Remitly, Xoom, or a bank wire funded from your account — are typically **outside** the fee.
+
+| Funding method | Subject to the fee? |
+|---|---|
+| Cash at a counter | Yes |
+| Money order / cashier's check | Yes |
+| Bank account (ACH) | No |
+| US debit card | No |
+| US credit card | No |
+
+## How to avoid it — legally and simply
+The avoidance strategy is almost trivial: **stop funding transfers with cash instruments**. If you've been walking into a money-transfer storefront with cash, switch to an app or service that pulls **directly from your US bank account**. This also happens to be the [cheapest way to send money to India](/articles/cheapest-way-send-money-usa-india) on the exchange-rate side, so you save twice.
+
+:::note
+**Don't confuse this with India's TCS.** The US 1% fee is a *US* tax on certain US-originated transfers. India's [20% TCS](/articles/tcs-india-remittance-tax) is a separate *Indian* mechanism on resident senders remitting out of India. They're different taxes in different countries — know which one applies to your situation.
+:::
+
+## A quick caveat on a new law
+Because this fee is recent, **specific rates, thresholds, and effective dates can be refined** through regulations. Before a large transfer, confirm the current rules with your transfer provider (they'll disclose any applicable fee) and a tax professional. The structural takeaway, however, is stable: **fund electronically and you avoid it.**
+
+## Frequently asked questions
+
+### How do I avoid the US 1% remittance fee?
+Fund your transfer electronically — from a US bank account (ACH) or a US-issued debit/credit card — instead of with cash, a money order, or a cashier's check.
+
+### Does the fee apply to bank wires and apps like Wise or Remitly?
+Transfers funded electronically from your US bank account or card are generally exempt. The fee targets cash-instrument funding, not the app itself.
+
+### Is this the same as India's TCS?
+No. The US remittance fee is a US tax on certain US-originated transfers; India's TCS is a separate Indian tax on resident senders. They can be unrelated to your transfer depending on who's sending and from where.
+
+### How much is the fee?
+Roughly 1% of the amount sent for affected (cash-instrument) transfers. Confirm the current rate with your provider, as the rules are new.
+
+## The bottom line
+The new US remittance excise tax sounds alarming but is one of the easiest taxes to sidestep entirely: it only bites cash-based transfers, and electronic funding from your bank account is exempt. Since electronic funding is also cheaper on the exchange rate, the right habit pays off twice. Send digitally, keep records, and verify the current rules before large transfers.`,
+  },
+  {
+    slug: "catch-up-missed-fbar-streamlined",
+    title: "Missed Your FBAR? IRS Streamlined Procedures for NRIs Explained",
+    excerpt:
+      "Unreported Indian accounts from past years? The IRS Streamlined Procedures let non-willful filers catch up with little or no penalty. Here's how to fix it.",
+    topic: "taxes",
+    author: "Priya Nair",
+    date: "2026-05-30",
+    readingTime: 9,
+    featured: false,
+    content: `Thousands of NRIs discover, often years into US life, that they were supposed to be reporting their Indian bank accounts, FDs, and PPF all along — and panic sets in. The penalties for unreported foreign accounts are famously severe, and the instinct is to stay quiet and hope nobody notices. That instinct is exactly wrong. The IRS has a dedicated, forgiving path for people whose failure was **honest, not willful** — the **Streamlined Filing Compliance Procedures** — and using it voluntarily is dramatically cheaper than being caught. Here's how to come clean safely.
+
+:::summary
+If you didn't file [FBARs or report Indian income](/articles/fbar-fatca-nri-guide) because you genuinely didn't know, you're likely **non-willful** — and the IRS **Streamlined Filing Compliance Procedures** let you catch up with **no penalty (if you live abroad)** or a **5% penalty (if you live in the US)**. You file the missing FBARs, amended returns, and a certification of non-willfulness. **Coming forward voluntarily** is far safer and cheaper than waiting to be found.
+:::
+
+:::key
+- Penalties apply for *not reporting*, but the **Streamlined Procedures** offer relief for **non-willful** taxpayers.
+- **Streamlined Foreign**: generally **0% penalty** for those who meet the non-residency test.
+- **Streamlined Domestic**: a **5% penalty** on the highest aggregate account balance.
+- You file **6 years of FBARs** and **3 years of amended returns**, plus a non-willfulness certification.
+- **Willful** evasion does **not** qualify — that needs a different program and a lawyer.
+- Acting **before** the IRS contacts you is essential — you can't use it once you're under audit.
+:::
+
+## Why staying silent is the wrong move
+Under FATCA, Indian banks report US-person accounts to the IRS, and the two countries exchange financial data automatically. The era of "they'll never know" is over. Meanwhile, the [FBAR penalty schedule](/articles/fbar-fatca-nri-guide) is brutal — but those maximum penalties target *willful* concealment. For honest mistakes, the IRS would rather you fix it, and built the Streamlined Procedures to make that possible.
+
+## Were you "non-willful"?
+This is the pivotal question. **Non-willful** means your failure resulted from a **good-faith misunderstanding** — you simply didn't know NRIs had to report Indian accounts, which is extremely common. **Willful** means you knew and deliberately hid assets. Only **non-willful** taxpayers qualify for Streamlined. If there's any chance your conduct could look willful, talk to a tax attorney before doing anything.
+
+## The two Streamlined tracks
+| Track | Who it's for | Penalty |
+|---|---|---|
+| **Streamlined Foreign Offshore** | Those meeting the non-residency requirement (e.g., living outside the US) | **0%** |
+| **Streamlined Domestic Offshore** | US residents who already filed returns | **5%** of highest aggregate balance |
+
+The **Foreign** track is remarkably generous — qualifying filers pay any tax due plus interest, but **no FBAR penalty**. The **Domestic** track charges a single **5%** miscellaneous penalty on the highest year-end aggregate value of the unreported accounts.
+
+## What you actually file
+The Streamlined submission has three core pieces:
+
+1. **Six years of delinquent FBARs** (FinCEN Form 114) filed electronically.
+2. **Three years of amended tax returns** (Form 1040-X) reporting the previously omitted Indian income, with any tax and interest.
+3. **Form 14653 or 14654** — a signed **certification of non-willful conduct**, explaining in your own words why you didn't file.
+
+The certification is the heart of it: a candid, specific narrative of your honest misunderstanding.
+
+:::note
+**Delinquent FBAR-only path.** If you reported all your income and paid all tax but simply forgot the FBAR, you may qualify for the even simpler **Delinquent FBAR Submission Procedures** — file the late FBARs with a reasonable-cause statement, often with no penalty. Confirm your situation with a CPA.
+:::
+
+## Why act now
+You **cannot** use the Streamlined Procedures once the IRS has already opened an examination or contacted you about the accounts. The entire benefit depends on **voluntary** disclosure. Every year you wait adds another year of exposure and risks the IRS reaching you first via FATCA data. The cheapest day to fix this is today.
+
+## A note on the names
+Beware of confusing or unofficial program names circulating online. The **real, current IRS programs** are the **Streamlined Filing Compliance Procedures** (Foreign and Domestic) and the **Delinquent FBAR/International Information Return Submission Procedures**. Work from the official IRS guidance (or a qualified CPA), not from a branded acronym you can't verify.
+
+## Frequently asked questions
+
+### What if I have small Indian accounts I never reported?
+If your failure was non-willful, the Streamlined Procedures let you file six years of FBARs and three years of amended returns, with 0% penalty (foreign track) or 5% (domestic track).
+
+### Will I go to jail for unreported Indian accounts?
+Criminal exposure is tied to *willful* evasion. Honest, non-willful taxpayers who come forward voluntarily through Streamlined are addressing it the right way and are not the target of prosecution.
+
+### How many years do I have to fix?
+Generally six years of FBARs and three years of amended income tax returns, plus a non-willfulness certification.
+
+### Can I do this myself?
+The Delinquent FBAR path is simple enough for some to self-file. Full Streamlined submissions — especially the certification — are best done with an NRI-focused CPA or tax attorney.
+
+## The bottom line
+Unreported Indian accounts are a fixable problem, not a life sentence — but only if you move first. If your lapse was an honest misunderstanding (as it is for most NRIs), the Streamlined Procedures let you catch up with minimal or zero penalty. Gather your account histories, get a cross-border CPA, file the back FBARs and amended returns with a candid non-willfulness statement, and put the worry behind you for good. Then keep current with our [FBAR/FATCA guide](/articles/fbar-fatca-nri-guide).`,
+  },
+  {
+    slug: "substantial-presence-test-explained",
+    title: "Am I a US Resident for Tax Purposes? Substantial Presence Test",
+    excerpt:
+      "The 183-day formula isn't what you think. Here's the exact IRS Substantial Presence Test calculation, the exempt-individual rules, and a worked example.",
+    topic: "taxes",
+    author: "Sneha Rao",
+    date: "2026-05-23",
+    readingTime: 8,
+    featured: false,
+    content: `Whether you're taxed by the US on your **worldwide income** or only your US income hinges on a single question: are you a **US resident for tax purposes**? This has nothing to do with your green card or visa type — it's decided by a day-counting formula called the **Substantial Presence Test (SPT)**. Get it wrong and you'll either overpay, underpay, or trip into the dreaded "dual-status" year. Here's exactly how the SPT works, with the exceptions that catch students and a worked example.
+
+:::summary
+You're a **US resident for tax purposes** if you meet the **Substantial Presence Test**: present at least **31 days this year** AND **183 days** across a 3-year weighted formula (all days this year + ⅓ of last year + ⅙ of the year before). **F-1 students** (5 years) and **J visa holders** (2 years) are "exempt individuals" whose days don't count. Residents are taxed on [worldwide income](/articles/indian-income-us-tax-return); nonresidents only on US income.
+:::
+
+:::key
+- The SPT decides whether you're taxed on **worldwide** or only **US** income.
+- Formula: **31+ days this year** AND **183 weighted days** over three years.
+- Weighting: **100%** of this year's days + **⅓** of last year + **⅙** of two years ago.
+- **F-1 students are exempt for 5 calendar years**; **J-1 holders for 2** — their days don't count.
+- Your **first year on H-1B** is often **dual-status** (part nonresident, part resident).
+- Meeting the SPT triggers [FBAR/FATCA](/articles/fbar-fatca-nri-guide) and worldwide-income reporting.
+:::
+
+## Why this is the most important tax question for newcomers
+Your residency status determines the entire shape of your US tax return. **Resident aliens** are taxed like US citizens — on income from everywhere, including India — and must file [FBAR/FATCA](/articles/fbar-fatca-nri-guide). **Nonresident aliens** are taxed only on US-source income and file Form 1040-NR. Misjudging this leads to wrong filings and penalties, so nail it first.
+
+## The Substantial Presence Test, step by step
+You're a resident for the current year if **both** are true:
+
+1. You were present in the US **at least 31 days** during the current year, **and**
+2. You were present **at least 183 days** over the three-year period, counting:
+   - **All** the days you were present this year, **plus**
+   - **⅓** of the days you were present **last year**, **plus**
+   - **⅙** of the days you were present **the year before that**.
+
+## A worked example
+Say you were in the US for **150 days in 2026**, **120 days in 2025**, and **120 days in 2024**:
+
+| Year | Days present | Weight | Counted days |
+|---|---|---|---|
+| 2026 | 150 | × 1 | 150 |
+| 2025 | 120 | × ⅓ | 40 |
+| 2024 | 120 | × ⅙ | 20 |
+| **Total** | | | **210** |
+
+You were present **31+ days in 2026** and your weighted total is **210 ≥ 183**, so you **meet the SPT** and are a **resident for tax purposes** in 2026.
+
+## The exempt-individual exceptions
+Some people don't count their days at all, for a limited time:
+
+- **F-1 students**: exempt individuals for their **first 5 calendar years** in the US — their days don't count toward the SPT, so they file as nonresidents during that window.
+- **J-1 scholars/researchers**: generally exempt for **2 years**.
+
+This is why a PhD student can be in the US for years and still file as a nonresident — until the exemption runs out, after which the day-count begins to apply.
+
+:::note
+**The dual-status first year.** Many H-1B holders arriving mid-year are **dual-status**: nonresident for the part of the year before they met the SPT, resident afterward. Dual-status returns are fiddly (you can't use the standard deduction the usual way, etc.), which is why year one often warrants a CPA. See our [first US tax return guide](/articles/h1b-first-tax-return-guide).
+:::
+
+## Other wrinkles worth knowing
+- **First-Year Choice** and **closer-connection** exceptions can alter your status in specific cases.
+- Days you're in the US as an **exempt individual** or unable to leave due to a **medical condition** may not count.
+- Becoming a resident triggers **worldwide income reporting** — including [Indian income](/articles/indian-income-us-tax-return) — with [DTAA relief](/articles/double-taxation-dtaa-india-usa) to avoid double tax.
+
+## Frequently asked questions
+
+### How many days make me a US tax resident?
+You need 31+ days in the current year and a weighted total of 183 days over three years (this year + ⅓ of last year + ⅙ of the year before). Meeting both makes you a resident.
+
+### Do F-1 student days count toward the test?
+No. F-1 students are exempt individuals for their first 5 calendar years, so their days don't count and they file as nonresidents during that period.
+
+### What is a dual-status year?
+A year in which you're a nonresident for part of it and a resident for the rest — common in your first H-1B year. The two periods are taxed under different rules.
+
+### Does meeting the test mean I report my Indian income?
+Yes. Once you're a resident for tax purposes, you report worldwide income, including Indian income, with foreign tax credits to prevent double taxation.
+
+## The bottom line
+The Substantial Presence Test, not your visa, decides whether the US taxes your worldwide income. Count this year's days fully, last year's at a third, and the year before at a sixth — clear 183 (and 31 this year) and you're a resident. Remember the 5-year F-1 and 2-year J-1 exemptions, watch for a dual-status first year, and once you're a resident, get your [worldwide income](/articles/indian-income-us-tax-return) and [FBAR](/articles/fbar-fatca-nri-guide) reporting right.`,
+  },
+  {
+    slug: "indian-ppf-taxable-usa",
+    title: "Is Your Indian PPF Taxable by the IRS? (US Tax Rules Explained)",
+    excerpt:
+      "PPF interest is tax-free in India — but the US doesn't honor that. Here's how the IRS likely treats your Public Provident Fund and the reporting you can't skip.",
+    topic: "taxes",
+    author: "Vikram Shah",
+    date: "2026-05-20",
+    readingTime: 8,
+    featured: false,
+    content: `The Public Provident Fund is a beloved Indian savings instrument: safe, government-backed, and completely **tax-free in India**. So it comes as an unwelcome shock to many NRIs that the **US does not recognize PPF's tax-exempt status**. Once you're a US tax resident, that tidy tax-free interest likely becomes **taxable income to the IRS**, and your PPF triggers reporting obligations that carry steep penalties if ignored. Here's what you need to know to handle your PPF correctly from the US side.
+
+:::summary
+While **PPF interest is tax-free in India**, the **US generally taxes it** because the IRS doesn't honor India's exemption — most advisors treat the annual PPF interest as **taxable income** to a US resident. Your PPF is also **reportable on FBAR and likely FATCA**, and some practitioners treat it as a **foreign trust** (Form 3520/3520-A). It is **not** a [PFIC](/articles/pfic-indian-mutual-funds-trap). The treatment is debated — get a cross-border CPA.
+:::
+
+:::key
+- **India's tax exemption for PPF does not carry over to the US.**
+- US residents most commonly report **annual PPF interest as taxable income**.
+- PPF counts toward your [FBAR ($10k) and FATCA](/articles/fbar-fatca-nri-guide) reporting thresholds.
+- Some practitioners treat PPF as a **foreign trust**, adding **Form 3520/3520-A**.
+- PPF is **not a PFIC** — but its US treatment is genuinely **unsettled**, so advice varies.
+- **NRIs can't open a new PPF**; an existing one runs to maturity but can't be extended.
+:::
+
+## Why India's tax-free status doesn't help you in the US
+The US taxes its residents on **worldwide income** and applies **its own rules** to foreign accounts. The fact that India chooses to exempt PPF interest is irrelevant to the IRS — there's no treaty provision that makes PPF tax-free for US purposes. So the interest your PPF earns each year is, in the mainstream view, **US-taxable income** even though you can't withdraw it yet and India taxes none of it.
+
+## How the IRS likely treats PPF interest
+The most common professional approach is to **report the PPF interest as it accrues each year** as ordinary interest income on your US return, paying US tax on it annually. Because you paid **zero Indian tax** on it, there's **no foreign tax credit** to offset the US tax (similar to the [NRE interest trap](/articles/double-taxation-dtaa-india-usa)). A minority approach defers recognition to withdrawal, but accrual reporting is the conservative, widely used method.
+
+## The reporting layer (this is the part you can't skip)
+Regardless of the income-timing debate, your PPF is a **foreign financial account** and must be disclosed:
+
+| Requirement | Trigger | Form |
+|---|---|---|
+| FBAR | Foreign accounts combined > $10,000 | FinCEN 114 |
+| FATCA | Above the [8938 thresholds](/articles/fbar-fatca-nri-guide) | Form 8938 |
+| Foreign trust (debated) | If treated as a trust | Form 3520 / 3520-A |
+
+The **foreign trust** question is where practitioners genuinely disagree. Some treat PPF as a grantor trust requiring **Form 3520 and 3520-A**, which have **harsh penalties** for non-filing; others treat it as a plain account. This ambiguity is exactly why PPF deserves professional advice.
+
+:::note
+**Good news: PPF is not a PFIC.** Unlike [Indian mutual funds](/articles/pfic-indian-mutual-funds-trap), PPF is not a Passive Foreign Investment Company, so it avoids the punishing excess-distribution regime and Form 8621. Its issues are income-timing and trust-reporting, not PFIC tax.
+:::
+
+## What NRIs can and can't do with PPF
+- **You cannot open a new PPF** once you're an NRI.
+- An **existing PPF can continue until its 15-year maturity**, but you **cannot extend** it as an NRI.
+- On maturity, NRIs must close the account.
+
+Given the US tax drag and reporting complexity, many NRIs choose **not** to keep feeding a PPF once they become US residents, preferring simpler US-side investments.
+
+## What you should do
+1. **List your PPF** alongside other Indian accounts and check your [FBAR/FATCA](/articles/fbar-fatca-nri-guide) thresholds.
+2. **Decide an income-reporting method** with a CPA (accrual is conservative).
+3. **Resolve the trust question** — whether Form 3520/3520-A applies to your situation.
+4. **Keep annual interest statements** for your US filings.
+5. **Reconsider new contributions** given the US tax and paperwork cost.
+
+## Frequently asked questions
+
+### Is Indian PPF interest taxable in the US?
+Generally yes. The US doesn't recognize India's PPF exemption, so most advisors report the annual interest as taxable income on your US return, with no foreign tax credit since no Indian tax was paid.
+
+### Do I have to report my PPF on the FBAR?
+Yes. PPF is a foreign financial account and counts toward the $10,000 FBAR threshold and, if applicable, FATCA Form 8938.
+
+### Is PPF a PFIC?
+No. PPF is not a PFIC, so it avoids Form 8621 and the excess-distribution tax that hits Indian mutual funds.
+
+### Should I keep contributing to my PPF after moving to the US?
+Many NRIs stop, because the US taxes the interest annually and the reporting is complex. NRIs also can't open new PPFs or extend existing ones. Discuss with a cross-border CPA.
+
+## The bottom line
+PPF is tax-free in India but not in the eyes of the IRS — plan to report its interest annually and, more importantly, to disclose the account on FBAR/FATCA (and possibly as a foreign trust). It's not a PFIC, which is a relief, but its US treatment is unsettled enough that a cross-border CPA is well worth the fee. Know the rules, file correctly, and decide whether continuing the account still makes sense from your new US vantage point.`,
+  },
+  {
+    slug: "best-worst-tax-states-h1b",
+    title: "Best and Worst US States for Taxes: An H-1B Take-Home Guide",
+    excerpt:
+      "The same salary nets wildly different take-home pay depending on your state. Here's how state income tax shifts your paycheck — and the no-tax states tech workers love.",
+    topic: "taxes",
+    author: "Arjun Mehta",
+    date: "2026-05-18",
+    readingTime: 8,
+    featured: false,
+    content: `Two H-1B engineers can earn the identical $160,000 salary and take home thousands of dollars apart — purely because of **which state they live in**. Federal tax is the same everywhere, but **state income tax** ranges from **0% to over 13%**, quietly reshaping your real pay. For mobile tech workers choosing between offers in Austin, San Francisco, Seattle, or New York, understanding the state tax map is one of the highest-leverage financial decisions you'll make. Here's how it works.
+
+:::summary
+**Federal tax is uniform; state income tax is not** — it ranges from **0%** (Texas, Washington, Florida, Nevada, and others) to **13.3%** in California. On a tech salary, the state you choose can swing your take-home by **thousands of dollars a year**. But weigh the **full cost of living** — no-income-tax states often offset with higher property or sales taxes, and big tech hubs carry high housing costs.
+:::
+
+:::key
+- **Federal income tax is the same** in every state; only **state tax** varies.
+- **Nine states have no state income tax**: TX, WA, FL, NV, TN, SD, WY, AK, NH.
+- **California tops out at 13.3%**; New York City adds a **city** tax on top of state tax.
+- A no-income-tax state can save a high earner **$10,000+ per year** versus California.
+- **Cost of living matters more than the tax rate alone** — high-tax hubs often pay more.
+- Your tax **home is where you're domiciled** — remote work doesn't automatically change it.
+:::
+
+## Why state tax is the hidden variable in your offer
+When you compare job offers, the headline salary hides a big difference: **state income tax**. Federal brackets apply identically nationwide, but each state sets its own rules. Move from a 0% state to a 13.3% state and a chunk of every paycheck simply disappears into state coffers. Over a multi-year stay, that difference funds a down payment.
+
+## The no-income-tax states
+Nine states levy **no state income tax** at all:
+
+- **Texas, Washington, Florida, Nevada, Tennessee, South Dakota, Wyoming, Alaska, New Hampshire.**
+
+Several are major tech employers — **Texas** (Austin, Dallas) and **Washington** (Seattle) are the standouts for H-1B engineers. Earning a big-tech salary in a 0% state is the most tax-efficient combination available.
+
+## The high-tax states
+| State | Top state income tax (approx.) | Tech hub |
+|---|---|---|
+| **California** | 13.3% | SF Bay Area, LA |
+| **New York** | ~10.9% (+ NYC city tax) | New York City |
+| **New Jersey** | ~10.75% | NYC metro |
+| **Oregon** | ~9.9% | Portland |
+| **Texas** | 0% | Austin, Dallas |
+| **Washington** | 0% | Seattle |
+
+California and New York combine the highest rates with the highest housing costs — though they also host the highest salaries, which can offset the bite.
+
+## A take-home illustration
+On a $160,000 salary, the difference between a **0% state** and **California's** marginal rates can mean **$10,000+ more in your pocket** annually in the no-tax state — money you could redirect into your [401(k)](/articles/what-happens-to-401k-leaving-usa), an [IRA](/articles/roth-ira-vs-traditional-nri), or a [home down payment](/articles/rent-vs-buy-house-immigrants).
+
+## But don't optimize for tax alone
+A low tax rate is only one input. Consider the whole picture:
+
+- **Housing**: the Bay Area and NYC are far costlier than Austin or Dallas — often dwarfing the tax difference.
+- **Other taxes**: no-income-tax states frequently have **higher property or sales taxes** (Texas property taxes are notably high).
+- **Salaries**: tech pay in high-tax hubs is often higher, partially compensating.
+- **Career**: the density of opportunities in a hub can matter more than tax in the long run.
+
+The right question isn't "lowest tax?" but "**best net financial outcome and career trajectory?**"
+
+:::note
+**Remote work doesn't auto-change your tax state.** You're taxed based on your **domicile** and where you physically work. Living in a no-tax state while your employer is elsewhere can create multi-state filing questions — and a few states aggressively tax remote workers tied to an in-state employer. Confirm your situation before assuming you've escaped state tax.
+:::
+
+## Frequently asked questions
+
+### Which states have no income tax for tech workers?
+Texas, Washington, Florida, Nevada, Tennessee, South Dakota, Wyoming, Alaska, and New Hampshire. Texas and Washington are the major tech employers among them.
+
+### How much can I save by living in a no-tax state?
+On a typical tech salary, $10,000 or more per year compared with California — though higher property/sales taxes and cost of living can offset part of that.
+
+### Does federal tax change by state?
+No. Federal income tax is identical in every state. Only state (and sometimes city) income tax varies.
+
+### If I work remotely, am I taxed where I live?
+Generally you're taxed based on your domicile and where you physically work, but some states tax remote workers tied to an in-state employer. Multi-state situations can require careful filing.
+
+## The bottom line
+State income tax is the quiet multiplier on your salary — 0% in Texas or Washington, 13.3% in California — and it can swing your take-home by five figures a year. But the smartest choice weighs the full picture: housing, other taxes, salary levels, and career density, not the tax rate in isolation. Run the net numbers for each offer, mind the remote-work domicile rules, and let the savings flow into [building wealth](/articles/index-funds-for-beginners-nri) rather than just lowering a tax line.`,
+  },
+  {
+    slug: "72t-sepp-401k-early-withdrawal",
+    title: "Rule 72(t): Access Your 401(k) Early Without the 10% Penalty",
+    excerpt:
+      "Returning to India before 59½ and need your retirement money? The IRS 72(t) SEPP rule lets you draw it down penalty-free — if you follow the strict rules.",
+    topic: "retirement",
+    author: "Arjun Mehta",
+    date: "2026-06-02",
+    readingTime: 9,
+    featured: false,
+    content: `If you're leaving the US before age 59½ and want to tap your 401(k) or IRA, the default cost is steep: ordinary income tax **plus a 10% early-withdrawal penalty**. But there's a legitimate, IRS-sanctioned way to access that money early **without the penalty** — **Rule 72(t)**, which sets up a stream of **Substantially Equal Periodic Payments (SEPP)**. It's powerful for returning NRIs who need income before retirement age, but the rules are rigid and breaking them is expensive. Here's how it works and when it makes sense.
+
+:::summary
+**IRS Rule 72(t)** lets you take **Substantially Equal Periodic Payments (SEPP)** from a 401(k) or IRA **before 59½ without the 10% penalty**. You must take **calculated equal payments for at least 5 years or until age 59½, whichever is longer**, using one of three IRS methods. You still owe **income tax** (and, as a nonresident, up to **30% withholding**) — 72(t) only removes the *penalty*. Break the schedule and the penalty applies retroactively.
+:::
+
+:::key
+- 72(t)/SEPP removes the **10% early-withdrawal penalty**, not the income tax.
+- Payments must continue for **5 years or until 59½, whichever is longer**.
+- Three IRS calculation methods: **RMD, amortization, annuitization**.
+- **Modifying or stopping** the payments early triggers the penalty **retroactively, plus interest**.
+- As a nonresident alien you may still face **up to 30% US withholding** on each payment.
+- Often best paired with India's [RNOR window](/articles/what-happens-to-401k-leaving-usa) to minimize Indian tax.
+:::
+
+## The problem 72(t) solves
+Normally, touching retirement money before **59½** costs you a **10% penalty** on top of income tax — a brutal hit detailed in [what happens to your 401(k) when you leave](/articles/what-happens-to-401k-leaving-usa). But life doesn't always wait for 59½. If you've returned to India in your 40s or 50s and want to draw on your US retirement savings, 72(t) is the legitimate escape from that penalty.
+
+## How SEPP works
+Under Section **72(t)**, you commit to taking **Substantially Equal Periodic Payments** — a fixed, formula-based amount — from your IRA (or, in some cases, a former employer's 401(k)). In exchange for that commitment, the IRS waives the 10% penalty. The catch is the commitment is **binding**:
+
+- Payments must continue for **the longer of 5 years or until you reach 59½**.
+- The amount is **calculated by an IRS-approved method** and can't be casually changed.
+
+So someone starting SEPP at 52 must continue until 59½ (more than 5 years); someone starting at 57 must continue until 62 (the 5-year minimum).
+
+## The three calculation methods
+| Method | How payments are sized | Flexibility |
+|---|---|---|
+| **Required Minimum Distribution (RMD)** | Balance ÷ life-expectancy factor, recalculated yearly | Payments vary year to year; lowest |
+| **Amortization** | Fixed payment based on balance, rate, life expectancy | Fixed, higher payment |
+| **Annuitization** | Fixed payment using an annuity factor | Fixed, similar to amortization |
+
+The **amortization** and **annuitization** methods produce larger, fixed payments; the **RMD** method produces smaller, fluctuating ones. You choose based on how much income you need.
+
+:::note
+**One mistake voids everything.** If you modify the payment amount, stop early, or take an extra distribution before the period ends, the IRS **retroactively applies the 10% penalty to every payment you've taken**, plus interest. SEPP demands discipline — set it up correctly with a professional and don't touch it.
+:::
+
+## 72(t) only removes the penalty — not the tax
+This is the most misunderstood point. SEPP payments are still **taxable income**. As a **nonresident alien** living in India, each payment may face **up to 30% US withholding**, reconciled on a [Form 1040-NR](/articles/what-happens-to-401k-leaving-usa). India will also tax the income once you're ordinarily resident, with [DTAA credit relief](/articles/double-taxation-dtaa-india-usa). So 72(t) saves the **10% penalty**, which is significant, but it's not tax-free money.
+
+## When 72(t) makes sense for NRIs
+- You've returned to India **before 59½** and genuinely need retirement income now.
+- You can commit to a **fixed payment schedule** for years without deviating.
+- You've coordinated timing with your India **RNOR window** to soften Indian tax.
+
+If you don't need the money yet, the better move is usually to **leave it invested** and let it compound — 72(t) is for genuine early-access needs, not convenience.
+
+## Frequently asked questions
+
+### Does 72(t) make my withdrawals tax-free?
+No. It only removes the 10% early-withdrawal penalty. The payments are still taxable income, and as a nonresident you may face up to 30% US withholding.
+
+### How long do I have to keep taking SEPP payments?
+For the longer of 5 years or until you reach age 59½. Starting at 53, for example, means continuing until 59½.
+
+### What happens if I stop or change the payments?
+The IRS retroactively applies the 10% penalty to all prior SEPP payments, plus interest. The schedule is binding once started.
+
+### Should I use 72(t) or just leave my 401(k) invested?
+If you don't need the money before 59½, leaving it to compound is usually better. Use 72(t) only when you genuinely need penalty-free early access.
+
+## The bottom line
+Rule 72(t) is a legitimate way for returning NRIs to unlock retirement money before 59½ without the 10% penalty — but it's a commitment, not a loophole to game. Choose a calculation method that matches your income needs, never break the schedule, remember you still owe income tax and face nonresident withholding, and time it with your RNOR window. Set up correctly with a cross-border advisor, it turns locked retirement savings into reliable early income.`,
+  },
+  {
+    slug: "backdoor-roth-ira-nri",
+    title: "Backdoor Roth IRA: A Step-by-Step Guide for High-Earning NRIs",
+    excerpt:
+      "Your tech salary blew past the Roth income limit? The backdoor Roth lets you contribute anyway — legally. Here's the process and the pro-rata trap to avoid.",
+    topic: "retirement",
+    author: "Sneha Rao",
+    date: "2026-05-26",
+    readingTime: 9,
+    featured: false,
+    content: `The Roth IRA is one of the best wealth-building tools in the US — contributions grow and come out **completely tax-free** in retirement. But there's a catch for successful NRIs: once your income climbs past a certain level, you're **barred from contributing directly**. Many tech workers on H-1B hit this ceiling within a few years. The solution is a perfectly legal maneuver called the **backdoor Roth IRA** — and while the concept is simple, one overlooked rule (the **pro-rata rule**) can turn it into a tax mess if you're not careful. Here's how to do it right.
+
+:::summary
+High earners above the **Roth income limits** can still fund a Roth via the **backdoor**: contribute to a **non-deductible Traditional IRA**, then **convert it to a Roth**. It's legal and common. The big trap is the **pro-rata rule** — if you hold **other pre-tax IRA balances** (like a [rollover IRA](/articles/what-happens-to-401k-leaving-usa)), the conversion becomes partly taxable. Clear those balances first, and file **Form 8606**.
+:::
+
+:::key
+- Direct Roth contributions phase out at higher incomes — common for tech [H-1B salaries](/articles/best-worst-tax-states-h1b).
+- The **backdoor** = non-deductible Traditional IRA contribution → **convert to Roth**.
+- The **pro-rata rule** taxes the conversion proportionally if you hold **other pre-tax IRA money**.
+- **Roll any existing pre-tax IRA into a 401(k)** before converting to dodge the pro-rata trap.
+- File **Form 8606** to document the non-deductible basis and the conversion.
+- Roth growth is **tax-free in the US** — but [India may tax it](/articles/what-happens-to-401k-leaving-usa) once you're ordinarily resident.
+:::
+
+## Why high earners need the backdoor
+A [Roth IRA](/articles/roth-ira-vs-traditional-nri) is extraordinary: you contribute after-tax dollars, and **every dollar of growth comes out tax-free** in retirement. But the IRS phases out direct Roth contributions above certain **modified adjusted gross income** limits. Many NRIs on tech salaries cross that line quickly, especially in [high-paying hubs](/articles/best-worst-tax-states-h1b). The backdoor Roth restores access — Congress is fully aware of it, and it's a mainstream strategy.
+
+## The backdoor Roth, step by step
+1. **Open a Traditional IRA** (and a Roth IRA if you don't have one) at the same brokerage.
+2. **Contribute the annual maximum** to the Traditional IRA as a **non-deductible** contribution (you don't take a deduction because your income is too high anyway).
+3. **Convert** the Traditional IRA balance to your Roth IRA — usually a simple in-platform step. Do it promptly to minimize taxable earnings.
+4. **Invest** the money inside the Roth (e.g., [index funds](/articles/index-funds-for-beginners-nri)).
+5. **File Form 8606** with your tax return to report the non-deductible contribution and the conversion.
+
+Because you contributed after-tax money and converted quickly, there's **little or no tax** on the conversion itself — *unless* the pro-rata rule bites.
+
+## The pro-rata trap (read this twice)
+Here's where people get burned. The IRS doesn't let you cherry-pick which IRA dollars you convert. It treats **all your Traditional, SEP, and SIMPLE IRAs as one pool** and taxes the conversion **proportionally** to how much of that pool is pre-tax.
+
+Example: you make a $7,000 non-deductible contribution, but you also have a **$63,000 pre-tax [rollover IRA](/articles/what-happens-to-401k-leaving-usa)** from an old 401(k). Now your IRA pool is $70,000, only 10% of which is your new after-tax money. So **90% of your conversion is taxable** — a nasty surprise.
+
+:::note
+**The fix:** before doing a backdoor Roth, **roll any existing pre-tax IRA balances into your current employer's 401(k)** (if the plan accepts roll-ins). That empties the Traditional IRA pool of pre-tax money, so your backdoor conversion is clean and (nearly) tax-free. Timing matters — the pool is measured at year-end.
+:::
+
+## The cross-border angle
+The Roth's magic is **US tax-free growth**. But remember: once you become **ordinarily resident in India**, India may **not recognize** the Roth's tax-free status and could tax the growth. The backdoor Roth is still excellent while you're a US resident, but factor your long-term plans in — the cross-border treatment is covered in [what happens to your 401(k)/IRA when you leave](/articles/what-happens-to-401k-leaving-usa).
+
+## Frequently asked questions
+
+### Is the backdoor Roth IRA legal?
+Yes. It's a well-established, IRS-acknowledged strategy. You contribute to a non-deductible Traditional IRA and convert it to a Roth, reporting it on Form 8606.
+
+### What is the pro-rata rule?
+The IRS treats all your Traditional/SEP/SIMPLE IRAs as one pool and taxes a conversion in proportion to the pre-tax money in that pool. Existing pre-tax IRA balances make the conversion partly taxable.
+
+### How do I avoid the pro-rata problem?
+Roll your existing pre-tax IRA balances into a 401(k) before converting, so the Traditional IRA pool holds only your new after-tax contribution.
+
+### Will India tax my Roth?
+Possibly. The US treats qualified Roth withdrawals as tax-free, but India may tax the growth once you're ordinarily resident. Plan around your long-term residency.
+
+## The bottom line
+If your income has outgrown direct Roth contributions, the backdoor Roth keeps the door open to decades of tax-free growth — legally and simply. Contribute to a non-deductible Traditional IRA, convert promptly, and file Form 8606. Just respect the pro-rata rule: clear any pre-tax IRA balances into a 401(k) first, or your "tax-free" conversion won't be. Do it cleanly each year and you compound serious tax-free wealth while you're in the US.`,
+  },
+  {
+    slug: "hsa-after-leaving-usa",
+    title: "Can You Keep Your HSA After Leaving the US? (NRI Guide)",
+    excerpt:
+      "Your Health Savings Account is yours forever — even abroad. Here's how to spend it, why it's a stealth retirement account, and the cross-border tax catch.",
+    topic: "retirement",
+    author: "Karthik Subramanian",
+    date: "2026-05-19",
+    readingTime: 8,
+    featured: false,
+    content: `The Health Savings Account is the most underrated account in the US system — and one many NRIs forget about when they leave. The great news: like your [401(k)](/articles/what-happens-to-401k-leaving-usa), your **HSA belongs to you forever**, doesn't expire, and goes with you when you move back to India. The catch: how you use it after leaving — and how India treats it — needs a little planning to avoid penalties and surprise taxes. Here's how to make the most of your HSA on the way out.
+
+:::summary
+Your **HSA is yours for life** and the balance doesn't disappear when you leave the US. You can **spend it on qualified medical expenses anytime** (including, in many cases, care abroad), and after **age 65 you can withdraw for any purpose** at ordinary income tax (no penalty). Before 65, non-medical withdrawals face a **20% penalty + tax**. You **can't contribute** without a US high-deductible plan, and **India may tax the growth** once you're resident.
+:::
+
+:::key
+- An HSA is **triple tax-advantaged** in the US: deductible in, tax-free growth, tax-free medical withdrawals.
+- The **balance is yours forever** — leaving the US doesn't forfeit it.
+- **Qualified medical expenses** (often including foreign care) come out **tax-free** anytime.
+- **After 65**, withdraw for **any reason** at ordinary income tax — like a Traditional IRA.
+- **Before 65**, non-medical withdrawals cost a **20% penalty + income tax**.
+- You **can't add money** without an active US **high-deductible health plan**; **India may tax the growth**.
+:::
+
+## Why the HSA is secretly a retirement account
+An HSA is the only account with a **triple tax advantage**: contributions are tax-deductible, the money grows tax-free, and withdrawals for **qualified medical expenses** are tax-free. Invest the balance (don't leave it as cash) and it compounds like a retirement account — one you can later use for the medical costs everyone faces in old age. Smart savers treat it as a stealth IRA.
+
+## It's yours forever — even after you leave
+When you leave the US, your HSA doesn't close or expire. The balance stays invested in your name, and you retain full access to it from India. What changes is that you **can no longer contribute** unless you have an active US **high-deductible health plan (HDHP)** — so the account becomes a "use and grow" pot rather than one you keep funding.
+
+## How to use it after leaving the US
+| Use | Tax treatment | Notes |
+|---|---|---|
+| Qualified medical expenses | **Tax-free** | Often includes care abroad if it would qualify in the US |
+| Reimburse old US medical bills | **Tax-free** | You can reimburse yourself years later if you kept receipts |
+| Non-medical, before 65 | **20% penalty + income tax** | Avoid |
+| Any purpose, after 65 | **Ordinary income tax, no penalty** | Acts like a Traditional IRA |
+
+A powerful trick: **save your US medical receipts**. Because there's no deadline to reimburse yourself, you can pay medical bills out of pocket now, let the HSA grow, and reimburse yourself tax-free years later — even from India.
+
+## Spending on medical care in India
+Qualified medical expenses generally **don't have to be incurred in the US** — care that would be a qualified expense in the US can typically be paid from your HSA even if you receive it in India. Keep documentation (invoices, prescriptions) to substantiate it. This makes your HSA genuinely useful for healthcare costs back home.
+
+:::note
+**The India tax catch.** India does **not** recognize the HSA's special status. Once you're **ordinarily resident** in India, India may tax the **growth/earnings** inside the account as regular income, even though the US treats it as tax-free. The [DTAA](/articles/double-taxation-dtaa-india-usa) helps with double taxation, but the HSA's US-only tax magic doesn't fully carry over. Plan withdrawals accordingly.
+:::
+
+## What to do before you leave
+1. **Invest the balance** (not cash) so it keeps compounding.
+2. **Save every US medical receipt** for tax-free reimbursement later.
+3. **Don't cash it out** for non-medical reasons before 65 — the 20% penalty is steep.
+4. **Keep the account open** with your HSA custodian; confirm they allow a foreign address.
+5. **Coordinate with India's tax rules** once you're resident, ideally with a cross-border CPA.
+
+## Frequently asked questions
+
+### Can I keep my HSA after I move back to India?
+Yes. The HSA is yours permanently. You keep the balance and can spend it on qualified medical expenses anytime; you just can't contribute without a US high-deductible health plan.
+
+### Can I use my HSA for medical care in India?
+Generally yes — expenses that would qualify in the US can typically be paid from your HSA even when incurred abroad. Keep documentation.
+
+### What happens if I withdraw for non-medical reasons?
+Before 65, non-medical withdrawals incur a 20% penalty plus income tax. After 65, they're taxed as ordinary income with no penalty, like a Traditional IRA.
+
+### Does India tax my HSA?
+India doesn't recognize the HSA's tax-free status, so once you're ordinarily resident it may tax the account's growth. The DTAA helps avoid double taxation.
+
+## The bottom line
+Don't abandon your HSA when you leave the US — it's a lifelong, triple-tax-advantaged account you can spend on medical care (often even in India) tax-free, or treat as a Traditional-IRA-like fund after 65. Invest the balance, hoard your receipts for later tax-free reimbursement, avoid early non-medical withdrawals, and plan around India's less generous treatment. Handled well, your HSA quietly funds the healthcare costs of your future, wherever you live.`,
+  },
+  {
+    slug: "transfer-money-india-us-home-downpayment",
+    title: "Moving Money From India to the US for a Home Down Payment",
+    excerpt:
+      "Funding a US home purchase with Indian savings? Here's how to navigate the LRS $250k limit, TCS, gift documentation, and getting money to escrow without delays.",
+    topic: "property",
+    author: "Rohan Gupta",
+    date: "2026-06-01",
+    readingTime: 9,
+    featured: false,
+    content: `Many NRIs fund part of their first US home with savings or family money from India. It's completely legal — but a large international transfer into a US **escrow account** under a closing deadline is exactly where things go wrong if you haven't planned. Between India's **Liberalised Remittance Scheme limits**, **TCS**, lender "**source of funds**" rules, and US **gift documentation**, a rushed transfer can delay your closing or trigger questions. Here's how to move down-payment money from India to the US smoothly.
+
+:::summary
+You can fund a US down payment from India under the **LRS ($250,000 per person per financial year)**. Large remittances may incur **20% TCS** (recoverable on the sender's Indian return) and lenders will demand a **paper trail showing the source of funds**. If parents send the money, document it as a **gift** (lender gift letter + [US Form 3520](/articles/gifting-money-india-tax-implications) if over $100k). Start the transfers **early** to meet your closing date.
+:::
+
+:::key
+- The **LRS caps remittances at $250,000 per individual per Indian financial year** — use multiple family members for larger sums.
+- Remittances above ₹7 lakh may attract **20% TCS**, recoverable on the [Indian return](/articles/tcs-india-remittance-tax).
+- Lenders require a documented **"source of funds"** — keep statements and a clear trail.
+- If family gifts the money, get a **lender gift letter**; file [Form 3520](/articles/gifting-money-india-tax-implications) if foreign gifts exceed $100k.
+- **Season the funds** in your US account before closing where possible.
+- Start transfers **weeks early** — escrow deadlines don't forgive bank delays.
+:::
+
+## The LRS limit and how families work around it
+Under India's **Liberalised Remittance Scheme**, each resident individual can send up to **USD 250,000 per financial year (April–March)** abroad. For a down payment larger than that, families commonly have **multiple members each remit** within their own limits (for example, both parents), legally aggregating more than $250k. Plan this across the right people and, if needed, across two financial years.
+
+## TCS on the transfer
+Remittances above **₹7 lakh** in a financial year generally attract **20% Tax Collected at Source** for non-education/medical purposes. Important: **TCS is recoverable** — the resident sender credits it against their Indian income tax or claims a refund when filing. It affects **cash flow now**, not the final cost. The full mechanics are in our [TCS guide](/articles/tcs-india-remittance-tax). (Separately, mind the new [US 1% remittance fee](/articles/us-1-percent-remittance-fee) by funding electronically.)
+
+## Lenders will ask: "where did this money come from?"
+US mortgage lenders scrutinize large deposits to prevent fraud and money laundering. Any big inflow into your account before closing must have a **documented source**:
+
+- Keep **Indian bank statements** showing the money's origin (your savings, a property sale, etc.).
+- Retain the **wire transfer records** linking India to your US account.
+- If it's a **gift from family**, get a signed **gift letter** stating it's a gift with no repayment expected.
+
+Undocumented large deposits can **stall or sink** your loan approval.
+
+## If parents or family provide the funds
+A family gift is a common and clean way to fund a down payment, but handle both sides:
+
+- **US lender side**: a **gift letter** is usually required so the lender knows it's not a hidden loan increasing your debt.
+- **US tax side**: the gift isn't taxable to you, but if foreign gifts exceed **$100,000** in a year you must file **[Form 3520](/articles/gifting-money-india-tax-implications)** (disclosure, no tax).
+- **India side**: the sending relatives are subject to the LRS limit and TCS.
+
+:::note
+**Season your funds.** Lenders prefer to see down-payment money sitting in your US account for **about 60 days** ("seasoned") before closing, which avoids extra source-of-funds scrutiny. If you can, transfer well ahead of your offer rather than days before closing.
+:::
+
+## A clean transfer timeline
+1. **Confirm your total down payment** and who's contributing.
+2. **Map the LRS limits** across family members; check TCS impact.
+3. **Transfer early** (ideally 60+ days before closing) to season the funds.
+4. **Fund electronically** to avoid the US remittance fee and get better rates.
+5. **Collect documentation**: Indian statements, wire records, gift letters.
+6. **File Form 3520** if foreign gifts exceed $100k that year.
+7. **Hand the paper trail to your lender** proactively.
+
+## Frequently asked questions
+
+### How much can I transfer from India for a US home?
+Each resident can remit up to $250,000 per Indian financial year under the LRS. Families often combine multiple members' limits for a larger down payment.
+
+### Is there tax on transferring my own money for a house?
+Sending your own funds isn't US income tax. Indian TCS (20% above ₹7 lakh) may apply to the resident sender but is recoverable on their Indian return.
+
+### What does the lender need to see?
+A documented source of funds: Indian bank statements, wire records, and — if it's family money — a gift letter confirming no repayment is owed.
+
+### Do I need to report the money to the IRS?
+The transfer of your own money isn't reportable as income, but a foreign gift over $100,000 in a year requires Form 3520, and Indian accounts may trigger FBAR/FATCA.
+
+## The bottom line
+Funding a US down payment from India is routine when you plan it: work within the LRS limits (combining family members if needed), expect recoverable TCS, fund electronically, and — above all — build a clean documented paper trail for your lender. Transfer early to season the funds and meet your closing date, document any family gifts properly, and file Form 3520 if required. Do this and your Indian savings become US equity without a single closing-day scramble. Then weigh the bigger decision in our [rent vs. buy guide](/articles/rent-vs-buy-house-immigrants).`,
+  },
+  {
+    slug: "cosign-mortgage-visa-holder",
+    title: "Co-signing a US Mortgage as a Visa Holder: Risks and Rules",
+    excerpt:
+      "Helping a relative buy a home by co-signing? Here's how lenders view non-citizen co-signers, the hit to your debt-to-income ratio, and the real risks.",
+    topic: "property",
+    author: "Vikram Shah",
+    date: "2026-05-24",
+    readingTime: 8,
+    featured: false,
+    content: `Family helps family — and in the US, that often means **co-signing a mortgage** so a relative with thin credit or income can qualify. If you're a visa holder asked to co-sign (or considering asking someone to co-sign for you), it's important to understand what you're really agreeing to. Co-signing isn't a friendly formality; it makes you **legally responsible for the entire loan**, and it directly affects your own borrowing power. Here's how it works for non-citizens and what to weigh before you sign.
+
+:::summary
+A **co-signer is fully liable** for the mortgage if the primary borrower doesn't pay, and the loan appears on the **co-signer's credit report**, raising their **debt-to-income (DTI) ratio**. Visa holders **can** co-sign or be co-signed for, provided they have valid status, an SSN, and qualifying income/credit. The debt can limit your **own** future borrowing (e.g., your own mortgage). Co-sign only with full awareness of the risk.
+:::
+
+:::key
+- A co-signer is **100% legally responsible** for repaying the loan if the borrower defaults.
+- The mortgage shows on the **co-signer's credit** and **raises their DTI ratio**.
+- Visa holders can co-sign with **valid status, an SSN, and qualifying income/credit**.
+- Co-signing can **reduce your own ability to get a mortgage** later.
+- Missed payments by the borrower **damage the co-signer's credit** too.
+- Consider alternatives: a **larger down payment** or [waiting to build credit](/articles/build-us-credit-score-from-zero).
+:::
+
+## What co-signing actually means
+When you co-sign, you're not just "vouching" for someone — you're a **co-borrower legally obligated for the full debt**. If the primary borrower stops paying, the lender can pursue **you** for the entire balance. The loan appears on **your** credit report, and the payment history — good or bad — affects **your** score. This is a serious financial commitment, not a signature of support.
+
+## Can a visa holder co-sign?
+Yes, with conditions. Lenders generally allow a co-signer who:
+
+- Has **valid US immigration status** (H-1B, L-1, green card, etc.).
+- Has a **Social Security Number** and a US credit history.
+- Shows **qualifying income** and an acceptable **DTI** even with the new loan added.
+
+Permanent residents are treated essentially like citizens; non-permanent residents (work visas) can typically co-sign if their status and finances qualify, though some lenders are more conservative.
+
+## The DTI hit you can't ignore
+This is the most underestimated consequence. Lenders measure your **debt-to-income ratio** — your monthly debt payments divided by gross income. When you co-sign, the **entire mortgage payment counts as your debt**, even though someone else is paying it.
+
+| Scenario | Effect on your DTI |
+|---|---|
+| Before co-signing | Lower DTI, full borrowing power |
+| After co-signing | Mortgage payment added to your debts |
+| Result | **Harder to qualify for your own loan** |
+
+So if you plan to [buy your own home](/articles/buying-first-home-on-visa) in the next few years, co-signing for a relative could push your DTI too high to get your own mortgage.
+
+:::note
+**Co-signing can quietly cost you your own home loan.** Because the co-signed mortgage counts against your DTI, lenders may see you as already carrying a large housing debt. Think carefully about timing — co-signing for a sibling today might block your own purchase next year.
+:::
+
+## The risks, plainly
+- **You owe the full debt** if the borrower defaults — no matter your "intent."
+- **Your credit drops** if they pay late, even once.
+- **Your borrowing power shrinks** via the DTI hit.
+- **Relationships strain** when money and a shared legal obligation mix.
+- **Removing yourself is hard** — usually requires a refinance into the borrower's name alone.
+
+## Alternatives worth considering
+Before co-signing, explore lower-risk options:
+
+- The borrower makes a **larger down payment** to qualify on their own.
+- The borrower **builds credit and income** for a year first (see [building credit from zero](/articles/build-us-credit-score-from-zero)).
+- You **gift** funds toward the down payment instead — bounded risk, no ongoing liability (mind [gift rules](/articles/gifting-money-india-tax-implications)).
+
+## Frequently asked questions
+
+### Can an H-1B holder co-sign a mortgage?
+Yes, generally, if they have valid status, an SSN, US credit history, and income that qualifies even with the added loan. Some lenders are stricter with non-permanent residents.
+
+### Does co-signing hurt my credit?
+It can. The loan appears on your report and raises your DTI. If the borrower pays on time it can be neutral or positive, but any missed payment damages your credit.
+
+### Will co-signing stop me from buying my own home?
+It might. The co-signed mortgage counts against your debt-to-income ratio, which can reduce how much you can borrow for your own purchase.
+
+### How do I get off a mortgage I co-signed?
+Usually only by having the primary borrower refinance the loan solely in their name, or by selling the property. It's not easy to undo, so weigh it upfront.
+
+## The bottom line
+Co-signing a US mortgage is an act of real financial generosity — and real financial risk. As a visa holder you can do it, but you're taking on full legal liability, a credit-report entry, and a DTI hit that can block your own home plans. Go in clear-eyed: understand the obligation, consider gifting or waiting instead, and never co-sign an amount you couldn't afford to repay yourself. When in doubt, help with a down-payment gift rather than a signature on the note.`,
+  },
+  {
+    slug: "car-lease-buyout-visa-timeline",
+    title: "Should You Buy Out Your Car Lease Before Your Visa Expires?",
+    excerpt:
+      "Visa timeline in flux and a lease ending? Here's how to decide between a lease buyout, returning the car, or walking away — without losing money.",
+    topic: "cars",
+    author: "Rohit Desai",
+    date: "2026-05-22",
+    readingTime: 7,
+    featured: false,
+    content: `Leasing a car is popular with visa holders precisely because it's flexible — lower payments, a newer car, and no long-term ownership. But when your **immigration timeline becomes uncertain** and the lease is ending (or you may need to leave the country mid-lease), a new question appears: should you **buy out** the lease, **return** the car, or find another exit? The right answer depends on the buyout math and your plans. Here's how to decide without leaving money on the table.
+
+:::summary
+A **lease buyout** means purchasing the car for its preset **residual value** plus fees. Buy out if the car is **worth more than the residual** (you capture equity) or you'll **stay and want to keep it**; **return it** if you're leaving the US or the residual exceeds market value. If you must leave mid-lease, options include a **lease transfer**, buyout-and-sell, or paying to terminate — compare the costs before deciding.
+:::
+
+:::key
+- A **buyout price = the residual value** set at lease signing **+ fees/taxes**.
+- Buy out if the car's **market value exceeds the residual** — you pocket the difference.
+- **Return the car** if you're leaving the US or it's worth less than the residual.
+- Leaving **mid-lease**? Consider a **lease transfer** (Swapalease/LeaseTrader), buyout-and-sell, or early termination.
+- A buyout requires **financing or cash** — and financing means [an auto loan](/articles/buy-car-without-cosigner).
+- Factor in your [insurance](/articles/cheap-car-insurance-foreign-license) and whether you'll even need a car if relocating.
+:::
+
+## How a lease buyout works
+When you signed the lease, the contract fixed a **residual value** — the car's predicted worth at lease-end. A **buyout** lets you purchase the car for that residual (plus a purchase fee and sales tax) instead of returning it. The key insight: that residual was an *estimate*. If the car's **actual market value** is now **higher** than the residual, buying out lets you **capture the equity** — sometimes thousands of dollars.
+
+## The buyout math
+| Situation | Smart move |
+|---|---|
+| Market value **>** residual | **Buy out** — you gain equity (keep or resell) |
+| Market value **≈** residual | Neutral — decide on need, not money |
+| Market value **<** residual | **Return** the car — don't overpay |
+
+Check your car's current market value (KBB, dealer offers) against the residual in your contract. In tight used-car markets, residuals set years earlier are often **below** today's value, making a buyout genuinely profitable.
+
+## Decision 1 — Lease ending, and you're staying
+If your status is stable and you'll remain in the US:
+
+- **Buy out** if you like the car and the residual is fair or below market — especially smart if you'd otherwise finance a different used car at [newcomer interest rates](/articles/buy-car-without-cosigner).
+- **Return and re-lease/buy** if you want a newer car or the residual is above market.
+
+## Decision 2 — Lease ending, and you're leaving the US
+If you're heading back to India:
+
+- **Return the car** at lease-end — the cleanest exit, no ownership to unwind.
+- **Buy out and resell** only if the equity (market value minus residual and fees) is meaningfully positive and worth the hassle of selling before you fly.
+
+## Decision 3 — You must leave mid-lease
+Breaking a lease early is where people lose money. Options, cheapest-first:
+
+1. **Lease transfer/assumption** — transfer the lease to someone else via services like **Swapalease** or **LeaseTrader**. Often the lowest-cost exit.
+2. **Buyout and sell** — buy the car, then sell it; works if market value covers the buyout.
+3. **Early termination** — pay the lessor's termination charge; usually the **most expensive**.
+
+:::note
+**Don't just hand the keys back mid-lease.** Simply abandoning a lease is a default that wrecks your [US credit](/articles/build-us-credit-score-from-zero) and can follow you. Use a formal exit — transfer, buyout, or negotiated termination — so you leave the country with clean credit.
+:::
+
+## Frequently asked questions
+
+### Is a lease buyout a good idea for a visa holder?
+It can be, if the car's market value exceeds the residual (you gain equity) or you're staying and want to keep it. If you're leaving the US, returning the car is usually cleaner.
+
+### How is the buyout price determined?
+It's the residual value set in your lease contract, plus a purchase fee and applicable sales tax. Compare it to the car's current market value.
+
+### What if I have to leave the country mid-lease?
+Consider transferring the lease (Swapalease, LeaseTrader), buying out and reselling, or negotiating early termination. Avoid simply abandoning the lease, which damages your credit.
+
+### Do I need financing for a buyout?
+Unless you pay cash, yes — you'd take an auto loan for the buyout, subject to the same newcomer financing considerations as buying any car.
+
+## The bottom line
+A lease buyout is a math problem layered on a life decision. If the car is worth more than its residual, buying out captures real equity; if you're leaving the US, returning it is usually cleanest. For a mid-lease exit, choose a formal route — transfer, buyout-and-sell, or negotiated termination — never a default. Run the residual-vs-market numbers, factor in your visa timeline and whether you'll even need a car, and you'll exit your lease on the right side of the money.`,
+  },
+  {
+    slug: "fha-loan-non-citizen-visa",
+    title: "Can Non-Citizens Qualify for an FHA Loan? (Visa Holder Guide)",
+    excerpt:
+      "FHA loans offer just 3.5% down — and yes, visa holders can qualify. Here are the exact HUD rules for permanent and non-permanent residents seeking a low-down mortgage.",
+    topic: "property",
+    author: "Vikram Shah",
+    date: "2026-05-17",
+    readingTime: 8,
+    featured: false,
+    content: `Saving a 20% down payment is daunting, especially in your early US years. That's why the **FHA loan** — a government-backed mortgage requiring as little as **3.5% down** — is so appealing. The common myth is that you must be a citizen to get one. You don't. **Non-citizens, including many visa holders, can qualify for FHA loans** under specific HUD rules. Here's exactly who's eligible, what you'll need, and the trade-offs to weigh against a conventional loan.
+
+:::summary
+**FHA loans allow ~3.5% down** and are **open to non-citizens**. **Permanent residents** (green card) are treated essentially like citizens. **Non-permanent residents** (e.g., H-1B, L-1) can qualify if they have a **valid SSN, lawful residency/work authorization (EAD or valid visa), and the home will be their primary residence**. FHA requires **mortgage insurance (MIP)**, so compare it against a [conventional loan](/articles/buying-first-home-on-visa) before deciding.
+:::
+
+:::key
+- FHA loans require as little as **3.5% down** with a credit score around **580+**.
+- **Permanent resident aliens** are treated like US citizens for FHA eligibility.
+- **Non-permanent residents** qualify with a **valid SSN**, **work authorization**, and the property as a **primary residence**.
+- FHA loans must be for your **primary home** — not investment property.
+- FHA charges **mortgage insurance premiums (MIP)** that can last the life of the loan.
+- For higher credit/down payment, a **conventional loan** may be cheaper long-term.
+:::
+
+## What an FHA loan is
+The **FHA loan** is insured by the Federal Housing Administration (part of HUD). Because the government backs it, lenders accept **lower down payments (3.5%)** and **lower credit scores** than conventional loans typically require. It's designed to make homeownership accessible to first-time and lower-down-payment buyers — which describes many newcomers.
+
+## Are non-citizens eligible? Yes — here's the breakdown
+HUD rules explicitly permit non-citizen borrowers:
+
+- **Permanent resident aliens (green card holders):** treated **the same as US citizens**. Provide evidence of permanent residency.
+- **Non-permanent resident aliens (work visas like H-1B, L-1):** **eligible** if they have:
+  - A **valid Social Security Number**.
+  - **Lawful authorization to live and work** in the US (a valid **EAD** or eligible visa status).
+  - The property used as their **primary residence**.
+
+So an H-1B holder with an SSN, valid status, and plans to live in the home can pursue an FHA loan.
+
+## What you'll need to qualify
+| Requirement | Typical FHA standard |
+|---|---|
+| Down payment | **3.5%** (credit 580+); 10% if 500–579 |
+| Credit score | ~**580+** for 3.5% down |
+| Residency/work proof | Green card, or valid visa + SSN + work authorization |
+| Occupancy | **Primary residence only** |
+| Debt-to-income | Generally up to ~43–50% with compensating factors |
+
+## The catch: mortgage insurance (MIP)
+FHA's low down payment comes with a cost — **Mortgage Insurance Premium (MIP)**:
+
+- An **upfront MIP** (a percentage of the loan, often rolled in), plus
+- An **annual MIP** paid monthly.
+
+Crucially, on most modern FHA loans with a low down payment, **MIP lasts for the life of the loan** — you can't cancel it the way you can drop conventional PMI at 20% equity. Over many years, that adds up.
+
+:::note
+**FHA vs. conventional — run both.** If you have a solid credit score (700+) and can manage a larger down payment, a **conventional loan** may be cheaper overall because you can eventually **drop PMI** at 20% equity, whereas FHA's MIP often sticks. FHA shines when your credit or down payment is limited. Compare total cost, not just the down payment, and see [buying a home on a visa](/articles/buying-first-home-on-visa).
+:::
+
+## Is an FHA loan right for you?
+- **Lean toward FHA** if your **down payment is small** (3.5%) or your **credit is still building** (~580–680).
+- **Lean toward conventional** if you have **strong credit** and a **larger down payment**, to avoid lifelong MIP.
+- Either way, only buy if your [rent-vs-buy math](/articles/rent-vs-buy-house-immigrants) and visa stability support it.
+
+## Frequently asked questions
+
+### Can an H-1B visa holder get an FHA loan?
+Yes. Non-permanent residents can qualify with a valid SSN, lawful work authorization (valid visa or EAD), and the home as their primary residence.
+
+### How much down payment does FHA require?
+As little as 3.5% with a credit score around 580 or higher (10% if your score is 500–579).
+
+### Do green card holders qualify for FHA loans?
+Yes — permanent resident aliens are treated essentially the same as US citizens for FHA eligibility.
+
+### What's the downside of an FHA loan?
+Mortgage insurance (MIP), which on most low-down-payment FHA loans lasts the life of the loan and can't be canceled like conventional PMI. A conventional loan may be cheaper with strong credit.
+
+## The bottom line
+The FHA loan makes a 3.5%-down home purchase realistic for newcomers, and yes — visa holders qualify with a valid SSN, work authorization, and owner-occupancy. Just weigh the lifelong MIP against a conventional loan if your credit and down payment are strong. Eligibility isn't the barrier most people assume; the smarter question is which loan costs you less over the years you'll actually own the home.`,
+  },
+  {
+    slug: "fcnr-deposit-usd-yield",
+    title: "FCNR Deposits: Earn High Interest on USD Without Currency Risk",
+    excerpt:
+      "Want attractive yields on your dollars without converting to rupees? FCNR(B) deposits let NRIs earn fixed interest in foreign currency, tax-free in India.",
+    topic: "money-transfer",
+    author: "Rohan Gupta",
+    date: "2026-05-31",
+    readingTime: 8,
+    featured: false,
+    content: `Most NRIs face a dilemma with their savings: keep dollars in the US earning modest interest, or convert to rupees for higher Indian rates but take on **currency risk** if the rupee depreciates. There's a third option many overlook — the **FCNR deposit**, which lets you hold a fixed deposit **in foreign currency (USD, GBP, etc.)** at an Indian bank, earning attractive interest **without ever converting to rupees**. No currency risk, tax-free in India, and fully repatriable. Here's how it works and when it's a smart move.
+
+:::summary
+An **FCNR(B) deposit** is a fixed deposit held **in foreign currency** (USD, GBP, EUR, etc.) at an Indian bank, for terms of **1–5 years**. You earn fixed interest, **avoid rupee currency risk**, and the **interest is tax-free in India** and fully **repatriable**. The catch for US filers: the interest **is taxable in the US** and the account is [FBAR/FATCA reportable](/articles/fbar-fatca-nri-guide). Great for parking dollars you'll want back in USD.
+:::
+
+:::key
+- FCNR = a fixed deposit held **in foreign currency**, so **no rupee depreciation risk**.
+- Terms run **1 to 5 years** at a fixed rate locked at deposit.
+- **Interest is tax-free in India** and the deposit is **fully repatriable**.
+- **US residents owe US tax** on the interest — there's no Indian tax to credit against it.
+- The account is **[FBAR/FATCA](/articles/fbar-fatca-nri-guide) reportable**.
+- Compare yields against a US [high-yield savings account](/articles/emergency-fund-first-year-usa) before locking in.
+:::
+
+## What an FCNR deposit is
+**FCNR(B)** stands for **Foreign Currency Non-Resident (Bank)** deposit. Unlike an [NRE or NRO account](/articles/nre-nro-accounts-explained) held in rupees, an FCNR deposit is held **in the foreign currency itself** — your dollars stay dollars. You lock them into a **term deposit (1–5 years)** at an Indian bank and earn a **fixed interest rate** for the term, with the principal and interest also in that foreign currency.
+
+## The big advantage: no currency risk
+This is the whole point. If you put dollars into a rupee NRE fixed deposit at a high Indian rate, a falling rupee can wipe out your gains when you convert back. With FCNR, **there's no conversion** — you deposit USD and withdraw USD. You capture a competitive interest rate **without betting on the exchange rate**. For NRIs who will eventually want their money back in dollars, this removes a major risk.
+
+## The India-side perks
+| Feature | FCNR(B) deposit |
+|---|---|
+| Currency | Foreign (USD, GBP, EUR, etc.) |
+| Term | 1–5 years, fixed rate |
+| Currency risk | **None** (held in foreign currency) |
+| India tax on interest | **Tax-free** |
+| Repatriation | **Fully repatriable** (principal + interest) |
+
+Tax-free interest in India plus full repatriability makes FCNR attractive on the Indian side.
+
+:::note
+**Don't forget the US side.** As a US tax resident, the FCNR interest is **taxable income in the US**, and because India doesn't tax it, there's **no foreign tax credit** to offset it — the same trap as [NRE interest](/articles/double-taxation-dtaa-india-usa). You also must report the deposit on [FBAR/FATCA](/articles/fbar-fatca-nri-guide). FCNR avoids currency risk, not US tax.
+:::
+
+## When FCNR makes sense
+- You have **dollars you'll want to keep in dollars** but want a better fixed yield than a US account.
+- You want **zero rupee exposure** while still banking with an Indian institution.
+- You're comfortable **locking funds** for 1–5 years.
+
+When it's **less** ideal:
+
+- If a **US high-yield savings account** offers comparable rates with full liquidity, the FCNR lock-in may not be worth it — compare current yields.
+- If you actually **want rupee exposure** (e.g., spending in India), an NRE rupee deposit might suit you better.
+
+## How to open one
+Any major Indian bank with NRI services (ICICI, HDFC, SBI, Axis) offers FCNR(B) deposits. You typically fund it by **remitting foreign currency** from your US account (mind the [US 1% remittance fee](/articles/us-1-percent-remittance-fee) — fund electronically) or from an existing NRE account. Choose your currency, term, and rate, and the deposit locks in.
+
+## Frequently asked questions
+
+### What is an FCNR deposit?
+A Foreign Currency Non-Resident (Bank) deposit — a fixed deposit held in foreign currency (like USD) at an Indian bank for 1–5 years, earning fixed interest with no rupee currency risk.
+
+### Is FCNR interest taxable?
+It's tax-free in India, but taxable in the US for US residents. Since no Indian tax is paid, there's no foreign tax credit to offset the US tax.
+
+### Is my money safe from rupee depreciation?
+Yes — that's the main benefit. Your deposit stays in foreign currency, so a falling rupee doesn't reduce your dollar value.
+
+### Do I have to report an FCNR deposit to the IRS?
+Yes. It's a foreign account subject to FBAR and, above the thresholds, FATCA reporting.
+
+## The bottom line
+FCNR deposits are an underused tool for NRIs who want a solid fixed yield on their dollars without gambling on the rupee. You keep your money in foreign currency, earn India-tax-free interest, and stay fully repatriable — just remember the interest is US-taxable and the account is reportable. Compare current FCNR rates against a liquid US high-yield savings account, and if the locked yield wins, it's a clean, low-risk home for dollars you'll want back as dollars.`,
+  },
+  {
+    slug: "tcs-education-remittance-tuition",
+    title: "Sending Money From India for US College Tuition: TCS Tax Guide",
+    excerpt:
+      "Funding US tuition from Indian accounts? Education remittances get favorable TCS rates — as low as 0.5% with a loan. Here's how to keep your transfer costs minimal.",
+    topic: "money-transfer",
+    author: "Arjun Mehta",
+    date: "2026-05-27",
+    readingTime: 7,
+    featured: false,
+    content: `Funding a US degree from India is a huge financial undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** than ordinary transfers — in some cases the rate is just **0.5%** versus the **20%** that hits general remittances. But you only get the low rate if you understand the categories and document things correctly. Here's how to fund US tuition from India while keeping transfer taxes to a minimum.
+
+:::summary
+Under India's LRS, **education remittances get preferential TCS treatment**: **0.5%** above ₹7 lakh if funded by an **education loan**, and **5%** above ₹7 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
+:::
+
+:::key
+- Education remittances enjoy **lower TCS** than the 20% general rate.
+- **Loan-funded education: just 0.5% TCS** above ₹7 lakh.
+- **Self-funded education: 5% TCS** above ₹7 lakh.
+- TCS is a **prepayment** — fully creditable/refundable on the sender's [Indian return](/articles/tcs-india-remittance-tax).
+- **Document the education purpose** (admission letter, fee invoice) to claim the lower rate.
+- Fund **electronically** to also dodge the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
+:::
+
+## Why education gets a tax break
+India's policy deliberately makes it cheaper to send money abroad for **education** than for general purposes like investing or gifting. The Liberalised Remittance Scheme applies **reduced TCS rates** to qualifying education remittances, recognizing that families shouldn't be penalized for funding a child's degree. The savings versus the 20% general rate are substantial.
+
+## The education TCS rates
+| Remittance type | TCS rate (above ₹7 lakh) |
+|---|---|
+| Education funded by an **education loan** | **0.5%** |
+| Education **self-funded** (own money) | **5%** |
+| General (gifts, investment, travel) | **20%** |
+
+The **₹7 lakh threshold** is per individual per financial year; below it, generally no TCS applies. The **loan-funded 0.5%** rate is dramatically lower — a strong incentive to route tuition through an education loan where it makes sense.
+
+## TCS is recoverable — it's not a real cost
+As with all TCS, this is a **prepayment of income tax**, not an extra charge. The resident sender (often the parent) sees it in their **Form 26AS** and **credits it against their Indian income tax** or claims a **refund** when filing their ITR. So even the 5% self-funded rate is recovered later — it's a cash-flow timing issue, fully explained in our [TCS guide](/articles/tcs-india-remittance-tax).
+
+## How to keep tuition transfers cheap
+1. **Classify correctly**: ensure the remittance is coded as **education** (not general) with your bank.
+2. **Use an education loan** if appropriate to access the **0.5%** rate.
+3. **Pay the university directly** where possible — many institutions accept international payments, and a direct tuition payment is cleanly an education remittance.
+4. **Keep documentation**: admission letter, fee invoice, I-20/enrollment proof.
+5. **Fund electronically** from a bank account to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee) on the US side.
+6. **File the Indian ITR** to recover the TCS.
+
+:::note
+**Watch both countries' rules.** The Indian TCS is on the **sending (resident) side**. Separately, large amounts a student receives could intersect with [US gift reporting](/articles/gifting-money-india-tax-implications) if structured as gifts, and any Indian accounts the student holds may trigger [FBAR](/articles/fbar-fatca-nri-guide). Keep tuition payments clearly tied to education to keep it simple.
+:::
+
+## Frequently asked questions
+
+### What is the TCS rate on education remittances from India?
+0.5% above ₹7 lakh if funded by an education loan, or 5% above ₹7 lakh if self-funded — much lower than the 20% on general remittances.
+
+### Is the education TCS refundable?
+Yes. Like all TCS, it's a prepayment of income tax that the sender credits against their tax liability or recovers as a refund when filing their Indian return.
+
+### How do I qualify for the lower 0.5% rate?
+The remittance must be for education funded through an education loan. Keep loan and admission documentation to support the classification.
+
+### Should I pay the university directly or send money to the student?
+Paying tuition directly to the university keeps the remittance cleanly classified as education and simplifies documentation on both the Indian and US sides.
+
+## The bottom line
+Funding US tuition from India is far cheaper, tax-wise, than most families fear — education remittances get 0.5%–5% TCS instead of 20%, and even that is recoverable on the Indian return. Classify the transfer as education, use a loan for the lowest rate, pay the university directly, keep your paperwork, and fund electronically to dodge the US remittance fee. Handle it right and almost none of the transfer cost is permanent.`,
+  },
+  {
+    slug: "selling-indian-shares-us-resident-tax",
+    title: "Selling Indian Shares & Mutual Funds as a US Resident: The Tax",
+    excerpt:
+      "Liquidating Indian stocks or mutual funds while living in the US? Here's how Indian TDS, US capital gains, and the PFIC rules combine — and how to avoid double tax.",
+    topic: "money-transfer",
+    author: "Sneha Rao",
+    date: "2026-05-23",
+    readingTime: 9,
+    featured: false,
+    content: `Selling your Indian investments after becoming a US resident is more complicated than just hitting "sell." Two tax systems apply at once: India taxes the gain (often via **TDS** withheld upfront), and the US taxes the **same gain** as worldwide income. And if what you're selling is an **Indian mutual fund**, the brutal **PFIC rules** can turn a normal capital gain into a punishing tax bill. Understanding how these layers combine — and how the DTAA prevents true double taxation — is essential before you liquidate. Here's the full picture.
+
+:::summary
+When a US resident sells Indian investments, **India taxes the gain (often via TDS)** and the **US also taxes it** as worldwide income — but the [DTAA](/articles/double-taxation-dtaa-india-usa) lets you credit Indian tax against US tax to avoid paying twice. **Direct stocks** get normal US capital-gains treatment; **Indian mutual funds are [PFICs](/articles/pfic-indian-mutual-funds-trap)**, taxed at the top US rate plus an interest charge. Report on both returns and reconcile via Form 1116.
+:::
+
+:::key
+- Selling Indian investments as a US resident is **taxed in both countries**, with [DTAA](/articles/double-taxation-dtaa-india-usa) credit relief.
+- India often withholds **TDS** on NRI capital gains at the time of sale.
+- **Direct Indian stocks**: normal US **capital-gains** treatment (short/long term).
+- **Indian mutual funds**: [PFICs](/articles/pfic-indian-mutual-funds-trap) — top US ordinary rate **plus an interest charge**, and Form 8621.
+- Claim a **Foreign Tax Credit (Form 1116)** for Indian tax to avoid double taxation.
+- Keep records of **cost basis, TDS, and sale proceeds** for both tax returns.
+:::
+
+## Two tax systems, one sale
+The moment you're a US resident, your Indian capital gains are **simultaneously**:
+
+- **Taxable in India** — typically with **TDS** (tax deducted at source) withheld by the broker/buyer at the time of sale for NRIs, and reconciled on your Indian return.
+- **Taxable in the US** — as part of your [worldwide income](/articles/indian-income-us-tax-return).
+
+The [DTAA](/articles/double-taxation-dtaa-india-usa) ensures you don't pay full tax twice: you claim a **Foreign Tax Credit (Form 1116)** for the Indian tax against your US tax on the same gain.
+
+## Direct stocks vs. mutual funds — a world of difference
+This distinction determines whether your sale is routine or painful:
+
+| What you're selling | US tax treatment |
+|---|---|
+| **Direct Indian shares** | Normal capital gains (favorable long-term rates) |
+| **Indian equity/debt mutual funds** | **PFIC** — top ordinary rate + interest charge, Form 8621 |
+
+### Direct stocks: the simple case
+Selling individual Indian company shares gets **standard US capital-gains treatment** — favorable long-term rates if held over a year. You report the gain, claim a credit for any Indian TDS, and you're done. Indian stocks are **not PFICs**.
+
+### Indian mutual funds: the PFIC trap
+Selling **Indian mutual funds** as a US resident triggers the **Passive Foreign Investment Company** regime: the gain is taxed at the **highest US ordinary income rate** plus an **interest charge** for deferral, and you file **Form 8621**. This can consume a far larger share of your gain than normal capital-gains rates. The full mechanics are in our [PFIC trap guide](/articles/pfic-indian-mutual-funds-trap).
+
+:::note
+**Plan the unwind, don't dump everything at once.** If you hold PFIC mutual funds, selling them all in one tax year can spike your US tax. Work with a CPA to **spread sales across years** and manage the PFIC consequences. And going forward, get India exposure through [direct stocks or US-listed India ETFs](/articles/invest-indian-stock-market-nri), never Indian mutual funds.
+:::
+
+## How the numbers reconcile
+1. **At sale**: India deducts **TDS** on the gain.
+2. **Indian return**: you reconcile the actual Indian tax (refund if TDS was excessive).
+3. **US return**: you report the full gain, compute US tax (capital gains for stocks; PFIC rules for funds).
+4. **Form 1116**: you credit the Indian tax paid against your US tax, so the same gain isn't taxed twice.
+5. **Repatriate** proceeds within the [$1M/year NRO limit](/articles/repatriate-india-property-sale-usa) if needed.
+
+## Frequently asked questions
+
+### Do I pay tax in both India and the US when I sell Indian shares?
+Both countries tax the gain, but the DTAA lets you credit the Indian tax against your US tax via Form 1116, so you effectively pay only the higher of the two rates.
+
+### Why are Indian mutual funds taxed so harshly?
+They're PFICs under US law. Gains are taxed at the top US ordinary rate plus an interest charge, with annual Form 8621 filing — far worse than normal capital gains.
+
+### Are direct Indian stocks PFICs?
+No. Individual company shares get normal US capital-gains treatment. Only pooled funds (mutual funds, ETFs, ULIPs) are PFICs.
+
+### What is TDS on the sale?
+Tax Deducted at Source — India withholds tax on an NRI's capital gain at the time of sale, which you reconcile (and possibly partly recover) on your Indian return.
+
+## The bottom line
+Selling Indian investments as a US resident means navigating two tax systems, but the DTAA keeps you from paying twice. Direct stocks are straightforward — normal capital gains with a credit for Indian TDS. Indian mutual funds are the danger zone, taxed under the punishing PFIC rules, so unwind them deliberately with a CPA and never buy more. Track your basis, TDS, and proceeds carefully, claim your Form 1116 credit, and your liquidation stays clean on both sides of the ocean.`,
+  },
+  {
+    slug: "inheriting-indian-assets-us-tax",
+    title: "Inheriting Property or Money in India: The US Tax Rules",
+    excerpt:
+      "Inherited ancestral land, gold, or bank accounts in India? Here's how the IRS treats foreign inheritance, the crucial Form 3520, and the step-up basis that saves you tax.",
+    topic: "money-transfer",
+    author: "Vikram Shah",
+    date: "2026-05-20",
+    readingTime: 9,
+    featured: false,
+    content: `Inheriting assets in India while living in the US raises an anxious question: *"Will the IRS tax my inheritance?"* The reassuring headline is that **inheritance itself is not taxable income** in the US — you won't pay income tax just for receiving ancestral land, gold, or a bank balance. But there are **critical reporting requirements** (chiefly **Form 3520**) with severe penalties for missing them, and the **cost basis** rules determine what you'll owe later if you sell. Get the paperwork right and you protect your legacy; ignore it and a tax-free inheritance can spawn a five-figure penalty.
+
+:::summary
+**Receiving an inheritance from India is not US income tax** to you. But if foreign inheritances/gifts exceed **$100,000** in a year, you must file **Form 3520** (disclosure only). Inherited assets generally get a **step-up in cost basis** to fair market value at the date of death, which **reduces future capital-gains tax** when you sell. India has **no inheritance tax**, but selling inherited property later triggers Indian capital gains/TDS. Report the accounts on [FBAR/FATCA](/articles/fbar-fatca-nri-guide).
+:::
+
+:::key
+- **Inheritance is not taxable income** in the US — receiving it costs no income tax.
+- Foreign inheritances/gifts over **$100,000** in a year require **[Form 3520](/articles/gifting-money-india-tax-implications)** (disclosure, no tax).
+- The **Form 3520 penalty** for non-filing reaches **25% of the amount** — don't skip it.
+- Inherited assets generally get a **step-up in basis** to value at the date of death, cutting future gains tax.
+- **India has no inheritance/estate tax**, but **selling** inherited property triggers Indian capital gains/TDS.
+- Inherited Indian **accounts** count toward [FBAR/FATCA](/articles/fbar-fatca-nri-guide) reporting.
+:::
+
+## Good news: inheritance isn't income
+In the US, money or property you **inherit is not taxable income**. Whether you inherit ₹50 lakh in a bank account, ancestral land, or gold, you owe **no US income tax** simply for receiving it. The US estate tax is levied on the **estate of the deceased**, and when the deceased is a **non-US person** whose assets are **outside the US** (i.e., in India), the US estate tax generally **doesn't apply** either. So the inheritance arrives tax-free on the US side.
+
+## The catch: Form 3520 reporting
+Tax-free does not mean report-free. If you receive **more than $100,000** in **gifts or inheritances from foreign persons** during the year, you must file **Form 3520** to disclose it. Key points:
+
+- It's an **information return** — filing it creates **no tax**.
+- The penalty for **not** filing is steep: up to **25% of the amount received**.
+- It's the same form used for large [foreign gifts](/articles/gifting-money-india-tax-implications).
+
+This is the single most important compliance step. A tax-free inheritance becomes a costly mistake only if you fail to disclose it.
+
+## Step-up in basis: the rule that saves you later
+Here's the provision that matters when you eventually **sell** an inherited asset. For US tax purposes, inherited assets generally receive a **step-up in cost basis** to their **fair market value on the date of death**. That means:
+
+- If you inherit property worth ₹1 crore at the date of death and later sell it for ₹1.1 crore, your **US taxable gain is only the ₹10 lakh appreciation since death** — not the gain since your ancestor originally bought it decades ago.
+- **Get a valuation** of the asset as of the date of death and keep it — it's the basis you'll use.
+
+:::note
+**Document the date-of-death value.** Obtain a professional valuation (for property) or records of the market value (for shares/gold) as of the date of death. This establishes your stepped-up basis and can save enormous capital-gains tax when you sell. Without it, you may struggle to prove your basis to the IRS.
+:::
+
+## The India side
+- **India has no inheritance or estate tax**, so inheriting itself triggers no Indian tax.
+- **Selling** inherited property in India later **does** trigger Indian **capital gains tax and TDS** — and the holding period/cost often inherits the original owner's acquisition details under Indian rules.
+- To bring proceeds to the US, follow the [property repatriation process](/articles/repatriate-india-property-sale-usa) ($1M/year, Forms 15CA/15CB).
+
+## What to do when you inherit
+1. **Don't panic** — receiving the inheritance is not US-taxable.
+2. **File Form 3520** if foreign gifts/inheritances exceed $100,000 that year.
+3. **Get a date-of-death valuation** to establish your stepped-up basis.
+4. **Report any inherited Indian accounts** on [FBAR/FATCA](/articles/fbar-fatca-nri-guide).
+5. **Plan the sale** (if selling) for both Indian capital-gains tax and US reporting, with a [DTAA credit](/articles/double-taxation-dtaa-india-usa).
+
+## Frequently asked questions
+
+### Do I pay US tax on an inheritance from India?
+No income tax for receiving it, and US estate tax generally doesn't apply to foreign assets of a non-US decedent. But you may need to file Form 3520 to disclose inheritances over $100,000.
+
+### What is the penalty for not filing Form 3520?
+Up to 25% of the amount received. The form itself creates no tax, but failing to file it is expensive, so always disclose large foreign inheritances.
+
+### What is step-up in basis?
+For US purposes, inherited assets are valued at their fair market value at the date of death, so when you sell you're only taxed on appreciation since then — often a large tax saving.
+
+### What happens when I sell inherited Indian property?
+India taxes the capital gain (with TDS), and you report it in the US too, claiming a DTAA foreign tax credit to avoid double taxation. Repatriate proceeds within the $1M/year limit.
+
+## The bottom line
+A foreign inheritance is one of the gentler cross-border events tax-wise: no US income tax to receive it, no US estate tax on a non-US decedent's Indian assets, and a valuable step-up in basis when you eventually sell. The non-negotiable step is **Form 3520** for amounts over $100,000 — skip it and a tax-free inheritance breeds a 25% penalty. Disclose properly, document the date-of-death value, report the accounts, and your legacy passes to you intact.`,
+  },
+  {
+    slug: "convert-resident-account-to-nre-nro",
+    title: "Converting Your Indian Bank Accounts After Moving to the US",
+    excerpt:
+      "Keeping your old resident savings account open after becoming an NRI is a FEMA violation. Here's how to convert your Indian accounts to NRE/NRO status correctly.",
+    topic: "money-transfer",
+    author: "Rohan Gupta",
+    date: "2026-05-18",
+    readingTime: 8,
+    featured: false,
+    content: `Here's a compliance gap most new NRIs don't even know they have: the moment you become a non-resident under Indian law, your **old resident savings accounts in India are no longer valid**. Continuing to operate them is a **FEMA violation** — not a grey area, an actual breach of India's foreign-exchange rules. The fix is straightforward: **redesignate your resident accounts to NRO** and set up an **NRE** account for your foreign income. Doing this promptly keeps you compliant and gives you the right banking infrastructure for life as an NRI. Here's the step-by-step.
+
+:::summary
+Under **FEMA**, once you become an NRI you **cannot keep operating resident savings accounts** — you must **convert them to NRO** (or close them). Set up the proper structure: **NRE** for your US-earned, repatriable, India-tax-free money, and **NRO** for India-origin income. Most banks let you convert by submitting a redesignation form with your passport, visa, and address proof — increasingly **online**. Don't ignore this; non-compliance carries penalties.
+:::
+
+:::key
+- Keeping a **resident account open as an NRI violates FEMA** — convert or close it.
+- **Resident savings accounts are redesignated to NRO** (Non-Resident Ordinary).
+- Open an **NRE** account for **foreign income** — repatriable and **India-tax-free interest**.
+- Conversion needs a **redesignation form + passport, visa, and overseas address proof**.
+- **Existing investments, SIPs, and mandates** must be relinked to the new account status.
+- Get the full [NRE vs NRO comparison](/articles/nre-nro-accounts-explained) before choosing where money flows.
+:::
+
+## Why your old account is now a problem
+Indian banking distinguishes sharply between **resident** and **non-resident** accounts. The day you become a non-resident under FEMA (broadly, when you move abroad with the intention to stay), your **resident savings account is no longer the correct vehicle**. Continuing to use it — depositing, transacting — is a **technical FEMA violation** that can attract penalties. Many NRIs unknowingly leave these accounts running for years; cleaning it up protects you.
+
+## The correct NRI account structure
+You replace your resident account with the right pair:
+
+| Account | Holds | Repatriable? | India tax on interest |
+|---|---|---|---|
+| **NRE** | Foreign-earned income (your US salary/savings) | **Yes, fully** | **Tax-free** |
+| **NRO** | India-origin income (rent, dividends, old funds) | Limited ($1M/yr) | Taxable (TDS) |
+
+The full breakdown is in our [NRE vs NRO guide](/articles/nre-nro-accounts-explained). In short: **NRE for money from abroad, NRO for money from India.**
+
+## How to convert your resident account
+Most banks make this reasonably simple, and increasingly **online** for NRIs:
+
+1. **Notify your bank** that your residency status has changed.
+2. **Submit the redesignation form** (often called a resident-to-NRO conversion form).
+3. **Provide documents**: passport, US visa, and **overseas address proof** (and sometimes a recent photo, FATCA declaration).
+4. The bank **redesignates the existing account as NRO**, preserving the account number in many cases.
+5. **Open a fresh NRE account** for your foreign income (and an FCNR deposit if you want [USD yield](/articles/fcnr-deposit-usd-yield)).
+
+## Don't forget the linked items
+Converting the account is step one — then relink everything attached to it:
+
+- **SIPs and investment mandates** must be updated to NRO/NRE status (and remember Indian mutual funds raise [PFIC issues](/articles/pfic-indian-mutual-funds-trap) for US residents).
+- **Auto-debits, bill payments, and standing instructions** need to be re-pointed.
+- **Demat/trading accounts** must be converted to [NRI versions](/articles/invest-indian-stock-market-nri).
+- **PPF and other schemes** follow their own NRI rules.
+
+:::note
+**This also matters for US compliance.** Once converted, your NRE/NRO/FCNR accounts are foreign accounts you must track for [FBAR/FATCA](/articles/fbar-fatca-nri-guide). Getting your Indian banking properly structured actually makes your US reporting cleaner, because everything is correctly labeled and consolidated.
+:::
+
+## Frequently asked questions
+
+### Do I have to convert my Indian savings account when I move to the US?
+Yes. Under FEMA, you can't keep operating a resident account as an NRI. You redesignate it to NRO (or close it) and open an NRE account for foreign income.
+
+### What happens if I don't convert my account?
+Continuing to use a resident account as an NRI is a FEMA violation that can attract penalties. It's a compliance risk worth fixing promptly.
+
+### What's the difference between NRE and NRO?
+NRE holds foreign-earned money (fully repatriable, tax-free interest in India); NRO holds India-origin income (taxable, limited repatriation). See our full comparison.
+
+### Can I convert my accounts online from the US?
+Increasingly yes — many banks allow NRI redesignation by submitting forms and documents digitally, though some still require couriered paperwork or notarization.
+
+## The bottom line
+Leaving your old resident account running after you've become an NRI is a quiet but real FEMA violation — and an easy one to fix. Redesignate it to NRO, open an NRE account for your foreign income (and an FCNR deposit if you want dollar yield), relink your SIPs and mandates, and you'll have a clean, compliant banking setup on both sides. Bonus: properly labeled Indian accounts make your US [FBAR/FATCA](/articles/fbar-fatca-nri-guide) reporting far simpler, too.`,
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
