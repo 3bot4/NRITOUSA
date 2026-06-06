@@ -6,14 +6,19 @@ import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
-import {
-  articles,
-  getArticle,
-  getRelatedArticles,
-} from "@/lib/articles";
+import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import { formatDate, initials } from "@/lib/format";
 import { site } from "@/lib/site";
+import {
+  articleJsonLd,
+  articlePath,
+  breadcrumbJsonLd,
+  extractFaq,
+  faqJsonLd,
+  jsonLdGraph,
+  topicPath,
+} from "@/lib/seo";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -26,16 +31,20 @@ export function generateMetadata({
 }): Metadata {
   const article = getArticle(params.slug);
   if (!article) return { title: "Article not found" };
+  const topic = getTopic(article.topic);
   return {
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `/articles/${article.slug}` },
+    alternates: { canonical: articlePath(article.slug) },
     openGraph: {
       type: "article",
+      url: articlePath(article.slug),
       title: article.title,
       description: article.excerpt,
       publishedTime: article.date,
-      authors: [article.author],
+      modifiedTime: article.updated ?? article.date,
+      section: topic?.title,
+      authors: [site.author],
     },
     twitter: {
       card: "summary_large_image",
@@ -55,20 +64,18 @@ export default function ArticlePage({
 
   const topic = getTopic(article.topic);
   const related = getRelatedArticles(article);
+  const faqs = extractFaq(article.content);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.date,
-    author: { "@type": "Person", name: article.author },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-    },
-    mainEntityOfPage: `${site.url}/articles/${article.slug}`,
-  };
+  const jsonLd = jsonLdGraph(
+    articleJsonLd(article),
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "Guides", url: "/topics" },
+      ...(topic ? [{ name: topic.title, url: topicPath(topic.slug) }] : []),
+      { name: article.title, url: articlePath(article.slug) },
+    ]),
+    ...(faqs.length ? [faqJsonLd(faqs)] : [])
+  );
 
   return (
     <>
@@ -82,15 +89,22 @@ export default function ArticlePage({
         <header className="border-b border-ink-900/5 bg-white py-12 sm:py-16">
           <Container>
             <div className="mx-auto max-w-prose">
-              <nav className="mb-5 flex items-center gap-2 text-sm text-ink-400">
+              <nav
+                aria-label="Breadcrumb"
+                className="mb-5 flex flex-wrap items-center gap-2 text-sm text-ink-400"
+              >
                 <Link href="/" className="hover:text-brand-600">
                   Home
                 </Link>
-                <span>/</span>
+                <span aria-hidden>/</span>
+                <Link href="/topics" className="hover:text-brand-600">
+                  Guides
+                </Link>
                 {topic && (
                   <>
+                    <span aria-hidden>/</span>
                     <Link
-                      href={`/topics/${topic.slug}`}
+                      href={topicPath(topic.slug)}
                       className="hover:text-brand-600"
                     >
                       {topic.title}
@@ -101,7 +115,7 @@ export default function ArticlePage({
 
               {topic && (
                 <Link
-                  href={`/topics/${topic.slug}`}
+                  href={topicPath(topic.slug)}
                   className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${topic.accent} px-3 py-1 text-xs font-semibold text-white`}
                 >
                   <span>{topic.icon}</span>
@@ -125,7 +139,8 @@ export default function ArticlePage({
                     {article.author}
                   </p>
                   <p className="text-ink-400">
-                    {formatDate(article.date)} · {article.readingTime} min read
+                    Updated {formatDate(article.updated ?? article.date)} ·{" "}
+                    {article.readingTime} min read
                   </p>
                 </div>
               </div>
@@ -144,10 +159,25 @@ export default function ArticlePage({
                   A quick note:
                 </strong>{" "}
                 This article is educational and reflects general information,
-                not personalized financial, tax, or legal advice. Rules change
-                and individual situations differ — consult a qualified
-                professional before acting.
+                not personalized financial, tax, legal, or immigration advice.
+                Rules change and individual situations differ — consult a
+                qualified professional before acting. See our{" "}
+                <Link href="/disclaimer" className="text-brand-600 underline">
+                  full disclaimer
+                </Link>
+                .
               </div>
+
+              {topic && (
+                <div className="mx-auto mt-6 max-w-prose text-sm">
+                  <Link
+                    href={topicPath(topic.slug)}
+                    className="font-medium text-brand-600 hover:text-brand-700"
+                  >
+                    ← More {topic.title} guides
+                  </Link>
+                </div>
+              )}
             </div>
           </Container>
         </div>
@@ -157,10 +187,7 @@ export default function ArticlePage({
       {related.length > 0 && (
         <section className="bg-white py-16 sm:py-20">
           <Container>
-            <SectionHeading
-              eyebrow="Keep reading"
-              title="Related guides"
-            />
+            <SectionHeading eyebrow="Keep reading" title="Related guides" />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {related.map((a) => (
                 <ArticleCard key={a.slug} article={a} />

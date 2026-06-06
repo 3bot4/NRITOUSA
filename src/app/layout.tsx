@@ -7,10 +7,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.name}`,
+    default: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
+    template: "%s | NRI to USA",
   },
   description: site.description,
+  applicationName: site.name,
   keywords: [
     "NRI finance",
     "NRI USA",
@@ -23,27 +24,37 @@ export const metadata: Metadata = {
     "India USA money transfer",
     "NRE NRO account",
   ],
-  authors: [{ name: site.name }],
+  authors: [{ name: site.author }],
+  creator: site.author,
+  publisher: site.publisher,
+  category: "finance",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    site: site.twitterHandle,
+    creator: site.twitterHandle,
+    title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
     description: site.description,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
-  alternates: {
-    canonical: "/",
-  },
+  formatDetection: { telephone: false },
 };
 
 export default function RootLayout({

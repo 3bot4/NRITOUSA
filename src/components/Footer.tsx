@@ -36,9 +36,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Resources",
     links: [
       { label: "About", href: "/about" },
-      { label: "Newsletter", href: "/#newsletter" },
-      { label: "Contact", href: `mailto:${site.email}` },
-      { label: "All Topics", href: "/topics" },
+      { label: "Contact", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Disclaimer", href: "/disclaimer" },
+      { label: "All Guides", href: "/topics" },
     ],
   },
 ];

@@ -4,17 +4,34 @@ import TopicCard from "@/components/TopicCard";
 import Newsletter from "@/components/Newsletter";
 import { topics } from "@/lib/topics";
 import { getArticlesByTopic } from "@/lib/articles";
+import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+
+const title = "All Guides for NRIs & Immigrants in the USA";
+const description =
+  "Browse every NRI to USA guide — finance, taxes, credit, housing, cars, investing, 401(k), Roth IRA, India-USA transfers, community, and immigrant stories.";
 
 export const metadata: Metadata = {
-  title: "All Topics",
-  description:
-    "Browse every NRITOUSA topic — finance, taxes, credit, housing, cars, investing, 401(k), Roth IRA, India–US transfers, community, and immigrant stories.",
+  title,
+  description,
   alternates: { canonical: "/topics" },
+  openGraph: { type: "website", url: "/topics", title, description },
+  twitter: { title, description },
 };
 
 export default function TopicsPage() {
+  const jsonLd = jsonLdGraph(
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "Guides", url: "/topics" },
+    ])
+  );
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="border-b border-ink-900/5 bg-white py-16 sm:py-20">
         <Container>
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">

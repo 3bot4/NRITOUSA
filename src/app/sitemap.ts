@@ -20,6 +20,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${site.url}/contact`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${site.url}/privacy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${site.url}/disclaimer`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 
   const topicRoutes: MetadataRoute.Sitemap = topics.map((t) => ({
@@ -31,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${site.url}/articles/${a.slug}`,
-    lastModified: new Date(a.date),
+    lastModified: new Date(a.updated ?? a.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
