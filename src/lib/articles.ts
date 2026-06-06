@@ -44,6 +44,331 @@ Months 1–3: secured card + authorized user. Months 4–6: your score appears a
 Patience compounds here exactly like interest does. Start today, automate the payments, and let time do the rest.`,
   },
   {
+    slug: "best-bank-account-nri-usa",
+    title: "Best US Bank Accounts for NRIs & International Students",
+    excerpt:
+      "Not all US banks welcome newcomers equally. Here's which accounts offer low fees, easy wire transfers, and no gotchas.",
+    topic: "finance",
+    author: "Rohan Gupta",
+    date: "2026-05-31",
+    readingTime: 6,
+    featured: true,
+    content: `Your first US bank account seems simple until you realize most banks were designed for people with SSNs, credit histories, and local driver's licenses. As a newcomer, you need a bank that doesn't penalize you for being new.
+
+## The challenge with major banks
+Big banks like Chase and Bank of America want lots of upfront verification. Without a US credit history, some branch managers get nervous and approve you conditionally or not at all. Their minimum balances and monthly fees can also drain your thin early savings.
+
+## Banks that actually welcome newcomers
+Citibank and HSBC specifically market to international transferees and NRIs. They understand your situation: you're moving money internationally, you need a US presence quickly, and you don't have a three-year credit file yet.
+
+Online banks like Ally, Charles Schwab, and Chime have zero brick-and-mortar friction. They approve nearly anyone with a valid passport and ITIN, and they ship you a debit card within days. No minimum balance, no monthly fees, and Ally pays interest on your savings.
+
+## What to prioritize
+- Zero monthly fees: Your first salary is lean. Avoid any account that charges you for the privilege of banking there.
+- No minimum balance: You might have $500 to start.
+- Easy international transfers: If you're sending money to India, look for accounts that offer low wire fees or partner with remittance services.
+- Mobile-first setup: You might not have a US address or phone number yet. Approve-via-app is your friend.
+
+## The move-in account strategy
+Open your first account online with a bank like Chime or Ally. Use it for direct deposits and routine spending. Once you have three months of US history and a local address, you can open a second account at a traditional bank if you need credit-building tools or business banking later. The key is not getting stuck in their expensive approval process when time is short.
+
+Your bank should adapt to you, not the reverse. Find one that does.`,
+  },
+  {
+    slug: "ssn-financial-next-steps",
+    title: "Got Your First SSN? 5 Financial Steps You Need to Take",
+    excerpt:
+      "Your Social Security Number is your entry ticket to US credit. Here's the exact sequence to build wealth without mistakes.",
+    topic: "finance",
+    author: "Sneha Rao",
+    date: "2026-06-02",
+    readingTime: 7,
+    featured: true,
+    content: `The day you receive your Social Security Number in the mail is the day your US financial life officially begins. The first month after arrival sets the trajectory for years. Miss these steps and you'll be fixing credit problems for the next decade.
+
+## Step 1: Lock your credit (this week)
+Before anyone can misuse your SSN, freeze your credit with all three bureaus: Equifax, Experian, and TransUnion. Visit each bureau's website, set up an account, and enable a credit freeze. It's free, takes 20 minutes, and prevents identity theft completely. You unfreeze when you actually need to apply for credit.
+
+## Step 2: Open a bank account (this week)
+Get your SSN tied to a US bank account immediately. The bank will report your account activity to credit bureaus within 30 days. This is your foundation. Use the bank account for your direct deposit; do not keep salary in cash.
+
+## Step 3: Get a credit report from AnnualCreditReport.com (week 2)
+Once your SSN is issued, you can pull your free annual credit report. Check it for errors — sometimes people's reports get tangled. If there's fraud (unlikely but possible), dispute it immediately.
+
+## Step 4: Apply for your first credit card (month 1)
+With your SSN and bank account active, apply for a secured credit card. Discover it Secured or Capital One are friendliest to newcomers. You'll get a decision within days. Set up automatic payment of your full balance each month — discipline now compounds into a 750+ score in 12 months.
+
+## Step 5: Link your SSN to your job (month 1)
+Make sure your employer has your correct SSN for W-2 reporting. Verify in your payroll system that your name and SSN match exactly. This triggers your official entry into the US tax system and credit bureaus.
+
+The order matters. Do all five within the first 30 days and you're on the path to financial health. Delay these and you'll be playing catch-up for years. Your SSN is your skeleton key — use it wisely.`,
+  },
+  {
+    slug: "rent-apartment-no-credit-history",
+    title: "How to Rent an Apartment in the USA Without Credit History",
+    excerpt:
+      "No credit, no rental history, no problem — here's how to get your lease approved and move in on time.",
+    topic: "housing",
+    author: "Vikram Shah",
+    date: "2026-06-03",
+    readingTime: 6,
+    featured: false,
+    content: `Apartment hunting as a newcomer hits a wall immediately: landlords run credit checks, and you have a zero or nonexistent file. Most landlords will reject you on sight. Here's how to get approved anyway.
+
+## The income proof strategy
+The single most important document is a letter from your US employer on company letterhead, stating your job title, start date, and annual salary. Follow this with three recent pay stubs (even if you just started). If your annual salary is at least 3x the monthly rent, most landlords will overlook weak credit.
+
+Example: $150,000 annual salary ÷ 12 = $12,500/month income. A $4,000 rent is only 32% of income — standard approval threshold. This trumps credit score almost every time.
+
+## The larger deposit play
+If your job verification is solid, offer a larger upfront deposit. Instead of the standard one month, offer three months' rent upfront. It signals stability and gives the landlord confidence. They'll often waive the credit check entirely.
+
+## Co-signer or guarantor services
+If your income is lower or your employment is new, ask a parent or family member to co-sign. Their credit and income back your lease. Alternatively, services like Insurent or Jetty provide guarantors for a fee (usually one month's rent) — they essentially insure your lease.
+
+## Private landlords vs. corporations
+Corporate apartment complexes have strict algorithmic screening — high credit score required, no exceptions. Private landlords in smaller buildings or owner-occupied homes are far more flexible and evaluate you as a person, not a credit file. Target smaller buildings.
+
+## The application reality
+You'll pay application fees ($30–$75 per person, non-refundable) and possibly a broker fee (some markets). Budget for this. Get everything pre-approved in writing before paying any fees.
+
+The key insight: landlords fear non-payment. If you can prove income far exceeds rent, you've solved their problem. Credit history is their second choice; income is their first. Show them the income and you'll get the keys.`,
+  },
+  {
+    slug: "phone-plan-utilities-immigrants",
+    title: "Best US Phone Plans for New Immigrants & International Students",
+    excerpt:
+      "Avoid contract traps and expensive roaming. Here's how to stay connected to India without breaking the bank.",
+    topic: "finance",
+    author: "Arjun Mehta",
+    date: "2026-06-04",
+    readingTime: 5,
+    featured: false,
+    content: `Your first utility in the US is a phone number and a working plan. Most carriers lock newcomers into expensive contracts with high roaming rates to India. Here's how to avoid that trap.
+
+## Prepaid vs. contract: always prepaid
+Prepaid plans have no contract, no credit check, and no early termination fees. You buy a SIM card ($20–$50) and load money as you use it. When you get an SSN and credit, you can switch to a contract plan if you want cheaper rates. Prepaid carriers: Mint Mobile, Boost Mobile, Visible, and Metro by T-Mobile all offer month-to-month with no commitment.
+
+## International calling is where they get you
+Standard US plans charge $1–$3 per minute for India calls. That's $60–$180 for an hour-long call home. Use internet calling instead: WhatsApp, Viber, or Google Duo are free over WiFi. For traditional calling, apps like Skype or Vonage cost pennies per minute.
+
+## The cheapest play
+Buy a prepaid SIM card from Mint Mobile ($15–$25/month for unlimited US calls/texts + data) and use it for your US number. For India calls, use WhatsApp or Vonage ($5/month for unlimited India calls). Total: $20/month instead of $80.
+
+## Utilities and credit
+Phone and utility accounts often report to credit bureaus, building your history passively. Pay on time and you're earning credit invisibly. This is free credit-building — don't miss it.
+
+Your phone plan is one of the few things you lock in immediately. Lock in cheap. Don't let the carrier's "welcome offer" trap you into a contract. You'll change plans three times before your green card arrives; stay flexible.`,
+  },
+  {
+    slug: "fbar-fatca-nri-guide",
+    title: "FBAR & FATCA Explained: Reporting Indian Accounts to the IRS",
+    excerpt:
+      "Do you hold Indian bank accounts or investments? Here's the exact IRS filing threshold and how to avoid massive penalties.",
+    topic: "taxes",
+    author: "Priya Nair",
+    date: "2026-06-01",
+    readingTime: 7,
+    featured: true,
+    content: `The IRS has two financial surveillance tools aimed directly at people like you: FBAR and FATCA. If you hold money in India, you must file both. Miss them and penalties start at $100,000 per violation. Let's untangle this.
+
+## What is FBAR?
+FBAR stands for Foreign Bank Account Report (officially Form 114). It's a disclosure to the US government of every foreign financial account you control if the combined balance ever exceeded $10,000 during the year.
+
+"Control" means you have signing authority. Your parents' account in their name alone? Not yours to report. Your own account in India? Absolutely yours. Joint account with your spouse? Report it.
+
+The threshold is $10,000 combined across all accounts. One account with $15,000 triggers it. Two accounts with $6,000 each trigger it. It resets each calendar year.
+
+## When and how to file FBAR
+FBAR is filed electronically via FinCEN (Financial Crimes Enforcement Network), separate from your tax return. The deadline is April 15, or October 15 with extension — same as your tax return, but filed separately.
+
+If you missed prior years' FBARs, the IRS has a Streamlined Filing Compliance Procedures program that lets you file back years with reduced penalties if you were not willfully evading. File retroactively now rather than hoping it's forgotten.
+
+## What is FATCA?
+FATCA (Form 8938) is a similar disclosure on a higher threshold — it kicks in at $200,000 (single) or $400,000 (married filing jointly) in foreign assets at year-end. Broadly, if you cross FATCA thresholds, you'll cross FBAR thresholds first, so FBAR is the binding requirement for most NRIs early on.
+
+## What counts as an account?
+- Savings and checking accounts, yes.
+- Recurring deposits (fixed deposits / FDs), yes.
+- Mutual funds, yes.
+- PPF (Public Provident Fund), yes.
+- Insurance policies with cash value, yes.
+- Stocks held at an Indian broker, yes.
+
+Essentially any asset you can convert to cash and move counts.
+
+## The real-world stakes
+Willful violation of FBAR carries civil penalties up to $100,000 per year per violation. Many people were hit in the early 2010s when the IRS cracked down. Non-willful violations can still cost $10,000.
+
+The good news: if you disclose everything voluntarily, penalties are near-zero. The IRS wants disclosure, not prosecution. File correctly and you're fine.
+
+## Your action steps
+1. List every account in India where you have signing authority.
+2. Pull statements showing the maximum balance reached in each, by month.
+3. If the combined peak crossed $10,000, file FBAR by April 15.
+4. Include FBAR disclosure in your US tax return.
+5. If you missed prior years, consult a CPA about Streamlined Filing.
+
+FBAR and FATCA feel bureaucratic and abstract until you owe a six-figure penalty. Take them seriously from day one. They're not optional — they're mandatory if you have foreign accounts. File now and you'll never think about them again.`,
+  },
+  {
+    slug: "double-taxation-dtaa-india-usa",
+    title: "India-USA Double Taxation: How DTAA Protects Your Income",
+    excerpt:
+      "Don't pay taxes twice on the same income. Here's how the India-US tax treaty prevents double taxation and saves you thousands.",
+    topic: "taxes",
+    author: "Arjun Mehta",
+    date: "2026-06-02",
+    readingTime: 6,
+    featured: true,
+    content: `The first time an NRI faces double taxation, it hits hard. You paid income tax in India on interest or rental income. Then you report it to the IRS and owe US tax too. That's paying once to India and once to the US on the same dollar. The India-US tax treaty (DTAA) exists precisely to prevent this.
+
+## How double taxation happens
+Let's say you earned ₹1,000,000 in rental income in India. You paid 30% tax to India: ₹300,000. Now you report that full ₹1,000,000 as a US resident. The IRS taxes it at 35% (federal + state). You owe another ₹350,000.
+
+Total tax paid: ₹650,000 on ₹1,000,000 income — 65% effective rate. This is the nightmare scenario that haunts NRI mailboxes.
+
+## What the DTAA does
+The Double Taxation Avoidance Agreement (DTAA) between India and the USA says: the IRS will credit taxes paid to India against your US tax bill. So:
+- Income taxed in India: ₹300,000 paid.
+- US tax owed: ₹350,000.
+- Foreign Tax Credit (form 1116): claim the ₹300,000 paid to India.
+- Net US tax owed: ₹350,000 - ₹300,000 = ₹50,000.
+- Total tax: ₹300,000 + ₹50,000 = ₹350,000 (the higher of the two).
+
+You pay the higher of India's rate or the US rate, not both. That's the protection the treaty provides.
+
+## Where it gets tricky
+The Foreign Tax Credit (Form 1116) is where most NRIs get lost. You can't just claim the Indian tax paid; you have to itemize it on Form 1116, which requires matching income amounts, rates, and proof of tax paid.
+
+The other complexity: the DTAA has specific provisions for different income types. Interest income has different rules than rental income, which differ from salary. There's no one-size-fits-all.
+
+## The practical move
+If you have any India income as a US tax resident, file Form 1116. Have a CPA review it. The form costs $200–$400 to do correctly but can save you five figures on double taxation. This is not DIY territory.
+
+The DTAA is your safety net. Use it, and you'll never pay 65% tax on the same dollar twice. Ignore it, and you'll fund the IRS and Indian government simultaneously.`,
+  },
+  {
+    slug: "indian-income-us-tax-return",
+    title: "Do I Need to Declare Indian Income on My US Tax Return?",
+    excerpt:
+      "Rental income, capital gains, interest from PPF — here's what counts as reportable income as a US resident.",
+    topic: "taxes",
+    author: "Sneha Rao",
+    date: "2026-06-03",
+    readingTime: 6,
+    featured: false,
+    content: `Once the IRS considers you a resident alien (usually after the Substantial Presence Test), you're taxed on worldwide income. That means India counts. Let's break down what you owe.
+
+## The worldwide income rule
+As a US resident alien, the IRS taxes you on all income earned anywhere — salaries, rental income, investment gains, interest, gifts above thresholds. Whether you earn it in India or America doesn't matter. The source doesn't excuse you; the residence does.
+
+## What must be reported
+- Salary before you moved: no (non-resident income from before your residency).
+- Salary after you moved: yes (you're working for a US company sponsoring your visa).
+- Rental income from Indian property: yes.
+- Interest from NRO accounts: yes.
+- Mutual fund gains: yes.
+- PPF interest: yes.
+- Stock dividends: yes.
+- Any other income-producing asset: yes.
+
+## What doesn't count
+- Gifts from parents: no (gifts are not income).
+- Inheritance: no (though step-up basis rules apply).
+- Return of your own principal: no (you're reclaiming your capital, not earning on it).
+
+## The mechanics of reporting
+On Form 1040 (your main tax return), you'll report the income amount. Then you'll use Form 1116 (Foreign Tax Credit) to claim whatever you paid to India, preventing double taxation. The form is detailed and requires documentation of Indian taxes paid.
+
+## If you miss income
+The IRS does not forgive sloppy reporting. If you omit Indian income and they find it, they'll assess the missing tax, plus interest (5–7% annually), plus penalties (20–75%). Report everything, even if you think it's too small to matter.
+
+## The practical playbook
+1. Document all Indian income sources: bank statements for interest, rental property records, investment statements.
+2. File your Indian income tax return (ITR) in India.
+3. Report the same income on your US return (Form 1040).
+4. File Form 1116 to claim the Indian tax credit.
+5. Keep both Indian and US filings for seven years.
+
+The IRS and Indian revenue authorities are increasingly aligned. Omit income in one place and the other will spot it eventually. Report everything and you'll sleep well.`,
+  },
+  {
+    slug: "pfic-indian-mutual-funds-trap",
+    title: "The PFIC Trap: Why Buying Indian Mutual Funds Costs US NRIs",
+    excerpt:
+      "Think twice before investing in Indian mutual funds as a US resident. Here's why the IRS's PFIC rules are punishing.",
+    topic: "taxes",
+    author: "Vikram Shah",
+    date: "2026-06-04",
+    readingTime: 7,
+    featured: false,
+    content: `Many NRIs still maintain mutual fund investments from before they moved to the US. This decision can cost them tens of thousands of dollars in unexpected taxes. The culprit is a rule most people have never heard of: PFIC (Passive Foreign Investment Company).
+
+## What is a PFIC?
+A PFIC is any foreign investment company (which includes most Indian mutual funds) that has more than 50% of its assets in passive income (dividends, interest, capital gains) rather than active business income. Most Indian mutual funds qualify as PFICs.
+
+When you hold a PFIC as a US resident, the IRS doesn't treat it like a normal investment. Instead, you're subject to special tax rules that are far less favorable than ordinary capital gains.
+
+## Why PFICs are punishing
+Normally, long-term capital gains are taxed at favorable rates (0%, 15%, or 20% depending on income). With a PFIC, gains are taxed at ordinary income rates (up to 37%) plus a layer of interest, retroactively, as if you'd deferred the tax from year one.
+
+Example: You bought an Indian mutual fund in 2023 for ₹10,000. In 2026, it's worth ₹15,000. Normally, you'd owe tax on the ₹5,000 gain at capital gains rates. With PFIC treatment, you owe ordinary income tax on ₹5,000 plus interest dating back to 2023. Your effective rate balloons to 50%+.
+
+## The paperwork burden
+Beyond the punishing tax, you must file Form 8621 annually for each PFIC holding. It's a complex form that requires detailed tracking of basis, fair market value, and elections. Most CPAs charge $500–$1,000 per PFIC per year just to handle the compliance.
+
+## What to do if you own one
+You have three choices:
+1. Hold it and file Form 8621 every year (expensive and painful).
+2. Sell it and trigger the PFIC tax (painful upfront).
+3. Make a "Mark-to-Market" or "QEF" election that might reduce future taxes (complex and requires retroactive filings).
+
+None are good. The real lesson: don't buy them.
+
+## The right strategy as a US resident
+If you're a US tax resident, invest through US-domiciled funds and ETFs. You avoid the PFIC trap entirely. Keep any existing India investments as-is (don't buy more) and liquidate them gradually as you identify gains, spreading the tax hit over years rather than all at once.
+
+Repatriate the proceeds to the US and invest in boring S&P 500 index funds. You'll pay lower taxes, file simpler returns, and sleep better. Your grandmother's mutual fund holding might have felt natural — but as a US resident, it's quietly destroying your after-tax returns.`,
+  },
+  {
+    slug: "gifting-money-india-tax-implications",
+    title: "Is a Cash Gift From Parents in India Taxable in the USA?",
+    excerpt:
+      "Receiving money from family back home? Here's what the IRS cares about and what you must disclose.",
+    topic: "taxes",
+    author: "Rohan Gupta",
+    date: "2026-06-05",
+    readingTime: 5,
+    featured: false,
+    content: `A common scenario: your parents send ₹5,000,000 to help you buy a home. You deposit it in your US bank account. Then you panic: "Will the IRS tax this?"
+
+The good news: gifts are not income and are not taxed. The bad news: you must disclose them on Form 3520 if they exceed certain thresholds, and the reporting rules are strict.
+
+## The gift rule
+In the US, gifts are not taxable income to the receiver. Your parents can gift you unlimited amounts and you owe zero tax. The tax burden falls on the giver at rates north of $10,000/year per person (currently $18,000 for 2026), but between family members it's usually a non-issue.
+
+## When you must report it
+Form 3520 is required if you receive a gift from a non-US person (your Indian parents, for example) exceeding $100,000 in a year. You must file it with your tax return disclosing the source, amount, and relationship.
+
+If you don't file and the IRS catches the deposit, they'll assume it's unreported income and tax you on it, possibly assessing interest and penalties. File the form and you're fine — it's a pure disclosure form with no tax consequence.
+
+## The bank's role
+Your bank will flag large deposits in a Currency Transaction Report (CTR) if they exceed $10,000 — but that's normal compliance, not a sign of trouble. The bank files it automatically. You don't need to do anything on your end.
+
+## How to document it
+Ask your parents to include a letter with the wire transfer or bank statement stating: "This is a gift to [your name] for [stated purpose, e.g., home purchase]. No repayment is expected." Keep this letter forever. It's your proof the money is a gift, not a loan.
+
+## The practical sequence
+1. Your parents wire the money from India.
+2. The bank deposits it and files a CTR (automatic, not a problem).
+3. You receive the Form 3520 requirement notification if over $100,000.
+4. You file Form 3520 with your tax return that year.
+5. You keep the gift letter and wire proof for seven years.
+
+Gifts are straightforward if you disclose them. The only risk is failing to file Form 3520 when required. Do that and you've solved the puzzle. Your parents can fund your life in America without creating a tax catastrophe.`,
+  },
+  {
     slug: "h1b-first-tax-return-guide",
     title: "Your First US Tax Return on H-1B: A No-Panic Guide",
     excerpt:
