@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
 
@@ -54,11 +55,32 @@ export default function ContactPage() {
         <Container>
           <div className="mx-auto max-w-prose">
             <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-              Email us
+              Send us a message
             </h2>
             <p className="mt-3 leading-8 text-ink-700">
-              The fastest way to reach the {site.name} editorial team is by
-              email:
+              Use the form below for general inquiries, feedback, corrections, or
+              partnership ideas. {site.name} is owned and operated by{" "}
+              <strong>{site.owner}</strong>.
+            </p>
+
+            <div className="mt-6 rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card sm:p-8">
+              <ContactForm />
+            </div>
+
+            <div className="mt-6 rounded-xl border-l-4 border-amber-400 bg-amber-50/70 px-5 py-4 text-sm leading-relaxed text-ink-700">
+              <strong className="font-semibold text-ink-900">
+                Please don&apos;t send sensitive documents.
+              </strong>{" "}
+              For your security, never email tax returns, passports, SSN cards,
+              bank statements, or other confidential financial, legal, or
+              immigration documents through this form.
+            </div>
+
+            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
+              Prefer email?
+            </h2>
+            <p className="mt-3 leading-8 text-ink-700">
+              You can also reach the {site.name} editorial team directly at:
             </p>
             <p className="mt-4">
               <a

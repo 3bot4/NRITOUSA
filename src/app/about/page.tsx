@@ -4,11 +4,16 @@ import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import { site } from "@/lib/site";
 
+const title = "About NRI to USA";
+const description =
+  "NRI to USA, owned by Wealth Building Academy LLC, helps NRIs, Indian immigrants, students, and families understand practical life and money decisions in the United States.";
+
 export const metadata: Metadata = {
-  title: "About",
-  description:
-    "NRITOUSA is a premium, SEO-focused content platform helping NRIs and new immigrants navigate money and life in the USA.",
+  title,
+  description,
   alternates: { canonical: "/about" },
+  openGraph: { type: "website", url: "/about", title, description },
+  twitter: { title, description },
 };
 
 const values = [
@@ -71,7 +76,7 @@ export default function AboutPage() {
 
           <div className="mx-auto mt-16 max-w-prose">
             <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-              Why we built this
+              Why this website exists
             </h2>
             <p className="mt-4 leading-8 text-ink-700">
               When you move to a new country, the hardest problems aren&apos;t
@@ -86,6 +91,59 @@ export default function AboutPage() {
               place, written by people who&apos;ve navigated the same questions.
               No jargon, no fear-mongering, no affiliate-driven nonsense — just
               the clearest possible answer to &quot;what should I actually do?&quot;
+            </p>
+
+            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
+              Who we help
+            </h2>
+            <p className="mt-4 leading-8 text-ink-700">
+              {site.name} is written for NRIs, Indian immigrants, international
+              students, H-1B and L-1 workers, green card holders, and families
+              planning a move to — or already building a life in — the United
+              States. Whether you landed last week or five years ago, our guides
+              meet you where you are.
+            </p>
+
+            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
+              Topics we cover
+            </h2>
+            <ul className="mt-4 list-disc space-y-2 pl-5 leading-8 text-ink-700">
+              <li>Getting started: your first days, banking, phone, and SSN</li>
+              <li>Banking, credit cards, and building a US credit score</li>
+              <li>US taxes, FBAR/FATCA, and India–US double taxation</li>
+              <li>Housing, renting, mortgages, and buying a home</li>
+              <li>Cars, financing, insurance, and driving licenses</li>
+              <li>Investing, 401(k), Roth IRA, and retirement planning</li>
+              <li>India–USA money transfers, NRE/NRO accounts, and property</li>
+              <li>Insurance, students, families, and community life</li>
+            </ul>
+
+            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
+              What we do not provide
+            </h2>
+            <p className="mt-4 leading-8 text-ink-700">
+              We publish educational content only. We are not financial advisors,
+              CPAs, attorneys, or immigration consultants, and nothing on this
+              site is personalized financial, tax, legal, immigration, or
+              investment advice. For decisions specific to your situation, please
+              consult a licensed professional. See our{" "}
+              <Link href="/disclaimer" className="text-brand-600 underline">
+                disclaimer
+              </Link>
+              .
+            </p>
+
+            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
+              Ownership
+            </h2>
+            <p className="mt-4 leading-8 text-ink-700">
+              {site.name} is owned and operated by{" "}
+              <strong>{site.owner}</strong>. Content is produced by the{" "}
+              {site.author}. You can reach us anytime through our{" "}
+              <Link href="/contact" className="text-brand-600 underline">
+                contact page
+              </Link>
+              .
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">

@@ -47,22 +47,37 @@ export default function MobileMenu({
             ))}
           </ul>
 
-          <div className="mt-6 grid grid-cols-2 gap-3">
+          <div className="mt-6 grid grid-cols-3 gap-2 text-center text-sm font-semibold text-ink-700">
+            <Link
+              href="/resources"
+              onClick={onClose}
+              className="rounded-xl border border-ink-900/10 px-3 py-3"
+            >
+              Resources
+            </Link>
             <Link
               href="/about"
               onClick={onClose}
-              className="rounded-xl border border-ink-900/10 px-4 py-3 text-center text-sm font-semibold text-ink-700"
+              className="rounded-xl border border-ink-900/10 px-3 py-3"
             >
               About
             </Link>
             <Link
-              href="/topics"
+              href="/contact"
               onClick={onClose}
-              className="rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white"
+              className="rounded-xl border border-ink-900/10 px-3 py-3"
             >
-              Start Here
+              Contact
             </Link>
           </div>
+
+          <Link
+            href="/topics"
+            onClick={onClose}
+            className="mt-3 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white"
+          >
+            Start Here
+          </Link>
         </nav>
       </div>
     </div>

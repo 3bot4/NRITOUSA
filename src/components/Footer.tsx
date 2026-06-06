@@ -6,10 +6,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Guides",
     links: [
-      { label: "New to USA", href: "/topics/finance" },
+      { label: "New to USA", href: "/topics/new-to-usa" },
       { label: "Banking & Credit", href: "/topics/credit" },
-      { label: "Renting vs Buying", href: "/topics/housing" },
-      { label: "Cars & Insurance", href: "/topics/cars" },
+      { label: "Housing & Renting", href: "/topics/housing" },
+      { label: "Cars & Driving", href: "/topics/cars" },
       { label: "All Guides", href: "/topics" },
     ],
   },
@@ -19,27 +19,28 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Taxes", href: "/topics/taxes" },
       { label: "401k & Roth IRA", href: "/topics/retirement" },
       { label: "Investing", href: "/topics/investing" },
+      { label: "Insurance", href: "/topics/insurance" },
       { label: "India-USA Money", href: "/topics/money-transfer" },
-      { label: "Property", href: "/topics/property" },
     ],
   },
   {
     title: "Community",
     links: [
-      { label: "Discussions", href: "/topics/community" },
+      { label: "Students", href: "/topics/students" },
+      { label: "Families", href: "/topics/families" },
+      { label: "Community & Life", href: "/topics/community" },
       { label: "Immigrant Stories", href: "/topics/stories" },
-      { label: "Ask a Question", href: "/topics/community" },
-      { label: "Join the Community", href: "/topics/community" },
+      { label: "Resources", href: "/resources" },
     ],
   },
   {
-    title: "Resources",
+    title: "Company",
     links: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Use", href: "/terms-of-use" },
       { label: "Disclaimer", href: "/disclaimer" },
-      { label: "All Guides", href: "/topics" },
     ],
   },
 ];
@@ -100,11 +101,13 @@ export default function Footer() {
         <div className="mt-12 border-t border-ink-900/10 pt-6">
           <p className="text-xs leading-relaxed text-ink-400">
             Content on {site.name} is for educational purposes only and is not
-            financial, legal, tax, or immigration advice. Please consult a
-            qualified professional for your situation.
+            financial, legal, tax, immigration, or investment advice.{" "}
+            {site.name} is owned by {site.owner}. Please consult qualified
+            professionals for your situation.
           </p>
           <p className="mt-3 text-xs text-ink-400">
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.owner}. All rights reserved. {site.name} is a
+            content platform owned and operated by {site.owner}.
           </p>
         </div>
       </Container>

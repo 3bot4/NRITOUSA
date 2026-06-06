@@ -92,7 +92,11 @@ export const organizationJsonLd = {
   "@type": "Organization",
   "@id": `${site.url}/#organization`,
   name: site.name,
+  legalName: site.owner,
   url: site.url,
+  email: site.email,
+  foundingDate: String(site.foundingYear),
+  parentOrganization: { "@type": "Organization", name: site.owner },
   description: site.description,
   logo: {
     "@type": "ImageObject",

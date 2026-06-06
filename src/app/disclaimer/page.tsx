@@ -55,10 +55,26 @@ export default function DisclaimerPage() {
         <Container>
           <div className="mx-auto max-w-prose space-y-8 leading-8 text-ink-700">
             <p>
-              Content on {site.name} is for educational and informational
-              purposes only and is not financial, legal, tax, or immigration
-              advice. Please consult a qualified professional for your
-              situation.
+              Content on {site.name} (owned and operated by {site.owner}) is for
+              educational and informational purposes only. Please consult a
+              qualified professional for your situation. Specifically, nothing on
+              this website is:
+            </p>
+
+            <ul className="list-disc space-y-2 pl-5">
+              <li>Financial advice</li>
+              <li>Tax advice</li>
+              <li>Legal advice</li>
+              <li>Immigration advice</li>
+              <li>Investment advice</li>
+            </ul>
+
+            <p>
+              Information can change based on your state, visa status, tax
+              residency, income, and personal situation. India–USA cross-border
+              finance is especially complex, and you are responsible for
+              verifying details with official sources and licensed professionals
+              before acting.
             </p>
 
             <div>
@@ -131,8 +147,12 @@ export default function DisclaimerPage() {
 
             <p>
               See also our{" "}
-              <Link href="/privacy" className="text-brand-600 underline">
+              <Link href="/privacy-policy" className="text-brand-600 underline">
                 Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link href="/terms-of-use" className="text-brand-600 underline">
+                Terms of Use
               </Link>
               .
             </p>

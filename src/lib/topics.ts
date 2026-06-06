@@ -2,6 +2,18 @@ import type { Topic } from "@/types";
 
 export const topics: Topic[] = [
   {
+    slug: "new-to-usa",
+    title: "New to the USA",
+    label: "New to USA",
+    description:
+      "Your first weeks in America — bank account, phone, SSN, apartment, and the starter checklist every new immigrant needs.",
+    icon: "🛬",
+    accent: "from-blue-500 to-indigo-600",
+    seoTitle: "New to the USA: First Steps for Immigrants",
+    seoDescription:
+      "Just moved to America? Step-by-step guides on your first 7 and 30 days — bank account, phone plan, SSN, credit card, apartment, and avoiding rookie mistakes.",
+  },
+  {
     slug: "finance",
     title: "Personal Finance",
     label: "Finance",
@@ -108,6 +120,42 @@ export const topics: Topic[] = [
     seoTitle: "India-USA Money Transfer & NRI Finance Guides",
     seoDescription:
       "Guides on sending money to India, bringing money to the USA, NRI bank accounts, property, investments, and cross-border finance.",
+  },
+  {
+    slug: "insurance",
+    title: "Insurance",
+    label: "Insurance",
+    description:
+      "Health, auto, renters, term life, and HSA vs FSA — the coverage that protects new immigrant families from costly surprises.",
+    icon: "🛡️",
+    accent: "from-teal-500 to-cyan-600",
+    seoTitle: "Insurance Guides for Immigrants in the USA",
+    seoDescription:
+      "Health, auto, renters, term life, umbrella, and HSA vs FSA explained simply for NRIs and new immigrant families in the United States.",
+  },
+  {
+    slug: "students",
+    title: "Students",
+    label: "Students",
+    description:
+      "Money, credit, housing, and OPT/H-1B planning for Indian students on F-1 visas studying in the United States.",
+    icon: "🎓",
+    accent: "from-fuchsia-500 to-purple-600",
+    seoTitle: "USA Money Guides for Indian Students",
+    seoDescription:
+      "Budgeting, credit cards, renting near campus, cars, and OPT/H-1B financial planning for Indian and international students in the USA.",
+  },
+  {
+    slug: "families",
+    title: "Families",
+    label: "Families",
+    description:
+      "Moving with family, school districts, healthcare, emergency funds, and budgeting for visits to India.",
+    icon: "👨‍👩‍👧",
+    accent: "from-rose-500 to-orange-500",
+    seoTitle: "Settling in the USA: Guides for Immigrant Families",
+    seoDescription:
+      "Practical guides for immigrant families in America — school districts, healthcare, emergency funds, home buying, and family budgeting.",
   },
   {
     slug: "community",

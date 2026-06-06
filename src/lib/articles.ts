@@ -3720,6 +3720,1434 @@ Increasingly yes — many banks allow NRI redesignation by submitting forms and 
 ## The bottom line
 Leaving your old resident account running after you've become an NRI is a quiet but real FEMA violation — and an easy one to fix. Redesignate it to NRO, open an NRE account for your foreign income (and an FCNR deposit if you want dollar yield), relink your SIPs and mandates, and you'll have a clean, compliant banking setup on both sides. Bonus: properly labeled Indian accounts make your US [FBAR/FATCA](/articles/fbar-fatca-nri-guide) reporting far simpler, too.`,
   },
+
+  /* ============================================================ *
+   * New to the USA
+   * ============================================================ */
+  {
+    slug: "first-7-days-in-usa",
+    title: "First 7 Days in the USA: What Every New Immigrant Should Do",
+    excerpt:
+      "A clear, hour-by-day plan for your first week in America — from your SIM card and bank account to the documents you must not lose.",
+    topic: "new-to-usa",
+    author: "Priya Nair",
+    date: "2026-06-02",
+    updated: "2026-06-06",
+    readingTime: 8,
+    featured: true,
+    content: `The first week in a new country is a blur of jet lag, paperwork, and a hundred small decisions. The goal of these seven days is not to finish everything — it is to build the tiny foundation (a phone number, an address, a bank account) that everything else plugs into.
+
+:::summary
+In week one, prioritize the things that unlock other things: a **US phone number**, a **US address**, and a **bank account**. Keep your passport, I-94, and visa documents safe, get a local SIM the day you land, and don't rush into credit cards or big purchases yet. Everything else can wait until you're rested.
+:::
+
+## Day 1: Phone, cash, and rest
+Get a US SIM or eSIM before you leave the airport, or on day one. A working US number is required for almost every signup — banks, apartments, rideshare. Prepaid carriers like Mint, US Mobile, or T-Mobile prepaid need no credit check. Keep a little cash for the first 48 hours, and then sleep. Decisions made on no sleep are expensive.
+
+## Day 2–3: Address and bank account
+Most things require a US address. If you don't have permanent housing yet, a friend's address or your temporary stay works to start. With an address, passport, and visa you can open a checking account. Newcomer-friendly banks (Chase, Bank of America) and online banks accept you without an SSN — see our guide to the [best US bank accounts for NRIs](/articles/best-bank-account-nri-usa).
+
+## Day 4: Lock down your documents
+Make digital and physical copies of everything: passport, visa stamp, I-94 (download from the CBP website), I-20 or DS-2019 if you're a student, offer letter, and vaccination records. Store one set in the cloud and keep originals in a single safe folder. Read our full list of [documents to keep safe](/articles/documents-to-keep-safe-usa).
+
+## Day 5: Plan your SSN
+If you're work-authorized, the Social Security Number is your key to credit, payroll, and more. You generally apply at a local SSA office after you arrive (students may need to wait until on-campus employment is set up). See what to do once it arrives in [SSN: your financial next steps](/articles/ssn-financial-next-steps).
+
+## Day 6: Groceries, transit, and a phone plan
+Set up the boring essentials: a grocery store routine, public transit card or rideshare app, and a permanent phone plan once you've tested coverage. Sort out utilities if you've moved into a place — our [phone plan and utilities guide](/articles/phone-plan-utilities-immigrants) covers the setup.
+
+## Day 7: Breathe and make a 30-day plan
+You don't need a credit card, a car, or an apartment lease in week one. Resist pressure to rush. Spend day seven mapping the next month — that's what our [first 30 days guide](/articles/first-30-days-in-usa) is for.
+
+:::key
+- Get a US SIM and number on day one — it unlocks every other signup
+- Open a bank account with passport + visa + address (no SSN needed)
+- Back up every document digitally and keep originals together
+- Apply for your SSN as soon as you're eligible
+- Don't rush credit cards, cars, or leases in the first week
+:::
+
+## Common mistakes in week one
+- **Carrying too much cash.** Move money into a bank account quickly; don't keep thousands in a suitcase.
+- **Losing the I-94.** Download it immediately — you'll need it for the SSN and leases.
+- **Signing a long lease while jet-lagged.** Start with temporary housing if you can.
+- **Skipping the SIM** and relying on hotel Wi-Fi — you'll get locked out of OTP-based signups.
+
+## Frequently asked questions
+
+### Can I open a bank account without an SSN?
+Yes. Many US banks open checking accounts with just your passport, visa, and a US address. An SSN can be added later. See our [bank account guide](/articles/best-bank-account-nri-usa).
+
+### Do I need a US phone number right away?
+Effectively yes — banks, apartments, and most apps send verification codes to a US number, so it's the first thing to set up.
+
+### When should I apply for a credit card?
+Usually after your SSN arrives. Start with a secured card and build from there; there's no rush in week one.
+
+## The bottom line
+Week one is about foundations, not finishing. Phone, address, bank account, safe documents — get those four right and the rest of your American setup has something to build on.`,
+  },
+  {
+    slug: "first-30-days-in-usa",
+    title: "First 30 Days in the USA: Bank, Phone, Credit Card, Apartment",
+    excerpt:
+      "Your month-one roadmap to a working financial life in America — banking, credit, housing, and the order to tackle them in.",
+    topic: "new-to-usa",
+    author: "Rohan Gupta",
+    date: "2026-06-02",
+    updated: "2026-06-06",
+    readingTime: 10,
+    featured: true,
+    content: `Once the first week's chaos settles, month one is about turning a survival setup into a real financial life: a stable home, a credit file, and the accounts you'll use for years.
+
+:::summary
+Across 30 days, build in this order: **bank account → SSN → secured credit card → permanent apartment → utilities and insurance**. Each step makes the next one easier. By the end of the month you want a checking + savings account, a credit card reporting to the bureaus, a lease, and renters insurance.
+:::
+
+## Week 1: Banking and phone (recap)
+If you haven't already, open a checking and savings account and get a permanent phone plan. Online banks pay 4%+ on savings with no fees — don't leave your emergency cash earning nothing.
+
+## Week 2: SSN and your first credit card
+Once your SSN arrives, apply for a secured credit card. Your Indian CIBIL score doesn't transfer, so you start from zero — the playbook is in [build a US credit score from zero](/articles/build-us-credit-score-from-zero) and our roundup of the [best secured cards for immigrants](/articles/best-secured-credit-cards-immigrants). One small recurring charge, paid in full monthly, is all it takes to start.
+
+## Week 3: Find permanent housing
+Temporary housing is fine to start, but month one is when you hunt for a real place. With no US credit history, landlords may ask for extra deposit, a cosigner, or prepaid rent — our guide to [renting an apartment with no credit history](/articles/rent-apartment-no-credit-history) shows the workarounds. Before signing, read [lease terms every newcomer should understand](/articles/first-apartment-lease-guide) and check [how much rent you can actually afford](/articles/how-much-rent-can-you-afford).
+
+## Week 4: Utilities, insurance, and a budget
+Set up electricity, internet, and gas, and buy [renters insurance](/articles/renters-insurance-explained) — it's usually $10–20/month and often required by the lease. Sort out [health insurance](/articles/health-insurance-basics-immigrants), whether through your employer or the marketplace. Then build your first monthly budget and start an [emergency fund](/articles/emergency-fund-first-year-usa).
+
+| Priority | Task | Why it matters |
+| --- | --- | --- |
+| 1 | Bank account | Foundation for everything else |
+| 2 | SSN | Unlocks credit and payroll |
+| 3 | Secured credit card | Starts your credit history |
+| 4 | Apartment + lease | Stable address and budget |
+| 5 | Utilities + insurance | Protects your home and finances |
+
+:::key
+- Tackle steps in order — each one unlocks the next
+- Open high-yield savings; don't let cash sit idle
+- Start credit with a secured card the moment your SSN arrives
+- Budget for deposits, utilities, and renters insurance before signing a lease
+- Begin a small emergency fund in month one
+:::
+
+## Common mistakes in month one
+- **Skipping the 401(k) match** at a new job because you "might move back" — that's free money. See [why the match matters](/articles/401k-match-explained-nri).
+- **Overspending on a car** before your credit is built. Read [buy vs lease with no credit](/articles/buy-vs-lease-car-no-credit) first.
+- **Ignoring health insurance.** A single ER visit uninsured can cost thousands.
+
+## Frequently asked questions
+
+### What should I do first — SSN or bank account?
+Open the bank account first; it doesn't require an SSN. Apply for the SSN in parallel, then add it to the bank and use it for your first credit card.
+
+### How soon can I rent an apartment?
+As soon as you can show income or savings. Without US credit, expect to provide a larger deposit or a cosigner — see [renting with no credit history](/articles/rent-apartment-no-credit-history).
+
+### Do I need a car in month one?
+Usually no. Get your housing, banking, and credit sorted first; tackle a car once your credit score has started to form.
+
+## The bottom line
+Month one is a sequence, not a scramble. Bank account, SSN, credit card, apartment, insurance — in that order — and you'll end your first 30 days with a financial life that actually works.`,
+  },
+  {
+    slug: "documents-to-keep-safe-usa",
+    title: "Documents to Keep Safe After Moving to the USA",
+    excerpt:
+      "The exact list of documents every new immigrant must protect — and how to store them so you're never caught without one.",
+    topic: "new-to-usa",
+    author: "Anjali Sharma",
+    date: "2026-06-01",
+    updated: "2026-06-06",
+    readingTime: 7,
+    content: `In the US, a surprising number of everyday tasks — leasing an apartment, starting a job, filing taxes, renewing a visa — hinge on documents you brought or received at the border. Losing one can cost weeks. Here's what to protect and how.
+
+:::summary
+Keep three categories safe: **immigration documents** (passport, visa, I-94, I-20/DS-2019, EAD), **financial/identity documents** (SSN card, offer letter, pay stubs), and **records you'll need at tax time** (W-2s, India income proof, account statements). Store one encrypted digital copy in the cloud and keep originals together in a single fireproof folder.
+:::
+
+## Immigration documents
+- **Passport** with your visa stamp
+- **I-94** arrival record — download it from the CBP website after each entry
+- **I-20** (F-1 students) or **DS-2019** (J-1)
+- **EAD card** if you have one (e.g., OPT, H-4 EAD)
+- **Approval notices** (I-797) for H-1B, L-1, etc.
+
+These are the documents USCIS, employers, and the DMV ask for. Never keep your only copy in a checked bag.
+
+## Identity and financial documents
+- **SSN card** — memorize the number, store the card safely, and never carry it daily
+- **Job offer letter** and recent **pay stubs** — landlords and lenders ask for these
+- **Driver's license** or state ID once you have one
+- **Bank account details** and debit/credit cards
+
+## Tax-time records
+Because you may have income on both sides of the world, save anything that proves income or taxes paid:
+- **W-2** and any **1099** forms
+- **India income and interest** statements
+- **Foreign account balances** for [FBAR/FATCA reporting](/articles/fbar-fatca-nri-guide)
+- **Proof of taxes paid in India** for [double-taxation relief](/articles/double-taxation-dtaa-india-usa)
+
+## How to store everything
+1. Scan every document to PDF.
+2. Store one copy in an encrypted cloud folder (and share access with a trusted family member).
+3. Keep originals together in one labeled, fireproof folder at home.
+4. Photograph the front and back of cards.
+5. Re-download your I-94 after every international trip.
+
+:::key
+- Protect immigration, identity, and tax documents as three buckets
+- Download your I-94 from CBP after every US entry
+- Never carry your SSN card daily — memorize the number
+- Keep one encrypted cloud copy plus originals in a fireproof folder
+- Save anything proving income or taxes paid in India for tax season
+:::
+
+## Common mistakes
+- **Keeping the only I-94 in email** and losing access — store it in a dedicated folder.
+- **Carrying the SSN card in your wallet** — if lost, it invites identity theft.
+- **Tossing pay stubs.** You'll need them for apartments, car loans, and mortgages.
+
+## Frequently asked questions
+
+### Where do I get my I-94?
+Download it free from the U.S. Customs and Border Protection (CBP) website using your passport details. Do this after every entry to the US.
+
+### Do I need to carry my passport every day?
+No. Carry a state ID or driver's license for daily use and keep your passport stored safely except when traveling.
+
+### How long should I keep tax documents?
+Keep US tax records and supporting documents for at least seven years, especially anything related to foreign accounts and income.
+
+## The bottom line
+A little organization now prevents big delays later. Sort your documents into immigration, identity, and tax buckets, back them up, and you'll breeze through the paperwork moments that trip up most newcomers.`,
+  },
+  {
+    slug: "common-mistakes-new-immigrants",
+    title: "Common Mistakes New Immigrants Make in America",
+    excerpt:
+      "The avoidable money and life mistakes that cost new immigrants the most — and how to sidestep every one.",
+    topic: "new-to-usa",
+    author: "Vikram Patel",
+    date: "2026-05-30",
+    updated: "2026-06-06",
+    readingTime: 9,
+    content: `Most newcomer mistakes aren't dramatic — they're quiet defaults that compound. Here are the ones that cost the most, and the simple fixes.
+
+:::summary
+The biggest early mistakes are: **skipping the 401(k) match**, **mismanaging credit**, **overspending on a car**, **ignoring insurance**, and **mishandling money between India and the US**. None require expertise to avoid — just knowing they exist puts you ahead of most new arrivals.
+:::
+
+## 1. Skipping the 401(k) employer match
+Many newcomers skip retirement contributions thinking they'll move back. But an employer match is an instant 50–100% return — free money you forfeit by opting out. Even if you leave the US, the account comes with you. See [what happens to your 401(k) if you leave](/articles/what-happens-to-401k-leaving-usa) and [why the match matters](/articles/401k-match-explained-nri).
+
+## 2. Mismanaging credit
+Common credit errors: applying for too many cards at once, carrying a balance to "build credit," or closing your first card. Keep [utilization low](/articles/credit-utilization-explained), pay in full, and let accounts age. The full playbook is [build credit from zero](/articles/build-us-credit-score-from-zero).
+
+## 3. Overspending on a car
+A new car with a high-interest loan (because you have no credit) is one of the costliest early decisions. Consider a reliable used car and read [buy vs lease with no credit](/articles/buy-vs-lease-car-no-credit) and [how to buy without a cosigner](/articles/buy-car-without-cosigner) before signing.
+
+## 4. Ignoring insurance
+Going without health insurance is a five-figure gamble. Renters insurance is cheap and often required. Learn the basics in [health insurance for immigrants](/articles/health-insurance-basics-immigrants) and [renters insurance explained](/articles/renters-insurance-explained).
+
+## 5. Mishandling India–US money
+Leaving a resident Indian account active (a FEMA issue), ignoring TCS on remittances, or using bad exchange rates all quietly cost money. Start with [NRE vs NRO accounts](/articles/nre-nro-accounts-explained) and the [cheapest way to send money](/articles/cheapest-way-send-money-usa-india).
+
+## 6. Not building an emergency fund
+Without family nearby, a financial cushion matters more, not less. Aim for 3–6 months of expenses — see [building your first emergency fund](/articles/emergency-fund-first-year-usa).
+
+:::key
+- Always capture the full 401(k) match — it's free money
+- Build credit slowly: low utilization, pay in full, keep cards open
+- Don't buy more car than you need on high-interest debt
+- Never skip health insurance; add cheap renters insurance
+- Fix your India accounts and use low-fee transfers
+- Build a 3–6 month emergency fund early
+:::
+
+## Frequently asked questions
+
+### Is it worth contributing to a 401(k) if I might move back to India?
+Yes. The employer match is free money, the account is portable, and you have options to manage it from abroad. Skipping it leaves guaranteed returns on the table.
+
+### What's the single most expensive early mistake?
+For most people it's a combination of high-interest car debt and skipping the 401(k) match — together they can cost tens of thousands over a few years.
+
+### How do I avoid credit mistakes as a newcomer?
+Use one secured card, keep utilization under 10%, pay the full balance every month, and avoid opening several accounts at once.
+
+## The bottom line
+You don't need to be an expert to avoid these — you just need to know they exist. Capture the match, build credit patiently, insure yourself, and handle cross-border money with care, and you'll dodge the mistakes that set most newcomers back years.`,
+  },
+  {
+    slug: "choosing-city-state-usa",
+    title: "How to Choose a City or State After Moving to the USA",
+    excerpt:
+      "Taxes, cost of living, jobs, weather, and community — how to weigh where to settle as a new immigrant in America.",
+    topic: "new-to-usa",
+    author: "Anjali Sharma",
+    date: "2026-05-29",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `Where you live in the US shapes your taxes, your take-home pay, your commute, and how at-home you feel. For immigrants, a few factors matter more than the glossy "best places to live" lists suggest.
+
+:::summary
+Weigh five things: **state taxes**, **cost of living (especially rent)**, **job market for your field**, **immigrant community**, and **climate/lifestyle**. A higher salary in a high-tax, high-rent city can leave you with less than a modest salary in a no-income-tax state. Run the real numbers before you commit.
+:::
+
+## State income taxes
+States like Texas, Florida, Washington, and Nevada have no state income tax, while California and New York can take 9%+ of high incomes. On a six-figure salary, that's a five-figure annual difference. See our breakdown of the [best and worst tax states for H-1B workers](/articles/best-worst-tax-states-h1b).
+
+## Cost of living — especially rent
+Rent is usually the biggest line in a newcomer's budget. A $150k salary in San Francisco may feel tighter than $110k in Dallas once rent and taxes are netted out. Use the [how much rent can you afford](/articles/how-much-rent-can-you-afford) framework against local rents before deciding.
+
+## Job market and industry hubs
+Your field often dictates the shortlist: tech (Bay Area, Seattle, Austin), finance (NYC, Charlotte), healthcare and energy (Texas), pharma (New Jersey). For visa holders, a deeper local market means more backup employers if you need to transfer your H-1B.
+
+## Immigrant community and amenities
+Indian groceries, temples, schools with diversity, and an established desi community make settling far easier — especially for families. Cities like Edison NJ, Fremont CA, Plano TX, and the Atlanta and Chicago suburbs have large, well-served communities.
+
+## Climate and lifestyle
+Don't underrate weather and commute. A brutal winter or a two-hour daily commute affects quality of life more than most people expect.
+
+| Factor | Lower-cost example | Higher-cost example |
+| --- | --- | --- |
+| State income tax | Texas, Florida (0%) | California, New York (high) |
+| Typical rent | Midwest, South | Coastal metros |
+| Tech jobs | Austin, Dallas | Bay Area, Seattle |
+| Indian community | Plano, Edison | Fremont, Jersey City |
+
+:::key
+- Compare take-home pay after state tax, not just salary
+- Rent usually outweighs every other cost-of-living factor
+- Pick a city with depth in your industry for visa security
+- A strong immigrant community eases settling, especially for families
+- Factor in commute and climate — they shape daily life
+:::
+
+## Common mistakes
+- **Chasing the highest salary** without netting out taxes and rent.
+- **Ignoring visa backup** by moving to a one-employer town.
+- **Forgetting family needs** like schools and community when single-minded about the job.
+
+## Frequently asked questions
+
+### Do no-income-tax states actually save money?
+Often yes, but not always — some offset with higher property or sales taxes. Compare total tax burden and cost of living together, not income tax alone.
+
+### Which cities are best for Indian immigrants?
+Areas with large communities and good jobs include the Bay Area, Seattle, Austin, Dallas/Plano, New Jersey (Edison/Jersey City), Atlanta, and Chicago suburbs.
+
+### Should I prioritize job or lifestyle?
+Early on, prioritize a strong job market in your field (especially for visa stability). Lifestyle and cost optimization can come once you're established.
+
+## The bottom line
+The "best" city is the one where your after-tax, after-rent income, your career, and your community all line up. Run the real numbers — salary minus state tax minus rent — and the right choice usually becomes obvious.`,
+  },
+
+  /* ============================================================ *
+   * Insurance
+   * ============================================================ */
+  {
+    slug: "health-insurance-basics-immigrants",
+    title: "Health Insurance Basics for Immigrants in the USA",
+    excerpt:
+      "Premiums, deductibles, copays, and networks decoded — how US health insurance actually works for new immigrants.",
+    topic: "insurance",
+    author: "Priya Nair",
+    date: "2026-06-03",
+    updated: "2026-06-06",
+    readingTime: 10,
+    featured: true,
+    content: `US healthcare is expensive and confusing, and going without insurance is one of the riskiest things a newcomer can do — a single hospital stay can cost tens of thousands of dollars. The good news: once you learn five terms, the system makes sense.
+
+:::summary
+Health insurance has five moving parts: **premium** (what you pay monthly), **deductible** (what you pay before coverage kicks in), **copay/coinsurance** (your share of each visit), **out-of-pocket maximum** (your yearly worst case), and **network** (which doctors are covered). Most immigrants get coverage through an employer; if not, the ACA marketplace is the main option.
+:::
+
+## The five terms that matter
+- **Premium** — the fixed amount you pay every month, often partly covered by your employer.
+- **Deductible** — what you pay yourself before insurance starts paying (e.g., $1,500).
+- **Copay / coinsurance** — a flat fee ($30) or percentage (20%) you pay per service after the deductible.
+- **Out-of-pocket maximum** — the most you'll pay in a year; after this, insurance covers 100%.
+- **Network** — in-network providers are covered; out-of-network can cost far more.
+
+## Where immigrants get coverage
+- **Employer plans** are the most common and usually the best value, since employers subsidize premiums. Enroll during onboarding or open enrollment.
+- **ACA marketplace** (HealthCare.gov) is for those without employer coverage; subsidies depend on income. Most visa holders who are "lawfully present" qualify.
+- **Student plans** are offered by universities for F-1 students (more in our [student money guide](/articles/usa-money-guide-indian-students)).
+- **Dependents** on H-4/L-2 are typically added to the worker's employer plan — see [dependent health insurance](/articles/h4-l2-dependent-health-insurance).
+
+## HMO vs PPO
+- **HMO**: cheaper, but you must stay in-network and get referrals.
+- **PPO**: pricier, but more flexibility to see specialists and out-of-network doctors.
+
+## High-deductible plans and the HSA
+A high-deductible health plan (HDHP) pairs with a **Health Savings Account (HSA)** — a triple-tax-advantaged account that's one of the best wealth-building tools in America. Learn the difference in [HSA vs FSA explained](/articles/hsa-vs-fsa-explained).
+
+| Term | What it means | Typical range |
+| --- | --- | --- |
+| Premium | Monthly cost | $0–$500+ (with employer) |
+| Deductible | You pay first | $500–$7,000 |
+| Copay | Per-visit fee | $20–$60 |
+| OOP max | Yearly ceiling | $3,000–$9,000 |
+
+:::key
+- Never go uninsured — one ER visit can cost five figures
+- Learn premium, deductible, copay, OOP max, and network
+- Employer plans are usually the best value
+- HMO is cheaper but restrictive; PPO is flexible but costs more
+- Pair an HDHP with an HSA for big tax savings
+:::
+
+## Common mistakes
+- **Choosing the lowest premium** without checking the deductible — a cheap plan can be expensive when you actually need care.
+- **Going out-of-network** unknowingly and getting a huge bill.
+- **Skipping the HSA** when you have an HDHP and missing the tax break.
+
+## Frequently asked questions
+
+### Do I need health insurance on a work visa?
+There's no federal mandate penalty, but going without coverage is financially dangerous. Take your employer plan or buy marketplace coverage.
+
+### Can H-4 or L-2 dependents get coverage?
+Yes — they're usually added to the primary worker's employer plan. See our [dependent insurance guide](/articles/h4-l2-dependent-health-insurance).
+
+### What is an HSA and should I use one?
+An HSA is a tax-advantaged savings account for medical costs, available with high-deductible plans. It's one of the most tax-efficient accounts in the US — see [HSA vs FSA](/articles/hsa-vs-fsa-explained).
+
+## The bottom line
+Don't gamble with health coverage. Take your employer plan if you have one, learn the five core terms, and if you're on a high-deductible plan, open an HSA — it doubles as a stealth retirement account.`,
+  },
+  {
+    slug: "term-life-insurance-immigrant-families",
+    title: "Term Life Insurance Basics for Immigrant Families",
+    excerpt:
+      "If people depend on your income, term life insurance is the cheapest peace of mind you can buy. Here's how it works for NRIs.",
+    topic: "insurance",
+    author: "Vikram Patel",
+    date: "2026-06-01",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `If your spouse, children, or parents depend on your income, life insurance turns a worst-case scenario into a manageable one. For most immigrant families, simple **term life** is all you need — and it's remarkably cheap when you're young and healthy.
+
+:::summary
+Buy **term life insurance** (not whole life) — it covers you for a set period (e.g., 20 or 30 years) for a low fixed premium. A healthy 30-something can often get $1 million of coverage for $30–60/month. Aim for roughly **10–15× your annual income**, and buy while you're young and healthy to lock in low rates.
+:::
+
+## Term vs whole life
+- **Term life**: pure insurance for a fixed period. Cheap, simple, and right for almost everyone.
+- **Whole/permanent life**: lifelong coverage with an investment component, often sold aggressively. The fees are high; most families are better off buying term and investing the difference in [index funds](/articles/index-funds-for-beginners-nri).
+
+## How much coverage do you need?
+A common rule is 10–15× your annual income, adjusted for debts and goals. Consider:
+- Outstanding mortgage or [home loan](/articles/buying-first-home-on-visa)
+- Years of income your family would need to replace
+- Children's future education
+- Support you send to parents in India
+
+## Does visa status matter?
+You can buy US term life as a visa holder or green card holder. Insurers may ask about travel and immigration status, but coverage is widely available. Premiums are based mainly on age and health, so buying earlier is cheaper.
+
+## What about policies in India?
+Some NRIs keep an Indian term policy too. That can work, but confirm it pays out for death abroad and that premiums/claims work cross-border. For income earned and family living in the US, a US policy is usually simpler.
+
+| Feature | Term life | Whole life |
+| --- | --- | --- |
+| Cost | Low | High |
+| Duration | Fixed (e.g., 20–30 yrs) | Lifetime |
+| Investment component | None | Yes (high fees) |
+| Best for | Most families | Niche estate planning |
+
+:::key
+- Choose term life over whole life for value and simplicity
+- Target roughly 10–15× your annual income in coverage
+- Buy young and healthy to lock in low premiums
+- Factor in mortgage, kids' education, and support to family in India
+- Invest the savings vs whole life in low-cost index funds
+:::
+
+## Common mistakes
+- **Buying whole life** when term covers the real need for a fraction of the cost.
+- **Underinsuring** by picking a round number instead of replacing real income.
+- **Waiting** — premiums only rise with age and health changes.
+
+## Frequently asked questions
+
+### Can I buy life insurance on a work visa?
+Yes. Term life is available to visa and green card holders; pricing is based mainly on age and health.
+
+### Term or whole life?
+For nearly all families, term life. It's far cheaper, and you can invest the difference yourself for better long-term returns.
+
+### How much coverage should I get?
+A practical starting point is 10–15× your annual income, then adjust for your mortgage, children's education, and family support.
+
+## The bottom line
+If anyone depends on your income, term life insurance is cheap, essential protection. Buy a simple term policy for 10–15× your income while you're young and healthy, and invest what you'd have wasted on whole life.`,
+  },
+  {
+    slug: "renters-insurance-explained",
+    title: "Renters Insurance Explained for New Immigrants",
+    excerpt:
+      "Cheap, often required, and widely misunderstood — what renters insurance covers and why every tenant should have it.",
+    topic: "insurance",
+    author: "Anjali Sharma",
+    date: "2026-05-31",
+    updated: "2026-06-06",
+    readingTime: 6,
+    content: `Renters insurance is one of the best deals in American personal finance: usually $10–20 a month to protect your belongings, your wallet from lawsuits, and your living costs if disaster strikes. Many leases require it, and you should have it even if yours doesn't.
+
+:::summary
+Renters insurance covers three things: your **personal belongings** (theft, fire, water damage), **liability** (if someone is injured in your place or you damage the building), and **additional living expenses** if your home becomes unlivable. It does **not** cover the building itself — that's the landlord's policy. Expect to pay about $10–20/month.
+:::
+
+## What it covers
+- **Personal property** — laptops, furniture, clothes, electronics, even items stolen from your car.
+- **Liability** — if a guest is injured or you accidentally cause damage (e.g., a kitchen fire).
+- **Loss of use** — hotel and food costs if a covered event makes your home uninhabitable.
+
+## What it doesn't cover
+- The building structure (the landlord insures that)
+- Floods and earthquakes (separate policies)
+- Roommates' belongings (they need their own policy)
+
+## How much does it cost?
+Typically $10–20/month for $20,000–$50,000 of coverage. It's cheap because the building — the expensive part — isn't your responsibility.
+
+## Replacement cost vs actual cash value
+- **Replacement cost** pays what it costs to buy a new equivalent item — worth the small extra premium.
+- **Actual cash value** pays the depreciated value, leaving you short on replacements.
+
+:::key
+- Covers belongings, liability, and living expenses — not the building
+- Usually just $10–20/month, and often lease-required
+- Choose replacement cost over actual cash value
+- Document valuables with photos and receipts
+- Bundle with auto insurance for a discount
+:::
+
+## Common mistakes
+- **Assuming the landlord's insurance covers your stuff** — it doesn't.
+- **Underinsuring** by guessing the value of your belongings too low.
+- **Skipping it to save $15/month** and facing a total loss with no recourse.
+
+## Frequently asked questions
+
+### Is renters insurance required?
+Many landlords require it in the lease. Even when not required, it's inexpensive protection well worth having.
+
+### Does it cover my laptop if stolen outside home?
+Often yes — personal property coverage typically extends to belongings stolen away from home, including from your car. Check your policy limits.
+
+### Can I bundle it with car insurance?
+Yes, and bundling usually earns a discount. See [auto insurance basics](/articles/auto-insurance-basics-new-drivers).
+
+## The bottom line
+For the price of a couple of coffees a month, renters insurance protects everything you own and shields you from liability. Get a replacement-cost policy, document your valuables, and bundle it with auto for a discount.`,
+  },
+  {
+    slug: "auto-insurance-basics-new-drivers",
+    title: "Auto Insurance Basics for New Drivers in the USA",
+    excerpt:
+      "Liability, collision, deductibles, and why new immigrants pay more — plus how to lower your car insurance bill.",
+    topic: "insurance",
+    author: "Rohan Gupta",
+    date: "2026-05-30",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `Car insurance in the US is mandatory in almost every state, and new immigrants often pay more at first because insurers can't see your driving history. Understanding the coverage types — and the levers that lower your premium — can save you hundreds a year.
+
+:::summary
+Auto insurance has a few key coverages: **liability** (required; pays for damage you cause to others), **collision** (your car in a crash), **comprehensive** (theft, weather, vandalism), and **uninsured motorist**. New immigrants pay more due to no US driving record, but you can cut costs with a clean record, higher deductibles, bundling, and transferring proof of your Indian no-claims history.
+:::
+
+## Coverage types
+- **Liability** — legally required; covers injuries and damage you cause to others. Carry more than the state minimum.
+- **Collision** — repairs your own car after an accident.
+- **Comprehensive** — covers theft, fire, weather, and vandalism.
+- **Uninsured/underinsured motorist** — protects you if the other driver has no insurance.
+
+## Why new immigrants pay more
+Insurers price on history they can see. With no US driving record and possibly a foreign license, you start in a higher-risk bucket. This usually improves within 1–3 years of clean US driving. Our guide to [cheap insurance on a foreign license](/articles/cheap-car-insurance-foreign-license) goes deeper.
+
+## How to lower your premium
+1. Keep a clean driving record.
+2. Raise your deductible (lowers premium, but you pay more out of pocket in a claim).
+3. Bundle with [renters insurance](/articles/renters-insurance-explained).
+4. Ask about good-driver, low-mileage, and safety-feature discounts.
+5. Provide a letter from your Indian insurer showing your no-claims history — some US insurers credit it.
+6. Get your US license sooner rather than later.
+
+| Coverage | Required? | Protects |
+| --- | --- | --- |
+| Liability | Yes (most states) | Others' injuries/damage you cause |
+| Collision | Optional | Your car in a crash |
+| Comprehensive | Optional | Theft, weather, vandalism |
+| Uninsured motorist | Varies | You, vs uninsured drivers |
+
+:::key
+- Liability is mandatory — but buy more than the state minimum
+- Add collision and comprehensive if your car has real value
+- New immigrants pay more at first; it improves with a clean record
+- Raise deductibles and bundle policies to cut premiums
+- A no-claims letter from India can earn a discount
+:::
+
+## Common mistakes
+- **Buying only state-minimum liability** — one serious accident can exceed it and expose your assets.
+- **Driving uninsured even briefly** — illegal and financially catastrophic.
+- **Not shopping around** — quotes vary widely between insurers.
+
+## Frequently asked questions
+
+### Can I drive on my Indian license?
+Usually for a short period after arrival, but rules vary by state. Get a US license promptly — it also lowers your insurance.
+
+### Why is my premium so high?
+You likely have no US driving history yet. It typically drops after 1–3 years of clean driving; ask about discounts and a no-claims letter from India.
+
+### What coverage do I really need?
+At minimum, solid liability (above state minimums). Add collision and comprehensive if your car is worth protecting.
+
+## The bottom line
+Auto insurance is unavoidable, but not fixed. Carry strong liability, add collision/comprehensive for a valuable car, and use clean-record, bundling, and no-claims discounts to bring the cost down over time.`,
+  },
+  {
+    slug: "hsa-vs-fsa-explained",
+    title: "HSA vs FSA Explained for Immigrants",
+    excerpt:
+      "Two tax-advantaged health accounts, very different rules. Which one to use — and why the HSA may be the best account in America.",
+    topic: "insurance",
+    author: "Priya Nair",
+    date: "2026-05-28",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `HSAs and FSAs both let you pay for healthcare with pre-tax dollars, but they work very differently. For many immigrants, the HSA is a hidden gem — arguably the most tax-efficient account in the US.
+
+:::summary
+An **FSA** is "use it or lose it" within the year and is tied to your employer. An **HSA** is yours forever, rolls over, can be invested, and is **triple tax-advantaged** (tax-free in, tax-free growth, tax-free out for medical costs). You need a high-deductible health plan (HDHP) to use an HSA. If you qualify, the HSA usually wins.
+:::
+
+## The key differences
+| Feature | HSA | FSA |
+| --- | --- | --- |
+| Requires HDHP | Yes | No |
+| Rolls over yearly | Yes (unlimited) | Mostly no (use it or lose it) |
+| Portable if you change jobs | Yes | No |
+| Can invest the balance | Yes | No |
+| Triple tax advantage | Yes | Partial |
+
+## Why the HSA is special
+Contributions reduce your taxable income, the balance grows tax-free when invested, and withdrawals for medical expenses are tax-free. After 65, you can withdraw for any reason (taxed like a regular retirement account) — so an HSA doubles as a stealth retirement account. Pair it with the right plan from [health insurance basics](/articles/health-insurance-basics-immigrants).
+
+## How to use an HSA well
+1. Contribute up to the annual limit if you can.
+2. Pay small medical bills out of pocket and **let the HSA invest and grow**.
+3. Keep receipts — you can reimburse yourself years later, tax-free.
+4. Treat it as a long-term account, not a checking account.
+
+## What about the FSA?
+An FSA still helps if you don't have an HDHP — just estimate your annual medical/dependent-care spending carefully, since unused funds are typically forfeited.
+
+## If you leave the US
+An HSA stays yours even if you move abroad, though using it for non-US medical care has nuances. See how other accounts behave in [HSA after leaving the USA](/articles/hsa-after-leaving-usa) and [what happens to your 401(k)](/articles/what-happens-to-401k-leaving-usa).
+
+:::key
+- FSA = use it or lose it, no HDHP needed, employer-tied
+- HSA = yours forever, investable, triple tax-free
+- You need a high-deductible plan to fund an HSA
+- Invest the HSA and pay small bills out of pocket to maximize growth
+- Keep receipts to reimburse yourself tax-free later
+:::
+
+## Common mistakes
+- **Treating the HSA as a spending account** instead of investing it.
+- **Over-funding an FSA** and forfeiting the leftover at year-end.
+- **Skipping the HSA** when on an HDHP and missing the best tax deal around.
+
+## Frequently asked questions
+
+### Can I have both an HSA and an FSA?
+Generally not a regular FSA alongside an HSA. A "limited-purpose" FSA (dental/vision) can coexist with an HSA. Check your employer's options.
+
+### What happens to my HSA if I change jobs?
+It's fully portable — the HSA belongs to you, not your employer, and moves with you.
+
+### Is the HSA really a retirement account?
+Effectively yes. After 65 you can withdraw for any purpose (taxed as income), and medical withdrawals stay tax-free, making it extremely tax-efficient.
+
+## The bottom line
+If you're on a high-deductible plan, the HSA is one of the best accounts in America — fund it, invest it, and let it grow tax-free. Use an FSA only when you can't have an HSA, and estimate its spending carefully.`,
+  },
+
+  /* ============================================================ *
+   * Students
+   * ============================================================ */
+  {
+    slug: "usa-money-guide-indian-students",
+    title: "USA Money Guide for Indian Students",
+    excerpt:
+      "Budgeting, banking, credit, and campus life — the complete money playbook for Indian students on an F-1 visa.",
+    topic: "students",
+    author: "Anjali Sharma",
+    date: "2026-06-03",
+    updated: "2026-06-06",
+    readingTime: 10,
+    featured: true,
+    content: `Studying in the US is a huge investment, and how you manage money as a student sets up your finances for years. F-1 life has its own rules — limited work options, tight budgets, and the chance to start building credit early.
+
+:::summary
+As an Indian student: open a **student checking account**, build a budget around tuition and rent, start **credit early** with a student or secured card, understand your **on-campus work limits (20 hrs/week)**, and plan for **CPT/OPT**. Money habits you build now compound long after graduation.
+:::
+
+## Banking as a student
+Open a student checking account (often no fees, no minimum balance). Many banks offer student-specific accounts with passport and I-20. Pair it with a high-yield savings account for any cushion. See the [best US bank accounts](/articles/best-bank-account-nri-usa).
+
+## Budgeting on a student income
+Your big costs are tuition, rent, food, and insurance. Practical tips:
+- Split rent with roommates near campus — see [renting near campus considerations](/articles/rent-apartment-no-credit-history).
+- Cook instead of eating out; it's the biggest controllable expense.
+- Buy used textbooks and use student discounts everywhere.
+- Track every dollar for the first few months.
+
+## Building credit early
+You can start building credit as a student, which pays off when you rent solo or finance a car later. Use a **student credit card** or a **secured card**, charge one small recurring bill, and pay in full. Full details in [credit card basics for international students](/articles/credit-card-basics-international-students) and [build credit from zero](/articles/build-us-credit-score-from-zero).
+
+## Work rules: 20 hours and CPT/OPT
+F-1 students can work **on-campus up to 20 hours/week** during the semester. Off-campus work generally requires authorization (CPT during studies, OPT after). These shape your income and later your career — see [OPT, H-1B, and financial planning](/articles/opt-h1b-financial-planning-students).
+
+## Insurance and taxes
+Most universities require health insurance — compare the school plan vs alternatives in [health insurance basics](/articles/health-insurance-basics-immigrants). Even with little income, students usually must file a tax form (often Form 8843, plus a return if you earned money).
+
+:::key
+- Open a fee-free student checking + high-yield savings account
+- Build a budget around tuition, rent, food, and insurance
+- Start credit early with a student or secured card
+- Respect the 20-hour on-campus work limit; plan CPT/OPT
+- Don't skip required health insurance, and file your tax forms
+:::
+
+## Common mistakes
+- **Not building credit** during school, then struggling to rent or finance later.
+- **Carrying a credit card balance** and paying high interest on a student budget.
+- **Ignoring tax filing** — even zero-income students usually must file Form 8843.
+
+## Frequently asked questions
+
+### Can F-1 students get a credit card?
+Yes — student cards and secured cards are designed for those with no credit. Use one responsibly to build history early.
+
+### How many hours can I work on an F-1 visa?
+Up to 20 hours per week on-campus during the semester (full-time during breaks). Off-campus work needs CPT or OPT authorization.
+
+### Do students need to file US taxes?
+Most F-1 students must at least file Form 8843, and a tax return if they earned income. Filing keeps you compliant and is sometimes required for future visa steps.
+
+## The bottom line
+Treat your student years as the start of your US financial life. Bank smart, budget tight, build credit early, and respect your visa's work rules — you'll graduate with both a degree and a head start on money.`,
+  },
+  {
+    slug: "credit-card-basics-international-students",
+    title: "Credit Card Basics for International Students",
+    excerpt:
+      "No SSN? No credit history? You can still get a card and start building credit as an international student. Here's how.",
+    topic: "students",
+    author: "Rohan Gupta",
+    date: "2026-06-01",
+    updated: "2026-06-06",
+    readingTime: 7,
+    content: `A credit card isn't about spending more — for an international student, it's the simplest tool to start building a US credit history that you'll need for apartments, car loans, and even some jobs after graduation.
+
+:::summary
+Students with no SSN or credit history have options: **secured cards**, **student cards designed for newcomers** (some accept your passport and even import Indian credit history via partners like Nova Credit), and **becoming an authorized user**. Use one small recurring charge, pay in full every month, and keep utilization low.
+:::
+
+## Your three paths to a first card
+1. **Secured card** — put down a refundable deposit ($200–$500) that becomes your limit. Near-automatic approval. See the [best secured cards](/articles/best-secured-credit-cards-immigrants).
+2. **Student/newcomer cards** — some issuers approve international students using passport and visa, sometimes leveraging your Indian credit file.
+3. **Authorized user** — if a relative has a seasoned US card, being added can backfill credit age onto your file.
+
+## How to use it to build credit
+- Charge **one small recurring bill** (a subscription, phone plan).
+- **Pay the statement in full** every month — never carry a balance.
+- Keep **utilization under 10%** of your limit; learn why in [how credit utilization works](/articles/credit-utilization-explained).
+- Don't apply for several cards at once.
+
+## Do you need an SSN?
+Not always. Some issuers accept an ITIN or passport; others require an SSN you can get with on-campus employment. If you have an SSN, more student cards open up.
+
+## Why this matters after graduation
+A year of clean credit history makes the jump to OPT/H-1B life smoother — renting an apartment, financing a car, and qualifying for better cards. It connects directly to [OPT and H-1B financial planning](/articles/opt-h1b-financial-planning-students).
+
+:::key
+- Secured cards, newcomer student cards, or authorized-user status all work
+- An SSN helps but isn't always required
+- One small recurring charge, paid in full, builds history
+- Keep utilization under 10% and avoid multiple applications
+- Early credit pays off for post-graduation housing and loans
+:::
+
+## Common mistakes
+- **Treating credit as free money** and carrying balances at 25%+ interest.
+- **Maxing out a low limit**, which spikes utilization and hurts your score.
+- **Closing your first card** later and losing account age.
+
+## Frequently asked questions
+
+### Can I get a credit card without an SSN?
+Sometimes — certain issuers accept a passport or ITIN, and some use your Indian credit history. A secured card is the most reliable starting point.
+
+### Will a secured card hurt my credit?
+No — used well, it builds credit. Your deposit is refundable, and many cards graduate to unsecured after a year of on-time payments.
+
+### How long until I have a usable score?
+A score typically appears within about six months of activity and climbs with consistent on-time payments and low utilization.
+
+## The bottom line
+Don't wait until graduation to start credit. Pick a secured or student card, run one small bill through it, pay in full, and you'll build the history that makes your post-study life in America far easier.`,
+  },
+  {
+    slug: "opt-h1b-financial-planning-students",
+    title: "OPT, H-1B, and Financial Planning Basics for Students",
+    excerpt:
+      "From student to professional — the money moves to make during OPT and the jump to H-1B as an Indian graduate.",
+    topic: "students",
+    author: "Vikram Patel",
+    date: "2026-05-29",
+    updated: "2026-06-06",
+    readingTime: 9,
+    content: `The transition from F-1 student to OPT worker to H-1B professional is also a financial transition — your income jumps, new accounts open up, and a few early decisions compound for decades. Here's how to handle the money side.
+
+:::summary
+During OPT and the move to H-1B: start **retirement contributions (capture any 401(k) match)**, keep **building credit**, build an **emergency fund**, understand your **changing tax status**, and avoid the classic trap of skipping benefits because your future feels uncertain. Your first professional paycheck is when long-term wealth begins.
+:::
+
+## Understand your status and taxes
+On OPT you're still on F-1. Your US tax residency may shift over time (the [Substantial Presence Test](/articles/substantial-presence-test-explained) determines when you become a resident for tax purposes), which changes how you file and what's taxed. Many students are exempt from FICA taxes for a period — verify your situation.
+
+## Capture the 401(k) match immediately
+When you start a job with benefits, contribute at least enough to get the full employer match — it's free money and the account is portable even if you leave the US. See [401(k) match explained](/articles/401k-match-explained-nri) and [what happens if you leave](/articles/what-happens-to-401k-leaving-usa).
+
+## Keep building credit
+Your student credit history now powers apartment approvals and car financing. Keep utilization low, consider upgrading from a secured to an unsecured card, and don't close your oldest account.
+
+## Build an emergency fund
+Visa life has uncertainty — the 60-day grace period between H-1B jobs makes a cash cushion essential. Aim for 3–6 months of expenses; see [building an emergency fund](/articles/emergency-fund-first-year-usa).
+
+## Start investing early
+Once the match and emergency fund are handled, begin investing for the long term in low-cost [index funds](/articles/index-funds-for-beginners-nri) and consider a [Roth vs Traditional IRA](/articles/roth-ira-vs-traditional-nri). Time in the market is your biggest advantage at this age.
+
+:::key
+- Track your tax residency as it shifts from nonresident to resident
+- Grab the full 401(k) match from your first benefited paycheck
+- Keep building credit; upgrade and keep old accounts open
+- Build a 3–6 month emergency fund for visa gaps
+- Start long-term investing once the basics are covered
+:::
+
+## Common mistakes
+- **Skipping the 401(k) match** during OPT/early H-1B "just in case."
+- **No emergency fund** to cover the 60-day H-1B grace period.
+- **Lifestyle inflation** swallowing the entire income jump from student to professional.
+
+## Frequently asked questions
+
+### Should I contribute to a 401(k) on OPT or H-1B?
+Yes — at least enough for the full match. It's free money and the account stays yours even if you eventually leave the US.
+
+### When do I become a US resident for tax purposes?
+It depends on the Substantial Presence Test and your years on F-1. Students are often nonresident aliens for a period, then become residents — see our [SPT guide](/articles/substantial-presence-test-explained).
+
+### How big should my emergency fund be on a visa?
+Aim for 3–6 months of expenses. The H-1B 60-day grace period between jobs makes this cushion especially important.
+
+## The bottom line
+Your first real paycheck is a fork in the road. Capture the match, keep credit strong, build a cushion for visa gaps, and start investing early — the habits you set during OPT and early H-1B shape your wealth for decades.`,
+  },
+
+  /* ============================================================ *
+   * Families
+   * ============================================================ */
+  {
+    slug: "moving-to-usa-with-family-checklist",
+    title: "Moving to the USA with Family: A Practical Checklist",
+    excerpt:
+      "Visas, schools, healthcare, housing, and budgets — the complete checklist for relocating to America with your family.",
+    topic: "families",
+    author: "Priya Nair",
+    date: "2026-06-03",
+    updated: "2026-06-06",
+    readingTime: 10,
+    featured: true,
+    content: `Moving alone is hard; moving with a family is a logistics project. Schools, dependents' visas, healthcare, and a bigger budget all need planning. This checklist keeps the big rocks in order.
+
+:::summary
+Plan around five pillars: **dependents' visas and documents**, **housing tied to good school districts**, **family health insurance**, a **larger emergency fund**, and a **realistic family budget** (including visits to India). Sequence matters — school district often drives where you rent, which drives your budget.
+:::
+
+## 1. Dependents' visas and documents
+Confirm your dependents' status (H-4, L-2, F-2, etc.), and whether spouses can work (H-4 EAD or L-2 work authorization). Gather marriage and birth certificates, vaccination records, and school transcripts for kids. Keep everything organized per our [documents to keep safe](/articles/documents-to-keep-safe-usa) guide.
+
+## 2. Housing and school districts
+For families, the school district often matters more than the neighborhood's looks — homes in strong districts cost more but shape your children's education. Research before you commit to a lease or purchase; see [school district basics](/articles/school-district-basics-immigrant-parents) and [how much rent you can afford](/articles/how-much-rent-can-you-afford).
+
+## 3. Family health insurance
+Add dependents to your employer plan during onboarding or open enrollment, and understand pediatric coverage and copays. Start with [health insurance basics](/articles/health-insurance-basics-immigrants) and [healthcare planning for families](/articles/healthcare-planning-immigrant-families).
+
+## 4. A bigger emergency fund
+With more dependents and a single income (if a spouse can't work yet), aim toward the higher end — 6 months of expenses. See [emergency fund for families](/articles/emergency-fund-for-families-usa).
+
+## 5. A realistic family budget
+Budget for childcare (expensive in the US), groceries, and the recurring cost of visiting India. Then layer in long-term goals like college savings and retirement — capture your [401(k) match](/articles/401k-match-explained-nri) first.
+
+:::key
+- Confirm dependents' visas and whether your spouse can work
+- Let school-district quality guide where you live
+- Add the whole family to health insurance promptly
+- Build toward a 6-month emergency fund for a family
+- Budget for childcare and regular India visits
+:::
+
+## Common mistakes
+- **Renting before researching schools** and having to move mid-year.
+- **Underestimating childcare costs**, which can rival rent.
+- **Forgetting India-visit budgeting**, then dipping into savings each year.
+
+## Frequently asked questions
+
+### Can my spouse work in the US?
+It depends on the visa — L-2 spouses and some H-4 spouses (with an EAD) can work, while others cannot. Confirm before assuming two incomes.
+
+### Should I rent or buy when moving with family?
+Most families rent first to learn the area and school options, then buy once settled — see [rent vs buy for immigrants](/articles/rent-vs-buy-house-immigrants).
+
+### How big should a family emergency fund be?
+Aim for about six months of expenses, especially on a single income or uncertain visa status.
+
+## The bottom line
+Relocating with family rewards planning. Lock down dependents' documents, choose housing by school district, insure everyone, and budget for the real costs of family life — including the flights home.`,
+  },
+  {
+    slug: "school-district-basics-immigrant-parents",
+    title: "School District Basics for Immigrant Parents",
+    excerpt:
+      "How US public schools, districts, and ratings work — and why your address decides your child's school.",
+    topic: "families",
+    author: "Anjali Sharma",
+    date: "2026-06-01",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `In the US, where you live usually determines which public school your child attends — and school quality varies widely between districts. For immigrant parents, understanding this system is key to choosing where to settle.
+
+:::summary
+US public schools are free and assigned by **address within a school district**. District quality varies a lot and is reflected in home prices and rents. Research ratings (GreatSchools, state report cards), confirm the assigned school before renting or buying, and know that enrollment requires proof of address, vaccination records, and prior transcripts.
+:::
+
+## How the system works
+Public schools are funded largely by local property taxes and organized into **districts**. Your home address maps to specific assigned elementary, middle, and high schools. Better-funded districts often have stronger programs — which is why homes there cost more.
+
+## Public, charter, magnet, and private
+- **Public** — free, assigned by address.
+- **Charter** — publicly funded, independently run, often by lottery.
+- **Magnet** — public schools with specialized programs (STEM, arts).
+- **Private** — tuition-based, not tied to address.
+
+## Researching a district
+- Check **GreatSchools.org** ratings and state "school report cards."
+- Look at test scores, college readiness, and student-teacher ratios.
+- Visit if you can, and ask other immigrant parents in local community groups.
+- Confirm the **exact assigned school** for an address — district lines can split neighborhoods.
+
+## Enrolling your child
+Typical requirements:
+1. Proof of residency (lease or utility bill)
+2. Child's vaccination records
+3. Birth certificate / passport
+4. Prior school transcripts or report cards
+5. Proof of guardianship
+
+## The housing connection
+Because schools follow addresses, families often choose housing by district first. Balance that against [how much rent you can afford](/articles/how-much-rent-can-you-afford) and your overall [family moving checklist](/articles/moving-to-usa-with-family-checklist).
+
+:::key
+- Your address determines your child's assigned public school
+- District quality varies widely and is priced into rents/homes
+- Use GreatSchools and state report cards to compare
+- Confirm the exact assigned school before signing a lease
+- Have residency, vaccination, and transcript documents ready
+:::
+
+## Common mistakes
+- **Assuming a "good city" means a good school** — quality is district- and even street-specific.
+- **Renting first, researching later**, then needing to move for schools.
+- **Missing enrollment documents** like vaccination records and transcripts.
+
+## Frequently asked questions
+
+### Are US public schools really free?
+Yes — public K-12 education is free and open to children regardless of immigration status, funded mainly through local property taxes.
+
+### How do I find the best school for my address?
+Check the district's school-locator tool, then review ratings on GreatSchools and your state's report card for the specific assigned school.
+
+### Can my child enroll mid-year?
+Yes, public schools enroll students year-round with proof of residency and the required records, though it's smoother to align with the school calendar.
+
+## The bottom line
+In America, your address is your child's school. Research the specific assigned district before you choose housing, prepare the enrollment documents early, and weigh school quality alongside your budget.`,
+  },
+  {
+    slug: "healthcare-planning-immigrant-families",
+    title: "Healthcare Planning for Immigrant Families",
+    excerpt:
+      "Pediatric care, family deductibles, and emergencies — how to plan healthcare for your whole family in the USA.",
+    topic: "families",
+    author: "Vikram Patel",
+    date: "2026-05-31",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `Healthcare is one of the biggest and most confusing expenses for immigrant families. Planning ahead — the right plan, a primary doctor, and an understanding of family costs — prevents both health and financial surprises.
+
+:::summary
+For families: pick a plan with a manageable **family deductible and out-of-pocket maximum**, establish a **pediatrician and primary care doctor** early, understand **in-network** rules, and budget for **copays and prescriptions**. An HSA (with an HDHP) can cover costs tax-free. Don't delay coverage — children especially need routine and emergency care access.
+:::
+
+## Choosing a family plan
+Family plans have a **family deductible** and **family out-of-pocket maximum** — the most you'll pay in a year across everyone. Compare:
+- Monthly premium vs deductible trade-off
+- Whether your kids' doctors are **in-network**
+- Prescription coverage for any ongoing medications
+
+Start with the fundamentals in [health insurance basics](/articles/health-insurance-basics-immigrants).
+
+## Set up care before you need it
+- Choose a **pediatrician** and a **primary care physician (PCP)** early.
+- Know your nearest **urgent care** (cheaper than ER for minor issues) and **ER**.
+- Schedule routine checkups and vaccinations — often fully covered as preventive care.
+
+## Managing costs
+- Use **in-network** providers to avoid surprise bills.
+- Consider an **HSA** with a high-deductible plan to pay costs tax-free — see [HSA vs FSA](/articles/hsa-vs-fsa-explained).
+- Keep an [emergency fund](/articles/emergency-fund-for-families-usa) sized for medical surprises.
+- Review bills carefully; errors are common, and you can often negotiate.
+
+## Dependents and visa status
+Dependents on H-4/L-2 are usually added to the worker's employer plan — details in [dependent health insurance](/articles/h4-l2-dependent-health-insurance). Confirm coverage starts before any gap.
+
+:::key
+- Compare family deductibles and out-of-pocket maximums, not just premiums
+- Establish a pediatrician and PCP before you need them
+- Use urgent care for minor issues to avoid ER bills
+- Pair an HDHP with an HSA to pay costs tax-free
+- Keep an emergency fund for medical surprises
+:::
+
+## Common mistakes
+- **Choosing the cheapest premium** with a deductible the family can't absorb.
+- **Going to the ER for minor issues** instead of urgent care.
+- **Not establishing a PCP**, leading to delayed or fragmented care.
+
+## Frequently asked questions
+
+### What's the difference between urgent care and the ER?
+Urgent care handles minor injuries and illnesses at much lower cost; the ER is for true emergencies. Using urgent care when appropriate saves thousands.
+
+### Are children's checkups covered?
+Most plans cover preventive care — well-child visits and vaccinations — at no extra cost when in-network. Confirm with your plan.
+
+### Can I use an HSA for my family's medical costs?
+Yes. An HSA (with an HDHP) can pay qualified medical expenses for you and your dependents, tax-free.
+
+## The bottom line
+Plan your family's healthcare like any other big expense: choose the plan that fits your family's real needs, line up doctors before emergencies, use the right level of care, and lean on an HSA and emergency fund to absorb costs.`,
+  },
+  {
+    slug: "emergency-fund-for-families-usa",
+    title: "Emergency Fund for Families in the USA",
+    excerpt:
+      "Why immigrant families need a bigger cushion — and exactly how to build a 6-month emergency fund step by step.",
+    topic: "families",
+    author: "Rohan Gupta",
+    date: "2026-05-28",
+    updated: "2026-06-06",
+    readingTime: 7,
+    content: `An emergency fund matters for everyone, but for immigrant families it's a lifeline — you may not have local family to fall back on, and visa status can add income uncertainty. Here's how to build one that fits family life.
+
+:::summary
+Aim for **6 months of essential family expenses** in a high-yield savings account. Build it in stages: a starter $1,000, then one month, then three, then six. Keep it separate from daily spending, automate contributions, and only touch it for true emergencies — job loss, medical events, or visa gaps.
+:::
+
+## Why families need more
+A single person might be fine with 3 months of expenses. Families should lean toward **6 months** because:
+- One income may support several people (especially if a spouse can't work yet).
+- The H-1B **60-day grace period** between jobs creates real income gaps.
+- No nearby family means fewer informal safety nets.
+- Childcare and medical costs make surprises bigger.
+
+## How much, exactly?
+Add up **essential** monthly costs — rent, groceries, utilities, insurance, childcare, minimum debt payments, transport — and multiply by six. Skip discretionary spending in this calculation.
+
+## Build it in stages
+1. **Starter fund:** $1,000 fast, for small emergencies.
+2. **One month** of essentials.
+3. **Three months.**
+4. **Six months** — full cushion.
+
+## Where to keep it
+Use a **high-yield savings account** (4%+ in 2026), separate from your checking so you're not tempted to spend it. It should be liquid — not invested in stocks. Once it's full, redirect that cash flow to [investing](/articles/index-funds-for-beginners-nri) and retirement.
+
+## Protect it
+Pair the fund with insurance so a single event doesn't drain it: [health insurance](/articles/health-insurance-basics-immigrants), [renters or home insurance](/articles/renters-insurance-explained), and [auto insurance](/articles/auto-insurance-basics-new-drivers).
+
+:::key
+- Target 6 months of essential expenses for a family
+- Build in stages: $1,000, then 1, 3, and 6 months
+- Keep it in a separate high-yield savings account
+- Automate contributions and treat it as off-limits
+- Back it up with health, home, and auto insurance
+:::
+
+## Common mistakes
+- **Investing the emergency fund** in stocks — it must be safe and liquid.
+- **Keeping it in checking**, where it gets spent.
+- **Stopping at one month** and being underprepared for a real job gap.
+
+## Frequently asked questions
+
+### How big should a family emergency fund be?
+About six months of essential expenses, given single-income risk, visa grace periods, and limited local support.
+
+### Where should I keep it?
+In a high-yield savings account — liquid, safe, and earning interest. Don't invest emergency money in the stock market.
+
+### What counts as an emergency?
+Job loss, medical events, urgent home or car repairs, and visa-related income gaps — not vacations, shopping, or planned expenses.
+
+## The bottom line
+For an immigrant family, a six-month emergency fund is peace of mind in a country where you're building your safety net from scratch. Build it in stages, keep it liquid and separate, and protect it with the right insurance.`,
+  },
+
+  /* ============================================================ *
+   * Thin-category fills: investing, housing, credit, community, stories
+   * ============================================================ */
+  {
+    slug: "brokerage-account-basics-usa",
+    title: "Brokerage Account Basics in the USA for Immigrants",
+    excerpt:
+      "What a brokerage account is, how to open one as a visa holder, and how to start investing beyond your 401(k).",
+    topic: "investing",
+    author: "Priya Nair",
+    date: "2026-06-02",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `Once your 401(k) match and emergency fund are handled, a regular brokerage account is how you invest the rest — and you don't need to be a citizen to open one.
+
+:::summary
+A **brokerage account** lets you buy stocks, ETFs, and index funds with after-tax money, with no contribution limits and full flexibility. Visa holders and green card holders can open one with an SSN/ITIN and US address. Use it after capturing your 401(k) match and building an emergency fund, and favor low-cost index funds.
+:::
+
+## What is a brokerage account?
+It's an investment account at a firm like Fidelity, Charles Schwab, or Vanguard. Unlike a 401(k) or IRA, there are **no contribution limits** and you can withdraw anytime — but you don't get the special tax breaks, and you owe tax on dividends and gains.
+
+## Can immigrants open one?
+Yes. Visa holders (H-1B, L-1, F-1 with restrictions) and green card holders can typically open accounts with an SSN or ITIN, passport, and US address. Confirm the broker's requirements for your status.
+
+## Where it fits in your plan
+Follow the usual order:
+1. Capture the full [401(k) match](/articles/401k-match-explained-nri).
+2. Build an [emergency fund](/articles/emergency-fund-first-year-usa).
+3. Max tax-advantaged accounts ([Roth/Traditional IRA](/articles/roth-ira-vs-traditional-nri)).
+4. Then invest extra in a **taxable brokerage account**.
+
+## What to buy
+For most people, low-cost, broad-market [index funds](/articles/index-funds-for-beginners-nri) beat picking stocks. Avoid the [PFIC trap](/articles/pfic-indian-mutual-funds-trap) — don't hold Indian mutual funds in a US brokerage, as they create painful tax reporting.
+
+## Tax basics
+- **Dividends** and **capital gains** are taxable each year (long-term gains get lower rates).
+- Keep records for your US return, and remember India-side reporting if relevant — see [double taxation](/articles/double-taxation-dtaa-india-usa).
+
+:::key
+- A brokerage account has no limits and full flexibility (but no tax shelter)
+- Visa and green card holders can open one with SSN/ITIN + address
+- Use it after the 401(k) match, emergency fund, and IRAs
+- Favor low-cost index funds; avoid Indian mutual funds (PFIC)
+- Plan for taxes on dividends and capital gains
+:::
+
+## Common mistakes
+- **Investing before** capturing the match or building a cushion.
+- **Holding Indian mutual funds** in a US account and triggering PFIC headaches.
+- **Trading frequently** instead of buying and holding index funds.
+
+## Frequently asked questions
+
+### Can H-1B or F-1 visa holders invest in US stocks?
+Yes. Visa holders can open brokerage accounts and invest in US stocks and funds. F-1 students can invest passively (not day-trade as a business).
+
+### Is a brokerage account better than an IRA?
+They serve different roles. Max tax-advantaged accounts (IRA, 401(k)) first; use a taxable brokerage for additional investing beyond those limits.
+
+### What should a beginner buy?
+A low-cost total-market or S&P 500 index fund is a simple, diversified starting point — see our [index funds guide](/articles/index-funds-for-beginners-nri).
+
+## The bottom line
+A taxable brokerage account is the flexible third layer of investing after your match, emergency fund, and IRAs. Open one, buy low-cost index funds, avoid the PFIC trap, and let compounding do the work.`,
+  },
+  {
+    slug: "how-much-rent-can-you-afford",
+    title: "How Much Rent Can You Afford in the USA?",
+    excerpt:
+      "The 30% rule, the real costs beyond rent, and how new immigrants should budget for housing in America.",
+    topic: "housing",
+    author: "Anjali Sharma",
+    date: "2026-06-02",
+    updated: "2026-06-06",
+    readingTime: 7,
+    content: `Rent is the single biggest line in most newcomers' budgets, and overcommitting to it quietly squeezes everything else — savings, investing, even peace of mind. Here's how to find a number you can actually live with.
+
+:::summary
+A common guideline is to keep rent at or below **30% of your gross income**, but newcomers should think in terms of **take-home pay** and total housing costs (rent + utilities + renters insurance + commute). In high-cost cities, splitting with roommates or commuting a bit farther keeps you within a healthy range.
+:::
+
+## The 30% rule (and its limits)
+The classic rule: spend no more than 30% of **gross** monthly income on rent. It's a useful ceiling, but two caveats:
+- Use **take-home pay** for a realistic view, since taxes and deductions are significant.
+- In expensive metros, 30% may be unrealistic — which is why roommates are common.
+
+## Count the full cost of housing
+Rent isn't the only number. Budget for:
+- **Utilities** (electricity, gas, water, internet) — often $100–250/month
+- **Renters insurance** — $10–20/month (see [renters insurance explained](/articles/renters-insurance-explained))
+- **Commute** — a cheaper apartment far out can cost more in gas/transit and time
+- **Parking**, pet fees, and amenity fees
+
+## A simple budgeting framework
+A popular split is **50/30/20**: 50% needs (including rent), 30% wants, 20% savings. If rent alone eats most of your "needs" bucket, it's too high.
+
+## Newcomer tactics
+- **Roommates** dramatically cut per-person cost.
+- A **larger security deposit** can offset thin credit — see [renting with no credit history](/articles/rent-apartment-no-credit-history).
+- Don't sign before reading [lease terms](/articles/first-apartment-lease-guide).
+- Compare against the trade-offs in [rent vs buy](/articles/rent-vs-buy-house-immigrants).
+
+| Monthly take-home | ~30% rent target |
+| --- | --- |
+| $4,000 | ~$1,200 |
+| $6,000 | ~$1,800 |
+| $8,000 | ~$2,400 |
+
+:::key
+- Keep rent near 30% of income — ideally measured on take-home pay
+- Budget total housing cost: utilities, insurance, commute, fees
+- Use the 50/30/20 split to sanity-check your budget
+- Roommates and a slightly longer commute expand your options
+- Don't let rent crowd out savings and the 401(k) match
+:::
+
+## Common mistakes
+- **Budgeting only the rent number** and forgetting utilities and commute.
+- **Maxing the 30% rule** in a city where you should aim lower.
+- **Skipping savings** to afford a nicer apartment.
+
+## Frequently asked questions
+
+### Should I use gross or net income for the 30% rule?
+The rule traditionally uses gross income, but budgeting on take-home pay is more realistic given US taxes and deductions.
+
+### Is it OK to spend more than 30% on rent?
+Sometimes necessary in expensive cities, but it squeezes savings. Offset with roommates or trim other spending if you go higher.
+
+### What hidden costs come with renting?
+Utilities, renters insurance, parking, application and amenity fees, and your commute — all add to the true cost of an apartment.
+
+## The bottom line
+Find your rent ceiling from take-home pay, count the full cost of housing, and protect your savings rate. The right apartment is the one that leaves room for an emergency fund and the 401(k) match — not the one that maxes out a rule of thumb.`,
+  },
+  {
+    slug: "credit-utilization-explained",
+    title: "How Credit Utilization Works (and Why It Matters)",
+    excerpt:
+      "Credit utilization is the second-biggest factor in your score. Here's how it works and how to keep it low.",
+    topic: "credit",
+    author: "Rohan Gupta",
+    date: "2026-06-01",
+    updated: "2026-06-06",
+    readingTime: 6,
+    content: `After payment history, **credit utilization** is the biggest driver of your credit score — and it's one of the easiest to control once you understand how it's measured.
+
+:::summary
+Credit utilization is the percentage of your available credit you're using. Keep it **under 30%, ideally under 10%**, on each card and overall. It's calculated from the balance reported on your statement date, so even if you pay in full, a high statement balance can hurt your score. Lower utilization = higher score.
+:::
+
+## What is utilization?
+Utilization = balance ÷ credit limit. If you have a $1,000 limit and a $300 balance, your utilization is 30%. Credit scoring models look at both **per-card** and **overall** utilization.
+
+## Why it matters so much
+High utilization signals risk to lenders — it looks like you're leaning on credit. It makes up roughly 30% of your FICO score, second only to payment history. The good news: unlike payment history, it has **no memory** — pay it down and your score recovers quickly.
+
+## The statement-date trap
+Your card reports your balance to the bureaus on the **statement closing date**, not the due date. So you can pay your bill in full every month and still show high utilization if you charged a lot before the statement closed. The fix: pay down before the statement date, or make a mid-cycle payment.
+
+## How to keep it low
+1. Keep balances under 10% of each card's limit.
+2. Pay **before** the statement closes, not just by the due date.
+3. **Request a credit limit increase** (raises the denominator).
+4. Keep old cards open — closing one shrinks your total limit.
+5. Spread charges across cards if needed.
+
+This builds directly on the foundation in [build credit from zero](/articles/build-us-credit-score-from-zero) and the cards in [best secured cards](/articles/best-secured-credit-cards-immigrants).
+
+| Balance on $1,000 limit | Utilization | Effect |
+| --- | --- | --- |
+| $50 | 5% | Excellent |
+| $250 | 25% | Okay |
+| $700 | 70% | Hurts score |
+
+:::key
+- Utilization = balance ÷ limit; keep it under 10% if you can
+- It's about 30% of your score and recovers quickly when lowered
+- Balances report on the statement date, not the due date
+- Raise limits and keep old cards open to lower utilization
+- Pay mid-cycle to keep the reported balance low
+:::
+
+## Common mistakes
+- **Maxing a low-limit first card**, spiking utilization even if you pay it off.
+- **Assuming "pay in full" means 0% utilization** — the statement balance still reports.
+- **Closing old cards**, which reduces your total available credit.
+
+## Frequently asked questions
+
+### Does paying in full avoid utilization issues?
+Not entirely — your balance on the statement date is what reports. Pay before the statement closes to show low utilization.
+
+### What utilization is ideal?
+Under 30% is good; under 10% is ideal. Some people aim for 1–9% for the best scores.
+
+### Will a credit limit increase help?
+Yes — a higher limit lowers your utilization ratio for the same spending, which can lift your score (just avoid spending more).
+
+## The bottom line
+Utilization is a fast lever on your credit score. Keep balances low relative to limits, pay before the statement date, and raise your limits over time — your score will reflect it within a cycle or two.`,
+  },
+  {
+    slug: "cultural-adjustment-money-decisions",
+    title: "Cultural Adjustment and Money Decisions in America",
+    excerpt:
+      "Tipping, credit culture, lifestyle inflation, and family expectations — the cultural side of money for new immigrants.",
+    topic: "community",
+    author: "Vikram Patel",
+    date: "2026-05-30",
+    updated: "2026-06-06",
+    readingTime: 7,
+    content: `Money in America isn't just numbers — it comes with a culture that's different from India's. Understanding these unwritten rules helps you avoid awkward moments and quietly costly habits.
+
+:::summary
+American money culture runs on **credit, tipping, and convenience spending**, with strong social pressure toward **lifestyle inflation**. Immigrants also navigate **family expectations** around supporting relatives in India. Awareness of these forces — and a simple budget — lets you fit in without overspending.
+:::
+
+## Credit culture
+The US runs on credit. Building a [credit score](/articles/build-us-credit-score-from-zero) is expected and necessary, but the flip side is a culture comfortable with debt. Use credit to build history and earn rewards — not to spend beyond your means.
+
+## Tipping
+Tipping is woven into US service culture: typically 15–20% at restaurants, plus tips for delivery, rides, salons, and more. It feels strange at first but is part of workers' income. Budget for it — it adds up.
+
+## Lifestyle inflation
+As income rises, so does spending pressure — bigger apartment, newer car, constant dining out. The antidote is paying yourself first: automate savings, the [401(k) match](/articles/401k-match-explained-nri), and [investing](/articles/index-funds-for-beginners-nri) before lifestyle creep claims the raise.
+
+## Family expectations
+Many immigrants support parents or family in India. That's meaningful, but plan for it: budget remittances deliberately, use [low-fee transfers](/articles/cheapest-way-send-money-usa-india), and don't let it derail your own emergency fund and retirement.
+
+## Convenience spending
+Subscriptions, delivery apps, and one-click buying make small spending invisible. Review recurring charges regularly — the "small" stuff is where budgets quietly leak.
+
+:::key
+- Use credit to build history, not to overspend
+- Budget for tipping — it's a real, recurring cost
+- Resist lifestyle inflation by automating savings first
+- Plan family support deliberately with low-fee transfers
+- Audit subscriptions and convenience spending regularly
+:::
+
+## Common mistakes
+- **Treating credit cards as extra income** rather than a tool.
+- **Letting every raise become spending** instead of savings.
+- **Sending money home without a budget**, straining your own goals.
+
+## Frequently asked questions
+
+### How much should I tip?
+Around 15–20% at sit-down restaurants, and smaller tips for delivery, rideshare, and personal services. When unsure, ask a colleague about local norms.
+
+### How do I avoid lifestyle inflation?
+Automate savings and investing so they happen before discretionary spending, and increase your savings rate whenever your income rises.
+
+### Is it bad to support family in India?
+Not at all — just budget for it intentionally so it doesn't undermine your emergency fund, retirement, or financial stability.
+
+## The bottom line
+Adjusting to American money culture is part of settling in. Build credit wisely, budget for tipping, resist lifestyle creep, and plan family support — so you fit into the culture without letting it quietly drain your finances.`,
+  },
+  {
+    slug: "things-i-wish-i-knew-before-moving-usa",
+    title: "Things I Wish I Knew Before Moving to the USA",
+    excerpt:
+      "Hard-won lessons from immigrants who've been there — the money and life advice they wish someone had given them on day one.",
+    topic: "stories",
+    author: "Priya Nair",
+    date: "2026-05-29",
+    updated: "2026-06-06",
+    readingTime: 8,
+    content: `Ask any immigrant who's been in the US a few years what they'd tell their newly-arrived self, and the same themes come up. Here are the lessons people most often wish they'd known on day one.
+
+:::summary
+The most common regrets cluster around five things: **starting credit too late**, **skipping the 401(k) match**, **not building an emergency fund**, **overspending early**, and **mishandling money between India and the US**. None require expertise — just earlier awareness. This is the advice immigrants pass down.
+:::
+
+## "I wish I'd started building credit on day one"
+Credit history takes time, and many people waited months before getting a first card — delaying every later milestone (apartments, car loans, mortgages). Start with a secured card immediately; see [build credit from zero](/articles/build-us-credit-score-from-zero).
+
+## "I left free money on the table by skipping the 401(k) match"
+A surprising number of newcomers opted out of their 401(k) thinking they'd move back to India — forfeiting an instant 50–100% return. The account is portable anyway. Read [why the match matters](/articles/401k-match-explained-nri) and [what happens if you leave](/articles/what-happens-to-401k-leaving-usa).
+
+## "I didn't have a safety net"
+Without family nearby and with visa uncertainty, the lack of an [emergency fund](/articles/emergency-fund-first-year-usa) turned small setbacks into crises. Three to six months of expenses changes everything.
+
+## "I overspent in my first year"
+The income jump and credit access make it easy to inflate your lifestyle fast — a big apartment, a new car on a high-interest loan. Many wish they'd lived modestly early and invested the difference in [index funds](/articles/index-funds-for-beginners-nri).
+
+## "I mishandled my India money"
+Leaving a resident account active ([a FEMA issue](/articles/nre-nro-accounts-explained)), ignoring TCS, and using poor exchange rates all cost money quietly. Learn the basics of [sending money home](/articles/cheapest-way-send-money-usa-india) early.
+
+:::key
+- Start building credit immediately — it gates everything later
+- Never skip the 401(k) match; it's free, portable money
+- Build a 3–6 month emergency fund for visa-life uncertainty
+- Live modestly your first year and invest the difference
+- Fix your India accounts and use low-fee, smart transfers
+:::
+
+## Common mistakes (in hindsight)
+- Waiting to "settle in" before handling credit and retirement.
+- Confusing a higher salary with being wealthy, and overspending.
+- Treating cross-border money as an afterthought.
+
+## Frequently asked questions
+
+### What's the one thing most immigrants regret financially?
+Two tie for first: starting credit late and skipping the 401(k) match. Both are easy to fix early and costly to delay.
+
+### How soon should I start investing?
+After capturing the match and building an emergency fund. The earlier you start, the more compounding works in your favor.
+
+### Is it really worth a 401(k) if I might return to India?
+Yes — the match is free money and the account is portable. You have clear options to manage it from abroad.
+
+## The bottom line
+The patterns are remarkably consistent: start credit early, grab the match, build a cushion, spend modestly, and handle India money with care. Learn from those who came before, and you'll skip years of avoidable mistakes.`,
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {

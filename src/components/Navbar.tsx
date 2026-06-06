@@ -9,12 +9,12 @@ import MobileMenu from "./MobileMenu";
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Guides", href: "/topics" },
+  { label: "New to USA", href: "/topics/new-to-usa" },
   { label: "Finance", href: "/topics/finance" },
   { label: "Housing", href: "/topics/housing" },
-  { label: "Cars", href: "/topics/cars" },
   { label: "India-USA Money", href: "/topics/money-transfer" },
-  { label: "Community", href: "/topics/community" },
-  { label: "Stories", href: "/topics/stories" },
+  { label: "Resources", href: "/resources" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Navbar() {

@@ -41,8 +41,8 @@ export default function TopicsPage() {
             All topics
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-500">
-            Eleven tracks covering the money and life decisions every NRI faces
-            in the US. Pick one and start reading.
+            {topics.length} tracks covering the money and life decisions every
+            NRI and new immigrant faces in the US. Pick one and start reading.
           </p>
         </Container>
       </section>
