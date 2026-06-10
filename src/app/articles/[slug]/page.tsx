@@ -6,6 +6,7 @@ import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import { formatDate, initials } from "@/lib/format";
@@ -19,6 +20,15 @@ import {
   jsonLdGraph,
   topicPath,
 } from "@/lib/seo";
+
+/**
+ * Interactive components embedded inside specific articles. The article's
+ * content marks the insertion point with a line containing exactly
+ * "{{calculator}}"; everything before/after renders through ArticleBody.
+ */
+const ARTICLE_EMBEDS: Record<string, React.ComponentType> = {
+  "iul-vs-401k-honest-comparison": IulComparisonCalculator,
+};
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -152,7 +162,22 @@ export default function ArticlePage({
         <div className="py-12 sm:py-16">
           <Container>
             <div className="mx-auto">
-              <ArticleBody content={article.content} />
+              {(() => {
+                const Embed = ARTICLE_EMBEDS[article.slug];
+                const parts = article.content.split("{{calculator}}");
+                if (Embed && parts.length === 2) {
+                  return (
+                    <>
+                      <ArticleBody content={parts[0]} />
+                      <div className="my-10">
+                        <Embed />
+                      </div>
+                      <ArticleBody content={parts[1]} />
+                    </>
+                  );
+                }
+                return <ArticleBody content={article.content} />;
+              })()}
 
               <div className="mx-auto mt-12 max-w-prose rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">

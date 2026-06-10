@@ -25,7 +25,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     ],
   },
   {
-    title: "Tools & Community",
+    title: "Tools & Calculators",
     links: [
       { label: "All Tools", href: "/tools" },
       { label: "Green Card Tracker", href: "/tools/green-card-tracker" },
@@ -35,7 +35,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Flight Price Guide", href: "/tools/flight-price-guide" },
       { label: "FBAR / FATCA Checker", href: "/tools/fbar-fatca-checker" },
       { label: "Calculators", href: "/calculators" },
-      { label: "Community", href: "/community" },
+      { label: "IUL vs 401(k) Calculator", href: "/articles/iul-vs-401k-honest-comparison" },
       { label: "Resources", href: "/resources" },
     ],
   },

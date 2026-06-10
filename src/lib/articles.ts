@@ -6090,6 +6090,131 @@ Cross-border assets governed by two legal systems can leave heirs facing years o
 ### Do I need professional help for all of this?
 For taxes (especially FBAR/FATCA and PFIC), estate planning, and investment strategy, yes — these areas are complex and cross-border, and mistakes are costly. A CPA, an estate attorney, a financial advisor, and India-based professionals where needed form the right team. This checklist is educational only.`,
   },
+  {
+    slug: "iul-vs-401k-honest-comparison",
+    title: "IUL vs 401(k) vs Taxable Brokerage: An Honest Comparison",
+    seoTitle: "IUL vs 401(k): Honest Comparison + Calculator (2026)",
+    excerpt:
+      "Is indexed universal life worth it? An evenhanded IUL vs 401(k) vs taxable brokerage comparison — caps, fees, floors, death benefit, and wealth transfer — with an interactive calculator that doesn't pick sides.",
+    topic: "investing",
+    author: "Rohan Gupta",
+    date: "2026-06-10",
+    updated: "2026-06-10",
+    readingTime: 16,
+    content: `:::summary
+An IUL is permanent life insurance whose cash value earns index-linked interest — capped, credited without dividends, and after meaningful charges. It is not a market investment. For most people building wealth, a 401(k) (especially with an employer match) and then a taxable brokerage account come first. An IUL can still earn a place for specific estate-liquidity and permanent-insurance needs once those are maxed. The calculator below lets you stress-test all three with your own numbers — including a bad-market scenario where the IUL's floor genuinely helps.
+:::
+
+If you are an NRI in the USA, someone has probably pitched you an IUL — often at a community event, often framed as "a 401(k) without the downside." This article takes that pitch seriously instead of dismissing it: we will lay out what an indexed universal life policy actually does well, what the brochures underplay, and then hand you a calculator so you can test the trade-offs yourself instead of trusting either a salesperson or a skeptic.
+
+## What an IUL actually is
+
+An indexed universal life (IUL) policy is **permanent life insurance** with a savings component. Part of each premium pays for insurance and policy costs; the rest builds **cash value**. That cash value earns interest credits **linked to a stock index** (usually the S&P 500) — but with three crucial mechanics:
+
+- **A floor**, typically 0%: in a year the index falls, your credited interest is 0% rather than negative.
+- **A cap**, commonly somewhere around 8–10% in recent years: in a year the index soars 25%, you are credited only up to the cap.
+- **A participation rate**: the share of the index gain (before the cap) that counts toward your credit.
+
+Two facts follow that every buyer should be able to repeat back before signing:
+
+:::note
+**Your cash value is not invested in the market.** The insurer credits interest based on the **price change** of the index between two dates — which means **dividends are excluded**. Dividends have contributed roughly 1.5–2 percentage points a year to the S&P 500's long-run total return, and a 401(k) or brokerage index fund captures them while an IUL does not. The insurer can also typically **change caps and participation rates on existing policies** within contractual limits.
+:::
+
+And second: the floor protects your **credited interest**, not your balance. Cost-of-insurance and administrative charges are still deducted in a 0% year, so cash value can fall even when "you can't lose money in a down market."
+
+## The legitimate case for an IUL
+
+An honest comparison has to start by acknowledging that IULs have real, structural advantages — these are not sales fictions:
+
+- **An income-tax-free death benefit.** Life insurance proceeds are generally received income-tax-free by beneficiaries under US law. For wealth transfer — leaving a defined sum to children, or creating liquidity to pay estate costs — this is the product's genuine superpower, and neither a 401(k) nor a brokerage account replicates it.
+- **A downside floor.** In a 2008-style year, an IUL credits 0% while a market portfolio may fall 30–40%. For someone psychologically or financially unable to ride out a crash, that has real value (the calculator's bad-sequence toggle shows exactly this).
+- **Tax-deferred growth with potentially tax-free access.** Cash value grows untaxed; you can withdraw up to your basis tax-free and borrow against the rest via policy loans without triggering income tax — **if** the policy stays in force for life.
+- **No IRS contribution limits.** A 401(k) caps employee deferrals (around $24,500 in 2026); an IUL's premiums are limited only by insurance rules, which matters to high earners who have already maxed everything tax-advantaged.
+- **Other features.** Depending on the state and policy: creditor protection, riders for chronic/terminal illness, and premium flexibility.
+
+## The case against — what the brochures underplay
+
+The same design that creates the floor also creates the costs, and they are well documented:
+
+- **The cap does the heavy lifting against you.** Market returns don't arrive evenly — a large share of long-run growth comes from a handful of very strong years (2009: +26%, 2013: +32%, 2019: +31%, 2023: +26% total return). A 9% cap surrenders most of those, and excluding dividends compounds the giveaway every single year.
+- **Fees are high and front-loaded.** A typical IUL charges a **premium load** (often 5–10% off the top of every payment), monthly **cost of insurance** that rises with your age, plus administrative and rider charges. Early-year cash value commonly runs far below premiums paid, and surrender charges can lock that in for 10–15 years.
+- **Lapse risk is the quiet killer.** If rising insurance costs, policy loans, or skipped premiums exhaust the cash value, the policy lapses — and a lapse with outstanding loans can convert years of "tax-free" borrowing into a single large taxable event.
+- **Illustrated returns are not realized returns.** Regulators (actuarial guidelines AG 49, 49-A, and 49-B) have repeatedly tightened IUL illustration rules precisely because projected crediting rates kept outrunning reality. Treat any illustration as a marketing scenario, not a forecast.
+- **It is a high-commission product.** First-year commissions on IUL policies frequently equal a large share — sometimes most — of the first year's premium. That doesn't make every recommendation wrong, but it explains why IULs get pitched far more often than their fit justifies.
+
+## How the 401(k) compares
+
+The 401(k)'s advantages are mechanical and hard to beat for accumulation:
+
+- **The employer match is an instant, guaranteed return** — typically 25–100% on matched dollars — before any market growth. No insurance product can manufacture that.
+- Your money earns the **full total return** of whatever you invest in, dividends included, with plan fees often under 0.5%.
+- Contributions reduce taxable income now (traditional) or grow tax-free (Roth); the 2026 employee limit is about $24,500 plus catch-up amounts at 50+.
+- The trade-offs: ordinary income tax at withdrawal, early-withdrawal penalties before 59½, required minimum distributions later, and — for wealth transfer — heirs generally must drain an inherited 401(k) within 10 years and pay income tax on it.
+
+## How a taxable brokerage compares
+
+The unglamorous taxable account is the IUL's most direct competitor for "money beyond the 401(k)":
+
+- **Full liquidity** at any time, for any purpose, at any age — no loans, no lapse risk, no surrender schedule.
+- Long-term capital gains and qualified dividends are taxed at preferential rates (0/15/20%), and index funds cost almost nothing to hold.
+- The drag: dividends are taxed yearly and gains are taxed when you sell — the calculator models both.
+- For wealth transfer, there is a fact every IUL pitch should be required to mention: under current law, your heirs receive a **stepped-up basis** on a taxable account at your death — the embedded capital gains simply disappear. "Tax-free to your heirs" is not unique to life insurance.
+
+## Try it yourself: the calculator
+
+The model below contributes the same amount each year to all three options and applies each one's real mechanics: the 401(k) gets the match and full total returns minus fees and withdrawal tax; the taxable account gets total returns minus fund fees, yearly dividend tax, and capital-gains tax at the end; the IUL gets **price-only** returns clamped between its floor and cap, minus a premium load and ongoing policy costs, with the death benefit shown alongside the cash value. Defaults are deliberately neutral, editable, and documented — and the "bad sequence" toggle replays the 2000–2011 market so you can watch the floor and the cap fight it out.
+
+{{calculator}}
+
+## How to read the results
+
+- **No single run is "the answer."** The honest use of this tool is to move the cap down 1%, the policy cost up 0.5%, and the horizon around — and watch how violently the IUL line responds compared to the other two. That sensitivity *is* the finding: an IUL's outcome depends heavily on terms the insurer can adjust and costs that rise with age.
+- **The steady scenario flatters nobody, the bad sequence flatters the floor.** Real markets are lumpy. The IUL looks best against a decade like 2000–2011 (two crashes), and worst against a strong bull run where the cap binds year after year.
+- **The death benefit is a different axis.** If your goal is a guaranteed legacy regardless of when you die, compare the death benefit against the accounts — but remember term life insurance plus investing the premium difference often produces a similar protection-plus-growth result at far lower cost during your working years.
+
+## Who an IUL might actually make sense for
+
+- You **already max** your 401(k), IRA/backdoor Roth, and HSA every year, and still have substantial long-term savings capacity.
+- You have a **permanent insurance need or estate-liquidity problem** — for example, an estate likely to face estate tax, illiquid assets (a business, property in India), or a desire to leave a defined tax-free sum to heirs.
+- You can **comfortably fund premiums for decades**, because a policy that lapses in year 12 is usually a wealth-destroying event.
+- You have compared **multiple in-force illustrations** (not just the sales illustration), understand the cap/participation/cost levers, and ideally had a **fee-only fiduciary** — someone who earns nothing from the sale — sanity-check the design.
+
+## Who is usually better off with a 401(k) and taxable account first
+
+- **Most people, most of the time** — and almost anyone who is not yet capturing their full employer match, which is free money no insurance design can outrun.
+- Anyone who might need the money before the policy matures economically (10–15+ years), or whose income could make premiums hard to sustain.
+- Anyone being sold an IUL **as an investment** rather than as insurance: if you do not need permanent life insurance, you are paying permanent-insurance costs for a capped, dividend-less version of returns you could own directly.
+- Anyone who hasn't yet considered **term life insurance + investing the difference**, which covers the protection need during the years your family actually depends on your income.
+
+:::note
+**About the salesperson:** IUL commissions are typically a large percentage of your first-year premium, which is why the product finds you more often than you find it. Before signing anything, ask what the agent earns on the sale, request an in-force illustration at the guaranteed minimum and at current (not maximum) rates, and get a second opinion from a fee-only fiduciary advisor who does not sell insurance. A good IUL recommendation survives those three questions.
+:::
+
+## NRI-specific wealth-transfer notes
+
+Cross-border families have a few extra angles worth knowing before any of this is decided:
+
+- **US estate tax hits non-domiciliaries harder.** A person who is not US-domiciled gets only a ~$60,000 exemption on US-situs assets (versus the multimillion-dollar exemption for US persons). Life insurance proceeds on the insured's own life are generally **not** treated as US-situs assets for a nonresident — one legitimate reason life insurance appears in cross-border estate plans. Domicile and treaty rules are genuinely complex here; this is an area for a cross-border estate attorney, not a sales meeting.
+- **If you may return to India**, confirm before buying: whether the insurer services policyholders resident in India, how premiums and claims work across borders, the FEMA/remittance mechanics, and how each country taxes the policy. US tax treatment of foreign-issued policies (and India's treatment of US ones) can differ sharply from the domestic story you were pitched.
+- **Coordinate the basics first.** Beneficiary designations on US accounts, wills covering assets in both countries, and the stepped-up basis on taxable accounts often accomplish much of the "legacy" goal at zero product cost. See our [estate planning guide for NRIs with assets in both countries](/articles/estate-planning-usa-india-assets) and the [10-year NRI wealth checklist](/articles/10-year-nri-wealth-checklist).
+
+Everything above is informational only — not investment, tax, insurance, or legal advice, and illustrations (including our calculator) are not guarantees.
+
+## Frequently asked questions
+
+### Is an IUL worth it?
+For most people still building wealth, usually not as a primary vehicle: the combination of capped, dividend-less crediting and high front-loaded costs means a 401(k) (especially with a match) and a low-cost taxable account typically accumulate more. An IUL is worth serious consideration mainly when you already max tax-advantaged accounts and have a genuine permanent-insurance or estate-liquidity need — and even then, only after comparing in-force illustrations with independent help.
+
+### IUL vs 401(k): which is better for most people?
+The 401(k) wins the accumulation contest for most people: the employer match is an instant return no policy can match, the money earns full total returns including dividends, and fees are a fraction of policy costs. The IUL's edge is the income-tax-free death benefit and the 0% floor — protection features, not growth features. They solve different problems, which is exactly why "fund the 401(k) first" is the standard ordering.
+
+### Are IUL illustrated returns real?
+Treat them as optimistic scenarios, not predictions. Illustrations assume today's caps and participation rates persist for decades, while insurers can and do lower them on existing policies; regulators have tightened illustration rules repeatedly (AG 49, 49-A, 49-B) because projections kept outrunning reality. Always ask for the guaranteed-minimum illustration alongside the current-rate one — the gap between them is the honest range.
+
+### What fees does an IUL actually charge?
+Typically a premium load of roughly 5–10% off every payment, monthly cost-of-insurance charges that rise with age, administrative and rider fees, and surrender charges that can last 10–15 years. The result is heavily front-loaded costs: early cash value often trails premiums paid by a wide margin. Our calculator simplifies these into a premium load plus an annual percentage — real policies should be evaluated from their own illustration's expense pages.`,
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {

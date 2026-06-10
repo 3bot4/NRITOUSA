@@ -1,0 +1,48 @@
+{
+  "lastUpdated": "2026-06-10",
+  "source": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-indexed-universal-life-insurance",
+  "sourceLabel": "SEC/FINRA investor bulletins on indexed universal life; IRS retirement plan limits",
+  "notes": "Default assumptions for the IUL vs 401(k) vs taxable brokerage comparison calculator (read by src/lib/iul-comparison.ts). Every number here is a broad, editable educational default — NOT a quote from any insurer or fund. TODO(owner): verify each value marked below against current insurer illustrations, fund fee tables, and IRS announcements before relying on them.",
+  "market": {
+    "expectedTotalReturnPct": 9,
+    "_expectedTotalReturnPct_note": "Long-run S&P 500 nominal total return has averaged roughly 9–10%/yr over very long windows. Deliberately set below 10 to avoid flattering any account type. TODO(owner): revisit annually.",
+    "dividendYieldPct": 1.5,
+    "_dividendYieldPct_note": "S&P 500 dividend yield has recently run ~1.2–1.4%; long-term average is higher. Matters because IUL index crediting typically uses a PRICE index that excludes dividends. TODO(owner): verify current yield.",
+    "badSequenceReturnsPct": [-9.1, -11.9, -22.1, 28.7, 10.9, 4.9, 15.8, 5.5, -37.0, 26.5, 15.1, 2.1],
+    "_badSequenceReturnsPct_note": "S&P 500 total returns 2000–2011 (the 'lost decade' plus 2008), cycled across the horizon when the bad-sequence toggle is on. Source: S&P Dow Jones Indices annual total returns. TODO(owner): spot-check the series."
+  },
+  "iul": {
+    "capRatePct": 9,
+    "_capRatePct_note": "Annual point-to-point S&P 500 cap rates on new IUL policies have commonly ranged ~8–10% in recent years, and insurers can lower caps on in-force policies. TODO(owner): verify against 2–3 current insurer illustrations.",
+    "participationRatePct": 100,
+    "_participationRatePct_note": "100% participation with a cap is the most common crediting design; some designs trade higher caps for lower participation. TODO(owner): verify.",
+    "floorPct": 0,
+    "_floorPct_note": "0% floor is standard — credited interest can't be negative, but policy charges still apply in down years, so cash value can still fall.",
+    "premiumLoadPct": 6,
+    "_premiumLoadPct_note": "Premium expense charges commonly run ~5–10% of each premium. TODO(owner): verify against current illustrations.",
+    "annualPolicyCostPct": 1.5,
+    "_annualPolicyCostPct_note": "Simplified combined annual drag (cost of insurance + admin + rider charges) expressed as % of cash value. Real COI is per-$1000-of-net-amount-at-risk, rises with age, and varies enormously by age/health/design — early-year drag is typically much higher than this flat assumption. TODO(owner): replace with values from an actual in-force illustration.",
+    "faceAmountMultiple": 20,
+    "_faceAmountMultiple_note": "Modeled initial death benefit = annual premium × this multiple (e.g. $10k/yr → $200k face). Real face amounts depend on age, health, and GPT/CVAT test design. TODO(owner): adjust to match a real illustration.",
+    "corridorFactor": 1.05,
+    "_corridorFactor_note": "Simplified IRC §7702 corridor: death benefit shown as max(face, cash value × this factor). Real corridor factors vary by age."
+  },
+  "k401": {
+    "employerMatchPct": 25,
+    "_employerMatchPct_note": "Modeled as employer adding this % on top of each $1 the user contributes. A common real-world design (50% match up to 6% of salary) lands near 25–50% of typical contributions. TODO(owner): users should set their own plan's match.",
+    "annualFeePct": 0.5,
+    "_annualFeePct_note": "All-in 401(k) plan + fund fee. Large plans run well under 0.5%; small plans can exceed 1%. TODO(owner): verify.",
+    "retirementTaxRatePct": 22,
+    "_retirementTaxRatePct_note": "Assumed ordinary income tax rate on traditional 401(k) withdrawals in retirement. TODO(owner): users should set their own expected bracket.",
+    "employeeLimit2026Usd": 24500,
+    "_employeeLimit2026Usd_note": "2026 employee elective deferral limit (announced by IRS Nov 2025; catch-up extra for 50+). TODO(owner): verify against the current IRS COLA notice before publishing updates."
+  },
+  "taxable": {
+    "fundFeePct": 0.1,
+    "_fundFeePct_note": "Broad-market index fund expense ratios commonly run 0.02–0.20%. TODO(owner): verify.",
+    "dividendTaxPct": 15,
+    "_dividendTaxPct_note": "Qualified dividend rate for most middle/upper-middle brackets (0/15/20% + possible 3.8% NIIT). TODO(owner): verify for target audience.",
+    "capGainsPct": 15,
+    "_capGainsPct_note": "Long-term capital gains rate for most filers (0/15/20% + possible NIIT). Note: under current law, heirs receive a stepped-up basis on taxable accounts at death — highly relevant to wealth-transfer comparisons. TODO(owner): verify."
+  }
+}
