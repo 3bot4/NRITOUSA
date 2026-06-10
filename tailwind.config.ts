@@ -31,6 +31,14 @@ const config: Config = {
           500: "#4b5563",
           400: "#6b7280",
         },
+        // Category accent tokens (used via src/lib/accents.ts). Disciplined,
+        // flat colors — deliberately NOT indigo→purple gradients.
+        cat: {
+          visa: { DEFAULT: "#c2660c", soft: "#fff7ed" }, // saffron — Visa & Green Card
+          money: { DEFAULT: "#047857", soft: "#ecfdf5" }, // emerald — Money & Tax
+          travel: { DEFAULT: "#6d28d9", soft: "#f5f3ff" }, // violet — Travel & Passport
+          docs: { DEFAULT: "#475569", soft: "#f1f5f9" }, // slate — Documents & Process
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

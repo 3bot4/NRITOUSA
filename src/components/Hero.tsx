@@ -34,20 +34,45 @@ export default function Hero() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/topics"
+                href="/tools/green-card-tracker"
                 className="rounded-xl bg-brand-600 px-7 py-3.5 text-center font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-md"
               >
-                Start Reading
+                Check your Green Card date
               </Link>
               <Link
-                href="#topics"
+                href="/tools"
                 className="rounded-xl border border-ink-900/10 bg-white px-7 py-3.5 text-center font-semibold text-ink-700 transition-colors hover:bg-ink-900/[0.03]"
               >
-                Explore Topics
+                Browse all tools
               </Link>
             </div>
+            <p className="mt-4 text-sm text-ink-400">
+              Just want to read?{" "}
+              <Link href="/topics" className="font-semibold text-brand-600 hover:text-brand-700">
+                Read the guides →
+              </Link>
+            </p>
 
-            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6">
+            {/* Trust badges */}
+            <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium text-ink-500">
+              {[
+                "Free",
+                "No login",
+                "Runs in your browser",
+                "Updated monthly",
+                "Built for Indians in the USA",
+              ].map((badge, i) => (
+                <li key={badge} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden className="text-ink-300">·</span>}
+                  <span className="flex items-center gap-1.5">
+                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    {badge}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6">
               {[
                 { value: String(topics.length), label: "Topic areas" },
                 { value: "50+", label: "In-depth guides" },

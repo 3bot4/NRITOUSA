@@ -10,7 +10,7 @@ const topics = [
   { icon: "🌱", label: "Roth IRA", href: "/topics/retirement" },
   { icon: "🩺", label: "HSA", href: "/topics/finance" },
   { icon: "🛟", label: "Emergency Fund", href: "/topics/finance" },
-  { icon: "🛡️", label: "Insurance", href: "/topics/cars" },
+  { icon: "🛡️", label: "Insurance", href: "/topics/insurance" },
   { icon: "📈", label: "US Investing", href: "/topics/investing" },
   { icon: "🇮🇳", label: "India Investing", href: "/topics/investing" },
 ];

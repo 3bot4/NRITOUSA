@@ -8,7 +8,7 @@ const featured = [
     title: "New to USA",
     description:
       "Your first-week checklist: SSN, bank account, phone plan, and finding an apartment.",
-    href: "/topics/finance",
+    href: "/topics/new-to-usa",
     accent: "from-sky-500 to-blue-600",
   },
   {

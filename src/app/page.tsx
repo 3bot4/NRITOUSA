@@ -5,9 +5,12 @@ import TrustStrip from "@/components/home/TrustStrip";
 import FeaturedTopics from "@/components/home/FeaturedTopics";
 import WhyExists from "@/components/home/WhyExists";
 import PopularGuides from "@/components/home/PopularGuides";
-import CalculatorsPreview from "@/components/home/CalculatorsPreview";
+import SampleResults from "@/components/home/SampleResults";
+import ToolFinder from "@/components/home/ToolFinder";
+import TopTools from "@/components/home/TopTools";
 import CitizenshipFinder from "@/components/home/CitizenshipFinder";
 import FinanceHub from "@/components/home/FinanceHub";
+import ComingSoon from "@/components/home/ComingSoon";
 import CommunityPreview from "@/components/home/CommunityPreview";
 import StoriesPreview from "@/components/home/StoriesPreview";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -38,12 +41,15 @@ export default function HomePage() {
       />
       <Hero />
       <TrustStrip />
+      <SampleResults />
+      <ToolFinder />
+      <TopTools />
+      <CitizenshipFinder />
       <FeaturedTopics />
       <WhyExists />
       <PopularGuides />
-      <CalculatorsPreview />
-      <CitizenshipFinder />
       <FinanceHub />
+      <ComingSoon />
       <CommunityPreview />
       <StoriesPreview />
       <Newsletter />

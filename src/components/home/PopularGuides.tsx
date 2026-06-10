@@ -10,7 +10,7 @@ const guides = [
     excerpt:
       "A week-by-week checklist for everything you need to set up the moment you land.",
     readingTime: 8,
-    href: "/topics/finance",
+    href: "/articles/first-30-days-in-usa",
     accent: "from-sky-500 to-blue-600",
   },
   {

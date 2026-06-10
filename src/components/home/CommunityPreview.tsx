@@ -3,31 +3,11 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 
 const questions = [
-  {
-    q: "Is it better to rent for 2 years before buying?",
-    tag: "Housing",
-    replies: 34,
-  },
-  {
-    q: "Best credit card for new immigrants?",
-    tag: "Credit",
-    replies: 58,
-  },
-  {
-    q: "Should I invest in India after moving to USA?",
-    tag: "Investing",
-    replies: 41,
-  },
-  {
-    q: "How much emergency fund should an immigrant family keep?",
-    tag: "Finance",
-    replies: 27,
-  },
-  {
-    q: "Should I buy a used car or lease a new car?",
-    tag: "Cars",
-    replies: 49,
-  },
+  { q: "Is it better to rent for 2 years before buying?", tag: "Housing" },
+  { q: "Best credit card for new immigrants?", tag: "Credit" },
+  { q: "Should I invest in India after moving to USA?", tag: "Investing" },
+  { q: "How much emergency fund should an immigrant family keep?", tag: "Finance" },
+  { q: "Should I buy a used car or lease a new car?", tag: "Cars" },
 ];
 
 export default function CommunityPreview() {
@@ -58,7 +38,6 @@ export default function CommunityPreview() {
                   <span className="rounded-full bg-ink-900/[0.04] px-2 py-0.5 font-medium text-ink-500">
                     {item.tag}
                   </span>
-                  <span>{item.replies} replies</span>
                 </div>
               </div>
               <span
