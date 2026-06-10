@@ -32,6 +32,8 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "H-1B Salaries", href: "/tools/h1b-salaries" },
       { label: "Visa-Free Travel", href: "/tools/visa-free-countries" },
       { label: "Processing Times", href: "/tools/processing-times" },
+      { label: "Flight Price Guide", href: "/tools/flight-price-guide" },
+      { label: "FBAR / FATCA Checker", href: "/tools/fbar-fatca-checker" },
       { label: "Calculators", href: "/calculators" },
       { label: "Community", href: "/community" },
       { label: "Resources", href: "/resources" },

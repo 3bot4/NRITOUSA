@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-06-09",
+  "lastUpdated": "2026-06-10",
   "source": "https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar",
   "sourceLabel": "IRS — FBAR & FATCA (Form 8938) requirements",
-  "status": "coming-soon",
-  "notes": "Data shape for the upcoming FBAR/FATCA requirement checker. Thresholds are statutory and change rarely (verify annually when IRS updates Form 8938 instructions).",
+  "status": "live",
+  "notes": "Thresholds for the FBAR/FATCA checker (src/lib/fbar-fatca.ts reads this file). Statutory values change rarely — verify annually against FinCEN Form 114 guidance and the current IRS Form 8938 instructions before each tax season.",
   "fbar": {
     "thresholdUsd": 10000,
     "basis": "Aggregate maximum value of all foreign financial accounts at any time in the year",
@@ -13,19 +13,70 @@
   "fatca": {
     "form": "IRS Form 8938 (filed with your federal tax return)",
     "thresholds": [
-      { "filing": "single-us-resident", "endOfYearUsd": 50000, "anyTimeUsd": 75000 },
-      { "filing": "married-joint-us-resident", "endOfYearUsd": 100000, "anyTimeUsd": 150000 },
-      { "filing": "single-abroad", "endOfYearUsd": 200000, "anyTimeUsd": 300000 },
-      { "filing": "married-joint-abroad", "endOfYearUsd": 400000, "anyTimeUsd": 600000 }
+      {
+        "filing": "single-us-resident",
+        "endOfYearUsd": 50000,
+        "anyTimeUsd": 75000
+      },
+      {
+        "filing": "married-joint-us-resident",
+        "endOfYearUsd": 100000,
+        "anyTimeUsd": 150000
+      },
+      {
+        "filing": "single-abroad",
+        "endOfYearUsd": 200000,
+        "anyTimeUsd": 300000
+      },
+      {
+        "filing": "married-joint-abroad",
+        "endOfYearUsd": 400000,
+        "anyTimeUsd": 600000
+      }
     ]
   },
   "accountTypes": [
-    { "id": "nre-nro", "label": "NRE / NRO bank accounts", "fbar": true, "fatca": true },
-    { "id": "fd", "label": "Indian fixed deposits", "fbar": true, "fatca": true },
-    { "id": "mutual-funds", "label": "Indian mutual funds (also PFIC!)", "fbar": true, "fatca": true },
-    { "id": "ppf-epf", "label": "PPF / EPF accounts", "fbar": true, "fatca": true },
-    { "id": "lic", "label": "LIC policies with cash value", "fbar": true, "fatca": true },
-    { "id": "demat", "label": "Demat / brokerage accounts", "fbar": true, "fatca": true },
-    { "id": "property", "label": "Indian real estate held directly", "fbar": false, "fatca": false }
+    {
+      "id": "nre-nro",
+      "label": "NRE / NRO bank accounts",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "fd",
+      "label": "Indian fixed deposits",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "mutual-funds",
+      "label": "Indian mutual funds (also PFIC!)",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "ppf-epf",
+      "label": "PPF / EPF accounts",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "lic",
+      "label": "LIC policies with cash value",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "demat",
+      "label": "Demat / brokerage accounts",
+      "fbar": true,
+      "fatca": true
+    },
+    {
+      "id": "property",
+      "label": "Indian real estate held directly",
+      "fbar": false,
+      "fatca": false
+    }
   ]
 }

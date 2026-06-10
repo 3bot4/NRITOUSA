@@ -1,15 +1,28 @@
 {
-  "lastUpdated": "2026-06-09",
+  "lastUpdated": "2026-06-10",
   "source": "https://www.transtats.bts.gov/",
   "sourceLabel": "US BTS DB1B average fare data + historical OTA averages",
-  "status": "coming-soon",
-  "notes": "Data shape for the upcoming USA↔India flight price guide. Values are SEASONAL HISTORICAL AVERAGES for round-trip economy, not live prices. monthlyAvgUsd is a 12-element array (Jan→Dec).",
+  "status": "live",
+  "notes": "Reserved data shape for a future live/historical fare upgrade of the flight price guide. The current tool uses static seasonal logic in src/lib/flight-price.ts and does not read this file yet; populate monthlyAvgUsd when real fare data is sourced.",
   "routes": [
     {
       "from": "SFO",
       "to": "DEL",
       "label": "San Francisco ↔ Delhi",
-      "monthlyAvgUsd": [null, null, null, null, null, null, null, null, null, null, null, null],
+      "monthlyAvgUsd": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "cheapestMonths": [],
       "priciestMonths": []
     },
@@ -17,7 +30,20 @@
       "from": "JFK",
       "to": "BOM",
       "label": "New York ↔ Mumbai",
-      "monthlyAvgUsd": [null, null, null, null, null, null, null, null, null, null, null, null],
+      "monthlyAvgUsd": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "cheapestMonths": [],
       "priciestMonths": []
     },
@@ -25,7 +51,20 @@
       "from": "SEA",
       "to": "HYD",
       "label": "Seattle ↔ Hyderabad",
-      "monthlyAvgUsd": [null, null, null, null, null, null, null, null, null, null, null, null],
+      "monthlyAvgUsd": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "cheapestMonths": [],
       "priciestMonths": []
     },
@@ -33,7 +72,20 @@
       "from": "DFW",
       "to": "BLR",
       "label": "Dallas ↔ Bengaluru",
-      "monthlyAvgUsd": [null, null, null, null, null, null, null, null, null, null, null, null],
+      "monthlyAvgUsd": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "cheapestMonths": [],
       "priciestMonths": []
     }

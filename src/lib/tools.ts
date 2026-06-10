@@ -105,27 +105,27 @@ export const tools: ToolMeta[] = [
     label: "Flight Price Guide",
     group: "Travel & Documents",
     description:
-      "Seasonal historical-average fares on major USA–India routes, so you know a good price when you see one. Launching soon.",
+      "Estimate whether USA–India fares for your route, month, and travel style are likely low, moderate, or high — with booking-window tips, a flexibility score, and a money-saving checklist.",
     icon: "✈️",
     accent: "from-cyan-500 to-teal-600",
-    seoTitle: "USA to India Flight Price Guide by Season",
+    seoTitle: "USA to India Flight Price Guide for NRIs",
     seoDescription:
-      "Historical average round-trip fares between US and Indian cities by month — find the cheapest season to fly SFO–DEL, JFK–BOM, SEA–HYD, DFW–BLR and more. Launching soon.",
-    status: "coming-soon",
+      "Estimate USA to India flight price pressure by route, month, season, flexibility, booking window, and travel type with this NRI flight guide.",
+    status: "live",
   },
   {
     slug: "fbar-fatca-checker",
-    title: "FBAR & FATCA Requirement Checker",
+    title: "FBAR & FATCA Checker",
     label: "FBAR / FATCA",
     group: "Money & Finance",
     description:
-      "Answer a few questions about your Indian accounts to see whether you must file FinCEN Form 114 or IRS Form 8938. Launching soon.",
+      "Answer a few questions about your Indian accounts to see whether FBAR or FATCA (Form 8938) may need review — with a document checklist and CPA question list. Educational only.",
     icon: "🧾",
     accent: "from-rose-500 to-pink-600",
-    seoTitle: "FBAR & FATCA Filing Requirement Checker for NRIs",
+    seoTitle: "FBAR and FATCA Checker for NRIs in the USA",
     seoDescription:
-      "Do your NRE/NRO accounts, Indian mutual funds, or LIC policies trigger FBAR or FATCA (Form 8938) filing? Quick requirement checker for NRIs in the USA. Launching soon.",
-    status: "coming-soon",
+      "Use this educational FBAR and FATCA checker to understand whether India bank accounts, FDs, NRE/NRO, or foreign assets may need review.",
+    status: "live",
   },
 ];
 
