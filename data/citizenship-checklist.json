@@ -1,0 +1,238 @@
+{
+  "lastUpdated": "2026-06-10",
+  "source": "https://www.uscis.gov/n-400",
+  "sourceLabel": "USCIS — Form N-400, Application for Naturalization",
+  "notes": "Dated facts for the /tools/citizenship-checklist tool (read by src/lib/citizenship.ts). Every value flagged TODO(owner) must be re-verified against uscis.gov before relying on it — naturalization fees, the civics-test rule, and vetting policy change. See docs/DATA-UPDATE-PLAYBOOK.md.",
+  "fees": {
+    "onlineUsd": 710,
+    "paperUsd": 760,
+    "_fee_note": "2026 N-400 filing fee. TODO(owner): verify against the current USCIS fee schedule (uscis.gov/g-1055) — fees changed in the April 2024 rule and can change again.",
+    "feeWaiverForm": "I-912",
+    "reducedFeeForm": "I-942",
+    "waiverNote": "Form I-912 (full fee waiver) and Form I-942 (reduced fee) exist for applicants who qualify by income or hardship. TODO(owner): confirm I-942 income bands still apply under the current fee rule."
+  },
+  "civicsTest": {
+    "newTestCutoffDate": "2025-10-20",
+    "_cutoff_note": "Applicants who FILED N-400 on or after this date take the 2025 civics test; those who filed before take the 2008 test. TODO(owner): verify the cutoff date and rules at uscis.gov/citizenship/2025-civics-test before launch.",
+    "newTest": { "poolSize": 128, "asked": 20, "toPass": 12, "label": "2025 civics test" },
+    "oldTest": { "poolSize": 100, "asked": 10, "toPass": 6, "label": "2008 civics test" },
+    "englishTest": "The English test is unchanged: a Speaking test (during the interview), a Reading test (read 1 of up to 3 sentences correctly), and a Writing test (write 1 of up to 3 sentences correctly).",
+    "exemptions": "Age/residence English exemptions may apply (e.g. 50/20 and 55/15 rules), and a 65/20 applicant gets a smaller civics list. TODO(owner): confirm exemption rules.",
+    "source": "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test"
+  },
+  "bases": [
+    {
+      "id": "5-year",
+      "label": "5-year permanent resident",
+      "yearsResidence": 5,
+      "physicalPresenceMonths": 30,
+      "physicalPresenceDays": 913,
+      "fileEarlyDays": 90,
+      "requiresMarriedToUsc": false,
+      "description": "Standard path: green card held for 5 years."
+    },
+    {
+      "id": "3-year-spouse",
+      "label": "3-year spouse of a US citizen",
+      "yearsResidence": 3,
+      "physicalPresenceMonths": 18,
+      "physicalPresenceDays": 548,
+      "fileEarlyDays": 90,
+      "requiresMarriedToUsc": true,
+      "description": "Married to and living with the same US citizen for the last 3 years, and your spouse has been a citizen that whole time."
+    },
+    {
+      "id": "military",
+      "label": "Military service member / veteran",
+      "yearsResidence": 0,
+      "physicalPresenceMonths": 0,
+      "physicalPresenceDays": 0,
+      "fileEarlyDays": 90,
+      "requiresMarriedToUsc": false,
+      "description": "Special rules under INA 328/329 can reduce or waive the residence and physical-presence requirements.",
+      "note": "Military naturalization (peacetime INA 328 or wartime INA 329) has its own rules and Form N-426. TODO(owner): this tool gives only general pointers for the military basis — verify specifics with the military JAG / USCIS military line."
+    }
+  ],
+  "requirements": {
+    "stateResidenceMonths": 3,
+    "continuousResidenceBreakPresumptionDays": 183,
+    "continuousResidenceBreakAutomaticDays": 365,
+    "_residence_note": "A single trip abroad of more than 6 months (~183 days) creates a rebuttable presumption that continuous residence was broken; a trip of 1 year or more breaks it automatically (absent an approved N-470). TODO(owner): verify day thresholds and N-470 exception at uscis.gov.",
+    "minAge": 18
+  },
+  "painPoints": [
+    {
+      "id": "new-civics-test",
+      "title": "A harder civics test for 2025+ filers",
+      "severity": "high",
+      "summary": "If you filed (or will file) your N-400 on or after October 20, 2025, you take the new 2025 civics test: 128-question study pool, 20 questions asked at the interview, and you must answer 12 correctly to pass. Filed before that date? You keep the 2008 test (100-question pool, 10 asked, 6 to pass).",
+      "whyNow": "The pass bar roughly doubled. Knowing which test applies to you decides how much you need to study — this tool derives it from your filing date.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/citizenship/2025-civics-test"
+    },
+    {
+      "id": "expanded-vetting",
+      "title": "Expanded background checks and a holistic character review",
+      "severity": "high",
+      "summary": "USCIS has restored more thorough vetting in 2025–26: revived in-person neighborhood investigations, fuller background checks, and a holistic Good Moral Character review that weighs criminal history (any arrest, even dismissed), full tax compliance, child support, Selective Service registration, and review of your PUBLIC social media.",
+      "whyNow": "Decisions increasingly turn on the whole picture, not just a checklist. Being able to explain your record calmly and consistently matters more than ever.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/policy-manual/volume-12-part-f"
+    },
+    {
+      "id": "disclosure-trap",
+      "title": "Hiding an arrest or tax issue is the #1 self-inflicted denial",
+      "severity": "high",
+      "summary": "USCIS pulls your FBI fingerprint record and IRS data. Failing to disclose an arrest, citation, or tax problem — even a dismissed charge from years ago — looks like a lack of good moral character and is a leading cause of denial. Disclose everything and bring certified court dispositions for every incident.",
+      "whyNow": "The cover-up is treated as worse than the underlying issue. Full disclosure with documents is almost always the safer path.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/policy-manual/volume-12-part-f-chapter-5"
+    },
+    {
+      "id": "nri-tax-residency-trap",
+      "title": "Filing US taxes as a 'non-resident' after getting your green card",
+      "severity": "high",
+      "summary": "Green card holders are US tax residents and generally must file as residents on worldwide income. Filing a US non-resident return (or claiming to be a non-resident for tax treaty benefits) after becoming an LPR — while telling USCIS you've kept US residence — is treated as a near-fatal inconsistency that can suggest abandonment of residence or lack of good moral character.",
+      "whyNow": "This is a common, avoidable trap for NRIs who keep India ties. If this may be your situation, talk to a cross-border tax pro and an immigration attorney before filing N-400.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/policy-manual/volume-12-part-d-chapter-2"
+    },
+    {
+      "id": "long-trips-continuous-residence",
+      "title": "Long trips to India can break your residency clock",
+      "severity": "medium",
+      "summary": "A single trip abroad of 6+ months raises a rebuttable presumption that you broke continuous residence; a trip of 1 year or more breaks it automatically. Build a complete, accurate travel log (exact entry/exit dates for every trip) before you file — the interview will test it.",
+      "whyNow": "NRIs visit India often and for long stretches. One overlooked long trip can reset your eligibility date or sink the application.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/policy-manual/volume-12-part-d-chapter-3"
+    },
+    {
+      "id": "multiple-dui",
+      "title": "Two or more DUIs in the period usually means denial",
+      "severity": "high",
+      "summary": "Under current USCIS interpretation, two or more DUI convictions during the statutory good-moral-character period (5 or 3 years) create a strong presumption against good moral character and very often lead to denial. A single old DUI is usually explainable with the right documents — disclose it either way.",
+      "whyNow": "DUI handling has tightened. If this applies to you, get certified dispositions and legal advice before filing.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.uscis.gov/policy-manual/volume-12-part-f-chapter-5"
+    },
+    {
+      "id": "oci-india-citizenship",
+      "title": "Naturalizing means giving up Indian citizenship",
+      "severity": "medium",
+      "summary": "India does not allow dual citizenship. Becoming a US citizen automatically ends your Indian citizenship — you must surrender your Indian passport and obtain a 'Surrender Certificate', then you can apply for an OCI (Overseas Citizen of India) card to keep lifelong visa-free travel and most rights (except voting, government jobs, and farmland purchase).",
+      "whyNow": "This is a post-oath task many new citizens forget; travelling to India on a cancelled Indian passport causes problems. Plan the OCI step in advance.",
+      "lastUpdated": "2026-06",
+      "source": "https://www.mha.gov.in/en/foreigners/overseas-citizenship-of-india-oci-cardholder"
+    }
+  ],
+  "sections": [
+    {
+      "id": "eligibility",
+      "title": "Confirm your eligibility",
+      "items": [
+        { "id": "elig-clock", "label": "Residency clock met (or within 90 days of it)", "detail": "You can file up to 90 days before your 5-year (or 3-year) green-card anniversary. The tool computes your earliest filing date above." },
+        { "id": "elig-physical", "label": "Physical-presence requirement met", "detail": "Physically present in the US for at least 30 months of the last 5 years (or 18 months of the last 3 years for the spouse track)." },
+        { "id": "elig-state", "label": "Lived in your current state/USCIS district 3+ months", "detail": "Students may file where they live or where their parents live." },
+        { "id": "elig-continuous", "label": "No single trip abroad that broke continuous residence", "detail": "Review every trip of 6+ months. A trip of 1 year+ breaks continuous residence automatically.", "riskTag": "longTrip" }
+      ]
+    },
+    {
+      "id": "documents",
+      "title": "Documents to gather",
+      "items": [
+        { "id": "doc-gc", "label": "Green card (Permanent Resident Card), front and back" },
+        { "id": "doc-passports", "label": "Current passport AND all expired passports", "detail": "Expired passports help reconstruct your exact travel history — USCIS may ask for stamps." },
+        { "id": "doc-id", "label": "State ID / driver's license" },
+        { "id": "doc-travel", "label": "Complete written travel history with exact entry/exit dates", "detail": "Every trip outside the US since you became an LPR (or last 5/3 years). Pull dates from passport stamps, airline emails, and your I-94 travel history." },
+        { "id": "doc-tax", "label": "IRS tax return TRANSCRIPTS for the last 5 years (3 for spouse track)", "detail": "Order tax transcripts free from the IRS (irs.gov 'Get Transcript') — bring these rather than just your own copies.", "riskTag": "tax" },
+        { "id": "doc-court", "label": "Certified court dispositions for ANY arrest, citation, or charge — even if dismissed", "detail": "Get the certified final disposition from the court for every incident, including dismissals and expunged records. Disclose everything.", "riskTag": "arrests" },
+        { "id": "doc-ss", "label": "Selective Service registration confirmation", "detail": "Males who lived in the US between ages 18 and 25 should confirm registration at sss.gov and print the confirmation.", "riskTag": "selectiveService" },
+        { "id": "doc-marriage", "label": "Marriage certificate + proof you live together + spouse's proof of US citizenship", "detail": "3-year spouse track only: spouse's birth certificate / naturalization certificate / US passport, plus joint lease, accounts, taxes.", "riskTag": "spouseTrack" },
+        { "id": "doc-namechange", "label": "Name-change documents (if your name differs across documents)", "detail": "Marriage certificate, divorce decree, or court order linking your names." }
+      ]
+    },
+    {
+      "id": "character",
+      "title": "Good Moral Character self-audit",
+      "items": [
+        { "id": "gmc-disclose", "label": "List EVERY arrest, citation, and charge to disclose (with dates)", "detail": "Including dismissed, expunged, and out-of-state incidents. USCIS sees your FBI record — non-disclosure is worse than the incident.", "riskTag": "arrests" },
+        { "id": "gmc-tax", "label": "Confirm all tax returns filed for every year as an LPR", "detail": "Filed as a resident (not non-resident). If you owe, set up an IRS payment plan and bring proof.", "riskTag": "tax" },
+        { "id": "gmc-childsupport", "label": "Current on child support / alimony (if applicable)", "detail": "Bring proof of payments or your court order.", "riskTag": "childSupport" },
+        { "id": "gmc-social", "label": "Review your PUBLIC social media and be ready to explain it", "detail": "USCIS may review public posts. You don't need to delete your life — just make sure nothing public contradicts your application, and be ready to explain calmly. Set profiles you're unsure about to private." },
+        { "id": "gmc-voting", "label": "Confirm you have never registered to vote or voted as a non-citizen", "detail": "Even accidental voter registration (e.g. offered at the DMV) must be disclosed and explained." }
+      ]
+    },
+    {
+      "id": "file",
+      "title": "File Form N-400",
+      "items": [
+        { "id": "file-online", "label": "Create a USCIS online account and complete Form N-400", "detail": "Online filing ($710) is usually faster to track than paper ($760). Fee may change — verify on uscis.gov." },
+        { "id": "file-fee", "label": "Pay the fee or apply for a fee waiver/reduction", "detail": "Form I-912 (full waiver) or I-942 (reduced fee) if you qualify by income or hardship." },
+        { "id": "file-evidence", "label": "Upload supporting evidence and submit", "detail": "Double-check your travel dates and disclosures before submitting — consistency matters." }
+      ]
+    },
+    {
+      "id": "biometrics",
+      "title": "Biometrics appointment",
+      "items": [
+        { "id": "bio-appt", "label": "Attend your biometrics (fingerprint) appointment", "detail": "USCIS mails the appointment notice. Your fingerprints run an FBI background check — this is why full disclosure matters." }
+      ]
+    },
+    {
+      "id": "tests",
+      "title": "Prepare for the English + Civics tests",
+      "items": [
+        { "id": "test-which", "label": "Confirm which civics test applies to you", "detail": "The tool derives this from your filing date: 2025 test (128 pool / 20 asked / 12 to pass) for Oct 20 2025+ filers, otherwise the 2008 test (100 / 10 / 6)." },
+        { "id": "test-civics", "label": "Study the civics questions for your test version", "detail": "Use the official USCIS study materials for the correct test version — the question pools differ." },
+        { "id": "test-english", "label": "Practice the English speaking, reading, and writing tests", "detail": "Read 1 of up to 3 sentences and write 1 of up to 3 correctly; speaking is assessed during the interview." }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "Interview preparation",
+      "items": [
+        { "id": "int-docs", "label": "Assemble your interview folder", "detail": "Green card, state ID, all passports, travel log, tax transcripts, and certified dispositions for any incident." },
+        { "id": "int-consistency", "label": "Re-read your N-400 and make sure you can answer consistently", "detail": "Especially trips abroad, addresses, employers, and any 'yes' answers on the moral-character questions." },
+        { "id": "int-updates", "label": "Note anything that changed since filing", "detail": "New trips, address or job changes, any new citations — bring documentation." }
+      ]
+    },
+    {
+      "id": "oath",
+      "title": "Oath ceremony + after you naturalize",
+      "items": [
+        { "id": "oath-attend", "label": "Attend the oath ceremony and receive your Naturalization Certificate", "detail": "Keep the certificate extremely safe — replacements (Form N-565) are slow and expensive." },
+        { "id": "oath-passport", "label": "Apply for a US passport", "detail": "Use your Naturalization Certificate; consider expedited service if you travel soon." },
+        { "id": "oath-ssa", "label": "Update Social Security Administration record", "detail": "Update your citizenship status with the SSA." },
+        { "id": "oath-voter", "label": "Register to vote and update REAL ID", "detail": "You can now register to vote; update your driver's license/REAL ID status." },
+        { "id": "oath-employer", "label": "Update your status with your employer (Form I-9)", "detail": "Provide updated work-authorization documents if asked." },
+        { "id": "oath-oci", "label": "Surrender your Indian passport and apply for OCI", "detail": "India bars dual citizenship — surrender your Indian passport for a Surrender Certificate, then apply for an OCI card. Not legal advice; see our OCI guide.", "riskTag": "oci" }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What documents do I need for the citizenship (N-400) interview in 2026?",
+      "answer": "Bring your green card, a state ID/driver's license, your current and all expired passports, a complete travel history with exact entry/exit dates, IRS tax transcripts for the last 5 years (3 for the spouse track), and certified court dispositions for any arrest or citation ever — even dismissed ones. Spouse-of-citizen applicants also bring the marriage certificate, proof of living together, and the spouse's proof of US citizenship. This tool builds a personalized list based on your answers."
+    },
+    {
+      "question": "What is the new 128-question citizenship test, and does it apply to me?",
+      "answer": "Applicants who filed Form N-400 on or after October 20, 2025 take the 2025 civics test: a 128-question study pool, 20 questions asked at the interview, and you must answer 12 correctly to pass. If you filed before that date, you take the older 2008 test (100-question pool, 10 asked, 6 to pass). The English test (speaking, reading 1 of 3, writing 1 of 3) is unchanged. Enter your filing date in the tool and it tells you which test and pass bar apply to you. Verify current rules at uscis.gov before relying on this."
+    },
+    {
+      "question": "When can I apply for citizenship — how early?",
+      "answer": "You can file up to 90 days before your 5-year green-card anniversary (or 3-year anniversary on the spouse-of-citizen track). You must also have at least 30 months of physical presence in the US over those 5 years (18 months over 3 years for spouses), 3 months of residence in your state/USCIS district, and unbroken continuous residence. Enter your 'resident since' date and the tool computes your earliest filing date and counts down to it."
+    },
+    {
+      "question": "Do long trips to India affect my citizenship eligibility?",
+      "answer": "Yes. A single trip abroad of 6 months or more creates a rebuttable presumption that you broke 'continuous residence', and a trip of 1 year or more breaks it automatically (absent an approved Form N-470). Frequent or long visits to India are a common issue for NRIs, so build a complete, accurate travel log with exact dates before you file — the interview officer will test it against your record."
+    },
+    {
+      "question": "Does becoming a US citizen cancel my Indian citizenship and OCI?",
+      "answer": "India does not permit dual citizenship, so naturalizing as a US citizen automatically ends your Indian citizenship. You must surrender your Indian passport for a 'Surrender Certificate', after which you can apply for an OCI (Overseas Citizen of India) card that gives lifelong visa-free travel and most rights except voting, certain government jobs, and agricultural land purchase. This is general information, not legal advice — confirm the current process with the Indian consulate/VFS."
+    },
+    {
+      "question": "Should I disclose an old arrest that was dismissed?",
+      "answer": "Yes — disclose every arrest, citation, or charge, including dismissed and expunged ones, and bring the certified court disposition for each. USCIS runs an FBI fingerprint check and will see your record; failing to disclose looks like a lack of good moral character and is one of the most common causes of denial. The underlying incident is often forgivable; hiding it usually is not."
+    }
+  ]
+}

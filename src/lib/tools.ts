@@ -30,6 +30,20 @@ export interface ToolMeta {
 
 export const tools: ToolMeta[] = [
   {
+    slug: "citizenship-checklist",
+    title: "US Citizenship (N-400) Readiness Checklist & Tracker",
+    label: "Citizenship Checklist",
+    group: "Visa & Green Card",
+    description:
+      "Personalized N-400 naturalization checklist: compute your earliest filing date, find out which civics test applies to you (2025 vs 2008), surface your risk areas, and track every step to the oath.",
+    icon: "🦅",
+    accent: "from-emerald-500 to-teal-600",
+    seoTitle: "US Citizenship Checklist for Green Card Holders (N-400) — 2026",
+    seoDescription:
+      "Free interactive N-400 naturalization checklist for green card holders: earliest filing date calculator, the new 128-question 2025 civics test rule, documents to gather, and the 2025–26 good moral character pain points.",
+    status: "live",
+  },
+  {
     slug: "green-card-tracker",
     title: "Green Card Wait Time Tracker & Estimator",
     label: "Green Card Tracker",

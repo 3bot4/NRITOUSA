@@ -6,6 +6,7 @@ import FeaturedTopics from "@/components/home/FeaturedTopics";
 import WhyExists from "@/components/home/WhyExists";
 import PopularGuides from "@/components/home/PopularGuides";
 import CalculatorsPreview from "@/components/home/CalculatorsPreview";
+import CitizenshipFinder from "@/components/home/CitizenshipFinder";
 import FinanceHub from "@/components/home/FinanceHub";
 import CommunityPreview from "@/components/home/CommunityPreview";
 import StoriesPreview from "@/components/home/StoriesPreview";
@@ -41,6 +42,7 @@ export default function HomePage() {
       <WhyExists />
       <PopularGuides />
       <CalculatorsPreview />
+      <CitizenshipFinder />
       <FinanceHub />
       <CommunityPreview />
       <StoriesPreview />

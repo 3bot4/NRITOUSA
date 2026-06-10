@@ -19,6 +19,7 @@ it renders on the page as the "Last updated · Source" stamp.
 | `data/h1b-lottery-timeline.json` | /tools/h1b-lottery-timeline (stub) | [USCIS H-1B cap season](https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations) | **Annual** (Jan–Mar cap season) |
 | `data/flight-price-guide.json` | /tools/flight-price-guide (stub) | [BTS DB1B fare data](https://www.transtats.bts.gov/) | **Quarterly** once live |
 | `data/fbar-fatca.json` | /tools/fbar-fatca-checker (stub) | [IRS FBAR](https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar) / Form 8938 instructions | **Annual** (thresholds rarely change) |
+| `data/citizenship-checklist.json` | /tools/citizenship-checklist | [USCIS N-400](https://www.uscis.gov/n-400) + [2025 civics test](https://www.uscis.gov/citizenship/2025-civics-test) + [Policy Manual Vol. 12](https://www.uscis.gov/policy-manual/volume-12) | **Quarterly** (and ad-hoc when fees, the test rule, or GMC policy change) |
 
 ---
 
@@ -104,3 +105,31 @@ Each stub already has a typed data shape:
 Then build the interactive UI, flip the tool's `status` from `"coming-soon"`
 to `"live"` in `src/lib/tools.ts`, and the hub card, sitemap priority, and
 "Coming soon" badges update automatically.
+
+## 6. Citizenship checklist (quarterly + ad-hoc)
+
+Edit `data/citizenship-checklist.json`. The tool ([/tools/citizenship-checklist](https://www.nritousa.com/tools/citizenship-checklist))
+derives eligibility, the civics-test version, and risk flags from it via
+`src/lib/citizenship.ts`. Re-verify these against the official sources and clear
+the `TODO(owner)` notes in the JSON as you confirm each:
+
+1. **Fees** (`fees.onlineUsd`, `fees.paperUsd`): the current N-400 fee schedule
+   at <https://www.uscis.gov/g-1055>. Confirm the I-912 waiver / I-942 reduced-fee
+   forms still apply.
+2. **Civics test rule** (`civicsTest`): confirm the **October 20, 2025 cutoff**
+   and the pool/asked/to-pass numbers for both the 2025 (128/20/12) and 2008
+   (100/10/6) tests at <https://www.uscis.gov/citizenship/2025-civics-test>.
+   If USCIS revises the test again, update `newTestCutoffDate` and the numbers.
+3. **Residency thresholds** (`bases`, `requirements`): physical-presence months
+   (30 for the 5-year, 18 for the 3-year-spouse), the 90-day early-filing window,
+   the 3-month state-residence rule, and the 6-month/1-year continuous-residence
+   break thresholds. Source: USCIS Policy Manual Vol. 12, Parts D–G.
+4. **Pain points** (`painPoints[]`): re-read USCIS Policy Manual Vol. 12 Part F
+   (Good Moral Character) and recent USCIS/news for vetting, social-media review,
+   DUI, and tax-residency guidance. Update each entry's `summary`, `whyNow`,
+   per-entry `lastUpdated` (YYYY-MM), and `source`.
+5. Bump the top-level `lastUpdated`. The checklist `sections`/`items` and `faq`
+   also live in this file — edit them here, not in the component.
+
+**When to do an ad-hoc update:** any USCIS fee rule, a new civics-test revision
+or cutoff change, or a major shift in good-moral-character / vetting policy.
