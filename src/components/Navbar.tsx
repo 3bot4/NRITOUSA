@@ -9,10 +9,12 @@ import MobileMenu from "./MobileMenu";
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Guides", href: "/topics" },
+  { label: "Tools", href: "/tools" },
   { label: "Calculators", href: "/calculators" },
   { label: "New to USA", href: "/topics/new-to-usa" },
   { label: "India-USA Money", href: "/topics/money-transfer" },
-  { label: "Resources", href: "/resources" },
+  { label: "Long-Term NRI", href: "/long-term-nri-wealth" },
+  { label: "Community", href: "/community" },
   { label: "About", href: "/about" },
 ];
 

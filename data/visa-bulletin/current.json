@@ -1,0 +1,29 @@
+{
+  "bulletinMonth": "2026-06",
+  "lastUpdated": "2026-06-09",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin (June 2026)",
+  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). Values marked todo:true are seeded estimates that MUST be verified against the official June 2026 bulletin before go-live.",
+  "categories": {
+    "eb1": {
+      "india": { "fad": "2022-12-15", "dff": "2023-06-01", "dffTodo": true },
+      "china": { "fad": "2023-04-01", "dff": "2023-10-01", "dffTodo": true },
+      "row": { "fad": "C", "dff": "C" }
+    },
+    "eb2": {
+      "india": { "fad": "2013-09-01", "dff": "2014-01-01", "dffTodo": true },
+      "china": { "fad": "2021-09-01", "dff": "2022-02-01", "dffTodo": true },
+      "row": { "fad": "C", "dff": "C", "fadTodo": true }
+    },
+    "eb3": {
+      "india": { "fad": "2013-12-15", "fadTodo": true, "dff": "2014-06-01", "dffTodo": true },
+      "china": { "fad": "2021-08-01", "fadTodo": true, "dff": "2022-01-01", "dffTodo": true },
+      "row": { "fad": "C", "dff": "C", "fadTodo": true }
+    },
+    "eb5": {
+      "india": { "fad": "2019-11-15", "fadTodo": true, "dff": "2020-04-01", "dffTodo": true },
+      "china": { "fad": "2016-12-01", "fadTodo": true, "dff": "2017-01-01", "dffTodo": true },
+      "row": { "fad": "C", "dff": "C" }
+    }
+  }
+}

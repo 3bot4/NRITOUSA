@@ -21,16 +21,20 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Investing", href: "/topics/investing" },
       { label: "Insurance", href: "/topics/insurance" },
       { label: "India-USA Money", href: "/topics/money-transfer" },
+      { label: "Long-Term NRI Wealth", href: "/long-term-nri-wealth" },
     ],
   },
   {
     title: "Tools & Community",
     links: [
+      { label: "All Tools", href: "/tools" },
+      { label: "Green Card Tracker", href: "/tools/green-card-tracker" },
+      { label: "H-1B Salaries", href: "/tools/h1b-salaries" },
+      { label: "Visa-Free Travel", href: "/tools/visa-free-countries" },
+      { label: "Processing Times", href: "/tools/processing-times" },
       { label: "Calculators", href: "/calculators" },
+      { label: "Community", href: "/community" },
       { label: "Resources", href: "/resources" },
-      { label: "Students", href: "/topics/students" },
-      { label: "Families", href: "/topics/families" },
-      { label: "Immigrant Stories", href: "/topics/stories" },
     ],
   },
   {

@@ -1,0 +1,131 @@
+{
+  "lastUpdated": "2026-06-09",
+  "source": "https://egov.uscis.gov/processing-times/",
+  "sourceLabel": "USCIS Case Processing Times + US Dept of State visa appointment wait data",
+  "notes": "Typical published ranges, not guarantees. USCIS times vary by service center and shift monthly; consulate stamping waits move weekly. Rows with todo:true are seeded estimates that must be verified against the linked source before go-live.",
+  "groups": [
+    {
+      "title": "USCIS petitions & applications",
+      "items": [
+        {
+          "item": "I-129 — H-1B extension / transfer (regular)",
+          "typical": "2–4 months",
+          "premium": "15 business days with premium processing ($2,805)",
+          "source": "https://egov.uscis.gov/processing-times/",
+          "sourceLabel": "USCIS processing times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "I-140 — Immigrant petition (EB-1/EB-2/EB-3)",
+          "typical": "4–9 months",
+          "premium": "15 business days with premium processing",
+          "source": "https://egov.uscis.gov/processing-times/",
+          "sourceLabel": "USCIS processing times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "I-485 — Adjustment of status (employment-based)",
+          "typical": "9–20 months",
+          "premium": null,
+          "source": "https://egov.uscis.gov/processing-times/",
+          "sourceLabel": "USCIS processing times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "I-765 — EAD work permit (initial / renewal)",
+          "typical": "3–8 months",
+          "premium": null,
+          "source": "https://egov.uscis.gov/processing-times/",
+          "sourceLabel": "USCIS processing times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "I-131 — Advance Parole travel document",
+          "typical": "4–11 months",
+          "premium": null,
+          "source": "https://egov.uscis.gov/processing-times/",
+          "sourceLabel": "USCIS processing times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        }
+      ]
+    },
+    {
+      "title": "Indian consular services in the USA",
+      "items": [
+        {
+          "item": "OCI card — new application via VFS (USA)",
+          "typical": "6–10 weeks",
+          "premium": null,
+          "source": "https://services.vfsglobal.com/usa/en/ind/",
+          "sourceLabel": "VFS Global (India consular services, USA)",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "Indian passport renewal via VFS (USA)",
+          "typical": "2–6 weeks",
+          "premium": null,
+          "source": "https://services.vfsglobal.com/usa/en/ind/",
+          "sourceLabel": "VFS Global (India consular services, USA)",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        }
+      ]
+    },
+    {
+      "title": "US visa stamping in India — appointment wait (H-1B/H-4 interview)",
+      "items": [
+        {
+          "item": "Mumbai consulate",
+          "typical": "1–3 months (interview); days–weeks for dropbox (interview waiver)",
+          "premium": null,
+          "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
+          "sourceLabel": "US Dept of State global visa wait times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "New Delhi embassy",
+          "typical": "1–3 months (interview); days–weeks for dropbox",
+          "premium": null,
+          "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
+          "sourceLabel": "US Dept of State global visa wait times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "Hyderabad consulate",
+          "typical": "1–4 months (interview); days–weeks for dropbox",
+          "premium": null,
+          "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
+          "sourceLabel": "US Dept of State global visa wait times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "Chennai consulate",
+          "typical": "1–4 months (interview); days–weeks for dropbox",
+          "premium": null,
+          "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
+          "sourceLabel": "US Dept of State global visa wait times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        },
+        {
+          "item": "Kolkata consulate",
+          "typical": "1–3 months (interview); days–weeks for dropbox",
+          "premium": null,
+          "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
+          "sourceLabel": "US Dept of State global visa wait times",
+          "lastUpdated": "2026-06-09",
+          "todo": true
+        }
+      ]
+    }
+  ]
+}

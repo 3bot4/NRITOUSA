@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Container from "./Container";
-
-const dashboardItems = [
-  { icon: "🏦", title: "Banking & Credit", meta: "Start in week 1" },
-  { icon: "🏠", title: "Rent vs Buy", meta: "Decide smart" },
-  { icon: "📈", title: "401k & Roth IRA", meta: "Free employer match" },
-  { icon: "🚗", title: "Cars & Insurance", meta: "Loan + coverage" },
-  { icon: "🔁", title: "India-USA Money", meta: "NRE / NRO transfers" },
-];
+import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
+import { topics } from "@/lib/topics";
 
 export default function Hero() {
   return (
@@ -55,7 +49,7 @@ export default function Hero() {
 
             <dl className="mt-12 grid max-w-md grid-cols-3 gap-6">
               {[
-                { value: "11", label: "Topic areas" },
+                { value: String(topics.length), label: "Topic areas" },
                 { value: "50+", label: "In-depth guides" },
                 { value: "12k+", label: "Readers" },
               ].map((stat) => (
@@ -69,55 +63,21 @@ export default function Hero() {
             </dl>
           </div>
 
-          {/* Right: dashboard card */}
+          {/* Right: interactive green card wait estimator */}
           <div className="relative">
             {/* Floating accent cards */}
             <div className="pointer-events-none absolute -right-3 -top-5 hidden rotate-3 rounded-2xl border border-ink-900/5 bg-white px-4 py-3 shadow-card sm:block">
               <p className="text-xs font-semibold text-emerald-600">
-                ✓ Tax-smart transfers
+                ✓ Live visa bulletin data
               </p>
             </div>
             <div className="pointer-events-none absolute -bottom-5 -left-4 hidden -rotate-2 rounded-2xl border border-ink-900/5 bg-white px-4 py-3 shadow-card sm:block">
               <p className="text-xs font-semibold text-brand-600">
-                ★ 750+ credit score
+                ★ Free tools for NRIs
               </p>
             </div>
 
-            <div className="relative rounded-3xl border border-ink-900/5 bg-white p-5 shadow-card-hover sm:p-6">
-              <div className="flex items-center justify-between border-b border-ink-900/5 pb-4">
-                <div>
-                  <p className="text-sm font-bold text-ink-900">
-                    Your USA starter kit
-                  </p>
-                  <p className="text-xs text-ink-400">Guides for your first year</p>
-                </div>
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white">
-                  N
-                </span>
-              </div>
-
-              <ul className="mt-4 space-y-2.5">
-                {dashboardItems.map((item) => (
-                  <li
-                    key={item.title}
-                    className="flex items-center gap-3 rounded-2xl border border-ink-900/5 bg-[#fafafa] p-3 transition-colors hover:bg-brand-50/60"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-lg shadow-sm">
-                      {item.icon}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-semibold text-ink-800">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-ink-400">{item.meta}</p>
-                    </div>
-                    <span className="ml-auto text-ink-300" aria-hidden>
-                      →
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <GreenCardEstimator variant="mini" />
           </div>
         </div>
       </Container>

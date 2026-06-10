@@ -170,6 +170,18 @@ export const topics: Topic[] = [
       "Building community, healthcare, dependents, and settling into life in the USA as a new immigrant or NRI family.",
   },
   {
+    slug: "long-term-nri-wealth",
+    title: "Long-Term NRI Wealth",
+    label: "Long-Term NRI",
+    description:
+      "For NRIs settled in the USA for 5, 10, 15, or 20+ years — comparing India vs USA assets, property and inheritance, currency risk, retirement, and cross-border estate planning.",
+    icon: "🌉",
+    accent: "from-emerald-600 to-cyan-700",
+    seoTitle: "Long-Term NRI Wealth Planning Guides",
+    seoDescription:
+      "Guides for NRIs settled in the USA covering India assets vs US investments, property decisions, currency risk, retirement, estate planning, and cross-border wealth.",
+  },
+  {
     slug: "stories",
     title: "Immigrant Stories",
     label: "Stories",

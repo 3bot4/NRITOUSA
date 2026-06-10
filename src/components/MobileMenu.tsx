@@ -30,12 +30,30 @@ export default function MobileMenu({
       >
         <nav className="px-5 py-6">
           <Link
+            href="/tools"
+            onClick={onClose}
+            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
+          >
+            <span className="text-xl">🛠️</span>
+            <span>Tools & data hub</span>
+          </Link>
+
+          <Link
             href="/calculators"
             onClick={onClose}
-            className="mb-5 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
+            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
           >
             <span className="text-xl">🧮</span>
             <span>Cross-border calculators</span>
+          </Link>
+
+          <Link
+            href="/community"
+            onClick={onClose}
+            className="mb-5 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
+          >
+            <span className="text-xl">💬</span>
+            <span>Community discussions</span>
           </Link>
 
           <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-ink-400">

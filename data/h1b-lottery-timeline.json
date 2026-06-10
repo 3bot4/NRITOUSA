@@ -1,0 +1,22 @@
+{
+  "lastUpdated": "2026-06-09",
+  "source": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations",
+  "sourceLabel": "USCIS H-1B Cap Season",
+  "status": "coming-soon",
+  "notes": "Data shape for the upcoming H-1B lottery timeline tool. Fill milestones from the USCIS cap-season announcements each January–March.",
+  "fiscalYear": 2027,
+  "milestones": [
+    { "id": "registration-open", "label": "Electronic registration opens", "date": null, "typical": "Early March" },
+    { "id": "registration-close", "label": "Registration closes", "date": null, "typical": "Late March" },
+    { "id": "selection-notify", "label": "Initial selection notifications", "date": null, "typical": "By March 31" },
+    { "id": "filing-open", "label": "Petition filing window opens", "date": null, "typical": "April 1 (90-day window)" },
+    { "id": "second-lottery", "label": "Possible second selection round", "date": null, "typical": "July–August (if cap not met)" },
+    { "id": "start-date", "label": "Earliest H-1B start date", "date": null, "typical": "October 1" }
+  ],
+  "stats": {
+    "capRegular": 65000,
+    "capMasters": 20000,
+    "lastSeasonRegistrations": null,
+    "lastSeasonSelectionRatePct": null
+  }
+}

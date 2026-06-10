@@ -17,6 +17,8 @@ export interface Topic {
 export interface Article {
   slug: string;
   title: string;
+  /** SEO <title> override (falls back to `title`). Keep under ~60 chars. */
+  seoTitle?: string;
   excerpt: string;
   topic: string; // Topic slug
   author: string;

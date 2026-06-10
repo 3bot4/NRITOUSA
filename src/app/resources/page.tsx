@@ -178,6 +178,82 @@ const resources: Resource[] = [
       { label: "Emergency fund for families", href: "/articles/emergency-fund-for-families-usa" },
     ],
   },
+  {
+    icon: "🏡",
+    title: "India property document checklist for NRIs",
+    description:
+      "Organize the paperwork that makes India property manageable — and prevents disputes when it passes to your heirs.",
+    topic: { label: "Long-Term NRI guides", href: "/long-term-nri-wealth" },
+    steps: [
+      "Locate the sale/title deed and registration papers",
+      "Update mutation records and keep tax-paid receipts",
+      "Get the encumbrance certificate and society documents",
+      "Confirm heirs' PAN and OCI details are current",
+      "Store everything in one physical + digital file",
+    ],
+    articles: [
+      { label: "Why US-born kids struggle with India property", href: "/articles/us-kids-india-property-problems" },
+      { label: "Estate planning with India assets", href: "/articles/estate-planning-usa-india-assets" },
+      { label: "Buying India property for children", href: "/articles/buying-india-property-for-children" },
+    ],
+  },
+  {
+    icon: "📜",
+    title: "NRI estate planning document checklist",
+    description:
+      "Coordinate wills, beneficiaries, and titles across the USA and India so your wishes actually hold.",
+    topic: { label: "Long-Term NRI guides", href: "/long-term-nri-wealth" },
+    steps: [
+      "Draft coordinated US and India wills",
+      "Update 401k/IRA/HSA and life insurance beneficiaries",
+      "Align India bank/FD nominees with your will",
+      "Name guardians for any minor children",
+      "Make a master list of accounts and document locations",
+    ],
+    articles: [
+      { label: "Estate planning with India assets", href: "/articles/estate-planning-usa-india-assets" },
+      { label: "Inheriting Indian assets & US tax", href: "/articles/inheriting-indian-assets-us-tax" },
+      { label: "Why US-born kids struggle with India property", href: "/articles/us-kids-india-property-problems" },
+    ],
+  },
+  {
+    icon: "🧭",
+    title: "NRI 10-year wealth review checklist",
+    description:
+      "An annual cross-border review for settled NRIs — investments, India assets, taxes, insurance, and estate, in one pass.",
+    topic: { label: "Long-Term NRI guides", href: "/long-term-nri-wealth" },
+    steps: [
+      "Refresh your US financial plan and allocation",
+      "Consolidate and reclassify India accounts",
+      "Confirm FBAR/FATCA and India income reporting",
+      "Optimize 401k, IRA, and HSA contributions",
+      "Put estate documents and a USD emergency fund in place",
+    ],
+    articles: [
+      { label: "NRI wealth checklist after 10 years", href: "/articles/10-year-nri-wealth-checklist" },
+      { label: "NRI retirement with India assets", href: "/articles/nri-retirement-usa-india-currency-risk" },
+      { label: "Invest in the USA or India?", href: "/articles/invest-in-usa-or-india" },
+    ],
+  },
+  {
+    icon: "⚖️",
+    title: "India FD vs USD return comparison checklist",
+    description:
+      "Compare an India FD to US investments the right way — in the currency you'll actually spend, after inflation and tax.",
+    topic: { label: "Long-Term NRI guides", href: "/long-term-nri-wealth" },
+    steps: [
+      "Note the FD's nominal rate and lock-in period",
+      "Subtract expected rupee depreciation vs the dollar",
+      "Adjust both options for inflation",
+      "Apply US (and any India) tax to the interest",
+      "Compare net, after-tax returns in your spending currency",
+    ],
+    articles: [
+      { label: "India FD vs US investments", href: "/articles/india-fd-vs-us-investments" },
+      { label: "Hidden cost of keeping money in India", href: "/articles/keeping-too-much-money-in-india" },
+      { label: "Invest in the USA or India?", href: "/articles/invest-in-usa-or-india" },
+    ],
+  },
 ];
 
 export default function ResourcesPage() {

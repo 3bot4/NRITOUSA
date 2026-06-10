@@ -33,7 +33,7 @@ export function generateMetadata({
   if (!article) return { title: "Article not found" };
   const topic = getTopic(article.topic);
   return {
-    title: article.title,
+    title: article.seoTitle ?? article.title,
     description: article.excerpt,
     alternates: { canonical: articlePath(article.slug) },
     openGraph: {

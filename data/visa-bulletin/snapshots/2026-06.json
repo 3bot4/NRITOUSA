@@ -1,0 +1,64 @@
+{
+  "bulletinMonth": "2026-06",
+  "generated": true,
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin archive",
+  "categories": {
+    "eb1": {
+      "india": {
+        "fad": "2022-12-15",
+        "dff": "2023-06-01"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2023-04-01",
+        "dff": "2023-10-01"
+      }
+    },
+    "eb2": {
+      "india": {
+        "fad": "2013-09-01",
+        "dff": "2014-01-01"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2021-09-01",
+        "dff": "2022-02-01"
+      }
+    },
+    "eb3": {
+      "india": {
+        "fad": "2013-12-15",
+        "dff": "2014-06-01"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2021-08-01",
+        "dff": "2022-01-01"
+      }
+    },
+    "eb5": {
+      "india": {
+        "fad": "2019-11-15",
+        "dff": "2020-04-01"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2016-12-01",
+        "dff": "2017-01-01"
+      }
+    }
+  }
+}
