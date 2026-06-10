@@ -17,6 +17,7 @@ import {
   type BulletinCountry,
   type EbCategory,
 } from "@/lib/visa-bulletin";
+import { inventoryMeta } from "@/lib/i485-inventory";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -42,6 +43,11 @@ export const metadata: Metadata = {
 };
 
 const faq: FaqItem[] = [
+  {
+    question: "How many people are ahead of me in the green card line?",
+    answer:
+      `Enter your category, country of birth, and priority date above and the tracker shows how many applicants with earlier priority dates are ahead of you, using the USCIS pending Form I-485 inventory (snapshot as of ${inventoryMeta.snapshotDate}). It counts only people who have already filed I-485 at the year-level granularity USCIS reports, so it is a concrete place in line — not a wait time, and it understates total demand because many eligible applicants haven't filed yet.`,
+  },
   {
     question: "What is the EB-2 India green card wait time in 2026?",
     answer:

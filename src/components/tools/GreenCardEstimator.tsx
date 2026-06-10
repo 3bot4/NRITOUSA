@@ -18,6 +18,11 @@ import {
   type BulletinCountry,
   type EbCategory,
 } from "@/lib/visa-bulletin";
+import {
+  inventoryMeta,
+  peopleAhead,
+  type AheadResult,
+} from "@/lib/i485-inventory";
 
 /** Debounce a fast-changing value (date typing) before re-estimating. */
 function useDebounced<T>(value: T, ms = 250): T {
@@ -118,6 +123,161 @@ function WaitVerdict({
   }
 }
 
+/** Provenance + plain caveats shown beneath every "place in line" number. */
+function SnapshotCaveat({ compact }: { compact?: boolean }) {
+  if (compact) {
+    return (
+      <p className="mt-2 text-[11px] text-ink-400">
+        Snapshot: {inventoryMeta.snapshotDate} · Source: USCIS — a place in
+        line, not a wait time.
+      </p>
+    );
+  }
+  return (
+    <div className="mt-3 space-y-1.5 text-[11px] leading-relaxed text-ink-400">
+      <p>
+        Snapshot: {inventoryMeta.snapshotDate} (published{" "}
+        {inventoryMeta.publishedDate}) · Source: {inventoryMeta.sourceLabel}.
+        USCIS publishes this in batches, lagging the snapshot date.
+      </p>
+      <p>
+        Counts only people who have{" "}
+        <strong className="text-ink-500">already filed Form I-485</strong>, so it
+        understates total demand — many with current or future dates
+        haven&apos;t filed, and the oldest/most-recent priority dates are grouped
+        together. It is a{" "}
+        <strong className="text-ink-500">place in line, not a wait time</strong>;
+        retrogression or policy changes can change everything.
+      </p>
+      {inventoryMeta.todo && (
+        <p>
+          Seeded figures pending cell-by-cell verification against the official
+          USCIS spreadsheet.
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** The concrete "how many people are ahead of you" headline panel. */
+function PlaceInLine({
+  ahead,
+  category,
+  country,
+  priorityDate,
+  compact,
+}: {
+  ahead: AheadResult;
+  category: EbCategory;
+  country: BulletinCountry;
+  priorityDate: string;
+  compact?: boolean;
+}) {
+  const [showCp, setShowCp] = useState(false);
+  const big = compact ? "text-3xl" : "text-4xl sm:text-5xl";
+  const cat = CATEGORY_SHORT[category];
+  const co = COUNTRY_LABELS[country];
+  const num = (n: number) => n.toLocaleString("en-US");
+
+  if (ahead.status === "unsupported") {
+    if (compact) return null;
+    return (
+      <div className="rounded-2xl border border-ink-900/5 bg-[#fafafa] p-4 text-sm text-ink-500">
+        USCIS doesn&apos;t break out {cat} {co} in the pending I-485 inventory
+        report, so a &ldquo;people ahead of you&rdquo; count isn&apos;t
+        available for this selection.
+      </div>
+    );
+  }
+
+  if (ahead.status === "not-listed") {
+    return (
+      <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4 sm:p-5">
+        <p className="text-sm font-bold text-ink-900">
+          No I-485 line position yet
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-ink-700">
+          USCIS does not yet list {ahead.year} priority dates for {cat} {co}{" "}
+          because Dates for Filing hasn&apos;t reached it — you cannot file Form
+          I-485 yet, so you are not counted in this inventory. The most recent
+          priority year listed is {ahead.maxYear}.
+        </p>
+        <SnapshotCaveat compact={compact} />
+      </div>
+    );
+  }
+
+  if (ahead.status === "grouped") {
+    return (
+      <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-4 sm:p-5">
+        <p className="text-xs font-bold uppercase tracking-wider text-ink-400">
+          Oldest grouped cohort
+        </p>
+        <p className={`mt-1 font-extrabold tracking-tight text-brand-700 ${big}`}>
+          {num(ahead.bucketCount)}
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-ink-700">
+          Your {ahead.year} priority date falls inside USCIS&apos;s grouped
+          &ldquo;{ahead.bucketLabel}&rdquo; bucket of {num(ahead.bucketCount)}{" "}
+          {cat} {co} applicants. USCIS doesn&apos;t break this oldest cohort down
+          further, so we can&apos;t separate exactly how many are ahead of you
+          within it.
+        </p>
+        <SnapshotCaveat compact={compact} />
+      </div>
+    );
+  }
+
+  // status: "ok"
+  return (
+    <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-4 sm:p-5">
+      <p className="text-xs font-bold uppercase tracking-wider text-ink-400">
+        People ahead of you in line
+      </p>
+      <p className={`mt-1 font-extrabold tracking-tight text-brand-700 ${big}`}>
+        ~{num(ahead.ahead)}
+      </p>
+      <p className="mt-1 text-sm leading-relaxed text-ink-700">
+        As of {inventoryMeta.snapshotDate}, about{" "}
+        <strong className="font-semibold text-ink-900">{num(ahead.ahead)}</strong>{" "}
+        {co} {cat} applicants have earlier priority dates than yours (
+        {formatCutoff(priorityDate)}) in the pending I-485 inventory.
+        {ahead.sameYear > 0 && (
+          <>
+            {" "}
+            Another ~{num(ahead.sameYear)} share your {ahead.sameYearLabel}{" "}
+            priority year (USCIS doesn&apos;t split this by month).
+          </>
+        )}
+      </p>
+
+      {!compact && (
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setShowCp((v) => !v)}
+            className="text-xs font-semibold text-brand-600 hover:text-brand-700"
+          >
+            {showCp ? "− Hide" : "+ Include estimated consular cases"}
+          </button>
+          {showCp && (
+            <p className="mt-2 rounded-xl bg-white px-3 py-2 text-xs leading-relaxed text-ink-600">
+              Counting estimated consular-processing cases too, your approximate
+              overall place in line is{" "}
+              <strong className="font-semibold text-ink-900">
+                ~{num(ahead.overallEstimate)}
+              </strong>
+              . {inventoryMeta.cpRatioNote}
+            </p>
+          )}
+        </div>
+      )}
+
+      <SnapshotCaveat compact={compact} />
+    </div>
+  );
+}
+
 export default function GreenCardEstimator({
   variant = "full",
 }: {
@@ -160,6 +320,11 @@ export default function GreenCardEstimator({
   const estimate = useMemo(() => {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(debouncedDate)) return null;
     return estimateWait(debouncedDate, category, country);
+  }, [debouncedDate, category, country]);
+
+  const ahead = useMemo(() => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(debouncedDate)) return null;
+    return peopleAhead(category, country, debouncedDate);
   }, [debouncedDate, category, country]);
 
   const sparkPoints = useMemo(() => {
@@ -216,6 +381,15 @@ export default function GreenCardEstimator({
 
   const results = estimate && (
     <div className={compact ? "mt-4 space-y-3" : "mt-6 space-y-5"}>
+      {ahead && (
+        <PlaceInLine
+          ahead={ahead}
+          category={category}
+          country={country}
+          priorityDate={debouncedDate}
+          compact={compact}
+        />
+      )}
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-ink-900/5 bg-[#fafafa] p-4">
         <div>
           <p className="text-xs text-ink-400">
@@ -303,11 +477,23 @@ export default function GreenCardEstimator({
       {estimate && (
         <div className="mt-5">
           <ResultActions
-            title={`Green card wait — ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]}`}
-            shareText={`My ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]} green card wait estimate:`}
-            fileName="green-card-wait"
-            footnote="Estimate only — not legal advice. nritousa.com"
+            title={`Green card line — ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]}`}
+            shareText={
+              ahead?.status === "ok"
+                ? `~${ahead.ahead.toLocaleString("en-US")} people are ahead of me in the ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]} green card line:`
+                : `My ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]} green card wait estimate:`
+            }
+            fileName="green-card-place-in-line"
+            footnote="Place in line from USCIS I-485 inventory — not a wait time, not legal advice. nritousa.com"
             rows={[
+              ...(ahead?.status === "ok"
+                ? [
+                    {
+                      label: `People ahead (I-485, as of ${inventoryMeta.snapshotDate})`,
+                      value: `~${ahead.ahead.toLocaleString("en-US")}`,
+                    },
+                  ]
+                : []),
               { label: "Category", value: `${CATEGORY_SHORT[category]} · ${COUNTRY_LABELS[country]}` },
               { label: "Priority date", value: priorityDate },
               { label: `Final Action Date (${bulletin.month})`, value: formatCutoff(estimate.fad) },

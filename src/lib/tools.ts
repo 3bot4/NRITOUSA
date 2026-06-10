@@ -49,12 +49,12 @@ export const tools: ToolMeta[] = [
     label: "Green Card Tracker",
     group: "Visa & Green Card",
     description:
-      "See the current visa bulletin cutoff for your EB category, how far your priority date is behind, and an honest estimated wait range based on historical movement.",
+      "See how many applicants are ahead of you in line from the USCIS I-485 inventory, the current visa bulletin cutoff for your EB category, how far your priority date is behind, and an honest estimated wait range.",
     icon: "🟢",
     accent: "from-emerald-500 to-teal-600",
     seoTitle: "Green Card Wait Time Estimator (EB-1/EB-2/EB-3 India) — 2026",
     seoDescription:
-      "Free EB green card wait time estimator for India and China. Current Final Action Dates, historical visa bulletin movement, and an honest estimated wait range for your priority date.",
+      "How many people are ahead of you in the EB green card line? Free estimator using the USCIS pending I-485 inventory plus current Final Action Dates, visa bulletin history, and an honest wait range for your priority date.",
     status: "live",
   },
   {

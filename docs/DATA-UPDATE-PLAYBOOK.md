@@ -13,6 +13,7 @@ it renders on the page as the "Last updated · Source" stamp.
 | File | Tool(s) | Official source | Cadence |
 | --- | --- | --- | --- |
 | `data/visa-bulletin/current.json` + `history.json` | Homepage estimator, /tools/green-card-tracker | [travel.state.gov Visa Bulletin](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html) | **Monthly** (bulletin drops ~2nd week for the following month) |
+| `data/i485-inventory/current.json` (+ dated snapshots) | Homepage estimator, /tools/green-card-tracker ("people ahead of you") | [USCIS Immigration & Citizenship Data → Pending EB I-485 Inventory](https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data) | **Irregular** (USCIS publishes every few months, lagging the snapshot date) |
 | `public/data/h1b/summary.json` | /tools/h1b-salaries | [DOL OFLC LCA disclosure data](https://www.dol.gov/agencies/eta/foreign-labor/performance) | **Quarterly** (Q1 ~Jan, Q2 ~Apr, Q3 ~Jul, Q4 ~Oct) |
 | `data/passport-access.json` | /tools/visa-free-countries | [Henley Passport Index](https://www.henleyglobal.com/passport-index) + each country's official immigration site | **Quarterly** (and ad-hoc when a country changes policy) |
 | `data/processing-times.json` | /tools/processing-times | [USCIS processing times](https://egov.uscis.gov/processing-times/), [DOS visa wait times](https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html), [VFS Global USA](https://services.vfsglobal.com/usa/en/ind/) | **Monthly** |
@@ -142,7 +143,50 @@ the `TODO(owner)` notes in the JSON as you confirm each:
 **When to do an ad-hoc update:** any USCIS fee rule, a new civics-test revision
 or cutoff change, or a major shift in good-moral-character / vetting policy.
 
-## 7. H-1B lottery timeline (annual, Jan–Mar)
+## 7. Pending I-485 inventory — "people ahead of you" (irregular)
+
+Powers the concrete "X applicants are ahead of you in line" headline in the
+green card estimator (homepage hero + /tools/green-card-tracker), via
+`src/lib/i485-inventory.ts`.
+
+USCIS publishes the **Pending Employment-Based Form I-485 Inventory** every
+few months (in batches, lagging the snapshot date) at
+<https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data>.
+Separate workbooks cover India, China, Mexico, the Philippines, and All Other,
+each broken down by preference category (EB-1/EB-2/EB-3) and **priority-date
+YEAR** with a grouped "{year} and earlier" floor and a most-recent listed year.
+
+When a new snapshot drops:
+
+1. Download the India / China / All Other workbooks. Note the **snapshot date**
+   (e.g. "as of February 3, 2026") and the **published date**.
+2. Create `data/i485-inventory/YYYY-MM-DD.json` (snapshot date as the name) with
+   this shape — **replicate the report's year-level granularity exactly; never
+   invent monthly buckets**:
+   ```json
+   {
+     "snapshotDate": "2026-02-03", "publishedDate": "2026-06-04",
+     "source": "...", "sourceLabel": "USCIS Pending Employment-Based I-485 Inventory",
+     "lastUpdated": "YYYY-MM-DD", "overallTotal": 172670,
+     "cpRatio": 1.03, "cpRatioNote": "...ESTIMATE...", "todo": true,
+     "data": { "India": { "EB-2": [ { "year": 2011, "grouped": "earlier", "count": 436 }, { "year": 2012, "count": 387 }, ... ], "EB-3": [...], "EB-1": [...] }, "China": {...}, "All Other": {...} }
+   }
+   ```
+   `grouped: "earlier"` marks the floor bucket ("this year and earlier"). Each
+   category's sub-buckets must sum to the workbook's category total.
+3. Copy the new file over `data/i485-inventory/current.json` (the lib imports
+   `current.json`; the dated file is the archive). Bump `lastUpdated`.
+4. Clear `todo`/`todoNote` only after every count is verified cell-by-cell
+   against the official spreadsheet. Re-confirm `cpRatio` is still a reasonable
+   consular-processing modeling assumption (it is **not** a USCIS figure).
+
+The compute (`peopleAhead`) sums buckets with a year strictly earlier than the
+user's priority year, reports the same-year cohort separately, and returns
+honest edge states: `not-listed` (priority year newer than the report lists —
+filing isn't open yet), `grouped` (date inside the "and earlier" floor), and
+`unsupported` (EB-5, which the report doesn't break out).
+
+## 8. H-1B lottery timeline (annual, Jan–Mar)
 
 Edit `data/h1b-lottery-timeline.json`. The tool
 ([/tools/h1b-lottery-timeline](https://www.nritousa.com/tools/h1b-lottery-timeline))
