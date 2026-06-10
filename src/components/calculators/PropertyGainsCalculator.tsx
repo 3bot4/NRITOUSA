@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   SelectField,
@@ -14,6 +13,8 @@ import {
   usd,
   num,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 const REPAT_LIMIT_USD = 1_000_000; // USD 1M / financial year from NRO
 const EC_CAP = 5_000_000; // Section 54EC cap ₹50 lakh
@@ -22,12 +23,21 @@ const STCG_RATE = 0.3; // slab approximation
 const CESS = 0.04;
 
 export default function PropertyGainsCalculator() {
-  const [buy, setBuy] = useState("5000000");
-  const [sell, setSell] = useState("12000000");
-  const [term, setTerm] = useState("long");
-  const [ec, setEc] = useState("0");
-  const [rate, setRate] = useState("86");
-  const [already, setAlready] = useState("0");
+  const [s, set] = useUrlState({
+    buy: "5000000",
+    sell: "12000000",
+    term: "long",
+    ec: "0",
+    rate: "86",
+    already: "0",
+  });
+  const { buy, sell, term, ec, rate, already } = s;
+  const setBuy = (v: string) => set("buy", v);
+  const setSell = (v: string) => set("sell", v);
+  const setTerm = (v: string) => set("term", v);
+  const setEc = (v: string) => set("ec", v);
+  const setRate = (v: string) => set("rate", v);
+  const setAlready = (v: string) => set("already", v);
 
   const purchase = num(buy);
   const sale = num(sell);
@@ -136,6 +146,18 @@ export default function PropertyGainsCalculator() {
               ]}
             />
           </ResultPanel>
+
+          <ResultActions
+            title="India property sale — tax & repatriation"
+            shareText="I estimated the tax and US repatriation on selling property in India:"
+            fileName="india-property-gains"
+            rows={[
+              { label: "Capital gain", value: inr(gain) },
+              { label: "Estimated tax / TDS", value: inr(totalTax) },
+              { label: "Net proceeds", value: `${inr(netInr)} (≈ ${usd(netUsd)})` },
+              { label: "Repatriable now", value: usd(repatriableUsd) },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Estimate only. Surcharge, indexation options for pre-July-2024

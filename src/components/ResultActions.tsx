@@ -129,6 +129,7 @@ export default function ResultActions({
   footnote?: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const [copiedText, setCopiedText] = useState(false);
 
   const copyLink = async () => {
     try {
@@ -137,6 +138,35 @@ export default function ResultActions({
       setTimeout(() => setCopied(false), 2000);
     } catch {
       /* clipboard unavailable — ignore */
+    }
+  };
+
+  const resultsAsText = () =>
+    `${title}\n${rows.map((r) => `• ${r.label}: ${r.value}`).join("\n")}\n${currentUrl()}\n${footnote}`;
+
+  const copyText = async () => {
+    try {
+      await navigator.clipboard.writeText(resultsAsText());
+      setCopiedText(true);
+      setTimeout(() => setCopiedText(false), 2000);
+    } catch {
+      /* clipboard unavailable — ignore */
+    }
+  };
+
+  // Native share sheet (mobile). Feature-detected at click time.
+  const nativeShare = async () => {
+    const nav = navigator as Navigator & {
+      share?: (d: { title?: string; text?: string; url?: string }) => Promise<void>;
+    };
+    if (typeof nav.share === "function") {
+      try {
+        await nav.share({ title, text: shareText, url: currentUrl() });
+      } catch {
+        /* user cancelled — ignore */
+      }
+    } else {
+      copyLink();
     }
   };
 
@@ -193,6 +223,12 @@ export default function ResultActions({
         </button>
         <button type="button" className={BTN} onClick={copyLink}>
           {copied ? "✓ Link copied" : "Copy link"}
+        </button>
+        <button type="button" className={`${BTN} sm:hidden`} onClick={nativeShare}>
+          Share…
+        </button>
+        <button type="button" className={BTN} onClick={copyText}>
+          {copiedText ? "✓ Copied" : "Copy results"}
         </button>
         <button
           type="button"

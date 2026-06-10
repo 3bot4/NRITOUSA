@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   SelectField,
@@ -12,20 +11,33 @@ import {
   usd,
   num,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 /**
  * Rent-vs-buy comparison anchored to a visa horizon (how long you can be sure
  * you'll stay), which is what determines whether you recover transaction costs.
  */
 export default function RentVsBuyCalculator() {
-  const [price, setPrice] = useState("500000");
-  const [down, setDown] = useState("20");
-  const [rate, setRate] = useState("6.5");
-  const [rent, setRent] = useState("2500");
-  const [appr, setAppr] = useState("3");
-  const [rentInc, setRentInc] = useState("3");
-  const [horizon, setHorizon] = useState("3");
-  const [invReturn, setInvReturn] = useState("6");
+  const [s, set] = useUrlState({
+    price: "500000",
+    down: "20",
+    rate: "6.5",
+    rent: "2500",
+    appr: "3",
+    rentInc: "3",
+    horizon: "3",
+    invReturn: "6",
+  });
+  const { price, down, rate, rent, appr, rentInc, horizon, invReturn } = s;
+  const setPrice = (v: string) => set("price", v);
+  const setDown = (v: string) => set("down", v);
+  const setRate = (v: string) => set("rate", v);
+  const setRent = (v: string) => set("rent", v);
+  const setAppr = (v: string) => set("appr", v);
+  const setRentInc = (v: string) => set("rentInc", v);
+  const setHorizon = (v: string) => set("horizon", v);
+  const setInvReturn = (v: string) => set("invReturn", v);
 
   const P = num(price);
   const dpPct = num(down) / 100;
@@ -158,6 +170,18 @@ export default function RentVsBuyCalculator() {
               </>
             )}
           </Callout>
+
+          <ResultActions
+            title="Rent vs Buy on a visa timeline"
+            shareText={`Over my ${N}-year US timeline, this calculator says ${buyBetter ? "buying" : "renting"} wins:`}
+            fileName="rent-vs-buy-visa"
+            rows={[
+              { label: "Timeline", value: `${N} years` },
+              { label: buyBetter ? "Buying wins by" : "Renting wins by", value: usd(diff) },
+              { label: "Net cost of buying", value: usd(buyCost) },
+              { label: "Net cost of renting", value: usd(rentCost) },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Estimate only. Assumes 30-yr mortgage, 3% closing, 7% selling, ~1.1%

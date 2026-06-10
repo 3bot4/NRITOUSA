@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   SelectField,
@@ -13,6 +12,8 @@ import {
   inr,
   num,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 const TCS_THRESHOLD = 700000; // ₹7 lakh per FY under LRS
 const TCS_RATES: Record<string, number> = {
@@ -24,13 +25,23 @@ const TCS_RATES: Record<string, number> = {
 };
 
 export default function RemittanceCalculator() {
-  const [amount, setAmount] = useState("10000");
-  const [direction, setDirection] = useState("us-india");
-  const [purpose, setPurpose] = useState("family");
-  const [rate, setRate] = useState("86");
-  const [margin, setMargin] = useState("0.8");
-  const [fee, setFee] = useState("5");
-  const [cash, setCash] = useState("no");
+  const [s, set] = useUrlState({
+    amount: "10000",
+    direction: "us-india",
+    purpose: "family",
+    rate: "86",
+    margin: "0.8",
+    fee: "5",
+    cash: "no",
+  });
+  const { amount, direction, purpose, rate, margin, fee, cash } = s;
+  const setAmount = (v: string) => set("amount", v);
+  const setDirection = (v: string) => set("direction", v);
+  const setPurpose = (v: string) => set("purpose", v);
+  const setRate = (v: string) => set("rate", v);
+  const setMargin = (v: string) => set("margin", v);
+  const setFee = (v: string) => set("fee", v);
+  const setCash = (v: string) => set("cash", v);
 
   const amt = num(amount);
   const R = num(rate) || 1; // INR per USD
@@ -167,6 +178,18 @@ export default function RemittanceCalculator() {
               on the spread, not just the flat fee.
             </Callout>
           )}
+
+          <ResultActions
+            title="India ↔ USA transfer cost"
+            shareText="I checked the true cost of an India–USA money transfer (fees + spread + TCS):"
+            fileName="remittance-cost"
+            rows={[
+              { label: "Sending", value: srcFmt(amt) },
+              { label: "Net received", value: dstFmt(recv) },
+              { label: "Effective rate", value: effRateLabel },
+              { label: "Total cost", value: srcFmt(totalCost) },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Estimate only. TCS assumes this is your transfer above the ₹7 lakh

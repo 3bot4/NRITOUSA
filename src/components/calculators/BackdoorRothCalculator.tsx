@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   SelectField,
@@ -14,6 +13,8 @@ import {
   pct,
   num,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 // 2025 IRS Roth IRA MAGI phase-out ranges and contribution limits.
 const RANGES: Record<string, [number, number]> = {
@@ -25,10 +26,17 @@ const LIMIT_UNDER_50 = 7000;
 const LIMIT_50_PLUS = 8000;
 
 export default function BackdoorRothCalculator() {
-  const [magi, setMagi] = useState("200000");
-  const [status, setStatus] = useState("single");
-  const [age, setAge] = useState("35");
-  const [tradBal, setTradBal] = useState("0");
+  const [s, set] = useUrlState({
+    magi: "200000",
+    status: "single",
+    age: "35",
+    tradBal: "0",
+  });
+  const { magi, status, age, tradBal } = s;
+  const setMagi = (v: string) => set("magi", v);
+  const setStatus = (v: string) => set("status", v);
+  const setAge = (v: string) => set("age", v);
+  const setTradBal = (v: string) => set("tradBal", v);
 
   const income = num(magi);
   const [low, high] = RANGES[status];
@@ -149,6 +157,25 @@ export default function BackdoorRothCalculator() {
               ]}
             />
           </ResultPanel>
+
+          <ResultActions
+            title="My backdoor Roth eligibility"
+            shareText="I checked my Roth IRA eligibility and the pro-rata trap:"
+            fileName="backdoor-roth-eligibility"
+            rows={[
+              {
+                label: "Verdict",
+                value:
+                  verdict === "full"
+                    ? "Contribute directly"
+                    : verdict === "partial"
+                      ? "Reduced direct contribution"
+                      : "Use the backdoor Roth",
+              },
+              { label: "Direct contribution", value: usd(directAllowed) },
+              { label: "Pro-rata taxable", value: preTax > 0 ? pct(taxablePct) : "0% (clean)" },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Uses 2025 IRS limits; 2026 figures adjust for inflation. The

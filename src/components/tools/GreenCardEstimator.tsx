@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Sparkline from "@/components/tools/Sparkline";
 import DataStamp from "@/components/tools/DataStamp";
+import ResultActions from "@/components/ResultActions";
 import {
   bulletin,
   CATEGORY_SHORT,
@@ -128,6 +129,33 @@ export default function GreenCardEstimator({
   const debouncedDate = useDebounced(priorityDate);
 
   const compact = variant === "mini";
+
+  // URL state — full variant only (the mini variant lives on the homepage and
+  // must not rewrite "/" with query params). Lets a shared link reopen the
+  // same category/country/priority date.
+  useEffect(() => {
+    if (compact) return;
+    const sp = new URLSearchParams(window.location.search);
+    const c = sp.get("cat");
+    const co = sp.get("country");
+    const pd = sp.get("pd");
+    if (c) setCategory(c as EbCategory);
+    if (co) setCountry(co as BulletinCountry);
+    if (pd && /^\d{4}-\d{2}-\d{2}$/.test(pd)) setPriorityDate(pd);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [compact]);
+
+  useEffect(() => {
+    if (compact) return;
+    const t = setTimeout(() => {
+      const sp = new URLSearchParams();
+      if (category !== "eb2") sp.set("cat", category);
+      if (country !== "india") sp.set("country", country);
+      sp.set("pd", priorityDate);
+      window.history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
+    }, 400);
+    return () => clearTimeout(t);
+  }, [compact, category, country, priorityDate]);
 
   const estimate = useMemo(() => {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(debouncedDate)) return null;
@@ -272,6 +300,21 @@ export default function GreenCardEstimator({
       </p>
       {inputs}
       {results}
+      {estimate && (
+        <div className="mt-5">
+          <ResultActions
+            title={`Green card wait — ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]}`}
+            shareText={`My ${CATEGORY_SHORT[category]} ${COUNTRY_LABELS[country]} green card wait estimate:`}
+            fileName="green-card-wait"
+            footnote="Estimate only — not legal advice. nritousa.com"
+            rows={[
+              { label: "Category", value: `${CATEGORY_SHORT[category]} · ${COUNTRY_LABELS[country]}` },
+              { label: "Priority date", value: priorityDate },
+              { label: `Final Action Date (${bulletin.month})`, value: formatCutoff(estimate.fad) },
+            ]}
+          />
+        </div>
+      )}
       <DataStamp
         className="mt-5 border-t border-ink-900/5 pt-4"
         lastUpdated={bulletin.lastUpdated}

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   CalcGrid,
@@ -11,17 +10,27 @@ import {
   usd,
   num,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 /**
  * Compares cashing out a 401(k) on leaving the US (penalty + withholding)
  * vs leaving it to compound and withdrawing in retirement. Estimate only.
  */
 export default function Retire401kCalculator() {
-  const [balance, setBalance] = useState("100000");
-  const [age, setAge] = useState("35");
-  const [bracket, setBracket] = useState("30");
-  const [years, setYears] = useState("20");
-  const [ret, setRet] = useState("7");
+  const [s, set] = useUrlState({
+    balance: "100000",
+    age: "35",
+    bracket: "30",
+    years: "20",
+    ret: "7",
+  });
+  const { balance, age, bracket, years, ret } = s;
+  const setBalance = (v: string) => set("balance", v);
+  const setAge = (v: string) => set("age", v);
+  const setBracket = (v: string) => set("bracket", v);
+  const setYears = (v: string) => set("years", v);
+  const setRet = (v: string) => set("ret", v);
 
   const bal = num(balance);
   const a = num(age);
@@ -114,6 +123,18 @@ export default function Retire401kCalculator() {
               <>Run both scenarios with your real bracket and timeline — and confirm DTAA treatment before deciding.</>
             )}
           </Callout>
+
+          <ResultActions
+            title="401(k): cash out vs keep"
+            shareText="I compared cashing out my 401(k) on leaving the US vs letting it compound:"
+            fileName="401k-cashout-vs-keep"
+            rows={[
+              { label: "Cash out now (net)", value: usd(netNow) },
+              { label: "Lost to penalty + tax", value: usd(lostNow) },
+              { label: `Keep ${yrs}y, after-tax`, value: usd(futureAfterTax) },
+              { label: "Advantage of keeping", value: usd(Math.max(0, advantage)) },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Estimate only. Actual tax depends on residency, DTAA treaty

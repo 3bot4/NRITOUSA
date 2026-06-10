@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   NumberField,
   SelectField,
@@ -10,6 +9,8 @@ import {
   Row,
   Callout,
 } from "./ui";
+import ResultActions from "@/components/ResultActions";
+import { useUrlState } from "@/lib/useUrlState";
 
 /**
  * India tax-residency classifier (Income-tax Act, section 6) — simplified.
@@ -17,12 +18,21 @@ import {
  * income becomes taxable in India. Estimates only; not tax advice.
  */
 export default function RnorCalculator() {
-  const [curr, setCurr] = useState("90");
-  const [last4, setLast4] = useState("300");
-  const [last7, setLast7] = useState("500");
-  const [nriYears, setNriYears] = useState("9");
-  const [visiting, setVisiting] = useState("yes");
-  const [highIncome, setHighIncome] = useState("no");
+  const [s, set] = useUrlState({
+    curr: "90",
+    last4: "300",
+    last7: "500",
+    nriYears: "9",
+    visiting: "yes",
+    highIncome: "no",
+  });
+  const { curr, last4, last7, nriYears, visiting, highIncome } = s;
+  const setCurr = (v: string) => set("curr", v);
+  const setLast4 = (v: string) => set("last4", v);
+  const setLast7 = (v: string) => set("last7", v);
+  const setNriYears = (v: string) => set("nriYears", v);
+  const setVisiting = (v: string) => set("visiting", v);
+  const setHighIncome = (v: string) => set("highIncome", v);
 
   const c = Math.max(0, parseFloat(curr) || 0);
   const d4 = Math.max(0, parseFloat(last4) || 0);
@@ -157,6 +167,17 @@ export default function RnorCalculator() {
               while still RNOR.
             </Callout>
           )}
+
+          <ResultActions
+            title="My India tax residency status"
+            shareText={`This calculator says my India tax status is ${status} (${statusMeta.full}):`}
+            fileName="india-tax-residency"
+            rows={[
+              { label: "Status", value: `${status} — ${statusMeta.full}` },
+              { label: "182-day test", value: cond1 ? "Met" : "Not met" },
+              { label: `${secondThreshold}+365-day test`, value: cond2 ? "Met" : "Not met" },
+            ]}
+          />
 
           <p className="text-xs leading-relaxed text-ink-400">
             Estimate only. The deemed-residency rule, dual-status years, and
