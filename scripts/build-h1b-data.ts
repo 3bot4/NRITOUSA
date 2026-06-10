@@ -238,6 +238,28 @@ async function processFile(
   console.log(`${path}: ${count} certified full-time rows ingested`);
 }
 
+/** Derive a human reporting period from the DOL filename, e.g.
+ *  "LCA_Disclosure_Data_FY2026_Q2.csv" -> "FY2026 through Q2 (Oct 1 2025 – Mar 31 2026)". */
+function reportingPeriodFromFiles(files: string[]): string {
+  const QUARTER_END: Record<string, string> = {
+    Q1: "Oct 1 – Dec 31",
+    Q2: "Oct 1 – Mar 31",
+    Q3: "Oct 1 – Jun 30",
+    Q4: "Oct 1 – Sep 30 (full FY)",
+  };
+  const matches = files
+    .map((f) => /FY(\d{4}).*?(Q[1-4])/i.exec(f))
+    .filter((m): m is RegExpExecArray => m !== null);
+  if (!matches.length) return "DOL OFLC LCA disclosure release";
+  // Use the latest quarter present.
+  const latest = matches.sort((a, b) =>
+    (a[1] + a[2]).localeCompare(b[1] + b[2])
+  )[matches.length - 1];
+  const [, fy, q] = latest;
+  const span = QUARTER_END[q.toUpperCase()] ?? "";
+  return `FY${fy} through ${q.toUpperCase()}${span ? ` (${span})` : ""}`;
+}
+
 async function main() {
   const files = process.argv.slice(2);
   if (!files.length) {
@@ -279,9 +301,10 @@ async function main() {
     lastUpdated: new Date().toISOString().slice(0, 10),
     source: "https://www.dol.gov/agencies/eta/foreign-labor/performance",
     sourceLabel: "US DOL OFLC LCA Disclosure Data (quarterly)",
+    reportingPeriod: reportingPeriodFromFiles(files),
     sample: false,
     notes:
-      "Aggregated from certified full-time LCA filings. Salaries are annual base pay in USD. Wage level I-IV is a rough experience proxy. Cells with fewer than 10 filings are omitted.",
+      "Aggregated from certified full-time LCA filings. Salaries are annual base pay in USD attested by employers. Wage level I-IV is a rough experience proxy. Cells with fewer than 10 filings are omitted.",
     years: Array.from(years).sort((a, b) => a - b),
     rows,
   };

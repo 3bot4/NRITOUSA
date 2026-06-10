@@ -16,7 +16,7 @@ it renders on the page as the "Last updated · Source" stamp.
 | `public/data/h1b/summary.json` | /tools/h1b-salaries | [DOL OFLC LCA disclosure data](https://www.dol.gov/agencies/eta/foreign-labor/performance) | **Quarterly** (Q1 ~Jan, Q2 ~Apr, Q3 ~Jul, Q4 ~Oct) |
 | `data/passport-access.json` | /tools/visa-free-countries | [Henley Passport Index](https://www.henleyglobal.com/passport-index) + each country's official immigration site | **Quarterly** (and ad-hoc when a country changes policy) |
 | `data/processing-times.json` | /tools/processing-times | [USCIS processing times](https://egov.uscis.gov/processing-times/), [DOS visa wait times](https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html), [VFS Global USA](https://services.vfsglobal.com/usa/en/ind/) | **Monthly** |
-| `data/h1b-lottery-timeline.json` | /tools/h1b-lottery-timeline (stub) | [USCIS H-1B cap season](https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations) | **Annual** (Jan–Mar cap season) |
+| `data/h1b-lottery-timeline.json` | /tools/h1b-lottery-timeline | [USCIS H-1B cap season](https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations) | **Annual** (Jan–Mar cap season) |
 | `data/flight-price-guide.json` | /tools/flight-price-guide (stub) | [BTS DB1B fare data](https://www.transtats.bts.gov/) | **Quarterly** once live |
 | `data/fbar-fatca.json` | /tools/fbar-fatca-checker (stub) | [IRS FBAR](https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar) / Form 8938 instructions | **Annual** (thresholds rarely change) |
 | `data/citizenship-checklist.json` | /tools/citizenship-checklist | [USCIS N-400](https://www.uscis.gov/n-400) + [2025 civics test](https://www.uscis.gov/citizenship/2025-civics-test) + [Policy Manual Vol. 12](https://www.uscis.gov/policy-manual/volume-12) | **Quarterly** (and ad-hoc when fees, the test rule, or GMC policy change) |
@@ -57,11 +57,22 @@ The estimator's velocity math and charts pick the new month up automatically.
    `WAGE_UNIT_OF_PAY`, `PW_WAGE_LEVEL`, `FULL_TIME_POSITION`, `DECISION_DATE`.
 3. Run the aggregator (multiple quarters can be passed at once):
    ```bash
-   npx tsx scripts/build-h1b-data.ts LCA_Disclosure_Data_FY2026_Q3.csv
+   npx tsx scripts/build-h1b-data.ts LCA_Disclosure_Data_FY2026_Q2.csv
    ```
+   Keep the `FY####_Q#` part of the filename — the script reads it to set
+   `reportingPeriod` (e.g. "FY2026 through Q2 (Oct 1 – Mar 31)"), which the UI
+   shows as "Source: US DOL OFLC, …".
 4. This overwrites `public/data/h1b/summary.json` with real aggregates and
-   sets `"sample": false`, which removes the SAMPLE DATA banner in the UI.
+   sets `"sample": false`, which swaps the amber "preview figures" banner for
+   the green "real LCA filings" provenance line in the UI.
 5. Spot-check a few medians against a known source, commit, deploy.
+
+> **Note on the live download:** `dol.gov` serves the disclosure files from an
+> Akamai edge that blocks non-browser/datacenter clients ("Access Denied"), so
+> the file generally cannot be fetched from CI or a sandbox — download it once
+> in a normal browser, then run the script against the local CSV. Until that's
+> done, the page ships honest **preview** numbers (`"sample": true`), never
+> placeholder numbers labeled as real.
 
 Raw LCA rows never ship to the browser — only the aggregated summary
 (median/p25/p75 by normalized title × metro × wage level × year, cells with
@@ -93,9 +104,6 @@ Arabia, and Central America rows each pass; they're the most-used.
 
 Each stub already has a typed data shape:
 
-- **H-1B lottery timeline** (`data/h1b-lottery-timeline.json`): fill the
-  `milestones[].date` values each January–March from USCIS announcements and
-  `stats` from the cap-season press release.
 - **Flight price guide** (`data/flight-price-guide.json`): fill each route's
   12-element `monthlyAvgUsd` array (Jan→Dec) from BTS DB1B or accumulated OTA
   averages; set `cheapestMonths`/`priciestMonths`.
@@ -133,3 +141,23 @@ the `TODO(owner)` notes in the JSON as you confirm each:
 
 **When to do an ad-hoc update:** any USCIS fee rule, a new civics-test revision
 or cutoff change, or a major shift in good-moral-character / vetting policy.
+
+## 7. H-1B lottery timeline (annual, Jan–Mar)
+
+Edit `data/h1b-lottery-timeline.json`. The tool
+([/tools/h1b-lottery-timeline](https://www.nritousa.com/tools/h1b-lottery-timeline))
+renders a personalized timeline from `cycles[]` (the dated milestones per
+fiscal year) and `phases[]` (the static "what to do / pitfalls" content).
+
+1. When USCIS announces the next cap season (usually January–February), add a
+   new object to the **front** of `cycles[]` for the new fiscal year and set
+   `currentFiscalYear` to match. Fill `registrationStart/End`, `selectionBy`,
+   `filingStart/End`, `secondRoundStart/End`, and `startDate` (Oct 1).
+2. After the season, fill `registrations` and `selected` from the USCIS
+   post-season data release (this drives the odds line) and clear `todo`/
+   `todoNote` once every value is verified against uscis.gov.
+3. Confirm the `registrationFee` (USCIS raised it to $215 per beneficiary
+   starting the FY2026 season) and the `caps` (65,000 regular + 20,000
+   master's) still hold.
+4. Bump the top-level `lastUpdated`. The `phases[]` copy rarely changes — edit
+   it here, not in the component.

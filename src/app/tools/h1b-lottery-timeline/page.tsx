@@ -3,8 +3,7 @@ import Container from "@/components/Container";
 import ToolHero from "@/components/tools/ToolHero";
 import ToolFaq from "@/components/tools/ToolFaq";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import ComingSoon from "@/components/tools/ComingSoon";
-import lotteryData from "../../../../data/h1b-lottery-timeline.json";
+import H1bLotteryTimeline from "@/components/tools/H1bLotteryTimeline";
 import { getTool } from "@/lib/tools";
 import {
   breadcrumbJsonLd,
@@ -60,17 +59,11 @@ export default function H1bLotteryTimelinePage() {
 
       <ToolHero tool={tool} />
 
-      <ComingSoon
-        planned={[
-          "Interactive cap-season timeline with every registration, selection, and filing milestone",
-          "Historical registration counts and selection odds, year over year",
-          "What to do at each stage — for beneficiaries and employers",
-          "Second-round (and third-round) selection tracking",
-        ]}
-        lastUpdated={lotteryData.lastUpdated}
-        source={lotteryData.source}
-        sourceLabel={lotteryData.sourceLabel}
-      />
+      <section className="py-12 sm:py-16">
+        <Container>
+          <H1bLotteryTimeline />
+        </Container>
+      </section>
 
       <section className="bg-white py-12 sm:py-16">
         <Container>

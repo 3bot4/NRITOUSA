@@ -1,22 +1,189 @@
 {
-  "lastUpdated": "2026-06-09",
+  "lastUpdated": "2026-06-10",
   "source": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations",
   "sourceLabel": "USCIS H-1B Cap Season",
-  "status": "coming-soon",
-  "notes": "Data shape for the upcoming H-1B lottery timeline tool. Fill milestones from the USCIS cap-season announcements each January–March.",
-  "fiscalYear": 2027,
-  "milestones": [
-    { "id": "registration-open", "label": "Electronic registration opens", "date": null, "typical": "Early March" },
-    { "id": "registration-close", "label": "Registration closes", "date": null, "typical": "Late March" },
-    { "id": "selection-notify", "label": "Initial selection notifications", "date": null, "typical": "By March 31" },
-    { "id": "filing-open", "label": "Petition filing window opens", "date": null, "typical": "April 1 (90-day window)" },
-    { "id": "second-lottery", "label": "Possible second selection round", "date": null, "typical": "July–August (if cap not met)" },
-    { "id": "start-date", "label": "Earliest H-1B start date", "date": null, "typical": "October 1" }
+  "currentFiscalYear": 2027,
+  "notes": "Dates for each H-1B cap cycle. USCIS announces the exact registration window each January–February; values flagged with todo:true are based on the usual pattern and MUST be verified against the official USCIS cap-season announcement at the source URL before each season. Registration/selection counts come from the USCIS post-season data release.",
+  "caps": { "regular": 65000, "masters": 20000 },
+  "cycles": [
+    {
+      "fiscalYear": 2027,
+      "label": "FY 2027 (registered March 2026, start Oct 1 2026)",
+      "registrationStart": "2026-03-06",
+      "registrationEnd": "2026-03-24",
+      "selectionBy": "2026-03-31",
+      "filingStart": "2026-04-01",
+      "filingEnd": "2026-06-30",
+      "secondRoundStart": "2026-07-01",
+      "secondRoundEnd": "2026-08-31",
+      "startDate": "2026-10-01",
+      "registrationFee": 215,
+      "registrations": null,
+      "selected": null,
+      "todo": true,
+      "todoNote": "TODO: verify the FY2027 registration window, selection date, and post-season registration/selection counts against uscis.gov. Dates below follow the typical March pattern; the registration fee rose to $215 per beneficiary effective the FY2026 season — confirm it still applies."
+    },
+    {
+      "fiscalYear": 2026,
+      "label": "FY 2026 (registered March 2025, start Oct 1 2025)",
+      "registrationStart": "2025-03-07",
+      "registrationEnd": "2025-03-24",
+      "selectionBy": "2025-03-31",
+      "filingStart": "2025-04-01",
+      "filingEnd": "2025-06-30",
+      "secondRoundStart": "2025-07-01",
+      "secondRoundEnd": "2025-08-31",
+      "startDate": "2025-10-01",
+      "registrationFee": 215,
+      "registrations": 343981,
+      "selected": 120141,
+      "todo": true,
+      "todoNote": "TODO: verify FY2026 registration count (~343,981 eligible registrations) and selection count (~120,141) against the official USCIS FY2026 cap-season figures."
+    }
   ],
+  "phases": [
+    {
+      "id": "registration",
+      "label": "Electronic registration window",
+      "icon": "📝",
+      "rangeKeys": ["registrationStart", "registrationEnd"],
+      "typical": "Early–late March (about a 2½-week window)",
+      "whatToDo": [
+        "Your employer (or their attorney) creates/uses a USCIS organizational account and submits an electronic registration for you with your passport details.",
+        "Each beneficiary needs only one registration per employer; the $215 fee is paid per registration.",
+        "Double-check the spelling of your name and passport number — they must match your passport exactly for the eventual petition."
+      ],
+      "pitfalls": [
+        "Since 2024 the lottery is beneficiary-centric: registering through multiple employers no longer increases your odds, and fraudulent multiple registrations are flagged and denied.",
+        "Registrations submitted after the window closes are not accepted — there is no grace period."
+      ]
+    },
+    {
+      "id": "selection",
+      "label": "Initial selection / lottery results",
+      "icon": "🎲",
+      "rangeKeys": ["selectionBy"],
+      "typical": "By March 31 (usually within a few days of the window closing)",
+      "whatToDo": [
+        "Check the employer's USCIS organizational account — selected registrations show the status \"Selected.\"",
+        "If selected, your employer can begin preparing the full I-129 petition and your supporting documents.",
+        "If not selected, your status shows \"Submitted\" — you remain eligible if USCIS runs a second round."
+      ],
+      "pitfalls": [
+        "Master's-cap math: the regular 65,000 lottery is run first across ALL eligible registrations; advanced-degree registrations not selected there get a second draw for the extra 20,000 — so a US master's improves, but does not guarantee, your odds.",
+        "Selection is not approval — it only grants the right to file a petition."
+      ]
+    },
+    {
+      "id": "filing",
+      "label": "Petition filing window (I-129)",
+      "icon": "📨",
+      "rangeKeys": ["filingStart", "filingEnd"],
+      "typical": "Opens April 1; at least a 90-day window to file",
+      "whatToDo": [
+        "Your employer files Form I-129 with the selection notice, an LCA certified by the DOL, your degree evaluation, and job/specialty-occupation evidence.",
+        "Earliest receipt date is April 1; the filing window stays open at least 90 days from your selection notice.",
+        "Gather your I-94, passport, prior visa/status documents, diplomas, and transcripts now so the petition is not delayed."
+      ],
+      "pitfalls": [
+        "Missing the filing window forfeits the selection — the slot is not held for next year.",
+        "A defective or uncertified LCA is a common cause of rejection; the LCA must be certified before the I-129 is filed."
+      ]
+    },
+    {
+      "id": "processing-decision",
+      "label": "Premium vs. regular processing",
+      "icon": "⚡",
+      "rangeKeys": ["filingStart", "filingEnd"],
+      "typical": "Decided at filing (premium can be added later)",
+      "whatToDo": [
+        "Decide whether to pay for premium processing (Form I-907) for a 15-business-day adjudication commitment, versus standard processing that can take months.",
+        "Premium is useful if you need a decision before a status expiry, a change-of-employer deadline, or visa stamping travel.",
+        "Premium can be added after filing if circumstances change."
+      ],
+      "pitfalls": [
+        "Premium processing guarantees a response time, not an approval — USCIS can issue an RFE or denial within the window.",
+        "The premium fee changes periodically; confirm the current I-907 fee before filing."
+      ]
+    },
+    {
+      "id": "adjudication",
+      "label": "USCIS adjudication",
+      "icon": "🏛️",
+      "rangeKeys": ["filingStart", "startDate"],
+      "typical": "Weeks (premium) to several months (regular)",
+      "whatToDo": [
+        "Track the case status with the receipt number on egov.uscis.gov.",
+        "Keep your employer informed of any travel or status changes while the case is pending.",
+        "If you are changing status from F-1/OPT, understand cap-gap rules that can extend work authorization to October 1."
+      ],
+      "pitfalls": [
+        "Regular processing times vary widely by service center; don't book international travel around an unconfirmed approval date.",
+        "If you are in cap-gap, leaving the US before approval can break the cap-gap extension."
+      ]
+    },
+    {
+      "id": "rfe",
+      "label": "Possible Request for Evidence (RFE)",
+      "icon": "❓",
+      "rangeKeys": ["filingStart", "startDate"],
+      "typical": "If issued, usually with a ~60–87 day response deadline",
+      "whatToDo": [
+        "If USCIS issues an RFE, work with your employer/attorney to respond fully before the stated deadline.",
+        "Common RFE topics: specialty-occupation/degree relevance, employer-employee relationship, and LCA wage level.",
+        "Submit all requested evidence in a single, well-organized response."
+      ],
+      "pitfalls": [
+        "Missing the RFE deadline almost always results in denial — calendar it the day it arrives.",
+        "A weak first response wastes your one chance; over-document rather than under-document."
+      ]
+    },
+    {
+      "id": "second-round",
+      "label": "Possible second selection round",
+      "icon": "🔁",
+      "rangeKeys": ["secondRoundStart", "secondRoundEnd"],
+      "typical": "July–August, only if USCIS does not reach the cap",
+      "appliesWhenNotSelected": true,
+      "whatToDo": [
+        "If the cap isn't met from the first round, USCIS runs additional selections from the existing registration pool — you do not re-register.",
+        "Keep your documents ready in case your \"Submitted\" registration is upgraded to \"Selected.\"",
+        "Watch the employer's organizational account and USCIS announcements through the summer."
+      ],
+      "pitfalls": [
+        "A second round is not guaranteed every year — in high-demand years the cap is reached in the first round.",
+        "If selected in a later round, your filing window opens then (not April 1), so act quickly."
+      ]
+    },
+    {
+      "id": "start-date",
+      "label": "Earliest H-1B start date",
+      "icon": "🚀",
+      "rangeKeys": ["startDate"],
+      "typical": "October 1 — start of the federal fiscal year",
+      "whatToDo": [
+        "Cap-subject H-1B employment can begin no earlier than October 1 of the selection year.",
+        "If you're on F-1 cap-gap, your OPT work authorization bridges to October 1 once the petition is timely filed/approved.",
+        "If consular processing abroad, schedule visa stamping so you can enter and begin on or after October 1."
+      ],
+      "pitfalls": [
+        "Starting cap-subject work before October 1 is not permitted (cap-exempt employers are the exception).",
+        "Plan stamping appointments early — consular wait times in India can be long."
+      ]
+    }
+  ],
+  "capExempt": {
+    "summary": "Cap-exempt employers — universities and their affiliated nonprofits, nonprofit research organizations, and government research organizations — are NOT subject to the annual H-1B cap or the lottery.",
+    "points": [
+      "No March registration and no lottery: a cap-exempt petition can be filed at any time of year.",
+      "There is no October 1 start restriction — employment can begin as soon as the petition is approved (or on the requested start date).",
+      "If you later move to a cap-subject employer, you will generally need to go through the cap/lottery at that point."
+    ]
+  },
   "stats": {
     "capRegular": 65000,
     "capMasters": 20000,
-    "lastSeasonRegistrations": null,
-    "lastSeasonSelectionRatePct": null
+    "registrationFeeUsd": 215,
+    "feeNote": "USCIS raised the H-1B registration fee to $215 per beneficiary starting the FY2026 season — verify the current amount each cycle."
   }
 }

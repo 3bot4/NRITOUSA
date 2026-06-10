@@ -2,8 +2,9 @@
   "lastUpdated": "2026-06-09",
   "source": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
   "sourceLabel": "US DOL OFLC LCA Disclosure Data (quarterly)",
+  "reportingPeriod": "Latest available DOL release (run the importer to set this)",
   "sample": true,
-  "notes": "SAMPLE DATA — realistic placeholder aggregates for UI development. Replace by running scripts/build-h1b-data.ts against the real DOL LCA disclosure file (see docs/DATA-UPDATE-PLAYBOOK.md). Salaries are annual base pay in USD. Wage level I–IV is a rough experience proxy (I ≈ entry, IV ≈ very senior).",
+  "notes": "PREVIEW DATA — realistic placeholder aggregates for UI development. Replace by running scripts/build-h1b-data.ts against the real DOL LCA disclosure file (see docs/DATA-UPDATE-PLAYBOOK.md). Salaries are annual base pay in USD attested on H-1B LCA filings. Wage level I–IV is a rough experience proxy (I ≈ entry, IV ≈ very senior).",
   "years": [2025],
   "rows": [
     { "title": "Software Engineer", "metro": "San Francisco Bay Area, CA", "level": 1, "year": 2025, "p25": 122000, "p50": 132000, "p75": 145000, "n": 1840 },

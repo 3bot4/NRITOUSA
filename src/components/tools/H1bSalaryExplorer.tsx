@@ -18,6 +18,7 @@ interface Summary {
   lastUpdated: string;
   source: string;
   sourceLabel: string;
+  reportingPeriod?: string;
   sample: boolean;
   years: number[];
   rows: SummaryRow[];
@@ -49,6 +50,9 @@ export default function H1bSalaryExplorer() {
   const [metro, setMetro] = useState("all");
   const [level, setLevel] = useState("all");
   const [year, setYear] = useState("all");
+  // Mobile-only: keep the (long) results list inside a short scroll box by
+  // default so the page doesn't run off-screen. Desktop is unaffected.
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   useEffect(() => {
     fetch("/data/h1b/summary.json")
@@ -96,10 +100,22 @@ export default function H1bSalaryExplorer() {
 
   return (
     <div className="rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card sm:p-8">
-      {data.sample && (
+      {data.sample ? (
         <p className="mb-5 rounded-xl border-l-4 border-amber-400 bg-amber-50/70 px-5 py-3 text-sm font-medium text-ink-700">
-          ⚠️ SAMPLE DATA — realistic placeholder numbers for preview. Real DOL
-          aggregates will replace this file shortly.
+          ⚠️ Preview figures — realistic placeholders shown while the official
+          DOL file loads. Not real filings yet; run the importer to replace them
+          (see methodology below).
+        </p>
+      ) : (
+        <p className="mb-5 rounded-xl border-l-4 border-emerald-400 bg-emerald-50/60 px-5 py-3 text-sm text-ink-700">
+          Base salaries reported on employer H-1B LCA filings (attested wage,
+          skewed toward large sponsors) — not a universal market salary.
+          {data.reportingPeriod ? (
+            <>
+              {" "}
+              Source: US DOL OFLC, {data.reportingPeriod}.
+            </>
+          ) : null}
         </p>
       )}
 
@@ -165,9 +181,17 @@ export default function H1bSalaryExplorer() {
         </label>
       </div>
 
-      <div className="mt-6 overflow-x-auto">
+      <p className="mt-6 text-xs text-ink-400 sm:hidden">
+        {filtered.length} {filtered.length === 1 ? "result" : "results"} —
+        scroll inside the box, or tap “Show all” to expand.
+      </p>
+      <div
+        className={`mt-2 overflow-auto sm:mt-6 sm:max-h-none ${
+          showAllMobile ? "max-h-[75vh]" : "max-h-[24rem]"
+        }`}
+      >
         <table className="w-full min-w-[640px] text-sm">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-b border-ink-900/5 text-left text-xs font-bold uppercase tracking-wider text-ink-400">
               <th className="py-3 pr-4">Job title</th>
               <th className="py-3 pr-4">Metro</th>
@@ -209,6 +233,15 @@ export default function H1bSalaryExplorer() {
           </tbody>
         </table>
       </div>
+      {filtered.length > 6 && (
+        <button
+          type="button"
+          onClick={() => setShowAllMobile((v) => !v)}
+          className="mt-3 w-full rounded-xl border border-ink-900/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink-700 transition-colors hover:border-ink-900/25 sm:hidden"
+        >
+          {showAllMobile ? "Collapse list" : `Show all ${filtered.length}`}
+        </button>
+      )}
       {filtered.length === 100 && (
         <p className="mt-2 text-xs text-ink-400">
           Showing the 100 most-filed matches — narrow your search to see more

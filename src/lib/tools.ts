@@ -105,13 +105,13 @@ export const tools: ToolMeta[] = [
     label: "H-1B Lottery",
     group: "Visa & Green Card",
     description:
-      "Key cap-season dates, selection odds from recent years, and what to do at each milestone. Launching soon.",
+      "A personalized H-1B cap-season timeline: enter your cycle and stage to see your registration, selection, filing, and start-date milestones, a live countdown to your next key date, and what to do at each step.",
     icon: "🎟️",
     accent: "from-fuchsia-500 to-pink-600",
     seoTitle: "H-1B Lottery Timeline & Selection Odds",
     seoDescription:
-      "H-1B cap season explained: registration dates, selection notifications, filing windows, and historical lottery odds. Interactive timeline launching soon.",
-    status: "coming-soon",
+      "Personalized H-1B cap season timeline: registration dates, selection notifications, filing windows, second-round odds, and a live countdown to your next key date — with what to do at each milestone.",
+    status: "live",
   },
   {
     slug: "flight-price-guide",
