@@ -14,7 +14,7 @@ it renders on the page as the "Last updated · Source" stamp.
 | --- | --- | --- | --- |
 | `data/visa-bulletin/current.json` + `history.json` | Homepage estimator, /tools/green-card-tracker | [travel.state.gov Visa Bulletin](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html) | **Monthly** (bulletin drops ~2nd week for the following month) |
 | `data/i485-inventory/current.json` (+ dated snapshots) | Homepage estimator, /tools/green-card-tracker ("people ahead of you") | [USCIS Immigration & Citizenship Data → Pending EB I-485 Inventory](https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data) | **Irregular** (USCIS publishes every few months, lagging the snapshot date) |
-| `public/data/h1b/summary.json` | /tools/h1b-salaries | [DOL OFLC LCA disclosure data](https://www.dol.gov/agencies/eta/foreign-labor/performance) | **Quarterly** (Q1 ~Jan, Q2 ~Apr, Q3 ~Jul, Q4 ~Oct) |
+| `public/data/h1b/explorer.json` | /tools/h1b-salaries | [DOL OFLC LCA disclosure data](https://www.dol.gov/agencies/eta/foreign-labor/performance) | **Quarterly** (Q1 ~Jan, Q2 ~Apr, Q3 ~Jul, Q4 ~Oct) |
 | `data/passport-access.json` | /tools/visa-free-countries | [Henley Passport Index](https://www.henleyglobal.com/passport-index) + each country's official immigration site | **Quarterly** (and ad-hoc when a country changes policy) |
 | `data/processing-times.json` | /tools/processing-times | [USCIS processing times](https://egov.uscis.gov/processing-times/), [DOS visa wait times](https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html), [VFS Global USA](https://services.vfsglobal.com/usa/en/ind/) | **Monthly** |
 | `data/h1b-lottery-timeline.json` | /tools/h1b-lottery-timeline | [USCIS H-1B cap season](https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations) | **Annual** (Jan–Mar cap season) |
@@ -49,35 +49,43 @@ The estimator's velocity math and charts pick the new month up automatically.
 
 ## 2. H-1B salaries (quarterly)
 
+Powers the interactive explorer at /tools/h1b-salaries via
+`public/data/h1b/explorer.json` and the streaming importer
+`scripts/build-h1b-data.py`.
+
 1. Download the latest **LCA Disclosure Data** `.xlsx` from
    <https://www.dol.gov/agencies/eta/foreign-labor/performance>
-   (Performance Data → Disclosure Data → LCA Programs).
-2. Convert to CSV (Excel "Save As → CSV", or any xlsx→csv converter). The
-   script needs these columns (present in the standard file): `CASE_STATUS`,
-   `JOB_TITLE`, `WORKSITE_CITY`, `WORKSITE_STATE`, `WAGE_RATE_OF_PAY_FROM`,
-   `WAGE_UNIT_OF_PAY`, `PW_WAGE_LEVEL`, `FULL_TIME_POSITION`, `DECISION_DATE`.
-3. Run the aggregator (multiple quarters can be passed at once):
+   (Performance Data → Disclosure Data → LCA Programs). Do this in a normal
+   browser — `dol.gov` serves these from an Akamai edge that blocks
+   datacenter/CI clients ("Access Denied").
+2. Run the importer directly on the `.xlsx` (it streams row-by-row with
+   openpyxl — it does **not** load the 138MB file into RAM; a `.csv` with the
+   same columns also works):
    ```bash
-   npx tsx scripts/build-h1b-data.ts LCA_Disclosure_Data_FY2026_Q2.csv
+   pip3 install openpyxl
+   python3 scripts/build-h1b-data.py "/path/to/LCA_Disclosure_Data_FY2026_Q2.xlsx"
    ```
-   Keep the `FY####_Q#` part of the filename — the script reads it to set
-   `reportingPeriod` (e.g. "FY2026 through Q2 (Oct 1 – Mar 31)"), which the UI
-   shows as "Source: US DOL OFLC, …".
-4. This overwrites `public/data/h1b/summary.json` with real aggregates and
-   sets `"sample": false`, which swaps the amber "preview figures" banner for
-   the green "real LCA filings" provenance line in the UI.
-5. Spot-check a few medians against a known source, commit, deploy.
+3. Update `PERIOD` (and the page/SEO copy if the quarter label changed) at the
+   top of `build-h1b-data.py` before running. The script prints sanity checks —
+   confirm Software Developers medians in big metros land ~$120k–$200k.
+4. It overwrites `public/data/h1b/explorer.json` (~1–2 MB). Commit + deploy.
 
-> **Note on the live download:** `dol.gov` serves the disclosure files from an
-> Akamai edge that blocks non-browser/datacenter clients ("Access Denied"), so
-> the file generally cannot be fetched from CI or a sandbox — download it once
-> in a normal browser, then run the script against the local CSV. Until that's
-> done, the page ships honest **preview** numbers (`"sample": true`), never
-> placeholder numbers labeled as real.
+**Filter / normalize rules (keep these stable across quarters):**
+- Keep `VISA_CLASS == 'H-1B'` only; `CASE_STATUS` starts with `Certified`
+  (both "Certified" and "Certified - Withdrawn"; withdrawn counted separately
+  in `withdrawnCount`).
+- Annualize `WAGE_RATE_OF_PAY_FROM` by `WAGE_UNIT_OF_PAY`
+  (Hour ×2080, Week ×52, Bi-Weekly ×26, Month ×12, Year ×1); same for
+  `PREVAILING_WAGE` via `PW_UNIT_OF_PAY`. Drop <$15k or >$5M.
+- Keys: role = `SOC_TITLE`; metro = `WORKSITE_CITY, WORKSITE_STATE`; state
+  rollup; `PW_WAGE_LEVEL` I–IV is the experience proxy. Employer names are
+  uppercased and stripped of legal suffixes (INC/LLC/LTD…) to merge dupes.
 
-Raw LCA rows never ship to the browser — only the aggregated summary
-(median/p25/p75 by normalized title × metro × wage level × year, cells with
-fewer than 10 filings dropped, capped at the 6,000 most-filed cells).
+Raw LCA rows never ship to the browser — only pre-aggregated percentiles
+(p10/p25/p50/p75/p90, min/max, median prevailing wage), a coarse $20k
+histogram per (role, metro), top employers per role, and a filters index.
+Thin cells (below ~5–10 filings) are dropped or fall back to a broader
+aggregate in the UI.
 
 ## 3. Passport access (quarterly + ad-hoc)
 

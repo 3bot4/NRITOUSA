@@ -114,10 +114,11 @@ export default function H1bSalariesPage() {
                 Aggregates, not records
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                We group certified full-time filings by normalized job title,
-                metro, wage level, and year, then publish only the median,
-                25th/75th percentile, and filing count. Cells with fewer than
-                10 filings are dropped.
+                We group certified H-1B filings by occupation (SOC title),
+                metro, and DOL wage level, then publish only percentiles
+                (p10–p90), the median prevailing-wage floor, and a coarse
+                distribution. Thin selections fall back to a broader aggregate
+                and are flagged.
               </p>
             </div>
             <div className="rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card">

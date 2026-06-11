@@ -63,12 +63,12 @@ export const tools: ToolMeta[] = [
     label: "H-1B Salaries",
     group: "Visa & Green Card",
     description:
-      "Median and percentile H-1B base salaries by job title, metro, and wage level — aggregated from official DOL LCA disclosure data.",
+      "Interactive H-1B salary explorer: change position, city, and experience level to watch the charts update, compare cities side by side, and drop in your offer to see your percentile — built from official DOL LCA filings.",
     icon: "💼",
     accent: "from-violet-500 to-purple-600",
     seoTitle: "H-1B Salary Explorer by Job Title & City (DOL Data)",
     seoDescription:
-      "Look up real H-1B salaries by job title, city, and wage level. Median, 25th and 75th percentile base pay aggregated from official US Department of Labor LCA disclosures.",
+      "Explore real H-1B base salaries by position, city, and experience level. See the full distribution, compare cities, check your percentile, and compare scenarios — from official US DOL LCA filings, FY2026 Q2.",
     status: "live",
   },
   {
