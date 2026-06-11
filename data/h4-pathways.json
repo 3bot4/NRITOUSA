@@ -1,0 +1,214 @@
+{
+  "lastUpdated": "2026-06-10",
+  "source": "https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/employer-information/employment-authorization",
+  "sourceLabel": "USCIS — Employment Authorization (general)",
+  "verifyNote": "Ideas and general info only — not legal, tax, or business advice. A valid H-4 EAD lets you work for any employer or be self-employed (W-2, 1099, freelance, sole proprietor, LLC, part-time) WHILE the EAD is valid. Verify your specifics with an immigration attorney and a CPA.",
+  "pillars": [
+    {
+      "id": "local",
+      "label": "Hyper-local & micro-businesses",
+      "accent": "visa",
+      "blurb": "Low-overhead businesses you can run from home or your neighborhood.",
+      "cards": [
+        {
+          "id": "in-home-daycare",
+          "title": "In-home daycare",
+          "idealFor": "People who love kids and want flexible, home-based income.",
+          "options": ["Licensed family child care", "Drop-in / part-time care", "After-school care"],
+          "difficulty": "Medium",
+          "setupTime": "Weeks–months",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["business", "income"],
+          "hours": ["20-40", "40+"],
+          "setupTax": "Usually a sole proprietorship to start; many register an LLC for liability. Income is self-employment (Schedule C) — set aside for self-employment tax and quarterly estimates.",
+          "caveat": "Child-care licensing and the number of children allowed VARY BY STATE and change often. Use the state checker below and verify with your state's official licensing authority BEFORE accepting any children."
+        },
+        {
+          "id": "tiffin",
+          "title": "Indian tiffin / meal-prep",
+          "idealFor": "Great home cooks serving the local desi community.",
+          "options": ["Weekly tiffin subscriptions", "Party / event catering", "Festival sweets & snacks"],
+          "difficulty": "Medium",
+          "setupTime": "Weeks",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["business", "income"],
+          "hours": ["20-40", "40+"],
+          "setupTax": "Sole prop or LLC; track ingredient costs and 1099/cash income on Schedule C.",
+          "caveat": "Selling food from home is regulated. Most states require a cottage-food registration and/or a health permit, and some prohibit certain foods. Verify your state and county health-department rules before selling."
+        },
+        {
+          "id": "apparel-rental",
+          "title": "Festive & boutique apparel rental",
+          "idealFor": "Style-savvy spouses with an eye for ethnic wear.",
+          "options": ["Lehenga / saree rentals", "Jewelry rental", "Pop-up boutique"],
+          "difficulty": "Easy",
+          "setupTime": "Days–weeks",
+          "income": "Low",
+          "workStyle": "either",
+          "goal": ["business", "income"],
+          "hours": ["10-20", "20-40"],
+          "setupTax": "Sole prop to start; report income on Schedule C. Collect/remit sales tax where required.",
+          "caveat": "Sales-tax registration may be required in your state. General info — confirm with a CPA."
+        },
+        {
+          "id": "mehndi-events",
+          "title": "Mehndi & event services",
+          "idealFor": "Artists and organizers for weddings and festivals.",
+          "options": ["Mehndi / henna", "Event decor", "Makeup & styling"],
+          "difficulty": "Easy",
+          "setupTime": "Days",
+          "income": "Low",
+          "workStyle": "in-person",
+          "goal": ["business", "income"],
+          "hours": ["10-20", "20-40"],
+          "setupTax": "Typically sole prop; 1099 / cash income on Schedule C.",
+          "caveat": "Some services need local business or cosmetology permits. Verify locally."
+        },
+        {
+          "id": "local-tutoring",
+          "title": "Tutoring local kids",
+          "idealFor": "Former teachers or strong-subject parents.",
+          "options": ["Math / science", "Music / arts", "Test prep"],
+          "difficulty": "Easy",
+          "setupTime": "Days",
+          "income": "Low",
+          "workStyle": "either",
+          "goal": ["income", "business"],
+          "hours": ["10-20", "20-40"],
+          "setupTax": "Sole prop; Schedule C self-employment income.",
+          "caveat": "General info — no special license usually needed, but verify local rules."
+        }
+      ]
+    },
+    {
+      "id": "digital",
+      "label": "Digital & remote freelancing",
+      "accent": "money",
+      "blurb": "Work from anywhere, often as a 1099 contractor or your own LLC.",
+      "cards": [
+        {
+          "id": "online-tutoring",
+          "title": "Online tutoring",
+          "idealFor": "Strong in math, coding, or languages.",
+          "options": ["Math / coding", "English / languages", "Competitive exam prep"],
+          "difficulty": "Easy",
+          "setupTime": "Days",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["income", "upskill"],
+          "hours": ["10-20", "20-40"],
+          "setupTax": "Platform 1099 or your own invoicing; Schedule C, self-employment tax.",
+          "caveat": "General info only — confirm tax treatment with a CPA."
+        },
+        {
+          "id": "virtual-assistant",
+          "title": "Virtual assistance",
+          "idealFor": "Organized multitaskers.",
+          "options": ["Admin / scheduling", "Customer support", "Operations"],
+          "difficulty": "Easy",
+          "setupTime": "Days",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["income"],
+          "hours": ["10-20", "20-40", "40+"],
+          "setupTax": "1099 contractor; Schedule C. Consider an LLC as you grow.",
+          "caveat": "General info — not tax advice."
+        },
+        {
+          "id": "social-media",
+          "title": "Social-media management",
+          "idealFor": "Creative, online-savvy spouses.",
+          "options": ["Content calendars", "Community management", "Paid ads"],
+          "difficulty": "Medium",
+          "setupTime": "Days–weeks",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["income", "business"],
+          "hours": ["20-40", "40+"],
+          "setupTax": "1099 / LLC; Schedule C or pass-through.",
+          "caveat": "General info — confirm with a CPA."
+        },
+        {
+          "id": "bookkeeping",
+          "title": "Bookkeeping",
+          "idealFor": "Detail-oriented, numbers people.",
+          "options": ["Small-business books", "QuickBooks / Xero", "AP/AR"],
+          "difficulty": "Medium",
+          "setupTime": "Weeks (with a cert)",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["income", "upskill"],
+          "hours": ["20-40", "40+"],
+          "setupTax": "1099 / LLC; Schedule C.",
+          "caveat": "A bookkeeping certificate helps credibility. General info only."
+        },
+        {
+          "id": "content-design",
+          "title": "Content & design",
+          "idealFor": "Writers, designers, marketers.",
+          "options": ["Copywriting", "Graphic / UX design", "Video editing"],
+          "difficulty": "Medium",
+          "setupTime": "Days–weeks",
+          "income": "Medium",
+          "workStyle": "home",
+          "goal": ["income", "business"],
+          "hours": ["10-20", "20-40", "40+"],
+          "setupTax": "1099 / LLC; Schedule C, self-employment tax.",
+          "caveat": "General info — not tax advice."
+        }
+      ]
+    },
+    {
+      "id": "upskill",
+      "label": "Upskill & launch",
+      "accent": "travel",
+      "blurb": "Build skills now, then work or intern — no need to switch to F-1 with a valid EAD.",
+      "cards": [
+        {
+          "id": "cc-certs",
+          "title": "Community-college certificates",
+          "idealFor": "Career switchers wanting a credential fast.",
+          "options": ["Paralegal", "Medical billing & coding", "Bookkeeping / accounting"],
+          "difficulty": "Medium",
+          "setupTime": "Months",
+          "income": "Medium",
+          "workStyle": "either",
+          "goal": ["upskill", "income"],
+          "hours": ["20-40", "40+"],
+          "setupTax": "Employment after is usually W-2; a valid EAD lets you work without switching to F-1.",
+          "caveat": "Confirm program details and any work components with the school and an attorney."
+        },
+        {
+          "id": "bootcamps",
+          "title": "Tech bootcamps",
+          "idealFor": "Aspiring tech professionals.",
+          "options": ["Data analytics", "UI/UX design", "QA / automation"],
+          "difficulty": "Hard",
+          "setupTime": "Months",
+          "income": "High",
+          "workStyle": "either",
+          "goal": ["upskill", "income"],
+          "hours": ["40+"],
+          "setupTax": "Roles after are often W-2; with a valid EAD you can intern or work without F-1.",
+          "caveat": "General info — verify any internship/work terms with an attorney."
+        },
+        {
+          "id": "intern-work",
+          "title": "Intern or work while studying",
+          "idealFor": "Anyone building US experience.",
+          "options": ["Paid internships", "Part-time roles", "Apprenticeships"],
+          "difficulty": "Easy",
+          "setupTime": "Varies",
+          "income": "Medium",
+          "workStyle": "either",
+          "goal": ["upskill", "income"],
+          "hours": ["10-20", "20-40"],
+          "setupTax": "W-2 or 1099 depending on the role.",
+          "caveat": "A valid H-4 EAD authorizes this; you do NOT need to change to F-1. Verify your EAD validity dates first."
+        }
+      ]
+    }
+  ]
+}

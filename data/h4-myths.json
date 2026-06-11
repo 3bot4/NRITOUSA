@@ -1,0 +1,38 @@
+{
+  "lastUpdated": "2026-06-10",
+  "source": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-4-dependent-spouses",
+  "sourceLabel": "USCIS — H-4 dependent spouses",
+  "verifyNote": "Plain-language clarifications, not legal advice. Confirm anything that affects you with an immigration attorney.",
+  "myths": [
+    {
+      "id": "w2-only",
+      "myth": "I can only take a W-2 job.",
+      "reality": "While your H-4 EAD is valid, it is unrestricted as to employer and work type — W-2 employment, 1099/freelance, consulting, sole proprietorship, or an LLC are all allowed. The EAD itself doesn't limit you to one form of work.",
+      "caveat": "True only WHILE the EAD is valid. Self-employment income has its own tax rules (Schedule C, self-employment tax)."
+    },
+    {
+      "id": "need-degree",
+      "myth": "I need a master's or a US degree to work.",
+      "reality": "H-4 EAD work is not tied to a specialty occupation or a prevailing-wage rule the way H-1B is. There is no degree requirement to work on a valid H-4 EAD.",
+      "caveat": "Specific jobs or licenses (e.g. nursing, real estate) may have their own credential requirements — that's separate from immigration."
+    },
+    {
+      "id": "hurts-spouse",
+      "myth": "If I work, it will hurt my spouse's H-1B or our green card.",
+      "reality": "Lawful work on a valid EAD does not by itself harm the H-1B or the green-card case. The real dependency runs the other way: your H-4 status — and therefore your EAD — depends on the H-1B spouse keeping valid H-1B status.",
+      "caveat": "If the H-1B lapses (e.g. job loss without a timely transfer), the H-4 and the EAD are affected, along with any job or business you run on it. Plan for that risk."
+    },
+    {
+      "id": "no-llc",
+      "myth": "I'm not allowed to start an LLC.",
+      "reality": "You can form and own an LLC and actively work in your own business on a valid H-4 EAD. Anyone can passively own a US company; the EAD is what lets you actively work in it.",
+      "caveat": "Once the EAD expires (and with no auto-extension for renewals filed on/after Oct 30, 2025), you must stop actively working in the business until a new EAD is approved."
+    },
+    {
+      "id": "forever",
+      "myth": "Once I have an EAD I'm set — it's 100% legal forever.",
+      "reality": "An H-4 EAD is real work authorization, but it is time-limited and must be renewed, and its validity is tied to maintaining H-4/H-1B status.",
+      "caveat": "Renewals filed on/after Oct 30, 2025 no longer get an automatic extension — see the renewal calculator and plan ahead to avoid a work gap."
+    }
+  ]
+}

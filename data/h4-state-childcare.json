@@ -1,0 +1,32 @@
+{
+  "lastUpdated": "2026-06-10",
+  "sourceLabel": "State child-care licensing authorities (via childcare.gov)",
+  "source": "https://childcare.gov/state-resources",
+  "caveat": "Child-care licensing rules — including whether a license is required, how many children you may care for (counting your own), training, ratios, and home-safety requirements — VARY BY STATE and change often. The links below are starting points only. These are illustrative, NOT compliance advice: verify the current rules with your state's official licensing authority and, ideally, an attorney before caring for any children.",
+  "finderUrl": "https://childcare.gov/state-resources",
+  "finderLabel": "Find your state's licensing agency on childcare.gov",
+  "todo": true,
+  "todoNote": "TODO: verify each state's official licensing-authority URL (urlTodo:true) and authority name before launch; add the remaining states. Do NOT add per-state child-count numbers as fact.",
+  "states": [
+    { "code": "CA", "name": "California", "authority": "CA Dept. of Social Services — Child Care Licensing", "url": "https://www.cdss.ca.gov/inforesources/child-care-licensing", "urlTodo": true },
+    { "code": "TX", "name": "Texas", "authority": "Texas HHS — Child Care Regulation", "url": "https://www.hhs.texas.gov/providers/protective-services-providers/child-care-regulation", "urlTodo": true },
+    { "code": "NJ", "name": "New Jersey", "authority": "NJ Dept. of Children and Families — Office of Licensing", "url": "https://www.nj.gov/dcf/providers/licensing/", "urlTodo": true },
+    { "code": "NY", "name": "New York", "authority": "NY Office of Children and Family Services (OCFS)", "url": "https://ocfs.ny.gov/programs/childcare/", "urlTodo": true },
+    { "code": "IL", "name": "Illinois", "authority": "Illinois DCFS — Day Care Licensing", "url": "https://dcfs.illinois.gov/brighter-futures/day-care.html", "urlTodo": true },
+    { "code": "WA", "name": "Washington", "authority": "WA Dept. of Children, Youth & Families (DCYF)", "url": "https://www.dcyf.wa.gov/services/earlylearning-childcare/licensed-providers", "urlTodo": true },
+    { "code": "GA", "name": "Georgia", "authority": "GA Dept. of Early Care and Learning (DECAL)", "url": "https://www.decal.ga.gov/", "urlTodo": true },
+    { "code": "MA", "name": "Massachusetts", "authority": "MA Dept. of Early Education and Care (EEC)", "url": "https://www.mass.gov/orgs/department-of-early-education-and-care", "urlTodo": true },
+    { "code": "PA", "name": "Pennsylvania", "authority": "PA Office of Child Development and Early Learning (OCDEL)", "url": null, "urlTodo": true },
+    { "code": "VA", "name": "Virginia", "authority": "VA Dept. of Education — Child Care Licensing", "url": null, "urlTodo": true },
+    { "code": "NC", "name": "North Carolina", "authority": "NC Division of Child Development and Early Education", "url": null, "urlTodo": true },
+    { "code": "FL", "name": "Florida", "authority": "FL Dept. of Children and Families — Child Care", "url": null, "urlTodo": true },
+    { "code": "MI", "name": "Michigan", "authority": "MI LARA — Child Care Licensing", "url": null, "urlTodo": true },
+    { "code": "OH", "name": "Ohio", "authority": "Ohio Dept. of Children and Youth", "url": null, "urlTodo": true },
+    { "code": "AZ", "name": "Arizona", "authority": "AZ Dept. of Health Services — Child Care Licensing", "url": null, "urlTodo": true },
+    { "code": "MN", "name": "Minnesota", "authority": "MN Dept. of Human Services — Licensing", "url": null, "urlTodo": true },
+    { "code": "MD", "name": "Maryland", "authority": "MD State Dept. of Education — Child Care Licensing", "url": null, "urlTodo": true },
+    { "code": "CO", "name": "Colorado", "authority": "CO Dept. of Early Childhood", "url": null, "urlTodo": true },
+    { "code": "WI", "name": "Wisconsin", "authority": "WI Dept. of Children and Families", "url": null, "urlTodo": true },
+    { "code": "OR", "name": "Oregon", "authority": "OR Early Learning Division — Office of Child Care", "url": null, "urlTodo": true }
+  ]
+}

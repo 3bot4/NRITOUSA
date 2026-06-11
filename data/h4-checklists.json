@@ -1,0 +1,41 @@
+{
+  "lastUpdated": "2026-06-10",
+  "source": "https://www.uscis.gov/i-765",
+  "sourceLabel": "USCIS / IRS — general guidance",
+  "verifyNote": "General steps, not legal or tax advice. Order and specifics vary; confirm with an immigration attorney and a CPA.",
+  "checklists": [
+    {
+      "id": "earn",
+      "title": "Start earning on your H-4 EAD",
+      "blurb": "The essentials before you take your first job or gig.",
+      "accent": "money",
+      "items": [
+        { "id": "earn-ead", "label": "Confirm your EAD is valid and note the exact expiration date" },
+        { "id": "earn-status", "label": "Confirm your H-4 status / I-94 is valid (the EAD depends on it)" },
+        { "id": "earn-ssn", "label": "Get or confirm your Social Security Number (SSN)" },
+        { "id": "earn-structure", "label": "Decide how you'll work: employee (W-2) vs self-employed (sole prop vs LLC)" },
+        { "id": "earn-bank", "label": "Open a separate bank account for business/freelance income" },
+        { "id": "earn-tax", "label": "Plan for self-employment tax & quarterly estimated taxes (1099 income)" },
+        { "id": "earn-track", "label": "Set up simple bookkeeping to track income and expenses" },
+        { "id": "earn-renewal", "label": "Calendar your EAD renewal (file early — no auto-extension for new filings)" }
+      ]
+    },
+    {
+      "id": "business",
+      "title": "Start a small business",
+      "blurb": "From structure to permits to staying compliant.",
+      "accent": "visa",
+      "items": [
+        { "id": "biz-ead", "label": "Confirm your H-4 EAD is valid (required to actively work in the business)" },
+        { "id": "biz-structure", "label": "Choose a structure: sole proprietorship or single-member LLC" },
+        { "id": "biz-register", "label": "Register the LLC with your state (if you chose an LLC)" },
+        { "id": "biz-ein", "label": "Get an EIN from the IRS (free)" },
+        { "id": "biz-permits", "label": "Get any state/local business licenses or permits" },
+        { "id": "biz-industry", "label": "Check industry-specific rules (e.g. food: cottage-food/health permit; childcare: state licensing)" },
+        { "id": "biz-bank", "label": "Open a business bank account; keep finances separate" },
+        { "id": "biz-books", "label": "Set up bookkeeping and a tax plan with a CPA" },
+        { "id": "biz-insurance", "label": "Consider liability insurance for your activity" }
+      ]
+    }
+  ]
+}

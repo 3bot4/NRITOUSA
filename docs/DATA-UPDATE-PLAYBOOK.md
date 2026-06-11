@@ -18,6 +18,7 @@ it renders on the page as the "Last updated · Source" stamp.
 | `data/passport-access.json` | /tools/visa-free-countries | [Henley Passport Index](https://www.henleyglobal.com/passport-index) + each country's official immigration site | **Quarterly** (and ad-hoc when a country changes policy) |
 | `data/processing-times.json` | /tools/processing-times | [USCIS processing times](https://egov.uscis.gov/processing-times/), [DOS visa wait times](https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html), [VFS Global USA](https://services.vfsglobal.com/usa/en/ind/) | **Monthly** |
 | `data/h1b-lottery-timeline.json` | /tools/h1b-lottery-timeline | [USCIS H-1B cap season](https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations) | **Annual** (Jan–Mar cap season) |
+| `data/h4-ead-rules.json`, `h4-pathways.json`, `h4-myths.json`, `h4-state-childcare.json`, `h4-checklists.json` | /tools/h4-ead-navigator | [USCIS I-765 / EAD](https://www.uscis.gov/i-765) + state child-care licensing sites | **Ad-hoc** — re-verify whenever EAD auto-extension or processing-time rules change (changed Oct 2025) |
 | `data/flight-price-guide.json` | /tools/flight-price-guide (stub) | [BTS DB1B fare data](https://www.transtats.bts.gov/) | **Quarterly** once live |
 | `data/fbar-fatca.json` | /tools/fbar-fatca-checker (stub) | [IRS FBAR](https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar) / Form 8938 instructions | **Annual** (thresholds rarely change) |
 | `data/citizenship-checklist.json` | /tools/citizenship-checklist | [USCIS N-400](https://www.uscis.gov/n-400) + [2025 civics test](https://www.uscis.gov/citizenship/2025-civics-test) + [Policy Manual Vol. 12](https://www.uscis.gov/policy-manual/volume-12) | **Quarterly** (and ad-hoc when fees, the test rule, or GMC policy change) |
@@ -213,3 +214,31 @@ fiscal year) and `phases[]` (the static "what to do / pitfalls" content).
    master's) still hold.
 4. Bump the top-level `lastUpdated`. The `phases[]` copy rarely changes — edit
    it here, not in the component.
+
+## 9. H-4 EAD navigator (ad-hoc — verify before launch & when rules change)
+
+Powers [/tools/h4-ead-navigator](https://www.nritousa.com/tools/h4-ead-navigator)
+entirely from data files (no scraper). All five are editorial JSON with
+`lastUpdated` + `source` and `todo` flags where values need verification.
+
+- **`data/h4-ead-rules.json`** — the renewal gap calculator's inputs. **Most
+  important to keep current.** Re-verify on <https://www.uscis.gov/i-765> and
+  <https://egov.uscis.gov/processing-times>: (1) the EAD auto-extension status
+  — a DHS rule effective **2025-10-30** removed it for new filings; (2)
+  `processing.renewalMonths` / `initialMonths` ranges for category c(26); (3)
+  whether premium processing (I-907) is available for c(26); (4) the 180-day
+  early-filing window. Clear `todo` only after confirming each.
+- **`data/h4-pathways.json`** — pillars + idea cards (difficulty/setup/income/
+  work-style tags, `goal`/`hours`/`workStyle` arrays drive the pathfinder
+  match). Keep every card framed as an idea with a tax/compliance caveat.
+- **`data/h4-myths.json`** — myth → reality → caveat. Keep the H-1B-dependency
+  reality honest (the EAD dies if the H-1B lapses).
+- **`data/h4-state-childcare.json`** — state → official licensing authority +
+  URL. **Never add per-state child-count numbers as fact.** Verify each `url`
+  (`urlTodo:true`) and add remaining states; the picker falls back to
+  childcare.gov when `url` is null.
+- **`data/h4-checklists.json`** — the two progress-tracked checklists.
+
+**Do this when:** USCIS changes EAD auto-extension or processing rules, or a
+state changes child-care licensing. Treat nothing here as definitive until the
+`todo` flags are cleared against official sources.

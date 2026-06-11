@@ -28,6 +28,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Tools & Calculators",
     links: [
       { label: "All Tools", href: "/tools" },
+      { label: "H-4 EAD Navigator", href: "/tools/h4-ead-navigator" },
       { label: "Citizenship Checklist", href: "/tools/citizenship-checklist" },
       { label: "Green Card Tracker", href: "/tools/green-card-tracker" },
       { label: "H-1B Salaries", href: "/tools/h1b-salaries" },

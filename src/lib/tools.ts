@@ -30,6 +30,20 @@ export interface ToolMeta {
 
 export const tools: ToolMeta[] = [
   {
+    slug: "h4-ead-navigator",
+    title: "H-4 Spouse Work & Business Navigator",
+    label: "H-4 EAD Navigator",
+    group: "Visa & Green Card",
+    description:
+      "What can an H-4 EAD spouse actually do? A playful pathfinder to matched work & business ideas, myth-vs-reality answers, an EAD renewal gap calculator, and tappable start-earning / start-a-business checklists.",
+    icon: "💍",
+    accent: "from-fuchsia-500 to-pink-600",
+    seoTitle: "H-4 EAD: What Work & Businesses Are Allowed? (2026 Guide + Tools)",
+    seoDescription:
+      "What can an H-4 EAD spouse do — jobs, freelance, LLC, daycare, tiffin? Interactive pathfinder, myth-vs-reality, an EAD renewal gap calculator with current processing times, and start-earning checklists. Educational, not legal advice.",
+    status: "live",
+  },
+  {
     slug: "citizenship-checklist",
     title: "US Citizenship (N-400) Readiness Checklist & Tracker",
     label: "Citizenship Checklist",

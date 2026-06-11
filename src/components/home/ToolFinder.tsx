@@ -15,6 +15,7 @@ const intents: Intent[] = [
   { q: "When will my green card come?", href: "/tools/green-card-tracker", cat: "visa", icon: "calendar" },
   { q: "Can I apply for citizenship yet?", href: "/tools/citizenship-checklist", cat: "visa", icon: "flag" },
   { q: "Is my H-1B salary fair?", href: "/tools/h1b-salaries", cat: "money", icon: "briefcase" },
+  { q: "My spouse has an H-4 EAD — what can they do?", href: "/tools/h4-ead-navigator", cat: "visa", icon: "briefcase" },
   { q: "Where can I travel visa-free?", href: "/tools/visa-free-countries", cat: "travel", icon: "passport" },
   { q: "How long is visa stamping taking?", href: "/tools/processing-times", cat: "docs", icon: "clock" },
   { q: "Cash out my 401k before moving back?", href: "/calculators/401k-return-to-india", cat: "money", icon: "dollar" },
