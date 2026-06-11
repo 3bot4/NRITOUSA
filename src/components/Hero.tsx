@@ -2,6 +2,11 @@ import Link from "next/link";
 import Container from "./Container";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
 import { topics } from "@/lib/topics";
+import { articles } from "@/lib/articles";
+
+// Real, data-driven counts — rounded down to a "+" figure so the stat is
+// always true as guides are added. No invented "readers" number.
+const guideCount = `${Math.floor(articles.length / 10) * 10}+`;
 
 export default function Hero() {
   return (
@@ -72,11 +77,10 @@ export default function Hero() {
               ))}
             </ul>
 
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6">
+            <dl className="mt-10 grid max-w-md grid-cols-2 gap-6">
               {[
                 { value: String(topics.length), label: "Topic areas" },
-                { value: "50+", label: "In-depth guides" },
-                { value: "12k+", label: "Readers" },
+                { value: guideCount, label: "In-depth guides" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <dt className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">

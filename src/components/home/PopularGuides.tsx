@@ -1,16 +1,16 @@
 import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import { getArticle } from "@/lib/articles";
 
-const guides = [
+const guideMeta = [
   {
     category: "Getting Started",
     title:
       "First 30 Days in the USA: Banking, Phone, Credit Card, Apartment",
     excerpt:
       "A week-by-week checklist for everything you need to set up the moment you land.",
-    readingTime: 8,
-    href: "/articles/first-30-days-in-usa",
+    slug: "first-30-days-in-usa",
     accent: "from-sky-500 to-blue-600",
   },
   {
@@ -18,8 +18,7 @@ const guides = [
     title: "How to Build Credit Score as a New Immigrant",
     excerpt:
       "The exact 12-month playbook to go from no credit file to a 750+ score.",
-    readingTime: 9,
-    href: "/articles/build-us-credit-score-from-zero",
+    slug: "build-us-credit-score-from-zero",
     accent: "from-violet-500 to-purple-600",
   },
   {
@@ -27,8 +26,7 @@ const guides = [
     title: "Should You Rent or Buy a Home in the USA?",
     excerpt:
       "Mortgages on a visa, the real costs of owning, and when buying actually wins.",
-    readingTime: 9,
-    href: "/articles/buying-first-home-on-visa",
+    slug: "buying-first-home-on-visa",
     accent: "from-amber-500 to-orange-600",
   },
   {
@@ -36,8 +34,7 @@ const guides = [
     title: "Buying a Car in the USA: Loan, Insurance, Registration",
     excerpt:
       "Finance a car without credit history and avoid getting fleeced at the dealership.",
-    readingTime: 8,
-    href: "/articles/buy-vs-lease-car-no-credit",
+    slug: "buy-vs-lease-car-no-credit",
     accent: "from-cyan-500 to-teal-600",
   },
   {
@@ -45,8 +42,7 @@ const guides = [
     title: "401k vs Roth IRA for Immigrants",
     excerpt:
       "Which to prioritize, how the employer match works, and what happens if you move back.",
-    readingTime: 7,
-    href: "/articles/roth-ira-vs-traditional-nri",
+    slug: "roth-ira-vs-traditional-nri",
     accent: "from-indigo-500 to-blue-700",
   },
   {
@@ -54,11 +50,18 @@ const guides = [
     title: "Sending Money from USA to India: What to Know",
     excerpt:
       "NRE vs. NRO accounts, the best transfer services, and the tax-smart way to remit.",
-    readingTime: 7,
-    href: "/articles/nre-nro-accounts-explained",
+    slug: "nre-nro-accounts-explained",
     accent: "from-emerald-500 to-teal-600",
   },
 ];
+
+// Reading time is pulled from the real article (computed from its word count),
+// never hardcoded, so the label always matches the actual guide.
+const guides = guideMeta.map((g) => ({
+  ...g,
+  href: `/articles/${g.slug}`,
+  readingTime: getArticle(g.slug)?.readingTime ?? 1,
+}));
 
 export default function PopularGuides() {
   return (

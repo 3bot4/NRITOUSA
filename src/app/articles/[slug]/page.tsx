@@ -4,13 +4,13 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
+import ArticleByline from "@/components/ArticleByline";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
 import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
-import { formatDate, initials } from "@/lib/format";
-import { site } from "@/lib/site";
+import { author } from "@/lib/author";
 import {
   articleJsonLd,
   articlePath,
@@ -54,7 +54,7 @@ export function generateMetadata({
       publishedTime: article.date,
       modifiedTime: article.updated ?? article.date,
       section: topic?.title,
-      authors: [site.author],
+      authors: [author.name],
     },
     twitter: {
       card: "summary_large_image",
@@ -140,20 +140,10 @@ export default function ArticlePage({
                 {article.excerpt}
               </p>
 
-              <div className="mt-6 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-50 text-sm font-bold text-brand-700">
-                  {initials(article.author)}
-                </span>
-                <div className="text-sm">
-                  <p className="font-semibold text-ink-800">
-                    {article.author}
-                  </p>
-                  <p className="text-ink-400">
-                    Updated {formatDate(article.updated ?? article.date)} ·{" "}
-                    {article.readingTime} min read
-                  </p>
-                </div>
-              </div>
+              <ArticleByline
+                date={article.updated ?? article.date}
+                readingTime={article.readingTime}
+              />
             </div>
           </Container>
         </header>

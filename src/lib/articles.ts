@@ -1,4 +1,5 @@
 import type { Article } from "@/types";
+import { computeReadingTime } from "@/lib/format";
 
 /**
  * Article content is authored as light markdown:
@@ -6,17 +7,20 @@ import type { Article } from "@/types";
  *  - "- " lines become list items
  *  - blank-line-separated blocks become paragraphs
  * Swap this array for a CMS or MDX loader later without touching the UI.
+ *
+ * Bylines and reading time are NOT authored per article: every article
+ * inherits the single shared author (see lib/author) and its reading time is
+ * computed from the body word count at build time (see below). This keeps
+ * fake personas and inflated "X min read" labels out of the content entirely.
  */
-export const articles: Article[] = [
+const rawArticles: Omit<Article, "readingTime">[] = [
   {
     slug: "build-us-credit-score-from-zero",
     title: "How to Build a US Credit Score From Zero as a New Immigrant",
     excerpt:
       "Your Indian credit history doesn't follow you. Here's the exact 12-month playbook to go from no file to a 750+ score.",
     topic: "credit",
-    author: "Priya Nair",
     date: "2026-05-28",
-    readingTime: 9,
     featured: true,
     content: `When you land in the US, you are financially invisible. Your CIBIL score, your years of disciplined EMI payments, your salary in India — none of it crosses the ocean. To American lenders you are a blank page, and a blank page is treated almost as badly as a bad page.
 
@@ -49,9 +53,7 @@ Patience compounds here exactly like interest does. Start today, automate the pa
     excerpt:
       "Not all US banks welcome newcomers equally. Here's which accounts open without an SSN, charge no fees, and even import your Indian credit history.",
     topic: "finance",
-    author: "Rohan Gupta",
     date: "2026-05-31",
-    readingTime: 10,
     featured: true,
     content: `Opening your first US bank account looks like a 20-minute errand until you hit the wall every newcomer hits: most US banking infrastructure assumes you already have a Social Security Number, a US credit file, and a local address. You may have none of the three on day one. The good news is that a handful of banks are built specifically for people in exactly your position — and knowing which ones saves you weeks of friction and hundreds of dollars in needless fees.
 
@@ -138,9 +140,7 @@ Your bank should adapt to you, not the other way around. Open a no-fee online ch
     excerpt:
       "Your Social Security Number is the master key to US credit, banking, and taxes. Here's the exact 30-day sequence to start right and avoid years of cleanup.",
     topic: "finance",
-    author: "Sneha Rao",
     date: "2026-06-02",
-    readingTime: 9,
     featured: true,
     content: `The plain card that arrives in the mail with your Social Security Number on it is the single most important document of your US financial life. It's the key that unlocks credit cards, loans, a real bank relationship, tax filing, and eventually a mortgage. It's also the exact number identity thieves want most. What you do in the first 30 days after it arrives sets your financial trajectory for the next decade — so do these five things in order.
 
@@ -228,9 +228,7 @@ Your SSN is a master key, and the first 30 days decide whether you spend the nex
     excerpt:
       "No credit score, no US rental history, no problem. Here's exactly how to get your lease approved with income proof, deposits, and guarantor services.",
     topic: "housing",
-    author: "Vikram Shah",
     date: "2026-06-03",
-    readingTime: 9,
     featured: false,
     content: `Your first apartment search collides head-on with the newcomer credit problem. Property managers run a credit check and a background check, and your US file is empty. The automated screening at big complexes often rejects a "no credit" applicant outright. But thousands of newcomers sign leases every month with zero US history — because a landlord's real fear isn't a low score, it's not getting paid. Solve that and the keys are yours.
 
@@ -326,9 +324,7 @@ A blank US credit report is a speed bump, not a wall. Lead with income proof, sw
     excerpt:
       "Skip the $500 deposit and contract traps. Here's how to get a US number on day one, call India for free, and set up utilities cheaply.",
     topic: "finance",
-    author: "Arjun Mehta",
     date: "2026-06-04",
-    readingTime: 8,
     featured: false,
     content: `A working US phone number is the first thing you need — to receive job paperwork, set up your bank, and get two-factor codes. But the big carriers are built for people with an SSN and credit, and they'll either run a credit check or demand a deposit of up to $500 per line before they'll sell you a postpaid plan. You don't need any of that. Here's how to be connected on day one for around $20 a month and call home to India for free.
 
@@ -416,9 +412,7 @@ Don't let a carrier talk you into a deposit and a contract in week one. Start wi
     excerpt:
       "Hold bank accounts, FDs, PPF, or mutual funds in India? Here are the exact filing thresholds, deadlines, forms, and penalties — plus how to fix missed years.",
     topic: "taxes",
-    author: "Priya Nair",
     date: "2026-06-01",
-    readingTime: 11,
     featured: true,
     content: `If you've moved to the US and still hold money in India — a savings account, a fixed deposit, PPF, mutual funds, or even a joint account with your parents — the US government wants to know about it. Two separate reporting regimes, **FBAR** and **FATCA**, exist precisely to surface foreign assets held by US taxpayers. They're not taxes; they're disclosures. But ignoring them carries some of the harshest penalties in the entire tax code, and "I didn't know" is not a defense. The reassuring part: once you understand the thresholds, compliance is genuinely straightforward.
 
@@ -520,9 +514,7 @@ FBAR and FATCA feel bureaucratic until you see the penalty schedule — then the
     excerpt:
       "Don't pay tax twice on the same rupee. Here's how the India-US tax treaty and the Foreign Tax Credit work — with a worked example that can save you thousands.",
     topic: "taxes",
-    author: "Arjun Mehta",
     date: "2026-06-02",
-    readingTime: 10,
     featured: true,
     content: `The first time you realize you might owe tax in *both* countries on the *same* income, it's genuinely alarming. You earned rental income or FD interest in India, paid Indian tax on it, and now the IRS wants its cut too. Left unmanaged, that's double taxation — paying two governments on one rupee. The good news is that the **India-US Double Taxation Avoidance Agreement (DTAA)**, combined with the US **Foreign Tax Credit**, is built to ensure you ultimately pay only the *higher* of the two countries' rates, not the sum. Here's exactly how it works.
 
@@ -607,9 +599,7 @@ The DTAA is your safety net against paying two governments for one rupee. Declar
     excerpt:
       "Rent, FD interest, capital gains, PPF, dividends — here's exactly which Indian income a US resident must report, what's exempt, and how to avoid penalties.",
     topic: "taxes",
-    author: "Sneha Rao",
     date: "2026-06-03",
-    readingTime: 9,
     featured: false,
     content: `It's the question almost every NRI asks in their first US tax season: *"I already pay tax in India on that — do I really have to tell the IRS about it too?"* For most people, once you become a **US resident for tax purposes**, the answer is an unambiguous yes. The US taxes its residents on **worldwide income**, full stop. The silver lining is that declaring it rarely means paying double — the [DTAA and Foreign Tax Credit](/articles/double-taxation-dtaa-india-usa) handle that. But the reporting itself is mandatory, and the penalties for "forgetting" are real.
 
@@ -697,9 +687,7 @@ If you're a US resident for tax purposes, your Indian rent, interest, dividends,
     excerpt:
       "Holding Indian mutual funds, ULIPs, or ETFs as a US resident triggers brutal PFIC tax rules and Form 8621. Here's what it costs and how to escape cleanly.",
     topic: "taxes",
-    author: "Vikram Shah",
     date: "2026-06-04",
-    readingTime: 10,
     featured: false,
     content: `It feels completely natural: you've held SIPs in Indian mutual funds for years, they've performed well, so you keep them after moving to the US. Unfortunately, that single decision can quietly become one of the most expensive mistakes in your financial life. The IRS classifies nearly every Indian mutual fund as a **PFIC — a Passive Foreign Investment Company** — and the tax regime for PFICs was deliberately designed to be punishing. Understanding this rule is the difference between a clean, low-tax portfolio and a paperwork nightmare that can tax away half your gains.
 
@@ -784,9 +772,7 @@ Indian mutual funds feel familiar and safe, but as a US resident they're a tax t
     excerpt:
       "Parents sending money for a house or wedding? Good news: gifts aren't taxed. But Form 3520 is mandatory over $100k, and missing it carries a 25% penalty.",
     topic: "taxes",
-    author: "Rohan Gupta",
     date: "2026-06-05",
-    readingTime: 8,
     featured: false,
     content: `It's one of the most common cross-border money moments: your parents in India wire you a large sum — to help with a home down payment, a wedding, or just to share family savings. The money lands in your US account and a small panic sets in: *"Is the IRS going to tax this? Do I have to report it?"* Here's the reassuring headline — **a genuine gift is not taxable income to you in the US.** But there's a critical disclosure form, and the penalty for skipping it is brutal relative to how easy it is to file.
 
@@ -874,9 +860,7 @@ Money from your parents in India is one of the few genuinely tax-free transfers 
     excerpt:
       "Your 401(k) doesn't vanish when you leave the US. Here are your real options, the 30% withholding trap, the 10% penalty, and how India's RNOR status protects you.",
     topic: "retirement",
-    author: "Sneha Rao",
     date: "2026-06-05",
-    readingTime: 11,
     featured: true,
     content: `It's the question that makes thousands of NRIs hesitate before contributing to their 401(k): *"What if I move back to India — does all this money get stuck or taxed to death?"* The fear is understandable, but the reality is reassuring. Your 401(k) is **your money**, legally portable across borders, and it doesn't disappear when your visa ends or your flight to India takes off. What changes is the *tax treatment* of how and when you take it out — and getting that timing right can save you tens of thousands of dollars.
 
@@ -954,9 +938,7 @@ Moving back to India is a reason to *plan* your 401(k), not to fear or skip it. 
     excerpt:
       "There is no direct pipe from a US 401(k) into NPS or PPF. Here's why cross-border retirement transfers don't exist — and the legal workarounds that actually do.",
     topic: "retirement",
-    author: "Arjun Mehta",
     date: "2026-05-29",
-    readingTime: 9,
     featured: false,
     content: `One of the most common — and most misunderstood — questions returning NRIs ask is: *"How do I transfer my 401(k) into my NPS or PPF account in India?"* The short answer is one nobody wants to hear: **you can't.** There is no mechanism, treaty, or form that lets you roll a US retirement account directly into an Indian one. The two countries' retirement systems are completely separate and don't talk to each other. But that doesn't mean your money is stuck — it means you need the right *workaround*, and choosing the wrong one can cost you a fortune in penalties.
 
@@ -1033,9 +1015,7 @@ Stop looking for a transfer button — it doesn't exist. The two retirement syst
     excerpt:
       "The 40-credit rule, why there's no US-India totalization agreement, the WEP repeal, and whether you can collect Social Security while living in India.",
     topic: "retirement",
-    author: "Karthik Subramanian",
     date: "2026-05-22",
-    readingTime: 10,
     featured: false,
     content: `Every paycheck in the US, **6.2% of your salary** vanishes into Social Security tax — and your employer matches it. For NRIs who may not retire in America, a fair question follows: *"Am I ever going to see any of that money, or is it just a tax I pay and lose?"* The answer hinges on one number — **40 credits** — and on a frustrating fact: unlike most developed countries, **India has no totalization agreement with the US.** Understanding the rules tells you whether your contributions become a retirement benefit or a sunk cost.
 
@@ -1106,9 +1086,7 @@ Social Security rewards the long haul. Cross the 40-credit (10-year) line and yo
     excerpt:
       "Standard rent-vs-buy calculators assume you stay 30 years. For visa holders, uncertainty changes everything. Here's the honest framework and the 5-year rule.",
     topic: "property",
-    author: "Vikram Shah",
     date: "2026-06-04",
-    readingTime: 10,
     featured: true,
     content: `Every personal finance article eventually tells you that "buying builds equity while renting is throwing money away." That advice was written for someone with citizenship, a stable job, and a 30-year horizon. As a visa holder, your situation is fundamentally different: your right to stay in the country isn't guaranteed, and a house is the least liquid asset you can own. The rent-vs-buy decision for an immigrant isn't about equity slogans — it's about **honestly pricing the uncertainty** in your own life. Here's the math the generic calculators ignore.
 
@@ -1191,9 +1169,7 @@ Ignore the equity slogans and run your own numbers. Buying wins only if you stay
     excerpt:
       "New immigrants get quoted brutal premiums with no US driving record. Here's how to use your Indian no-claims history, pick the right insurer, and cut the cost fast.",
     topic: "cars",
-    author: "Rohit Desai",
     date: "2026-05-26",
-    readingTime: 8,
     featured: false,
     content: `You've driven safely for ten years in India, but the moment you ask for a US car insurance quote as a newcomer, the number is shocking — sometimes **two to three times** what your colleagues pay. The reason is simple and frustrating: US insurers price on your **US driving record**, and yours is blank. To their algorithm, a 35-year-old experienced driver from Bangalore looks identical to a 16-year-old who just got a learner's permit. The good news is that this is fixable, and faster than you'd think. Here's how to avoid overpaying from day one.
 
@@ -1268,9 +1244,7 @@ A high first quote is the newcomer tax, not your permanent rate. Prove your Indi
     excerpt:
       "Sell US property after becoming a nonresident and the buyer must withhold up to 15% of the gross price. Here's how FIRPTA works and how to get your money back.",
     topic: "property",
-    author: "Vikram Shah",
     date: "2026-05-19",
-    readingTime: 9,
     featured: false,
     content: `You bought a home while working in the US, your plans changed, and now you're selling it — possibly after you've already moved back to India. Then your closing agent drops a surprise: the buyer is legally required to **withhold 15% of the entire sale price** and send it to the IRS. Not 15% of your profit — 15% of the **gross** amount. On a $600,000 sale, that's **$90,000** frozen, even if your actual gain (and tax) is far smaller. This is **FIRPTA**, and while it feels punitive, it's recoverable if you understand the rules and plan ahead.
 
@@ -1346,9 +1320,7 @@ FIRPTA isn't a penalty — it's a withholding mechanism, and a recoverable one. 
     excerpt:
       "Banks bury their fees in the exchange rate. Here's how to compare the true cost, the best services for big and small transfers, and how to keep more rupees.",
     topic: "money-transfer",
-    author: "Rohan Gupta",
     date: "2026-06-03",
-    readingTime: 9,
     featured: true,
     content: `Sending money to India is something most NRIs do dozens of times a year — for family, EMIs, investments, or savings. And on every single transfer, money quietly leaks away, not through the advertised fee, but through the **exchange rate markup** you never see. A "zero fee" transfer with a bad rate can cost you far more than a small flat fee at the real rate. Over a year of remittances, the difference between the cheapest and priciest option can run into **hundreds of dollars**. Here's how to stop overpaying.
 
@@ -1426,9 +1398,7 @@ Stop reading the fee and start reading the rupees. The exchange-rate markup is t
     excerpt:
       "Sold a flat or inherited property in India? Here's the step-by-step on TDS, the $1M repatriation limit, Forms 15CA/15CB, and bringing the money to the US legally.",
     topic: "money-transfer",
-    author: "Rohan Gupta",
     date: "2026-05-27",
-    readingTime: 10,
     featured: false,
     content: `Selling property in India and bringing the proceeds to the US is one of the larger, more anxiety-inducing money moves an NRI makes. The sums are big, the rules span two countries, and a single missed form can freeze your funds at the bank. But the process is well-defined: India lets you repatriate up to **$1 million per financial year** from your NRO account, provided you've paid the right taxes and filed the right certificates. Here's the complete roadmap from sale to US bank account.
 
@@ -1506,9 +1476,7 @@ Bringing Indian property money to the US is a process, not a gamble: pay the TDS
     excerpt:
       "Sending money out of India under the LRS? A 20% Tax Collected at Source can apply above ₹7 lakh. Here's who it hits, the exceptions, and how to claim it back.",
     topic: "money-transfer",
-    author: "Arjun Mehta",
     date: "2026-05-24",
-    readingTime: 8,
     featured: false,
     content: `If your parents in India are sending you money, or you moved funds abroad while still an Indian resident, you may have run into a confusing line on the bank statement: a **20% Tax Collected at Source (TCS)**. It feels like a penalty for sending your own money — but it isn't a new tax at all. TCS is a *prepayment* of income tax that the bank collects upfront and you (or the sender) reclaim later. Understanding when it applies and how to recover it prevents both nasty surprises and the false belief that the money is simply lost.
 
@@ -1583,9 +1551,7 @@ The 20% TCS sounds alarming but is mostly a cash-flow timing issue for **residen
     excerpt:
       "Want exposure to Indian equities? Here's how to open an NRI trading and Demat account, the NRE vs NRO choice, the PFIC trap to dodge, and the US tax angle.",
     topic: "investing",
-    author: "Sneha Rao",
     date: "2026-05-31",
-    readingTime: 10,
     featured: false,
     content: `India's growth story is hard to ignore, and many US-based NRIs want a slice of their home market. The good news: you can legally invest in Indian stocks as an NRI. The catch: doing it from the US adds two layers of complexity most domestic Indian investors never face — Indian regulatory setup (NRE/NRO, PIS, Demat accounts) and the **US tax code's brutal PFIC rules** that make the obvious choice, mutual funds, a costly mistake. Here's how to get India exposure without creating a tax nightmare.
 
@@ -1668,9 +1634,7 @@ You can absolutely invest in India's market as a US NRI — just do it the smart
     excerpt:
       "Resident vs. non-resident, the substantial presence test, India income, and the forms that actually matter.",
     topic: "taxes",
-    author: "Arjun Mehta",
     date: "2026-04-12",
-    readingTime: 11,
     featured: true,
     content: `Tax season in your first year is where most NRIs feel genuinely lost. The vocabulary is new, the stakes feel high, and bad advice is everywhere. Let's make it boring and clear.
 
@@ -1704,9 +1668,7 @@ File on time, disclose everything, keep your documents for seven years, and the 
     excerpt:
       "The match is free money — but what happens to your 401(k) if you move back to India? Here's the full picture.",
     topic: "retirement",
-    author: "Sneha Rao",
     date: "2026-05-03",
-    readingTime: 8,
     featured: true,
     content: `A 401(k) is an employer-sponsored retirement account. You contribute pre-tax dollars, it grows tax-deferred, and many employers match part of your contribution. That match is the closest thing to free money you'll encounter — and far too many NRIs skip it because they "might move back."
 
@@ -1739,9 +1701,7 @@ Capture the full match, choose Roth if you're early-career, and don't touch it u
     excerpt:
       "Which account holds your US savings, which holds your India income, and how to move money tax-efficiently.",
     topic: "money-transfer",
-    author: "Vikram Shah",
     date: "2026-03-20",
-    readingTime: 7,
     content: `Once you're earning in dollars, you'll eventually want to send money to India — for family, savings, or investments. The foundation of doing this cleanly is understanding two account types: NRE and NRO.
 
 ## NRE — Non-Resident External
@@ -1774,9 +1734,7 @@ Get this scaffolding in place early and every future transfer becomes a two-minu
     excerpt:
       "Financing a car before you have a credit score is possible. Here's how to do it without getting fleeced.",
     topic: "cars",
-    author: "Rohit Desai",
     date: "2026-02-14",
-    readingTime: 8,
     content: `A car is often the first big purchase an NRI makes in the US, frequently before any credit score exists. Dealers know newcomers are vulnerable here, so go in informed.
 
 ## The no-credit problem
@@ -1806,9 +1764,7 @@ Walk into the dealership with financing pre-arranged from a bank or credit union
     excerpt:
       "No credit, no US rental history, no problem — how to land your first apartment and decode the lease.",
     topic: "housing",
-    author: "Ananya Iyer",
     date: "2026-01-30",
-    readingTime: 7,
     content: `Your first apartment hunt collides head-on with the credit problem: landlords want a credit score and rental history you don't have yet. Here's how to get the keys anyway.
 
 ## How to qualify with no credit
@@ -1841,9 +1797,7 @@ Take photos at move-in, keep every receipt, and get all promises in writing. In 
     excerpt:
       "You don't need to pick stocks. Here's why low-cost index funds are the default — and the PFIC trap to avoid.",
     topic: "investing",
-    author: "Sneha Rao",
     date: "2026-04-25",
-    readingTime: 9,
     content: `Once your emergency fund is set and you're capturing your 401(k) match, the next question is investing the rest. The honest answer for most people is delightfully boring: low-cost index funds.
 
 ## What an index fund actually is
@@ -1872,9 +1826,7 @@ That's it. Automate a monthly contribution, ignore the daily noise, and let comp
     excerpt:
       "A first-person account of the green card backlog — the anxiety, the financial planning, and the unexpected lessons.",
     topic: "stories",
-    author: "Karthik Subramanian",
     date: "2026-05-18",
-    readingTime: 10,
     content: `I landed at Newark in 2017 with two suitcases and a job offer. I assumed the green card would take a couple of years. Seven years later, I finally got it. Here's what nobody told me.
 
 ## The waiting is a tax on your life decisions
@@ -1903,9 +1855,7 @@ The green card finally came. But the person it shaped during the wait — discip
     excerpt:
       "You don't need a green card to own property. Mortgages, down payments, and the real risks for visa holders.",
     topic: "property",
-    author: "Vikram Shah",
     date: "2026-03-08",
-    readingTime: 9,
     content: `One of the most persistent myths among NRIs is that you need a green card to buy a house in the US. You don't. There's no citizenship or permanent-residency requirement to own property. What you need is a down payment, a credit history, and a clear-eyed view of the risks.
 
 ## Getting a mortgage on a visa
@@ -1937,9 +1887,7 @@ Owning a home on a visa is entirely doable. Just make sure the decision survives
     excerpt:
       "The loneliness nobody warns you about — and practical ways to build a life, not just a career, in a new country.",
     topic: "community",
-    author: "Ananya Iyer",
     date: "2026-02-28",
-    readingTime: 6,
     content: `The financial side of immigrating gets all the guides. The emotional side gets silence. But ask any NRI a few years in, and they'll tell you: the hardest part wasn't the taxes. It was the loneliness.
 
 ## Why it hits harder than expected
@@ -1965,9 +1913,7 @@ A career can be rebuilt anywhere. A community takes intention. Start building it
     excerpt:
       "Before investing a single dollar, build this. Here's how much, where to keep it, and why it matters more for immigrants.",
     topic: "finance",
-    author: "Priya Nair",
     date: "2026-01-15",
-    readingTime: 6,
     content: `Every personal finance guide preaches the emergency fund, but for NRIs it's not just prudent — it's existential. When you have no family safety net in the country and your visa is tied to your job, cash is freedom.
 
 ## Why immigrants need a bigger buffer
@@ -1993,9 +1939,7 @@ An emergency fund feels like idle money right up until the day it becomes the mo
     excerpt:
       "Beyond your 401(k), an IRA supercharges your retirement savings. Here's how to pick the right one as an immigrant.",
     topic: "retirement",
-    author: "Arjun Mehta",
     date: "2026-05-10",
-    readingTime: 7,
     content: `Your 401(k) gets the employer match, but it's not the only retirement tool. An IRA — Individual Retirement Account — lets you save more, with more investment freedom. The big choice is Roth vs. traditional.
 
 ## The core difference
@@ -2025,9 +1969,7 @@ An IRA is the quiet workhorse of an immigrant's retirement plan. Open one, autom
     excerpt:
       "Flights are the cheap part. Here's the honest breakdown of what relocating to the US actually costs in month one — deposits, setup, and the cash cushion you need.",
     topic: "finance",
-    author: "Rohan Gupta",
     date: "2026-06-05",
-    readingTime: 9,
     featured: true,
     content: `Everyone budgets for the flight and the visa. Almost nobody budgets for the **first 30 days on the ground**, which is where the real money goes. Between an apartment that wants three months of rent upfront, a phone, furniture, groceries, and a deposit on every utility, a newcomer can burn through **$8,000–$15,000** before their first US paycheck even clears. Underestimating this is the single most common financial mistake new immigrants make. Here's what moving from India to the US actually costs — so you arrive with enough cushion to make good decisions instead of desperate ones.
 
@@ -2109,9 +2051,7 @@ Relocation budgets fail because they stop at the airfare. The real cost is rebui
     excerpt:
       "No credit score? A secured card is your fastest on-ramp. Here's how they work, which ones graduate to real cards, and how to hit 700+ in a year.",
     topic: "credit",
-    author: "Priya Nair",
     date: "2026-06-04",
-    readingTime: 8,
     featured: false,
     content: `When you arrive in the US with no credit history, you're stuck in a frustrating loop: you need credit to get a card, but you need a card to build credit. The **secured credit card** is the key that breaks that loop. You put down a refundable deposit, the bank issues you a real card backed by it, and your responsible use gets reported to the credit bureaus like any other card. Used correctly, a secured card can take you from invisible to a **700+ score in about 12 months**. Here's how to pick the right one and use it well.
 
@@ -2191,9 +2131,7 @@ A secured credit card is the cheapest, surest on-ramp to a US credit score. Pick
     excerpt:
       "Dealers love to demand a US co-signer from newcomers. You don't need one. Here's how to finance a car independently using income proof and newcomer programs.",
     topic: "cars",
-    author: "Rohit Desai",
     date: "2026-05-28",
-    readingTime: 8,
     featured: false,
     content: `A dealership will often tell a new immigrant the same thing: *"You'll need a US citizen or permanent resident to co-sign."* It's frustrating, sometimes pushy, and frequently **not true**. You can finance a car on a work visa with no US credit and no co-signer — but you need to walk in with the right preparation and the right lender, because the dealer's default financing is built to extract the highest rate from people who don't know their options. Here's how to get the keys on your own.
 
@@ -2268,9 +2206,7 @@ Don't let a dealer convince you that you need an American co-signer. Bring a str
     excerpt:
       "Yes — you can set up a US-dollar account before your flight even lands. Here are the digital banks and international options that allow pre-arrival setup.",
     topic: "finance",
-    author: "Rohan Gupta",
     date: "2026-05-25",
-    readingTime: 7,
     featured: false,
     content: `Landing in the US with no bank account means scrambling in your first week — and you can't receive your salary or pay rent until it's sorted. The smart move is to **set up your US banking before you fly**, so you arrive with an account number, a routing number, and (often) a card on the way. It's more possible than most newcomers realize, though the options come with trade-offs. Here's how to get a US-dollar account open from India before you ever clear immigration.
 
@@ -2337,9 +2273,7 @@ Don't wait until you land to think about banking. Use an international bank or n
     excerpt:
       "A single ER visit can cost five figures uninsured. Here's how employer plans cover dependents, what marketplace and short-term options exist, and how to choose.",
     topic: "finance",
-    author: "Ananya Iyer",
     date: "2026-05-21",
-    readingTime: 9,
     featured: false,
     content: `Health insurance is the cost newcomers most underestimate and most regret skipping. In the US there is **no universal healthcare**, and a single emergency room visit or hospital stay can cost **tens of thousands of dollars** out of pocket. For families on dependent visas — **H-4** (spouses/children of H-1B holders) and **L-2** (dependents of L-1 holders) — getting coverage right is non-negotiable. The good news: dependents have several solid paths to insurance. Here's how to evaluate them.
 
@@ -2424,9 +2358,7 @@ For H-4 and L-2 families, the safest, most cost-effective choice is usually the 
     excerpt:
       "A new US federal excise tax adds 1% to certain money transfers abroad. Here's exactly which transfers are hit, which are exempt, and how to legally avoid it.",
     topic: "taxes",
-    author: "Arjun Mehta",
     date: "2026-06-03",
-    readingTime: 8,
     featured: true,
     content: `If you send money from the US to India, there's a new line item you need to understand: a **federal excise tax on remittance transfers**. Introduced in 2025 legislation and applying to transfers from 2026, it adds a percentage charge to certain cross-border transfers — but, crucially, **only to specific funding methods**. For most NRIs, the fee is **entirely avoidable** simply by choosing how you pay. Here's the practical breakdown so you don't pay a tax you never needed to.
 
@@ -2505,9 +2437,7 @@ The new US remittance excise tax sounds alarming but is one of the easiest taxes
     excerpt:
       "Unreported Indian accounts from past years? The IRS Streamlined Procedures let non-willful filers catch up with little or no penalty. Here's how to fix it.",
     topic: "taxes",
-    author: "Priya Nair",
     date: "2026-05-30",
-    readingTime: 9,
     featured: false,
     content: `Thousands of NRIs discover, often years into US life, that they were supposed to be reporting their Indian bank accounts, FDs, and PPF all along — and panic sets in. The penalties for unreported foreign accounts are famously severe, and the instinct is to stay quiet and hope nobody notices. That instinct is exactly wrong. The IRS has a dedicated, forgiving path for people whose failure was **honest, not willful** — the **Streamlined Filing Compliance Procedures** — and using it voluntarily is dramatically cheaper than being caught. Here's how to come clean safely.
 
@@ -2580,9 +2510,7 @@ Unreported Indian accounts are a fixable problem, not a life sentence — but on
     excerpt:
       "The 183-day formula isn't what you think. Here's the exact IRS Substantial Presence Test calculation, the exempt-individual rules, and a worked example.",
     topic: "taxes",
-    author: "Sneha Rao",
     date: "2026-05-23",
-    readingTime: 8,
     featured: false,
     content: `Whether you're taxed by the US on your **worldwide income** or only your US income hinges on a single question: are you a **US resident for tax purposes**? This has nothing to do with your green card or visa type — it's decided by a day-counting formula called the **Substantial Presence Test (SPT)**. Get it wrong and you'll either overpay, underpay, or trip into the dreaded "dual-status" year. Here's exactly how the SPT works, with the exceptions that catch students and a worked example.
 
@@ -2663,9 +2591,7 @@ The Substantial Presence Test, not your visa, decides whether the US taxes your 
     excerpt:
       "PPF interest is tax-free in India — but the US doesn't honor that. Here's how the IRS likely treats your Public Provident Fund and the reporting you can't skip.",
     topic: "taxes",
-    author: "Vikram Shah",
     date: "2026-05-20",
-    readingTime: 8,
     featured: false,
     content: `The Public Provident Fund is a beloved Indian savings instrument: safe, government-backed, and completely **tax-free in India**. So it comes as an unwelcome shock to many NRIs that the **US does not recognize PPF's tax-exempt status**. Once you're a US tax resident, that tidy tax-free interest likely becomes **taxable income to the IRS**, and your PPF triggers reporting obligations that carry steep penalties if ignored. Here's what you need to know to handle your PPF correctly from the US side.
 
@@ -2740,9 +2666,7 @@ PPF is tax-free in India but not in the eyes of the IRS — plan to report its i
     excerpt:
       "The same salary nets wildly different take-home pay depending on your state. Here's how state income tax shifts your paycheck — and the no-tax states tech workers love.",
     topic: "taxes",
-    author: "Arjun Mehta",
     date: "2026-05-18",
-    readingTime: 8,
     featured: false,
     content: `Two H-1B engineers can earn the identical $160,000 salary and take home thousands of dollars apart — purely because of **which state they live in**. Federal tax is the same everywhere, but **state income tax** ranges from **0% to over 13%**, quietly reshaping your real pay. For mobile tech workers choosing between offers in Austin, San Francisco, Seattle, or New York, understanding the state tax map is one of the highest-leverage financial decisions you'll make. Here's how it works.
 
@@ -2821,9 +2745,7 @@ State income tax is the quiet multiplier on your salary — 0% in Texas or Washi
     excerpt:
       "Returning to India before 59½ and need your retirement money? The IRS 72(t) SEPP rule lets you draw it down penalty-free — if you follow the strict rules.",
     topic: "retirement",
-    author: "Arjun Mehta",
     date: "2026-06-02",
-    readingTime: 9,
     featured: false,
     content: `If you're leaving the US before age 59½ and want to tap your 401(k) or IRA, the default cost is steep: ordinary income tax **plus a 10% early-withdrawal penalty**. But there's a legitimate, IRS-sanctioned way to access that money early **without the penalty** — **Rule 72(t)**, which sets up a stream of **Substantially Equal Periodic Payments (SEPP)**. It's powerful for returning NRIs who need income before retirement age, but the rules are rigid and breaking them is expensive. Here's how it works and when it makes sense.
 
@@ -2897,9 +2819,7 @@ Rule 72(t) is a legitimate way for returning NRIs to unlock retirement money bef
     excerpt:
       "Your tech salary blew past the Roth income limit? The backdoor Roth lets you contribute anyway — legally. Here's the process and the pro-rata trap to avoid.",
     topic: "retirement",
-    author: "Sneha Rao",
     date: "2026-05-26",
-    readingTime: 9,
     featured: false,
     content: `The Roth IRA is one of the best wealth-building tools in the US — contributions grow and come out **completely tax-free** in retirement. But there's a catch for successful NRIs: once your income climbs past a certain level, you're **barred from contributing directly**. Many tech workers on H-1B hit this ceiling within a few years. The solution is a perfectly legal maneuver called the **backdoor Roth IRA** — and while the concept is simple, one overlooked rule (the **pro-rata rule**) can turn it into a tax mess if you're not careful. Here's how to do it right.
 
@@ -2963,9 +2883,7 @@ If your income has outgrown direct Roth contributions, the backdoor Roth keeps t
     excerpt:
       "Your Health Savings Account is yours forever — even abroad. Here's how to spend it, why it's a stealth retirement account, and the cross-border tax catch.",
     topic: "retirement",
-    author: "Karthik Subramanian",
     date: "2026-05-19",
-    readingTime: 8,
     featured: false,
     content: `The Health Savings Account is the most underrated account in the US system — and one many NRIs forget about when they leave. The great news: like your [401(k)](/articles/what-happens-to-401k-leaving-usa), your **HSA belongs to you forever**, doesn't expire, and goes with you when you move back to India. The catch: how you use it after leaving — and how India treats it — needs a little planning to avoid penalties and surprise taxes. Here's how to make the most of your HSA on the way out.
 
@@ -3035,9 +2953,7 @@ Don't abandon your HSA when you leave the US — it's a lifelong, triple-tax-adv
     excerpt:
       "Funding a US home purchase with Indian savings? Here's how to navigate the LRS $250k limit, TCS, gift documentation, and getting money to escrow without delays.",
     topic: "property",
-    author: "Rohan Gupta",
     date: "2026-06-01",
-    readingTime: 9,
     featured: false,
     content: `Many NRIs fund part of their first US home with savings or family money from India. It's completely legal — but a large international transfer into a US **escrow account** under a closing deadline is exactly where things go wrong if you haven't planned. Between India's **Liberalised Remittance Scheme limits**, **TCS**, lender "**source of funds**" rules, and US **gift documentation**, a rushed transfer can delay your closing or trigger questions. Here's how to move down-payment money from India to the US smoothly.
 
@@ -3112,9 +3028,7 @@ Funding a US down payment from India is routine when you plan it: work within th
     excerpt:
       "Helping a relative buy a home by co-signing? Here's how lenders view non-citizen co-signers, the hit to your debt-to-income ratio, and the real risks.",
     topic: "property",
-    author: "Vikram Shah",
     date: "2026-05-24",
-    readingTime: 8,
     featured: false,
     content: `Family helps family — and in the US, that often means **co-signing a mortgage** so a relative with thin credit or income can qualify. If you're a visa holder asked to co-sign (or considering asking someone to co-sign for you), it's important to understand what you're really agreeing to. Co-signing isn't a friendly formality; it makes you **legally responsible for the entire loan**, and it directly affects your own borrowing power. Here's how it works for non-citizens and what to weigh before you sign.
 
@@ -3195,9 +3109,7 @@ Co-signing a US mortgage is an act of real financial generosity — and real fin
     excerpt:
       "Visa timeline in flux and a lease ending? Here's how to decide between a lease buyout, returning the car, or walking away — without losing money.",
     topic: "cars",
-    author: "Rohit Desai",
     date: "2026-05-22",
-    readingTime: 7,
     featured: false,
     content: `Leasing a car is popular with visa holders precisely because it's flexible — lower payments, a newer car, and no long-term ownership. But when your **immigration timeline becomes uncertain** and the lease is ending (or you may need to leave the country mid-lease), a new question appears: should you **buy out** the lease, **return** the car, or find another exit? The right answer depends on the buyout math and your plans. Here's how to decide without leaving money on the table.
 
@@ -3272,9 +3184,7 @@ A lease buyout is a math problem layered on a life decision. If the car is worth
     excerpt:
       "FHA loans offer just 3.5% down — and yes, visa holders can qualify. Here are the exact HUD rules for permanent and non-permanent residents seeking a low-down mortgage.",
     topic: "property",
-    author: "Vikram Shah",
     date: "2026-05-17",
-    readingTime: 8,
     featured: false,
     content: `Saving a 20% down payment is daunting, especially in your early US years. That's why the **FHA loan** — a government-backed mortgage requiring as little as **3.5% down** — is so appealing. The common myth is that you must be a citizen to get one. You don't. **Non-citizens, including many visa holders, can qualify for FHA loans** under specific HUD rules. Here's exactly who's eligible, what you'll need, and the trade-offs to weigh against a conventional loan.
 
@@ -3354,9 +3264,7 @@ The FHA loan makes a 3.5%-down home purchase realistic for newcomers, and yes �
     excerpt:
       "Want attractive yields on your dollars without converting to rupees? FCNR(B) deposits let NRIs earn fixed interest in foreign currency, tax-free in India.",
     topic: "money-transfer",
-    author: "Rohan Gupta",
     date: "2026-05-31",
-    readingTime: 8,
     featured: false,
     content: `Most NRIs face a dilemma with their savings: keep dollars in the US earning modest interest, or convert to rupees for higher Indian rates but take on **currency risk** if the rupee depreciates. There's a third option many overlook — the **FCNR deposit**, which lets you hold a fixed deposit **in foreign currency (USD, GBP, etc.)** at an Indian bank, earning attractive interest **without ever converting to rupees**. No currency risk, tax-free in India, and fully repatriable. Here's how it works and when it's a smart move.
 
@@ -3430,9 +3338,7 @@ FCNR deposits are an underused tool for NRIs who want a solid fixed yield on the
     excerpt:
       "Funding US tuition from Indian accounts? Education remittances get favorable TCS rates — as low as 0.5% with a loan. Here's how to keep your transfer costs minimal.",
     topic: "money-transfer",
-    author: "Arjun Mehta",
     date: "2026-05-27",
-    readingTime: 7,
     featured: false,
     content: `Funding a US degree from India is a huge financial undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** than ordinary transfers — in some cases the rate is just **0.5%** versus the **20%** that hits general remittances. But you only get the low rate if you understand the categories and document things correctly. Here's how to fund US tuition from India while keeping transfer taxes to a minimum.
 
@@ -3499,9 +3405,7 @@ Funding US tuition from India is far cheaper, tax-wise, than most families fear 
     excerpt:
       "Liquidating Indian stocks or mutual funds while living in the US? Here's how Indian TDS, US capital gains, and the PFIC rules combine — and how to avoid double tax.",
     topic: "money-transfer",
-    author: "Sneha Rao",
     date: "2026-05-23",
-    readingTime: 9,
     featured: false,
     content: `Selling your Indian investments after becoming a US resident is more complicated than just hitting "sell." Two tax systems apply at once: India taxes the gain (often via **TDS** withheld upfront), and the US taxes the **same gain** as worldwide income. And if what you're selling is an **Indian mutual fund**, the brutal **PFIC rules** can turn a normal capital gain into a punishing tax bill. Understanding how these layers combine — and how the DTAA prevents true double taxation — is essential before you liquidate. Here's the full picture.
 
@@ -3574,9 +3478,7 @@ Selling Indian investments as a US resident means navigating two tax systems, bu
     excerpt:
       "Inherited ancestral land, gold, or bank accounts in India? Here's how the IRS treats foreign inheritance, the crucial Form 3520, and the step-up basis that saves you tax.",
     topic: "money-transfer",
-    author: "Vikram Shah",
     date: "2026-05-20",
-    readingTime: 9,
     featured: false,
     content: `Inheriting assets in India while living in the US raises an anxious question: *"Will the IRS tax my inheritance?"* The reassuring headline is that **inheritance itself is not taxable income** in the US — you won't pay income tax just for receiving ancestral land, gold, or a bank balance. But there are **critical reporting requirements** (chiefly **Form 3520**) with severe penalties for missing them, and the **cost basis** rules determine what you'll owe later if you sell. Get the paperwork right and you protect your legacy; ignore it and a tax-free inheritance can spawn a five-figure penalty.
 
@@ -3650,9 +3552,7 @@ A foreign inheritance is one of the gentler cross-border events tax-wise: no US 
     excerpt:
       "Keeping your old resident savings account open after becoming an NRI is a FEMA violation. Here's how to convert your Indian accounts to NRE/NRO status correctly.",
     topic: "money-transfer",
-    author: "Rohan Gupta",
     date: "2026-05-18",
-    readingTime: 8,
     featured: false,
     content: `Here's a compliance gap most new NRIs don't even know they have: the moment you become a non-resident under Indian law, your **old resident savings accounts in India are no longer valid**. Continuing to operate them is a **FEMA violation** — not a grey area, an actual breach of India's foreign-exchange rules. The fix is straightforward: **redesignate your resident accounts to NRO** and set up an **NRE** account for your foreign income. Doing this promptly keeps you compliant and gives you the right banking infrastructure for life as an NRI. Here's the step-by-step.
 
@@ -3730,10 +3630,8 @@ Leaving your old resident account running after you've become an NRI is a quiet 
     excerpt:
       "A clear, hour-by-day plan for your first week in America — from your SIM card and bank account to the documents you must not lose.",
     topic: "new-to-usa",
-    author: "Priya Nair",
     date: "2026-06-02",
     updated: "2026-06-06",
-    readingTime: 8,
     featured: true,
     content: `The first week in a new country is a blur of jet lag, paperwork, and a hundred small decisions. The goal of these seven days is not to finish everything — it is to build the tiny foundation (a phone number, an address, a bank account) that everything else plugs into.
 
@@ -3793,10 +3691,8 @@ Week one is about foundations, not finishing. Phone, address, bank account, safe
     excerpt:
       "Your month-one roadmap to a working financial life in America — banking, credit, housing, and the order to tackle them in.",
     topic: "new-to-usa",
-    author: "Rohan Gupta",
     date: "2026-06-02",
     updated: "2026-06-06",
-    readingTime: 10,
     featured: true,
     content: `Once the first week's chaos settles, month one is about turning a survival setup into a real financial life: a stable home, a credit file, and the accounts you'll use for years.
 
@@ -3857,10 +3753,8 @@ Month one is a sequence, not a scramble. Bank account, SSN, credit card, apartme
     excerpt:
       "The exact list of documents every new immigrant must protect — and how to store them so you're never caught without one.",
     topic: "new-to-usa",
-    author: "Anjali Sharma",
     date: "2026-06-01",
     updated: "2026-06-06",
-    readingTime: 7,
     content: `In the US, a surprising number of everyday tasks — leasing an apartment, starting a job, filing taxes, renewing a visa — hinge on documents you brought or received at the border. Losing one can cost weeks. Here's what to protect and how.
 
 :::summary
@@ -3929,10 +3823,8 @@ A little organization now prevents big delays later. Sort your documents into im
     excerpt:
       "The avoidable money and life mistakes that cost new immigrants the most — and how to sidestep every one.",
     topic: "new-to-usa",
-    author: "Vikram Patel",
     date: "2026-05-30",
     updated: "2026-06-06",
-    readingTime: 9,
     content: `Most newcomer mistakes aren't dramatic — they're quiet defaults that compound. Here are the ones that cost the most, and the simple fixes.
 
 :::summary
@@ -3986,10 +3878,8 @@ You don't need to be an expert to avoid these — you just need to know they exi
     excerpt:
       "Taxes, cost of living, jobs, weather, and community — how to weigh where to settle as a new immigrant in America.",
     topic: "new-to-usa",
-    author: "Anjali Sharma",
     date: "2026-05-29",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `Where you live in the US shapes your taxes, your take-home pay, your commute, and how at-home you feel. For immigrants, a few factors matter more than the glossy "best places to live" lists suggest.
 
 :::summary
@@ -4055,10 +3945,8 @@ The "best" city is the one where your after-tax, after-rent income, your career,
     excerpt:
       "Premiums, deductibles, copays, and networks decoded — how US health insurance actually works for new immigrants.",
     topic: "insurance",
-    author: "Priya Nair",
     date: "2026-06-03",
     updated: "2026-06-06",
-    readingTime: 10,
     featured: true,
     content: `US healthcare is expensive and confusing, and going without insurance is one of the riskiest things a newcomer can do — a single hospital stay can cost tens of thousands of dollars. The good news: once you learn five terms, the system makes sense.
 
@@ -4126,10 +4014,8 @@ Don't gamble with health coverage. Take your employer plan if you have one, lear
     excerpt:
       "If people depend on your income, term life insurance is the cheapest peace of mind you can buy. Here's how it works for NRIs.",
     topic: "insurance",
-    author: "Vikram Patel",
     date: "2026-06-01",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `If your spouse, children, or parents depend on your income, life insurance turns a worst-case scenario into a manageable one. For most immigrant families, simple **term life** is all you need — and it's remarkably cheap when you're young and healthy.
 
 :::summary
@@ -4193,10 +4079,8 @@ If anyone depends on your income, term life insurance is cheap, essential protec
     excerpt:
       "Cheap, often required, and widely misunderstood — what renters insurance covers and why every tenant should have it.",
     topic: "insurance",
-    author: "Anjali Sharma",
     date: "2026-05-31",
     updated: "2026-06-06",
-    readingTime: 6,
     content: `Renters insurance is one of the best deals in American personal finance: usually $10–20 a month to protect your belongings, your wallet from lawsuits, and your living costs if disaster strikes. Many leases require it, and you should have it even if yours doesn't.
 
 :::summary
@@ -4253,10 +4137,8 @@ For the price of a couple of coffees a month, renters insurance protects everyth
     excerpt:
       "Liability, collision, deductibles, and why new immigrants pay more — plus how to lower your car insurance bill.",
     topic: "insurance",
-    author: "Rohan Gupta",
     date: "2026-05-30",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `Car insurance in the US is mandatory in almost every state, and new immigrants often pay more at first because insurers can't see your driving history. Understanding the coverage types — and the levers that lower your premium — can save you hundreds a year.
 
 :::summary
@@ -4320,10 +4202,8 @@ Auto insurance is unavoidable, but not fixed. Carry strong liability, add collis
     excerpt:
       "Two tax-advantaged health accounts, very different rules. Which one to use — and why the HSA may be the best account in America.",
     topic: "insurance",
-    author: "Priya Nair",
     date: "2026-05-28",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `HSAs and FSAs both let you pay for healthcare with pre-tax dollars, but they work very differently. For many immigrants, the HSA is a hidden gem — arguably the most tax-efficient account in the US.
 
 :::summary
@@ -4391,10 +4271,8 @@ If you're on a high-deductible plan, the HSA is one of the best accounts in Amer
     excerpt:
       "Budgeting, banking, credit, and campus life — the complete money playbook for Indian students on an F-1 visa.",
     topic: "students",
-    author: "Anjali Sharma",
     date: "2026-06-03",
     updated: "2026-06-06",
-    readingTime: 10,
     featured: true,
     content: `Studying in the US is a huge investment, and how you manage money as a student sets up your finances for years. F-1 life has its own rules — limited work options, tight budgets, and the chance to start building credit early.
 
@@ -4454,10 +4332,8 @@ Treat your student years as the start of your US financial life. Bank smart, bud
     excerpt:
       "No SSN? No credit history? You can still get a card and start building credit as an international student. Here's how.",
     topic: "students",
-    author: "Rohan Gupta",
     date: "2026-06-01",
     updated: "2026-06-06",
-    readingTime: 7,
     content: `A credit card isn't about spending more — for an international student, it's the simplest tool to start building a US credit history that you'll need for apartments, car loans, and even some jobs after graduation.
 
 :::summary
@@ -4514,10 +4390,8 @@ Don't wait until graduation to start credit. Pick a secured or student card, run
     excerpt:
       "From student to professional — the money moves to make during OPT and the jump to H-1B as an Indian graduate.",
     topic: "students",
-    author: "Vikram Patel",
     date: "2026-05-29",
     updated: "2026-06-06",
-    readingTime: 9,
     content: `The transition from F-1 student to OPT worker to H-1B professional is also a financial transition — your income jumps, new accounts open up, and a few early decisions compound for decades. Here's how to handle the money side.
 
 :::summary
@@ -4576,10 +4450,8 @@ Your first real paycheck is a fork in the road. Capture the match, keep credit s
     excerpt:
       "Visas, schools, healthcare, housing, and budgets — the complete checklist for relocating to America with your family.",
     topic: "families",
-    author: "Priya Nair",
     date: "2026-06-03",
     updated: "2026-06-06",
-    readingTime: 10,
     featured: true,
     content: `Moving alone is hard; moving with a family is a logistics project. Schools, dependents' visas, healthcare, and a bigger budget all need planning. This checklist keeps the big rocks in order.
 
@@ -4635,10 +4507,8 @@ Relocating with family rewards planning. Lock down dependents' documents, choose
     excerpt:
       "How US public schools, districts, and ratings work — and why your address decides your child's school.",
     topic: "families",
-    author: "Anjali Sharma",
     date: "2026-06-01",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `In the US, where you live usually determines which public school your child attends — and school quality varies widely between districts. For immigrant parents, understanding this system is key to choosing where to settle.
 
 :::summary
@@ -4704,10 +4574,8 @@ In America, your address is your child's school. Research the specific assigned 
     excerpt:
       "Pediatric care, family deductibles, and emergencies — how to plan healthcare for your whole family in the USA.",
     topic: "families",
-    author: "Vikram Patel",
     date: "2026-05-31",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `Healthcare is one of the biggest and most confusing expenses for immigrant families. Planning ahead — the right plan, a primary doctor, and an understanding of family costs — prevents both health and financial surprises.
 
 :::summary
@@ -4769,10 +4637,8 @@ Plan your family's healthcare like any other big expense: choose the plan that f
     excerpt:
       "Why immigrant families need a bigger cushion — and exactly how to build a 6-month emergency fund step by step.",
     topic: "families",
-    author: "Rohan Gupta",
     date: "2026-05-28",
     updated: "2026-06-06",
-    readingTime: 7,
     content: `An emergency fund matters for everyone, but for immigrant families it's a lifeline — you may not have local family to fall back on, and visa status can add income uncertainty. Here's how to build one that fits family life.
 
 :::summary
@@ -4838,10 +4704,8 @@ For an immigrant family, a six-month emergency fund is peace of mind in a countr
     excerpt:
       "What a brokerage account is, how to open one as a visa holder, and how to start investing beyond your 401(k).",
     topic: "investing",
-    author: "Priya Nair",
     date: "2026-06-02",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `Once your 401(k) match and emergency fund are handled, a regular brokerage account is how you invest the rest — and you don't need to be a citizen to open one.
 
 :::summary
@@ -4901,10 +4765,8 @@ A taxable brokerage account is the flexible third layer of investing after your 
     excerpt:
       "The 30% rule, the real costs beyond rent, and how new immigrants should budget for housing in America.",
     topic: "housing",
-    author: "Anjali Sharma",
     date: "2026-06-02",
     updated: "2026-06-06",
-    readingTime: 7,
     content: `Rent is the single biggest line in most newcomers' budgets, and overcommitting to it quietly squeezes everything else — savings, investing, even peace of mind. Here's how to find a number you can actually live with.
 
 :::summary
@@ -4971,10 +4833,8 @@ Find your rent ceiling from take-home pay, count the full cost of housing, and p
     excerpt:
       "Credit utilization is the second-biggest factor in your score. Here's how it works and how to keep it low.",
     topic: "credit",
-    author: "Rohan Gupta",
     date: "2026-06-01",
     updated: "2026-06-06",
-    readingTime: 6,
     content: `After payment history, **credit utilization** is the biggest driver of your credit score — and it's one of the easiest to control once you understand how it's measured.
 
 :::summary
@@ -5038,10 +4898,8 @@ Utilization is a fast lever on your credit score. Keep balances low relative to 
     excerpt:
       "Tipping, credit culture, lifestyle inflation, and family expectations — the cultural side of money for new immigrants.",
     topic: "community",
-    author: "Vikram Patel",
     date: "2026-05-30",
     updated: "2026-06-06",
-    readingTime: 7,
     content: `Money in America isn't just numbers — it comes with a culture that's different from India's. Understanding these unwritten rules helps you avoid awkward moments and quietly costly habits.
 
 :::summary
@@ -5096,10 +4954,8 @@ Adjusting to American money culture is part of settling in. Build credit wisely,
     excerpt:
       "Hard-won lessons from immigrants who've been there — the money and life advice they wish someone had given them on day one.",
     topic: "stories",
-    author: "Priya Nair",
     date: "2026-05-29",
     updated: "2026-06-06",
-    readingTime: 8,
     content: `Ask any immigrant who's been in the US a few years what they'd tell their newly-arrived self, and the same themes come up. Here are the lessons people most often wish they'd known on day one.
 
 :::summary
@@ -5155,10 +5011,8 @@ The patterns are remarkably consistent: start credit early, grab the match, buil
     excerpt:
       "A practical guide for long-term NRIs comparing USA and India investments, currency risk, taxes, inflation, family goals, and flexibility.",
     topic: "long-term-nri-wealth",
-    author: "Rohan Gupta",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 11,
     featured: true,
     content: `When you first landed in the US, the answer felt obvious: keep building in India because that's where your accounts, your family, and your comfort were. Ten years later the question is genuinely harder. Your salary, your mortgage, your kids' college, and most of your future expenses are now in dollars — but a meaningful slice of your net worth may still sit in rupees. "USA or India?" is no longer about loyalty or sentiment. It's about matching where your money grows to where you will actually spend it.
 
@@ -5252,10 +5106,8 @@ Convert both to the same currency and adjust for inflation. Take the rupee retur
     excerpt:
       "Learn how NRIs should compare India fixed deposits with US investments after considering inflation, currency depreciation, taxes, and liquidity.",
     topic: "long-term-nri-wealth",
-    author: "Sneha Rao",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 11,
     featured: true,
     content: `A 7% fixed deposit feels almost irresistible when your US savings account pays a fraction of that in real terms. For many NRIs, the India FD is the most emotionally comfortable investment they own: familiar, "guaranteed," and tied to home. But comparing an India FD to US investments on headline interest rate alone is one of the most common mistakes long-term NRIs make. The honest comparison has to include inflation, currency depreciation, taxes in two countries, and what you give up by locking money in rupees.
 
@@ -5351,10 +5203,8 @@ Yes. NRE and NRO FD balances are foreign financial accounts and count toward the
     excerpt:
       "Understand why US-raised children may face challenges managing inherited property in India, including paperwork, distance, legal issues, and family disputes.",
     topic: "long-term-nri-wealth",
-    author: "Priya Nair",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 10,
     content: `Many NRI parents quietly assume their India property will simply pass to their children — a flat in the family's city, ancestral land, a house bought during good NRI years. Emotionally it makes sense. Practically, a US-born or US-raised child who has never managed Indian paperwork, doesn't speak the local language fluently, and lives in a different time zone can find that inheritance more burden than gift. This article is about the gap between the emotional plan and the practical reality — and why talking about it early matters.
 
 :::summary
@@ -5436,10 +5286,8 @@ No. A nominee typically holds the asset in trust and is responsible for passing 
     excerpt:
       "Compare buying investment property in the USA vs India as an NRI, including rent, financing, taxes, control, currency risk, and management issues.",
     topic: "long-term-nri-wealth",
-    author: "Rohan Gupta",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 11,
     content: `For NRIs with stable US income, "should I buy a rental?" eventually leads to a second question: here or in India? An India property offers familiarity, family proximity, and an emotional anchor to home. A US property offers proximity to you, easier financing, and a legal system you operate in daily. This guide compares the two honestly across the factors that actually determine whether an investment property builds wealth or drains your weekends — without claiming either country always wins.
 
 :::summary
@@ -5538,10 +5386,8 @@ US rental income is reported on your US return. India rental income is taxable i
     excerpt:
       "Learn the risks NRIs should consider when keeping large assets in India, including inflation, currency depreciation, taxes, control, and future needs.",
     topic: "long-term-nri-wealth",
-    author: "Sneha Rao",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 10,
     content: `Keeping some money in India is sensible. Keeping a large share of your net worth there, years after your life moved to dollars, can quietly cost you — not through any single dramatic loss, but through a slow drip of currency depreciation, inflation, tax friction, and reduced control. This article isn't an argument to pull everything out of India. It's an argument to be deliberate about how much stays, and why.
 
 :::summary
@@ -5626,10 +5472,8 @@ Yes. US tax residents must report foreign financial accounts via FBAR (FinCEN 11
     excerpt:
       "A practical estate planning guide for NRIs with assets in the USA and India, covering wills, beneficiaries, property documents, and family planning.",
     topic: "long-term-nri-wealth",
-    author: "Priya Nair",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 11,
     featured: true,
     content: `Most NRIs spend years building wealth and almost no time planning how it will pass on — especially when that wealth is split across two countries with different laws. A US will may not cleanly govern Indian property; an Indian nominee is not the same as a legal heir; beneficiary designations can override your will entirely. For families with US and India assets, estate planning isn't a one-document task. It's coordinating two legal systems so your wishes actually hold.
 
@@ -5724,10 +5568,8 @@ Yes, generally. Accounts like 401k, IRAs, and life insurance pass by beneficiary
     excerpt:
       "Explore whether NRIs retiring in the USA should keep or sell India property, including taxes, family needs, currency risk, maintenance, and heirs.",
     topic: "long-term-nri-wealth",
-    author: "Rohan Gupta",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 10,
     content: `As retirement approaches, the India property you've held for years quietly turns into a decision. Keep it for sentiment, family use, and possible appreciation? Or sell while you still have the energy to manage the process, and convert it into something that funds your dollar retirement? There's no universally right answer — but retirement is exactly when this question deserves a clear-eyed look rather than another year of postponement.
 
 :::summary
@@ -5813,10 +5655,8 @@ Yes. India property value and rent are in rupees, but your retirement spending i
     excerpt:
       "A retirement planning guide for NRIs balancing USA expenses, India assets, exchange rates, inflation, healthcare, and family goals.",
     topic: "long-term-nri-wealth",
-    author: "Sneha Rao",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 12,
     featured: true,
     content: `Retirement planning is hard enough in one country. For NRIs, it spans two — a dollar lifestyle and dollar expenses on one side, rupee assets and family ties on the other, with an exchange rate sitting in the middle of every projection. The central challenge is a currency mismatch: if your bills are in dollars but part of your nest egg is in rupees, your retirement security depends partly on a rate you can't control. This guide walks through planning around that reality without pretending either country has all the answers.
 
@@ -5912,10 +5752,8 @@ US tax residents are taxed on worldwide income, so 401k/IRA withdrawals, Social 
     excerpt:
       "Before buying India property for US-raised children, NRIs should consider legal control, future interest, maintenance, inheritance, and currency issues.",
     topic: "long-term-nri-wealth",
-    author: "Priya Nair",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 10,
     content: `"We're buying it for the kids." It's one of the most common reasons NRIs purchase property in India — a gift, a root, a future asset for children growing up far from home. The intention is loving. The outcome depends entirely on whether those US-raised children will ever want, use, or be able to manage an Indian property. Before you buy, it's worth pressure-testing the assumption that the property your children will value is the one you'd choose for them.
 
 :::summary
@@ -5994,10 +5832,8 @@ Yes. Money invested in India property is in rupees; if the child later sells and
     excerpt:
       "A practical checklist for NRIs living in the USA for 10+ years covering investments, India assets, taxes, insurance, estate planning, and retirement.",
     topic: "long-term-nri-wealth",
-    author: "Rohan Gupta",
     date: "2026-06-06",
     updated: "2026-06-06",
-    readingTime: 11,
     content: `After a decade in the US, your financial life has quietly grown complicated. You have US accounts and India accounts, possibly property in both countries, retirement plans half-optimized, insurance you set up years ago, and an estate plan you've been meaning to write. This checklist is for the settled NRI who needs to step back, take inventory across both countries, and tidy up the pieces that drift when life gets busy. Work through it once a year and you'll catch the gaps before they become expensive.
 
 :::summary
@@ -6097,10 +5933,8 @@ For taxes (especially FBAR/FATCA and PFIC), estate planning, and investment stra
     excerpt:
       "Is indexed universal life worth it? An evenhanded IUL vs 401(k) vs taxable brokerage comparison — caps, fees, floors, death benefit, and wealth transfer — with an interactive calculator that doesn't pick sides.",
     topic: "investing",
-    author: "Rohan Gupta",
     date: "2026-06-10",
     updated: "2026-06-10",
-    readingTime: 16,
     content: `:::summary
 An IUL is permanent life insurance whose cash value earns index-linked interest — capped, credited without dividends, and after meaningful charges. It is not a market investment. For most people building wealth, a 401(k) (especially with an employer match) and then a taxable brokerage account come first. An IUL can still earn a place for specific estate-liquidity and permanent-insurance needs once those are maxed. The calculator below lets you stress-test all three with your own numbers — including a bad-market scenario where the IUL's floor genuinely helps.
 :::
@@ -6216,6 +6050,16 @@ Treat them as optimistic scenarios, not predictions. Illustrations assume today'
 Typically a premium load of roughly 5–10% off every payment, monthly cost-of-insurance charges that rise with age, administrative and rider fees, and surrender charges that can last 10–15 years. The result is heavily front-loaded costs: early cash value often trails premiums paid by a wide margin. Our calculator simplifies these into a premium load plus an annual percentage — real policies should be evaluated from their own illustration's expense pages.`,
   },
 ];
+
+/**
+ * Public article list. Reading time is derived from the body at build time
+ * (word count / 220 wpm, rounded up, min 1) so the label can never be inflated
+ * or drift from the actual text.
+ */
+export const articles: Article[] = rawArticles.map((a) => ({
+  ...a,
+  readingTime: computeReadingTime(a.content),
+}));
 
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);

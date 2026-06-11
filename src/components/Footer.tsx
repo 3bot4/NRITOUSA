@@ -45,6 +45,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Deepak Middha — Founder", href: "/about-deepak" },
       { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Use", href: "/terms-of-use" },
@@ -61,11 +62,18 @@ export default function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-bold">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white">
+            <Link
+              href="/"
+              aria-label="NRI to USA — home"
+              className="flex items-center gap-2 font-bold"
+            >
+              <span
+                aria-hidden
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white"
+              >
                 N
               </span>
-              <span className="text-lg tracking-tight text-ink-900">
+              <span aria-hidden className="text-lg tracking-tight text-ink-900">
                 NRI <span className="font-semibold text-ink-400">to</span>{" "}
                 <span className="text-brand-600">USA</span>
               </span>

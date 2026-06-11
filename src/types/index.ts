@@ -21,7 +21,6 @@ export interface Article {
   seoTitle?: string;
   excerpt: string;
   topic: string; // Topic slug
-  author: string;
   /** ISO date string */
   date: string;
   readingTime: number; // minutes

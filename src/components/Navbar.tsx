@@ -44,11 +44,18 @@ export default function Navbar() {
     >
       <Container>
         <nav className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2 font-bold">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white shadow-sm">
+          <Link
+            href="/"
+            aria-label="NRI to USA — home"
+            className="flex items-center gap-2 font-bold"
+          >
+            <span
+              aria-hidden
+              className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white shadow-sm"
+            >
               N
             </span>
-            <span className="text-lg tracking-tight text-ink-900">
+            <span aria-hidden className="text-lg tracking-tight text-ink-900">
               NRI <span className="text-ink-400 font-semibold">to</span>{" "}
               <span className="text-brand-600">USA</span>
             </span>

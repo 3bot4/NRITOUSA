@@ -43,7 +43,7 @@ export default function Newsletter() {
               </button>
             </form>
             <p className="mt-3 text-xs text-ink-500">
-              Join 12,000+ NRIs already reading.
+              Practical guides only. No spam, unsubscribe anytime.
             </p>
           </div>
         </div>

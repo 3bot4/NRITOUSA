@@ -2,36 +2,37 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 
+// Anonymized reader lessons — illustrative, not attributed to named people.
 const stories = [
   {
-    title: "My First Year in America",
-    author: "Karthik S.",
+    title: "A reader's first year in America",
+    label: "Reader lesson",
     excerpt:
-      "From a confusing first winter to finally feeling at home — what the first 12 months really taught me.",
+      "From a confusing first winter to finally feeling at home — what the first 12 months can teach you.",
     accent: "from-purple-500 to-indigo-600",
     href: "/topics/stories",
   },
   {
-    title: "Mistakes I Made Buying My First Car",
-    author: "Rahul M.",
+    title: "Mistakes to avoid buying your first car",
+    label: "Reader lesson",
     excerpt:
-      "I walked in with no credit and walked out with an 18% loan. Here's what I'd do differently.",
+      "Walking in with no credit can mean an 18% loan. Here's what to do differently.",
     accent: "from-cyan-500 to-blue-600",
     href: "/topics/stories",
   },
   {
-    title: "What I Wish I Knew Before Renting",
-    author: "Ananya I.",
+    title: "What to know before renting your first apartment",
+    label: "Reader lesson",
     excerpt:
-      "Hidden fees, a brutal security deposit, and the lease clause that cost me. Learn from my misses.",
+      "Hidden fees, a brutal security deposit, and the lease clause that catches people out.",
     accent: "from-amber-500 to-orange-600",
     href: "/topics/stories",
   },
   {
-    title: "Learning About 401k Too Late",
-    author: "Sneha R.",
+    title: "Why not to skip the 401k match",
+    label: "Reader lesson",
     excerpt:
-      "I skipped the employer match for two years to 'save'. That decision cost me thousands.",
+      "Skipping the employer match for two years to 'save' can quietly cost thousands.",
     accent: "from-emerald-500 to-teal-600",
     href: "/topics/stories",
   },
@@ -43,8 +44,8 @@ export default function StoriesPreview() {
       <Container>
         <SectionHeading
           eyebrow="Real experiences"
-          title="Personal immigrant stories"
-          description="Honest, first-person lessons you won't find in a textbook."
+          title="Lessons from immigrant readers"
+          description="Honest, anonymized lessons you won't find in a textbook."
           action={{ label: "All stories", href: "/topics/stories" }}
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -69,7 +70,7 @@ export default function StoriesPreview() {
                   {story.excerpt}
                 </p>
                 <p className="mt-4 text-xs font-medium text-ink-400">
-                  {story.author}
+                  {story.label}
                 </p>
               </div>
             </Link>

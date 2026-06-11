@@ -138,8 +138,13 @@ export default function AboutPage() {
             </h2>
             <p className="mt-4 leading-8 text-ink-700">
               {site.name} is owned and operated by{" "}
-              <strong>{site.owner}</strong>. Content is produced by the{" "}
-              {site.author}. You can reach us anytime through our{" "}
+              <strong>{site.owner}</strong>, founded by{" "}
+              <Link href="/about-deepak" className="text-brand-600 underline">
+                Deepak Middha
+              </Link>
+              , a Chartered Accountant and Series 65 holder who writes and
+              reviews the guides on this site. You can reach us anytime through
+              our{" "}
               <Link href="/contact" className="text-brand-600 underline">
                 contact page
               </Link>

@@ -16,8 +16,8 @@ export default function CommunityPreview() {
       <Container>
         <SectionHeading
           eyebrow="Community"
-          title="Questions Immigrants Actually Ask"
-          description="Real questions from people figuring out money and life in the US."
+          title="Common questions from new immigrants"
+          description="The questions people most often have figuring out money and life in the US."
         />
 
         <div className="grid gap-4 lg:grid-cols-2">
@@ -53,13 +53,13 @@ export default function CommunityPreview() {
           <div className="flex flex-col justify-center rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-600 to-emerald-600 p-6 text-white shadow-card">
             <p className="text-lg font-bold">Have a question of your own?</p>
             <p className="mt-1 text-sm text-white/80">
-              Ask the community and learn from people a few steps ahead of you.
+              Send it over and we may turn it into a guide that helps others too.
             </p>
             <Link
-              href="/topics/community"
+              href="/contact"
               className="mt-4 w-fit rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 transition-transform hover:-translate-y-0.5"
             >
-              Join the Community
+              Ask a question
             </Link>
           </div>
         </div>

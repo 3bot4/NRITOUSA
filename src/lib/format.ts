@@ -6,6 +6,16 @@ export function formatDate(iso: string): string {
   });
 }
 
+/**
+ * Build-time reading time in minutes: body word count / 220 wpm, rounded up,
+ * minimum 1. Computed from article content so the label can never drift from
+ * the actual text.
+ */
+export function computeReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
 /** Deterministic initials for author avatars (no external images). */
 export function initials(name: string): string {
   return name

@@ -1,5 +1,6 @@
 import type { Article, Topic } from "@/types";
 import { site } from "@/lib/site";
+import { author } from "@/lib/author";
 import { getTopicTitle } from "@/lib/topics";
 
 /* ------------------------------------------------------------------ *
@@ -157,7 +158,12 @@ export function articleJsonLd(article: Article) {
     description: article.excerpt,
     datePublished: article.date,
     dateModified: article.updated ?? article.date,
-    author: { "@type": "Organization", name: site.author, url: site.url },
+    author: {
+      "@type": "Person",
+      name: author.name,
+      jobTitle: author.jobTitle,
+      url: absoluteUrl(author.url),
+    },
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     url,

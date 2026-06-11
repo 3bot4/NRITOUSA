@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Article } from "@/types";
 import { getTopic } from "@/lib/topics";
-import { formatDate, initials } from "@/lib/format";
+import { formatDate } from "@/lib/format";
+import { author, authorInitials } from "@/lib/author";
 
 export default function ArticleCard({
   article,
@@ -45,10 +46,10 @@ export default function ArticleCard({
 
           <div className="mt-auto flex items-center gap-3 pt-4">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-700">
-              {initials(article.author)}
+              {authorInitials}
             </span>
             <div className="text-xs text-ink-400">
-              <span className="font-medium text-ink-600">{article.author}</span>
+              <span className="font-medium text-ink-600">{author.name}</span>
               <span className="mx-1.5">·</span>
               <span>{formatDate(article.date)}</span>
               <span className="mx-1.5">·</span>
