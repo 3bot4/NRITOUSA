@@ -10,7 +10,7 @@ import SectionHeading from "@/components/SectionHeading";
 import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
-import { author } from "@/lib/author";
+import { resolveByline } from "@/lib/byline";
 import {
   articleJsonLd,
   articlePath,
@@ -54,7 +54,7 @@ export function generateMetadata({
       publishedTime: article.date,
       modifiedTime: article.updated ?? article.date,
       section: topic?.title,
-      authors: [author.name],
+      authors: [resolveByline(article).name],
     },
     twitter: {
       card: "summary_large_image",
@@ -140,10 +140,7 @@ export default function ArticlePage({
                 {article.excerpt}
               </p>
 
-              <ArticleByline
-                date={article.updated ?? article.date}
-                readingTime={article.readingTime}
-              />
+              <ArticleByline article={article} />
             </div>
           </Container>
         </header>

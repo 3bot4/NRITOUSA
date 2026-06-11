@@ -19,7 +19,14 @@ export type IconName =
   | "share"
   | "download"
   | "link"
-  | "check";
+  | "check"
+  | "user"
+  | "users"
+  | "pen"
+  | "star"
+  | "megaphone"
+  | "linkedin"
+  | "mail";
 
 const PATHS: Record<IconName, React.ReactNode> = {
   calendar: (
@@ -73,6 +80,41 @@ const PATHS: Record<IconName, React.ReactNode> = {
   download: <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" />,
   link: <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" />,
   check: <path d="M20 6L9 17l-5-5" />,
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 21c0-3.6 3-5.5 6.5-5.5s6.5 1.9 6.5 5.5" />
+      <path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 15.2c2.6.5 4 2.4 4 5.3" />
+    </>
+  ),
+  pen: <path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />,
+  star: (
+    <path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" />
+  ),
+  megaphone: (
+    <>
+      <path d="M3 11v2a1 1 0 0 0 1 1h2l9 5V5L6 10H4a1 1 0 0 0-1 1z" />
+      <path d="M18 8a4 4 0 0 1 0 8" />
+    </>
+  ),
+  linkedin: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 7l9 6 9-6" />
+    </>
+  ),
 };
 
 export default function Icon({

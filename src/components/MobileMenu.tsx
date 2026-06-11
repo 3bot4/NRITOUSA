@@ -47,6 +47,15 @@ export default function MobileMenu({
             <span>Cross-border calculators</span>
           </Link>
 
+          <Link
+            href="/contribute"
+            onClick={onClose}
+            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
+          >
+            <span className="text-xl">✍️</span>
+            <span>Write for Us</span>
+          </Link>
+
           <p className="mb-2 mt-2 px-1 text-xs font-semibold uppercase tracking-wider text-ink-400">
             Browse topics
           </p>

@@ -6065,6 +6065,13 @@ export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
 
+/** All articles written by a given guest contributor, newest first. */
+export function getArticlesByAuthor(authorSlug: string): Article[] {
+  return articles
+    .filter((a) => a.authorSlug === authorSlug)
+    .sort((a, b) => +new Date(b.date) - +new Date(a.date));
+}
+
 export function getArticlesByTopic(topicSlug: string): Article[] {
   return articles
     .filter((a) => a.topic === topicSlug)

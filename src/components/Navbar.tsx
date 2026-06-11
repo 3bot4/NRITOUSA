@@ -14,6 +14,7 @@ export const navLinks = [
   { label: "New to USA", href: "/topics/new-to-usa" },
   { label: "India-USA Money", href: "/topics/money-transfer" },
   { label: "Long-Term NRI", href: "/long-term-nri-wealth" },
+  { label: "Write for Us", href: "/contribute" },
   { label: "About", href: "/about" },
 ];
 

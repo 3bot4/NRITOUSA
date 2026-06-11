@@ -21,6 +21,12 @@ export interface Article {
   seoTitle?: string;
   excerpt: string;
   topic: string; // Topic slug
+  /**
+   * Slug of a guest contributor (see lib/authors). When omitted, the article
+   * is attributed to the site's owner/editor (Deepak Middha) — the default for
+   * all in-house finance/tax content.
+   */
+  authorSlug?: string;
   /** ISO date string */
   date: string;
   readingTime: number; // minutes
@@ -29,4 +35,26 @@ export interface Article {
   updated?: string;
   /** Markdown-ish body rendered as paragraphs/headings */
   content: string;
+}
+
+/**
+ * A guest contributor. Drives the /contributors directory and /author/[slug]
+ * profile pages. Add a new author here and the layout/pages pick it up — no
+ * component changes needed.
+ */
+export interface Author {
+  /** URL slug, e.g. "asha-rao" → /author/asha-rao */
+  slug: string;
+  name: string;
+  /** Professional title shown under the name, e.g. "Senior SDE at a FAANG". */
+  role: string;
+  /** Two-sentence bio. */
+  bio: string;
+  /** Public LinkedIn profile URL. */
+  linkedin: string;
+  /**
+   * Optional headshot served from /public, e.g. "/contributors/asha-rao.jpg".
+   * When omitted, an initials avatar is rendered instead.
+   */
+  headshot?: string;
 }

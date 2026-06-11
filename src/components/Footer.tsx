@@ -46,6 +46,8 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "About", href: "/about" },
       { label: "Deepak Middha — Founder", href: "/about-deepak" },
+      { label: "Write for Us", href: "/contribute" },
+      { label: "Contributors", href: "/contributors" },
       { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Use", href: "/terms-of-use" },

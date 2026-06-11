@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Article } from "@/types";
 import { getTopic } from "@/lib/topics";
 import { formatDate } from "@/lib/format";
-import { author, authorInitials } from "@/lib/author";
+import { resolveByline } from "@/lib/byline";
 
 export default function ArticleCard({
   article,
@@ -12,6 +12,7 @@ export default function ArticleCard({
   variant?: "default" | "compact";
 }) {
   const topic = getTopic(article.topic);
+  const by = resolveByline(article);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink-900/5 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
@@ -46,10 +47,10 @@ export default function ArticleCard({
 
           <div className="mt-auto flex items-center gap-3 pt-4">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-700">
-              {authorInitials}
+              {by.initials}
             </span>
             <div className="text-xs text-ink-400">
-              <span className="font-medium text-ink-600">{author.name}</span>
+              <span className="font-medium text-ink-600">{by.name}</span>
               <span className="mx-1.5">·</span>
               <span>{formatDate(article.date)}</span>
               <span className="mx-1.5">·</span>

@@ -1,6 +1,6 @@
-import type { Article, Topic } from "@/types";
+import type { Article, Author, Topic } from "@/types";
 import { site } from "@/lib/site";
-import { author } from "@/lib/author";
+import { resolveByline } from "@/lib/byline";
 import { getTopicTitle } from "@/lib/topics";
 
 /* ------------------------------------------------------------------ *
@@ -151,6 +151,7 @@ export function faqJsonLd(items: FaqItem[]) {
 /** Article schema for a single guide. */
 export function articleJsonLd(article: Article) {
   const url = articleUrl(article.slug);
+  const by = resolveByline(article);
   return {
     "@type": "Article",
     "@id": `${url}#article`,
@@ -160,10 +161,14 @@ export function articleJsonLd(article: Article) {
     dateModified: article.updated ?? article.date,
     author: {
       "@type": "Person",
-      name: author.name,
-      jobTitle: author.jobTitle,
-      url: absoluteUrl(author.url),
+      name: by.name,
+      ...(by.role ? { jobTitle: by.role } : {}),
+      url: absoluteUrl(by.url),
+      ...(by.linkedin ? { sameAs: [by.linkedin] } : {}),
     },
+    ...(by.isContributor
+      ? { editor: { "@type": "Person", name: site.publisher } }
+      : {}),
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     url,
@@ -193,6 +198,36 @@ export function topicCollectionJsonLd(topic: Topic, articles: Article[]) {
         name: a.title,
       })),
     },
+  };
+}
+
+/** ProfilePage + Person schema for a contributor's author page (E-E-A-T). */
+export function authorProfileJsonLd(author: Author, authored: Article[]) {
+  const url = absoluteUrl(`/author/${author.slug}`);
+  return {
+    "@type": "ProfilePage",
+    "@id": `${url}#profilepage`,
+    url,
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${url}#person`,
+      name: author.name,
+      jobTitle: author.role,
+      description: author.bio,
+      url,
+      sameAs: [author.linkedin],
+      ...(author.headshot ? { image: absoluteUrl(author.headshot) } : {}),
+    },
+    ...(authored.length
+      ? {
+          hasPart: authored.map((a) => ({
+            "@type": "Article",
+            headline: a.title,
+            url: articleUrl(a.slug),
+          })),
+        }
+      : {}),
   };
 }
 
