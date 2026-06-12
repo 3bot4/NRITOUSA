@@ -1,0 +1,19 @@
+{
+  "_comment": "Manually-maintained homepage values that are NOT part of the automated daily pipeline. Edit these by hand. nreFd = best NRE fixed-deposit rate shown in the sidebar (update from bank websites). bulletinReleases = known/estimated U.S. State Dept Visa Bulletin publication dates (ISO, ET); the sidebar shows days until the next one after today. The Visa Bulletin for a given month is published in the second week of the PRIOR month.",
+  "nreFd": {
+    "rate": 7.25,
+    "bank": "IndusInd Bank",
+    "tenor": "1–2 yr NRE FD",
+    "updated": "2026-06-01",
+    "source": "Bank published rate card"
+  },
+  "bulletinReleases": [
+    "2026-06-13",
+    "2026-07-15",
+    "2026-08-14",
+    "2026-09-12",
+    "2026-10-14",
+    "2026-11-13",
+    "2026-12-12"
+  ]
+}
