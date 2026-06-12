@@ -1,7 +1,7 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-06-12T00:45:15-04:00",
-  "asOfLabel": "Jun 12, 2026, 12:45 AM ET",
+  "asOf": "2026-06-12T00:48:32-04:00",
+  "asOfLabel": "Jun 12, 2026, 12:48 AM ET",
   "items": [
     {
       "key": "usdinr",
@@ -12,7 +12,7 @@
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-12T00:45:15-04:00",
+      "fetchedAt": "2026-06-12T00:48:32-04:00",
       "stale": false
     },
     {
@@ -37,7 +37,7 @@
       "decimals": 0,
       "source": "Yahoo Finance EOD",
       "fetchedAt": "2026-06-12T00:45:15-04:00",
-      "stale": false
+      "stale": true
     },
     {
       "key": "gold",

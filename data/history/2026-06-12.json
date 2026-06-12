@@ -1,6 +1,6 @@
 {
   "date": "2026-06-12",
-  "asOf": "2026-06-12T00:45:15-04:00",
+  "asOf": "2026-06-12T00:48:32-04:00",
   "items": [
     {
       "key": "usdinr",
@@ -11,7 +11,7 @@
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-12T00:45:15-04:00",
+      "fetchedAt": "2026-06-12T00:48:32-04:00",
       "stale": false
     },
     {
@@ -36,7 +36,7 @@
       "decimals": 0,
       "source": "Yahoo Finance EOD",
       "fetchedAt": "2026-06-12T00:45:15-04:00",
-      "stale": false
+      "stale": true
     },
     {
       "key": "gold",
