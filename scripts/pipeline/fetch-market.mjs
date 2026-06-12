@@ -60,9 +60,15 @@ async function run() {
     const { key, label, unit, decimals } = src.meta;
     const last = prevItems.get(key);
     try {
-      const { value, source } = await src.fetchValue();
+      const { value, previous: srcPrev, source } = await src.fetchValue();
       const v = round(value, decimals);
-      let previous = last && Number.isFinite(last.value) ? last.value : v;
+      // Prefer the source's own prior observation (true day-over-day); else fall
+      // back to our last committed snapshot; else self (first ever run).
+      let previous = Number.isFinite(srcPrev)
+        ? round(srcPrev, decimals)
+        : last && Number.isFinite(last.value)
+        ? last.value
+        : v;
       let changePct =
         previous !== 0 ? round(((v - previous) / previous) * 100, 2) : 0;
       let note = "";
