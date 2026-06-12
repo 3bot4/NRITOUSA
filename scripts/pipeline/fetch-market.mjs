@@ -34,6 +34,12 @@ const SOURCES = [usdinr, nifty50, sp500, gold];
 const HISTORY_DAYS = 30;
 const DRY_RUN = !!process.env.DRY_RUN;
 
+// Largest believable single-snapshot % move per item. A bigger jump is almost
+// always a seed/baseline discontinuity or a bad tick rather than a real daily
+// move (indices have circuit breakers well under this), so we treat it as a new
+// baseline (changePct 0) instead of displaying an alarming, wrong number.
+const MAX_MOVE_PCT = { usdinr: 5, nifty50: 10, sp500: 10, gold: 12 };
+
 const MARKET_COMMENT =
   "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). " +
   "The frontend reads ONLY this static file — no client-side API calls. " +
@@ -56,9 +62,16 @@ async function run() {
     try {
       const { value, source } = await src.fetchValue();
       const v = round(value, decimals);
-      const previous = last && Number.isFinite(last.value) ? last.value : v;
-      const changePct =
+      let previous = last && Number.isFinite(last.value) ? last.value : v;
+      let changePct =
         previous !== 0 ? round(((v - previous) / previous) * 100, 2) : 0;
+      let note = "";
+      if (Math.abs(changePct) > (MAX_MOVE_PCT[key] ?? 10)) {
+        // Implausible jump → treat today's value as a fresh baseline.
+        note = ` [baseline reset: ${changePct >= 0 ? "+" : ""}${changePct}% vs prior treated as 0]`;
+        previous = v;
+        changePct = 0;
+      }
       items.push({
         key,
         label,
@@ -71,7 +84,7 @@ async function run() {
         fetchedAt: nowEtIso(now),
         stale: false,
       });
-      summary.push(`  ✓ ${label.padEnd(10)} ${unit}${v} (${changePct >= 0 ? "+" : ""}${changePct}%) — ${source}`);
+      summary.push(`  ✓ ${label.padEnd(10)} ${unit}${v} (${changePct >= 0 ? "+" : ""}${changePct}%) — ${source}${note}`);
     } catch (err) {
       if (last) {
         items.push({ ...last, stale: true });
