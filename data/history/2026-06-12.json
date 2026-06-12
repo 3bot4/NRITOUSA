@@ -1,17 +1,17 @@
 {
   "date": "2026-06-12",
-  "asOf": "2026-06-12T00:48:32-04:00",
+  "asOf": "2026-06-12T00:59:45-04:00",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
       "value": 95.76,
-      "previous": 95.76,
-      "changePct": 0,
+      "previous": 95.27,
+      "changePct": 0.51,
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-12T00:48:32-04:00",
+      "fetchedAt": "2026-06-12T00:59:45-04:00",
       "stale": false
     },
     {

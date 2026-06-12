@@ -1,18 +1,18 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-06-12T00:48:32-04:00",
-  "asOfLabel": "Jun 12, 2026, 12:48 AM ET",
+  "asOf": "2026-06-12T00:59:45-04:00",
+  "asOfLabel": "Jun 12, 2026, 12:59 AM ET",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
       "value": 95.76,
-      "previous": 95.76,
-      "changePct": 0,
+      "previous": 95.27,
+      "changePct": 0.51,
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-12T00:48:32-04:00",
+      "fetchedAt": "2026-06-12T00:59:45-04:00",
       "stale": false
     },
     {
