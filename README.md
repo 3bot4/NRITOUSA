@@ -118,16 +118,34 @@ DRY_RUN=1 node scripts/pipeline/fetch-market.mjs # fetch + print, write nothing
 
 ### Data sources (all free / open, no API keys)
 
-| Item | Primary | Fallback | Terms |
+| Item | Primary | Fallbacks | Terms |
 | ---- | ------- | -------- | ----- |
-| USD/INR | RBI/FBIL reference rate *(opt-in via `RBI_REFERENCE_URL`)* | ECB reference rate via [Frankfurter](https://frankfurter.dev) | ECB data is open/public; Frankfurter is free, no key. RBI/FBIL has no stable key-less JSON feed, so it's an env hook (see below). |
-| NIFTY 50 | [Stooq](https://stooq.com) EOD (`^nsei`) | Yahoo Finance chart (`^NSEI`) | Stooq permits free EOD downloads. Yahoo is an undocumented public endpoint used only as fallback. |
-| S&P 500 | Stooq EOD (`^spx`) | Yahoo Finance chart (`^GSPC`) | as above |
-| Gold (USD/oz) | Stooq EOD (`xauusd`, spot) | Yahoo Finance chart (`GC=F`, COMEX future) | as above; spot vs near-future differ by a few dollars — the stamped `source` records which supplied the value. |
+| USD/INR | ECB reference rate via [Frankfurter](https://frankfurter.dev) *(RBI/FBIL opt-in via `RBI_REFERENCE_URL`)* | FRED `DEXINUS` | ECB/Frankfurter is open, key-less, and serves CI runners reliably. RBI/FBIL has no stable key-less JSON feed, so it's an env hook (see below). |
+| S&P 500 | [FRED](https://fred.stlouisfed.org) `SP500` | [Stooq](https://stooq.com) `^spx` → Yahoo `^GSPC` | FRED is U.S. government public-domain data. |
+| Gold (USD/oz) | FRED `GOLDAMGBD228NLBM` (LBMA fixing) | Stooq `xauusd` → Yahoo `GC=F` | FRED public-domain; sources differ by a few dollars (fix vs spot vs future) — the stamped `source` records which supplied the value. |
+| NIFTY 50 | Stooq `^nsei` | Yahoo `^NSEI` | No open/public NIFTY feed serves CI runners; this is the least reliable item (see note). |
 | EB-2 India FAD | `data/visa-bulletin/current.json` (the **same** data the Green Card estimator uses — no second parser) | — | U.S. Dept of State Visa Bulletin. Updated by the monthly bulletin process, **not** this daily job. |
 
 We deliberately do **not** use Twelve Data, Alpha Vantage, or similar commercial
 free tiers whose terms restrict public display.
+
+#### Datacenter-IP reality & the recommended free FRED key
+
+Most free, key-less market sources (Stooq, Yahoo, even FRED's `fredgraph.csv`)
+**block or rate-limit datacenter IPs**, which is exactly what GitHub Actions runs
+on. From Actions, only ECB/Frankfurter (USD/INR) is reliably reachable key-less;
+S&P 500, gold, and NIFTY 50 frequently fall back to their last-good value flagged
+`stale`.
+
+**Recommended fix (free, no display terms):** create a **FRED API key** at
+<https://fredaccount.stlouisfed.org/apikeys> and add it as a repo **secret named
+`FRED_API_KEY`** (Settings → Secrets and variables → Actions → New repository
+secret). The key is free, instant, and FRED is public-domain U.S. government data.
+With it set, **USD/INR, S&P 500, and gold all fetch reliably** from Actions via the
+official FRED API. NIFTY 50 has no FRED series, so it remains best-effort (Stooq/
+Yahoo) — it will simply show the last-good value with a "stale" badge when those
+sources block the runner. The site renders stale values gracefully, so nothing
+breaks either way.
 
 **Optional RBI primary:** set repository variables `RBI_REFERENCE_URL` (a JSON
 endpoint returning the rate) and `RBI_REFERENCE_PATH` (dot-path to the number,

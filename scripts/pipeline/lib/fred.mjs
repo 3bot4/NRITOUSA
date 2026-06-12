@@ -1,34 +1,53 @@
 /**
- * FRED (Federal Reserve Bank of St. Louis) open-data CSV reader. No API key, and
- * — unlike Stooq/Yahoo — it serves datacenter IPs (e.g. GitHub Actions) reliably.
+ * FRED (Federal Reserve Bank of St. Louis) open-data reader. No commercial terms
+ * — FRED is U.S. government public-domain data.
  *
- * fredgraph.csv?id=SERIES returns:
- *   observation_date,SERIES
- *   2026-06-10,7266.99
- *   2026-06-11,7394.30
- * Missing observations (holidays) appear as ".". We return the latest valid
- * value plus the prior valid value, so day-over-day % change is computed from
- * FRED's own series rather than our snapshot cadence.
+ * Two transports:
+ *  1. With a free FRED API key (env FRED_API_KEY): the official JSON API at
+ *     api.stlouisfed.org. This is built for automation and serves datacenter IPs
+ *     (e.g. GitHub Actions) reliably — STRONGLY recommended. Get a key free at
+ *     https://fredaccount.stlouisfed.org/apikeys (no cost, no display terms).
+ *  2. Without a key: the public fredgraph.csv endpoint. Works from normal IPs but
+ *     its bot protection often blocks datacenter IPs, so on Actions it may fail
+ *     and the item falls back / goes stale.
+ *
+ * Returns the latest valid observation plus the prior valid one, so day-over-day
+ * % change comes from FRED's own series.
  */
-import { fetchText } from "./http.mjs";
+import { fetchText, fetchJson } from "./http.mjs";
 
 export async function fetchFred(seriesId, source) {
+  const key = process.env.FRED_API_KEY;
+  const [value, previous] = key
+    ? await viaApi(seriesId, key)
+    : await viaCsv(seriesId);
+  if (!Number.isFinite(value)) throw new Error(`FRED ${seriesId}: no value`);
+  return { value, previous, source };
+}
+
+async function viaApi(seriesId, key) {
+  const url =
+    `https://api.stlouisfed.org/fred/series/observations` +
+    `?series_id=${encodeURIComponent(seriesId)}` +
+    `&api_key=${encodeURIComponent(key)}&file_type=json` +
+    `&sort_order=desc&limit=8`;
+  const j = await fetchJson(url, { timeoutMs: 15_000 });
+  const vals = (j?.observations ?? [])
+    .map((o) => Number(o.value))
+    .filter((v) => Number.isFinite(v) && v > 0); // desc order
+  return [vals[0], vals[1]];
+}
+
+async function viaCsv(seriesId) {
   const csv = await fetchText(
     `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${encodeURIComponent(seriesId)}`,
     { timeoutMs: 15_000 }
   );
   const rows = csv.trim().split(/\r?\n/);
-  if (rows.length < 2) throw new Error(`FRED ${seriesId}: no rows`);
-  // Collect numeric values in date order, skipping "." placeholders.
   const vals = [];
   for (let i = 1; i < rows.length; i++) {
     const v = Number(rows[i].split(",")[1]);
     if (Number.isFinite(v) && v > 0) vals.push(v);
   }
-  if (!vals.length) throw new Error(`FRED ${seriesId}: no numeric values`);
-  return {
-    value: vals.at(-1),
-    previous: vals.length > 1 ? vals.at(-2) : undefined,
-    source,
-  };
+  return [vals.at(-1), vals.length > 1 ? vals.at(-2) : undefined];
 }

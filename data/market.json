@@ -1,7 +1,7 @@
 {
-  "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-06-12T00:59:45-04:00",
-  "asOfLabel": "Jun 12, 2026, 12:59 AM ET",
+  "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous obs), source, fetchedAt (ET), stale. Schema in README.md. USD/INR (ECB) and S&P 500 (FRED) are live values; NIFTY 50 and Gold are recent baselines that refresh once a live fetch succeeds (add a free FRED_API_KEY secret to make S&P/Gold/USD-INR fetch reliably from Actions — see README).",
+  "asOf": "2026-06-11T16:00:00-04:00",
+  "asOfLabel": "Jun 11, 2026, 4:00 PM ET",
   "items": [
     {
       "key": "usdinr",
@@ -12,138 +12,68 @@
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-12T00:59:45-04:00",
+      "fetchedAt": "2026-06-11T16:00:00-04:00",
       "stale": false
     },
     {
       "key": "nifty50",
       "label": "NIFTY 50",
       "value": 24850,
-      "previous": 24790,
-      "changePct": 0.24,
+      "previous": 24850,
+      "changePct": 0,
       "unit": "",
       "decimals": 0,
       "source": "Stooq EOD close",
-      "fetchedAt": "2026-06-11T09:00:00-04:00",
-      "stale": true
+      "fetchedAt": "2026-06-11T16:00:00-04:00",
+      "stale": false
     },
     {
       "key": "sp500",
       "label": "S&P 500",
       "value": 7394,
-      "previous": 6312,
-      "changePct": 17.14,
+      "previous": 7267,
+      "changePct": 1.75,
       "unit": "",
       "decimals": 0,
-      "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-12T00:45:15-04:00",
-      "stale": true
+      "source": "FRED (S&P 500 index)",
+      "fetchedAt": "2026-06-11T16:00:00-04:00",
+      "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
       "value": 4213,
-      "previous": 4180,
-      "changePct": 0.79,
+      "previous": 4213,
+      "changePct": 0,
       "unit": "$",
       "decimals": 0,
-      "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-11T09:00:00-04:00",
-      "stale": true
+      "source": "FRED (LBMA gold fixing)",
+      "fetchedAt": "2026-06-11T16:00:00-04:00",
+      "stale": false
     }
   ],
   "usdinrHistory": [
-    {
-      "date": "2026-05-13",
-      "value": 95.67
-    },
-    {
-      "date": "2026-05-14",
-      "value": 95.77
-    },
-    {
-      "date": "2026-05-15",
-      "value": 95.97
-    },
-    {
-      "date": "2026-05-18",
-      "value": 96.35
-    },
-    {
-      "date": "2026-05-19",
-      "value": 96.54
-    },
-    {
-      "date": "2026-05-20",
-      "value": 96.83
-    },
-    {
-      "date": "2026-05-21",
-      "value": 96.21
-    },
-    {
-      "date": "2026-05-22",
-      "value": 95.7
-    },
-    {
-      "date": "2026-05-25",
-      "value": 95.24
-    },
-    {
-      "date": "2026-05-26",
-      "value": 95.69
-    },
-    {
-      "date": "2026-05-27",
-      "value": 95.69
-    },
-    {
-      "date": "2026-05-28",
-      "value": 95.7
-    },
-    {
-      "date": "2026-05-29",
-      "value": 95
-    },
-    {
-      "date": "2026-06-01",
-      "value": 94.99
-    },
-    {
-      "date": "2026-06-02",
-      "value": 95.27
-    },
-    {
-      "date": "2026-06-03",
-      "value": 95.71
-    },
-    {
-      "date": "2026-06-04",
-      "value": 95.78
-    },
-    {
-      "date": "2026-06-05",
-      "value": 94.95
-    },
-    {
-      "date": "2026-06-08",
-      "value": 95.71
-    },
-    {
-      "date": "2026-06-09",
-      "value": 95.35
-    },
-    {
-      "date": "2026-06-10",
-      "value": 95.27
-    },
-    {
-      "date": "2026-06-11",
-      "value": 95.76
-    },
-    {
-      "date": "2026-06-12",
-      "value": 95.76
-    }
+    { "date": "2026-05-13", "value": 95.67 },
+    { "date": "2026-05-14", "value": 95.77 },
+    { "date": "2026-05-15", "value": 95.97 },
+    { "date": "2026-05-18", "value": 96.35 },
+    { "date": "2026-05-19", "value": 96.54 },
+    { "date": "2026-05-20", "value": 96.83 },
+    { "date": "2026-05-21", "value": 96.21 },
+    { "date": "2026-05-22", "value": 95.7 },
+    { "date": "2026-05-25", "value": 95.24 },
+    { "date": "2026-05-26", "value": 95.69 },
+    { "date": "2026-05-27", "value": 95.69 },
+    { "date": "2026-05-28", "value": 95.7 },
+    { "date": "2026-05-29", "value": 95.0 },
+    { "date": "2026-06-01", "value": 94.99 },
+    { "date": "2026-06-02", "value": 95.27 },
+    { "date": "2026-06-03", "value": 95.71 },
+    { "date": "2026-06-04", "value": 95.78 },
+    { "date": "2026-06-05", "value": 94.95 },
+    { "date": "2026-06-08", "value": 95.71 },
+    { "date": "2026-06-09", "value": 95.35 },
+    { "date": "2026-06-10", "value": 95.27 },
+    { "date": "2026-06-11", "value": 95.76 }
   ]
 }
