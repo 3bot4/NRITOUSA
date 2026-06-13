@@ -22,30 +22,48 @@ const rawArticles: Omit<Article, "readingTime">[] = [
     topic: "credit",
     date: "2026-05-28",
     featured: true,
-    content: `When you land in the US, you are financially invisible. Your CIBIL score, your years of disciplined EMI payments, your salary in India — none of it crosses the ocean. To American lenders you are a blank page, and a blank page is treated almost as badly as a bad page.
+    content: `Your CIBIL score and years of clean EMI payments don't cross the ocean — to US lenders you start as a blank page. But credit here is a system with rules you can use legitimately. This is the 12-month playbook to go from no file to 700+.
 
-The good news: credit is a system with rules, and rules can be gamed legitimately. With the right moves you can reach a 700+ score within a year.
+:::info
+title: The 12-month picture
+- **Months 1–3:** secured card + authorized user
+- **Months 4–6:** score appears, climbs into the 600s
+- **Months 7–12:** qualify for a real unsecured card and cross 700
+:::
 
-## Start with a secured card
-A secured credit card is backed by a refundable deposit you put down — usually $200 to $500. That deposit becomes your limit. Because the bank takes no risk, approval is near-automatic even with no SSN history. The Discover it Secured and Capital One Platinum Secured are the usual starting points.
+## The three moves that build your file
+Do these in order. The first two you can do in week one; the third is a habit you keep forever.
 
-Use it for one small recurring charge — a subscription, your phone bill — and pay it in full every month. That single habit drives most of your early score.
+:::steps
+Start with a secured card — back it with a $200–$500 refundable deposit, which becomes your limit. Approval is near-automatic with no SSN history. The Discover it Secured and Capital One Platinum Secured are the usual starting points.
+Get added as an authorized user — if a spouse, sibling, or friend has a seasoned, clean US card, their history backfills onto your report. You never even need to use the card.
+Keep utilization under 10% — on a $500 limit, carry a statement balance under $50 even if you pay it off in full. Utilization is the second-biggest scoring factor after payment history.
+:::
 
-## Get added as an authorized user
-If a spouse, sibling, or close friend already has a seasoned US card with a clean history, ask to be added as an authorized user. Their account history can backfill onto your report, instantly giving you "age" you didn't earn. You never even need to use the card.
-
-## Keep utilization low
-Credit utilization — the percentage of your limit you use — is the second-biggest factor after payment history. Keep it under 10% if you can. On a $500 limit, that means carrying a statement balance under $50, even if you pay everything off.
+:::tip
+- Put one small recurring charge (a subscription, your phone bill) on the secured card and autopay it in full
+- That single habit drives most of your early score
+- Check your free score monthly through your card's app to watch it move
+:::
 
 ## What NOT to do
-- Don't apply for five cards in your first month. Each application is a hard inquiry and dings your score.
-- Don't close your first card once you upgrade. Age of accounts matters.
-- Don't carry a balance to "build credit." That's a myth that only earns the bank interest.
+These three mistakes quietly set newcomers back months.
 
-## The 12-month timeline
-Months 1–3: secured card + authorized user. Months 4–6: your score appears and climbs into the 600s. Months 7–12: you qualify for a real unsecured card, graduate your secured deposit back, and cross 700.
+:::warn
+- Don't apply for five cards in your first month — each application is a hard inquiry that dings your score
+- Don't close your first card once you upgrade — age of accounts matters
+- Don't carry a balance to "build credit" — it's a myth that only earns the bank interest
+:::
 
-Patience compounds here exactly like interest does. Start today, automate the payments, and let time do the rest.`,
+:::cta
+title: Putting down a card deposit?
+body: See how that cash could grow instead, and what a 700+ score saves you on your first loan.
+button: Open the wealth calculator
+href: /long-term-nri-wealth
+:::
+
+## The bottom line
+Secured card plus authorized-user status, then keep utilization low and payments automatic — that's the whole game. The one caveat: patience, because age of accounts only compounds with time. Start today and let it run.`,
   },
   {
     slug: "best-bank-account-nri-usa",

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import Container from "@/components/Container";
-import { articleImage } from "@/lib/stockImages";
 import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import ArticleByline from "@/components/ArticleByline";
@@ -14,6 +12,7 @@ import TuitionCalc from "@/components/education/TuitionCalc";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import { resolveByline } from "@/lib/byline";
+import { formatDate } from "@/lib/format";
 import {
   articleJsonLd,
   articlePath,
@@ -99,31 +98,14 @@ export default function ArticlePage({
       />
 
       <article>
-        {/* Hero image, tinted with the topic's brand gradient */}
-        <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
-          <Image
-            src={articleImage(article)}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div
-            className={`absolute inset-0 bg-gradient-to-tr opacity-50 mix-blend-multiply ${
-              topic?.accent ?? "from-brand-500 to-brand-700"
-            }`}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
-        </div>
-
-        {/* Header */}
-        <header className="border-b border-ink-900/5 bg-white py-12 sm:py-16">
+        {/* Compact header — no hero image. Category, read time and date on
+            one line, then straight into the title and subtitle. */}
+        <header className="border-b border-ink-900/5 bg-white pt-8 pb-7 sm:pt-10">
           <Container>
-            <div className="mx-auto max-w-prose">
+            <div className="mx-auto max-w-[720px]">
               <nav
                 aria-label="Breadcrumb"
-                className="mb-5 flex flex-wrap items-center gap-2 text-sm text-ink-400"
+                className="mb-4 flex flex-wrap items-center gap-2 text-xs text-ink-400"
               >
                 <Link href="/" className="hover:text-brand-600">
                   Home
@@ -145,20 +127,26 @@ export default function ArticlePage({
                 )}
               </nav>
 
-              {topic && (
-                <Link
-                  href={topicPath(topic.slug)}
-                  className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${topic.accent} px-3 py-1 text-xs font-semibold text-white`}
-                >
-                  <span>{topic.icon}</span>
-                  {topic.label}
-                </Link>
-              )}
+              {/* Category pill · read time · date */}
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-ink-400">
+                {topic && (
+                  <Link
+                    href={topicPath(topic.slug)}
+                    className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${topic.accent} px-3 py-1 font-semibold text-white`}
+                  >
+                    <span>{topic.icon}</span>
+                    {topic.label}
+                  </Link>
+                )}
+                <span>{article.readingTime} min read</span>
+                <span aria-hidden>·</span>
+                <span>{formatDate(article.updated ?? article.date)}</span>
+              </div>
 
-              <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-4xl md:text-[2.75rem]">
+              <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">
                 {article.title}
               </h1>
-              <p className="mt-4 text-lg leading-relaxed text-ink-500">
+              <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {article.excerpt}
               </p>
 
@@ -168,7 +156,7 @@ export default function ArticlePage({
         </header>
 
         {/* Body */}
-        <div className="py-12 sm:py-16">
+        <div className="py-8 sm:py-10">
           <Container>
             <div className="mx-auto">
               {(() => {
@@ -188,7 +176,7 @@ export default function ArticlePage({
                 return <ArticleBody content={article.content} />;
               })()}
 
-              <div className="mx-auto mt-12 max-w-prose rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
+              <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">
                   A quick note:
                 </strong>{" "}
@@ -203,7 +191,7 @@ export default function ArticlePage({
               </div>
 
               {topic && (
-                <div className="mx-auto mt-6 max-w-prose text-sm">
+                <div className="mx-auto mt-6 max-w-[720px] text-sm">
                   <Link
                     href={topicPath(topic.slug)}
                     className="font-medium text-brand-600 hover:text-brand-700"
@@ -219,7 +207,7 @@ export default function ArticlePage({
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="bg-white py-16 sm:py-20">
+        <section className="bg-white py-12 sm:py-14">
           <Container>
             <SectionHeading eyebrow="Keep reading" title="Related guides" />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
