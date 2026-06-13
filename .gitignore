@@ -35,3 +35,6 @@ next-env.d.ts
 /.git-corrupt-bak
 *.dmg
 .vercel
+
+# generated audit reports (the audit.js / website-audit.sh tooling is tracked)
+audit-report.*.md

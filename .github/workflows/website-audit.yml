@@ -1,0 +1,49 @@
+name: Weekly site audit
+
+# Runs the technical audit (audit.js) against the live site once a week and on
+# demand. Crawls every sitemap page, checks every link/image, validates anchors,
+# extracts SEO, and checks MX. Fails the run if hard errors are found (genuinely
+# broken links, 4xx/5xx pages, broken anchors, or missing MX) — bot-blocked
+# external links are re-checked with a browser UA and don't count.
+#
+# The Markdown report is uploaded as a build artifact on every run.
+
+on:
+  schedule:
+    - cron: "0 2 * * 0" # Every Sunday at 02:00 UTC
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Site URL to audit"
+        required: false
+        default: "https://www.nritousa.com"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run audit
+        run: ./website-audit.sh "${{ github.event.inputs.url || 'https://www.nritousa.com' }}"
+
+      - name: Upload report
+        if: always() # keep the report even when the audit fails on a regression
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: audit-report.*.md
+          if-no-files-found: warn
