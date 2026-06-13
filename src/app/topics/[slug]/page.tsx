@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/Container";
+import { topicHeroImage } from "@/lib/stockImages";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import { topics, getTopic } from "@/lib/topics";
@@ -45,6 +47,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
   if (!topic) notFound();
 
   const articles = getArticlesByTopic(topic.slug);
+  const hero = topicHeroImage(topic.slug);
 
   const jsonLd = jsonLdGraph(
     topicCollectionJsonLd(topic, articles),
@@ -65,7 +68,20 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
       <section
         className={`relative overflow-hidden border-b border-ink-900/5 bg-gradient-to-br ${topic.accent}`}
       >
-        <div className="absolute inset-0 bg-ink-900/40" />
+        {hero && (
+          <Image
+            src={hero}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        )}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br opacity-80 mix-blend-multiply ${topic.accent}`}
+        />
+        <div className="absolute inset-0 bg-ink-900/50" />
         <Container className="relative py-16 sm:py-20">
           <nav
             aria-label="Breadcrumb"

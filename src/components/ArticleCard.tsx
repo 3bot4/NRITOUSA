@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Article } from "@/types";
 import { getTopic } from "@/lib/topics";
 import { formatDate } from "@/lib/format";
 import { resolveByline } from "@/lib/byline";
+import { articleImage } from "@/lib/stockImages";
 
 export default function ArticleCard({
   article,
@@ -13,21 +15,29 @@ export default function ArticleCard({
 }) {
   const topic = getTopic(article.topic);
   const by = resolveByline(article);
+  const cover = articleImage(article);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink-900/5 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
       <Link href={`/articles/${article.slug}`} className="flex h-full flex-col">
-        {/* Gradient cover stands in for a hero image */}
-        <div
-          className={`relative aspect-[16/9] w-full bg-gradient-to-br ${
-            topic?.accent ?? "from-brand-500 to-brand-700"
-          }`}
-        >
-          <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink-800 backdrop-blur">
+        {/* Stock photo cover, tinted with the topic's brand gradient */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
+          <Image
+            src={cover}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-tr opacity-60 mix-blend-multiply ${
+              topic?.accent ?? "from-brand-500 to-brand-700"
+            }`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/30 to-transparent" />
+          <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink-800 shadow-sm backdrop-blur">
+            {topic?.icon && <span aria-hidden>{topic.icon}</span>}
             {topic?.label ?? "Guide"}
-          </span>
-          <span className="absolute bottom-3 left-4 text-4xl opacity-90">
-            {topic?.icon}
           </span>
         </div>
 

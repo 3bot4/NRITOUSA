@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/Container";
+import { articleImage } from "@/lib/stockImages";
 import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import ArticleByline from "@/components/ArticleByline";
@@ -97,6 +99,24 @@ export default function ArticlePage({
       />
 
       <article>
+        {/* Hero image, tinted with the topic's brand gradient */}
+        <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
+          <Image
+            src={articleImage(article)}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-tr opacity-50 mix-blend-multiply ${
+              topic?.accent ?? "from-brand-500 to-brand-700"
+            }`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
+        </div>
+
         {/* Header */}
         <header className="border-b border-ink-900/5 bg-white py-12 sm:py-16">
           <Container>
