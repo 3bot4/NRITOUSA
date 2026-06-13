@@ -6506,6 +6506,8 @@ Let's build out what actually happens to your $80,000 over ten years in a well-c
 
 Your $80,000 returned roughly $290,000–$310,000 in a decade — not counting equity you could pull out through a cash-out refinance to buy the next property. That is nearly five times your original cash back in real, measurable wealth, with a significant portion sheltered from taxes along the way.
 
+One honest caveat: depreciation is a deferral, not a free lunch. Every dollar you depreciate also lowers your cost basis in the property, so when you eventually sell, your taxable gain is larger by the total depreciation you claimed — this is called **depreciation recapture** (taxed at up to 25% federally) on top of regular capital gains. The deductions still help enormously, because you get the tax savings now and pay later in cheaper future dollars. And the bill is not even inevitable: if you roll the sale proceeds into another investment property through a [1031 exchange](/articles/investment-property-usa-vs-india), both the capital gain and the recapture carry forward into the new property — deferred again, and potentially erased entirely by the step-up in basis your heirs receive when the property passes to the next generation.
+
 ## Why real estate beats the stock market after taxes
 This is the argument most financial advisors — who earn commissions on stock and fund products — will never give you.
 
@@ -6533,8 +6535,9 @@ This is not an argument to abandon stocks entirely — a portfolio with both is 
 | Tangible, legacy asset | Yes | No |
 | Inflation hedge | Strong | Moderate |
 | Control | High | None |
+| Liquidity | Low (weeks to months to sell) | High (sell in seconds) |
 
-The market fell 38% in 2008, 34% in March 2020, and over 20% in 2022. Your rental in a good market still collected rent every single month through each crash. Your tenant did not know or care that the S&P 500 was down. For the cross-border version of this decision, see [investing in the US versus India](/articles/invest-in-usa-or-india) and [US vs India investment property](/articles/investment-property-usa-vs-india).
+The market fell 38% in 2008, 34% in March 2020, and over 20% in 2022. Your rental in a good market still collected rent every single month through each crash. Your tenant did not know or care that the S&P 500 was down. The trade-off cuts the other way too: a stock can be sold in seconds, while real estate is an illiquid asset — selling a property can take weeks or months, plus closing costs and agent fees, so it is poorly suited to money you might need in a hurry. For the cross-border version of this decision, see [investing in the US versus India](/articles/invest-in-usa-or-india) and [US vs India investment property](/articles/investment-property-usa-vs-india).
 
 ## The immigrant advantage in real estate
 Immigrant families often bring a specific set of traits that make them better at this than the average American buyer.
