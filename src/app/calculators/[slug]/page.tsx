@@ -19,6 +19,7 @@ import PropertyGainsCalculator from "@/components/calculators/PropertyGainsCalcu
 import Retire401kCalculator from "@/components/calculators/Retire401kCalculator";
 import BackdoorRothCalculator from "@/components/calculators/BackdoorRothCalculator";
 import RentVsBuyCalculator from "@/components/calculators/RentVsBuyCalculator";
+import RentVsBuyImmigrantCalculator from "@/components/calculators/RentVsBuyImmigrantCalculator";
 import RemittanceCalculator from "@/components/calculators/RemittanceCalculator";
 
 const REGISTRY: Record<string, React.ComponentType> = {
@@ -27,6 +28,7 @@ const REGISTRY: Record<string, React.ComponentType> = {
   "401k-return-to-india": Retire401kCalculator,
   "backdoor-roth-eligibility": BackdoorRothCalculator,
   "rent-vs-buy-visa": RentVsBuyCalculator,
+  "rent-vs-buy-immigrant": RentVsBuyImmigrantCalculator,
   "remittance-tcs-cost": RemittanceCalculator,
 };
 

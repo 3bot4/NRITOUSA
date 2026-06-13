@@ -146,6 +146,30 @@ export const calculators: CalculatorMeta[] = [
     },
   },
   {
+    slug: "rent-vs-buy-immigrant",
+    title: "Rent vs. Buy Calculator for Immigrants & Visa Holders",
+    label: "Rent vs Buy (Immigrant)",
+    category: "Housing, Cars & Remittances",
+    description:
+      "The only rent vs. buy calculator that factors in your visa, immigration timeline, and relocation risk — built for visa holders, not 30-year US citizens.",
+    icon: "🏡",
+    accent: "from-emerald-500 to-teal-600",
+    seoTitle: "Rent vs. Buy Calculator for Immigrants & Visa Holders",
+    seoDescription:
+      "Built for visa holders — accounts for visa type, immigration timeline, and relocation risk. See the immigrant-adjusted break-even and whether buying beats renting.",
+    related: [
+      "rent-vs-buy-house-immigrants",
+      "buying-first-home-on-visa",
+      "selling-us-home-nri-firpta",
+      "transfer-money-india-us-home-downpayment",
+    ],
+    leadMagnet: {
+      heading: "Deciding whether to buy on a visa?",
+      body: "Get our free home-buying-on-a-visa checklist — visa-friendly lenders, the EMI-to-rent test, and how to fund a down payment from India.",
+      cta: "Send me the visa home-buying guide",
+    },
+  },
+  {
     slug: "remittance-tcs-cost",
     title: "True-Cost Remittance & TCS Fee Estimator",
     label: "Remittance & TCS",
