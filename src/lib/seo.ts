@@ -105,12 +105,9 @@ export const organizationJsonLd = {
     width: 1200,
     height: 630,
   },
-  sameAs: [
-    site.social.twitter,
-    site.social.instagram,
-    site.social.youtube,
-    site.social.linkedin,
-  ],
+  // Only real, resolving profiles — populated from site.social, which is empty
+  // until accounts exist (so this is currently []).
+  sameAs: Object.values(site.social).filter(Boolean),
 };
 
 export const websiteJsonLd = {

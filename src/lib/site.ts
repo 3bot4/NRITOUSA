@@ -15,14 +15,15 @@ export const site = {
   email: "hello@nritousa.com",
   /** First year of publication — used in copyright and Organization schema. */
   foundingYear: 2026,
-  social: {
-    twitter: "https://twitter.com/nritousa",
-    instagram: "https://instagram.com/nritousa",
-    youtube: "https://youtube.com/@nritousa",
-    linkedin: "https://linkedin.com/company/nritousa",
-  },
-  /** Twitter/X handle for the twitter:creator / twitter:site cards. */
-  twitterHandle: "@nritousa",
+  /**
+   * Social profiles. Empty until real accounts exist — we don't render links
+   * to profiles that 404 (every previous handle did; see the audit). Re-add a
+   * key here and the footer, contact page, and Organization `sameAs` light up
+   * again automatically.
+   */
+  social: {} as Partial<
+    Record<"twitter" | "instagram" | "youtube" | "linkedin", string>
+  >,
 };
 
 export type Site = typeof site;

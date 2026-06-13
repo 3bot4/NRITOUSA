@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-06-10",
-  "source": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations",
+  "source": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
   "sourceLabel": "USCIS H-1B Cap Season",
   "currentFiscalYear": 2027,
   "notes": "Dates for each H-1B cap cycle. USCIS announces the exact registration window each January–February; values flagged with todo:true are based on the usual pattern and MUST be verified against the official USCIS cap-season announcement at the source URL before each season. Registration/selection counts come from the USCIS post-season data release.",

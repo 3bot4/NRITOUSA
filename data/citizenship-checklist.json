@@ -13,7 +13,7 @@
   },
   "civicsTest": {
     "newTestCutoffDate": "2025-10-20",
-    "_cutoff_note": "Applicants who FILED N-400 on or after this date take the 2025 civics test; those who filed before take the 2008 test. TODO(owner): verify the cutoff date and rules at uscis.gov/citizenship/2025-civics-test before launch.",
+    "_cutoff_note": "Applicants who FILED N-400 on or after this date take the 2025 civics test; those who filed before take the 2008 test. TODO(owner): verify the cutoff date and rules at uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test before launch.",
     "newTest": { "poolSize": 128, "asked": 20, "toPass": 12, "label": "2025 civics test" },
     "oldTest": { "poolSize": 100, "asked": 10, "toPass": 6, "label": "2008 civics test" },
     "englishTest": "The English test is unchanged: a Speaking test (during the interview), a Reading test (read 1 of up to 3 sentences correctly), and a Writing test (write 1 of up to 3 sentences correctly).",
@@ -68,7 +68,7 @@
       "summary": "If you filed (or will file) your N-400 on or after October 20, 2025, you take the new 2025 civics test: 128-question study pool, 20 questions asked at the interview, and you must answer 12 correctly to pass. Filed before that date? You keep the 2008 test (100-question pool, 10 asked, 6 to pass).",
       "whyNow": "The pass bar roughly doubled. Knowing which test applies to you decides how much you need to study — this tool derives it from your filing date.",
       "lastUpdated": "2026-06",
-      "source": "https://www.uscis.gov/citizenship/2025-civics-test"
+      "source": "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test"
     },
     {
       "id": "expanded-vetting",
@@ -122,7 +122,7 @@
       "summary": "India does not allow dual citizenship. Becoming a US citizen automatically ends your Indian citizenship — you must surrender your Indian passport and obtain a 'Surrender Certificate', then you can apply for an OCI (Overseas Citizen of India) card to keep lifelong visa-free travel and most rights (except voting, government jobs, and farmland purchase).",
       "whyNow": "This is a post-oath task many new citizens forget; travelling to India on a cancelled Indian passport causes problems. Plan the OCI step in advance.",
       "lastUpdated": "2026-06",
-      "source": "https://www.mha.gov.in/en/foreigners/overseas-citizenship-of-india-oci-cardholder"
+      "source": "https://ociservices.gov.in/"
     }
   ],
   "sections": [

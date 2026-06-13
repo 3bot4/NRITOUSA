@@ -101,27 +101,6 @@ export default function ContactPage() {
               correct it. Accuracy matters to us.
             </p>
 
-            <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">
-              Follow along
-            </h2>
-            <p className="mt-3 leading-8 text-ink-700">
-              We share new guides and updates on social media:
-            </p>
-            <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
-              <a href={site.social.twitter} className="text-brand-600 hover:text-brand-700">
-                Twitter / X
-              </a>
-              <a href={site.social.instagram} className="text-brand-600 hover:text-brand-700">
-                Instagram
-              </a>
-              <a href={site.social.youtube} className="text-brand-600 hover:text-brand-700">
-                YouTube
-              </a>
-              <a href={site.social.linkedin} className="text-brand-600 hover:text-brand-700">
-                LinkedIn
-              </a>
-            </div>
-
             <div className="mt-12 rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
               <strong className="font-semibold text-ink-700">
                 Please note:

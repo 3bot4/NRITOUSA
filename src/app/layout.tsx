@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     description: site.description,
   },
   twitter: {
+    // No @site/@creator handle until a real account exists; the large-image
+    // card still works for link previews via the default OG image.
     card: "summary_large_image",
-    site: site.twitterHandle,
-    creator: site.twitterHandle,
     title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
     description: site.description,
   },

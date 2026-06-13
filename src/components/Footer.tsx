@@ -84,17 +84,6 @@ export default function Footer() {
               {site.tagline}. Practical, premium guides for NRIs and new
               immigrants in America.
             </p>
-            <div className="mt-5 flex gap-4 text-sm">
-              <a href={site.social.twitter} className="text-ink-400 hover:text-brand-600">
-                Twitter
-              </a>
-              <a href={site.social.instagram} className="text-ink-400 hover:text-brand-600">
-                Instagram
-              </a>
-              <a href={site.social.youtube} className="text-ink-400 hover:text-brand-600">
-                YouTube
-              </a>
-            </div>
           </div>
 
           {columns.map((col) => (
