@@ -10,6 +10,7 @@ export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Guides", href: "/topics" },
   { label: "Tools", href: "/tools" },
+  { label: "Education", href: "/education" },
   { label: "Calculators", href: "/calculators" },
   { label: "New to USA", href: "/topics/new-to-usa" },
   { label: "India-USA Money", href: "/topics/money-transfer" },

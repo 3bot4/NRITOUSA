@@ -39,6 +39,15 @@ export default function MobileMenu({
           </Link>
 
           <Link
+            href="/education"
+            onClick={onClose}
+            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
+          >
+            <span className="text-xl">🎓</span>
+            <span>US Education hub</span>
+          </Link>
+
+          <Link
             href="/calculators"
             onClick={onClose}
             className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"

@@ -16,6 +16,17 @@ export function computeReadingTime(content: string): number {
   return Math.max(1, Math.ceil(words / 220));
 }
 
+/** Format a number as whole US dollars, e.g. 11610 → "$11,610". */
+export function formatUsd(n: number, digits = 0): string {
+  return isFinite(n)
+    ? n.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: digits,
+      })
+    : "—";
+}
+
 /** Deterministic initials for author avatars (no external images). */
 export function initials(name: string): string {
   return name

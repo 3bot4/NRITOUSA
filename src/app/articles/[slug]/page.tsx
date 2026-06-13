@@ -8,6 +8,7 @@ import ArticleByline from "@/components/ArticleByline";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
 import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
+import TuitionCalc from "@/components/education/TuitionCalc";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import { resolveByline } from "@/lib/byline";
@@ -28,6 +29,7 @@ import {
  */
 const ARTICLE_EMBEDS: Record<string, React.ComponentType> = {
   "iul-vs-401k-honest-comparison": IulComparisonCalculator,
+  "college-tuition-immigrants-2025": TuitionCalc,
 };
 
 export function generateStaticParams() {

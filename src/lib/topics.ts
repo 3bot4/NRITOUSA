@@ -182,6 +182,18 @@ export const topics: Topic[] = [
       "Guides for NRIs settled in the USA covering India assets vs US investments, property decisions, currency risk, retirement, estate planning, and cross-border wealth.",
   },
   {
+    slug: "education",
+    title: "US Education",
+    label: "Education",
+    description:
+      "Navigating American schools and colleges as an immigrant family — K-12 enrollment, grade levels, GPA and the SAT, college costs, financial aid, and the best universities for Indian students.",
+    icon: "🎓",
+    accent: "from-indigo-500 to-blue-600",
+    seoTitle: "US Education Guides for Immigrant Families",
+    seoDescription:
+      "Guides on the US education system for immigrants — K-12 enrollment, grade levels, GPA, the digital SAT, college costs, FAFSA eligibility, and top universities for Indian students.",
+  },
+  {
     slug: "stories",
     title: "Immigrant Stories",
     label: "Stories",

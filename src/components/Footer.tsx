@@ -42,6 +42,18 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     ],
   },
   {
+    title: "US Education",
+    links: [
+      { label: "Education Hub", href: "/education" },
+      { label: "Grade Level Finder", href: "/education/grade-finder" },
+      { label: "GPA Calculator", href: "/education/gpa-calculator" },
+      { label: "SAT Score & Fit Tool", href: "/education/sat-guide" },
+      { label: "College Cost Calculator", href: "/education/tuition-calculator" },
+      { label: "College Rankings", href: "/education/college-rankings" },
+      { label: "Education Guides", href: "/education/articles" },
+    ],
+  },
+  {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
@@ -62,7 +74,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-ink-900/10 bg-white">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-1">
             <Link
               href="/"

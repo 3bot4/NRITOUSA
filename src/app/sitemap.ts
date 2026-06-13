@@ -3,6 +3,7 @@ import { topics } from "@/lib/topics";
 import { articles } from "@/lib/articles";
 import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
+import { eduCalcs } from "@/lib/education";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -53,6 +54,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${site.url}/education`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/education/articles`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${site.url}/privacy-policy`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -100,11 +113,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: t.status === "live" ? 0.8 : 0.4,
   }));
 
+  const eduRoutes: MetadataRoute.Sitemap = eduCalcs.map((c) => ({
+    url: `${site.url}/education/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...topicRoutes,
     ...calculatorRoutes,
     ...toolRoutes,
+    ...eduRoutes,
     ...articleRoutes,
   ];
 }
