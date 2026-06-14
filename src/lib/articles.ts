@@ -73,7 +73,7 @@ Secured card plus authorized-user status, then keep utilization low and payments
     topic: "finance",
     date: "2026-05-31",
     featured: true,
-    content: `Opening your first US bank account looks like a 20-minute errand until you hit the wall every newcomer hits: most US banking infrastructure assumes you already have a Social Security Number, a US credit file, and a local address. You may have none of the three on day one. The good news is that a handful of banks are built specifically for people in exactly your position — and knowing which ones saves you weeks of friction and hundreds of dollars in needless fees.
+    content: `Opening your first US bank account hits a wall: most banks assume you already have an SSN, a US credit file, and a local address — you may have none on day one. A handful of banks are built for exactly your position. Here's which ones open without an SSN, charge no fees, and even import your Indian credit history.
 
 :::summary
 You can open a US checking account with just your **passport, visa, and US address** — an SSN is not legally required, though some banks ask for one. Online banks (Ally, SoFi, Discover) and newcomer programs (Chase, Amex via Nova Credit) are the path of least resistance. Avoid accounts with monthly maintenance fees and minimum-balance requirements; in 2026 you should pay $0 to bank and earn 4%+ on savings.
@@ -98,9 +98,14 @@ Federal "Know Your Customer" rules require a bank to verify your identity — no
 If you don't have an SSN yet, don't wait. Apply for an ITIN with [Form W-7](https://www.irs.gov/forms-pubs/about-form-w-7), or open at a bank that accepts a passport now and add your SSN later. For the full post-SSN checklist, see our guide on the [5 financial steps to take after getting your SSN](/articles/ssn-financial-next-steps).
 
 ## The challenge with the big four
-Chase, Bank of America, Wells Fargo, and Citi dominate the branch map, and there's real value in a nearby branch when you need a cashier's check or to wire money. But their everyday accounts often carry a **$12–$25 monthly maintenance fee** that's only waived if you keep a minimum balance (commonly $1,500) or set up a qualifying direct deposit. In your first lean months, that fee is a slow leak.
+Chase, Bank of America, Wells Fargo, and Citi dominate the branch map — useful when you need a cashier's check or wire. But their everyday accounts carry a **$12–$25 monthly maintenance fee**, waived only with a minimum balance (often $1,500) or a qualifying direct deposit.
 
-The workaround: most big banks waive the fee with direct deposit, and several run dedicated newcomer programs. **Chase**, for example, frequently offers a new-checking cash bonus and will open accounts for visa holders with a passport. If you want a branch relationship, ask specifically for their "Secure" or newcomer checking product and confirm how the monthly fee is waived.
+:::tip
+title: How to dodge the big-bank fee
+- Set up direct deposit — most big banks waive the monthly fee once your paycheck lands
+- Ask Chase for its "Secure" or newcomer checking product and confirm the fee-waiver terms
+- Watch for new-checking cash bonuses, which Chase offers visa holders with just a passport
+:::
 
 ## Banks built for newcomers
 **Online banks** remove almost all the friction:
@@ -113,7 +118,7 @@ The workaround: most big banks waive the fee with direct deposit, and several ru
 **Indian-origin banks with US branches** — **ICICI Bank**, **SBI California**, and **Kotak** understand the NRI use case natively and make it easy to link to NRE/NRO accounts back home. If most of your money movement is India-bound, start here. (See [NRE vs. NRO accounts explained](/articles/nre-nro-accounts-explained) to set the India side up correctly.)
 
 ## The Nova Credit trick: import your Indian credit history
-Here's the nugget most newcomers never hear: **your Indian credit history doesn't have to be worthless.** A service called **Nova Credit** translates your CIBIL/Indian bureau data into a US-readable score. **American Express** uses it so that newcomers can be approved for a real, unsecured card on arrival — no US history required. That's a genuine shortcut around the chicken-and-egg credit problem most people solve slowly with a secured card. (If you still need the slow route, our [build a US credit score from zero](/articles/build-us-credit-score-from-zero) playbook covers it.)
+Your Indian credit history doesn't have to be worthless. **Nova Credit** translates your CIBIL/bureau data into a US-readable score, and **American Express** uses it to approve newcomers for a real, unsecured card on arrival — no US history required. That's a genuine shortcut around the credit chicken-and-egg problem. If you still need the slow route, our [build a US credit score from zero](/articles/build-us-credit-score-from-zero) playbook covers it.
 
 ## What to prioritize when choosing
 | Feature | Why it matters | Target |
@@ -160,7 +165,7 @@ Your bank should adapt to you, not the other way around. Open a no-fee online ch
     topic: "finance",
     date: "2026-06-02",
     featured: true,
-    content: `The plain card that arrives in the mail with your Social Security Number on it is the single most important document of your US financial life. It's the key that unlocks credit cards, loans, a real bank relationship, tax filing, and eventually a mortgage. It's also the exact number identity thieves want most. What you do in the first 30 days after it arrives sets your financial trajectory for the next decade — so do these five things in order.
+    content: `The plain card with your SSN is the single most important document of your US financial life — and the exact number identity thieves want most. What you do in the first 30 days after it arrives sets your financial trajectory for a decade. Do these five things, in order.
 
 :::summary
 In your first month with an SSN: **(1)** freeze your credit at all three bureaus, **(2)** tie your SSN to a bank account, **(3)** pull and check your credit report, **(4)** apply for your first credit card, and **(5)** confirm your employer has the correct SSN for tax withholding. Sequence matters — freezing your credit first protects everything that follows.
@@ -432,7 +437,7 @@ Don't let a carrier talk you into a deposit and a contract in week one. Start wi
     topic: "taxes",
     date: "2026-06-01",
     featured: true,
-    content: `If you've moved to the US and still hold money in India — a savings account, a fixed deposit, PPF, mutual funds, or even a joint account with your parents — the US government wants to know about it. Two separate reporting regimes, **FBAR** and **FATCA**, exist precisely to surface foreign assets held by US taxpayers. They're not taxes; they're disclosures. But ignoring them carries some of the harshest penalties in the entire tax code, and "I didn't know" is not a defense. The reassuring part: once you understand the thresholds, compliance is genuinely straightforward.
+    content: `If you still hold money in India — savings, an FD, PPF, mutual funds, even a joint account with your parents — the US wants it disclosed through two regimes, **FBAR** and **FATCA**. They're disclosures, not taxes, but ignoring them carries some of the harshest penalties in the tax code. Once you know the thresholds, compliance is genuinely straightforward.
 
 :::summary
 File an **FBAR (FinCEN Form 114)** if your foreign accounts **combined** crossed **$10,000** at any point in the year. File **FATCA (Form 8938)** with your tax return if your foreign assets exceed **$50,000** (single) or **$100,000** (married filing jointly) at year-end — higher if you live abroad. Both are disclosures, not taxes. Penalties are severe, but **voluntary disclosure through the Streamlined Procedures** cleans up missed years cheaply.
@@ -524,7 +529,7 @@ If you have signature authority or ownership, report your interest in the accoun
 Yes — it's free on the BSA E-Filing System and many people do it themselves. If you have many accounts, PFIC mutual funds, or missed prior years, a CPA is worth the few hundred dollars.
 
 ## The bottom line
-FBAR and FATCA feel bureaucratic until you see the penalty schedule — then they feel terrifying. The fix is simple: disclose. List your accounts, check whether the combined peak crossed $10,000, file the FBAR by October 15, add Form 8938 if you cross its higher bar, and use the Streamlined Procedures to clean up any missed years. The IRS wants visibility, not your savings. Give it the disclosure and you'll never lose sleep over this again.`,
+The fix is simple: disclose. List your accounts, check whether the combined peak crossed $10,000, file the FBAR by October 15, and add Form 8938 if you cross its higher bar. Missed prior years? The Streamlined Procedures clean them up cheaply — the IRS wants visibility, not your savings.`,
   },
   {
     slug: "double-taxation-dtaa-india-usa",
@@ -534,7 +539,7 @@ FBAR and FATCA feel bureaucratic until you see the penalty schedule — then the
     topic: "taxes",
     date: "2026-06-02",
     featured: true,
-    content: `The first time you realize you might owe tax in *both* countries on the *same* income, it's genuinely alarming. You earned rental income or FD interest in India, paid Indian tax on it, and now the IRS wants its cut too. Left unmanaged, that's double taxation — paying two governments on one rupee. The good news is that the **India-US Double Taxation Avoidance Agreement (DTAA)**, combined with the US **Foreign Tax Credit**, is built to ensure you ultimately pay only the *higher* of the two countries' rates, not the sum. Here's exactly how it works.
+    content: `Owing tax in *both* countries on the *same* income is genuinely alarming: you paid Indian tax on rent or FD interest, and now the IRS wants its cut too. The **India-US DTAA**, with the US **Foreign Tax Credit**, ensures you pay only the *higher* of the two rates — never both stacked. Here's exactly how it works, with a worked example.
 
 :::summary
 You don't escape declaring Indian income to the IRS — but the **DTAA** ensures you aren't taxed twice on it. You report the income on your US return, then claim a **Foreign Tax Credit (Form 1116)** for the tax already paid to India. The net effect: you pay the **higher** of the Indian or US rate, never both stacked. NRE interest is a common trap — it's tax-free in India but **fully taxable in the US**.
@@ -609,7 +614,7 @@ The Foreign Tax Credit can reduce your US tax on that income to zero, and the un
 Most people are better off with the **credit** (Form 1116), which reduces tax dollar-for-dollar, rather than a deduction, which only reduces taxable income. A CPA can confirm for your situation.
 
 ## The bottom line
-The DTAA is your safety net against paying two governments for one rupee. Declare all your Indian income, file **Form 1116** to credit the Indian tax you already paid, and you'll pay only the higher of the two rates. Watch the NRE-interest trap, mind the April-to-March timing, and get professional help once the numbers are meaningful. Used correctly, the treaty turns a terrifying 65% scenario into an ordinary tax line.`,
+Declare all your Indian income, file **Form 1116** to credit the Indian tax you paid, and you'll owe only the higher of the two rates. Watch the NRE-interest trap and the April-to-March timing mismatch. Once the numbers are meaningful, an NRI-focused CPA pays for itself.`,
   },
   {
     slug: "indian-income-us-tax-return",
@@ -880,7 +885,7 @@ Money from your parents in India is one of the few genuinely tax-free transfers 
     topic: "retirement",
     date: "2026-06-05",
     featured: true,
-    content: `It's the question that makes thousands of NRIs hesitate before contributing to their 401(k): *"What if I move back to India — does all this money get stuck or taxed to death?"* The fear is understandable, but the reality is reassuring. Your 401(k) is **your money**, legally portable across borders, and it doesn't disappear when your visa ends or your flight to India takes off. What changes is the *tax treatment* of how and when you take it out — and getting that timing right can save you tens of thousands of dollars.
+    content: `*"If I move back to India, does my 401(k) get stuck or taxed to death?"* The reassuring reality: it's **your money**, legally portable, and it doesn't vanish when your visa ends. What changes is the *tax treatment* of how and when you withdraw — and getting that timing right can save tens of thousands.
 
 :::summary
 Your 401(k) stays yours after you leave the US. You can **leave it invested, roll it into an IRA, or withdraw it** (the worst option). Withdrawing before age **59½ triggers a 10% penalty plus income tax**, and as a nonresident alien you face up to **30% mandatory withholding**. The smart play for most people: **roll it into an IRA**, let it grow, and time withdrawals to your low-income years — ideally during India's **RNOR window** when foreign income isn't taxed there.
@@ -1109,11 +1114,7 @@ Social Security rewards the long haul. Cross the 40-credit (10-year) line and yo
     date: "2026-06-04",
     updated: "2026-06-13",
     featured: true,
-    content: `"Ghar lena chahiye." If you grew up in an Indian household, owning a home isn't just a financial goal — it's a milestone, a sign you've arrived, almost a duty. So let's be clear from the very first line: **buying is not wrong. Buying *wrong* is wrong.**
-
-The biggest mistake Indian immigrants make isn't renting too long. It's buying **too big, too fast, with too little visa clarity** — a four-bedroom house in a prestigious zip code, 18 months into a first US job, at 7% interest, with the emergency fund drained for the down payment.
-
-Here's the context that changes the math. US home prices rose **30–50% nationally between 2021 and 2023**, and some metros — Austin, Phoenix, Tampa — saw **60–80%**. That wave already happened. In 2024–2025 the market shows saturation; it's no longer a seller's market everywhere. So the real question isn't the tired "rent or buy?" It's sharper: **what should you buy, and when?**
+    content: `"Ghar lena chahiye." In an Indian household, owning a home is a milestone — so let's be clear: buying isn't wrong, but **buying *wrong* is wrong**. The real mistake immigrants make isn't renting too long; it's buying **too big, too fast, with too little visa clarity**. After the 2021–2023 price surge already played out, the sharp question is no longer "rent or buy?" but **what to buy, and when**.
 
 :::summary
 Buying can absolutely beat renting — **if all three conditions hold**: you have **3–5 years of visa clarity**, you buy a **modest townhouse** where the all-in monthly cost lands within **$200–$300 of comparable rent**, and you'll **stay in the same metro** even through a job change. Buy the EMI-to-rent-parity home, not the dream mansion. Run your own numbers in our [Immigrant Rent vs. Buy Calculator](/calculators/rent-vs-buy-immigrant).
@@ -1180,19 +1181,21 @@ Generic calculators assume you'll stay. For immigrants, that's the single bigges
 - If you're in a **portable profession** (software, finance, medicine, engineering) where remote work is viable, renting the home out after you move is more manageable.
 - The honest question: *"If I got a $50k raise offer in another city tomorrow, would I take it?"* If yes, renting keeps that option open. If no, you're settled — buy.
 
-## Buy the townhouse (not the mansion) if…
-- Visa clarity of 3–5 years ✓
-- 20% down saved **and** a 6-month emergency fund still intact ✓
-- All-in monthly ownership cost within ~$300 of local rent for comparable space ✓
-- You'll stay in this metro even through a job change ✓
-- You'd be okay becoming a landlord if life changes ✓
-
-## Keep renting if…
-- Your visa situation is uncertain or under 2 years of clarity remain.
-- The down payment would drain your emergency fund.
-- The house you *want* costs 2–3x what makes financial sense.
-- You might relocate for your career in the next 2–3 years.
-- The local price-to-rent ratio is above 25 (renting is cheap relative to buying).
+## Buy the townhouse, or keep renting?
+:::compare
+left: Keep renting if
+right: Buy the townhouse if
+✗ Your visa clarity is under 2 years or uncertain
+✗ The down payment would drain your emergency fund
+✗ The home you want costs 2–3x what makes financial sense
+✗ You might relocate for your career in the next 2–3 years
+✗ Local price-to-rent ratio is above 25 (renting is cheap)
+✓ You have 3–5 years of visa clarity
+✓ 20% down saved and a 6-month emergency fund still intact
+✓ All-in monthly cost within ~$300 of local rent for comparable space
+✓ You'll stay in this metro even through a job change
+✓ You'd be okay becoming a landlord if life changes
+:::
 
 :::note
 **Try our Rent vs. Buy Calculator built for immigrants.** It factors in visa type, years of clarity, local rent vs. EMI, and job-change risk — the inputs generic calculators skip. [Use the Immigrant Rent vs. Buy Calculator →](/calculators/rent-vs-buy-immigrant)
@@ -1201,7 +1204,7 @@ Generic calculators assume you'll stay. For immigrants, that's the single bigges
 ## Frequently asked questions
 
 ### Should I buy a big house or a smaller one as an immigrant?
-Start smaller. A 2–3BR townhouse where the EMI roughly matches local rent is the smart play. Upgrade later, once your immigration path is fully clear and you've built equity. The instinct to buy the biggest house possible is understandable culturally, but on a work visa it's high-risk.
+Start smaller — a 2–3BR townhouse where the EMI roughly matches local rent is the smart play. Upgrade later, once your immigration path is clear and you've built equity. The instinct to buy the biggest house possible is understandable culturally, but on a work visa it's high-risk.
 
 ### Are 2024–2025 home prices a good entry point?
 Better than the 2022 peak, but not the windfall that 2020–2021 buyers got. The opportunity now is **EMI-to-rent parity** in stabilizing markets — not speculative appreciation.
@@ -1219,13 +1222,7 @@ Yes. See our guide on [buying a home on a visa](/articles/buying-first-home-on-v
 If you've become a nonresident by sale time, FIRPTA requires the buyer to withhold 15% of the gross price — see our [FIRPTA guide](/articles/selling-us-home-nri-firpta).
 
 ## The bottom line
-Stop asking "rent or buy?" Start asking **"what should I buy, and when?"**
-
-If your visa gives you 3–5 years of clarity, buying a modest townhouse where the mortgage lands close to rent isn't just defensible — it's smart. You build equity, you stop paying someone else's mortgage, and you get the stability of a home that's yours.
-
-What's *not* smart: rushing into a $900k five-bedroom because it's the "Indian thing to do," at 7% interest, 18 months into your first US job, with no emergency fund left. That's how you end up underwater.
-
-Buy with your head, not your culture. The right house at the right time is a wealth-building machine. The wrong house at the wrong time is a visa-holder's nightmare. Run your specific numbers in our [Immigrant Rent vs. Buy Calculator](/calculators/rent-vs-buy-immigrant) before you decide.`,
+Stop asking "rent or buy?" — ask **"what should I buy, and when?"** With 3–5 years of visa clarity, a modest townhouse where the mortgage lands near rent builds equity at roughly the cost of renting. What's *not* smart: a $900k five-bedroom at 7%, 18 months into your first job, with no emergency fund left. Buy with your head, not your culture — run your numbers in our [Immigrant Rent vs. Buy Calculator](/calculators/rent-vs-buy-immigrant).`,
   },
   {
     slug: "cheap-car-insurance-foreign-license",
@@ -1386,7 +1383,7 @@ FIRPTA isn't a penalty — it's a withholding mechanism, and a recoverable one. 
     topic: "money-transfer",
     date: "2026-06-03",
     featured: true,
-    content: `Sending money to India is something most NRIs do dozens of times a year — for family, EMIs, investments, or savings. And on every single transfer, money quietly leaks away, not through the advertised fee, but through the **exchange rate markup** you never see. A "zero fee" transfer with a bad rate can cost you far more than a small flat fee at the real rate. Over a year of remittances, the difference between the cheapest and priciest option can run into **hundreds of dollars**. Here's how to stop overpaying.
+    content: `Most NRIs send money to India dozens of times a year — and on every transfer money leaks away through the **exchange-rate markup** you never see, not the advertised fee. A "zero fee" transfer at a bad rate can cost far more than a small flat fee at the real rate. Over a year, the gap between cheapest and priciest runs into **hundreds of dollars** — here's how to stop overpaying.
 
 :::summary
 The real cost of a transfer is **fee + exchange-rate markup** — and banks hide most of it in the rate. Always compare the **final INR amount that lands**, not the headline fee. **Wise** is best for transparent mid-market rates, **Remitly/Xoom** for promotional first-transfer rates and speed, and a **bank/ACH wire** for very large sums. Send to an **NRE account** to keep funds repatriable and the interest tax-free in India.
@@ -1454,7 +1451,7 @@ Sending your own after-tax US dollars to your NRE account isn't taxed. The inter
 There's no US limit on sending your own money, though large gifts to others have [reporting rules](/articles/gifting-money-india-tax-implications). Banks file routine reports on large transfers automatically.
 
 ## The bottom line
-Stop reading the fee and start reading the rupees. The exchange-rate markup is the real cost of every transfer, so compare the final landed amount, default to transparent services like Wise, grab promo rates for first transfers, fund from your bank (not a card), and route money to an NRE account. Do this consistently and you'll keep hundreds of dollars a year that would otherwise vanish into the spread.`,
+Stop reading the fee and start reading the rupees. Compare the final landed amount, default to transparent services like Wise, grab promo rates for first transfers, fund from your bank (not a card), and route to an NRE account. Done consistently, that keeps hundreds of dollars a year out of the spread.`,
   },
   {
     slug: "repatriate-india-property-sale-usa",
@@ -1700,31 +1697,60 @@ You can absolutely invest in India's market as a US NRI — just do it the smart
     topic: "taxes",
     date: "2026-04-12",
     featured: true,
-    content: `Tax season in your first year is where most NRIs feel genuinely lost. The vocabulary is new, the stakes feel high, and bad advice is everywhere. Let's make it boring and clear.
+    content: `Tax season in your first year is where most NRIs feel genuinely lost — new vocabulary, high stakes, and bad advice everywhere. Let's make it boring and clear: who counts as a resident, what income is reportable, and which forms actually matter.
 
-## First question: are you a resident for tax purposes?
-This has nothing to do with your green card. The IRS uses the Substantial Presence Test. Broadly, if you were physically in the US for at least 31 days this year and 183 days across a weighted three-year window, you are a resident alien for tax purposes.
+:::info
+title: The test that decides everything
+- Your tax residency is set by the **Substantial Presence Test**, not your green card
+- **Residents** are taxed on worldwide income; **non-residents** only on US income
+- Many first-year H-1B holders are **dual-status** — non-resident part of the year, resident the rest
+:::
 
-Residents are taxed on worldwide income. Non-residents are taxed only on US income. Many first-year H-1B holders are "dual-status," which is exactly as fun as it sounds.
+## Are you a resident for tax purposes?
+The IRS uses the Substantial Presence Test, not your visa. Broadly, you're a resident alien if you were physically in the US for at least **31 days this year** and **183 days** across a weighted three-year window. Residents are taxed on worldwide income; non-residents only on US income.
 
 ## Worldwide income means India too
-If you are a resident alien, your Indian salary (before you moved), rental income, savings interest, and mutual fund gains are all reportable. The India–US tax treaty and the Foreign Tax Credit (Form 1116) usually prevent true double taxation — you credit taxes paid in India against your US bill — but you still have to disclose.
+If you're a resident alien, your Indian salary (before you moved), rental income, savings interest, and mutual-fund gains are all reportable. The India–US treaty and the **Foreign Tax Credit (Form 1116)** usually prevent true double taxation — you credit taxes paid in India against your US bill — but you still have to disclose. See [how the DTAA protects your income](/articles/double-taxation-dtaa-india-usa).
 
-## FBAR and FATCA
-If your foreign accounts (Indian bank accounts, PPF, etc.) together crossed $10,000 at any point in the year, you must file an FBAR (FinCEN Form 114). It's separate from your tax return and the penalties for ignoring it are severe. FATCA (Form 8938) is a similar disclosure that kicks in at higher thresholds.
+:::warn
+title: Don't skip these disclosures
+- If your foreign accounts together crossed **$10,000** at any point, you must file an **FBAR (FinCEN Form 114)** — separate from your return, with severe penalties for ignoring it
+- **FATCA (Form 8938)** is a similar disclosure that kicks in at higher thresholds
+- Disclosure is required even when no extra tax is owed
+:::
 
 ## The forms checklist
-- W-2 from your employer
-- 1099s for any interest, dividends, or freelance income
-- Form 1040 (the main return)
-- Form 1116 if claiming the Foreign Tax Credit
-- FBAR if foreign accounts crossed $10,000
-- Form 8938 if you cross FATCA thresholds
+:::key
+- **W-2** from your employer
+- **1099s** for any interest, dividends, or freelance income
+- **Form 1040** — the main return
+- **Form 1116** if claiming the Foreign Tax Credit
+- **FBAR** if foreign accounts crossed $10,000
+- **Form 8938** if you cross FATCA thresholds
+:::
 
-## Should you DIY or hire a pro?
-If you're single, W-2 only, and have no India income after moving — software like the major filers handles it fine. The moment you have India income, dual-status, or RSUs, pay a CPA who specifically does NRI returns. It's a few hundred dollars that prevents five-figure mistakes.
+## DIY or hire a pro?
+:::compare
+left: Hire an NRI CPA if
+right: DIY software is fine if
+✗ You have India income this year
+✗ You're dual-status in year one
+✗ You have RSUs or stock comp
+✓ You're single and W-2 only
+✓ You have no India income after moving
+✓ Your return is otherwise straightforward
+:::
+A CPA who specifically does NRI returns costs a few hundred dollars and prevents five-figure mistakes.
 
-File on time, disclose everything, keep your documents for seven years, and the IRS becomes a non-event.`,
+:::cta
+title: Have Indian income to report?
+body: See exactly how the India-US treaty and Form 1116 stop you being taxed twice.
+button: Read the DTAA guide
+href: /articles/double-taxation-dtaa-india-usa
+:::
+
+## The bottom line
+File on time, disclose everything, and keep your documents for seven years. The one caveat: the moment India income, dual-status, or RSUs enter the picture, hire an NRI-focused CPA. Do that and the IRS becomes a non-event.`,
   },
   {
     slug: "401k-match-explained-nri",
@@ -1734,30 +1760,51 @@ File on time, disclose everything, keep your documents for seven years, and the 
     topic: "retirement",
     date: "2026-05-03",
     featured: true,
-    content: `A 401(k) is an employer-sponsored retirement account. You contribute pre-tax dollars, it grows tax-deferred, and many employers match part of your contribution. That match is the closest thing to free money you'll encounter — and far too many NRIs skip it because they "might move back."
+    content: `A 401(k) is an employer-sponsored retirement account: you contribute pre-tax dollars, it grows tax-deferred, and many employers match part of what you put in. That match is the closest thing to free money you'll ever get — yet far too many NRIs skip it because they "might move back."
 
-## The match is a 100% instant return
-A typical match is "100% of the first 4%." That means if you put in 4% of your salary, your employer adds another 4%. You doubled your money before the market moved a cent. No investment on earth reliably beats that.
+:::info
+title: Why the match is unbeatable
+- A typical match is **100% of your first 4%** — put in 4%, your employer adds 4%
+- That's a **100% instant return**, before the market moves a cent
+- No investment reliably beats it; skipping it is a voluntary pay cut
+:::
 
-Always contribute at least enough to capture the full match. Skipping it is a voluntary pay cut.
+## Always capture the full match
+Contribute at least enough to get every matched dollar. A "100% of the first 4%" match means 4% of salary earns you another 4% free. Skipping it is the one money mistake with no upside.
 
 ## Roth vs. traditional 401(k)
-- Traditional: contributions are pre-tax now, taxed when you withdraw in retirement.
-- Roth: contributions are after-tax now, withdrawals are tax-free later.
+| | Traditional | Roth |
+|---|---|---|
+| Contributions | Pre-tax now | After-tax now |
+| Withdrawals | Taxed in retirement | Tax-free later |
+| Best if | Lower tax bracket later | Early-career or retiring outside the US |
 
-If you expect to be in a higher tax bracket later (or to retire outside the US), Roth is often the smarter long-term play. Many plans let you split.
+Many plans let you split between the two. If you expect a higher bracket later, Roth is often the smarter long-term play.
 
 ## "But what if I move back to India?"
-This is the real NRI question, and the answer is reassuring: your 401(k) is yours. It doesn't vanish if you leave the country. Your options:
+Your 401(k) is yours — it doesn't vanish if you leave the country.
 
-- Leave it invested in the US and let it grow until retirement.
-- Roll it into an IRA for more investment choices and lower fees.
-- Withdraw it (worst option) — you'd owe US tax plus a 10% early-withdrawal penalty before age 59½.
+:::steps
+Leave it invested in the US — let it grow tax-deferred until retirement.
+Roll it into an IRA — more investment choice and lower fees.
+Withdraw it (worst option) — you'd owe US tax plus a 10% early-withdrawal penalty before age 59½.
+:::
 
-If you become a non-resident again, withdrawals may face a flat US withholding, and India will tax the income too, though the tax treaty offers relief. The key point: moving back is a reason to plan, not a reason to skip free money.
+:::warn
+- As a non-resident, withdrawals may face a flat US withholding
+- India will tax the income too once you're ordinarily resident — though the tax treaty offers relief
+- Moving back is a reason to plan, not to skip free money
+:::
 
-## The simple rule
-Capture the full match, choose Roth if you're early-career, and don't touch it until retirement. Your 55-year-old self will quietly thank your 28-year-old self.`,
+:::cta
+title: Planning a move back to India?
+body: See the withdrawal traps, the 30% withholding, and the RNOR window that can save you thousands.
+button: Read the full 401(k) guide
+href: /articles/what-happens-to-401k-leaving-usa
+:::
+
+## The bottom line
+Capture the full match, choose Roth if you're early-career, and don't touch it until retirement. The one caveat: if you move back, plan withdrawals around the tax treaty rather than cashing out. Your 55-year-old self will quietly thank your 28-year-old self.`,
   },
   {
     slug: "nre-nro-accounts-explained",
@@ -2035,7 +2082,7 @@ An IRA is the quiet workhorse of an immigrant's retirement plan. Open one, autom
     topic: "finance",
     date: "2026-06-05",
     featured: true,
-    content: `Everyone budgets for the flight and the visa. Almost nobody budgets for the **first 30 days on the ground**, which is where the real money goes. Between an apartment that wants three months of rent upfront, a phone, furniture, groceries, and a deposit on every utility, a newcomer can burn through **$8,000–$15,000** before their first US paycheck even clears. Underestimating this is the single most common financial mistake new immigrants make. Here's what moving from India to the US actually costs — so you arrive with enough cushion to make good decisions instead of desperate ones.
+    content: `Everyone budgets for the flight and visa; almost nobody budgets for the **first 30 days on the ground**, where the real money goes. Between move-in, a phone, furniture, groceries, and a deposit on every utility, a newcomer can burn **$8,000–$15,000** before the first paycheck clears. Here's what relocating actually costs — so you arrive with cushion to make good decisions, not desperate ones.
 
 :::summary
 Beyond flights and visa fees, plan for a **$8,000–$15,000 landing cushion** to cover apartment move-in (often **~3x monthly rent**), utility and phone deposits, furniture, groceries, and transport before your first paycheck. The biggest line item is housing. Arriving with a healthy [emergency fund](/articles/emergency-fund-first-year-usa) in place turns a stressful first month into a manageable one.
@@ -2107,7 +2154,7 @@ Housing. Apartment move-in (first month + security deposit + any broker fee) typ
 Yes — buy furniture secondhand, choose prepaid phone plans, use no-fee online banks, and lead with income proof to lower rental deposits.
 
 ## The bottom line
-Relocation budgets fail because they stop at the airfare. The real cost is rebuilding an entire life in dollars during the one month you have no income. Plan for an $8,000–$15,000 landing cushion, lead with the no-credit-required options, buy secondhand, and keep a multi-month emergency fund accessible. Arrive financially prepared and your first month becomes an adventure instead of a panic.`,
+Relocation budgets fail because they stop at the airfare — the real cost is rebuilding a life in dollars during your one income-less month. Plan for an $8,000–$15,000 landing cushion, lead with the no-credit options, buy secondhand, and keep a multi-month emergency fund accessible. Arrive prepared and month one becomes an adventure, not a panic.`,
   },
   {
     slug: "best-secured-credit-cards-immigrants",
