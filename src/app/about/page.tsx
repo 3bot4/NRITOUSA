@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
@@ -6,15 +7,13 @@ import { site } from "@/lib/site";
 
 const title = "About NRI to USA";
 const description =
-  "NRI to USA, owned by Wealth Building Academy LLC, helps NRIs, Indian immigrants, students, and families understand practical life and money decisions in the United States.";
+  "NRI to USA, owned by Wealth Building Academy LLC, helps NRIs, immigrants, students, and families make practical life and money decisions in the US.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/about" },
-  openGraph: { type: "website", url: "/about", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/about",
+});
 
 const values = [
   {

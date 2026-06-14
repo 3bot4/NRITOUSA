@@ -2,19 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Disclaimer";
 const description =
   "Content on NRI to USA is for educational purposes only and is not financial, legal, tax, or immigration advice. Read our full disclaimer.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/disclaimer" },
-  openGraph: { type: "website", url: "/disclaimer", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   const jsonLd = jsonLdGraph(

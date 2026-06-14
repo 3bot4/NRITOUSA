@@ -3,19 +3,22 @@ import Container from "@/components/Container";
 import CalculatorCard from "@/components/CalculatorCard";
 import Newsletter from "@/components/Newsletter";
 import { calculators, calculatorCategories } from "@/lib/calculators";
-import { absoluteUrl, breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Cross-Border Calculators for NRIs & Immigrants";
 const description =
-  "Free interactive calculators built for NRIs and immigrants — RNOR tax residency, India property capital gains & repatriation, 401(k) cash-out vs keep, backdoor Roth eligibility, visa-timeline rent vs buy, and India–USA remittance cost.";
+  "Free interactive calculators for NRIs and immigrants: RNOR residency, India property gains, 401(k) cash-out, backdoor Roth, rent vs buy, and more.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/calculators" },
-  openGraph: { type: "website", url: "/calculators", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/calculators",
+});
 
 export default function CalculatorsPage() {
   const itemList = {

@@ -10,24 +10,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("h4-ead-navigator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/h4-ead-navigator" },
-  openGraph: {
-    type: "website",
-    url: "/tools/h4-ead-navigator",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/h4-ead-navigator",
+});
 
 const faq: FaqItem[] = [
   {

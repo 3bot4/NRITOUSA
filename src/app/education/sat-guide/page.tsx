@@ -14,23 +14,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("sat-guide")!;
 const LAST_UPDATED = "2025-08-15";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: calc.seoTitle,
   description: calc.seoDescription,
-  alternates: { canonical: "/education/sat-guide" },
-  openGraph: {
-    type: "website",
-    url: "/education/sat-guide",
-    title: calc.seoTitle,
-    description: calc.seoDescription,
-  },
-};
+  path: "/education/sat-guide",
+});
 
 const satVsAct = [
   ["Format", "Digital, adaptive", "Paper or digital"],

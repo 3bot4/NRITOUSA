@@ -11,6 +11,7 @@ import {
   absoluteUrl,
   breadcrumbJsonLd,
   jsonLdGraph,
+  pageMetadata,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -45,20 +46,11 @@ export function generateMetadata({
 }): Metadata {
   const calc = getCalculator(params.slug);
   if (!calc) return { title: "Calculator not found" };
-  const title = calc.seoTitle;
-  const description = calc.seoDescription;
-  return {
-    title,
-    description,
-    alternates: { canonical: `/calculators/${calc.slug}` },
-    openGraph: {
-      type: "website",
-      url: `/calculators/${calc.slug}`,
-      title,
-      description,
-    },
-    twitter: { title, description },
-  };
+  return pageMetadata({
+    title: calc.seoTitle,
+    description: calc.seoDescription,
+    path: `/calculators/${calc.slug}`,
+  });
 }
 
 export default function CalculatorPage({

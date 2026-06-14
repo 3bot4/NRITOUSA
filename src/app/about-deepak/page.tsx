@@ -4,19 +4,22 @@ import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import { author, authorInitials } from "@/lib/author";
 import { site } from "@/lib/site";
-import { absoluteUrl, jsonLdGraph } from "@/lib/seo";
+import {
+  absoluteUrl,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Deepak Middha — Founder & Author | NRI to USA";
 const description =
-  "Deepak Middha is the founder of NRI to USA and Wealth Building Academy LLC — a Chartered Accountant with 15+ years in the hedge fund industry and holder of the Series 65.";
+  "Deepak Middha is the founder of NRI to USA — a Chartered Accountant with 15+ years in the hedge fund industry and holder of the Series 65.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: author.url },
-  openGraph: { type: "profile", url: author.url, title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: author.url,
+  type: "profile",
+});
 
 /** Person structured data for E-E-A-T / author authority. */
 const personJsonLd = {

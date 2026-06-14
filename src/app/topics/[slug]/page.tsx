@@ -11,6 +11,7 @@ import { getArticlesByTopic } from "@/lib/articles";
 import {
   breadcrumbJsonLd,
   jsonLdGraph,
+  pageMetadata,
   topicCollectionJsonLd,
   topicPath,
 } from "@/lib/seo";
@@ -26,20 +27,11 @@ export function generateMetadata({
 }): Metadata {
   const topic = getTopic(params.slug);
   if (!topic) return { title: "Topic not found" };
-  const title = topic.seoTitle ?? topic.title;
-  const description = topic.seoDescription ?? topic.description;
-  return {
-    title,
-    description,
-    alternates: { canonical: topicPath(topic.slug) },
-    openGraph: {
-      type: "website",
-      url: topicPath(topic.slug),
-      title,
-      description,
-    },
-    twitter: { title, description },
-  };
+  return pageMetadata({
+    title: topic.seoTitle ?? topic.title,
+    description: topic.seoDescription ?? topic.description,
+    path: topicPath(topic.slug),
+  });
 }
 
 export default function TopicPage({ params }: { params: { slug: string } }) {

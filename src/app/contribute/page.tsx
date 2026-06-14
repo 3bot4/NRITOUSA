@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Icon, { type IconName } from "@/components/Icon";
 import ContributeForm from "@/components/contributors/ContributeForm";
 
-const title = "Write for Us — Share Your NRI Career & Visa Story";
+const title = "Write for Us — Share Your NRI Story";
 const description =
-  "Are you an immigrant IT professional in the US? Share your real H-1B transfer, layoff-survival, salary-negotiation, or relocation story and help thousands of NRIs one step behind you. Get a byline, an author page, and a portfolio piece.";
+  "Are you an immigrant IT professional in the US? Share your H-1B, layoff, salary-negotiation, or relocation story — and get a byline and author page.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/contribute" },
-  openGraph: { type: "website", url: "/contribute", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/contribute",
+});
 
 const benefits: { icon: IconName; title: string; body: string }[] = [
   {

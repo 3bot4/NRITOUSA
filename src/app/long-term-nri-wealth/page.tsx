@@ -7,10 +7,11 @@ import SectionHeading from "@/components/SectionHeading";
 import { getArticle, getArticlesByTopic } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import {
+  absoluteUrl,
   articleUrl,
   breadcrumbJsonLd,
   jsonLdGraph,
-  absoluteUrl,
+  pageMetadata,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -21,18 +22,11 @@ const title = "Long-Term NRI Wealth Planning";
 const description =
   "Guides for NRIs settled in the USA covering India assets, US investments, property decisions, retirement, estate planning, and cross-border wealth.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: PATH },
-  openGraph: {
-    type: "website",
-    url: PATH,
-    title,
-    description,
-  },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: PATH,
+});
 
 /** Pull a handful of cluster articles by slug for the curated sections. */
 function pick(slugs: string[]) {

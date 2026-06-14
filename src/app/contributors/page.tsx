@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
@@ -9,13 +10,11 @@ const title = "Contributors";
 const description =
   "Meet the immigrant IT professionals sharing their real career, visa, and relocation journeys to help NRIs one step behind them.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/contributors" },
-  openGraph: { type: "website", url: "/contributors", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/contributors",
+});
 
 export default function ContributorsPage() {
   return (

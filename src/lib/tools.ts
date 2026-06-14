@@ -43,9 +43,9 @@ export const tools: ToolMeta[] = [
       "What can an H-4 EAD spouse actually do? A playful pathfinder to matched work & business ideas, myth-vs-reality answers, an EAD renewal gap calculator, and tappable start-earning / start-a-business checklists.",
     icon: "💍",
     accent: "from-fuchsia-500 to-pink-600",
-    seoTitle: "H-4 EAD: What Work & Businesses Are Allowed? (2026 Guide + Tools)",
+    seoTitle: "H-4 EAD: What Work Is Allowed? (2026 Guide)",
     seoDescription:
-      "What can an H-4 EAD spouse do — jobs, freelance, LLC, daycare, tiffin? Interactive pathfinder, myth-vs-reality, an EAD renewal gap calculator with current processing times, and start-earning checklists. Educational, not legal advice.",
+      "What can an H-4 EAD spouse do — jobs, freelance, LLC, daycare, tiffin? Interactive pathfinder, myth-vs-reality, and an EAD renewal gap calculator.",
     status: "live",
   },
   {
@@ -57,9 +57,9 @@ export const tools: ToolMeta[] = [
       "Personalized N-400 naturalization checklist: compute your earliest filing date, find out which civics test applies to you (2025 vs 2008), surface your risk areas, and track every step to the oath.",
     icon: "🦅",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "US Citizenship Checklist for Green Card Holders (N-400) — 2026",
+    seoTitle: "US Citizenship (N-400) Checklist — 2026",
     seoDescription:
-      "Free interactive N-400 naturalization checklist for green card holders: earliest filing date calculator, the new 128-question 2025 civics test rule, documents to gather, and the 2025–26 good moral character pain points.",
+      "Free N-400 naturalization checklist for green card holders: earliest filing date calculator, the 2025 civics test rule, and documents to gather.",
     status: "live",
   },
   {
@@ -71,9 +71,9 @@ export const tools: ToolMeta[] = [
       "See how many applicants are ahead of you in line from the USCIS I-485 inventory, the current visa bulletin cutoff for your EB category, how far your priority date is behind, and an honest estimated wait range.",
     icon: "🟢",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "Green Card Wait Time Estimator (EB-1/EB-2/EB-3 India) — 2026",
+    seoTitle: "Green Card Wait Time Estimator (India) 2026",
     seoDescription:
-      "How many people are ahead of you in the EB green card line? Free estimator using the USCIS pending I-485 inventory plus current Final Action Dates, visa bulletin history, and an honest wait range for your priority date.",
+      "How many people are ahead of you in the EB green card line? Free estimator using USCIS I-485 inventory, Final Action Dates, and an honest wait range.",
     status: "live",
   },
   {
@@ -85,9 +85,9 @@ export const tools: ToolMeta[] = [
       "Interactive H-1B salary explorer: change position, city, and experience level to watch the charts update, compare cities side by side, and drop in your offer to see your percentile — built from official DOL LCA filings.",
     icon: "💼",
     accent: "from-violet-500 to-purple-600",
-    seoTitle: "H-1B Salary Explorer by Job Title & City (DOL Data)",
+    seoTitle: "H-1B Salary Explorer by Job Title & City",
     seoDescription:
-      "Explore real H-1B base salaries by position, city, and experience level. See the full distribution, compare cities, check your percentile, and compare scenarios — from official US DOL LCA filings, FY2026 Q2.",
+      "Explore real H-1B base salaries by position, city, and experience. See the distribution, compare cities, and check your percentile — from DOL data.",
     status: "live",
   },
   {
@@ -99,9 +99,9 @@ export const tools: ToolMeta[] = [
       "Filterable list of where Indians can travel visa-free, with visa on arrival or e-Visa — including destinations that get easier with a valid US visa.",
     icon: "🌍",
     accent: "from-sky-500 to-blue-600",
-    seoTitle: "Visa-Free Countries for Indian Passport Holders (2026)",
+    seoTitle: "Visa-Free Countries for Indians (2026)",
     seoDescription:
-      "Where can Indians travel without a visa in 2026? Full filterable list of visa-free, visa-on-arrival, and e-Visa destinations — plus countries that waive visas for Indians with a valid US visa.",
+      "Where can Indians travel visa-free in 2026? Full filterable list of visa-free, visa-on-arrival, and e-Visa destinations — plus US-visa waivers.",
     status: "live",
   },
   {
@@ -113,9 +113,9 @@ export const tools: ToolMeta[] = [
       "Typical current waits for H-1B extensions, I-140, I-485, EAD/AP, OCI cards, Indian passport renewal, and US visa stamping in India — in one table.",
     icon: "⏱️",
     accent: "from-amber-500 to-orange-600",
-    seoTitle: "USCIS, OCI & Visa Stamping Processing Times (2026)",
+    seoTitle: "USCIS, OCI & Visa Stamping Times (2026)",
     seoDescription:
-      "Current typical processing times in one place: I-129 H-1B, I-140, I-485, EAD and Advance Parole, OCI card, Indian passport renewal via VFS, and H-1B stamping waits at Indian consulates.",
+      "Current typical processing times in one place: H-1B, I-140, I-485, EAD/AP, OCI card, Indian passport renewal, and US visa stamping in India.",
     status: "live",
   },
   {
@@ -129,7 +129,7 @@ export const tools: ToolMeta[] = [
     accent: "from-fuchsia-500 to-pink-600",
     seoTitle: "H-1B Lottery Timeline & Selection Odds",
     seoDescription:
-      "Personalized H-1B cap season timeline: registration dates, selection notifications, filing windows, second-round odds, and a live countdown to your next key date — with what to do at each milestone.",
+      "Personalized H-1B cap season timeline: registration, selection, filing windows, second-round odds, and a live countdown to your next key date.",
     status: "live",
   },
   {
@@ -170,9 +170,9 @@ export const tools: ToolMeta[] = [
       "Prepare a clean, printable Form 10F draft to claim India–US DTAA treaty benefits: enter your name, PAN, tax residency period, and foreign tax ID, then copy or download the seven-field declaration. Runs entirely in your browser — educational only.",
     icon: "📄",
     accent: "from-indigo-500 to-blue-600",
-    seoTitle: "Form 10F Generator for NRIs — DTAA Treaty Benefits (2026)",
+    seoTitle: "Form 10F Generator for NRIs (DTAA) 2026",
     seoDescription:
-      "Free Form 10F generator for NRIs claiming India–US DTAA treaty benefits. Fill in name, PAN, TIN, tax residency period, and address to get a printable, copy/download-ready Form 10F draft. Private — nothing leaves your browser. Educational only.",
+      "Free Form 10F generator for NRIs claiming India–US DTAA treaty benefits. Enter your details to get a printable, copy/download-ready draft.",
     status: "live",
     tags: ["tax-compliance"],
   },

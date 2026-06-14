@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { Article, Author, Topic } from "@/types";
 import { site } from "@/lib/site";
 import { resolveByline } from "@/lib/byline";
@@ -17,6 +18,71 @@ export const articlePath = (slug: string) => `/articles/${slug}`;
 export const topicPath = (slug: string) => `/topics/${slug}`;
 export const articleUrl = (slug: string) => absoluteUrl(articlePath(slug));
 export const topicUrl = (slug: string) => absoluteUrl(topicPath(slug));
+
+/* ------------------------------------------------------------------ *
+ * Page metadata builder
+ * ------------------------------------------------------------------ */
+
+interface PageMetaOptions {
+  /** Document <title> (the " | NRI to USA" suffix is added by the layout template). */
+  title: string;
+  /** Meta description. */
+  description: string;
+  /** Root-relative path; used for canonical + og:url. */
+  path: string;
+  /** og:type — "website" (default), "article", or "profile". */
+  type?: "website" | "article" | "profile";
+  /** Per-page OG image path; defaults to the site-wide image. */
+  image?: string;
+  /** og:title / twitter:title override (defaults to `title`). */
+  socialTitle?: string;
+  /** og:description / twitter:description override (defaults to `description`). */
+  socialDescription?: string;
+  /** Extra Open Graph fields (e.g. article publishedTime/authors). */
+  openGraph?: Record<string, unknown>;
+}
+
+/**
+ * Single source of truth for every page's metadata. Guarantees a COMPLETE
+ * Open Graph + Twitter card set on every route — including og:image,
+ * twitter:image, and twitter:card — which Next.js otherwise drops when a page
+ * declares its own (partial) openGraph/twitter objects. Pass per-page values;
+ * og:image falls back to the site-wide image when none is given.
+ */
+export function pageMetadata({
+  title,
+  description,
+  path,
+  type = "website",
+  image,
+  socialTitle,
+  socialDescription,
+  openGraph,
+}: PageMetaOptions): Metadata {
+  const img = image ?? site.ogImage;
+  const ogTitle = socialTitle ?? title;
+  const ogDescription = socialDescription ?? description;
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type,
+      url: path,
+      title: ogTitle,
+      description: ogDescription,
+      siteName: site.name,
+      images: [{ url: img, width: 1200, height: 630, alt: ogTitle }],
+      ...openGraph,
+    } as Metadata["openGraph"],
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: [img],
+    },
+  };
+}
 
 /* ------------------------------------------------------------------ *
  * Light-markdown helpers (for clean schema text)

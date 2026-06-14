@@ -15,24 +15,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("fbar-fatca-checker")!;
 const LAST_UPDATED = "2026-06-10";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/fbar-fatca-checker" },
-  openGraph: {
-    type: "website",
-    url: "/tools/fbar-fatca-checker",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/fbar-fatca-checker",
+});
 
 const faq: FaqItem[] = [
   {

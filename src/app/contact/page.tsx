@@ -4,19 +4,21 @@ import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Contact NRI to USA";
 const description =
   "Get in touch with the NRI to USA editorial team with questions, feedback, corrections, or partnership enquiries about our guides for immigrants.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/contact" },
-  openGraph: { type: "website", url: "/contact", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const jsonLd = jsonLdGraph(

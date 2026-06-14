@@ -221,7 +221,7 @@ export default function DtaaReliefCalculator() {
             (Foreign Tax Credit), filed with your 1040. If you also need India to
             grant treaty relief on US-taxed income, India requires{" "}
             <a
-              href="https://www.incometax.gov.in/iec/foportal/help/how-to-file-form-67"
+              href="https://www.incometax.gov.in/iec/foportal/help/statutory-forms/popular-form/form67-um"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-600 underline"

@@ -11,7 +11,7 @@ export const topics: Topic[] = [
     accent: "from-blue-500 to-indigo-600",
     seoTitle: "New to the USA: First Steps for Immigrants",
     seoDescription:
-      "Just moved to America? Step-by-step guides on your first 7 and 30 days — bank account, phone plan, SSN, credit card, apartment, and avoiding rookie mistakes.",
+      "Just moved to America? Step-by-step guides for your first 7 and 30 days — bank account, phone plan, SSN, credit card, and apartment.",
   },
   {
     slug: "finance",
@@ -153,7 +153,7 @@ export const topics: Topic[] = [
       "Moving with family, school districts, healthcare, emergency funds, and budgeting for visits to India.",
     icon: "👨‍👩‍👧",
     accent: "from-rose-500 to-orange-500",
-    seoTitle: "Settling in the USA: Guides for Immigrant Families",
+    seoTitle: "Settling in the USA: Immigrant Family Guides",
     seoDescription:
       "Practical guides for immigrant families in America — school districts, healthcare, emergency funds, home buying, and family budgeting.",
   },
@@ -179,7 +179,7 @@ export const topics: Topic[] = [
     accent: "from-emerald-600 to-cyan-700",
     seoTitle: "Long-Term NRI Wealth Planning Guides",
     seoDescription:
-      "Guides for NRIs settled in the USA covering India assets vs US investments, property decisions, currency risk, retirement, estate planning, and cross-border wealth.",
+      "Guides for NRIs settled in the USA: India assets vs US investments, property, currency risk, retirement, and cross-border estate planning.",
   },
   {
     slug: "education",
@@ -191,7 +191,7 @@ export const topics: Topic[] = [
     accent: "from-indigo-500 to-blue-600",
     seoTitle: "US Education Guides for Immigrant Families",
     seoDescription:
-      "Guides on the US education system for immigrants — K-12 enrollment, grade levels, GPA, the digital SAT, college costs, FAFSA eligibility, and top universities for Indian students.",
+      "Guides on the US education system for immigrants: K-12 enrollment, grade levels, GPA, the digital SAT, college costs, and top universities.",
   },
   {
     slug: "stories",

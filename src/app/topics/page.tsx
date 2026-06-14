@@ -4,19 +4,21 @@ import TopicCard from "@/components/TopicCard";
 import Newsletter from "@/components/Newsletter";
 import { topics } from "@/lib/topics";
 import { getArticlesByTopic } from "@/lib/articles";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "All Guides for NRIs & Immigrants in the USA";
 const description =
   "Browse every NRI to USA guide — finance, taxes, credit, housing, cars, investing, 401(k), Roth IRA, India-USA transfers, community, and immigrant stories.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/topics" },
-  openGraph: { type: "website", url: "/topics", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/topics",
+});
 
 export default function TopicsPage() {
   const jsonLd = jsonLdGraph(

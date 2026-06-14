@@ -11,24 +11,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("h1b-salaries")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/h1b-salaries" },
-  openGraph: {
-    type: "website",
-    url: "/tools/h1b-salaries",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/h1b-salaries",
+});
 
 const faq: FaqItem[] = [
   {

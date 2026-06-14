@@ -9,19 +9,22 @@ import IulComparisonCard from "@/components/IulComparisonCard";
 import { tools, toolGroups, liveTools } from "@/lib/tools";
 import { calculators, usInvestingCalculatorSlugs } from "@/lib/calculators";
 import { TAX_COMPLIANCE_PATH, TAX_COMPLIANCE_TAG } from "@/lib/taxCompliance";
-import { absoluteUrl, breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Free Tools & Data for Indians in the USA";
 const description =
-  "Interactive, data-backed tools for NRIs: green card wait estimator with live visa bulletin data, H-1B salary explorer, visa-free travel list for Indian passports, processing-time tracker, and cross-border calculators.";
+  "Free, data-backed tools for NRIs: green card wait estimator with live visa bulletin data, H-1B salary explorer, visa-free travel list, and more.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools" },
-  openGraph: { type: "website", url: "/tools", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/tools",
+});
 
 export default function ToolsHubPage() {
   // Tax & compliance items live exclusively on the India Tax & Compliance hub,

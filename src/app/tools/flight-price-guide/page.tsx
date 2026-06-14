@@ -14,24 +14,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("flight-price-guide")!;
 const LAST_UPDATED = "2026-06-10";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/flight-price-guide" },
-  openGraph: {
-    type: "website",
-    url: "/tools/flight-price-guide",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/flight-price-guide",
+});
 
 const faq: FaqItem[] = [
   {

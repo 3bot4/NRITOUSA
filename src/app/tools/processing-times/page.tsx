@@ -11,24 +11,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("processing-times")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/processing-times" },
-  openGraph: {
-    type: "website",
-    url: "/tools/processing-times",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/processing-times",
+});
 
 const faq: FaqItem[] = [
   {

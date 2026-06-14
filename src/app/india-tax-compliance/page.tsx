@@ -17,25 +17,19 @@ import {
   articleUrl,
   breadcrumbJsonLd,
   jsonLdGraph,
+  pageMetadata,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const title = "India Tax & Compliance for US NRIs";
 const description =
-  "The cross-border tax command center for NRIs in the USA: calculators for property-sale capital gains, remittance TCS, and RNOR residency; an FBAR/FATCA checker; and guides on DTAA, repatriation, and reporting Indian income on your US return.";
+  "The cross-border tax hub for NRIs in the USA: calculators for property gains, remittance TCS, and RNOR; an FBAR/FATCA checker; and DTAA guides.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: TAX_COMPLIANCE_PATH },
-  openGraph: {
-    type: "website",
-    url: TAX_COMPLIANCE_PATH,
-    title,
-    description,
-  },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: TAX_COMPLIANCE_PATH,
+});
 
 /** Resolve article slugs to real articles, dropping any that don't exist. */
 function resolve(slugs: string[]) {

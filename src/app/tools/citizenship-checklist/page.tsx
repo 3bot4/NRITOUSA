@@ -16,23 +16,17 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("citizenship-checklist")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/citizenship-checklist" },
-  openGraph: {
-    type: "website",
-    url: "/tools/citizenship-checklist",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/citizenship-checklist",
+});
 
 const faq: FaqItem[] = citizenship.faq;
 

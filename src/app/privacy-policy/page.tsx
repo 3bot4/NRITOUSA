@@ -2,19 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Privacy Policy";
 const description =
-  "How NRI to USA (owned by Wealth Building Academy LLC) collects, uses, and protects your information, including cookies, Google Analytics, advertising, and your privacy choices.";
+  "How NRI to USA (Wealth Building Academy LLC) collects, uses, and protects your information — cookies, Google Analytics, advertising, and your choices.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/privacy-policy" },
-  openGraph: { type: "website", url: "/privacy-policy", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   const jsonLd = jsonLdGraph(
@@ -171,7 +173,7 @@ export default function PrivacyPolicyPage() {
                 You may opt out of personalized advertising by visiting
                 Google&apos;s{" "}
                 <a
-                  href="https://www.google.com/settings/ads"
+                  href="https://adssettings.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-brand-600 underline"

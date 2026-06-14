@@ -2,19 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Resources & Checklists for NRIs in the USA";
 const description =
-  "Free step-by-step checklists for new immigrants — moving to the USA, first apartment, building credit, buying a car, sending money to India, taxes, retirement, and settling your family.";
+  "Free step-by-step checklists for new immigrants: moving to the USA, first apartment, building credit, buying a car, sending money, and taxes.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/resources" },
-  openGraph: { type: "website", url: "/resources", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/resources",
+});
 
 type Resource = {
   icon: string;

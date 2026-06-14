@@ -15,23 +15,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("grade-finder")!;
 const LAST_UPDATED = "2025-08-15";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: calc.seoTitle,
   description: calc.seoDescription,
-  alternates: { canonical: "/education/grade-finder" },
-  openGraph: {
-    type: "website",
-    url: "/education/grade-finder",
-    title: calc.seoTitle,
-    description: calc.seoDescription,
-  },
-};
+  path: "/education/grade-finder",
+});
 
 const schoolTypes = [
   {

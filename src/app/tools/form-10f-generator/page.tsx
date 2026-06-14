@@ -15,24 +15,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("form-10f-generator")!;
 const LAST_UPDATED = "2026-06-14";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/form-10f-generator" },
-  openGraph: {
-    type: "website",
-    url: "/tools/form-10f-generator",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/form-10f-generator",
+});
 
 const faq: FaqItem[] = [
   {

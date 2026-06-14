@@ -10,21 +10,15 @@ import {
   articleUrl,
   breadcrumbJsonLd,
   jsonLdGraph,
+  pageMetadata,
 } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "US Education Guides for Immigrant Families | nritousa.com",
+export const metadata: Metadata = pageMetadata({
+  title: "US Education Guides for Immigrant Families",
   description:
-    "In-depth, regularly updated guides on the US education system for immigrant and NRI families — college costs, K-12 enrollment, the SAT and ACT, and the best universities for Indian students.",
-  alternates: { canonical: "/education/articles" },
-  openGraph: {
-    type: "website",
-    url: "/education/articles",
-    title: "US Education Guides for Immigrant Families",
-    description:
-      "Long-form guides on US college costs, the K-12 school system, the digital SAT, and the best universities for immigrant students.",
-  },
-};
+    "In-depth guides on the US education system for immigrant families: college costs, K-12 enrollment, the digital SAT, and top US universities.",
+  path: "/education/articles",
+});
 
 export default function EducationArticlesPage() {
   const url = absoluteUrl("/education/articles");

@@ -11,22 +11,21 @@ import {
   articleUrl,
   breadcrumbJsonLd,
   jsonLdGraph,
+  pageMetadata,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const PATH = "/send-money-to-india";
 const PAGE_TITLE = "Send Money to India";
-const title = "Send Money to India: Compare Costs, TCS & Hidden Fees";
+const title = "Send Money to India: Costs, TCS & Fees";
 const description =
-  "Compare India–USA transfer costs, understand TCS on outward remittances, and avoid hidden exchange-rate fees — with a true-cost calculator and in-depth guides for NRIs.";
+  "Compare India–USA transfer costs, understand TCS on outward remittances, and avoid hidden exchange-rate fees — with a true-cost calculator and guides.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: PATH },
-  openGraph: { type: "website", url: PATH, title, description },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: PATH,
+});
 
 export default function SendMoneyToIndiaPage() {
   const remittance = getCalculator("remittance-tcs-cost");

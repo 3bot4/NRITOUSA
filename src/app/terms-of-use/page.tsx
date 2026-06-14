@@ -2,19 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
-import { breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 const title = "Terms of Use";
 const description =
-  "The terms governing your use of NRI to USA, owned by Wealth Building Academy LLC. Content is educational only and not financial, legal, tax, or immigration advice.";
+  "The terms governing your use of NRI to USA, owned by Wealth Building Academy LLC. Educational content only — not financial, legal, or tax advice.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/terms-of-use" },
-  openGraph: { type: "website", url: "/terms-of-use", title, description },
-  twitter: { title, description },
-};
+export const metadata: Metadata = pageMetadata({
+  title: title,
+  description: description,
+  path: "/terms-of-use",
+});
 
 export default function TermsOfUsePage() {
   const jsonLd = jsonLdGraph(

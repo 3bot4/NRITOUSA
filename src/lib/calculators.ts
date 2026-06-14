@@ -46,7 +46,7 @@ export const calculators: CalculatorMeta[] = [
     accent: "from-rose-500 to-pink-600",
     seoTitle: "RNOR & India Tax Residency Calculator for NRIs",
     seoDescription:
-      "Enter your days in India to find your Indian tax status — NRI, RNOR, or ROR — and when your worldwide income (US 401k, salary, gains) becomes taxable in India.",
+      "Enter your days in India to find your tax status (NRI, RNOR, or ROR) and when your worldwide income becomes taxable in India.",
     related: [
       "substantial-presence-test-explained",
       "indian-income-us-tax-return",
@@ -68,7 +68,7 @@ export const calculators: CalculatorMeta[] = [
       "Estimate capital gains tax and TDS on selling property in India, the 54EC exemption, and how much you can repatriate to the US under the $1M limit.",
     icon: "🏘️",
     accent: "from-amber-500 to-orange-600",
-    seoTitle: "India Property Sale Tax & Repatriation Calculator (NRI)",
+    seoTitle: "India Property Sale Tax Calculator (NRI)",
     seoDescription:
       "Estimate LTCG/STCG tax, TDS, the Section 54EC exemption, and your USD 1 million repatriation headroom when selling property in India as an NRI.",
     related: [
@@ -92,9 +92,9 @@ export const calculators: CalculatorMeta[] = [
       "Moving back to India? Compare cashing out your 401(k) now (after penalty + withholding) against leaving it to compound in USD for retirement.",
     icon: "🏦",
     accent: "from-indigo-500 to-blue-700",
-    seoTitle: "401(k) Cash Out vs Keep Calculator for Returning NRIs",
+    seoTitle: "401(k) Cash Out vs Keep Calculator (NRIs)",
     seoDescription:
-      "Compare the after-penalty, after-tax value of cashing out your 401(k) when leaving the US versus letting it compound for 10–20 years under the India-US DTAA.",
+      "Compare the after-tax value of cashing out your 401(k) when you leave the US versus letting it compound for 10–20 years under the DTAA.",
     related: [
       "what-happens-to-401k-leaving-usa",
       "transfer-401k-to-india-nps-ppf",
@@ -116,9 +116,9 @@ export const calculators: CalculatorMeta[] = [
       "High income phasing you out of a Roth IRA? Check your eligibility, the pro-rata tax trap, and the steps to a clean backdoor Roth conversion.",
     icon: "🚪",
     accent: "from-violet-500 to-purple-600",
-    seoTitle: "Backdoor Roth IRA Eligibility Calculator (2025/2026)",
+    seoTitle: "Backdoor Roth IRA Eligibility Calculator",
     seoDescription:
-      "Check Roth IRA income phase-out limits by filing status, see the pro-rata tax on existing Traditional IRA balances, and get a clean backdoor Roth checklist.",
+      "Check Roth IRA income phase-out limits by filing status, the pro-rata tax on existing Traditional IRA balances, and a clean backdoor Roth checklist.",
     related: [
       "backdoor-roth-ira-nri",
       "roth-ira-vs-traditional-nri",
@@ -139,9 +139,9 @@ export const calculators: CalculatorMeta[] = [
       "Standard calculators assume you'll stay 30 years. This one ties the rent-vs-buy decision to your real US visa horizon, including selling costs if you relocate.",
     icon: "🔑",
     accent: "from-sky-500 to-blue-600",
-    seoTitle: "Visa-Timeline Rent vs Buy Calculator for Immigrants",
+    seoTitle: "Visa-Timeline Rent vs Buy Calculator",
     seoDescription:
-      "Should an H-1B or visa holder rent or buy? Compare total cost over your secure US timeline, factoring in closing costs, selling costs, and home appreciation.",
+      "Should an H-1B or visa holder rent or buy? Compare total cost over your secure US timeline, including closing costs, selling costs, and appreciation.",
     related: [
       "rent-vs-buy-house-immigrants",
       "buying-first-home-on-visa",
@@ -162,9 +162,9 @@ export const calculators: CalculatorMeta[] = [
       "The only rent vs. buy calculator that factors in your visa, immigration timeline, and relocation risk — built for visa holders, not 30-year US citizens.",
     icon: "🏡",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "Rent vs. Buy Calculator for Immigrants & Visa Holders",
+    seoTitle: "Rent vs. Buy Calculator for Visa Holders",
     seoDescription:
-      "Built for visa holders — accounts for visa type, immigration timeline, and relocation risk. See the immigrant-adjusted break-even and whether buying beats renting.",
+      "Built for visa holders: accounts for visa type, immigration timeline, and relocation risk. See the immigrant-adjusted break-even — rent or buy.",
     related: [
       "rent-vs-buy-house-immigrants",
       "buying-first-home-on-visa",
@@ -186,9 +186,9 @@ export const calculators: CalculatorMeta[] = [
       "See the real cost of an India–US transfer: flat fees, hidden exchange-rate margin, and India's TCS on outward remittances — and the net amount that actually arrives.",
     icon: "💸",
     accent: "from-cyan-500 to-teal-600",
-    seoTitle: "Remittance Cost & TCS Calculator (India–USA Transfers)",
+    seoTitle: "Remittance & TCS Calculator (India–USA)",
     seoDescription:
-      "Calculate the true cost of sending money between India and the USA — provider fees, exchange-rate spread, and India's TCS brackets — to see the net amount received.",
+      "See the true cost of sending money between India and the USA — provider fees, exchange-rate spread, and India's TCS — and the net amount received.",
     related: [
       "cheapest-way-send-money-usa-india",
       "us-1-percent-remittance-fee",
@@ -210,9 +210,9 @@ export const calculators: CalculatorMeta[] = [
       "Taxed on the same income in both India and the US? Estimate your Foreign Tax Credit, how much double taxation the DTAA avoids, and any US tax still due or India tax to carry over.",
     icon: "⚖️",
     accent: "from-teal-500 to-emerald-600",
-    seoTitle: "DTAA Relief & Foreign Tax Credit Calculator for US NRIs",
+    seoTitle: "DTAA & Foreign Tax Credit Calculator (NRI)",
     seoDescription:
-      "Estimate India–US DTAA relief: enter India income, tax paid in India, and your US bracket to see your indicative Foreign Tax Credit (Form 1116), the double tax avoided, and any carryover.",
+      "Estimate India–US DTAA relief: enter your India income, tax paid, and US bracket to see your Foreign Tax Credit (Form 1116) and double tax avoided.",
     related: [
       "double-taxation-dtaa-india-usa",
       "indian-income-us-tax-return",

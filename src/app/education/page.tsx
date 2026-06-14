@@ -12,13 +12,17 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "US Education Hub for Immigrant Families | nritousa.com",
-  description:
-    "Navigate the US education system: free K-12 grade finder, GPA and SAT calculators, college cost projector, rankings explorer, and in-depth guides for newly arrived immigrant and NRI families.",
+  ...pageMetadata({
+    title: "US Education Hub for Immigrant Families",
+    description:
+      "Free tools and guides for the US education system: K-12 grade finder, GPA & SAT calculators, a college-cost projector, and rankings for NRI families.",
+    path: "/education",
+  }),
   keywords: [
     "US education system for immigrants",
     "what grade is my child in USA",
@@ -26,14 +30,6 @@ export const metadata: Metadata = {
     "GPA calculator",
     "SAT score calculator",
   ],
-  alternates: { canonical: "/education" },
-  openGraph: {
-    type: "website",
-    url: "/education",
-    title: "US Education Hub for Immigrant Families",
-    description:
-      "Free calculators and guides for the US education system — grade levels, GPA, SAT, college costs, and rankings — built for newly arrived immigrant and NRI families.",
-  },
 };
 
 const stats = [

@@ -16,23 +16,18 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("college-rankings")!;
 const LAST_UPDATED = "2025-08-15";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: calc.seoTitle,
   description: calc.seoDescription,
-  alternates: { canonical: "/education/college-rankings" },
-  openGraph: {
-    type: "website",
-    url: "/education/college-rankings",
-    title: calc.seoTitle,
-    description: calc.seoDescription,
-  },
-};
+  path: "/education/college-rankings",
+});
 
 const faq: FaqItem[] = [
   {

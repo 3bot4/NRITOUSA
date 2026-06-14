@@ -9,23 +9,17 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("h1b-lottery-timeline")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
-  alternates: { canonical: "/tools/h1b-lottery-timeline" },
-  openGraph: {
-    type: "website",
-    url: "/tools/h1b-lottery-timeline",
-    title: tool.seoTitle,
-    description: tool.seoDescription,
-  },
-  twitter: { title: tool.seoTitle, description: tool.seoDescription },
-};
+  path: "/tools/h1b-lottery-timeline",
+});
 
 const faq: FaqItem[] = [
   {

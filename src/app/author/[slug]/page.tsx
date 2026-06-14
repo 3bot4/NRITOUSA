@@ -9,7 +9,7 @@ import Icon from "@/components/Icon";
 import AuthorAvatar from "@/components/contributors/AuthorAvatar";
 import { authors, getAuthor } from "@/lib/authors";
 import { getArticlesByAuthor } from "@/lib/articles";
-import { authorProfileJsonLd, jsonLdGraph } from "@/lib/seo";
+import { authorProfileJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return authors.map((a) => ({ slug: a.slug }));
@@ -22,16 +22,12 @@ export function generateMetadata({
 }): Metadata {
   const author = getAuthor(params.slug);
   if (!author) return { title: "Author not found" };
-  const title = `${author.name} — ${author.role}`;
-  const description = author.bio;
-  const url = `/author/${author.slug}`;
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: { type: "profile", url, title, description },
-    twitter: { title, description },
-  };
+  return pageMetadata({
+    title: `${author.name} — ${author.role}`,
+    description: author.bio,
+    path: `/author/${author.slug}`,
+    type: "profile",
+  });
 }
 
 export default function AuthorPage({

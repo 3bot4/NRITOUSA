@@ -20,6 +20,7 @@ import {
   extractFaq,
   faqJsonLd,
   jsonLdGraph,
+  pageMetadata,
   topicPath,
 } from "@/lib/seo";
 
@@ -45,26 +46,20 @@ export function generateMetadata({
   const article = getArticle(params.slug);
   if (!article) return { title: "Article not found" };
   const topic = getTopic(article.topic);
-  return {
+  return pageMetadata({
     title: article.seoTitle ?? article.title,
     description: article.excerpt,
-    alternates: { canonical: articlePath(article.slug) },
+    path: articlePath(article.slug),
+    type: "article",
+    image: `${articlePath(article.slug)}/opengraph-image`,
+    socialTitle: article.title,
     openGraph: {
-      type: "article",
-      url: articlePath(article.slug),
-      title: article.title,
-      description: article.excerpt,
       publishedTime: article.date,
       modifiedTime: article.updated ?? article.date,
       section: topic?.title,
       authors: [resolveByline(article).name],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.excerpt,
-    },
-  };
+  });
 }
 
 export default function ArticlePage({
