@@ -57,6 +57,17 @@ const nextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  async redirects() {
+    return [
+      // The money-transfer topic page was consolidated into the
+      // /send-money-to-india landing page. Keep old links/bookmarks working.
+      {
+        source: "/topics/money-transfer",
+        destination: "/send-money-to-india",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

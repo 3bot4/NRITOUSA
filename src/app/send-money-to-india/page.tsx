@@ -171,7 +171,6 @@ export default function SendMoneyToIndiaPage() {
             eyebrow="Guides"
             title="Sending money, explained"
             description="The cheapest services, the exchange-rate spread, NRE/NRO accounts, TCS, and how to move money tax-smart in both directions."
-            action={{ label: "All transfer guides", href: "/topics/money-transfer" }}
           />
           {guides.length > 0 && (
             <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

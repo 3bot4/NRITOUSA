@@ -48,7 +48,7 @@ const featured = [
     title: "India ↔ USA Money Transfers",
     description:
       "NRE/NRO accounts, best transfer services, and moving money tax-efficiently.",
-    href: "/topics/money-transfer",
+    href: "/send-money-to-india",
     accent: "from-emerald-500 to-teal-600",
   },
   {

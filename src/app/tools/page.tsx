@@ -8,6 +8,7 @@ import CalculatorCard from "@/components/CalculatorCard";
 import IulComparisonCard from "@/components/IulComparisonCard";
 import { tools, toolGroups, liveTools } from "@/lib/tools";
 import { calculators, usInvestingCalculatorSlugs } from "@/lib/calculators";
+import { TAX_COMPLIANCE_PATH, TAX_COMPLIANCE_TAG } from "@/lib/taxCompliance";
 import { absoluteUrl, breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
 
 const title = "Free Tools & Data for Indians in the USA";
@@ -23,8 +24,10 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsHubPage() {
-  const crossBorderCalculators = calculators.filter(
-    (c) => !usInvestingCalculatorSlugs.includes(c.slug)
+  // Tax & compliance items live exclusively on the India Tax & Compliance hub,
+  // so they are excluded here (both the tagged tools and the tagged calculators).
+  const hubTools = liveTools.filter(
+    (t) => !t.tags?.includes(TAX_COMPLIANCE_TAG)
   );
   const usInvestingCalculators = usInvestingCalculatorSlugs
     .map((slug) => calculators.find((c) => c.slug === slug))
@@ -33,15 +36,15 @@ export default function ToolsHubPage() {
   const itemList = {
     "@type": "ItemList",
     itemListElement: [
-      ...liveTools.map((t, i) => ({
+      ...hubTools.map((t, i) => ({
         "@type": "ListItem",
         position: i + 1,
         name: t.title,
         url: absoluteUrl(`/tools/${t.slug}`),
       })),
-      ...calculators.map((c, i) => ({
+      ...usInvestingCalculators.map((c, i) => ({
         "@type": "ListItem",
-        position: liveTools.length + i + 1,
+        position: hubTools.length + i + 1,
         name: c.title,
         url: absoluteUrl(`/calculators/${c.slug}`),
       })),
@@ -84,7 +87,10 @@ export default function ToolsHubPage() {
         <Container>
           <div className="space-y-8">
             {toolGroups.map((group) => {
-              const items = tools.filter((t) => t.group === group);
+              const items = tools.filter(
+                (t) =>
+                  t.group === group && !t.tags?.includes(TAX_COMPLIANCE_TAG)
+              );
               if (!items.length) return null;
               return (
                 <div key={group}>
@@ -100,24 +106,30 @@ export default function ToolsHubPage() {
               );
             })}
 
-            <div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <Link
+              href={TAX_COMPLIANCE_PATH}
+              className="group flex flex-col gap-2 rounded-2xl border border-ink-900/5 bg-gradient-to-br from-rose-50 to-pink-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
                 <h2 className="text-lg font-bold tracking-tight text-ink-900">
-                  Cross-border calculators
+                  Looking for India tax calculators?
                 </h2>
-                <Link
-                  href="/calculators"
-                  className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                <p className="mt-1 text-sm text-ink-500">
+                  RNOR residency, property-sale gains, remittance TCS, DTAA
+                  credits, 401(k) cash-out, and FBAR/FATCA now live on the India
+                  Tax &amp; Compliance hub.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+                Visit the India Tax &amp; Compliance hub{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
                 >
-                  View all calculators <span aria-hidden>→</span>
-                </Link>
-              </div>
-              <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {crossBorderCalculators.map((c) => (
-                  <CalculatorCard key={c.slug} calc={c} />
-                ))}
-              </div>
-            </div>
+                  →
+                </span>
+              </span>
+            </Link>
 
             <div>
               <h2 className="text-lg font-bold tracking-tight text-ink-900">

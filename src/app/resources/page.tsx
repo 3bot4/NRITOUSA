@@ -107,7 +107,7 @@ const resources: Resource[] = [
     title: "India–USA money transfer checklist",
     description:
       "Move money between India and the USA the tax-smart, low-fee way using the right accounts.",
-    topic: { label: "Transfer guides", href: "/topics/money-transfer" },
+    topic: { label: "Transfer guides", href: "/send-money-to-india" },
     steps: [
       "Choose the cheapest transfer service & rate",
       "Use NRE/NRO accounts correctly",

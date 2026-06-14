@@ -286,6 +286,16 @@ export default function IndiaTaxCompliancePage() {
             </Link>
             .
           </div>
+
+          <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-500">
+            Looking for visa and green card tools?{" "}
+            <Link
+              href="/tools"
+              className="font-semibold text-brand-600 hover:text-brand-700"
+            >
+              Browse all tools <span aria-hidden>→</span>
+            </Link>
+          </p>
         </Container>
       </section>
 
