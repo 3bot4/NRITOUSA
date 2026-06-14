@@ -253,7 +253,7 @@ Your SSN is a master key, and the first 30 days decide whether you spend the nex
     topic: "housing",
     date: "2026-06-03",
     featured: false,
-    content: `Your first apartment search collides head-on with the newcomer credit problem. Property managers run a credit check and a background check, and your US file is empty. The automated screening at big complexes often rejects a "no credit" applicant outright. But thousands of newcomers sign leases every month with zero US history — because a landlord's real fear isn't a low score, it's not getting paid. Solve that and the keys are yours.
+    content: `Your first apartment search collides with the newcomer credit problem: managers run a credit check and your US file is empty, so big complexes often auto-reject. But thousands of newcomers sign leases every month with zero US history — because a landlord's real fear isn't a low score, it's not getting paid. Solve that and the keys are yours.
 
 :::summary
 Landlords want proof you'll pay. With **no US credit**, you win approval by showing **income roughly 3x the rent** (an employer letter plus pay stubs), offering a **larger deposit or prepaid rent**, lining up a **guarantor service** if needed, and targeting **smaller private landlords** over algorithm-driven corporate complexes. Budget **3x the monthly rent in cash** for move-in costs.
@@ -319,10 +319,13 @@ The sticker rent is only part of it. At signing, expect:
 A safe rule: have **about 3x the monthly rent in cash** ready before you start touring.
 
 ## Red flags to walk away from
-- A "landlord" who won't let you see the unit in person or on a live video call.
-- Pressure to **wire a deposit before you've signed** anything.
-- A lease missing the landlord's real legal name and address.
-- A deal far below market "because they're traveling abroad." Classic scam.
+:::warn
+title: Rental scam red flags
+- A "landlord" who won't let you see the unit in person or on a live video call
+- Pressure to **wire a deposit before you've signed** anything
+- A lease missing the landlord's real legal name and address
+- A deal far below market "because they're traveling abroad" — classic scam
+:::
 
 ## Frequently asked questions
 
@@ -349,7 +352,7 @@ A blank US credit report is a speed bump, not a wall. Lead with income proof, sw
     topic: "finance",
     date: "2026-06-04",
     featured: false,
-    content: `A working US phone number is the first thing you need — to receive job paperwork, set up your bank, and get two-factor codes. But the big carriers are built for people with an SSN and credit, and they'll either run a credit check or demand a deposit of up to $500 per line before they'll sell you a postpaid plan. You don't need any of that. Here's how to be connected on day one for around $20 a month and call home to India for free.
+    content: `A working US phone number is the first thing you need — for job paperwork, your bank, and two-factor codes. But big carriers want an SSN and credit, and will run a check or demand a deposit of up to $500 per line for a postpaid plan. You don't need any of that — here's how to be connected on day one for ~$20/month and call India free.
 
 :::summary
 Get a **prepaid plan** — no SSN, no credit check, no contract, no deposit. **Mint Mobile, US Mobile, and Visible** offer unlimited talk/text and data for **$15–$30/month**. Use **WhatsApp or Google Voice** for free India calls over WiFi. Switch to a cheaper postpaid family plan later once you have an SSN. Many utilities ask for a deposit without credit, but it's refundable.
@@ -624,7 +627,7 @@ Declare all your Indian income, file **Form 1116** to credit the Indian tax you 
     topic: "taxes",
     date: "2026-06-03",
     featured: false,
-    content: `It's the question almost every NRI asks in their first US tax season: *"I already pay tax in India on that — do I really have to tell the IRS about it too?"* For most people, once you become a **US resident for tax purposes**, the answer is an unambiguous yes. The US taxes its residents on **worldwide income**, full stop. The silver lining is that declaring it rarely means paying double — the [DTAA and Foreign Tax Credit](/articles/double-taxation-dtaa-india-usa) handle that. But the reporting itself is mandatory, and the penalties for "forgetting" are real.
+    content: `*"I already pay tax in India on that — do I have to tell the IRS too?"* Once you're a **US resident for tax purposes**, the answer is yes: the US taxes residents on **worldwide income**. The good news is declaring it rarely means paying double — the [DTAA and Foreign Tax Credit](/articles/double-taxation-dtaa-india-usa) handle that — but reporting is mandatory and the penalties for "forgetting" are real.
 
 :::summary
 If you pass the **Substantial Presence Test**, you're a US resident alien taxed on **worldwide income** — including Indian rent, interest, dividends, and capital gains. You report it on **Form 1040**, then use **Form 1116** to credit Indian tax already paid so you're not taxed twice. **Gifts and inheritance aren't income** (though they have their own reporting). Omitting income risks back taxes plus 20%+ penalties and interest.
@@ -679,13 +682,13 @@ Once you're a **resident alien**, the worldwide-income rule applies and India is
 
 ## What happens if you don't report it
 The IRS treats omission seriously. If they find unreported Indian income, expect:
-
-- **Back taxes** on the omitted amount.
-- **Interest** that accrues from the original due date.
-- **Accuracy-related penalties** of **20%** of the underpayment — rising to **75%** for civil fraud.
-- Potential FBAR/FATCA penalties layered on top if accounts were also undisclosed.
-
-Because the Foreign Tax Credit usually wipes out most or all of the *actual* US tax on Indian income anyway, the irony is that people risk huge penalties to avoid reporting income they often wouldn't owe much on.
+:::warn
+- **Back taxes** on the omitted amount
+- **Interest** accruing from the original due date
+- **Accuracy-related penalties** of **20%** of the underpayment — rising to **75%** for civil fraud
+- Potential FBAR/FATCA penalties layered on top if accounts were also undisclosed
+:::
+The irony: the Foreign Tax Credit usually wipes out most of the *actual* US tax on Indian income anyway — people risk huge penalties to avoid reporting income they'd owe little on.
 
 ## Frequently asked questions
 
@@ -712,7 +715,7 @@ If you're a US resident for tax purposes, your Indian rent, interest, dividends,
     topic: "taxes",
     date: "2026-06-04",
     featured: false,
-    content: `It feels completely natural: you've held SIPs in Indian mutual funds for years, they've performed well, so you keep them after moving to the US. Unfortunately, that single decision can quietly become one of the most expensive mistakes in your financial life. The IRS classifies nearly every Indian mutual fund as a **PFIC — a Passive Foreign Investment Company** — and the tax regime for PFICs was deliberately designed to be punishing. Understanding this rule is the difference between a clean, low-tax portfolio and a paperwork nightmare that can tax away half your gains.
+    content: `You held SIPs in Indian mutual funds for years and kept them after moving to the US — natural, and quietly one of the most expensive mistakes in your financial life. The IRS classifies nearly every Indian mutual fund as a **PFIC (Passive Foreign Investment Company)**, and the PFIC tax regime was designed to punish. Understanding it is the difference between a clean, low-tax portfolio and a paperwork nightmare that taxes away half your gains.
 
 :::summary
 US residents who hold **Indian mutual funds, ETFs, or ULIPs** are caught by the **PFIC** rules. Under the default regime, gains are taxed at the **highest ordinary income rate (up to 37%)** plus an **interest charge** for deferral — often a 50%+ effective hit — and you must file **Form 8621** for each fund every year. The fix: **don't buy them as a US resident.** Invest through **US-domiciled funds/ETFs** instead, and unwind existing Indian funds deliberately with a CPA.
@@ -797,7 +800,7 @@ Indian mutual funds feel familiar and safe, but as a US resident they're a tax t
     topic: "taxes",
     date: "2026-06-05",
     featured: false,
-    content: `It's one of the most common cross-border money moments: your parents in India wire you a large sum — to help with a home down payment, a wedding, or just to share family savings. The money lands in your US account and a small panic sets in: *"Is the IRS going to tax this? Do I have to report it?"* Here's the reassuring headline — **a genuine gift is not taxable income to you in the US.** But there's a critical disclosure form, and the penalty for skipping it is brutal relative to how easy it is to file.
+    content: `Your parents in India wire you a large sum — for a home down payment, a wedding, or to share family savings — and a small panic sets in: *will the IRS tax this?* The reassuring headline: **a genuine gift is not taxable income to you in the US**. But there's a critical disclosure form, and the penalty for skipping it is brutal relative to how easy it is to file.
 
 :::summary
 A bona fide **gift from your non-US parents is not taxable income** to you in the US — you owe **zero tax** on it. However, if foreign gifts total **more than $100,000** in a year, you must **disclose** them on **Form 3520** (a reporting form, not a tax). Missing Form 3520 can cost up to **25% of the gift**. On the India side, parents using the LRS may face **20% TCS** on large outward remittances, which is creditable on their Indian return.
@@ -963,7 +966,7 @@ Moving back to India is a reason to *plan* your 401(k), not to fear or skip it. 
     topic: "retirement",
     date: "2026-05-29",
     featured: false,
-    content: `One of the most common — and most misunderstood — questions returning NRIs ask is: *"How do I transfer my 401(k) into my NPS or PPF account in India?"* The short answer is one nobody wants to hear: **you can't.** There is no mechanism, treaty, or form that lets you roll a US retirement account directly into an Indian one. The two countries' retirement systems are completely separate and don't talk to each other. But that doesn't mean your money is stuck — it means you need the right *workaround*, and choosing the wrong one can cost you a fortune in penalties.
+    content: `*"How do I transfer my 401(k) into my NPS or PPF in India?"* The short answer nobody wants: **you can't** — no mechanism, treaty, or form rolls a US retirement account directly into an Indian one. But your money isn't stuck; you just need the right *workaround*, and choosing the wrong one can cost a fortune in penalties.
 
 :::summary
 **No direct transfer exists** between a US 401(k)/IRA and India's NPS or PPF — the systems aren't connected. Your real choices are to **leave it invested in the US**, **roll it into an IRA**, or **liquidate and move the cash** (expensive, due to the 10% penalty and up to 30% withholding). You *can* separately contribute to **NPS** as an NRI using your NRE/NRO funds, but that's a new investment, not a transfer.
@@ -1040,7 +1043,7 @@ Stop looking for a transfer button — it doesn't exist. The two retirement syst
     topic: "retirement",
     date: "2026-05-22",
     featured: false,
-    content: `Every paycheck in the US, **6.2% of your salary** vanishes into Social Security tax — and your employer matches it. For NRIs who may not retire in America, a fair question follows: *"Am I ever going to see any of that money, or is it just a tax I pay and lose?"* The answer hinges on one number — **40 credits** — and on a frustrating fact: unlike most developed countries, **India has no totalization agreement with the US.** Understanding the rules tells you whether your contributions become a retirement benefit or a sunk cost.
+    content: `Every paycheck, **6.2% of your salary** vanishes into Social Security tax — so for NRIs who may not retire here, a fair question follows: *will I ever see any of it?* The answer hinges on one number — **40 credits** — and a frustrating fact: unlike most countries, **India has no totalization agreement with the US**. Understanding the rules tells you whether your contributions become a benefit or a sunk cost.
 
 :::summary
 To collect US Social Security retirement benefits you need **40 credits — about 10 years of work**. If you earn them, you can generally **receive benefits even while living in India**. The catch: the US and India have **no totalization agreement**, so you can't combine credits across countries, and short stints may earn you nothing. A 2025 law **repealed the WEP**, so foreign pensions no longer reduce your US benefit.
@@ -1232,7 +1235,7 @@ Stop asking "rent or buy?" — ask **"what should I buy, and when?"** With 3–5
     topic: "cars",
     date: "2026-05-26",
     featured: false,
-    content: `You've driven safely for ten years in India, but the moment you ask for a US car insurance quote as a newcomer, the number is shocking — sometimes **two to three times** what your colleagues pay. The reason is simple and frustrating: US insurers price on your **US driving record**, and yours is blank. To their algorithm, a 35-year-old experienced driver from Bangalore looks identical to a 16-year-old who just got a learner's permit. The good news is that this is fixable, and faster than you'd think. Here's how to avoid overpaying from day one.
+    content: `You drove safely for ten years in India, yet your first US insurance quote as a newcomer is shocking — sometimes **two to three times** what colleagues pay. US insurers price on your **US driving record**, and yours is blank, so their algorithm treats a 35-year-old from Bangalore like a 16-year-old with a learner's permit. The good news: it's fixable, faster than you'd think — here's how to avoid overpaying from day one.
 
 :::summary
 US insurers quote newcomers high because you have **no US driving history**. Cut the cost by **getting a state driver's license quickly**, asking insurers to credit your **Indian no-claims/driving record**, choosing **newcomer-friendly companies** (Geico, Progressive), and using **telematics, higher deductibles, and bundling**. Premiums typically **drop sharply after 6–12 months** of a clean US record.
@@ -1269,11 +1272,13 @@ Not all insurers treat thin histories the same:
 Always get **at least three quotes** — the spread for newcomers can be enormous.
 
 ## Tactic 4 — Use the levers that lower any premium
-- **Telematics / usage-based programs**: let the insurer track your driving for a few weeks; safe drivers earn discounts and bypass the "no history" penalty.
-- **Raise your deductible**: moving from a $250 to a $1,000 deductible can cut your premium noticeably (just keep the deductible in your emergency fund).
-- **Bundle**: pair auto with [renter's insurance](/articles/rent-apartment-no-credit-history) for a multi-policy discount.
-- **Pay in full / autopay**: many insurers discount upfront annual payment.
-- **Lower coverage on an old car**: drop collision/comprehensive on a cheap beater where it's not worth it.
+:::tip
+- **Telematics / usage-based programs** — let the insurer track your driving for a few weeks; safe drivers earn discounts and bypass the "no history" penalty
+- **Raise your deductible** — moving from $250 to $1,000 can cut your premium noticeably (keep the deductible in your emergency fund)
+- **Bundle** auto with [renter's insurance](/articles/rent-apartment-no-credit-history) for a multi-policy discount
+- **Pay in full / autopay** — many insurers discount upfront annual payment
+- **Lower coverage on an old car** — drop collision/comprehensive on a cheap beater
+:::
 
 :::note
 **Your US credit affects your premium.** In most states, insurers use a credit-based insurance score. As you [build US credit](/articles/build-us-credit-score-from-zero), your insurance rates tend to improve too — another reason to start your credit file early.
@@ -1307,7 +1312,7 @@ A high first quote is the newcomer tax, not your permanent rate. Prove your Indi
     topic: "property",
     date: "2026-05-19",
     featured: false,
-    content: `You bought a home while working in the US, your plans changed, and now you're selling it — possibly after you've already moved back to India. Then your closing agent drops a surprise: the buyer is legally required to **withhold 15% of the entire sale price** and send it to the IRS. Not 15% of your profit — 15% of the **gross** amount. On a $600,000 sale, that's **$90,000** frozen, even if your actual gain (and tax) is far smaller. This is **FIRPTA**, and while it feels punitive, it's recoverable if you understand the rules and plan ahead.
+    content: `You're selling the US home you bought while working here — maybe after already moving back to India — when your closing agent drops a surprise: the buyer must **withhold 15% of the entire sale price** for the IRS. Not 15% of your profit — 15% of the **gross**, so a $600,000 sale freezes **$90,000** even if your actual tax is far smaller. This is **FIRPTA**, and while it feels punitive, it's recoverable if you understand the rules and plan ahead.
 
 :::summary
 **FIRPTA** requires buyers to withhold up to **15% of the gross sale price** when the seller is a **nonresident alien** — it's a prepayment of tax, not the tax itself. If you're still a **US tax resident** when you sell, FIRPTA does **not** apply. Nonresidents can reduce the withholding with a **Form 8288-B certificate** and reclaim any excess by filing a **1040-NR**. Lower rates apply for sales under $1M used as the buyer's residence.
@@ -1461,7 +1466,7 @@ Stop reading the fee and start reading the rupees. Compare the final landed amou
     topic: "money-transfer",
     date: "2026-05-27",
     featured: false,
-    content: `Selling property in India and bringing the proceeds to the US is one of the larger, more anxiety-inducing money moves an NRI makes. The sums are big, the rules span two countries, and a single missed form can freeze your funds at the bank. But the process is well-defined: India lets you repatriate up to **$1 million per financial year** from your NRO account, provided you've paid the right taxes and filed the right certificates. Here's the complete roadmap from sale to US bank account.
+    content: `Selling Indian property and bringing the proceeds to the US is one of the larger money moves an NRI makes — big sums, two countries' rules, and one missed form can freeze your funds. But the process is well-defined: India lets you repatriate up to **$1 million per financial year** from your NRO account once you've paid the right taxes and filed the right certificates. Here's the complete roadmap from sale to US bank account.
 
 :::summary
 After selling Indian property, the buyer deducts **TDS** (often ~20%+ for NRIs on long-term gains). Proceeds go into your **NRO account**, from which you can repatriate up to **$1 million per financial year**. You'll need a Chartered Accountant's **Form 15CB** and your **Form 15CA** declaration to remit. On the US side, report the **capital gain** and claim a [foreign tax credit](/articles/double-taxation-dtaa-india-usa) to avoid double taxation.
