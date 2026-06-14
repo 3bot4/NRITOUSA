@@ -84,7 +84,7 @@ export default function Footer() {
             >
               <span
                 aria-hidden
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 bg-gradient-to-br from-brand-600 to-emerald-500 text-sm font-extrabold text-white"
               >
                 N
               </span>
