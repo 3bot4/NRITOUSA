@@ -47,9 +47,9 @@ export default function TopicsPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-10 sm:py-12">
         <Container>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {topics.map((topic) => (
               <TopicCard
                 key={topic.slug}

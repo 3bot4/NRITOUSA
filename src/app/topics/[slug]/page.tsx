@@ -116,12 +116,12 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-10 sm:py-12">
         <Container>
           {articles.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {articles.map((article) => (
-                <ArticleCard key={article.slug} article={article} />
+                <ArticleCard key={article.slug} article={article} variant="dense" />
               ))}
             </div>
           ) : (

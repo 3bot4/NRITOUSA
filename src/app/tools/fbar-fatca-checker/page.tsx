@@ -6,6 +6,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
+import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import FbarFatcaChecker from "@/components/tools/FbarFatcaChecker";
 import { getTool } from "@/lib/tools";
 import { site } from "@/lib/site";
@@ -210,6 +211,13 @@ export default function FbarFatcaCheckerPage() {
           <div className="mx-auto mt-10 max-w-3xl">
             <ToolDisclaimer />
           </div>
+        </Container>
+      </section>
+
+      {/* Related tax & compliance tools (5 interlinks → hub) */}
+      <section className="bg-slate-50/60 py-12 sm:py-16">
+        <Container>
+          <RelatedToolsStrip currentHref="/tools/fbar-fatca-checker" />
         </Container>
       </section>
     </>

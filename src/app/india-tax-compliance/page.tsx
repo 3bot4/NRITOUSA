@@ -1,0 +1,295 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Container from "@/components/Container";
+import SectionHeading from "@/components/SectionHeading";
+import Newsletter from "@/components/Newsletter";
+import { getArticle } from "@/lib/articles";
+import {
+  TAX_COMPLIANCE_PATH,
+  TAX_COMPLIANCE_TITLE,
+  TAX_TOPIC_GROUPS,
+  TAX_TOPIC_SLUGS,
+  taxComplianceCalculators,
+  taxComplianceTools,
+} from "@/lib/taxCompliance";
+import {
+  absoluteUrl,
+  articleUrl,
+  breadcrumbJsonLd,
+  jsonLdGraph,
+} from "@/lib/seo";
+import { site } from "@/lib/site";
+
+const title = "India Tax & Compliance for US NRIs";
+const description =
+  "The cross-border tax command center for NRIs in the USA: calculators for property-sale capital gains, remittance TCS, and RNOR residency; an FBAR/FATCA checker; and guides on DTAA, repatriation, and reporting Indian income on your US return.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: TAX_COMPLIANCE_PATH },
+  openGraph: {
+    type: "website",
+    url: TAX_COMPLIANCE_PATH,
+    title,
+    description,
+  },
+  twitter: { card: "summary_large_image", title, description },
+};
+
+/** Resolve article slugs to real articles, dropping any that don't exist. */
+function resolve(slugs: string[]) {
+  return slugs
+    .map((s) => getArticle(s))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+}
+
+export default function IndiaTaxCompliancePage() {
+  const calcs = taxComplianceCalculators();
+  const tools = taxComplianceTools();
+  const topicArticles = resolve(TAX_TOPIC_SLUGS);
+
+  const jsonLd = jsonLdGraph(
+    {
+      "@type": "CollectionPage",
+      "@id": `${absoluteUrl(TAX_COMPLIANCE_PATH)}#collection`,
+      name: title,
+      description,
+      url: absoluteUrl(TAX_COMPLIANCE_PATH),
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${site.url}/#website` },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: [
+          ...calcs.map((c) => ({
+            url: absoluteUrl(`/calculators/${c.slug}`),
+            name: c.title,
+          })),
+          ...tools.map((t) => ({
+            url: absoluteUrl(`/tools/${t.slug}`),
+            name: t.title,
+          })),
+          ...topicArticles.map((a) => ({
+            url: articleUrl(a.slug),
+            name: a.title,
+          })),
+        ].map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: item.url,
+          name: item.name,
+        })),
+      },
+    },
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: TAX_COMPLIANCE_TITLE, url: TAX_COMPLIANCE_PATH },
+    ])
+  );
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-ink-900/5 bg-gradient-to-br from-rose-500 to-pink-600">
+        <div className="absolute inset-0 bg-ink-900/40" />
+        <Container className="relative py-16 sm:py-24">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-2 text-sm text-white/80"
+          >
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span aria-hidden>/</span>
+            <span className="text-white">{TAX_COMPLIANCE_TITLE}</span>
+          </nav>
+
+          <div className="mt-5 flex items-center gap-4">
+            <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-4xl backdrop-blur">
+              🧾
+            </span>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              India Tax &amp; Compliance
+            </h1>
+          </div>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
+            One place for the tax side of your India–US money: when you become a
+            US tax resident, what India can still tax, how the DTAA stops double
+            taxation, and how to report Indian accounts, property sales, and
+            remittances correctly. Start with a calculator, then dig into the
+            topic guides.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/calculators/india-property-capital-gains"
+              className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-ink-900 shadow-sm hover:bg-white/90"
+            >
+              Estimate property-sale tax
+            </Link>
+            <Link
+              href="#tax-topics"
+              className="rounded-xl bg-white/15 px-5 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/25"
+            >
+              Browse all tax topics
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Calculators + Tools — compact, glanceable cards */}
+      <section className="bg-white py-10 sm:py-12">
+        <Container>
+          <SectionHeading
+            eyebrow="Calculators & tools"
+            title="Run the numbers, then check compliance"
+            description="The decisions that move the most money — capital gains, repatriation, residency timing, transfer costs, and foreign-account reporting."
+            action={{ label: "All calculators", href: "/calculators" }}
+          />
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {calcs.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/calculators/${c.slug}`}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${c.accent} text-lg shadow-sm`}
+                  >
+                    {c.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    Calculator
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {c.label}
+                </h3>
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                  {c.description}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+            {tools.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/tools/${t.slug}`}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${t.accent} text-lg shadow-sm`}
+                  >
+                    {t.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    Tool
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {t.label}
+                </h3>
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                  {t.description}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Tax Topics — dense text cards, grouped */}
+      <section id="tax-topics" className="scroll-mt-20 bg-slate-50/60 py-10 sm:py-12">
+        <Container>
+          <SectionHeading
+            eyebrow="Tax topics"
+            title="Cross-border tax, explained"
+            description="Every India–US tax guide, grouped by the question you're trying to answer."
+            action={{ label: "More tax guides", href: "/topics/taxes" }}
+          />
+          <div className="space-y-8">
+            {TAX_TOPIC_GROUPS.map((group) => {
+              const items = resolve(group.slugs);
+              if (items.length === 0) return null;
+              return (
+                <div key={group.title}>
+                  <div className="mb-3 flex flex-wrap items-baseline gap-x-3">
+                    <h3 className="text-base font-bold tracking-tight text-ink-900">
+                      {group.title}
+                    </h3>
+                    <p className="text-xs text-ink-400">{group.description}</p>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {items.map((a) => (
+                      <Link
+                        key={a.slug}
+                        href={`/articles/${a.slug}`}
+                        className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                      >
+                        <h4 className="text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                          {a.title}
+                        </h4>
+                        <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                          {a.excerpt}
+                        </p>
+                        <span className="mt-2.5 text-[0.6875rem] font-semibold text-brand-600">
+                          Read guide{" "}
+                          <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                            →
+                          </span>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="bg-white pb-16">
+        <Container>
+          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/5 bg-slate-50/60 p-6 text-sm leading-relaxed text-ink-500">
+            <strong className="font-semibold text-ink-700">Disclaimer:</strong>{" "}
+            Content on {site.name} is for educational purposes only and is not
+            financial, legal, tax, immigration, or investment advice. {site.name}{" "}
+            is owned by {site.owner}. Cross-border rules differ between the USA
+            and India, vary by state and by individual situation, and change over
+            time. Please consult a qualified CPA, attorney, financial advisor,
+            tax professional, or India-based professional for your situation. See
+            our{" "}
+            <Link href="/disclaimer" className="text-brand-600 underline">
+              full disclaimer
+            </Link>
+            .
+          </div>
+        </Container>
+      </section>
+
+      <Newsletter />
+    </>
+  );
+}

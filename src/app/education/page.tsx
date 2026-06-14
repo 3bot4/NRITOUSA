@@ -145,32 +145,38 @@ export default function EducationHubPage() {
       </section>
 
       {/* Calculators */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-12">
         <Container>
           <SectionHeading
             eyebrow="Interactive tools"
             title="Free education calculators"
             description="Everything is computed in your browser. Nothing is stored or submitted."
           />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eduCalcs.map((c) => (
               <Link
                 key={c.slug}
                 href={`/education/${c.slug}`}
-                className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
               >
-                <span
-                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${c.accent} text-2xl`}
-                >
-                  {c.icon}
-                </span>
-                <h3 className="text-base font-bold tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${c.accent} text-lg shadow-sm`}
+                  >
+                    {c.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    Calculator
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                   {c.label}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
+                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
                   {c.description}
                 </p>
-                <span className="mt-4 text-sm font-semibold text-brand-600">
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
                   Open tool{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-0.5">
                     →
@@ -183,7 +189,7 @@ export default function EducationHubPage() {
       </section>
 
       {/* Articles */}
-      <section className="bg-white py-14 sm:py-20">
+      <section className="bg-white py-10 sm:py-12">
         <Container>
           <SectionHeading
             eyebrow="In-depth guides"
@@ -191,20 +197,20 @@ export default function EducationHubPage() {
             description="Long-form, regularly updated explainers written for immigrant families."
             action={{ label: "All education guides", href: "/education/articles" }}
           />
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {articles.map((a) => (
               <Link
                 key={a.slug}
                 href={`/articles/${a.slug}`}
-                className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
               >
-                <h3 className="text-base font-bold tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
+                <h3 className="text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                   {a.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden">
+                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
                   {a.excerpt}
                 </p>
-                <span className="mt-4 text-sm font-semibold text-brand-600">
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
                   Read guide{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-0.5">
                     →

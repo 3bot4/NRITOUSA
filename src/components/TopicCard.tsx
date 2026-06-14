@@ -11,22 +11,30 @@ export default function TopicCard({
   return (
     <Link
       href={`/topics/${topic.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
     >
-      <div
-        className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${topic.accent} text-2xl shadow-sm`}
-      >
-        {topic.icon}
+      <div className="flex items-center gap-2.5">
+        <span
+          aria-hidden
+          className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${topic.accent} text-lg shadow-sm`}
+        >
+          {topic.icon}
+        </span>
+        <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+          {typeof count === "number"
+            ? `${count} guide${count === 1 ? "" : "s"}`
+            : "Topic"}
+        </span>
       </div>
-      <h3 className="text-lg font-bold tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
+      <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
         {topic.title}
       </h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
+      <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
         {topic.description}
       </p>
-      <span className="mt-4 text-sm font-semibold text-brand-600">
-        {typeof count === "number" ? `${count} guide${count === 1 ? "" : "s"}` : "Explore"}{" "}
-        <span aria-hidden className="transition-transform group-hover:translate-x-0.5 inline-block">
+      <span className="mt-2.5 text-xs font-semibold text-brand-600">
+        Explore{" "}
+        <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
           →
         </span>
       </span>

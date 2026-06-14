@@ -11,11 +11,37 @@ export default function ArticleCard({
   variant = "default",
 }: {
   article: Article;
-  variant?: "default" | "compact";
+  variant?: "default" | "compact" | "dense";
 }) {
   const topic = getTopic(article.topic);
   const by = resolveByline(article);
   const cover = articleImage(article);
+
+  // Dense: text-only, image-free card for high-density browse grids.
+  if (variant === "dense") {
+    return (
+      <Link
+        href={`/articles/${article.slug}`}
+        className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+      >
+        <span className="inline-flex items-center gap-1.5 text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+          {topic?.icon && <span aria-hidden>{topic.icon}</span>}
+          {topic?.label ?? "Guide"}
+        </span>
+        <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+          {article.title}
+        </h3>
+        <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+          {article.excerpt}
+        </p>
+        <span className="mt-2.5 flex items-center gap-2 text-[0.6875rem] text-ink-400">
+          <span className="font-semibold text-brand-600">Read guide →</span>
+          <span aria-hidden>·</span>
+          <span>{article.readingTime} min</span>
+        </span>
+      </Link>
+    );
+  }
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink-900/5 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">

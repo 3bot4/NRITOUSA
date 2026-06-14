@@ -21,6 +21,11 @@ export interface CalculatorMeta {
   seoDescription: string;
   /** Related guide slugs (must exist in lib/articles) */
   related: string[];
+  /**
+   * Cross-cutting cluster tags (e.g. "tax-compliance"). Drives the India Tax
+   * & Compliance hub and the related-tools strip at the foot of each page.
+   */
+  tags?: string[];
   /** Contextual lead magnet shown on the results panel */
   leadMagnet: {
     heading: string;
@@ -47,6 +52,7 @@ export const calculators: CalculatorMeta[] = [
       "indian-income-us-tax-return",
       "double-taxation-dtaa-india-usa",
     ],
+    tags: ["tax-compliance"],
     leadMagnet: {
       heading: "Planning your move back to India?",
       body: "Get our free RNOR planning checklist — how to use your tax-free transitional window before global income becomes taxable.",
@@ -70,6 +76,7 @@ export const calculators: CalculatorMeta[] = [
       "inheriting-indian-assets-us-tax",
       "selling-indian-shares-us-resident-tax",
     ],
+    tags: ["tax-compliance"],
     leadMagnet: {
       heading: "Selling property in India?",
       body: "Get our free repatriation pack — the 15CA/15CB compliance checklist and the documents your bank will ask for.",
@@ -93,6 +100,7 @@ export const calculators: CalculatorMeta[] = [
       "transfer-401k-to-india-nps-ppf",
       "401k-match-explained-nri",
     ],
+    tags: ["tax-compliance"],
     leadMagnet: {
       heading: "Returning to India soon?",
       body: "Get our free guide chapter on minimizing US tax and withholding on 401(k) and IRA distributions after you leave.",
@@ -186,6 +194,7 @@ export const calculators: CalculatorMeta[] = [
       "us-1-percent-remittance-fee",
       "tcs-india-remittance-tax",
     ],
+    tags: ["tax-compliance"],
     leadMagnet: {
       heading: "Moving large sums across borders?",
       body: "Get our free India–USA transfer playbook — how to cut fees, beat the spread, and stay TCS-compliant.",

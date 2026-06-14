@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
 import AllToolsGrid from "@/components/home/AllToolsGrid";
+import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
@@ -36,6 +37,7 @@ export default function HomePage() {
 
       <Container className="py-8 sm:py-10">
         <AllToolsGrid />
+        <TaxComplianceSpotlight />
         <LatestUpdates />
       </Container>
     </>

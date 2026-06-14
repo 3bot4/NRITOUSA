@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/SectionHeading";
 import LeadMagnet from "@/components/calculators/LeadMagnet";
+import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import { calculators, getCalculator } from "@/lib/calculators";
 import { getArticle } from "@/lib/articles";
 import {
@@ -172,19 +172,43 @@ export default function CalculatorPage({
         </Container>
       </section>
 
-      {/* Related guides */}
+      {/* Related guides — compact text cards */}
       {related.length > 0 && (
-        <section className="bg-white py-16 sm:py-20">
+        <section className="bg-white py-10 sm:py-12">
           <Container>
             <SectionHeading eyebrow="Learn more" title="Related guides" />
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {related.map((a) => (
-                <ArticleCard key={a.slug} article={a} />
+                <Link
+                  key={a.slug}
+                  href={`/articles/${a.slug}`}
+                  className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                >
+                  <h3 className="text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                    {a.title}
+                  </h3>
+                  <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                    {a.excerpt}
+                  </p>
+                  <span className="mt-2.5 text-[0.6875rem] font-semibold text-brand-600">
+                    Read guide{" "}
+                    <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </span>
+                </Link>
               ))}
             </div>
           </Container>
         </section>
       )}
+
+      {/* Related tax & compliance tools (5 interlinks → hub) */}
+      <section className="bg-slate-50/60 py-14 sm:py-16">
+        <Container>
+          <RelatedToolsStrip currentHref={`/calculators/${calc.slug}`} />
+        </Container>
+      </section>
     </>
   );
 }

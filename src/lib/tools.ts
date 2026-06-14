@@ -26,6 +26,11 @@ export interface ToolMeta {
   seoTitle: string;
   seoDescription: string;
   status: "live" | "coming-soon";
+  /**
+   * Cross-cutting cluster tags (e.g. "tax-compliance"). Drives the India Tax
+   * & Compliance hub and the related-tools strip at the foot of each page.
+   */
+  tags?: string[];
 }
 
 export const tools: ToolMeta[] = [
@@ -154,6 +159,7 @@ export const tools: ToolMeta[] = [
     seoDescription:
       "Use this educational FBAR and FATCA checker to understand whether India bank accounts, FDs, NRE/NRO, or foreign assets may need review.",
     status: "live",
+    tags: ["tax-compliance"],
   },
 ];
 

@@ -60,18 +60,18 @@ export default function CalculatorsPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-10 sm:py-12">
         <Container>
-          <div className="space-y-14">
+          <div className="space-y-8">
             {calculatorCategories.map((category) => {
               const items = calculators.filter((c) => c.category === category);
               if (!items.length) return null;
               return (
                 <div key={category}>
-                  <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                  <h2 className="text-lg font-bold tracking-tight text-ink-900">
                     {category}
                   </h2>
-                  <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.map((c) => (
                       <CalculatorCard key={c.slug} calc={c} />
                     ))}

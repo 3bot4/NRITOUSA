@@ -71,18 +71,18 @@ export default function ToolsHubPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-10 sm:py-12">
         <Container>
-          <div className="space-y-14">
+          <div className="space-y-8">
             {toolGroups.map((group) => {
               const items = tools.filter((t) => t.group === group);
               if (!items.length) return null;
               return (
                 <div key={group}>
-                  <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                  <h2 className="text-lg font-bold tracking-tight text-ink-900">
                     {group}
                   </h2>
-                  <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.map((t) => (
                       <ToolCard key={t.slug} tool={t} />
                     ))}
@@ -93,7 +93,7 @@ export default function ToolsHubPage() {
 
             <div>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                <h2 className="text-lg font-bold tracking-tight text-ink-900">
                   Cross-border calculators
                 </h2>
                 <Link
@@ -103,29 +103,32 @@ export default function ToolsHubPage() {
                   View all calculators <span aria-hidden>→</span>
                 </Link>
               </div>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {calculators.map((c) => (
                   <CalculatorCard key={c.slug} calc={c} />
                 ))}
                 {/* In-article calculator: lives at its article URL, not /calculators */}
                 <Link
                   href="/articles/iul-vs-401k-honest-comparison"
-                  className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                  className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
                 >
-                  <div className="mb-4 flex items-start justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-2xl shadow-sm">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-lg shadow-sm">
                       ⚖️
                     </span>
+                    <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                      Calculator
+                    </span>
                   </div>
-                  <h3 className="text-base font-bold tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
-                    IUL vs 401(k) vs Taxable: Honest Comparison
+                  <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
+                    IUL vs 401(k) vs Taxable
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
+                  <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
                     Side-by-side projection of indexed universal life against a
                     401(k) and a taxable brokerage — caps, floors, fees, death
                     benefit, and a bad-market scenario toggle.
                   </p>
-                  <span className="mt-4 text-sm font-semibold text-brand-600">
+                  <span className="mt-2.5 text-xs font-semibold text-brand-600">
                     Open comparison{" "}
                     <span className="inline-block transition-transform group-hover:translate-x-0.5">
                       →
