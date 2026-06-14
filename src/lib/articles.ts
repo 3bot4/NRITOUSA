@@ -3055,7 +3055,7 @@ Rule 72(t) is a legitimate way for returning NRIs to unlock retirement money bef
     topic: "retirement",
     date: "2026-05-26",
     featured: false,
-    content: `The Roth IRA is one of the best wealth-building tools in the US — contributions grow and come out **completely tax-free** in retirement. But there's a catch for successful NRIs: once your income climbs past a certain level, you're **barred from contributing directly**. Many tech workers on H-1B hit this ceiling within a few years. The solution is a perfectly legal maneuver called the **backdoor Roth IRA** — and while the concept is simple, one overlooked rule (the **pro-rata rule**) can turn it into a tax mess if you're not careful. Here's how to do it right.
+    content: `The Roth IRA is one of the best wealth-building tools in the US — but once your income climbs past a certain level, you're **barred from contributing directly**, a ceiling many H-1B tech workers hit within a few years. The fix is a perfectly legal maneuver, the **backdoor Roth IRA**. The concept is simple, but one overlooked rule — the **pro-rata rule** — can turn it into a tax mess if you're not careful.
 
 :::summary
 High earners above the **Roth income limits** can still fund a Roth via the **backdoor**: contribute to a **non-deductible Traditional IRA**, then **convert it to a Roth**. It's legal and common. The big trap is the **pro-rata rule** — if you hold **other pre-tax IRA balances** (like a [rollover IRA](/articles/what-happens-to-401k-leaving-usa)), the conversion becomes partly taxable. Clear those balances first, and file **Form 8606**.
@@ -3119,7 +3119,7 @@ If your income has outgrown direct Roth contributions, the backdoor Roth keeps t
     topic: "retirement",
     date: "2026-05-19",
     featured: false,
-    content: `The Health Savings Account is the most underrated account in the US system — and one many NRIs forget about when they leave. The great news: like your [401(k)](/articles/what-happens-to-401k-leaving-usa), your **HSA belongs to you forever**, doesn't expire, and goes with you when you move back to India. The catch: how you use it after leaving — and how India treats it — needs a little planning to avoid penalties and surprise taxes. Here's how to make the most of your HSA on the way out.
+    content: `The Health Savings Account is the most underrated account in the US system — and one many NRIs forget when they leave. Like your [401(k)](/articles/what-happens-to-401k-leaving-usa), your **HSA belongs to you forever**, doesn't expire, and moves with you to India. The catch — how you use it after leaving, and how India treats it — needs a little planning to avoid penalties and surprise taxes.
 
 :::summary
 Your **HSA is yours for life** and the balance doesn't disappear when you leave the US. You can **spend it on qualified medical expenses anytime** (including, in many cases, care abroad), and after **age 65 you can withdraw for any purpose** at ordinary income tax (no penalty). Before 65, non-medical withdrawals face a **20% penalty + tax**. You **can't contribute** without a US high-deductible plan, and **India may tax the growth** once you're resident.
@@ -3189,7 +3189,7 @@ Don't abandon your HSA when you leave the US — it's a lifelong, triple-tax-adv
     topic: "property",
     date: "2026-06-01",
     featured: false,
-    content: `Many NRIs fund part of their first US home with savings or family money from India. It's completely legal — but a large international transfer into a US **escrow account** under a closing deadline is exactly where things go wrong if you haven't planned. Between India's **Liberalised Remittance Scheme limits**, **TCS**, lender "**source of funds**" rules, and US **gift documentation**, a rushed transfer can delay your closing or trigger questions. Here's how to move down-payment money from India to the US smoothly.
+    content: `Many NRIs fund part of their first US home with savings or family money from India — completely legal, but a large transfer into a US **escrow account** under a closing deadline is exactly where things go wrong unplanned. Between the **LRS limit**, **TCS**, lender "**source of funds**" rules, and US **gift documentation**, a rushed transfer can delay closing or trigger questions. Here's how to move down-payment money from India to the US smoothly.
 
 :::summary
 You can fund a US down payment from India under the **LRS ($250,000 per person per financial year)**. Large remittances may incur **20% TCS** (recoverable on the sender's Indian return) and lenders will demand a **paper trail showing the source of funds**. If parents send the money, document it as a **gift** (lender gift letter + [US Form 3520](/articles/gifting-money-india-tax-implications) if over $100k). Start the transfers **early** to meet your closing date.
@@ -3264,7 +3264,7 @@ Funding a US down payment from India is routine when you plan it: work within th
     topic: "property",
     date: "2026-05-24",
     featured: false,
-    content: `Family helps family — and in the US, that often means **co-signing a mortgage** so a relative with thin credit or income can qualify. If you're a visa holder asked to co-sign (or considering asking someone to co-sign for you), it's important to understand what you're really agreeing to. Co-signing isn't a friendly formality; it makes you **legally responsible for the entire loan**, and it directly affects your own borrowing power. Here's how it works for non-citizens and what to weigh before you sign.
+    content: `Family helps family — and in the US that often means **co-signing a mortgage** so a relative with thin credit can qualify. But co-signing isn't a friendly formality: it makes you **legally responsible for the entire loan** and directly affects your own borrowing power. Here's how it works for non-citizens and what to weigh before you sign.
 
 :::summary
 A **co-signer is fully liable** for the mortgage if the primary borrower doesn't pay, and the loan appears on the **co-signer's credit report**, raising their **debt-to-income (DTI) ratio**. Visa holders **can** co-sign or be co-signed for, provided they have valid status, an SSN, and qualifying income/credit. The debt can limit your **own** future borrowing (e.g., your own mortgage). Co-sign only with full awareness of the risk.
@@ -3345,7 +3345,7 @@ Co-signing a US mortgage is an act of real financial generosity — and real fin
     topic: "cars",
     date: "2026-05-22",
     featured: false,
-    content: `Leasing a car is popular with visa holders precisely because it's flexible — lower payments, a newer car, and no long-term ownership. But when your **immigration timeline becomes uncertain** and the lease is ending (or you may need to leave the country mid-lease), a new question appears: should you **buy out** the lease, **return** the car, or find another exit? The right answer depends on the buyout math and your plans. Here's how to decide without leaving money on the table.
+    content: `Leasing is popular with visa holders precisely because it's flexible — lower payments, a newer car, no long-term ownership. But when your **immigration timeline turns uncertain** and the lease is ending (or you may leave mid-lease), a question appears: **buy out**, **return**, or find another exit? The answer depends on the buyout math and your plans — here's how to decide without leaving money on the table.
 
 :::summary
 A **lease buyout** means purchasing the car for its preset **residual value** plus fees. Buy out if the car is **worth more than the residual** (you capture equity) or you'll **stay and want to keep it**; **return it** if you're leaving the US or the residual exceeds market value. If you must leave mid-lease, options include a **lease transfer**, buyout-and-sell, or paying to terminate — compare the costs before deciding.
@@ -3420,7 +3420,7 @@ A lease buyout is a math problem layered on a life decision. If the car is worth
     topic: "property",
     date: "2026-05-17",
     featured: false,
-    content: `Saving a 20% down payment is daunting, especially in your early US years. That's why the **FHA loan** — a government-backed mortgage requiring as little as **3.5% down** — is so appealing. The common myth is that you must be a citizen to get one. You don't. **Non-citizens, including many visa holders, can qualify for FHA loans** under specific HUD rules. Here's exactly who's eligible, what you'll need, and the trade-offs to weigh against a conventional loan.
+    content: `Saving a 20% down payment is daunting in your early US years, which is why the **FHA loan** — a government-backed mortgage requiring as little as **3.5% down** — is so appealing. The myth that you must be a citizen to get one is false: **non-citizens, including many visa holders, qualify** under specific HUD rules. Here's exactly who's eligible, what you'll need, and the trade-offs versus a conventional loan.
 
 :::summary
 **FHA loans allow ~3.5% down** and are **open to non-citizens**. **Permanent residents** (green card) are treated essentially like citizens. **Non-permanent residents** (e.g., H-1B, L-1) can qualify if they have a **valid SSN, lawful residency/work authorization (EAD or valid visa), and the home will be their primary residence**. FHA requires **mortgage insurance (MIP)**, so compare it against a [conventional loan](/articles/buying-first-home-on-visa) before deciding.
@@ -3500,7 +3500,7 @@ The FHA loan makes a 3.5%-down home purchase realistic for newcomers, and yes �
     topic: "money-transfer",
     date: "2026-05-31",
     featured: false,
-    content: `Most NRIs face a dilemma with their savings: keep dollars in the US earning modest interest, or convert to rupees for higher Indian rates but take on **currency risk** if the rupee depreciates. There's a third option many overlook — the **FCNR deposit**, which lets you hold a fixed deposit **in foreign currency (USD, GBP, etc.)** at an Indian bank, earning attractive interest **without ever converting to rupees**. No currency risk, tax-free in India, and fully repatriable. Here's how it works and when it's a smart move.
+    content: `Most NRIs face a savings dilemma: keep dollars in the US at modest interest, or convert to rupees for higher Indian rates and take on **currency risk**. A third option many overlook — the **FCNR deposit** — lets you hold a fixed deposit **in foreign currency** at an Indian bank, earning attractive interest **without ever converting to rupees**: no currency risk, tax-free in India, fully repatriable. Here's how it works and when it's smart.
 
 :::summary
 An **FCNR(B) deposit** is a fixed deposit held **in foreign currency** (USD, GBP, EUR, etc.) at an Indian bank, for terms of **1–5 years**. You earn fixed interest, **avoid rupee currency risk**, and the **interest is tax-free in India** and fully **repatriable**. The catch for US filers: the interest **is taxable in the US** and the account is [FBAR/FATCA reportable](/articles/fbar-fatca-nri-guide). Great for parking dollars you'll want back in USD.
@@ -3574,7 +3574,7 @@ FCNR deposits are an underused tool for NRIs who want a solid fixed yield on the
     topic: "money-transfer",
     date: "2026-05-27",
     featured: false,
-    content: `Funding a US degree from India is a huge financial undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** than ordinary transfers — in some cases the rate is just **0.5%** versus the **20%** that hits general remittances. But you only get the low rate if you understand the categories and document things correctly. Here's how to fund US tuition from India while keeping transfer taxes to a minimum.
+    content: `Funding a US degree from India is a huge undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** — as low as **0.5%** versus the **20%** on general remittances — but only if you classify and document correctly. Here's how to fund US tuition from India while keeping transfer taxes minimal.
 
 :::summary
 Under India's LRS, **education remittances get preferential TCS treatment**: **0.5%** above ₹7 lakh if funded by an **education loan**, and **5%** above ₹7 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
@@ -3641,7 +3641,7 @@ Funding US tuition from India is far cheaper, tax-wise, than most families fear 
     topic: "money-transfer",
     date: "2026-05-23",
     featured: false,
-    content: `Selling your Indian investments after becoming a US resident is more complicated than just hitting "sell." Two tax systems apply at once: India taxes the gain (often via **TDS** withheld upfront), and the US taxes the **same gain** as worldwide income. And if what you're selling is an **Indian mutual fund**, the brutal **PFIC rules** can turn a normal capital gain into a punishing tax bill. Understanding how these layers combine — and how the DTAA prevents true double taxation — is essential before you liquidate. Here's the full picture.
+    content: `Selling Indian investments after becoming a US resident is more complicated than hitting "sell": two tax systems apply at once — India taxes the gain (often via **TDS**), and the US taxes the same gain as worldwide income. And if it's an **Indian mutual fund**, the brutal **PFIC rules** can turn a normal capital gain into a punishing bill. Understanding how these layers combine — and how the DTAA prevents true double taxation — is essential before you liquidate.
 
 :::summary
 When a US resident sells Indian investments, **India taxes the gain (often via TDS)** and the **US also taxes it** as worldwide income — but the [DTAA](/articles/double-taxation-dtaa-india-usa) lets you credit Indian tax against US tax to avoid paying twice. **Direct stocks** get normal US capital-gains treatment; **Indian mutual funds are [PFICs](/articles/pfic-indian-mutual-funds-trap)**, taxed at the top US rate plus an interest charge. Report on both returns and reconcile via Form 1116.
@@ -3714,7 +3714,7 @@ Selling Indian investments as a US resident means navigating two tax systems, bu
     topic: "money-transfer",
     date: "2026-05-20",
     featured: false,
-    content: `Inheriting assets in India while living in the US raises an anxious question: *"Will the IRS tax my inheritance?"* The reassuring headline is that **inheritance itself is not taxable income** in the US — you won't pay income tax just for receiving ancestral land, gold, or a bank balance. But there are **critical reporting requirements** (chiefly **Form 3520**) with severe penalties for missing them, and the **cost basis** rules determine what you'll owe later if you sell. Get the paperwork right and you protect your legacy; ignore it and a tax-free inheritance can spawn a five-figure penalty.
+    content: `Inheriting assets in India while living in the US raises an anxious question: *will the IRS tax my inheritance?* The reassuring headline: **inheritance itself isn't taxable income** in the US — but there are **critical reporting requirements** (chiefly **Form 3520**) with severe penalties for missing them, and **cost-basis** rules that determine what you'll owe if you later sell. Get the paperwork right and you protect your legacy; ignore it and a tax-free inheritance can spawn a five-figure penalty.
 
 :::summary
 **Receiving an inheritance from India is not US income tax** to you. But if foreign inheritances/gifts exceed **$100,000** in a year, you must file **Form 3520** (disclosure only). Inherited assets generally get a **step-up in cost basis** to fair market value at the date of death, which **reduces future capital-gains tax** when you sell. India has **no inheritance tax**, but selling inherited property later triggers Indian capital gains/TDS. Report the accounts on [FBAR/FATCA](/articles/fbar-fatca-nri-guide).
