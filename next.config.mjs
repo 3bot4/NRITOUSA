@@ -9,7 +9,21 @@
  * inline hydration scripts and inline styles without a nonce, and the GA
  * config snippet is inline too — a nonce-based policy (via middleware) would
  * let us drop 'unsafe-inline' from script-src later.
+ *
+ * Next.js's dev-mode React Fast Refresh evaluates code with eval(), so in
+ * development we must add 'unsafe-eval' to script-src or the client bundle
+ * throws on init and the page never hydrates (interactive tools go dead).
+ * Production builds don't use eval, so 'unsafe-eval' is never shipped to users.
  */
+const isDev = process.env.NODE_ENV !== "production";
+const scriptSrc = [
+  "script-src 'self' 'unsafe-inline'",
+  isDev ? "'unsafe-eval'" : "",
+  "https://www.googletagmanager.com",
+]
+  .filter(Boolean)
+  .join(" ");
+
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -19,7 +33,7 @@ const csp = [
   "img-src 'self' data: https:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  scriptSrc,
   "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
   "upgrade-insecure-requests",
 ].join("; ");

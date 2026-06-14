@@ -161,6 +161,21 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: ["tax-compliance"],
   },
+  {
+    slug: "form-10f-generator",
+    title: "Form 10F Generator for DTAA Treaty Benefits",
+    label: "Form 10F Generator",
+    group: "Money & Finance",
+    description:
+      "Prepare a clean, printable Form 10F draft to claim India–US DTAA treaty benefits: enter your name, PAN, tax residency period, and foreign tax ID, then copy or download the seven-field declaration. Runs entirely in your browser — educational only.",
+    icon: "📄",
+    accent: "from-indigo-500 to-blue-600",
+    seoTitle: "Form 10F Generator for NRIs — DTAA Treaty Benefits (2026)",
+    seoDescription:
+      "Free Form 10F generator for NRIs claiming India–US DTAA treaty benefits. Fill in name, PAN, TIN, tax residency period, and address to get a printable, copy/download-ready Form 10F draft. Private — nothing leaves your browser. Educational only.",
+    status: "live",
+    tags: ["tax-compliance"],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [
