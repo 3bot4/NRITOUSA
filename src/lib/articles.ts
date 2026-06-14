@@ -2160,24 +2160,38 @@ An emergency fund feels like idle money right up until the day it becomes the mo
     date: "2026-05-10",
     content: `Your 401(k) gets the employer match, but it's not the only retirement tool. An IRA — Individual Retirement Account — lets you save more, with more investment freedom. The big choice is Roth vs. traditional.
 
+:::info
+title: The short version
+- **Roth** = pay tax now, withdraw tax-free later; **Traditional** = deduct now, pay tax later
+- For most younger NRIs in a lower bracket today, **Roth usually wins**
+- Roth withdrawals are also far simpler if you retire back in India
+:::
+
 ## The core difference
-- Traditional IRA: contributions may be tax-deductible now; you pay tax when you withdraw in retirement.
-- Roth IRA: you contribute after-tax dollars now; qualified withdrawals are completely tax-free later, including all the growth.
+| | Traditional IRA | Roth IRA |
+|---|---|---|
+| Contributions | May be tax-deductible now | After-tax now |
+| Withdrawals | Taxed in retirement | Tax-free, including all growth |
+| Best if | Higher tax bracket now | Lower bracket now / early-career |
 
 ## Why Roth often wins for younger NRIs
-If you're early in your career, your tax bracket is likely lower now than it will be at peak earnings. Paying tax now at a low rate, then withdrawing tax-free later, is a strong bet. The Roth's tax-free growth over decades is extraordinary.
+Early in your career your tax bracket is likely lower now than at peak earnings, so paying tax now and withdrawing tax-free later is a strong bet — and the Roth's tax-free growth over decades is extraordinary. There's also a portability angle: if you move back to India in retirement, tax-free Roth withdrawals are far simpler to plan around than a traditional account's taxable distributions interacting with two tax systems.
 
-There's also a portability angle: if you move back to India in retirement, tax-free Roth withdrawals are far simpler to plan around than a traditional account's taxable distributions interacting with two tax systems.
-
-## Watch the income limits
-Roth IRA eligibility phases out at higher incomes. High earners can still get in via the "backdoor Roth" — contributing to a traditional IRA and converting — but the mechanics deserve care, especially if you hold other IRA balances (the pro-rata rule).
+:::warn
+title: Watch the income limits
+- Roth IRA eligibility **phases out at higher incomes**
+- High earners can still get in via the **"backdoor Roth"** (contribute to a traditional IRA, then convert)
+- Mind the **pro-rata rule** if you hold other IRA balances — the mechanics deserve care
+:::
 
 ## How it fits the bigger plan
 The clean priority order for most NRIs:
-1. 401(k) up to the full employer match.
-2. Max a Roth IRA.
-3. Back to the 401(k) to max it out.
-4. Taxable brokerage for anything beyond.
+:::steps
+401(k) up to the full employer match — free money first.
+Max a Roth IRA — tax-free growth for decades.
+Back to the 401(k) to max it out.
+Taxable brokerage for anything beyond.
+:::
 
 An IRA is the quiet workhorse of an immigrant's retirement plan. Open one, automate the contribution, choose low-cost index funds inside it, and let 30 years of tax-free compounding do something remarkable.`,
   },
@@ -2271,7 +2285,7 @@ Relocation budgets fail because they stop at the airfare — the real cost is re
     topic: "credit",
     date: "2026-06-04",
     featured: false,
-    content: `When you arrive in the US with no credit history, you're stuck in a frustrating loop: you need credit to get a card, but you need a card to build credit. The **secured credit card** is the key that breaks that loop. You put down a refundable deposit, the bank issues you a real card backed by it, and your responsible use gets reported to the credit bureaus like any other card. Used correctly, a secured card can take you from invisible to a **700+ score in about 12 months**. Here's how to pick the right one and use it well.
+    content: `Arriving with no credit history traps you in a loop: you need credit to get a card, but a card to build credit. The **secured credit card** breaks it — you put down a refundable deposit, get a real card backed by it, and your responsible use reports to the bureaus like any other card. Used correctly, it takes you from invisible to a **700+ score in about 12 months** — here's how to pick one and use it well.
 
 :::summary
 A **secured credit card** requires a refundable deposit (usually **$200–$500**) that becomes your credit limit. Approval is near-automatic with no US history. The best cards (**Discover it Secured, Capital One Platinum Secured**) report to all three bureaus, charge **no annual fee**, and **graduate** you to an unsecured card. Pay in full, keep utilization under 10%, and you'll build a strong score within a year.
@@ -2321,10 +2335,12 @@ The card is only half the equation — your habits are the rest:
 This is the same discipline detailed in our [build a US credit score from zero](/articles/build-us-credit-score-from-zero) playbook.
 
 ## Mistakes to avoid
-- **Applying for several cards at once** — each is a hard inquiry on a thin file.
-- **Carrying a balance to "build credit"** — a myth that just costs you interest.
-- **Closing your first card** after upgrading — it shortens your credit age.
-- **Maxing the limit** — high utilization hurts even if you pay it off.
+:::warn
+- **Applying for several cards at once** — each is a hard inquiry on a thin file
+- **Carrying a balance to "build credit"** — a myth that just costs you interest
+- **Closing your first card** after upgrading — it shortens your credit age
+- **Maxing the limit** — high utilization hurts even if you pay it off
+:::
 
 ## Frequently asked questions
 
@@ -2351,7 +2367,7 @@ A secured credit card is the cheapest, surest on-ramp to a US credit score. Pick
     topic: "cars",
     date: "2026-05-28",
     featured: false,
-    content: `A dealership will often tell a new immigrant the same thing: *"You'll need a US citizen or permanent resident to co-sign."* It's frustrating, sometimes pushy, and frequently **not true**. You can finance a car on a work visa with no US credit and no co-signer — but you need to walk in with the right preparation and the right lender, because the dealer's default financing is built to extract the highest rate from people who don't know their options. Here's how to get the keys on your own.
+    content: `A dealership will often tell a newcomer: *"You'll need a US citizen to co-sign."* It's frustrating, sometimes pushy, and frequently **not true** — you can finance a car on a work visa with no US credit and no co-signer. You just need the right preparation and lender, because the dealer's default financing is built to extract the highest rate from people who don't know their options.
 
 :::summary
 You **don't** need a US co-signer to buy a car on a visa. Get approved independently with a **larger down payment**, **proof of stable employment/income**, **imported Indian credit (Nova Credit)**, **credit-union or manufacturer newcomer programs**, and **pre-arranged financing** so you're not at the dealer's mercy. Expect a higher first rate, then **refinance after 6–12 months** of US credit history.
@@ -2426,7 +2442,7 @@ Don't let a dealer convince you that you need an American co-signer. Bring a str
     topic: "finance",
     date: "2026-05-25",
     featured: false,
-    content: `Landing in the US with no bank account means scrambling in your first week — and you can't receive your salary or pay rent until it's sorted. The smart move is to **set up your US banking before you fly**, so you arrive with an account number, a routing number, and (often) a card on the way. It's more possible than most newcomers realize, though the options come with trade-offs. Here's how to get a US-dollar account open from India before you ever clear immigration.
+    content: `Landing with no bank account means scrambling in your first week — you can't receive salary or pay rent until it's sorted. The smart move is to **set up US banking before you fly**, so you arrive with account and routing numbers and (often) a card on the way. It's more possible than most newcomers realize — here's how to open a US-dollar account from India before you clear immigration.
 
 :::summary
 You can open US banking from India in a few ways: **international banks with India-US presence** (ICICI, HDFC, SBI, Citi) that let you start before arrival, **newcomer fintech platforms** built for immigrants, and **digital banks** you can apply to once you have a US address. A full SSN-linked account usually finalizes after you land, but you can have the essentials — account/routing numbers — ready for day one.
@@ -2493,7 +2509,7 @@ Don't wait until you land to think about banking. Use an international bank or n
     topic: "finance",
     date: "2026-05-21",
     featured: false,
-    content: `Health insurance is the cost newcomers most underestimate and most regret skipping. In the US there is **no universal healthcare**, and a single emergency room visit or hospital stay can cost **tens of thousands of dollars** out of pocket. For families on dependent visas — **H-4** (spouses/children of H-1B holders) and **L-2** (dependents of L-1 holders) — getting coverage right is non-negotiable. The good news: dependents have several solid paths to insurance. Here's how to evaluate them.
+    content: `Health insurance is the cost newcomers most underestimate and most regret skipping — the US has **no universal healthcare**, and one ER visit can cost **tens of thousands** out of pocket. For families on dependent visas — **H-4** (spouses/children of H-1B holders) and **L-2** (dependents of L-1 holders) — getting coverage right is non-negotiable. The good news: dependents have several solid paths to insurance, and here's how to evaluate them.
 
 :::summary
 The best coverage for most **H-4 and L-2 dependents** is the H-1B/L-1 worker's **employer-sponsored family plan** — it's subsidized and comprehensive. If that's unavailable or expensive, options include the **ACA marketplace**, **short-term plans** (cheap but limited), and **visitor/dependent plans**. Never go uninsured: US medical bills are among the highest in the world and one incident can be financially catastrophic.
@@ -2657,7 +2673,7 @@ The new US remittance excise tax sounds alarming but is one of the easiest taxes
     topic: "taxes",
     date: "2026-05-30",
     featured: false,
-    content: `Thousands of NRIs discover, often years into US life, that they were supposed to be reporting their Indian bank accounts, FDs, and PPF all along — and panic sets in. The penalties for unreported foreign accounts are famously severe, and the instinct is to stay quiet and hope nobody notices. That instinct is exactly wrong. The IRS has a dedicated, forgiving path for people whose failure was **honest, not willful** — the **Streamlined Filing Compliance Procedures** — and using it voluntarily is dramatically cheaper than being caught. Here's how to come clean safely.
+    content: `Many NRIs discover, years into US life, that they were supposed to report their Indian bank accounts, FDs, and PPF all along — and panic, instinctively staying quiet. That instinct is exactly wrong: the IRS has a forgiving path for honest, **non-willful** failures, the **Streamlined Filing Compliance Procedures**, and using it voluntarily is dramatically cheaper than being caught. Here's how to come clean safely.
 
 :::summary
 If you didn't file [FBARs or report Indian income](/articles/fbar-fatca-nri-guide) because you genuinely didn't know, you're likely **non-willful** — and the IRS **Streamlined Filing Compliance Procedures** let you catch up with **no penalty (if you live abroad)** or a **5% penalty (if you live in the US)**. You file the missing FBARs, amended returns, and a certification of non-willfulness. **Coming forward voluntarily** is far safer and cheaper than waiting to be found.
@@ -2730,7 +2746,7 @@ Unreported Indian accounts are a fixable problem, not a life sentence — but on
     topic: "taxes",
     date: "2026-05-23",
     featured: false,
-    content: `Whether you're taxed by the US on your **worldwide income** or only your US income hinges on a single question: are you a **US resident for tax purposes**? This has nothing to do with your green card or visa type — it's decided by a day-counting formula called the **Substantial Presence Test (SPT)**. Get it wrong and you'll either overpay, underpay, or trip into the dreaded "dual-status" year. Here's exactly how the SPT works, with the exceptions that catch students and a worked example.
+    content: `Whether the US taxes your **worldwide income** or only your US income hinges on one question: are you a **US resident for tax purposes**? It's not about your green card or visa — it's decided by a day-counting formula, the **Substantial Presence Test (SPT)**. Get it wrong and you'll overpay, underpay, or trip into a dual-status year — here's exactly how it works, with a worked example.
 
 :::summary
 You're a **US resident for tax purposes** if you meet the **Substantial Presence Test**: present at least **31 days this year** AND **183 days** across a 3-year weighted formula (all days this year + ⅓ of last year + ⅙ of the year before). **F-1 students** (5 years) and **J visa holders** (2 years) are "exempt individuals" whose days don't count. Residents are taxed on [worldwide income](/articles/indian-income-us-tax-return); nonresidents only on US income.
@@ -2811,7 +2827,7 @@ The Substantial Presence Test, not your visa, decides whether the US taxes your 
     topic: "taxes",
     date: "2026-05-20",
     featured: false,
-    content: `The Public Provident Fund is a beloved Indian savings instrument: safe, government-backed, and completely **tax-free in India**. So it comes as an unwelcome shock to many NRIs that the **US does not recognize PPF's tax-exempt status**. Once you're a US tax resident, that tidy tax-free interest likely becomes **taxable income to the IRS**, and your PPF triggers reporting obligations that carry steep penalties if ignored. Here's what you need to know to handle your PPF correctly from the US side.
+    content: `The PPF is a beloved Indian instrument: safe, government-backed, and completely **tax-free in India** — so it shocks many NRIs that the **US doesn't recognize that exemption**. Once you're a US tax resident, the interest likely becomes **taxable to the IRS**, and the account triggers reporting obligations with steep penalties if ignored. Here's how to handle your PPF correctly from the US side.
 
 :::summary
 While **PPF interest is tax-free in India**, the **US generally taxes it** because the IRS doesn't honor India's exemption — most advisors treat the annual PPF interest as **taxable income** to a US resident. Your PPF is also **reportable on FBAR and likely FATCA**, and some practitioners treat it as a **foreign trust** (Form 3520/3520-A). It is **not** a [PFIC](/articles/pfic-indian-mutual-funds-trap). The treatment is debated — get a cross-border CPA.
@@ -2886,7 +2902,7 @@ PPF is tax-free in India but not in the eyes of the IRS — plan to report its i
     topic: "taxes",
     date: "2026-05-18",
     featured: false,
-    content: `Two H-1B engineers can earn the identical $160,000 salary and take home thousands of dollars apart — purely because of **which state they live in**. Federal tax is the same everywhere, but **state income tax** ranges from **0% to over 13%**, quietly reshaping your real pay. For mobile tech workers choosing between offers in Austin, San Francisco, Seattle, or New York, understanding the state tax map is one of the highest-leverage financial decisions you'll make. Here's how it works.
+    content: `Two H-1B engineers earning the identical $160,000 can take home thousands of dollars apart — purely because of **which state they live in**. Federal tax is the same everywhere, but **state income tax** ranges from **0% to over 13%**, quietly reshaping your real pay. For mobile tech workers choosing between Austin, SF, Seattle, or New York, the state tax map is one of the highest-leverage financial decisions you'll make.
 
 :::summary
 **Federal tax is uniform; state income tax is not** — it ranges from **0%** (Texas, Washington, Florida, Nevada, and others) to **13.3%** in California. On a tech salary, the state you choose can swing your take-home by **thousands of dollars a year**. But weigh the **full cost of living** — no-income-tax states often offset with higher property or sales taxes, and big tech hubs carry high housing costs.
@@ -2965,7 +2981,7 @@ State income tax is the quiet multiplier on your salary — 0% in Texas or Washi
     topic: "retirement",
     date: "2026-06-02",
     featured: false,
-    content: `If you're leaving the US before age 59½ and want to tap your 401(k) or IRA, the default cost is steep: ordinary income tax **plus a 10% early-withdrawal penalty**. But there's a legitimate, IRS-sanctioned way to access that money early **without the penalty** — **Rule 72(t)**, which sets up a stream of **Substantially Equal Periodic Payments (SEPP)**. It's powerful for returning NRIs who need income before retirement age, but the rules are rigid and breaking them is expensive. Here's how it works and when it makes sense.
+    content: `Leaving the US before 59½ and want to tap your 401(k) or IRA? The default cost is steep — income tax **plus a 10% early-withdrawal penalty** — but **Rule 72(t)** is a legitimate, IRS-sanctioned way to access the money early **without the penalty**, via **Substantially Equal Periodic Payments (SEPP)**. It's powerful for returning NRIs who need income before retirement age, but the rules are rigid and breaking them is expensive.
 
 :::summary
 **IRS Rule 72(t)** lets you take **Substantially Equal Periodic Payments (SEPP)** from a 401(k) or IRA **before 59½ without the 10% penalty**. You must take **calculated equal payments for at least 5 years or until age 59½, whichever is longer**, using one of three IRS methods. You still owe **income tax** (and, as a nonresident, up to **30% withholding**) — 72(t) only removes the *penalty*. Break the schedule and the penalty applies retroactively.
