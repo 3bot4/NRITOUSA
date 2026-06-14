@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   tickerItems,
   marketAsOfLabel,
@@ -29,7 +30,9 @@ function Arrow({ direction }: { direction: TickerItem["direction"] }) {
 function Cell({ item }: { item: TickerItem }) {
   const isDiff = item.kind === "differentiator";
   return (
-    <div
+    <Link
+      href={item.href}
+      style={{ color: "inherit", textDecoration: "none" }}
       className={[
         "flex shrink-0 items-center gap-2 px-4 py-2.5 text-sm",
         isDiff
@@ -51,7 +54,7 @@ function Cell({ item }: { item: TickerItem }) {
           stale
         </span>
       )}
-    </div>
+    </Link>
   );
 }
 

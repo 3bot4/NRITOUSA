@@ -82,7 +82,7 @@ export default function ToolsHubPage() {
                   <h2 className="text-lg font-bold tracking-tight text-ink-900">
                     {group}
                   </h2>
-                  <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.map((t) => (
                       <ToolCard key={t.slug} tool={t} />
                     ))}
@@ -103,7 +103,7 @@ export default function ToolsHubPage() {
                   View all calculators <span aria-hidden>→</span>
                 </Link>
               </div>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {calculators.map((c) => (
                   <CalculatorCard key={c.slug} calc={c} />
                 ))}
@@ -123,7 +123,7 @@ export default function ToolsHubPage() {
                   <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                     IUL vs 401(k) vs Taxable
                   </h3>
-                  <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+                  <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
                     Side-by-side projection of indexed universal life against a
                     401(k) and a taxable brokerage — caps, floors, fees, death
                     benefit, and a bad-market scenario toggle.

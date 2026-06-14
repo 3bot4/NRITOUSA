@@ -35,9 +35,9 @@ export default function HomePage() {
       <Ticker />
       <HomeHero />
 
-      <Container className="py-8 sm:py-10">
-        <AllToolsGrid />
+      <Container className="pb-8 pt-6 sm:pb-10">
         <TaxComplianceSpotlight />
+        <AllToolsGrid />
         <LatestUpdates />
       </Container>
     </>

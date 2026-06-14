@@ -11,7 +11,6 @@ export const navLinks = [
   { label: "India Tax & Compliance", href: "/india-tax-compliance" },
   { label: "Tools", href: "/tools" },
   { label: "Education", href: "/education" },
-  { label: "Calculators", href: "/calculators" },
   { label: "New to USA", href: "/topics/new-to-usa" },
   { label: "Send Money to India", href: "/topics/money-transfer" },
   { label: "Guides", href: "/topics" },

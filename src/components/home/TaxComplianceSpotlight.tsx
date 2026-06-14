@@ -14,7 +14,7 @@ export default function TaxComplianceSpotlight() {
   if (items.length === 0) return null;
 
   return (
-    <section aria-labelledby="tax-hub-h" className="mt-10">
+    <section aria-labelledby="tax-hub-h">
       <div className="rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50 to-white p-5 sm:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
@@ -45,7 +45,7 @@ export default function TaxComplianceSpotlight() {
           </Link>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {items.map((t) => (
             <Link
               key={t.href}

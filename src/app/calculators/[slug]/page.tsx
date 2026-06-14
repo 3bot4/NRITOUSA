@@ -179,7 +179,7 @@ export default function CalculatorPage({
         <section className="bg-white py-10 sm:py-12">
           <Container>
             <SectionHeading eyebrow="Learn more" title="Related guides" />
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {related.map((a) => (
                 <Link
                   key={a.slug}

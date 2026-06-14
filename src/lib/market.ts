@@ -67,8 +67,20 @@ export interface TickerItem {
   /** Direction drives the green/red/neutral styling. */
   direction: "up" | "down" | "flat";
   kind: TickerKind;
+  /** Destination the ticker cell links to (rendered as an anchor). */
+  href: string;
   stale?: boolean;
 }
+
+/** Where each ticker item links to, keyed by its `key`. */
+const tickerHref: Record<string, string> = {
+  usdinr: "/calculators/remittance-tcs",
+  // The investing guide lives at /topics/investing (there is no /guides route).
+  nifty50: "/topics/investing",
+  sp500: "/topics/investing",
+  gold: "/topics/investing",
+  eb2india: "/tools/green-card-tracker",
+};
 
 /** EB-2 India Final Action Date, derived from the visa-bulletin data. */
 export function eb2IndiaFad(): { fad: string; display: string } {
@@ -109,11 +121,12 @@ function eb2TickerItem(): TickerItem {
   }
   return {
     key: "eb2india",
-    label: "EB-2 India Final Action Date",
+    label: "EB-2 India",
     display,
     change,
     direction,
     kind: "differentiator",
+    href: tickerHref.eb2india,
   };
 }
 
@@ -128,6 +141,7 @@ function marketTickerItem(item: MarketItem): TickerItem {
     change: `${sign}${item.changePct.toFixed(2)}%`,
     direction,
     kind: "market",
+    href: tickerHref[item.key] ?? "/tools",
     stale: item.stale,
   };
 }

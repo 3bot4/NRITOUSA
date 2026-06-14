@@ -1,48 +1,57 @@
 import Link from "next/link";
-import { homeTools } from "@/lib/homeTools";
-import { accent } from "@/lib/accents";
+import ToolCard from "@/components/tools/ToolCard";
+import CalculatorCard from "@/components/CalculatorCard";
+import { liveTools, type ToolGroup } from "@/lib/tools";
+import { calculators } from "@/lib/calculators";
 
 /**
- * All tools, rendered as compact cards directly under the hero CTA. The list is
- * driven entirely by src/lib/homeTools.ts (a merge of tools.ts + calculators.ts),
- * so adding a new tool to either source surfaces it here automatically.
+ * Home-page tool catalog, rendered as the SAME categorized sections used on the
+ * /tools hub — Visa & Green Card and Travel & Documents tool groups plus the
+ * Cross-border calculators — reusing the shared ToolCard / CalculatorCard so the
+ * two surfaces stay visually identical. A "Browse all tools →" link sends people
+ * to the full /tools hub.
  */
+
+const HOME_GROUPS: ToolGroup[] = ["Visa & Green Card", "Travel & Documents"];
+
 export default function AllToolsGrid() {
   return (
-    <section aria-labelledby="all-tools-h">
-      <h2
-        id="all-tools-h"
-        className="mb-3 text-sm font-bold uppercase tracking-wide text-ink-500"
-      >
-        All tools
-      </h2>
+    <section aria-label="Tools" className="mt-10 space-y-8">
+      {HOME_GROUPS.map((group) => {
+        const items = liveTools.filter((t) => t.group === group);
+        if (!items.length) return null;
+        return (
+          <div key={group}>
+            <h2 className="text-lg font-bold tracking-tight text-ink-900">
+              {group}
+            </h2>
+            <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {items.map((t) => (
+                <ToolCard key={t.slug} tool={t} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {homeTools.map((t) => {
-          const a = accent(t.cat);
-          return (
-            <Link
-              key={t.href}
-              href={t.href}
-              className="group flex items-start gap-3 rounded-xl border border-ink-900/5 bg-white p-3.5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
-            >
-              <span
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-lg ${a.softBg}`}
-                aria-hidden
-              >
-                {t.icon}
-              </span>
-              <span className="min-w-0">
-                <span className="block text-sm font-bold tracking-tight text-ink-900 group-hover:text-brand-700">
-                  {t.label}
-                </span>
-                <span className="mt-0.5 block truncate text-xs text-ink-500">
-                  {t.description}
-                </span>
-              </span>
-            </Link>
-          );
-        })}
+      <div>
+        <h2 className="text-lg font-bold tracking-tight text-ink-900">
+          Cross-border calculators
+        </h2>
+        <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {calculators.map((c) => (
+            <CalculatorCard key={c.slug} calc={c} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <Link
+          href="/tools"
+          className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+        >
+          Browse all tools <span aria-hidden>→</span>
+        </Link>
       </div>
     </section>
   );

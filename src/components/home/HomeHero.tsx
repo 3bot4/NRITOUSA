@@ -12,7 +12,7 @@ export default function HomeHero() {
   return (
     <section className="relative overflow-hidden border-b border-ink-900/5 bg-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_75%_-10%,rgba(53,99,255,0.08),transparent)]" />
-      <Container className="relative py-7 sm:py-9">
+      <Container className="relative py-3.5 sm:py-4">
         <div className="max-w-2xl">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-3xl">
             Data-driven money &amp; immigration tools for{" "}
@@ -23,6 +23,9 @@ export default function HomeHero() {
           <p className="mt-2 text-sm text-ink-500 sm:text-base">
             Live USD/INR, markets, and Visa Bulletin movement — plus free tools
             to estimate your green-card wait and true cost of sending money home.
+          </p>
+          <p className="mt-1.5 text-[13px] text-ink-400">
+            20+ free tools · 50+ guides · Data updated daily
           </p>
         </div>
 

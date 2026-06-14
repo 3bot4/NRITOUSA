@@ -31,7 +31,7 @@ export default function ArticleCard({
         <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
           {article.title}
         </h3>
-        <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+        <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
           {article.excerpt}
         </p>
         <span className="mt-2.5 flex items-center gap-2 text-[0.6875rem] text-ink-400">

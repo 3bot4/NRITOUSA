@@ -97,7 +97,7 @@ export default function IndiaTaxCompliancePage() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-ink-900/5 bg-gradient-to-br from-rose-500 to-pink-600">
         <div className="absolute inset-0 bg-ink-900/40" />
-        <Container className="relative py-16 sm:py-24">
+        <Container className="relative py-12 sm:py-14">
           <nav
             aria-label="Breadcrumb"
             className="flex flex-wrap items-center gap-2 text-sm text-white/80"
@@ -152,7 +152,7 @@ export default function IndiaTaxCompliancePage() {
             description="The decisions that move the most money — capital gains, repatriation, residency timing, transfer costs, and foreign-account reporting."
             action={{ label: "All calculators", href: "/calculators" }}
           />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {calcs.map((c) => (
               <Link
                 key={c.slug}
@@ -240,7 +240,7 @@ export default function IndiaTaxCompliancePage() {
                     </h3>
                     <p className="text-xs text-ink-400">{group.description}</p>
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.map((a) => (
                       <Link
                         key={a.slug}

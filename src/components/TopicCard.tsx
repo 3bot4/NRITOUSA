@@ -29,7 +29,7 @@ export default function TopicCard({
       <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
         {topic.title}
       </h3>
-      <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+      <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
         {topic.description}
       </p>
       <span className="mt-2.5 text-xs font-semibold text-brand-600">

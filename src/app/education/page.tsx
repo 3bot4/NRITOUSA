@@ -152,7 +152,7 @@ export default function EducationHubPage() {
             title="Free education calculators"
             description="Everything is computed in your browser. Nothing is stored or submitted."
           />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eduCalcs.map((c) => (
               <Link
                 key={c.slug}
@@ -173,7 +173,7 @@ export default function EducationHubPage() {
                 <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                   {c.label}
                 </h3>
-                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
                   {c.description}
                 </p>
                 <span className="mt-2.5 text-xs font-semibold text-brand-600">
@@ -197,7 +197,7 @@ export default function EducationHubPage() {
             description="Long-form, regularly updated explainers written for immigrant families."
             action={{ label: "All education guides", href: "/education/articles" }}
           />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {articles.map((a) => (
               <Link
                 key={a.slug}
@@ -207,7 +207,7 @@ export default function EducationHubPage() {
                 <h3 className="text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                   {a.title}
                 </h3>
-                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
                   {a.excerpt}
                 </p>
                 <span className="mt-2.5 text-xs font-semibold text-brand-600">
