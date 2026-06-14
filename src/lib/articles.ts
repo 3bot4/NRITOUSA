@@ -3788,7 +3788,7 @@ A foreign inheritance is one of the gentler cross-border events tax-wise: no US 
     topic: "money-transfer",
     date: "2026-05-18",
     featured: false,
-    content: `Here's a compliance gap most new NRIs don't even know they have: the moment you become a non-resident under Indian law, your **old resident savings accounts in India are no longer valid**. Continuing to operate them is a **FEMA violation** — not a grey area, an actual breach of India's foreign-exchange rules. The fix is straightforward: **redesignate your resident accounts to NRO** and set up an **NRE** account for your foreign income. Doing this promptly keeps you compliant and gives you the right banking infrastructure for life as an NRI. Here's the step-by-step.
+    content: `Here's a compliance gap most new NRIs don't know they have: the moment you become a non-resident under Indian law, your **old resident savings accounts are no longer valid**, and operating them is an actual **FEMA violation**. The fix is straightforward — **redesignate them to NRO** and open an **NRE** account for your foreign income. Doing it promptly keeps you compliant and gives you the right banking infrastructure for NRI life.
 
 :::summary
 Under **FEMA**, once you become an NRI you **cannot keep operating resident savings accounts** — you must **convert them to NRO** (or close them). Set up the proper structure: **NRE** for your US-earned, repatriable, India-tax-free money, and **NRO** for India-origin income. Most banks let you convert by submitting a redesignation form with your passport, visa, and address proof — increasingly **online**. Don't ignore this; non-compliance carries penalties.
@@ -4037,9 +4037,11 @@ Because you may have income on both sides of the world, save anything that prove
 :::
 
 ## Common mistakes
-- **Keeping the only I-94 in email** and losing access — store it in a dedicated folder.
-- **Carrying the SSN card in your wallet** — if lost, it invites identity theft.
-- **Tossing pay stubs.** You'll need them for apartments, car loans, and mortgages.
+:::warn
+- **Keeping the only I-94 in email** and losing access — store it in a dedicated folder
+- **Carrying the SSN card in your wallet** — if lost, it invites identity theft
+- **Tossing pay stubs** — you'll need them for apartments, car loans, and mortgages
+:::
 
 ## Frequently asked questions
 
@@ -4155,9 +4157,11 @@ Don't underrate weather and commute. A brutal winter or a two-hour daily commute
 :::
 
 ## Common mistakes
-- **Chasing the highest salary** without netting out taxes and rent.
-- **Ignoring visa backup** by moving to a one-employer town.
-- **Forgetting family needs** like schools and community when single-minded about the job.
+:::warn
+- **Chasing the highest salary** without netting out taxes and rent
+- **Ignoring visa backup** by moving to a one-employer town
+- **Forgetting family needs** like schools and community when single-minded about the job
+:::
 
 ## Frequently asked questions
 
@@ -4295,9 +4299,11 @@ Some NRIs keep an Indian term policy too. That can work, but confirm it pays out
 :::
 
 ## Common mistakes
-- **Buying whole life** when term covers the real need for a fraction of the cost.
-- **Underinsuring** by picking a round number instead of replacing real income.
-- **Waiting** — premiums only rise with age and health changes.
+:::warn
+- **Buying whole life** when term covers the real need for a fraction of the cost
+- **Underinsuring** by picking a round number instead of replacing real income
+- **Waiting** — premiums only rise with age and health changes
+:::
 
 ## Frequently asked questions
 
@@ -4353,9 +4359,11 @@ Typically $10–20/month for $20,000–$50,000 of coverage. It's cheap because t
 :::
 
 ## Common mistakes
-- **Assuming the landlord's insurance covers your stuff** — it doesn't.
-- **Underinsuring** by guessing the value of your belongings too low.
-- **Skipping it to save $15/month** and facing a total loss with no recourse.
+:::warn
+- **Assuming the landlord's insurance covers your stuff** — it doesn't
+- **Underinsuring** by guessing the value of your belongings too low
+- **Skipping it to save $15/month** and facing a total loss with no recourse
+:::
 
 ## Frequently asked questions
 
@@ -4418,9 +4426,11 @@ Insurers price on history they can see. With no US driving record and possibly a
 :::
 
 ## Common mistakes
-- **Buying only state-minimum liability** — one serious accident can exceed it and expose your assets.
-- **Driving uninsured even briefly** — illegal and financially catastrophic.
-- **Not shopping around** — quotes vary widely between insurers.
+:::warn
+- **Buying only state-minimum liability** — one serious accident can exceed it and expose your assets
+- **Driving uninsured even briefly** — illegal and financially catastrophic
+- **Not shopping around** — quotes vary widely between insurers
+:::
 
 ## Frequently asked questions
 
@@ -4483,9 +4493,11 @@ An HSA stays yours even if you move abroad, though using it for non-US medical c
 :::
 
 ## Common mistakes
-- **Treating the HSA as a spending account** instead of investing it.
-- **Over-funding an FSA** and forfeiting the leftover at year-end.
-- **Skipping the HSA** when on an HDHP and missing the best tax deal around.
+:::warn
+- **Treating the HSA as a spending account** instead of investing it
+- **Over-funding an FSA** and forfeiting the leftover at year-end
+- **Skipping the HSA** when on an HDHP and missing the best tax deal around
+:::
 
 ## Frequently asked questions
 
@@ -4610,9 +4622,11 @@ A year of clean credit history makes the jump to OPT/H-1B life smoother — rent
 :::
 
 ## Common mistakes
-- **Treating credit as free money** and carrying balances at 25%+ interest.
-- **Maxing out a low limit**, which spikes utilization and hurts your score.
-- **Closing your first card** later and losing account age.
+:::warn
+- **Treating credit as free money** and carrying balances at 25%+ interest
+- **Maxing out a low limit**, which spikes utilization and hurts your score
+- **Closing your first card** later and losing account age
+:::
 
 ## Frequently asked questions
 
@@ -4666,9 +4680,11 @@ Once the match and emergency fund are handled, begin investing for the long term
 :::
 
 ## Common mistakes
-- **Skipping the 401(k) match** during OPT/early H-1B "just in case."
-- **No emergency fund** to cover the 60-day H-1B grace period.
-- **Lifestyle inflation** swallowing the entire income jump from student to professional.
+:::warn
+- **Skipping the 401(k) match** during OPT/early H-1B "just in case"
+- **No emergency fund** to cover the 60-day H-1B grace period
+- **Lifestyle inflation** swallowing the entire income jump from student to professional
+:::
 
 ## Frequently asked questions
 
