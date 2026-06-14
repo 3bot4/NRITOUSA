@@ -201,6 +201,30 @@ export const calculators: CalculatorMeta[] = [
       cta: "Send me the transfer playbook",
     },
   },
+  {
+    slug: "dtaa-foreign-tax-credit",
+    title: "DTAA Relief & Foreign Tax Credit Calculator (India–US)",
+    label: "DTAA / Foreign Tax Credit",
+    category: "Finance & Taxes",
+    description:
+      "Taxed on the same income in both India and the US? Estimate your Foreign Tax Credit, how much double taxation the DTAA avoids, and any US tax still due or India tax to carry over.",
+    icon: "⚖️",
+    accent: "from-teal-500 to-emerald-600",
+    seoTitle: "DTAA Relief & Foreign Tax Credit Calculator for US NRIs",
+    seoDescription:
+      "Estimate India–US DTAA relief: enter India income, tax paid in India, and your US bracket to see your indicative Foreign Tax Credit (Form 1116), the double tax avoided, and any carryover.",
+    related: [
+      "double-taxation-dtaa-india-usa",
+      "indian-income-us-tax-return",
+      "selling-indian-shares-us-resident-tax",
+    ],
+    tags: ["tax-compliance"],
+    leadMagnet: {
+      heading: "Worried about being taxed twice?",
+      body: "Get our free DTAA relief pack — the Form 1116 vs Form 67 walkthrough and the documents to keep so your foreign tax credit holds up.",
+      cta: "Send me the DTAA relief pack",
+    },
+  },
 ];
 
 export const calculatorCategories = [
