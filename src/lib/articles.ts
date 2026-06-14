@@ -5677,7 +5677,7 @@ US rental income is reported on your US return. India rental income is taxable i
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `Keeping some money in India is sensible. Keeping a large share of your net worth there, years after your life moved to dollars, can quietly cost you — not through any single dramatic loss, but through a slow drip of currency depreciation, inflation, tax friction, and reduced control. This article isn't an argument to pull everything out of India. It's an argument to be deliberate about how much stays, and why.
+    content: `Keeping some money in India is sensible; keeping a large share of your net worth there, years after your life moved to dollars, can quietly cost you — through a slow drip of currency depreciation, inflation, tax friction, and reduced control. This isn't an argument to pull everything out of India. It's an argument to be deliberate about how much stays, and why.
 
 :::summary
 The hidden costs of over-holding in India are **currency depreciation**, **higher inflation**, **dual tax reporting**, **repatriation friction**, and **reduced control** — none individually alarming, but together meaningful over a decade. The fix isn't "move everything to the US"; it's to size your India holdings to **genuine rupee needs** and shift the rest toward your real spending currency. This is educational information, not personalized financial advice.
@@ -5725,11 +5725,13 @@ List your future goals and tag each with a currency. Parents' care, India travel
 - Revisit the split annually as your plans firm up — see the [10-year NRI wealth checklist](/articles/10-year-nri-wealth-checklist).
 
 ## Common mistakes
-- **Letting an India buffer grow by inertia** far beyond its purpose.
-- **Measuring rupee balances in rupees only**, ignoring dollar purchasing power.
-- **Funding US goals from India assets**, exposing them to conversion-timing risk.
-- **Underestimating repatriation time**, then scrambling when cash is needed.
-- **Forgetting reporting**, turning a quiet holding into a compliance headache.
+:::warn
+- **Letting an India buffer grow by inertia** far beyond its purpose
+- **Measuring rupee balances in rupees only**, ignoring dollar purchasing power
+- **Funding US goals from India assets**, exposing them to conversion-timing risk
+- **Underestimating repatriation time**, then scrambling when cash is needed
+- **Forgetting reporting**, turning a quiet holding into a compliance headache
+:::
 
 ## The bottom line
 This is not "India bad, USA good." It's "match money to purpose." Keep what serves real rupee goals and family comfort; move the surplus toward the currency you'll actually spend, gradually and with tax advice. Over a decade, that single discipline can meaningfully improve what your savings are worth when you finally need them. Work with a CPA and a financial advisor, plus an India-based professional, to plan the specifics.
@@ -5861,7 +5863,7 @@ Yes, generally. Accounts like 401k, IRAs, and life insurance pass by beneficiary
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `As retirement approaches, the India property you've held for years quietly turns into a decision. Keep it for sentiment, family use, and possible appreciation? Or sell while you still have the energy to manage the process, and convert it into something that funds your dollar retirement? There's no universally right answer — but retirement is exactly when this question deserves a clear-eyed look rather than another year of postponement.
+    content: `As retirement approaches, the India property you've held for years quietly turns into a decision: keep it for sentiment and family use, or sell while you still have the energy and convert it into dollar-retirement funding? There's no universally right answer. But retirement is exactly when this deserves a clear-eyed look rather than another year of postponement.
 
 :::summary
 Whether to sell India property before retiring in the US depends on **emotional value vs financial usefulness**, whether your **children will manage it**, rental and maintenance realities, **currency risk**, and the **tax and repatriation** process. Keeping it can make sense if the family genuinely uses it or you may live there; selling can simplify your estate and fund dollar retirement. Decide deliberately, with professional help. This is educational information, not advice.
@@ -5910,11 +5912,13 @@ Many retirees find a middle path: sell investment or surplus properties that are
 - Does keeping it **complicate my estate** for my heirs?
 
 ## Common mistakes
-- **Postponing indefinitely**, until selling becomes harder and lands on unprepared heirs.
-- **Overstating rental income** by ignoring tax, vacancy, and currency.
-- **Assuming children want it** without asking.
-- **Underestimating the sale and repatriation timeline.**
-- **Selling purely on sentiment** — or keeping purely on it — without running the numbers.
+:::warn
+- **Postponing indefinitely**, until selling becomes harder and lands on unprepared heirs
+- **Overstating rental income** by ignoring tax, vacancy, and currency
+- **Assuming children want it** without asking
+- **Underestimating the sale and repatriation timeline**
+- **Selling purely on sentiment** — or keeping purely on it — without running the numbers
+:::
 
 ## The bottom line
 There's no rule that says sell or keep. There's only the question of whether the property still serves your retirement and your family — and whether you'd rather handle any sale now, while it's easiest, than leave it to heirs who may not want it. Decide deliberately, not by default. Run the tax math with a cross-border CPA and an India CA, and confirm the legal and repatriation steps with an India property lawyer.
@@ -6047,7 +6051,7 @@ US tax residents are taxed on worldwide income, so 401k/IRA withdrawals, Social 
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `"We're buying it for the kids." It's one of the most common reasons NRIs purchase property in India — a gift, a root, a future asset for children growing up far from home. The intention is loving. The outcome depends entirely on whether those US-raised children will ever want, use, or be able to manage an Indian property. Before you buy, it's worth pressure-testing the assumption that the property your children will value is the one you'd choose for them.
+    content: `"We're buying it for the kids" is one of the most common reasons NRIs purchase property in India — a gift, a root, an asset for children growing up far from home. The intention is loving, but the outcome depends entirely on whether those US-raised children will ever want, use, or be able to manage an Indian property. Before you buy, it's worth pressure-testing that assumption.
 
 :::summary
 Buying India property "for the children" works best when there's a **realistic plan for who will own, use, and manage it** — not just an emotional gift. US-raised kids often have limited connection to India property management, so consider whether they'll **actually use it**, who handles **maintenance and tenants**, how **ownership and inheritance** will work, and whether **US investments** might serve them better. Talk to your children first. This is educational information, not advice.
@@ -6089,14 +6093,16 @@ There's nothing wrong with buying property because it means something. The key i
 Before buying, ask your children directly: Would you want this? Would you use it? Would you rather have the equivalent value invested for you in the US? Their honest answers — which often surprise parents — should shape the decision. A gift the recipient doesn't want isn't really a gift.
 
 ## Common mistakes
-- **Buying without asking the children** what they actually want.
-- **Assuming kids will use or manage** an India property they have little connection to.
-- **Ignoring the eventual sale**, which the child may have to handle remotely.
-- **Unclear ownership/title structure**, creating tax and inheritance tangles.
-- **Treating an emotional gift as a financial one**, when US assets might serve better.
+:::warn
+- **Buying without asking the children** what they actually want
+- **Assuming kids will use or manage** an India property they have little connection to
+- **Ignoring the eventual sale**, which the child may have to handle remotely
+- **Unclear ownership/title structure**, creating tax and inheritance tangles
+- **Treating an emotional gift as a financial one**, when US assets might serve better
+:::
 
 ## The bottom line
-Buying India property for your children can be a beautiful gesture or a future burden — and the difference is whether it fits their actual lives. Have the honest conversation first, decide ownership and management deliberately, and be willing to consider that a US-based gift might serve a US-raised child better. The goal isn't to discourage owning in India; it's to make sure the gift is one your children can actually use and manage. Consult an India property lawyer and a cross-border tax professional before buying.
+Buying India property for your children can be a beautiful gesture or a future burden — and the difference is whether it fits their actual lives. Have the honest conversation first, decide ownership and management deliberately, and consider that a US-based gift might serve a US-raised child better. Consult an India property lawyer and a cross-border tax professional before buying.
 
 ## Frequently asked questions
 
@@ -6127,7 +6133,7 @@ Yes. Money invested in India property is in rupees; if the child later sells and
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `After a decade in the US, your financial life has quietly grown complicated. You have US accounts and India accounts, possibly property in both countries, retirement plans half-optimized, insurance you set up years ago, and an estate plan you've been meaning to write. This checklist is for the settled NRI who needs to step back, take inventory across both countries, and tidy up the pieces that drift when life gets busy. Work through it once a year and you'll catch the gaps before they become expensive.
+    content: `After a decade in the US, your financial life has quietly grown complicated: US accounts and India accounts, maybe property in both, retirement plans half-optimized, and an estate plan you've been meaning to write. This checklist is for the settled NRI who needs to step back, take inventory across both countries, and tidy up the pieces that drift when life gets busy. Work through it once a year and you'll catch the gaps before they become expensive.
 
 :::summary
 This is a practical, cross-border review for NRIs settled 10+ years in the US: update your **US financial plan**, review **India accounts and property**, confirm **tax reporting** (FBAR/FATCA), optimize **401k/IRA/HSA**, check **insurance**, create or update **estate documents**, organize **India documents**, talk to your **children about assets**, build a **USD emergency fund**, and revisit your **retirement location plan**. This is educational information, not personalized advice — confirm specifics with professionals.
@@ -6190,11 +6196,13 @@ Where you'll retire drives almost everything: your spending currency, healthcare
 | Retirement location plan revisited | ☐ |
 
 ## Common mistakes
-- **Never doing a full review**, letting accounts and plans drift for years.
-- **Missing FBAR/FATCA**, turning a quiet holding into a compliance problem.
-- **Leaving employer match unclaimed** — a permanent loss.
-- **No estate documents**, despite significant cross-border assets.
-- **No USD emergency fund**, forcing bad-timing conversions or sales.
+:::warn
+- **Never doing a full review**, letting accounts and plans drift for years
+- **Missing FBAR/FATCA**, turning a quiet holding into a compliance problem
+- **Leaving employer match unclaimed** — a permanent loss
+- **No estate documents**, despite significant cross-border assets
+- **No USD emergency fund**, forcing bad-timing conversions or sales
+:::
 
 ## The bottom line
 A decade in, the risk isn't any single bad decision — it's drift. Accounts multiply, plans go stale, and the cross-border pieces never quite get coordinated. An annual pass through this checklist catches the gaps while they're cheap to fix. You don't have to do everything at once; pick the highest-impact items first and build the habit. For taxes, estate, and investments, confirm the specifics with a CPA, an estate attorney, and a financial advisor, plus India-based professionals where needed.
@@ -6727,9 +6735,7 @@ Starting at a community college and transferring to a four-year university for t
       "Your grandfather built wealth with land. With 20% down, US tax breaks, and leverage behind you, the same instinct is more powerful here than it ever was back home.",
     topic: "property",
     date: "2026-06-13",
-    content: `Before there were stock portfolios, index funds, or 401(k) accounts, your grandfather in India had a simple investment philosophy that built the family's wealth across generations. He bought land. He bought a shop. He bought a flat in the city when he could, or a plot on the edge of town when he could not. He might not have known the word "leverage" or "equity," but he understood the principle at its core: you do not need to own something fully to benefit from all of it.
-
-That same instinct — the one that told your father to put his savings into property before anything else — turns out to be one of the most financially sophisticated strategies available in the American market today. Modern finance gave it a name: leveraged real estate investment. And the numbers behind it, especially with America's tax laws layered on top, make it even more powerful than what your family practiced back home.
+    content: `Before stock portfolios and 401(k)s, your grandfather in India built the family's wealth on a simple philosophy: he bought land, a shop, a flat in the city — understanding instinctively that you don't need to own something fully to benefit from all of it. That same instinct turns out to be one of the most financially sophisticated strategies in the American market today; modern finance just calls it leveraged real estate. With US tax law layered on top, the numbers are even more powerful than what your family practiced back home.
 
 :::summary
 US mortgages let you control a **$400,000 property with just $80,000 down** — so you gain on the full value while risking a fraction. A well-chosen rental pays you five ways at once: cash flow, tenant-funded mortgage paydown, appreciation, **depreciation tax deductions**, and an inflation hedge. Over a decade, $80,000 down can return roughly **$290,000–$310,000**, much of it sheltered from tax. This is the wealth-building path immigrant families already know from home — now supercharged by US leverage and the tax code.
@@ -6874,7 +6880,7 @@ Your grandfather knew this. Your father knew this. The only question is whether 
 ## Frequently asked questions
 
 ### Can immigrants buy investment property in the USA?
-Yes. There is no citizenship requirement to own US real estate. Visa holders, green card holders, and even non-residents can buy investment property. Financing is the main variable: H-1B and green card holders generally qualify for conventional mortgages with 20–25% down, while non-residents may need a larger down payment or a foreign-national loan program.
+Yes — there's no citizenship requirement to own US real estate, so visa holders, green card holders, and even non-residents can buy. Financing is the main variable: H-1B and green card holders generally qualify for conventional mortgages with 20–25% down. Non-residents may need a larger down payment or a foreign-national loan program.
 
 ### How much do I need to put down on a rental property?
 Conventional investment-property loans typically require 20–25% down — more than the 3–20% common for a primary residence. On a $400,000 rental that is roughly $80,000–$100,000, plus closing costs and a maintenance reserve.
