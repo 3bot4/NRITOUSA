@@ -2471,7 +2471,7 @@ For H-4 and L-2 families, the safest, most cost-effective choice is usually the 
     topic: "taxes",
     date: "2026-06-03",
     featured: true,
-    content: `If you send money from the US to India, there's a new line item you need to understand: a **federal excise tax on remittance transfers**. Introduced in 2025 legislation and applying to transfers from 2026, it adds a percentage charge to certain cross-border transfers — but, crucially, **only to specific funding methods**. For most NRIs, the fee is **entirely avoidable** simply by choosing how you pay. Here's the practical breakdown so you don't pay a tax you never needed to.
+    content: `If you send money to India, there's a new line item: a **US federal excise tax on remittance transfers**, enacted in 2025 and applying from 2026. Crucially, it only hits *specific funding methods* — for most NRIs it's **entirely avoidable** by choosing how you pay. Here's the practical breakdown so you don't pay a tax you never needed to.
 
 :::summary
 A new **US federal remittance excise tax (around 1%)** applies to cross-border transfers funded with **cash, money orders, or similar physical instruments**. Transfers funded **electronically from a US bank account or US-issued debit/credit card are exempt**. The fix is simple: **always fund transfers electronically** from your bank account. Verify current rates and effective dates, as rules are new and details can change.
@@ -3777,10 +3777,12 @@ You don't need a credit card, a car, or an apartment lease in week one. Resist p
 :::
 
 ## Common mistakes in week one
-- **Carrying too much cash.** Move money into a bank account quickly; don't keep thousands in a suitcase.
-- **Losing the I-94.** Download it immediately — you'll need it for the SSN and leases.
-- **Signing a long lease while jet-lagged.** Start with temporary housing if you can.
-- **Skipping the SIM** and relying on hotel Wi-Fi — you'll get locked out of OTP-based signups.
+:::warn
+- **Carrying too much cash** — move it into a bank account quickly; don't keep thousands in a suitcase
+- **Losing the I-94** — download it immediately; you'll need it for the SSN and leases
+- **Signing a long lease while jet-lagged** — start with temporary housing if you can
+- **Skipping the SIM** and relying on hotel Wi-Fi — you'll get locked out of OTP-based signups
+:::
 
 ## Frequently asked questions
 
@@ -3840,9 +3842,11 @@ Set up electricity, internet, and gas, and buy [renters insurance](/articles/ren
 :::
 
 ## Common mistakes in month one
-- **Skipping the 401(k) match** at a new job because you "might move back" — that's free money. See [why the match matters](/articles/401k-match-explained-nri).
-- **Overspending on a car** before your credit is built. Read [buy vs lease with no credit](/articles/buy-vs-lease-car-no-credit) first.
-- **Ignoring health insurance.** A single ER visit uninsured can cost thousands.
+:::warn
+- **Skipping the 401(k) match** because you "might move back" — that's free money; see [why the match matters](/articles/401k-match-explained-nri)
+- **Overspending on a car** before your credit is built — read [buy vs lease with no credit](/articles/buy-vs-lease-car-no-credit) first
+- **Ignoring health insurance** — a single uninsured ER visit can cost thousands
+:::
 
 ## Frequently asked questions
 
@@ -4101,9 +4105,11 @@ A high-deductible health plan (HDHP) pairs with a **Health Savings Account (HSA)
 :::
 
 ## Common mistakes
-- **Choosing the lowest premium** without checking the deductible — a cheap plan can be expensive when you actually need care.
-- **Going out-of-network** unknowingly and getting a huge bill.
-- **Skipping the HSA** when you have an HDHP and missing the tax break.
+:::warn
+- **Choosing the lowest premium** without checking the deductible — a cheap plan can be expensive when you actually need care
+- **Going out-of-network** unknowingly and getting a huge bill
+- **Skipping the HSA** when you have an HDHP and missing the tax break
+:::
 
 ## Frequently asked questions
 
@@ -4395,11 +4401,13 @@ As an Indian student: open a **student checking account**, build a budget around
 Open a student checking account (often no fees, no minimum balance). Many banks offer student-specific accounts with passport and I-20. Pair it with a high-yield savings account for any cushion. See the [best US bank accounts](/articles/best-bank-account-nri-usa).
 
 ## Budgeting on a student income
-Your big costs are tuition, rent, food, and insurance. Practical tips:
-- Split rent with roommates near campus — see [renting near campus considerations](/articles/rent-apartment-no-credit-history).
-- Cook instead of eating out; it's the biggest controllable expense.
-- Buy used textbooks and use student discounts everywhere.
-- Track every dollar for the first few months.
+Your big costs are tuition, rent, food, and insurance. Keep the controllable ones tight:
+:::tip
+- Split rent with roommates near campus — see [renting with no credit](/articles/rent-apartment-no-credit-history)
+- Cook instead of eating out; it's the biggest controllable expense
+- Buy used textbooks and use student discounts everywhere
+- Track every dollar for the first few months
+:::
 
 ## Building credit early
 You can start building credit as a student, which pays off when you rent solo or finance a car later. Use a **student credit card** or a **secured card**, charge one small recurring bill, and pay in full. Full details in [credit card basics for international students](/articles/credit-card-basics-international-students) and [build credit from zero](/articles/build-us-credit-score-from-zero).
@@ -4419,9 +4427,11 @@ Most universities require health insurance — compare the school plan vs altern
 :::
 
 ## Common mistakes
-- **Not building credit** during school, then struggling to rent or finance later.
-- **Carrying a credit card balance** and paying high interest on a student budget.
-- **Ignoring tax filing** — even zero-income students usually must file Form 8843.
+:::warn
+- **Not building credit** during school, then struggling to rent or finance later
+- **Carrying a credit card balance** and paying high interest on a student budget
+- **Ignoring tax filing** — even zero-income students usually must file Form 8843
+:::
 
 ## Frequently asked questions
 
@@ -4585,6 +4595,13 @@ With more dependents and a single income (if a spouse can't work yet), aim towar
 ## 5. A realistic family budget
 Budget for childcare (expensive in the US), groceries, and the recurring cost of visiting India. Then layer in long-term goals like college savings and retirement — capture your [401(k) match](/articles/401k-match-explained-nri) first.
 
+:::cta
+title: Rent first, or buy near the school?
+body: Run the visa-holder's real math before you commit a family-sized budget.
+button: Open the Rent vs. Buy guide
+href: /articles/rent-vs-buy-house-immigrants
+:::
+
 :::key
 - Confirm dependents' visas and whether your spouse can work
 - Let school-district quality guide where you live
@@ -4594,9 +4611,11 @@ Budget for childcare (expensive in the US), groceries, and the recurring cost of
 :::
 
 ## Common mistakes
-- **Renting before researching schools** and having to move mid-year.
-- **Underestimating childcare costs**, which can rival rent.
-- **Forgetting India-visit budgeting**, then dipping into savings each year.
+:::warn
+- **Renting before researching schools** and having to move mid-year
+- **Underestimating childcare costs**, which can rival rent
+- **Forgetting India-visit budgeting**, then dipping into savings each year
+:::
 
 ## Frequently asked questions
 
@@ -5125,9 +5144,7 @@ The patterns are remarkably consistent: start credit early, grab the match, buil
     date: "2026-06-06",
     updated: "2026-06-06",
     featured: true,
-    content: `When you first landed in the US, the answer felt obvious: keep building in India because that's where your accounts, your family, and your comfort were. Ten years later the question is genuinely harder. Your salary, your mortgage, your kids' college, and most of your future expenses are now in dollars — but a meaningful slice of your net worth may still sit in rupees. "USA or India?" is no longer about loyalty or sentiment. It's about matching where your money grows to where you will actually spend it.
-
-This guide walks through the trade-offs honestly. Neither country is the universal winner. The right mix depends on where you plan to retire, your time horizon, your tax situation, and how much complexity you're willing to manage from 8,000 miles away.
+    content: `Ten years in, "invest in the USA or India?" is no longer about loyalty — it's about matching where your money grows to where you'll actually spend it. Your salary, mortgage, and kids' college are now in dollars, yet a meaningful slice of your net worth may still sit in rupees. Neither country is the universal winner; the right mix depends on where you'll retire, your horizon, and your tax situation.
 
 :::summary
 For most long-term NRIs, the deciding factor is **currency alignment**: money you'll spend in dollars is generally cleaner to hold in dollar assets, and money you'll spend in India can stay in rupee assets. India can still make sense for family support, a home you'll use, or genuine rupee expenses. The USA is often simpler for retirement, college, and long-term compounding because it removes currency risk, tax-reporting friction, and the cost of managing assets remotely. This is educational information, not personalized advice.
@@ -5181,14 +5198,16 @@ US residents are taxed on worldwide income and must report foreign accounts via 
 | Need the money liquid quickly? | No | Yes |
 
 ## Common mistakes
-- **Chasing nominal returns.** A 7.5% FD looks great until you adjust for inflation and rupee depreciation in dollar terms.
-- **Holding rupee assets for dollar goals.** College in the US funded by Indian FDs is a currency bet, not a plan.
-- **Ignoring PFIC rules.** Indian mutual funds can create outsized US tax and filing burdens.
-- **Forgetting FBAR/FATCA.** Foreign accounts must be reported regardless of where you invest.
-- **Letting sentiment drive allocation.** "It's home" is a fine reason to keep a house you'll use, not a reason to anchor your retirement to a currency you won't spend.
+:::warn
+- **Chasing nominal returns** — a 7.5% FD looks great until you adjust for inflation and rupee depreciation in dollar terms
+- **Holding rupee assets for dollar goals** — US college funded by Indian FDs is a currency bet, not a plan
+- **Ignoring PFIC rules** — Indian mutual funds can create outsized US tax and filing burdens
+- **Forgetting FBAR/FATCA** — foreign accounts must be reported regardless of where you invest
+- **Letting sentiment drive allocation** — "it's home" justifies a house you'll use, not anchoring your retirement to a currency you won't spend
+:::
 
 ## The bottom line
-Think in terms of where you'll spend, not where you came from. For most settled NRIs, dollar goals are best funded with dollar assets, while rupee assets earn their place when there's a real rupee purpose behind them. Map your future expenses to currencies first, then let that map — not nostalgia or headline interest rates — guide the split. Because tax and currency rules are involved, confirm your specific plan with a CPA and a financial advisor (and an India-based professional for the India side).
+Think in terms of where you'll spend, not where you came from: fund dollar goals with dollar assets, and let rupee assets earn their place only when there's a real rupee purpose. Map your future expenses to currencies first — then let that map, not nostalgia or headline rates, guide the split. Because tax and currency rules are involved, confirm your specific plan with a CPA and an advisor.
 
 ## Frequently asked questions
 
@@ -5220,9 +5239,7 @@ Convert both to the same currency and adjust for inflation. Take the rupee retur
     date: "2026-06-06",
     updated: "2026-06-06",
     featured: true,
-    content: `A 7% fixed deposit feels almost irresistible when your US savings account pays a fraction of that in real terms. For many NRIs, the India FD is the most emotionally comfortable investment they own: familiar, "guaranteed," and tied to home. But comparing an India FD to US investments on headline interest rate alone is one of the most common mistakes long-term NRIs make. The honest comparison has to include inflation, currency depreciation, taxes in two countries, and what you give up by locking money in rupees.
-
-This is not an argument that FDs are bad. They are a genuinely useful, low-volatility tool for rupee goals. It's an argument for comparing them the right way.
+    content: `A 7% fixed deposit feels irresistible next to a US savings account — and the India FD is the most emotionally comfortable investment many NRIs own. But comparing the two on headline rate alone is one of the most common long-term NRI mistakes; the honest version includes inflation, currency depreciation, and taxes in both countries. This isn't an argument that FDs are bad — it's an argument for comparing them the right way.
 
 :::summary
 India FD rates look high partly because India's inflation and currency depreciation are also higher. To compare fairly, convert returns into the **currency you'll actually spend** and adjust for inflation and taxes in both countries. FDs make sense for rupee goals, an India emergency buffer, or money you'll spend in India. For dollar goals over long horizons, US diversified investments have historically offered higher real, dollar-denominated growth — with more volatility. None of this is personalized advice.
@@ -5278,11 +5295,13 @@ The honest takeaway: FDs can win for rupee goals and stability; broad US investi
 - You're parking funds you'll spend in India anyway.
 
 ## Common mistakes
-- **Comparing 7% FD to a US savings rate.** Compare it to a diversified US portfolio over the same horizon, in dollars, after tax.
-- **Assuming NRE interest is tax-free for you.** It's tax-free in India, not necessarily in the US.
-- **Ignoring currency.** A dollar goal funded by a rupee FD is a currency bet.
-- **Over-allocating to FDs out of comfort.** Familiarity isn't a return.
-- **Forgetting FBAR.** FD balances count toward foreign-account reporting thresholds.
+:::warn
+- **Comparing a 7% FD to a US savings rate** — compare it to a diversified US portfolio over the same horizon, in dollars, after tax
+- **Assuming NRE interest is tax-free for you** — it's tax-free in India, not necessarily in the US
+- **Ignoring currency** — a dollar goal funded by a rupee FD is a currency bet
+- **Over-allocating to FDs out of comfort** — familiarity isn't a return
+- **Forgetting FBAR** — FD balances count toward foreign-account reporting thresholds
+:::
 
 ## The bottom line
 India FDs aren't a mistake — using the FD rate as the whole story is. Convert to dollars, adjust for inflation, account for US tax, and match the FD to a real rupee purpose. Do that and the FD finds its rightful place: a stable tool for rupee goals, not a default home for money you'll eventually spend in dollars. Confirm the tax mechanics with a CPA and your India banker before committing.
@@ -5586,7 +5605,7 @@ Yes. US tax residents must report foreign financial accounts via FBAR (FinCEN 11
     date: "2026-06-06",
     updated: "2026-06-06",
     featured: true,
-    content: `Most NRIs spend years building wealth and almost no time planning how it will pass on — especially when that wealth is split across two countries with different laws. A US will may not cleanly govern Indian property; an Indian nominee is not the same as a legal heir; beneficiary designations can override your will entirely. For families with US and India assets, estate planning isn't a one-document task. It's coordinating two legal systems so your wishes actually hold.
+    content: `Most NRIs spend years building wealth and almost no time planning how it passes on — especially when it's split across two countries with different laws. A US will may not cleanly govern Indian property, an Indian nominee isn't a legal heir, and beneficiary designations can override your will entirely. For cross-border families, estate planning isn't one document — it's coordinating two legal systems so your wishes actually hold.
 
 :::note
 **Important legal disclaimer:** This article is educational only and is **not legal, tax, or estate-planning advice**. Estate, succession, and inheritance laws differ between the US (and between US states) and India (and by religion within India), and they change over time. Always work with a qualified estate-planning attorney in the US and a property/succession lawyer in India, plus a cross-border tax professional, before acting.
@@ -5643,11 +5662,13 @@ A perfect plan that no one knows about fails. Tell your executor and key family 
 - A **cross-border CPA** for the tax interaction — see [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax).
 
 ## Common mistakes
-- **One will for everything.** Cross-border assets often need coordinated, separate wills.
-- **Stale beneficiary designations.** They override your will — and people forget them.
-- **Nominee = heir confusion.** A frequent, costly misunderstanding in India.
-- **Messy India titles.** The biggest barrier to heirs actually receiving property.
-- **No communication.** Hidden plans cause exactly the disputes they meant to prevent.
+:::warn
+- **One will for everything** — cross-border assets often need coordinated, separate wills
+- **Stale beneficiary designations** — they override your will, and people forget them
+- **Nominee = heir confusion** — a frequent, costly misunderstanding in India
+- **Messy India titles** — the biggest barrier to heirs actually receiving property
+- **No communication** — hidden plans cause exactly the disputes they meant to prevent
+:::
 
 ## The bottom line
 Cross-border estate planning is less about a single document and more about coordination — two wills that don't fight, current beneficiary designations, clean titles, named guardians, and a family that knows the plan. Done early, it spares your heirs years of difficulty. Because the laws are complex and country- and state-specific, build this with a US estate attorney, an India succession lawyer, and a cross-border tax professional.
@@ -5769,7 +5790,7 @@ Yes. India property value and rent are in rupees, but your retirement spending i
     date: "2026-06-06",
     updated: "2026-06-06",
     featured: true,
-    content: `Retirement planning is hard enough in one country. For NRIs, it spans two — a dollar lifestyle and dollar expenses on one side, rupee assets and family ties on the other, with an exchange rate sitting in the middle of every projection. The central challenge is a currency mismatch: if your bills are in dollars but part of your nest egg is in rupees, your retirement security depends partly on a rate you can't control. This guide walks through planning around that reality without pretending either country has all the answers.
+    content: `Retirement planning is hard in one country; for NRIs it spans two — dollar expenses on one side, rupee assets and family ties on the other, with an exchange rate in the middle of every projection. The central challenge is a currency mismatch: if your bills are in dollars but part of your nest egg is in rupees, your security depends on a rate you can't control. Here's how to plan around that without pretending either country has all the answers.
 
 :::summary
 NRI retirement planning hinges on the **currency mismatch** between dollar expenses and rupee assets. Build your core retirement on **dollar assets** (401k, IRA, HSA, taxable accounts) for the spending you'll do in dollars, including US healthcare, while keeping India assets sized to genuine rupee needs. Plan for **healthcare, currency risk, family support, taxes, and estate** together. This is educational information, not financial, tax, or investment advice — work with professionals.
@@ -5827,11 +5848,13 @@ A financial advisor (ideally one familiar with cross-border situations), a cross
 | Emergencies | Dollars | USD emergency fund |
 
 ## Common mistakes
-- **Funding dollar retirement with rupee assets**, exposing the core plan to currency risk.
-- **Underestimating US healthcare**, especially pre-Medicare.
-- **Leaving employer match on the table** during working years.
-- **Ignoring withdrawal sequencing**, paying more lifetime tax than necessary.
-- **Treating estate planning as separate** from retirement, leaving heirs a tangle.
+:::warn
+- **Funding dollar retirement with rupee assets** — exposing the core plan to currency risk
+- **Underestimating US healthcare**, especially pre-Medicare
+- **Leaving employer match on the table** during working years
+- **Ignoring withdrawal sequencing** — paying more lifetime tax than necessary
+- **Treating estate planning as separate** from retirement, leaving heirs a tangle
+:::
 
 ## The bottom line
 Retire on the currency you'll spend. Build a dollar core for dollar expenses — especially healthcare — fund genuine rupee goals from India assets, keep a dollar emergency cushion, and coordinate taxes and estate across both countries. The exchange rate will always be uncertain; a well-matched plan simply makes it matter less. Because so many moving parts interact, build your plan with a financial advisor, a cross-border CPA, and estate attorneys in both countries.
@@ -6186,13 +6209,15 @@ For 2024–25, published tuition averages about **$11,610/year** for public in-s
 :::
 
 ## What each type of college costs
-US colleges fall into a few cost tiers, and choosing the tier matters more than choosing the exact school. These are 2024–25 published averages for tuition and fees:
+US colleges fall into a few cost tiers, and choosing the tier matters more than the exact school. These are 2024–25 published averages for tuition and fees:
 
-- **Community college — about $3,900/year.** Two-year schools offering associate degrees and transfer pathways. Most students commute, so there's no room-and-board cost.
-- **Public university, in-state — about $11,610/year.** State schools charge their own residents a heavily subsidized rate.
-- **Public university, out-of-state — about $30,780/year.** The same school charges non-residents roughly triple.
-- **Private nonprofit — about $43,505/year.** Independent universities, from small liberal-arts colleges to research powerhouses.
-- **Ivy League — about $68,000/year.** The eight Ivies and peers like MIT and Stanford.
+| College type | Tuition & fees / year | Notes |
+|---|---|---|
+| Community college | ~$3,900 | Two-year associate/transfer; most commute (no room & board) |
+| Public, in-state | ~$11,610 | State residents pay a heavily subsidized rate |
+| Public, out-of-state | ~$30,780 | The same school charges non-residents roughly triple |
+| Private nonprofit | ~$43,505 | Liberal-arts colleges to research universities |
+| Ivy League | ~$68,000 | The eight Ivies and peers like MIT and Stanford |
 
 On top of tuition, budget roughly **$13,000–$19,000 a year for room and board** if your child lives on campus, plus about **$1,200 a year for books and fees**. Over four years, with normal tuition inflation of 3–5%, total cost ranges from under $30,000 (community college, living at home) to well over $300,000 (private, on campus).
 
@@ -6241,7 +6266,7 @@ To estimate your own family's four-year number — by school type, with inflatio
 ## Frequently asked questions
 
 ### How much does four years of US college really cost?
-It depends entirely on school type and residency. Four years at a community college while living at home can cost under $30,000. Four years in-state at a public university runs roughly $50,000–$70,000 in tuition. Four years at a private university or Ivy can exceed $200,000–$300,000 at sticker price — though generous need-based aid at the wealthiest schools often brings the real cost down sharply.
+It depends on school type and residency. Community college while living at home can cost under $30,000 over four years; in-state public runs roughly $50,000–$70,000 in tuition; private or Ivy can exceed $200,000–$300,000 at sticker price. Generous need-based aid at the wealthiest schools often brings the real cost down sharply.
 
 ### Do green card holders pay in-state tuition?
 Yes. Lawful permanent residents qualify for in-state tuition once they meet the state's residency requirement, typically 12 months of living in the state, exactly like US citizens. That can save $15,000–$20,000 a year compared to out-of-state rates.
@@ -6284,12 +6309,14 @@ US public K-12 education is **free for all children** living in the country, set
 About 56 million students attend US K-12 schools. The system spans **kindergarten through 12th grade** — 13 years — for children roughly ages 5 to 18. The single most important thing for a new immigrant parent to know: under *Plyler v. Doe*, public schools **must** enroll every child living in their area, and they cannot ask about immigration status, demand a Social Security number, or require a green card. Education is a right here, not a privilege tied to paperwork.
 
 ## Grade levels by age
-US grades map to age, with placement set by your state's kindergarten cutoff date — the date a child must turn 5 by to start kindergarten. Most states use **September 1**, but some (like Michigan and parts of New York) use December 1, and several leave it to the local district.
+US grades map to age, with placement set by your state's kindergarten cutoff — the date a child must turn 5 by to start kindergarten. Most states use **September 1**, but some (like Michigan and parts of New York) use December 1, and several leave it to the local district.
 
-- **Kindergarten** — age ~5
-- **Grades 1–5 (Elementary)** — ages ~6–11
-- **Grades 6–8 (Middle School)** — ages ~11–14
-- **Grades 9–12 (High School)** — ages ~14–18 (freshman, sophomore, junior, senior)
+| Stage | Grades | Typical age |
+|---|---|---|
+| Kindergarten | K | ~5 |
+| Elementary | 1–5 | ~6–11 |
+| Middle school | 6–8 | ~11–14 |
+| High school | 9–12 | ~14–18 (freshman → senior) |
 
 A child who attended school in India usually enters the US grade that matches their age, not a lower one — districts place by age first. To estimate your child's grade and see your state's cutoff, use our [Grade Level Finder](/education/grade-finder).
 
@@ -6305,11 +6332,13 @@ You have more options than you might expect, and most are free:
 Your assigned public school is determined by your home address, which is why families often research school ratings before choosing where to rent or buy.
 
 ## How to enroll: step by step
-1. **Find your assigned school** using your district's address lookup tool, or call the district office.
-2. **Gather documents** (see below).
-3. **Visit the school or district enrollment office** — many now offer online pre-registration.
-4. **Meet for placement** — the school confirms the grade and, if needed, assesses English level for support services.
-5. **Complete health requirements** — the school nurse reviews immunization records and tells you if any US-required shots are missing.
+:::steps
+Find your assigned school — use your district's address lookup tool, or call the district office.
+Gather documents — see the list below.
+Visit the enrollment office — many districts now offer online pre-registration.
+Meet for placement — the school confirms the grade and assesses English level for support if needed.
+Complete health requirements — the nurse reviews immunization records and flags any US-required shots.
+:::
 
 ### Documents you'll need
 - **Proof of address** — a lease, mortgage statement, or recent utility bill.
