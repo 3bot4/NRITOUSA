@@ -4819,9 +4819,11 @@ Because schools follow addresses, families often choose housing by district firs
 :::
 
 ## Common mistakes
-- **Assuming a "good city" means a good school** — quality is district- and even street-specific.
-- **Renting first, researching later**, then needing to move for schools.
-- **Missing enrollment documents** like vaccination records and transcripts.
+:::warn
+- **Assuming a "good city" means a good school** — quality is district- and even street-specific
+- **Renting first, researching later**, then needing to move for schools
+- **Missing enrollment documents** like vaccination records and transcripts
+:::
 
 ## Frequently asked questions
 
@@ -4882,9 +4884,11 @@ Dependents on H-4/L-2 are usually added to the worker's employer plan — detail
 :::
 
 ## Common mistakes
-- **Choosing the cheapest premium** with a deductible the family can't absorb.
-- **Going to the ER for minor issues** instead of urgent care.
-- **Not establishing a PCP**, leading to delayed or fragmented care.
+:::warn
+- **Choosing the cheapest premium** with a deductible the family can't absorb
+- **Going to the ER for minor issues** instead of urgent care
+- **Not establishing a PCP**, leading to delayed or fragmented care
+:::
 
 ## Frequently asked questions
 
@@ -4945,9 +4949,11 @@ Pair the fund with insurance so a single event doesn't drain it: [health insuran
 :::
 
 ## Common mistakes
-- **Investing the emergency fund** in stocks — it must be safe and liquid.
-- **Keeping it in checking**, where it gets spent.
-- **Stopping at one month** and being underprepared for a real job gap.
+:::warn
+- **Investing the emergency fund** in stocks — it must be safe and liquid
+- **Keeping it in checking**, where it gets spent
+- **Stopping at one month** and being underprepared for a real job gap
+:::
 
 ## Frequently asked questions
 
@@ -5010,9 +5016,11 @@ For most people, low-cost, broad-market [index funds](/articles/index-funds-for-
 :::
 
 ## Common mistakes
-- **Investing before** capturing the match or building a cushion.
-- **Holding Indian mutual funds** in a US account and triggering PFIC headaches.
-- **Trading frequently** instead of buying and holding index funds.
+:::warn
+- **Investing before** capturing the match or building a cushion
+- **Holding Indian mutual funds** in a US account and triggering PFIC headaches
+- **Trading frequently** instead of buying and holding index funds
+:::
 
 ## Frequently asked questions
 
@@ -5078,9 +5086,11 @@ A popular split is **50/30/20**: 50% needs (including rent), 30% wants, 20% savi
 :::
 
 ## Common mistakes
-- **Budgeting only the rent number** and forgetting utilities and commute.
-- **Maxing the 30% rule** in a city where you should aim lower.
-- **Skipping savings** to afford a nicer apartment.
+:::warn
+- **Budgeting only the rent number** and forgetting utilities and commute
+- **Maxing the 30% rule** in a city where you should aim lower
+- **Skipping savings** to afford a nicer apartment
+:::
 
 ## Frequently asked questions
 
@@ -5143,9 +5153,11 @@ This builds directly on the foundation in [build credit from zero](/articles/bui
 :::
 
 ## Common mistakes
-- **Maxing a low-limit first card**, spiking utilization even if you pay it off.
-- **Assuming "pay in full" means 0% utilization** — the statement balance still reports.
-- **Closing old cards**, which reduces your total available credit.
+:::warn
+- **Maxing a low-limit first card**, spiking utilization even if you pay it off
+- **Assuming "pay in full" means 0% utilization** — the statement balance still reports
+- **Closing old cards**, which reduces your total available credit
+:::
 
 ## Frequently asked questions
 
@@ -5199,9 +5211,11 @@ Subscriptions, delivery apps, and one-click buying make small spending invisible
 :::
 
 ## Common mistakes
-- **Treating credit cards as extra income** rather than a tool.
-- **Letting every raise become spending** instead of savings.
-- **Sending money home without a budget**, straining your own goals.
+:::warn
+- **Treating credit cards as extra income** rather than a tool
+- **Letting every raise become spending** instead of savings
+- **Sending money home without a budget**, straining your own goals
+:::
 
 ## Frequently asked questions
 
@@ -5255,9 +5269,11 @@ Leaving a resident account active ([a FEMA issue](/articles/nre-nro-accounts-exp
 :::
 
 ## Common mistakes (in hindsight)
-- Waiting to "settle in" before handling credit and retirement.
-- Confusing a higher salary with being wealthy, and overspending.
-- Treating cross-border money as an afterthought.
+:::warn
+- Waiting to "settle in" before handling credit and retirement
+- Confusing a higher salary with being wealthy, and overspending
+- Treating cross-border money as an afterthought
+:::
 
 ## Frequently asked questions
 
@@ -5474,7 +5490,7 @@ Yes. NRE and NRO FD balances are foreign financial accounts and count toward the
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `Many NRI parents quietly assume their India property will simply pass to their children — a flat in the family's city, ancestral land, a house bought during good NRI years. Emotionally it makes sense. Practically, a US-born or US-raised child who has never managed Indian paperwork, doesn't speak the local language fluently, and lives in a different time zone can find that inheritance more burden than gift. This article is about the gap between the emotional plan and the practical reality — and why talking about it early matters.
+    content: `Many NRI parents assume their India property will simply pass to their children — a family flat, ancestral land, a house bought in good NRI years. But a US-raised child who has never managed Indian paperwork, doesn't speak the language fluently, and lives 12 hours offset can find that inheritance more burden than gift. This is about the gap between the emotional plan and the practical reality — and why talking early matters.
 
 :::summary
 US-raised children can legally inherit Indian property, but **managing** it from abroad is the hard part: title and documentation gaps, distance, local family dynamics, tenants, succession paperwork, and the difficulty of selling and repatriating proceeds. The single biggest fix is **early planning and clear documentation** while parents are alive and able to organize it. This is educational information, not legal advice — India property and succession law is complex and state-specific, so consult an India property lawyer and a cross-border tax professional.
@@ -5519,14 +5535,16 @@ After selling, bringing proceeds to the US has its own rules and limits, typical
 Every problem above shrinks dramatically if parents, while healthy, (1) clean up titles, (2) write a clear India will, (3) assemble a documented file, (4) help children get PAN/OCI, and (5) have an honest conversation about whether the children even want the property. See [what NRIs should know before buying India property for their children](/articles/buying-india-property-for-children).
 
 ## Common mistakes
-- **Assuming "the kids will figure it out."** They usually can't, and the cost lands at the hardest moment.
-- **Leaving titles and records messy.** Unclear ownership is the number-one barrier to selling later.
-- **No will, or a vague one.** Intestate succession can fragment property among many heirs.
-- **Confusing nominee with heir.** Nominees hold assets in trust for legal heirs; this surprises families constantly.
-- **Never asking the children.** Some kids would rather have the value than the property — but parents never ask.
+:::warn
+- **Assuming "the kids will figure it out"** — they usually can't, and the cost lands at the hardest moment
+- **Leaving titles and records messy** — unclear ownership is the number-one barrier to selling later
+- **No will, or a vague one** — intestate succession can fragment property among many heirs
+- **Confusing nominee with heir** — nominees hold assets in trust for legal heirs; this surprises families constantly
+- **Never asking the children** — some would rather have the value than the property, but parents never ask
+:::
 
 ## The bottom line
-Leaving India property to US-raised children can be a gift or a quiet liability — and the difference is almost entirely planning. Clean the titles, write the will, build the document file, and have the honest conversation while everyone can participate. The goal isn't to push families toward selling or keeping; it's to make sure whatever the children inherit is actually manageable. Because India property and succession law is complex and varies by state and religion, work with a qualified India property lawyer and a cross-border tax professional.
+Leaving India property to US-raised children can be a gift or a quiet liability — and the difference is almost entirely planning. Clean the titles, write the will, build the document file, and have the honest conversation while everyone can participate. Because India succession law is complex and state- and religion-specific, work with an India property lawyer and a cross-border tax professional.
 
 ## Frequently asked questions
 
@@ -5557,7 +5575,7 @@ No. A nominee typically holds the asset in trust and is responsible for passing 
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
     updated: "2026-06-06",
-    content: `For NRIs with stable US income, "should I buy a rental?" eventually leads to a second question: here or in India? An India property offers familiarity, family proximity, and an emotional anchor to home. A US property offers proximity to you, easier financing, and a legal system you operate in daily. This guide compares the two honestly across the factors that actually determine whether an investment property builds wealth or drains your weekends — without claiming either country always wins.
+    content: `For NRIs with stable US income, "should I buy a rental?" leads to a second question: here or in India? India offers familiarity, family proximity, and an emotional anchor; the US offers proximity to you, easier financing, and a legal system you operate in daily. This guide compares the two honestly across the factors that decide whether a rental builds wealth or drains your weekends — without claiming either always wins.
 
 :::summary
 US investment property is generally **easier to finance, manage, and report** for someone living in America, with mature tenant and legal systems. India property can offer emotional value and family use, but **remote management, tenant laws, currency risk, and dual tax reporting** raise the real-world cost. Decide based on whether you want a managed financial asset (often the US) or an asset tied to family and future India plans. This is educational information, not investment advice.
@@ -5619,14 +5637,16 @@ These are legitimate — just price in the management cost and don't confuse the
 | Emotional / family value | High | Lower |
 
 ## Common mistakes
-- **Buying India property purely as an "investment"** when it's really emotional — and underpricing management cost.
-- **Quoting gross yield.** Decisions should rest on net, after-tax, after-currency returns.
-- **No local manager.** Remote India ownership without reliable help reliably disappoints.
-- **Ignoring exit.** Plan how you'll sell and repatriate before you buy.
-- **Forgetting US reporting on India rent.** It's taxable and reportable in the US too.
+:::warn
+- **Buying India property purely as an "investment"** when it's really emotional — and underpricing management cost
+- **Quoting gross yield** — decisions should rest on net, after-tax, after-currency returns
+- **No local manager** — remote India ownership without reliable help reliably disappoints
+- **Ignoring exit** — plan how you'll sell and repatriate before you buy
+- **Forgetting US reporting on India rent** — it's taxable and reportable in the US too
+:::
 
 ## The bottom line
-If you want a financial asset you can actually run, the US usually wins on financing, management, currency, and reporting. If you want a family anchor in India and accept the management cost, that can be a fine choice — just make it with eyes open and the numbers run net. Neither is universally right. Model both honestly, and consult a CPA, a real-estate professional, and an India property lawyer for the specifics.
+If you want a financial asset you can actually run, the US usually wins on financing, management, currency, and reporting. If you want a family anchor in India and accept the management cost, that's a fine choice — just make it with eyes open and the numbers run net. Neither is universally right: model both honestly and consult a CPA, a real-estate pro, and an India property lawyer.
 
 ## Frequently asked questions
 
