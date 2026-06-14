@@ -1,12 +1,53 @@
 import Link from "next/link";
 import Container from "@/components/Container";
-import Icon from "@/components/Icon";
+import Icon, { type IconName } from "@/components/Icon";
+
+/**
+ * The four "who are you?" entry points shown directly under the hero CTA. Each
+ * routes a visitor straight to the hub/tool that matches their situation.
+ */
+const personas: {
+  title: string;
+  description: string;
+  href: string;
+  icon: IconName;
+  accent: string;
+}[] = [
+  {
+    title: "Just moved to the US?",
+    description: "Banking, driving, housing — start here",
+    href: "/topics/new-to-usa",
+    icon: "plane-arrival",
+    accent: "from-sky-500 to-blue-600",
+  },
+  {
+    title: "On H-1B, tracking your green card?",
+    description: "See your wait time, visa bulletin, and salary data",
+    href: "/tools/green-card-tracker",
+    icon: "id-badge",
+    accent: "from-emerald-500 to-teal-600",
+  },
+  {
+    title: "Managing India money from the US?",
+    description: "Property sale tax, FBAR, repatriation calculators",
+    href: "/india-tax-compliance",
+    icon: "chart-arrows",
+    accent: "from-rose-500 to-pink-600",
+  },
+  {
+    title: "Moving back to India?",
+    description: "401(k) cashout, RNOR status, currency timing",
+    href: "/calculators/401k-return-to-india",
+    icon: "home-move",
+    accent: "from-amber-500 to-orange-600",
+  },
+];
 
 /**
  * Compact value-prop hero + the single primary CTA. The "Check your Green Card
  * date" button is the largest, most prominent action on the page (full-width,
- * bigger padding/font than anything below it). The tools grid renders directly
- * beneath it on the home page.
+ * bigger padding/font than anything below it). A 2×2 grid of persona entry
+ * cards sits below it, and the tools grid renders beneath that on the home page.
  */
 export default function HomeHero() {
   return (
@@ -37,6 +78,41 @@ export default function HomeHero() {
           <Icon name="calendar" className="h-6 w-6" />
           Check your Green Card date
         </Link>
+
+        {/* Persona entry cards — 2×2 grid mirroring the hub sub-tool cards. */}
+        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-2">
+          {personas.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+            >
+              <div className="flex items-center gap-2.5">
+                <span
+                  aria-hidden
+                  className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${p.accent} text-white shadow-sm`}
+                >
+                  <Icon name={p.icon} className="h-5 w-5" />
+                </span>
+                <h2 className="text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {p.title}
+                </h2>
+              </div>
+              <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-500">
+                {p.description}
+              </p>
+              <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                Start{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          ))}
+        </div>
       </Container>
     </section>
   );

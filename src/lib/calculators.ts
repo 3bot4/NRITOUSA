@@ -233,6 +233,19 @@ export const calculatorCategories = [
   "Housing, Cars & Remittances",
 ];
 
+/**
+ * Calculators surfaced under the "US Investing & Wealth" section (on /tools and
+ * the home grid) instead of the generic Cross-border calculators list. Keyed by
+ * slug so both surfaces split the catalog the same way. The IUL vs 401(k)
+ * comparison also belongs to this group but lives at an article URL, so it is
+ * rendered separately via <IulComparisonCard>.
+ */
+export const usInvestingCalculatorSlugs = [
+  "backdoor-roth-eligibility",
+  "rent-vs-buy-visa",
+  "rent-vs-buy-immigrant",
+];
+
 export function getCalculator(slug: string): CalculatorMeta | undefined {
   return calculators.find((c) => c.slug === slug);
 }

@@ -20,7 +20,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "401k & Roth IRA", href: "/topics/retirement" },
       { label: "Investing", href: "/topics/investing" },
       { label: "Insurance", href: "/topics/insurance" },
-      { label: "Send Money to India", href: "/topics/money-transfer" },
+      { label: "Send Money to India", href: "/send-money-to-india" },
       { label: "India Tax & Compliance", href: "/india-tax-compliance" },
       { label: "Long-Term NRI Wealth", href: "/long-term-nri-wealth" },
     ],

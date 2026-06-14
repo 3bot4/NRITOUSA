@@ -1,18 +1,22 @@
 import Link from "next/link";
 import ToolCard from "@/components/tools/ToolCard";
 import CalculatorCard from "@/components/CalculatorCard";
+import IulComparisonCard from "@/components/IulComparisonCard";
 import { liveTools, type ToolGroup } from "@/lib/tools";
-import { calculators } from "@/lib/calculators";
+import { calculators, getCalculator } from "@/lib/calculators";
 
 /**
  * Home-page tool catalog, rendered as the SAME categorized sections used on the
- * /tools hub — Visa & Green Card and Travel & Documents tool groups plus the
- * Cross-border calculators — reusing the shared ToolCard / CalculatorCard so the
- * two surfaces stay visually identical. A "Browse all tools →" link sends people
- * to the full /tools hub.
+ * /tools hub — Visa & Green Card and Travel & Documents tool groups, Cross-border
+ * calculators, and US Investing — reusing the shared ToolCard / CalculatorCard so
+ * the two surfaces stay visually identical. A "Browse all tools →" link sends
+ * people to the full /tools hub.
  */
 
 const HOME_GROUPS: ToolGroup[] = ["Visa & Green Card", "Travel & Documents"];
+
+/** Backdoor Roth headlines the home "US Investing" teaser; IUL renders beside it. */
+const backdoorRoth = getCalculator("backdoor-roth-eligibility");
 
 export default function AllToolsGrid() {
   return (
@@ -39,9 +43,21 @@ export default function AllToolsGrid() {
           Cross-border calculators
         </h2>
         <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {calculators.map((c) => (
-            <CalculatorCard key={c.slug} calc={c} />
-          ))}
+          {calculators
+            .filter((c) => c.slug !== "backdoor-roth-eligibility")
+            .map((c) => (
+              <CalculatorCard key={c.slug} calc={c} />
+            ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-bold tracking-tight text-ink-900">
+          US Investing
+        </h2>
+        <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {backdoorRoth && <CalculatorCard calc={backdoorRoth} />}
+          <IulComparisonCard />
         </div>
       </div>
 

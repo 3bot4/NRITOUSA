@@ -12,7 +12,7 @@ export const navLinks = [
   { label: "Tools", href: "/tools" },
   { label: "Education", href: "/education" },
   { label: "New to USA", href: "/topics/new-to-usa" },
-  { label: "Send Money to India", href: "/topics/money-transfer" },
+  { label: "Send Money to India", href: "/send-money-to-india" },
   { label: "Guides", href: "/topics" },
   { label: "Long-Term NRI", href: "/long-term-nri-wealth" },
   { label: "Write for Us", href: "/contribute" },

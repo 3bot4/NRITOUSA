@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import ToolCard from "@/components/tools/ToolCard";
 import CalculatorCard from "@/components/CalculatorCard";
+import IulComparisonCard from "@/components/IulComparisonCard";
 import { tools, toolGroups, liveTools } from "@/lib/tools";
-import { calculators } from "@/lib/calculators";
+import { calculators, usInvestingCalculatorSlugs } from "@/lib/calculators";
 import { absoluteUrl, breadcrumbJsonLd, jsonLdGraph } from "@/lib/seo";
 
 const title = "Free Tools & Data for Indians in the USA";
@@ -21,6 +23,13 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsHubPage() {
+  const crossBorderCalculators = calculators.filter(
+    (c) => !usInvestingCalculatorSlugs.includes(c.slug)
+  );
+  const usInvestingCalculators = usInvestingCalculatorSlugs
+    .map((slug) => calculators.find((c) => c.slug === slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
   const itemList = {
     "@type": "ItemList",
     itemListElement: [
@@ -104,37 +113,30 @@ export default function ToolsHubPage() {
                 </Link>
               </div>
               <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {calculators.map((c) => (
+                {crossBorderCalculators.map((c) => (
                   <CalculatorCard key={c.slug} calc={c} />
                 ))}
-                {/* In-article calculator: lives at its article URL, not /calculators */}
-                <Link
-                  href="/articles/iul-vs-401k-honest-comparison"
-                  className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-lg shadow-sm">
-                      ⚖️
-                    </span>
-                    <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
-                      Calculator
-                    </span>
-                  </div>
-                  <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
-                    IUL vs 401(k) vs Taxable
-                  </h3>
-                  <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
-                    Side-by-side projection of indexed universal life against a
-                    401(k) and a taxable brokerage — caps, floors, fees, death
-                    benefit, and a bad-market scenario toggle.
-                  </p>
-                  <span className="mt-2.5 text-xs font-semibold text-brand-600">
-                    Open comparison{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </span>
-                </Link>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-lg font-bold tracking-tight text-ink-900">
+                US Investing &amp; Wealth
+              </h2>
+              <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                Retirement, housing, and wealth-building tools for immigrants
+                building their US life
+              </p>
+              <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {usInvestingCalculators.map((c) => (
+                  <Fragment key={c.slug}>
+                    <CalculatorCard calc={c} />
+                    {/* IUL comparison lives at an article URL, not /calculators */}
+                    {c.slug === "backdoor-roth-eligibility" && (
+                      <IulComparisonCard />
+                    )}
+                  </Fragment>
+                ))}
               </div>
             </div>
           </div>
