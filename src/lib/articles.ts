@@ -1544,7 +1544,7 @@ Bringing Indian property money to the US is a process, not a gamble: pay the TDS
     topic: "money-transfer",
     date: "2026-05-24",
     featured: false,
-    content: `If your parents in India are sending you money, or you moved funds abroad while still an Indian resident, you may have run into a confusing line on the bank statement: a **20% Tax Collected at Source (TCS)**. It feels like a penalty for sending your own money — but it isn't a new tax at all. TCS is a *prepayment* of income tax that the bank collects upfront and you (or the sender) reclaim later. Understanding when it applies and how to recover it prevents both nasty surprises and the false belief that the money is simply lost.
+    content: `If your parents are sending you money from India, you may hit a confusing line on the statement: a **20% Tax Collected at Source (TCS)**. It feels like a penalty for sending your own money, but it isn't a new tax — it's a *prepayment* of income tax the bank collects upfront and the sender reclaims later. Knowing when it applies and how to recover it prevents nasty surprises and the false belief the money is lost.
 
 :::summary
 **TCS** applies to money sent abroad by **Indian residents** under the **Liberalised Remittance Scheme (LRS)**. Since October 2023, the rate is **20% on amounts above ₹7 lakh** per year for most purposes (lower for education and medical). TCS is **not an extra tax** — it's creditable against the sender's Indian income tax or **refundable** when they file their ITR. It primarily affects **residents** (like parents sending gifts), not NRO repatriation by NRIs.
@@ -1619,7 +1619,7 @@ The 20% TCS sounds alarming but is mostly a cash-flow timing issue for **residen
     topic: "investing",
     date: "2026-05-31",
     featured: false,
-    content: `India's growth story is hard to ignore, and many US-based NRIs want a slice of their home market. The good news: you can legally invest in Indian stocks as an NRI. The catch: doing it from the US adds two layers of complexity most domestic Indian investors never face — Indian regulatory setup (NRE/NRO, PIS, Demat accounts) and the **US tax code's brutal PFIC rules** that make the obvious choice, mutual funds, a costly mistake. Here's how to get India exposure without creating a tax nightmare.
+    content: `India's growth story is hard to ignore, and you can legally invest in Indian stocks as a US NRI. The catch: doing it from the US adds two layers most domestic investors never face — the regulatory setup (NRE/NRO, PIS, Demat) and the **US PFIC rules** that make the obvious choice, mutual funds, a costly mistake. Here's how to get India exposure without a tax nightmare.
 
 :::summary
 As an NRI you invest in Indian equities through an **NRI trading + Demat account** linked to your **NRE (repatriable) or NRO (non-repatriable)** bank account. You can buy **direct stocks**, but you must **avoid Indian mutual funds and ETFs** — the US treats them as [PFICs](/articles/pfic-indian-mutual-funds-trap) with punishing tax. Gains are taxed in India (with TDS for NRIs) and are also [reportable in the US](/articles/indian-income-us-tax-return), with DTAA credit relief.
@@ -1818,29 +1818,41 @@ Capture the full match, choose Roth if you're early-career, and don't touch it u
       "Which account holds your US savings, which holds your India income, and how to move money tax-efficiently.",
     topic: "money-transfer",
     date: "2026-03-20",
-    content: `Once you're earning in dollars, you'll eventually want to send money to India — for family, savings, or investments. The foundation of doing this cleanly is understanding two account types: NRE and NRO.
+    content: `Once you're earning in dollars, you'll want to send money to India — for family, savings, or investments. Doing it cleanly starts with understanding two account types: NRE and NRO.
 
-## NRE — Non-Resident External
-An NRE account holds money you earned abroad and bring into India. Key benefits:
-- Fully repatriable — you can move it back to the US anytime.
-- Interest earned is tax-free in India.
-- Held in rupees, but funded from your foreign income.
+:::info
+title: NRE vs NRO in one line
+- **NRE** — money earned abroad; fully repatriable, interest tax-free in India
+- **NRO** — income earned in India (rent, dividends); interest taxable, repatriation capped
+:::
 
-This is where your US-earned savings should land if you want flexibility.
+## NRE vs NRO at a glance
+| | NRE (Non-Resident External) | NRO (Non-Resident Ordinary) |
+|---|---|---|
+| Holds | Money earned abroad | Income earned in India |
+| Repatriable? | Fully, anytime | Capped (~$1M/year with paperwork) |
+| Interest tax (India) | Tax-free | Taxable (~30% TDS) |
+| Best for | US-earned savings you want flexible | Rent, dividends, pre-move salary |
 
-## NRO — Non-Resident Ordinary
-An NRO account holds income that originates in India — rent, dividends, a salary from before you left. Key points:
-- Interest is taxable in India (typically ~30% TDS).
-- Repatriation is capped (currently up to $1 million per year with paperwork).
+Your US-earned savings should land in NRE if you want flexibility; India-origin income goes to NRO.
 
 ## Choosing a transfer service
-Banks give you terrible exchange rates and bury fees in the spread. Specialist services consistently beat them on the all-in cost. Compare the rate you actually receive, not the advertised fee. A "zero fee" transfer with a bad rate costs more than a small flat fee at the mid-market rate.
+Banks give terrible exchange rates and bury fees in the spread, so specialist services consistently beat them on all-in cost. Compare the rate you actually receive, not the advertised fee — a "zero fee" transfer at a bad rate costs more than a small flat fee at the mid-market rate.
 
-## A clean setup
-- Open both an NRE and NRO account before you need them.
-- Route US-earned money to NRE for tax-free, repatriable savings.
-- Route India-origin income to NRO.
-- Use a low-spread transfer specialist and always check the receive amount.
+:::tip
+title: A clean two-account setup
+- Open both an NRE and NRO account before you need them
+- Route US-earned money to NRE for tax-free, repatriable savings
+- Route India-origin income to NRO
+- Use a low-spread transfer specialist and always check the receive amount
+:::
+
+:::cta
+title: Sending money to India?
+body: Compare the true cost — fee plus the exchange-rate markup banks hide — before your next transfer.
+button: See the cheapest ways
+href: /articles/cheapest-way-send-money-usa-india
+:::
 
 Get this scaffolding in place early and every future transfer becomes a two-minute task instead of a research project.`,
   },
@@ -1851,28 +1863,47 @@ Get this scaffolding in place early and every future transfer becomes a two-minu
       "Financing a car before you have a credit score is possible. Here's how to do it without getting fleeced.",
     topic: "cars",
     date: "2026-02-14",
-    content: `A car is often the first big purchase an NRI makes in the US, frequently before any credit score exists. Dealers know newcomers are vulnerable here, so go in informed.
+    content: `A car is often the first big purchase an NRI makes in the US — frequently before any credit score exists. Dealers know newcomers are vulnerable here, so go in informed.
+
+:::info
+title: The short version
+- No credit means high APRs (12–18%) — neutralize it with a down payment and income proof
+- For most first-job NRIs, a lightly used car bought with a meaningful down payment wins
+- Arrange financing from a bank or credit union before you walk into the dealership
+:::
 
 ## The no-credit problem
-Without a credit history, lenders see risk and respond with sky-high interest rates — sometimes 12–18% APR. Your job is to neutralize that.
+Without a credit history, lenders see risk and respond with sky-high interest rates — sometimes **12–18% APR**. Your job is to neutralize that.
 
-## Tactics that work
-- Put down a larger down payment to shrink the loan and the lender's risk.
-- Bring a pay stub and offer letter; some lenders weigh income heavily for newcomers.
-- Check if your employer's credit union offers newcomer auto loans — they're often the most forgiving.
-- Some manufacturers (notably a few luxury and Japanese brands) run "new-to-country" financing programs specifically for visa holders.
+:::tip
+title: Tactics that lower your rate
+- Put down a larger down payment to shrink the loan and the lender's risk
+- Bring a pay stub and offer letter; some lenders weigh income heavily for newcomers
+- Check if your employer's credit union offers newcomer auto loans — often the most forgiving
+- Some manufacturers (a few luxury and Japanese brands) run "new-to-country" financing for visa holders
+:::
 
 ## Buy or lease?
-Lease if: you want lower monthly payments, a newer car every few years, and you drive under ~12,000 miles a year. You never build equity, and mileage overages are pricey.
+| | Lease | Buy (lightly used) |
+|---|---|---|
+| Monthly payment | Lower | Higher |
+| Build equity? | Never | Yes — you own it |
+| Best if | Newer car every few years, under ~12,000 mi/yr | You'll keep it for years |
+| Watch out for | Mileage-overage fees | Steeper depreciation if bought new |
 
-Buy if: you plan to keep the car for years and want to eventually own it outright. A used car 2–3 years old hits the sweet spot — someone else ate the steepest depreciation.
-
-For most NRIs in their first job, a lightly used car bought with a meaningful down payment is the financially sober choice. A lease only makes sense if predictable low payments matter more than ownership.
+For most NRIs in their first job, a used car 2–3 years old — where someone else ate the steepest depreciation — bought with a meaningful down payment is the financially sober choice. A lease only makes sense if predictable low payments matter more than ownership.
 
 ## Don't forget insurance
 No US driving history means high premiums at first. Get quotes from multiple insurers, ask whether your Indian no-claims record counts (some accept a letter from your Indian insurer), and revisit your rate every six months as your record builds.
 
-Walk into the dealership with financing pre-arranged from a bank or credit union. The dealer's financing is a profit center; your outside offer is your leverage.`,
+:::cta
+title: Getting quoted brutal insurance rates?
+body: Your Indian no-claims history can cut the cost — here's how to prove it.
+button: Cheap car insurance guide
+href: /articles/cheap-car-insurance-foreign-license
+:::
+
+Walk into the dealership with financing pre-arranged from a bank or credit union — the dealer's financing is a profit center, and your outside offer is your leverage.`,
   },
   {
     slug: "first-apartment-lease-guide",
@@ -1883,17 +1914,28 @@ Walk into the dealership with financing pre-arranged from a bank or credit union
     date: "2026-01-30",
     content: `Your first apartment hunt collides head-on with the credit problem: landlords want a credit score and rental history you don't have yet. Here's how to get the keys anyway.
 
+:::info
+title: The short version
+- Income proof (~3x rent), a bigger deposit, or a guarantor beats a blank credit file
+- Budget ~3x the monthly rent in cash for signing day
+- Photograph everything at move-in and get all promises in writing
+:::
+
 ## How to qualify with no credit
-- Offer to pay a larger security deposit or a few months upfront.
-- Provide your job offer letter and recent pay stubs as proof of income (aim to show income ~3x the rent).
-- Ask about a co-signer or guarantor — some buildings accept third-party guarantor services for a fee.
-- Smaller private landlords are far more flexible than big corporate complexes.
+:::tip
+- Offer to pay a larger security deposit or a few months upfront
+- Provide your job offer letter and recent pay stubs (aim to show income ~3x the rent)
+- Ask about a co-signer or guarantor — some buildings accept third-party guarantor services for a fee
+- Smaller private landlords are far more flexible than big corporate complexes
+:::
 
 ## Decoding the lease
-- Term: most are 12-month. Breaking early usually costs 1–2 months' rent.
-- Security deposit: refundable, minus damages. Document the apartment's condition with photos on day one.
-- Renter's insurance: often required, and cheap (~$15/month). Get it regardless.
-- Utilities: clarify what's included. "Water included, electric separate" is common.
+| Lease item | What to know |
+|---|---|
+| Term | Most are 12-month; breaking early usually costs 1–2 months' rent |
+| Security deposit | Refundable minus damages — photograph the unit's condition on day one |
+| Renter's insurance | Often required, and cheap (~$15/month); get it regardless |
+| Utilities | Clarify what's included — "water included, electric separate" is common |
 
 ## Hidden costs to budget for
 - Application fees ($30–$75 per applicant, non-refundable).
@@ -1901,9 +1943,11 @@ Walk into the dealership with financing pre-arranged from a bank or credit union
 - First month + last month + security deposit due at signing — budget ~3x the monthly rent in cash upfront.
 
 ## Red flags
-- A landlord who won't let you see the unit in person or on video.
-- Pressure to wire a deposit before signing anything.
-- A lease missing the landlord's real name and address.
+:::warn
+- A landlord who won't let you see the unit in person or on video
+- Pressure to wire a deposit before signing anything
+- A lease missing the landlord's real name and address
+:::
 
 Take photos at move-in, keep every receipt, and get all promises in writing. In US rentals, if it isn't in the lease, it doesn't exist.`,
   },
@@ -1914,27 +1958,43 @@ Take photos at move-in, keep every receipt, and get all promises in writing. In 
       "You don't need to pick stocks. Here's why low-cost index funds are the default — and the PFIC trap to avoid.",
     topic: "investing",
     date: "2026-04-25",
-    content: `Once your emergency fund is set and you're capturing your 401(k) match, the next question is investing the rest. The honest answer for most people is delightfully boring: low-cost index funds.
+    content: `Once your emergency fund is set and you're capturing your 401(k) match, the next question is investing the rest. For most people the honest answer is delightfully boring: low-cost index funds.
+
+:::info
+title: Why index funds win
+- One fund buys a slice of hundreds or thousands of companies — instant diversification
+- Most professional stock-pickers fail to beat a simple index over time
+- Target expense ratios under **0.10%**; automate and ignore the noise
+:::
 
 ## What an index fund actually is
-Instead of betting on individual companies, an index fund buys a tiny slice of hundreds or thousands of them at once — for example, the 500 largest US companies. You get instant diversification, near-zero fees, and the long-run growth of the whole market.
-
-Decades of data show that the vast majority of professional stock-pickers fail to beat a simple index fund over time. You don't need to be smarter than them; you need to not pay them.
+Instead of betting on individual companies, an index fund buys a tiny slice of hundreds or thousands at once — for example, the 500 largest US companies. You get instant diversification, near-zero fees, and the long-run growth of the whole market. Decades of data show most professional stock-pickers fail to beat a simple index fund — you don't need to be smarter than them, you need to not pay them.
 
 ## Open a brokerage account
-Any major US brokerage will do. Look for: no account minimum, commission-free trades, and access to low-expense-ratio index funds or ETFs. Expense ratios under 0.10% are the goal.
+Any major US brokerage will do. Look for no account minimum, commission-free trades, and access to low-expense-ratio index funds or ETFs. Expense ratios under **0.10%** are the goal.
 
-## The NRI-specific trap: PFICs
-Here's the one rule that trips up NRIs: do NOT hold Indian mutual funds while you're a US tax resident. The IRS classifies them as PFICs (Passive Foreign Investment Companies), and the tax treatment is punishing and paperwork-heavy.
+:::warn
+title: The NRI-specific trap — PFICs
+- Do **not** hold Indian mutual funds while you're a US tax resident — the IRS classifies them as [PFICs](/articles/pfic-indian-mutual-funds-trap)
+- PFIC tax treatment is punishing and paperwork-heavy (Form 8621 per fund, every year)
+- The fix: invest through US-domiciled funds while you're in the US, keeping India and US investments cleanly separated
+:::
 
-The fix is simple: invest through US-domiciled funds while you're in the US. Keep your India and US investments cleanly separated.
+:::cta
+title: Want to see it compound?
+body: Project what steady index investing could grow into over your years in the US.
+button: Open the wealth calculator
+href: /long-term-nri-wealth
+:::
 
 ## A starter portfolio
-- A total US stock market index fund as your core.
-- A total international index fund for global exposure.
-- A bond index fund if you want to dial down volatility.
+:::key
+- A **total US stock market** index fund as your core
+- A **total international** index fund for global exposure
+- A **bond** index fund if you want to dial down volatility
+:::
 
-That's it. Automate a monthly contribution, ignore the daily noise, and let compounding work over decades. Simplicity isn't a compromise here — it's the strategy.`,
+Automate a monthly contribution, ignore the daily noise, and let compounding work over decades. Simplicity isn't a compromise here — it's the strategy.`,
   },
   {
     slug: "from-h1b-to-green-card-my-story",
@@ -1943,7 +2003,7 @@ That's it. Automate a monthly contribution, ignore the daily noise, and let comp
       "A first-person account of the green card backlog — the anxiety, the financial planning, and the unexpected lessons.",
     topic: "stories",
     date: "2026-05-18",
-    content: `I landed at Newark in 2017 with two suitcases and a job offer. I assumed the green card would take a couple of years. Seven years later, I finally got it. Here's what nobody told me.
+    content: `I landed at Newark in 2017 with two suitcases and a job offer, assuming the green card would take a couple of years. Seven years later, I finally got it. Here's what nobody told me.
 
 ## The waiting is a tax on your life decisions
 The India green card backlog means major life choices get held hostage by your visa. Should we buy a house if we might have to leave? Can my spouse work? Can I switch jobs without restarting the queue? Every decision carried an asterisk.
@@ -1959,9 +2019,11 @@ That uncertainty, painful as it was, made me a far better money manager than my 
 I stayed at a job I'd outgrown for two extra years out of visa fear. When I finally moved using H-1B portability, nothing broke. The fear was bigger than the risk. Know your rights: portability, the AC21 provisions, and what your priority date actually protects.
 
 ## What I'd tell my younger self
-- Start the green card process the day you're eligible. Time in the queue is the only thing you can't buy back.
-- Keep documents obsessively organized. One folder, every receipt, every approval notice.
-- Don't put your whole identity in the outcome. You are not a priority date.
+:::key
+- Start the green card process the day you're eligible — time in the queue is the only thing you can't buy back
+- Keep documents obsessively organized: one folder, every receipt, every approval notice
+- Don't put your whole identity in the outcome — you are not a priority date
+:::
 
 The green card finally came. But the person it shaped during the wait — disciplined, adaptable, a little stubborn — turned out to matter more than the card itself.`,
   },
@@ -1972,25 +2034,43 @@ The green card finally came. But the person it shaped during the wait — discip
       "You don't need a green card to own property. Mortgages, down payments, and the real risks for visa holders.",
     topic: "property",
     date: "2026-03-08",
-    content: `One of the most persistent myths among NRIs is that you need a green card to buy a house in the US. You don't. There's no citizenship or permanent-residency requirement to own property. What you need is a down payment, a credit history, and a clear-eyed view of the risks.
+    content: `One of the most persistent NRI myths is that you need a green card to buy a US house — you don't; there's no citizenship or residency requirement to own property. What you need is a down payment, a credit history, and a clear-eyed view of the risks. Here's how it works on a work visa.
+
+:::info
+title: The short version
+- No green card required — H-1B and L-1 holders qualify for conventional mortgages
+- You'll need a ~620+ credit score, stable income, and a 5–20% down payment
+- Only buy if you'll stay in the same area ~5 years — a forced sale can mean a loss
+:::
 
 ## Getting a mortgage on a visa
 Lenders care about repayment ability, not your immigration status per se. On an H-1B or L-1 you can qualify for a conventional mortgage if you have:
-- A credit score (typically 620+, ideally 700+).
+- A credit score (typically **620+**, ideally 700+).
 - A stable income and employment history (2 years is the classic benchmark, though some lenders flex for newer arrivals).
-- A down payment, usually 5–20%.
+- A down payment, usually **5–20%**.
 
 Some lenders are visa-friendly and well-practiced with H-1B applicants; others aren't. Shop around.
 
 ## The numbers beyond the sticker price
-- Down payment: 20% avoids private mortgage insurance (PMI); less is possible but adds cost.
-- Closing costs: budget 2–5% of the purchase price.
-- Property taxes, homeowners insurance, and possibly HOA fees — ongoing, and they add up.
+| Cost | What to budget |
+|---|---|
+| Down payment | 20% avoids PMI; less is possible but adds cost |
+| Closing costs | 2–5% of the purchase price |
+| Ongoing | Property taxes, homeowners insurance, and possibly HOA fees |
 
 ## The visa-holder risk you must respect
-The hard question: what if you have to leave the country? A house is illiquid. Selling under time pressure can mean a loss. Before buying, ask yourself whether you'd be financially fine if you had to rent it out remotely or sell in a soft market.
+:::warn
+- A house is illiquid — selling under time pressure (e.g., if you must leave) can mean a loss
+- Before buying, ask whether you'd be fine renting it out remotely or selling in a soft market
+- A reasonable rule: only buy if you expect to stay in the same area at least 5 years
+:::
 
-A reasonable rule: only buy if you expect to stay in the same area for at least 5 years, so appreciation and equity outpace your transaction costs.
+:::cta
+title: Rent or buy on a visa?
+body: Run the visa-holder's real math — EMI-to-rent parity, visa clarity, and job-change risk.
+button: Rent vs. Buy guide
+href: /articles/rent-vs-buy-house-immigrants
+:::
 
 ## Buying property in India as an NRI
 The flip side — many NRIs invest back home. You can buy residential and commercial property in India (but not agricultural land) as an NRI. Fund it through your NRE/NRO accounts, mind the TDS rules on rental income, and keep clean records for when you eventually repatriate.
@@ -2004,16 +2084,18 @@ Owning a home on a visa is entirely doable. Just make sure the decision survives
       "The loneliness nobody warns you about — and practical ways to build a life, not just a career, in a new country.",
     topic: "community",
     date: "2026-02-28",
-    content: `The financial side of immigrating gets all the guides. The emotional side gets silence. But ask any NRI a few years in, and they'll tell you: the hardest part wasn't the taxes. It was the loneliness.
+    content: `The financial side of immigrating gets all the guides; the emotional side gets silence. But ask any NRI a few years in and they'll tell you the hardest part wasn't the taxes — it was the loneliness. Here's what actually helps.
 
 ## Why it hits harder than expected
 Back home, community was ambient — family nearby, friends from school, neighbors who'd known you for years. In a new country, you start from zero socially while also navigating a new job, a new city, and a new financial system. The isolation can be heavy, especially in the first winter.
 
 ## Practical ways to build roots
-- Find your overlap groups: regional associations, alumni networks, and cultural organizations exist in most US cities.
-- Use shared interests, not just shared origin — a running club or a board-game meetup builds faster bonds than a generic "networking" event.
-- Say yes early and often. The first six months set your social trajectory.
-- Host. Even a simple chai-and-snacks evening makes you the connector everyone remembers.
+:::tip
+- Find your overlap groups: regional associations, alumni networks, and cultural organizations exist in most US cities
+- Use shared interests, not just shared origin — a running club or board-game meetup builds faster bonds than a generic "networking" event
+- Say yes early and often — the first six months set your social trajectory
+- Host. Even a simple chai-and-snacks evening makes you the connector everyone remembers
+:::
 
 ## Don't only befriend people exactly like you
 It's comforting to stay inside the diaspora bubble, and you should have that anchor. But the immigrants who thrive long-term tend to build mixed networks — colleagues, neighbors, parents from their kids' school. It accelerates everything from job opportunities to simply feeling at home.
@@ -2030,22 +2112,42 @@ A career can be rebuilt anywhere. A community takes intention. Start building it
       "Before investing a single dollar, build this. Here's how much, where to keep it, and why it matters more for immigrants.",
     topic: "finance",
     date: "2026-01-15",
-    content: `Every personal finance guide preaches the emergency fund, but for NRIs it's not just prudent — it's existential. When you have no family safety net in the country and your visa is tied to your job, cash is freedom.
+    content: `Every personal finance guide preaches the emergency fund, but for NRIs it's not just prudent — it's existential. With no family safety net in the country and your visa tied to your job, cash is freedom.
+
+:::info
+title: The short version
+- Aim for **6 months** of expenses — higher than usual, because of the H-1B 60-day clock
+- Keep it in a **high-yield savings account**: liquid, safe, earning ~4%
+- Build it before you invest the surplus (after capturing your 401(k) match)
+:::
 
 ## Why immigrants need a bigger buffer
-A US-born worker who loses a job can move back in with family and regroup. An H-1B worker who loses a job has a 60-day clock to find a new sponsor or leave the country. That pressure makes a robust cash cushion non-negotiable. It buys you time to make good decisions instead of desperate ones.
+A US-born worker who loses a job can move back in with family and regroup. An H-1B worker who loses a job has a **60-day clock** to find a new sponsor or leave the country. That pressure makes a robust cash cushion non-negotiable — it buys time to make good decisions instead of desperate ones.
 
-## How much to save
-The standard advice is 3–6 months of expenses. For visa holders, aim for the higher end — 6 months — precisely because of the job-loss clock. Calculate your real monthly burn (rent, food, insurance, minimum debt payments) and multiply.
+## How much, and where to keep it
+The standard advice is 3–6 months of expenses; visa holders should aim for the higher end. Calculate your real monthly burn (rent, food, insurance, minimum debt payments) and multiply.
 
-## Where to keep it
-Not in your checking account, where it earns nothing and is too easy to spend. Not in the stock market, where it could drop 20% the week you need it. The right home is a high-yield savings account: liquid, safe, and earning meaningful interest.
+:::tip
+title: Where it should (and shouldn't) live
+- **Not** in checking — it earns nothing and is too easy to spend
+- **Not** in the stock market — it could drop 20% the week you need it
+- **Yes** in a high-yield savings account: liquid, safe, and earning meaningful interest
+:::
 
 ## Build it before you invest
-It's tempting to chase market returns immediately. Resist. The sequence is:
-1. Capture your 401(k) employer match (free money).
-2. Build the emergency fund.
-3. Then invest the surplus.
+It's tempting to chase market returns immediately — resist. The sequence is:
+:::steps
+Capture your 401(k) employer match — free money first.
+Build the emergency fund — your 6-month cushion.
+Then invest the surplus — index funds for the long term.
+:::
+
+:::cta
+title: Need a place to park it at 4%+?
+body: Open a no-fee high-yield savings account — no SSN required to start.
+button: Best US bank accounts
+href: /articles/best-bank-account-nri-usa
+:::
 
 An emergency fund feels like idle money right up until the day it becomes the most important money you own. For an immigrant building a life on a visa, that day is never as far away as it seems.`,
   },
