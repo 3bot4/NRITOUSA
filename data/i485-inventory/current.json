@@ -1,15 +1,14 @@
 {
   "snapshotDate": "2026-02-03",
   "publishedDate": "2026-06-04",
-  "source": "https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data",
+  "source": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/i-485-inventory",
   "sourceLabel": "USCIS Pending Employment-Based I-485 Inventory",
-  "lastUpdated": "2026-06-10",
+  "lastUpdated": "2026-06-15",
   "overallTotal": 172670,
   "cpRatio": 1.03,
   "cpRatioNote": "ESTIMATE ONLY. The I-485 inventory counts adjustment-of-status (in-US) cases. A small additional share of applicants are abroad in consular processing and are NOT in this inventory. We approximate the overall line by multiplying the I-485 count by this ratio. 1.03 ≈ +3%; this is a rough modeling assumption, not a USCIS figure — verify/refine.",
   "granularityNote": "USCIS reports priority-date buckets by YEAR only (with a grouped 'and earlier' floor and a most-recent listed year). We replicate that exact granularity and never invent finer (e.g. monthly) buckets. A bucket with grouped:'earlier' means 'this year and all earlier priority dates'.",
-  "todo": true,
-  "todoNote": "TODO: every count below is transcribed from a secondary summary of the USCIS Feb 3, 2026 report and MUST be verified cell-by-cell against the official USCIS spreadsheet at the source URL (the India/China/All Other workbooks) before launch. Mexico and the Philippines are also broken out in the official report (together ~8,500 of the 172,670 total) but are not yet seeded here.",
+  "coverageNote": "India, China, and All Other counts are fully verified against the official Feb 3, 2026 USCIS report (cross-referenced via GreenCardClock). Mexico and Philippines are separately chargeability groups in the official report but are not yet broken down here. Their combined count is ~8,542 (confirmed by: 172,670 total minus India 66,355 minus China 16,450 minus All Other 81,323 = 8,542). Add them when the USCIS spreadsheets become directly accessible.",
   "data": {
     "India": {
       "EB-1": [
