@@ -23,6 +23,7 @@ import RentVsBuyCalculator from "@/components/calculators/RentVsBuyCalculator";
 import RentVsBuyImmigrantCalculator from "@/components/calculators/RentVsBuyImmigrantCalculator";
 import RemittanceCalculator from "@/components/calculators/RemittanceCalculator";
 import DtaaReliefCalculator from "@/components/calculators/DtaaReliefCalculator";
+import FcnrVsHysaCalculator from "@/components/calculators/FcnrVsHysaCalculator";
 
 const REGISTRY: Record<string, React.ComponentType> = {
   "rnor-tax-residency": RnorCalculator,
@@ -33,6 +34,7 @@ const REGISTRY: Record<string, React.ComponentType> = {
   "rent-vs-buy-immigrant": RentVsBuyImmigrantCalculator,
   "remittance-tcs-cost": RemittanceCalculator,
   "dtaa-foreign-tax-credit": DtaaReliefCalculator,
+  "fcnr-vs-hysa": FcnrVsHysaCalculator,
 };
 
 export function generateStaticParams() {

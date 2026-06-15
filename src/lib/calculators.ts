@@ -202,6 +202,26 @@ export const calculators: CalculatorMeta[] = [
     },
   },
   {
+    slug: "fcnr-vs-hysa",
+    title: "FCNR vs HYSA: After-Tax Returns Calculator",
+    label: "FCNR vs HYSA",
+    category: "Finance & Taxes",
+    description:
+      "Compare FCNR fixed deposit returns vs a US High-Yield Savings Account or CD after US income tax. See net returns, tax impact, and a 10-year compounding chart.",
+    icon: "🏦",
+    accent: "from-teal-500 to-cyan-600",
+    seoTitle: "FCNR vs HYSA Calculator — Compare After-Tax Returns | NRI to USA",
+    seoDescription:
+      "Compare FCNR fixed deposit returns vs US HYSA or CD after US income tax. Free calculator for NRIs shows net returns, tax impact, and 10-year compounding graph.",
+    related: [],
+    tags: ["tax-compliance"],
+    leadMagnet: {
+      heading: "Parking USD savings as an NRI?",
+      body: "Get our free NRI banking guide — when to use FCNR vs NRE vs regular US accounts, and how to optimize after-tax returns.",
+      cta: "Send me the NRI banking guide",
+    },
+  },
+  {
     slug: "dtaa-foreign-tax-credit",
     title: "DTAA Relief & Foreign Tax Credit Calculator (India–US)",
     label: "DTAA / Foreign Tax Credit",
