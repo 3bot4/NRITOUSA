@@ -33,6 +33,8 @@ import {
 const SOURCES = [usdinr, nifty50, sp500, gold];
 const HISTORY_DAYS = 30;
 const DRY_RUN = !!process.env.DRY_RUN;
+const FAILED_JOBS_PATH = join(DATA_DIR, "failed_jobs.json");
+const MAX_FAILURE_HISTORY = 50;
 
 // Largest believable single-snapshot % move per item. A bigger jump is almost
 // always a seed/baseline discontinuity or a bad tick rather than a real daily
@@ -55,6 +57,7 @@ async function run() {
   const now = new Date();
   const items = [];
   const summary = [];
+  const failures = [];
 
   for (const src of SOURCES) {
     const { key, label, unit, decimals } = src.meta;
@@ -92,6 +95,14 @@ async function run() {
       });
       summary.push(`  ✓ ${label.padEnd(10)} ${unit}${v} (${changePct >= 0 ? "+" : ""}${changePct}%) — ${source}${note}`);
     } catch (err) {
+      failures.push({
+        job: "daily-market",
+        dataKey: key,
+        label,
+        timestamp: nowEtIso(now),
+        error: err.message,
+        retainedStaleValue: last ? last.value : null,
+      });
       if (last) {
         items.push({ ...last, stale: true });
         summary.push(`  ⚠ ${label.padEnd(10)} FETCH FAILED → keeping last good ${unit}${last.value} (stale). ${err.message}`);
@@ -146,7 +157,17 @@ async function run() {
   writeJson(MARKET_JSON, market);
   writeJson(join(HISTORY_DIR, `${snapshot.date}.json`), snapshot);
   console.log(`\nWrote ${MARKET_JSON}`);
-  console.log(`Wrote ${join(HISTORY_DIR, `${snapshot.date}.json`)}\n`);
+  console.log(`Wrote ${join(HISTORY_DIR, `${snapshot.date}.json`)}`);
+
+  if (failures.length > 0) {
+    const existing = readJson(FAILED_JOBS_PATH, []);
+    writeJson(
+      FAILED_JOBS_PATH,
+      [...(Array.isArray(existing) ? existing : []), ...failures].slice(-MAX_FAILURE_HISTORY)
+    );
+    console.log(`⚠ Recorded ${failures.length} failure(s) to data/failed_jobs.json`);
+  }
+  console.log();
 }
 
 // Never throw out of the process — a pipeline crash must not fail the workflow
