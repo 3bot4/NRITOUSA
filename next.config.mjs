@@ -66,6 +66,13 @@ const nextConfig = {
         destination: "/send-money-to-india",
         permanent: true,
       },
+      // The passport article was expanded into a top-level topic cluster
+      // (hub at /indian-passport-renewal-usa). Preserve the old /articles URL.
+      {
+        source: "/articles/indian-passport-renewal-usa",
+        destination: "/indian-passport-renewal-usa",
+        permanent: true,
+      },
     ];
   },
 };

@@ -4,6 +4,7 @@ import { articles } from "@/lib/articles";
 import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
 import { eduCalcs } from "@/lib/education";
+import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -126,6 +127,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const passportClusterRoutes: MetadataRoute.Sitemap = clusterPages.map((p) => ({
+    url: `${site.url}${clusterPath(p.slug)}`,
+    lastModified: new Date(p.updated ?? p.date),
+    changeFrequency: "monthly",
+    priority: p.kind === "hub" ? 0.9 : 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...topicRoutes,
@@ -133,5 +141,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolRoutes,
     ...eduRoutes,
     ...articleRoutes,
+    ...passportClusterRoutes,
   ];
 }
