@@ -6968,12 +6968,12 @@ A 1031 exchange lets you sell one investment property and reinvest the full proc
   {
     slug: "visa-bulletin-explained-for-indians",
     title: "Visa Bulletin Explained for Indians: Priority Dates, Final Action Dates, and What to Watch",
-    seoTitle: "Visa Bulletin Explained for Indians: Priority Dates & Wait Times",
+    seoTitle: "Visa Bulletin Explained for Indians: EB-2, EB-3, Priority Dates & Green Card Wait Time",
     seoDescription:
-      "Understand how the USCIS Visa Bulletin works for Indian nationals — priority dates, final action dates, dates for filing, EB-2, EB-3, and how to track your place in line.",
+      "Learn how the Visa Bulletin works for Indians in the USA, including EB-2 and EB-3 India priority dates, Final Action Dates, Dates for Filing, retrogression, cross-chargeability, and green card wait times.",
     excerpt:
-      "The Visa Bulletin controls when your green card can move forward — but its two charts, shifting cutoffs, and India-specific backlogs confuse almost everyone. Here is the plain-English guide.",
-    topic: "finance",
+      "The Visa Bulletin controls when your green card can move forward — but its two charts, shifting cutoffs, and India-specific backlogs confuse almost everyone. Here is the plain-English guide to EB-2 India priority dates, Final Action Dates vs. Dates for Filing, retrogression, and green card wait time estimates.",
+    topic: "immigration",
     date: "2026-06-15",
     featured: true,
     content: `If you are an Indian national on an employment-based green card path, the Visa Bulletin is the single most important monthly document the US government publishes. It determines when your case can actually move forward — and for most Indians it is measured in decades, not months.
@@ -7009,12 +7009,25 @@ USCIS announces each month whether it will accept Chart B filings. Check the USC
 Your **priority date** is the date that marks your place in line. How you get it:
 
 :::steps
-I-140 petition filed by your employer — the **receipt date** of an approved Form I-140 (EB-1, EB-2, EB-3) becomes your priority date.
-PERM Labor Certification (EB-2, EB-3) — if PERM is required, your priority date is the **date PERM was filed** with the DOL, which can be months before I-140.
-EB-1A / EB-1B / EB-2 NIW (self-petition) — priority date is the **I-140 receipt date** since no PERM is needed.
+PERM-based EB-2 and EB-3 cases — your priority date is usually the **date the PERM labor certification was filed** with the Department of Labor. This can be months before the I-140 is even filed, so confirm the exact date with your employer's immigration attorney.
+EB-1, EB-2 NIW, and other cases without PERM — your priority date is typically the **I-140 receipt date** from USCIS, since no PERM labor certification is required.
+Self-petitioned cases (EB-1A, EB-1B, EB-2 NIW) — the I-140 receipt date is the priority date; confirm with an immigration attorney which date applies to your specific petition.
 :::
 
-Your priority date never expires and moves with you if you change employers under AC21 portability (as long as the new job is in the same or similar occupation and the I-140 was approved before the change).
+Your priority date generally does not expire and can follow you to a new employer under AC21 portability rules in certain circumstances — confirm the portability requirements with an immigration attorney before relying on it.
+
+## Example: EB-2 India priority date
+
+To make this concrete: suppose your EB-2 India priority date is **September 2013**.
+
+- If the **Final Action Date** for EB-2 India in the current Visa Bulletin is later than September 2013 (e.g., October 2013 or beyond), your I-485 may be approvable — USCIS can approve your green card if the case is otherwise complete.
+- If only the **Dates for Filing** chart shows a date later than September 2013, and USCIS has activated Chart B for that month, you may be able to file the I-485 and receive a work permit and advance parole — but final approval still waits until the Final Action Date catches up.
+- If **both dates are earlier** than September 2013 (e.g., August 2013 or further back), neither filing nor approval is currently possible. This backward movement is called **retrogression**.
+
+:::info
+title: Why retrogression happens
+Retrogression occurs when USCIS processes cases faster than expected in the first half of the fiscal year and needs to slow down to avoid exceeding the annual per-country green card limits. Check the Bulletin every month — it can move forward or backward. Use the [Green Card Tracker](/tools/green-card-tracker) for live current dates.
+:::
 
 ## India's backlog: why it is so much worse than other countries
 The US allocates green cards by preference category (EB-1, EB-2, EB-3) with **per-country caps**: no single country can use more than **7% of the annual employment-based green cards**. India sends far more high-skilled workers than that 7% allows, so demand vastly exceeds the cap every year. The result is a queue that stretches **decades** for EB-2 and EB-3 India.
@@ -7047,19 +7060,14 @@ Check the USCIS website to see if Chart B (Dates for Filing) is also activated t
 When the Bulletin shows **"C"** for a category and country, it means there is no backlog — anyone with an approved I-140 in that category can proceed immediately. EB-1 India is occasionally current or very close; EB-2 and EB-3 India have not been current since the early 2010s.
 
 ## Cross-chargeability: using your spouse's country
-If you were born in India but your **spouse was born in a different country** (not subject to India's backlog), you may be able to use their country of birth for cutoff purposes. This is called **cross-chargeability** and can immediately move your case decades forward.
+Cross-chargeability can sometimes allow a principal applicant to use their spouse's country of birth if both spouses are immigrating together on the same I-485 application and the spouse's country has a more favorable cutoff date. This is a technical provision that should be confirmed with the employer's immigration attorney before filing — it does not apply automatically.
 
-:::good
-title: You can use cross-chargeability if:
-- Your spouse is the principal beneficiary or a derivative on the same I-485
-- Your spouse was born in a country with an earlier cutoff (e.g., Taiwan, UK, Europe)
-- Both of you are applying together on the same application
-:::
-
-:::warn
-- You cannot use cross-chargeability if your spouse already has a green card
-- Cross-chargeability does not help if you are the dependent spouse — only the principal applicant can claim it
-- Your employer's immigration attorney must specifically invoke it
+:::tip
+- Both spouses generally need to be filing I-485 together on the same application for cross-chargeability to apply
+- The spouse must have been born in a country with an earlier or current cutoff date for the relevant category
+- Cross-chargeability generally does not apply if the spouse already holds a green card or is not a derivative applicant on the same case
+- Your employer's immigration attorney must specifically invoke it in the filing — raise it proactively
+- Confirm your specific eligibility with an attorney before relying on this strategy; edge cases and interpretation can vary
 :::
 
 ## What happens between I-140 and I-485 filing?
@@ -7072,18 +7080,36 @@ Biometrics and interview (if required) — most employment cases are interview-w
 I-485 approval — green card issued.
 :::
 
-The time between I-140 approval and I-485 filing can be years or decades. During this time you must maintain valid nonimmigrant status (H-1B, L-1, or a bridge visa). Many Indians spend this entire period on H-1B extensions under AC21, which allows unlimited extensions in one-year increments once the I-485 has been pending for 180+ days.
+The time between I-140 approval and I-485 filing can be years or decades. During this time you must maintain valid nonimmigrant status (H-1B, L-1, or a bridge visa).
+
+:::tip
+- Many Indian applicants remain on H-1B extensions while waiting for a visa number. AC21-related rules may allow H-1B extensions beyond the normal six-year cap in certain situations — for example, when a PERM or I-140 has been pending long enough, or when an approved I-140 exists but a visa number is not yet available.
+- **I-485 portability** (a separate rule) may allow a job change to the same or similar occupational classification after the I-485 has been pending for 180 days, without losing your priority date.
+- These are two distinct rules with different requirements and conditions. Confirm with a qualified immigration attorney before changing employers, changing job titles, or relying on any extension or portability strategy.
+:::
 
 ## Frequently asked questions
 
 ### Can my priority date be transferred to a new employer?
-Yes, under AC21 portability, if your I-140 was approved and your I-485 has been pending for 180+ days (or your I-140 was approved and you transfer before 180 days in the same occupation), your priority date carries over.
+In many cases, yes — but the rules are specific. Under AC21, if your I-140 was approved and your I-485 has been pending for 180 or more days, you may be able to change employers to the same or a similar occupational classification without losing your priority date. Confirm the portability requirements with an immigration attorney before making any job change.
 
 ### What if the cutoff date moves backward (retrogresses)?
 If retrogression pushes the cutoff past your priority date, your I-485 cannot be approved (and cannot be filed if only Chart B applies). Any pending I-485 continues to wait — it is not rejected. Work permits issued during the filing window remain valid.
 
 ### Does upgrading from EB-3 to EB-2 help Indians?
 Sometimes. EB-2 India has historically been slightly ahead of EB-3 India, but the gap is narrow. If your employer is willing to re-file under EB-2, it may save a year or two — but it is not the decades-long shortcut many hope for.
+
+## Related immigration tools and guides
+
+:::info
+title: Track and plan your green card journey
+- [Green Card Wait Time Tracker](/tools/green-card-tracker) — live visa bulletin dates and EB-2/EB-3 India priority date wait estimates
+- [H-1B Salary Explorer](/tools/h1b-salaries) — salary data for H-1B workers by employer, job title, and location
+- [H-4 EAD Navigator](/tools/h4-ead-navigator) — H-4 EAD eligibility checker for dependent spouses waiting on a green card
+- [USCIS Processing Times](/tools/processing-times) — current processing times for I-140, I-485, EAD, and advance parole
+- [FBAR for NRE/NRO Accounts](/articles/fbar-nre-nro-accounts) — what Indians in the USA must report to FinCEN and the IRS while waiting for a green card
+- [Moving to USA from India: First 30 Days Checklist](/articles/moving-to-usa-from-india-checklist) — first-month setup guide for new H-1B, L-1, and F-1 arrivals
+:::
 
 :::cta
 title: Track your exact wait time
@@ -7094,27 +7120,42 @@ href: /tools/green-card-tracker
   },
   {
     slug: "fbar-nre-nro-accounts",
-    title: "FBAR for NRE and NRO Accounts: What Indian Americans Need to Know",
-    seoTitle: "FBAR for NRE/NRO Accounts: What Indians in the USA Must Report",
+    title: "FBAR for NRE and NRO Accounts: What Indians in the USA Need to Know",
+    seoTitle: "FBAR for NRE/NRO Accounts: Do Indian Bank Accounts Need Reporting?",
     seoDescription:
-      "Do your NRE or NRO accounts in India require FBAR or FATCA reporting? Learn the thresholds, deadlines, what counts, penalties, and how to catch up on missed years.",
+      "Learn when NRE, NRO, FD, PPF, EPF, and Indian Demat accounts must be reported on FBAR or FATCA Form 8938 by Indians living in the USA. Includes thresholds, examples, deadlines, and missed-year options.",
     excerpt:
-      "If you hold NRE or NRO accounts in India and live in the USA, the IRS almost certainly wants them disclosed — even if the accounts earn tax-free interest in India. Here is what you actually need to file.",
+      "If you hold NRE or NRO accounts in India and live in the USA, U.S. tax rules may require you to disclose them — through FBAR with FinCEN and, in some cases, Form 8938 with your IRS tax return. Here is what you need to know.",
     topic: "taxes",
     date: "2026-06-15",
     featured: true,
-    content: `Nearly every Indian in the USA keeps at least one Indian bank account — an NRE account for parking US earnings, an NRO account for India-sourced income, or both. What most do not realise until their first US tax filing is that the IRS wants these disclosed separately from the tax return itself, through two different regimes.
+    content: `Nearly every Indian in the USA keeps at least one Indian bank account — an NRE account for parking US earnings, an NRO account for India-sourced income, or both. What many do not realise until their first US tax filing is that U.S. rules may require these to be disclosed separately from the tax return, through two different regimes — FBAR with FinCEN and, in some cases, Form 8938 with the IRS. Whether this applies to you depends on your U.S. tax residency status, which is separate from your visa type.
 
 :::info
 title: The short answer
-- **FBAR (FinCEN 114):** file if combined peak balance across all foreign accounts exceeded **$10,000** at any point during the year. This almost certainly includes your NRE/NRO accounts.
+- **FBAR (FinCEN 114):** file if you are a U.S. person and the combined peak balance across all foreign accounts exceeded **$10,000** at any point during the year. NRE and NRO accounts count as foreign financial accounts — whether they apply to you depends on your U.S. tax residency status.
 - **FATCA (Form 8938):** file with your tax return if foreign assets exceed **$50,000** (single) or **$100,000** (MFJ) at year-end. Higher thresholds if you live abroad.
 - **NRE interest is tax-free in India but taxable in the US** — and the accounts are still reportable even in years they earn nothing.
 - Use our [FBAR/FATCA Checker](/tools/fbar-fatca-checker) to confirm your specific obligations.
 :::
 
+## Who does FBAR apply to?
+FBAR applies to **U.S. persons** — a term with a specific legal meaning that is separate from your visa type. You are a U.S. person for FBAR purposes if you are any of the following:
+
+- A **U.S. citizen** (including dual citizens)
+- A **green card holder** (lawful permanent resident)
+- A **U.S. tax resident** — including most H-1B, L-1, O-1, and OPT holders who meet the **Substantial Presence Test** for the year
+- An **F-1 student** who has exceeded the exempt individual period (generally after five calendar years in the US)
+- Anyone with **ownership or signature authority** over a foreign financial account, regardless of visa type
+
+:::tip
+- Your visa type alone does not determine your FBAR obligation — your **U.S. tax residency status** for the year does
+- F-1 students in their first five calendar years in the US are generally **exempt individuals** under the SPT and may not be U.S. tax residents for that year — confirm with a CPA
+- If you are **not** a U.S. tax resident for the year in question, verify your residency status before assuming FBAR or Form 8938 applies
+:::
+
 ## Do NRE and NRO accounts count for FBAR?
-Yes, unconditionally. Both account types are foreign financial accounts held at foreign institutions — exactly what FBAR covers.
+Yes, if you are a U.S. person and your aggregate foreign account balances cross the FBAR threshold. Both account types are foreign financial accounts held at foreign institutions — exactly what FBAR is designed to capture. The FBAR threshold for NRE NRO accounts is the same as for any other foreign account: $10,000 aggregate peak during the year.
 
 :::compare
 left: NRE Account
@@ -7146,6 +7187,7 @@ Form 8938 is separate from the FBAR and is filed as part of your **Form 1040**. 
 |---|---|---|
 | Single, US resident | $50,000 | $75,000 |
 | Married filing jointly, US resident | $100,000 | $150,000 |
+| Married filing separately, US resident | $50,000 | $75,000 |
 
 Most new immigrants hit FBAR first and reach the Form 8938 bar only once savings grow. If you cross both thresholds, you file both — they are separate disclosures and one does not substitute for the other.
 
@@ -7153,12 +7195,13 @@ Most new immigrants hit FBAR first and reach the Form 8938 bar only once savings
 FBAR and FATCA cast a wide net. In addition to your NRE/NRO accounts, you likely also need to count:
 
 :::warn
-- **Fixed Deposits (FDs)** — each FD at an Indian bank is a separate reportable account
-- **PPF (Public Provident Fund)** — counts for both FBAR and FATCA
-- **Mutual funds in a Demat/folio account** — count for FBAR (and trigger the separate [PFIC problem](/articles/pfic-indian-mutual-funds-trap))
-- **PF / EPF balance** if you still hold it
-- **Joint accounts with parents** where you have signature authority
-- **Cash-value insurance policies** like ULIPs or investment-linked LIC plans
+- **Fixed Deposits (FDs)** — each FD at an Indian bank is typically a separate reportable account for FBAR purposes
+- **PPF (Public Provident Fund)** — may need to be counted for FBAR and FATCA depending on how it is held; do not exclude it without confirming with a CPA
+- **Mutual funds in a Demat/folio account** — may count for FBAR and can also trigger the separate [PFIC problem](/articles/pfic-indian-mutual-funds-trap); consult a tax professional before assuming they are excluded
+- **PF / EPF balance** — may need to be reported depending on how the account is structured; ask your CPA before excluding it
+- **Joint accounts with parents** where you have signature authority — your signature authority alone can create a reporting obligation even if the funds are not yours
+- **Cash-value insurance policies** like ULIPs or investment-linked LIC plans — may be reportable depending on their structure
+These may need to be counted or separately reported depending on how they are held. Do not ignore them — ask your CPA before excluding any of these from your FBAR or Form 8938 calculations.
 :::
 
 ## Deadlines
@@ -7181,6 +7224,10 @@ These are some of the harshest civil penalties in the tax code — and they appl
 | Form 8938 failure | $10,000; up to $50,000 after IRS notice |
 
 The distinction between "willful" and "non-willful" is critical. Most Indians who simply did not know about the requirement are non-willful — but that determination belongs to the IRS, not you.
+
+:::note
+Penalty amounts are inflation-adjusted and can change each year. Always verify the current IRS and FinCEN penalty schedules before filing or responding to a notice.
+:::
 
 ## Missed prior years? The Streamlined Procedures
 If you have unfiled FBARs for prior years because you genuinely did not know, the **IRS Streamlined Filing Compliance Procedures** exist specifically for non-willful filers:
@@ -7211,7 +7258,7 @@ List every Indian account — NRE, NRO, FDs, PPF, Demat, EPF, insurance — and 
 Pull statements and find the **highest balance** each account reached during the year.
 Convert each peak balance to USD using the Treasury year-end exchange rate.
 If the combined peak exceeds $10,000, file the FBAR via BSA E-Filing by October 15.
-If your total foreign assets at year-end exceed $50,000 (single) or $100,000 (MFJ), complete Form 8938 with your 1040.
+If your total foreign assets at year-end exceed $50,000 (single or married filing separately) or $100,000 (MFJ), complete Form 8938 with your 1040.
 For missed prior years, consult a CPA familiar with Streamlined Procedures immediately.
 :::
 
@@ -7238,16 +7285,16 @@ No. The FBAR is a disclosure form only. The tax liability (if any) comes from re
   },
   {
     slug: "moving-to-usa-from-india-checklist",
-    title: "Moving to USA from India: The Complete First-Month Checklist",
-    seoTitle: "Moving to USA from India: Complete Checklist for New Arrivals",
+    title: "Moving to USA from India: First 30 Days Checklist",
+    seoTitle: "Moving to USA from India Checklist: First 30 Days for New Arrivals",
     seoDescription:
-      "Everything you need to do in your first month after moving to the USA from India — banking, SSN, phone, housing, driving, credit, health insurance, and ITIN setup.",
+      "Moving to USA from India? Complete first 30 days checklist for new immigrants — SSN, bank account, phone plan, credit card, driving license, health insurance, and ITIN setup for H-1B, L-1, F-1, and dependent visa holders.",
     excerpt:
-      "The first 30 days in the US are a logistics sprint — SSN, bank account, phone, credit card, driving, and health insurance all need to happen in roughly that order. Here is the sequenced checklist.",
+      "The first 30 days in the US are a logistics sprint — SSN, bank account, phone plan, credit card, driving, and health insurance all need to happen in roughly that order. Here is the sequenced new immigrant checklist for Indians moving to America on H-1B, L-1, F-1, and dependent visas.",
     topic: "new-to-usa",
     date: "2026-06-15",
     featured: true,
-    content: `When you land in the US from India, you have no credit history, no local bank account, no US phone plan, and no idea what order to do things in. The sequence matters — some tasks unlock others. This checklist works for H-1B, L-1, F-1, and dependent visa holders in their first 30 days.
+    content: `When you land in the US from India, you have no credit history, no local bank account, no US phone plan, and no idea what order to do things in. The sequence matters — some tasks unlock others. This Indian moving to America checklist covers the first 30 days for H-1B workers, L-1 transferees, F-1 students, and dependent visa holders, with separate sections for students and families at the bottom.
 
 :::info
 title: The first 30 days at a glance
@@ -7262,29 +7309,34 @@ title: The first 30 days at a glance
 
 :::steps
 Set up an NRE account — transfers from the US are tax-free in India and earn decent interest. Do this before you leave.
-Carry enough cash and an international-capable card to last 2–3 weeks while your US account opens.
-Save digital and physical copies of all key documents — passport, visa, I-20/offer letter, birth certificate, marriage certificate, and educational degrees.
-Inform your Indian bank of your travel so cards are not blocked.
+Book temporary housing for the first 2–4 weeks — a short-stay apartment, extended-stay hotel, or a contact's place. Do not sign a long-term lease before you know the city.
+Carry a small emergency amount in USD cash plus an international debit card (HDFC Forex, Wise). Avoid carrying large amounts of cash — if you carry more than customs reporting thresholds (currently $10,000 for US customs), check [U.S. Customs declaration rules](https://www.cbp.gov/travel/us-citizens/know-before-you-go/prohibited-and-restricted-items) before travel.
+Save digital and physical copies of all key documents — passport, visa, I-20/offer letter, birth certificate, marriage certificate, and educational degrees. Download offline copies in case of connectivity issues.
+Activate international roaming on your Indian SIM for the first few days — you will need your Indian number for bank OTPs and UPI until your US number is set up.
+Inform your Indian bank of your travel dates so cards are not blocked on arrival.
+Check whether your Indian phone supports US LTE/5G bands and eSIM before you arrive — this avoids scrambling for a compatible SIM at the airport.
+If you take prescription medicines, carry a 30-day supply with a doctor's note or prescription label in English.
+Carry your Indian driving licence and an International Driving Permit if you plan to drive in the first few weeks before getting a US state licence.
 :::
 
 :::tip
-- India's UPI apps (PhonePe, GPay) stop working on a US SIM — sort any pending India payments before you land
-- A few thousand dollars in USD cash is useful for the first week before your debit card arrives
-- International debit cards (HDFC Forex, Wise) beat airport currency desks on rates
+- India's UPI apps (PhonePe, GPay) stop working on a US SIM — settle any pending India payments before you land
+- Your US debit card typically arrives within a week of opening the account; carry enough cash for the first few days only
+- International debit cards (HDFC Forex, Wise) beat airport currency desks on rates for ATM withdrawals
 :::
 
 ## Week 1: SSN, SIM, and bank
 
 ### Social Security Number
-Apply for your SSN at a Social Security Administration office as soon as your visa status is active (H-1B on start date; F-1 after a few days in status). Bring:
-- Passport and visa
-- I-94 (print from i94.cbp.dhs.gov — the stamp in your passport is not sufficient)
-- Employment offer letter or I-20
+Apply for your SSN at a [Social Security Administration](https://www.ssa.gov/ssnumber/) office as soon as your visa status is active (H-1B on your employment start date; F-1 only if you have an eligible employment authorisation — see the F-1 section below). Bring:
+- Passport and visa stamp
+- I-94 arrival record — print from [i94.cbp.dhs.gov](https://i94.cbp.dhs.gov) (the stamp in your passport is not sufficient)
+- Employment offer letter or I-20 (as applicable)
 
 The SSN takes **2–4 weeks to arrive** by mail. Many banks will let you open an account without one using your passport and I-94 — do not wait.
 
 ### Phone plan
-Get a **prepaid SIM** (T-Mobile, Mint, or Visible) the day you arrive — you need a local number to receive verification codes for everything else. Upgrade to a postpaid plan with a credit check once your credit starts building.
+Get a **prepaid SIM** (T-Mobile, Mint, or Visible) the day you arrive — you need a local number to receive verification codes for everything else. Check whether your Indian phone supports US LTE/5G bands and eSIM before you arrive to avoid compatibility issues. Upgrade to a postpaid plan with a credit check once your credit starts building (typically after 6–12 months).
 
 ### Bank account
 
@@ -7316,15 +7368,15 @@ Put one recurring charge on the card (Netflix, phone bill) and set autopay for t
 ## Week 3: Driving and health insurance
 
 ### Driving license
-Most states require you to exchange or convert your Indian license within 30–60 days of establishing residency. The process varies by state:
+Driving rules vary by state. Some states permit a foreign licence for a limited period after you establish residency, while others expect you to apply for a state licence soon after arrival. **Check your specific state DMV website before driving** — do not assume your Indian licence is valid indefinitely.
 
-| State type | What you need |
+| Typical state requirement | What you generally need |
 |---|---|
-| Easy conversion states | Written test only (no driving test) |
-| Standard states | Written test + driving test + vision test |
-| Strict states | Full test regardless of Indian license |
+| Written knowledge test only | Some states for experienced foreign licence holders |
+| Written test + driving test + vision test | Most states |
+| Full test regardless of prior licence | A few states with no exemptions |
 
-Get your SSN first — most states require it (or a denial letter) before they will issue a license. Book the appointment early; DMV slots fill weeks out.
+Get your SSN first — most states require it or a denial letter from the [SSA](https://www.ssa.gov/ssnumber/) before they will issue a licence. Book your DMV appointment early; slots fill weeks out in most metro areas.
 
 ### Health insurance
 If your employer provides health insurance, enroll during the **onboarding window** (usually 30–60 days from start). Missing this window means waiting until open enrollment unless you have a qualifying life event.
@@ -7355,7 +7407,7 @@ Compare remittance services before you transfer — rates vary significantly on 
 Be aware of **TCS (Tax Collected at Source)** in India: remittances above ₹7 lakh per year attract 20% TCS, which you can reclaim in India via ITR but ties up cash. See [TCS on India remittances explained](/articles/tcs-india-remittance-tax).
 
 ### ITIN (if applicable)
-If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using Form W-7 with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.
+If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using [IRS Form W-7](https://www.irs.gov/individuals/individual-taxpayer-identification-number) submitted with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.
 
 ### Parallel India obligations
 Moving abroad does not end your India filing obligations if you have income there:
@@ -7365,6 +7417,40 @@ Moving abroad does not end your India filing obligations if you have income ther
 - Inform your EPF/UAN portal of your NRI status
 - Mutual funds, FDs, and property income in India still require ITR filing if income exceeds the basic exemption
 - Update your KYC to NRI status at Indian banks to avoid compliance flags
+:::
+
+## Special note for F-1 students
+If you are arriving on an **F-1 student visa**, your first-month timeline differs from a work visa holder in several important ways:
+
+:::steps
+Attend your school's **international student orientation** — it is usually mandatory and covers SEVIS check-in, I-20 activation, health insurance enrolment, and campus services.
+Confirm your **SEVIS record is active** with your Designated School Official (DSO) before doing anything else — your F-1 status depends on it.
+Enrol in your university's **health insurance plan** if required — most universities mandate it for F-1 students and require a formal waiver with proof of comparable private coverage to opt out.
+Open a **student bank account** — many banks (Chase, Bank of America, Wells Fargo) offer fee-free student accounts with no minimum balance requirement.
+Note that F-1 students may **not qualify for an SSN** without an eligible employment offer — you generally need an on-campus job offer, CPT, or OPT authorisation letter before visiting an SSA office. Ask your DSO first.
+**On-campus work** is generally permitted up to 20 hours per week during the semester without special authorisation; off-campus work during your studies requires CPT or OPT authorisation from your DSO.
+:::
+
+:::tip
+- Most F-1 students in their first five calendar years in the US are **exempt individuals** under the Substantial Presence Test — meaning you may not be a U.S. tax resident yet and may not need to file FBAR. Confirm your status with a CPA before assuming either way.
+- If you are on **OPT** and have been in the US for more than five calendar years, you may now meet the SPT and become a U.S. tax resident — FBAR and Form 8938 obligations may begin
+:::
+
+## If you are moving with family
+Arriving with a spouse, children, or both adds several additional tasks to your first-month list:
+
+:::steps
+Gather **school enrollment documents** for your children — vaccination records, previous school transcripts, birth certificate, and proof of residence are typically required for K-12 public school enrollment.
+Find a **pediatrician or primary care doctor** promptly — pediatric appointments are booked weeks out in many cities. Check that the provider is in-network for your insurance plan.
+Clarify your **spouse's SSN or ITIN situation** — H-4 spouses without an EAD cannot get an SSN. They will need an [ITIN](https://www.irs.gov/individuals/individual-taxpayer-identification-number) (Form W-7) to file jointly on your tax return.
+Review **apartment lease requirements** before signing — some landlords require all adult occupants to be listed and may ask for an income-to-rent ratio based on the working spouse's salary only.
+Enrol **dependents in health insurance** during your employer's onboarding window — adding dependents later is only possible during open enrollment or a qualifying life event.
+:::
+
+:::tip
+- Research **school district quality** before signing a lease — in many US cities, the school district matters more than the neighbourhood's aesthetics, and homes in strong districts often cost more
+- Your spouse can apply for an SSN only if they have US work authorisation (H-4 EAD, L-2 automatic work authorisation, or similar)
+- L-2 spouses may have automatic work authorisation following a 2022 court settlement — check the current USCIS guidance for your specific situation
 :::
 
 ## Documents to get sorted in month 1

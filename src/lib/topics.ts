@@ -26,6 +26,18 @@ export const topics: Topic[] = [
       "Learn banking, credit cards, taxes, investing, insurance, emergency funds, 401k, Roth IRA, and money basics for immigrants in the USA.",
   },
   {
+    slug: "immigration",
+    title: "Visa & Green Card",
+    label: "Immigration",
+    description:
+      "Green card wait times, visa bulletins, H-1B and L-1 status, priority dates, and the path from visa to permanent residence.",
+    icon: "🛂",
+    accent: "from-blue-500 to-indigo-600",
+    seoTitle: "Visa & Green Card Guides for Indians in the USA",
+    seoDescription:
+      "Green card wait times, visa bulletin tracker, priority dates, EB-2 and EB-3 India backlogs, H-1B extensions, and the path to permanent residence in America.",
+  },
+  {
     slug: "taxes",
     title: "Taxes & Filing",
     label: "Taxes",
