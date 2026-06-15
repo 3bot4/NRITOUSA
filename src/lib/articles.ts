@@ -6965,6 +6965,453 @@ Neither is universally "better." Real estate offers leverage, cash flow, strong 
 ### What is a 1031 exchange?
 A 1031 exchange lets you sell one investment property and reinvest the full proceeds into another "like-kind" property without paying capital gains tax at the time of sale. Investors chain these together for decades to grow a portfolio tax-deferred, and a step-up in basis at death can eliminate the deferred gain for heirs.`,
   },
+  {
+    slug: "visa-bulletin-explained-for-indians",
+    title: "Visa Bulletin Explained for Indians: Priority Dates, Final Action Dates, and What to Watch",
+    seoTitle: "Visa Bulletin Explained for Indians: Priority Dates & Wait Times",
+    seoDescription:
+      "Understand how the USCIS Visa Bulletin works for Indian nationals — priority dates, final action dates, dates for filing, EB-2, EB-3, and how to track your place in line.",
+    excerpt:
+      "The Visa Bulletin controls when your green card can move forward — but its two charts, shifting cutoffs, and India-specific backlogs confuse almost everyone. Here is the plain-English guide.",
+    topic: "finance",
+    date: "2026-06-15",
+    featured: true,
+    content: `If you are an Indian national on an employment-based green card path, the Visa Bulletin is the single most important monthly document the US government publishes. It determines when your case can actually move forward — and for most Indians it is measured in decades, not months.
+
+:::info
+title: What the Visa Bulletin controls
+- It is published by the **State Department** every month, usually around the 10th.
+- It sets **cutoff dates** by country of birth and preference category.
+- If your **priority date** (the date your employer filed an I-140 or labor cert) is **earlier** than the cutoff, you can proceed to the next step.
+- India has its own, much older cutoff — separate from the rest of the world — because of **per-country annual limits**.
+- Use our [Green Card Wait Time Tracker](/tools/green-card-tracker) to see the current cutoffs and estimate your wait.
+:::
+
+## Two charts: Final Action Dates vs. Dates for Filing
+The Bulletin publishes two separate tables and USCIS declares each month which one applies.
+
+**Chart A — Final Action Dates:** The date you must be past before USCIS will approve your green card. This is the hard cutoff.
+
+**Chart B — Dates for Filing:** When USCIS activates this chart, it allows applicants with dates past this (usually earlier) cutoff to file the I-485 adjustment of status — even if the case cannot yet be approved. You get a work permit and advance parole while you wait.
+
+:::compare
+left: Chart A (Final Action)
+right: Chart B (Dates for Filing)
+✗ Must be current before USCIS approves I-485
+✗ Stricter — dates are further back
+✓ Lets you file I-485 early when activated
+✓ Dates are usually ahead of Chart A
+:::
+
+USCIS announces each month whether it will accept Chart B filings. Check the USCIS website alongside the Bulletin itself — the Bulletin alone is not enough.
+
+## What is a priority date?
+Your **priority date** is the date that marks your place in line. How you get it:
+
+:::steps
+I-140 petition filed by your employer — the **receipt date** of an approved Form I-140 (EB-1, EB-2, EB-3) becomes your priority date.
+PERM Labor Certification (EB-2, EB-3) — if PERM is required, your priority date is the **date PERM was filed** with the DOL, which can be months before I-140.
+EB-1A / EB-1B / EB-2 NIW (self-petition) — priority date is the **I-140 receipt date** since no PERM is needed.
+:::
+
+Your priority date never expires and moves with you if you change employers under AC21 portability (as long as the new job is in the same or similar occupation and the I-140 was approved before the change).
+
+## India's backlog: why it is so much worse than other countries
+The US allocates green cards by preference category (EB-1, EB-2, EB-3) with **per-country caps**: no single country can use more than **7% of the annual employment-based green cards**. India sends far more high-skilled workers than that 7% allows, so demand vastly exceeds the cap every year. The result is a queue that stretches **decades** for EB-2 and EB-3 India.
+
+| Category | Rest of world (approx.) | India (approx.) |
+|---|---|---|
+| EB-1 | Often current | 1–3 years behind |
+| EB-2 | Often current | 10–15+ years behind |
+| EB-3 | 1–3 years | 10–15+ years behind |
+
+These numbers shift monthly. Use the [Green Card Tracker](/tools/green-card-tracker) for the live current dates.
+
+## How to read the Bulletin each month
+
+:::steps
+Go to travel.state.gov and open the latest Visa Bulletin.
+Find Table A (Final Action Dates) for Employment-Based categories.
+Locate the **India row** in the **EB-2** or **EB-3** column.
+Compare that date to your priority date — if your priority date is **before** the cutoff, your I-485 can be approved.
+Check the USCIS website to see if Chart B (Dates for Filing) is also activated this month.
+:::
+
+:::tip
+- Sign up for the **Visa Bulletin notification email** from the State Department — it arrives a few days before official publication.
+- The cutoff date **can move backward** (retrogress) — always check rather than assuming it moved forward.
+- Cutoffs typically move faster in the first half of the fiscal year (October–March) and slow or retrogress later.
+:::
+
+## What "current" means
+When the Bulletin shows **"C"** for a category and country, it means there is no backlog — anyone with an approved I-140 in that category can proceed immediately. EB-1 India is occasionally current or very close; EB-2 and EB-3 India have not been current since the early 2010s.
+
+## Cross-chargeability: using your spouse's country
+If you were born in India but your **spouse was born in a different country** (not subject to India's backlog), you may be able to use their country of birth for cutoff purposes. This is called **cross-chargeability** and can immediately move your case decades forward.
+
+:::good
+title: You can use cross-chargeability if:
+- Your spouse is the principal beneficiary or a derivative on the same I-485
+- Your spouse was born in a country with an earlier cutoff (e.g., Taiwan, UK, Europe)
+- Both of you are applying together on the same application
+:::
+
+:::warn
+- You cannot use cross-chargeability if your spouse already has a green card
+- Cross-chargeability does not help if you are the dependent spouse — only the principal applicant can claim it
+- Your employer's immigration attorney must specifically invoke it
+:::
+
+## What happens between I-140 and I-485 filing?
+
+:::steps
+I-140 approved by USCIS — this locks in your priority date.
+Wait for priority date to become current or reach the Dates for Filing cutoff.
+File I-485 (and I-131, I-765 for travel/work authorization) once eligible.
+Biometrics and interview (if required) — most employment cases are interview-waived.
+I-485 approval — green card issued.
+:::
+
+The time between I-140 approval and I-485 filing can be years or decades. During this time you must maintain valid nonimmigrant status (H-1B, L-1, or a bridge visa). Many Indians spend this entire period on H-1B extensions under AC21, which allows unlimited extensions in one-year increments once the I-485 has been pending for 180+ days.
+
+## Frequently asked questions
+
+### Can my priority date be transferred to a new employer?
+Yes, under AC21 portability, if your I-140 was approved and your I-485 has been pending for 180+ days (or your I-140 was approved and you transfer before 180 days in the same occupation), your priority date carries over.
+
+### What if the cutoff date moves backward (retrogresses)?
+If retrogression pushes the cutoff past your priority date, your I-485 cannot be approved (and cannot be filed if only Chart B applies). Any pending I-485 continues to wait — it is not rejected. Work permits issued during the filing window remain valid.
+
+### Does upgrading from EB-3 to EB-2 help Indians?
+Sometimes. EB-2 India has historically been slightly ahead of EB-3 India, but the gap is narrow. If your employer is willing to re-file under EB-2, it may save a year or two — but it is not the decades-long shortcut many hope for.
+
+:::cta
+title: Track your exact wait time
+body: Enter your priority date and category into the Green Card Tracker to see where you stand with current visa bulletin data.
+button: Open the Green Card Tracker
+href: /tools/green-card-tracker
+:::`,
+  },
+  {
+    slug: "fbar-nre-nro-accounts",
+    title: "FBAR for NRE and NRO Accounts: What Indian Americans Need to Know",
+    seoTitle: "FBAR for NRE/NRO Accounts: What Indians in the USA Must Report",
+    seoDescription:
+      "Do your NRE or NRO accounts in India require FBAR or FATCA reporting? Learn the thresholds, deadlines, what counts, penalties, and how to catch up on missed years.",
+    excerpt:
+      "If you hold NRE or NRO accounts in India and live in the USA, the IRS almost certainly wants them disclosed — even if the accounts earn tax-free interest in India. Here is what you actually need to file.",
+    topic: "taxes",
+    date: "2026-06-15",
+    featured: true,
+    content: `Nearly every Indian in the USA keeps at least one Indian bank account — an NRE account for parking US earnings, an NRO account for India-sourced income, or both. What most do not realise until their first US tax filing is that the IRS wants these disclosed separately from the tax return itself, through two different regimes.
+
+:::info
+title: The short answer
+- **FBAR (FinCEN 114):** file if combined peak balance across all foreign accounts exceeded **$10,000** at any point during the year. This almost certainly includes your NRE/NRO accounts.
+- **FATCA (Form 8938):** file with your tax return if foreign assets exceed **$50,000** (single) or **$100,000** (MFJ) at year-end. Higher thresholds if you live abroad.
+- **NRE interest is tax-free in India but taxable in the US** — and the accounts are still reportable even in years they earn nothing.
+- Use our [FBAR/FATCA Checker](/tools/fbar-fatca-checker) to confirm your specific obligations.
+:::
+
+## Do NRE and NRO accounts count for FBAR?
+Yes, unconditionally. Both account types are foreign financial accounts held at foreign institutions — exactly what FBAR covers.
+
+:::compare
+left: NRE Account
+right: NRO Account
+✗ Principal is repatriable — still counts for FBAR
+✗ Interest is tax-free in India — still taxable in US and still reportable
+✓ Commonly used to park US-to-India transfers
+✓ Commonly used for India-sourced income (rent, pension, dividends)
+:::
+
+The nature of the account — repatriable or not, tax-free or not in India — does not change the US reporting obligation. The test is simple: is it a foreign financial account you own or have signature authority over? If yes, it counts toward the FBAR threshold.
+
+## The FBAR threshold: $10,000 aggregate
+The FBAR is required when the **combined maximum balance** of all foreign accounts — across every bank, every account type — exceeded **$10,000 at any single day** during the calendar year.
+
+| Scenario | File FBAR? |
+|---|---|
+| NRE: peak ₹9L (~$10,800), NRO: ₹50K | ✅ Yes — aggregate over $10,000 |
+| NRE: peak $8,000, no other accounts | ❌ No |
+| NRE: $6,000, NRO: $5,000 | ✅ Yes — combined $11,000 |
+| Account briefly had $15,000 from a property sale then emptied | ✅ Yes — peak balance counts |
+
+Convert balances to USD using the **Treasury Fiscal Data year-end exchange rate** for the reporting year (not the rate on the day of each transaction).
+
+## FATCA / Form 8938: higher bar, filed with your tax return
+Form 8938 is separate from the FBAR and is filed as part of your **Form 1040**. The thresholds are:
+
+| Status | Year-end value | OR any-time peak |
+|---|---|---|
+| Single, US resident | $50,000 | $75,000 |
+| Married filing jointly, US resident | $100,000 | $150,000 |
+
+Most new immigrants hit FBAR first and reach the Form 8938 bar only once savings grow. If you cross both thresholds, you file both — they are separate disclosures and one does not substitute for the other.
+
+## What else beyond NRE/NRO counts?
+FBAR and FATCA cast a wide net. In addition to your NRE/NRO accounts, you likely also need to count:
+
+:::warn
+- **Fixed Deposits (FDs)** — each FD at an Indian bank is a separate reportable account
+- **PPF (Public Provident Fund)** — counts for both FBAR and FATCA
+- **Mutual funds in a Demat/folio account** — count for FBAR (and trigger the separate [PFIC problem](/articles/pfic-indian-mutual-funds-trap))
+- **PF / EPF balance** if you still hold it
+- **Joint accounts with parents** where you have signature authority
+- **Cash-value insurance policies** like ULIPs or investment-linked LIC plans
+:::
+
+## Deadlines
+
+:::steps
+April 15 — standard FBAR due date (FinCEN 114, filed online via BSA E-Filing, free)
+October 15 — automatic FBAR extension, no form required
+April 15 — Form 8938 due with your 1040 (or October 15 if you extend the return)
+:::
+
+The FBAR and the Form 8938 are completely independent filings. Filing one does not extend or satisfy the other.
+
+## Penalties for not filing
+These are some of the harshest civil penalties in the tax code — and they apply even when there is no unpaid tax.
+
+| Violation | Penalty |
+|---|---|
+| Non-willful FBAR | Up to ~$16,000 per report (per *Bittner*, 2023 — not per account) |
+| Willful FBAR | Greater of ~$160,000 or 50% of account balance, per year |
+| Form 8938 failure | $10,000; up to $50,000 after IRS notice |
+
+The distinction between "willful" and "non-willful" is critical. Most Indians who simply did not know about the requirement are non-willful — but that determination belongs to the IRS, not you.
+
+## Missed prior years? The Streamlined Procedures
+If you have unfiled FBARs for prior years because you genuinely did not know, the **IRS Streamlined Filing Compliance Procedures** exist specifically for non-willful filers:
+
+:::good
+title: Streamlined Domestic Offshore Procedures (US residents)
+- Amend the last **3 years** of tax returns
+- File the last **6 years** of FBARs
+- Pay a one-time **5% miscellaneous offshore penalty** (on highest aggregate account balance)
+- No FBAR penalty on top of that
+:::
+
+:::good
+title: Streamlined Foreign Offshore Procedures (if you lived abroad)
+- Same amended returns and FBARs
+- **Zero penalty** if you qualify as living outside the US
+:::
+
+Coming forward voluntarily through Streamlined is dramatically cheaper than being audited. Do not wait — the IRS receives account information directly from Indian banks through FATCA bank agreements.
+
+## Is NRE interest taxable in the USA?
+Yes. NRE account interest is tax-exempt under Indian law, but the US taxes its residents on **worldwide income**. NRE interest must be reported on your US tax return as ordinary income. The India–US DTAA does not override this; it helps eliminate double taxation, but there is no double taxation here since India does not tax NRE interest in the first place.
+
+## Action checklist
+
+:::steps
+List every Indian account — NRE, NRO, FDs, PPF, Demat, EPF, insurance — and note your signature authority on any joint accounts.
+Pull statements and find the **highest balance** each account reached during the year.
+Convert each peak balance to USD using the Treasury year-end exchange rate.
+If the combined peak exceeds $10,000, file the FBAR via BSA E-Filing by October 15.
+If your total foreign assets at year-end exceed $50,000 (single) or $100,000 (MFJ), complete Form 8938 with your 1040.
+For missed prior years, consult a CPA familiar with Streamlined Procedures immediately.
+:::
+
+:::cta
+title: Not sure if you need to file?
+body: The FBAR/FATCA Checker walks through your accounts and tells you which forms apply.
+button: Check your FBAR/FATCA obligation
+href: /tools/fbar-fatca-checker
+:::
+
+## Frequently asked questions
+
+### Do I report the balance in rupees or dollars?
+Convert to dollars using the **Treasury Fiscal Data year-end exchange rate** for each year you are reporting. Use the same rate consistently across all accounts.
+
+### If my NRE account was empty most of the year but briefly had $12,000, do I still file?
+Yes. The FBAR threshold is the **highest balance at any point during the year**, not the year-end balance and not an average.
+
+### My parents are joint holders on an account I control. Do they need to file?
+If your parents are US residents or citizens, yes. Each person with ownership or signature authority files independently. Your Indian parents who are not US tax residents do not have a US filing obligation.
+
+### Does filing FBAR create a tax bill?
+No. The FBAR is a disclosure form only. The tax liability (if any) comes from reporting the **income earned** on those accounts on your 1040 — interest, dividends, capital gains. The FBAR itself does not generate tax.`,
+  },
+  {
+    slug: "moving-to-usa-from-india-checklist",
+    title: "Moving to USA from India: The Complete First-Month Checklist",
+    seoTitle: "Moving to USA from India: Complete Checklist for New Arrivals",
+    seoDescription:
+      "Everything you need to do in your first month after moving to the USA from India — banking, SSN, phone, housing, driving, credit, health insurance, and ITIN setup.",
+    excerpt:
+      "The first 30 days in the US are a logistics sprint — SSN, bank account, phone, credit card, driving, and health insurance all need to happen in roughly that order. Here is the sequenced checklist.",
+    topic: "new-to-usa",
+    date: "2026-06-15",
+    featured: true,
+    content: `When you land in the US from India, you have no credit history, no local bank account, no US phone plan, and no idea what order to do things in. The sequence matters — some tasks unlock others. This checklist works for H-1B, L-1, F-1, and dependent visa holders in their first 30 days.
+
+:::info
+title: The first 30 days at a glance
+- **Week 1:** SSN application, temporary SIM, open a bank account
+- **Week 2:** Permanent phone plan, get your debit card, apply for first credit card
+- **Week 3:** Driving (if applicable), health insurance enrollment, find housing
+- **Week 4:** Set up autopay, start building credit history, file any India-side obligations
+- Many steps depend on each other — get the SSN before the bank account whenever possible
+:::
+
+## Before you arrive: the India-side setup
+
+:::steps
+Set up an NRE account — transfers from the US are tax-free in India and earn decent interest. Do this before you leave.
+Carry enough cash and an international-capable card to last 2–3 weeks while your US account opens.
+Save digital and physical copies of all key documents — passport, visa, I-20/offer letter, birth certificate, marriage certificate, and educational degrees.
+Inform your Indian bank of your travel so cards are not blocked.
+:::
+
+:::tip
+- India's UPI apps (PhonePe, GPay) stop working on a US SIM — sort any pending India payments before you land
+- A few thousand dollars in USD cash is useful for the first week before your debit card arrives
+- International debit cards (HDFC Forex, Wise) beat airport currency desks on rates
+:::
+
+## Week 1: SSN, SIM, and bank
+
+### Social Security Number
+Apply for your SSN at a Social Security Administration office as soon as your visa status is active (H-1B on start date; F-1 after a few days in status). Bring:
+- Passport and visa
+- I-94 (print from i94.cbp.dhs.gov — the stamp in your passport is not sufficient)
+- Employment offer letter or I-20
+
+The SSN takes **2–4 weeks to arrive** by mail. Many banks will let you open an account without one using your passport and I-94 — do not wait.
+
+### Phone plan
+Get a **prepaid SIM** (T-Mobile, Mint, or Visible) the day you arrive — you need a local number to receive verification codes for everything else. Upgrade to a postpaid plan with a credit check once your credit starts building.
+
+### Bank account
+
+:::good
+title: Best first accounts for new arrivals (no SSN required at most)
+- **Chase Total Checking** — widely accepted, large ATM network, most employers use direct deposit here
+- **Bank of America Advantage** — similar reach, waivable monthly fee
+- **Charles Schwab High Yield Investor Checking** — no foreign transaction fee (useful for India trips)
+- **Wise or Remitly account** — excellent for transfers to India while your bank account is being set up
+:::
+
+Avoid keeping large balances in a current/checking account. Once settled, move savings to a high-yield savings account (Marcus, Ally, SoFi) earning 4–5% APY.
+
+## Week 2: Credit card and credit building
+The biggest financial mistake new arrivals make is using only a debit card for months. Every week without a credit card is a week of credit history not being built.
+
+:::steps
+Apply for a **secured credit card** immediately — the Discover it Secured or Capital One Platinum Secured need no credit history. Deposit $500 as collateral.
+If a spouse or friend has a US credit card, ask to be added as an **authorized user** — their history appears on your report.
+Put one recurring charge on the card (Netflix, phone bill) and set autopay for the full balance — this is the simplest credit-building habit.
+:::
+
+:::warn
+- Do not apply for multiple credit cards in your first month — each hard inquiry costs points
+- Do not carry a balance to "build credit" — it earns the bank interest and does nothing for your score
+- Do not use more than 10% of your credit limit on statement date (keep utilization low)
+:::
+
+## Week 3: Driving and health insurance
+
+### Driving license
+Most states require you to exchange or convert your Indian license within 30–60 days of establishing residency. The process varies by state:
+
+| State type | What you need |
+|---|---|
+| Easy conversion states | Written test only (no driving test) |
+| Standard states | Written test + driving test + vision test |
+| Strict states | Full test regardless of Indian license |
+
+Get your SSN first — most states require it (or a denial letter) before they will issue a license. Book the appointment early; DMV slots fill weeks out.
+
+### Health insurance
+If your employer provides health insurance, enroll during the **onboarding window** (usually 30–60 days from start). Missing this window means waiting until open enrollment unless you have a qualifying life event.
+
+:::compare
+left: Skip employer plan (common mistake)
+right: Enroll immediately
+✗ No coverage if an emergency happens in month one
+✗ Waiting for open enrollment means months uninsured
+✓ Employer pays 50–80% of premiums
+✓ Dependents covered from day one
+:::
+
+Check whether your plan is an HMO (must stay in network, referral required) or a PPO (can see specialists directly). For most new arrivals, a PPO gives more flexibility while you find doctors.
+
+## Week 4: Remittances, ITIN, and financial foundations
+
+### Sending money to India
+Compare remittance services before you transfer — rates vary significantly on large amounts.
+
+| Service | Best for |
+|---|---|
+| Wise | Best mid-market rate, transparent fees |
+| Remitly | Speed (Express option) |
+| ICICI Money2India | Good if recipient has ICICI account |
+| Bank wire | Worst rate — avoid for large transfers |
+
+Be aware of **TCS (Tax Collected at Source)** in India: remittances above ₹7 lakh per year attract 20% TCS, which you can reclaim in India via ITR but ties up cash. See [TCS on India remittances explained](/articles/tcs-india-remittance-tax).
+
+### ITIN (if applicable)
+If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using Form W-7 with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.
+
+### Parallel India obligations
+Moving abroad does not end your India filing obligations if you have income there:
+
+:::tip
+- NRO account interest is taxable in India — your bank deducts TDS; file India ITR to claim refunds
+- Inform your EPF/UAN portal of your NRI status
+- Mutual funds, FDs, and property income in India still require ITR filing if income exceeds the basic exemption
+- Update your KYC to NRI status at Indian banks to avoid compliance flags
+:::
+
+## Documents to get sorted in month 1
+
+| Document | Where | When |
+|---|---|---|
+| SSN card | SSA office | Week 1 — apply immediately |
+| I-94 printout | i94.cbp.dhs.gov | Day 1 |
+| State ID / Driver's license | DMV | After SSN arrives |
+| ITIN (spouse, if needed) | IRS via Form W-7 | With first tax return |
+| Health insurance card | Employer HR | After enrollment |
+| Library card | Local library | Useful for free resources |
+
+## Common first-month mistakes
+
+:::warn
+- **Ignoring FBAR** — if you carry NRE/NRO accounts above $10,000 peak, you must file FinCEN 114 for that year. See [FBAR for NRE/NRO accounts](/articles/fbar-nre-nro-accounts).
+- **Waiting too long to start credit** — six months of no credit-building is six months you cannot get back
+- **Keeping all money in a checking account** — the US has high-yield savings accounts earning 4–5% APY
+- **Using wire transfers for remittances** — third-party services beat bank rates by 2–4% on large amounts
+- **Not enrolling in health insurance on time** — the employer onboarding window closes, then you wait months
+:::
+
+:::cta
+title: Build your US credit score from zero
+body: The 12-month playbook to go from no file to 700+ — starting with a secured card in week one.
+button: Read the credit guide
+href: /articles/build-us-credit-score-from-zero
+:::
+
+## Frequently asked questions
+
+### Can I open a US bank account before I arrive?
+Some banks (Wise, Charles Schwab) allow a limited pre-arrival setup, but most require you to be physically present in the US with valid immigration documents.
+
+### Do I need an SSN to open a bank account?
+No. Most major banks accept a passport and I-94 to open a basic checking account. You can add your SSN later once it arrives.
+
+### How long does it take to get a credit score?
+Your first score usually appears after **3–6 months** of a credit account being open and reported. Starting with a secured card in week one means your score appears by month 4–5.
+
+### What is the difference between NRE and NRO accounts?
+An NRE account holds foreign-currency deposits that are fully repatriable; interest is tax-free in India. An NRO account holds India-sourced income (rent, pension, sale proceeds); interest is taxable in India at 30% TDS. See [FBAR for NRE/NRO accounts](/articles/fbar-nre-nro-accounts) for the US reporting side.
+
+### Should I keep my Indian mutual funds after moving to the USA?
+Generally no — Indian mutual funds become **PFICs** (Passive Foreign Investment Companies) under US tax law, which triggers punitive reporting and taxation. Read [the PFIC trap for Indian mutual funds](/articles/pfic-indian-mutual-funds-trap) before deciding.`,
+  },
 ];
 
 /**
