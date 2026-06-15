@@ -96,7 +96,11 @@ export default function ToolsHubPage() {
               );
               if (!items.length) return null;
               return (
-                <div key={group}>
+                <div
+                  key={group}
+                  id={group.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                  className="scroll-mt-24"
+                >
                   <h2 className="text-lg font-bold tracking-tight text-ink-900">
                     {group}
                   </h2>

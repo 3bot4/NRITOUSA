@@ -12,6 +12,9 @@ export const author = {
   byline: "Deepak Middha, CA, Series 65",
   /** Short credential used in the "Reviewed by" credibility line. */
   reviewerByline: "Deepak Middha, CA",
+  /** One-line reviewer bio shown in the article reviewer box. */
+  reviewerBio:
+    "Deepak has experience in cross-border finance, tax-aware planning, and immigrant money decisions.",
   jobTitle: "Founder & Author",
   /** Canonical bio page every byline links to. */
   url: "/about-deepak",

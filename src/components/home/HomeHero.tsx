@@ -21,7 +21,7 @@ const personas: {
     accent: "from-sky-500 to-blue-600",
   },
   {
-    title: "On H-1B, tracking your green card?",
+    title: "On H-1B and waiting for your green card?",
     description: "See your wait time, visa bulletin, and salary data",
     href: "/tools/green-card-tracker",
     icon: "id-badge",
@@ -56,17 +56,22 @@ export default function HomeHero() {
       <Container className="relative py-3.5 sm:py-4">
         <div className="max-w-2xl">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-3xl">
-            Data-driven money &amp; immigration tools for{" "}
+            Free immigration, tax, and money tools for{" "}
             <span className="bg-gradient-to-r from-brand-600 to-emerald-500 bg-clip-text text-transparent">
               Indians in the USA
             </span>
           </h1>
           <p className="mt-2 text-sm text-ink-500 sm:text-base">
-            Live USD/INR, markets, and Visa Bulletin movement — plus free tools
-            to estimate your green-card wait and true cost of sending money home.
+            Trusted by NRIs navigating passport renewal, visa bulletins, green
+            card wait times, FBAR, remittances, and life in the USA.
           </p>
           <p className="mt-1.5 text-[13px] text-ink-400">
             20+ free tools · 50+ guides · Data updated daily
+          </p>
+          <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-400">
+            Built for Indian immigrants, NRIs, H-1B workers, green card
+            applicants, students, and families navigating life between India and
+            the USA.
           </p>
         </div>
 
@@ -76,7 +81,7 @@ export default function HomeHero() {
           className="mt-6 flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 px-8 py-5 text-lg font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:text-xl"
         >
           <Icon name="calendar" className="h-6 w-6" />
-          Check your Green Card date
+          Check your Green Card wait time
         </Link>
 
         {/* Persona entry cards — 2×2 grid mirroring the hub sub-tool cards. */}

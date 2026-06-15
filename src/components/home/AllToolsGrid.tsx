@@ -21,6 +21,9 @@ const backdoorRoth = getCalculator("backdoor-roth-eligibility");
 export default function AllToolsGrid() {
   return (
     <section aria-label="Tools" className="mt-10 space-y-8">
+      <p className="text-sm font-bold uppercase tracking-wider text-emerald-600">
+        Your tools are free. Always.
+      </p>
       {HOME_GROUPS.map((group) => {
         const items = liveTools.filter((t) => t.group === group);
         if (!items.length) return null;

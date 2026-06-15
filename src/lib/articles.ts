@@ -6792,13 +6792,21 @@ Starting at a community college and transferring to a four-year university for t
   {
     slug: "real-estate-first-investment-immigrants",
     title:
-      "Why Real Estate Is the Perfect First Investment for Immigrants in America",
-    seoTitle: "Real Estate Investing for Immigrants in the USA",
+      "Real Estate Investing for Immigrants in the USA: Benefits, Risks, and What NRIs Should Know First",
+    seoTitle:
+      "Real Estate Investing for Immigrants in the USA: Benefits, Risks, Taxes & Leverage",
+    seoDescription:
+      "A practical guide to real estate investing for NRIs and immigrants in the USA. Covers leverage, depreciation, 1031 exchanges, risks, and tax implications for non-citizens.",
     excerpt:
       "Your grandfather built wealth with land. With 20% down, US tax breaks, and leverage, the same instinct is more powerful here than it was back home.",
     topic: "property",
     date: "2026-06-13",
     content: `Before stock portfolios and 401(k)s, your grandfather in India built the family's wealth on a simple philosophy: he bought land, a shop, a flat in the city — understanding instinctively that you don't need to own something fully to benefit from all of it. That same instinct turns out to be one of the most financially sophisticated strategies in the American market today; modern finance just calls it leveraged real estate. With US tax law layered on top, the numbers are even more powerful than what your family practiced back home.
+
+:::info
+title: Important disclaimer
+Real estate can lose value. This article explains general concepts and is not financial or investment advice. Vacancy risk, repair costs, interest rate changes, liquidity constraints, and visa status can all significantly affect outcomes. Consult a licensed financial advisor before investing.
+:::
 
 :::summary
 US mortgages let you control a **$400,000 property with just $80,000 down** — so you gain on the full value while risking a fraction. A well-chosen rental pays you five ways at once: cash flow, tenant-funded mortgage paydown, appreciation, **depreciation tax deductions**, and an inflation hedge. Over a decade, $80,000 down can return roughly **$290,000–$310,000**, much of it sheltered from tax. This is the wealth-building path immigrant families already know from home — now supercharged by US leverage and the tax code.

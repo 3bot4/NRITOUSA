@@ -2,23 +2,27 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
+import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
 import AllToolsGrid from "@/components/home/AllToolsGrid";
 import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
+const HOME_TITLE =
+  "NRI to USA — Free Immigration, Tax & Money Tools for Indians in the USA";
+const HOME_DESCRIPTION =
+  "Free tools and guides for Indians in the USA. Passport renewal, visa bulletin tracker, green card wait times, FBAR/FATCA checker, remittance calculator, H-1B salaries and more.";
+
 export const metadata: Metadata = {
   title: {
-    absolute: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
+    absolute: HOME_TITLE,
   },
-  description:
-    "Practical guides for NRIs and immigrants in the USA on money, housing, cars, taxes, investing, retirement, and India-USA life.",
+  description: HOME_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
-    description:
-      "Practical guides for NRIs and immigrants in the USA on money, housing, cars, taxes, investing, retirement, and India-USA life.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
 };
 
@@ -36,6 +40,7 @@ export default function HomePage() {
       <HomeHero />
 
       <Container className="pb-8 pt-6 sm:pb-10">
+        <PopularGuidesForIndians />
         <TaxComplianceSpotlight />
         <AllToolsGrid />
         <LatestUpdates />

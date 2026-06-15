@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { topics } from "@/lib/topics";
 
 export default function MobileMenu({
   open,
   onClose,
+  links,
 }: {
   open: boolean;
   onClose: () => void;
+  links: { label: string; href: string }[];
 }) {
   return (
     <div
@@ -29,97 +30,24 @@ export default function MobileMenu({
         }`}
       >
         <nav className="px-5 py-6">
-          <Link
-            href="/tools"
-            onClick={onClose}
-            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
-          >
-            <span className="text-xl">🛠️</span>
-            <span>Tools & data hub</span>
-          </Link>
-
-          <Link
-            href="/education"
-            onClick={onClose}
-            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
-          >
-            <span className="text-xl">🎓</span>
-            <span>US Education hub</span>
-          </Link>
-
-          <Link
-            href="/calculators"
-            onClick={onClose}
-            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
-          >
-            <span className="text-xl">🧮</span>
-            <span>Cross-border calculators</span>
-          </Link>
-
-          <Link
-            href="/india-tax-compliance"
-            onClick={onClose}
-            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
-          >
-            <span className="text-xl">🧾</span>
-            <span>India Tax &amp; Compliance hub</span>
-          </Link>
-
-          <Link
-            href="/contribute"
-            onClick={onClose}
-            className="mb-3 flex items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-semibold text-brand-700"
-          >
-            <span className="text-xl">✍️</span>
-            <span>Write for Us</span>
-          </Link>
-
-          <p className="mb-2 mt-2 px-1 text-xs font-semibold uppercase tracking-wider text-ink-400">
-            Browse topics
-          </p>
           <ul className="grid grid-cols-1 gap-1">
-            {topics.map((topic) => (
-              <li key={topic.slug}>
+            {links.map((link) => (
+              <li key={link.href}>
                 <Link
-                  href={`/topics/${topic.slug}`}
+                  href={link.href}
                   onClick={onClose}
-                  className="flex items-center gap-3 rounded-xl px-3 py-3 text-ink-700 transition-colors hover:bg-ink-900/[0.04]"
+                  className="block rounded-xl px-3 py-3 text-base font-semibold text-ink-800 transition-colors hover:bg-ink-900/[0.04] hover:text-brand-600"
                 >
-                  <span className="text-xl">{topic.icon}</span>
-                  <span className="font-medium">{topic.title}</span>
+                  {link.label}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="mt-6 grid grid-cols-3 gap-2 text-center text-sm font-semibold text-ink-700">
-            <Link
-              href="/resources"
-              onClick={onClose}
-              className="rounded-xl border border-ink-900/10 px-3 py-3"
-            >
-              Resources
-            </Link>
-            <Link
-              href="/about"
-              onClick={onClose}
-              className="rounded-xl border border-ink-900/10 px-3 py-3"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              onClick={onClose}
-              className="rounded-xl border border-ink-900/10 px-3 py-3"
-            >
-              Contact
-            </Link>
-          </div>
-
           <Link
             href="/topics"
             onClick={onClose}
-            className="mt-3 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white"
+            className="mt-4 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white"
           >
             Start Here
           </Link>

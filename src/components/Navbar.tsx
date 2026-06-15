@@ -7,16 +7,11 @@ import Container from "./Container";
 import MobileMenu from "./MobileMenu";
 
 export const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "India Tax & Compliance", href: "/india-tax-compliance" },
   { label: "Tools", href: "/tools" },
-  { label: "Education", href: "/education" },
-  { label: "New to USA", href: "/topics/new-to-usa" },
-  { label: "Send Money to India", href: "/send-money-to-india" },
+  { label: "Immigration", href: "/tools#visa-green-card" },
+  { label: "Tax & Money", href: "/india-tax-compliance" },
   { label: "Guides", href: "/topics" },
-  { label: "Long-Term NRI", href: "/long-term-nri-wealth" },
   { label: "Write for Us", href: "/contribute" },
-  { label: "About", href: "/about" },
 ];
 
 export default function Navbar() {
@@ -124,7 +119,7 @@ export default function Navbar() {
         </nav>
       </Container>
 
-      <MobileMenu open={open} onClose={() => setOpen(false)} />
+      <MobileMenu open={open} onClose={() => setOpen(false)} links={navLinks} />
     </header>
   );
 }

@@ -48,7 +48,7 @@ export function generateMetadata({
   const topic = getTopic(article.topic);
   return pageMetadata({
     title: article.seoTitle ?? article.title,
-    description: article.excerpt,
+    description: article.seoDescription ?? article.excerpt,
     path: articlePath(article.slug),
     type: "article",
     image: `${articlePath(article.slug)}/opengraph-image`,

@@ -19,6 +19,8 @@ export interface Article {
   title: string;
   /** SEO <title> override (falls back to `title`). Keep under ~60 chars. */
   seoTitle?: string;
+  /** SEO meta description override (falls back to `excerpt`). ~140–160 chars. */
+  seoDescription?: string;
   excerpt: string;
   topic: string; // Topic slug
   /**
