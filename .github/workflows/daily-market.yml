@@ -1,15 +1,19 @@
 name: Daily market data
 
-# Refreshes /data/market.json + /data/history every day at 09:00 America/New_York.
-# GitHub cron is UTC-only and has no DST support, so we trigger at BOTH 13:00 and
-# 14:00 UTC (the two possible UTC times for 9 AM ET across EDT/EST) and let a
-# guard step run the fetch only when it is actually 09:00 in New York. Manual
-# runs (workflow_dispatch) always proceed.
+# Refreshes /data/market.json + /data/history twice per day: 6 AM and 6 PM
+# America/New_York. GitHub cron is UTC-only (no DST), so we fire at the two
+# possible UTC offsets for each target hour and use a guard step to run only
+# when it is actually 06 or 18 in New York. Manual runs always proceed.
+#
+# 6 AM ET:   10:00 UTC (EDT/summer) or 11:00 UTC (EST/winter)
+# 6 PM ET:   22:00 UTC (EDT/summer) or 23:00 UTC (EST/winter)
 
 on:
   schedule:
-    - cron: "0 13 * * *" # 09:00 EDT (summer)
-    - cron: "0 14 * * *" # 09:00 EST (winter)
+    - cron: "0 10 * * *" # 06:00 EDT (summer)
+    - cron: "0 11 * * *" # 06:00 EST (winter)
+    - cron: "0 22 * * *" # 18:00 EDT (summer)
+    - cron: "0 23 * * *" # 18:00 EST (winter)
   workflow_dispatch: {}
 
 permissions:
@@ -23,7 +27,7 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Decide whether to run (DST-correct 9 AM ET gate)
+      - name: Decide whether to run (DST-correct 6 AM / 6 PM ET gate)
         id: guard
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -31,7 +35,12 @@ jobs:
           fi
           H=$(TZ=America/New_York date +%H)
           echo "Current New York hour: $H"
-          if [ "$H" = "09" ]; then echo "run=yes" >> "$GITHUB_OUTPUT"; else echo "run=no" >> "$GITHUB_OUTPUT"; echo "Not 9 AM ET — skipping this trigger."; fi
+          if [ "$H" = "06" ] || [ "$H" = "18" ]; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=no" >> "$GITHUB_OUTPUT"
+            echo "Not 6 AM or 6 PM ET — skipping this trigger."
+          fi
 
       - name: Checkout
         if: steps.guard.outputs.run == 'yes'
@@ -67,6 +76,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes — nothing to commit."
           else
-            git commit -m "chore(data): daily market refresh $(TZ=America/New_York date +'%Y-%m-%d')"
+            git commit -m "chore(data): market refresh $(TZ=America/New_York date +'%Y-%m-%d %H:%M ET')"
             git push
           fi

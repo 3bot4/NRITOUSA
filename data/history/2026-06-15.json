@@ -1,0 +1,55 @@
+{
+  "date": "2026-06-15",
+  "asOf": "2026-06-15T13:03:12-04:00",
+  "items": [
+    {
+      "key": "usdinr",
+      "label": "USD/INR",
+      "value": 94.72,
+      "previous": 95.12,
+      "changePct": -0.42,
+      "unit": "₹",
+      "decimals": 2,
+      "source": "ECB reference rate via Frankfurter",
+      "fetchedAt": "2026-06-15T13:03:12-04:00",
+      "stale": false
+    },
+    {
+      "key": "nifty50",
+      "label": "NIFTY 50",
+      "value": 23854,
+      "previous": 23242,
+      "changePct": 2.63,
+      "unit": "",
+      "decimals": 0,
+      "source": "Yahoo Finance EOD",
+      "fetchedAt": "2026-06-15T13:03:12-04:00",
+      "stale": false
+    },
+    {
+      "key": "sp500",
+      "label": "S&P 500",
+      "value": 7568,
+      "previous": 7406,
+      "changePct": 2.19,
+      "unit": "",
+      "decimals": 0,
+      "source": "Yahoo Finance EOD",
+      "fetchedAt": "2026-06-15T13:03:12-04:00",
+      "stale": false
+    },
+    {
+      "key": "gold",
+      "label": "Gold",
+      "value": 4337,
+      "previous": 4220,
+      "changePct": 2.77,
+      "unit": "$",
+      "decimals": 0,
+      "source": "gold-api.com spot price",
+      "fetchedAt": "2026-06-15T13:03:12-04:00",
+      "stale": false
+    }
+  ],
+  "eb2IndiaFad": "2013-09-01"
+}
