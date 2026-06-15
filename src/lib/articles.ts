@@ -6957,6 +6957,156 @@ Neither is universally "better." Real estate offers leverage, cash flow, strong 
 ### What is a 1031 exchange?
 A 1031 exchange lets you sell one investment property and reinvest the full proceeds into another "like-kind" property without paying capital gains tax at the time of sale. Investors chain these together for decades to grow a portfolio tax-deferred, and a step-up in basis at death can eliminate the deferred gain for heirs.`,
   },
+  {
+    slug: "indian-passport-renewal-usa",
+    title: "Indian Passport Renewal in the USA: Step-by-Step Guide (2026)",
+    seoTitle: "Indian Passport Renewal in the USA (2026)",
+    excerpt:
+      "The exact VFS Global process to renew your Indian passport from the US — documents, fees, photo specs, and the mistakes that get applications rejected.",
+    topic: "new-to-usa",
+    date: "2026-06-14",
+    content: `Renewing an Indian passport from the US is a paperwork exercise, not a hard one — but a single wrong photo or missing photocopy at the VFS counter can cost you weeks. This is the whole process, in the order you actually do it.
+
+:::summary
+Indian citizens on any valid US status (H1B, L1, F1/OPT, H4, Green Card) renew through **VFS Global** on behalf of the Indian Consulate. You apply and pay on the **Passport Seva portal**, book a **VFS appointment**, then show up with originals + photocopies. Normal processing runs **6–12 weeks**, Tatkal **3–5 weeks**. Most renewals need **no police verification**. Start 3–4 months before expiry or travel.
+:::
+
+## Who can renew in the USA
+Any Indian citizen with valid US immigration status can renew here — the visa stamp can be expired as long as the underlying status (H1B, etc.) is current.
+
+:::info
+title: You should renew if any of these is true
+- Passport is **expired or expiring within 12 months**
+- Fewer than **2 blank pages** remain
+- It's **damaged, lost, or stolen**
+- Your **name or personal details changed** (e.g. after marriage)
+:::
+
+> OCI/PIO cardholders (US citizens of Indian origin) follow a different process — this guide is for Indian passport holders.
+
+## The VFS Global process, step by step
+The consulates outsource passport services to VFS Global. You do the application and payment yourself online first, then VFS only handles document intake and biometrics.
+
+:::steps
+Create an account on [passportindia.gov.in](https://passportindia.gov.in) and choose "Reissue of Passport" — not "Fresh Passport."
+Fill the form accurately (name, DOB, Indian address, emergency contacts) and note your Application Reference Number (ARN).
+Pay the fee online by card or net banking and save the payment receipt.
+Book a VFS appointment at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) — slots fill 3–6 weeks out, so book early.
+Attend on the day with all originals + photocopies; VFS verifies documents and captures biometrics.
+Track status on the Passport Seva portal with your ARN; the new passport returns by speed post.
+:::
+
+## Documents required
+Bring every document as **original plus a self-attested photocopy** — missing copies are the #1 reason people get turned away at the counter.
+
+| Document | Notes |
+| --- | --- |
+| Printed application form | With ARN number |
+| Current Indian passport | Original + copy of first & last 2 pages |
+| Proof of US status | I-797 / Green Card / F1 visa / EAD |
+| Proof of US address | Utility bill, bank statement, or lease (last 3 months) |
+| Proof of Indian address | Aadhaar, voter ID, or similar |
+| 2 passport photos | Indian specs (see below) |
+| Fee receipt + appointment letter | Printed |
+
+Add to that list by situation: **marriage name change** → marriage certificate + spouse's passport; **lost/stolen** → US police report + notarized affidavit of loss; **F1/OPT** → I-20 + EAD; **H4/L2** → principal's I-797 + marriage certificate. Keep digital and physical copies of everything — our guide to [documents to keep safe in the USA](/articles/documents-to-keep-safe-usa) covers how.
+
+## Fees
+Paid in USD on the Passport Seva portal at application time. VFS adds a service charge of roughly $15–25 per application.
+
+| Service | Normal | Tatkal |
+| --- | --- | --- |
+| 36-page (10 yr) | ~$98 | ~$176 |
+| 60-page (10 yr) | ~$111 | ~$190 |
+| Minor under 15 (5 yr) | ~$45 | ~$101 |
+| Lost/stolen | ~$162 | N/A |
+
+> Fees change — always confirm current rates on [passportindia.gov.in](https://passportindia.gov.in) before paying.
+
+## Photo requirements
+Indian passport photos are **not** the same as US ones, and the wrong format is one of the most common rejections.
+
+:::good
+- **2" x 2"** (51mm x 51mm), high-resolution color print
+- **Plain white** background — no cream or off-white
+- Face fills **70–80%** of the frame, neutral expression, both eyes open
+- Taken within the **last 6 months**, no shadows
+:::
+
+:::bad
+- **No glasses** — even prescription
+- **No head coverings** except religious
+- Don't use CVS/Walgreens "US passport" photos — get them at an Indian grocery/photo shop and bring the spec sheet
+:::
+
+## Processing time
+Plan for the long end of these ranges, especially in peak seasons (Nov–Feb, Jun–Aug).
+
+| Service | Estimated time |
+| --- | --- |
+| Normal renewal | 6–12 weeks |
+| Tatkal renewal | 3–5 weeks |
+| Lost passport | 8–16 weeks |
+| Minor (first-time) | 8–14 weeks |
+
+## Police verification
+This is the part NRIs worry about most — and usually needn't.
+
+:::info
+title: When verification is and isn't needed
+- **Not needed** for a straightforward renewal where your Indian address is unchanged and you have no pending cases
+- **Required** for first-time/fresh passports, a changed Indian address, lost/stolen cases, or any criminal record
+:::
+
+If it is triggered, the consulate routes it to your local police station in India — so keep your permanent Indian address consistent across applications and ask family there to cooperate if contacted.
+
+## Tatkal vs Normal
+Tatkal ("immediate") is faster but costs ~$70–80 more and needs an extra self-declaration (Annexure F). Neither option guarantees a specific date.
+
+:::compare
+left: Choose Tatkal if
+right: Choose Normal if
+✓ You have confirmed travel within ~8–10 weeks
+✓ There's a family emergency in India
+✓ Your passport expires in under 6 months
+✗ Travel is more than 3 months away
+✗ You want to save money
+✗ You have no urgent deadline
+:::
+
+## Minor passport renewal
+Children's passports are valid 5 years (under 15), and the child must attend VFS for biometrics. Both parents need to attend **or** the absent parent provides a notarized consent (Annexure D). Bring the child's current passport, birth certificate, both parents' passports and US status proof, and 2 photos of the child. If your child was born in the US, also consider applying for **OCI** for lifetime visa-free entry to India.
+
+## Common mistakes to avoid
+:::warn
+- **Wrong photo format** — US-spec photos with non-white backgrounds get rejected
+- **Missing photocopies** — VFS needs originals *and* self-attested copies of each document
+- **Picking "Fresh Passport"** instead of "Reissue" — causes delays and re-filing
+- **Applying with lapsed status** — your underlying status (not just the visa stamp) must be valid; carry I-94/I-797
+- **Booking too late** — slots fill weeks out and processing can take 12 weeks; start 3–4 months early
+- **Bad mailing address** — passports return by signature-required speed post
+:::
+
+## Frequently asked questions
+
+### Can I renew if I have a Green Card?
+Yes. Green Card holders renew at VFS just like visa holders — bring the Green Card as proof of US status.
+
+### Can I renew an already-expired passport?
+Yes, there's no deadline to renew an expired Indian passport. You just can't travel internationally on it until the new one arrives.
+
+### What happens to the US visa in my old passport?
+It stays valid. Ask VFS to return your old passport stamped "CANCELLED" and travel with both books together — old (valid US visa) and new.
+
+### Do I have to surrender my old passport?
+Yes, it's collected at the counter. Request the cancelled-and-returned option to preserve old visa stamps.
+
+### Is a VFS appointment mandatory?
+Yes — walk-ins aren't accepted. Book online in advance.
+
+## The bottom line
+Apply and pay on Passport Seva, book VFS early, and bring originals plus photocopies of everything with Indian-spec photos. Get those three right and the rest is just waiting — so start 3–4 months ahead of any expiry or trip and you'll never be caught without a valid passport.`,
+  },
 ];
 
 /**
