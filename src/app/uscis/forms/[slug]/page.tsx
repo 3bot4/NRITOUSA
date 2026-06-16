@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -147,6 +148,13 @@ export default function UscisFormChildPage({
           <Container>
             <div className="mx-auto">
               <ArticleBody content={page.content} />
+
+              {/* fee table for i-907 page */}
+              {page.slug === "i-907-premium-processing" && (
+                <div className="mx-auto mt-6 max-w-[720px]">
+                  <PremiumProcessingFeeTable />
+                </div>
+              )}
 
               {/* Tool CTA */}
               <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-blue-100 bg-blue-50/50 p-5 text-sm">

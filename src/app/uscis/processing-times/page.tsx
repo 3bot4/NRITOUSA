@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import UscisProcessingDelayChecker from "@/components/tools/UscisProcessingDelayChecker";
+import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -444,11 +445,7 @@ export default function ProcessingTimesPage() {
               </table>
             </div>
 
-            <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs leading-relaxed text-amber-900">
-              <strong className="font-semibold">Caution:</strong> Premium processing availability, fees, and eligible form types change. Always verify current rules at{" "}
-              <a href="https://www.uscis.gov/forms/how-do-i-use-premium-processing" target="_blank" rel="noopener noreferrer" className="underline font-semibold">uscis.gov/forms/how-do-i-use-premium-processing</a>{" "}
-              before advising or deciding. For employer-filed petitions, the employer decides whether to pay for premium processing.
-            </div>
+            <PremiumProcessingFeeTable />
           </div>
         </Container>
       </section>

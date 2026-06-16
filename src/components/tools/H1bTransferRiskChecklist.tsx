@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { premiumProcessing } from "@/lib/premiumProcessing";
 
 /* ─────────────────────── types ─────────────────────────────────────────── */
 
@@ -146,8 +147,7 @@ function assess(
         "New employer filing timeline — premium processing is strongly advisable",
         "Whether H-4 or other change of status is an option",
       ],
-      premiumNote:
-        "Premium processing is strongly recommended in this situation. USCIS acts within 15 business days — regular processing (months) may be too slow given the grace period timeline.",
+      premiumNote: `Premium processing is strongly recommended in this situation. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). USCIS acts within 15 business days — regular processing (months) may be too slow given the grace period timeline. Always verify the current fee on the USCIS Form I-907 page.`,
       showAttorneyBadge: true,
       gracePeriodCaution:
         "The 60-day H1B grace period allows you to stay in the US and seek a new employer, but you cannot work without a valid work authorization. The period runs from your last day of H1B employment.",
@@ -175,8 +175,7 @@ function assess(
         "Whether premium processing will be used",
         "Whether H-4 change of status is available if new employer timeline is uncertain",
       ],
-      premiumNote:
-        "Premium processing is strongly advisable when you have a job offer and are in the grace period. It reduces the wait from months to 15 business days.",
+      premiumNote: `Premium processing is strongly advisable when you have a job offer and are in the grace period. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). It reduces the wait from months to 15 business days. Verify on the USCIS Form I-907 page before filing.`,
       showAttorneyBadge: true,
       gracePeriodCaution:
         "You have up to 60 days (or until your I-94 expires, whichever is shorter) from your last day of H1B employment to file a new petition or change status. You cannot work during this period without valid work authorization.",
@@ -201,8 +200,7 @@ function assess(
         "Confirm whether premium processing was included",
         "Do not begin work until receipt notice is in hand and attorney confirms portability applies",
       ],
-      premiumNote:
-        "If premium processing was not included, ask your attorney about upgrading now — the receipt notice arrives faster and reduces your uncertainty window.",
+      premiumNote: `If premium processing was not included, ask your attorney about upgrading now — the receipt notice arrives faster and reduces your uncertainty window. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Verify on the USCIS Form I-907 page before filing.`,
       showAttorneyBadge: true,
       gracePeriodCaution:
         "Continue tracking the 60-day grace period from your employment end date. The petition filing date matters — ensure it was filed within the grace period while your I-94 was still valid.",
@@ -265,7 +263,7 @@ function assess(
       ],
       premiumNote:
         premium === "no"
-          ? "Consider asking your employer about premium processing if your current I-94 expiry is within 6 months. Regular processing can take 3-6 months."
+          ? `Consider asking your employer about premium processing if your current I-94 expiry is within 6 months. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Regular processing can take 3–6 months. Verify on the USCIS Form I-907 page.`
           : undefined,
       showAttorneyBadge: false,
     };
@@ -292,8 +290,7 @@ function assess(
       "Whether your visa stamp is valid for any planned travel",
       "Official processing times at uscis.gov/check-processing-times",
     ],
-    premiumNote:
-      "If your current H1B status or I-94 expiry is within 6 months, ask your employer about premium processing for the pending or planned petition.",
+    premiumNote: `If your current H1B status or I-94 expiry is within 6 months, ask your employer about premium processing for the pending or planned petition. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Verify on the USCIS Form I-907 page before filing.`,
     showAttorneyBadge: true,
   };
 }

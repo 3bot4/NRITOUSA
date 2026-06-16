@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { premiumProcessing } from "@/lib/premiumProcessing";
 
 /* ─────────────────────── types ─────────────────────────────────────────── */
 
@@ -143,7 +144,7 @@ function assess(
             "If past the window, have your attorney contact USCIS or file a service request.",
             "Premium processing guarantees USCIS action — not approval. An RFE response period does not count against the 15-day clock.",
           ],
-          premiumNote: `Premium processing for ${form} = 15 business days for USCIS to take action after accepting the premium upgrade. Action may be approval, RFE, or denial.`,
+          premiumNote: `Premium processing for ${form}: current fee for many eligible categories is ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Guarantees USCIS action within 15 business days — not approval. Always verify the current fee on the USCIS Form I-907 page before filing.`,
           showCaseStatusTool: true,
           showAttorneyBadge: employer === "yes",
         };
@@ -157,8 +158,7 @@ function assess(
           "Count 15 business days from USCIS's premium acceptance date.",
           "Have your attorney's contact information ready in case an RFE arrives.",
         ],
-        premiumNote:
-          "Premium processing guarantees USCIS action within 15 business days — not approval. An RFE restarts the premium clock.",
+        premiumNote: `Premium processing for ${form}: current fee for many eligible categories is ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Guarantees USCIS action within 15 business days — not approval. An RFE restarts the premium clock. Always verify the current fee on the USCIS Form I-907 page.`,
         showCaseStatusTool: true,
         showAttorneyBadge: employer === "yes",
       };
@@ -219,8 +219,7 @@ function assess(
           "For H1B transfers — confirm your employment authorization start date with your employer.",
           "Do not change employers or take other immigration actions without attorney advice.",
         ],
-        premiumNote:
-          "Premium processing is available for most I-129 H1B petitions. It guarantees USCIS action within 15 business days — not approval.",
+        premiumNote: `Premium processing is available for most I-129 H1B petitions. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Guarantees USCIS action within 15 business days — not approval. Verify the current fee on the USCIS Form I-907 page before filing.`,
         showCaseStatusTool: true,
         showAttorneyBadge: true,
       };
@@ -235,8 +234,7 @@ function assess(
           "Check uscis.gov/check-processing-times periodically and compare to your receipt date.",
           "Keep your employer's HR and attorney informed if your current work authorization has an upcoming expiration.",
         ],
-        premiumNote:
-          "Premium processing is available for most I-129 H1B petitions if your timeline is urgent.",
+        premiumNote: `Premium processing is available for most I-129 H1B petitions if your timeline is urgent. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Always verify on the USCIS Form I-907 page before filing.`,
         showCaseStatusTool: true,
         showAttorneyBadge: employer === "yes",
       };
@@ -257,8 +255,7 @@ function assess(
           "Ask about premium processing if establishing the priority date urgently matters.",
           "Even with I-140 pending, your H1B can typically be extended beyond 6 years if an I-140 is approvable.",
         ],
-        premiumNote:
-          "Premium processing is available for I-140. It guarantees USCIS action within 15 business days — useful if you need to establish your priority date quickly.",
+        premiumNote: `Premium processing is available for I-140. Current fee: ${premiumProcessing.items.find(i => i.form === "I-140")?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Guarantees USCIS action within 15 business days — useful if you need to establish your priority date quickly. Verify the current fee on the USCIS Form I-907 page.`,
         showCaseStatusTool: true,
         showAttorneyBadge: true,
       };
@@ -273,8 +270,7 @@ function assess(
         "Begin monitoring the visa bulletin at travel.state.gov — your priority date is already set.",
         "Discuss H1B extension strategy with your employer's attorney now, regardless of I-140 status.",
       ],
-      premiumNote:
-        "Premium processing is available for I-140 if establishing the priority date quickly is a priority.",
+      premiumNote: `Premium processing is available for I-140 if establishing your priority date quickly matters. Current fee: ${premiumProcessing.items.find(i => i.form === "I-140")?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Verify on the USCIS Form I-907 page before filing.`,
       showCaseStatusTool: true,
       showAttorneyBadge: employer === "yes",
     };
@@ -294,6 +290,7 @@ function assess(
         "Keep all supporting documents current (medical exam, affidavit of support, employment letter).",
         "Discuss biometrics scheduling and interview preparation with your attorney.",
       ],
+      premiumNote: "Premium processing is not available for I-485 Adjustment of Status.",
       showCaseStatusTool: true,
       showAttorneyBadge: true,
     };

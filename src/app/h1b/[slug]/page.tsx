@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -142,6 +143,13 @@ export default function H1bChildPage({
           <Container>
             <div className="mx-auto">
               <ArticleBody content={page.content} />
+
+              {/* fee table for premium-processing slug */}
+              {page.slug === "premium-processing" && (
+                <div className="mx-auto mt-6 max-w-[720px]">
+                  <PremiumProcessingFeeTable />
+                </div>
+              )}
 
               {/* tool CTA */}
               <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-orange-100 bg-orange-50/50 p-5 text-sm">

@@ -5,6 +5,7 @@ import ToolHero from "@/components/tools/ToolHero";
 import ToolFaq from "@/components/tools/ToolFaq";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import DataStamp from "@/components/tools/DataStamp";
+import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import processingData from "../../../../data/processing-times.json";
 import { getTool } from "@/lib/tools";
 import {
@@ -167,6 +168,9 @@ export default function ProcessingTimesPage() {
 
       <section className="bg-white py-12 sm:py-16">
         <Container>
+          <div className="mx-auto mb-8 max-w-3xl">
+            <PremiumProcessingFeeTable />
+          </div>
           <ToolFaq items={faq} />
           <div className="mx-auto mt-10 max-w-3xl">
             <ToolDisclaimer />

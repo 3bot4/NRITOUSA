@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import H1bTransferRiskChecklist from "@/components/tools/H1bTransferRiskChecklist";
+import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -384,7 +385,6 @@ export default function H1bHubPage() {
                 <tbody className="divide-y divide-ink-900/5">
                   {[
                     ["What it is", "Optional paid service for expedited USCIS action on I-129 and I-140"],
-                    ["Fee", "Verify current fee at uscis.gov/i-907 — subject to change"],
                     ["USCIS guarantee", "Action within 15 business days of premium acceptance"],
                     ["What 'action' means", "Approval, RFE, Notice of Intent to Deny, or denial"],
                     ["Does it guarantee approval?", "No — it guarantees speed, not outcome"],
@@ -399,6 +399,7 @@ export default function H1bHubPage() {
                 </tbody>
               </table>
             </div>
+            <PremiumProcessingFeeTable />
           </div>
         </Container>
       </section>
