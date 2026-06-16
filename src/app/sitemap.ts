@@ -8,6 +8,7 @@ import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { uscisChildPages } from "@/lib/uscisCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
+import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -97,6 +98,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/green-card`,
       lastModified: new Date("2026-06-16"),
       changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/visa-bulletin`,
+      lastModified: new Date("2026-06-16"),
+      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
@@ -205,5 +212,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...uscisChildRoutes,
     ...h1bChildRoutes,
     ...greenCardChildRoutes,
+    ...visaBulletinChildPages.map((p) => ({
+      url: `${site.url}/visa-bulletin/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }
