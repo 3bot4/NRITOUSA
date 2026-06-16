@@ -110,6 +110,21 @@ export const tools: ToolMeta[] = [
     tags: [],
   },
   {
+    slug: "uscis-notice-decoder",
+    title: "USCIS Notice Decoder for Indians",
+    label: "USCIS Notice Decoder",
+    group: "Visa & Green Card",
+    description:
+      "Received a USCIS notice and not sure what it means? Select the notice type, related form, and your situation to get a plain-English explanation, what to check, deadline warnings, and whether to contact your attorney. No personal information collected.",
+    icon: "📬",
+    accent: "from-violet-600 to-indigo-600",
+    seoTitle: "USCIS Notice Decoder | I-797, RFE, Biometrics, Approval Notice Explained",
+    seoDescription:
+      "Decode any USCIS notice: I-797 receipt, biometrics appointment, RFE, approval notice, transfer notice. Plain-English guide for Indian H1B, I-485, EAD, N-400 applicants.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "uscis-case-status-meaning",
     title: "USCIS Case Status Meaning Tool for Indians",
     label: "USCIS Status Decoder",

@@ -20,11 +20,19 @@ import {
   getUscisChildPage,
   USCIS_CASE_STATUS_HUB,
 } from "@/lib/uscisCluster";
+import {
+  myuscisChildSlugs,
+  getMyuscisChildPage,
+  MYUSCIS_HUB,
+} from "@/lib/myuscisCluster";
 
 /* ── static params ──────────────────────────────────────────────────────── */
 
 export function generateStaticParams() {
-  return uscisChildSlugs.map((slug) => ({ slug }));
+  return [
+    ...uscisChildSlugs.map((slug) => ({ slug })),
+    ...myuscisChildSlugs.map((slug) => ({ slug })),
+  ];
 }
 
 /* ── metadata ───────────────────────────────────────────────────────────── */
@@ -34,7 +42,7 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
-  const page = getUscisChildPage(params.slug);
+  const page = getUscisChildPage(params.slug) ?? getMyuscisChildPage(params.slug);
   if (!page) return {};
   return pageMetadata({
     title: page.seoTitle ?? page.title,
@@ -55,17 +63,29 @@ export default function UscisChildPage({
 }: {
   params: { slug: string };
 }) {
-  const page = getUscisChildPage(params.slug);
+  const uscisPage = getUscisChildPage(params.slug);
+  const myuscisPage = !uscisPage ? getMyuscisChildPage(params.slug) : undefined;
+  const page = uscisPage ?? myuscisPage;
+
   if (!page) notFound();
+
+  const isMyuscisCluster = !!myuscisPage;
 
   const faqs = extractFaq(page.content);
 
-  const crumbs = [
-    { name: "Home", url: "/" },
-    { name: "USCIS Guide", url: "/uscis" },
-    { name: "Case Status", url: USCIS_CASE_STATUS_HUB },
-    { name: page.navLabel, url: `/uscis/${page.slug}` },
-  ];
+  const crumbs = isMyuscisCluster
+    ? [
+        { name: "Home", url: "/" },
+        { name: "USCIS Guide", url: "/uscis" },
+        { name: "myUSCIS Account", url: MYUSCIS_HUB },
+        { name: page.navLabel, url: `/uscis/${page.slug}` },
+      ]
+    : [
+        { name: "Home", url: "/" },
+        { name: "USCIS Guide", url: "/uscis" },
+        { name: "Case Status", url: USCIS_CASE_STATUS_HUB },
+        { name: page.navLabel, url: `/uscis/${page.slug}` },
+      ];
 
   const articleJsonLd = {
     "@type": "Article",
@@ -91,8 +111,15 @@ export default function UscisChildPage({
     ...(faqs.length ? [faqJsonLd(faqs)] : [])
   );
 
-  // Sibling pages for navigation (excluding current)
-  const siblings = uscisChildPages.filter((p) => p.slug !== page.slug);
+  // Sibling pages: show pages from same cluster only
+  const siblings = isMyuscisCluster
+    ? ([] as typeof uscisChildPages) // myuscis siblings shown on hub
+    : uscisChildPages.filter((p) => p.slug !== page.slug);
+
+  const backHref = isMyuscisCluster ? MYUSCIS_HUB : USCIS_CASE_STATUS_HUB;
+  const backLabel = isMyuscisCluster
+    ? "← Back to myUSCIS Account guide"
+    : "← Back to USCIS Case Status guide";
 
   return (
     <>
@@ -156,17 +183,20 @@ export default function UscisChildPage({
               {/* Tool CTA */}
               <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-blue-100 bg-blue-50/50 p-5 text-sm">
                 <p className="font-semibold text-blue-900">
-                  Not sure what your status means for your specific form?
+                  {isMyuscisCluster
+                    ? "Not sure what a USCIS notice means?"
+                    : "Not sure what your status means for your specific form?"}
                 </p>
                 <p className="mt-1 text-blue-800/80">
-                  Use the USCIS Case Status Meaning Tool — select your form type and current
-                  status for plain-English guidance.
+                  {isMyuscisCluster
+                    ? "Use the USCIS Notice Decoder — select your notice type and form for plain-English guidance."
+                    : "Use the USCIS Case Status Meaning Tool — select your form type and current status for plain-English guidance."}
                 </p>
                 <Link
-                  href="/tools/uscis-case-status-meaning"
+                  href={isMyuscisCluster ? "/tools/uscis-notice-decoder" : "/tools/uscis-case-status-meaning"}
                   className="mt-3 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Try the tool →
+                  {isMyuscisCluster ? "Try the Notice Decoder →" : "Try the tool →"}
                 </Link>
               </div>
 
@@ -184,15 +214,16 @@ export default function UscisChildPage({
                   USCIS website
                 </a>{" "}
                 and consult a licensed immigration attorney for your situation.
+                NRItoUSA is not affiliated with USCIS or any US government agency.
               </div>
 
               {/* Back link */}
               <div className="mx-auto mt-6 max-w-[720px] text-sm">
                 <Link
-                  href={USCIS_CASE_STATUS_HUB}
+                  href={backHref}
                   className="font-medium text-brand-600 hover:text-brand-700"
                 >
-                  ← Back to USCIS Case Status guide
+                  {backLabel}
                 </Link>
               </div>
             </div>
@@ -200,7 +231,7 @@ export default function UscisChildPage({
         </div>
       </article>
 
-      {/* ── Sibling navigation ──────────────────────────────────────────────── */}
+      {/* ── Sibling navigation (case status cluster only) ────────────────────── */}
       {siblings.length > 0 && (
         <section className="bg-white py-12 sm:py-14">
           <Container>
