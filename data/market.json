@@ -6,49 +6,49 @@
     {
       "key": "usdinr",
       "label": "USD/INR",
-      "value": 94.56,
-      "previous": 94.72,
-      "changePct": -0.17,
+      "value": 94.605,
+      "previous": 94.70,
+      "changePct": -0.10,
       "unit": "₹",
       "decimals": 2,
-      "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-06-16T17:48:13-04:00",
+      "source": "Yahoo Finance",
+      "fetchedAt": "2026-06-16T16:54:00-04:00",
       "stale": false
     },
     {
       "key": "nifty50",
       "label": "NIFTY 50",
       "value": 23989,
-      "previous": 23215,
-      "changePct": 3.33,
+      "previous": 23854,
+      "changePct": 0.57,
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-16T17:48:13-04:00",
+      "fetchedAt": "2026-06-16T16:54:00-04:00",
       "stale": false
     },
     {
       "key": "sp500",
       "label": "S&P 500",
-      "value": 7554,
-      "previous": 7431,
-      "changePct": 1.66,
+      "value": 7511,
+      "previous": 7554,
+      "changePct": -0.57,
       "unit": "",
       "decimals": 0,
-      "source": "FRED (S&P 500 index)",
-      "fetchedAt": "2026-06-16T17:48:13-04:00",
+      "source": "Yahoo Finance",
+      "fetchedAt": "2026-06-16T16:54:00-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4333,
-      "previous": 4333,
-      "changePct": 0,
+      "value": 4353,
+      "previous": 4352,
+      "changePct": 0.03,
       "unit": "$",
       "decimals": 0,
-      "source": "gold-api.com spot price",
-      "fetchedAt": "2026-06-16T17:48:13-04:00",
+      "source": "Yahoo Finance",
+      "fetchedAt": "2026-06-16T16:54:00-04:00",
       "stale": false
     }
   ],
@@ -151,7 +151,7 @@
     },
     {
       "date": "2026-06-16",
-      "value": 94.56
+      "value": 94.605
     }
   ]
 }
