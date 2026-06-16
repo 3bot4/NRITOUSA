@@ -10,6 +10,7 @@ export const navLinks = [
   { label: "Tools", href: "/tools" },
   { label: "USCIS Hub", href: "/uscis" },
   { label: "Immigration", href: "/tools#visa-green-card" },
+  { label: "Immigration Tracker", href: "/immigration-tracker" },
   { label: "Tax & Money", href: "/india-tax-compliance" },
   { label: "Guides", href: "/topics" },
   { label: "Write for Us", href: "/contribute" },
