@@ -26,6 +26,18 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     ],
   },
   {
+    title: "Immigration",
+    links: [
+      { label: "USCIS Guide for Indians", href: "/uscis" },
+      { label: "USCIS Case Status", href: "/uscis/case-status" },
+      { label: "USCIS Processing Times", href: "/uscis/processing-times" },
+      { label: "H1B Guide", href: "/h1b" },
+      { label: "Green Card Process", href: "/green-card" },
+      { label: "Visa Bulletin", href: "/visa-bulletin" },
+      { label: "Indian Passport Renewal", href: "/indian-passport-renewal-usa" },
+    ],
+  },
+  {
     title: "Tools & Calculators",
     links: [
       { label: "All Tools", href: "/tools" },

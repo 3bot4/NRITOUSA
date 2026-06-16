@@ -35,6 +35,81 @@ export interface ToolMeta {
 
 export const tools: ToolMeta[] = [
   {
+    slug: "green-card-stage-finder",
+    title: "Green Card Stage Finder for Indians",
+    label: "Green Card Stage Finder",
+    group: "Visa & Green Card",
+    description:
+      "Where are you in the green card process? Answer questions about your visa, EB category, PERM, I-140, priority date, and I-485 filing to get your current stage, what happens next, the main bottleneck, and questions to ask your employer's immigration attorney. No personal information collected.",
+    icon: "🟢",
+    accent: "from-green-700 to-emerald-600",
+    seoTitle: "Green Card Stage Finder for Indians | PERM, I-140, Priority Date, I-485",
+    seoDescription:
+      "Find your green card stage: PERM pending, I-140 approved, waiting for priority date, or I-485 filed. Educational tool for Indian H1B workers — no personal info needed.",
+    status: "live",
+    tags: [],
+  },
+  {
+    slug: "h1b-transfer-risk-checklist",
+    title: "H1B Transfer Risk Checklist for Indians",
+    label: "H1B Transfer Checklist",
+    group: "Visa & Green Card",
+    description:
+      "Laid off, changing jobs, or navigating an H1B transfer? Answer a few questions about your employment status, petition filing, I-94 validity, and travel plans to get an educational risk assessment and a list of documents to collect.",
+    icon: "📋",
+    accent: "from-orange-600 to-amber-500",
+    seoTitle: "H1B Transfer Risk Checklist | Layoff, AC21, Receipt, Premium Processing",
+    seoDescription:
+      "H1B transfer situation checker for Indians — assess layoff grace period, AC21 portability, receipt notice timing, premium processing, and travel risk. No personal info required.",
+    status: "live",
+    tags: [],
+  },
+  {
+    slug: "uscis-processing-delay-checker",
+    title: "USCIS Processing Delay Checker for Indians",
+    label: "Processing Delay Checker",
+    group: "Visa & Green Card",
+    description:
+      "Is your H1B, I-140, I-485, or EAD case delayed? Select your form type, receipt date, and current status to get an educational assessment of whether your case is within normal range — and what to do next. No personal information collected.",
+    icon: "⏱️",
+    accent: "from-blue-600 to-cyan-600",
+    seoTitle: "USCIS Processing Delay Checker | H1B, I-140, I-485, EAD for Indians",
+    seoDescription:
+      "Is my USCIS case delayed? Free tool for Indian applicants — select form type and status for an educational delay assessment. No receipt number needed.",
+    status: "live",
+    tags: [],
+  },
+  {
+    slug: "uscis-receipt-number-decoder",
+    title: "USCIS Receipt Number Decoder for Indians",
+    label: "Receipt Prefix Decoder",
+    group: "Visa & Green Card",
+    description:
+      "What does your USCIS receipt number prefix mean? Select IOE, LIN, SRC, EAC, WAC, or MSC to learn which service center has your case, what forms it handles, and what the prefix does NOT tell you. No full receipt number required.",
+    icon: "🔍",
+    accent: "from-indigo-600 to-violet-600",
+    seoTitle: "USCIS Receipt Number Prefix Decoder | IOE LIN SRC EAC WAC MSC Explained",
+    seoDescription:
+      "What does IOE, LIN, SRC, EAC, WAC, or MSC mean on your USCIS receipt number? Free decoder tool for Indian applicants — no personal info needed.",
+    status: "live",
+    tags: [],
+  },
+  {
+    slug: "uscis-case-status-meaning",
+    title: "USCIS Case Status Meaning Tool for Indians",
+    label: "USCIS Status Decoder",
+    group: "Visa & Green Card",
+    description:
+      "Select your form type and current USCIS status to get a plain-English explanation, what usually happens next, your action steps, and when to contact your attorney. No receipt number or personal details needed.",
+    icon: "🛂",
+    accent: "from-blue-600 to-indigo-600",
+    seoTitle: "USCIS Case Status Meaning Tool for Indians | H1B, I-140, I-485, EAD",
+    seoDescription:
+      "What does my USCIS status mean? Free tool for Indians — select your form and status to get plain-English meaning, next steps, and action guidance. No personal info required.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "h4-ead-navigator",
     title: "H-4 Spouse Work & Business Navigator",
     label: "H-4 EAD Navigator",
