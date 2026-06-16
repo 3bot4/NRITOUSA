@@ -95,7 +95,7 @@ right_items:
 title: H-1B I-129 specifics
 - Cap-subject H-1B: filed only after lottery selection, between April 1–June 30 for an October 1 start
 - Cap-exempt: universities, nonprofits, government research — can be filed any time
-- Premium processing (I-907): $2,805 fee for 15 business day USCIS action
+- Premium processing (I-907): verify current fee at uscis.gov/i-907 for 15 business day USCIS action
 - Validity: up to 3 years initially, extendable in 3-year increments
 - **If I-140 is approved and priority date is not current**: H-1B extensions beyond 6 years are available under INA 214(n) / AC21 one-year increments
 :::
@@ -130,7 +130,7 @@ Q: How do I know if my I-129 was approved?
 A: Your employer receives the I-797A approval notice. Ask your employer or attorney for a copy — you need it for travel, visa stamping, and future H-1B extensions.
 
 Q: What is the I-129 filing fee?
-A: Base fee is $730, plus a $600 Asylum Program Fee for employers with 26+ employees, and optional $2,805 premium processing. Some fees vary by employer size.
+A: Base fee is $730, plus a $600 Asylum Program Fee for employers with 26+ employees, and optional premium processing (verify current fee at uscis.gov/i-907). Some fees vary by employer size. Always verify current fees at uscis.gov before filing.
 
 Q: My I-129 got an RFE — is that a denial?
 A: No. An RFE (Request for Evidence) means USCIS needs more documentation. Your employer's attorney must respond within the deadline (usually 87 days). Many RFE cases are ultimately approved.
@@ -592,7 +592,7 @@ A: Yes, if you are seeking the same extension or change of status and you entere
     title: "Form I-907 Explained for Indians: Premium Processing for USCIS Petitions",
     seoTitle: "Form I-907 Premium Processing Explained | H1B, I-140, I-765 for Indians",
     metaDescription:
-      "What is Form I-907 premium processing? Pay $2,805 for a guaranteed 15 business day USCIS action on eligible petitions including H-1B I-129, I-140, and I-765. Guide for Indians.",
+      "What is Form I-907 premium processing? Get expedited 15 business day USCIS action on eligible petitions including H-1B I-129, I-140, and I-765. Verify current fee at uscis.gov/i-907. Guide for Indians.",
     navLabel: "I-907 Premium Processing",
     excerpt:
       "Form I-907 lets you pay for expedited 15 business day USCIS action on eligible petitions. It guarantees speed — not approval. An RFE or denial within 15 days still satisfies USCIS's commitment.",
@@ -615,8 +615,8 @@ Check uscis.gov for current eligibility — USCIS periodically expands or limits
 ## Current fee
 
 :::info
-title: I-907 premium processing fee (2026)
-- **$2,805** for most eligible petitions
+title: I-907 premium processing fee
+- Fee varies by form type and can change — always verify the **current amount at uscis.gov/i-907** before filing
 - Fee is in addition to the underlying petition fee (I-129, I-140, etc.)
 - Fee must be paid by separate check/money order or separate online payment
 - If USCIS fails to act within 15 business days, the fee must be refunded
@@ -646,7 +646,7 @@ right_items:
 - I-485 (adjustment of status) — not eligible for premium processing
 - I-131 (Advance Parole) — not eligible
 - Already outside the normal processing time without urgent need
-- Budget constraints — $2,805 is significant; regular processing may still be fast enough
+- Budget constraints — premium processing fees are significant; regular processing may still be fast enough
 :::
 
 ## FAQ

@@ -4,6 +4,7 @@ import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
 import AllToolsGrid from "@/components/home/AllToolsGrid";
+import UscisToolsSpotlight from "@/components/home/UscisToolsSpotlight";
 import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -41,6 +42,7 @@ export default function HomePage() {
 
       <Container className="pb-8 pt-6 sm:pb-10">
         <PopularGuidesForIndians />
+        <UscisToolsSpotlight />
         <TaxComplianceSpotlight />
         <AllToolsGrid />
         <LatestUpdates />

@@ -53,7 +53,7 @@ const faq: FaqItem[] = [
   {
     question: "Is premium processing (I-907) worth it?",
     answer:
-      "It depends on timing and urgency. At $2,805, premium processing is worth it when: your H-1B is expiring and a new approval is time-sensitive, an employer needs an approved I-140 before your 6-year H-1B cap expires, or your offer letter timing depends on an approved petition. It guarantees 15 business day USCIS action — not approval. It is not available for I-485, I-131, or I-539.",
+      "It depends on timing and urgency. Premium processing may be available for some form types (like I-129 and I-140) when your H-1B is expiring, an employer needs an approved I-140 before your 6-year cap, or offer timing is critical. It guarantees 15 business day USCIS action — not approval. It is not available for I-485, I-131, or I-539. Fees and eligible categories can change — always verify the current fee and eligibility on the official USCIS Form I-907 page before filing.",
   },
 ];
 

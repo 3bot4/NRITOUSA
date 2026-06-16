@@ -8,7 +8,7 @@ import MobileMenu from "./MobileMenu";
 
 export const navLinks = [
   { label: "Tools", href: "/tools" },
-  { label: "USCIS Guide", href: "/uscis" },
+  { label: "USCIS Hub", href: "/uscis" },
   { label: "Immigration", href: "/tools#visa-green-card" },
   { label: "Tax & Money", href: "/india-tax-compliance" },
   { label: "Guides", href: "/topics" },

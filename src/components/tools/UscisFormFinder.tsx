@@ -164,7 +164,7 @@ function buildResult(
       return {
         form: "I-907",
         name: "Request for Premium Processing Service",
-        what: "Form I-907 is filed alongside an eligible petition (I-129, I-140, I-765, and others) to pay for USCIS to take action within 15 business days. Premium processing costs $2,805 (as of 2026) on top of the petition fee. It guarantees speed — not approval. An RFE within 15 days is still valid USCIS compliance.",
+        what: "Form I-907 is filed alongside an eligible petition (I-129, I-140, I-765, and others) to pay for USCIS to take action within 15 business days. It guarantees speed — not approval. An RFE within 15 days is still valid USCIS compliance. Fees and eligible form types can change — always verify the current fee on the official USCIS Form I-907 premium processing page before filing.",
         whoFiles: "Employer or self, depending on which petition it accompanies",
         slug: "i-907-premium-processing",
         warning: "Premium processing is not available for I-485, I-131, or I-539. Note that 15 'business days' is about 3 calendar weeks — and the clock may restart after an RFE response.",

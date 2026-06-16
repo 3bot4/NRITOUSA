@@ -252,7 +252,7 @@ const faqs: FaqItem[] = [
   {
     question: "How long does an H-1B extension take in 2026?",
     answer:
-      "A regular H-1B extension or transfer (Form I-129) typically takes 2–4 months at USCIS. Premium processing guarantees USCIS action within 15 business days for an additional $2,805 fee — action means approval, denial, or RFE, not necessarily final approval. See full current timelines at /tools/processing-times.",
+      "A regular H-1B extension or transfer (Form I-129) typically takes 2–4 months at USCIS. Premium processing may be available and guarantees USCIS action within 15 business days — action means approval, denial, or RFE, not necessarily final approval. Fees can change; verify the current amount on the official USCIS Form I-907 page. See full current timelines at /tools/processing-times.",
   },
   {
     question: "What can an H-4 EAD spouse do for work?",

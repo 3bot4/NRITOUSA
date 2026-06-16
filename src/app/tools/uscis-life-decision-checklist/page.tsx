@@ -33,7 +33,7 @@ const faq: FaqItem[] = [
   {
     question: "Do I need Advance Parole to visit India?",
     answer:
-      "If your I-485 is pending, yes — you need a physical Advance Parole card (I-131) in hand before departure. Leaving without it is treated as I-485 abandonment. The H-1B visa stamp exception exists but is narrow and carries risk. File I-131 with your I-485 and wait for the physical card before booking travel.",
+      "For many I-485 applicants, leaving the United States without Advance Parole can risk abandonment of the I-485. Some H/L visa holders may have exceptions if they maintain valid status and re-enter properly, but travel rules are fact-specific. File I-131 with your I-485 and wait for the physical card before booking travel. Always confirm with your immigration attorney before traveling while I-485 is pending.",
   },
   {
     question: "Can I buy a house on H-1B?",

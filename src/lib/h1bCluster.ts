@@ -206,7 +206,7 @@ title: 240-day rule cautions
 
 ## Premium processing for H1B extensions
 
-Premium processing (Form I-907, ~$2,805 fee) guarantees USCIS action within 15 business days of accepting the premium upgrade. This is commonly used for extensions where the current status expiry is approaching and there is timing pressure.
+Premium processing (Form I-907) guarantees USCIS action within 15 business days of accepting the premium upgrade. This is commonly used for extensions where the current status expiry is approaching and there is timing pressure. Fees can change — always verify the current amount at uscis.gov/i-907 before filing.
 
 :::bad
 title: Premium processing does not guarantee approval
@@ -411,7 +411,7 @@ Premium processing guarantees speed, not success. USCIS may still issue an RFE o
 :::info
 title: Premium processing quick reference
 - **Covered forms:** I-129 (H1B, L1, TN, O1 and others), I-140 (employment green card) — verify current eligible forms at uscis.gov
-- **Current fee:** Approximately $2,805 per petition (subject to change — verify at uscis.gov before filing)
+- **Current fee:** Verify at uscis.gov/i-907 before filing (subject to change)
 - **USCIS guarantee:** Action within 15 business days of accepting the premium upgrade
 - **What "action" means:** Approval, Request for Evidence (RFE), Notice of Intent to Deny (NOID), or denial
 - **RFE impact on clock:** If USCIS issues an RFE, the 15-business-day clock restarts after your attorney submits the response

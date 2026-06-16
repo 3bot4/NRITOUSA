@@ -44,7 +44,7 @@ const faq: FaqItem[] = [
   {
     question: "What is premium processing and does it guarantee approval?",
     answer:
-      "Premium processing is an optional service, currently costing $2,805 (as of 2025), that allows petitioners to pay USCIS for expedited action on certain forms, primarily I-129 and I-140. USCIS guarantees action — meaning an approval, denial, Request for Evidence (RFE), or Notice of Intent to Deny — within 15 business days of accepting the premium upgrade. Premium processing does NOT guarantee approval and does not shorten interview or visa bulletin waits.",
+      "Premium processing is an optional service that allows petitioners to pay USCIS for expedited action on certain forms, primarily I-129 and I-140. USCIS guarantees action — meaning an approval, denial, Request for Evidence (RFE), or Notice of Intent to Deny — within 15 business days of accepting the premium upgrade. Premium processing does NOT guarantee approval and does not shorten interview or visa bulletin waits. Fees and eligible form types can change; always verify the current fee and eligibility on the official USCIS Form I-907 premium processing page before filing.",
   },
   {
     question: "My H1B transfer has been pending for 4 months — is that normal?",
@@ -284,7 +284,7 @@ export default function ProcessingTimesPage() {
                 range: "3–6 months (regular) · 15 business days (premium)",
                 notes: [
                   "An H1B transfer (change of employer) requires a new I-129 petition from the new employer.",
-                  "Under portability (AC21), you can start working for the new employer on H1B as soon as the new petition is filed (not approved), as long as your previous H1B was valid.",
+                  "In many H-1B portability situations, a worker may be able to start with the new employer after USCIS receives the petition, but this depends on specific facts, valid status, timing, and receipt. Confirm with the employer's immigration attorney before starting work.",
                   "Premium processing is available and commonly used for transfers where start date is time-sensitive.",
                   "USCIS may request additional evidence (RFE) on specialty occupation or employer-employee relationship.",
                 ],
@@ -427,7 +427,7 @@ export default function ProcessingTimesPage() {
                 <tbody className="divide-y divide-ink-900/5">
                   {[
                     ["Forms available", "All USCIS forms", "Select forms: I-129, I-140, and some others — verify at uscis.gov"],
-                    ["Cost", "Filing fee only", "Additional ~$2,805 fee (subject to change)"],
+                    ["Cost", "Filing fee only", "Additional fee — verify current amount at uscis.gov/i-907 (subject to change)"],
                     ["USCIS action guarantee", "No guarantee", "Action within 15 business days of premium acceptance"],
                     ["What 'action' means", "—", "Approval, denial, RFE, or Notice of Intent to Deny"],
                     ["Does it guarantee approval?", "—", "No — premium processing guarantees speed, not outcome"],

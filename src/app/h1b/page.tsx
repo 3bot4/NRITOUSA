@@ -241,7 +241,7 @@ export default function H1bHubPage() {
                     ["Annual cap", "65,000 cap-subject + 20,000 advanced degree exemption"],
                     ["Cap-exempt", "Universities, nonprofits, government research — no lottery needed"],
                     ["Transfer", "Cap-exempt — no lottery for existing H1B holders changing employers"],
-                    ["Premium processing", "I-907, ~$2,805, USCIS action in 15 business days"],
+                    ["Premium processing", "I-907 — verify current fee at uscis.gov/i-907, USCIS action in 15 business days"],
                   ].map(([item, detail]) => (
                     <tr key={item}>
                       <td className="px-4 py-2.5 text-xs font-semibold text-ink-700">{item}</td>
@@ -384,7 +384,7 @@ export default function H1bHubPage() {
                 <tbody className="divide-y divide-ink-900/5">
                   {[
                     ["What it is", "Optional paid service for expedited USCIS action on I-129 and I-140"],
-                    ["Fee", "~$2,805 (verify at uscis.gov — subject to change)"],
+                    ["Fee", "Verify current fee at uscis.gov/i-907 — subject to change"],
                     ["USCIS guarantee", "Action within 15 business days of premium acceptance"],
                     ["What 'action' means", "Approval, RFE, Notice of Intent to Deny, or denial"],
                     ["Does it guarantee approval?", "No — it guarantees speed, not outcome"],

@@ -31,7 +31,7 @@ const faq: FaqItem[] = [
   {
     question: "What does the 3-letter prefix on my receipt number mean?",
     answer:
-      "The first 3 letters identify the USCIS service center that received your application: IOE = filed online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center. The prefix does NOT tell you how long your case will take or whether it will be approved.",
+      "The first three letters often indicate the initial USCIS system, service center, or intake location associated with the receipt number — IOE = filed online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center. However, the prefix does not always prove where your case is currently being processed, because USCIS may transfer or route cases internally. The prefix does NOT tell you how long your case will take or whether it will be approved.",
   },
   {
     question: "Where do I find my receipt number?",
@@ -174,7 +174,7 @@ export default function ReceiptNumberPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 flex-none text-indigo-400">▸</span>
-                The <strong>first 3 letters</strong> identify which USCIS service center received your application (IOE = online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center).
+                The <strong>first three letters</strong> often indicate the initial USCIS system or intake location (IOE = online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center) — but USCIS may transfer cases internally, so the prefix does not always reflect where your case is currently being processed.
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 flex-none text-indigo-400">▸</span>
@@ -182,7 +182,7 @@ export default function ReceiptNumberPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 flex-none text-indigo-400">▸</span>
-                <strong className="text-rose-700">Never post your full receipt number publicly</strong> — it is linked to your immigration record.
+                <strong className="text-rose-700">Never post your full receipt number, A-number, passport number, date of birth, address, or employer details publicly</strong> — these are sensitive immigration identifiers linked to your record. Only enter your full receipt number on the official USCIS portal at egov.uscis.gov.
               </li>
             </ul>
           </div>

@@ -53,7 +53,7 @@ const faq: FaqItem[] = [
   {
     question: "Can I travel while my I-485 is pending?",
     answer:
-      "Only with an approved Advance Parole (Form I-131). Traveling without it while I-485 is pending is typically treated as abandonment of your adjustment application. Never travel internationally while I-485 is pending without consulting your attorney and without physically holding an approved Advance Parole document.",
+      "For many I-485 applicants, leaving the United States without Advance Parole (Form I-131) can risk abandonment of the adjustment application. Some H/L visa holders may have exceptions if they maintain valid status and re-enter properly, but travel rules are fact-specific. Never travel internationally while I-485 is pending without consulting your immigration attorney and without physically holding an approved Advance Parole document.",
   },
   {
     question: "My case was denied — what are my options?",

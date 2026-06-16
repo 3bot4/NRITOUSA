@@ -1,0 +1,22 @@
+type,source_page,anchor_text,url,status,detail
+broken-external,ALL PAGES (Footer),Twitter,https://twitter.com/nritousa,404,Account/profile does not exist (404 to direct requests) (appears in footer of all 106 pages)
+broken-external,ALL PAGES (Footer),YouTube,https://youtube.com/@nritousa,301->404,Channel does not exist (404 confirmed with browser UA) (appears in footer of all 105 pages)
+broken-external,/contact,LinkedIn,https://linkedin.com/company/nritousa,301->404,Company page does not exist (404 confirmed with browser UA)
+warning-external,ALL PAGES (Footer),Instagram,https://instagram.com/nritousa,301->200,"Returns JS shell with no profile metadata; existence unverifiable, likely does not exist (appears in footer of all 105 pages)"
+warning-external,/articles/ssn-financial-next-steps,AnnualCreditReport.com,https://www.annualcreditreport.com/,403,Blocks automated clients; verify manually in a browser (likely fine for users)
+warning-external,/privacy-policy,Ads Settings,https://www.google.com/settings/ads,8 redirect hops -> myaccount.google.com/not-supported,Legacy URL; lands on 'not supported' page. Use https://adssettings.google.com
+mislink,/,"New to USA — 'Your first-week checklist: SSN, bank account…' (Featured topics card)",/topics/finance,200 (wrong destination),should be: /topics/new-to-usa | fix in src/components/home/FeaturedTopics.tsx:11
+mislink,/,"Getting Started — 'First 30 Days in the USA: Banking, Phone, Credit Card, Apartment' (Popular guides card)",/topics/finance,200 (wrong destination),should be: /articles/first-30-days-in-usa | fix in src/components/home/PopularGuides.tsx:13
+mislink,/,Insurance (Finance hub chip),/topics/cars,200 (wrong destination),should be: /topics/insurance | fix in src/components/home/FinanceHub.tsx:13
+mislink,/,HSA (Finance hub chip),/topics/finance,200 (wrong destination),should be: /articles/hsa-vs-fsa-explained or /topics/insurance (HSA article lives under Insurance) | fix in src/components/home/FinanceHub.tsx:11
+mislink,/,Community Q&A card 'Is it better to rent for 2 years before buying? — 34 replies',/topics/community,200 (wrong destination),should be: no forum exists; remove fake reply counts or link to relevant article/topic (/topics/housing) | fix in src/components/home/CommunityPreview.tsx
+mislink,/,Community Q&A card 'Best credit card for new immigrants? — 58 replies',/topics/community,200 (wrong destination),should be: no forum exists; /topics/credit or remove | fix in src/components/home/CommunityPreview.tsx
+mislink,/,Community Q&A card 'Should I invest in India after moving to USA? — 41 replies',/topics/community,200 (wrong destination),should be: no forum exists; /topics/investing or remove | fix in src/components/home/CommunityPreview.tsx
+mislink,/,Community Q&A card 'How much emergency fund should an immigrant family keep? — 27 replies',/topics/community,200 (wrong destination),should be: no forum exists; /articles/emergency-fund-for-families-usa or remove | fix in src/components/home/CommunityPreview.tsx
+mislink,/,Community Q&A card 'Should I buy a used car or lease a new car? — 49 replies',/topics/community,200 (wrong destination),should be: no forum exists; /articles/buy-vs-lease-car-no-credit or remove | fix in src/components/home/CommunityPreview.tsx
+mislink,/,Story card 'My First Year in America',/topics/stories,200 (wrong destination),should be: story does not exist as an article; write it or link an existing story | fix in src/components/home/StoriesPreview.tsx:7-12
+mislink,/,Story card 'Mistakes I Made Buying My First Car',/topics/stories,200 (wrong destination),should be: story does not exist as an article | fix in src/components/home/StoriesPreview.tsx:15-20
+mislink,/,Story card 'What I Wish I Knew Before Renting',/topics/stories,200 (wrong destination),should be: story does not exist as an article | fix in src/components/home/StoriesPreview.tsx:23-28
+mislink,/,Story card 'Learning About 401k Too Late',/topics/stories,200 (wrong destination),should be: story does not exist as an article | fix in src/components/home/StoriesPreview.tsx:31-36
+config,"/contact, /about, Footer",hello@nritousa.com,mailto:hello@nritousa.com,NO MX RECORD,nritousa.com has no MX records — email to hello@nritousa.com is undeliverable. Set up email (e.g. Google Workspace/Zoho/Cloudflare Email Routing).
+redirect-bug,(not linked internally),-,https://www.nritousa.com/privacy,308 (no Location header),Returns HTTP 308 with Next.js error-page body and NO Location header — browsers cannot follow it. Should 308 -> /privacy-policy.

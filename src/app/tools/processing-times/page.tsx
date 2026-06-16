@@ -29,7 +29,7 @@ const faq: FaqItem[] = [
   {
     question: "How long does an H-1B extension or transfer take in 2026?",
     answer:
-      "A regular I-129 H-1B extension or transfer typically takes 2–4 months, while premium processing guarantees USCIS action within 15 business days for an extra $2,805. You can usually start working for a new employer as soon as the transfer petition is received, and extensions get an automatic 240-day work authorization cushion.",
+      "A regular I-129 H-1B extension or transfer typically takes 2–4 months. Premium processing may be available and speeds up USCIS action to 15 business days — but does not guarantee approval. Fees and eligibility can change; always verify the current amount on the official USCIS Form I-907 page. For H-1B transfers, whether you can start working before the petition is approved depends on your specific facts, timing, and valid status — confirm with your employer's immigration attorney before starting work. Extensions get an automatic 240-day work authorization cushion.",
   },
   {
     question: "How long does an OCI card take from the USA?",

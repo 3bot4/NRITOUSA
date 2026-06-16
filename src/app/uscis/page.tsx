@@ -83,12 +83,12 @@ const faqs = [
   {
     question: "What is a USCIS receipt number?",
     answer:
-      "A receipt number (also called a case number) is a 13-character identifier on your Notice of Action (I-797). The first 3 letters identify the USCIS service center or lockbox that received your case. You use this number to check status on the USCIS website or myUSCIS. See /uscis/receipt-number for a full explanation.",
+      "A receipt number (also called a case number) is a 13-character identifier on your Notice of Action (I-797). The first three letters often indicate the initial USCIS intake location — but USCIS may transfer cases internally, so the prefix does not always reflect where your case is currently being processed. Use your receipt number only on the official USCIS portal at egov.uscis.gov — do not share it publicly. See /uscis/receipt-number for a full explanation.",
   },
   {
     question: "What do IOE, LIN, SRC, EAC, WAC, MSC mean?",
     answer:
-      "These are USCIS service center and filing location codes in your receipt number. LIN = Nebraska Service Center, SRC = Texas Service Center, EAC = Vermont Service Center, WAC = California Service Center, IOE = USCIS ELIS (electronic filing system), MSC = National Benefits Center. Your case is processed by whichever center received your filing.",
+      "These are USCIS system or intake location codes in your receipt number: LIN = Nebraska Service Center, SRC = Texas Service Center, EAC = Vermont Service Center, WAC = California Service Center, IOE = USCIS online filing system, MSC = National Benefits Center. However, USCIS may transfer or re-route cases internally, so the prefix does not always prove where your case is currently being processed. See /tools/uscis-receipt-number-decoder for a plain-English breakdown of what each prefix may indicate.",
   },
   {
     question: "How do USCIS processing times work?",

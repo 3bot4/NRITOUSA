@@ -55,7 +55,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is premium processing and is it worth it?",
     answer:
-      "Premium processing is an optional $2,805 fee paid via Form I-907 that guarantees USCIS will take action (approve, deny, or issue an RFE) within 15 business days on eligible petitions like I-129 and I-140. It is worth it when timing is critical — H-1B extension about to expire, offer letter dependent on approval, or I-140 needed before the 6-year H-1B cap. It does not guarantee approval.",
+      "Premium processing is an optional service paid via Form I-907 that guarantees USCIS will take action (approve, deny, or issue an RFE) within 15 business days on eligible petitions like I-129 and I-140. It is worth it when timing is critical — H-1B extension about to expire, offer letter dependent on approval, or I-140 needed before the 6-year H-1B cap. It does not guarantee approval. Fees and eligible form types can change — always verify the current fee on the official USCIS Form I-907 premium processing page before filing.",
   },
   {
     question: "My H-4 spouse needs to extend her status — what form is that?",

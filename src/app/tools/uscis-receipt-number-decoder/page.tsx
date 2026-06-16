@@ -28,7 +28,7 @@ const faq: FaqItem[] = [
   {
     question: "What does the prefix on my USCIS receipt number mean?",
     answer:
-      "The first 3 letters of your receipt number identify the USCIS service center that received your application: IOE = filed online via myUSCIS, LIN = Nebraska Service Center, SRC = Texas Service Center, EAC = Vermont Service Center, WAC = California Service Center, MSC/NBC = National Benefits Center. The prefix does NOT tell you how long your case will take, whether it will be approved, or where you are in the queue.",
+      "The first three letters often indicate the initial USCIS system, service center, or intake location: IOE = filed online via myUSCIS, LIN = Nebraska Service Center, SRC = Texas Service Center, EAC = Vermont Service Center, WAC = California Service Center, MSC/NBC = National Benefits Center. However, USCIS may transfer or route cases internally, so the prefix does not always prove where your case is currently being processed. The prefix does NOT tell you how long your case will take, whether it will be approved, or where you are in the queue.",
   },
   {
     question: "Do I need to enter my full receipt number to use this tool?",
