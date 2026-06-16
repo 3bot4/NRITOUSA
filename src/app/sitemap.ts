@@ -6,6 +6,8 @@ import { tools } from "@/lib/tools";
 import { eduCalcs } from "@/lib/education";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { uscisChildPages } from "@/lib/uscisCluster";
+import { myuscisChildPages } from "@/lib/myuscisCluster";
+import { formsChildPages } from "@/lib/uscisFormsCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
@@ -74,6 +76,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/uscis/case-status`,
       lastModified: new Date("2026-06-16"),
       changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/uscis/myuscis-account`,
+      lastModified: new Date("2026-06-16"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${site.url}/uscis/forms`,
+      lastModified: new Date("2026-06-16"),
+      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
@@ -214,6 +228,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...greenCardChildRoutes,
     ...visaBulletinChildPages.map((p) => ({
       url: `${site.url}/visa-bulletin/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...myuscisChildPages.map((p) => ({
+      url: `${site.url}/uscis/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...formsChildPages.map((p) => ({
+      url: `${site.url}/uscis/forms/${p.slug}`,
       lastModified: new Date(p.updated ?? p.date),
       changeFrequency: "monthly" as const,
       priority: 0.8,

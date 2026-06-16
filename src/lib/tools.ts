@@ -110,6 +110,21 @@ export const tools: ToolMeta[] = [
     tags: [],
   },
   {
+    slug: "uscis-form-finder",
+    title: "Which USCIS Form Is This? Form Finder for Indians",
+    label: "USCIS Form Finder",
+    group: "Visa & Green Card",
+    description:
+      "Not sure which USCIS form applies to your situation? Select your immigration scenario, current status, and who is filing to instantly identify the right form — I-129, I-140, I-485, I-765, I-131, I-539, AR-11, N-400, and more. Plain-English explanation included. No personal information collected.",
+    icon: "📋",
+    accent: "from-blue-600 to-indigo-600",
+    seoTitle: "Which USCIS Form Do I Need? Form Finder for Indians | I-129, I-140, I-485",
+    seoDescription:
+      "Find the right USCIS form for your situation: H-1B, green card, EAD, Advance Parole, family petition, citizenship. Plain-English guide for Indian applicants. No personal info needed.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "uscis-notice-decoder",
     title: "USCIS Notice Decoder for Indians",
     label: "USCIS Notice Decoder",
