@@ -7,9 +7,10 @@ import {
 } from "@/lib/market";
 
 /**
- * Top-of-page market ticker: exactly five items (USD/INR, NIFTY 50, S&P 500,
- * Gold, and our EB-2 India differentiator). Reads purely from /data/market.json
- * via lib/market — no client-side network calls. Scrolls horizontally on mobile.
+ * Continuously scrolling market ticker. Items are rendered twice so the loop
+ * is seamless — when the first set exits left, the duplicate fills from right.
+ * The CSS `ticker-track` animation and `ticker-wrap` hover-pause are defined
+ * in globals.css. Pauses on hover so users can click links.
  */
 
 const dirText: Record<TickerItem["direction"], string> = {
@@ -58,33 +59,47 @@ function Cell({ item }: { item: TickerItem }) {
   );
 }
 
+function Divider() {
+  return (
+    <span aria-hidden className="mx-1 h-4 w-px shrink-0 bg-ink-900/10" />
+  );
+}
+
 export default function Ticker() {
   const items = tickerItems();
+
+  const cells = items.map((item, i) => (
+    <span key={item.key} className="flex shrink-0 items-center">
+      {i > 0 && <Divider />}
+      <Cell item={item} />
+    </span>
+  ));
 
   return (
     <section
       aria-label="Markets and visa bulletin snapshot"
       className="border-b border-ink-900/10 bg-white"
     >
-      {/* Strip: horizontal scroll on mobile, full row on desktop */}
-      <div className="mx-auto w-full max-w-6xl px-2 sm:px-4">
-        <div className="flex items-center gap-1 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-2">
-          {items.map((item, i) => (
-            <div key={item.key} className="flex shrink-0 items-center">
-              {i > 0 && (
-                <span
-                  aria-hidden
-                  className="mx-1 hidden h-4 w-px bg-ink-900/10 sm:block"
-                />
-              )}
-              <Cell item={item} />
-            </div>
-          ))}
+      {/* Scrolling strip */}
+      <div className="ticker-wrap overflow-hidden">
+        {/* ticker-track renders items twice; animation shifts by exactly -50% so
+            the second copy picks up where the first left off — seamless loop. */}
+        <div className="ticker-track flex items-center">
+          {/* first copy */}
+          <span className="flex items-center" aria-hidden={false}>
+            {cells}
+            <Divider />
+          </span>
+          {/* duplicate — hidden from assistive tech to avoid double-reading */}
+          <span className="flex items-center" aria-hidden>
+            {cells}
+            <Divider />
+          </span>
         </div>
       </div>
 
       {/* Attribution */}
-      <div className="mx-auto w-full max-w-6xl px-4 pb-1.5">
+      <div className="px-4 pb-1.5">
         <p className="text-[11px] leading-tight text-ink-400">
           Source: {marketSources.join(", ")}, EB-2 from U.S. State Dept Visa
           Bulletin · as of {marketAsOfLabel}
