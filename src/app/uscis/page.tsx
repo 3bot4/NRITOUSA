@@ -11,9 +11,9 @@ const UPDATED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "USCIS Guide for Indians: Case Status, Processing Times, H1B & Green Card",
+    title: "USCIS Guide for Indians: Case Status, Receipt Numbers, H1B & Green Card Tools",
     description:
-      "Simple USCIS guide for Indians in the USA. Understand case status, receipt numbers, processing times, H1B, green card, visa bulletin, myUSCIS, EAD, I-485, I-140 and more.",
+      "USCIS guide for Indians in the USA. Decode case status, receipt number prefixes, processing times, H1B, EB-2/EB-3 green card, I-485, EAD, and visa bulletin.",
     path: PAGE_PATH,
     type: "article",
     openGraph: {
@@ -124,6 +124,21 @@ const faqs = [
     question: "What should I do if USCIS sends an RFE?",
     answer:
       "An RFE (Request for Evidence) is not a denial — it means USCIS needs additional documentation or clarification. You must respond by the deadline stated in the notice (usually 87 days). Work with your immigration attorney immediately to prepare a complete response. Submitting a strong, timely response is critical; a missed deadline typically results in denial.",
+  },
+  {
+    question: "How long is the EB-2 India green card wait time?",
+    answer:
+      "The EB-2 India Final Action Date is currently in the early 2010s, meaning applicants who filed PERM in 2012–2013 are only now becoming eligible for green card approval. New EB-2 India applicants face wait times measured in decades under current demand. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
+  },
+  {
+    question: "Can I file I-485 while my priority date is not yet current?",
+    answer:
+      "Only if USCIS has authorized the Dates for Filing (Table B) chart for that month AND your priority date qualifies under Table B. USCIS announces this each month — check uscis.gov/visabulletininfo. Filing under Table B gives you EAD and Advance Parole but your green card will not be approved until the Final Action Date is also current.",
+  },
+  {
+    question: "How long does H-4 EAD renewal take and what happens if there is a gap?",
+    answer:
+      "H-4 EAD renewal typically takes 2–6 months through USCIS. Premium processing is not available for H-4 EAD. If your EAD expires before the renewal is approved, you cannot legally work until the new card arrives. Filing at least 6 months before expiration is strongly recommended. Use the H-4 EAD Navigator at /tools/h4-ead-navigator for a renewal gap assessment.",
   },
 ];
 
@@ -413,17 +428,27 @@ export default function UscisHubPage() {
 
               {/* ── Tools strip ───────────────────────────────────── */}
               <section className="rounded-2xl border border-ink-900/5 bg-ink-50 p-6">
-                <h2 className="text-base font-semibold text-ink-900 mb-4">
-                  USCIS tools for Indians
-                </h2>
-                <ul className="space-y-2.5 text-sm">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+                  <h2 className="text-base font-semibold text-ink-900">
+                    USCIS tools for Indians
+                  </h2>
+                  <Link href="/tools/visa-green-card" className="text-xs font-semibold text-brand-600 hover:text-brand-700">
+                    See all visa &amp; green card tools →
+                  </Link>
+                </div>
+                <ul className="grid gap-y-2.5 gap-x-6 text-sm sm:grid-cols-2">
                   {[
                     { label: "USCIS Case Status Meaning", href: "/tools/uscis-case-status-meaning" },
-                    { label: "Green Card Stage Finder", href: "/tools/green-card-tracker" },
+                    { label: "USCIS Processing Delay Checker", href: "/tools/uscis-processing-delay-checker" },
+                    { label: "Receipt Number Prefix Decoder", href: "/tools/uscis-receipt-number-decoder" },
+                    { label: "Green Card Stage Finder", href: "/tools/green-card-stage-finder" },
+                    { label: "Green Card Wait Tracker", href: "/tools/green-card-tracker" },
                     { label: "Priority Date Checker", href: "/tools/priority-date-checker" },
-                    { label: "H1B Salaries", href: "/tools/h1b-salaries" },
-                    { label: "Processing Times", href: "/tools/processing-times" },
-                    { label: "H4 EAD Navigator", href: "/tools/h4-ead-navigator" },
+                    { label: "H-1B Lottery Timeline & Odds", href: "/tools/h1b-lottery-timeline" },
+                    { label: "H-1B Transfer Risk Checklist", href: "/tools/h1b-transfer-risk-checklist" },
+                    { label: "H1B Salaries Explorer", href: "/tools/h1b-salaries" },
+                    { label: "Processing Times Table", href: "/tools/processing-times" },
+                    { label: "H-4 EAD Navigator", href: "/tools/h4-ead-navigator" },
                     { label: "Citizenship Checklist", href: "/tools/citizenship-checklist" },
                   ].map((t) => (
                     <li key={t.href}>
@@ -436,6 +461,28 @@ export default function UscisHubPage() {
                     </li>
                   ))}
                 </ul>
+              </section>
+
+              {/* ── Related guides ────────────────────────────────── */}
+              <section>
+                <h2 className="text-base font-semibold text-ink-900 mb-3">
+                  Related USCIS guides
+                </h2>
+                <div className="grid gap-2 sm:grid-cols-2 text-sm">
+                  {[
+                    { label: "USCIS Case Status Explained", href: "/uscis/case-status" },
+                    { label: "USCIS Processing Times Guide", href: "/uscis/processing-times" },
+                    { label: "H-1B Guide for Indians", href: "/h1b" },
+                    { label: "Green Card Process for Indians", href: "/green-card" },
+                    { label: "Visa Bulletin Explained", href: "/visa-bulletin" },
+                    { label: "Visa & Green Card Tools Hub", href: "/tools/visa-green-card" },
+                  ].map((l) => (
+                    <Link key={l.href} href={l.href}
+                      className="rounded-xl border border-ink-900/5 bg-white px-4 py-3 font-medium text-brand-600 hover:border-brand-300 hover:text-brand-700 transition">
+                      {l.label} →
+                    </Link>
+                  ))}
+                </div>
               </section>
 
               {/* ── Disclaimer footer ──────────────────────────────── */}

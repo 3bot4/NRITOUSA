@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolHero from "@/components/tools/ToolHero";
@@ -230,12 +231,35 @@ export default function GreenCardTrackerPage() {
         </Container>
       </section>
 
-      {/* FAQ + disclaimer */}
+      {/* FAQ + disclaimer + internal links */}
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
           <div className="mx-auto mt-10 max-w-3xl">
             <ToolDisclaimer />
+          </div>
+
+          {/* Internal links */}
+          <div className="mx-auto mt-8 max-w-3xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-400">Related guides and tools</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                { href: "/visa-bulletin", label: "Visa Bulletin Explained", desc: "Final Action Dates, Dates for Filing, and retrogression" },
+                { href: "/green-card", label: "Green Card Process for Indians", desc: "PERM, I-140, priority date, I-485 step by step" },
+                { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your priority date to the current bulletin" },
+                { href: "/visa-bulletin/eb2-india", label: "EB-2 India Guide", desc: "EB-2 Final Action Date history and strategy" },
+                { href: "/visa-bulletin/eb3-india", label: "EB-3 India Guide", desc: "EB-3 cutoffs and EB-2/EB-3 downgrade strategy" },
+                { href: "/uscis", label: "USCIS Guide", desc: "Case status, processing times, and receipt numbers" },
+                { href: "/visa-bulletin/retrogression", label: "Retrogression Explained", desc: "What retrogression means for your pending I-485" },
+                { href: "/tools/visa-green-card", label: "All Visa & Green Card Tools", desc: "Every immigration tool on NRItoUSA" },
+              ].map((l) => (
+                <Link key={l.href} href={l.href}
+                  className="group flex flex-col gap-0.5 rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-300 hover:shadow-sm">
+                  <span className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{l.label}</span>
+                  <span className="text-xs text-ink-500">{l.desc}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </Container>
       </section>

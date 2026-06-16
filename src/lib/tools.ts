@@ -161,9 +161,9 @@ export const tools: ToolMeta[] = [
       "See how many applicants are ahead of you in line from the USCIS I-485 inventory, the current visa bulletin cutoff for your EB category, how far your priority date is behind, and an honest estimated wait range.",
     icon: "🟢",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "Green Card Wait Time Estimator (India) 2026",
+    seoTitle: "Green Card Wait Time Tracker for Indians | EB-2 EB-3 India Priority Date 2026",
     seoDescription:
-      "How many people are ahead of you in the EB green card line? Free estimator using USCIS I-485 inventory, Final Action Dates, and an honest wait range.",
+      "How long is the India green card wait? Free tracker using USCIS I-485 inventory and visa bulletin Final Action Dates for EB-2 and EB-3 India. No personal info needed.",
     status: "live",
   },
   {
@@ -203,9 +203,9 @@ export const tools: ToolMeta[] = [
       "Typical current waits for H-1B extensions, I-140, I-485, EAD/AP, OCI cards, Indian passport renewal, and US visa stamping in India — in one table.",
     icon: "⏱️",
     accent: "from-amber-500 to-orange-600",
-    seoTitle: "USCIS, OCI & Visa Stamping Times (2026)",
+    seoTitle: "USCIS & Visa Processing Times 2026 | H-1B, I-140, I-485, EAD, OCI for Indians",
     seoDescription:
-      "Current typical processing times in one place: H-1B, I-140, I-485, EAD/AP, OCI card, Indian passport renewal, and US visa stamping in India.",
+      "Current H-1B extension, I-140, I-485, EAD, OCI card, Indian passport renewal, and visa stamping times in one table. From official USCIS and State Department data.",
     status: "live",
   },
   {
@@ -217,9 +217,9 @@ export const tools: ToolMeta[] = [
       "A personalized H-1B cap-season timeline: enter your cycle and stage to see your registration, selection, filing, and start-date milestones, a live countdown to your next key date, and what to do at each step.",
     icon: "🎟️",
     accent: "from-fuchsia-500 to-pink-600",
-    seoTitle: "H-1B Lottery Timeline & Selection Odds",
+    seoTitle: "H-1B Lottery Timeline & Odds 2026 | Cap Season Dates for Indians",
     seoDescription:
-      "Personalized H-1B cap season timeline: registration, selection, filing windows, second-round odds, and a live countdown to your next key date.",
+      "H-1B cap season timeline for Indians: registration dates, selection window, filing period, and lottery odds. Live countdown to your next key date.",
     status: "live",
   },
   {

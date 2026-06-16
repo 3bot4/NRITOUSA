@@ -21,8 +21,9 @@ const description =
   "Free, data-backed tools for NRIs: green card wait estimator with live visa bulletin data, H-1B salary explorer, visa-free travel list, and more.";
 
 export const metadata: Metadata = pageMetadata({
-  title: title,
-  description: description,
+  title: "Free Visa, Green Card & Finance Tools for Indians in the USA",
+  description:
+    "Free tools for Indians in the USA: green card wait tracker, H-1B salary explorer, priority date checker, USCIS status decoder, processing times, and more.",
   path: "/tools",
 });
 
@@ -95,16 +96,27 @@ export default function ToolsHubPage() {
                   t.group === group && !t.tags?.includes(TAX_COMPLIANCE_TAG)
               );
               if (!items.length) return null;
+              const isVisaGroup = group === "Visa & Green Card";
               return (
                 <div
                   key={group}
                   id={group.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
                   className="scroll-mt-24"
                 >
-                  <h2 className="text-lg font-bold tracking-tight text-ink-900">
-                    {group}
-                  </h2>
-                  <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h2 className="text-lg font-bold tracking-tight text-ink-900">
+                      {group}
+                    </h2>
+                    {isVisaGroup && (
+                      <Link
+                        href="/tools/visa-green-card"
+                        className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                      >
+                        See all visa &amp; green card tools →
+                      </Link>
+                    )}
+                  </div>
+                  <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.map((t) => (
                       <ToolCard key={t.slug} tool={t} />
                     ))}

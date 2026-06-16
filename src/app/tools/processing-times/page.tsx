@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import ToolHero from "@/components/tools/ToolHero";
 import ToolFaq from "@/components/tools/ToolFaq";
@@ -44,6 +45,16 @@ const faq: FaqItem[] = [
     question: "Are these processing times guaranteed?",
     answer:
       "No. They are typical published ranges from USCIS, the State Department, and VFS, and individual cases routinely run faster or slower depending on service center workload, RFEs, and security checks. Use them for planning, and check your specific receipt's status on the official case tracker.",
+  },
+  {
+    question: "How accurate are USCIS processing time estimates?",
+    answer:
+      "USCIS processing time estimates represent the range within which 80% of cases are completed. The remaining 20% fall outside — both faster and slower. Service centers vary significantly, and times can shift month to month based on staffing, RFE rates, and application volume. If your case is past the published timeframe for your service center, you may submit an official case inquiry through your myUSCIS account or the USCIS Contact Center.",
+  },
+  {
+    question: "How do I check if my USCIS case is delayed beyond the published processing time?",
+    answer:
+      "Compare your receipt date to the USCIS processing times page for your form and service center. If your receipt date is earlier than the 'received date for inquiry' shown for your form, you may submit a case inquiry. The USCIS Processing Delay Checker at /tools/uscis-processing-delay-checker provides an educational assessment of whether your case is within normal range.",
   },
 ];
 
@@ -159,6 +170,26 @@ export default function ProcessingTimesPage() {
           <ToolFaq items={faq} />
           <div className="mx-auto mt-10 max-w-3xl">
             <ToolDisclaimer />
+          </div>
+
+          {/* Internal links */}
+          <div className="mx-auto mt-8 max-w-3xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-400">Related guides and tools</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                { href: "/uscis", label: "USCIS Guide for Indians", desc: "Case status, receipt numbers, and notices explained" },
+                { href: "/uscis/processing-times", label: "USCIS Processing Times Guide", desc: "How to read USCIS processing estimates for your form" },
+                { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H-1B, I-140, or I-485 case delayed?" },
+                { href: "/tools/uscis-case-status-meaning", label: "USCIS Case Status Decoder", desc: "Plain-English meaning for every USCIS status message" },
+                { href: "/tools/visa-green-card", label: "All Visa & Green Card Tools", desc: "Every immigration tool on NRItoUSA" },
+              ].map((l) => (
+                <Link key={l.href} href={l.href}
+                  className="group flex flex-col gap-0.5 rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-300 hover:shadow-sm">
+                  <span className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{l.label}</span>
+                  <span className="text-xs text-ink-500">{l.desc}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
