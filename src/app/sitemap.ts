@@ -8,6 +8,7 @@ import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { uscisChildPages } from "@/lib/uscisCluster";
 import { myuscisChildPages } from "@/lib/myuscisCluster";
 import { formsChildPages } from "@/lib/uscisFormsCluster";
+import { lifePlanningChildPages } from "@/lib/uscisLifePlanningCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
@@ -89,6 +90,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("2026-06-16"),
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${site.url}/uscis/life-planning`,
+      lastModified: new Date("2026-06-16"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/community/nri-uscis-decisions`,
+      lastModified: new Date("2026-06-16"),
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     {
       url: `${site.url}/uscis/receipt-number`,
@@ -243,6 +256,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(p.updated ?? p.date),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...lifePlanningChildPages.map((p) => ({
+      url: `${site.url}/uscis/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
     })),
   ];
 }

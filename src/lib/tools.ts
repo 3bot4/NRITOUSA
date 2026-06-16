@@ -110,6 +110,21 @@ export const tools: ToolMeta[] = [
     tags: [],
   },
   {
+    slug: "uscis-life-decision-checklist",
+    title: "USCIS Life Decision Checklist for Indians",
+    label: "Life Decision Checklist",
+    group: "Visa & Green Card",
+    description:
+      "Navigating a major life decision — changing jobs, buying a house, traveling to India, starting a business, or filing I-485 — while your immigration case is pending? Select your situation, status, and green card stage for a personalized risk level and action checklist. No personal immigration identifiers collected.",
+    icon: "🏡",
+    accent: "from-green-600 to-emerald-600",
+    seoTitle: "USCIS Life Decision Checklist | Job Change, House, Travel for Indians",
+    seoDescription:
+      "Should you change jobs, buy a house, or travel to India while your green card is pending? Get a personalized USCIS risk checklist for major life decisions on H1B and I-485.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "uscis-form-finder",
     title: "Which USCIS Form Is This? Form Finder for Indians",
     label: "USCIS Form Finder",
