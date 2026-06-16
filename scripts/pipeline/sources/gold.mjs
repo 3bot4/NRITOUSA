@@ -1,12 +1,10 @@
 /**
- * Gold — reference spot price, USD per troy ounce.
- * gold-api.com (free, key-less, works from datacenter IPs) → FRED LBMA fixing →
- * Stooq/Yahoo. The sources differ slightly (live spot vs London fix vs COMEX
- * future) but track within a few dollars; the stamped `source` records which
- * one supplied the value.
- *
- * Note: the old FRED series GOLDAMGBD228NLBM was discontinued (404s), so the
- * live gold-api.com spot price is now the primary source.
+ * Gold — USD per troy ounce.
+ * Primary: Yahoo Finance GC=F (COMEX front-month gold futures) — the number
+ * users see on finance.yahoo.com/quote/GC=F; returns both latest price and
+ * chartPreviousClose for accurate day-over-day change.
+ * Fallbacks: gold-api.com live spot → FRED LBMA fixing. The three sources
+ * track within a few dollars of each other; `source` records which was used.
  */
 import { firstOk, fetchJson } from "../lib/http.mjs";
 import { fetchFred } from "../lib/fred.mjs";
@@ -24,11 +22,11 @@ async function fromGoldApi() {
 
 export function fetchValue() {
   return firstOk([
+    { name: "Yahoo/Stooq", run: () => fetchEod({ stooq: "xauusd", yahoo: "GC=F" }) },
     { name: "gold-api", run: fromGoldApi },
     {
       name: "FRED",
       run: () => fetchFred("GOLDPMGBD228NLBM", "FRED (LBMA gold fixing)"),
     },
-    { name: "Stooq/Yahoo", run: () => fetchEod({ stooq: "xauusd", yahoo: "GC=F" }) },
   ]);
 }
