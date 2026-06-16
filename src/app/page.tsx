@@ -7,6 +7,7 @@ import AllToolsGrid from "@/components/home/AllToolsGrid";
 import UscisToolsSpotlight from "@/components/home/UscisToolsSpotlight";
 import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
+import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpotlight";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const HOME_TITLE =
@@ -42,6 +43,7 @@ export default function HomePage() {
 
       <Container className="pb-8 pt-6 sm:pb-10">
         <PopularGuidesForIndians />
+        <ImmigrationTrackerSpotlight />
         <UscisToolsSpotlight />
         <TaxComplianceSpotlight />
         <AllToolsGrid />
