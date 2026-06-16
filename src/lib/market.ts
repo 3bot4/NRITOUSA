@@ -274,8 +274,6 @@ function processingTimeTickerItem(
 /** All ticker items in display order. */
 export function tickerItems(): TickerItem[] {
   const items: TickerItem[] = [
-    // Market prices
-    ...marketItems.map(marketTickerItem),
     // EB priority dates
     ebIndiaTickerItem("eb1", "eb1india", "EB-1 India"),
     ebIndiaTickerItem("eb2", "eb2india", "EB-2 India"),
