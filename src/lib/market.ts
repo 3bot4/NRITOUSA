@@ -79,7 +79,9 @@ const tickerHref: Record<string, string> = {
   nifty50: "/topics/investing",
   sp500: "/topics/investing",
   gold: "/topics/investing",
-  eb2india: "/tools/green-card-tracker",
+  eb1india: "/tools/priority-date-checker",
+  eb2india: "/tools/priority-date-checker",
+  eb3india: "/tools/priority-date-checker",
 };
 
 /** EB-2 India Final Action Date, derived from the visa-bulletin data. */
@@ -88,13 +90,8 @@ export function eb2IndiaFad(): { fad: string; display: string } {
   return { fad, display: formatCutoff(fad) };
 }
 
-/**
- * Movement of the EB-2 India FAD at the most recent bulletin, in cutoff-months
- * (positive = advanced forward, negative = retrogressed, 0 = held). Null when
- * there isn't enough history.
- */
-function eb2IndiaLastMove(): number | null {
-  const series = getSeries("eb2", "india");
+function ebIndiaLastMove(category: "eb1" | "eb2" | "eb3"): number | null {
+  const series = getSeries(category, "india");
   if (!series || series.fad.length < 2) return null;
   const pts = series.fad;
   const [, last] = pts[pts.length - 1];
@@ -103,30 +100,38 @@ function eb2IndiaLastMove(): number | null {
   return monthIndex(last) - monthIndex(prev);
 }
 
-function eb2TickerItem(): TickerItem {
-  const { display } = eb2IndiaFad();
-  const move = eb2IndiaLastMove();
-  let change = "Final Action Date";
+function ebIndiaTickerItem(
+  category: "eb1" | "eb2" | "eb3",
+  key: string,
+  label: string
+): TickerItem {
+  const { fad } = getCutoffs(category, "india");
+  const display = formatCutoff(fad);
+  const move = ebIndiaLastMove(category);
+  let change = "FAD";
   let direction: TickerItem["direction"] = "flat";
-  if (move !== null) {
+  if (fad === "C") {
+    change = "Current";
+    direction = "up";
+  } else if (move !== null) {
     if (move > 0.5) {
       direction = "up";
-      change = `+${Math.round(move)} mo this bulletin`;
+      change = `+${Math.round(move)} mo`;
     } else if (move < -0.5) {
       direction = "down";
-      change = `${Math.round(move)} mo (retrogressed)`;
+      change = `${Math.round(move)} mo`;
     } else {
-      change = "No change this bulletin";
+      change = "No change";
     }
   }
   return {
-    key: "eb2india",
-    label: "EB-2 India",
+    key,
+    label,
     display,
     change,
     direction,
     kind: "differentiator",
-    href: tickerHref.eb2india,
+    href: tickerHref[key] ?? "/tools/priority-date-checker",
   };
 }
 
@@ -146,9 +151,14 @@ function marketTickerItem(item: MarketItem): TickerItem {
   };
 }
 
-/** The exactly-five ticker items, in display order. */
+/** All ticker items in display order: 4 market + EB-1/EB-2/EB-3 India FADs. */
 export function tickerItems(): TickerItem[] {
-  return [...marketItems.map(marketTickerItem), eb2TickerItem()];
+  return [
+    ...marketItems.map(marketTickerItem),
+    ebIndiaTickerItem("eb1", "eb1india", "EB-1 India"),
+    ebIndiaTickerItem("eb2", "eb2india", "EB-2 India"),
+    ebIndiaTickerItem("eb3", "eb3india", "EB-3 India"),
+  ];
 }
 
 /* --------------------------- USD/INR sidebar card -------------------------- */

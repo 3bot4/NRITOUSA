@@ -38,11 +38,35 @@
   100% { transform: translateX(-50%); }
 }
 
+.ticker-wrap {
+  overflow: hidden;
+}
+
 .ticker-track {
-  animation: ticker-scroll 30s linear infinite;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: max-content;
+  /* mobile: faster because the strip is narrower so items pass by more slowly */
+  animation: ticker-scroll 20s linear infinite;
   will-change: transform;
+}
+
+/* desktop: slower — items have more room so they stay visible longer */
+@media (min-width: 640px) {
+  .ticker-track {
+    animation-duration: 40s;
+  }
 }
 
 .ticker-wrap:hover .ticker-track {
   animation-play-state: paused;
+}
+
+/* Each copy inside ticker-track must also not wrap */
+.ticker-copy {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
 }

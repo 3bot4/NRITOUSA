@@ -80,18 +80,16 @@ export default function Ticker() {
       aria-label="Markets and visa bulletin snapshot"
       className="border-b border-ink-900/10 bg-white"
     >
-      {/* Scrolling strip */}
-      <div className="ticker-wrap overflow-hidden">
-        {/* ticker-track renders items twice; animation shifts by exactly -50% so
-            the second copy picks up where the first left off — seamless loop. */}
-        <div className="ticker-track flex items-center">
-          {/* first copy */}
-          <span className="flex items-center" aria-hidden={false}>
+      {/* Scrolling strip — ticker-wrap + ticker-track + ticker-copy defined in globals.css */}
+      <div className="ticker-wrap">
+        <div className="ticker-track">
+          {/* first copy — read by screen readers */}
+          <span className="ticker-copy">
             {cells}
             <Divider />
           </span>
-          {/* duplicate — hidden from assistive tech to avoid double-reading */}
-          <span className="flex items-center" aria-hidden>
+          {/* duplicate — visually seamless loop, hidden from assistive tech */}
+          <span className="ticker-copy" aria-hidden>
             {cells}
             <Divider />
           </span>
@@ -101,8 +99,8 @@ export default function Ticker() {
       {/* Attribution */}
       <div className="px-4 pb-1.5">
         <p className="text-[11px] leading-tight text-ink-400">
-          Source: {marketSources.join(", ")}, EB-2 from U.S. State Dept Visa
-          Bulletin · as of {marketAsOfLabel}
+          Source: {marketSources.join(", ")}, EB-1/2/3 from U.S. State Dept
+          Visa Bulletin · as of {marketAsOfLabel}
         </p>
       </div>
     </section>
