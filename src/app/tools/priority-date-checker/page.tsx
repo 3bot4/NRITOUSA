@@ -5,6 +5,7 @@ import ToolHero from "@/components/tools/ToolHero";
 import ToolFaq from "@/components/tools/ToolFaq";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import PriorityDateChecker from "@/components/tools/PriorityDateChecker";
+import { currentBulletinNote } from "@/lib/visa-bulletin";
 import { getTool } from "@/lib/tools";
 import {
   absoluteUrl,
@@ -126,6 +127,9 @@ export default function PriorityDateCheckerPage() {
       <section className="py-12 sm:py-16">
         <Container>
           <div className="mx-auto max-w-3xl">
+            <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
+              {currentBulletinNote}
+            </div>
             <PriorityDateChecker />
           </div>
         </Container>

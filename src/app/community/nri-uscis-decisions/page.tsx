@@ -216,7 +216,7 @@ export default function NriDecisionsCommunityPage() {
               <section className="flex flex-wrap gap-2">
                 {[
                   { href: "/uscis/life-planning", label: "USCIS Life Planning Guide" },
-                  { href: "/uscis", label: "USCIS Guide" },
+                  { href: "/uscis", label: "USCIS Hub" },
                   { href: "/h1b", label: "H-1B Guide" },
                   { href: "/green-card", label: "Green Card Guide" },
                 ].map((l) => (

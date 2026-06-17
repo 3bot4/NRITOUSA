@@ -54,7 +54,7 @@ interface NoticeResult {
 }
 
 const BASE_LINKS = {
-  uscis: { href: "/uscis", label: "USCIS Guide for Indians" },
+  uscis: { href: "/uscis", label: "USCIS Hub" },
   statusMeaning: { href: "/tools/uscis-case-status-meaning", label: "USCIS Case Status Meaning" },
   delayChecker: { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker" },
   receiptNumber: { href: "/uscis/receipt-number", label: "Receipt Number Guide (IOE/LIN/SRC/EAC/WAC/MSC)" },

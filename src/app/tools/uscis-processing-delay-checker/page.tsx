@@ -144,7 +144,7 @@ export default function UscisProcessingDelayCheckerPage() {
                 { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "Every status message explained for Indian applicants" },
                 { href: "/uscis/request-for-evidence-rfe", label: "RFE Guide", desc: "RFE received? What to do and how long you have" },
                 { href: "/tools/uscis-receipt-number-decoder", label: "Receipt Prefix Decoder", desc: "What IOE, LIN, SRC, EAC, WAC, MSC mean" },
-                { href: "/uscis", label: "USCIS Guide Hub", desc: "Full USCIS overview for NRIs and Indian applicants" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Full USCIS overview for NRIs and Indian applicants" },
               ].map((g) => (
                 <Link key={g.href} href={g.href} className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
                   <p className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{g.label}</p>

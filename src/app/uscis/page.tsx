@@ -196,7 +196,7 @@ const situationCards = [
 const faqSchema = faqJsonLd(faqs);
 const crumbs = [
   { name: "Home", url: "/" },
-  { name: "USCIS Guide", url: PAGE_PATH },
+  { name: "USCIS Hub", url: PAGE_PATH },
 ];
 const breadcrumb = breadcrumbJsonLd(crumbs);
 const articleSchema = {

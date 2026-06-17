@@ -27,7 +27,7 @@ export const metadata: Metadata = pageMetadata({
 
 const crumbs = [
   { name: "Home", url: "/" },
-  { name: "USCIS Guide", url: "/uscis" },
+  { name: "USCIS Hub", url: "/uscis" },
   { name: "USCIS Forms Explained", url: PAGE_PATH },
 ];
 
@@ -437,7 +437,7 @@ export default function UscisFormsPage() {
               {/* Internal links */}
               <section className="flex flex-wrap gap-2 text-sm">
                 {[
-                  { href: "/uscis", label: "USCIS Guide" },
+                  { href: "/uscis", label: "USCIS Hub" },
                   { href: "/uscis/case-status", label: "Case Status Guide" },
                   { href: "/uscis/myuscis-account", label: "myUSCIS Account" },
                   { href: "/h1b", label: "H-1B Guide" },

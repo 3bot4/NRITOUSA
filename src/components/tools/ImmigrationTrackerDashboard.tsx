@@ -16,6 +16,7 @@ import ImmigrationEmailSignup from "@/components/tools/ImmigrationEmailSignup";
 import {
   visaBulletinIndia,
   greenCardBacklog,
+  i485BacklogIndia,
   h1bLottery,
   processingTimes,
   countdowns,
@@ -39,6 +40,15 @@ function daysUntil(dateStr: string): number {
   const target = new Date(dateStr);
   const now = new Date();
   return Math.max(0, Math.ceil((target.getTime() - now.getTime()) / 86400000));
+}
+
+/** Map a verified movement direction to the card's trend-arrow direction. */
+function movementToDirection(
+  dir: "forward" | "retrogressed" | "unchanged" | "unavailable"
+): "up" | "down" | "neutral" {
+  if (dir === "forward") return "up";
+  if (dir === "retrogressed") return "down";
+  return "neutral";
 }
 
 function yearGap(cutoffDate: string): string {
@@ -218,7 +228,7 @@ export default function ImmigrationTrackerDashboard({
   faqItems: FaqItem[];
 }) {
   const eb2Gap = useMemo(
-    () => yearGap(visaBulletinIndia.categories.EB2.finalActionDate),
+    () => yearGap(visaBulletinIndia.categories.EB2.currentFinalActionDate),
     []
   );
   const bulletinCountdown = useMemo(
@@ -253,9 +263,14 @@ export default function ImmigrationTrackerDashboard({
       </div>
 
       {/* Disclaimer box */}
-      <div className="rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
-        <strong className="font-semibold">Not legal advice.</strong>{" "}
-        {dashboardDisclaimers.standardDisclaimer}
+      <div className="space-y-2">
+        <div className="rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
+          <strong className="font-semibold">Not legal advice.</strong>{" "}
+          {dashboardDisclaimers.standardDisclaimer}
+        </div>
+        <div className="rounded-xl border border-ink-100 bg-ink-50/60 px-4 py-3 text-sm text-ink-600">
+          {dashboardDisclaimers.adLandingDisclaimer}
+        </div>
       </div>
 
       {/* ── Visa Bulletin Cards ───────────────────────────────────────────── */}
@@ -274,16 +289,24 @@ export default function ImmigrationTrackerDashboard({
           </a>
         </div>
 
+        {/* June 2026 retrogression note + source */}
+        <div className="mb-4 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
+          {visaBulletinIndia.retrogressionNote}
+          <span className="mt-1 block text-xs text-amber-800/80">
+            {visaBulletinIndia.sourceNote} Last verified: {visaBulletinIndia.lastVerified}.
+          </span>
+        </div>
+
         <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* EB-1 India */}
           <StatCard
             icon="1️⃣"
             accent="from-emerald-600 to-teal-600"
             label="EB-1 India"
-            value={formatCutoff(EB1.finalActionDate)}
-            subvalue={`Filing: ${formatCutoff(EB1.datesForFiling)}`}
-            changeLabel={EB1.finalActionChangeLabel}
-            changeDirection="up"
+            value={formatCutoff(EB1.currentFinalActionDate)}
+            subvalue={`Filing: ${formatCutoff(EB1.currentDatesForFiling)}`}
+            changeLabel={EB1.finalActionMovementLabel}
+            changeDirection={movementToDirection(EB1.movementDirection)}
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel={visaBulletinIndia.officialSourceName}
             sourceUrl={visaBulletinIndia.officialSourceUrl}
@@ -298,10 +321,10 @@ export default function ImmigrationTrackerDashboard({
             icon="2️⃣"
             accent="from-blue-600 to-indigo-600"
             label="EB-2 India"
-            value={formatCutoff(EB2.finalActionDate)}
-            subvalue={`Filing: ${formatCutoff(EB2.datesForFiling)}`}
-            changeLabel={EB2.finalActionChangeLabel}
-            changeDirection="up"
+            value={formatCutoff(EB2.currentFinalActionDate)}
+            subvalue={`Filing: ${formatCutoff(EB2.currentDatesForFiling)}`}
+            changeLabel={EB2.finalActionMovementLabel}
+            changeDirection={movementToDirection(EB2.movementDirection)}
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel={visaBulletinIndia.officialSourceName}
             sourceUrl={visaBulletinIndia.officialSourceUrl}
@@ -316,10 +339,10 @@ export default function ImmigrationTrackerDashboard({
             icon="3️⃣"
             accent="from-violet-600 to-purple-600"
             label="EB-3 India"
-            value={formatCutoff(EB3.finalActionDate)}
-            subvalue={`Filing: ${formatCutoff(EB3.datesForFiling)}`}
-            changeLabel={EB3.finalActionChangeLabel}
-            changeDirection="up"
+            value={formatCutoff(EB3.currentFinalActionDate)}
+            subvalue={`Filing: ${formatCutoff(EB3.currentDatesForFiling)}`}
+            changeLabel={EB3.finalActionMovementLabel}
+            changeDirection={movementToDirection(EB3.movementDirection)}
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel={visaBulletinIndia.officialSourceName}
             sourceUrl={visaBulletinIndia.officialSourceUrl}
@@ -359,7 +382,7 @@ export default function ImmigrationTrackerDashboard({
             lastUpdated={greenCardBacklog.lastUpdated}
             sourceLabel={greenCardBacklog.officialSourceName}
             sourceUrl={greenCardBacklog.officialSourceUrl}
-            note={greenCardBacklog.note}
+            note={`${greenCardBacklog.note} ${i485BacklogIndia.cardLabel}`}
             learnMoreHref="/green-card"
             confidence={["official", "manually-maintained"]}
             confidenceNote="Based on USCIS inventory data when available; manually transcribed and maintained."
@@ -584,6 +607,9 @@ export default function ImmigrationTrackerDashboard({
             USCIS snapshot as of {inventoryMeta.snapshotDate}. Counts only
             Form I-485 (in-US) filers — consular-processing cases not included.
           </p>
+          <p className="mt-1 text-xs text-ink-400">
+            {i485BacklogIndia.cardLabel} {i485BacklogIndia.note}
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3">
@@ -627,34 +653,43 @@ export default function ImmigrationTrackerDashboard({
             <span id="changes-heading">What Changed This Month?</span>
           </SectionHeading>
           <p className="mt-1 text-sm text-ink-500">
-            Summary of changes in the {bulletin.month} Visa Bulletin vs. the prior month.
+            Current {bulletin.month} Visa Bulletin cutoffs for India. Movement is
+            only shown when verified against the previous official bulletin.
           </p>
+        </div>
+
+        {/* June 2026 retrogression note */}
+        <div className="mb-3 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
+          {visaBulletinIndia.retrogressionNote}
         </div>
 
         <div className="space-y-3">
           {[
             {
               category: "EB-1 India",
-              fad: `Final Action Date moved to ${formatCutoff(EB1.finalActionDate)} (${EB1.finalActionChangeLabel} from ${formatCutoff(EB1.previousFinalActionDate)})`,
-              dff: `Dates for Filing moved to ${formatCutoff(EB1.datesForFiling)} (${EB1.datesForFilingChangeLabel} from ${formatCutoff(EB1.previousDatesForFiling)})`,
+              cat: EB1,
               accent: "bg-emerald-50 border-emerald-100 text-emerald-900",
               dot: "bg-emerald-500",
             },
             {
               category: "EB-2 India",
-              fad: `Final Action Date moved to ${formatCutoff(EB2.finalActionDate)} (${EB2.finalActionChangeLabel} from ${formatCutoff(EB2.previousFinalActionDate)})`,
-              dff: `Dates for Filing moved to ${formatCutoff(EB2.datesForFiling)} (${EB2.datesForFilingChangeLabel} from ${formatCutoff(EB2.previousDatesForFiling)})`,
+              cat: EB2,
               accent: "bg-blue-50 border-blue-100 text-blue-900",
               dot: "bg-blue-500",
             },
             {
               category: "EB-3 India",
-              fad: `Final Action Date moved to ${formatCutoff(EB3.finalActionDate)} (${EB3.finalActionChangeLabel} from ${formatCutoff(EB3.previousFinalActionDate)})`,
-              dff: `Dates for Filing moved to ${formatCutoff(EB3.datesForFiling)} (${EB3.datesForFilingChangeLabel} from ${formatCutoff(EB3.previousDatesForFiling)})`,
+              cat: EB3,
               accent: "bg-violet-50 border-violet-100 text-violet-900",
               dot: "bg-violet-500",
             },
-          ].map((item) => (
+          ].map(({ category, cat, accent, dot }) => ({
+            category,
+            accent,
+            dot,
+            fad: `Final Action Date: ${formatCutoff(cat.currentFinalActionDate)} — ${cat.finalActionMovementLabel} (vs. previous bulletin)`,
+            dff: `Dates for Filing: ${formatCutoff(cat.currentDatesForFiling)} — ${cat.datesForFilingMovementLabel}`,
+          })).map((item) => (
             <div
               key={item.category}
               className={`rounded-xl border px-4 py-3 ${item.accent}`}

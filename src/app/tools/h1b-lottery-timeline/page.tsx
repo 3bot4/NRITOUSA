@@ -120,7 +120,7 @@ export default function H1bLotteryTimelinePage() {
             <div className="grid gap-3 sm:grid-cols-2">
               {[
                 { href: "/h1b", label: "H-1B Guide for Indians", desc: "Cap, lottery, transfer, extensions, and AC21" },
-                { href: "/uscis", label: "USCIS Guide", desc: "Case status, processing times, receipt numbers" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Case status, processing times, receipt numbers" },
                 { href: "/tools/h1b-transfer-risk-checklist", label: "H-1B Transfer Risk Checklist", desc: "Layoff grace period, AC21 portability, travel risk" },
                 { href: "/tools/h1b-salaries", label: "H-1B Salary Explorer", desc: "DOL LCA salary data by job title and city" },
                 { href: "/tools/processing-times", label: "USCIS Processing Times", desc: "H-1B extension and transfer timelines" },

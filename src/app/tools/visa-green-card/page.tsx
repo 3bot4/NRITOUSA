@@ -91,7 +91,7 @@ const toolSections = [
     ],
     guides: [
       { href: "/h1b", label: "H-1B Guide for Indians" },
-      { href: "/uscis", label: "USCIS Guide for Indians" },
+      { href: "/uscis", label: "USCIS Hub" },
     ],
   },
   {
@@ -109,7 +109,7 @@ const toolSections = [
       },
     ],
     guides: [
-      { href: "/uscis", label: "USCIS Guide" },
+      { href: "/uscis", label: "USCIS Hub" },
     ],
   },
   {
@@ -145,7 +145,7 @@ const toolSections = [
       },
     ],
     guides: [
-      { href: "/uscis", label: "USCIS Guide for Indians" },
+      { href: "/uscis", label: "USCIS Hub" },
       { href: "/uscis/case-status", label: "USCIS Case Status Explained" },
       { href: "/uscis/processing-times", label: "USCIS Processing Times Guide" },
     ],
@@ -426,7 +426,7 @@ export default function VisaGreenCardToolsPage() {
           <p className="text-xs font-bold uppercase tracking-wider text-ink-500 mb-4">All immigration guides</p>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4 text-sm">
             {[
-              { href: "/uscis", label: "USCIS Guide" },
+              { href: "/uscis", label: "USCIS Hub" },
               { href: "/h1b", label: "H-1B Guide" },
               { href: "/green-card", label: "Green Card Process" },
               { href: "/visa-bulletin", label: "Visa Bulletin Guide" },
