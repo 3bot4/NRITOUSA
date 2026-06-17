@@ -6,6 +6,7 @@ import Newsletter from "@/components/Newsletter";
 import ToolCard from "@/components/tools/ToolCard";
 import CalculatorCard from "@/components/CalculatorCard";
 import IulComparisonCard from "@/components/IulComparisonCard";
+import OptionLeoCard from "@/components/OptionLeoCard";
 import { tools, toolGroups, liveTools } from "@/lib/tools";
 import { calculators, usInvestingCalculatorSlugs } from "@/lib/calculators";
 import { TAX_COMPLIANCE_PATH, TAX_COMPLIANCE_TAG } from "@/lib/taxCompliance";
@@ -168,6 +169,8 @@ export default function ToolsHubPage() {
                     )}
                   </Fragment>
                 ))}
+                {/* OptionLeo is an external partner-education card, not a tool */}
+                <OptionLeoCard />
               </div>
             </div>
           </div>
