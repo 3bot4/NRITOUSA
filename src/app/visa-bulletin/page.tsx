@@ -14,6 +14,7 @@ import {
 import { site } from "@/lib/site";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { CURRENT_VISA_BULLETIN } from "@/lib/visaBulletinDates";
+import { currentBulletinNote } from "@/lib/visa-bulletin";
 
 const PAGE_PATH = "/visa-bulletin";
 const UPDATED = "2026-06-16";
@@ -152,6 +153,11 @@ export default function VisaBulletinPage() {
           <p className="mt-3 text-lg leading-relaxed text-ink-500">
             The visa bulletin is the monthly publication that controls when Indian H1B workers can file or receive approval of their green card. This guide explains every part — priority date, Final Action Date, Dates for Filing, retrogression, and what to do when your date becomes current.
           </p>
+        </div>
+
+        {/* June 2026 retrogression note */}
+        <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
+          {currentBulletinNote}
         </div>
 
         {/* ── SECTION 1: Quick answer ─────────────────────────────────────────── */}

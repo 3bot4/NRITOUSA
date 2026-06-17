@@ -13,6 +13,7 @@ import {
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
+import { currentBulletinNote } from "@/lib/visa-bulletin";
 
 const PAGE_PATH = "/green-card";
 const UPDATED = "2026-06-16";
@@ -150,6 +151,11 @@ export default function GreenCardPage() {
           <p className="mt-3 text-lg leading-relaxed text-ink-500">
             A complete guide to employment-based (EB) green card for Indian H1B workers — from PERM filing through I-485 approval, with India-specific guidance on the backlog, EB-2 vs EB-3, AC21 portability, and protecting your children with CSPA.
           </p>
+        </div>
+
+        {/* June 2026 retrogression note */}
+        <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
+          {currentBulletinNote}
         </div>
 
         {/* quick answer */}
