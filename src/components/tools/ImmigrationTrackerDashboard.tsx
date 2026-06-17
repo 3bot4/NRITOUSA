@@ -250,27 +250,6 @@ export default function ImmigrationTrackerDashboard({
             </p>
           </div>
         </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/tools/priority-date-checker"
-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
-          >
-            Check Priority Date →
-          </Link>
-          <Link
-            href="/tools/green-card-stage-finder"
-            className="rounded-lg border border-ink-900/10 bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-sm transition-colors hover:bg-ink-50"
-          >
-            Find Green Card Stage →
-          </Link>
-          <Link
-            href="/tools/uscis-case-status-meaning"
-            className="rounded-lg border border-ink-900/10 bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-sm transition-colors hover:bg-ink-50"
-          >
-            Decode USCIS Status →
-          </Link>
-        </div>
       </div>
 
       {/* Disclaimer box */}
@@ -295,7 +274,7 @@ export default function ImmigrationTrackerDashboard({
           </a>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* EB-1 India */}
           <StatCard
             icon="1️⃣"
@@ -411,7 +390,7 @@ export default function ImmigrationTrackerDashboard({
           </SectionHeading>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* H1B Lottery */}
           <StatCard
             icon="🎲"
@@ -464,6 +443,43 @@ export default function ImmigrationTrackerDashboard({
         <p className="mt-3 text-xs text-ink-400">
           {dashboardDisclaimers.processingTimeDisclaimer}
         </p>
+      </section>
+
+      {/* ── Tool CTAs (placed after the dashboard cards, before charts) ────── */}
+      <section
+        aria-labelledby="cta-heading"
+        className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-5 sm:p-6"
+      >
+        <h2
+          id="cta-heading"
+          className="text-base font-bold tracking-tight text-ink-900 sm:text-lg"
+        >
+          Check your own case against these numbers
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm text-ink-500">
+          Use these free, no-login tools to see where you stand — no receipt
+          numbers or personal documents needed.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/tools/priority-date-checker"
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
+          >
+            Check Priority Date →
+          </Link>
+          <Link
+            href="/tools/green-card-stage-finder"
+            className="rounded-lg border border-ink-900/10 bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-sm transition-colors hover:bg-ink-50"
+          >
+            Find Green Card Stage →
+          </Link>
+          <Link
+            href="/tools/uscis-case-status-meaning"
+            className="rounded-lg border border-ink-900/10 bg-white px-4 py-2 text-sm font-semibold text-ink-700 shadow-sm transition-colors hover:bg-ink-50"
+          >
+            Decode USCIS Status →
+          </Link>
+        </div>
       </section>
 
       {/* ── Visa Bulletin Movement Chart ──────────────────────────────────── */}
