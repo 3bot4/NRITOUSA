@@ -249,7 +249,7 @@ export default function GreenCardTrackerPage() {
                 { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your priority date to the current bulletin" },
                 { href: "/visa-bulletin/eb2-india", label: "EB-2 India Guide", desc: "EB-2 Final Action Date history and strategy" },
                 { href: "/visa-bulletin/eb3-india", label: "EB-3 India Guide", desc: "EB-3 cutoffs and EB-2/EB-3 downgrade strategy" },
-                { href: "/uscis", label: "USCIS Guide", desc: "Case status, processing times, and receipt numbers" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Case status, processing times, and receipt numbers" },
                 { href: "/visa-bulletin/retrogression", label: "Retrogression Explained", desc: "What retrogression means for your pending I-485" },
                 { href: "/tools/visa-green-card", label: "All Visa & Green Card Tools", desc: "Every immigration tool on NRItoUSA" },
               ].map((l) => (

@@ -30,7 +30,7 @@ export function generateMetadata(): Metadata {
 
 const crumbs = [
   { name: "Home", url: "/" },
-  { name: "USCIS Guide", url: "/uscis" },
+  { name: "USCIS Hub", url: "/uscis" },
   { name: "myUSCIS Account", url: PAGE_PATH },
 ];
 
@@ -122,7 +122,7 @@ const whoCanUse = [
     icon: "👨‍👩‍👧",
     who: "Family green card (I-130)",
     use: "Track I-130 petition status for spouse or family members. Receive notifications at each stage of the family-based immigration process.",
-    links: [{ label: "USCIS Guide", href: "/uscis" }],
+    links: [{ label: "USCIS Hub", href: "/uscis" }],
   },
 ];
 
@@ -556,7 +556,7 @@ export default function MyuscisAccountPage() {
                     { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H1B, I-140, I-485, or EAD case delayed?" },
                     { href: "/uscis/receipt-number", label: "Receipt Number Guide", desc: "IOE, LIN, SRC, EAC, WAC, MSC — what each means" },
                     { href: "/uscis/case-status", label: "USCIS Case Status Explained", desc: "Every status message from Received to Card Was Mailed" },
-                    { href: "/uscis", label: "USCIS Guide for Indians", desc: "The complete USCIS hub — H1B, green card, EAD, notices" },
+                    { href: "/uscis", label: "USCIS Hub", desc: "The complete USCIS hub — H1B, green card, EAD, notices" },
                   ].map((l) => (
                     <Link key={l.href} href={l.href}
                       className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-blue-400 hover:shadow-sm">

@@ -86,7 +86,7 @@ export default function ReceiptNumberPage() {
     faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
-      { name: "USCIS Guide", url: "/uscis" },
+      { name: "USCIS Hub", url: "/uscis" },
       { name: "Receipt Number", url: PAGE_PATH },
     ])
   );
@@ -110,7 +110,7 @@ export default function ReceiptNumberPage() {
             <li aria-hidden>/</li>
             <li>
               <Link href="/uscis" className="hover:text-ink-800">
-                USCIS Guide
+                USCIS Hub
               </Link>
             </li>
             <li aria-hidden>/</li>
@@ -143,7 +143,7 @@ export default function ReceiptNumberPage() {
         <Container>
           <div className="mx-auto max-w-3xl">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-indigo-600">
-              USCIS Guide
+              USCIS Hub
             </p>
             <h1 className="text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
               USCIS Receipt Number Explained
@@ -627,7 +627,7 @@ export default function ReceiptNumberPage() {
                 },
                 {
                   href: "/uscis",
-                  label: "USCIS Guide Hub",
+                  label: "USCIS Hub",
                   desc: "Full overview of USCIS processes for Indian applicants",
                 },
               ].map((g) => (

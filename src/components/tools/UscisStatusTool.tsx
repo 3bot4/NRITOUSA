@@ -416,7 +416,7 @@ const SITUATION_NOTES: Partial<Record<Situation, Record<string, string>>> = {
   },
   "gc-pending": {
     "actively-reviewed":
-      "While I-485 is pending, you can generally work on EAD and travel on Advance Parole. Do not travel internationally without a valid AP document — it will abandon your adjustment.",
+      "While I-485 is pending, many applicants can work on EAD and travel on Advance Parole. Avoid traveling internationally without a valid AP document — for many applicants it can cause the adjustment to be treated as abandoned. Travel rules are fact-specific, so confirm with your immigration attorney first.",
     approved:
       "Your green card application is approved — you are now a permanent resident. Your EAD and AP are no longer needed. You can now travel freely without Advance Parole.",
     "rfe-sent":

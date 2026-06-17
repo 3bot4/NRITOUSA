@@ -24,40 +24,57 @@ const _eb1 = currentBulletin.categories.eb1.india;
 const _eb2 = currentBulletin.categories.eb2.india;
 const _eb3 = currentBulletin.categories.eb3.india;
 
+/**
+ * Movement labels are MANUALLY MAINTAINED and must reflect the verified
+ * difference vs. the previous official bulletin. We never compute or invent a
+ * movement amount unless previousFinalActionDate / previousDatesForFiling are
+ * present AND verified. When previous data is null, movementDirection is
+ * "unavailable" and the label tells the user to verify against the prior
+ * bulletin. June 2026: EB-1 and EB-2 India retrogressed; previous-month cutoffs
+ * are not independently verified in this file, so we do not show a month count.
+ */
+export type MovementDirection = "forward" | "retrogressed" | "unchanged" | "unavailable";
+
 export const visaBulletinIndia = {
   month: currentBulletin.bulletinMonth,
   year: currentBulletin.bulletinMonth.split("-")[0],
   lastUpdated: currentBulletin.lastUpdated,
-  officialSourceName: currentBulletin.sourceLabel,
+  lastVerified: "June 2026",
+  officialSourceName: "U.S. Department of State Visa Bulletin",
   officialSourceUrl: currentBulletin.source,
+  sourceNote:
+    "June 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
+  retrogressionNote:
+    "June 2026 note: The Department of State Visa Bulletin reflected retrogression pressure for India employment-based categories, especially EB-1 and EB-2. Always verify the latest bulletin before making filing or travel decisions.",
 
   categories: {
     EB1: {
-      finalActionDate: _eb1.fad,
-      datesForFiling: _eb1.dff,
-      // MANUALLY MAINTAINED — update when bulletin changes
-      previousFinalActionDate: "2022-10-15",
-      previousDatesForFiling: "2023-01-01",
-      finalActionChangeLabel: "+2 months forward",
-      datesForFilingChangeLabel: "+5 months forward",
+      currentFinalActionDate: _eb1.fad,
+      currentDatesForFiling: _eb1.dff,
+      // Previous-month cutoffs not independently verified — do not compute movement.
+      previousFinalActionDate: null,
+      previousDatesForFiling: null,
+      movementDirection: "retrogressed" as MovementDirection,
+      finalActionMovementLabel: "Retrogressed",
+      datesForFilingMovementLabel: "Verify vs. last bulletin",
     },
     EB2: {
-      finalActionDate: _eb2.fad,
-      datesForFiling: _eb2.dff,
-      // MANUALLY MAINTAINED — update when bulletin changes
-      previousFinalActionDate: "2013-08-01",
-      previousDatesForFiling: "2013-08-01",
-      finalActionChangeLabel: "+1 month forward",
-      datesForFilingChangeLabel: "+5 months forward",
+      currentFinalActionDate: _eb2.fad,
+      currentDatesForFiling: _eb2.dff,
+      previousFinalActionDate: null,
+      previousDatesForFiling: null,
+      movementDirection: "retrogressed" as MovementDirection,
+      finalActionMovementLabel: "Retrogressed",
+      datesForFilingMovementLabel: "Verify vs. last bulletin",
     },
     EB3: {
-      finalActionDate: _eb3.fad,
-      datesForFiling: _eb3.dff,
-      // MANUALLY MAINTAINED — update when bulletin changes
-      previousFinalActionDate: "2013-10-15",
-      previousDatesForFiling: "2014-01-01",
-      finalActionChangeLabel: "+2 months forward",
-      datesForFilingChangeLabel: "+5 months forward",
+      currentFinalActionDate: _eb3.fad,
+      currentDatesForFiling: _eb3.dff,
+      previousFinalActionDate: null,
+      previousDatesForFiling: null,
+      movementDirection: "unavailable" as MovementDirection,
+      finalActionMovementLabel: "Movement pending verification",
+      datesForFilingMovementLabel: "Verify vs. last bulletin",
     },
   },
 } as const;
@@ -88,6 +105,29 @@ export const greenCardBacklog = {
     EB2: 26984,
     EB3: 17036,
   },
+} as const;
+
+// Source clarification for the India I-485 backlog numbers shown on the tracker.
+// These are a manually maintained snapshot, NOT a live USCIS feed.
+export const i485BacklogIndia = {
+  totalDisplay: `~${_indiaTotal.toLocaleString()}`,
+  eb1Display: "22,335",
+  eb2Display: "26,984",
+  eb3Display: "17,036",
+  sourceDatasetName: "USCIS Employment-Based I-485 Inventory snapshot used by NRItoUSA",
+  // TODO: Add exact USCIS I-485 inventory report filename/date used for these numbers.
+  // Best known: USCIS Pending EB I-485 Inventory, snapshot ${inventoryRaw.snapshotDate},
+  // published ${inventoryRaw.publishedDate}. Confirm the exact India/China/All-Other
+  // workbook filename from the USCIS data page before citing.
+  sourceFileOrReportName: `USCIS Pending EB I-485 Inventory — snapshot ${inventoryRaw.snapshotDate} (published ${inventoryRaw.publishedDate}); exact workbook filename TODO`,
+  snapshotDate: inventoryRaw.snapshotDate,
+  publishedDate: inventoryRaw.publishedDate,
+  lastVerified: "June 2026",
+  officialSourceName: "USCIS Immigration and Citizenship Data",
+  officialSourceUrl:
+    "https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data",
+  note: "Inventory numbers can differ by report date, category filters, and USCIS dataset version. Verify against the exact USCIS inventory file before citing.",
+  cardLabel: "Dataset: USCIS EB I-485 inventory snapshot used by NRItoUSA. Last manually verified: June 2026.",
 } as const;
 
 // ─── H1B Lottery ─────────────────────────────────────────────────────────────
@@ -222,6 +262,8 @@ export const dashboardDisclaimers = {
     "Visa Bulletin dates are set monthly by the U.S. Department of State and can move forward, stay the same, or retrogress. Past movement is not a predictor of future movement.",
   sourceVerificationDisclaimer:
     "Every data field on this page shows its source and last-updated date. We update this page when official sources publish new data, but always verify directly with the official source before making any immigration decision.",
+  adLandingDisclaimer:
+    "Because immigration data changes often, this tracker shows manually maintained snapshots and estimates where noted. Always verify official USCIS and Department of State sources before filing, traveling, paying fees, or making legal decisions.",
 } as const;
 
 // ─── Type exports ─────────────────────────────────────────────────────────────

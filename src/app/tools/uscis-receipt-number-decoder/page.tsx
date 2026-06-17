@@ -169,7 +169,7 @@ export default function UscisReceiptNumberDecoderPage() {
                 },
                 {
                   href: "/uscis",
-                  label: "USCIS Guide Hub",
+                  label: "USCIS Hub",
                   desc: "Full USCIS overview for NRIs and Indian applicants",
                 },
                 {

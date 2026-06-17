@@ -90,20 +90,20 @@ export default function UscisChildPage({
   const crumbs = isMyuscisCluster
     ? [
         { name: "Home", url: "/" },
-        { name: "USCIS Guide", url: "/uscis" },
+        { name: "USCIS Hub", url: "/uscis" },
         { name: "myUSCIS Account", url: MYUSCIS_HUB },
         { name: page.navLabel, url: `/uscis/${page.slug}` },
       ]
     : isLifePlanningCluster
     ? [
         { name: "Home", url: "/" },
-        { name: "USCIS Guide", url: "/uscis" },
+        { name: "USCIS Hub", url: "/uscis" },
         { name: "Life Planning", url: LIFE_PLANNING_HUB },
         { name: page.navLabel, url: `/uscis/${page.slug}` },
       ]
     : [
         { name: "Home", url: "/" },
-        { name: "USCIS Guide", url: "/uscis" },
+        { name: "USCIS Hub", url: "/uscis" },
         { name: "Case Status", url: USCIS_CASE_STATUS_HUB },
         { name: page.navLabel, url: `/uscis/${page.slug}` },
       ];

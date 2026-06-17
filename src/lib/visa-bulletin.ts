@@ -55,6 +55,15 @@ export const bulletin = {
   sourceLabel: currentData.sourceLabel,
 };
 
+/**
+ * MANUALLY MAINTAINED point-in-time note about the current bulletin's movement
+ * direction. Single source of truth — surfaced on /visa-bulletin,
+ * /tools/priority-date-checker, /green-card, and the immigration tracker.
+ * Update (or clear) this whenever a new bulletin is configured.
+ */
+export const currentBulletinNote =
+  "June 2026 note: The Department of State Visa Bulletin reflected retrogression pressure for India employment-based categories, especially EB-1 and EB-2. Always verify the latest bulletin before making filing or travel decisions.";
+
 export function getCutoffs(
   category: EbCategory,
   country: BulletinCountry
