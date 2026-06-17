@@ -1,8 +1,9 @@
 import Script from "next/script";
-import { GA_ID, gaEnabled } from "@/lib/gtag";
+import { GA_ID, ADS_ID, gaEnabled } from "@/lib/gtag";
 
-// Loads GA4 (gtag.js) globally. Uses afterInteractive so it never blocks the
-// initial render and produces no hydration mismatch. Renders nothing in dev.
+// Loads GA4 + Google Ads (gtag.js) globally. Uses afterInteractive so it never
+// blocks the initial render and produces no hydration mismatch. Renders nothing
+// in dev. Both IDs share a single gtag.js load with one config() call each.
 export default function GoogleAnalytics() {
   if (!gaEnabled) return null;
 
@@ -18,6 +19,7 @@ export default function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GA_ID}');
+          gtag('config', '${ADS_ID}');
         `}
       </Script>
     </>
