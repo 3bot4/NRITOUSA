@@ -2,6 +2,7 @@ import Link from "next/link";
 import ToolCard from "@/components/tools/ToolCard";
 import CalculatorCard from "@/components/CalculatorCard";
 import IulComparisonCard from "@/components/IulComparisonCard";
+import OptionLeoCard from "@/components/OptionLeoCard";
 import { liveTools, type ToolGroup } from "@/lib/tools";
 import { calculators, getCalculator } from "@/lib/calculators";
 
@@ -61,6 +62,7 @@ export default function AllToolsGrid() {
         <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {backdoorRoth && <CalculatorCard calc={backdoorRoth} />}
           <IulComparisonCard />
+          <OptionLeoCard />
         </div>
       </div>
 
