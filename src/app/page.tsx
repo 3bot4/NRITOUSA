@@ -6,6 +6,7 @@ import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
 import AllToolsGrid from "@/components/home/AllToolsGrid";
 import UscisToolsSpotlight from "@/components/home/UscisToolsSpotlight";
 import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
+import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpotlight";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -46,6 +47,7 @@ export default function HomePage() {
         <ImmigrationTrackerSpotlight />
         <UscisToolsSpotlight />
         <TaxComplianceSpotlight />
+        <LeadMagnetSpotlight />
         <AllToolsGrid />
         <LatestUpdates />
       </Container>

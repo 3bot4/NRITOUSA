@@ -20,8 +20,16 @@ export interface ToolUsedEvent {
 }
 
 export function trackToolUsed(params: ToolUsedEvent): void {
+  trackEvent("tool_used", { ...params });
+}
+
+/** Generic GA4 event. Same SSR/dev/blocked-analytics safety as above. */
+export function trackEvent(
+  event: string,
+  params?: Record<string, unknown>
+): void {
   if (typeof window === "undefined") return;
   const gtag = (window as Window & { gtag?: GtagFn }).gtag;
   if (typeof gtag !== "function") return;
-  gtag("event", "tool_used", params);
+  gtag("event", event, params);
 }
