@@ -11,6 +11,12 @@
 import currentBulletin from "../../data/visa-bulletin/current.json";
 import processingTimesRaw from "../../data/processing-times.json";
 import inventoryRaw from "../../data/i485-inventory/current.json";
+import { getH1bPremiumFee, getPremiumFeeByForm, premiumProcessing } from "@/lib/premiumProcessing";
+
+// Premium processing fees come from the central source of truth in
+// src/lib/premiumProcessing.ts — never hardcode fee amounts on the tracker.
+const _h1bFee = getH1bPremiumFee();
+const _i140Fee = getPremiumFeeByForm("I-140")[0];
 
 // ─── Visa Bulletin India ──────────────────────────────────────────────────────
 
@@ -137,7 +143,7 @@ export const processingTimes = {
       lastUpdated: _i485?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i485?.source ?? processingTimesRaw.source,
       officialSourceName: _i485?.sourceLabel ?? processingTimesRaw.sourceLabel,
-      note: "Varies by service center and case type. No premium processing for I-485.",
+      note: "Varies by service center and case type. Premium processing is not available for I-485.",
       learnMoreHref: "/uscis/processing-times",
     },
     {
@@ -149,8 +155,10 @@ export const processingTimes = {
       lastUpdated: _i140?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i140?.source ?? processingTimesRaw.source,
       officialSourceName: _i140?.sourceLabel ?? processingTimesRaw.sourceLabel,
-      note: "Premium processing (15 business days) available for most I-140 categories.",
+      // Fee pulled from central premiumProcessing — see PremiumProcessingFeeNote on the card.
+      note: `I-140 premium processing may be available for many eligible categories. Current common fee shown in our data: ${_i140Fee.feeDisplay}. Last verified: ${premiumProcessing.lastVerified}. Premium processing does not move your priority date or visa bulletin availability.`,
       learnMoreHref: "/green-card",
+      premiumFeeForm: "I-140" as const,
     },
     {
       form: "I-765 (EAD)",
@@ -173,7 +181,7 @@ export const processingTimes = {
       lastUpdated: _i131?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i131?.source ?? processingTimesRaw.source,
       officialSourceName: _i131?.sourceLabel ?? processingTimesRaw.sourceLabel,
-      note: "Do not travel outside the US without AP in hand if your I-485 is pending.",
+      note: "For many I-485 applicants, leaving the U.S. without Advance Parole can risk abandonment of the I-485. Some H/L visa holders may have exceptions if they maintain valid status and re-enter properly. Travel rules are fact-specific, so confirm with an immigration attorney before traveling.",
       learnMoreHref: "/uscis",
     },
     {
@@ -185,8 +193,10 @@ export const processingTimes = {
       lastUpdated: _i129?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i129?.source ?? processingTimesRaw.source,
       officialSourceName: _i129?.sourceLabel ?? processingTimesRaw.sourceLabel,
-      note: _i129?.premium ?? "Premium processing available ($2,805 as of 2025).",
+      // Fee pulled from central premiumProcessing — never the stale value in processing-times.json.
+      note: `${_h1bFee.timelineDisplay} with premium processing for many eligible H-1B/I-129 cases. Current common fee shown in our data: ${_h1bFee.feeDisplay}. Last verified: ${premiumProcessing.lastVerified}. Always verify the latest fee on the official USCIS Form I-907 page before filing.`,
       learnMoreHref: "/h1b",
+      premiumFeeForm: "I-129" as const,
     },
   ],
 } as const;
