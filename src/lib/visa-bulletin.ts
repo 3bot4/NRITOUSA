@@ -62,7 +62,7 @@ export const bulletin = {
  * Update (or clear) this whenever a new bulletin is configured.
  */
 export const currentBulletinNote =
-  "June 2026 note: The Department of State Visa Bulletin reflected retrogression pressure for India employment-based categories, especially EB-1 and EB-2. Always verify the latest bulletin before making filing or travel decisions.";
+  "June 2026 Visa Bulletin: EB-1 and EB-2 India retrogressed, while EB-3 India advanced modestly. Always verify with the official Department of State Visa Bulletin.";
 
 export function getCutoffs(
   category: EbCategory,
