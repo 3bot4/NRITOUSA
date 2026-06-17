@@ -181,7 +181,7 @@ export default function ProcessingTimesPage() {
             <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-400">Related guides and tools</p>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                { href: "/uscis", label: "USCIS Guide for Indians", desc: "Case status, receipt numbers, and notices explained" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Case status, receipt numbers, and notices explained" },
                 { href: "/uscis/processing-times", label: "USCIS Processing Times Guide", desc: "How to read USCIS processing estimates for your form" },
                 { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H-1B, I-140, or I-485 case delayed?" },
                 { href: "/tools/uscis-case-status-meaning", label: "USCIS Case Status Decoder", desc: "Plain-English meaning for every USCIS status message" },

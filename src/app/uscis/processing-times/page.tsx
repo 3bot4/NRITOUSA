@@ -100,7 +100,7 @@ export default function ProcessingTimesPage() {
     faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
-      { name: "USCIS Guide", url: "/uscis" },
+      { name: "USCIS Hub", url: "/uscis" },
       { name: "Processing Times", url: PAGE_PATH },
     ])
   );
@@ -118,7 +118,7 @@ export default function ProcessingTimesPage() {
           <ol className="flex flex-wrap items-center gap-1.5 text-xs text-ink-500">
             <li><Link href="/" className="hover:text-ink-800">Home</Link></li>
             <li aria-hidden>/</li>
-            <li><Link href="/uscis" className="hover:text-ink-800">USCIS Guide</Link></li>
+            <li><Link href="/uscis" className="hover:text-ink-800">USCIS Hub</Link></li>
             <li aria-hidden>/</li>
             <li className="font-medium text-ink-800">Processing Times</li>
           </ol>
@@ -140,7 +140,7 @@ export default function ProcessingTimesPage() {
       <section className="bg-white pb-6 pt-10 sm:pb-8 sm:pt-14">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">USCIS Guide</p>
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">USCIS Hub</p>
             <h1 className="text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
               USCIS Processing Times Explained for Indians
             </h1>
@@ -571,7 +571,7 @@ export default function ProcessingTimesPage() {
                 { href: "/tools/uscis-case-status-meaning", label: "Case Status Meaning Tool", desc: "Interactive decoder for your current USCIS status" },
                 { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is my case delayed? Educational assessment tool" },
                 { href: "/tools/uscis-receipt-number-decoder", label: "Receipt Prefix Decoder", desc: "What IOE, LIN, SRC, EAC, WAC, MSC mean" },
-                { href: "/uscis", label: "USCIS Guide Hub", desc: "Full USCIS overview for Indian applicants" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Full USCIS overview for Indian applicants" },
                 { href: "/uscis/request-for-evidence-rfe", label: "RFE Guide", desc: "What to do when USCIS sends a Request for Evidence" },
               ].map((g) => (
                 <Link key={g.href} href={g.href} className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">

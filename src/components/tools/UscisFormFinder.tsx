@@ -139,7 +139,7 @@ function buildResult(
         warning: "India family preference categories (especially F4 — siblings) have very long backlogs, sometimes 20+ years. Check the State Department visa bulletin for India family preference priority dates before making plans.",
         relatedLinks: [
           { href: "/uscis/forms/i-130", label: "I-130 full guide" },
-          { href: "/uscis", label: "USCIS Guide for Indians" },
+          { href: "/uscis", label: "USCIS Hub" },
         ],
       };
 
@@ -229,7 +229,7 @@ function buildResult(
         relatedLinks: [
           { href: "/uscis/forms", label: "USCIS Forms Explained" },
           { href: "/tools/uscis-notice-decoder", label: "USCIS Notice Decoder" },
-          { href: "/uscis", label: "USCIS Guide for Indians" },
+          { href: "/uscis", label: "USCIS Hub" },
         ],
       };
   }

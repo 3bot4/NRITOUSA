@@ -189,7 +189,7 @@ export default function UscisNoticeDecoderPage() {
                 },
                 {
                   href: "/uscis",
-                  label: "Full USCIS Guide for Indians",
+                  label: "USCIS Hub",
                   desc: "Case status, receipt numbers, H1B, green card, and more",
                 },
               ].map((g) => (

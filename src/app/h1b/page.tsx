@@ -570,7 +570,7 @@ export default function H1bHubPage() {
             <h2 className="text-base font-bold text-ink-900 mb-4">Related guides and tools</h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                { href: "/uscis", label: "USCIS Guide Hub", desc: "Full USCIS overview for Indian applicants" },
+                { href: "/uscis", label: "USCIS Hub", desc: "Full USCIS overview for Indian applicants" },
                 { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What every status message means" },
                 { href: "/uscis/processing-times", label: "Processing Times Guide", desc: "H1B and other USCIS processing time estimates" },
                 { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H1B case delayed? Educational assessment" },

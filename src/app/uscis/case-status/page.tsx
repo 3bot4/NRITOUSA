@@ -32,7 +32,7 @@ export function generateMetadata(): Metadata {
 
 const crumbs = [
   { name: "Home", url: "/" },
-  { name: "USCIS Guide", url: "/uscis" },
+  { name: "USCIS Hub", url: "/uscis" },
   { name: "Case Status Explained", url: PAGE_PATH },
 ];
 
