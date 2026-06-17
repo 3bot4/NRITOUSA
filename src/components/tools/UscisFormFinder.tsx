@@ -152,7 +152,7 @@ function buildResult(
           : "Form I-539 lets you extend your current nonimmigrant stay or change to a different nonimmigrant category (e.g., B-2 visitor to F-1 student) without leaving the US. It cannot be used by H-1B or L-1 principals — those require employer I-129.",
         whoFiles: "Self (or dependent filing alongside principal)",
         slug: "i-539",
-        warning: "File I-539 BEFORE your current status expires. Processing can take 12–24 months. Do not travel internationally while I-539 is pending — it typically abandons the application. You cannot work on a pending I-539 alone.",
+        warning: "File I-539 BEFORE your current status expires. Processing can take 12–24 months. Avoid traveling internationally while I-539 is pending — it often results in the application being treated as abandoned. A pending I-539 alone does not authorize work. Confirm your situation with an immigration attorney.",
         relatedLinks: [
           { href: "/uscis/forms/i-539", label: "I-539 full guide" },
           { href: "/uscis/forms/i-765", label: "I-765 EAD guide" },
