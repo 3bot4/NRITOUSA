@@ -5,6 +5,14 @@ import Link from "next/link";
 import TrackerCharts from "@/components/tools/TrackerCharts";
 import DataStamp from "@/components/tools/DataStamp";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
+import DataConfidenceBadge, {
+  type ConfidenceType,
+} from "@/components/tools/DataConfidenceBadge";
+import PremiumProcessingFeeNote, {
+  type PremiumFeeType,
+} from "@/components/tools/PremiumProcessingFeeNote";
+import ShareTrackerBlock from "@/components/tools/ShareTrackerBlock";
+import ImmigrationEmailSignup from "@/components/tools/ImmigrationEmailSignup";
 import {
   visaBulletinIndia,
   greenCardBacklog,
@@ -16,6 +24,14 @@ import {
 import { formatCutoff, bulletin } from "@/lib/visa-bulletin";
 import { inventoryMeta } from "@/lib/i485-inventory";
 import type { FaqItem } from "@/lib/seo";
+
+const TRACKER_URL = "https://www.nritousa.com/immigration-tracker";
+
+/** Maps a central-data premiumFeeForm string to the fee-note component's type. */
+const PREMIUM_FEE_TYPE: Record<string, PremiumFeeType> = {
+  "I-129": "h1bI129",
+  "I-140": "i140",
+};
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -74,6 +90,9 @@ function StatCard({
   learnMoreHref,
   accent,
   icon,
+  confidence,
+  confidenceNote,
+  premiumFeeType,
 }: {
   label: string;
   value: string;
@@ -87,6 +106,9 @@ function StatCard({
   learnMoreHref?: string;
   accent?: string;
   icon?: string;
+  confidence?: ConfidenceType | ConfidenceType[];
+  confidenceNote?: string;
+  premiumFeeType?: PremiumFeeType;
 }) {
   return (
     <div className="flex flex-col gap-3 rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card">
@@ -109,6 +131,10 @@ function StatCard({
         )}
       </div>
 
+      {confidence && (
+        <DataConfidenceBadge type={confidence} note={confidenceNote} />
+      )}
+
       <div>
         <p className="text-xl font-extrabold leading-snug tracking-tight text-ink-900 sm:text-2xl">
           {value}
@@ -121,6 +147,8 @@ function StatCard({
       {note && (
         <p className="text-xs leading-relaxed text-ink-400">{note}</p>
       )}
+
+      {premiumFeeType && <PremiumProcessingFeeNote feeType={premiumFeeType} />}
 
       <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-ink-900/5 pt-3">
         <DataStamp
@@ -282,6 +310,8 @@ export default function ImmigrationTrackerDashboard({
             sourceUrl={visaBulletinIndia.officialSourceUrl}
             note="Final Action Date (approval cutoff) · Dates for Filing shown as subvalue."
             learnMoreHref="/visa-bulletin"
+            confidence={["official", "manually-maintained"]}
+            confidenceNote="Based on manually maintained Visa Bulletin data. Verify with official Department of State Visa Bulletin."
           />
 
           {/* EB-2 India */}
@@ -298,6 +328,8 @@ export default function ImmigrationTrackerDashboard({
             sourceUrl={visaBulletinIndia.officialSourceUrl}
             note="Final Action Date (approval cutoff) · Dates for Filing shown as subvalue."
             learnMoreHref="/visa-bulletin"
+            confidence={["official", "manually-maintained"]}
+            confidenceNote="Based on manually maintained Visa Bulletin data. Verify with official Department of State Visa Bulletin."
           />
 
           {/* EB-3 India */}
@@ -314,6 +346,8 @@ export default function ImmigrationTrackerDashboard({
             sourceUrl={visaBulletinIndia.officialSourceUrl}
             note="Final Action Date (approval cutoff) · Dates for Filing shown as subvalue."
             learnMoreHref="/visa-bulletin"
+            confidence={["official", "manually-maintained"]}
+            confidenceNote="Based on manually maintained Visa Bulletin data. Verify with official Department of State Visa Bulletin."
           />
 
           {/* EB-2 India Gap */}
@@ -328,8 +362,10 @@ export default function ImmigrationTrackerDashboard({
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel="Computed from Final Action Date"
             sourceUrl={visaBulletinIndia.officialSourceUrl}
-            note="Simple calendar difference between today and the EB-2 India Final Action Date. Not a wait-time prediction."
+            note="Simple calendar gap, not a wait-time prediction."
             learnMoreHref="/green-card"
+            confidence="calculated"
+            confidenceNote="Calculated as the simple calendar gap between today and the EB-2 India Final Action Date."
           />
 
           {/* I-485 Backlog */}
@@ -346,6 +382,8 @@ export default function ImmigrationTrackerDashboard({
             sourceUrl={greenCardBacklog.officialSourceUrl}
             note={greenCardBacklog.note}
             learnMoreHref="/green-card"
+            confidence={["official", "manually-maintained"]}
+            confidenceNote="Based on USCIS inventory data when available; manually transcribed and maintained."
           />
 
           {/* Next Visa Bulletin */}
@@ -359,6 +397,8 @@ export default function ImmigrationTrackerDashboard({
             sourceLabel="Estimated — not official"
             sourceUrl="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
             note={countdowns.note}
+            confidence="estimate"
+            confidenceNote="Estimated timing only, not an official release date."
           />
         </div>
       </section>
@@ -386,26 +426,39 @@ export default function ImmigrationTrackerDashboard({
             sourceUrl={h1bLottery.officialSourceUrl}
             note="Lottery odds vary by year and registration rules. Estimate only."
             learnMoreHref="/h1b"
+            confidence={["calculated", "estimate"]}
+            confidenceNote="Calculated from USCIS registration/selection data. Odds vary by year and rules."
           />
 
           {/* Processing time cards */}
-          {processingTimes.items.map((item) => (
-            <StatCard
-              key={item.form}
-              icon="⏱️"
-              accent="from-slate-600 to-gray-600"
-              label={item.form}
-              value={item.valueDisplay}
-              subvalue={item.category}
-              changeLabel={item.changeDisplay}
-              changeDirection="neutral"
-              lastUpdated={item.lastUpdated}
-              sourceLabel={item.officialSourceName}
-              sourceUrl={item.officialSourceUrl}
-              note={item.note}
-              learnMoreHref={item.learnMoreHref}
-            />
-          ))}
+          {processingTimes.items.map((item) => {
+            const premiumFeeForm =
+              "premiumFeeForm" in item
+                ? (item as { premiumFeeForm: string }).premiumFeeForm
+                : undefined;
+            return (
+              <StatCard
+                key={item.form}
+                icon="⏱️"
+                accent="from-slate-600 to-gray-600"
+                label={item.form}
+                value={item.valueDisplay}
+                subvalue={item.category}
+                changeLabel={item.changeDisplay}
+                changeDirection="neutral"
+                lastUpdated={item.lastUpdated}
+                sourceLabel={item.officialSourceName}
+                sourceUrl={item.officialSourceUrl}
+                note={item.note}
+                learnMoreHref={item.learnMoreHref}
+                confidence="uscis-estimate"
+                confidenceNote="Processing times are estimates, not guarantees."
+                premiumFeeType={
+                  premiumFeeForm ? PREMIUM_FEE_TYPE[premiumFeeForm] : undefined
+                }
+              />
+            );
+          })}
         </div>
 
         <p className="mt-3 text-xs text-ink-400">
@@ -623,6 +676,12 @@ export default function ImmigrationTrackerDashboard({
         </div>
       </section>
 
+      {/* ── Email capture ─────────────────────────────────────────────────── */}
+      <ImmigrationEmailSignup source="immigration-tracker" />
+
+      {/* ── Share (top placement, near email capture) ─────────────────────── */}
+      <ShareTrackerBlock url={TRACKER_URL} />
+
       {/* ── Explainer Section ─────────────────────────────────────────────── */}
       <section aria-labelledby="explainer-heading">
         <div className="mb-4">
@@ -762,6 +821,9 @@ export default function ImmigrationTrackerDashboard({
           USCIS H-1B Registration
         </a>
       </div>
+
+      {/* ── Share (bottom placement) ──────────────────────────────────────── */}
+      <ShareTrackerBlock url={TRACKER_URL} />
 
       {/* ── Disclaimer ───────────────────────────────────────────────────── */}
       <ToolDisclaimer />

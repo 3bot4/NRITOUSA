@@ -7,6 +7,8 @@ const HIGHLIGHTS = [
   { icon: "📆", text: "Next visa bulletin countdown" },
 ];
 
+const BADGES = ["Visa Bulletin", "Green Card", "USCIS", "H1B"];
+
 export default function ImmigrationTrackerSpotlight() {
   return (
     <section aria-labelledby="tracker-spotlight-h">
@@ -27,9 +29,19 @@ export default function ImmigrationTrackerSpotlight() {
                 NRI Immigration Tracker
               </h2>
               <p className="mt-0.5 text-sm text-ink-500">
-                Track EB1/EB2/EB3 India movement, I-485 backlog, H1B lottery odds, USCIS
-                processing times, and next visa bulletin countdown in one place.
+                Track EB-1, EB-2, EB-3 India movement, I-485 backlog, H1B lottery odds, USCIS
+                processing times, and the next Visa Bulletin countdown in one place.
               </p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {BADGES.map((b) => (
+                  <span
+                    key={b}
+                    className="inline-flex items-center rounded-full border border-indigo-100 bg-white px-2 py-0.5 text-[11px] font-semibold text-indigo-700"
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
           <Link

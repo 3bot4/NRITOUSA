@@ -17,6 +17,12 @@ interface Payload {
   email?: string;
   /** Honeypot — must stay empty. Bots fill it; humans never see it. */
   company?: string;
+  /** Optional provenance tag, e.g. "immigration-tracker". */
+  source?: string;
+  /** Optional list of interest ids the user opted into. */
+  interests?: string[];
+  /** Optional self-reported immigration status (free choice from a fixed list). */
+  status?: string;
 }
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -53,6 +59,29 @@ export async function POST(request: Request) {
 
   const listId = Number(process.env.BREVO_NEWSLETTER_LIST_ID ?? 5);
 
+  // Optional segmentation tags. These map to Brevo contact attributes; if the
+  // attributes don't exist in the Brevo account they are simply ignored, so
+  // this stays safe whether or not segmentation is configured.
+  // TODO(backend): create SOURCE / INTERESTS / IMMIGRATION_STATUS attributes in
+  // Brevo (and optionally a tracker list via BREVO_TRACKER_LIST_ID) to persist
+  // and segment these. Until then, email signup still works.
+  const attributes: Record<string, string> = {};
+  if (typeof body.source === "string" && body.source.trim()) {
+    attributes.SOURCE = body.source.trim().slice(0, 100);
+  }
+  if (Array.isArray(body.interests) && body.interests.length) {
+    attributes.INTERESTS = body.interests.join(",").slice(0, 255);
+  }
+  if (typeof body.status === "string" && body.status.trim()) {
+    attributes.IMMIGRATION_STATUS = body.status.trim().slice(0, 100);
+  }
+
+  const trackerListId = Number(process.env.BREVO_TRACKER_LIST_ID ?? 0);
+  const listIds =
+    body.source === "immigration-tracker" && trackerListId
+      ? [listId, trackerListId]
+      : [listId];
+
   try {
     const res = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -63,8 +92,9 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         email,
-        listIds: [listId],
+        listIds,
         updateEnabled: true,
+        ...(Object.keys(attributes).length ? { attributes } : {}),
       }),
     });
 
