@@ -311,8 +311,13 @@ export default function GreenCardEstimator({
       const sp = new URLSearchParams();
       if (category !== "eb2") sp.set("cat", category);
       if (country !== "india") sp.set("country", country);
-      sp.set("pd", priorityDate);
-      window.history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
+      if (priorityDate !== "2019-06-01") sp.set("pd", priorityDate);
+      const qs = sp.toString();
+      window.history.replaceState(
+        null,
+        "",
+        qs ? `${window.location.pathname}?${qs}` : window.location.pathname
+      );
     }, 400);
     return () => clearTimeout(t);
   }, [compact, category, country, priorityDate]);
