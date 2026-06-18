@@ -8,6 +8,7 @@ import PrivacyNotice from "./PrivacyNotice";
 import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
+import { useScrollTopOnMount } from "@/lib/nri-tax/useScrollTopOnMount";
 import {
   ASSET_TYPES,
   assetMeta,
@@ -41,6 +42,7 @@ function emptyDraft(): Draft {
 const usd = (n: number | null) => (n == null ? "—" : `$${Math.round(n).toLocaleString("en-US")}`);
 
 export default function OrganizerAssets() {
+  useScrollTopOnMount();
   const org = useOrganizer();
   const [draft, setDraft] = useState<Draft>(emptyDraft());
   const [editingId, setEditingId] = useState<string | null>(null);

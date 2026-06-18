@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
 import { useOrganizer, currentTaxYear } from "@/lib/nri-tax/storage";
+import { useScrollTopOnMount } from "@/lib/nri-tax/useScrollTopOnMount";
 import { buildSummary } from "@/lib/nri-tax/rules";
 import { sampleAssets, sampleIncome, sampleProfile } from "@/lib/nri-tax/sample";
 import {
@@ -71,6 +72,7 @@ function RuleCard({ r }: { r: RuleOutput }) {
 }
 
 export default function OrganizerReport() {
+  useScrollTopOnMount();
   const org = useOrganizer();
   const router = useRouter();
   const params = useSearchParams();
@@ -98,6 +100,15 @@ export default function OrganizerReport() {
     month: "long",
     day: "numeric",
   });
+
+  // Hide blank income rows from the report/PDF (data is not deleted): only show
+  // a row if it has a meaningful amount, tax/TDS, or a note.
+  const visibleIncome = income.filter(
+    (i) =>
+      (i.amount ?? 0) > 0 ||
+      (i.taxPaidOrTds ?? 0) > 0 ||
+      (i.notes ?? "").trim().length > 0
+  );
 
   const byCategory = (c: RuleCategory) => rules.filter((r) => r.category === c);
   const formsToReview = rules.filter(
@@ -231,7 +242,7 @@ export default function OrganizerReport() {
       <Section title="Income summary">
         <SummaryTable
           head={["Type", "Source", "Amount", "Tax/TDS"]}
-          rows={income.map((i) => [
+          rows={visibleIncome.map((i) => [
             incomeMeta(i.incomeType).label,
             i.countrySource,
             usd(i.amount),

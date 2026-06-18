@@ -7,6 +7,7 @@ import PrivacyNotice from "./PrivacyNotice";
 import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
+import { useScrollTopOnMount } from "@/lib/nri-tax/useScrollTopOnMount";
 import {
   FILING_STATUS_OPTIONS,
   INDIA_TAX_STATUS_OPTIONS,
@@ -15,6 +16,7 @@ import {
 } from "@/lib/nri-tax/types";
 
 export default function OrganizerProfile() {
+  useScrollTopOnMount();
   const org = useOrganizer();
   if (!org.ready) {
     return (

@@ -8,6 +8,7 @@ import PrivacyNotice from "./PrivacyNotice";
 import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
+import { useScrollTopOnMount } from "@/lib/nri-tax/useScrollTopOnMount";
 import { INCOME_TYPES, incomeMeta, type IncomeItem, type IncomeType } from "@/lib/nri-tax/types";
 
 type Draft = Omit<IncomeItem, "id" | "userId" | "taxYear" | "createdAt" | "updatedAt">;
@@ -29,6 +30,7 @@ function emptyDraft(): Draft {
 const usd = (n: number | null) => (n == null ? "—" : `$${Math.round(n).toLocaleString("en-US")}`);
 
 export default function OrganizerIncome() {
+  useScrollTopOnMount();
   const org = useOrganizer();
   const [draft, setDraft] = useState<Draft>(emptyDraft());
   const [editingId, setEditingId] = useState<string | null>(null);

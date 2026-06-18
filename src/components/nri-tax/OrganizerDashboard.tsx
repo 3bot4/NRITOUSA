@@ -7,6 +7,7 @@ import OrganizerNav from "./OrganizerNav";
 import PrivacyNotice from "./PrivacyNotice";
 import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { useOrganizer } from "@/lib/nri-tax/storage";
+import { useScrollTopOnMount } from "@/lib/nri-tax/useScrollTopOnMount";
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
@@ -27,6 +28,7 @@ function StatCard({ label, value, hint }: { label: string; value: string; hint?:
 }
 
 export default function OrganizerDashboard() {
+  useScrollTopOnMount();
   const org = useOrganizer();
   const router = useRouter();
 
