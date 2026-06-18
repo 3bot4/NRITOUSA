@@ -53,6 +53,7 @@ function movementToDirection(
 
 function yearGap(cutoffDate: string): string {
   if (cutoffDate === "C") return "No backlog (Current)";
+  if (cutoffDate === "U") return "Unavailable this month";
   const cutoff = new Date(cutoffDate);
   const now = new Date();
   const totalMonths =
@@ -289,7 +290,7 @@ export default function ImmigrationTrackerDashboard({
           </a>
         </div>
 
-        {/* June 2026 retrogression note + source */}
+        {/* July 2026 retrogression note + source */}
         <div className="mb-4 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
           {visaBulletinIndia.retrogressionNote}
           <span className="mt-1 block text-xs text-amber-800/80">
@@ -658,7 +659,7 @@ export default function ImmigrationTrackerDashboard({
           </p>
         </div>
 
-        {/* June 2026 retrogression note */}
+        {/* July 2026 retrogression note */}
         <div className="mb-3 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
           {visaBulletinIndia.retrogressionNote}
         </div>
@@ -687,7 +688,7 @@ export default function ImmigrationTrackerDashboard({
             category,
             accent,
             dot,
-            fad: `Final Action Date: ${formatCutoff(cat.currentFinalActionDate)} — ${cat.finalActionMovementLabel}${cat.previousFinalActionDate ? ` (from ${formatCutoff(cat.previousFinalActionDate)} in May 2026)` : ""}`,
+            fad: `Final Action Date: ${formatCutoff(cat.currentFinalActionDate)} — ${cat.finalActionMovementLabel}${cat.previousFinalActionDate ? ` (from ${formatCutoff(cat.previousFinalActionDate)} in June 2026)` : ""}`,
             dff: `Dates for Filing: ${formatCutoff(cat.currentDatesForFiling)} — ${cat.datesForFilingMovementLabel}`,
           })).map((item) => (
             <div

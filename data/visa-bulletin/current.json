@@ -1,28 +1,28 @@
 {
-  "bulletinMonth": "2026-06",
-  "lastUpdated": "2026-06-15",
-  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-june-2026.html",
-  "sourceLabel": "U.S. Department of State Visa Bulletin (June 2026)",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). All values verified against the official June 2026 bulletin.",
+  "bulletinMonth": "2026-07",
+  "lastUpdated": "2026-06-18",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin (July 2026)",
+  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). All values verified against the official July 2026 bulletin. USCIS has directed applicants to use Final Action Dates for employment-based adjustment of status filings in July 2026.",
   "categories": {
     "eb1": {
-      "india": { "fad": "2022-12-15", "dff": "2023-12-01" },
-      "china": { "fad": "2023-04-01", "dff": "2023-12-01" },
+      "india": { "fad": "2022-10-15", "dff": "2023-12-01" },
+      "china": { "fad": "2023-06-01", "dff": "2023-12-01" },
       "row": { "fad": "C", "dff": "C" }
     },
     "eb2": {
-      "india": { "fad": "2013-09-01", "dff": "2015-01-15" },
+      "india": { "fad": "U", "dff": "2015-01-15" },
       "china": { "fad": "2021-09-01", "dff": "2022-01-01" },
       "row": { "fad": "C", "dff": "C" }
     },
     "eb3": {
-      "india": { "fad": "2013-12-15", "dff": "2015-01-15" },
-      "china": { "fad": "2021-08-01", "dff": "2022-01-01" },
-      "row": { "fad": "2024-06-01", "dff": "C" }
+      "india": { "fad": "2014-01-01", "dff": "2015-01-15" },
+      "china": { "fad": "2021-12-22", "dff": "2022-01-01" },
+      "row": { "fad": "2024-08-01", "dff": "C" }
     },
     "eb5": {
-      "india": { "fad": "2022-05-01", "dff": "2024-05-01" },
-      "china": { "fad": "2016-09-22", "dff": "2017-03-01" },
+      "india": { "fad": "U", "dff": "2024-05-01" },
+      "china": { "fad": "2016-12-01", "dff": "2017-03-01" },
       "row": { "fad": "C", "dff": "C" }
     }
   }
