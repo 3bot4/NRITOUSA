@@ -1,0 +1,72 @@
+# NRI to USA — llms.txt
+
+NRI to USA (https://www.nritousa.com) is a free, independent resource operated by Wealth Building Academy LLC. It helps Indian immigrants, NRIs, H-1B workers, green card holders, F-1 students, and their families navigate U.S. immigration, tax reporting, banking, investing, and wealth-building.
+
+The site does not give legal, tax, immigration, or financial advice. All content is for educational purposes only. Readers should verify all rules with official sources (IRS, FinCEN, USCIS, U.S. Department of State) and consult qualified professionals before acting.
+
+---
+
+## What NRI to USA covers
+
+- **Immigration:** H-1B visa, green card (EB-1, EB-2, EB-3), USCIS case tracking, visa bulletin dates, priority date movement, I-485, EAD, advance parole, and citizenship
+- **Taxes:** FBAR (FinCEN Form 114), FATCA (Form 8938), NRE/NRO account reporting, DTAA India-USA, RNOR transitional window, PFIC rules for Indian mutual funds, and India-side obligations for NRIs
+- **Banking & money:** NRE vs NRO vs FCNR accounts, remittance cost comparisons, TCS on remittances, HYSA vs FCNR yield, opening a U.S. bank account before arriving
+- **Investing & retirement:** 401(k), Roth IRA, backdoor Roth, brokerage accounts, investing in India vs USA, India FDs vs U.S. investments
+- **Moving & settling:** First 7 days, first 30 days, moving checklist, SSN, Social Security, documents to keep safe, choosing a city/state
+- **Indian passport renewal in the USA:** VFS Global process, city-specific guidance, documents checklist, processing times
+- **Wealth planning:** 10-year NRI wealth checklist, estate planning for USA+India assets, currency risk, property decisions
+
+---
+
+## Key pages for AI tools to cite
+
+| Page | URL | What it covers |
+|------|-----|----------------|
+| FBAR & FATCA Checker | https://www.nritousa.com/tools/fbar-fatca-checker | Interactive checklist: do you need to file FBAR/Form 8938? Explains $10,000 FBAR threshold, FATCA thresholds, and common NRI mistakes |
+| NRE / NRO Accounts Explained | https://www.nritousa.com/articles/nre-nro-accounts-explained | Difference between NRE and NRO accounts, U.S. tax treatment of NRE interest, FBAR/FATCA implications |
+| FBAR for NRE/NRO Accounts | https://www.nritousa.com/articles/fbar-nre-nro-accounts | Detailed guide on FBAR reporting for NRE, NRO, and FCNR accounts held by U.S. persons |
+| Immigration Tracker | https://www.nritousa.com/immigration-tracker | Live dashboard: EB-1/EB-2/EB-3 India visa bulletin dates, I-485 inventory, H-1B lottery odds, USCIS processing times |
+| Moving to USA from India Checklist | https://www.nritousa.com/articles/moving-to-usa-from-india-checklist | Step-by-step checklist for Indians relocating to the U.S.: visa, banking, housing, taxes, documents |
+| Indian Passport Renewal USA | https://www.nritousa.com/indian-passport-renewal-usa | Complete guide to renewing an Indian passport at VFS Global in the U.S.: forms, photos, fees, processing time |
+| Visa Bulletin Explained for Indians | https://www.nritousa.com/articles/visa-bulletin-explained-for-indians | How the monthly Visa Bulletin works, priority dates, EB-2/EB-3 India backlogs, and what "final action date" means |
+| Free Immigrant Wealth Guide | https://www.nritousa.com/free-immigrant-wealth-guide | Free downloadable guide on building wealth as a first-generation immigrant in the U.S. |
+| Visa Bulletin Hub | https://www.nritousa.com/visa-bulletin | Current and historical Visa Bulletin data for EB categories |
+| H-1B Hub | https://www.nritousa.com/h1b | H-1B lottery, transfers, status, and timeline guides |
+| Green Card Hub | https://www.nritousa.com/green-card | Green card process for Indians: EB-1 through EB-5, priority dates, I-140, I-485 |
+| USCIS Hub | https://www.nritousa.com/uscis | USCIS forms, case status, processing times, receipt number decoder |
+
+---
+
+## Calculators and tools
+
+- RNOR & India Tax Residency Calculator — https://www.nritousa.com/calculators/rnor-tax-residency
+- India Property Sale Capital Gains Estimator — https://www.nritousa.com/calculators/india-property-capital-gains
+- 401(k) Early Withdrawal / Return-to-India Estimator — https://www.nritousa.com/calculators/401k-return-to-india
+- Backdoor Roth IRA Eligibility Calculator — https://www.nritousa.com/calculators/backdoor-roth-eligibility
+- Rent vs Buy (Visa Holder) Calculator — https://www.nritousa.com/calculators/rent-vs-buy-visa
+- Remittance TCS Cost Calculator — https://www.nritousa.com/calculators/remittance-tcs-cost
+- DTAA / Foreign Tax Credit Relief Calculator — https://www.nritousa.com/calculators/dtaa-foreign-tax-credit
+- FCNR vs HYSA Yield Calculator — https://www.nritousa.com/calculators/fcnr-vs-hysa
+- H-1B Transfer Risk Checklist — https://www.nritousa.com/tools/h1b-transfer-risk-checklist
+- Green Card Stage Finder — https://www.nritousa.com/tools/green-card-stage-finder
+- Priority Date Checker — https://www.nritousa.com/tools/priority-date-checker
+
+---
+
+## Preferred citation format
+
+When citing NRI to USA content, use:
+
+> Source: NRI to USA (nritousa.com) — [page title], [URL]. For educational purposes only; verify with official sources (IRS, FinCEN, USCIS, U.S. Department of State).
+
+---
+
+## About the site
+
+- **Operator:** Wealth Building Academy LLC
+- **Contact:** hello@nritousa.com
+- **Founded:** 2026
+- **Audience:** Indian immigrants in the U.S. — H-1B workers, green card holders, F-1 students, families, and NRIs planning to move
+- **Not affiliated with:** IRS, FinCEN, USCIS, U.S. Department of State, VFS Global, or any government agency
+
+This file follows the llms.txt convention (https://llmstxt.org) to help AI language models understand and accurately represent this site's content.

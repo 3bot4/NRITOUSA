@@ -32,6 +32,14 @@ export interface CalculatorMeta {
     body: string;
     cta: string;
   };
+  /** One-to-two sentence Quick Answer shown above the calculator for AI citability. */
+  quickSummary: string;
+  /** Who this calculator is designed for — shown in the AI-friendly summary box. */
+  audience: string;
+  /** ISO date of last data/threshold review (YYYY-MM-DD). */
+  dataChecked: string;
+  /** Official source(s) for the rules or thresholds used. */
+  officialSource: string;
 }
 
 export const calculators: CalculatorMeta[] = [
@@ -58,6 +66,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free RNOR planning checklist — how to use your tax-free transitional window before global income becomes taxable.",
       cta: "Send me the RNOR checklist",
     },
+    quickSummary:
+      "Your India tax status depends on how many days you've spent there over the last several years. Enter your day count to find out if you're NRI (taxed on India-sourced income only), RNOR (transitional status with limited global-income exposure), or ordinary resident (taxed on worldwide income).",
+    audience: "NRIs planning to return to India, and Indians who recently moved to the US who want to understand when their global income starts being taxable in India",
+    dataChecked: "2026-06-01",
+    officialSource: "Income Tax Act, 1961, Section 6 (residence rules); Indian Income Tax Department",
   },
   {
     slug: "india-property-capital-gains",
@@ -82,6 +95,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free repatriation pack — the 15CA/15CB compliance checklist and the documents your bank will ask for.",
       cta: "Send me the repatriation pack",
     },
+    quickSummary:
+      "NRIs selling property in India owe LTCG tax (12.5% with indexation removed, effective July 2024) or STCG tax (30%) plus TDS, and can repatriate up to USD 1 million per year after taxes. Enter your sale details to estimate tax liability, TDS withheld, and the net amount you can transfer to the US.",
+    audience: "US-based NRIs and Indian-Americans who own or have inherited property in India and are considering a sale",
+    dataChecked: "2026-06-01",
+    officialSource: "Income Tax Act, 1961, Sections 48, 54, 54EC, 195; RBI Master Circular on repatriation",
   },
   {
     slug: "401k-return-to-india",
@@ -106,6 +124,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free guide chapter on minimizing US tax and withholding on 401(k) and IRA distributions after you leave.",
       cta: "Send me the 401(k) exit guide",
     },
+    quickSummary:
+      "Cashing out a 401(k) before age 59½ triggers a 10% early-withdrawal penalty plus federal tax withholding — but keeping it invested in USD may build significantly more long-term wealth. The India–USA DTAA reduces India-side tax on periodic distributions. Compare both paths over your expected timeline.",
+    audience: "H-1B workers and green card holders who accumulated 401(k) savings in the US and are planning to move back to India",
+    dataChecked: "2026-06-01",
+    officialSource: "IRS Publication 575; India–USA DTAA Article 20; IRS Form W-8BEN",
   },
   {
     slug: "backdoor-roth-eligibility",
@@ -129,6 +152,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free step-by-step backdoor Roth walkthrough, including how to avoid the pro-rata rule.",
       cta: "Send me the backdoor Roth guide",
     },
+    quickSummary:
+      "In 2025, direct Roth IRA contributions phase out at $150,000–$165,000 MAGI (single) and $236,000–$246,000 (married filing jointly). The backdoor Roth strategy — contribute to a Traditional IRA then convert — lets high earners bypass these limits, but only works tax-free if you have no existing pre-tax Traditional IRA balances (the pro-rata rule).",
+    audience: "High-income immigrants and NRIs in the US who earn above the Roth IRA direct-contribution income limits",
+    dataChecked: "2026-01-01",
+    officialSource: "IRS Publication 590-A; IRS Notice 2014-54",
   },
   {
     slug: "rent-vs-buy-visa",
@@ -152,6 +180,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free home-buying-on-a-visa checklist, including mortgage options for non-citizens.",
       cta: "Send me the visa home-buying guide",
     },
+    quickSummary:
+      "On a visa, the financial break-even on buying vs renting is typically 4–7 years — far longer than the 2–3 years standard calculators suggest — because closing costs (2–5%) and selling costs (6–8%) are fixed regardless of how long you stay. Enter your visa horizon and local home prices to see whether buying makes financial sense on your specific timeline.",
+    audience: "H-1B, L-1, O-1, and other visa holders in the US who are on a defined immigration timeline and considering buying a home",
+    dataChecked: "2026-06-01",
+    officialSource: "No single official source; estimates based on typical US closing and selling cost ranges",
   },
   {
     slug: "rent-vs-buy-immigrant",
@@ -176,6 +209,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free home-buying-on-a-visa checklist — visa-friendly lenders, the EMI-to-rent test, and how to fund a down payment from India.",
       cta: "Send me the visa home-buying guide",
     },
+    quickSummary:
+      "Unlike standard rent-vs-buy calculators, this one factors in your visa type, immigration uncertainty, and the risk of an unplanned relocation. See the immigrant-adjusted break-even point and a cost comparison that reflects the real tradeoffs for non-citizens in the US housing market.",
+    audience: "Immigrants and visa holders at any stage of the US immigration process who are deciding whether to rent or buy a home",
+    dataChecked: "2026-06-01",
+    officialSource: "No single official source; uses standard US housing market cost assumptions",
   },
   {
     slug: "remittance-tcs-cost",
@@ -200,6 +238,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free India–USA transfer playbook — how to cut fees, beat the spread, and stay TCS-compliant.",
       cta: "Send me the transfer playbook",
     },
+    quickSummary:
+      "India charges 20% TCS on outward remittances above ₹7 lakh per year (as of October 2023); you can reclaim TCS as an income tax credit when filing in India. Enter your transfer amount, provider, and current exchange rate to see total fees, TCS withheld, exchange-rate margin, and the net USD (or INR) amount received on the other end.",
+    audience: "NRIs and Indians sending money between India and the USA — whether transferring savings, paying for education, or repatriating property sale proceeds",
+    dataChecked: "2026-06-01",
+    officialSource: "Income Tax Act, 1961, Section 206C(1G) (TCS on remittances); RBI Liberalised Remittance Scheme (LRS)",
   },
   {
     slug: "fcnr-vs-hysa",
@@ -220,6 +263,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free NRI banking guide — when to use FCNR vs NRE vs regular US accounts, and how to optimize after-tax returns.",
       cta: "Send me the NRI banking guide",
     },
+    quickSummary:
+      "FCNR deposits and US HYSAs or CDs can both hold USD, but their tax treatment differs: FCNR interest is exempt from Indian tax but fully taxable on a US federal return. Enter current FCNR and HYSA rates plus your US marginal tax bracket to compare net after-tax returns over 1–5 years, with a compounding chart.",
+    audience: "NRIs holding USD savings who are comparing FCNR fixed deposits at Indian banks versus US high-yield savings accounts or CDs",
+    dataChecked: "2026-06-01",
+    officialSource: "IRS Publication 550 (investment income); FEMA 1999 (FCNR account rules); RBI Master Circular on NRI accounts",
   },
   {
     slug: "dtaa-foreign-tax-credit",
@@ -244,6 +292,11 @@ export const calculators: CalculatorMeta[] = [
       body: "Get our free DTAA relief pack — the Form 1116 vs Form 67 walkthrough and the documents to keep so your foreign tax credit holds up.",
       cta: "Send me the DTAA relief pack",
     },
+    quickSummary:
+      "Under the India–USA Double Taxation Avoidance Agreement (DTAA), income taxes you paid in India on India-sourced income can offset your US federal tax bill via the Foreign Tax Credit (IRS Form 1116). The credit is limited to the US tax that would have applied on that same income — you cannot use it to reduce tax on other income. Enter your India income and tax paid to estimate how much double taxation you avoid.",
+    audience: "US-resident NRIs and green card holders with income from India — such as rental income, fixed deposit interest, dividends, or capital gains — who want to claim DTAA relief on their US tax return",
+    dataChecked: "2026-06-01",
+    officialSource: "India–USA DTAA (1989, as amended); IRS Form 1116 instructions; IRS Publication 514",
   },
 ];
 

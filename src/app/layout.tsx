@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { site } from "@/lib/site";
+import { organizationJsonLd, websiteJsonLd, jsonLdGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -58,6 +59,8 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
+const siteJsonLd = jsonLdGraph(organizationJsonLd, websiteJsonLd);
+
 export default function RootLayout({
   children,
 }: {
@@ -66,6 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
