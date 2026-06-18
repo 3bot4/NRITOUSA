@@ -3,7 +3,7 @@ import OrganizerAssets from "@/components/nri-tax/OrganizerAssets";
 
 export const metadata: Metadata = {
   title: "Assets — NRI Wealth Checkup",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 };
 
 export default function AssetsPage() {

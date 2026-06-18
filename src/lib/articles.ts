@@ -1486,11 +1486,11 @@ Stop reading the fee and start reading the rupees. Compare the final landed amou
     content: `Selling Indian property and bringing the proceeds to the US is one of the larger money moves an NRI makes — big sums, two countries' rules, and one missed form can freeze your funds. But the process is well-defined: India lets you repatriate up to **$1 million per financial year** from your NRO account once you've paid the right taxes and filed the right certificates. Here's the complete roadmap from sale to US bank account.
 
 :::summary
-After selling Indian property, the buyer deducts **TDS** (often ~20%+ for NRIs on long-term gains). Proceeds go into your **NRO account**, from which you can repatriate up to **$1 million per financial year**. You'll need a Chartered Accountant's **Form 15CB** and your **Form 15CA** declaration to remit. On the US side, report the **capital gain** and claim a [foreign tax credit](/articles/double-taxation-dtaa-india-usa) to avoid double taxation.
+After selling Indian property, the buyer deducts **TDS** on the sale value (rates vary by holding period and gain). Proceeds go into your **NRO account**, from which you can repatriate up to **$1 million per financial year**. You'll need a Chartered Accountant's **Form 15CB** and your **Form 15CA** declaration to remit. On the US side, report the **capital gain** and claim a [foreign tax credit](/articles/double-taxation-dtaa-india-usa) to avoid double taxation.
 :::
 
 :::key
-- Indian buyers must deduct **TDS on NRI property sales** — roughly **20%+ on long-term gains** (higher rates for short-term).
+- Indian buyers must deduct **TDS on NRI property sales** — the rate depends on the holding period, gain amount, and applicable surcharge; NRIs should confirm with an Indian CA.
 - Sale proceeds are credited to your **NRO account**.
 - You can repatriate up to **$1 million per Indian financial year** from the NRO account.
 - Remittance requires **Form 15CB** (CA certificate) and **Form 15CA** (your declaration).
@@ -1499,7 +1499,7 @@ After selling Indian property, the buyer deducts **TDS** (often ~20%+ for NRIs o
 :::
 
 ## Step 1 — Understand the TDS the buyer deducts
-When an NRI sells property in India, the **buyer is required to deduct Tax Deducted at Source (TDS)** before paying you. For **long-term capital gains** (property held over 24 months), the rate is around **20% plus applicable surcharge and cess**. For **short-term** gains, TDS is deducted at the applicable slab rate, which is higher. This TDS is a prepayment against your actual Indian tax — if too much was withheld, you reclaim it when you file your Indian return.
+When an NRI sells property in India, the **buyer is required to deduct Tax Deducted at Source (TDS)** before paying you. TDS is typically deducted on the full sale value at rates that depend on the holding period, applicable surcharge, and cess — not on the net gain. For **long-term capital gains** (property held over 24 months), the underlying tax rate for sales on or after **July 23, 2024** is generally **12.5% without indexation**; for property acquired before that date, some old-rate/indexation comparison rules may apply depending on taxpayer status and property type — confirm with an Indian CA. For **short-term** gains, TDS is deducted at the applicable slab rate, which is higher. This TDS is a prepayment against your actual Indian tax — if too much was withheld, you reclaim it when you file your Indian return.
 
 :::note
 **Apply for a lower TDS certificate.** Because TDS is often deducted on a high base, NRIs can apply to the Indian Income Tax Department for a **lower/nil deduction certificate (under Section 197)** reflecting the actual gain. This prevents a large chunk of your money being needlessly locked up — file it before the sale closes.
