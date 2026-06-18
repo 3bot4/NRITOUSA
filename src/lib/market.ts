@@ -99,7 +99,7 @@ function ebIndiaLastMove(category: "eb1" | "eb2" | "eb3"): number | null {
   const pts = series.fad;
   const [, last] = pts[pts.length - 1];
   const [, prev] = pts[pts.length - 2];
-  if (last === "C" || prev === "C") return null;
+  if (last === "C" || prev === "C" || last === "U" || prev === "U") return null;
   return monthIndex(last) - monthIndex(prev);
 }
 
@@ -110,6 +110,19 @@ function ebIndiaTickerItem(
 ): TickerItem {
   const { fad } = getCutoffs(category, "india");
   const display = formatCutoff(fad);
+
+  if (fad === "U") {
+    return {
+      key,
+      label,
+      display: "Unavailable",
+      change: "no numbers this month",
+      direction: "down",
+      kind: "differentiator",
+      href: tickerHref[key] ?? "/tools/priority-date-checker",
+    };
+  }
+
   const move = ebIndiaLastMove(category);
   let change = "FAD";
   let direction: TickerItem["direction"] = "flat";
