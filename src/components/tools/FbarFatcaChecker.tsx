@@ -10,6 +10,7 @@ import {
   ACCOUNT_TYPE_OPTIONS,
   DATA_STAMP,
   evaluateChecker,
+  FATCA_ABROAD_HELPER,
   FATCA_THRESHOLD_TABLE,
   FILING_STATUS_OPTIONS,
   RESIDENCE_OPTIONS,
@@ -231,7 +232,10 @@ export default function FbarFatcaChecker() {
             ))}
           </select>
         </Field>
-        <Field label="Where do you live?">
+        <Field
+          label="Form 8938 threshold category"
+          help={FATCA_ABROAD_HELPER}
+        >
           <select
             value={residence}
             onChange={(e) => setResidence(e.target.value as Residence)}
@@ -262,7 +266,7 @@ export default function FbarFatcaChecker() {
 
       <UsdField
         label="Highest total foreign account value during the year (USD)"
-        help="Add the highest combined value of all non-US bank, brokerage, FD, mutual fund, and similar financial accounts at any point during the year — not just December 31."
+        help="Add the highest combined value of all non-US bank, brokerage, FD, mutual fund, and similar financial accounts at any point during the year — not just December 31. Account income does not determine FBAR; the maximum account balance does."
         value={accountsRaw}
         onChange={setAccountsRaw}
       />
@@ -540,6 +544,11 @@ export default function FbarFatcaChecker() {
       </ResultCard>
 
       <p className="text-xs leading-relaxed text-ink-400">
+        <strong className="font-semibold text-ink-500">Joint ownership note:</strong>{" "}
+        Joint ownership rules can change how values are counted, especially for spouses
+        filing jointly vs separately. This tool gives an educational estimate; confirm with a CPA.
+      </p>
+      <p className="text-xs leading-relaxed text-ink-400">
         <strong className="font-semibold text-ink-500">
           Educational only — not tax advice.
         </strong>{" "}
@@ -552,6 +561,31 @@ export default function FbarFatcaChecker() {
         source={DATA_STAMP.source}
         sourceLabel={DATA_STAMP.sourceLabel}
       />
+      <div className="space-y-1">
+        <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Official sources</p>
+        <ul className="space-y-1 text-xs text-ink-400">
+          <li>
+            <a href="https://www.irs.gov/fbar" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
+              IRS — FBAR (FinCEN Form 114)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.irs.gov/businesses/comparison-of-form-8938-and-fbar-requirements" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
+              IRS — Comparison of Form 8938 and FBAR requirements
+            </a>
+          </li>
+          <li>
+            <a href="https://www.irs.gov/instructions/i8938" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
+              IRS — Instructions for Form 8938
+            </a>
+          </li>
+          <li>
+            <a href="https://www.irs.gov/businesses/corporations/basic-questions-and-answers-on-form-8938" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
+              IRS — Basic questions and answers on Form 8938
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 

@@ -20,6 +20,9 @@ export const SOURCES = {
     "https://www.irs.gov/businesses/corporations/basic-questions-and-answers-on-form-8938",
   form8938DoINeed:
     "https://www.irs.gov/businesses/corporations/do-i-need-to-file-form-8938-statement-of-specified-foreign-financial-assets",
+  form8938Comparison:
+    "https://www.irs.gov/businesses/comparison-of-form-8938-and-fbar-requirements",
+  form8938Instructions: "https://www.irs.gov/instructions/i8938",
   fbar: "https://www.irs.gov/fbar",
   fincenBsa: "https://bsaefiling.fincen.treas.gov/main.html",
   form8621: "https://www.irs.gov/forms-pubs/about-form-8621",
@@ -251,10 +254,11 @@ export const FBAR_THRESHOLD_USD = 10000;
  * Form 8938 instructions every year.
  */
 export const FATCA_THRESHOLDS = {
-  us_single_or_mfs: { year_end: 50000, anytime: 75000 },
+  us_single_or_mfs_or_hoh: { year_end: 50000, anytime: 75000 },
   us_mfj: { year_end: 100000, anytime: 150000 },
-  abroad_single_or_mfs: { year_end: 200000, anytime: 300000 },
+  abroad_single_or_mfs_or_hoh: { year_end: 200000, anytime: 300000 },
   abroad_mfj: { year_end: 400000, anytime: 600000 },
+  specified_domestic_entity: { year_end: 50000, anytime: 75000 },
 } as const;
 
 export const THRESHOLDS_VERIFY_NOTE =

@@ -51,10 +51,13 @@ export const FILING_STATUS_OPTIONS: { value: FilingStatus; label: string }[] = [
 ];
 
 export const RESIDENCE_OPTIONS: { value: Residence; label: string }[] = [
-  { value: "us", label: "Living in the USA" },
-  { value: "abroad", label: "Living outside the USA" },
-  { value: "not-sure", label: "Split year / not sure" },
+  { value: "us", label: "Living in the U.S. / using U.S. threshold" },
+  { value: "abroad", label: "Living abroad / may qualify for higher abroad threshold" },
+  { value: "not-sure", label: "Not sure" },
 ];
+
+export const FATCA_ABROAD_HELPER =
+  "The higher Form 8938 abroad thresholds generally require a foreign tax home and IRS presence-abroad test, such as bona fide residence for a full tax year or 330 full days abroad during a qualifying 12-month period. If unsure, use the U.S. threshold and confirm with a CPA.";
 
 export type AccountTypeId =
   | "savings"
@@ -326,11 +329,11 @@ function evaluateFatca(i: CheckerInputs): CheckerResult["fatca"] {
     return {
       status: "review-likely",
       headline: "FATCA / Form 8938 review likely needed",
-      detail: `For "${applicable.label}", Form 8938 thresholds are generally more than $${applicable.endOfYearUsd.toLocaleString(
+      detail: `For "${applicable.label}", Form 8938 thresholds for specified foreign financial assets are generally more than $${applicable.endOfYearUsd.toLocaleString(
         "en-US"
       )} on the last day of the year or more than $${applicable.anyTimeUsd.toLocaleString(
         "en-US"
-      )} at any time during the year. The value you entered is above the any-time level, so you may want to review Form 8938 requirements with a qualified tax professional. Thresholds can change and depend on your exact situation.`,
+      )} at any time during the year. The value you entered is above the any-time level, so you may want to review Form 8938 requirements with a qualified tax professional. Thresholds depend on filing status and where you live, and can change.`,
       applicable,
     };
   }
@@ -338,11 +341,24 @@ function evaluateFatca(i: CheckerInputs): CheckerResult["fatca"] {
     return {
       status: "depends-on-year-end",
       headline: "May depend on your year-end value",
-      detail: `The value you entered is below the any-time threshold ($${applicable.anyTimeUsd.toLocaleString(
+      detail: `The specified foreign financial assets value you entered is below the any-time threshold ($${applicable.anyTimeUsd.toLocaleString(
         "en-US"
       )}) but above the last-day-of-year threshold ($${applicable.endOfYearUsd.toLocaleString(
         "en-US"
       )}) for "${applicable.label}". Whether Form 8938 review is needed may turn on what your assets were worth on December 31 — worth checking your year-end statements and confirming with a CPA.`,
+      applicable,
+    };
+  }
+  // At-threshold edge case: value equals one of the thresholds exactly.
+  if (assetValue === applicable.anyTimeUsd || assetValue === applicable.endOfYearUsd) {
+    return {
+      status: "under-threshold",
+      headline: "At threshold — review with CPA",
+      detail: `The value you entered equals (but does not exceed) the Form 8938 threshold for "${applicable.label}" (more than $${applicable.endOfYearUsd.toLocaleString(
+        "en-US"
+      )} on the last day of the year, or more than $${applicable.anyTimeUsd.toLocaleString(
+        "en-US"
+      )} at any time). Not above the threshold based on the numbers entered, but review with a CPA if any values are approximate. Form 8938 applies to specified foreign financial assets — thresholds depend on filing status and where you live.`,
       applicable,
     };
   }
@@ -353,7 +369,7 @@ function evaluateFatca(i: CheckerInputs): CheckerResult["fatca"] {
       "en-US"
     )} on the last day of the year, or more than $${applicable.anyTimeUsd.toLocaleString(
       "en-US"
-    )} at any time). "Specified foreign financial assets" is a broad and technical category though — still verify if you hold assets beyond ordinary bank accounts. Note that FBAR has a much lower, separate threshold.`,
+    )} at any time). Form 8938 covers specified foreign financial assets — a broader and technical category that still warrants review if you hold assets beyond ordinary bank accounts. Note that FBAR has a much lower, separate threshold. Thresholds depend on filing status and where you live.`,
     applicable,
   };
 }

@@ -74,6 +74,18 @@ describe("FBAR screening", () => {
     expect(ruleFor(rules, "FBAR (FinCEN")?.status).toBe("May be required");
   });
 
+  it("flags 'May be required' at $10,001 — just over the line", () => {
+    const assets = [asset({ assetType: "INDIA_NRO_ACCOUNT", maximumYearValue: 10001 })];
+    const rules = runRules(profile(), assets, []);
+    expect(ruleFor(rules, "FBAR (FinCEN")?.status).toBe("May be required");
+  });
+
+  it("does NOT flag 'May be required' at exactly $10,000", () => {
+    const assets = [asset({ assetType: "INDIA_NRO_ACCOUNT", maximumYearValue: 10000 })];
+    const rules = runRules(profile(), assets, []);
+    expect(ruleFor(rules, "FBAR (FinCEN")?.status).not.toBe("May be required");
+  });
+
   it("stays at or below the line (Review needed) when under $10,000", () => {
     const assets = [asset({ assetType: "INDIA_NRO_ACCOUNT", maximumYearValue: 4000 })];
     const rules = runRules(profile(), assets, []);
@@ -121,8 +133,27 @@ describe("FATCA / Form 8938 thresholds", () => {
     expect(fatcaThresholdFor(profile({ filingStatus: "married_joint", livingLocationForTax: "abroad" })).year_end).toBe(400000);
   });
 
+  it("head of household uses the single/US threshold row", () => {
+    expect(fatcaThresholdFor(profile({ filingStatus: "head_of_household", livingLocationForTax: "us" })).year_end).toBe(50000);
+    expect(fatcaThresholdFor(profile({ filingStatus: "head_of_household", livingLocationForTax: "us" })).anytime).toBe(75000);
+  });
+
   it("flags 'May be required' over the single-US threshold", () => {
     const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 60000, maximumYearValue: 60000 })];
+    const rules = runRules(profile({ filingStatus: "single", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
+  });
+
+  // QA: U.S. single $50,001 year-end triggers
+  it("flags 'May be required' at $50,001 year-end for U.S. single", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 50001, maximumYearValue: 50001 })];
+    const rules = runRules(profile({ filingStatus: "single", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
+  });
+
+  // QA: U.S. single $75,001 anytime triggers
+  it("flags 'May be required' at $75,001 anytime for U.S. single", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 40000, maximumYearValue: 75001 })];
     const rules = runRules(profile({ filingStatus: "single", livingLocationForTax: "us" }), assets, []);
     expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
   });
@@ -131,6 +162,48 @@ describe("FATCA / Form 8938 thresholds", () => {
     const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 60000, maximumYearValue: 60000 })];
     const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "us" }), assets, []);
     expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("Review needed");
+  });
+
+  // QA: U.S. MFJ $100,000 year-end exactly — must NOT be 'May be required'
+  it("does NOT flag 'May be required' at exactly $100,000 year-end for U.S. MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 100000, maximumYearValue: 100000 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).not.toBe("May be required");
+  });
+
+  // QA: U.S. MFJ $150,000 anytime exactly — must NOT be 'May be required'
+  it("does NOT flag 'May be required' at exactly $150,000 anytime for U.S. MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 80000, maximumYearValue: 150000 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).not.toBe("May be required");
+  });
+
+  // QA: U.S. MFJ $100,001 year-end — must be 'May be required'
+  it("flags 'May be required' at $100,001 year-end for U.S. MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 100001, maximumYearValue: 100001 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
+  });
+
+  // QA: U.S. MFJ $150,001 anytime — must be 'May be required'
+  it("flags 'May be required' at $150,001 anytime for U.S. MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 80000, maximumYearValue: 150001 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "us" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
+  });
+
+  // QA: Abroad MFJ $400,001 year-end triggers
+  it("flags 'May be required' at $400,001 year-end for abroad MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 400001, maximumYearValue: 400001 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "abroad" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
+  });
+
+  // QA: Abroad MFJ $600,001 anytime triggers
+  it("flags 'May be required' at $600,001 anytime for abroad MFJ", () => {
+    const assets = [asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 300000, maximumYearValue: 600001 })];
+    const rules = runRules(profile({ filingStatus: "married_joint", livingLocationForTax: "abroad" }), assets, []);
+    expect(ruleFor(rules, "FATCA / Form 8938")?.status).toBe("May be required");
   });
 });
 
@@ -149,18 +222,32 @@ describe("PFIC / Form 8621", () => {
 });
 
 describe("Foreign entity & real estate", () => {
-  it("flags India private company shares for foreign-entity review", () => {
+  it("flags India private company shares for foreign-entity review (FATCA)", () => {
     const assets = [asset({ assetType: "INDIA_PRIVATE_COMPANY", yearEndValue: 50000, maximumYearValue: 50000 })];
     const rules = runRules(profile(), assets, []);
     expect(ruleFor(rules, "Foreign entity")?.status).toBe("Review needed");
+    // Also counts toward FATCA specified foreign financial assets
+    const totals = computeTotals(profile(), assets, []);
+    expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(50000);
   });
 
-  it("keeps directly-held India real estate out of FBAR/FATCA but flags a property note", () => {
+  it("keeps directly-held India real estate out of FBAR/FATCA counts but flags a property note", () => {
     const assets = [asset({ assetType: "INDIA_REAL_ESTATE_PERSONAL", yearEndValue: 200000, maximumYearValue: 200000 })];
     const totals = computeTotals(profile(), assets, []);
     expect(totals.foreignFinancialAccountsMax).toBe(0);
+    expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(0);
     const rules = runRules(profile(), assets, []);
     expect(ruleFor(rules, "Foreign real estate")?.status).toBe("Review needed");
+  });
+
+  it("excludes India land and INDIA_REAL_ESTATE_RENTAL from FBAR/FATCA counts", () => {
+    const assets = [
+      asset({ assetType: "INDIA_LAND", yearEndValue: 300000, maximumYearValue: 300000 }),
+      asset({ assetType: "INDIA_REAL_ESTATE_RENTAL", yearEndValue: 150000, maximumYearValue: 150000 }),
+    ];
+    const totals = computeTotals(profile(), assets, []);
+    expect(totals.foreignFinancialAccountsMax).toBe(0);
+    expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(0);
   });
 });
 
