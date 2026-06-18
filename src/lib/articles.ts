@@ -1486,11 +1486,11 @@ Stop reading the fee and start reading the rupees. Compare the final landed amou
     content: `Selling Indian property and bringing the proceeds to the US is one of the larger money moves an NRI makes — big sums, two countries' rules, and one missed form can freeze your funds. But the process is well-defined: India lets you repatriate up to **$1 million per financial year** from your NRO account once you've paid the right taxes and filed the right certificates. Here's the complete roadmap from sale to US bank account.
 
 :::summary
-After selling Indian property, the buyer deducts **TDS** (often ~20%+ for NRIs on long-term gains). Proceeds go into your **NRO account**, from which you can repatriate up to **$1 million per financial year**. You'll need a Chartered Accountant's **Form 15CB** and your **Form 15CA** declaration to remit. On the US side, report the **capital gain** and claim a [foreign tax credit](/articles/double-taxation-dtaa-india-usa) to avoid double taxation.
+After selling Indian property, the buyer deducts **TDS** on the gain (for long-term gains, generally at the **12.5%** LTCG rate without indexation for sales on/after July 23, 2024, plus surcharge and cess). Proceeds go into your **NRO account**, from which you can repatriate up to **$1 million per financial year**. You'll need a Chartered Accountant's **Form 15CB** and your **Form 15CA** declaration to remit. On the US side, report the **capital gain** and claim a [foreign tax credit](/articles/double-taxation-dtaa-india-usa) to avoid double taxation.
 :::
 
 :::key
-- Indian buyers must deduct **TDS on NRI property sales** — roughly **20%+ on long-term gains** (higher rates for short-term).
+- Indian buyers must deduct **TDS on NRI property sales** at the capital-gains rate — for long-term gains, generally **12.5% without indexation** (sales on/after July 23, 2024) plus surcharge and cess; short-term gains are taxed at slab rates.
 - Sale proceeds are credited to your **NRO account**.
 - You can repatriate up to **$1 million per Indian financial year** from the NRO account.
 - Remittance requires **Form 15CB** (CA certificate) and **Form 15CA** (your declaration).
@@ -1499,7 +1499,11 @@ After selling Indian property, the buyer deducts **TDS** (often ~20%+ for NRIs o
 :::
 
 ## Step 1 — Understand the TDS the buyer deducts
-When an NRI sells property in India, the **buyer is required to deduct Tax Deducted at Source (TDS)** before paying you. For **long-term capital gains** (property held over 24 months), the rate is around **20% plus applicable surcharge and cess**. For **short-term** gains, TDS is deducted at the applicable slab rate, which is higher. This TDS is a prepayment against your actual Indian tax — if too much was withheld, you reclaim it when you file your Indian return.
+When an NRI sells property in India, the **buyer is required to deduct Tax Deducted at Source (TDS)** before paying you. TDS on **long-term capital gains** (property held over 24 months) is deducted at the LTCG rate plus applicable surcharge and cess. For **short-term** gains, TDS is deducted at the applicable slab rate, which is higher. This TDS is a prepayment against your actual Indian tax — if too much was withheld, you reclaim it when you file your Indian return.
+
+:::note
+**About the long-term rate.** For long-term India property sold on or after **July 23, 2024**, the simplified long-term capital gains rate is generally **12.5% without indexation**. For property acquired **before July 23, 2024**, some old-rate/indexation comparison rules may apply depending on taxpayer status, property type, and current Indian tax guidance. NRIs should **confirm eligibility with an Indian CA** before relying on an indexed estimate — don't assume the older 20%-with-indexation rate automatically applies.
+:::
 
 :::note
 **Apply for a lower TDS certificate.** Because TDS is often deducted on a high base, NRIs can apply to the Indian Income Tax Department for a **lower/nil deduction certificate (under Section 197)** reflecting the actual gain. This prevents a large chunk of your money being needlessly locked up — file it before the sale closes.
@@ -2626,7 +2630,7 @@ For H-4 and L-2 families, the safest, most cost-effective choice is usually the 
     title: "The US 1% Remittance Fee: How to Avoid It When Sending Money",
     seoTitle: "The US 1% Remittance Fee & How to Avoid It",
     excerpt:
-      "A new US excise tax adds 1% to certain transfers abroad. Here's exactly which transfers are hit, which are exempt, and how to legally avoid it.",
+      "A new US excise tax adds about 1% to remittance transfers funded with cash, money orders, or similar physical instruments — transfers funded from a US bank account or US-issued card are generally exempt. Here's who's hit and how to avoid it.",
     topic: "taxes",
     date: "2026-06-03",
     featured: true,
