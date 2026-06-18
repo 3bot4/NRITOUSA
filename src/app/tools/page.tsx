@@ -17,14 +17,11 @@ import {
   pageMetadata,
 } from "@/lib/seo";
 
-const title = "Free Tools & Data for Indians in the USA";
-const description =
-  "Free, data-backed tools for NRIs: green card wait estimator with live visa bulletin data, H-1B salary explorer, visa-free travel list, and more.";
-
 export const metadata: Metadata = pageMetadata({
-  title: "Free Visa, Green Card & Finance Tools for Indians in the USA",
+  title:
+    "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA",
   description:
-    "Free tools for Indians in the USA: green card wait tracker, H-1B salary explorer, priority date checker, USCIS status decoder, processing times, and more.",
+    "Free tools for Indians in the USA: NRI Wealth Checkup, FBAR/FATCA checker, green card tracker, H-1B salaries, USCIS tools, India tax calculators, and retirement planning.",
   path: "/tools",
 });
 
@@ -41,15 +38,21 @@ export default function ToolsHubPage() {
   const itemList = {
     "@type": "ItemList",
     itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "NRI Wealth Checkup",
+        url: absoluteUrl("/nri-wealth-checkup"),
+      },
       ...hubTools.map((t, i) => ({
         "@type": "ListItem",
-        position: i + 1,
+        position: i + 2,
         name: t.title,
         url: absoluteUrl(`/tools/${t.slug}`),
       })),
       ...usInvestingCalculators.map((c, i) => ({
         "@type": "ListItem",
-        position: hubTools.length + i + 1,
+        position: hubTools.length + i + 2,
         name: c.title,
         url: absoluteUrl(`/calculators/${c.slug}`),
       })),
