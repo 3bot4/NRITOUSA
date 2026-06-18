@@ -45,11 +45,11 @@ export default function MobileMenu({
           </ul>
 
           <Link
-            href="/topics"
+            href="/nri-wealth-checkup"
             onClick={onClose}
             className="mt-4 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white"
           >
-            Start Here
+            Wealth Checkup
           </Link>
         </nav>
       </div>

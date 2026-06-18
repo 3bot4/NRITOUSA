@@ -91,6 +91,34 @@ export default function ToolsHubPage() {
       <section className="py-10 sm:py-12">
         <Container>
           <div className="space-y-8">
+            <Link
+              href="/nri-wealth-checkup"
+              className="group flex flex-col gap-2 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-indigo-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                  Featured · Money &amp; Finance
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  NRI Global Wealth &amp; Tax Organizer
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Organize your U.S. and India assets and income, then get an educational FBAR,
+                  FATCA, PFIC, foreign tax credit, and India-income checklist — plus questions for
+                  your CPA/CA. Free, private, no account.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+                Start your checkup{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+
             {toolGroups.map((group) => {
               const items = tools.filter(
                 (t) =>

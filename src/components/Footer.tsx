@@ -24,6 +24,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Send Money to India", href: "/send-money-to-india" },
       { label: "India Tax & Compliance", href: "/india-tax-compliance" },
       { label: "Long-Term NRI Wealth", href: "/long-term-nri-wealth" },
+      { label: "NRI Wealth & Tax Organizer", href: "/nri-wealth-checkup" },
     ],
   },
   {
@@ -42,6 +43,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Tools & Calculators",
     links: [
       { label: "All Tools", href: "/tools" },
+      { label: "NRI Wealth & Tax Organizer", href: "/nri-wealth-checkup" },
       { label: "H-4 EAD Navigator", href: "/tools/h4-ead-navigator" },
       { label: "Citizenship Checklist", href: "/tools/citizenship-checklist" },
       { label: "Green Card Tracker", href: "/tools/green-card-tracker" },

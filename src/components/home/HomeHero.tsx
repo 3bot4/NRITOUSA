@@ -56,14 +56,15 @@ export default function HomeHero() {
       <Container className="relative py-3.5 sm:py-4">
         <div className="max-w-2xl">
           <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-3xl">
-            Free immigration, tax, and money tools for{" "}
+            Free immigration, wealth, tax, and money tools for{" "}
             <span className="bg-gradient-to-r from-brand-600 to-emerald-500 bg-clip-text text-transparent">
               Indians in the USA
             </span>
           </h1>
           <p className="mt-2 text-sm text-ink-500 sm:text-base">
-            Trusted by NRIs navigating passport renewal, visa bulletins, green
-            card wait times, FBAR, remittances, and life in the USA.
+            Free calculators, checklists, and guides for Indian families
+            managing U.S. income, India assets, taxes, retirement, property,
+            inheritance, and return-to-India decisions.
           </p>
           <p className="mt-1.5 text-[13px] text-ink-400">
             20+ free tools · 50+ guides · Data updated daily
@@ -75,14 +76,25 @@ export default function HomeHero() {
           </p>
         </div>
 
-        {/* Primary CTA — largest, full-width, single hero action. */}
-        <Link
-          href="/tools/green-card-tracker"
-          className="mt-6 flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 px-8 py-5 text-lg font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:text-xl"
-        >
-          <Icon name="calendar" className="h-6 w-6" />
-          Check your Green Card wait time
-        </Link>
+        {/* Primary + secondary hero CTAs. Primary (wealth checkup) is the
+            largest, most prominent action; the secondary FBAR/FATCA risk check
+            sits beside it on desktop and stacks below on mobile. */}
+        <div className="mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
+          <Link
+            href="/nri-wealth-checkup"
+            className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 px-8 py-5 text-lg font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:flex-[3] sm:text-xl"
+          >
+            <Icon name="chart-arrows" className="h-6 w-6" />
+            Start Your NRI Wealth Checkup
+          </Link>
+          <Link
+            href="/tools/fbar-fatca-checker"
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-brand-200 bg-white px-6 py-5 text-base font-bold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:shadow-lg sm:flex-[2]"
+          >
+            <Icon name="shield-check" className="h-5 w-5" />
+            Check FBAR/FATCA Risk
+          </Link>
+        </div>
 
         {/* Persona entry cards — 2×2 grid mirroring the hub sub-tool cards. */}
         <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-2">

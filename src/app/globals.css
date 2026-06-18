@@ -13,6 +13,14 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    /* Keep anchored sections / deep-route headings clear of the 64px sticky
+       header (with breathing room) on jump and refresh. */
+    scroll-padding-top: 5rem;
+  }
+
+  /* Belt-and-suspenders: any element targeted by a hash anchor clears the nav. */
+  :target {
+    scroll-margin-top: 5rem;
   }
 
   body {
@@ -40,6 +48,21 @@
 
 .ticker-wrap {
   overflow: hidden;
+  /* Fade both edges so the first/last items read as intentional, not clipped. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 1.25rem,
+    #000 calc(100% - 1.25rem),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 1.25rem,
+    #000 calc(100% - 1.25rem),
+    transparent 100%
+  );
 }
 
 .ticker-track {
@@ -69,4 +92,21 @@
   align-items: center;
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+/* Print / Save-as-PDF support for the NRI Wealth & Tax Organizer report.
+   Hides site chrome and non-printable controls so the report prints clean. */
+@media print {
+  body > header,
+  body > footer,
+  .no-print {
+    display: none !important;
+  }
+  .print-clean {
+    box-shadow: none !important;
+    border-color: #e5e7eb !important;
+  }
+  main {
+    padding: 0 !important;
+  }
 }

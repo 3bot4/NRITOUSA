@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import { getArticle, getArticlesByTopic } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import {
@@ -259,6 +260,13 @@ export default function LongTermNriWealthPage() {
               <ArticleCard key={a.slug} article={a} />
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* Conversion-focused common-questions block (shared with the homepage). */}
+      <section className="py-14 sm:py-20">
+        <Container>
+          <CommonNriQuestions />
         </Container>
       </section>
 

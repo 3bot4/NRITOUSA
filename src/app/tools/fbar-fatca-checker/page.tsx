@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolHero from "@/components/tools/ToolHero";
@@ -117,6 +118,19 @@ export default function FbarFatcaCheckerPage() {
             </DisclaimerBox>
           </div>
           <FbarFatcaChecker />
+          <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
+            <strong className="font-semibold text-ink-900">
+              Want to organize all your accounts in one place?
+            </strong>{" "}
+            <span className="text-ink-600">
+              The free{" "}
+              <Link href="/nri-wealth-checkup" className="font-semibold text-brand-700 underline">
+                NRI Global Wealth &amp; Tax Organizer
+              </Link>{" "}
+              screens FBAR, FATCA/Form 8938, PFIC, foreign tax credit, and India income together and
+              builds a CPA/CA question list and PDF report.
+            </span>
+          </div>
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last updated: <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time> ·
             Thresholds summarized from FinCEN Form 114 and IRS Form 8938
