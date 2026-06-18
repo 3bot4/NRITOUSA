@@ -78,8 +78,13 @@ export function computeTotals(
       foreignFinancialAccountsMax += mx;
     }
 
-    // FATCA base: specified foreign financial assets, excluding real estate.
-    if (meta.isFatcaSpecifiedAsset && !meta.isRealEstateOrPhysical) {
+    // FATCA base: specified foreign financial assets.
+    // Directly-held real estate is excluded. Entity-held real estate counts
+    // because the reportable item is the foreign entity interest, not the land.
+    const isFatcaEligible =
+      (meta.isFatcaSpecifiedAsset && !meta.isRealEstateOrPhysical) ||
+      (meta.isRealEstateOrPhysical && a.heldDirectlyOrEntity === "entity");
+    if (isFatcaEligible) {
       specifiedForeignFinancialAssetsYearEnd += ye;
       specifiedForeignFinancialAssetsMax += mx;
     }
@@ -89,11 +94,9 @@ export function computeTotals(
   let foreignTaxPaidOrTds = 0;
   for (const i of income) {
     if (incomeMeta(i.incomeType).source === "India") indiaSourceIncome += num(i.amount);
+    // Form 1116 total: use income-level TDS only, not asset-level,
+    // to avoid double-counting when users enter TDS in both places.
     if (incomeMeta(i.incomeType).source !== "US") foreignTaxPaidOrTds += num(i.taxPaidOrTds);
-  }
-  // Asset-level TDS also counts toward foreign tax paid.
-  for (const a of assets) {
-    if (assetMeta(a.assetType).group !== "US") foreignTaxPaidOrTds += num(a.taxPaidOrTds);
   }
 
   return {
@@ -203,6 +206,20 @@ export function runRules(
         relatedIncome: [],
         disclaimer: D,
       });
+    } else if (totals.foreignFinancialAccountsMax === FBAR_THRESHOLD_USD) {
+      out.push({
+        form: "FBAR (FinCEN Form 114)",
+        category: "US Reporting",
+        status: "Review needed",
+        reason: `Your foreign financial accounts combine to exactly $${fmt(
+          FBAR_THRESHOLD_USD
+        )} maximum — right at the $10,000 screening line. FBAR is required only when the total exceeds $10,000, not when it equals $10,000 exactly. Review values with your CPA to confirm accuracy, especially if any accounts are approximate.`,
+        sourceUrl: SOURCES.fbar,
+        severity: "medium",
+        relatedAssets: related,
+        relatedIncome: [],
+        disclaimer: D,
+      });
     } else {
       out.push({
         form: "FBAR (FinCEN Form 114)",
@@ -210,7 +227,7 @@ export function runRules(
         status: "Review needed",
         reason: `Your foreign financial accounts combine to about $${fmt(
           totals.foreignFinancialAccountsMax
-        )} maximum during the year, which is at or below the $10,000 screening line. Because the maximum (not year-end) value matters and small accounts add up, confirm the total with your CPA.`,
+        )} maximum during the year, which is below the $10,000 screening line. Because the maximum (not year-end) value matters and small accounts add up, confirm the total with your CPA.`,
         sourceUrl: SOURCES.fbar,
         severity: "medium",
         relatedAssets: related,
@@ -247,6 +264,12 @@ export function runRules(
     const thr = fatcaThresholdFor(profile);
     const overYearEnd = totals.specifiedForeignFinancialAssetsYearEnd > thr.year_end;
     const overAnytime = totals.specifiedForeignFinancialAssetsMax > thr.anytime;
+    const atYearEnd = totals.specifiedForeignFinancialAssetsYearEnd === thr.year_end;
+    const atAnytime = totals.specifiedForeignFinancialAssetsMax === thr.anytime;
+    const isAbroadThreshold = profile.livingLocationForTax === "abroad";
+    const abroadNote = isAbroadThreshold
+      ? " Higher abroad thresholds should be used only if you meet IRS living-abroad / presence-abroad rules."
+      : "";
 
     if (!usPerson) {
       out.push({
@@ -297,9 +320,27 @@ export function runRules(
           totals.specifiedForeignFinancialAssetsMax
         )} maximum) appear above the educational Form 8938 threshold for your situation ($${fmt(
           thr.year_end
-        )} year-end / $${fmt(thr.anytime)} anytime). ${THRESHOLDS_VERIFY_NOTE}`,
+        )} year-end / $${fmt(thr.anytime)} anytime).${abroadNote} ${THRESHOLDS_VERIFY_NOTE}`,
         sourceUrl: SOURCES.form8938Qa,
         severity: "high",
+        relatedAssets: related,
+        relatedIncome: [],
+        disclaimer: D,
+      });
+    } else if (atYearEnd || atAnytime) {
+      out.push({
+        form: "FATCA / Form 8938",
+        category: "US Reporting",
+        status: "Review needed",
+        reason: `Your specified foreign financial assets are about $${fmt(
+          totals.specifiedForeignFinancialAssetsYearEnd
+        )} at year-end / $${fmt(
+          totals.specifiedForeignFinancialAssetsMax
+        )} maximum — exactly at the Form 8938 threshold for your situation ($${fmt(
+          thr.year_end
+        )} year-end / $${fmt(thr.anytime)} anytime). Form 8938 triggers only when values exceed (not equal) the threshold, so this does not appear required based on entered numbers. Review values with your CPA to confirm accuracy.${abroadNote} ${THRESHOLDS_VERIFY_NOTE}`,
+        sourceUrl: SOURCES.form8938DoINeed,
+        severity: "medium",
         relatedAssets: related,
         relatedIncome: [],
         disclaimer: D,
@@ -309,11 +350,13 @@ export function runRules(
         form: "FATCA / Form 8938",
         category: "US Reporting",
         status: "Review needed",
-        reason: `Your specified foreign financial assets (about $${fmt(
+        reason: `Your specified foreign financial assets are about $${fmt(
           totals.specifiedForeignFinancialAssetsYearEnd
-        )} year-end) appear below the educational Form 8938 threshold for your situation ($${fmt(
+        )} at year-end / $${fmt(
+          totals.specifiedForeignFinancialAssetsMax
+        )} maximum during the year. Based on entered values, this appears below the educational Form 8938 threshold for your situation ($${fmt(
           thr.year_end
-        )} year-end). Confirm with your CPA, especially if balances spiked mid-year. ${THRESHOLDS_VERIFY_NOTE}`,
+        )} year-end / $${fmt(thr.anytime)} anytime). Confirm with your CPA, especially if values are approximate.${abroadNote} ${THRESHOLDS_VERIFY_NOTE}`,
         sourceUrl: SOURCES.form8938DoINeed,
         severity: "low",
         relatedAssets: related,
@@ -332,7 +375,7 @@ export function runRules(
         category: "US Reporting",
         status: "Review needed",
         reason:
-          "Directly-held foreign real estate is generally NOT reported directly on Form 8938 — the real estate itself may not be directly reportable on Form 8938, but if the property is held through a foreign corporation, partnership, LLP, trust, estate, or other entity, the foreign entity interest may be reportable on Form 8938 (and may trigger Forms 5471/8865/8858). Rental income and a property sale can also create U.S. tax and reporting obligations.",
+          "Directly-held foreign real estate is generally NOT reported directly on Form 8938. The real estate itself may not be separately reported on Form 8938, but if the property is held through a foreign corporation, partnership, LLP, trust, estate, or other entity, the foreign entity interest may be reportable on Form 8938 (and may trigger Forms 5471/8865/8858) — its value may include the underlying real estate. Rental income and a property sale can also create U.S. tax and reporting obligations.",
         sourceUrl: SOURCES.form8938Qa,
         severity: "medium",
         relatedAssets: foreignRe.map(nick),

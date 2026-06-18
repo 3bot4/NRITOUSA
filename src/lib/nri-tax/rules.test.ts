@@ -240,7 +240,24 @@ describe("Foreign entity & real estate", () => {
     expect(ruleFor(rules, "Foreign real estate")?.status).toBe("Review needed");
   });
 
-  it("excludes India land and INDIA_REAL_ESTATE_RENTAL from FBAR/FATCA counts", () => {
+  it("includes entity-held real estate in Form 8938 FATCA totals but not FBAR", () => {
+    const assets = [
+      asset({
+        assetType: "INDIA_REAL_ESTATE_PERSONAL",
+        yearEndValue: 150000,
+        maximumYearValue: 150000,
+        heldDirectlyOrEntity: "entity",
+      }),
+    ];
+    const totals = computeTotals(profile(), assets, []);
+    // Not in FBAR (real estate never counts for FBAR)
+    expect(totals.foreignFinancialAccountsMax).toBe(0);
+    // But IS in FATCA because held through entity (foreign entity interest)
+    expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(150000);
+    expect(totals.specifiedForeignFinancialAssetsMax).toBe(150000);
+  });
+
+  it("excludes India land and INDIA_REAL_ESTATE_RENTAL (directly held) from FBAR/FATCA counts", () => {
     const assets = [
       asset({ assetType: "INDIA_LAND", yearEndValue: 300000, maximumYearValue: 300000 }),
       asset({ assetType: "INDIA_REAL_ESTATE_RENTAL", yearEndValue: 150000, maximumYearValue: 150000 }),
@@ -256,6 +273,23 @@ describe("Foreign tax credit & India ITR", () => {
     const inc = [income({ incomeType: "INDIA_NRO_INTEREST", amount: 600, taxPaidOrTds: 180 })];
     const rules = runRules(profile(), [], inc);
     expect(ruleFor(rules, "Foreign tax credit")?.status).toBe("Review needed");
+  });
+
+  it("does not double-count TDS when same amount appears in both asset and income records", () => {
+    // Sample scenario: NRO $180, FD $450, rental $400 in income = $1,030 total
+    // Assets also carry $180 + $450 — should NOT add these again
+    const assets = [
+      asset({ assetType: "INDIA_NRO_ACCOUNT", yearEndValue: 9000, maximumYearValue: 12000, taxPaidOrTds: 180 }),
+      asset({ assetType: "INDIA_FIXED_DEPOSIT", yearEndValue: 25000, maximumYearValue: 25000, taxPaidOrTds: 450 }),
+    ];
+    const inc = [
+      income({ incomeType: "INDIA_NRO_INTEREST", amount: 600, taxPaidOrTds: 180 }),
+      income({ incomeType: "INDIA_FD_INTEREST", amount: 1500, taxPaidOrTds: 450 }),
+      income({ incomeType: "INDIA_RENTAL_INCOME", amount: 4000, taxPaidOrTds: 400 }),
+    ];
+    const totals = computeTotals(profile(), assets, inc);
+    // Only income-level TDS should count: 180 + 450 + 400 = 1030
+    expect(totals.foreignTaxPaidOrTds).toBe(1030);
   });
 
   it("treats NRE-interest-only as a U.S. taxability review", () => {

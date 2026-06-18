@@ -57,11 +57,11 @@ export default function OrganizerProfile() {
           hint="Drives the Form 8938 threshold estimate"
         />
         <SelectField
-          label="Living location for tax"
+          label="Form 8938 threshold category"
           value={p.livingLocationForTax}
           onChange={(v) => org.saveProfile({ livingLocationForTax: v })}
           options={LIVING_LOCATION_OPTIONS}
-          hint="U.S. vs abroad changes the Form 8938 threshold"
+          hint="The higher abroad thresholds generally require meeting IRS living-abroad / presence-abroad rules. If unsure, use the U.S. threshold and confirm with a CPA."
         />
         <TextField
           label="State"

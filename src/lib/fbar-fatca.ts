@@ -230,17 +230,17 @@ function jsonThreshold(filing: string): { endOfYearUsd: number; anyTimeUsd: numb
 export const FATCA_THRESHOLD_TABLE: FatcaThresholdRow[] = [
   {
     residence: "us",
-    label: "Living in USA — Single / Married filing separately",
+    label: "Living in U.S. — Single / MFS / Head of Household",
     ...jsonThreshold("single-us-resident"),
   },
   {
     residence: "us",
-    label: "Living in USA — Married filing jointly",
+    label: "Living in U.S. — Married filing jointly",
     ...jsonThreshold("married-joint-us-resident"),
   },
   {
     residence: "abroad",
-    label: "Living abroad — Single / Married filing separately",
+    label: "Living abroad — Single / MFS / Head of Household",
     ...jsonThreshold("single-abroad"),
   },
   {
