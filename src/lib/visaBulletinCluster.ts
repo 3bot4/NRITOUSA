@@ -496,10 +496,10 @@ Retrogression means the State Department moved the visa bulletin Final Action Da
 Each month, the State Department sets new priority date cutoffs in the visa bulletin. In most months, dates move forward (advancing toward more recent dates). In some months, dates move backward — this is retrogression.
 
 **Example:**
-- June 2026 EB-2 India Final Action Date: August 2012
-- July 2026 EB-2 India Final Action Date: April 2012 ← retrogression of 4 months
+- June 2026 EB-1 India Final Action Date: Dec 15, 2022
+- July 2026 EB-1 India Final Action Date: Oct 15, 2022 ← retrogression of ~2 months
 
-A priority date of July 2012 that was current in June would not be current in July.
+A priority date of Dec 1, 2022 that was current in June would not be current in July.
 
 ## Why does retrogression happen?
 
@@ -866,7 +866,8 @@ Keep a simple log of the India EB-2 and EB-3 dates each month:
 
 | Month | EB-2 India (Table A) | EB-3 India (Table A) | EB-2 India (Table B) | Using Table B? |
 |---|---|---|---|---|
-| June 2026 | (check bulletin) | (check bulletin) | (check bulletin) | (check USCIS memo) |
+| June 2026 | Sep 1, 2013 | Dec 15, 2013 | Jan 15, 2015 | No (Final Action Dates) |
+| July 2026 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
 
 This makes retrogression and forward movement immediately visible.
 

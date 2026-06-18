@@ -114,6 +114,18 @@ function WaitVerdict({
           </p>
         </div>
       );
+    case "unavailable":
+      return (
+        <div>
+          <p className={`font-extrabold tracking-tight text-rose-700 ${big}`}>
+            Category unavailable
+          </p>
+          <p className="mt-1 text-xs text-ink-500">
+            No immigrant visa numbers are authorized for this category and country
+            of birth this month. No action is possible — monitor future bulletins.
+          </p>
+        </div>
+      );
     default:
       return (
         <p className="text-sm text-ink-500">

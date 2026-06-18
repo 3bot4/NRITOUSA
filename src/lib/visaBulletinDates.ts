@@ -46,30 +46,32 @@ export interface VisaBulletinData {
 /* ─── UPDATE THIS OBJECT EACH MONTH ──────────────────────────────────────── */
 
 export const CURRENT_VISA_BULLETIN: VisaBulletinData = {
-  month: "June",
+  month: "July",
   year: 2026,
   sourceUrl:
-    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-june-2026.html",
+    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
 
   // Table A — Final Action Dates
   // A priority date ON OR BEFORE this date qualifies for final approval.
+  // "U" = Unavailable — no visa numbers authorized for this category/country this month.
   finalActionDates: {
-    EB1: { india: "C",          other: "C"    },
-    EB2: { india: "2012-08-01", other: "C"    },
-    EB3: { india: "2012-11-01", other: "C"    },
+    EB1: { india: "2022-10-15", other: "C"          },
+    EB2: { india: "U",          other: "C"          },
+    EB3: { india: "2014-01-01", other: "2024-08-01" },
   },
 
   // Table B — Dates for Filing
-  // Set the entire object to null if USCIS has not authorized Part B this month.
+  // USCIS is using Final Action Dates (Table A) for July 2026 employment-based
+  // adjustment of status — Table B cannot be used to file I-485 this month.
   datesForFiling: {
-    EB1: { india: "C",          other: "C"    },
-    EB2: { india: "2013-04-01", other: "C"    },
-    EB3: { india: "2013-01-01", other: "C"    },
+    EB1: { india: "2023-12-01", other: "C"    },
+    EB2: { india: "2015-01-15", other: "C"    },
+    EB3: { india: "2015-01-15", other: "C"    },
   },
 
-  usingDatesForFiling: true, // USCIS Visa Bulletin Acceptance memo — verify at uscis.gov each month
+  usingDatesForFiling: false, // USCIS using Final Action Dates for July 2026 — verify at uscis.gov
 
-  lastUpdated: "2026-06-01",
+  lastUpdated: "2026-06-18",
 };
 
 /* ─── HELPERS ─────────────────────────────────────────────────────────────── */

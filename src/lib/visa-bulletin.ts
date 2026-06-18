@@ -62,7 +62,7 @@ export const bulletin = {
  * Update (or clear) this whenever a new bulletin is configured.
  */
 export const currentBulletinNote =
-  "June 2026 Visa Bulletin: EB-1 and EB-2 India retrogressed, while EB-3 India advanced modestly. Always verify with the official Department of State Visa Bulletin.";
+  "July 2026 Visa Bulletin: EB-1 India retrogressed to Oct 15, 2022. EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India advanced slightly to Jan 1, 2014. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. USCIS is using Final Action Dates for employment-based adjustment filings this month. Always verify with the official Department of State Visa Bulletin.";
 
 export function getCutoffs(
   category: EbCategory,
@@ -104,6 +104,7 @@ const MONTHS_ABBR = [
 
 export function formatCutoff(cutoff: Cutoff): string {
   if (isCurrent(cutoff)) return "Current";
+  if (cutoff === "U") return "Unavailable";
   const [y, m, d] = cutoff.split("-").map(Number);
   return d ? `${MONTHS_ABBR[m - 1]} ${d}, ${y}` : `${MONTHS_ABBR[m - 1]} ${y}`;
 }
@@ -174,6 +175,7 @@ export type EstimateStatus =
   | "estimate" // normal case: a projected range applies
   | "stalled" // cutoff barely moving — no meaningful projection
   | "retrogressing" // cutoff moved backwards recently
+  | "unavailable" // FAD is "U" — no visa numbers available this month
   | "no-data"; // not enough history to project
 
 export interface WaitEstimate {
@@ -221,9 +223,14 @@ export function estimateWait(
     capped: false,
   };
 
+  // Category/country has no visa numbers this month.
+  if (fad === "U") {
+    return { ...base, status: "unavailable" };
+  }
+
   // Filing eligibility under Dates for Filing (when USCIS accepts that chart).
   base.canFileI485 =
-    isCurrent(dff) || monthIndex(priorityDate) < monthIndex(dff);
+    dff !== "U" && (isCurrent(dff) || monthIndex(priorityDate) < monthIndex(dff));
 
   if (isCurrent(fad) || monthIndex(priorityDate) < monthIndex(fad)) {
     return { ...base, status: "current" };
