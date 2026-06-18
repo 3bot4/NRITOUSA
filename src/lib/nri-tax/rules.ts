@@ -122,10 +122,10 @@ export function fatcaThresholdFor(profile: UserProfile): {
   const key: keyof typeof FATCA_THRESHOLDS = abroad
     ? mfj
       ? "abroad_mfj"
-      : "abroad_single_or_mfs"
+      : "abroad_single_or_mfs_or_hoh"
     : mfj
       ? "us_mfj"
-      : "us_single_or_mfs";
+      : "us_single_or_mfs_or_hoh";
   return { key, ...FATCA_THRESHOLDS[key] };
 }
 
@@ -332,7 +332,7 @@ export function runRules(
         category: "US Reporting",
         status: "Review needed",
         reason:
-          "Directly-held foreign real estate is generally NOT reported directly on Form 8938 — but rental income, a sale, or holding the property through a foreign entity can still create U.S. reporting and tax. If any property is held through a company/LLP, Form 8938 and other forms may apply.",
+          "Directly-held foreign real estate is generally NOT reported directly on Form 8938 — the real estate itself may not be directly reportable on Form 8938, but if the property is held through a foreign corporation, partnership, LLP, trust, estate, or other entity, the foreign entity interest may be reportable on Form 8938 (and may trigger Forms 5471/8865/8858). Rental income and a property sale can also create U.S. tax and reporting obligations.",
         sourceUrl: SOURCES.form8938Qa,
         severity: "medium",
         relatedAssets: foreignRe.map(nick),
