@@ -65,13 +65,18 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function ImmigrationTrackerPage() {
+  const url = absoluteUrl(PATH);
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebPage",
-      "@id": absoluteUrl(PATH),
-      url: absoluteUrl(PATH),
+      "@type": "WebApplication",
+      "@id": `${url}#app`,
       name: TITLE,
       description: DESCRIPTION,
+      url,
+      applicationCategory: "GovernmentApplication",
+      operatingSystem: "Any",
+      isAccessibleForFree: true,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       inLanguage: "en-US",
     },
     breadcrumbJsonLd([

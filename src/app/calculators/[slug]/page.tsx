@@ -138,6 +138,36 @@ export default function CalculatorPage({
         </Container>
       </section>
 
+      {/* Quick Summary — AI-friendly snapshot of what this calculator does */}
+      <section className="border-b border-ink-900/5 bg-slate-50/70 py-7 sm:py-8">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <div className="rounded-2xl border border-brand-200 bg-white px-6 py-5">
+              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-700">
+                Quick answer
+              </h2>
+              <p className="text-sm leading-relaxed text-ink-700">{calc.quickSummary}</p>
+              <dl className="mt-4 grid gap-2 sm:grid-cols-2 text-xs">
+                <div>
+                  <dt className="font-semibold text-ink-500">Who this is for</dt>
+                  <dd className="mt-0.5 text-ink-700">{calc.audience}</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-ink-500">Data last checked</dt>
+                  <dd className="mt-0.5 text-ink-700">
+                    <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
+                  </dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="font-semibold text-ink-500">Official source</dt>
+                  <dd className="mt-0.5 text-ink-700">{calc.officialSource}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Calculator */}
       <section className="py-12 sm:py-16">
         <Container>
