@@ -160,11 +160,15 @@ export default function PropertyGainsCalculator() {
           />
 
           <p className="text-xs leading-relaxed text-ink-400">
-            Estimate only. Surcharge, indexation options for pre-July-2024
-            purchases, and exact TDS mechanics vary. NRIs face TDS on the sale
-            value unless a lower-deduction certificate is obtained. Also report
-            the gain on your US return (DTAA credit may apply). Consult a CA and
-            a US tax professional.
+            Estimate only. For long-term India property sold on or after July 23,
+            2024, the simplified long-term capital gains rate is generally 12.5%
+            without indexation (this calculator uses that rate). For property
+            acquired before July 23, 2024, some old-rate/indexation comparison
+            rules may apply depending on taxpayer status and property type — NRIs
+            should confirm with an Indian CA. TDS is deducted on the full sale
+            value; a lower-deduction certificate may reduce the withheld amount.
+            Also report the gain on your US return (DTAA credit may apply).
+            Consult a CA and a US tax professional.
           </p>
         </>
       }

@@ -108,6 +108,39 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
         </Container>
       </section>
 
+      {topic.slug === "taxes" && (
+        <section className="border-b border-ink-900/5 bg-gradient-to-br from-brand-50 to-indigo-50 py-6">
+          <Container>
+            <Link
+              href="/nri-wealth-checkup"
+              className="group flex flex-col gap-2 rounded-2xl border border-brand-200 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                  Free Tool
+                </p>
+                <h2 className="mt-1 text-base font-bold tracking-tight text-ink-900">
+                  NRI Wealth Checkup — FBAR, FATCA &amp; India Tax Organizer
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Add your U.S. and India assets, income, NRE/NRO accounts, and TDS to get an
+                  educational FBAR, FATCA, PFIC, and CPA/CA checklist. Free, private, no account.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+                Start Wealth Checkup{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          </Container>
+        </section>
+      )}
+
       <section className="py-10 sm:py-12">
         <Container>
           {articles.length > 0 ? (
