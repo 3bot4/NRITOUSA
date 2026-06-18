@@ -155,7 +155,7 @@ export default function VisaBulletinPage() {
           </p>
         </div>
 
-        {/* June 2026 retrogression note */}
+        {/* July 2026 bulletin note */}
         <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
           {currentBulletinNote}
         </div>

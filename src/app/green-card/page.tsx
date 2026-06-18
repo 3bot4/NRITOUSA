@@ -143,7 +143,7 @@ export default function GreenCardPage() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-700 to-emerald-600 px-3 py-1 text-xs font-semibold text-white">
               🟢 Green Card Guide
             </span>
-            <span>Updated June 2026</span>
+            <span>Updated July 2026</span>
           </div>
           <h1 className="mt-3 text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">
             Green Card for Indians:<br className="hidden sm:block" /> PERM, I-140, Priority Date, I-485
@@ -153,7 +153,7 @@ export default function GreenCardPage() {
           </p>
         </div>
 
-        {/* June 2026 retrogression note */}
+        {/* July 2026 bulletin note */}
         <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
           {currentBulletinNote}
         </div>

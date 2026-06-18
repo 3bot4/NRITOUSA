@@ -190,14 +190,18 @@ function i485BacklogTickerItem(): TickerItem {
 
 /**
  * EB-2 India date gap: years between today and the current FAD.
- * E.g. FAD = Sep 2013, today = Jun 2026 → "13 yrs behind".
+ * Shows "unavailable" when FAD is "U" (no visa numbers this month).
  */
 function eb2GapTickerItem(): TickerItem {
   const { fad } = getCutoffs("eb2", "india");
   let display = "Current";
   let change = "no backlog";
   let direction: TickerItem["direction"] = "up";
-  if (fad !== "C") {
+  if (fad === "U") {
+    display = "Unavailable";
+    change = "no numbers this month";
+    direction = "down";
+  } else if (fad !== "C") {
     const fadYear = parseInt(fad.slice(0, 4), 10);
     const todayYear = new Date().getFullYear();
     const gap = todayYear - fadYear;
