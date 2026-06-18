@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
+import NriWealthPlanning from "@/components/home/NriWealthPlanning";
+import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
 import AllToolsGrid from "@/components/home/AllToolsGrid";
 import UscisToolsSpotlight from "@/components/home/UscisToolsSpotlight";
@@ -12,9 +14,9 @@ import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpo
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const HOME_TITLE =
-  "NRI to USA — Free Immigration, Tax & Money Tools for Indians in the USA";
+  "NRI to USA — Free Immigration, Wealth, Tax & Money Tools for Indians in the USA";
 const HOME_DESCRIPTION =
-  "Free tools and guides for Indians in the USA. Passport renewal, visa bulletin tracker, green card wait times, FBAR/FATCA checker, remittance calculator, H-1B salaries and more.";
+  "Free calculators, checklists, and guides for Indian families in the USA managing U.S. income, India assets, taxes, retirement, property, inheritance, FBAR/FATCA, and return-to-India decisions — plus the immigration tools you know us for.";
 
 export const metadata: Metadata = {
   title: {
@@ -43,6 +45,8 @@ export default function HomePage() {
       <HomeHero />
 
       <Container className="pb-8 pt-6 sm:pb-10">
+        <NriWealthPlanning />
+        <CommonNriQuestions />
         <PopularGuidesForIndians />
         <ImmigrationTrackerSpotlight />
         <UscisToolsSpotlight />

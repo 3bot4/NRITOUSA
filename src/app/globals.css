@@ -70,3 +70,20 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
+
+/* Print / Save-as-PDF support for the NRI Wealth & Tax Organizer report.
+   Hides site chrome and non-printable controls so the report prints clean. */
+@media print {
+  body > header,
+  body > footer,
+  .no-print {
+    display: none !important;
+  }
+  .print-clean {
+    box-shadow: none !important;
+    border-color: #e5e7eb !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+}

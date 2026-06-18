@@ -30,7 +30,8 @@ export type IconName =
   | "plane-arrival"
   | "id-badge"
   | "chart-arrows"
-  | "home-move";
+  | "home-move"
+  | "shield-check";
 
 const PATHS: Record<IconName, React.ReactNode> = {
   calendar: (
@@ -146,6 +147,12 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M5 9.5V21h7" />
       <path d="M9 21v-6h4v3" />
       <path d="M15 18h6M18 15l3 3-3 3" />
+    </>
+  ),
+  "shield-check": (
+    <>
+      <path d="M12 3l7 3v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3z" />
+      <path d="M9 12l2 2 4-4" />
     </>
   ),
 };
