@@ -160,6 +160,7 @@ export default function OrganizerAssets() {
             value={draft.taxPaidOrTds}
             onChange={(v) => set({ taxPaidOrTds: v })}
             prefix="$"
+            hint="Avoid duplicating TDS here if you already enter it under Income & TDS."
           />
           <SelectField
             label="Ownership"
