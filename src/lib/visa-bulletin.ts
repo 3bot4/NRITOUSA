@@ -91,6 +91,19 @@ export function getSeries(
 
 export const isCurrent = (cutoff: Cutoff) => cutoff === "C";
 
+/** True when a visa bulletin cutoff value means "no numbers available this month". */
+export const isUnavailableVisaValue = (value: string): boolean => value === "U";
+
+/**
+ * True when the value is a parseable ISO cutoff date (not "C", not "U", not invalid).
+ * Use before passing a cutoff to new Date(), differenceInYears, or sort comparisons.
+ */
+export function isValidVisaDate(value: string): boolean {
+  if (value === "C" || value === "U") return false;
+  const parts = value.split("-").map(Number);
+  return parts.length >= 2 && !isNaN(parts[0]) && !isNaN(parts[1]);
+}
+
 /** "2026-06" or "2013-09-01" → months since year 0 (day adds a fraction). */
 export function monthIndex(date: string): number {
   const [y, m, d] = date.split("-").map(Number);
@@ -142,15 +155,15 @@ export function velocity(
   };
 
   const b = valueAt(end);
-  if (!b || isCurrent(b)) return null;
+  if (!b || isCurrent(b) || isUnavailableVisaValue(b)) return null;
 
   let a = valueAt(start) ?? points[0][1];
   let anchor = Math.max(start, monthIndex(points[0][0]));
-  if (isCurrent(a)) {
-    // Series was Current at the window start (it later retrogressed into a
-    // backlog) — anchor at the first dated cutoff inside the window instead.
+  if (isCurrent(a) || isUnavailableVisaValue(a)) {
+    // Series was Current/Unavailable at the window start — anchor at the first
+    // valid dated cutoff inside the window instead.
     const firstDated = points.find(
-      ([ym, cutoff]) => monthIndex(ym) >= start && !isCurrent(cutoff)
+      ([ym, cutoff]) => monthIndex(ym) >= start && isValidVisaDate(cutoff)
     );
     if (!firstDated) return null;
     a = firstDated[1];
@@ -288,7 +301,7 @@ export function expandSeries(
       if (monthIndex(ym) > mi) break;
       v = cutoff;
     }
-    out.push({ month, value: v && !isCurrent(v) ? monthIndex(v) : null });
+    out.push({ month, value: v && isValidVisaDate(v) ? monthIndex(v) : null });
   }
   return out;
 }

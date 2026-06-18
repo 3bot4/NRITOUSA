@@ -99,7 +99,7 @@ function ebIndiaLastMove(category: "eb1" | "eb2" | "eb3"): number | null {
   const pts = series.fad;
   const [, last] = pts[pts.length - 1];
   const [, prev] = pts[pts.length - 2];
-  if (last === "C" || prev === "C") return null;
+  if (last === "C" || prev === "C" || last === "U" || prev === "U") return null;
   return monthIndex(last) - monthIndex(prev);
 }
 
@@ -110,6 +110,19 @@ function ebIndiaTickerItem(
 ): TickerItem {
   const { fad } = getCutoffs(category, "india");
   const display = formatCutoff(fad);
+
+  if (fad === "U") {
+    return {
+      key,
+      label,
+      display: "Unavailable",
+      change: "no numbers this month",
+      direction: "down",
+      kind: "differentiator",
+      href: tickerHref[key] ?? "/tools/priority-date-checker",
+    };
+  }
+
   const move = ebIndiaLastMove(category);
   let change = "FAD";
   let direction: TickerItem["direction"] = "flat";
@@ -190,14 +203,18 @@ function i485BacklogTickerItem(): TickerItem {
 
 /**
  * EB-2 India date gap: years between today and the current FAD.
- * E.g. FAD = Sep 2013, today = Jun 2026 → "13 yrs behind".
+ * Shows "unavailable" when FAD is "U" (no visa numbers this month).
  */
 function eb2GapTickerItem(): TickerItem {
   const { fad } = getCutoffs("eb2", "india");
   let display = "Current";
   let change = "no backlog";
   let direction: TickerItem["direction"] = "up";
-  if (fad !== "C") {
+  if (fad === "U") {
+    display = "Unavailable";
+    change = "no numbers this month";
+    direction = "down";
+  } else if (fad !== "C") {
     const fadYear = parseInt(fad.slice(0, 4), 10);
     const todayYear = new Date().getFullYear();
     const gap = todayYear - fadYear;
