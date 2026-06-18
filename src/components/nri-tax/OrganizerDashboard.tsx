@@ -5,9 +5,8 @@ import { useRouter } from "next/navigation";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
 import PrivacyNotice from "./PrivacyNotice";
+import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { useOrganizer } from "@/lib/nri-tax/storage";
-import { sampleAssets, sampleIncome, sampleProfile } from "@/lib/nri-tax/sample";
-import type { OrganizerData } from "@/lib/nri-tax/storage";
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
@@ -42,17 +41,6 @@ export default function OrganizerDashboard() {
   const { totals, riskScore, rules, missingInfo } = org.summary;
   const isEmpty = org.assets.length === 0 && org.income.length === 0;
   const activeFlags = rules.filter((r) => r.status !== "Likely not applicable" && r.status !== "Not enough information");
-
-  const loadSample = () => {
-    const data: OrganizerData = {
-      userId: "local-user",
-      profiles: [{ ...sampleProfile(org.taxYear), userId: "local-user" }],
-      assets: sampleAssets(org.taxYear).map((a) => ({ ...a, userId: "local-user" })),
-      income: sampleIncome(org.taxYear).map((i) => ({ ...i, userId: "local-user" })),
-      reports: [],
-    };
-    org.importData(data);
-  };
 
   return (
     <Container className="py-8">
@@ -92,12 +80,12 @@ export default function OrganizerDashboard() {
             >
               Set up profile →
             </Link>
-            <button
-              onClick={loadSample}
+            <Link
+              href="/nri-wealth-checkup/report?sample=1"
               className="rounded-lg border border-ink-900/15 bg-white px-4 py-2 text-sm font-semibold text-ink-700 hover:bg-ink-900/5"
             >
-              Load sample data
-            </button>
+              View sample report
+            </Link>
           </div>
         </div>
       )}
@@ -168,6 +156,7 @@ export default function OrganizerDashboard() {
       </div>
 
       <PrivacyNotice className="mt-8" />
+      <OrganizerDisclaimer className="mt-4" />
     </Container>
   );
 }

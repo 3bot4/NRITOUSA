@@ -1,16 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
-import { useOrganizer } from "@/lib/nri-tax/storage";
+import { useOrganizer, currentTaxYear } from "@/lib/nri-tax/storage";
+import { buildSummary } from "@/lib/nri-tax/rules";
+import { sampleAssets, sampleIncome, sampleProfile } from "@/lib/nri-tax/sample";
 import {
   assetMeta,
   incomeMeta,
   TOOL_DISCLAIMER,
+  type AssetItem,
+  type IncomeItem,
   type RuleCategory,
   type RuleOutput,
   type RuleStatus,
+  type UserProfile,
 } from "@/lib/nri-tax/types";
 import {
   FILING_STATUS_OPTIONS,
@@ -65,7 +72,12 @@ function RuleCard({ r }: { r: RuleOutput }) {
 
 export default function OrganizerReport() {
   const org = useOrganizer();
-  if (!org.ready) {
+  const router = useRouter();
+  const params = useSearchParams();
+  const isSample = params.get("sample") === "1";
+  const [showClear, setShowClear] = useState(false);
+
+  if (!isSample && !org.ready) {
     return (
       <Container className="py-10">
         <p className="text-ink-500">Loading…</p>
@@ -73,7 +85,13 @@ export default function OrganizerReport() {
     );
   }
 
-  const { profile, assets, income, summary } = org;
+  // Sample mode renders fixed demo data and never reads/writes the user's store.
+  const taxYear = isSample ? currentTaxYear() : org.taxYear;
+  const profile: UserProfile = isSample ? sampleProfile(taxYear) : org.profile;
+  const assets: AssetItem[] = isSample ? sampleAssets(taxYear) : org.assets;
+  const income: IncomeItem[] = isSample ? sampleIncome(taxYear) : org.income;
+  const summary = isSample ? buildSummary(profile, assets, income) : org.summary;
+
   const { totals, riskScore, rules, cpaQuestions, documentChecklist, nextYearReminders } = summary;
   const generated = new Date().toLocaleDateString("en-US", {
     year: "numeric",
@@ -86,33 +104,69 @@ export default function OrganizerReport() {
     (r) => r.status === "May be required" || r.status === "Review needed"
   );
 
+  const clearData = () => {
+    org.resetAll();
+    setShowClear(false);
+    router.push("/nri-wealth-checkup/dashboard");
+  };
+
   return (
     <Container className="py-8">
       <div className="no-print">
-        <OrganizerNav
-          taxYear={org.taxYear}
-          availableYears={org.availableYears}
-          onYearChange={org.setTaxYear}
-        />
+        {!isSample && (
+          <OrganizerNav
+            taxYear={org.taxYear}
+            availableYears={org.availableYears}
+            onYearChange={org.setTaxYear}
+          />
+        )}
       </div>
+
+      {isSample && (
+        <div className="mb-5 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          <strong className="font-semibold">Sample — not your data.</strong> This report uses a
+          fictional NRI family to show what the tool produces. Nothing here is saved.{" "}
+          <Link href="/nri-wealth-checkup/profile" className="font-semibold underline">
+            Start your own checkup →
+          </Link>
+        </div>
+      )}
 
       {/* Title block */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-ink-900">
             NRI Global Wealth &amp; Tax Organizer — Educational Report
+            {isSample && " (Sample)"}
           </h1>
           <p className="mt-1 text-sm text-ink-500">
-            Tax year {org.taxYear} · Generated {generated}
+            Tax year {taxYear} · Generated {generated}
+            {isSample && " · Sample data"}
           </p>
         </div>
-        <div className="no-print flex gap-2">
+        <div className="no-print flex flex-wrap gap-2">
           <button
             onClick={() => window.print()}
             className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
             Download PDF
           </button>
+          {!isSample && (
+            <>
+              <Link
+                href="/nri-wealth-checkup/assets"
+                className="rounded-lg border border-ink-900/15 bg-white px-4 py-2 text-sm font-semibold text-ink-700 hover:bg-ink-900/5"
+              >
+                Edit Inputs
+              </Link>
+              <button
+                onClick={() => setShowClear(true)}
+                className="rounded-lg border border-rose-200 bg-white px-4 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50"
+              >
+                Clear Local Data
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -125,8 +179,11 @@ export default function OrganizerReport() {
               : "bg-emerald-50 text-emerald-700 ring-emerald-600/20"
         }`}
       >
-        Review level: {riskScore}
+        Educational review level: {riskScore}
       </span>
+      <p className="mt-2 max-w-2xl text-xs text-ink-500">
+        This is not a filing determination. It highlights topics to review with a qualified CPA/CA.
+      </p>
 
       {/* Profile summary */}
       <Section title="Profile summary">
@@ -143,7 +200,7 @@ export default function OrganizerReport() {
       {/* Asset map */}
       <Section title="Asset map">
         <SummaryTable
-          head={["Asset", "Type", "Country", "Year-end", "Max", "TDS"]}
+          head={["Asset", "Type", "Country", "Year-end", "Max", "Tax/TDS"]}
           rows={assets.map((a) => [
             a.institutionOrAssetNickname || "—",
             assetMeta(a.assetType).label,
@@ -155,16 +212,25 @@ export default function OrganizerReport() {
           empty="No assets entered."
         />
         <div className="mt-3 grid gap-2 text-sm sm:grid-cols-3">
-          <Mini k="Total U.S. assets" v={usd(totals.usAssets)} />
-          <Mini k="Total India assets" v={usd(totals.indiaAssets)} />
-          <Mini k="Other foreign assets" v={usd(totals.otherForeignAssets)} />
+          <Mini k="Total U.S. assets (year-end)" v={usd(totals.usAssets)} />
+          <Mini k="Total India assets (year-end)" v={usd(totals.indiaAssets)} />
+          <Mini k="Other foreign assets (year-end)" v={usd(totals.otherForeignAssets)} />
+          <Mini
+            k="Foreign financial accounts — maximum during year"
+            v={usd(totals.foreignFinancialAccountsMax)}
+          />
+          <Mini
+            k="Specified foreign financial assets — maximum during year"
+            v={usd(totals.specifiedForeignFinancialAssetsMax)}
+          />
+          <Mini k="India-source income" v={usd(totals.indiaSourceIncome)} />
         </div>
       </Section>
 
       {/* Income summary */}
       <Section title="Income summary">
         <SummaryTable
-          head={["Type", "Source", "Amount", "TDS"]}
+          head={["Type", "Source", "Amount", "Tax/TDS"]}
           rows={income.map((i) => [
             incomeMeta(i.incomeType).label,
             i.countrySource,
@@ -260,12 +326,38 @@ export default function OrganizerReport() {
           Download PDF
         </button>
         <Link
-          href="/nri-wealth-checkup/dashboard"
+          href={isSample ? "/nri-wealth-checkup/profile" : "/nri-wealth-checkup/dashboard"}
           className="rounded-xl border border-ink-900/15 bg-white px-5 py-3 text-sm font-semibold text-ink-700 hover:bg-ink-900/5"
         >
-          Back to dashboard
+          {isSample ? "Start your own checkup" : "Back to dashboard"}
         </Link>
       </div>
+
+      {/* Clear-data confirmation modal */}
+      {showClear && (
+        <div className="no-print fixed inset-0 z-50 flex items-center justify-center bg-ink-900/40 p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-bold text-ink-900">Clear local data?</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              This will remove locally saved entries from this browser only. It cannot be undone.
+            </p>
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                onClick={() => setShowClear(false)}
+                className="rounded-lg border border-ink-900/15 bg-white px-4 py-2 text-sm font-semibold text-ink-700 hover:bg-ink-900/5"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={clearData}
+                className="rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700"
+              >
+                Clear data
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Container>
   );
 }

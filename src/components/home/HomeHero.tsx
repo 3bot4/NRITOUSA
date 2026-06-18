@@ -79,7 +79,7 @@ export default function HomeHero() {
         {/* Primary + secondary hero CTAs. Primary (wealth checkup) is the
             largest, most prominent action; the secondary FBAR/FATCA risk check
             sits beside it on desktop and stacks below on mobile. */}
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
           <Link
             href="/nri-wealth-checkup"
             className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 px-8 py-5 text-lg font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:flex-[3] sm:text-xl"

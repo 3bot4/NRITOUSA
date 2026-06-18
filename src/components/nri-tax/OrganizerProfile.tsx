@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
 import PrivacyNotice from "./PrivacyNotice";
+import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
 import {
@@ -98,7 +99,7 @@ export default function OrganizerProfile() {
         )}
       </div>
 
-      <p className="mt-3 text-xs text-ink-400">Changes save automatically to this browser.</p>
+      <OrganizerDisclaimer className="mt-6" />
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Link

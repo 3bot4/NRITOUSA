@@ -5,6 +5,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
 import PrivacyNotice from "./PrivacyNotice";
+import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
 import { INCOME_TYPES, incomeMeta, type IncomeItem, type IncomeType } from "@/lib/nri-tax/types";
@@ -217,6 +218,8 @@ export default function OrganizerIncome() {
           Back to dashboard
         </Link>
       </div>
+
+      <OrganizerDisclaimer className="mt-8" />
     </Container>
   );
 }

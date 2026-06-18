@@ -90,6 +90,16 @@ describe("FBAR screening", () => {
     expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(0);
   });
 
+  it("excludes U.S. 401(k) from FBAR & FATCA foreign-asset counts", () => {
+    const assets = [
+      asset({ assetType: "US_401K", country: "USA", currency: "USD", yearEndValue: 150000, maximumYearValue: 150000 }),
+    ];
+    const totals = computeTotals(profile(), assets, []);
+    expect(totals.foreignFinancialAccountsMax).toBe(0);
+    expect(totals.specifiedForeignFinancialAssetsYearEnd).toBe(0);
+    expect(totals.usAssets).toBe(150000);
+  });
+
   it("includes signature-authority-only accounts", () => {
     const assets = [
       asset({
@@ -135,6 +145,22 @@ describe("PFIC / Form 8621", () => {
     const assets = [asset({ assetType: "INDIA_STOCKS", yearEndValue: 30000 })];
     const rules = runRules(profile(), assets, []);
     expect(ruleFor(rules, "PFIC / Form 8621")).toBeUndefined();
+  });
+});
+
+describe("Foreign entity & real estate", () => {
+  it("flags India private company shares for foreign-entity review", () => {
+    const assets = [asset({ assetType: "INDIA_PRIVATE_COMPANY", yearEndValue: 50000, maximumYearValue: 50000 })];
+    const rules = runRules(profile(), assets, []);
+    expect(ruleFor(rules, "Foreign entity")?.status).toBe("Review needed");
+  });
+
+  it("keeps directly-held India real estate out of FBAR/FATCA but flags a property note", () => {
+    const assets = [asset({ assetType: "INDIA_REAL_ESTATE_PERSONAL", yearEndValue: 200000, maximumYearValue: 200000 })];
+    const totals = computeTotals(profile(), assets, []);
+    expect(totals.foreignFinancialAccountsMax).toBe(0);
+    const rules = runRules(profile(), assets, []);
+    expect(ruleFor(rules, "Foreign real estate")?.status).toBe("Review needed");
   });
 });
 

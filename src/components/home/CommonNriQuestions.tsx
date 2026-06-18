@@ -32,7 +32,7 @@ const CARDS: QuestionCard[] = [
     hook: "You are not just an immigrant anymore — your money is now cross-border.",
     support:
       "Map your U.S. and India assets and see what needs tax, reporting, retirement, or estate attention.",
-    cta: "Start NRI Wealth Checkup",
+    cta: "Start Checkup",
     type: "Tool",
     href: "/nri-wealth-checkup",
   },
@@ -48,7 +48,7 @@ const CARDS: QuestionCard[] = [
     hook: "NRE interest is tax-free in India, not automatically tax-free in America.",
     support:
       "Understand how U.S. and India tax treatment can differ for NRE, NRO, FD, and India-source income.",
-    cta: "Read NRE/NRO Tax Guide",
+    cta: "Read Tax Guide",
     type: "Guide",
     href: "/articles/nre-nro-accounts-explained",
   },
@@ -56,7 +56,7 @@ const CARDS: QuestionCard[] = [
     hook: "Before selling India property, calculate the U.S. + India tax together.",
     support:
       "Estimate capital gains, TDS, repatriation steps, and foreign tax credit questions before making a decision.",
-    cta: "Plan India Property Sale",
+    cta: "Plan Property Sale",
     type: "Tool/Guide",
     href: "/india-property",
   },
@@ -64,7 +64,7 @@ const CARDS: QuestionCard[] = [
     hook: "After 10 years in the U.S., your financial life needs a cleanup.",
     support:
       "Review accounts, beneficiaries, estate documents, retirement plans, India assets, and compliance risks.",
-    cta: "Open 10-Year NRI Checklist",
+    cta: "Open Checklist",
     type: "Checklist",
     href: "/articles/10-year-nri-wealth-checklist",
   },
@@ -72,7 +72,7 @@ const CARDS: QuestionCard[] = [
     hook: "Your CPA may not understand India. Your CA may not understand the IRS.",
     support:
       "Generate a clean summary of your U.S. and India assets so both advisors can review the same facts.",
-    cta: "Create CPA/CA Summary",
+    cta: "Create Summary",
     type: "Tool",
     href: "/nri-wealth-checkup",
   },
@@ -80,7 +80,7 @@ const CARDS: QuestionCard[] = [
     hook: "Plan before your parents’ property becomes your tax problem.",
     support:
       "Organize inheritance, nominees, property documents, tax basis, and repatriation questions early.",
-    cta: "Review Inheritance Checklist",
+    cta: "Review Checklist",
     type: "Guide",
     href: "/nri-estate-planning",
   },
@@ -88,7 +88,7 @@ const CARDS: QuestionCard[] = [
     hook: "Retiring in India? Your 401(k), IRA, Social Security, RNOR status, and currency plan must work together.",
     support:
       "Plan U.S. retirement accounts, India residency status, withdrawals, and currency timing before moving.",
-    cta: "Start Return-to-India Planner",
+    cta: "Start Planner",
     type: "Tool/Guide",
     href: "/return-to-india",
   },

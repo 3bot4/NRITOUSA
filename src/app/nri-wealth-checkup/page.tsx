@@ -5,7 +5,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import PrivacyNotice from "@/components/nri-tax/PrivacyNotice";
 import LandingActions from "@/components/nri-tax/LandingActions";
-import { SOURCES } from "@/lib/nri-tax/types";
+import { SOURCES, TOOL_DISCLAIMER } from "@/lib/nri-tax/types";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -136,12 +136,7 @@ export default function NriWealthCheckupLanding() {
       <Container className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl space-y-6">
           <PrivacyNotice />
-          <DisclaimerBox title="Educational only">
-            This is an educational organizer. NRItoUSA does not prepare taxes or give legal, tax, or
-            financial advice. Flags use language like &ldquo;may apply&rdquo; and &ldquo;review
-            needed&rdquo; — always confirm with a qualified U.S. CPA, Enrolled Agent, Indian CA, or
-            attorney.
-          </DisclaimerBox>
+          <DisclaimerBox title="Educational only">{TOOL_DISCLAIMER}</DisclaimerBox>
         </div>
 
         {/* What it screens */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import OrganizerReport from "@/components/nri-tax/OrganizerReport";
 
 export const metadata: Metadata = {
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function ReportPage() {
-  return <OrganizerReport />;
+  return (
+    <Suspense fallback={null}>
+      <OrganizerReport />
+    </Suspense>
+  );
 }

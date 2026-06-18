@@ -85,10 +85,10 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <Link
-              href="/topics"
+              href="/nri-wealth-checkup"
               className="hidden rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 sm:inline-block"
             >
-              Start Here
+              Wealth Checkup
             </Link>
 
             {/* Mobile toggle */}

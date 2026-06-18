@@ -5,6 +5,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import OrganizerNav from "./OrganizerNav";
 import PrivacyNotice from "./PrivacyNotice";
+import OrganizerDisclaimer from "./OrganizerDisclaimer";
 import { NumberField, SelectField, TextField } from "./FieldKit";
 import { useOrganizer } from "@/lib/nri-tax/storage";
 import {
@@ -297,6 +298,8 @@ export default function OrganizerAssets() {
           Back to dashboard
         </Link>
       </div>
+
+      <OrganizerDisclaimer className="mt-8" />
     </Container>
   );
 }
