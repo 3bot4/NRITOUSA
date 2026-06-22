@@ -45,7 +45,32 @@ export default function TaxComplianceSpotlight() {
           </Link>
         </div>
 
-        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <Link
+          href="/india-tax-compliance/nri-tax-forms-limits"
+          className="group mt-4 flex items-center justify-between gap-3 rounded-xl border border-rose-200 bg-white p-3.5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+        >
+          <span className="flex items-start gap-3">
+            <span
+              aria-hidden
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-pink-600 text-lg"
+            >
+              🗂️
+            </span>
+            <span className="min-w-0">
+              <span className="block text-sm font-bold tracking-tight text-ink-900 group-hover:text-brand-700">
+                NRI Tax Forms &amp; Limits Center
+              </span>
+              <span className="mt-0.5 block text-xs text-ink-500">
+                US &amp; India forms, triggers, thresholds, and deadlines — in two tables.
+              </span>
+            </span>
+          </span>
+          <span aria-hidden className="flex-none text-sm font-semibold text-rose-600 group-hover:translate-x-0.5">
+            →
+          </span>
+        </Link>
+
+        <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {items.map((t) => (
             <Link
               key={t.href}

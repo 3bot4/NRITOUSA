@@ -158,6 +158,17 @@ export default function NriWealthCheckupLanding() {
               </a>
             ))}
           </div>
+          <p className="mt-4 text-sm text-ink-500">
+            Want the full map of which US and India forms apply, with thresholds and
+            deadlines? See the{" "}
+            <Link
+              href="/india-tax-compliance/nri-tax-forms-limits"
+              className="font-semibold text-brand-600 hover:text-brand-700"
+            >
+              NRI Tax Forms &amp; Limits Center
+            </Link>
+            .
+          </p>
         </div>
 
         {/* How it works */}
