@@ -5,6 +5,8 @@ import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
 import { eduCalcs } from "@/lib/education";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
+import { itrPages, itrPath } from "@/lib/itrCluster";
+import { tdsPages, tdsPath } from "@/lib/tdsCluster";
 import { uscisChildPages } from "@/lib/uscisCluster";
 import { myuscisChildPages } from "@/lib/myuscisCluster";
 import { formsChildPages } from "@/lib/uscisFormsCluster";
@@ -237,6 +239,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.kind === "hub" ? 0.9 : 0.7,
   }));
 
+  const itrClusterRoutes: MetadataRoute.Sitemap = itrPages.map((p) => ({
+    url: `${site.url}${itrPath(p.slug)}`,
+    lastModified: new Date(p.updated ?? p.date),
+    changeFrequency: "monthly",
+    priority: p.kind === "pillar" ? 0.9 : 0.7,
+  }));
+
+  const tdsClusterRoutes: MetadataRoute.Sitemap = tdsPages.map((p) => ({
+    url: `${site.url}${tdsPath(p.slug)}`,
+    lastModified: new Date(p.updated ?? p.date),
+    changeFrequency: "monthly",
+    priority: p.kind === "pillar" ? 0.9 : 0.7,
+  }));
+
   const uscisChildRoutes: MetadataRoute.Sitemap = uscisChildPages.map((p) => ({
     url: `${site.url}/uscis/${p.slug}`,
     lastModified: new Date(p.updated ?? p.date),
@@ -266,6 +282,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...eduRoutes,
     ...articleRoutes,
     ...passportClusterRoutes,
+    ...itrClusterRoutes,
+    ...tdsClusterRoutes,
     ...uscisChildRoutes,
     ...h1bChildRoutes,
     ...greenCardChildRoutes,
