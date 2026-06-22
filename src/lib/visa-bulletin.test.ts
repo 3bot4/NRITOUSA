@@ -16,10 +16,12 @@ import { describe, it, expect } from "vitest";
 import {
   CATEGORY_LABELS,
   COUNTRY_LABELS,
+  EB5_SETASIDE_ORDER,
   estimateWait,
   expandSeries,
   formatCutoff,
   getCutoffs,
+  getEb5SetAside,
   getSeries,
   isCurrent,
   isUnavailableVisaValue,
@@ -140,5 +142,37 @@ describe("synthetic bulletins: a category going Unavailable mid-series", () => {
   it("isCurrent + Unavailable are mutually exclusive sentinels", () => {
     expect(isCurrent("U")).toBe(false);
     expect(isUnavailableVisaValue("C")).toBe(false);
+  });
+});
+
+describe("EB-5 set-aside categories (July 2026)", () => {
+  it("exposes all three set-asides", () => {
+    expect(EB5_SETASIDE_ORDER).toEqual([
+      "rural",
+      "highUnemployment",
+      "infrastructure",
+    ]);
+  });
+
+  it("all India set-asides are Current (separate from Unavailable Unreserved)", () => {
+    // EB-5 India Unreserved is "U" this month...
+    expect(getCutoffs("eb5", "india").fad).toBe("U");
+    // ...but the reserved set-asides remain Current.
+    for (const key of EB5_SETASIDE_ORDER) {
+      const cut = getEb5SetAside(key, "india");
+      expect(cut).not.toBeNull();
+      expect(isCurrent(cut!.fad)).toBe(true);
+      expect(formatCutoff(cut!.fad)).toBe("Current");
+    }
+  });
+
+  it("set-asides resolve for every country without throwing", () => {
+    for (const co of COUNTRIES) {
+      for (const key of EB5_SETASIDE_ORDER) {
+        const cut = getEb5SetAside(key, co);
+        expect(cut).not.toBeNull();
+        expect(formatCutoff(cut!.fad)).not.toMatch(/NaN|Invalid/);
+      }
+    }
   });
 });

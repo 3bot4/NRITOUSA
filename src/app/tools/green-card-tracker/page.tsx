@@ -9,6 +9,7 @@ import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
 import TrackerCharts from "@/components/tools/TrackerCharts";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
+import Eb5SetAsidePanel from "@/components/Eb5SetAsidePanel";
 import { getTool } from "@/lib/tools";
 import {
   bulletin,
@@ -172,6 +173,7 @@ export default function GreenCardTrackerPage() {
             source={bulletin.source}
             sourceLabel={bulletin.sourceLabel}
           />
+          <Eb5SetAsidePanel className="mt-6" />
         </Container>
       </section>
 

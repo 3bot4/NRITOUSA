@@ -3,7 +3,7 @@
   "lastUpdated": "2026-06-18",
   "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
   "sourceLabel": "U.S. Department of State Visa Bulletin (July 2026)",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). All values verified against the official July 2026 bulletin. USCIS has directed applicants to use Final Action Dates for employment-based adjustment of status filings in July 2026.",
+  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official July 2026 bulletin. USCIS has directed applicants to use Final Action Dates for employment-based adjustment of status filings in July 2026.",
   "categories": {
     "eb1": {
       "india": { "fad": "2022-10-15", "dff": "2023-12-01" },
@@ -23,6 +23,23 @@
     "eb5": {
       "india": { "fad": "U", "dff": "2024-05-01" },
       "china": { "fad": "2016-12-01", "dff": "2017-03-01" },
+      "row": { "fad": "C", "dff": "C" }
+    }
+  },
+  "eb5SetAsides": {
+    "rural": {
+      "india": { "fad": "C", "dff": "C" },
+      "china": { "fad": "C", "dff": "C" },
+      "row": { "fad": "C", "dff": "C" }
+    },
+    "highUnemployment": {
+      "india": { "fad": "C", "dff": "C" },
+      "china": { "fad": "C", "dff": "C" },
+      "row": { "fad": "C", "dff": "C" }
+    },
+    "infrastructure": {
+      "india": { "fad": "C", "dff": "C" },
+      "china": { "fad": "C", "dff": "C" },
       "row": { "fad": "C", "dff": "C" }
     }
   }

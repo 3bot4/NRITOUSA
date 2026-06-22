@@ -16,6 +16,7 @@ import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { CURRENT_VISA_BULLETIN } from "@/lib/visaBulletinDates";
 import { currentBulletinNote } from "@/lib/visa-bulletin";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
+import Eb5SetAsidePanel from "@/components/Eb5SetAsidePanel";
 
 const PAGE_PATH = "/visa-bulletin";
 const UPDATED = "2026-06-16";
@@ -415,6 +416,15 @@ export default function VisaBulletinPage() {
           <p className="mt-3 text-xs text-ink-500">
             <Link href="/visa-bulletin/eb3-india" className="text-brand-600 underline">Full EB-3 India guide + downgrade strategy →</Link>
           </p>
+        </section>
+
+        {/* ── SECTION 10b: EB-5 set-asides ────────────────────────────────────── */}
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-ink-900 mb-3">EB-5 investor categories: Unreserved vs. set-asides</h2>
+          <p className="text-sm text-ink-600 mb-4">
+            EB-5 splits into the <strong>Unreserved</strong> category and three reserved <strong>set-asides</strong> (Rural, High Unemployment, Infrastructure). For July 2026, EB-5 India Unreserved is <strong>Unavailable</strong>, but the set-aside categories remain <strong>Current</strong> — one reason set-aside investments draw India-born investors.
+          </p>
+          <Eb5SetAsidePanel />
         </section>
 
         {/* ── SECTION 11: Retrogression ───────────────────────────────────────── */}

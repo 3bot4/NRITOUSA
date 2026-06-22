@@ -84,6 +84,39 @@ export function getCutoffs(
   return cats[category][country];
 }
 
+/* ---------------------------- EB-5 set-asides ---------------------------- */
+
+/** The three reserved EB-5 set-aside categories (separate from Unreserved). */
+export type Eb5SetAside = "rural" | "highUnemployment" | "infrastructure";
+
+export const EB5_SETASIDE_LABELS: Record<Eb5SetAside, string> = {
+  rural: "Rural (20% set-aside)",
+  highUnemployment: "High Unemployment (10% set-aside)",
+  infrastructure: "Infrastructure (2% set-aside)",
+};
+
+export const EB5_SETASIDE_ORDER: Eb5SetAside[] = [
+  "rural",
+  "highUnemployment",
+  "infrastructure",
+];
+
+const eb5SetAsideData = (currentData as { eb5SetAsides?: Record<
+  string,
+  Record<string, CategoryCutoffs>
+> }).eb5SetAsides;
+
+/**
+ * Final Action / Dates for Filing for an EB-5 reserved set-aside category.
+ * Returns null only if the data file predates set-aside support.
+ */
+export function getEb5SetAside(
+  setAside: Eb5SetAside,
+  country: BulletinCountry
+): CategoryCutoffs | null {
+  return eb5SetAsideData?.[setAside]?.[country] ?? null;
+}
+
 export function getSeries(
   category: EbCategory,
   country: BulletinCountry
