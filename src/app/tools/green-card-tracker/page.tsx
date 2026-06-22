@@ -8,6 +8,7 @@ import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
 import TrackerCharts from "@/components/tools/TrackerCharts";
+import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 import { getTool } from "@/lib/tools";
 import {
   bulletin,
@@ -110,6 +111,7 @@ export default function GreenCardTrackerPage() {
       {/* Estimator */}
       <section className="py-12 sm:py-16">
         <Container>
+          <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
           <GreenCardEstimator variant="full" />
         </Container>
       </section>

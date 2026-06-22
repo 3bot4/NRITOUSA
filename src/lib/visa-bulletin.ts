@@ -64,6 +64,15 @@ export const bulletin = {
 export const currentBulletinNote =
   "July 2026 Visa Bulletin: EB-1 India retrogressed to Oct 15, 2022. EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India advanced slightly to Jan 1, 2014. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. USCIS is using Final Action Dates for employment-based adjustment filings this month. Always verify with the official Department of State Visa Bulletin.";
 
+/**
+ * Short, consistent alert headline used by the reusable <VisaBulletinAlert />
+ * component across visa-bulletin pages, the priority date checker, the green
+ * card tracker, and the USCIS hub. Update this each bulletin alongside the data
+ * files. Single source of truth for the standing alert wording.
+ */
+export const bulletinAlert =
+  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India retrogressed to October 15, 2022. EB-3 India advanced to January 1, 2014. For July 2026 employment-based adjustment of status, use Final Action Dates.";
+
 export function getCutoffs(
   category: EbCategory,
   country: BulletinCountry

@@ -7057,7 +7057,7 @@ Check the USCIS website to see if Chart B (Dates for Filing) is also activated t
 :::
 
 ## What "current" means
-When the Bulletin shows **"C"** for a category and country, it means there is no backlog — anyone with an approved I-140 in that category can proceed immediately. EB-1 India is occasionally current or very close; EB-2 and EB-3 India have not been current since the early 2010s.
+When the Bulletin shows **"C"** for a category and country, it means there is no backlog — anyone with an approved I-140 in that category can proceed immediately. EB-1 India is occasionally current or very close; EB-2 and EB-3 India have been heavily backlogged for well over a decade and remain far from current (EB-2 India is Unavailable in the July 2026 bulletin, and EB-3 India sits around January 2014).
 
 ## Cross-chargeability: using your spouse's country
 Cross-chargeability can sometimes allow a principal applicant to use their spouse's country of birth if both spouses are immigrating together on the same I-485 application and the spouse's country has a more favorable cutoff date. This is a technical provision that should be confirmed with the employer's immigration attorney before filing — it does not apply automatically.

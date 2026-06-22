@@ -5,6 +5,7 @@ import Newsletter from "@/components/Newsletter";
 import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdGraph, absoluteUrl } from "@/lib/seo";
 import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
+import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 
 const PAGE_PATH = "/uscis";
 const UPDATED = "2026-06-16";
@@ -108,7 +109,7 @@ const faqs = [
   {
     question: "What happens when priority date becomes current?",
     answer:
-      "When your priority date is on or before the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, you can file or USCIS can approve your I-485. Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month.",
+      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates.",
   },
   {
     question: "Do H1B workers need a myUSCIS account?",
@@ -128,7 +129,7 @@ const faqs = [
   {
     question: "How long is the EB-2 India green card wait time?",
     answer:
-      "The EB-2 India Final Action Date is currently in the early 2010s, meaning applicants who filed PERM in 2012–2013 are only now becoming eligible for green card approval. New EB-2 India applicants face wait times measured in decades under current demand. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
+      "As of the July 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in July 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
   },
   {
     question: "Can I file I-485 while my priority date is not yet current?",
@@ -298,6 +299,9 @@ export default function UscisHubPage() {
         <div className="py-8 sm:py-10">
           <Container>
             <div className="mx-auto max-w-[720px] space-y-12">
+
+              {/* ── July 2026 Visa Bulletin alert ─────────────────── */}
+              <VisaBulletinAlert />
 
               {/* ── Disclaimer ────────────────────────────────────── */}
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
