@@ -27,6 +27,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
         label: "NRI Tax Forms & Limits Center",
         href: "/india-tax-compliance/nri-tax-forms-limits",
       },
+      {
+        label: "Form 15CA / 15CB & Repatriation Paperwork",
+        href: "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
+      },
       { label: "Long-Term NRI Wealth", href: "/long-term-nri-wealth" },
       { label: "NRI Wealth & Tax Organizer", href: "/nri-wealth-checkup" },
     ],

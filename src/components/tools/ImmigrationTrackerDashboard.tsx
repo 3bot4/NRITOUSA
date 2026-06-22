@@ -38,6 +38,7 @@ const PREMIUM_FEE_TYPE: Record<string, PremiumFeeType> = {
 
 function daysUntil(dateStr: string): number {
   const target = new Date(dateStr);
+  if (isNaN(target.getTime())) return 0;
   const now = new Date();
   return Math.max(0, Math.ceil((target.getTime() - now.getTime()) / 86400000));
 }
@@ -55,6 +56,7 @@ function yearGap(cutoffDate: string): string {
   if (cutoffDate === "C") return "No backlog (Current)";
   if (cutoffDate === "U") return "Unavailable this month";
   const cutoff = new Date(cutoffDate);
+  if (isNaN(cutoff.getTime())) return "Unavailable";
   const now = new Date();
   const totalMonths =
     (now.getFullYear() - cutoff.getFullYear()) * 12 +

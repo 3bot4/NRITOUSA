@@ -15,6 +15,8 @@ import { site } from "@/lib/site";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { CURRENT_VISA_BULLETIN } from "@/lib/visaBulletinDates";
 import { currentBulletinNote } from "@/lib/visa-bulletin";
+import VisaBulletinAlert from "@/components/VisaBulletinAlert";
+import Eb5SetAsidePanel from "@/components/Eb5SetAsidePanel";
 
 const PAGE_PATH = "/visa-bulletin";
 const UPDATED = "2026-06-16";
@@ -49,7 +51,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is the Final Action Date?",
     answer:
-      "The Final Action Date (Table A in the visa bulletin) is the cutoff date for green card approval. Your priority date must be on or before this date for USCIS to approve your I-485. This is the most important date to monitor.",
+      "The Final Action Date (Table A in the visa bulletin) is the cutoff date for green card approval. Your priority date must be earlier than this date for USCIS to approve your I-485. This is the most important date to monitor.",
   },
   {
     question: "What is the Dates for Filing chart?",
@@ -59,7 +61,7 @@ const faqs: FaqItem[] = [
   {
     question: "Why is EB-2 India so far behind?",
     answer:
-      "US immigration law limits each country to 7% of annual employment-based green cards. India accounts for a much larger share of EB-2 and EB-3 applicants than 7%, creating a massive backlog. The EB-2 India Final Action Date is currently in the early 2010s — meaning applicants who filed PERM in 2012–2013 are only now being approved.",
+      "US immigration law limits each country to 7% of annual employment-based green cards. India accounts for a much larger share of EB-2 and EB-3 applicants than 7%, creating a massive backlog. As of the July 2026 Visa Bulletin, EB-2 India is Unavailable — no EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits.",
   },
   {
     question: "What is retrogression?",
@@ -155,7 +157,10 @@ export default function VisaBulletinPage() {
           </p>
         </div>
 
-        {/* June 2026 retrogression note */}
+        {/* July 2026 standing alert */}
+        <VisaBulletinAlert className="mb-8" />
+
+        {/* July 2026 bulletin note */}
         <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
           {currentBulletinNote}
         </div>
@@ -164,7 +169,7 @@ export default function VisaBulletinPage() {
         <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
           <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">Quick answer</p>
           <p className="text-sm leading-relaxed text-ink-800">
-            The visa bulletin sets monthly cutoff dates for green card approval by category (EB-1/EB-2/EB-3) and country. Your <strong>priority date</strong> (PERM filing date) must be on or before the published cutoff to file or receive I-485 approval. For Indian workers, EB-2 and EB-3 India cutoffs are currently in the early 2010s — creating a multi-year or multi-decade wait.
+            The visa bulletin sets monthly cutoff dates for green card approval by category (EB-1/EB-2/EB-3) and country. Your <strong>priority date</strong> (PERM filing date) must be <strong>earlier than</strong> the published cutoff to file or receive I-485 approval. For July 2026, EB-2 India is <strong>Unavailable</strong> (no numbers for the remainder of FY 2026) and EB-3 India advanced to January 1, 2014 — Indian backlogs remain measured in years to decades.
           </p>
         </div>
 
@@ -200,7 +205,7 @@ export default function VisaBulletinPage() {
             <ul className="space-y-1.5 text-sm text-amber-800">
               <li>• US immigration law limits each country to 7% of annual employment-based green cards</li>
               <li>• India accounts for far more than 7% of EB-2 and EB-3 applicants — creating a severe backlog</li>
-              <li>• India EB-2 Final Action Date is currently in the early 2010s — applicants filing in 2024 face multi-decade waits</li>
+              <li>• India EB-2 is Unavailable in the July 2026 bulletin (no numbers for the rest of FY 2026); new applicants face multi-decade waits when numbers return</li>
               <li>• The visa bulletin determines whether you can file I-485 this month — or must wait years longer</li>
               <li>• Retrogression (dates moving backward) can delay green card approval even after I-485 is filed</li>
             </ul>
@@ -242,7 +247,7 @@ export default function VisaBulletinPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">Final Action Date (Table A) explained</h2>
           <p className="text-sm text-ink-600 mb-4">
-            The Final Action Date is the most important cutoff. Your priority date must be <strong>on or before</strong> this date for USCIS to approve your green card. This date is always published — it is never optional.
+            The Final Action Date is the most important cutoff. Your priority date must be <strong>earlier than</strong> this date for USCIS to approve your green card. This date is always published — it is never optional. When a category shows <strong>&ldquo;U&rdquo; (Unavailable)</strong>, no visa numbers are authorized that month and no case can be approved regardless of priority date.
           </p>
           <div className="rounded-2xl border border-ink-900/5 bg-white p-5">
             <p className="text-sm font-semibold text-ink-900 mb-2">Current Final Action Dates ({bulletin.month} {bulletin.year})</p>
@@ -381,11 +386,13 @@ export default function VisaBulletinPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">EB-2 India: advanced degree workers and NIW</h2>
           <p className="text-sm text-ink-600 mb-3">
-            EB-2 requires a master's degree (or bachelor's + 5 years progressive experience). EB-2 NIW allows self-petition if work benefits the US national interest — no PERM needed. For India, the EB-2 Final Action Date is in the early 2010s.
+            EB-2 requires a master's degree (or bachelor's + 5 years progressive experience). EB-2 NIW allows self-petition if work benefits the US national interest — no PERM needed. For July 2026, EB-2 India is <strong>Unavailable</strong> — no immigrant visa numbers are authorized for the remainder of FY 2026, so no EB-2 India case can receive final approval this month regardless of priority date.
           </p>
           <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs text-amber-900">
             <strong className="font-semibold">India EB-2 current Final Action Date ({bulletin.month} {bulletin.year}):</strong>{" "}
-            {bulletin.finalActionDates.EB2.india === "C" ? "Current (C)" : bulletin.finalActionDates.EB2.india}
+            {bulletin.finalActionDates.EB2.india === "C" ? "Current (C)" :
+             bulletin.finalActionDates.EB2.india === "U" ? "Unavailable" :
+             bulletin.finalActionDates.EB2.india}
             {" "}— verify at travel.state.gov
           </div>
           <p className="mt-3 text-xs text-ink-500">
@@ -401,12 +408,23 @@ export default function VisaBulletinPage() {
           </p>
           <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs text-amber-900">
             <strong className="font-semibold">India EB-3 current Final Action Date ({bulletin.month} {bulletin.year}):</strong>{" "}
-            {bulletin.finalActionDates.EB3.india === "C" ? "Current (C)" : bulletin.finalActionDates.EB3.india}
+            {bulletin.finalActionDates.EB3.india === "C" ? "Current (C)" :
+             bulletin.finalActionDates.EB3.india === "U" ? "Unavailable" :
+             bulletin.finalActionDates.EB3.india}
             {" "}— verify at travel.state.gov
           </div>
           <p className="mt-3 text-xs text-ink-500">
             <Link href="/visa-bulletin/eb3-india" className="text-brand-600 underline">Full EB-3 India guide + downgrade strategy →</Link>
           </p>
+        </section>
+
+        {/* ── SECTION 10b: EB-5 set-asides ────────────────────────────────────── */}
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-ink-900 mb-3">EB-5 investor categories: Unreserved vs. set-asides</h2>
+          <p className="text-sm text-ink-600 mb-4">
+            EB-5 splits into the <strong>Unreserved</strong> category and three reserved <strong>set-asides</strong> (Rural, High Unemployment, Infrastructure). For July 2026, EB-5 India Unreserved is <strong>Unavailable</strong>, but the set-aside categories remain <strong>Current</strong> — one reason set-aside investments draw India-born investors.
+          </p>
+          <Eb5SetAsidePanel />
         </section>
 
         {/* ── SECTION 11: Retrogression ───────────────────────────────────────── */}

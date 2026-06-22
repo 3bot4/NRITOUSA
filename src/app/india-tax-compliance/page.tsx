@@ -32,6 +32,12 @@ import {
   tdsPillar,
   tdsSupportPages,
 } from "@/lib/tdsCluster";
+import {
+  REPAT_CLUSTER_SECTION,
+  repatPath,
+  repatPillar,
+  repatSupportPages,
+} from "@/lib/repatriationCluster";
 import { FORMS_LIMITS_PATH } from "@/lib/formsLimitsCenter";
 
 const title = "India Tax & Compliance for US NRIs";
@@ -404,6 +410,124 @@ export default function IndiaTaxCompliancePage() {
               <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
                 Map your income type and what was deducted, then get a document
                 checklist, likely next step, and CA questions.
+              </p>
+              <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                Open{" "}
+                <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Form 15CA / 15CB & Repatriation Paperwork — new cluster */}
+      <section className="bg-white pt-10 sm:pt-12">
+        <Container>
+          <SectionHeading
+            eyebrow={REPAT_CLUSTER_SECTION.eyebrow}
+            title={REPAT_CLUSTER_SECTION.title}
+            description={REPAT_CLUSTER_SECTION.description}
+            action={{
+              label: "Start the guide",
+              href: repatPath(repatPillar.slug),
+            }}
+          />
+
+          {/* Pillar — prominent lead card */}
+          <Link
+            href={repatPath(repatPillar.slug)}
+            className="group flex flex-col gap-2 rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden
+                className={`flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br ${repatPillar.accent} text-2xl shadow-sm`}
+              >
+                {repatPillar.icon}
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+                  Pillar guide
+                </p>
+                <h3 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  Form 15CA &amp; 15CB for NRIs: Repatriating Money from India to
+                  the USA
+                </h3>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Moving money from India to the USA? Learn the document trail —
+                  Form 15CA, Form 15CB, source-of-funds proof, TDS proof, and the
+                  FEMA/bank repatriation request — and the order to do it in.
+                </p>
+              </div>
+            </div>
+            <span className="flex-none text-sm font-semibold text-indigo-600 group-hover:text-indigo-700">
+              Read the guide{" "}
+              <span
+                aria-hidden
+                className="inline-block transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </span>
+          </Link>
+
+          {/* Supporting pages */}
+          <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {repatSupportPages.map((p) => (
+              <Link
+                key={p.slug}
+                href={repatPath(p.slug)}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${p.accent} text-lg shadow-sm`}
+                  >
+                    {p.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    Guide
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {p.navLabel}
+                </h3>
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                  {p.excerpt}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+            {/* Interactive checklist tool card */}
+            <Link
+              href="/tools/form-15ca-15cb-checklist"
+              className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+            >
+              <div className="flex items-center gap-2.5">
+                <span
+                  aria-hidden
+                  className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-lg shadow-sm"
+                >
+                  ✅
+                </span>
+                <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                  Tool
+                </span>
+              </div>
+              <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                15CA / 15CB checklist
+              </h3>
+              <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                Map your source of funds and taxability to a document checklist
+                and whether a CA review is strongly recommended.
               </p>
               <span className="mt-2.5 text-xs font-semibold text-brand-600">
                 Open{" "}

@@ -107,17 +107,17 @@ title: What you'll get on this page
 :::
 
 ## 1. What is TDS for NRIs?
-**TDS** is tax the *payer* withholds from money owed to you and deposits with the government against your **PAN**. It's an advance collection mechanism — not a final tax. At year-end you compute your **actual** tax liability on your Indian income, subtract the TDS already deposited, and either owe the balance or claim the excess back as a **refund**.
+**TDS** is tax the payer withholds from money owed to you and deposits with the government against your **PAN**. It's an advance collection mechanism — not a final tax. At year-end you compute your **actual** tax liability on your Indian income, subtract the TDS already deposited, and either owe the balance or claim the excess back as a **refund**.
 
 | Resident Indian | NRI (you) |
 |---|---|
 | TDS rates on many payments are **lower**, often nil below a threshold | TDS withheld at **higher, NRI-specific rates** with surcharge and cess |
-| Banks generally don't withhold on small savings interest | Often deducted **from the first rupee**, with no small-balance exemption |
+| For residents, withholding may be lower or may not apply below applicable thresholds/forms; verify current rules | Often deducted **from the first rupee**, with no small-balance exemption |
 | — | Frequently **higher than your real tax** — which is exactly what creates the refund |
 
 :::tip
 title: The core idea to hold onto
-- TDS deducted is **not the same as tax owed**. A bank deducting 30%-plus on your NRO FD interest does **not** mean your tax is 30%.
+- TDS deducted is **not the same as tax owed**. A bank deducting high NRI-rate TDS on your NRO FD interest does **not** mean that's your final tax rate.
 - Your real liability depends on your **total Indian income**, the **slab/regime**, available **deductions**, and any **DTAA** rate cap.
 - The difference comes back **only if you file an Indian return** for that year. Unfiled = unclaimed.
 :::
@@ -144,7 +144,7 @@ A refund isn't automatic and isn't guaranteed — it appears when the tax **dedu
 
 :::good
 title: Situations that commonly produce a refund
-- **TDS deducted at a higher rate than your final liability** — e.g. 30%-plus NRO TDS when your slab works out lower.
+- **TDS deducted at a higher rate than your final liability** — e.g. high NRI-rate NRO TDS when your slab works out lower (illustrative; verify the current FY/AY rate).
 - **DTAA benefit not applied by the payer/bank** — the bank withheld at the full domestic rate because it didn't have your treaty paperwork (Form 10F + TRC) on file.
 - **Deductions and exemptions reduce your actual liability** — standard deduction on rent, 80C-type deductions where available, home-loan interest, basic exemption limit.
 - **Loss set-off or a corrected capital-gains computation** — capital losses offset gains, or the property gain is recomputed with the right cost base and indexation, shrinking the tax.
@@ -160,7 +160,7 @@ title: When a refund is unlikely
 :::tip
 title: Two ways to fix over-deduction
 - **After the fact** — let the TDS be deducted, then **file your ITR** to reconcile and claim the excess back as a refund. Works for everything.
-- **Up front** — apply for a **Form 13 lower/nil-deduction certificate** *before* the payment so less (or no) TDS is withheld in the first place. Best for big one-off payments like a property sale. See [Form 13 for NRIs](/india-tax-compliance/form-13-lower-tds-certificate-nri).
+- **Up front** — apply for a **Form 13 lower/nil-deduction certificate** **before** the payment so less (or no) TDS is withheld in the first place. Best for big one-off payments like a property sale. See [Form 13 for NRIs](/india-tax-compliance/form-13-lower-tds-certificate-nri).
 :::
 
 ## 4. Documents you'll need
@@ -182,7 +182,7 @@ Gather these before you start a refund claim — most refund delays trace back t
 :::tip
 title: Why Form 26AS and AIS come first
 - They are the department's own record of the TDS deducted against your PAN — the exact figure you'll claim back.
-- Filing numbers that don't match them is the #1 cause of notices. See [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri).
+- Filing numbers that don't match them is a common cause of mismatch notices. See [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri).
 - For the treaty paperwork, see the [Form 10F generator](/tools/form-10f-generator) and the [DTAA / foreign tax credit calculator](/calculators/dtaa-foreign-tax-credit).
 :::
 
@@ -228,7 +228,7 @@ Take this list to your Chartered Accountant — these are the decisions that act
 title: Bring these to your CA
 - Based on my total Indian income this year, **what's my real tax** versus the TDS already deducted?
 - Has the **DTAA rate** been applied to my interest/dividends — and do you have my **Form 10F + TRC**?
-- For my property sale, should we apply for a **Form 13 lower-TDS certificate** *before* closing?
+- For my property sale, should we apply for a **Form 13 lower-TDS certificate** **before** closing?
 - Is my **capital-gains computation** correct — cost, indexation, and any reinvestment exemption?
 - Can any **capital losses** be set off to reduce the gain?
 - Does my **Form 26AS / AIS** match what was actually deducted, and are there mismatches to fix?
@@ -243,7 +243,7 @@ A frequent NRI headache: the TDS your **bank** says it deducted doesn't match wh
 title: Why the mismatch happens — and why it matters
 - The bank deducts TDS but **deposits or reports it late**, or against the **wrong PAN / wrong quarter**, so it hasn't yet appeared in your 26AS.
 - You can only claim a refund for TDS that the **department actually shows** against your PAN — not for what the bank's certificate says alone.
-- **Fix the mismatch first:** ask the bank/deductor to correct their TDS return so the credit reflects in your 26AS, *then* file. Filing against a credit that isn't in 26AS invites a notice or a withheld refund.
+- **Fix the mismatch first:** ask the bank/deductor to correct their TDS return so the credit reflects in your 26AS, **then** file. Filing against a credit that isn't in 26AS invites a notice or a withheld refund.
 :::
 
 See [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri) for how to reconcile these before filing.
@@ -339,7 +339,7 @@ title: DTAA can lower the rate — if the paperwork is on file
 :::steps
 1. Get your **bank interest certificate** — interest paid and TDS deducted for the year
 2. Pull **Form 26AS / AIS** and confirm that TDS shows against your PAN
-3. Reconcile the bank figure with 26AS — fix any mismatch with the bank *before* filing
+3. Reconcile the bank figure with 26AS — fix any mismatch with the bank **before** filing
 4. File your **ITR** for the assessment year, reporting the interest and claiming the TDS credit
 5. Apply the **DTAA** rate if eligible, with Form 10F / TRC support
 6. E-verify, and ensure your **NRO account is pre-validated** so the refund can be paid
@@ -399,7 +399,7 @@ If the TDS deducted exceeds your actual Indian tax liability for the year, the e
     date: "2026-06-22",
     excerpt:
       "Form 13 is how an NRI gets TDS reduced before the payment happens, instead of waiting a year to reclaim it — most valuable on property sales and high-value income where default TDS dwarfs the real tax.",
-    content: `Reclaiming over-deducted TDS by filing a return works — but it can lock up a large sum for a year or more. **Form 13** is the proactive alternative: you ask the Income Tax Department, *before* the income is paid, for a certificate that lets the payer deduct at a **lower or nil rate**. For NRIs it matters most on **property sales** and other big one-off payments.
+    content: `Reclaiming over-deducted TDS by filing a return works — but it can lock up a large sum for a year or more. **Form 13** is the proactive alternative: you ask the Income Tax Department, **before** the income is paid, for a certificate that lets the payer deduct at a **lower or nil rate**. For NRIs it matters most on **property sales** and other big one-off payments.
 
 :::warn
 title: Educational only — verify the current process
@@ -532,7 +532,7 @@ title: Path A — reclaim after the sale (refund)
 
 :::good
 title: Path B — lower it before the sale (Form 13)
-- Apply for a **[Form 13 lower/nil TDS certificate](/india-tax-compliance/form-13-lower-tds-certificate-nri)** *before* closing.
+- Apply for a **[Form 13 lower/nil TDS certificate](/india-tax-compliance/form-13-lower-tds-certificate-nri)** **before** closing.
 - If granted, the buyer deducts on the **estimated actual gain**, freeing most of your money **at closing**.
 - Needs lead time and a clean capital-gains estimate — start early.
 :::

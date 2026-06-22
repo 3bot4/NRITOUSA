@@ -74,7 +74,7 @@ The US immigration system allocates employment-based green cards with a per-coun
 India accounts for a disproportionately large share of EB-2 and EB-3 applicants relative to that 7% cap. The result:
 
 :::bad
-**India EB-2 and EB-3 backlogs are measured in years or decades.** The priority dates currently being approved for India EB-2 and EB-3 are from the early 2010s. If you filed PERM in 2024, your priority date may not be current until the 2030s or later.
+**India EB-2 and EB-3 backlogs are measured in years or decades.** As of the July 2026 Visa Bulletin, EB-2 India is Unavailable (no numbers for the remainder of FY 2026) and EB-3 India sits around January 2014. If you filed PERM in 2024, your priority date may not be current until the 2030s or later. Always verify the current month's cutoffs in the official visa bulletin.
 :::
 
 For Indian applicants, the priority date is not just a bureaucratic number — it determines years of waiting in H1B status, whether your children age out, and when you can change jobs freely.
@@ -139,10 +139,14 @@ Every month, the State Department publishes two priority date charts:
 
 | Chart | Name | Purpose |
 |---|---|---|
-| **Table A** | Final Action Dates | USCIS may APPROVE your green card when your priority date is on/before this date |
-| **Table B** | Dates for Filing | USCIS may ACCEPT your I-485 filing when your priority date is on/before this date — earlier than Table A |
+| **Table A** | Final Action Dates | USCIS may APPROVE your green card when your priority date is earlier than this date |
+| **Table B** | Dates for Filing | USCIS may ACCEPT your I-485 filing when your priority date is earlier than this date — and this cutoff is usually later than Table A |
 
-Table B is always more recent (more favorable) than Table A. It exists to allow applicants to file I-485 and get work/travel authorization while waiting for their final approval.
+Table B is often later (more favorable) than Table A, but not always — and it can only be used for adjustment of status if USCIS allows it that month. It exists to let applicants file I-485 and get work/travel authorization while waiting for their final approval.
+
+:::warn
+**For July 2026 employment-based adjustment of status, use Final Action Dates.** USCIS has directed employment-based I-485 filers to use Table A (Final Action Dates) this month — Table B (Dates for Filing) cannot be used to file I-485 in July 2026.
+:::
 
 :::warn
 **Table B is not always available.** USCIS must publish a "Visa Bulletin Acceptance" memo each month authorizing use of Table B. Check uscis.gov/visabulletininfo for the current month's announcement. If USCIS says Table A must be used, then Table B is irrelevant — even if your priority date would qualify under Table B.
@@ -151,7 +155,7 @@ Table B is always more recent (more favorable) than Table A. It exists to allow 
 ## How to use Table A (Final Action Dates)
 
 Table A is always the governing chart for green card approval. Your priority date must be:
-- **On or before** the Final Action Date listed for your category (EB-1, EB-2, EB-3) and country (India, Other)
+- **Earlier than** the Final Action Date listed for your category (EB-1, EB-2, EB-3) and country (India, Other). If the category shows "U" (Unavailable), no priority date qualifies that month
 - Current in the month when USCIS adjudicates your I-485 — not just the month you filed
 
 A priority date that is current under Table A means USCIS can approve your green card.
@@ -163,7 +167,7 @@ If the bulletin shows "C" (Current) for your category and country, all priority 
 ## How to use Table B (Dates for Filing)
 
 If USCIS authorizes Table B use that month:
-- Your priority date only needs to be on or before the Table B date to FILE I-485
+- Your priority date only needs to be earlier than the Table B date to FILE I-485
 - Filing I-485 gives you access to EAD (work permit) and Advance Parole (travel) while waiting
 - Filing under Table B does NOT mean your green card will be approved — USCIS holds the case until your Final Action Date (Table A) is also current
 - If your Final Action Date retrogresses after you file, your I-485 stays pending — you do not refile
@@ -177,9 +181,9 @@ If USCIS authorizes Table B use that month:
 1. Find your priority date (from your PERM receipt or I-140 approval notice)
 2. Go to [travel.state.gov](https://travel.state.gov) and open the current month's visa bulletin
 3. Check Table A for your EB category (EB-1/EB-2/EB-3) and India row
-4. If your priority date is on or before Table A: you can file I-485 and be approved
+4. If your priority date is earlier than Table A (and the category is not "U"): you can file I-485 and be approved
 5. If not: go to [uscis.gov/visabulletininfo](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart) to check if Table B is authorized this month
-6. If Table B is authorized and your priority date is on or before Table B: you can file I-485
+6. If Table B is authorized and your priority date is earlier than Table B: you can file I-485
 
 ## What this means for Indian applicants
 
@@ -219,6 +223,10 @@ No. Table B dates in the visa bulletin are not self-executing. They require an e
       "EB-1 skips PERM entirely and has a much shorter India backlog than EB-2 or EB-3 — making it the fastest employment green card path for qualifying Indians.",
     date: "2026-06-16",
     content: `
+:::warn
+**July 2026 update:** EB-1 India **retrogressed** to October 15, 2022 in the July 2026 Visa Bulletin (back from December 15, 2022 in June). It remains far ahead of EB-2 India (Unavailable this month) and EB-3 India (January 1, 2014). For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates. Always verify with the official Department of State Visa Bulletin.
+:::
+
 :::summary
 EB-1 employment green cards do not require PERM labor certification — meaning no DOL process, no recruitment test, and no 12+ month wait before you can file I-140. For India-born applicants who qualify, EB-1 typically has a dramatically shorter wait than EB-2 or EB-3 India.
 :::
@@ -319,8 +327,12 @@ Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C. 
       "EB-2 India has one of the longest green card backlogs in the US system — but knowing the current cutoff, NIW option, and EB-3 strategy can help you plan.",
     date: "2026-06-16",
     content: `
+:::warn
+**July 2026 update:** EB-2 India is **Unavailable** in the July 2026 Visa Bulletin. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in July 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates. Always verify with the official Department of State Visa Bulletin.
+:::
+
 :::summary
-EB-2 India is the second preference employment-based category for workers with an advanced degree (master's or higher, or bachelor's + 5 years of progressive experience) or exceptional ability. For India-born applicants, the EB-2 Final Action Date is currently in the early 2010s — meaning a wait measured in years or decades depending on your priority date.
+EB-2 India is the second preference employment-based category for workers with an advanced degree (master's or higher, or bachelor's + 5 years of progressive experience) or exceptional ability. As of July 2026, EB-2 India is Unavailable — no numbers this month. Even in months when a cutoff date is posted, the India EB-2 backlog is measured in years to decades depending on your priority date.
 :::
 
 ## EB-2 requirements
@@ -347,10 +359,10 @@ Skip the PERM requirement by showing your work benefits the national interest of
 
 The per-country 7% cap limits India to approximately 9,800 employment-based visas per year across all EB categories. India accounts for a disproportionate share of EB-2 applicants — far more than 7% of the total pool.
 
-The result: the EB-2 India Final Action Date has been stuck in the early 2010s for years, moving slowly at 1–3 months per calendar year in good years, retrogressing in bad years.
+The result: when a cutoff date is posted at all, the EB-2 India Final Action Date has sat in the early-to-mid 2010s for years, moving slowly at 1–3 months per calendar year in good years and retrogressing in bad years. In July 2026 the category went fully **Unavailable** (no numbers) for the remainder of FY 2026 — a more severe form of the same supply problem.
 
 :::bad
-If you filed PERM in 2018, 2020, 2022, or 2024, your wait for EB-2 India could be 10–30+ years from the time of filing, based on historical movement. Always verify current dates with the official visa bulletin.
+If you filed PERM in 2018, 2020, 2022, or 2024, your wait for EB-2 India could be 10–30+ years from the time of filing, based on historical movement — and in months like July 2026 when the category is Unavailable, no approvals happen at all. Always verify current dates with the official visa bulletin.
 :::
 
 ## EB-2 NIW: self-petition without PERM
@@ -411,6 +423,10 @@ Yes — you can file I-485 under whichever has the more favorable current priori
       "EB-3 India covers bachelor's-degree holders and skilled workers — and while the backlog is similar to EB-2, the relative cutoff movement can make EB-3 strategically useful.",
     date: "2026-06-16",
     content: `
+:::warn
+**July 2026 update:** EB-3 India advanced to **January 1, 2014** in the July 2026 Visa Bulletin (covering both Skilled Workers/Professionals and Other Workers). This month EB-3 India is posting a cutoff date while EB-2 India is **Unavailable** — so a priority date earlier than January 1, 2014 may have options under EB-3 that EB-2 does not offer right now. For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates. Always verify with the official Department of State Visa Bulletin.
+:::
+
 :::summary
 EB-3 is the third preference employment-based category for skilled workers (2+ years of training/experience), professionals (bachelor's degree), and other workers. For India, EB-3 has its own backlog, which sometimes moves faster and sometimes slower than EB-2 India. Some applicants pursue both categories simultaneously.
 :::
@@ -427,7 +443,7 @@ Most Indian H1B workers qualify under the "professionals" sub-category.
 
 ## EB-3 India backlog
 
-Like EB-2, EB-3 India suffers from the per-country 7% cap. The Final Action Date for EB-3 India is also in the early 2010s range and moves at a similar pace to EB-2 India — though not always identically.
+Like EB-2, EB-3 India suffers from the per-country 7% cap. The Final Action Date for EB-3 India sits around 2014 (January 1, 2014 in the July 2026 bulletin) and moves at a broadly similar pace to EB-2 India — though not always identically. Note that in July 2026 EB-3 India is still posting a cutoff date while EB-2 India is Unavailable, so the two can diverge sharply.
 
 The key insight: EB-2 and EB-3 India move independently every month. In some months EB-3 India is more current than EB-2 India; in others, EB-2 is ahead. This creates the strategic opportunity of filing I-140 in both categories.
 
@@ -459,7 +475,7 @@ If you originally filed I-485 under EB-3 and your employer now has an approved E
 2. Go to Table A (Final Action Dates) or Table B (Dates for Filing) — whichever applies
 3. Look for "3rd" row (Third Preference / EB-3) in the Employment-Based chart
 4. Find the India column
-5. Compare the printed date to your priority date — if your date is on/before the printed date, you are current
+5. Compare the printed date to your priority date — if your date is earlier than the printed date, you are current. If the cell shows "U" (Unavailable), no priority date is current that month
 
 ### Frequently asked questions
 
@@ -500,6 +516,10 @@ Each month, the State Department sets new priority date cutoffs in the visa bull
 - July 2026 EB-1 India Final Action Date: Oct 15, 2022 ← retrogression of ~2 months
 
 A priority date of Dec 1, 2022 that was current in June would not be current in July.
+
+:::warn
+**July 2026 went further than a normal retrogression.** Alongside EB-1 India retrogressing from Dec 15, 2022 to Oct 15, 2022, **EB-2 India and EB-5 India Unreserved both became Unavailable ("U")** for the remainder of FY 2026 — meaning no visa numbers at all, the most extreme form of backward movement. EB-3 India, by contrast, advanced slightly to January 1, 2014. For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates.
+:::
 
 ## Why does retrogression happen?
 
@@ -666,6 +686,10 @@ If USCIS schedules an interview but your priority date is not current at the tim
       "An EB-2 to EB-3 downgrade can let Indian applicants file I-485 sooner if EB-3 India is more current — but it requires a new PERM and carries real costs and risks.",
     date: "2026-06-16",
     content: `
+:::warn
+**July 2026 caution:** EB-2 India is **Unavailable** while the EB-3 India Final Action Date is **January 1, 2014**. A downgrade strategy only helps for filing or approval if the applicant's priority date is earlier than the applicable active chart cutoff and the case otherwise qualifies — so this month, a downgrade only does anything for priority dates earlier than January 1, 2014, and only under the chart USCIS authorizes (Final Action Dates for July 2026). Always verify the current bulletin and confirm with your attorney.
+:::
+
 :::summary
 An EB-2 to EB-3 downgrade means filing a new PERM and I-140 in the EB-3 category to take advantage of a more favorable EB-3 India cutoff date. This allows applicants to file I-485 (and get EAD/AP) sooner if EB-3 India is currently ahead of EB-2 India. The original EB-2 I-140 is typically kept active — only the new EB-3 I-140 is used for I-485 filing.
 :::

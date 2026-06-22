@@ -216,7 +216,7 @@ function assess(
         `Your priority date: ${pdLabel}`,
         `${bulletin.month} ${bulletin.year} Final Action Date for ${category} ${isIndia ? "India" : "Other"}: ${faLabel}`,
         `${bulletin.month} ${bulletin.year} Dates for Filing for ${category} ${isIndia ? "India" : "Other"}: ${dffLabel}`,
-        `Your priority date appears AFTER the Final Action Date but ON OR BEFORE the Dates for Filing cutoff.`,
+        `Your priority date appears AFTER the Final Action Date but EARLIER THAN the Dates for Filing cutoff.`,
         `This means you may be able to FILE I-485 this month (for EAD/AP) — if USCIS authorizes Dates for Filing. Check uscis.gov/visabulletininfo.`,
         ...staleNote,
       ],

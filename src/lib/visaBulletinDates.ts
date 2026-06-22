@@ -43,35 +43,69 @@ export interface VisaBulletinData {
   lastUpdated: string;
 }
 
-/* ─── UPDATE THIS OBJECT EACH MONTH ──────────────────────────────────────── */
+/* ─── CANONICAL DATA SOURCE ───────────────────────────────────────────────────
+ * The actual cutoff dates come from the single source of truth in
+ * data/visa-bulletin/current.json (also used by the tools, charts, and tracker
+ * via src/lib/visa-bulletin.ts). This file adapts that data into the
+ * India/"Other" shape the Priority Date Checker uses, and adds the one field
+ * current.json does not carry: whether USCIS authorized Dates for Filing this
+ * month. Update current.json each month; only usingDatesForFiling is manual.
+ *
+ * Note on Table A vs Table B values: a listed date is a strict cutoff — a
+ * priority date qualifies only when it is EARLIER THAN the listed date.
+ * "U" = Unavailable (no numbers this month). "C" = Current (all dates qualify).
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+import currentData from "../../data/visa-bulletin/current.json";
+
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+const [_y, _m] = currentData.bulletinMonth.split("-").map(Number);
+
+type RawCat = { fad: string; dff: string };
+const cats = currentData.categories as Record<
+  string,
+  Record<string, RawCat>
+>;
+
+/** India = the country row; "Other" = Rest-of-World row in current.json. */
+const fad = (key: "eb1" | "eb2" | "eb3"): CategoryDates => ({
+  india: cats[key].india.fad,
+  other: cats[key].row.fad,
+});
+const dff = (key: "eb1" | "eb2" | "eb3"): CategoryDates => ({
+  india: cats[key].india.dff,
+  other: cats[key].row.dff,
+});
 
 export const CURRENT_VISA_BULLETIN: VisaBulletinData = {
-  month: "July",
-  year: 2026,
-  sourceUrl:
-    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
+  month: MONTH_NAMES[_m - 1],
+  year: _y,
+  sourceUrl: currentData.source,
 
-  // Table A — Final Action Dates
-  // A priority date ON OR BEFORE this date qualifies for final approval.
-  // "U" = Unavailable — no visa numbers authorized for this category/country this month.
+  // Table A — Final Action Dates (from current.json)
   finalActionDates: {
-    EB1: { india: "2022-10-15", other: "C"          },
-    EB2: { india: "U",          other: "C"          },
-    EB3: { india: "2014-01-01", other: "2024-08-01" },
+    EB1: fad("eb1"),
+    EB2: fad("eb2"),
+    EB3: fad("eb3"),
   },
 
-  // Table B — Dates for Filing
-  // USCIS is using Final Action Dates (Table A) for July 2026 employment-based
-  // adjustment of status — Table B cannot be used to file I-485 this month.
+  // Table B — Dates for Filing (from current.json)
   datesForFiling: {
-    EB1: { india: "2023-12-01", other: "C"    },
-    EB2: { india: "2015-01-15", other: "C"    },
-    EB3: { india: "2015-01-15", other: "C"    },
+    EB1: dff("eb1"),
+    EB2: dff("eb2"),
+    EB3: dff("eb3"),
   },
 
-  usingDatesForFiling: false, // USCIS using Final Action Dates for July 2026 — verify at uscis.gov
+  // MANUAL each month — USCIS is using Final Action Dates (Table A) for July
+  // 2026 employment-based adjustment of status, so Table B cannot be used to
+  // file I-485 this month. Verify at uscis.gov/visabulletininfo.
+  usingDatesForFiling: false,
 
-  lastUpdated: "2026-06-18",
+  lastUpdated: currentData.lastUpdated,
 };
 
 /* ─── HELPERS ─────────────────────────────────────────────────────────────── */

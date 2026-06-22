@@ -7,6 +7,7 @@ import { eduCalcs } from "@/lib/education";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { itrPages, itrPath } from "@/lib/itrCluster";
 import { tdsPages, tdsPath } from "@/lib/tdsCluster";
+import { repatPages, repatPath } from "@/lib/repatriationCluster";
 import { uscisChildPages } from "@/lib/uscisCluster";
 import { myuscisChildPages } from "@/lib/myuscisCluster";
 import { formsChildPages } from "@/lib/uscisFormsCluster";
@@ -53,6 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${site.url}/india-tax-compliance`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/india-tax-compliance/nri-tax-forms-limits`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -253,6 +260,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.kind === "pillar" ? 0.9 : 0.7,
   }));
 
+  const repatClusterRoutes: MetadataRoute.Sitemap = repatPages.map((p) => ({
+    url: `${site.url}${repatPath(p.slug)}`,
+    lastModified: new Date(p.updated ?? p.date),
+    changeFrequency: "monthly",
+    priority: p.kind === "pillar" ? 0.9 : 0.7,
+  }));
+
   const uscisChildRoutes: MetadataRoute.Sitemap = uscisChildPages.map((p) => ({
     url: `${site.url}/uscis/${p.slug}`,
     lastModified: new Date(p.updated ?? p.date),
@@ -284,6 +298,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...passportClusterRoutes,
     ...itrClusterRoutes,
     ...tdsClusterRoutes,
+    ...repatClusterRoutes,
     ...uscisChildRoutes,
     ...h1bChildRoutes,
     ...greenCardChildRoutes,

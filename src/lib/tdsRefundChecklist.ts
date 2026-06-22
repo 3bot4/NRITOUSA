@@ -268,7 +268,7 @@ export function evaluate(inputs: TdsChecklistInputs): TdsChecklistResult {
       nextStepTitle: "Reconcile Form 26AS / AIS before you file",
       nextStep: [
         "Download Form 26AS, AIS, and TIS and confirm every rupee of TDS shows against your PAN, matching your bank/buyer certificates.",
-        "Filing figures that don't match the department's records is the leading cause of mismatch notices — reconcile first, then file.",
+        "Filing figures that don't match the department's records is a common cause of mismatch notices — reconcile first, then file.",
       ],
       documents,
       caQuestions,

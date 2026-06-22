@@ -143,7 +143,7 @@ export default function GreenCardPage() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-700 to-emerald-600 px-3 py-1 text-xs font-semibold text-white">
               🟢 Green Card Guide
             </span>
-            <span>Updated June 2026</span>
+            <span>Updated July 2026</span>
           </div>
           <h1 className="mt-3 text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">
             Green Card for Indians:<br className="hidden sm:block" /> PERM, I-140, Priority Date, I-485
@@ -153,7 +153,7 @@ export default function GreenCardPage() {
           </p>
         </div>
 
-        {/* June 2026 retrogression note */}
+        {/* July 2026 bulletin note */}
         <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
           {currentBulletinNote}
         </div>
@@ -279,7 +279,7 @@ export default function GreenCardPage() {
         {/* ── SECTION 5: Priority date ─────────────────────────────────────────── */}
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">Priority date and the visa bulletin</h2>
-          <p className="text-sm text-ink-600 mb-4">The State Department publishes a new visa bulletin each month. Your priority date must be on or before the cutoff date in the bulletin to move forward.</p>
+          <p className="text-sm text-ink-600 mb-4">The State Department publishes a new visa bulletin each month. Your priority date must be earlier than the cutoff date in the bulletin to move forward. If a category shows &ldquo;U&rdquo; (Unavailable) — as EB-2 India and EB-5 India Unreserved are in the July 2026 bulletin — no numbers are authorized that month and no case can be approved regardless of priority date.</p>
           <div className="overflow-x-auto rounded-2xl border border-ink-900/5">
             <table className="w-full text-sm">
               <thead>
@@ -292,12 +292,12 @@ export default function GreenCardPage() {
               <tbody className="divide-y divide-ink-900/5 bg-white">
                 <tr>
                   <td className="px-4 py-3 font-medium text-ink-800">Part A — Final Action Date</td>
-                  <td className="px-4 py-3 text-ink-700">USCIS can approve your green card when your priority date is on or before this date</td>
+                  <td className="px-4 py-3 text-ink-700">USCIS can approve your green card when your priority date is earlier than this date</td>
                   <td className="px-4 py-3 text-ink-500">Always applies — USCIS will not approve green card until this date is current</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-ink-800">Part B — Dates for Filing</td>
-                  <td className="px-4 py-3 text-ink-700">USCIS can accept I-485 filing when priority date is on or before this date — earlier than Part A</td>
+                  <td className="px-4 py-3 text-ink-700">USCIS can accept I-485 filing when priority date is earlier than this date — and this cutoff is later than Part A</td>
                   <td className="px-4 py-3 text-ink-500">Only when USCIS announces Part B can be used that month — check uscis.gov monthly</td>
                 </tr>
               </tbody>

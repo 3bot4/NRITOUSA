@@ -227,7 +227,7 @@ const faqs: FaqItem[] = [
   {
     question: "How long is the EB-2 India green card wait time in 2026?",
     answer:
-      "The EB-2 India Final Action Date is currently in the early 2010s — meaning only applicants who filed PERM in 2012–2013 are eligible for green card approval today. New EB-2 India applicants filing in 2024–2026 face multi-decade waits under current demand. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many people are ahead of you.",
+      "As of the July 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in July 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many people are ahead of you.",
   },
   {
     question: "What does IOE, LIN, SRC, EAC, WAC, or MSC mean on my USCIS receipt number?",
@@ -237,7 +237,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is the difference between Final Action Dates and Dates for Filing?",
     answer:
-      "The Final Action Date (Table A) controls when USCIS can approve your green card — your priority date must be on or before this cutoff. Dates for Filing (Table B) is an earlier cutoff that, when USCIS authorizes it monthly, lets you file your I-485 for EAD and Advance Parole before your Final Action Date is current. Only use Table B when USCIS explicitly announces authorization at uscis.gov/visabulletininfo each month.",
+      "The Final Action Date (Table A) controls when USCIS can approve your green card — your priority date must be earlier than this cutoff. Dates for Filing (Table B) is a later cutoff that, when USCIS authorizes it monthly, lets you file your I-485 for EAD and Advance Parole before your Final Action Date is current. Only use Table B when USCIS explicitly announces authorization at uscis.gov/visabulletininfo each month.",
   },
   {
     question: "Can I file I-485 before my priority date is current under Final Action Dates?",
