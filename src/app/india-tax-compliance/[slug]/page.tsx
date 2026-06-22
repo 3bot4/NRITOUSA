@@ -2,19 +2,24 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ItrClusterPage from "@/components/ItrClusterPage";
 import TdsClusterPage from "@/components/TdsClusterPage";
+import RepatriationClusterPage from "@/components/RepatriationClusterPage";
 import { pageMetadata } from "@/lib/seo";
 import { getItrPage, itrPages, itrPath } from "@/lib/itrCluster";
 import { getTdsPage, tdsPages, tdsPath } from "@/lib/tdsCluster";
+import { getRepatPage, repatPages, repatPath } from "@/lib/repatriationCluster";
 
 /**
  * Shared dynamic route for every /india-tax-compliance/<slug> cluster page.
- * Two sibling clusters live under this hub — "NRI ITR Filing" (lib/itrCluster)
- * and "NRI TDS Refund & Lower TDS" (lib/tdsCluster) — and are resolved by slug.
- * Slugs are unique across both clusters.
+ * Three sibling clusters live under this hub — "NRI ITR Filing" (lib/itrCluster),
+ * "NRI TDS Refund & Lower TDS" (lib/tdsCluster), and "Form 15CA/15CB &
+ * Repatriation Paperwork" (lib/repatriationCluster) — resolved by slug.
+ * Slugs are unique across all three clusters.
  */
 
 export function generateStaticParams() {
-  return [...itrPages, ...tdsPages].map((p) => ({ slug: p.slug }));
+  return [...itrPages, ...tdsPages, ...repatPages].map((p) => ({
+    slug: p.slug,
+  }));
 }
 
 export function generateMetadata({
@@ -50,6 +55,20 @@ export function generateMetadata({
     });
   }
 
+  const repat = getRepatPage(params.slug);
+  if (repat) {
+    return pageMetadata({
+      title: repat.seoTitle ?? repat.title,
+      description: repat.metaDescription ?? repat.excerpt,
+      path: repatPath(repat.slug),
+      type: "article",
+      openGraph: {
+        publishedTime: repat.date,
+        modifiedTime: repat.updated ?? repat.date,
+      },
+    });
+  }
+
   return { title: "Page not found" };
 }
 
@@ -63,6 +82,9 @@ export default function IndiaTaxComplianceClusterPage({
 
   const tds = getTdsPage(params.slug);
   if (tds) return <TdsClusterPage page={tds} />;
+
+  const repat = getRepatPage(params.slug);
+  if (repat) return <RepatriationClusterPage page={repat} />;
 
   notFound();
 }

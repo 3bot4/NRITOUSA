@@ -23,6 +23,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Free Immigrant Wealth Guide", href: "/free-immigrant-wealth-guide" },
       { label: "Send Money to India", href: "/send-money-to-india" },
       { label: "India Tax & Compliance", href: "/india-tax-compliance" },
+      {
+        label: "Form 15CA / 15CB & Repatriation Paperwork",
+        href: "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
+      },
       { label: "Long-Term NRI Wealth", href: "/long-term-nri-wealth" },
       { label: "NRI Wealth & Tax Organizer", href: "/nri-wealth-checkup" },
     ],

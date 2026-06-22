@@ -326,6 +326,21 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: ["tax-compliance"],
   },
+  {
+    slug: "form-15ca-15cb-checklist",
+    title: "Form 15CA / 15CB Checklist",
+    label: "15CA / 15CB Checklist",
+    group: "Money & Finance",
+    description:
+      "Moving money from India to the USA? Answer a few questions about your source of funds, taxability, TDS, amount, and records to get a tailored document checklist and whether a CA review is strongly recommended. Educational only — it never decides your Form 15CA part or 15CB requirement. Runs entirely in your browser.",
+    icon: "🌐",
+    accent: "from-indigo-500 to-blue-600",
+    seoTitle: "Form 15CA / 15CB Checklist for NRIs: Repatriation Documents",
+    seoDescription:
+      "Free checklist for US-based NRIs repatriating money from India: map source of funds, taxability, and TDS to the documents to collect and whether a CA review is recommended.",
+    status: "live",
+    tags: ["tax-compliance"],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [
