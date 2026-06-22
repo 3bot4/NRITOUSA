@@ -311,6 +311,21 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: ["tax-compliance"],
   },
+  {
+    slug: "nri-tds-refund-checklist",
+    title: "NRI TDS Refund Checklist",
+    label: "TDS Refund Checklist",
+    group: "Money & Finance",
+    description:
+      "Answer a few questions about your Indian income type, what TDS was deducted, your PAN and DTAA documents, and whether you've filed — to get a tailored document checklist, the likely next review step, and questions for your CA. Educational only, runs entirely in your browser.",
+    icon: "✅",
+    accent: "from-teal-500 to-cyan-600",
+    seoTitle: "NRI TDS Refund Checklist: NRO Interest, Property Sale & DTAA",
+    seoDescription:
+      "Free interactive checklist for US-based NRIs to map Indian TDS refunds — NRO interest, property sale, rent, dividends, and capital gains. Get documents, next steps, and CA questions.",
+    status: "live",
+    tags: ["tax-compliance"],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [
