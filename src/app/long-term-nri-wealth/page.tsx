@@ -8,6 +8,12 @@ import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import { getArticle, getArticlesByTopic } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import {
+  GIFT_CLUSTER_SECTION,
+  giftPath,
+  giftPillar,
+  giftSupportPages,
+} from "@/lib/giftsCluster";
+import {
   absoluteUrl,
   articleUrl,
   breadcrumbJsonLd,
@@ -227,6 +233,92 @@ export default function LongTermNriWealthPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {propertyInheritance.map((a) => (
               <ArticleCard key={a!.slug} article={a!} variant="compact" />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Parents, Gifts, Inheritance & Form 3520 cluster */}
+      <section className="py-14 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow={GIFT_CLUSTER_SECTION.eyebrow}
+            title={GIFT_CLUSTER_SECTION.title}
+            description={GIFT_CLUSTER_SECTION.description}
+            action={{
+              label: "Start the guide",
+              href: giftPath(giftPillar.slug),
+            }}
+          />
+
+          {/* Pillar — prominent lead card */}
+          <Link
+            href={giftPath(giftPillar.slug)}
+            className="group flex flex-col gap-2 rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50 to-pink-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden
+                className={`flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br ${giftPillar.accent} text-2xl shadow-sm`}
+              >
+                {giftPillar.icon}
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-rose-600">
+                  Pillar guide
+                </p>
+                <h3 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  Money from Parents in India: Gifts, Inheritance, Property &amp;
+                  Form 3520
+                </h3>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  {giftPillar.excerpt}
+                </p>
+              </div>
+            </div>
+            <span className="flex-none text-sm font-semibold text-rose-600 group-hover:text-rose-700">
+              Read the guide{" "}
+              <span
+                aria-hidden
+                className="inline-block transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </span>
+          </Link>
+
+          {/* Supporting pages */}
+          <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {giftSupportPages.map((p) => (
+              <Link
+                key={p.slug}
+                href={giftPath(p.slug)}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${p.accent} text-lg shadow-sm`}
+                  >
+                    {p.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    Guide
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {p.navLabel}
+                </h3>
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                  {p.excerpt}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
             ))}
           </div>
         </Container>
