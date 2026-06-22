@@ -38,6 +38,7 @@ import {
   repatPillar,
   repatSupportPages,
 } from "@/lib/repatriationCluster";
+import { FORMS_LIMITS_PATH } from "@/lib/formsLimitsCenter";
 
 const title = "India Tax & Compliance for US NRIs";
 const description =
@@ -176,6 +177,45 @@ export default function IndiaTaxCompliancePage() {
             </div>
             <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
               Start your checkup{" "}
+              <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </span>
+          </Link>
+        </Container>
+      </section>
+
+      {/* NRI Tax Forms & Limits Center — reference hub */}
+      <section className="bg-white pt-10 sm:pt-12">
+        <Container>
+          <Link
+            href={FORMS_LIMITS_PATH}
+            className="group flex flex-col gap-2 rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50 to-pink-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden
+                className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 text-2xl shadow-sm"
+              >
+                🗂️
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-rose-600">
+                  Reference hub
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  NRI Tax Forms &amp; Limits Center
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Two master tables — US forms (FBAR, FATCA, Form 3520, PFIC,
+                  Form 1116) and India forms (ITR-2/3, 15CA, 15CB, Form 10F,
+                  Form 67) — with triggers, thresholds, deadlines, documents, and
+                  the right tool for each.
+                </p>
+              </div>
+            </div>
+            <span className="flex-none text-sm font-semibold text-rose-600 group-hover:text-rose-700">
+              Open the center{" "}
               <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
                 →
               </span>

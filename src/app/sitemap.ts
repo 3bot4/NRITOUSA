@@ -59,6 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${site.url}/india-tax-compliance/nri-tax-forms-limits`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${site.url}/nri-wealth-checkup`,
       lastModified: now,
       changeFrequency: "weekly",

@@ -24,6 +24,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Send Money to India", href: "/send-money-to-india" },
       { label: "India Tax & Compliance", href: "/india-tax-compliance" },
       {
+        label: "NRI Tax Forms & Limits Center",
+        href: "/india-tax-compliance/nri-tax-forms-limits",
+      },
+      {
         label: "Form 15CA / 15CB & Repatriation Paperwork",
         href: "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
       },
