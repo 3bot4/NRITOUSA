@@ -3,10 +3,12 @@ import { notFound } from "next/navigation";
 import ItrClusterPage from "@/components/ItrClusterPage";
 import TdsClusterPage from "@/components/TdsClusterPage";
 import RepatriationClusterPage from "@/components/RepatriationClusterPage";
+import GiftsClusterPage from "@/components/GiftsClusterPage";
 import { pageMetadata } from "@/lib/seo";
 import { getItrPage, itrPages, itrPath } from "@/lib/itrCluster";
 import { getTdsPage, tdsPages, tdsPath } from "@/lib/tdsCluster";
 import { getRepatPage, repatPages, repatPath } from "@/lib/repatriationCluster";
+import { getGiftPage, giftPages, giftPath } from "@/lib/giftsCluster";
 
 /**
  * Shared dynamic route for every /india-tax-compliance/<slug> cluster page.
@@ -17,7 +19,7 @@ import { getRepatPage, repatPages, repatPath } from "@/lib/repatriationCluster";
  */
 
 export function generateStaticParams() {
-  return [...itrPages, ...tdsPages, ...repatPages].map((p) => ({
+  return [...itrPages, ...tdsPages, ...repatPages, ...giftPages].map((p) => ({
     slug: p.slug,
   }));
 }
@@ -69,6 +71,20 @@ export function generateMetadata({
     });
   }
 
+  const gift = getGiftPage(params.slug);
+  if (gift) {
+    return pageMetadata({
+      title: gift.seoTitle ?? gift.title,
+      description: gift.metaDescription ?? gift.excerpt,
+      path: giftPath(gift.slug),
+      type: "article",
+      openGraph: {
+        publishedTime: gift.date,
+        modifiedTime: gift.updated ?? gift.date,
+      },
+    });
+  }
+
   return { title: "Page not found" };
 }
 
@@ -85,6 +101,9 @@ export default function IndiaTaxComplianceClusterPage({
 
   const repat = getRepatPage(params.slug);
   if (repat) return <RepatriationClusterPage page={repat} />;
+
+  const gift = getGiftPage(params.slug);
+  if (gift) return <GiftsClusterPage page={gift} />;
 
   notFound();
 }

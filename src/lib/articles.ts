@@ -843,6 +843,13 @@ Key facts about Form 3520:
 **Don't skip it.** The penalty for failing to file Form 3520 on a reportable foreign gift is **5% of the gift per month, up to 25% total**. On a $200,000 gift, that's a potential **$50,000 penalty** — for failing to file a form that itself triggers no tax. This is one of the most disproportionate penalties in the code, and exactly why disclosure is non-negotiable.
 :::
 
+:::cta
+title: See the full gifts, inheritance & Form 3520 picture
+body: This article is part of a wider hub covering cash gifts, down-payment gifts, inheritance of Indian property and mutual funds, Form 3520, FBAR/FATCA, PFIC, and the Indian documentation — with a free checker.
+button: Open the gifts & Form 3520 hub
+href: /india-tax-compliance/foreign-gifts-inheritance-form-3520-india
+:::
+
 ## What about the bank and large deposits?
 When a large sum lands, your bank may file routine compliance reports — but this is normal and automatic, not a red flag:
 
@@ -3791,6 +3798,13 @@ Tax-free does not mean report-free. If you receive **more than $100,000** in **g
 - It's the same form used for large [foreign gifts](/articles/gifting-money-india-tax-implications).
 
 This is the single most important compliance step. A tax-free inheritance becomes a costly mistake only if you fail to disclose it.
+
+:::cta
+title: See the full gifts, inheritance & Form 3520 picture
+body: This article is part of a wider hub covering inheritance of Indian property, bank accounts, gold, shares and mutual funds (PFIC), Form 3520, FBAR/FATCA, and the Indian documentation — with a free checker.
+button: Open the gifts & Form 3520 hub
+href: /india-tax-compliance/foreign-gifts-inheritance-form-3520-india
+:::
 
 ## Step-up in basis: the rule that saves you later
 Here's the provision that matters when you eventually **sell** an inherited asset. For US tax purposes, inherited assets generally receive a **step-up in cost basis** to their **fair market value on the date of death**. That means:
