@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-links.js",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts"
   },
   "dependencies": {
     "next": "^14.2.35",

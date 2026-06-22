@@ -1,0 +1,144 @@
+/**
+ * Regression guard for the July 2026 "Unavailable" (U) outage.
+ *
+ * In July 2026 the Visa Bulletin marked EB-2 India and EB-5 India Final Action
+ * Dates as "U" (Unavailable). Code paths that assumed every cutoff was a
+ * parseable date passed "U" to monthIndex()/new Date(), producing NaN — which
+ * surfaced as "NaN yr gap" on the homepage and crashed several tool routes.
+ *
+ * These tests exercise EVERY category/country combination through the core
+ * math + formatting helpers and assert that no NaN, Invalid Date, or throw can
+ * escape — regardless of whether a cutoff is a date, "C" (Current), or "U"
+ * (Unavailable). Run before shipping any new bulletin: `npm test`.
+ */
+
+import { describe, it, expect } from "vitest";
+import {
+  CATEGORY_LABELS,
+  COUNTRY_LABELS,
+  estimateWait,
+  expandSeries,
+  formatCutoff,
+  getCutoffs,
+  getSeries,
+  isCurrent,
+  isUnavailableVisaValue,
+  isValidVisaDate,
+  velocity,
+  type BulletinCountry,
+  type EbCategory,
+} from "./visa-bulletin";
+
+const CATEGORIES = Object.keys(CATEGORY_LABELS) as EbCategory[];
+const COUNTRIES = Object.keys(COUNTRY_LABELS) as BulletinCountry[];
+
+/** Every cutoff value shape a bulletin can throw at us. */
+const CUTOFF_SAMPLES = ["2014-01-01", "C", "U"] as const;
+
+describe("visa-bulletin value helpers", () => {
+  it("isUnavailableVisaValue only matches the Unavailable sentinel", () => {
+    expect(isUnavailableVisaValue("U")).toBe(true);
+    expect(isUnavailableVisaValue("C")).toBe(false);
+    expect(isUnavailableVisaValue("2014-01-01")).toBe(false);
+  });
+
+  it("isValidVisaDate rejects C, U, and parses real dates", () => {
+    expect(isValidVisaDate("2014-01-01")).toBe(true);
+    expect(isValidVisaDate("2026-07")).toBe(true);
+    expect(isValidVisaDate("C")).toBe(false);
+    expect(isValidVisaDate("U")).toBe(false);
+  });
+
+  it("formatCutoff never returns NaN/Invalid Date for any cutoff shape", () => {
+    for (const v of CUTOFF_SAMPLES) {
+      const label = formatCutoff(v);
+      expect(label).not.toMatch(/NaN|Invalid/);
+    }
+    expect(formatCutoff("U")).toBe("Unavailable");
+    expect(formatCutoff("C")).toBe("Current");
+  });
+});
+
+describe("estimateWait never produces NaN for any real category/country", () => {
+  for (const category of CATEGORIES) {
+    for (const country of COUNTRIES) {
+      it(`${category}/${country} — current bulletin`, () => {
+        const est = estimateWait("2019-06-01", category, country);
+        const numericFields = [
+          est.monthsBehind,
+          est.optimisticMonths,
+          est.pessimisticMonths,
+          est.velocityPerMonth,
+        ];
+        for (const n of numericFields) {
+          if (n !== null) expect(Number.isNaN(n)).toBe(false);
+        }
+        // Unavailable categories must short-circuit to the safe status.
+        const { fad } = getCutoffs(category, country);
+        if (isUnavailableVisaValue(fad)) {
+          expect(est.status).toBe("unavailable");
+          expect(est.optimisticMonths).toBeNull();
+          expect(est.pessimisticMonths).toBeNull();
+        }
+      });
+    }
+  }
+});
+
+describe("chart + velocity math is NaN-free across all series", () => {
+  for (const category of CATEGORIES) {
+    for (const country of COUNTRIES) {
+      it(`${category}/${country} — expandSeries + velocity`, () => {
+        const series = getSeries(category, country);
+        if (!series) return; // ROW has no series — expected null
+        for (const key of ["fad", "dff"] as const) {
+          for (const pt of expandSeries(series[key])) {
+            // Plotted values must be real numbers; "U"/"C"/gaps become null.
+            if (pt.value !== null) expect(Number.isNaN(pt.value)).toBe(false);
+          }
+          const v = velocity(series[key]);
+          if (v !== null) expect(Number.isNaN(v)).toBe(false);
+        }
+      });
+    }
+  }
+});
+
+describe("synthetic bulletins: a category going Unavailable mid-series", () => {
+  it("velocity returns null when the latest point is U (no fake movement)", () => {
+    const v = velocity([
+      ["2025-01", "2013-01-01"],
+      ["2026-07", "U"],
+    ]);
+    expect(v).toBeNull();
+  });
+
+  it("expandSeries maps U months to null, not NaN", () => {
+    const out = expandSeries([
+      ["2026-05", "2014-01-01"],
+      ["2026-07", "U"],
+    ]);
+    const july = out.find((p) => p.month === "2026-7");
+    expect(july?.value ?? null).toBeNull();
+    for (const p of out) {
+      if (p.value !== null) expect(Number.isNaN(p.value)).toBe(false);
+    }
+  });
+
+  it("estimateWait against a U cutoff is 'unavailable', not a NaN range", () => {
+    // Drive through the public API: any category whose current FAD is U.
+    const unavailable = CATEGORIES.flatMap((c) =>
+      COUNTRIES.map((co) => ({ c, co, fad: getCutoffs(c, co).fad }))
+    ).filter((x) => isUnavailableVisaValue(x.fad));
+    // July 2026 has at least EB-2 India + EB-5 India Unavailable.
+    expect(unavailable.length).toBeGreaterThan(0);
+    for (const { c, co } of unavailable) {
+      expect(estimateWait("2015-01-01", c, co).status).toBe("unavailable");
+    }
+  });
+
+  it("isCurrent + Unavailable are mutually exclusive sentinels", () => {
+    expect(isCurrent("U")).toBe(false);
+    expect(isUnavailableVisaValue("C")).toBe(false);
+  });
+});
