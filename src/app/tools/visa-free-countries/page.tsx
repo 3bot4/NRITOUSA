@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import PassportAccessTable from "@/components/tools/PassportAccessTable";
 import passportData from "../../../../data/passport-access.json";
 import { getTool } from "@/lib/tools";
@@ -97,9 +96,28 @@ export default function VisaFreeCountriesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="visa-free-countries"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Where can an Indian passport take you visa-free? Filter visa-free, visa-on-arrival, and e-Visa destinations — including ones a US visa unlocks."
+        badges={["Always free", "No signup", "Filterable list", "Updated data"]}
+        accent={tool.accent}
+        sourceNote={
+          <>
+            Entry rules change frequently and depend on your specific passport
+            and status. Always confirm with the destination&apos;s official
+            embassy or consulate before booking.
+          </>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <dl className="mb-8 grid gap-5 sm:grid-cols-3">
             {stats.map((s) => (
@@ -131,11 +149,9 @@ export default function VisaFreeCountriesPage() {
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

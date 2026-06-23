@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import EduHero from "@/components/education/EduHero";
 import GpaCalc from "@/components/education/GpaCalc";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { gradeScale, collegeGpaTargets } from "@/lib/education-data";
@@ -87,17 +85,29 @@ export default function GpaCalculatorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <EduHero calc={calc} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="gpa-calculator"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Education", href: "/education" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category="Education"
+        title={calc.title}
+        hook="Add your courses and grades to get your weighted and unweighted GPA on the standard US 4.0 scale — instantly."
+        badges={["Instant result", "No signup", "No personal data", "Weighted & unweighted"]}
+        accent={calc.accent}
+        disclaimerExtra={
+          <p>
+            Schools and colleges calculate GPA in slightly different ways (some
+            omit ± grades, weight differently, or exclude certain courses). This
+            tool uses the most common standard 4.0 scale.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Heads up">
-              Schools and colleges calculate GPA in slightly different ways
-              (some omit ± grades, weight differently, or exclude certain
-              courses). This tool uses the most common standard 4.0 scale.
-            </DisclaimerBox>
-          </div>
           <GpaCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -212,11 +222,9 @@ export default function GpaCalculatorPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

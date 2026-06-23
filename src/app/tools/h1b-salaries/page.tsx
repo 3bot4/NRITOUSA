@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import H1bSalaryExplorer from "@/components/tools/H1bSalaryExplorer";
 import { getTool } from "@/lib/tools";
 import {
@@ -78,9 +77,26 @@ export default function H1bSalariesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="h1b-salaries"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="What do H-1B roles actually pay? Change position, city, and experience to watch the charts update — and drop in your offer to see your percentile."
+        accent={tool.accent}
+        sourceNote={
+          <>
+            Built from official DOL LCA disclosure filings. Figures are gross
+            base salaries, not total compensation.
+          </>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <H1bSalaryExplorer />
         </Container>
@@ -132,11 +148,9 @@ export default function H1bSalariesPage() {
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

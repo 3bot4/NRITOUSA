@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import EduHero from "@/components/education/EduHero";
 import CollegeRankingsExplorer from "@/components/education/CollegeRankingsExplorer";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { collegeCategories, collegesByTag } from "@/lib/education-data";
@@ -83,17 +81,35 @@ export default function CollegeRankingsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <EduHero calc={calc} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="college-rankings"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Education", href: "/education" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category="Education"
+        title={calc.title}
+        hook="Sort and filter top US universities by ranking, acceptance rate, and in-state or out-of-state tuition — with curated category lists."
+        badges={["Instant result", "No signup", "Filterable", "Updated data"]}
+        accent={calc.accent}
+        sourceNote={
+          <>
+            Approximate 2024–25 figures compiled from US News, QS, and published
+            cost of attendance. Always verify on the school&apos;s official site.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            Rankings, acceptance rates, and tuition are approximate 2024–25
+            figures compiled from US News, QS, and published cost of attendance.
+            Always verify on the school&apos;s official site.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-4xl">
-            <DisclaimerBox title="Approximate data">
-              Rankings, acceptance rates, and tuition are approximate 2024–25
-              figures compiled from US News, QS, and published cost of
-              attendance. Always verify on the school&apos;s official site.
-            </DisclaimerBox>
-          </div>
           <CollegeRankingsExplorer />
           <p className="mt-6 text-xs text-ink-400">
             Last reviewed:{" "}
@@ -167,11 +183,9 @@ export default function CollegeRankingsPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

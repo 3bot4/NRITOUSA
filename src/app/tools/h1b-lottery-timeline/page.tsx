@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import H1bLotteryTimeline from "@/components/tools/H1bLotteryTimeline";
 import { getTool } from "@/lib/tools";
 import {
@@ -88,20 +87,41 @@ export default function H1bLotteryTimelinePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Trust block */}
-      <div className="border-b border-amber-200 bg-amber-50">
-        <Container>
-          <div className="py-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-amber-900">
-            <span><strong className="font-semibold">Educational only — not legal advice.</strong> NRItoUSA is not affiliated with USCIS or DHS.</span>
-            <span>Data source: <a href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-cap-season" target="_blank" rel="noopener noreferrer nofollow" className="font-medium underline">USCIS H-1B Cap Season</a></span>
-            <span>Updated: June 2026</span>
-          </div>
-        </Container>
-      </div>
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="h1b-lottery-timeline"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Where are you in H-1B cap season? Enter your cycle and stage to see your registration, selection, filing, and start-date milestones with a live countdown."
+        accent={tool.accent}
+        sourceNote={
+          <>
+            Data source:{" "}
+            <a
+              href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-cap-season"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="font-medium underline"
+            >
+              USCIS H-1B Cap Season
+            </a>{" "}
+            · updated June 2026.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            NRItoUSA is not affiliated with USCIS or DHS. H-1B cap dates and
+            rules can change each season — verify against official USCIS
+            announcements.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <H1bLotteryTimeline />
         </Container>
@@ -110,9 +130,6 @@ export default function H1bLotteryTimelinePage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
 
           {/* Internal links */}
           <div className="mx-auto mt-8 max-w-3xl">
@@ -136,6 +153,7 @@ export default function H1bLotteryTimelinePage() {
           </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }
