@@ -311,12 +311,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.kind === "pillar" ? 0.9 : 0.7,
   }));
 
-  const uscisChildRoutes: MetadataRoute.Sitemap = uscisChildPages.map((p) => ({
-    url: `${site.url}/uscis/${p.slug}`,
-    lastModified: new Date(p.updated ?? p.date),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const uscisChildRoutes: MetadataRoute.Sitemap = uscisChildPages
+    // /uscis/receipt-number has its own dedicated static route above; skip the
+    // cluster duplicate so the sitemap emits it only once.
+    .filter((p) => p.slug !== "receipt-number")
+    .map((p) => ({
+      url: `${site.url}/uscis/${p.slug}`,
+      lastModified: new Date(p.updated ?? p.date),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }));
 
   const h1bChildRoutes: MetadataRoute.Sitemap = h1bChildPages.map((p) => ({
     url: `${site.url}/h1b/${p.slug}`,
