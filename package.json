@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-links.js",
+    "indexnow": "node scripts/indexnow.mjs",
     "test": "vitest run",
     "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts"
   },
