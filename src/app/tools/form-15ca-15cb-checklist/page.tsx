@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import Form15Checklist from "@/components/tools/Form15Checklist";
@@ -90,22 +89,32 @@ export default function Form15ChecklistPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Top disclaimer + checklist */}
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="form-15ca-15cb-checklist"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Moving money from India to the USA? Answer a few questions to get your tailored 15CA/15CB document checklist — and whether a CA review is needed."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            This Form 15CA / 15CB checklist is for educational purposes only. It
+            does not decide which Form 15CA part applies, whether a Form 15CB is
+            required, or any tax amount. The forms, thresholds, and repatriation
+            limits change over time and depend on your facts — always confirm
+            with a qualified Chartered Accountant (CA) and your authorised-dealer
+            bank.
+          </p>
+        }
+      >
+      {/* Checklist */}
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Important">
-              This Form 15CA / 15CB checklist is for educational purposes only
-              and is not tax, legal, or FEMA advice. It does not decide which
-              Form 15CA part applies, whether a Form 15CB is required, or any tax
-              amount. The forms, thresholds, and repatriation limits change over
-              time and depend on your facts — always confirm with a qualified
-              Chartered Accountant (CA) and your authorised-dealer bank.
-            </DisclaimerBox>
-          </div>
-
           <Form15Checklist />
 
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
@@ -186,6 +195,7 @@ export default function Form15ChecklistPage() {
           <RelatedToolsStrip currentHref="/tools/form-15ca-15cb-checklist" />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import EduHero from "@/components/education/EduHero";
 import TuitionCalc from "@/components/education/TuitionCalc";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { collegeTypes } from "@/lib/education-data";
@@ -111,17 +109,29 @@ export default function TuitionCalculatorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <EduHero calc={calc} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="tuition-calculator"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Education", href: "/education" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category="Education"
+        title={calc.title}
+        hook="What will US college actually cost? Project the full multi-year price by school type, with inflation and financial-aid assumptions."
+        badges={["Instant result", "No signup", "No personal data", "Multi-year"]}
+        accent={calc.accent}
+        disclaimerExtra={
+          <p>
+            This projects published-price averages, not what any specific family
+            pays. Net price after aid varies widely — always run the
+            college&apos;s own Net Price Calculator before deciding.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Estimate only">
-              This projects published-price averages, not what any specific
-              family pays. Net price after aid varies widely — always run the
-              college&apos;s own Net Price Calculator before deciding.
-            </DisclaimerBox>
-          </div>
           <TuitionCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -236,11 +246,9 @@ export default function TuitionCalculatorPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

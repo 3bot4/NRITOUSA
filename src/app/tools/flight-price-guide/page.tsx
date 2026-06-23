@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import FlightPriceEstimator from "@/components/tools/FlightPriceEstimator";
 import { getTool } from "@/lib/tools";
@@ -91,21 +89,34 @@ export default function FlightPriceGuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
+      <ToolFirstLayout
+        toolSlug="flight-price-guide"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Will your USA–India fare be low, moderate, or high? Estimate price pressure by route, month, and travel style — with booking-window tips."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            This tool is for educational planning only and does not show live
+            airline prices. Flight prices change frequently based on airline,
+            availability, route, date, baggage, refund rules, and booking
+            platform. Always compare directly with airlines and trusted travel
+            providers.
+          </p>
+        }
+      >
       {/* Estimator */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <FlightPriceEstimator />
           <div className="mx-auto mt-8 max-w-3xl">
-            <DisclaimerBox title="Educational planning tool">
-              This tool is for educational planning only and does not show live
-              airline prices. Flight prices change frequently based on airline,
-              availability, route, date, baggage, refund rules, and booking
-              platform. Always compare directly with airlines and trusted
-              travel providers.
-            </DisclaimerBox>
-            <p className="mt-3 text-xs text-ink-400">
+            <p className="text-xs text-ink-400">
               Last updated:{" "}
               <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time> · Seasonal
               logic based on long-running USA–India demand patterns, reviewed
@@ -220,11 +231,9 @@ export default function FlightPriceGuidePage() {
               "first-7-days-in-usa",
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

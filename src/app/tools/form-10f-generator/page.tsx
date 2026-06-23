@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import Form10FGenerator from "@/components/tools/Form10FGenerator";
@@ -97,21 +95,32 @@ export default function Form10FGeneratorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Top disclaimer + generator */}
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="form-10f-generator"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Claiming India–US DTAA treaty benefits? Enter your details to generate a clean, printable Form 10F draft — entirely in your browser."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            This Form 10F generator is for educational purposes only. It
+            produces a draft to help you prepare — the official Form 10F must be
+            filed electronically on the Indian Income-tax e-filing portal and
+            generally requires a valid Tax Residency Certificate. Rules change;
+            please consult a qualified tax professional familiar with India–US
+            cross-border tax.
+          </p>
+        }
+      >
+      {/* Generator */}
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Important">
-              This Form 10F generator is for educational purposes only and is
-              not tax, legal, or financial advice. It produces a draft to help
-              you prepare — the official Form 10F must be filed electronically
-              on the Indian Income-tax e-filing portal and generally requires a
-              valid Tax Residency Certificate. Rules change; please consult a
-              qualified tax professional familiar with India–US cross-border tax.
-            </DisclaimerBox>
-          </div>
           <Form10FGenerator />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last updated: <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time> ·
@@ -179,9 +188,6 @@ export default function Form10FGeneratorPage() {
               "tcs-india-remittance-tax",
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
 
@@ -191,6 +197,7 @@ export default function Form10FGeneratorPage() {
           <RelatedToolsStrip currentHref="/tools/form-10f-generator" />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

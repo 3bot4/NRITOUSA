@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import EduHero from "@/components/education/EduHero";
 import GradeFinderCalc from "@/components/education/GradeFinderCalc";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { stateCutoffs } from "@/lib/education-data";
@@ -115,17 +113,29 @@ export default function GradeFinderPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <EduHero calc={calc} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="grade-finder"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Education", href: "/education" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category="Education"
+        title={calc.title}
+        hook="Just moved to the US? Find the likely US grade level for your child based on age and your state's cutoff — a starting point for the school."
+        badges={["Instant result", "No signup", "No personal data", "By state"]}
+        accent={calc.accent}
+        disclaimerExtra={
+          <p>
+            Grade placement is set by your local school district, which assesses
+            each newly arrived child individually. Use this as a starting point
+            and confirm with the school.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Estimate only">
-              Grade placement is set by your local school district, which assesses
-              each newly arrived child individually. Use this as a starting point
-              and confirm with the school.
-            </DisclaimerBox>
-          </div>
           <GradeFinderCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -312,11 +322,9 @@ export default function GradeFinderPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

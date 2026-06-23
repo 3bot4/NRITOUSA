@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import H4EadNavigator from "@/components/tools/H4EadNavigator";
 import { getTool } from "@/lib/tools";
 import {
@@ -102,20 +101,26 @@ export default function H4EadNavigatorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* prominent disclaimer */}
-      <section className="border-b border-ink-900/5 bg-amber-50/40">
-        <Container className="py-3">
-          <p className="text-center text-xs text-ink-600">
-            <strong className="font-semibold text-ink-800">Educational only</strong> —
-            not legal, tax, or immigration advice. Rules change; verify with an
-            immigration attorney and official sources (uscis.gov, your state).
+      <ToolFirstLayout
+        toolSlug="h4-ead-navigator"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="What can an H-4 EAD spouse actually do? Find matched work & business ideas, myth-vs-reality answers, and an EAD renewal gap calculator."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            Rules change; verify with an immigration attorney and official
+            sources (uscis.gov and your state) before acting.
           </p>
-        </Container>
-      </section>
-
-      <section className="py-12 sm:py-16">
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <H4EadNavigator />
         </Container>
@@ -124,11 +129,9 @@ export default function H4EadNavigatorPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

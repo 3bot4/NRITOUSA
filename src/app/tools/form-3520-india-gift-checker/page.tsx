@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import Form3520IndiaGiftChecker from "@/components/tools/Form3520IndiaGiftChecker";
@@ -90,23 +89,40 @@ export default function Form3520IndiaGiftCheckerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Top disclaimer + checker */}
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="form-3520-india-gift-checker"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Money or assets from family in India? Answer a few questions to flag whether Form 3520, FBAR/FATCA, or PFIC review may apply — and what to collect."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            This Form 3520 checker is for educational purposes only and does not
+            compute any tax, penalty, or threshold amount. Form 3520, PFIC, and
+            FBAR/FATCA rules and thresholds change over time and depend on your
+            facts — always verify current rules with the{" "}
+            <a
+              href="https://www.irs.gov"
+              className="text-brand-600 underline"
+              rel="nofollow noopener"
+              target="_blank"
+            >
+              IRS
+            </a>{" "}
+            and consult a qualified cross-border CPA (US side) and a Chartered
+            Accountant (CA) (India side).
+          </p>
+        }
+      >
+      {/* Checker */}
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Important">
-              This Form 3520 checker is for educational purposes only and is not
-              tax, legal, or financial advice. It does not compute any tax,
-              penalty, or threshold amount. Form 3520 thresholds, PFIC rules,
-              and FBAR/FATCA thresholds change over time and depend on your
-              facts — always verify current rules with the IRS and consult a
-              qualified cross-border CPA (US side) and a Chartered Accountant
-              (CA) (India side).
-            </DisclaimerBox>
-          </div>
-
           <Form3520IndiaGiftChecker />
 
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
@@ -150,25 +166,6 @@ export default function Form3520IndiaGiftCheckerPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-ink-900/5 bg-white p-6 text-sm leading-relaxed text-ink-500 shadow-card">
-            <strong className="font-semibold text-ink-700">
-              Educational only — not tax advice.
-            </strong>{" "}
-            {site.name} is not a tax firm and does not provide tax, legal, or
-            financial advice. Form 3520, FBAR/FATCA, and PFIC rules and
-            thresholds change over time and vary by individual situation. Always
-            verify current rules with the official{" "}
-            <a
-              href="https://www.irs.gov"
-              className="text-brand-600 underline"
-              rel="nofollow noopener"
-              target="_blank"
-            >
-              IRS
-            </a>{" "}
-            and consult a qualified cross-border CPA and a Chartered Accountant
-            (CA) for your situation.
-          </div>
         </Container>
       </section>
 
@@ -178,6 +175,7 @@ export default function Form3520IndiaGiftCheckerPage() {
           <RelatedToolsStrip currentHref="/tools/form-3520-india-gift-checker" />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import DataStamp from "@/components/tools/DataStamp";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import CitizenshipChecklist from "@/components/tools/CitizenshipChecklist";
@@ -83,29 +81,39 @@ export default function CitizenshipChecklistPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
+      <ToolFirstLayout
+        toolSlug="citizenship-checklist"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Ready to file N-400? Compute your earliest filing date, find which civics test applies, and track every step to the oath."
+        accent={tool.accent}
+        disclaimerExtra={
+          <p>
+            This checklist is for educational planning and is not legal advice.
+            Immigration rules change frequently and individual cases vary —
+            always verify against{" "}
+            <a
+              href="https://www.uscis.gov/n-400"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium underline"
+            >
+              uscis.gov
+            </a>{" "}
+            and consider consulting a licensed immigration attorney before you
+            file.
+          </p>
+        }
+      >
       {/* Interactive tool */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Educational only">
-              This checklist is for educational planning and is not legal
-              advice. Immigration rules change frequently and individual cases
-              vary — always verify against{" "}
-              <a
-                href="https://www.uscis.gov/n-400"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline"
-              >
-                uscis.gov
-              </a>{" "}
-              and consider consulting a licensed immigration attorney before you
-              file.
-            </DisclaimerBox>
-          </div>
-
           <CitizenshipChecklist />
 
           <div className="mx-auto mt-6 max-w-3xl">
@@ -192,11 +200,9 @@ export default function CitizenshipChecklistPage() {
               "us-tax-basics-new-immigrants",
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }
