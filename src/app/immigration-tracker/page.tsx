@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import ImmigrationTrackerDashboard from "@/components/tools/ImmigrationTrackerDashboard";
+import ToolAnalytics from "@/components/tools/ToolAnalytics";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -92,6 +93,7 @@ export default function ImmigrationTrackerPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ToolAnalytics toolSlug="immigration-tracker" />
       <Container className="pb-12 pt-6 sm:pb-16">
         <ImmigrationTrackerDashboard faqItems={FAQ_ITEMS} />
       </Container>

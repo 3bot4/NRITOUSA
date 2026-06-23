@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import TrackerCharts from "@/components/tools/TrackerCharts";
 import DataStamp from "@/components/tools/DataStamp";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
+import BottomDisclaimer, {
+  FULL_DISCLAIMER_ID,
+} from "@/components/tools/BottomDisclaimer";
 import DataConfidenceBadge, {
   type ConfidenceType,
 } from "@/components/tools/DataConfidenceBadge";
@@ -265,16 +267,18 @@ export default function ImmigrationTrackerDashboard({
         </div>
       </div>
 
-      {/* Disclaimer box */}
-      <div className="space-y-2">
-        <div className="rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
-          <strong className="font-semibold">Not legal advice.</strong>{" "}
-          {dashboardDisclaimers.standardDisclaimer}
-        </div>
-        <div className="rounded-xl border border-ink-100 bg-ink-50/60 px-4 py-3 text-sm text-ink-600">
-          {dashboardDisclaimers.adLandingDisclaimer}
-        </div>
-      </div>
+      {/* Compact top disclaimer — full text in the accordion below */}
+      <p className="text-xs leading-relaxed text-ink-400">
+        Educational only — not legal, tax, or immigration advice. Data may lag
+        official releases; every card shows its source and date.{" "}
+        <a
+          href={`#${FULL_DISCLAIMER_ID}`}
+          className="font-medium text-brand-600 underline underline-offset-2"
+        >
+          Full disclaimer below
+        </a>
+        .
+      </p>
 
       {/* ── Visa Bulletin Cards ───────────────────────────────────────────── */}
       <section aria-labelledby="vb-heading">
@@ -880,7 +884,13 @@ export default function ImmigrationTrackerDashboard({
       <ShareTrackerBlock url={TRACKER_URL} />
 
       {/* ── Disclaimer ───────────────────────────────────────────────────── */}
-      <ToolDisclaimer />
+      <BottomDisclaimer>
+        <p>
+          <strong className="font-semibold">Not legal advice.</strong>{" "}
+          {dashboardDisclaimers.standardDisclaimer}
+        </p>
+        <p>{dashboardDisclaimers.adLandingDisclaimer}</p>
+      </BottomDisclaimer>
     </div>
   );
 }

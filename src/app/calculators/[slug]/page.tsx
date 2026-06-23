@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import LeadMagnet from "@/components/calculators/LeadMagnet";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import { calculators, getCalculator } from "@/lib/calculators";
@@ -99,77 +100,36 @@ export default function CalculatorPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section
-        className={`relative overflow-hidden border-b border-ink-900/5 bg-gradient-to-br ${calc.accent}`}
-      >
-        <div className="absolute inset-0 bg-ink-900/40" />
-        <Container className="relative py-14 sm:py-16">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex flex-wrap items-center gap-2 text-sm text-white/80"
-          >
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-            <span aria-hidden>/</span>
-            <Link href="/calculators" className="hover:text-white">
-              Calculators
-            </Link>
-            <span aria-hidden>/</span>
-            <span className="text-white">{calc.label}</span>
-          </nav>
-          <div className="mt-5 flex items-center gap-4">
-            <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-4xl backdrop-blur">
-              {calc.icon}
-            </span>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/80">
-                {calc.category}
-              </p>
-              <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                {calc.title}
-              </h1>
-            </div>
-          </div>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/90">
-            {calc.description}
+      <ToolFirstLayout
+        toolSlug={calc.slug}
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Calculators", href: "/calculators" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category={calc.category}
+        title={calc.title}
+        hook={calc.description}
+        accent={calc.accent}
+        sourceNote={
+          <>
+            Source: {calc.officialSource} · data last checked{" "}
+            <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>. Verify
+            before making decisions.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            This calculator provides general estimates and is not financial,
+            tax, legal, or immigration advice. Rules change and vary by state,
+            visa status, and individual circumstance. Consult a qualified
+            professional before acting.
           </p>
-        </Container>
-      </section>
-
-      {/* Quick Summary — AI-friendly snapshot of what this calculator does */}
-      <section className="border-b border-ink-900/5 bg-slate-50/70 py-7 sm:py-8">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <div className="rounded-2xl border border-brand-200 bg-white px-6 py-5">
-              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-700">
-                Quick answer
-              </h2>
-              <p className="text-sm leading-relaxed text-ink-700">{calc.quickSummary}</p>
-              <dl className="mt-4 grid gap-2 sm:grid-cols-2 text-xs">
-                <div>
-                  <dt className="font-semibold text-ink-500">Who this is for</dt>
-                  <dd className="mt-0.5 text-ink-700">{calc.audience}</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-ink-500">Data last checked</dt>
-                  <dd className="mt-0.5 text-ink-700">
-                    <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
-                  </dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="font-semibold text-ink-500">Official source</dt>
-                  <dd className="mt-0.5 text-ink-700">{calc.officialSource}</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </Container>
-      </section>
-
+        }
+      >
       {/* Calculator */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <Calculator />
 
@@ -182,18 +142,28 @@ export default function CalculatorPage({
             />
           </div>
 
-          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
-            <strong className="font-semibold text-ink-700">
-              Educational estimate only.
-            </strong>{" "}
-            This calculator provides general estimates and is not financial,
-            tax, legal, or immigration advice. Rules change and vary by state,
-            visa status, and individual circumstance. Consult a qualified
-            professional before acting. See our{" "}
-            <Link href="/disclaimer" className="text-brand-600 underline">
-              full disclaimer
-            </Link>
-            .
+          {/* Quick answer — AI-friendly snapshot, below the tool */}
+          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-brand-200 bg-white px-6 py-5">
+            <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-700">
+              Quick answer
+            </h2>
+            <p className="text-sm leading-relaxed text-ink-700">{calc.quickSummary}</p>
+            <dl className="mt-4 grid gap-2 sm:grid-cols-2 text-xs">
+              <div>
+                <dt className="font-semibold text-ink-500">Who this is for</dt>
+                <dd className="mt-0.5 text-ink-700">{calc.audience}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-ink-500">Data last checked</dt>
+                <dd className="mt-0.5 text-ink-700">
+                  <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
+                </dd>
+              </div>
+              <div className="sm:col-span-2">
+                <dt className="font-semibold text-ink-500">Official source</dt>
+                <dd className="mt-0.5 text-ink-700">{calc.officialSource}</dd>
+              </div>
+            </dl>
           </div>
         </Container>
       </section>
@@ -235,6 +205,7 @@ export default function CalculatorPage({
           <RelatedToolsStrip currentHref={`/calculators/${calc.slug}`} />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

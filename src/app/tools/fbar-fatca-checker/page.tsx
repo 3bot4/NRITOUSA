@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import FbarFatcaChecker from "@/components/tools/FbarFatcaChecker";
@@ -103,20 +101,38 @@ export default function FbarFatcaCheckerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Top disclaimer + checker */}
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="fbar-fatca-checker"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Worried your NRE/NRO accounts, FDs, or mutual funds need US reporting? Check FBAR & FATCA in about a minute."
+        accent={tool.accent}
+        sourceNote={
+          <>
+            Thresholds summarized from FinCEN Form 114 and IRS Form 8938
+            instructions · last updated{" "}
+            <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time>. Verify against
+            current IRS guidance before filing.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            This FBAR/FATCA checker is for educational purposes only and is not
+            tax, legal, financial, or immigration advice. Rules are complex and
+            can change. Please consult a qualified CPA or tax professional
+            familiar with US and India cross-border tax reporting.
+          </p>
+        }
+      >
+        {/* Checker */}
+        <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Important">
-              This FBAR/FATCA checker is for educational purposes only and is
-              not tax, legal, financial, or immigration advice. Rules are
-              complex and can change. Please consult a qualified CPA or tax
-              professional familiar with US and India cross-border tax
-              reporting.
-            </DisclaimerBox>
-          </div>
           <FbarFatcaChecker />
           <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
             <strong className="font-semibold text-ink-900">
@@ -203,7 +219,7 @@ export default function FbarFatcaCheckerPage() {
         </Container>
       </section>
 
-      {/* Related guides + disclaimer */}
+      {/* Related guides */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <RelatedGuides
@@ -216,9 +232,6 @@ export default function FbarFatcaCheckerPage() {
               "pfic-indian-mutual-funds-trap",
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
 
@@ -228,6 +241,7 @@ export default function FbarFatcaCheckerPage() {
           <RelatedToolsStrip currentHref="/tools/fbar-fatca-checker" />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

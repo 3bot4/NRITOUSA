@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import EduHero from "@/components/education/EduHero";
 import SatScoreCalc from "@/components/education/SatScoreCalc";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { site } from "@/lib/site";
@@ -101,18 +99,36 @@ export default function SatGuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <EduHero calc={calc} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="sat-guide"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Education", href: "/education" },
+          { label: calc.label },
+        ]}
+        icon={calc.icon}
+        category="Education"
+        title={calc.title}
+        hook="Move the sliders for your Math and Reading & Writing scores to see your total, national percentile, and which colleges fit."
+        badges={["Instant result", "No signup", "No personal data", "2025 digital SAT"]}
+        accent={calc.accent}
+        sourceNote={
+          <>
+            Percentiles from College Board 2024 total-score distribution · last
+            reviewed <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time>.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            Percentiles and college-fit bands are directional estimates from
+            College Board 2024 data. Admissions weigh GPA, course rigor, essays,
+            and extracurriculars alongside scores — and many schools are
+            test-optional.
+          </p>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Approximate">
-              Percentiles and college-fit bands are directional estimates from
-              College Board 2024 data. Admissions weigh GPA, course rigor,
-              essays, and extracurriculars alongside scores — and many schools
-              are test-optional.
-            </DisclaimerBox>
-          </div>
           <SatScoreCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -224,11 +240,9 @@ export default function SatGuidePage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

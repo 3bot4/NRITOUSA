@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ResultPanel, Stat, Row, Callout } from "@/components/calculators/ui";
 import { satPercentile, satFit } from "@/lib/education-data";
+import { trackToolResultView } from "@/lib/analytics";
 
 function ScoreSlider({
   label,
@@ -55,6 +56,20 @@ export default function SatScoreCalc() {
     () => ({ pct: satPercentile(total), fit: satFit(total) }),
     [total]
   );
+
+  // Send only the coarse college-fit band — never the entered scores.
+  useEffect(() => {
+    const t = setTimeout(
+      () =>
+        trackToolResultView({
+          tool_slug: "sat-guide",
+          route: "/education/sat-guide",
+          result_status: fit.band,
+        }),
+      1500
+    );
+    return () => clearTimeout(t);
+  }, [fit.band]);
 
   return (
     <div className="mx-auto max-w-5xl">

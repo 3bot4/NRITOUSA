@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import DataStamp from "@/components/tools/DataStamp";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import processingData from "../../../../data/processing-times.json";
@@ -100,9 +99,30 @@ export default function ProcessingTimesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="processing-times"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Typical current waits for H-1B, I-140, I-485, EAD/AP, OCI, passport renewal, and US visa stamping — in one table."
+        badges={["Always free", "No signup", "Official sources", "One-page view"]}
+        accent={tool.accent}
+        sourceNote={
+          <>
+            From official USCIS, State Department, and VFS data · last updated{" "}
+            <time dateTime={processingData.lastUpdated}>
+              {processingData.lastUpdated}
+            </time>
+            . Always check official sources before booking travel or filing.
+          </>
+        }
+      >
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="space-y-10">
             {processingData.groups.map((group) => (
@@ -172,9 +192,6 @@ export default function ProcessingTimesPage() {
             <PremiumProcessingFeeTable />
           </div>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
 
           {/* Internal links */}
           <div className="mx-auto mt-8 max-w-3xl">
@@ -197,6 +214,7 @@ export default function ProcessingTimesPage() {
           </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }
