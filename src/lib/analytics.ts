@@ -23,6 +23,56 @@ export function trackToolUsed(params: ToolUsedEvent): void {
   trackEvent("tool_used", { ...params });
 }
 
+/**
+ * Mobile-first tool layout events.
+ *
+ * PRIVACY: every payload below is restricted to non-identifying labels —
+ * the tool slug, the route path, a generic step name, and a coarse result
+ * status (e.g. "shown" / "match" / "no_match"). Never pass a user-entered
+ * value (income, balances, visa dates, receipt/SSN/passport numbers, names,
+ * or emails) into these helpers.
+ */
+export interface ToolEventBase {
+  /** Stable tool/calculator slug, e.g. "fbar-fatca-checker". */
+  tool_slug: string;
+  /** Route path only (no query/hash), e.g. "/tools/fbar-fatca-checker". */
+  route?: string;
+}
+
+export function trackToolView(p: ToolEventBase): void {
+  trackEvent("tool_view", { ...p });
+}
+
+export function trackToolFirstInteraction(p: ToolEventBase): void {
+  trackEvent("tool_first_interaction", { ...p });
+}
+
+export function trackToolResultView(
+  p: ToolEventBase & { result_status?: string }
+): void {
+  trackEvent("tool_result_view", { ...p });
+}
+
+export function trackToolStepNext(
+  p: ToolEventBase & { step?: string }
+): void {
+  trackEvent("tool_step_next", { ...p });
+}
+
+export function trackToolShareClick(
+  p: ToolEventBase & { channel?: string }
+): void {
+  trackEvent("tool_share_click", { ...p });
+}
+
+export function trackToolEmailCaptureView(p: ToolEventBase): void {
+  trackEvent("tool_email_capture_view", { ...p });
+}
+
+export function trackToolEmailCaptureSubmit(p: ToolEventBase): void {
+  trackEvent("tool_email_capture_submit", { ...p });
+}
+
 /** Generic GA4 event. Same SSR/dev/blocked-analytics safety as above. */
 export function trackEvent(
   event: string,

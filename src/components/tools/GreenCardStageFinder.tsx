@@ -443,12 +443,6 @@ export default function GreenCardStageFinder() {
         </p>
       </div>
 
-      {/* disclaimer */}
-      <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
-        <strong className="font-bold">Educational only — not legal advice.</strong> This tool gives a general educational stage assessment. Your actual stage may differ. Always confirm with your employer's immigration attorney. For priority date availability, check the latest official visa bulletin at{" "}
-        <a href="https://travel.state.gov" target="_blank" rel="noopener noreferrer" className="underline font-semibold">travel.state.gov</a>.
-      </div>
-
       {!submitted ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* row 1 */}

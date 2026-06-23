@@ -5,7 +5,7 @@ import ToolLayout from "@/components/tools/ToolLayout";
 import InputCard, { Field, fieldClass } from "@/components/tools/InputCard";
 import ResultCard, { type ResultTone } from "@/components/tools/ResultCard";
 import DataStamp from "@/components/tools/DataStamp";
-import { trackToolUsed } from "@/lib/analytics";
+import { trackToolUsed, trackToolResultView } from "@/lib/analytics";
 import {
   ACCOUNT_TYPE_OPTIONS,
   DATA_STAMP,
@@ -156,6 +156,11 @@ export default function FbarFatcaChecker() {
         result_type: result.trackedResult,
         category: "money",
         page_slug: "/tools/fbar-fatca-checker",
+      });
+      trackToolResultView({
+        tool_slug: "fbar-fatca-checker",
+        route: "/tools/fbar-fatca-checker",
+        result_status: result.trackedResult,
       });
     }, 1500);
     return () => clearTimeout(t);

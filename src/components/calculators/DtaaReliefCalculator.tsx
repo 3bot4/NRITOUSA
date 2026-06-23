@@ -13,8 +13,10 @@ import {
   num,
 } from "./ui";
 import Link from "next/link";
+import { useEffect } from "react";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import { trackToolResultView } from "@/lib/analytics";
 
 /**
  * India–US DTAA / Foreign Tax Credit relief estimator (simplified Form 1116
@@ -115,6 +117,29 @@ export default function DtaaReliefCalculator() {
   const rateWith = inc > 0 ? (withCredit / inc) * 100 : 0;
 
   const indiaHigher = paidIndia >= usTaxOnIncome;
+
+  // Coarse, non-identifying outcome label only — never the entered amounts.
+  const resultStatus =
+    inc <= 0
+      ? "empty"
+      : carryover > 0
+        ? "carryover"
+        : residualUsTax > 0
+          ? "residual_us_tax"
+          : "fully_offset";
+  useEffect(() => {
+    if (resultStatus === "empty") return;
+    const t = setTimeout(
+      () =>
+        trackToolResultView({
+          tool_slug: "dtaa-foreign-tax-credit",
+          route: "/calculators/dtaa-foreign-tax-credit",
+          result_status: resultStatus,
+        }),
+      1500
+    );
+    return () => clearTimeout(t);
+  }, [resultStatus]);
 
   return (
     <CalcGrid
