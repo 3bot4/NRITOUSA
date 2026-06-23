@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import PriorityDateChecker from "@/components/tools/PriorityDateChecker";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 import { currentBulletinNote } from "@/lib/visa-bulletin";
@@ -100,39 +99,59 @@ export default function PriorityDateCheckerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool}>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link href="/visa-bulletin"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/25">
-            Visa bulletin guide →
-          </Link>
-          <Link href="/visa-bulletin/final-action-date-vs-date-of-filing"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur transition hover:bg-white/20">
-            Table A vs Table B explained
-          </Link>
-        </div>
-      </ToolHero>
-
-      {/* disclaimer strip */}
-      <section className="border-b border-ink-900/5 bg-amber-50/40">
-        <Container className="py-3">
-          <p className="text-center text-xs text-ink-600">
-            <strong className="font-semibold text-ink-800">Not legal advice.</strong> This tool uses manually updated visa bulletin data. Always verify with the{" "}
-            <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener noreferrer" className="underline">official State Department visa bulletin</a>{" "}
+      <ToolFirstLayout
+        toolSlug="priority-date-checker"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Where does your EB priority date stand against the current India visa bulletin cutoffs? Compare Final Action & Filing dates."
+        accent={tool.accent}
+        headerExtra={
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/visa-bulletin"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100"
+            >
+              Visa bulletin guide →
+            </Link>
+            <Link
+              href="/visa-bulletin/final-action-date-vs-date-of-filing"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 px-3 py-1.5 text-xs font-medium text-ink-600 transition hover:border-ink-900/20"
+            >
+              Table A vs Table B explained
+            </Link>
+          </div>
+        }
+        disclaimerExtra={
+          <p>
+            This tool uses manually updated visa bulletin data. Always verify
+            with the{" "}
+            <a
+              href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              official State Department visa bulletin
+            </a>{" "}
             and the USCIS filing chart. Confirm with your immigration attorney.
           </p>
-        </Container>
-      </section>
-
+        }
+      >
       {/* tool */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
             <VisaBulletinAlert className="mb-6" />
-            <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
+            <PriorityDateChecker />
+            <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
               {currentBulletinNote}
             </div>
-            <PriorityDateChecker />
           </div>
         </Container>
       </section>
@@ -166,11 +185,9 @@ export default function PriorityDateCheckerPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

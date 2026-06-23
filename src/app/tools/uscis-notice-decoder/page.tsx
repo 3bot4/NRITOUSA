@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import UscisNoticeDecoder from "@/components/tools/UscisNoticeDecoder";
 import { getTool } from "@/lib/tools";
 import {
@@ -98,28 +97,36 @@ export default function UscisNoticeDecoderPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool}>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link
-            href="/uscis/myuscis-account"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/25"
-          >
-            myUSCIS account guide →
-          </Link>
-          <Link
-            href="/uscis/i-797-notice"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur transition hover:bg-white/20"
-          >
-            I-797 notice types explained
-          </Link>
-        </div>
-      </ToolHero>
-
-      {/* Disclaimer strip */}
-      <section className="border-b border-ink-900/5 bg-amber-50/40">
-        <Container className="py-3">
-          <p className="text-center text-xs text-ink-600">
-            <strong className="font-semibold text-ink-800">Educational only — not legal advice.</strong>{" "}
+      <ToolFirstLayout
+        toolSlug="uscis-notice-decoder"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Got a USCIS notice and not sure what it means? Select the notice type for a plain-English explanation, deadline warnings, and what to check."
+        accent={tool.accent}
+        headerExtra={
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/uscis/myuscis-account"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100"
+            >
+              myUSCIS account guide →
+            </Link>
+            <Link
+              href="/uscis/i-797-notice"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 px-3 py-1.5 text-xs font-medium text-ink-600 transition hover:border-ink-900/20"
+            >
+              I-797 notice types explained
+            </Link>
+          </div>
+        }
+        disclaimerExtra={
+          <p>
             No personal data collected. Always verify at{" "}
             <a
               href="https://www.uscis.gov"
@@ -131,11 +138,10 @@ export default function UscisNoticeDecoderPage() {
             </a>{" "}
             and consult a licensed immigration attorney.
           </p>
-        </Container>
-      </section>
-
+        }
+      >
       {/* Tool */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
             <UscisNoticeDecoder />
@@ -213,11 +219,9 @@ export default function UscisNoticeDecoderPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }
