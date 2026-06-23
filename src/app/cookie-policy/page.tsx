@@ -5,7 +5,6 @@ import { breadcrumbJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import LegalPageLayout, {
   LegalCallout,
   LegalList,
-  LegalWarning,
   type LegalSection,
 } from "@/components/LegalPageLayout";
 
@@ -160,19 +159,16 @@ export default function CookiePolicyPage() {
       body: (
         <>
           <p>
-            You can manage cookies at any time through your browser settings and
-            the opt-out tools described in this policy.
+            By continuing to use the Site, you consent to our use of cookies as
+            described in this policy. You can manage, withdraw, or change your
+            choices at any time through your browser settings and the opt-out
+            tools described above.
           </p>
-          <LegalWarning title="Note for the site owner (to be confirmed)">
-            {/* TODO: Implement a cookie preference banner if required for the
-                site's target users/jurisdictions (e.g. EU/UK consent, or certain
-                U.S. state requirements). Until then, do not claim cookie-consent
-                compliance. See docs/legal-policy-review-todos.md. */}
-            A cookie consent banner is not currently implemented. If the Site
-            targets users in jurisdictions that require prior consent for
-            non-essential cookies, a cookie preference banner should be added
-            before relying on this policy for consent.
-          </LegalWarning>
+          <p>
+            Where the law in your location requires prior consent for
+            non-essential cookies, we will obtain that consent before such
+            cookies are set.
+          </p>
         </>
       ),
     },

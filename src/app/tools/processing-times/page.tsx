@@ -4,6 +4,9 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import DataStamp from "@/components/tools/DataStamp";
+import ProcessingTimesExplorer, {
+  type TimeGroup,
+} from "@/components/tools/ProcessingTimesExplorer";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import processingData from "../../../../data/processing-times.json";
 import { getTool } from "@/lib/tools";
@@ -57,16 +60,6 @@ const faq: FaqItem[] = [
       "Compare your receipt date to the USCIS processing times page for your form and service center. If your receipt date is earlier than the 'received date for inquiry' shown for your form, you may submit a case inquiry. The USCIS Processing Delay Checker at /tools/uscis-processing-delay-checker provides an educational assessment of whether your case is within normal range.",
   },
 ];
-
-interface TimeItem {
-  item: string;
-  typical: string;
-  premium: string | null;
-  source: string;
-  sourceLabel: string;
-  lastUpdated: string;
-  todo?: boolean;
-}
 
 export default function ProcessingTimesPage() {
   const url = absoluteUrl("/tools/processing-times");
@@ -124,59 +117,9 @@ export default function ProcessingTimesPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="space-y-10">
-            {processingData.groups.map((group) => (
-              <div key={group.title}>
-                <h2 className="text-xl font-bold tracking-tight text-ink-900">
-                  {group.title}
-                </h2>
-                <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/5 bg-white shadow-card">
-                  <table className="w-full min-w-[560px] text-sm">
-                    <thead>
-                      <tr className="border-b border-ink-900/5 bg-[#fafafa] text-left text-xs font-bold uppercase tracking-wider text-ink-400">
-                        <th className="px-5 py-3.5">Item</th>
-                        <th className="px-5 py-3.5">Typical range</th>
-                        <th className="px-5 py-3.5">Source</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {(group.items as TimeItem[]).map((row) => (
-                        <tr
-                          key={row.item}
-                          className="border-b border-ink-900/5 align-top last:border-0"
-                        >
-                          <td className="px-5 py-4 font-semibold text-ink-900">
-                            {row.item}
-                          </td>
-                          <td className="px-5 py-4 text-ink-700">
-                            {row.typical}
-                            {row.premium && (
-                              <span className="mt-1 block text-xs text-emerald-600">
-                                ⚡ {row.premium}
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-5 py-4">
-                            <a
-                              href={row.source}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs font-medium text-brand-600 underline decoration-brand-200 underline-offset-2 hover:text-brand-700"
-                            >
-                              {row.sourceLabel}
-                            </a>
-                            <span className="mt-0.5 block text-[11px] text-ink-400">
-                              as of {row.lastUpdated}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProcessingTimesExplorer
+            groups={processingData.groups as TimeGroup[]}
+          />
           <DataStamp
             className="mt-6"
             lastUpdated={processingData.lastUpdated}

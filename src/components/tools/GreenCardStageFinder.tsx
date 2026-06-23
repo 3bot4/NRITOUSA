@@ -408,6 +408,9 @@ export default function GreenCardStageFinder() {
   const [priorityMonth, setPriorityMonth] = useState(0);
   const [priorityYear, setPriorityYear] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  // Mobile-only stepper position (0-indexed). Desktop ignores this and shows
+  // every group at once as stacked cards.
+  const [step, setStep] = useState(0);
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 20 }, (_, i) => currentYear - i);
@@ -422,7 +425,27 @@ export default function GreenCardStageFinder() {
     setI140Filed(""); setI140Approved(""); setI485Filed(""); setEadReceived("");
     setApReceived(""); setPriorityMonth(0); setPriorityYear(0);
     setSubmitted(false);
+    setStep(0);
   }
+
+  // Mobile stepper metadata. On screens ≥ sm every group is shown together, so
+  // these titles double as the card headings.
+  const STEPS = [
+    "Your status & category",
+    "Labor certification (PERM)",
+    "I-140 & priority date",
+    "Adjustment of status (I-485)",
+  ];
+  const TOTAL_STEPS = STEPS.length;
+  const isLastStep = step === TOTAL_STEPS - 1;
+  // A group is visible on mobile only when it's the active step; on sm+ it's
+  // always visible (the `sm:block` wins over `hidden`).
+  const groupClass = (i: number) =>
+    `${step === i ? "block" : "hidden"} sm:block rounded-2xl border border-ink-900/5 bg-white/70 p-4 sm:p-5`;
+  const selectClass =
+    "mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20";
+  const groupTitleClass =
+    "mb-3 text-xs font-bold uppercase tracking-wide text-green-700";
 
   const result = submitted
     ? assess(visa, category, country, permFiled, permApproved, i140Filed, i140Approved, i485Filed, eadReceived, apReceived, priorityMonth, priorityYear)
@@ -445,161 +468,207 @@ export default function GreenCardStageFinder() {
 
       {!submitted ? (
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* row 1 */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">Current visa / status</span>
-              <select value={visa} onChange={(e) => setVisa(e.target.value as VisaStatus)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="h1b">H1B</option>
-                <option value="h4">H4</option>
-                <option value="l1">L1</option>
-                <option value="f1">F1</option>
-                <option value="i485-pending">I-485 pending</option>
-                <option value="ead-ap">EAD / Advance Parole holder</option>
-                <option value="other">Other</option>
-              </select>
-            </label>
-
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">EB green card category</span>
-              <select value={category} onChange={(e) => setCategory(e.target.value as EbCategory)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="eb1">EB-1 (extraordinary ability / outstanding researcher / multinational exec)</option>
-                <option value="eb2">EB-2 (advanced degree / exceptional ability / NIW)</option>
-                <option value="eb3">EB-3 (skilled worker / professional)</option>
-              </select>
-            </label>
-          </div>
-
-          {/* row 2 */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">Country of birth</span>
-              <select value={country} onChange={(e) => setCountry(e.target.value as CountryOfBirth)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="india">India</option>
-                <option value="other">Other country</option>
-              </select>
-            </label>
-
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">PERM labor certification filed?</span>
-              <select value={permFiled} onChange={(e) => setPermFiled(e.target.value as PermFiled)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes — PERM has been filed</option>
-                <option value="no">No — not yet filed</option>
-                <option value="not-sure">Not sure</option>
-                <option value="not-needed">Not needed (EB-1 or EB-2 NIW)</option>
-              </select>
-            </label>
-          </div>
-
-          {/* row 3 */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">PERM approved (DOL certified)?</span>
-              <select value={permApproved} onChange={(e) => setPermApproved(e.target.value as PermApproved)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes — PERM certified</option>
-                <option value="no">No — still pending or denied</option>
-                <option value="not-sure">Not sure</option>
-                <option value="na">Not applicable</option>
-              </select>
-            </label>
-
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">I-140 petition filed with USCIS?</span>
-              <select value={i140Filed} onChange={(e) => setI140Filed(e.target.value as I140Filed)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes — I-140 has been filed</option>
-                <option value="no">No — not yet filed</option>
-                <option value="not-sure">Not sure</option>
-              </select>
-            </label>
-          </div>
-
-          {/* row 4 */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">I-140 approved by USCIS?</span>
-              <select value={i140Approved} onChange={(e) => setI140Approved(e.target.value as I140Approved)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes — I-140 is approved</option>
-                <option value="no">No — pending or denied</option>
-                <option value="not-sure">Not sure</option>
-              </select>
-            </label>
-
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">I-485 filed?</span>
-              <select value={i485Filed} onChange={(e) => setI485Filed(e.target.value as I485Filed)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes — I-485 filed</option>
-                <option value="no">No — not yet filed</option>
-                <option value="not-sure">Not sure</option>
-              </select>
-            </label>
-          </div>
-
-          {/* row 5 */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">EAD (work permit) received?</span>
-              <select value={eadReceived} onChange={(e) => setEadReceived(e.target.value as EadReceived)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="not-sure">Not sure</option>
-              </select>
-            </label>
-
-            <label className="block">
-              <span className="text-xs font-semibold text-ink-800">Advance Parole received?</span>
-              <select value={apReceived} onChange={(e) => setApReceived(e.target.value as ApReceived)}
-                className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value="">Select…</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="not-sure">Not sure</option>
-              </select>
-            </label>
-          </div>
-
-          {/* priority date */}
-          <div>
-            <span className="text-xs font-semibold text-ink-800">
-              Priority date{" "}
-              <span className="font-normal text-ink-400">(month and year — optional but improves result)</span>
-            </span>
-            <div className="mt-1 grid grid-cols-2 gap-3">
-              <select value={priorityMonth} onChange={(e) => setPriorityMonth(Number(e.target.value))}
-                className="w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value={0}>Month…</option>
-                {MONTHS.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
-              </select>
-              <select value={priorityYear} onChange={(e) => setPriorityYear(Number(e.target.value))}
-                className="w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-500/20">
-                <option value={0}>Year…</option>
-                {years.map((y) => <option key={y} value={y}>{y}</option>)}
-              </select>
+          {/* Mobile-only step progress. Hidden on sm+ where all groups show. */}
+          <div className="sm:hidden">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wide text-green-700">
+                Step {step + 1} of {TOTAL_STEPS}
+              </span>
+              <span className="text-xs font-semibold text-ink-500">{STEPS[step]}</span>
             </div>
-            <p className="mt-1 text-xs text-ink-400">
-              Found on your I-797 PERM receipt or I-140 approval notice. Do not enter receipt numbers.
-            </p>
+            <div className="mt-2 flex gap-1.5" aria-hidden>
+              {STEPS.map((_, i) => (
+                <span
+                  key={i}
+                  className={`h-1.5 flex-1 rounded-full ${i <= step ? "bg-green-600" : "bg-ink-900/10"}`}
+                />
+              ))}
+            </div>
           </div>
 
-          <button type="submit"
-            className="mt-2 w-full rounded-xl bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800">
+          {/* Step 1 — status & category */}
+          <div className={groupClass(0)}>
+            <p className={groupTitleClass}>{STEPS[0]}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">Current visa / status</span>
+                <select value={visa} onChange={(e) => setVisa(e.target.value as VisaStatus)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="h1b">H1B</option>
+                  <option value="h4">H4</option>
+                  <option value="l1">L1</option>
+                  <option value="f1">F1</option>
+                  <option value="i485-pending">I-485 pending</option>
+                  <option value="ead-ap">EAD / Advance Parole holder</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">EB green card category</span>
+                <select value={category} onChange={(e) => setCategory(e.target.value as EbCategory)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="eb1">EB-1 (extraordinary ability / outstanding researcher / multinational exec)</option>
+                  <option value="eb2">EB-2 (advanced degree / exceptional ability / NIW)</option>
+                  <option value="eb3">EB-3 (skilled worker / professional)</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          {/* Step 2 — PERM */}
+          <div className={groupClass(1)}>
+            <p className={groupTitleClass}>{STEPS[1]}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">Country of birth</span>
+                <select value={country} onChange={(e) => setCountry(e.target.value as CountryOfBirth)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="india">India</option>
+                  <option value="other">Other country</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">PERM labor certification filed?</span>
+                <select value={permFiled} onChange={(e) => setPermFiled(e.target.value as PermFiled)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes — PERM has been filed</option>
+                  <option value="no">No — not yet filed</option>
+                  <option value="not-sure">Not sure</option>
+                  <option value="not-needed">Not needed (EB-1 or EB-2 NIW)</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">PERM approved (DOL certified)?</span>
+                <select value={permApproved} onChange={(e) => setPermApproved(e.target.value as PermApproved)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes — PERM certified</option>
+                  <option value="no">No — still pending or denied</option>
+                  <option value="not-sure">Not sure</option>
+                  <option value="na">Not applicable</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          {/* Step 3 — I-140 & priority date */}
+          <div className={groupClass(2)}>
+            <p className={groupTitleClass}>{STEPS[2]}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">I-140 petition filed with USCIS?</span>
+                <select value={i140Filed} onChange={(e) => setI140Filed(e.target.value as I140Filed)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes — I-140 has been filed</option>
+                  <option value="no">No — not yet filed</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">I-140 approved by USCIS?</span>
+                <select value={i140Approved} onChange={(e) => setI140Approved(e.target.value as I140Approved)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes — I-140 is approved</option>
+                  <option value="no">No — pending or denied</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="mt-4">
+              <span className="text-xs font-semibold text-ink-800">
+                Priority date{" "}
+                <span className="font-normal text-ink-400">(month and year — optional but improves result)</span>
+              </span>
+              <div className="mt-1 grid grid-cols-2 gap-3">
+                <select value={priorityMonth} onChange={(e) => setPriorityMonth(Number(e.target.value))} className={selectClass}>
+                  <option value={0}>Month…</option>
+                  {MONTHS.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
+                </select>
+                <select value={priorityYear} onChange={(e) => setPriorityYear(Number(e.target.value))} className={selectClass}>
+                  <option value={0}>Year…</option>
+                  {years.map((y) => <option key={y} value={y}>{y}</option>)}
+                </select>
+              </div>
+              <p className="mt-1 text-xs text-ink-400">
+                Found on your I-797 PERM receipt or I-140 approval notice. Do not enter receipt numbers.
+              </p>
+            </div>
+          </div>
+
+          {/* Step 4 — I-485 / EAD / AP */}
+          <div className={groupClass(3)}>
+            <p className={groupTitleClass}>{STEPS[3]}</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">I-485 filed?</span>
+                <select value={i485Filed} onChange={(e) => setI485Filed(e.target.value as I485Filed)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes — I-485 filed</option>
+                  <option value="no">No — not yet filed</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">EAD (work permit) received?</span>
+                <select value={eadReceived} onChange={(e) => setEadReceived(e.target.value as EadReceived)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-semibold text-ink-800">Advance Parole received?</span>
+                <select value={apReceived} onChange={(e) => setApReceived(e.target.value as ApReceived)} className={selectClass}>
+                  <option value="">Select…</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                  <option value="not-sure">Not sure</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          {/* Mobile stepper navigation */}
+          <div className="flex items-center gap-3 sm:hidden">
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={() => setStep((s) => Math.max(0, s - 1))}
+                className="rounded-xl border border-ink-900/10 bg-white px-5 py-3 text-sm font-semibold text-ink-700 transition hover:bg-ink-50"
+              >
+                ← Back
+              </button>
+            )}
+            {!isLastStep ? (
+              <button
+                type="button"
+                onClick={() => setStep((s) => Math.min(TOTAL_STEPS - 1, s + 1))}
+                className="flex-1 rounded-xl bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
+              >
+                Next →
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="flex-1 rounded-xl bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
+              >
+                Find my stage
+              </button>
+            )}
+          </div>
+
+          {/* Desktop submit — all groups already visible above */}
+          <button
+            type="submit"
+            className="mt-2 hidden w-full rounded-xl bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800 sm:block"
+          >
             Find my stage
           </button>
         </form>

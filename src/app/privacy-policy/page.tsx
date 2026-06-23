@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
       heading: "Introduction",
       body: (
         <p>
-          {site.owner}, a {site.state} limited liability company, operates{" "}
+          {site.owner}, an {site.state} limited liability company, operates{" "}
           {site.domain} under the brand name {site.name} (&quot;we&quot;,
           &quot;us&quot;, &quot;our&quot;). This Privacy Policy explains what
           information we collect, how we use and share it, how long we keep it,

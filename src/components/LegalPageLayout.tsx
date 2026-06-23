@@ -99,12 +99,6 @@ export default function LegalPageLayout({
                 </section>
               ))}
             </div>
-
-            <div className="rounded-2xl border border-ink-900/5 bg-slate-50 p-5 text-sm text-ink-500">
-              This page is provided for general informational purposes and is
-              not legal advice. It should be reviewed by a qualified attorney
-              before it is relied upon for your specific business needs.
-            </div>
           </div>
         </Container>
       </section>

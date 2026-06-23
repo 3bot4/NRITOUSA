@@ -46,7 +46,7 @@ export default function TermsAndConditionsPage() {
             These Terms &amp; Conditions (&quot;Terms&quot;) govern your access
             to and use of {site.domain} and its content, tools, calculators,
             checklists, and resources (collectively, the &quot;Site&quot;). The
-            Site is operated by <strong>{site.owner}</strong>, a {site.state}{" "}
+            Site is operated by <strong>{site.owner}</strong>, an {site.state}{" "}
             limited liability company, under the brand name {site.name}.
           </p>
           <p>
@@ -394,10 +394,10 @@ export default function TermsAndConditionsPage() {
       body: (
         <p>
           These Terms are governed by the laws of the State of {site.state},
-          without regard to its conflict-of-law principles. Subject to the
-          section below, you agree that the courts located in {site.state} shall
-          have jurisdiction and venue over any dispute, unless your attorney
-          advises otherwise. {/* TODO (attorney review): confirm venue/jurisdiction language. */}
+          without regard to its conflict-of-law principles. You agree that the
+          state and federal courts located in {site.state} shall have exclusive
+          jurisdiction and venue over any dispute arising out of or relating to
+          these Terms or your use of the Site.
         </p>
       ),
     },
@@ -405,19 +405,12 @@ export default function TermsAndConditionsPage() {
       id: "dispute-resolution",
       heading: "Dispute resolution",
       body: (
-        <>
-          <p>
-            If a dispute arises, you agree to first attempt to resolve it
-            informally by contacting {site.owner} and allowing a reasonable
-            period for the parties to discuss and seek resolution in good faith.
-          </p>
-          <LegalWarning title="Attorney review required">
-            This section intentionally does not include binding arbitration or a
-            class-action waiver. Whether to add such provisions — and in what
-            form — should be decided with a qualified attorney before
-            publication.
-          </LegalWarning>
-        </>
+        <p>
+          If a dispute arises, you agree to first attempt to resolve it
+          informally by contacting {site.owner} and allowing a reasonable period
+          for the parties to discuss the matter and seek a resolution in good
+          faith before pursuing any other remedy.
+        </p>
       ),
     },
     {
@@ -440,7 +433,7 @@ export default function TermsAndConditionsPage() {
           <>
             <p>
               Welcome to {site.name} ({site.domain}), operated by{" "}
-              <strong>{site.owner}</strong>, a {site.state} limited liability
+              <strong>{site.owner}</strong>, an {site.state} limited liability
               company. Please read these Terms &amp; Conditions carefully before
               using the Site.
             </p>
