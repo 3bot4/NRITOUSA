@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import DisclaimerBox from "@/components/tools/DisclaimerBox";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import NriTdsRefundChecklist from "@/components/tools/NriTdsRefundChecklist";
@@ -90,22 +89,46 @@ export default function NriTdsRefundChecklistPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
-      {/* Top disclaimer + checklist */}
-      <section className="py-12 sm:py-16">
+      <ToolFirstLayout
+        toolSlug="nri-tds-refund-checklist"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Too much TDS deducted on your Indian income? Map your refund: get the documents to collect, the next step, and questions for your CA."
+        accent={tool.accent}
+        sourceNote={
+          <>
+            General educational checklist · last updated{" "}
+            <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time>. Verify against
+            current Income Tax Department guidance for the relevant year.
+          </>
+        }
+        disclaimerExtra={
+          <p>
+            This TDS refund checklist is for educational purposes only and does
+            not compute any tax or refund amount. Indian TDS rates, surcharge,
+            cess, thresholds, and forms change every financial year — always
+            verify current rates and forms on the official{" "}
+            <a
+              href="https://www.incometax.gov.in"
+              className="text-brand-600 underline"
+              rel="nofollow noopener"
+              target="_blank"
+            >
+              Income Tax portal
+            </a>{" "}
+            and consult a qualified Chartered Accountant (CA) for your situation.
+          </p>
+        }
+      >
+      {/* Checklist */}
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <DisclaimerBox title="Important">
-              This TDS refund checklist is for educational purposes only and is
-              not tax, legal, or financial advice. It does not compute any tax
-              or refund amount. Indian TDS rates, surcharge, cess, thresholds,
-              and forms change every financial year — always verify current
-              rates and forms on the Income Tax portal and consult a qualified
-              Chartered Accountant (CA).
-            </DisclaimerBox>
-          </div>
-
           <NriTdsRefundChecklist />
 
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
@@ -149,24 +172,6 @@ export default function NriTdsRefundChecklistPage() {
               },
             ]}
           />
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-ink-900/5 bg-white p-6 text-sm leading-relaxed text-ink-500 shadow-card">
-            <strong className="font-semibold text-ink-700">
-              Educational only — not tax advice.
-            </strong>{" "}
-            {site.name} is not a tax firm and does not provide tax, legal, or
-            financial advice. Indian TDS rates, surcharge, cess, thresholds, and
-            forms change by financial year and vary by individual situation.
-            Always verify current rates and forms on the official{" "}
-            <a
-              href="https://www.incometax.gov.in"
-              className="text-brand-600 underline"
-              rel="nofollow noopener"
-              target="_blank"
-            >
-              Income Tax portal
-            </a>{" "}
-            and consult a qualified Chartered Accountant (CA) for your situation.
-          </div>
         </Container>
       </section>
 
@@ -176,6 +181,7 @@ export default function NriTdsRefundChecklistPage() {
           <RelatedToolsStrip currentHref="/tools/nri-tds-refund-checklist" />
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

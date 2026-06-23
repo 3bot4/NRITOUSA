@@ -451,13 +451,6 @@ export default function UscisNoticeDecoder() {
         </p>
       </div>
 
-      {/* disclaimer */}
-      <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
-        <strong className="font-bold">Educational only — not legal advice.</strong>{" "}
-        Do not upload actual notices. No receipt numbers, A-numbers, or personal details collected.
-        NRItoUSA is not affiliated with USCIS. Always consult your immigration attorney.
-      </div>
-
       {!submitted ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-3">

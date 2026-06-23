@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import UscisLifeDecisionChecklist from "@/components/tools/UscisLifeDecisionChecklist";
 import { getTool } from "@/lib/tools";
 import {
@@ -88,35 +87,43 @@ export default function UscisLifeDecisionChecklistPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool}>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link
-            href="/uscis/life-planning"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/25"
-          >
-            Full life planning guide →
-          </Link>
-          <Link
-            href="/community/nri-uscis-decisions"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur transition hover:bg-white/20"
-          >
-            Community insights
-          </Link>
-        </div>
-      </ToolHero>
-
-      {/* Disclaimer strip */}
-      <section className="border-b border-ink-900/5 bg-amber-50/40">
-        <Container className="py-3">
-          <p className="text-center text-xs text-ink-600">
-            <strong className="font-semibold text-ink-800">Educational only — not legal advice.</strong>{" "}
-            No personal immigration identifiers collected. Always consult your immigration attorney before major decisions.
+      <ToolFirstLayout
+        toolSlug="uscis-life-decision-checklist"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="Changing jobs, buying a house, or traveling while your case is pending? Get a personalized risk level and action checklist for major decisions."
+        accent={tool.accent}
+        headerExtra={
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/uscis/life-planning"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100"
+            >
+              Full life planning guide →
+            </Link>
+            <Link
+              href="/community/nri-uscis-decisions"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 px-3 py-1.5 text-xs font-medium text-ink-600 transition hover:border-ink-900/20"
+            >
+              Community insights
+            </Link>
+          </div>
+        }
+        disclaimerExtra={
+          <p>
+            No personal immigration identifiers collected. Always consult your
+            immigration attorney before major decisions.
           </p>
-        </Container>
-      </section>
-
+        }
+      >
       {/* Tool */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
             <UscisLifeDecisionChecklist />
@@ -155,11 +162,9 @@ export default function UscisLifeDecisionChecklistPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }

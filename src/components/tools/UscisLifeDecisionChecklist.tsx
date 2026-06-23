@@ -566,12 +566,6 @@ export default function UscisLifeDecisionChecklist() {
         </p>
       </div>
 
-      <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
-        <strong className="font-bold">Educational only — not legal advice.</strong>{" "}
-        No personal identifiers collected (no receipt numbers, A-numbers, DOB, employer, or address).
-        Always consult your immigration attorney before acting.
-      </div>
-
       {!submitted ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">

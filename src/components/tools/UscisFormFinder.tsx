@@ -265,13 +265,6 @@ export default function UscisFormFinder() {
         </p>
       </div>
 
-      {/* disclaimer */}
-      <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
-        <strong className="font-bold">Educational only — not legal advice.</strong>{" "}
-        USCIS forms, fees, and rules change. No personal information collected.
-        Always verify at uscis.gov and consult your immigration attorney.
-      </div>
-
       {!submitted ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-3">

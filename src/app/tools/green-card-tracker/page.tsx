@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
-import ToolHero from "@/components/tools/ToolHero";
+import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
 import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
 import TrackerCharts from "@/components/tools/TrackerCharts";
@@ -107,10 +106,28 @@ export default function GreenCardTrackerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ToolHero tool={tool} />
-
+      <ToolFirstLayout
+        toolSlug="green-card-tracker"
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Tools", href: "/tools" },
+          { label: tool.label },
+        ]}
+        icon={tool.icon}
+        category={tool.group}
+        title={tool.title}
+        hook="How long is the India green card wait? See how many applicants are ahead of you and an honest estimated wait range for your EB category."
+        accent={tool.accent}
+        sourceNote={
+          <>
+            Built from USCIS I-485 inventory and State Department visa bulletin
+            Final Action Dates. Verify with official sources before making
+            decisions.
+          </>
+        }
+      >
       {/* Estimator */}
-      <section className="py-12 sm:py-16">
+      <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
           <GreenCardEstimator variant="full" />
@@ -239,9 +256,6 @@ export default function GreenCardTrackerPage() {
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
-          <div className="mx-auto mt-10 max-w-3xl">
-            <ToolDisclaimer />
-          </div>
 
           {/* Internal links */}
           <div className="mx-auto mt-8 max-w-3xl">
@@ -267,6 +281,7 @@ export default function GreenCardTrackerPage() {
           </div>
         </Container>
       </section>
+      </ToolFirstLayout>
     </>
   );
 }
