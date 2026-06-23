@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 const topics = [
@@ -107,6 +108,11 @@ export default function ContactForm() {
       <p className="text-xs leading-relaxed text-ink-400">
         Submitting opens your email app with the message pre-filled. Please do
         not include sensitive financial, tax, legal, or immigration documents.
+        See our{" "}
+        <Link href="/privacy-policy" className="underline hover:text-brand-600">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   );

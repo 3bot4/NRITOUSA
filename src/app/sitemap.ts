@@ -192,13 +192,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: `${site.url}/terms-of-use`,
+      url: `${site.url}/terms-and-conditions`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${site.url}/disclaimer`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${site.url}/cookie-policy`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,

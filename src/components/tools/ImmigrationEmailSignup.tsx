@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 /**
  * Email capture for monthly immigration updates. Posts to the existing
@@ -210,8 +211,16 @@ export default function ImmigrationEmailSignup({
             employer names, or personal immigration documents.
           </p>
           <p className="text-xs leading-relaxed text-ink-400">
-            NRItoUSA sends practical immigration and finance updates for Indians
-            in the USA. No spam.
+            By submitting, you agree to receive emails from NRItoUSA — practical
+            immigration and finance updates for Indians in the USA. No spam, and
+            you can unsubscribe anytime. See our{" "}
+            <Link
+              href="/privacy-policy"
+              className="underline hover:text-brand-600"
+            >
+              Privacy Policy
+            </Link>
+            .
           </p>
         </form>
       )}

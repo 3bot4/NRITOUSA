@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -153,7 +154,12 @@ export default function LeadMagnetForm() {
       )}
 
       <p className="text-xs leading-relaxed text-ink-400">
-        Educational only. Not investment, tax, or legal advice. No strategy
+        By submitting, you agree to receive emails from NRItoUSA. You can
+        unsubscribe anytime. See our{" "}
+        <Link href="/privacy-policy" className="underline hover:text-brand-600">
+          Privacy Policy
+        </Link>
+        . Educational only. Not investment, tax, or legal advice. No strategy
         guarantees income or returns.
       </p>
     </form>

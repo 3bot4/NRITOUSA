@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Container from "./Container";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -102,8 +103,16 @@ export default function Newsletter() {
                 {message}
               </p>
             )}
-            <p className="mt-3 text-xs text-ink-500">
-              Practical guides only. No spam, unsubscribe anytime.
+            <p className="mt-3 text-xs leading-relaxed text-ink-500">
+              By submitting, you agree to receive emails from NRItoUSA. You can
+              unsubscribe anytime. See our{" "}
+              <Link
+                href="/privacy-policy"
+                className="underline hover:text-ink-300"
+              >
+                Privacy Policy
+              </Link>
+              .
             </p>
           </div>
         </div>

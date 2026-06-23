@@ -85,9 +85,10 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Write for Us", href: "/contribute" },
       { label: "Contributors", href: "/contributors" },
       { label: "Contact", href: "/contact" },
+      { label: "Terms & Conditions", href: "/terms-and-conditions" },
       { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms of Use", href: "/terms-of-use" },
       { label: "Disclaimer", href: "/disclaimer" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
     ],
   },
 ];
@@ -143,10 +144,14 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-ink-900/10 pt-6">
           <p className="text-xs leading-relaxed text-ink-400">
-            Content on {site.name} is for educational purposes only and is not
-            financial, legal, tax, immigration, or investment advice.{" "}
-            {site.name} is owned by {site.owner}. Please consult qualified
-            professionals for your situation.
+            {site.name} is operated by {site.owner}. Content and tools are for
+            general educational purposes only and are not legal, tax,
+            immigration, financial, or investment advice. Please consult
+            qualified professionals for your situation. See our{" "}
+            <Link href="/disclaimer" className="underline hover:text-brand-600">
+              Disclaimer
+            </Link>
+            .
           </p>
           <p className="mt-3 text-xs text-ink-400">
             © {year} {site.owner}. All rights reserved. {site.name} is a
