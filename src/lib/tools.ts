@@ -282,6 +282,22 @@ export const tools: ToolMeta[] = [
     status: "live",
   },
   {
+    slug: "nri-tax-filing-roadmap",
+    title: "DIY NRI Tax Filing Roadmap",
+    label: "DIY Tax Filing Roadmap",
+    group: "Money & Finance",
+    description:
+      "Answer a few simple questions and see which U.S. and India tax forms, deadlines, documents, and NRItoUSA tools may apply — FBAR, FATCA, Form 1040, India ITR, TDS refund, Form 10F, and 15CA/15CB. Educational roadmap only.",
+    icon: "🧭",
+    accent: "from-brand-600 to-indigo-600",
+    seoTitle:
+      "DIY NRI Tax Filing Roadmap for Indians in USA | FBAR, FATCA, ITR, TDS",
+    seoDescription:
+      "A free roadmap for Indians in the USA to understand which U.S. and India tax forms may apply: FBAR, FATCA/Form 8938, Form 1040, Form 1116, India ITR, TDS refund, Form 26AS, AIS/TIS, Form 10F, and 15CA/15CB.",
+    status: "live",
+    tags: ["tax-compliance"],
+  },
+  {
     slug: "fbar-fatca-checker",
     title: "FBAR & FATCA Checker",
     label: "FBAR / FATCA",

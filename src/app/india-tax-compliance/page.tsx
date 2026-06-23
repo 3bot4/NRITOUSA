@@ -191,6 +191,47 @@ export default function IndiaTaxCompliancePage() {
         </Container>
       </section>
 
+      {/* DIY NRI Tax Filing Roadmap — front-door router */}
+      <section className="bg-white pt-10 sm:pt-12">
+        <Container>
+          <Link
+            href="/tools/nri-tax-filing-roadmap"
+            className="group flex flex-col gap-2 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-indigo-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden
+                className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-indigo-600 text-2xl shadow-sm"
+              >
+                🧭
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                  Not sure what to file first?
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  DIY NRI Tax Filing Roadmap
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Use the{" "}
+                  <span className="font-semibold text-brand-700">
+                    DIY NRI tax filing roadmap
+                  </span>{" "}
+                  to see how FBAR, FATCA, U.S. Form 1040, India ITR, TDS refunds,
+                  Form 10F, and 15CA/15CB connect.
+                </p>
+              </div>
+            </div>
+            <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+              Start the roadmap{" "}
+              <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </span>
+          </Link>
+        </Container>
+      </section>
+
       {/* NRI Tax Forms & Limits Center — reference hub */}
       <section className="bg-white pt-10 sm:pt-12">
         <Container>

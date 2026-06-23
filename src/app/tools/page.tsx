@@ -122,6 +122,36 @@ export default function ToolsHubPage() {
               </span>
             </Link>
 
+            <Link
+              href="/tools/nri-tax-filing-roadmap"
+              className="group flex flex-col gap-2 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-indigo-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                  Free Tool
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  DIY NRI Tax Filing Roadmap
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  See which U.S. and India tax forms, limits, deadlines,
+                  documents, and NRItoUSA tools may apply before you file — FBAR,
+                  FATCA &amp; Form 8938; India ITR, TDS refund &amp; Form 26AS;
+                  and your U.S. return with Indian income &amp; foreign tax
+                  credit.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+                Start tax roadmap{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+
             {toolGroups.map((group) => {
               const items = tools.filter(
                 (t) =>

@@ -461,6 +461,8 @@ File an **FBAR (FinCEN Form 114)** if your foreign accounts **combined** crossed
 - Missed prior years? The **Streamlined Filing Compliance Procedures** let non-willful filers catch up with little or no penalty.
 :::
 
+Not sure how FBAR connects with Form 1040, India ITR, or TDS refunds? Start with the [DIY NRI Tax Filing Roadmap](/tools/nri-tax-filing-roadmap) to see the full U.S. + India checklist.
+
 ## What is the FBAR?
 FBAR stands for **Foreign Bank Account Report**, officially **FinCEN Form 114**. It's a disclosure of every foreign financial account you own or have **signature authority** over, filed with the Treasury's Financial Crimes Enforcement Network (FinCEN) — completely separate from your income tax return.
 
@@ -538,7 +540,14 @@ If you have signature authority or ownership, report your interest in the accoun
 Yes — it's free on the BSA E-Filing System and many people do it themselves. If you have many accounts, PFIC mutual funds, or missed prior years, a CPA is worth the few hundred dollars.
 
 ## The bottom line
-The fix is simple: disclose. List your accounts, check whether the combined peak crossed $10,000, file the FBAR by October 15, and add Form 8938 if you cross its higher bar. Missed prior years? The Streamlined Procedures clean them up cheaply — the IRS wants visibility, not your savings.`,
+The fix is simple: disclose. List your accounts, check whether the combined peak crossed $10,000, file the FBAR by October 15, and add Form 8938 if you cross its higher bar. Missed prior years? The Streamlined Procedures clean them up cheaply — the IRS wants visibility, not your savings.
+
+:::cta
+title: Not sure how FBAR connects with Form 1040, India ITR, or TDS refunds?
+body: Start with the DIY NRI Tax Filing Roadmap to see the full U.S. + India checklist in one place — which forms, deadlines, and documents may apply to your situation.
+button: Open the tax filing roadmap
+href: /tools/nri-tax-filing-roadmap
+:::`,
   },
   {
     slug: "double-taxation-dtaa-india-usa",
@@ -648,6 +657,13 @@ If you pass the **Substantial Presence Test**, you're a US resident alien taxed 
 - **Not income:** gifts and inheritance (but [gifts over $100k need Form 3520](/articles/gifting-money-india-tax-implications)).
 - The **Foreign Tax Credit (Form 1116)** prevents double taxation on what you report.
 - Reporting income is **separate** from [FBAR/FATCA account disclosure](/articles/fbar-fatca-nri-guide) — you may owe both.
+:::
+
+:::cta
+title: Reporting Indian income in the U.S.?
+body: Use the roadmap to also check India ITR, TDS refund, FBAR/FATCA, and Form 8938 — and see which NRItoUSA tools and documents may apply to your situation.
+button: Open the tax filing roadmap
+href: /tools/nri-tax-filing-roadmap
 :::
 
 ## First: are you even a US tax resident?

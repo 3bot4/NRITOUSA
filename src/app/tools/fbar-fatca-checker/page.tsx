@@ -134,6 +134,22 @@ export default function FbarFatcaCheckerPage() {
         <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <FbarFatcaChecker />
+          <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 text-sm">
+            <strong className="font-semibold text-ink-900">
+              FBAR/FATCA is only one part of your filing year.
+            </strong>{" "}
+            <span className="text-ink-600">
+              If you also have Indian income, TDS, a property sale, or India ITR
+              questions, use the{" "}
+              <Link
+                href="/tools/nri-tax-filing-roadmap"
+                className="font-semibold text-brand-700 underline"
+              >
+                DIY NRI tax filing roadmap
+              </Link>{" "}
+              to see the full U.S. + India checklist.
+            </span>
+          </div>
           <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
             <strong className="font-semibold text-ink-900">
               Want to organize all your accounts in one place?
