@@ -94,6 +94,13 @@ export default function HomeHero() {
             <Icon name="shield-check" className="h-5 w-5" />
             Check FBAR/FATCA Risk
           </Link>
+          <Link
+            href="/tools/nri-tax-filing-roadmap"
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-brand-200 bg-white px-6 py-5 text-base font-bold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:shadow-lg sm:flex-[2]"
+          >
+            <Icon name="scale" className="h-5 w-5" />
+            Start tax roadmap
+          </Link>
         </div>
 
         {/* Persona entry cards — 2×2 grid mirroring the hub sub-tool cards. */}

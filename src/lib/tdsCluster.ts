@@ -96,6 +96,13 @@ title: Read this first — educational only
 - The US side (Form 1040, foreign tax credit, FBAR, FATCA) is separate — see the [India Tax & Compliance hub](/india-tax-compliance).
 :::
 
+:::cta
+title: Claiming a TDS refund?
+body: See how TDS refund, India ITR, your U.S. tax return, and the Form 1116 foreign tax credit connect — the DIY NRI tax filing roadmap maps the full U.S. + India checklist.
+button: Open the tax filing roadmap
+href: /tools/nri-tax-filing-roadmap
+:::
+
 :::info
 title: What you'll get on this page
 - What TDS is and why NRIs see it on almost every type of Indian income

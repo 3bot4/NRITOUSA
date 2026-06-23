@@ -475,6 +475,14 @@ export interface SituationCard {
 
 export const SITUATIONS: SituationCard[] = [
   {
+    icon: "🧭",
+    label: "I want a step-by-step filing roadmap",
+    blurb:
+      "A guided sequence across U.S. return, FBAR, FATCA, India ITR, TDS refund, Form 10F, and 15CA/15CB.",
+    href: "/tools/nri-tax-filing-roadmap",
+    accent: "from-brand-600 to-indigo-600",
+  },
+  {
     icon: "🏦",
     label: "I have Indian bank accounts",
     blurb: "FBAR, FATCA / Form 8938 and Schedule B reporting on NRE/NRO/FCNR.",

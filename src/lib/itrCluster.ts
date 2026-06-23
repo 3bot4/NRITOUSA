@@ -93,6 +93,13 @@ title: Read this first — educational only
 - Your US side (Form 1040, FBAR, FATCA) is separate — see the [India Tax & Compliance hub](/india-tax-compliance) for that.
 :::
 
+:::cta
+title: Filing India ITR from the USA?
+body: Before you file, check whether the same income also needs U.S. reporting, FBAR/FATCA review, or foreign tax credit planning. The DIY NRI tax filing roadmap maps the whole U.S. + India picture.
+button: Open U.S. + India tax roadmap
+href: /tools/nri-tax-filing-roadmap
+:::
+
 :::info
 title: What you'll get on this page
 - When an NRI in the USA may need to file an Indian return
