@@ -96,6 +96,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${site.url}/send-money-to-india`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/immigration-tracker`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/contributors`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${site.url}/contribute`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${site.url}/about-deepak`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${site.url}/calculators`,
       lastModified: now,
       changeFrequency: "monthly",
