@@ -77,7 +77,7 @@ export interface TickerItem {
 
 /** Where each ticker item links to, keyed by its `key`. */
 const tickerHref: Record<string, string> = {
-  usdinr: "/calculators/remittance-tcs",
+  usdinr: "/calculators/remittance-tcs-cost",
   // The investing guide lives at /topics/investing (there is no /guides route).
   nifty50: "/topics/investing",
   sp500: "/topics/investing",
