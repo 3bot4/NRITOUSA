@@ -6,6 +6,8 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
+import HubLinkGroups from "@/components/HubLinkGroups";
+import RelatedHubs from "@/components/RelatedHubs";
 import FbarFatcaChecker from "@/components/tools/FbarFatcaChecker";
 import { getTool } from "@/lib/tools";
 import { site } from "@/lib/site";
@@ -228,6 +230,143 @@ export default function FbarFatcaCheckerPage() {
         </Container>
       </section>
 
+      {/* FBAR/FATCA Resource Center */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <SectionHeading
+            eyebrow="Resource center"
+            title="FBAR/FATCA Resource Center for NRIs"
+            description="The forms, deadlines, tools, and guides that surround foreign-account reporting — so you can see the whole picture, not just the threshold check above."
+          />
+          <HubLinkGroups
+            columns={4}
+            groups={[
+              {
+                title: "Forms",
+                links: [
+                  {
+                    label: "FBAR / FinCEN Form 114",
+                    href: "/articles/fbar-fatca-nri-guide",
+                    desc: "Annual report of foreign accounts when the combined total tops $10,000.",
+                  },
+                  {
+                    label: "FATCA / IRS Form 8938",
+                    href: "/articles/fbar-fatca-nri-guide",
+                    desc: "Specified foreign assets filed with your federal tax return.",
+                  },
+                  {
+                    label: "Schedule B foreign account question",
+                    desc: "Part III asks whether you have a foreign account — answer it honestly.",
+                  },
+                  {
+                    label: "Form 8621 / PFIC for Indian mutual funds",
+                    href: "/articles/pfic-indian-mutual-funds-trap",
+                    desc: "Indian mutual funds are usually PFICs with punitive US tax rules.",
+                  },
+                  {
+                    label: "Form 3520 for foreign gifts/inheritance",
+                    href: "/tools/form-3520-india-gift-checker",
+                    desc: "Reports large gifts or inheritance from parents/relatives in India.",
+                  },
+                ],
+              },
+              {
+                title: "Timelines",
+                links: [
+                  {
+                    label: "FBAR annual deadline",
+                    desc: "Due April 15 each year, alongside your federal return.",
+                  },
+                  {
+                    label: "FBAR automatic extension",
+                    desc: "Automatically extended to October 15 — no form to file.",
+                  },
+                  {
+                    label: "Form 8938 timing",
+                    desc: "Attached to and filed with your federal income tax return.",
+                  },
+                  {
+                    label: "Prior-year cleanup / missed filing",
+                    href: "/articles/catch-up-missed-fbar-streamlined",
+                    desc: "Streamlined & delinquent-FBAR routes for catching up on missed years.",
+                  },
+                ],
+              },
+              {
+                title: "Related tools",
+                links: [
+                  {
+                    label: "DIY NRI Tax Filing Roadmap",
+                    href: "/tools/nri-tax-filing-roadmap",
+                  },
+                  {
+                    label: "NRI Tax Forms & Limits Center",
+                    href: "/india-tax-compliance/nri-tax-forms-limits",
+                  },
+                  {
+                    label: "NRI Wealth & Tax Organizer",
+                    href: "/nri-wealth-checkup",
+                  },
+                  {
+                    label: "DTAA / Foreign Tax Credit Calculator",
+                    href: "/calculators/dtaa-foreign-tax-credit",
+                  },
+                  {
+                    label: "Form 3520 Gift Checker",
+                    href: "/tools/form-3520-india-gift-checker",
+                  },
+                ],
+              },
+              {
+                title: "Related guides",
+                links: [
+                  {
+                    label: "FBAR for NRE/NRO accounts",
+                    href: "/articles/fbar-nre-nro-accounts",
+                  },
+                  {
+                    label: "NRE/NRO/FD tax guide",
+                    href: "/articles/nre-nro-accounts-explained",
+                  },
+                  {
+                    label: "Indian income on a U.S. tax return",
+                    href: "/articles/indian-income-us-tax-return",
+                  },
+                  {
+                    label: "PFIC / Indian mutual funds guide",
+                    href: "/articles/pfic-indian-mutual-funds-trap",
+                  },
+                  {
+                    label: "Catching up on missed FBARs",
+                    href: "/articles/catch-up-missed-fbar-streamlined",
+                  },
+                ],
+              },
+            ]}
+          />
+
+          {/* Next step CTA */}
+          <div className="mt-8 flex flex-col items-start gap-4 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-white p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-base font-bold text-ink-900">
+                Next step: organize every account in one place
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm text-ink-600">
+                The free NRI Wealth Checkup screens FBAR, FATCA, PFIC, foreign
+                tax credit, and India income together and builds a CPA/CA
+                question list and PDF report.
+              </p>
+            </div>
+            <Link
+              href="/nri-wealth-checkup"
+              className="inline-flex flex-none items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+            >
+              Start the NRI Wealth Checkup →
+            </Link>
+          </div>
+        </Container>
+      </section>
+
       {/* FAQ */}
       <section className="py-12 sm:py-16">
         <Container>
@@ -255,6 +394,13 @@ export default function FbarFatcaCheckerPage() {
       <section className="bg-slate-50/60 py-12 sm:py-16">
         <Container>
           <RelatedToolsStrip currentHref="/tools/fbar-fatca-checker" />
+        </Container>
+      </section>
+
+      {/* Related hubs */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <RelatedHubs hubs={["tax", "taxRoadmap", "wealthCheckup", "immigration"]} />
         </Container>
       </section>
       </ToolFirstLayout>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
@@ -195,6 +196,11 @@ export default function Form10FGeneratorPage() {
       <section className="bg-slate-50/60 py-12 sm:py-16">
         <Container>
           <RelatedToolsStrip currentHref="/tools/form-10f-generator" />
+        </Container>
+      </section>
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["tax", "taxRoadmap", "fbar", "wealthCheckup"]} />
         </Container>
       </section>
       </ToolFirstLayout>

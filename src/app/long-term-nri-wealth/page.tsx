@@ -4,6 +4,8 @@ import Container from "@/components/Container";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import HubLinkGroups from "@/components/HubLinkGroups";
+import RelatedHubs from "@/components/RelatedHubs";
 import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import { getArticle, getArticlesByTopic } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
@@ -161,6 +163,58 @@ export default function LongTermNriWealthPage() {
               Browse all {articles.length} guides
             </Link>
           </div>
+        </Container>
+      </section>
+
+      {/* Wealth Hub — grouped table of contents */}
+      <section className="bg-white pt-14 sm:pt-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Wealth hub"
+            title="Plan your cross-border money in one place"
+            description="Start with the free checkup, then jump to the calculator, guide, or checklist for the decision in front of you."
+          />
+          <HubLinkGroups
+            columns={4}
+            groups={[
+              {
+                title: "Start here",
+                links: [
+                  { label: "NRI Wealth Checkup", href: "/nri-wealth-checkup" },
+                  { label: "10-Year NRI Wealth Checklist", href: "/articles/10-year-nri-wealth-checklist" },
+                  { label: "Free Immigrant Wealth Guide", href: "/free-immigrant-wealth-guide" },
+                ],
+              },
+              {
+                title: "Money decisions",
+                links: [
+                  { label: "Rent vs Buy Calculator", href: "/calculators/rent-vs-buy-immigrant" },
+                  { label: "401(k) Cash Out vs Keep", href: "/calculators/401k-return-to-india" },
+                  { label: "FCNR vs HYSA", href: "/calculators/fcnr-vs-hysa" },
+                  { label: "India FD vs US Investments", href: "/articles/india-fd-vs-us-investments" },
+                  { label: "Invest more in USA or India?", href: "/articles/invest-in-usa-or-india" },
+                ],
+              },
+              {
+                title: "Property & legacy",
+                links: [
+                  { label: "India Property Sale Calculator", href: "/calculators/india-property-capital-gains" },
+                  { label: "Inheriting Indian assets (US tax)", href: "/articles/inheriting-indian-assets-us-tax" },
+                  { label: "Estate planning checklist", href: "/articles/estate-planning-usa-india-assets" },
+                  { label: "US-born kids & India property", href: "/articles/us-kids-india-property-problems" },
+                ],
+              },
+              {
+                title: "Return to India",
+                links: [
+                  { label: "RNOR Tax Residency Calculator", href: "/calculators/rnor-tax-residency" },
+                  { label: "401(k), IRA & Social Security", href: "/articles/what-happens-to-401k-leaving-usa" },
+                  { label: "Currency & retirement planning", href: "/articles/nri-retirement-usa-india-currency-risk" },
+                  { label: "Tax residency planning", href: "/articles/substantial-presence-test-explained" },
+                ],
+              },
+            ]}
+          />
         </Container>
       </section>
 
@@ -359,6 +413,13 @@ export default function LongTermNriWealthPage() {
       <section className="py-14 sm:py-20">
         <Container>
           <CommonNriQuestions />
+        </Container>
+      </section>
+
+      {/* Related hubs */}
+      <section className="pb-14">
+        <Container>
+          <RelatedHubs hubs={["wealthCheckup", "tax", "taxRoadmap", "immigration"]} />
         </Container>
       </section>
 

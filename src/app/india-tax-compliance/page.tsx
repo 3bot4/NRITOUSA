@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import HubLinkGroups from "@/components/HubLinkGroups";
+import RelatedHubs from "@/components/RelatedHubs";
 import Newsletter from "@/components/Newsletter";
 import { getArticle } from "@/lib/articles";
 import {
@@ -159,6 +161,63 @@ export default function IndiaTaxCompliancePage() {
               Browse all tax topics
             </Link>
           </div>
+        </Container>
+      </section>
+
+      {/* Command center — grouped table of contents */}
+      <section className="bg-white pt-10 sm:pt-12">
+        <Container>
+          <SectionHeading
+            eyebrow="Command center"
+            title="Everything you might need this tax year"
+            description="Grouped by what you're trying to do — start here, U.S. reporting for India assets, India-side compliance, and the calculators that do the math."
+          />
+          <HubLinkGroups
+            columns={4}
+            groups={[
+              {
+                title: "Start here",
+                links: [
+                  { label: "DIY NRI Tax Filing Roadmap", href: "/tools/nri-tax-filing-roadmap" },
+                  { label: "NRI Tax Forms & Limits Center", href: "/india-tax-compliance/nri-tax-forms-limits" },
+                  { label: "FBAR/FATCA Checker", href: "/tools/fbar-fatca-checker" },
+                  { label: "NRI Wealth & Tax Organizer", href: "/nri-wealth-checkup" },
+                ],
+              },
+              {
+                title: "U.S. reporting for India assets",
+                links: [
+                  { label: "FBAR (FinCEN 114)", href: "/tools/fbar-fatca-checker" },
+                  { label: "FATCA / Form 8938", href: "/articles/fbar-fatca-nri-guide" },
+                  { label: "PFIC / Indian mutual funds", href: "/articles/pfic-indian-mutual-funds-trap" },
+                  { label: "Foreign tax credit / DTAA", href: "/calculators/dtaa-foreign-tax-credit" },
+                  { label: "Indian income (incl. rental) on a U.S. return", href: "/articles/indian-income-us-tax-return" },
+                  { label: "NRE/NRO/FD interest", href: "/articles/nre-nro-accounts-explained" },
+                ],
+              },
+              {
+                title: "India-side compliance",
+                links: [
+                  { label: "India ITR for NRIs", href: "/india-tax-compliance/nri-itr-filing-usa" },
+                  { label: "TDS refund", href: "/tools/nri-tds-refund-checklist" },
+                  { label: "Form 10F", href: "/tools/form-10f-generator" },
+                  { label: "15CA / 15CB", href: "/tools/form-15ca-15cb-checklist" },
+                  { label: "Repatriation paperwork", href: "/india-tax-compliance/form-15ca-15cb-nri-repatriation" },
+                  { label: "Property sale TDS", href: "/calculators/india-property-capital-gains" },
+                ],
+              },
+              {
+                title: "Calculators",
+                links: [
+                  { label: "RNOR Tax Residency", href: "/calculators/rnor-tax-residency" },
+                  { label: "India Property Sale", href: "/calculators/india-property-capital-gains" },
+                  { label: "DTAA / Foreign Tax Credit", href: "/calculators/dtaa-foreign-tax-credit" },
+                  { label: "Remittance & TCS Cost", href: "/calculators/remittance-tcs-cost" },
+                  { label: "FCNR vs HYSA", href: "/calculators/fcnr-vs-hysa" },
+                ],
+              },
+            ]}
+          />
         </Container>
       </section>
 
@@ -867,6 +926,13 @@ export default function IndiaTaxCompliancePage() {
               );
             })}
           </div>
+        </Container>
+      </section>
+
+      {/* Related hubs */}
+      <section className="bg-white pt-4 pb-10">
+        <Container>
+          <RelatedHubs hubs={["taxRoadmap", "fbar", "wealth", "immigration"]} />
         </Container>
       </section>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
 import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
@@ -279,6 +280,11 @@ export default function GreenCardTrackerPage() {
               ))}
             </div>
           </div>
+        </Container>
+      </section>
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["immigration", "uscis", "tax", "wealth"]} />
         </Container>
       </section>
       </ToolFirstLayout>

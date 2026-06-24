@@ -137,6 +137,7 @@ export const taxEntries: SitemapEntry[] = [
  * ------------------------------------------------------------------ */
 const immDate = new Date("2026-06-16");
 export const immigrationEntries: SitemapEntry[] = [
+  e("/immigration", 0.9, "weekly"),
   e("/uscis", 0.9, "weekly", immDate),
   e("/uscis/case-status", 0.9, "weekly", immDate),
   e("/uscis/myuscis-account", 0.85, "monthly", immDate),

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
 import UscisStatusTool from "@/components/tools/UscisStatusTool";
 import { getTool } from "@/lib/tools";
@@ -204,6 +205,11 @@ export default function UscisStatusMeaningPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
+        </Container>
+      </section>
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["immigration", "uscis", "tax", "wealth"]} />
         </Container>
       </section>
       </ToolFirstLayout>

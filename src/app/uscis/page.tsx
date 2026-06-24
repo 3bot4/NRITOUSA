@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import HubLinkGroups from "@/components/HubLinkGroups";
+import RelatedHubs from "@/components/RelatedHubs";
 import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdGraph, absoluteUrl } from "@/lib/seo";
 import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -274,8 +276,14 @@ export default function UscisHubPage() {
               {/* CTA buttons */}
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link
-                  href="/uscis/case-status"
+                  href="/immigration"
                   className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+                >
+                  ← Immigration Hub
+                </Link>
+                <Link
+                  href="/uscis/case-status"
+                  className="inline-flex items-center gap-2 rounded-lg border border-ink-900/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink-700 shadow-sm transition hover:border-brand-400 hover:text-brand-700"
                 >
                   Check Case Status Meaning
                 </Link>
@@ -430,41 +438,68 @@ export default function UscisHubPage() {
                 </Link>
               </section>
 
-              {/* ── Tools strip ───────────────────────────────────── */}
-              <section className="rounded-2xl border border-ink-900/5 bg-ink-50 p-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
-                  <h2 className="text-base font-semibold text-ink-900">
+              {/* ── Tools grouped by job-to-be-done ───────────────── */}
+              <section>
+                <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
+                  <h2 className="text-xl font-bold text-ink-900">
                     USCIS tools for Indians
                   </h2>
-                  <Link href="/tools/visa-green-card" className="text-xs font-semibold text-brand-600 hover:text-brand-700">
+                  <Link
+                    href="/tools/visa-green-card"
+                    className="text-xs font-semibold text-brand-600 hover:text-brand-700"
+                  >
                     See all visa &amp; green card tools →
                   </Link>
                 </div>
-                <ul className="grid gap-y-2.5 gap-x-6 text-sm sm:grid-cols-2">
-                  {[
-                    { label: "USCIS Case Status Meaning", href: "/tools/uscis-case-status-meaning" },
-                    { label: "USCIS Processing Delay Checker", href: "/tools/uscis-processing-delay-checker" },
-                    { label: "Receipt Number Prefix Decoder", href: "/tools/uscis-receipt-number-decoder" },
-                    { label: "Green Card Stage Finder", href: "/tools/green-card-stage-finder" },
-                    { label: "Green Card Wait Tracker", href: "/tools/green-card-tracker" },
-                    { label: "Priority Date Checker", href: "/tools/priority-date-checker" },
-                    { label: "H-1B Lottery Timeline & Odds", href: "/tools/h1b-lottery-timeline" },
-                    { label: "H-1B Transfer Risk Checklist", href: "/tools/h1b-transfer-risk-checklist" },
-                    { label: "H1B Salaries Explorer", href: "/tools/h1b-salaries" },
-                    { label: "Processing Times Table", href: "/tools/processing-times" },
-                    { label: "H-4 EAD Navigator", href: "/tools/h4-ead-navigator" },
-                    { label: "Citizenship Checklist", href: "/tools/citizenship-checklist" },
-                  ].map((t) => (
-                    <li key={t.href}>
-                      <Link
-                        href={t.href}
-                        className="text-brand-600 hover:text-brand-700 font-medium"
-                      >
-                        {t.label} →
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <HubLinkGroups
+                  columns={3}
+                  groups={[
+                    {
+                      title: "Case status & notices",
+                      links: [
+                        { label: "USCIS Case Status Meaning", href: "/tools/uscis-case-status-meaning" },
+                        { label: "USCIS Notice Decoder", href: "/tools/uscis-notice-decoder" },
+                      ],
+                    },
+                    {
+                      title: "Forms & receipt numbers",
+                      links: [
+                        { label: "USCIS Form Finder", href: "/tools/uscis-form-finder" },
+                        { label: "Receipt Number Prefix Decoder", href: "/tools/uscis-receipt-number-decoder" },
+                      ],
+                    },
+                    {
+                      title: "Processing delays",
+                      links: [
+                        { label: "Processing Delay Checker", href: "/tools/uscis-processing-delay-checker" },
+                        { label: "Processing Times Table", href: "/tools/processing-times" },
+                      ],
+                    },
+                    {
+                      title: "Green card stages",
+                      links: [
+                        { label: "Green Card Stage Finder", href: "/tools/green-card-stage-finder" },
+                        { label: "Green Card Wait Tracker", href: "/tools/green-card-tracker" },
+                        { label: "Priority Date Checker", href: "/tools/priority-date-checker" },
+                      ],
+                    },
+                    {
+                      title: "H1B & employment-based",
+                      links: [
+                        { label: "H-1B Transfer Risk Checklist", href: "/tools/h1b-transfer-risk-checklist" },
+                        { label: "H-1B Lottery Timeline & Odds", href: "/tools/h1b-lottery-timeline" },
+                        { label: "H1B Salaries Explorer", href: "/tools/h1b-salaries" },
+                        { label: "H-4 EAD Navigator", href: "/tools/h4-ead-navigator" },
+                      ],
+                    },
+                    {
+                      title: "Citizenship",
+                      links: [
+                        { label: "Citizenship Checklist", href: "/tools/citizenship-checklist" },
+                      ],
+                    },
+                  ]}
+                />
               </section>
 
               {/* ── Related guides ────────────────────────────────── */}
@@ -488,6 +523,9 @@ export default function UscisHubPage() {
                   ))}
                 </div>
               </section>
+
+              {/* ── Related hubs ──────────────────────────────────── */}
+              <RelatedHubs hubs={["immigration", "tax", "wealth"]} />
 
               {/* ── Disclaimer footer ──────────────────────────────── */}
               <div className="rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
