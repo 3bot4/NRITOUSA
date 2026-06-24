@@ -25,7 +25,7 @@ export default function CalculatorCard({ calc }: { calc: CalculatorMeta }) {
         {calc.description}
       </p>
       <span className="mt-2.5 text-xs font-semibold text-brand-600">
-        Open calculator{" "}
+        Open Calculator{" "}
         <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
           →
         </span>

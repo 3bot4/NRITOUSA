@@ -3,11 +3,11 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
-import ToolCard from "@/components/tools/ToolCard";
 import CalculatorCard from "@/components/CalculatorCard";
 import IulComparisonCard from "@/components/IulComparisonCard";
 import OptionLeoCard from "@/components/OptionLeoCard";
-import { tools, toolGroups, liveTools } from "@/lib/tools";
+import ToolsExplorer from "@/components/tools/ToolsExplorer";
+import { liveTools } from "@/lib/tools";
 import { calculators, usInvestingCalculatorSlugs } from "@/lib/calculators";
 import { TAX_COMPLIANCE_PATH, TAX_COMPLIANCE_TAG } from "@/lib/taxCompliance";
 import {
@@ -152,40 +152,19 @@ export default function ToolsHubPage() {
               </span>
             </Link>
 
-            {toolGroups.map((group) => {
-              const items = tools.filter(
-                (t) =>
-                  t.group === group && !t.tags?.includes(TAX_COMPLIANCE_TAG)
-              );
-              if (!items.length) return null;
-              const isVisaGroup = group === "Visa & Green Card";
-              return (
-                <div
-                  key={group}
-                  id={group.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
-                  className="scroll-mt-24"
-                >
-                  <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
-                    <h2 className="text-lg font-bold tracking-tight text-ink-900">
-                      {group}
-                    </h2>
-                    {isVisaGroup && (
-                      <Link
-                        href="/tools/visa-green-card"
-                        className="text-sm font-semibold text-brand-600 hover:text-brand-700"
-                      >
-                        See all visa &amp; green card tools →
-                      </Link>
-                    )}
-                  </div>
-                  <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {items.map((t) => (
-                      <ToolCard key={t.slug} tool={t} />
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+            {/* Searchable, filterable index of every tool & calculator. All
+                links render server-side, so the full list stays crawlable. */}
+            <ToolsExplorer />
+
+            <div className="rounded-2xl border border-ink-900/5 bg-slate-50 px-5 py-3 text-sm text-ink-500">
+              Deep into the green card journey?{" "}
+              <Link
+                href="/tools/visa-green-card"
+                className="font-semibold text-brand-600 hover:text-brand-700"
+              >
+                See the full visa &amp; green card tools hub →
+              </Link>
+            </div>
 
             <Link
               href={TAX_COMPLIANCE_PATH}

@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
 import HubCards from "@/components/home/HubCards";
+import HomeToolFinder from "@/components/home/HomeToolFinder";
 import NriWealthPlanning from "@/components/home/NriWealthPlanning";
 import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
@@ -47,6 +48,7 @@ export default function HomePage() {
 
       <Container className="pb-8 pt-6 sm:pb-10">
         <HubCards />
+        <HomeToolFinder />
         <NriWealthPlanning />
         <CommonNriQuestions />
         <PopularGuidesForIndians />

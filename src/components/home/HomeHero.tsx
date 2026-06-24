@@ -3,19 +3,22 @@ import Container from "@/components/Container";
 import Icon, { type IconName } from "@/components/Icon";
 
 /**
- * The four primary entry-point CTAs shown directly under the hero copy. All
- * four render as filled brand-blue cards so they read as one prominent set.
+ * Hero entry-point CTAs. "Start Your NRI Wealth Checkup" is the single dominant
+ * action (large, filled brand-blue, full-width on its row). The remaining three
+ * are visually secondary — lighter outline buttons — so the page has one clear
+ * primary action instead of four equally-weighted choices.
  */
-const heroCtas: {
+const primaryCta: { label: string; href: string; icon: IconName } = {
+  label: "Start Your NRI Wealth Checkup",
+  href: "/nri-wealth-checkup",
+  icon: "chart-arrows",
+};
+
+const secondaryCtas: {
   label: string;
   href: string;
   icon: IconName;
 }[] = [
-  {
-    label: "Start Your NRI Wealth Checkup",
-    href: "/nri-wealth-checkup",
-    icon: "chart-arrows",
-  },
   {
     label: "Check FBAR/FATCA Risk",
     href: "/tools/fbar-fatca-checker",
@@ -66,18 +69,29 @@ export default function HomeHero() {
           </p>
         </div>
 
-        {/* Primary hero CTAs — four equally-weighted, filled brand-blue cards. */}
-        <div className="mt-5 grid gap-2.5 sm:max-w-3xl sm:grid-cols-2 lg:grid-cols-4">
-          {heroCtas.map((cta) => (
-            <Link
-              key={cta.href}
-              href={cta.href}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3.5 text-center text-sm font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg"
-            >
-              <Icon name={cta.icon} className="h-4 w-4 flex-none" />
-              {cta.label}
-            </Link>
-          ))}
+        {/* Dominant primary CTA */}
+        <div className="mt-5 sm:max-w-3xl">
+          <Link
+            href={primaryCta.href}
+            className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-brand-600 px-6 py-4 text-center text-base font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:text-lg"
+          >
+            <Icon name={primaryCta.icon} className="h-5 w-5 flex-none" />
+            {primaryCta.label}
+          </Link>
+
+          {/* Secondary CTAs — lighter outline buttons so they don't compete. */}
+          <div className="mt-2.5 grid gap-2.5 sm:grid-cols-3">
+            {secondaryCtas.map((cta) => (
+              <Link
+                key={cta.href}
+                href={cta.href}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-center text-sm font-semibold text-brand-700 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50"
+              >
+                <Icon name={cta.icon} className="h-4 w-4 flex-none" />
+                {cta.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
