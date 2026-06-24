@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Container from "@/components/Container";
 import ToolAnalytics from "@/components/tools/ToolAnalytics";
+import RecommendedToolsAd from "@/components/RecommendedToolsAd";
+import { categoryForToolSlug } from "@/lib/recommendedToolsConfig";
 import BottomDisclaimer, {
   FULL_DISCLAIMER_ID,
 } from "@/components/tools/BottomDisclaimer";
@@ -144,6 +146,14 @@ export default function ToolFirstLayout({
 
       {/* Tool + below-the-fold content */}
       {children}
+
+      {/* Contextual partner tools — renders nothing on immigration-only /
+          generic tools with no finance context. */}
+      <RecommendedToolsAd
+        category={categoryForToolSlug(toolSlug, title)}
+        text={`${toolSlug} ${title} ${category}`}
+        sourcePage={toolSlug}
+      />
 
       {/* Full disclaimer, after everything else */}
       <section className="bg-white py-10 sm:py-12">

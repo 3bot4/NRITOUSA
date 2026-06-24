@@ -73,6 +73,24 @@ export function trackToolEmailCaptureSubmit(p: ToolEventBase): void {
   trackEvent("tool_email_capture_submit", { ...p });
 }
 
+/**
+ * Click on a bottom-of-page "Recommended Tool" partner card (TaxSaveIQ /
+ * StockLeo / OptionLeo). Non-identifying labels only — the tool name, a coarse
+ * source page/category, and the outbound URL.
+ */
+export interface RecommendedToolClickEvent {
+  tool_name: string;
+  source_page: string;
+  source_category: string;
+  destination_url: string;
+}
+
+export function trackRecommendedToolClick(
+  params: RecommendedToolClickEvent
+): void {
+  trackEvent("recommended_tool_click", { ...params });
+}
+
 /** Generic GA4 event. Same SSR/dev/blocked-analytics safety as above. */
 export function trackEvent(
   event: string,
