@@ -7,6 +7,8 @@ import ArticleCard from "@/components/ArticleCard";
 import ArticleByline from "@/components/ArticleByline";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import RecommendedToolsAd from "@/components/RecommendedToolsAd";
+import type { PageCategory } from "@/lib/recommendedToolsConfig";
 import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
 import TuitionCalc from "@/components/education/TuitionCalc";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
@@ -32,6 +34,25 @@ import {
 const ARTICLE_EMBEDS: Record<string, React.ComponentType> = {
   "iul-vs-401k-honest-comparison": IulComparisonCalculator,
   "college-tuition-immigrants-2025": TuitionCalc,
+};
+
+/**
+ * Article topic → recommended-tool category. Topics not listed (credit, cars,
+ * insurance, community, new-to-usa, housing, stories, etc.) fall back to
+ * keyword auto-detection on the title/excerpt, which yields no card unless the
+ * piece genuinely carries tax/finance context.
+ */
+const TOPIC_AD_CATEGORY: Record<string, PageCategory> = {
+  taxes: "tax",
+  investing: "investing",
+  retirement: "investing",
+  "long-term-nri-wealth": "investing",
+  property: "investing",
+  "money-transfer": "investing",
+  immigration: "immigration",
+  students: "education",
+  education: "education",
+  families: "education",
 };
 
 export function generateStaticParams() {
@@ -213,6 +234,14 @@ export default function ArticlePage({
           </Container>
         </section>
       )}
+
+      {/* Contextual partner tools — renders nothing for topics/articles with
+          no tax/finance context. */}
+      <RecommendedToolsAd
+        category={TOPIC_AD_CATEGORY[article.topic]}
+        text={`${article.slug} ${article.title} ${article.excerpt} ${article.topic}`}
+        sourcePage={`article/${article.slug}`}
+      />
 
       <Newsletter />
     </>

@@ -13,6 +13,7 @@ import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpotlight";
+import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const HOME_TITLE =
@@ -59,6 +60,12 @@ export default function HomePage() {
         <AllToolsGrid />
         <LatestUpdates />
       </Container>
+
+      <RecommendedToolsAd
+        category="home"
+        heading="Recommended Financial Tools for NRIs"
+        sourcePage="home"
+      />
     </>
   );
 }
