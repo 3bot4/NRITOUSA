@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
+import HubCards from "@/components/home/HubCards";
 import NriWealthPlanning from "@/components/home/NriWealthPlanning";
 import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
@@ -45,6 +46,7 @@ export default function HomePage() {
       <HomeHero />
 
       <Container className="pb-8 pt-6 sm:pb-10">
+        <HubCards />
         <NriWealthPlanning />
         <CommonNriQuestions />
         <PopularGuidesForIndians />

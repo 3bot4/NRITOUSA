@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
@@ -280,6 +281,11 @@ export default function NriTaxFilingRoadmapPage() {
             <RelatedToolsStrip currentHref={PATH} />
           </Container>
         </section>
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["tax", "taxRoadmap", "fbar", "wealthCheckup"]} />
+        </Container>
+      </section>
       </ToolFirstLayout>
     </>
   );

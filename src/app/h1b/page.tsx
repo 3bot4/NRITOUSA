@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import RelatedHubs from "@/components/RelatedHubs";
 import H1bTransferRiskChecklist from "@/components/tools/H1bTransferRiskChecklist";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
@@ -598,6 +599,12 @@ export default function H1bHubPage() {
               and consult a licensed immigration attorney for your specific situation.
             </p>
           </div>
+        </Container>
+      </section>
+
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["immigration", "uscis", "tax", "wealth"]} />
         </Container>
       </section>
 

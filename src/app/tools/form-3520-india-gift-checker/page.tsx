@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
@@ -173,6 +174,11 @@ export default function Form3520IndiaGiftCheckerPage() {
       <section className="bg-slate-50/60 py-12 sm:py-16">
         <Container>
           <RelatedToolsStrip currentHref="/tools/form-3520-india-gift-checker" />
+        </Container>
+      </section>
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["tax", "taxRoadmap", "fbar", "wealthCheckup"]} />
         </Container>
       </section>
       </ToolFirstLayout>

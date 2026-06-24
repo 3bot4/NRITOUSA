@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import RelatedHubs from "@/components/RelatedHubs";
 import GreenCardStageFinder from "@/components/tools/GreenCardStageFinder";
 import {
   pageMetadata,
@@ -520,6 +521,12 @@ export default function GreenCardPage() {
         </div>
 
       </div>
+
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["immigration", "uscis", "tax", "wealth"]} />
+        </Container>
+      </section>
 
       <Newsletter />
     </>

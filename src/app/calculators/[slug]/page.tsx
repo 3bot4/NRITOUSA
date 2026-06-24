@@ -6,6 +6,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import LeadMagnet from "@/components/calculators/LeadMagnet";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
+import RelatedHubs from "@/components/RelatedHubs";
 import { calculators, getCalculator } from "@/lib/calculators";
 import { getArticle } from "@/lib/articles";
 import {
@@ -203,6 +204,13 @@ export default function CalculatorPage({
       <section className="bg-slate-50/60 py-14 sm:py-16">
         <Container>
           <RelatedToolsStrip currentHref={`/calculators/${calc.slug}`} />
+        </Container>
+      </section>
+
+      {/* Related hubs */}
+      <section className="py-12 sm:py-14">
+        <Container>
+          <RelatedHubs hubs={["tax", "taxRoadmap", "wealth", "wealthCheckup"]} />
         </Container>
       </section>
       </ToolFirstLayout>
