@@ -7,6 +7,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        // Internal JSON endpoints (form handlers, data status) carry no
+        // indexable content and must never be crawled. Everything else —
+        // tools, calculators, articles, hubs, JS/CSS — stays open.
+        disallow: ["/api/"],
       },
       // Google
       { userAgent: "Googlebot", allow: "/" },
