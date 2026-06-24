@@ -96,8 +96,12 @@ const CARDS: QuestionCard[] = [
 
 export default function CommonNriQuestions() {
   return (
-    <section aria-labelledby="nri-questions-h" className="mt-10">
-      <div className="mb-5 max-w-2xl">
+    <section
+      aria-labelledby="nri-questions-h"
+      className="mt-10 grid gap-6 lg:grid-cols-[2fr_3fr] lg:gap-10"
+    >
+      {/* Left: sticky intro so the long list on the right doesn't read as a wall. */}
+      <div className="lg:sticky lg:top-24 lg:self-start">
         <p className="mb-1.5 text-sm font-semibold uppercase tracking-wider text-brand-600">
           Real questions, real answers
         </p>
@@ -109,35 +113,47 @@ export default function CommonNriQuestions() {
         </h2>
         <p className="mt-2 text-ink-500">
           If you&apos;re an Indian family settled in the USA, your money is
-          cross-border now. Here are the questions we hear most — and the free
-          tool, guide, or checklist that answers each one.
+          cross-border now. Here are the questions we hear most — tap any to see
+          the free tool, guide, or checklist that answers it.
         </p>
       </div>
 
-      <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {CARDS.map((c) => (
-          <div
+      {/* Right: accordion list. <details>/<summary> keeps every answer and link
+          in the DOM (crawlable) while collapsing the visual height. */}
+      <div className="divide-y divide-ink-900/5 overflow-hidden rounded-2xl border border-ink-900/5 bg-white shadow-card">
+        {CARDS.map((c, i) => (
+          <details
             key={c.cta + c.hook.slice(0, 12)}
-            className="flex flex-col rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+            name="nri-question"
+            open={i === 0}
+            className="group px-5"
           >
-            <span
-              className={`inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wider ring-1 ring-inset ${TYPE_STYLES[c.type]}`}
-            >
-              {c.type}
-            </span>
-            <h3 className="mt-3 text-base font-bold leading-snug tracking-tight text-ink-900">
-              {c.hook}
-            </h3>
-            <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
-              {c.support}
-            </p>
-            <Link
-              href={c.href}
-              className="mt-4 inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
-            >
-              {c.cta} <span aria-hidden className="ml-1">→</span>
-            </Link>
-          </div>
+            <summary className="flex cursor-pointer list-none items-start gap-3 py-4 [&::-webkit-details-marker]:hidden">
+              <span
+                className={`mt-0.5 inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wider ring-1 ring-inset ${TYPE_STYLES[c.type]}`}
+              >
+                {c.type}
+              </span>
+              <h3 className="flex-1 text-base font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-700">
+                {c.hook}
+              </h3>
+              <span
+                aria-hidden
+                className="mt-1 shrink-0 text-ink-400 transition-transform group-open:rotate-180"
+              >
+                ▾
+              </span>
+            </summary>
+            <div className="pb-5 pl-0 pr-2">
+              <p className="text-sm leading-relaxed text-ink-500">{c.support}</p>
+              <Link
+                href={c.href}
+                className="mt-3 inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
+              >
+                {c.cta} <span aria-hidden className="ml-1">→</span>
+              </Link>
+            </div>
+          </details>
         ))}
       </div>
     </section>
