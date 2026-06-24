@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
 import {
@@ -208,6 +209,13 @@ export default function TdsClusterPage({ page }: { page: TdsPage }) {
           </Container>
         </section>
       )}
+
+      {/* Contextual partner tool — India tax & compliance hub → TaxSaveIQ. */}
+      <RecommendedToolsAd
+        category="tax"
+        text={`${page.slug} ${page.title} ${page.excerpt}`}
+        sourcePage={`india-tax-compliance/${page.slug}`}
+      />
 
       <Newsletter />
     </>
