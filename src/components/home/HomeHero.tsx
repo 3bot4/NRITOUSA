@@ -3,43 +3,33 @@ import Container from "@/components/Container";
 import Icon, { type IconName } from "@/components/Icon";
 
 /**
- * The four "who are you?" entry points shown directly under the hero CTA. Each
- * routes a visitor straight to the hub/tool that matches their situation.
+ * The four primary entry-point CTAs shown directly under the hero copy. All
+ * four render as filled brand-blue cards so they read as one prominent set.
  */
-const personas: {
-  title: string;
-  description: string;
+const heroCtas: {
+  label: string;
   href: string;
   icon: IconName;
-  accent: string;
 }[] = [
   {
-    title: "Just moved to the US?",
-    description: "Banking, driving, housing — start here",
-    href: "/topics/new-to-usa",
-    icon: "plane-arrival",
-    accent: "from-sky-500 to-blue-600",
-  },
-  {
-    title: "On H-1B and waiting for your green card?",
-    description: "See your wait time, visa bulletin, and salary data",
-    href: "/tools/green-card-tracker",
-    icon: "id-badge",
-    accent: "from-emerald-500 to-teal-600",
-  },
-  {
-    title: "Managing India money from the US?",
-    description: "Property sale tax, FBAR, repatriation calculators",
-    href: "/india-tax-compliance",
+    label: "Start Your NRI Wealth Checkup",
+    href: "/nri-wealth-checkup",
     icon: "chart-arrows",
-    accent: "from-rose-500 to-pink-600",
   },
   {
-    title: "Moving back to India?",
-    description: "401(k) cashout, RNOR status, currency timing",
-    href: "/calculators/401k-return-to-india",
-    icon: "home-move",
-    accent: "from-amber-500 to-orange-600",
+    label: "Check FBAR/FATCA Risk",
+    href: "/tools/fbar-fatca-checker",
+    icon: "shield-check",
+  },
+  {
+    label: "DIY NRI Tax Filings",
+    href: "/tools/nri-tax-filing-roadmap",
+    icon: "scale",
+  },
+  {
+    label: "Immigration Tracker",
+    href: "/immigration-tracker",
+    icon: "id-badge",
   },
 ];
 
@@ -76,64 +66,16 @@ export default function HomeHero() {
           </p>
         </div>
 
-        {/* Primary + secondary hero CTAs. Primary (wealth checkup) is the
-            largest, most prominent action; the secondary FBAR/FATCA risk check
-            sits beside it on desktop and stacks below on mobile. */}
-        <div className="mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
-          <Link
-            href="/nri-wealth-checkup"
-            className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 px-8 py-5 text-lg font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg sm:flex-[3] sm:text-xl"
-          >
-            <Icon name="chart-arrows" className="h-6 w-6" />
-            Start Your NRI Wealth Checkup
-          </Link>
-          <Link
-            href="/tools/fbar-fatca-checker"
-            className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-brand-200 bg-white px-6 py-5 text-base font-bold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:shadow-lg sm:flex-[2]"
-          >
-            <Icon name="shield-check" className="h-5 w-5" />
-            Check FBAR/FATCA Risk
-          </Link>
-          <Link
-            href="/tools/nri-tax-filing-roadmap"
-            className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-brand-200 bg-white px-6 py-5 text-base font-bold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:shadow-lg sm:flex-[2]"
-          >
-            <Icon name="scale" className="h-5 w-5" />
-            Start tax roadmap
-          </Link>
-        </div>
-
-        {/* Persona entry cards — 2×2 grid mirroring the hub sub-tool cards. */}
-        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-2">
-          {personas.map((p) => (
+        {/* Primary hero CTAs — four equally-weighted, filled brand-blue cards. */}
+        <div className="mt-5 grid gap-2.5 sm:max-w-3xl sm:grid-cols-2 lg:grid-cols-4">
+          {heroCtas.map((cta) => (
             <Link
-              key={p.href}
-              href={p.href}
-              className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              key={cta.href}
+              href={cta.href}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3.5 text-center text-sm font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg"
             >
-              <div className="flex items-center gap-2.5">
-                <span
-                  aria-hidden
-                  className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${p.accent} text-white shadow-sm`}
-                >
-                  <Icon name={p.icon} className="h-5 w-5" />
-                </span>
-                <h2 className="text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
-                  {p.title}
-                </h2>
-              </div>
-              <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-500">
-                {p.description}
-              </p>
-              <span className="mt-2.5 text-xs font-semibold text-brand-600">
-                Start{" "}
-                <span
-                  aria-hidden
-                  className="inline-block transition-transform group-hover:translate-x-0.5"
-                >
-                  →
-                </span>
-              </span>
+              <Icon name={cta.icon} className="h-4 w-4 flex-none" />
+              {cta.label}
             </Link>
           ))}
         </div>
