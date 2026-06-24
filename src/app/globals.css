@@ -86,6 +86,23 @@
   animation-play-state: paused;
 }
 
+/* Reduced-motion: stop the marquee and let users scroll the strip by hand so
+   long items (e.g. Advance Parole processing time) are never auto-clipped. */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ticker-track {
+    animation: none;
+  }
+  /* The duplicate copy only exists to make the scroll loop seamless; with the
+     animation off it would just be redundant width, so hide it. */
+  .ticker-track .ticker-copy[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 /* Each copy inside ticker-track must also not wrap */
 .ticker-copy {
   display: inline-flex;

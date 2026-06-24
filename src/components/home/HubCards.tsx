@@ -32,6 +32,12 @@ const hubs = [
     blurb: "India vs US investing, property, retirement & estate.",
   },
   {
+    href: "/return-to-india",
+    icon: "🛬",
+    title: "Return to India Hub",
+    blurb: "401(k), RNOR status, currency timing & moving-back checklist.",
+  },
+  {
     href: "/tools",
     icon: "🧰",
     title: "All Tools",
@@ -48,7 +54,7 @@ export default function HubCards() {
       >
         Explore by hub
       </h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {hubs.map((hub) => (
           <Link
             key={hub.href}

@@ -4,6 +4,11 @@ import type { ToolMeta } from "@/lib/tools";
 /** Compact hub card for a tool — mirrors the CalculatorCard style. */
 export default function ToolCard({ tool }: { tool: ToolMeta }) {
   const comingSoon = tool.status === "coming-soon";
+  // Checklist-style tools get their own badge + CTA so the card type reads
+  // clearly against calculators and guides elsewhere on the page.
+  const isChecklist = /checklist/.test(tool.slug);
+  const kindLabel = isChecklist ? "Checklist" : "Tool";
+  const cta = isChecklist ? "Open Checklist" : "Open Tool";
   return (
     <Link
       href={`/tools/${tool.slug}`}
@@ -18,7 +23,7 @@ export default function ToolCard({ tool }: { tool: ToolMeta }) {
             {tool.icon}
           </span>
           <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
-            Tool
+            {kindLabel}
           </span>
         </div>
         {comingSoon && (
@@ -34,7 +39,7 @@ export default function ToolCard({ tool }: { tool: ToolMeta }) {
         {tool.description}
       </p>
       <span className="mt-2.5 text-xs font-semibold text-brand-600">
-        {comingSoon ? "Preview" : "Open tool"}{" "}
+        {comingSoon ? "Preview" : cta}{" "}
         <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
           →
         </span>
