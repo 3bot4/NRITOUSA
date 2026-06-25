@@ -62,6 +62,12 @@ const situationCards = [
     icon: "🔁",
   },
   {
+    title: "I was laid off on H-1B",
+    desc: "Organize your 60-day planning questions, documents, H-1B transfer options, I-140/priority date concerns, H-4 family impact, and money checklist.",
+    href: "/h1b-layoff",
+    icon: "⚡",
+  },
+  {
     title: "I need passport / travel help",
     desc: "Renew your Indian passport in the USA and plan travel while your case is pending.",
     href: "/indian-passport-renewal-usa",

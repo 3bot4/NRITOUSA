@@ -146,6 +146,7 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/receipt-number", 0.9, "weekly", immDate),
   e("/uscis/processing-times", 0.9, "weekly", immDate),
   e("/h1b", 0.9, "weekly", immDate),
+  e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),

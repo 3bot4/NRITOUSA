@@ -152,6 +152,33 @@ export default function ToolsHubPage() {
               </span>
             </Link>
 
+            <Link
+              href="/h1b-layoff"
+              className="group flex flex-col gap-2 rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-orange-600">
+                  Visa &amp; Green Card
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  H-1B Layoff Checklist
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  A planning checklist for Indian H-1B workers after layoff, with
+                  links to LayoffNext countdown and recovery tools.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-orange-600 group-hover:text-orange-700">
+                Open checklist{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+
             {/* Searchable, filterable index of every tool & calculator. All
                 links render server-side, so the full list stays crawlable. */}
             <ToolsExplorer />
