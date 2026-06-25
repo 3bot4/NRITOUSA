@@ -46,6 +46,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "USCIS Case Status", href: "/uscis/case-status" },
       { label: "USCIS Processing Times", href: "/uscis/processing-times" },
       { label: "H1B Guide", href: "/h1b" },
+      { label: "H-1B Layoff Checklist", href: "/h1b-layoff" },
       { label: "Green Card Process", href: "/green-card" },
       { label: "Visa Bulletin", href: "/visa-bulletin" },
       { label: "Indian Passport Renewal", href: "/indian-passport-renewal-usa" },
