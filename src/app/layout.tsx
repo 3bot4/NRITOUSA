@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
+  // Dynamic, self-referencing canonical for EVERY route. Next resolves a
+  // "./" canonical against the current request pathname (see
+  // resolveRelativeUrl in next/dist/lib/metadata), then composes it with
+  // metadataBase → https://www.nritousa.com<current-path>. Pages that set
+  // their own alternates.canonical (via pageMetadata) override this with the
+  // identical self-referencing value, so the two are always consistent.
+  alternates: { canonical: "./" },
   keywords: [
     "NRI finance",
     "NRI USA",

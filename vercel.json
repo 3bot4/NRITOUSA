@@ -1,5 +1,13 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "nritousa.com" }],
+      "destination": "https://www.nritousa.com/:path*",
+      "permanent": true
+    }
+  ]
 }
