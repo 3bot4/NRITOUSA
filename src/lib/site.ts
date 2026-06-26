@@ -3,6 +3,12 @@ export const site = {
   domain: "www.nritousa.com",
   url: "https://www.nritousa.com",
   tagline: "The complete USA guide for NRIs and immigrants",
+  /**
+   * Short positioning line used as the default social (OG/Twitter) description.
+   * Kept separate from {description}: the long sentence is better for SEO,
+   * this punchy line reads better in link previews and matches the OG image.
+   */
+  socialTagline: "Immigration • Tax • Wealth • Return to India Planning",
   description:
     "Practical guides for NRIs and immigrants in the USA covering finance, housing, cars, taxes, investing, retirement, India-USA money transfers, and real immigrant experiences.",
   /** Default author/publisher used in structured data across the site. */

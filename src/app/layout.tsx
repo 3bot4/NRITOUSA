@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
-    description: site.description,
+    description: site.socialTagline,
   },
   twitter: {
     // No @site/@creator handle until a real account exists; the large-image
     // card still works for link previews via the default OG image.
     card: "summary_large_image",
     title: "NRI to USA — The Complete USA Guide for NRIs & Immigrants",
-    description: site.description,
+    description: site.socialTagline,
   },
   robots: {
     index: true,
