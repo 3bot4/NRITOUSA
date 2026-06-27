@@ -372,6 +372,51 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: ["tax-compliance"],
   },
+  {
+    slug: "oci-eligibility-checker",
+    title: "OCI Eligibility Checker",
+    label: "OCI Eligibility Checker",
+    group: "Travel & Documents",
+    description:
+      "Not sure if you qualify for an OCI card? Answer a few questions about your citizenship and Indian ancestry — born in India, parents/grandparents Indian, spouse OCI, minor or adult — to see whether you're Eligible, Possibly Eligible, or Not Eligible, with the reasoning and next steps. Runs entirely in your browser; no personal data leaves the page.",
+    icon: "🪪",
+    accent: "from-amber-500 to-orange-600",
+    seoTitle: "OCI Eligibility Checker (2026): Are You Eligible for an OCI Card?",
+    seoDescription:
+      "Free OCI eligibility checker for Indians in the USA. Answer a few questions about citizenship and Indian ancestry to see if you qualify for an OCI card — instant, private, no signup.",
+    status: "live",
+    tags: ["oci"],
+  },
+  {
+    slug: "oci-cost-calculator",
+    title: "OCI Cost Calculator",
+    label: "OCI Cost Calculator",
+    group: "Travel & Documents",
+    description:
+      "Estimate the full cost of your OCI application in the USA: government service fee, VFS service charge, ICWF, plus optional return courier, SMS updates, and premium lounge. Pick your service type and number of applicants for a line-by-line total. Fees are centrally maintained — always verify live amounts on VFS before paying.",
+    icon: "💵",
+    accent: "from-emerald-500 to-green-600",
+    seoTitle: "OCI Cost Calculator (2026): Government + VFS Fees in the USA",
+    seoDescription:
+      "Estimate total OCI card cost in the USA — government fee, VFS service charge, ICWF, courier, SMS and lounge add-ons — with a line-by-line breakdown for any number of applicants.",
+    status: "live",
+    tags: ["oci"],
+  },
+  {
+    slug: "oci-timeline-calculator",
+    title: "OCI Timeline Calculator",
+    label: "OCI Timeline Calculator",
+    group: "Travel & Documents",
+    description:
+      "Enter your application date and see an estimated, stage-by-stage OCI timeline: VFS submission, consulate processing, MHA clearance in India, printing, and dispatch — with expected earliest and latest delivery dates. Processing ranges are centrally maintained and clearly marked as estimates.",
+    icon: "⏱️",
+    accent: "from-sky-500 to-blue-600",
+    seoTitle: "OCI Timeline Calculator (2026): Processing Time & Delivery Date",
+    seoDescription:
+      "Estimate your OCI processing timeline in the USA stage by stage — VFS, consulate, MHA clearance, printing, dispatch — with expected delivery dates from your application date.",
+    status: "live",
+    tags: ["oci"],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [

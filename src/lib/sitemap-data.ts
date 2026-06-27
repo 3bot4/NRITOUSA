@@ -22,6 +22,7 @@ import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
 import { eduCalcs } from "@/lib/education";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
+import { ociGuides, ociGuidePath } from "@/lib/ociGuides";
 import { itrPages, itrPath } from "@/lib/itrCluster";
 import { tdsPages, tdsPath } from "@/lib/tdsCluster";
 import { repatPages, repatPath } from "@/lib/repatriationCluster";
@@ -150,6 +151,8 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),
+  e("/oci", 0.9, "weekly"),
+  ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),
   e("/community/nri-uscis-decisions", 0.7, "weekly", immDate),
   ...clusterPages.map((p) =>
     e(clusterPath(p.slug), p.kind === "hub" ? 0.9 : 0.7, "monthly", clusterDate(p)),

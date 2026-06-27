@@ -83,6 +83,9 @@ const TOOL_CATEGORIES: Record<string, ChipCategory[]> = {
   "nri-tds-refund-checklist": ["Tax"],
   "form-15ca-15cb-checklist": ["Tax"],
   "form-3520-india-gift-checker": ["Tax", "Property"],
+  "oci-eligibility-checker": ["Travel", "Immigration"],
+  "oci-cost-calculator": ["Travel", "Immigration"],
+  "oci-timeline-calculator": ["Travel", "Immigration"],
 };
 
 /** Per-slug chip mapping for the calculators in calculators.ts. */
