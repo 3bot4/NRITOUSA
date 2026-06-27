@@ -265,7 +265,7 @@ Issued by the **NJ Department of the Treasury, Division of Revenue & Enterprise 
 Issued by the **NY Department of State**. County-clerk certification is often required first for vital records. Official: [dos.ny.gov apostille](https://dos.ny.gov/apostille-or-certificate-authentication).
 
 ### Illinois
-Issued by the **Illinois Secretary of State**, Index Department. Mail-in and walk-in (Chicago/Springfield). Official: [ilsos.gov apostille](https://www.ilsos.gov/departments/index/notary/apostille.html).
+Issued by the **Illinois Secretary of State**, Index Department. Mail-in and walk-in (Chicago/Springfield); the fee is $2 per document. Official: [ilsos.gov apostilles](https://www.ilsos.gov/departments/index/apostilles.html).
 
 :::tip
 title: Mail vs walk-in
