@@ -17,11 +17,15 @@ export interface EligibilityInputs {
   bornInIndia: YesNoUnsure;
   parentIndian: YesNoUnsure;
   grandparentIndian: YesNoUnsure;
+  /** Was a great-grandparent an Indian citizen? (OCI can extend this far.) */
+  greatGrandparentIndian: YesNoUnsure;
   spouseOci: YesNoUnsure;
   /** How long has the marriage to the OCI/Indian-citizen spouse lasted? */
   marriageYears: YesNoUnsure; // "yes" = 2+ years, "no" = under 2 years
   /** Is the applicant a current/former citizen of Pakistan or Bangladesh? */
   pakBangladesh: YesNoUnsure;
+  /** Currently/recently in foreign military, police, or government service? */
+  govService: YesNoUnsure;
   minor: YesNoUnsure;
 }
 
@@ -31,9 +35,11 @@ export const EMPTY_ELIGIBILITY: EligibilityInputs = {
   bornInIndia: "",
   parentIndian: "",
   grandparentIndian: "",
+  greatGrandparentIndian: "",
   spouseOci: "",
   marriageYears: "",
   pakBangladesh: "",
+  govService: "",
   minor: "",
 };
 
@@ -70,11 +76,20 @@ function allAnswered(i: EligibilityInputs): boolean {
     i.bornInIndia,
     i.parentIndian,
     i.grandparentIndian,
+    i.greatGrandparentIndian,
     i.spouseOci,
     i.pakBangladesh,
+    i.govService,
     i.minor,
   ];
   return core.every((v) => v !== "");
+}
+
+/** Foreign military/police/government-service warning, when relevant. */
+function govServiceNote(i: EligibilityInputs): string | null {
+  return i.govService === "yes"
+    ? "Heads-up: current or recent foreign military, police, or government service can affect how an OCI application is reviewed and may require additional disclosure or clearance. Confirm your situation with the Indian consulate."
+    : null;
 }
 
 export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
@@ -156,6 +171,8 @@ export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
   if (y(i.bornInIndia)) basis.push("You were born in India (former Indian national).");
   if (y(i.parentIndian)) basis.push("A parent is/was an Indian citizen.");
   if (y(i.grandparentIndian)) basis.push("A grandparent is/was an Indian citizen.");
+  if (y(i.greatGrandparentIndian))
+    basis.push("A great-grandparent is/was an Indian citizen.");
   if (y(i.spouseOci)) {
     basis.push(
       i.marriageYears === "yes"
@@ -164,8 +181,13 @@ export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
     );
   }
 
+  const govNote = govServiceNote(i);
+
   const hasAncestryPath =
-    y(i.bornInIndia) || y(i.parentIndian) || y(i.grandparentIndian);
+    y(i.bornInIndia) ||
+    y(i.parentIndian) ||
+    y(i.grandparentIndian) ||
+    y(i.greatGrandparentIndian);
   const spousePathSolid = y(i.spouseOci) && i.marriageYears === "yes";
   const spousePathWeak = y(i.spouseOci) && i.marriageYears !== "yes";
 
@@ -184,9 +206,9 @@ export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
       ],
       basis,
       nextSteps: [
-        "Generate your exact paperwork with the OCI Document Checklist Generator.",
         "Estimate fees and processing time with the OCI Cost & Timeline calculators.",
         "Have origin documents apostilled where required before submitting to VFS.",
+        ...(govNote ? [govNote] : []),
       ],
       ready: true,
     };
@@ -197,6 +219,7 @@ export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
     i.bornInIndia === "unsure" ||
     i.parentIndian === "unsure" ||
     i.grandparentIndian === "unsure" ||
+    i.greatGrandparentIndian === "unsure" ||
     i.spouseOci === "unsure";
 
   if (spousePathWeak || anyUnsure) {
@@ -216,6 +239,7 @@ export function evaluateEligibility(i: EligibilityInputs): EligibilityResult {
         "Trace whether any parent, grandparent, or great-grandparent ever held Indian citizenship.",
         "For spouse cases, note your marriage registration date and the two-year threshold.",
         "When in doubt, confirm with your Indian consulate before applying.",
+        ...(govNote ? [govNote] : []),
       ],
       ready: true,
     };

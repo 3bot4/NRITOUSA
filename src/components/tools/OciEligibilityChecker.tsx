@@ -122,6 +122,12 @@ export default function OciEligibilityChecker() {
             onChange={(v) => set("grandparentIndian", v)}
           />
           <Segmented
+            label="Is/was any of your great-grandparents an Indian citizen?"
+            help="OCI ancestry can extend to great-grandchildren of Indian citizens."
+            value={inputs.greatGrandparentIndian}
+            onChange={(v) => set("greatGrandparentIndian", v)}
+          />
+          <Segmented
             label="Is your spouse an Indian citizen or OCI holder?"
             value={inputs.spouseOci}
             onChange={(v) => set("spouseOci", v)}
@@ -142,6 +148,12 @@ export default function OciEligibilityChecker() {
             label="Are you (or your parents/grandparents) a current or former citizen of Pakistan or Bangladesh?"
             value={inputs.pakBangladesh}
             onChange={(v) => set("pakBangladesh", v)}
+          />
+          <Segmented
+            label="Are you currently or recently in foreign military, police, or government service?"
+            help="This doesn't automatically disqualify you, but it can require extra disclosure or clearance."
+            value={inputs.govService}
+            onChange={(v) => set("govService", v)}
           />
           <Segmented
             label="Is the applicant a minor (under 18)?"

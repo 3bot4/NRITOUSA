@@ -144,6 +144,13 @@ export default function OciTimelineCalculator() {
               </ol>
             </ResultCard>
           )}
+
+          <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4 text-sm text-ink-600">
+            <strong className="font-semibold text-ink-900">Note:</strong>{" "}
+            Timeline estimates do not include apostille time, certified document
+            ordering time, VFS shipping time, or delays from missing or
+            additional documents.
+          </div>
         </div>
       }
     />

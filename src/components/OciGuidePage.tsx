@@ -14,6 +14,7 @@ import {
 import { site } from "@/lib/site";
 import { OCI_BASE, OCI_TOOLS } from "@/lib/oci/config";
 import { ociGuides, ociGuidePath, type OciGuide } from "@/lib/ociGuides";
+import OciApostilleChecker from "@/components/tools/OciApostilleChecker";
 
 /**
  * Renders one OCI pillar guide: dense article body + breadcrumb/FAQ schema,
@@ -50,6 +51,7 @@ function guideArticleJsonLd(guide: OciGuide) {
 export default function OciGuidePage({ guide }: { guide: OciGuide }) {
   const faqs = extractFaq(guide.content);
   const others = ociGuides.filter((g) => g.slug !== guide.slug);
+  const isApostille = guide.slug === "apostille";
 
   const crumbs = [
     { name: "Home", url: "/" },
@@ -114,6 +116,34 @@ export default function OciGuidePage({ guide }: { guide: OciGuide }) {
             </div>
           </Container>
         </header>
+
+        {isApostille && (
+          <section className="border-b border-ink-900/5 bg-slate-50/60 py-8 sm:py-10">
+            <Container>
+              <div className="mb-5 flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-xl text-white shadow-sm"
+                >
+                  📜
+                </span>
+                <div>
+                  <p className="text-[0.6875rem] font-semibold uppercase tracking-wider text-brand-600">
+                    Free tool · no signup
+                  </p>
+                  <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+                    OCI Apostille Need Checker
+                  </h2>
+                  <p className="mt-1 text-sm text-ink-500">
+                    Answer four quick questions to see whether your document
+                    likely needs apostille or attestation — and who handles it.
+                  </p>
+                </div>
+              </div>
+              <OciApostilleChecker />
+            </Container>
+          </section>
+        )}
 
         <div className="py-8 sm:py-10">
           <Container>

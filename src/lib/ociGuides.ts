@@ -189,45 +189,62 @@ US civil documents (birth, marriage, name-change) usually must be apostilled by 
    * =============================================================== */
   {
     slug: "apostille",
-    title: "Apostille for OCI in the USA: Birth & Marriage Certificates by State",
-    seoTitle: "Apostille for OCI (2026): Birth & Marriage Certificates by State",
+    title: "OCI Apostille Guide for U.S. Applicants: Birth, Marriage & Name-Change Documents",
+    seoTitle: "OCI Apostille Guide for U.S. Applicants (2026): Birth & Marriage Certificates",
     metaDescription:
-      "How to apostille US documents for OCI — what apostille is, why it's needed, notary vs attestation vs apostille, which documents need it, and step-by-step Secretary of State guides for California, Texas, New Jersey, New York and Illinois.",
+      "OCI apostille guide for U.S. applicants — when a birth certificate, marriage certificate, divorce decree, or name-change order needs apostille or attestation, minor OCI rules, who apostilles each document, and how to follow the latest VFS checklist.",
     excerpt:
-      "What apostille is, which OCI documents need it, and how to do it through the Secretary of State in CA, TX, NJ, NY, and IL.",
+      "When U.S. birth, marriage, divorce, and name-change documents need apostille or attestation for OCI — with a built-in need checker, examples, and the latest VFS-checklist guidance.",
     navLabel: "Apostille guide",
-    hook: "What apostille is, which documents need it, and how to do it in CA, TX, NJ, NY & IL.",
+    hook: "When birth, marriage & name-change documents need apostille or attestation — plus a need checker.",
     icon: "📜",
     date: "2026-06-27",
-    content: `If your OCI application uses a US birth certificate, marriage certificate, or name-change order, that document almost certainly needs an **apostille** first. This guide explains what that means and walks through the process for the five states where most Indian-origin Americans live.
+    updated: "2026-06-27",
+    content: `This guide is for **U.S.-based OCI applicants** who need to understand when birth certificates, marriage certificates, divorce documents, or name-change records may need **apostille or attestation** — and exactly how to handle them for VFS. Use the **OCI Apostille Need Checker** above for a quick read on your specific document, then use the sections below to get it right.
 
-:::info
-title: Where apostille fits
-Apostille is a document step that happens **before** you submit to VFS. Finish it first, then follow the [How to Apply guide](${OCI_BASE}/how-to-apply).
+:::warn
+title: Important: Do not send original apostilled documents to VFS unless specifically requested
+For OCI applications, applicants usually apostille the original/certified document first, but VFS/Consulate typically requires **self-attested copies** of apostilled documents in the OCI packet. Keep your original apostilled document safe. Always follow the **latest VFS checklist** for your applicant type and consulate jurisdiction.
 :::
+
+> Get the certified/original document apostilled first, then **submit or upload the copy required by the latest VFS checklist** — don't mail your only original unless the checklist explicitly asks for it.
 
 ## What is an apostille?
-An apostille is a certificate attached by a US state's **Secretary of State** that authenticates a public document for use in another country. Because both the US and India are members of the Hague Apostille Convention, an apostille is accepted directly — no further embassy legalization is needed.
+An apostille is a certificate that authenticates a public document for use in another country under the Hague Apostille Convention. Because both the U.S. and India are members, an apostille is accepted directly — no further embassy legalization is needed. **Who issues it depends on who issued the document** (see below): in many U.S. states it's the Secretary of State, but not always.
 
-## Notary vs attestation vs apostille
-These get confused constantly, and submitting the wrong one is a top rejection reason.
+## Apostille vs notarization vs attestation
+These get confused constantly, and using the wrong one is a top reason OCI documents bounce back.
 
 :::compare
-left: Not enough on its own
-right: What OCI needs
-✗ Notary — only verifies a signature, not the document
-✗ Attestation — a generic term; not the Hague certificate
-✓ Apostille — the state Secretary of State's Hague certificate
+left: Often not enough on its own
+right: What OCI may require
+✗ Notarization — only confirms a signature or identity, not international acceptance
+✓ Apostille — Hague Convention authentication of the document itself
+✓ Attestation — consular / foreign-mission authentication, used for non-apostille countries or when VFS/Consulate requests it
 :::
 
-> Order matters: for many vital records you need a **certified copy** from the issuing office first, sometimes **notarized**, and only then **apostilled** by the Secretary of State.
+- **Notary alone is usually not enough.** OCI may require apostille **or** official consular/foreign-mission attestation depending on **where the document was issued**.
+- **Apostille** is for documents from Hague Convention countries (including the U.S. and India).
+- **Attestation** may apply for documents from non-apostille countries, or when VFS/the Consulate specifically asks for it.
+- OCI applicants **should not rely on a simple notary stamp** when VFS asks for apostille or attestation.
+
+## Who actually apostilles the document?
+Use the apostille authority for the **state or country that issued the document** — not where you live now.
+
+:::info
+title: Who handles what
+- **U.S. state-issued** birth, marriage, divorce, and name-change documents usually go to **that state's apostille authority** (often the Secretary of State, but not always).
+- **U.S. federal documents** may instead need authentication by the **U.S. Department of State**.
+- **Indian-issued documents** are generally **not apostilled in the U.S.** — they're handled differently; check the latest VFS checklist.
+- **Foreign (non-U.S.) documents** may need an **apostille from that country** (if it's a Hague member) or **attestation by the appropriate mission** if it isn't.
+:::
 
 ## Which OCI documents need apostille?
 :::good
-title: Usually require apostille
-- US **birth certificate** (for newborns/minors, and to prove parentage)
-- US **marriage certificate** (spouse-based OCI, name change)
-- **Name-change** court orders / deed poll
+title: May require apostille / attestation
+- U.S. **birth certificate** (newborns/minors, and to prove parentage)
+- U.S. **marriage certificate** (spouse-based OCI, name change)
+- **Name-change** court orders / legal documents
 - **Divorce decrees** and **death certificates** where relevant to your case
 :::
 
@@ -235,37 +252,43 @@ title: Usually require apostille
 title: Usually do NOT need apostille
 - Your **passport** and **naturalization certificate** (foreign-government IDs)
 - The **OCI application printout** and photos
-- Documents already issued by Indian authorities
+- Documents already issued by **Indian authorities**
 :::
 
-When in doubt, confirm with your consulate before paying for an apostille you don't need.
+When in doubt, confirm against the latest VFS checklist before paying for an apostille you may not need.
+
+## OCI apostille examples
+- **U.S.-born minor applying for OCI:** the birth certificate may need apostille/attestation. A **hospital "birth certificate" is not enough** — you need the certified government-issued birth certificate showing **both parents' names**.
+- **OCI through marriage:** a foreign marriage certificate may need apostille/attestation, and **spouse-based OCI has extra eligibility rules** (including a registered-marriage duration requirement).
+- **Name change:** a court order or legal name-change document may need apostille if it was issued **outside India**.
+- **Divorce / death certificate:** may be needed for **remarriage** cases or to document a parent/spouse relationship.
 
 ## The general process
 :::steps
-Get a certified copy of the vital record from the issuing county/state office (not a photocopy).
+Order a certified government copy of the record from the issuing county/state office (not a photocopy or hospital copy).
 Check whether your state needs it notarized or county-clerk certified first.
-Submit to your state's Secretary of State (by mail or in person) with the apostille request form and fee.
-Receive the document with the apostille certificate attached.
-Submit the apostilled document with your OCI application to VFS.
+Submit to the correct apostille authority (the issuing state, the U.S. Department of State for federal documents, or a foreign authority/mission) with the request form and fee.
+Receive the document with the apostille (or attestation) attached, and keep the original safe.
+Submit or upload the copy required by the latest VFS checklist — not your only original, unless specifically requested.
 :::
 
-## State-by-state Secretary of State guides
+## State-by-state apostille authorities
 Fees and turnaround change — always confirm on the official page linked for your state.
 
 ### California
-Issued by the **California Secretary of State** (Notary Public & Special Filings / Authentication). Mail-in and limited in-person (Sacramento/LA) service. Official: [sos.ca.gov authentication](https://www.sos.ca.gov/notary/authentication).
+Issued by the **California Secretary of State** (Notary Public & Special Filings / Authentication). Mail-in and limited in-person (Sacramento/LA) service. Official: [California SOS authentication](https://www.sos.ca.gov/notary/authentication).
 
 ### Texas
-Issued by the **Texas Secretary of State**, Authentications Unit. Mail-in, with expedited options. Official: [sos.state.tx.us authentication](https://www.sos.state.tx.us/authinfo.shtml).
+Issued by the **Texas Secretary of State**, Authentications Unit. Mail-in, with expedited options. Official: [Texas SOS authentication](https://www.sos.state.tx.us/authinfo.shtml).
 
 ### New Jersey
-Issued by the **NJ Department of the Treasury, Division of Revenue & Enterprise Services**. Regional/Trenton service. Official: [nj.gov apostilles](https://www.nj.gov/treasury/revenue/apostilles.shtml).
+Issued by the **NJ Department of the Treasury, Division of Revenue & Enterprise Services**. Regional/Trenton service. Official: [New Jersey apostilles](https://www.nj.gov/treasury/revenue/apostilles.shtml).
 
 ### New York
-Issued by the **NY Department of State**. County-clerk certification is often required first for vital records. Official: [dos.ny.gov apostille](https://dos.ny.gov/apostille-or-certificate-authentication).
+Issued by the **NY Department of State**. County-clerk certification is often required first for vital records. Official: [New York apostille](https://dos.ny.gov/apostille-or-certificate-authentication).
 
 ### Illinois
-Issued by the **Illinois Secretary of State**, Index Department. Mail-in and walk-in (Chicago/Springfield); the fee is $2 per document. Official: [ilsos.gov apostilles](https://www.ilsos.gov/departments/index/apostilles.html).
+Issued by the **Illinois Secretary of State**, Index Department. Mail-in and walk-in (Chicago/Springfield); the fee is $2 per document. Official: [Illinois apostilles](https://www.ilsos.gov/departments/index/apostilles.html).
 
 :::tip
 title: Mail vs walk-in
@@ -274,28 +297,48 @@ Walk-in service (where offered) can be same-day; mail-in often runs 1–4 weeks.
 
 ## Common apostille mistakes
 :::warn
-- Apostilling a **plain photocopy** instead of a certified vital record.
-- Going to the **wrong state** — apostille is done by the state that **issued** the document, not where you live now.
+- **Mailing your only original** when the VFS checklist actually asks for a self-attested copy.
+- Apostilling a **plain photocopy or hospital certificate** instead of a certified government record.
+- Going to the **wrong authority** — apostille is done by the **issuer's** state/country, not where you live now.
+- Relying on a **notary stamp** when VFS asks for apostille or attestation.
 - Skipping a required **county-clerk certification** (common in New York).
-- Letting the certified copy get **too old** if your state requires a recent issue date.
 :::
+
+## Where to go next
+- New to the process? Start at the [OCI Center](${OCI_BASE}) or read the full [step-by-step application guide](${OCI_BASE}/how-to-apply), which covers **minor and newborn applications**, the **document checklist**, and **fees** in detail.
+- Renewing or updating instead? See [OCI renewal, re-issue and name changes](${OCI_BASE}/renewal).
+- Check you qualify with the [eligibility checker](${OCI_TOOLS.eligibility.path}), estimate the [total cost](${OCI_TOOLS.cost.path}), and plan dates with the [timeline calculator](${OCI_TOOLS.timeline.path}).
 
 ## Frequently asked questions
 
-### Does OCI require apostille?
-For US-issued civil documents (birth, marriage, name-change) used in your application, yes — they generally must be apostilled by the issuing state's Secretary of State. Your passport and naturalization certificate do not.
+### Do I send the original apostilled document to VFS?
+Usually not. Applicants typically apostille the original/certified document, but the OCI packet generally needs a **self-attested copy** of it. Keep your original safe and follow the latest VFS checklist for your applicant type and consulate — only send an original if it specifically asks.
 
-### Can I just notarize instead of apostille?
-No. A notary only witnesses a signature. OCI needs the state's Hague apostille certificate on the underlying document.
+### Does a U.S. birth certificate need apostille for minor OCI?
+Often yes. A U.S. state-issued birth certificate showing **both parents** usually needs apostille/attestation for a minor's OCI. Confirm the exact requirement on the current VFS checklist for your consulate.
 
-### Which state apostilles my document?
-The state that **issued** it. A birth certificate from New Jersey is apostilled by New Jersey, even if you now live in Texas.
+### Is a hospital birth certificate accepted for OCI?
+No. A hospital "certificate" is not the official record. You need the **certified government-issued birth certificate** from the state/county vital-records office, which can then be apostilled.
 
-### How long does apostille take?
-Walk-in service can be same-day in some states; mail-in commonly takes 1–4 weeks. Confirm current turnaround on your state's official page and start early.
+### Is notarization enough for OCI?
+Usually not. A notary only confirms a signature or identity. When VFS asks for apostille or attestation, a notary stamp alone won't satisfy it.
 
-### Do I need apostille for a newborn's OCI?
-Yes — the child's US birth certificate showing both parents typically needs to be apostilled. See the [How to Apply guide](${OCI_BASE}/how-to-apply).`,
+### Who apostilles a marriage certificate?
+The authority for **wherever it was issued** — typically that U.S. state's apostille authority for a U.S. marriage certificate, or the issuing country's authority/mission for a foreign one.
+
+### What if my document was issued outside the United States?
+It may need an **apostille from that country** if it's a Hague Convention member, or **consular/mission attestation** if it isn't. Indian-issued documents are handled separately — check the latest VFS checklist.
+
+### Can OCI be delayed because of apostille problems?
+Yes. Missing apostille/attestation, wrong issuing authority, hospital instead of certified certificates, or sending the wrong copy are common causes of OCI delays and document rejections.
+
+### Should I apostille before starting the OCI application?
+It usually helps to order certified copies and apostille **early**, because that step is sequential and can take weeks — but always confirm the current VFS document list first so you apostille the right documents.
+
+:::warn
+title: Disclaimer
+This page is an educational guide. OCI and VFS requirements can change by applicant type, consulate jurisdiction, and document country. Always verify with the **latest VFS checklist** and official OCI instructions before submitting.
+:::`,
   },
 
   /* =============================================================== *

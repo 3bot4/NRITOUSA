@@ -191,6 +191,16 @@ export default function OciCostCalculator() {
               </li>
             </ul>
           </ResultCard>
+
+          <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4 text-sm text-ink-600">
+            <strong className="font-semibold text-ink-900">
+              Fees can change.
+            </strong>{" "}
+            Always verify with the latest VFS fee table before mailing your
+            application. The government fee, ICWF, and VFS service charge are
+            shown as separate lines above and were summarised as of{" "}
+            <time dateTime={OCI_DATA_AS_OF}>{OCI_DATA_AS_OF}</time>.
+          </div>
         </div>
       }
     />
