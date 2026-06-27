@@ -189,10 +189,10 @@ US civil documents (birth, marriage, name-change) usually must be apostilled by 
    * =============================================================== */
   {
     slug: "apostille",
-    title: "OCI Apostille Guide for U.S. Applicants: Birth, Marriage & Name-Change Documents",
-    seoTitle: "OCI Apostille Guide for U.S. Applicants (2026): Birth & Marriage Certificates",
+    title: "OCI Apostille Guide for U.S. Applicants",
+    seoTitle: "OCI Apostille Guide for U.S. Applicants",
     metaDescription:
-      "OCI apostille guide for U.S. applicants — when a birth certificate, marriage certificate, divorce decree, or name-change order needs apostille or attestation, minor OCI rules, who apostilles each document, and how to follow the latest VFS checklist.",
+      "Learn when OCI applicants may need apostille or attestation for birth certificates, marriage certificates, name-change records, and minor OCI documents. Includes VFS copy warning and state apostille guidance.",
     excerpt:
       "When U.S. birth, marriage, divorce, and name-change documents need apostille or attestation for OCI — with a built-in need checker, examples, and the latest VFS-checklist guidance.",
     navLabel: "Apostille guide",
@@ -200,17 +200,15 @@ US civil documents (birth, marriage, name-change) usually must be apostilled by 
     icon: "📜",
     date: "2026-06-27",
     updated: "2026-06-27",
-    content: `This guide is for **U.S.-based OCI applicants** who need to understand when birth certificates, marriage certificates, divorce documents, or name-change records may need **apostille or attestation** — and exactly how to handle them for VFS. Use the **OCI Apostille Need Checker** above for a quick read on your specific document, then use the sections below to get it right.
+    content: `This guide is for **U.S.-based OCI applicants** who need to understand when birth certificates, marriage certificates, divorce documents, or name-change records **may need apostille or attestation depending on the document, applicant type, country of issue, and the latest VFS checklist** — and how to handle them for VFS. Use the **OCI Apostille Need Checker** above for a quick read on your specific document, then use the sections below to get it right.
 
 :::warn
-title: Important: Do not send original apostilled documents to VFS unless specifically requested
-For OCI applications, applicants usually apostille the original/certified document first, but VFS/Consulate typically requires **self-attested copies** of apostilled documents in the OCI packet. Keep your original apostilled document safe. Always follow the **latest VFS checklist** for your applicant type and consulate jurisdiction.
+title: Important: Keep your original apostilled document safe
+For OCI applications, you may need to get a certified/original document apostilled first, but VFS/Consulate typically requires **self-attested copies** of apostilled documents in the OCI application packet. Do not send original apostilled documents to VFS unless the latest VFS checklist or Consulate specifically asks for them.
 :::
 
-> Get the certified/original document apostilled first, then **submit or upload the copy required by the latest VFS checklist** — don't mail your only original unless the checklist explicitly asks for it.
-
 ## What is an apostille?
-An apostille is a certificate that authenticates a public document for use in another country under the Hague Apostille Convention. Because both the U.S. and India are members, an apostille is accepted directly — no further embassy legalization is needed. **Who issues it depends on who issued the document** (see below): in many U.S. states it's the Secretary of State, but not always.
+An apostille authenticates a public document for use in another country under the Hague Apostille Convention. Because both the U.S. and India are members, an apostille is accepted directly — no further embassy legalization is needed. **Apostille is issued by the apostille authority for the state or country that issued the document. In many U.S. states this is the Secretary of State, but not always.**
 
 ## Apostille vs notarization vs attestation
 These get confused constantly, and using the wrong one is a top reason OCI documents bounce back.
@@ -223,10 +221,7 @@ right: What OCI may require
 ✓ Attestation — consular / foreign-mission authentication, used for non-apostille countries or when VFS/Consulate requests it
 :::
 
-- **Notary alone is usually not enough.** OCI may require apostille **or** official consular/foreign-mission attestation depending on **where the document was issued**.
-- **Apostille** is for documents from Hague Convention countries (including the U.S. and India).
-- **Attestation** may apply for documents from non-apostille countries, or when VFS/the Consulate specifically asks for it.
-- OCI applicants **should not rely on a simple notary stamp** when VFS asks for apostille or attestation.
+**Notarization alone is usually not enough when VFS asks for apostille/attestation.** Apostille is used for Hague Convention document authentication. Attestation may apply for documents from non-apostille countries or when requested by VFS/Consulate. Always follow the **latest VFS checklist** for the applicant type and consulate jurisdiction.
 
 ## Who actually apostilles the document?
 Use the apostille authority for the **state or country that issued the document** — not where you live now.
@@ -269,7 +264,13 @@ Order a certified government copy of the record from the issuing county/state of
 Check whether your state needs it notarized or county-clerk certified first.
 Submit to the correct apostille authority (the issuing state, the U.S. Department of State for federal documents, or a foreign authority/mission) with the request form and fee.
 Receive the document with the apostille (or attestation) attached, and keep the original safe.
-Submit or upload the copy required by the latest VFS checklist — not your only original, unless specifically requested.
+Submit/upload the self-attested copy of the apostilled document required by the latest VFS checklist. Keep the original apostilled document safe unless VFS or the Consulate specifically asks for it.
+:::
+
+## Minor OCI birth certificate warning
+:::warn
+title: Minor OCI birth certificate warning
+For minor or newborn OCI applications, use a certified government-issued birth certificate that shows the child's details and parent information. Hospital birth certificates are not accepted for OCI. If the birth certificate was issued outside India, apostille or attestation may be required depending on the VFS checklist.
 :::
 
 ## State-by-state apostille authorities
@@ -312,22 +313,22 @@ Walk-in service (where offered) can be same-day; mail-in often runs 1–4 weeks.
 ## Frequently asked questions
 
 ### Do I send the original apostilled document to VFS?
-Usually not. Applicants typically apostille the original/certified document, but the OCI packet generally needs a **self-attested copy** of it. Keep your original safe and follow the latest VFS checklist for your applicant type and consulate — only send an original if it specifically asks.
-
-### Does a U.S. birth certificate need apostille for minor OCI?
-Often yes. A U.S. state-issued birth certificate showing **both parents** usually needs apostille/attestation for a minor's OCI. Confirm the exact requirement on the current VFS checklist for your consulate.
-
-### Is a hospital birth certificate accepted for OCI?
-No. A hospital "certificate" is not the official record. You need the **certified government-issued birth certificate** from the state/county vital-records office, which can then be apostilled.
+Usually no. VFS/Consulate typically requires **self-attested copies** of apostilled documents. Keep the original safe unless specifically requested.
 
 ### Is notarization enough for OCI?
-Usually not. A notary only confirms a signature or identity. When VFS asks for apostille or attestation, a notary stamp alone won't satisfy it.
+Usually no. A notary stamp alone is different from apostille or consular attestation.
+
+### Does a U.S. birth certificate need apostille for minor OCI?
+It may be required depending on the VFS checklist and applicant type. Use a certified government-issued birth certificate, not a hospital certificate.
+
+### Is a hospital birth certificate accepted for OCI?
+No. A hospital "certificate" is not the official record. Use the **certified government-issued birth certificate** from the state/county vital-records office, which can then be apostilled if required.
 
 ### Who apostilles a marriage certificate?
-The authority for **wherever it was issued** — typically that U.S. state's apostille authority for a U.S. marriage certificate, or the issuing country's authority/mission for a foreign one.
+The apostille authority of the state/country that issued the marriage certificate.
 
 ### What if my document was issued outside the United States?
-It may need an **apostille from that country** if it's a Hague Convention member, or **consular/mission attestation** if it isn't. Indian-issued documents are handled separately — check the latest VFS checklist.
+It may need apostille from that country if applicable, or attestation by the appropriate foreign mission/consulate. Indian-issued documents are handled separately — check the latest VFS checklist.
 
 ### Can OCI be delayed because of apostille problems?
 Yes. Missing apostille/attestation, wrong issuing authority, hospital instead of certified certificates, or sending the wrong copy are common causes of OCI delays and document rejections.

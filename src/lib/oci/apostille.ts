@@ -120,32 +120,32 @@ export function evaluateApostille(i: ApostilleInputs): ApostilleResult {
     tone = "info";
     const authority =
       i.usState && i.usState !== "other" && STATE_AUTHORITY[i.usState]
-        ? STATE_AUTHORITY[i.usState]
-        : "the apostille authority of the state that issued the document";
+        ? `Use ${STATE_AUTHORITY[i.usState]}.`
+        : "Use the apostille authority of the state that issued the document.";
     notes.push({
       tone: "info",
-      text: `Apostille may be needed if VFS asks for apostille/attestation. Use ${authority}. Do not send the original apostilled document to VFS unless specifically requested — usually you submit a self-attested copy.`,
+      text: `Apostille may be needed if the VFS checklist asks for apostille/attestation. ${authority} Usually submit a self-attested copy to VFS, not the original apostilled document.`,
     });
   } else if (i.issuedIn === "india") {
     headline = "Indian-issued documents are handled differently";
     tone = "caution";
     notes.push({
       tone: "caution",
-      text: "Indian-issued documents are generally handled differently. Check the latest VFS checklist — U.S. state apostille is not used for Indian-issued documents.",
+      text: "Indian-issued documents are not apostilled by a U.S. state. Check the latest VFS checklist for how Indian-issued documents should be submitted.",
     });
   } else if (i.issuedIn === "other") {
     headline = "Apostille or mission attestation, depending on the country";
     tone = "info";
     notes.push({
       tone: "info",
-      text: "You may need apostille from that country if it is part of the Hague Apostille Convention, or consular/mission attestation if it is not. Check the latest VFS checklist.",
+      text: "You may need apostille from that country if it is part of the Hague Apostille Convention, or consular/mission attestation if not.",
     });
   }
 
   if (i.certified === "no") {
     notes.push({
       tone: "attention",
-      text: "Order a certified government copy first. Photocopies or hospital certificates are usually not accepted for apostille.",
+      text: "Order a certified government copy first. Photocopies and hospital certificates are usually not accepted for apostille/OCI.",
     });
   } else if (i.certified === "unsure") {
     notes.push({
@@ -157,12 +157,12 @@ export function evaluateApostille(i: ApostilleInputs): ApostilleResult {
   if (i.applicant === "minor") {
     notes.push({
       tone: "caution",
-      text: "For minor OCI, parent names on the birth certificate are important. Hospital birth certificates are not accepted.",
+      text: "Hospital birth certificates are not accepted for OCI. Parent information on the birth certificate matters.",
     });
   } else if (i.applicant === "spouse") {
     notes.push({
       tone: "caution",
-      text: "Spouse-based OCI has extra eligibility rules, including marriage documentation and duration requirements. Confirm on VFS/official OCI guidance.",
+      text: "Spouse-based OCI has additional marriage documentation and eligibility rules. Verify using official OCI/VFS guidance.",
     });
   }
 
