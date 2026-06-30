@@ -117,7 +117,11 @@ export default function SponsorCard({
             {sponsor.employer}
           </h3>
         </div>
-        <TrendBadge trend={sponsor.trend} />
+        {/* Only show a trend once there's a prior-year window to compare against.
+            With a single disclosure file prev_year_count is 0 for every row, so
+            the "trend" would be a meaningless all-"up" — hide it until a prior
+            fiscal-year file is loaded. */}
+        {sponsor.prev_year_count > 0 && <TrendBadge trend={sponsor.trend} />}
       </div>
 
       <p className="mt-1.5 text-sm text-ink-600">

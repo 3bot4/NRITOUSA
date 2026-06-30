@@ -38,3 +38,7 @@ next-env.d.ts
 
 # generated audit reports (the audit.js / website-audit.sh tooling is tracked)
 audit-report.*.md
+
+# raw DOL OFLC LCA disclosure files — large (100-600 MB), never committed.
+# Only the rolled-up data/h1b/sponsors.csv produced by data/h1b/etl.py is tracked.
+data/h1b/*.xlsx
