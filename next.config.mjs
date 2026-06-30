@@ -54,6 +54,17 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  experimental: {
+    // The H-1B Sponsor Finder's CSV fallback (used when DATABASE_URL is unset)
+    // reads data/h1b/sponsors.csv at runtime via a dynamic fs path, which Next's
+    // file tracing can't detect. Force-include it in those function bundles so
+    // the no-database fallback works on Vercel previews too.
+    outputFileTracingIncludes: {
+      "/api/sponsors": ["./data/h1b/sponsors.csv"],
+      "/api/roles": ["./data/h1b/sponsors.csv"],
+      "/h1b-sponsors/[socSlug]/[state]": ["./data/h1b/sponsors.csv"],
+    },
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
