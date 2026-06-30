@@ -1,0 +1,187 @@
+employer,soc_code,soc_title,state,lca_count,worker_positions,median_wage,wage_levels,prev_year_count,trend,last_filed
+COGNIZANT,13-2011,Accountants and Auditors,CA,4,5,125000,"{""I"": 2, ""II"": 2}",0,up,2025-09-29
+BRIGHTWAVE ANALYTICS,13-2011,Accountants and Auditors,CA,3,8,185000,"{""III"": 3}",0,up,2026-01-26
+AMAZON,13-2011,Accountants and Auditors,CA,2,2,117502,"{""III"": 2}",3,down,2025-06-07
+INFOSYS,13-2011,Accountants and Auditors,CA,2,2,140000,"{""III"": 2}",6,down,2026-02-14
+META,13-2011,Accountants and Auditors,CA,2,6,132504,"{""II"": 1, ""III"": 1}",0,up,2026-01-30
+TATA CONSULTANCY SERVICES,13-2011,Accountants and Auditors,CA,2,2,150000,"{""II"": 1, ""III"": 1}",0,up,2025-12-02
+GOOGLE,13-2011,Accountants and Auditors,CA,0,0,125000,{},1,down,2024-08-05
+MICROSOFT,13-2011,Accountants and Auditors,CA,0,0,160000,{},1,down,2024-11-24
+AMAZON,13-2011,Accountants and Auditors,IL,5,6,185004,"{""II"": 2, ""III"": 2, ""IV"": 1}",0,up,2026-01-15
+INFOSYS,13-2011,Accountants and Auditors,IL,4,9,184990,"{""II"": 2, ""III"": 1, ""IV"": 1}",3,up,2026-03-04
+COGNIZANT,13-2011,Accountants and Auditors,IL,1,1,110000,"{""III"": 1}",1,flat,2025-10-20
+META,13-2011,Accountants and Auditors,IL,1,2,185000,"{""III"": 1}",1,flat,2026-03-01
+MICROSOFT,13-2011,Accountants and Auditors,IL,1,1,160000,"{""III"": 1}",1,flat,2025-11-22
+TATA CONSULTANCY SERVICES,13-2011,Accountants and Auditors,IL,1,2,160000,"{""II"": 1}",0,up,2025-11-19
+MICROSOFT,13-2011,Accountants and Auditors,NJ,3,8,160000,"{""II"": 3}",1,up,2025-11-10
+TATA CONSULTANCY SERVICES,13-2011,Accountants and Auditors,NJ,3,4,125000,"{""I"": 2, ""IV"": 1}",0,up,2026-03-28
+GOOGLE,13-2011,Accountants and Auditors,NJ,2,7,210000,"{""I"": 1, ""II"": 1}",3,down,2025-11-06
+NORTHSTAR ROBOTICS,13-2011,Accountants and Auditors,NJ,2,6,160000,"{""III"": 1, ""IV"": 1}",1,up,2025-09-10
+AMAZON,13-2011,Accountants and Auditors,NJ,1,2,140000,"{""III"": 1}",2,down,2025-10-25
+INFOSYS,13-2011,Accountants and Auditors,NJ,1,1,160000,"{""I"": 1}",0,up,2026-03-03
+META,13-2011,Accountants and Auditors,NJ,1,1,140000,"{""III"": 1}",0,up,2025-05-13
+BRIGHTWAVE ANALYTICS,13-2011,Accountants and Auditors,NJ,0,0,140000,{},3,down,2024-08-25
+AMAZON,13-2011,Accountants and Auditors,NY,4,9,150000,"{""I"": 2, ""III"": 2}",5,down,2025-12-06
+TATA CONSULTANCY SERVICES,13-2011,Accountants and Auditors,NY,3,7,185000,"{""I"": 2, ""III"": 1}",0,up,2026-03-01
+INFOSYS,13-2011,Accountants and Auditors,NY,2,10,160000,"{""III"": 2}",3,down,2025-12-07
+NORTHSTAR ROBOTICS,13-2011,Accountants and Auditors,NY,2,6,132505,"{""II"": 1, ""IV"": 1}",0,up,2025-10-10
+COGNIZANT,13-2011,Accountants and Auditors,NY,1,1,110006,"{""III"": 1}",1,flat,2025-08-07
+GOOGLE,13-2011,Accountants and Auditors,NY,1,1,210000,"{""III"": 1}",0,up,2025-08-12
+MICROSOFT,13-2011,Accountants and Auditors,NY,1,2,140000,"{""II"": 1}",0,up,2026-02-16
+BRIGHTWAVE ANALYTICS,13-2011,Accountants and Auditors,NY,0,0,210000,{},1,down,2024-09-18
+META,13-2011,Accountants and Auditors,NY,0,0,142498,{},2,down,2025-03-15
+AMAZON,13-2011,Accountants and Auditors,TX,4,4,150005,"{""I"": 1, ""II"": 1, ""III"": 1, ""IV"": 1}",2,up,2026-02-09
+META,13-2011,Accountants and Auditors,TX,2,2,134990,"{""III"": 2}",1,up,2026-03-10
+COGNIZANT,13-2011,Accountants and Auditors,TX,1,1,110006,"{""I"": 1}",0,up,2025-09-23
+GOOGLE,13-2011,Accountants and Auditors,TX,1,2,140010,"{""IV"": 1}",0,up,2026-03-24
+INFOSYS,13-2011,Accountants and Auditors,TX,1,1,185000,"{""I"": 1}",3,down,2025-09-23
+MICROSOFT,13-2011,Accountants and Auditors,TX,1,1,110000,"{""III"": 1}",0,up,2025-11-09
+NORTHSTAR ROBOTICS,13-2011,Accountants and Auditors,TX,1,5,110000,"{""II"": 1}",2,down,2025-07-24
+BRIGHTWAVE ANALYTICS,13-2011,Accountants and Auditors,TX,0,0,125004,{},3,down,2024-10-21
+AMAZON,13-2011,Accountants and Auditors,WA,4,8,185000,"{""II"": 3, ""III"": 1}",1,up,2026-02-05
+MICROSOFT,13-2011,Accountants and Auditors,WA,3,3,140000,"{""I"": 1, ""III"": 1, ""IV"": 1}",0,up,2025-08-19
+GOOGLE,13-2011,Accountants and Auditors,WA,2,6,162502,"{""I"": 1, ""III"": 1}",5,down,2025-10-28
+INFOSYS,13-2011,Accountants and Auditors,WA,2,3,125004,"{""II"": 1, ""III"": 1}",1,up,2026-03-27
+COGNIZANT,13-2011,Accountants and Auditors,WA,1,2,210000,"{""III"": 1}",1,flat,2026-02-03
+NORTHSTAR ROBOTICS,13-2011,Accountants and Auditors,WA,1,1,110000,"{""II"": 1}",1,flat,2025-09-19
+TATA CONSULTANCY SERVICES,13-2011,Accountants and Auditors,WA,0,0,160000,{},3,down,2025-02-27
+AMAZON,15-1211,Computer Systems Analysts,CA,3,7,140000,"{""III"": 2, ""IV"": 1}",3,flat,2025-10-07
+GOOGLE,15-1211,Computer Systems Analysts,CA,3,7,210000,"{""I"": 1, ""III"": 2}",3,flat,2026-01-25
+META,15-1211,Computer Systems Analysts,CA,2,6,140000,"{""III"": 1, ""IV"": 1}",2,flat,2025-10-06
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,CA,2,6,117500,"{""II"": 2}",1,up,2025-07-20
+BRIGHTWAVE ANALYTICS,15-1211,Computer Systems Analysts,CA,1,1,140000,"{""III"": 1}",1,flat,2025-12-21
+INFOSYS,15-1211,Computer Systems Analysts,CA,1,1,160000,"{""III"": 1}",0,up,2025-07-07
+MICROSOFT,15-1211,Computer Systems Analysts,CA,1,2,110000,"{""III"": 1}",0,up,2025-06-01
+GOOGLE,15-1211,Computer Systems Analysts,IL,4,6,140002,"{""I"": 1, ""III"": 3}",0,up,2026-01-30
+AMAZON,15-1211,Computer Systems Analysts,IL,3,4,185000,"{""I"": 1, ""II"": 1, ""IV"": 1}",4,down,2026-01-21
+META,15-1211,Computer Systems Analysts,IL,2,7,172498,"{""II"": 1, ""III"": 1}",4,down,2025-12-15
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,IL,2,2,125000,"{""I"": 1, ""III"": 1}",2,flat,2025-09-29
+COGNIZANT,15-1211,Computer Systems Analysts,IL,1,1,185000,"{""II"": 1}",0,up,2025-08-09
+INFOSYS,15-1211,Computer Systems Analysts,IL,1,2,110000,"{""III"": 1}",0,up,2025-08-04
+BRIGHTWAVE ANALYTICS,15-1211,Computer Systems Analysts,IL,0,0,132500,{},4,down,2024-11-07
+BRIGHTWAVE ANALYTICS,15-1211,Computer Systems Analysts,NJ,3,7,185000,"{""II"": 1, ""III"": 2}",1,up,2025-11-02
+INFOSYS,15-1211,Computer Systems Analysts,NJ,3,8,125000,"{""II"": 1, ""III"": 2}",1,up,2026-01-22
+GOOGLE,15-1211,Computer Systems Analysts,NJ,2,2,142500,"{""I"": 1, ""III"": 1}",1,up,2026-02-17
+MICROSOFT,15-1211,Computer Systems Analysts,NJ,2,6,142498,"{""II"": 1, ""IV"": 1}",2,flat,2025-10-14
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,NJ,2,2,117494,"{""I"": 1, ""III"": 1}",2,flat,2025-11-30
+AMAZON,15-1211,Computer Systems Analysts,NJ,1,2,210000,"{""III"": 1}",0,up,2025-04-06
+META,15-1211,Computer Systems Analysts,NJ,1,2,185000,"{""IV"": 1}",0,up,2026-03-26
+TATA CONSULTANCY SERVICES,15-1211,Computer Systems Analysts,NJ,1,1,109990,"{""III"": 1}",1,flat,2026-02-12
+AMAZON,15-1211,Computer Systems Analysts,NY,2,2,155000,"{""III"": 2}",4,down,2025-07-12
+GOOGLE,15-1211,Computer Systems Analysts,NY,2,2,197490,"{""III"": 1, ""IV"": 1}",0,up,2025-08-19
+INFOSYS,15-1211,Computer Systems Analysts,NY,2,4,197495,"{""II"": 1, ""IV"": 1}",1,up,2026-02-13
+MICROSOFT,15-1211,Computer Systems Analysts,NY,2,3,197500,"{""I"": 1, ""III"": 1}",3,down,2026-02-11
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,NY,2,2,125000,"{""I"": 1, ""III"": 1}",2,flat,2026-03-07
+BRIGHTWAVE ANALYTICS,15-1211,Computer Systems Analysts,NY,1,2,110000,"{""III"": 1}",1,flat,2025-11-04
+TATA CONSULTANCY SERVICES,15-1211,Computer Systems Analysts,NY,1,2,160004,"{""I"": 1}",1,flat,2026-03-28
+COGNIZANT,15-1211,Computer Systems Analysts,NY,0,0,185000,{},2,down,2024-06-17
+GOOGLE,15-1211,Computer Systems Analysts,TX,4,6,155000,"{""I"": 1, ""III"": 1, ""IV"": 2}",0,up,2026-03-03
+AMAZON,15-1211,Computer Systems Analysts,TX,3,11,185000,"{""II"": 1, ""III"": 2}",4,down,2026-01-15
+COGNIZANT,15-1211,Computer Systems Analysts,TX,2,2,167500,"{""II"": 1, ""IV"": 1}",1,up,2026-03-03
+BRIGHTWAVE ANALYTICS,15-1211,Computer Systems Analysts,TX,1,5,184990,"{""III"": 1}",1,flat,2025-11-05
+META,15-1211,Computer Systems Analysts,TX,1,1,140000,"{""IV"": 1}",1,flat,2025-11-21
+MICROSOFT,15-1211,Computer Systems Analysts,TX,1,1,110000,"{""III"": 1}",0,up,2026-01-28
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,TX,1,1,185000,"{""III"": 1}",1,flat,2025-12-13
+TATA CONSULTANCY SERVICES,15-1211,Computer Systems Analysts,TX,1,5,110000,"{""III"": 1}",0,up,2026-02-04
+AMAZON,15-1211,Computer Systems Analysts,WA,3,3,160000,"{""I"": 1, ""II"": 1, ""III"": 1}",3,flat,2025-12-26
+GOOGLE,15-1211,Computer Systems Analysts,WA,2,2,162500,"{""III"": 1, ""IV"": 1}",1,up,2025-09-03
+META,15-1211,Computer Systems Analysts,WA,2,3,159998,"{""II"": 1, ""III"": 1}",0,up,2026-03-29
+INFOSYS,15-1211,Computer Systems Analysts,WA,1,1,140000,"{""III"": 1}",0,up,2025-12-04
+COGNIZANT,15-1211,Computer Systems Analysts,WA,0,0,125000,{},1,down,2024-08-28
+MICROSOFT,15-1211,Computer Systems Analysts,WA,0,0,110000,{},2,down,2024-12-25
+NORTHSTAR ROBOTICS,15-1211,Computer Systems Analysts,WA,0,0,110000,{},1,down,2025-01-19
+TATA CONSULTANCY SERVICES,15-1211,Computer Systems Analysts,WA,0,0,110000,{},1,down,2025-02-13
+AMAZON,15-1252,Software Developers,CA,3,11,125000,"{""II"": 1, ""III"": 2}",3,flat,2026-03-07
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,CA,2,2,150000,"{""I"": 1, ""II"": 1}",0,up,2026-02-24
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,CA,2,3,167504,"{""III"": 2}",1,up,2026-01-13
+COGNIZANT,15-1252,Software Developers,CA,1,1,210000,"{""III"": 1}",0,up,2026-01-05
+NORTHSTAR ROBOTICS,15-1252,Software Developers,CA,1,5,159993,"{""II"": 1}",1,flat,2025-07-22
+GOOGLE,15-1252,Software Developers,CA,0,0,160000,{},1,down,2024-10-21
+INFOSYS,15-1252,Software Developers,CA,0,0,160000,{},5,down,2025-03-25
+MICROSOFT,15-1252,Software Developers,CA,0,0,210000,{},1,down,2025-02-09
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,IL,3,4,125000,"{""II"": 1, ""III"": 1, ""IV"": 1}",2,up,2026-01-14
+AMAZON,15-1252,Software Developers,IL,2,6,125000,"{""II"": 1, ""III"": 1}",4,down,2025-09-28
+INFOSYS,15-1252,Software Developers,IL,2,2,135000,"{""III"": 2}",1,up,2025-05-04
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,IL,1,1,140010,"{""III"": 1}",1,flat,2025-06-01
+COGNIZANT,15-1252,Software Developers,IL,1,2,125000,"{""III"": 1}",0,up,2026-03-12
+MICROSOFT,15-1252,Software Developers,IL,1,1,140000,"{""III"": 1}",0,up,2025-04-13
+NORTHSTAR ROBOTICS,15-1252,Software Developers,IL,1,1,110000,"{""II"": 1}",0,up,2025-07-11
+GOOGLE,15-1252,Software Developers,IL,0,0,210001,{},2,down,2024-11-28
+META,15-1252,Software Developers,IL,0,0,172500,{},2,down,2025-03-21
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,NJ,2,7,132500,"{""I"": 1, ""II"": 1}",0,up,2026-03-07
+COGNIZANT,15-1252,Software Developers,NJ,2,10,155000,"{""II"": 1, ""III"": 1}",2,flat,2025-12-12
+NORTHSTAR ROBOTICS,15-1252,Software Developers,NJ,2,2,150000,"{""I"": 1, ""IV"": 1}",0,up,2025-09-29
+AMAZON,15-1252,Software Developers,NJ,1,1,110000,"{""II"": 1}",2,down,2025-11-13
+MICROSOFT,15-1252,Software Developers,NJ,1,2,185016,"{""III"": 1}",2,down,2025-05-12
+INFOSYS,15-1252,Software Developers,NJ,0,0,140000,{},3,down,2025-03-26
+META,15-1252,Software Developers,NJ,0,0,175001,{},2,down,2024-05-16
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,NJ,0,0,110000,{},3,down,2024-10-29
+GOOGLE,15-1252,Software Developers,NY,5,9,160004,"{""I"": 1, ""II"": 1, ""III"": 1, ""IV"": 2}",1,up,2026-02-17
+INFOSYS,15-1252,Software Developers,NY,4,9,142500,"{""I"": 1, ""II"": 1, ""III"": 2}",0,up,2026-03-15
+AMAZON,15-1252,Software Developers,NY,2,4,175000,"{""I"": 1, ""II"": 1}",1,up,2026-02-05
+NORTHSTAR ROBOTICS,15-1252,Software Developers,NY,2,10,175000,"{""II"": 1, ""III"": 1}",1,up,2025-10-12
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,NY,1,2,125000,"{""III"": 1}",0,up,2026-02-24
+META,15-1252,Software Developers,NY,1,1,210000,"{""II"": 1}",2,down,2025-05-02
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,NY,1,1,210000,"{""III"": 1}",0,up,2025-11-14
+COGNIZANT,15-1252,Software Developers,NY,0,0,125000,{},1,down,2025-01-16
+GOOGLE,15-1252,Software Developers,TX,3,5,125000,"{""II"": 1, ""III"": 2}",1,up,2026-01-12
+INFOSYS,15-1252,Software Developers,TX,3,4,140000,"{""III"": 1, ""IV"": 2}",1,up,2026-01-10
+AMAZON,15-1252,Software Developers,TX,2,6,160003,"{""II"": 1, ""IV"": 1}",4,down,2025-10-02
+COGNIZANT,15-1252,Software Developers,TX,2,3,162494,"{""II"": 1, ""III"": 1}",1,up,2026-02-09
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,TX,1,1,110000,"{""III"": 1}",0,up,2025-11-20
+NORTHSTAR ROBOTICS,15-1252,Software Developers,TX,1,1,125000,"{""III"": 1}",0,up,2025-12-22
+MICROSOFT,15-1252,Software Developers,TX,0,0,140000,{},1,down,2024-12-24
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,TX,0,0,110000,{},1,down,2024-07-24
+INFOSYS,15-1252,Software Developers,WA,4,9,135000,"{""III"": 2, ""IV"": 2}",3,up,2026-03-07
+GOOGLE,15-1252,Software Developers,WA,3,4,125000,"{""II"": 1, ""III"": 2}",2,up,2025-07-14
+AMAZON,15-1252,Software Developers,WA,2,6,134995,"{""I"": 1, ""IV"": 1}",1,up,2025-05-16
+BRIGHTWAVE ANALYTICS,15-1252,Software Developers,WA,2,3,135002,"{""II"": 1, ""III"": 1}",0,up,2025-10-01
+NORTHSTAR ROBOTICS,15-1252,Software Developers,WA,1,2,185000,"{""I"": 1}",1,flat,2026-01-28
+COGNIZANT,15-1252,Software Developers,WA,0,0,197500,{},2,down,2025-01-24
+MICROSOFT,15-1252,Software Developers,WA,0,0,210000,{},1,down,2024-12-20
+TATA CONSULTANCY SERVICES,15-1252,Software Developers,WA,0,0,125000,{},1,down,2024-12-21
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,CA,3,4,160000,"{""I"": 1, ""III"": 1, ""IV"": 1}",0,up,2025-12-31
+GOOGLE,15-2051,Data Scientists,CA,2,3,132504,"{""III"": 1, ""IV"": 1}",0,up,2026-01-14
+INFOSYS,15-2051,Data Scientists,CA,2,2,175000,"{""III"": 2}",0,up,2026-03-10
+AMAZON,15-2051,Data Scientists,CA,1,1,140000,"{""III"": 1}",2,down,2025-04-29
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,CA,1,1,140000,"{""I"": 1}",0,up,2025-04-10
+BRIGHTWAVE ANALYTICS,15-2051,Data Scientists,CA,0,0,140000,{},2,down,2024-09-05
+META,15-2051,Data Scientists,CA,0,0,140000,{},1,down,2024-05-04
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,IL,3,12,140000,"{""I"": 2, ""III"": 1}",1,up,2025-11-13
+AMAZON,15-2051,Data Scientists,IL,2,3,125000,"{""III"": 2}",1,up,2025-09-22
+GOOGLE,15-2051,Data Scientists,IL,2,2,172500,"{""I"": 1, ""III"": 1}",2,flat,2026-01-02
+INFOSYS,15-2051,Data Scientists,IL,2,6,185000,"{""III"": 1, ""IV"": 1}",1,up,2025-11-14
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,IL,1,1,210000,"{""III"": 1}",2,down,2025-07-02
+BRIGHTWAVE ANALYTICS,15-2051,Data Scientists,IL,0,0,172498,{},2,down,2025-03-07
+AMAZON,15-2051,Data Scientists,NJ,4,8,160000,"{""II"": 1, ""III"": 3}",3,up,2026-02-06
+INFOSYS,15-2051,Data Scientists,NJ,3,8,110000,"{""I"": 1, ""II"": 1, ""III"": 1}",1,up,2025-11-14
+GOOGLE,15-2051,Data Scientists,NJ,2,2,155000,"{""II"": 1, ""III"": 1}",0,up,2026-02-28
+COGNIZANT,15-2051,Data Scientists,NJ,1,1,210000,"{""IV"": 1}",0,up,2025-07-17
+MICROSOFT,15-2051,Data Scientists,NJ,1,5,110000,"{""III"": 1}",2,down,2025-05-01
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,NJ,1,1,125004,"{""III"": 1}",3,down,2025-05-08
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,NJ,1,1,125000,"{""II"": 1}",1,flat,2025-12-01
+INFOSYS,15-2051,Data Scientists,NY,1,1,125008,"{""II"": 1}",2,down,2025-10-27
+AMAZON,15-2051,Data Scientists,NY,0,0,117500,{},2,down,2025-01-27
+COGNIZANT,15-2051,Data Scientists,NY,0,0,117500,{},2,down,2024-10-24
+GOOGLE,15-2051,Data Scientists,NY,0,0,160000,{},3,down,2025-03-09
+META,15-2051,Data Scientists,NY,0,0,110000,{},1,down,2024-04-17
+MICROSOFT,15-2051,Data Scientists,NY,0,0,125000,{},1,down,2024-09-16
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,NY,0,0,110000,{},1,down,2024-12-13
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,NY,0,0,125000,{},2,down,2024-07-13
+INFOSYS,15-2051,Data Scientists,TX,4,9,160000,"{""I"": 1, ""III"": 2, ""IV"": 1}",4,flat,2026-01-21
+AMAZON,15-2051,Data Scientists,TX,2,6,175000,"{""III"": 2}",2,flat,2026-01-01
+BRIGHTWAVE ANALYTICS,15-2051,Data Scientists,TX,2,2,167502,"{""III"": 1, ""IV"": 1}",1,up,2026-02-26
+META,15-2051,Data Scientists,TX,2,2,172500,"{""II"": 1, ""III"": 1}",0,up,2025-07-09
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,TX,2,3,125002,"{""I"": 1, ""III"": 1}",2,flat,2025-11-10
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,TX,2,6,117504,"{""III"": 2}",2,flat,2026-01-15
+COGNIZANT,15-2051,Data Scientists,TX,1,2,160000,"{""II"": 1}",1,flat,2025-10-16
+GOOGLE,15-2051,Data Scientists,TX,1,1,140000,"{""II"": 1}",3,down,2025-05-08
+MICROSOFT,15-2051,Data Scientists,TX,0,0,185000,{},1,down,2024-04-09
+AMAZON,15-2051,Data Scientists,WA,5,10,140004,"{""I"": 1, ""III"": 2, ""IV"": 2}",2,up,2026-01-29
+NORTHSTAR ROBOTICS,15-2051,Data Scientists,WA,2,4,140002,"{""II"": 1, ""III"": 1}",0,up,2025-05-06
+COGNIZANT,15-2051,Data Scientists,WA,1,1,210000,"{""III"": 1}",2,down,2025-05-25
+META,15-2051,Data Scientists,WA,1,1,140000,"{""III"": 1}",3,down,2025-04-09
+MICROSOFT,15-2051,Data Scientists,WA,1,5,110000,"{""I"": 1}",0,up,2025-11-09
+TATA CONSULTANCY SERVICES,15-2051,Data Scientists,WA,1,5,110006,"{""I"": 1}",3,down,2025-06-02
+BRIGHTWAVE ANALYTICS,15-2051,Data Scientists,WA,0,0,155000,{},2,down,2024-11-01
+INFOSYS,15-2051,Data Scientists,WA,0,0,125000,{},2,down,2024-12-17

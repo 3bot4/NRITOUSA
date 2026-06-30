@@ -1,0 +1,54 @@
+[
+  [
+    "^AMAZON",
+    "AMAZON"
+  ],
+  [
+    "^GOOGLE|^ALPHABET",
+    "GOOGLE"
+  ],
+  [
+    "^MICROSOFT",
+    "MICROSOFT"
+  ],
+  [
+    "^META|^FACEBOOK",
+    "META"
+  ],
+  [
+    "^APPLE\\b",
+    "APPLE"
+  ],
+  [
+    "^INFOSYS",
+    "INFOSYS"
+  ],
+  [
+    "^TATA CONSULTANCY|^TCS\\b",
+    "TATA CONSULTANCY SERVICES"
+  ],
+  [
+    "^COGNIZANT",
+    "COGNIZANT"
+  ],
+  [
+    "^WIPRO",
+    "WIPRO"
+  ],
+  [
+    "^HCL\\b",
+    "HCL"
+  ],
+  [
+    "^ACCENTURE",
+    "ACCENTURE"
+  ],
+  [
+    "^DELOITTE",
+    "DELOITTE"
+  ],
+  [
+    "^IBM\\b|INTL BUSINESS MACHINES",
+    "IBM"
+  ]
+]
