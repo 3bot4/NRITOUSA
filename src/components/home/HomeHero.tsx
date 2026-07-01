@@ -79,6 +79,37 @@ export default function HomeHero() {
             {primaryCta.label}
           </Link>
 
+          {/* New-tool spotlight card, directly under the primary CTA. */}
+          <Link
+            href="/tools/h1b-sponsor-finder"
+            className="group mt-2.5 flex items-center gap-3 rounded-xl border border-brand-200 bg-gradient-to-r from-brand-50 to-indigo-50/60 px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+          >
+            <span
+              aria-hidden
+              className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white shadow-sm"
+            >
+              <Icon name="briefcase" className="h-5 w-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2">
+                <span className="text-sm font-bold text-ink-900 sm:text-base">
+                  H-1B Sponsor Finder
+                </span>
+                <span className="rounded-full bg-brand-600 px-1.5 py-0.5 text-[0.625rem] font-bold uppercase tracking-wide text-white">
+                  New
+                </span>
+              </span>
+              <span className="mt-0.5 block text-xs text-ink-500">
+                Which companies sponsor H-1Bs for your role &amp; state — ranked
+                by certified LCA volume, with median pay.
+              </span>
+            </span>
+            <Icon
+              name="arrow-right"
+              className="h-4 w-4 flex-none text-brand-600 transition-transform group-hover:translate-x-0.5"
+            />
+          </Link>
+
           {/* Secondary CTAs — lighter outline buttons so they don't compete. */}
           <div className="mt-2.5 grid gap-2.5 sm:grid-cols-3">
             {secondaryCtas.map((cta) => (

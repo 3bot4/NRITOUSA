@@ -417,6 +417,21 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: ["oci"],
   },
+  {
+    slug: "h1b-sponsor-finder",
+    title: "H-1B Sponsor Finder for Indians",
+    label: "H-1B Sponsor Finder",
+    group: "Visa & Green Card",
+    description:
+      "Which employers actually sponsor H-1Bs for your job, in your state? Search by role and state to see a ranked list of companies by certified H-1B LCA volume, with median wages, the DOL wage-level mix, and a 12-month trend. Built from DOL OFLC disclosure data — an LCA is a sponsorship signal, not a petition approval or a job offer.",
+    icon: "🧭",
+    accent: "from-indigo-600 to-blue-600",
+    seoTitle: "H-1B Sponsor Finder | Companies That Sponsor H-1B by Role & State",
+    seoDescription:
+      "Find which US employers sponsor H-1Bs for your job in your state, ranked by certified LCA volume with median wages and wage levels. Free tool for Indian H-1B workers, built from official DOL data.",
+    status: "live",
+    tags: [],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [
