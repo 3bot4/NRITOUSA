@@ -92,10 +92,18 @@ def norm_fein(fein):
     return re.sub(r"\D", "", str(fein))
 
 
+SOC_RE = re.compile(r"(\d{2}-\d{4})")
+
+
 def norm_soc(code):
-    """'15-1252.00' -> '15-1252' (strip the O*NET detail suffix)."""
+    """Canonicalize a messy SOC_CODE to 'NN-NNNN'.
+
+    The disclosure data is dirty: '15-1252.00' (O*NET detail suffix),
+    '15-1252 - Software Developers' (code + title concatenated), stray spaces.
+    Pull the first NN-NNNN token; fall back to the trimmed original."""
     s = str(code or "").strip()
-    return s.split(".")[0]
+    m = SOC_RE.search(s)
+    return m.group(1) if m else s
 
 
 def annualize(wage, unit):

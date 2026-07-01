@@ -42,8 +42,11 @@ async function resolve(params: Params): Promise<{
   if (!isValidState(stateCode)) return null;
   const role = await roleForSlug(params.socSlug);
   if (!role) return null;
+  // Resolve by SOC *title*, not the first row's soc_code: the disclosure data
+  // carries the same occupation under several messy codes, so matching on the
+  // title (as /api/sponsors does) aggregates them all for the state.
   const sponsors = await getSponsors({
-    socCodes: [role.soc_code],
+    role: role.soc_title,
     state: stateCode,
   });
   if (!sponsors.length) return null;
