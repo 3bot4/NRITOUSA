@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   tickerItems,
-  marketAsOfLabel,
+  currentBulletinLabel,
   type TickerItem,
 } from "@/lib/market";
 
@@ -98,7 +98,7 @@ export default function Ticker() {
       {/* Attribution */}
       <div className="px-4 pb-1.5">
         <p className="text-[11px] leading-tight text-ink-400">
-          Source: U.S. State Dept Visa Bulletin, USCIS · as of {marketAsOfLabel}
+          Source: U.S. State Dept Visa Bulletin, USCIS · {currentBulletinLabel()} bulletin
         </p>
       </div>
     </section>

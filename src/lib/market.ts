@@ -1,16 +1,13 @@
 /**
- * Typed access for the homepage data-dense layout (ticker strip + USD/INR
- * sidebar card + "next visa bulletin" countdown).
+ * Typed access for the homepage data-dense layout (ticker strip +
+ * "next visa bulletin" countdown).
  *
- * The four MARKET items (USD/INR, NIFTY 50, S&P 500, Gold) come from the static
- * /data/market.json file, which the daily Phase-2 pipeline overwrites. The fifth
- * ticker item — the EB-2 India Final Action Date — is derived here from the SAME
- * visa-bulletin data the green-card estimator uses (lib/visa-bulletin), so there
- * is exactly one parser for bulletin data. Nothing in this module calls a network
- * API; it reads committed JSON only.
+ * Every ticker item is derived from committed immigration data — the visa
+ * bulletin (lib/visa-bulletin), the I-485 inventory, the H-1B lottery timeline,
+ * and USCIS processing times. Nothing in this module calls a network API; it
+ * reads committed JSON only.
  */
 
-import marketData from "../../data/market.json";
 import config from "../../data/homepage-config.json";
 import i485Inventory from "../../data/i485-inventory/current.json";
 import processingTimes from "../../data/processing-times.json";
@@ -23,40 +20,7 @@ import {
   bulletin,
 } from "@/lib/visa-bulletin";
 
-/* ------------------------------- market items ------------------------------ */
-
-export interface MarketItem {
-  key: string;
-  label: string;
-  value: number;
-  previous: number;
-  changePct: number;
-  unit: string;
-  decimals: number;
-  source: string;
-  fetchedAt: string;
-  stale?: boolean;
-}
-
-const marketItems = marketData.items as MarketItem[];
-
-export const marketAsOfLabel: string = marketData.asOfLabel;
-
-/** Sources backing the four market items, de-duplicated, for the attribution line. */
-export const marketSources: string[] = Array.from(
-  new Set(marketItems.map((i) => i.source))
-);
-
-/** Format a market value with its unit + decimals (e.g. ₹85.62, 24,850). */
-export function formatMarketValue(item: MarketItem): string {
-  const num = item.value.toLocaleString("en-US", {
-    minimumFractionDigits: item.decimals,
-    maximumFractionDigits: item.decimals,
-  });
-  return `${item.unit}${num}`;
-}
-
-/* ------------------------ ticker (5 items, ordered) ------------------------ */
+/* ------------------------ ticker (immigration items) ----------------------- */
 
 export type TickerKind = "market" | "differentiator";
 
@@ -148,22 +112,6 @@ function ebIndiaTickerItem(
     direction,
     kind: "differentiator",
     href: tickerHref[key] ?? "/tools/priority-date-checker",
-  };
-}
-
-function marketTickerItem(item: MarketItem): TickerItem {
-  const direction =
-    item.changePct > 0.005 ? "up" : item.changePct < -0.005 ? "down" : "flat";
-  const sign = item.changePct > 0 ? "+" : "";
-  return {
-    key: item.key,
-    label: item.label,
-    display: formatMarketValue(item),
-    change: `${sign}${item.changePct.toFixed(2)}%`,
-    direction,
-    kind: "market",
-    href: tickerHref[item.key] ?? "/tools",
-    stale: item.stale,
   };
 }
 
@@ -315,56 +263,6 @@ export function tickerItems(): TickerItem[] {
   for (const p of pt) if (p) items.push(p);
 
   return items;
-}
-
-/* --------------------------- USD/INR sidebar card -------------------------- */
-
-interface HistoryPoint {
-  date: string;
-  value: number;
-}
-
-export interface UsdInrCard {
-  rate: number;
-  changePct: number;
-  direction: "up" | "down" | "flat";
-  /** {month,value} points shaped for the shared <Sparkline> component. */
-  spark: { month: string; value: number | null }[];
-  high: number;
-  low: number;
-  rangeLabel: string;
-  stale?: boolean;
-}
-
-export function usdInrCard(): UsdInrCard {
-  const item = marketItems.find((i) => i.key === "usdinr")!;
-  const history = (marketData.usdinrHistory as HistoryPoint[]) ?? [];
-
-  // Use the trailing 30 calendar days of history; show whatever range exists.
-  const values = history.map((p) => p.value);
-  const high = values.length ? Math.max(...values) : item.value;
-  const low = values.length ? Math.min(...values) : item.value;
-
-  const spanDays = history.length
-    ? Math.round(
-        (Date.parse(history[history.length - 1].date) -
-          Date.parse(history[0].date)) /
-          86_400_000
-      )
-    : 0;
-  const rangeLabel = spanDays >= 28 ? "30-day range" : `${spanDays}-day range`;
-
-  return {
-    rate: item.value,
-    changePct: item.changePct,
-    direction:
-      item.changePct > 0.005 ? "up" : item.changePct < -0.005 ? "down" : "flat",
-    spark: history.map((p) => ({ month: p.date, value: p.value })),
-    high,
-    low,
-    rangeLabel,
-    stale: item.stale,
-  };
 }
 
 /* ------------------------------ NRE FD config ------------------------------ */

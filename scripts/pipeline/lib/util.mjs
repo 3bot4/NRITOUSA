@@ -8,7 +8,6 @@ import { fileURLToPath } from "node:url";
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 export const DATA_DIR = join(ROOT, "data");
 export const HISTORY_DIR = join(DATA_DIR, "history");
-export const MARKET_JSON = join(DATA_DIR, "market.json");
 
 export function readJson(path, fallback = null) {
   try {

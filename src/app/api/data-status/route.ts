@@ -76,32 +76,7 @@ export async function GET() {
   const root = process.cwd();
   const sources: SourceStatus[] = [];
 
-  // ── 1. Market data (automated 2x/day, threshold 12h = 0.5 days) ──────────
-  const market = readJson<Record<string, unknown> | null>(
-    join(root, "data", "market.json"),
-    null
-  );
-  if (!market) {
-    sources.push({ key: "market", label: "Market Data (USD/INR, NIFTY 50, S&P 500, Gold)", lastUpdated: null, maxAgeDays: 0.5, ageDays: null, status: "missing" });
-  } else {
-    const days = ageDays(market.asOf as string);
-    const notes: string[] = [];
-    const staleItems = ((market.items as Array<{ key: string; stale?: boolean }>) ?? [])
-      .filter((i) => i.stale)
-      .map((i) => i.key);
-    if (staleItems.length) notes.push(`Items using stale fallback: ${staleItems.join(", ")}`);
-    sources.push({
-      key: "market",
-      label: "Market Data (USD/INR, NIFTY 50, S&P 500, Gold)",
-      lastUpdated: market.asOf as string,
-      maxAgeDays: 0.5,
-      ageDays: Math.round(days * 100) / 100,
-      status: staleItems.length ? "warn" : ageStatus(days, 0.5),
-      ...(notes.length && { notes }),
-    });
-  }
-
-  // ── 2. Visa Bulletin (monthly, threshold 35 days) ─────────────────────────
+  // ── 1. Visa Bulletin (monthly, threshold 35 days) ─────────────────────────
   const vb = readJson<Record<string, unknown> | null>(
     join(root, "data", "visa-bulletin", "current.json"),
     null
