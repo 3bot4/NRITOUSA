@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import ReplaceGreenCardChecker from "@/components/tools/ReplaceGreenCardChecker";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -26,6 +27,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  replacementTimingColumns,
+  replacementTimingRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/replace-green-card";
 const TITLE = "Replace Green Card: Lost, Stolen, Damaged, or Incorrect Card";
@@ -100,6 +107,25 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* Fast-answer replacement timeline estimate */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Green Card Replacement Timeline Estimate"
+              intro="How long replacement usually takes by reason, and when you may need temporary proof. These are planning ranges — always confirm on USCIS."
+              columns={replacementTimingColumns}
+              rows={replacementTimingRows}
+              badges={["Usually Form I-90", "Timing varies", "Temporary proof for urgent needs", "Conditional cards are different"]}
+              summaryTitle="Green Card Replacement Answer"
+              summaryText="Replacing a green card usually uses Form I-90, but urgent travel, work, or DMV needs may require temporary proof while waiting. Timing is similar to a Form I-90 renewal and varies by USCIS workload."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check My Replacement Steps"
+              ctaHref="#replace-green-card-tool"
+            />
+          </Container>
+        </section>
+
         {/* Situations table */}
         <section className="py-10 sm:py-12">
           <Container>
@@ -150,7 +176,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="replace-green-card-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <ReplaceGreenCardChecker />

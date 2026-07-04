@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RenewOnlineChecklist from "@/components/tools/RenewOnlineChecklist";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -26,6 +27,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  onlineTimelineColumns,
+  onlineTimelineRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/renew-green-card-online";
 const TITLE = "Renew Green Card Online: Form I-90 Step-by-Step Guide";
@@ -98,6 +105,25 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* Fast-answer online timeline estimate */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Online Green Card Renewal Timeline"
+              intro="Here is how the online Form I-90 process usually flows and roughly how long each step takes."
+              columns={onlineTimelineColumns}
+              rows={onlineTimelineRows}
+              badges={["Online may be easier", "Not guaranteed faster", "Timing varies", "Check USCIS"]}
+              summaryTitle="Does Filing Online Make It Faster?"
+              summaryText="Renewing online may make filing and tracking easier, but it does not guarantee faster USCIS approval. Processing time still depends on USCIS workload and case facts."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check Online Filing Readiness"
+              ctaHref="#online-renewal-tool"
+            />
+          </Container>
+        </section>
+
         {/* Steps table */}
         <section className="py-10 sm:py-12">
           <Container>
@@ -124,7 +150,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="online-renewal-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <RenewOnlineChecklist />

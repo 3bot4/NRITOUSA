@@ -4,6 +4,7 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import GreenCardRenewalChecker from "@/components/tools/GreenCardRenewalChecker";
 import RenewalTimelineTable from "@/components/tools/RenewalTimelineTable";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import RenewalReasonCards from "@/components/tools/RenewalReasonCards";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
@@ -31,6 +32,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  greenCardRenewalFastAnswerColumns,
+  greenCardRenewalFastAnswerRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/green-card-renewal";
 const TITLE = "Green Card Renewal 2026: Timeline, Fee, Form I-90 & Checklist";
@@ -113,12 +120,31 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Static timeline table */}
+        {/* Fast-answer estimated timeline (above everything else) */}
         <section className="py-10 sm:py-12">
           <Container>
+            <EstimatedTimelineAnswer
+              title="Green Card Renewal Timeline Estimate"
+              intro="Most users want the timeline first. The table below gives a quick planning estimate for Form I-90 renewal or replacement. Use the checker below for a personal next-step checklist."
+              columns={greenCardRenewalFastAnswerColumns}
+              rows={greenCardRenewalFastAnswerRows}
+              badges={["Form I-90", "Estimated timeline first", "Check USCIS monthly", "Receipt may extend validity", "Conditional cards are different"]}
+              summaryTitle="Green Card Renewal Planning Answer"
+              summaryText="For a standard 10-year green card renewal, a practical planning range is about 8–14 months, but the current official Form I-90 processing time should always be checked on USCIS. After filing, users usually wait for a receipt notice, possible biometrics, USCIS review, approval, card production, and mailing."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check My Renewal Steps"
+              ctaHref="#green-card-renewal-tool"
+            />
+          </Container>
+        </section>
+
+        {/* Detailed stage table */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
             <RenewalTimelineTable
-              title="Green Card Renewal Timeline"
-              intro="Here is the usual path for a standard 10-year green card renewal with Form I-90. Use it to plan, then use the personalized checklist below for your specific situation."
+              title="Green Card Renewal Stages Explained"
+              intro="Now that you have the estimate above, here is what happens at each Form I-90 stage. Use the personalized checklist below for your specific situation."
               rows={greenCardRenewalTimelineRows}
               badges={greenCardRenewalBadges}
               sourceNote={C.sourceNote}

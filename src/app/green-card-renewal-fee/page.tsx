@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RenewalFeeChecker from "@/components/tools/RenewalFeeChecker";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -25,6 +26,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  feeTimingColumns,
+  feeTimingRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/green-card-renewal-fee";
 const TITLE = "Green Card Renewal Fee 2026: Form I-90 Cost & Fee Waiver";
@@ -97,6 +104,25 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* Fast-answer fee + timing snapshot */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Green Card Renewal Fee and Timing Snapshot"
+              intro="A quick snapshot of what each filing situation may cost and how it affects timing. We never show a hardcoded dollar amount — always confirm the current fee on USCIS."
+              columns={feeTimingColumns}
+              rows={feeTimingRows}
+              badges={["Fees change", "Check USCIS Fee Schedule", "Online vs paper differs", "Conditional cards are different"]}
+              summaryTitle="Green Card Renewal Fee Answer"
+              summaryText="The green card renewal fee changes with USCIS rules. Do not rely on outdated blog fees. Always check the USCIS Fee Schedule before filing."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check My Fee Situation"
+              ctaHref="#green-card-fee-tool"
+            />
+          </Container>
+        </section>
+
         {/* Fee snapshot table */}
         <section className="py-10 sm:py-12">
           <Container>
@@ -154,7 +180,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="green-card-fee-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <RenewalFeeChecker />
