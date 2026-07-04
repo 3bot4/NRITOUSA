@@ -5,6 +5,15 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import I485ProcessingCalculator from "@/components/tools/I485ProcessingCalculator";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
+import {
+  i485TimelineRows,
+  i485TimelineBadges,
+  i485PlanningSummary,
+  i485SourceNote,
+  i485SourceLinks,
+  TIMELINE_DISCLAIMER,
+} from "@/data/immigrationTimelineData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -129,6 +138,7 @@ const faq: FaqItem[] = [
   { question: "What is I-485 processing time?", answer: "I-485 processing time is how long USCIS takes to adjudicate your Application to Register Permanent Residence or Adjust Status after it is filed. It varies widely by field office, whether an interview is required, and visa-number availability. Check the current USCIS I-485 processing times for your office." },
   { question: "How long does I-485 take in 2026?", answer: "After filing, I-485 commonly takes several months to about two years, and longer if a field-office interview is required. These are general planning ranges — exact times vary by office and change, so verify on the USCIS processing-times page for Form I-485." },
   { question: "Why does I-485 processing time vary by field office?", answer: "USCIS field offices and service centers carry different caseloads, staffing, and interview requirements. The same category can be adjudicated much faster at one office than another, which is why office-specific USCIS processing times matter more than a single national number." },
+  { question: "What happens after I-485 biometrics?", answer: "After your biometrics appointment, USCIS uses your fingerprints and photo to run background and security checks while an officer reviews eligibility and evidence. Depending on your case, the next steps can be an EAD/Advance Parole issuance, an RFE, a field-office interview, a visa-number wait, or approval. Biometrics completion is a normal milestone, not a signal that a decision is imminent." },
   { question: "Does biometrics mean my I-485 is almost approved?", answer: "No. Biometrics is a routine early step so USCIS can run background checks. It is a good sign your case is moving, but it does not mean approval is imminent — an interview, RFE, or visa-number wait can still follow." },
   { question: "Does EAD approval mean I-485 approval is coming soon?", answer: "Not necessarily. The EAD (work permit) and Advance Parole often arrive months before any I-485 decision. They let you work and travel while the case is pending, but they are separate from the green-card decision itself." },
   { question: "Can I-485 be approved if my priority date is not current?", answer: "Generally no. Even with a pending I-485, USCIS usually cannot approve the green card unless your priority date is current under the Visa Bulletin chart in use. For India EB-2/EB-3 this is often the dominant wait." },
@@ -166,11 +176,11 @@ export default function Page() {
         icon="🟢"
         category="Visa & Green Card"
         title="I-485 Processing Time 2026"
-        hook="Check typical I-485 green card processing timelines, what affects your case, and estimate your personal wait based on your category, field office, and priority date."
+        hook="See estimated I-485 timeline by stage, including receipt notice, biometrics, RFE, interview, case review, EAD/AP, and green card approval."
         accent="from-emerald-600 to-teal-600"
         headerExtra={
           <div className="flex flex-wrap gap-2">
-            <a href="#calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">
+            <a href="#i485-calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">
               Estimate My I-485 Timeline →
             </a>
             <a href={D.uscisProcessingTimesUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50">
@@ -179,15 +189,15 @@ export default function Page() {
           </div>
         }
         sourceNote={<>Last updated: {I485_UPDATED_HUMAN}. {I485_DATA_NOTE}</>}
-        disclaimerExtra={<p>This tool is for educational planning only and is not legal advice. Immigration timelines vary by case. Confirm your situation with your employer, attorney, USCIS, or DOL official sources.</p>}
+        disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
         {/* Quick answer */}
         <section className="pt-6">
           <Container>
             <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card sm:p-6">
-              <h2 className="text-lg font-bold text-ink-900">Quick answer: how long does I-485 take?</h2>
+              <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Long Does I-485 Take?</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                I-485 processing time depends on your green card category, USCIS field office or service center, biometrics, whether an interview is required, background checks, medical exam status, and whether your priority date is current. Check both the USCIS processing times and the Visa Bulletin before assuming when your green card may be approved.
+                I-485 processing time depends on green card category, USCIS field office or service center, biometrics, medical exam, RFE, interview, background checks, and priority date availability. For employment-based Indian applicants, the Visa Bulletin can be one of the biggest factors because USCIS generally cannot approve the green card unless the priority date is current.
               </p>
               <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3.5">
                 <p className="text-xs leading-relaxed text-ink-700">
@@ -195,19 +205,42 @@ export default function Page() {
                 </p>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <a href="#calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Use the calculator →</a>
+                <a href="#i485-calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Use the calculator →</a>
                 <a href={D.uscisProcessingTimesUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-emerald-300">USCIS processing times ↗</a>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Snapshot table */}
+        {/* NEW: static timeline estimate table (before the calculator) */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <ImmigrationTimelineTable
+              title="I-485 Processing Time Estimate by Stage"
+              intro="Most users searching for I-485 processing time want to know what happens after filing and how long each stage may take. This table gives a planning estimate. Use the calculator below for a personal estimate based on your case details."
+              rows={i485TimelineRows}
+              badges={i485TimelineBadges}
+              sourceNote={i485SourceNote}
+              sourceLinks={i485SourceLinks}
+              ctaText="Estimate My I-485 Timeline"
+              ctaHref="#i485-calculator"
+              accentBtn="bg-emerald-600 hover:bg-emerald-700"
+            />
+
+            {/* Quick planning summary box */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-emerald-100 bg-emerald-50/40 p-5 shadow-card">
+              <h3 className="text-base font-bold text-ink-900">I-485 Timeline Planning Summary</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">{i485PlanningSummary}</p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Situations table (renamed, now below the timeline estimate) */}
         <section className="py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">I-485 processing time snapshot</h2>
-              <p className="mt-1.5 text-sm text-ink-500">A quick map of common situations and what to do next. General guidance only — not case-specific.</p>
+              <h2 className="text-xl font-bold text-ink-900">I-485 Situations Explained</h2>
+              <p className="mt-1.5 text-sm text-ink-500">After you understand the estimated I-485 timeline above, this table explains common case situations and what you should check next.</p>
               <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
                 <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                   <thead>
@@ -273,10 +306,10 @@ export default function Page() {
         </section>
 
         {/* Calculator */}
-        <section className="border-t border-ink-900/5 bg-ink-50/40 pb-12 pt-10 sm:pb-16 sm:pt-12">
+        <section id="i485-calculator" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 pb-12 pt-10 sm:pb-16 sm:pt-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Estimate your personal I-485 processing time</h2>
+              <h2 className="text-xl font-bold text-ink-900">Estimate Your Personal I-485 Processing Time</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
                 The snapshot above gives a general overview. Use the calculator below to estimate your personal timeline based on your green card category, country, priority date, field office, biometrics, RFE, and interview status.
               </p>
@@ -310,7 +343,7 @@ export default function Page() {
         {/* Internal links */}
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related green card and immigration tools" links={[...i485ClusterLinks.filter((l) => l.href !== PATH), ...i485RelatedLinks]} />
+            <PermClusterLinks title="Related Green Card and Immigration Tools" links={[...i485ClusterLinks.filter((l) => l.href !== PATH), ...i485RelatedLinks]} />
           </Container>
         </section>
 

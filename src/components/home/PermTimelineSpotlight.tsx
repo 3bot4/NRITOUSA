@@ -26,7 +26,7 @@ export default function PermTimelineSpotlight() {
                 PERM Processing Time Calculator
               </h2>
               <p className="mt-0.5 text-sm text-ink-500">
-                Estimate your PWD, recruitment, PERM approval, I-140, priority date, and H-1B max-out risk timeline.
+                See estimated PERM timeline by stage, including PWD, recruitment, DOL review, audit, I-140, and H-1B risk.
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {BADGES.map((b) => (
@@ -72,7 +72,7 @@ export default function PermTimelineSpotlight() {
             <div>
               <p className="text-sm font-bold tracking-tight text-ink-900">I-485 Processing Time</p>
               <p className="mt-0.5 text-xs text-ink-500">
-                Estimate your green card adjustment timeline and see what may affect approval timing.
+                See estimated green card adjustment timeline, including biometrics, RFE, interview, Visa Bulletin, and approval stage.
               </p>
             </div>
           </div>
@@ -94,9 +94,9 @@ export default function PermTimelineSpotlight() {
               🗂️
             </span>
             <div>
-              <p className="text-sm font-bold tracking-tight text-ink-900">NVC Case Status & Timeline Checker</p>
+              <p className="text-sm font-bold tracking-tight text-ink-900">NVC Case Status</p>
               <p className="mt-0.5 text-xs text-ink-500">
-                Understand what happens after USCIS approval, check your NVC stage, prepare documents, and know when to contact NVC.
+                Understand your NVC case stage, DQ status, interview wait, CEAC updates, and next steps.
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function PermTimelineSpotlight() {
             href="/nvc-case-status"
             className="shrink-0 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-center text-sm font-semibold text-indigo-700 transition-colors hover:bg-indigo-100"
           >
-            Check NVC Timeline →
+            Check NVC Status →
           </Link>
         </div>
       </div>

@@ -6,6 +6,15 @@ import PermTimelineCalculator from "@/components/tools/PermTimelineCalculator";
 import PermDolTimesPanel from "@/components/tools/PermDolTimesPanel";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
+import {
+  permTimelineRows,
+  permTimelineBadges,
+  permPlanningSummary,
+  permSourceNote,
+  permSourceLinks,
+  TIMELINE_DISCLAIMER,
+} from "@/data/immigrationTimelineData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -137,7 +146,9 @@ const faq: FaqItem[] = [
   { question: "How long does PERM take in 2026?", answer: "The total PERM stage — prevailing wage determination, recruitment, filing, and DOL analyst review — commonly spans well over a year end to end, and longer if the case is audited. Exact current queues change monthly; always check the DOL FLAG dashboard and confirm your own timeline with your employer's immigration attorney." },
   { question: "Is PWD included in PERM processing time?", answer: "Technically no. Prevailing wage determination (PWD) is a separate DOL step that must finish before PERM is filed. Many people casually include PWD, recruitment, and DOL review when they say 'PERM timeline,' but the official PERM processing queue only covers the review after the ETA-9089 is filed." },
   { question: "What is the difference between PWD and PERM?", answer: "PWD (prevailing wage determination) is the first DOL step: DOL sets the minimum wage your employer must offer for the role. PERM (labor certification) comes later, after recruitment, and is DOL's certification that no qualified U.S. worker is available. PWD must be completed before PERM can be filed." },
+  { question: "How long does PWD take for PERM?", answer: "As a planning range, a prevailing wage determination (PWD) commonly takes about 5–7 months, and it has no premium processing. PWD is a separate DOL step that must finish before PERM is filed, so it is not counted in the official PERM review queue. Times change monthly — check the DOL FLAG processing-times dashboard for the current PWD queue." },
   { question: "How long does PERM take after recruitment?", answer: "After recruitment ends, the employer must wait at least 30 days (the quiet period) before filing PERM. Once filed, DOL analyst review currently takes many months — see the current queue on the DOL FLAG dashboard. An audit adds significant additional time." },
+  { question: "Does a PERM audit add time?", answer: "Yes. If DOL selects your PERM for audit, it moves to a separate, slower review queue and can add roughly 6–12+ months as a planning range. An audit is not a denial — your attorney responds with the recruitment file and documentation — but you should plan for a longer total timeline. Check the DOL audit queue and confirm timing with your attorney." },
   { question: "What does DOL analyst review mean?", answer: "DOL analyst review is the standard adjudication: an analyst reviews the filed ETA-9089 and recruitment record and either certifies, denies, or issues an audit. DOL publishes the priority date (filing month) it is currently reviewing on the FLAG dashboard." },
   { question: "What happens if my PERM is audited?", answer: "An audit means DOL asks for the full recruitment file and supporting documentation before deciding. It is not a denial, but it substantially lengthens processing because audited cases go into a separate, slower review queue. Your attorney responds to the audit on the employer's behalf." },
   { question: "Can PERM be premium processed?", answer: "No. PERM labor certification cannot be premium processed. There is no way to pay to expedite a PERM decision. Premium processing is only available for certain I-140 immigrant petitions, which come after PERM." },
@@ -177,12 +188,12 @@ export default function Page() {
         icon="⏳"
         category="Visa & Green Card"
         title={TITLE}
-        hook="Check the current PERM timeline, PWD processing, recruitment stage, DOL review, audit risk, and estimated I-140 timing before entering your personal case details."
+        hook="See estimated PERM timeline by stage, including PWD, recruitment, DOL review, audit, I-140, priority date, and H-1B risk."
         accent="from-blue-700 to-indigo-600"
         headerExtra={
           <div className="flex flex-wrap gap-2">
-            <a href="#calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-bold text-white transition hover:bg-blue-800">
-              Calculate My PERM Timeline →
+            <a href="#perm-calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-bold text-white transition hover:bg-blue-800">
+              Estimate My Personal PERM Timeline →
             </a>
             <a href={D.dolSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-white px-4 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-50">
               Check Official DOL Processing Times ↗
@@ -190,19 +201,15 @@ export default function Page() {
           </div>
         }
         sourceNote={<>Last updated: {CLUSTER_UPDATED_HUMAN}. {DOL_DATA_NOTE}</>}
-        disclaimerExtra={
-          <p>
-            This tool is for educational planning only and is not legal advice. Immigration timelines vary by case. Confirm your situation with your employer, attorney, USCIS, or DOL official sources.
-          </p>
-        }
+        disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
         {/* Quick answer */}
         <section className="pt-6">
           <Container>
             <div className="mx-auto max-w-3xl rounded-2xl border border-blue-200 bg-blue-50/50 p-5 shadow-card sm:p-6">
-              <h2 className="text-lg font-bold text-ink-900">Quick answer: how long does PERM take?</h2>
+              <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Long Does PERM Take?</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                PERM timing usually includes three major parts: the prevailing wage determination, recruitment, and DOL review after PERM filing. If the case is audited, the timeline can become much longer. After PERM approval, the employer usually moves to I-140, and Indian EB-2/EB-3 applicants must also track the Visa Bulletin.
+                The total PERM timeline is not only the DOL review period. Most applicants should think of the timeline as PWD + recruitment + PERM filing + DOL analyst review + possible audit + I-140. A no-audit PERM path can often take around <strong>20–26 months</strong> from PWD filing to PERM approval as a planning range. If the case is audited, it can take longer. PERM itself does not have premium processing.
               </p>
               <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3.5">
                 <p className="text-xs leading-relaxed text-ink-700">
@@ -210,19 +217,42 @@ export default function Page() {
                 </p>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <a href="#calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-800">Use the calculator →</a>
+                <a href="#perm-calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-800">Use the calculator →</a>
                 <a href={D.dolSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-blue-300">DOL FLAG processing times ↗</a>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Snapshot table */}
+        {/* NEW: static timeline estimate table (before the calculator) */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <ImmigrationTimelineTable
+              title="PERM Processing Time Estimate by Stage"
+              intro="Most users searching for PERM processing time want the total wait first. This table gives a quick planning estimate. Use the calculator below for a personal estimate based on your own dates."
+              rows={permTimelineRows}
+              badges={permTimelineBadges}
+              sourceNote={permSourceNote}
+              sourceLinks={permSourceLinks}
+              ctaText="Estimate My Personal PERM Timeline"
+              ctaHref="#perm-calculator"
+              accentBtn="bg-blue-700 hover:bg-blue-800"
+            />
+
+            {/* Quick planning summary box */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-blue-100 bg-blue-50/40 p-5 shadow-card">
+              <h3 className="text-base font-bold text-ink-900">PERM Timeline Planning Summary</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">{permPlanningSummary}</p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Stage explanation table (renamed, now below the timeline estimate) */}
         <section className="py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">PERM processing time snapshot</h2>
-              <p className="mt-1.5 text-sm text-ink-500">The stages of a PERM green card case and what each one means for you. General guidance only — not case-specific.</p>
+              <h2 className="text-xl font-bold text-ink-900">PERM Stages Explained</h2>
+              <p className="mt-1.5 text-sm text-ink-500">After you understand the timeline estimate above, this table explains what each PERM stage means and what action usually comes next.</p>
               <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
                 <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                   <thead>
@@ -299,10 +329,10 @@ export default function Page() {
         </section>
 
         {/* Calculator */}
-        <section className="border-t border-ink-900/5 bg-white pb-12 pt-10 sm:pb-16 sm:pt-12">
+        <section id="perm-calculator" className="scroll-mt-24 border-t border-ink-900/5 bg-white pb-12 pt-10 sm:pb-16 sm:pt-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Estimate your personal PERM processing time</h2>
+              <h2 className="text-xl font-bold text-ink-900">Estimate Your Personal PERM Processing Time</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
                 The snapshot above gives a general overview. Use the calculator below to estimate your own PERM timeline based on PWD, recruitment, PERM filing date, audit status, I-140, priority date, and H-1B expiration.
               </p>
@@ -316,7 +346,7 @@ export default function Page() {
         {/* Internal links */}
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related PERM and green card tools" links={[...clusterLinks.filter((l) => l.href !== PATH), ...relatedImmigrationLinks]} />
+            <PermClusterLinks title="Related PERM and Green Card Tools" links={[...clusterLinks.filter((l) => l.href !== PATH), ...relatedImmigrationLinks]} />
           </Container>
         </section>
 
