@@ -3,6 +3,13 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Newsletter from "@/components/Newsletter";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  taxComplianceSnapshotRows,
+  taxComplianceSources,
+  TAX_COMPLIANCE_VERIFIED,
+  TAX_COMPLIANCE_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -220,6 +227,23 @@ export default function NriTaxFormsLimitsPage() {
               India forms table
             </Link>
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: FBAR/FATCA thresholds first */}
+      <section className="bg-white pt-8">
+        <Container>
+          <FastAnswerSnapshot
+            title="Key US reporting thresholds & deadlines"
+            accent="brand"
+            rows={taxComplianceSnapshotRows}
+            badges={["FBAR $10,000", "Due Apr 15 → auto Oct 15"]}
+            lastVerified={TAX_COMPLIANCE_VERIFIED}
+            sources={taxComplianceSources}
+            disclaimer={TAX_COMPLIANCE_DISCLAIMER}
+            ctaText="See the full US forms table"
+            ctaHref="#us-forms"
+          />
         </Container>
       </section>
 

@@ -309,6 +309,24 @@ export const taxNumbers: NumberGroup = {
   },
 } as const;
 
+/** Reusable Fast Answer rows for FBAR/FATCA compliance pages. */
+export const taxComplianceSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "FBAR filing threshold", value: taxNumbers.fbarThreshold.value, note: "Aggregate high balance across ALL foreign accounts at any time in the year.", highlight: true },
+  { label: "FBAR deadline", value: taxNumbers.fbarDeadline.value, note: "Filed via FinCEN BSA, separately from your tax return." },
+  { label: "FATCA Form 8938", value: taxNumbers.fatca8938.value, note: "US single: $50k end-of-year / $75k any time; higher for MFJ & taxpayers abroad." },
+  { label: "Filed with", value: "IRS return (8938) / FinCEN (FBAR)", note: "Two separate regimes — meeting one threshold says nothing about the other." },
+];
+
+export const taxComplianceSources: { label: string; href: string }[] = [
+  { label: "IRS — FBAR", href: officialSources.irsFbar },
+  { label: "FinCEN BSA E-Filing", href: officialSources.fincenBsa },
+  { label: "IRS — Form 8938", href: officialSources.irsForm8938 },
+];
+
+export const TAX_COMPLIANCE_VERIFIED = "2026-07-04";
+export const TAX_COMPLIANCE_DISCLAIMER =
+  "Thresholds and deadlines reflect current IRS/FinCEN rules but can change, and your situation may differ. This is educational information, not tax or legal advice — confirm with the official IRS/FinCEN pages or a qualified cross-border CPA before filing.";
+
 /* ───────────────────────── Wealth / return to India ─────────────────────── */
 
 export const wealthNumbers: NumberGroup = {
