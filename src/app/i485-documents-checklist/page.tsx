@@ -20,7 +20,16 @@ import {
   I485_UPDATED,
   I485_UPDATED_HUMAN,
 } from "@/lib/i485Cluster";
-import { i485Checklist, i485ProcessingData as D, I485_DATA_NOTE } from "@/data/i485ProcessingData";
+import {
+  i485Checklist,
+  i485ProcessingData as D,
+  I485_DATA_NOTE,
+  i485StageEstimateRows,
+  i485EstimateSourceLinks,
+  I485_ESTIMATE_VERIFIED,
+  I485_ESTIMATE_DISCLAIMER,
+} from "@/data/i485ProcessingData";
+import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
 
 const PATH = "/i485-documents-checklist";
 const TITLE = "I-485 Documents Checklist 2026: What to Gather Before Filing";
@@ -78,7 +87,23 @@ export default function Page() {
           </Link>
         }
       >
-        <section className="pb-10 pt-6 sm:pb-12">
+        {/* Fast Answer: I-485 timeline snapshot before the checklist */}
+        <section className="pt-6">
+          <Container>
+            <EstimatedTimelineTable
+              title="I-485 timeline snapshot (what to expect after filing)"
+              intro="Prepare a complete package to avoid RFEs. Here is the general timeline once your I-485 is on file — planning ranges only, verify with USCIS."
+              rows={i485StageEstimateRows}
+              lastUpdated={I485_ESTIMATE_VERIFIED}
+              sourceLinks={i485EstimateSourceLinks}
+              disclaimer={I485_ESTIMATE_DISCLAIMER}
+              ctaText="See detailed I-485 processing time"
+              ctaHref="/i485-processing-time"
+            />
+          </Container>
+        </section>
+
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-5">
               <p className="text-sm leading-relaxed text-ink-600">

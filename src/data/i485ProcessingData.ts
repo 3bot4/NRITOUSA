@@ -87,3 +87,40 @@ export const i485Checklist: ChecklistGroup[] = [
 /** Standard educational data-source note for the I-485 cluster. */
 export const I485_DATA_NOTE =
   "Data source: USCIS Form I-485 processing times and the Department of State Visa Bulletin. Times are estimates that vary by office and change; verify on USCIS and follow the official form instructions.";
+
+/* ─────────────── I-485 stage planning estimate (Fast Answer) ────────────── */
+
+/**
+ * General planning ranges for the I-485 (adjustment of status) journey, shown as
+ * the top "Fast Answer" on I-485 cluster pages. Planning estimates only — they
+ * vary widely by field office, category, and visa availability. For Indian
+ * EB-2/EB-3 the dominant wait is the Visa Bulletin BEFORE you can file.
+ * lastVerified: 2026-07-04.
+ */
+export const I485_ESTIMATE_VERIFIED = "2026-07-04";
+
+export interface I485EstimateRow {
+  stage: string;
+  estimatedTime: string;
+  whatToCheck?: string;
+  notes?: string;
+  highlight?: boolean;
+}
+
+export const i485StageEstimateRows: I485EstimateRow[] = [
+  { stage: "Receipt notice (I-797C)", estimatedTime: "Days to a few weeks", whatToCheck: "USCIS account / mail", notes: "Confirms USCIS received your I-485." },
+  { stage: "Biometrics appointment", estimatedTime: "1–3 months", whatToCheck: "Appointment notice", notes: "Varies by ASC; can be reused in some cases." },
+  { stage: "EAD / Advance Parole (if filed together)", estimatedTime: "Several months", whatToCheck: "I-765 / I-131 status", notes: "Lets you work/travel while I-485 is pending." },
+  { stage: "Interview (if required)", estimatedTime: "Field-office dependent", whatToCheck: "Local office processing times", notes: "Many employment cases are waived; some offices require it." },
+  { stage: "Employment-based I-485 decision", estimatedTime: "Months to 2+ years", whatToCheck: "USCIS Processing Times", notes: "Broad range by office, category, and visa availability.", highlight: true },
+  { stage: "Indian EB-2 / EB-3 (before filing)", estimatedTime: "Visa Bulletin-gated", whatToCheck: "Monthly Visa Bulletin", notes: "The priority-date backlog is usually the main delay." },
+];
+
+export const i485EstimateSourceLinks: { label: string; href: string }[] = [
+  { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+  { label: "USCIS Case Status", href: "https://egov.uscis.gov/" },
+  { label: "Visa Bulletin", href: "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" },
+];
+
+export const I485_ESTIMATE_DISCLAIMER =
+  "General planning ranges only — I-485 times vary widely by field office, category, and visa availability, and change over time. There is no premium processing for I-485. Not legal advice; verify with USCIS before relying on any date.";

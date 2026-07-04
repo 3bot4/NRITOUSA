@@ -5,6 +5,13 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
+import {
+  i485StageEstimateRows,
+  i485EstimateSourceLinks,
+  I485_ESTIMATE_VERIFIED,
+  I485_ESTIMATE_DISCLAIMER,
+} from "@/data/i485ProcessingData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -87,7 +94,23 @@ export default function Page() {
           </Link>
         }
       >
-        <section className="pb-10 pt-6 sm:pb-12">
+        {/* Fast Answer: I-485 stage estimate first */}
+        <section className="pt-6">
+          <Container>
+            <EstimatedTimelineTable
+              title="I-485 Processing Time Estimate by Stage"
+              intro="Planning ranges for adjustment of status after you can file. Times vary widely by field office, category, and visa availability — verify with USCIS. There is no premium processing for I-485."
+              rows={i485StageEstimateRows}
+              lastUpdated={I485_ESTIMATE_VERIFIED}
+              sourceLinks={i485EstimateSourceLinks}
+              disclaimer={I485_ESTIMATE_DISCLAIMER}
+              ctaText="Estimate my I-485 timeline"
+              ctaHref="/i485-processing-time"
+            />
+          </Container>
+        </section>
+
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <p className="text-sm leading-relaxed text-ink-600">
