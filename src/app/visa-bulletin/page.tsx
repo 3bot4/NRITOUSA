@@ -558,6 +558,7 @@ export default function VisaBulletinPage() {
               { href: "/green-card", label: "Green Card Guide", desc: "PERM, I-140, priority date, I-485, EAD — full process" },
               { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your date to the current bulletin" },
               { href: "/tools/green-card-stage-finder", label: "Green Card Stage Finder", desc: "Find your current stage and what to do next" },
+              { href: "/nvc-processing-time", label: "NVC interview wait after documentarily qualified", desc: "How long from DQ to a consular interview" },
               { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What your USCIS case status means" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
