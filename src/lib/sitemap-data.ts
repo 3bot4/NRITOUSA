@@ -163,6 +163,10 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/i140-processing-time", 0.9, "monthly"),
   e("/i140-premium-processing", 0.85, "monthly"),
   e("/i140-approved-what-next", 0.8, "monthly"),
+  // EAD / Advance Parole cluster.
+  e("/ead-processing-time", 0.9, "monthly"),
+  e("/advance-parole-processing-time", 0.85, "monthly"),
+  e("/ead-renewal-gap", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),

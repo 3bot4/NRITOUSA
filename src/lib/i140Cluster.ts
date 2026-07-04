@@ -26,6 +26,7 @@ export const i140RelatedLinks: ClusterLink[] = [
   { href: "/perm-processing-time-calculator", label: "PERM Processing Time Calculator", desc: "The step before I-140" },
   { href: "/perm-timeline", label: "PERM Timeline", desc: "Full green card process after H-1B" },
   { href: "/eb2-eb3-priority-date-india", label: "EB2/EB3 India Priority Date", desc: "When you can file I-485" },
+  { href: "/ead-processing-time", label: "EAD Processing Time", desc: "Work permit timeline & auto-extension" },
   { href: "/h1b-perm-max-out-calculator", label: "H-1B Max-Out Calculator", desc: "How an approved I-140 extends H-1B" },
   { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your date to the bulletin" },
   { href: "/tools/green-card-tracker", label: "Green Card Wait Tracker", desc: "How many are ahead of you in line" },
