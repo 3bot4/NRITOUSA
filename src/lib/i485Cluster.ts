@@ -23,6 +23,8 @@ export const i485ClusterLinks: ClusterLink[] = [
 ];
 
 export const i485RelatedLinks: ClusterLink[] = [
+  { href: "/perm-processing-time-calculator", label: "PERM Processing Time Calculator", desc: "The PWD → PERM → I-140 timeline before I-485" },
+  { href: "/nvc-case-status", label: "NVC Case Status", desc: "Consular processing instead of adjustment of status" },
   { href: "/nvc-document-checklist-india", label: "NVC document checklist", desc: "Consular-processing documents for Indian applicants" },
   { href: "/eb2-eb3-priority-date-india", label: "EB2/EB3 India Priority Date", desc: "When your date becomes current" },
   { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "The petition before I-485" },
@@ -84,5 +86,5 @@ export function i485ArticleJsonLd(opts: {
 }
 
 export const I485_PUBLISHED = "2026-07-03";
-export const I485_UPDATED = "2026-07-03";
-export const I485_UPDATED_HUMAN = "July 3, 2026";
+export const I485_UPDATED = "2026-07-04";
+export const I485_UPDATED_HUMAN = "July 4, 2026";

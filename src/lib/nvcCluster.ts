@@ -28,8 +28,9 @@ export const nvcClusterLinks: ClusterLink[] = [
 
 export const nvcRelatedLinks: ClusterLink[] = [
   { href: "/i485-processing-time", label: "I-485 Processing Time", desc: "Adjusting status inside the U.S. instead" },
-  { href: "/visa-bulletin", label: "Visa Bulletin Explained", desc: "When your priority date becomes current" },
-  { href: "/green-card", label: "Green Card Process", desc: "The full PERM → I-140 → visa journey" },
+  { href: "/perm-processing-time-calculator", label: "PERM Processing Time Calculator", desc: "The PWD → PERM → I-140 timeline before NVC" },
+  { href: "/eb2-eb3-priority-date-india", label: "EB2 / EB3 Priority Date India", desc: "When your India priority date becomes current" },
+  { href: "/visa-bulletin", label: "Visa Bulletin Explained", desc: "How the monthly bulletin works for Indians" },
   { href: "/immigration-tracker", label: "Immigration Tracker", desc: "Priority dates, backlog & processing times" },
 ];
 
