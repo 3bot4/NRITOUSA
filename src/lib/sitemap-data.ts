@@ -155,6 +155,10 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/perm-timeline", 0.8, "monthly"),
   e("/h1b-perm-max-out-calculator", 0.85, "monthly"),
   e("/eb2-eb3-priority-date-india", 0.8, "monthly"),
+  // Prevailing-wage cluster.
+  e("/prevailing-wage-calculator", 0.9, "monthly"),
+  e("/dol-wage-levels-explained", 0.8, "monthly"),
+  e("/h1b-prevailing-wage", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),

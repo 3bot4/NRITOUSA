@@ -50,6 +50,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Green Card Process", href: "/green-card" },
       { label: "PERM Processing Time Calculator", href: "/perm-processing-time-calculator" },
       { label: "DOL Processing Times", href: "/dol-processing-times" },
+      { label: "Prevailing Wage Calculator", href: "/prevailing-wage-calculator" },
       { label: "Visa Bulletin", href: "/visa-bulletin" },
       { label: "Indian Passport Renewal", href: "/indian-passport-renewal-usa" },
     ],
