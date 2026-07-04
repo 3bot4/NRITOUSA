@@ -20,7 +20,8 @@ import {
   NVC_UPDATED,
   NVC_UPDATED_HUMAN,
 } from "@/lib/nvcCluster";
-import { nvcLinks, NVC_DATA_NOTE } from "@/data/nvcData";
+import { nvcLinks, NVC_DATA_NOTE, nvcFeeRows, nvcFees as F } from "@/data/nvcData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/nvc-public-inquiry";
 const TITLE = "NVC Public Inquiry: When and How to Contact NVC";
@@ -91,8 +92,23 @@ export default function Page() {
         sourceNote={<>Last updated: {NVC_UPDATED_HUMAN}. {NVC_DATA_NOTE}</>}
         disclaimerExtra={<p>This is an educational tool and not legal advice. Always verify with official USCIS, Department of State, CEAC, and embassy/consulate instructions.</p>}
       >
-        {/* Quick answer */}
+        {/* Fast Answer: NVC fees */}
         <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="NVC fees & timing"
+              accent="sky"
+              rows={nvcFeeRows}
+              badges={["AOS $120", "IV $325 / $345"]}
+              lastVerified={F.lastVerified}
+              sources={[{ label: "NVC Fees", href: nvcLinks.fees }, { label: "NVC Timeframes", href: nvcLinks.nvcTimeframes }, { label: "CEAC", href: nvcLinks.ceac }]}
+              disclaimer={NVC_DATA_NOTE}
+            />
+          </Container>
+        </section>
+
+        {/* Quick answer */}
+        <section className="pt-10">
           <Container>
             <div className="mx-auto max-w-3xl rounded-2xl border border-rose-200 bg-rose-50/50 p-5 shadow-card sm:p-6">
               <h2 className="text-lg font-bold text-ink-900">Quick answer</h2>
