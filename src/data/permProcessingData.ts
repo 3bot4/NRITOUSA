@@ -131,3 +131,42 @@ export function displayDays(value: number | null): string {
 /** Standard educational data-source note shown on every page using this data. */
 export const DOL_DATA_NOTE =
   "Data source: U.S. Department of Labor FLAG Processing Times. Processing dates can change monthly and may not reflect every individual case.";
+
+/* ─────────────── PERM stage planning estimate (Fast Answer) ─────────────── */
+
+/**
+ * General, rule-of-thumb planning ranges for the whole PERM → I-140 path, shown
+ * as the top "Fast Answer" on the PERM cluster pages. These are planning
+ * estimates (clearly labelled), NOT the official current FLAG queue — that lives
+ * in the NEEDS_UPDATE fields above. Verify against DOL FLAG before relying on
+ * any figure. lastVerified: 2026-07-04.
+ */
+export const PERM_ESTIMATE_VERIFIED = "2026-07-04";
+
+export interface PermEstimateRow {
+  stage: string;
+  estimatedTime: string;
+  whatToCheck?: string;
+  notes?: string;
+  highlight?: boolean;
+}
+
+export const permStageEstimateRows: PermEstimateRow[] = [
+  { stage: "Prevailing Wage (PWD)", estimatedTime: "5–7 months", whatToCheck: "DOL FLAG PWD queue", notes: "Filed with DOL before recruitment; timing varies by wage source." },
+  { stage: "Recruitment + quiet period", estimatedTime: "2–3 months", whatToCheck: "Ad run dates + 30-day quiet period", notes: "Employer-run; includes the mandatory 30-day wait after ads." },
+  { stage: "PERM analyst review", estimatedTime: "12–16 months", whatToCheck: "DOL FLAG analyst-review queue", notes: "Depends on the DOL queue; no premium processing for PERM." },
+  { stage: "PERM audit (if selected)", estimatedTime: "+6–12+ months", whatToCheck: "Audit notice + response deadline", notes: "Only if audited; adds substantial time on top of analyst review." },
+  { stage: "Total to PERM approval — no audit", estimatedTime: "~20–26 months", notes: "PWD + recruitment + analyst review, planning range.", highlight: true },
+  { stage: "Total to PERM approval — with audit", estimatedTime: "~26–36+ months", notes: "When the case is audited." },
+  { stage: "I-140 after PERM", estimatedTime: "Premium 15 business days; regular ~4–8 months", whatToCheck: "USCIS Processing Times / I-907", notes: "Premium processing may be available depending on category." },
+];
+
+/** Convenience source links for the PERM Fast Answer. */
+export const permEstimateSourceLinks: { label: string; href: string }[] = [
+  { label: "DOL FLAG Processing Times", href: "https://flag.dol.gov/processingtimes" },
+  { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+  { label: "Visa Bulletin", href: "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" },
+];
+
+export const PERM_ESTIMATE_DISCLAIMER =
+  "General planning ranges only — the official current queue is on DOL FLAG and changes monthly. PERM has no premium processing. Not legal advice; verify with official sources before relying on any date.";
