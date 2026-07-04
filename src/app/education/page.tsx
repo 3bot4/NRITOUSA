@@ -4,6 +4,13 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFaq from "@/components/tools/ToolFaq";
 import ToolDisclaimer from "@/components/tools/ToolDisclaimer";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  educationSnapshotRows,
+  educationSnapshotSources,
+  EDUCATION_VERIFIED,
+  EDUCATION_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import { eduCalcs, eduArticleSlugs } from "@/lib/education";
 import { getArticle } from "@/lib/articles";
 import { site } from "@/lib/site";
@@ -137,6 +144,21 @@ export default function EducationHubPage() {
               </div>
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: education fees & key dates */}
+      <section className="py-10 sm:py-12">
+        <Container>
+          <FastAnswerSnapshot
+            title="Education fees & key dates at a glance"
+            accent="sky"
+            rows={educationSnapshotRows}
+            badges={["SAT ~$68", "FAFSA opens Oct 1"]}
+            lastVerified={EDUCATION_VERIFIED}
+            sources={educationSnapshotSources}
+            disclaimer={EDUCATION_DISCLAIMER}
+          />
         </Container>
       </section>
 

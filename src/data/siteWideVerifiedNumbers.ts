@@ -385,6 +385,23 @@ export const educationNumbers: NumberGroup = {
   },
 } as const;
 
+/** Reusable Fast Answer rows for education fees & key dates. */
+export const educationSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "SAT registration fee", value: educationNumbers.satFee.value, note: "Fee waivers for eligible low-income US students (via school counselor).", highlight: true },
+  { label: "FAFSA opens", value: educationNumbers.fafsaOpens.value, note: "Federal financial aid application at studentaid.gov." },
+  { label: "College application fee", value: "~$50–90 each", note: "Varies by school; many waive fees for eligible applicants." },
+  { label: "ACT registration fee", value: "~$69", note: "Alternative to the SAT; waivers available for eligible students." },
+];
+
+export const educationSnapshotSources: { label: string; href: string }[] = [
+  { label: "College Board (SAT)", href: officialSources.collegeBoardSat },
+  { label: "Federal Student Aid (FAFSA)", href: officialSources.fafsa },
+];
+
+export const EDUCATION_VERIFIED = "2026-07-04";
+export const EDUCATION_DISCLAIMER =
+  "Fees and dates are current best-known figures and change each cycle — SAT/ACT and college application fees vary, and waivers exist for eligible students. Confirm on College Board / ACT / studentaid.gov and each college's site before relying on a number.";
+
 /** Everything, keyed by cluster — consumed by the monthly audit. */
 export const allVerifiedNumbers = {
   greenCardRenewal: greenCardRenewalNumbers,
