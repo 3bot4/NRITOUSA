@@ -32,6 +32,8 @@ export const clusterLinks: ClusterLink[] = [
 
 /** Related existing immigration tools/pages linked from cluster pages. */
 export const relatedImmigrationLinks: ClusterLink[] = [
+  { href: "/i485-processing-time", label: "I-485 Processing Time", desc: "Adjustment-of-status timeline after your date is current" },
+  { href: "/nvc-case-status", label: "NVC Case Status", desc: "Consular processing stage after USCIS approval" },
   { href: "/prevailing-wage-calculator", label: "Prevailing Wage Calculator", desc: "Estimate your DOL wage level & check an offer" },
   { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "Standard vs premium decision estimate" },
   { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your date to the current bulletin" },
@@ -107,5 +109,5 @@ export function clusterArticleJsonLd(opts: {
 
 /** Human-readable publish/update stamps for the cluster (edit when you revise). */
 export const CLUSTER_PUBLISHED = "2026-07-03";
-export const CLUSTER_UPDATED = "2026-07-03";
-export const CLUSTER_UPDATED_HUMAN = "July 3, 2026";
+export const CLUSTER_UPDATED = "2026-07-04";
+export const CLUSTER_UPDATED_HUMAN = "July 4, 2026";
