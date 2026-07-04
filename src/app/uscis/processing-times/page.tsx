@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import UscisProcessingDelayChecker from "@/components/tools/UscisProcessingDelayChecker";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -151,6 +152,30 @@ export default function ProcessingTimesPage() {
               Updated {new Date(UPDATED).toLocaleDateString("en-US", { month: "long", year: "numeric", day: "numeric" })} · ~12 min read
             </p>
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: processing times & premium */}
+      <section className="bg-white pb-4 pt-2">
+        <Container>
+          <FastAnswerSnapshot
+            title="USCIS processing times at a glance"
+            accent="brand"
+            rows={[
+              { label: "Premium processing (I-907)", value: "15 business days", note: "Action guarantee (not approval); fee $2,965 for I-129/I-140.", highlight: true },
+              { label: "Regular I-140", value: "~6–12+ months", note: "Varies by service center & petition type." },
+              { label: "Regular I-129 (H-1B)", value: "Varies by service center", note: "Premium available to cut to 15 business days." },
+              { label: "Check your case", value: "Case status + Processing Times", note: "Compare your receipt date to the posted times." },
+            ]}
+            badges={["Premium 15 business days", "Fee $2,965"]}
+            lastVerified="2026-07-04"
+            sources={[
+              { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+              { label: "USCIS Form I-907", href: "https://www.uscis.gov/i-907" },
+              { label: "USCIS Case Status", href: "https://egov.uscis.gov/" },
+            ]}
+            disclaimer="Processing times vary by form, category, and service center and change often; premium fees can change (premium rose to $2,965 on Mar 1, 2026). Not legal advice — verify on USCIS before relying on any date."
+          />
         </Container>
       </section>
 
