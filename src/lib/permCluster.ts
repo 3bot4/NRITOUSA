@@ -33,6 +33,7 @@ export const clusterLinks: ClusterLink[] = [
 /** Related existing immigration tools/pages linked from cluster pages. */
 export const relatedImmigrationLinks: ClusterLink[] = [
   { href: "/prevailing-wage-calculator", label: "Prevailing Wage Calculator", desc: "Estimate your DOL wage level & check an offer" },
+  { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "Standard vs premium decision estimate" },
   { href: "/tools/priority-date-checker", label: "Priority Date Checker", desc: "Compare your date to the current bulletin" },
   { href: "/tools/green-card-tracker", label: "Green Card Wait Tracker", desc: "How many are ahead of you in line" },
   { href: "/visa-bulletin", label: "Visa Bulletin Guide", desc: "How the monthly bulletin works for Indians" },

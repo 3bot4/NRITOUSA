@@ -159,6 +159,10 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/prevailing-wage-calculator", 0.9, "monthly"),
   e("/dol-wage-levels-explained", 0.8, "monthly"),
   e("/h1b-prevailing-wage", 0.8, "monthly"),
+  // I-140 cluster.
+  e("/i140-processing-time", 0.9, "monthly"),
+  e("/i140-premium-processing", 0.85, "monthly"),
+  e("/i140-approved-what-next", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),
