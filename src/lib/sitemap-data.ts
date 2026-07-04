@@ -171,6 +171,14 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/i485-processing-time", 0.9, "monthly"),
   e("/i485-timeline", 0.85, "monthly"),
   e("/i485-documents-checklist", 0.8, "monthly"),
+  // Green Card Renewal / Form I-90 cluster.
+  e("/green-card-renewal", 0.9, "monthly"),
+  e("/green-card-renewal-processing-time", 0.85, "monthly"),
+  e("/renew-green-card-online", 0.85, "monthly"),
+  e("/green-card-renewal-fee", 0.85, "monthly"),
+  e("/replace-green-card", 0.85, "monthly"),
+  e("/i90-vs-i751", 0.8, "monthly"),
+  e("/expired-green-card", 0.8, "monthly"),
   // NVC (National Visa Center / consular processing) cluster.
   e("/nvc-case-status", 0.9, "monthly"),
   e("/what-is-nvc-case-number", 0.8, "monthly"),

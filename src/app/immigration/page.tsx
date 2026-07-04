@@ -86,6 +86,12 @@ const situationCards = [
     icon: "🗂️",
   },
   {
+    title: "I need to renew my green card",
+    desc: "Check Form I-90 timeline, renewal fee, online filing steps, replacement reasons, and a personalized renewal checklist.",
+    href: "/green-card-renewal",
+    icon: "🟢",
+  },
+  {
     title: "I want to track my case",
     desc: "Follow case status, processing delays, and how many applicants are ahead of you.",
     href: "/immigration-tracker",
