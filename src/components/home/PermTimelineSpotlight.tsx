@@ -59,6 +59,30 @@ export default function PermTimelineSpotlight() {
             </li>
           ))}
         </ul>
+
+        {/* Companion: I-485 processing time */}
+        <div className="mt-4 flex flex-col gap-3 rounded-xl border border-emerald-100 bg-white p-4 shadow-card sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3">
+            <span
+              aria-hidden
+              className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 text-lg shadow-sm"
+            >
+              🟢
+            </span>
+            <div>
+              <p className="text-sm font-bold tracking-tight text-ink-900">I-485 Processing Time</p>
+              <p className="mt-0.5 text-xs text-ink-500">
+                Estimate your green card adjustment timeline and see what may affect approval timing.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/i485-processing-time"
+            className="shrink-0 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-center text-sm font-semibold text-emerald-700 transition-colors hover:bg-emerald-100"
+          >
+            Check I-485 Timeline →
+          </Link>
+        </div>
       </div>
     </section>
   );
