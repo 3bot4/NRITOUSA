@@ -3,9 +3,10 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import TuitionCalc from "@/components/education/TuitionCalc";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { EduIntro, EduDeepDive } from "@/components/education/EduHub";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
+import { getEducationContent } from "@/lib/educationContent";
 import { collegeTypes } from "@/lib/education-data";
 import { formatUsd as usd } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -15,10 +16,10 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("tuition-calculator")!;
+const content = getEducationContent("tuition-calculator")!;
 const LAST_UPDATED = "2025-08-15";
 
 export const metadata: Metadata = pageMetadata({
@@ -50,51 +51,24 @@ const residency = [
   },
 ];
 
-const faq: FaqItem[] = [
-  {
-    question: "How much does a US college degree actually cost?",
-    answer:
-      "For 2024–25, published annual tuition averages about $11,610 for public in-state, $30,780 for public out-of-state, $43,505 for private nonprofit, $68,000 for Ivy League schools, and just $3,900 for community college. Room and board adds roughly $13,000–$19,000 a year, plus about $1,200 for books and fees. Over four years with inflation, that's anywhere from under $30,000 (community college commuter) to $300,000+ (private/Ivy on campus).",
-  },
-  {
-    question: "Can green card holders get in-state tuition?",
-    answer:
-      "Yes. Lawful permanent residents qualify for in-state tuition once they meet the state's residency requirement — typically 12 months of living in the state — just like citizens. This can cut tuition by $15,000–$20,000 a year versus out-of-state rates.",
-  },
-  {
-    question: "Who can file the FAFSA?",
-    answer:
-      "US citizens and eligible non-citizens — green card holders, refugees, asylees, and certain others — can file the FAFSA for federal grants and loans at studentaid.gov. Students on F-1, H-4, or other temporary visas generally cannot get federal aid, but should still pursue institutional and private scholarships, and state Dream Act aid where available.",
-  },
-  {
-    question: "Can immigrants use a 529 college savings plan?",
-    answer:
-      "Yes. Anyone with a Social Security number or ITIN can open a 529 plan, regardless of visa status. Earnings grow tax-free and withdrawals for qualified education expenses are federal-tax-free — many states also give a tax deduction. It's one of the best tools for immigrant families saving for college.",
-  },
-  {
-    question: "How much can students borrow in federal loans?",
-    answer:
-      "Federal Direct Loan limits for dependent undergraduates are $5,500 in year one, $6,500 in year two, and $7,500 per year after that — capped at $31,000 total. Anything beyond that typically requires a Parent PLUS loan or a private loan, which is why families lean on savings, 529 plans, and scholarships to close the gap.",
-  },
-];
-
 export default function TuitionCalculatorPage() {
   const url = absoluteUrl("/education/tuition-calculator");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: calc.title,
       description: calc.seoDescription,
       url,
-      applicationCategory: "FinanceApplication",
-      operatingSystem: "Any",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Education", url: "/education" },
@@ -132,6 +106,10 @@ export default function TuitionCalculatorPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <EduIntro content={content} />
+          </div>
+
           <TuitionCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -225,10 +203,11 @@ export default function TuitionCalculatorPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Full SEO hub content: how to use result, explainer, cost table,
+          decision framework, mistakes, example, related links, and FAQ */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <EduDeepDive content={content} />
         </Container>
       </section>
 
