@@ -3,9 +3,10 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import CollegeRankingsExplorer from "@/components/education/CollegeRankingsExplorer";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { EduIntro, EduDeepDive } from "@/components/education/EduHub";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
+import { getEducationContent } from "@/lib/educationContent";
 import { collegeCategories, collegesByTag } from "@/lib/education-data";
 import { formatUsd as usd } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -15,10 +16,10 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("college-rankings")!;
+const content = getEducationContent("college-rankings")!;
 const LAST_UPDATED = "2025-08-15";
 
 export const metadata: Metadata = pageMetadata({
@@ -27,46 +28,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/education/college-rankings",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "Which US universities are best for international and immigrant students?",
-    answer:
-      "For STEM, the standouts include MIT, Stanford, Carnegie Mellon, UC Berkeley, Georgia Tech, UIUC, Purdue, and UT Austin — all with strong recruiting and (for the public ones) lower in-state cost. The 'best' school depends on your budget, intended major, and whether you qualify for in-state tuition. Use the filters to weigh ranking against cost.",
-  },
-  {
-    question: "Are public universities cheaper than private ones?",
-    answer:
-      "For in-state students, dramatically so — public flagships can cost $10,000–$17,000 in tuition versus $60,000+ at private universities. But out-of-state and international students pay much higher public rates ($30,000–$60,000), which can approach private-school cost. Top private schools also often give the most generous need-based aid, so the sticker price isn't the whole story.",
-  },
-  {
-    question: "What's a good 'value' college?",
-    answer:
-      "A value pick is a school with a strong ranking relative to its cost — typically public flagships like Georgia Tech, UT Austin, Purdue, UC Berkeley, and the University of Michigan, which deliver top-tier programs at a fraction of private-school tuition for in-state students. Many also offer automatic merit scholarships based on GPA and test scores.",
-  },
-  {
-    question: "Can I transfer from community college to a top university?",
-    answer:
-      "Yes, and it's a proven money-saving path. Many states have guaranteed-transfer agreements — California's community colleges, for instance, have admission pathways into the UC system. Two years at community college followed by two years at a four-year university can cut a bachelor's degree cost by tens of thousands of dollars.",
-  },
-];
-
 export default function CollegeRankingsPage() {
   const url = absoluteUrl("/education/college-rankings");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: calc.title,
       description: calc.seoDescription,
       url,
-      applicationCategory: "EducationApplication",
-      operatingSystem: "Any",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Education", url: "/education" },
@@ -110,6 +89,10 @@ export default function CollegeRankingsPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <EduIntro content={content} />
+          </div>
+
           <CollegeRankingsExplorer />
           <p className="mt-6 text-xs text-ink-400">
             Last reviewed:{" "}
@@ -162,10 +145,11 @@ export default function CollegeRankingsPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Full SEO hub content: how to use result, factors explainer,
+          comparison table, steps, mistakes, example, related links, and FAQ */}
       <section className="py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <EduDeepDive content={content} />
         </Container>
       </section>
 
