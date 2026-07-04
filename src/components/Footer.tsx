@@ -53,6 +53,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Prevailing Wage Calculator", href: "/prevailing-wage-calculator" },
       { label: "I-140 Processing Time", href: "/i140-processing-time" },
       { label: "EAD Processing Time", href: "/ead-processing-time" },
+      { label: "I-485 Processing Time", href: "/i485-processing-time" },
       { label: "Visa Bulletin", href: "/visa-bulletin" },
       { label: "Indian Passport Renewal", href: "/indian-passport-renewal-usa" },
     ],

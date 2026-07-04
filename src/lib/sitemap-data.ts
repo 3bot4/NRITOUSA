@@ -167,6 +167,10 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/ead-processing-time", 0.9, "monthly"),
   e("/advance-parole-processing-time", 0.85, "monthly"),
   e("/ead-renewal-gap", 0.8, "monthly"),
+  // I-485 / Adjustment of Status cluster.
+  e("/i485-processing-time", 0.9, "monthly"),
+  e("/i485-timeline", 0.85, "monthly"),
+  e("/i485-documents-checklist", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),
