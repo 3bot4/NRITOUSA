@@ -3,6 +3,13 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  itrSnapshotRows,
+  indiaIncomeTaxSources,
+  INDIA_TAX_VERIFIED,
+  INDIA_TAX_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
 import {
@@ -125,6 +132,20 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
             </div>
           </Container>
         </header>
+
+        <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="NRI ITR filing — key dates & forms"
+              accent="brand"
+              rows={itrSnapshotRows}
+              badges={["Due Jul 31 (non-audit)", "ITR-2 / ITR-3"]}
+              lastVerified={INDIA_TAX_VERIFIED}
+              sources={indiaIncomeTaxSources}
+              disclaimer={INDIA_TAX_DISCLAIMER}
+            />
+          </Container>
+        </div>
 
         <div className="py-8 sm:py-10">
           <Container>
