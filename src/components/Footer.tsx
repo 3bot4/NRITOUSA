@@ -48,6 +48,8 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "H1B Guide", href: "/h1b" },
       { label: "H-1B Layoff Checklist", href: "/h1b-layoff" },
       { label: "Green Card Process", href: "/green-card" },
+      { label: "PERM Processing Time Calculator", href: "/perm-processing-time-calculator" },
+      { label: "DOL Processing Times", href: "/dol-processing-times" },
       { label: "Visa Bulletin", href: "/visa-bulletin" },
       { label: "Indian Passport Renewal", href: "/indian-passport-renewal-usa" },
     ],
