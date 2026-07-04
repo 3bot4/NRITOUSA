@@ -8,10 +8,16 @@ import LeadMagnet from "@/components/calculators/LeadMagnet";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import RelatedHubs from "@/components/RelatedHubs";
 import { calculators, getCalculator } from "@/lib/calculators";
+import { getCalculatorContent } from "@/lib/calculatorContent";
 import { getArticle } from "@/lib/articles";
+import {
+  CalculatorIntro,
+  CalculatorDeepDive,
+} from "@/components/calculators/CalculatorHub";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
+  faqJsonLd,
   jsonLdGraph,
   pageMetadata,
 } from "@/lib/seo";
@@ -68,22 +74,31 @@ export default function CalculatorPage({
   const Calculator = REGISTRY[calc.slug];
   if (!Calculator) notFound();
 
+  const content = getCalculatorContent(calc.slug);
+
   const related = calc.related
     .map((slug) => getArticle(slug))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
   const url = absoluteUrl(`/calculators/${calc.slug}`);
   const jsonLd = jsonLdGraph(
+    // Valid SoftwareApplication node: applicationCategory + operatingSystem +
+    // a free `offers` object (price "0"). No unsupported fields.
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: calc.title,
       description: calc.seoDescription,
       url,
-      applicationCategory: "FinanceApplication",
-      operatingSystem: "Any",
+      applicationCategory: content?.appCategory ?? "FinanceApplication",
+      operatingSystem: "Web",
       isAccessibleForFree: true,
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -91,7 +106,15 @@ export default function CalculatorPage({
       { name: "Home", url: "/" },
       { name: "Calculators", url: "/calculators" },
       { name: calc.label, url: `/calculators/${calc.slug}` },
-    ])
+    ]),
+    // FAQPage — only when page-specific FAQs are actually rendered below.
+    ...(content
+      ? [
+          faqJsonLd(
+            content.faqs.map((f) => ({ question: f.question, answer: f.answer }))
+          ),
+        ]
+      : [])
   );
 
   return (
@@ -132,6 +155,18 @@ export default function CalculatorPage({
       {/* Calculator */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          {/* Static SEO context above the tool (quick answer, who it's for,
+              key inputs, decision window) — only on expanded hub pages. */}
+          {content && (
+            <div className="mb-8">
+              <CalculatorIntro
+                content={content}
+                quickSummary={calc.quickSummary}
+                audience={calc.audience}
+              />
+            </div>
+          )}
+
           <Calculator />
 
           <div className="mt-8">
@@ -143,29 +178,48 @@ export default function CalculatorPage({
             />
           </div>
 
-          {/* Quick answer — AI-friendly snapshot, below the tool */}
-          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-brand-200 bg-white px-6 py-5">
-            <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-700">
-              Quick answer
-            </h2>
-            <p className="text-sm leading-relaxed text-ink-700">{calc.quickSummary}</p>
-            <dl className="mt-4 grid gap-2 sm:grid-cols-2 text-xs">
-              <div>
-                <dt className="font-semibold text-ink-500">Who this is for</dt>
-                <dd className="mt-0.5 text-ink-700">{calc.audience}</dd>
+          {content ? (
+            <>
+              {/* Full SEO hub content below the tool */}
+              <div className="mt-12 sm:mt-14">
+                <CalculatorDeepDive content={content} />
               </div>
-              <div>
-                <dt className="font-semibold text-ink-500">Data last checked</dt>
-                <dd className="mt-0.5 text-ink-700">
-                  <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
-                </dd>
+
+              {/* Data provenance footnote */}
+              <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-ink-900/10 bg-slate-50/70 px-5 py-4 text-xs text-ink-500">
+                <p>
+                  Reviewed for 2026 · data last checked{" "}
+                  <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>.
+                  Source: {calc.officialSource}. Figures are estimates and may
+                  change — verify before acting.
+                </p>
               </div>
-              <div className="sm:col-span-2">
-                <dt className="font-semibold text-ink-500">Official source</dt>
-                <dd className="mt-0.5 text-ink-700">{calc.officialSource}</dd>
-              </div>
-            </dl>
-          </div>
+            </>
+          ) : (
+            /* Compact quick-answer fallback for calculators without expanded content. */
+            <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-brand-200 bg-white px-6 py-5">
+              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-700">
+                Quick answer
+              </h2>
+              <p className="text-sm leading-relaxed text-ink-700">{calc.quickSummary}</p>
+              <dl className="mt-4 grid gap-2 sm:grid-cols-2 text-xs">
+                <div>
+                  <dt className="font-semibold text-ink-500">Who this is for</dt>
+                  <dd className="mt-0.5 text-ink-700">{calc.audience}</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-ink-500">Data last checked</dt>
+                  <dd className="mt-0.5 text-ink-700">
+                    <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
+                  </dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="font-semibold text-ink-500">Official source</dt>
+                  <dd className="mt-0.5 text-ink-700">{calc.officialSource}</dd>
+                </div>
+              </dl>
+            </div>
+          )}
         </Container>
       </section>
 
