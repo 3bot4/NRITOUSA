@@ -3,9 +3,10 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import GpaCalc from "@/components/education/GpaCalc";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { EduIntro, EduDeepDive } from "@/components/education/EduHub";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
+import { getEducationContent } from "@/lib/educationContent";
 import { gradeScale, collegeGpaTargets } from "@/lib/education-data";
 import { site } from "@/lib/site";
 import {
@@ -14,10 +15,10 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 
 const calc = getEduCalc("gpa-calculator")!;
+const content = getEducationContent("gpa-calculator")!;
 const LAST_UPDATED = "2025-08-15";
 
 export const metadata: Metadata = pageMetadata({
@@ -26,51 +27,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/education/gpa-calculator",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "What's the difference between weighted and unweighted GPA?",
-    answer:
-      "Unweighted GPA puts every course on the same 4.0 scale — an A is 4.0 whether it's a regular class or AP Calculus. Weighted GPA adds a bonus for harder courses, typically +1.0 for AP/IB and +0.5 for Honors, so weighted GPAs can exceed 4.0 (often up to 5.0). Colleges look at both, and most recalculate your GPA their own way using your transcript.",
-  },
-  {
-    question: "How do US letter grades convert to GPA points?",
-    answer:
-      "On the standard 4.0 scale: A = 4.0, A− = 3.7, B+ = 3.3, B = 3.0, B− = 2.7, C+ = 2.3, C = 2.0, and so on down to F = 0.0. Your GPA is the credit-hour-weighted average of these points across all your courses.",
-  },
-  {
-    question: "How is my Indian or foreign GPA converted for US colleges?",
-    answer:
-      "US colleges and employers usually require a credential evaluation from a service like WES (World Education Services) or another NACES-member agency. They convert your percentage marks or CGPA into a US 4.0-scale equivalent. Rules of thumb vary, but a credential evaluation is the document that actually counts — don't rely on a rough self-conversion for applications.",
-  },
-  {
-    question: "What GPA do top colleges require?",
-    answer:
-      "The most selective universities (Ivy League, Stanford, MIT) admit students with median GPAs near 3.9–4.0 unweighted and often well above 4.0 weighted. Top-50 schools cluster around 3.6–3.85, strong state flagships around 3.4–3.7, and most four-year colleges around 3.0. Community colleges are typically open-admission.",
-  },
-  {
-    question: "What are Dean's List, cum laude, and academic probation?",
-    answer:
-      "Dean's List recognizes a strong semester GPA (often 3.5+). Latin honors at graduation are usually cum laude (~3.5), magna cum laude (~3.7), and summa cum laude (~3.9), though exact thresholds vary by school. Academic probation is a warning status for students who fall below a minimum GPA (commonly 2.0) and risk dismissal if it isn't raised.",
-  },
-];
-
 export default function GpaCalculatorPage() {
   const url = absoluteUrl("/education/gpa-calculator");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: calc.title,
       description: calc.seoDescription,
       url,
-      applicationCategory: "EducationApplication",
-      operatingSystem: "Any",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Education", url: "/education" },
@@ -108,6 +82,10 @@ export default function GpaCalculatorPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <EduIntro content={content} />
+          </div>
+
           <GpaCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last reviewed:{" "}
@@ -201,10 +179,11 @@ export default function GpaCalculatorPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Full SEO hub content: how to use result, explainer, steps,
+          mistakes, example, related links, and FAQ */}
       <section className="py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <EduDeepDive content={content} />
         </Container>
       </section>
 
