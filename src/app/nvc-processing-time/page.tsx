@@ -22,7 +22,8 @@ import {
   NVC_UPDATED,
   NVC_UPDATED_HUMAN,
 } from "@/lib/nvcCluster";
-import { nvcLinks, nvcProcessingData as D, NVC_DATA_NOTE } from "@/data/nvcData";
+import { nvcLinks, nvcProcessingData as D, nvcFees as F, NVC_DATA_NOTE } from "@/data/nvcData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/nvc-processing-time";
 const TITLE = "NVC Processing Time: Case Creation, Document Review & Interview Wait";
@@ -92,21 +93,29 @@ export default function Page() {
         sourceNote={<>Last updated: {NVC_UPDATED_HUMAN}. {NVC_DATA_NOTE}</>}
         disclaimerExtra={<p>This is an educational tool and not legal advice. Always verify with official USCIS, Department of State, CEAC, and embassy/consulate instructions.</p>}
       >
-        {/* Quick answer */}
+        {/* Fast Answer: stage ranges + fees, first */}
         <section className="pt-6">
           <Container>
-            <div className="mx-auto max-w-3xl rounded-2xl border border-blue-200 bg-blue-50/50 p-5 shadow-card sm:p-6">
-              <h2 className="text-lg font-bold text-ink-900">Quick answer: how long does NVC take?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                There is no single guaranteed number. NVC processing has several parts — case creation after USCIS approval, the fee/DS-260 steps you control, document review, and the wait from <strong>documentarily qualified</strong> to a consular interview. Each part varies and changes constantly. Interview scheduling ultimately depends on appointment availability at your embassy or consulate.
-              </p>
-              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3.5">
-                <p className="text-xs leading-relaxed text-ink-700">
-                  <span className="font-bold text-ink-900">Always verify:</span> compare your case against the official{" "}
-                  <a href={nvcLinks.nvcTimeframes} target="_blank" rel="noopener noreferrer" className="font-semibold underline">NVC timeframes</a>, which the Department of State updates regularly.
-                </p>
-              </div>
-            </div>
+            <FastAnswerSnapshot
+              title="How long does NVC take? (planning ranges)"
+              accent="sky"
+              rows={[
+                { label: "USCIS → NVC case creation", value: `${D.caseCreationWeeksLow}–${D.caseCreationWeeksHigh} wks`, note: "Handoff + welcome letter." },
+                { label: "Document review", value: `${D.docReviewWeeksLow}–${D.docReviewWeeksHigh} wks`, note: "Per review cycle, if complete.", highlight: true },
+                { label: "DQ → interview", value: `${D.dqToInterviewMonthsLow}–${D.dqToInterviewMonthsHigh} mo`, note: "Embassy availability + priority date." },
+                { label: "Fee payment to clear", value: F.feePaymentClearDays, note: "Allow before the next step unlocks." },
+              ]}
+              badges={["Planning ranges, not guarantees", `AOS fee ${F.affidavitOfSupport} · IV fee ${F.familyIvApplication}–${F.employmentIvApplication}`]}
+              lastVerified={F.lastVerified}
+              sources={[
+                { label: "Official NVC Timeframes", href: nvcLinks.nvcTimeframes },
+                { label: "NVC Fees", href: nvcLinks.fees },
+                { label: "CEAC", href: nvcLinks.ceac },
+              ]}
+              disclaimer={NVC_DATA_NOTE}
+              ctaText="Check my NVC stage & next step"
+              ctaHref="#calculator"
+            />
           </Container>
         </section>
 

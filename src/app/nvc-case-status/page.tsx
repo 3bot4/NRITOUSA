@@ -22,7 +22,8 @@ import {
   NVC_UPDATED,
   NVC_UPDATED_HUMAN,
 } from "@/lib/nvcCluster";
-import { nvcStages, nvcLinks, NVC_DATA_NOTE } from "@/data/nvcData";
+import { nvcStages, nvcLinks, nvcFeeRows, nvcFees as F, NVC_DATA_NOTE } from "@/data/nvcData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
 import {
   nvcTimelineRows,
@@ -118,23 +119,28 @@ export default function Page() {
         sourceNote={<>Last updated: {NVC_UPDATED_HUMAN}. {NVC_DATA_NOTE}</>}
         disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
-        {/* Quick answer box */}
+        {/* Fast Answer: NVC fees first (stage timing table follows below) */}
         <section className="pt-6">
           <Container>
-            <div className="mx-auto max-w-3xl rounded-2xl border border-blue-200 bg-blue-50/50 p-5 shadow-card sm:p-6">
-              <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Long Does NVC Take?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                NVC timing depends on when USCIS sends the approved petition, when fees are paid, when the DS-260 and civil/financial documents are submitted, whether NVC accepts the documents, and when the U.S. embassy or consulate has interview availability. After a case becomes <strong>documentarily qualified</strong>, the interview wait can vary widely by country, visa category, and embassy workload.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <a href="#nvc-case-tool" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-700">Check my NVC case stage →</a>
-                <a href={nvcLinks.nvcTimeframes} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-blue-300">Official NVC timeframes ↗</a>
-              </div>
-              <p className="mt-3 text-xs text-ink-500">
-                NVC is the Department of State stage for consular processing (interview abroad). If you are adjusting status inside the U.S., see{" "}
-                <Link href="/i485-processing-time" className="text-brand-600 underline">I-485 processing time</Link> instead.
-              </p>
-            </div>
+            <FastAnswerSnapshot
+              title="NVC fees and what happens next"
+              accent="sky"
+              rows={nvcFeeRows}
+              badges={["Paid in CEAC", `Allow ${F.feePaymentClearDays} to clear`, "Stage timeline below"]}
+              lastVerified={F.lastVerified}
+              sources={[
+                { label: "NVC Fees", href: nvcLinks.fees },
+                { label: "Official NVC Timeframes", href: nvcLinks.nvcTimeframes },
+                { label: "CEAC", href: nvcLinks.ceac },
+              ]}
+              disclaimer={NVC_DATA_NOTE}
+              ctaText="Check my NVC case stage"
+              ctaHref="#nvc-case-tool"
+            />
+            <p className="mx-auto mt-3 max-w-3xl text-xs text-ink-500">
+              NVC is the Department of State stage for consular processing (interview abroad). If you are adjusting status inside the U.S., see{" "}
+              <Link href="/i485-processing-time" className="text-brand-600 underline">I-485 processing time</Link> instead.
+            </p>
           </Container>
         </section>
 

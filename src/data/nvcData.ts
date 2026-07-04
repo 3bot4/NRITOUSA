@@ -71,6 +71,37 @@ export const nvcProcessingData: NvcProcessingData = {
 export const NVC_DATA_NOTE =
   "These are general planning ranges only — NVC and embassy timelines change constantly and are never guaranteed. Interview scheduling depends on appointment availability at your embassy or consulate. Always verify the official NVC timeframes and check CEAC.";
 
+/* ─────────────────────── NVC fees (verified) ───────────────────────────── */
+
+/**
+ * Department of State immigrant-visa fees paid through NVC/CEAC. Verify current
+ * amounts on the DOS Visa Fees / NVC Fees page before paying — fees change.
+ * lastVerified: 2026-07-04.
+ */
+export const nvcFees = {
+  lastVerified: "2026-07-04",
+  affidavitOfSupport: "$120",
+  familyIvApplication: "$325",
+  employmentIvApplication: "$345",
+  otherIvApplication: "$205",
+  feePaymentClearDays: "~10 calendar days",
+} as const;
+
+export interface NvcFeeRow {
+  label: string;
+  value: string;
+  note?: string;
+  highlight?: boolean;
+}
+
+/** Rows for the Fast Answer fee snapshot. */
+export const nvcFeeRows: NvcFeeRow[] = [
+  { label: "Affidavit of Support review", value: nvcFees.affidavitOfSupport, note: "Form I-864 review fee, per case." },
+  { label: "Family-based IV (per applicant)", value: nvcFees.familyIvApplication, note: "Immigrant visa application fee.", highlight: true },
+  { label: "Employment-based IV (per applicant)", value: nvcFees.employmentIvApplication, note: "Immigrant visa application fee." },
+  { label: "Other immigrant visa (where applicable)", value: nvcFees.otherIvApplication, note: "E.g. DV and certain special categories." },
+];
+
 /* ─────────────────────── the NVC stages, in order ──────────────────────── */
 
 export interface NvcStage {
