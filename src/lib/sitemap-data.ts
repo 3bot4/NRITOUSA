@@ -148,6 +148,13 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/processing-times", 0.9, "weekly", immDate),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
+  // PERM processing-time cluster (top-level tool + supporting pages).
+  e("/perm-processing-time-calculator", 0.9, "monthly"),
+  e("/dol-processing-times", 0.85, "monthly"),
+  e("/pwd-processing-time", 0.8, "monthly"),
+  e("/perm-timeline", 0.8, "monthly"),
+  e("/h1b-perm-max-out-calculator", 0.85, "monthly"),
+  e("/eb2-eb3-priority-date-india", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),
