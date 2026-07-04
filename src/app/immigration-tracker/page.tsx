@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import ImmigrationTrackerDashboard from "@/components/tools/ImmigrationTrackerDashboard";
 import ToolAnalytics from "@/components/tools/ToolAnalytics";
@@ -96,6 +97,13 @@ export default function ImmigrationTrackerPage() {
       <ToolAnalytics toolSlug="immigration-tracker" />
       <Container className="pb-12 pt-6 sm:pb-16">
         <ImmigrationTrackerDashboard faqItems={FAQ_ITEMS} />
+        <p className="mt-6 text-center text-sm text-ink-500">
+          Petition already approved and doing consular processing?{" "}
+          <Link href="/nvc-case-status" className="font-semibold text-brand-600 underline">
+            Check your NVC case status
+          </Link>{" "}
+          and find your next step.
+        </p>
       </Container>
     </>
   );

@@ -83,6 +83,30 @@ export default function PermTimelineSpotlight() {
             Check I-485 Timeline →
           </Link>
         </div>
+
+        {/* Companion: NVC case status (consular processing) */}
+        <div className="mt-4 flex flex-col gap-3 rounded-xl border border-indigo-100 bg-white p-4 shadow-card sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3">
+            <span
+              aria-hidden
+              className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-lg shadow-sm"
+            >
+              🗂️
+            </span>
+            <div>
+              <p className="text-sm font-bold tracking-tight text-ink-900">NVC Case Status & Timeline Checker</p>
+              <p className="mt-0.5 text-xs text-ink-500">
+                Understand what happens after USCIS approval, check your NVC stage, prepare documents, and know when to contact NVC.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/nvc-case-status"
+            className="shrink-0 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-center text-sm font-semibold text-indigo-700 transition-colors hover:bg-indigo-100"
+          >
+            Check NVC Timeline →
+          </Link>
+        </div>
       </div>
     </section>
   );

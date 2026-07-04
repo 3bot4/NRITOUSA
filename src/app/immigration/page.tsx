@@ -80,6 +80,12 @@ const situationCards = [
     icon: "🟩",
   },
   {
+    title: "My petition went to NVC",
+    desc: "Check your NVC case status after USCIS approval — case number, fees, DS-260, documents, and interview wait.",
+    href: "/nvc-case-status",
+    icon: "🗂️",
+  },
+  {
     title: "I want to track my case",
     desc: "Follow case status, processing delays, and how many applicants are ahead of you.",
     href: "/immigration-tracker",
@@ -360,6 +366,7 @@ export default function ImmigrationHubPage() {
                       href: "/visa-bulletin",
                     },
                     { label: "Green Card Process for Indians", href: "/green-card" },
+                    { label: "NVC Case Status After USCIS Approval", href: "/nvc-case-status" },
                     { label: "H1B Guide for Indians", href: "/h1b" },
                     {
                       label: "Indian Passport Renewal in the USA",

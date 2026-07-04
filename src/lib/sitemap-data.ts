@@ -171,6 +171,12 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/i485-processing-time", 0.9, "monthly"),
   e("/i485-timeline", 0.85, "monthly"),
   e("/i485-documents-checklist", 0.8, "monthly"),
+  // NVC (National Visa Center / consular processing) cluster.
+  e("/nvc-case-status", 0.9, "monthly"),
+  e("/what-is-nvc-case-number", 0.8, "monthly"),
+  e("/nvc-processing-time", 0.85, "monthly"),
+  e("/nvc-document-checklist-india", 0.8, "monthly"),
+  e("/nvc-public-inquiry", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),

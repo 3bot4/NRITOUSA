@@ -23,6 +23,7 @@ export const i485ClusterLinks: ClusterLink[] = [
 ];
 
 export const i485RelatedLinks: ClusterLink[] = [
+  { href: "/nvc-document-checklist-india", label: "NVC document checklist", desc: "Consular-processing documents for Indian applicants" },
   { href: "/eb2-eb3-priority-date-india", label: "EB2/EB3 India Priority Date", desc: "When your date becomes current" },
   { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "The petition before I-485" },
   { href: "/ead-processing-time", label: "EAD Processing Time", desc: "Work permit filed with I-485" },
