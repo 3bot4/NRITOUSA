@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import GreenCardRenewalChecker from "@/components/tools/GreenCardRenewalChecker";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -26,6 +27,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  expiredTimingColumns,
+  expiredTimingRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/expired-green-card";
 const TITLE = "Expired Green Card: What to Do Before Travel, Work, or Renewal";
@@ -100,6 +107,25 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* Fast-answer expired timeline + next steps */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Expired Green Card Timeline and Next Steps"
+              intro="What to do and how urgent it is, based on your situation. An expired card does not end your status, but it can cause friction until you renew."
+              columns={expiredTimingColumns}
+              rows={expiredTimingRows}
+              badges={["Status usually continues", "Renew with Form I-90", "Travel/work needs may be urgent", "Conditional cards are different"]}
+              summaryTitle="Expired Green Card Answer"
+              summaryText="An expired green card does not automatically mean someone lost permanent resident status, but the expired card can create problems for travel, work verification, DMV, and proof of status. Regular 10-year card holders often use Form I-90, while conditional residents usually need a different process."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check My Expired Card Steps"
+              ctaHref="#expired-green-card-tool"
+            />
+          </Container>
+        </section>
+
         {/* Concerns table */}
         <section className="py-10 sm:py-12">
           <Container>
@@ -147,7 +173,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="expired-green-card-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <GreenCardRenewalChecker />

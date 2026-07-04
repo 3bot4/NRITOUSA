@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import FormSelectorI90I751 from "@/components/tools/FormSelectorI90I751";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -26,6 +27,12 @@ import {
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
 } from "@/data/greenCardRenewalData";
+import {
+  i90i751TimingColumns,
+  i90i751TimingRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/i90-vs-i751";
 const TITLE = "Form I-90 vs I-751: Which Green Card Form Do You Need?";
@@ -99,6 +106,25 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* Fast-answer timing + form choice */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="I-90 vs I-751 Timing and Form Choice"
+              intro="With these forms, choosing the right one matters more than speed. This quick guide maps your situation to the usual form."
+              columns={i90i751TimingColumns}
+              rows={i90i751TimingRows}
+              badges={["Right form first", "Wrong form causes delay", "10-yr = I-90", "2-yr = I-751 / I-829"]}
+              summaryTitle="Which Form Answer"
+              summaryText="Form choice matters more than speed. Filing I-90 when you actually need I-751 or I-829 can create serious delays. When unsure, confirm your card type before filing."
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Check Which Form I Need"
+              ctaHref="#i90-i751-tool"
+            />
+          </Container>
+        </section>
+
         {/* Comparison table */}
         <section className="py-10 sm:py-12">
           <Container>
@@ -149,7 +175,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="i90-i751-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <FormSelectorI90I751 />

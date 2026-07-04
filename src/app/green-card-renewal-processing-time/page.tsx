@@ -4,6 +4,7 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import GreenCardProcessingChecker from "@/components/tools/GreenCardProcessingChecker";
 import RenewalTimelineTable from "@/components/tools/RenewalTimelineTable";
+import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -22,13 +23,21 @@ import {
   greenCardRenewalProcessingStages,
   greenCardRenewalProcessingBadges,
   greenCardRenewalProcessingSummary,
-  processingTimeFaqs,
   greenCardRenewalSourceLinks,
   greenCardRenewalSources as S,
   greenCardRenewalConfig as C,
   GC_RENEWAL_DISCLAIMER,
   GC_RENEWAL_DATA_NOTE,
+  type FaqEntry,
 } from "@/data/greenCardRenewalData";
+import {
+  greenCardRenewalFastAnswerColumns,
+  greenCardRenewalFastAnswerRows,
+  processingCompetitorColumns,
+  processingCompetitorRows,
+  greenCardRenewalTimingConfig as T,
+  greenCardRenewalOfficialLinks,
+} from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/green-card-renewal-processing-time";
 const TITLE = "Green Card Renewal Processing Time 2026";
@@ -46,12 +55,24 @@ const SECTIONS: { h: string; body: string }[] = [
   { h: "How to track case status", body: "Use your USCIS online account and the USCIS Case Status tool to follow milestones such as receipt, biometrics, card production, and mailing. Watch for any USCIS mail, which may include a biometrics notice or a request for evidence with a deadline." },
 ];
 
+/* FAQ (timing-forward). Kept page-local so FAQPage schema matches the visible list. */
+const faq: FaqEntry[] = [
+  { question: "How long does green card renewal take in 2026?", answer: "A practical planning range is about 8–14 months for many standard Form I-90 renewals, but users should always check official USCIS Form I-90 processing times, which vary by office and change over time." },
+  { question: "Why does green card renewal take so long?", answer: "Timing depends on USCIS workload, whether biometrics is required, any request for evidence (RFE), background checks, how complete your application is, and card production and mailing. Any of these can extend the wait." },
+  { question: "Does online filing make green card renewal faster?", answer: "Online filing may make submission and tracking easier, but it does not guarantee faster USCIS approval. Processing time still depends on USCIS workload and your case facts." },
+  { question: "Can green card renewal be expedited?", answer: "USCIS expedite requests are limited and discretionary. Review the official USCIS expedite criteria before requesting one — approval is not guaranteed." },
+  { question: "Does the receipt notice extend my green card?", answer: "For eligible renewals, USCIS has announced receipt notice extension language (up to 36 months). You must read your own receipt notice and verify current USCIS policy, then keep the notice with your card." },
+  { question: "What if my case is outside normal processing time?", answer: "Use the USCIS Processing Times tool to see whether a case inquiry (service request) is allowed. You can usually submit one only once your case passes the posted 'case inquiry date'." },
+  { question: "Can I work while my I-90 is pending?", answer: "An expired card does not automatically end status, but proving work authorization can be harder. A receipt notice or extension documentation may help — check current USCIS guidance and your employer's HR." },
+  { question: "Can I travel while my I-90 is pending?", answer: "Travel with a pending renewal can be complicated. Check USCIS, airline, and consulate requirements and whether you need a temporary I-551/ADIT stamp before you leave." },
+];
+
 export default function Page() {
   const jsonLd = jsonLdGraph(
     gcRenewalWebAppJsonLd({ path: PATH, name: TITLE, description: DESC }),
     gcRenewalArticleJsonLd({ path: PATH, headline: TITLE, description: DESC, datePublished: GC_RENEWAL_PUBLISHED, dateModified: GC_RENEWAL_UPDATED }),
-    gcRenewalItemListJsonLd({ path: PATH, name: "Green Card Renewal Processing Time by Stage", items: greenCardRenewalProcessingStages.map((r) => ({ name: r.step, description: r.whatHappens })) }),
-    faqJsonLd(processingTimeFaqs),
+    gcRenewalItemListJsonLd({ path: PATH, name: "Green Card Renewal Processing Time Stages", items: greenCardRenewalProcessingStages.map((r) => ({ name: r.step, description: r.whatHappens })) }),
+    faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Immigration", url: "/immigration" },
@@ -79,7 +100,7 @@ export default function Page() {
         accent="from-emerald-600 to-teal-600"
         headerExtra={
           <div className="flex flex-wrap gap-2">
-            <a href="#processing-checker" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">Check My Stage →</a>
+            <a href="#green-card-processing-tool" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">Check My Stage →</a>
             <a href={S.uscisProcessingTimes} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50">USCIS Processing Times ↗</a>
           </div>
         }
@@ -92,22 +113,62 @@ export default function Page() {
             <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card sm:p-6">
               <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Long Does Green Card Renewal Take?</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                Green card renewal processing time varies by USCIS workload, filing reason, biometrics, background checks, and whether USCIS requests more information. There is no single guaranteed timeline — check the official USCIS Processing Times tool for <strong>Form I-90</strong> and your own case status.
+                Green card renewal processing time varies by Form I-90 workload, biometrics, RFE, case facts, and USCIS processing-center workload. A practical planning range for a standard 10-year card renewal is <strong>about 8–14 months</strong>, but users should verify the current official Form I-90 processing time on USCIS.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                <a href="#processing-checker" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Estimate my stage →</a>
+                <a href="#green-card-processing-tool" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Estimate my stage →</a>
                 <a href={S.uscisCaseStatus} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-emerald-300">Case status ↗</a>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Static stage table */}
+        {/* Fast-answer estimated timeline */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Green Card Renewal Processing Time Estimate"
+              intro="The estimate below answers the question most people ask first — how long it takes — before you use the checker. These are planning ranges, not guarantees."
+              columns={greenCardRenewalFastAnswerColumns}
+              rows={greenCardRenewalFastAnswerRows}
+              badges={["Timing varies", "Check USCIS", "Receipt may extend validity", "Biometrics may be reused", "RFE adds time"]}
+              summaryTitle="Processing Time Planning Answer"
+              summaryText={T.competitorStyleShortEstimate}
+              sourceNote={T.sourceNote}
+              officialLinks={greenCardRenewalOfficialLinks}
+              ctaText="Estimate My Renewal Stage"
+              ctaHref="#green-card-processing-tool"
+            />
+          </Container>
+        </section>
+
+        {/* Competitor-style simple estimate table */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <EstimatedTimelineAnswer
+              title="Green Card Renewal Processing Time by Category"
+              intro="A simple, at-a-glance estimate by category. The headline number: a 10-year green card renewal is about an 8–14 month planning range — always confirm on USCIS."
+              columns={processingCompetitorColumns}
+              rows={processingCompetitorRows}
+              badges={["10-year renewal ≈ 8–14 months", "Planning range only", "Verify on USCIS"]}
+              sourceNote={T.sourceNote}
+              officialLinks={[
+                { label: "USCIS Form I-90 processing times", href: S.uscisProcessingTimes },
+                { label: "Replace Your Green Card", href: S.replaceGreenCard },
+                { label: "USCIS Case Status", href: S.uscisCaseStatus },
+              ]}
+              ctaText="Estimate My Renewal Stage"
+              ctaHref="#green-card-processing-tool"
+            />
+          </Container>
+        </section>
+
+        {/* Detailed stage table (renamed) */}
         <section className="py-10 sm:py-12">
           <Container>
             <RenewalTimelineTable
-              title="Green Card Renewal Processing Time by Stage"
-              intro="Renewal timing is not based on the filing date alone. This table shows what happens at each Form I-90 stage and what to check. Use the checker below for a personal estimate."
+              title="Green Card Renewal Stages Explained"
+              intro="Now that you have the estimate above, here is what happens at each Form I-90 stage and what to check. Use the checker below for a personal estimate."
               rows={greenCardRenewalProcessingStages}
               badges={greenCardRenewalProcessingBadges}
               sourceNote={C.sourceNote}
@@ -117,7 +178,7 @@ export default function Page() {
                 { label: "Form I-90", href: S.formI90 },
               ]}
               ctaText="Check My Stage"
-              ctaHref="#processing-checker"
+              ctaHref="#green-card-processing-tool"
             />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-emerald-100 bg-emerald-50/40 p-5 shadow-card">
               <h3 className="text-base font-bold text-ink-900">Processing Time Planning Summary</h3>
@@ -127,7 +188,7 @@ export default function Page() {
         </section>
 
         {/* Tool */}
-        <section className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="green-card-processing-tool" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <h2 className="text-xl font-bold text-ink-900">Estimate where your green card renewal stands</h2>
@@ -171,7 +232,7 @@ export default function Page() {
 
         <section className="border-t border-ink-900/5 bg-white py-12 sm:py-16">
           <Container>
-            <ToolFaq items={processingTimeFaqs} />
+            <ToolFaq items={faq} />
           </Container>
         </section>
 

@@ -10,7 +10,9 @@
     "check:links": "node scripts/check-links.js",
     "indexnow": "node scripts/indexnow.mjs",
     "test": "vitest run",
-    "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts"
+    "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts",
+    "audit:intent-numbers": "node scripts/audit-user-intent-numbers.ts",
+    "audit:monthly-numbers": "node scripts/audit-monthly-numbers.ts"
   },
   "dependencies": {
     "next": "^14.2.35",
