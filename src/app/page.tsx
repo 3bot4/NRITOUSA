@@ -13,6 +13,7 @@ import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpotlight";
+import PermTimelineSpotlight from "@/components/home/PermTimelineSpotlight";
 import H1bLayoffSpotlight from "@/components/home/H1bLayoffSpotlight";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -55,6 +56,7 @@ export default function HomePage() {
         <CommonNriQuestions />
         <PopularGuidesForIndians />
         <ImmigrationTrackerSpotlight />
+        <PermTimelineSpotlight />
         <H1bLayoffSpotlight />
         <UscisToolsSpotlight />
         <TaxComplianceSpotlight />
