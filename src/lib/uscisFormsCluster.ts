@@ -76,7 +76,7 @@ export const formSnapshots: Record<string, FormSnapshot> = {
   },
   "i-140": {
     filingFee: "$715",
-    feeNote: "Per petition. EB-1A and EB-2 NIW may be self-petitioned.",
+    feeNote: "Employers also pay the $600 Asylum Program Fee ($300 for small employers, $0 for nonprofits). EB-1A and EB-2 NIW may be self-petitioned.",
     processingTime: "Several months regular; 15 business days with premium",
     premiumProcessing: "Yes — I-907, 15 business days",
     whoFiles: "Employer (or self, for EB-1A / EB-2 NIW)",
@@ -125,7 +125,7 @@ export const formSnapshots: Record<string, FormSnapshot> = {
   },
   "i-539": {
     filingFee: "$470 paper / $420 online",
-    feeNote: "Plus an $85 biometrics fee for some applicants. Per application (co-applicants may be added).",
+    feeNote: "USCIS has exempted the biometrics fee for I-539 applicants. Per application (co-applicants may be added).",
     processingTime: "About 12–24+ months (varies widely)",
     premiumProcessing: "Limited — available for some categories (e.g. certain F/M/J) at a separate fee",
     whoFiles: "The applicant (extend/change nonimmigrant status)",
@@ -134,8 +134,8 @@ export const formSnapshots: Record<string, FormSnapshot> = {
     lastVerified: "2026-07-04",
   },
   "i-907-premium-processing": {
-    filingFee: "$2,805 (most I-129 & I-140)",
-    feeNote: "Premium fee varies by form: e.g. ~$1,965 for some I-129 (H-2B/R-1) and ~$1,685 for I-539 / I-765 categories. See the fee table below.",
+    filingFee: "$2,965 (most I-129 & I-140)",
+    feeNote: "Premium fees rose on Mar 1, 2026: ~$1,780 for I-129 H-2B/R-1 and I-765 OPT/STEM, ~$2,075 for I-539 (F/J/M). See the fee table below.",
     processingTime: "15 business days for most I-129/I-140 (30 for some I-539/I-765 categories)",
     premiumProcessing: "This IS the premium-processing request (Form I-907)",
     whoFiles: "Whoever filed the underlying petition (employer or applicant)",

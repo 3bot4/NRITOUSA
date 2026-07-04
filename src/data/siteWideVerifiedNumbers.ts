@@ -390,7 +390,7 @@ export const educationSnapshotRows: { label: string; value: string; note?: strin
   { label: "SAT registration fee", value: educationNumbers.satFee.value, note: "Fee waivers for eligible low-income US students (via school counselor).", highlight: true },
   { label: "FAFSA opens", value: educationNumbers.fafsaOpens.value, note: "Federal financial aid application at studentaid.gov." },
   { label: "College application fee", value: "~$50–90 each", note: "Varies by school; many waive fees for eligible applicants." },
-  { label: "ACT registration fee", value: "~$69", note: "Alternative to the SAT; waivers available for eligible students." },
+  { label: "ACT registration fee", value: "$68", note: "Alternative to the SAT; optional writing/science add-ons cost extra. Waivers available." },
 ];
 
 export const educationSnapshotSources: { label: string; href: string }[] = [

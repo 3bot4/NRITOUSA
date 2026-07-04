@@ -64,18 +64,18 @@ export interface PassportFeeSnapshot {
  */
 export const passportFeeSnapshot: PassportFeeSnapshot = {
   title: "Indian passport renewal — fees & timelines at a glance",
-  badges: ["Normal 6–12 wks", "Tatkal 3–5 wks", "Estimates — verify on VFS"],
+  badges: ["Normal 6–12 wks", "Tatkal 3–5 wks", "Fees per VFS USA"],
   rows: [
     { label: "Normal renewal time", value: "6–12 weeks", note: "Plan for the long end in peak season." },
     { label: "Tatkal renewal time", value: "3–5 weeks", note: "Faster processing for eligible cases." },
-    { label: "Normal booklet fee (36-page)", value: "~$75", note: "60-page (jumbo) is ~$90. Estimate — verify.", highlight: true },
-    { label: "Tatkal (extra)", value: "+~$90", note: "Added on top of the normal fee." },
-    { label: "VFS service charge", value: "~$15–25", note: "Per application; varies by jurisdiction." },
-    { label: "Return courier / speed post", value: "~$18–25", note: "To mail the new passport back." },
+    { label: "Passport fee (36-page)", value: "$125", note: "60-page (jumbo) is $175. Booklet fee only.", highlight: true },
+    { label: "Tatkal (extra)", value: "+$125", note: "Added on top of the normal booklet fee." },
+    { label: "VFS service charge", value: "$19", note: "Per application; plus a $2 ICWF charge." },
+    { label: "Total (36-page)", value: "$146 normal / $271 tatkal", note: "Fee + ICWF + VFS; return courier extra." },
   ],
   lastVerified: "2026-07-04",
   disclaimer:
-    "Fee amounts are common USD estimates and vary by jurisdiction, booklet size, and validity — e.g. a lost passport runs ~$100 and 8–16 weeks, and outside photos add ~$10–20. There is usually a small ICWF charge (~$3). Always confirm the exact current fees on VFS Global / Passport Seva before paying. Educational information, not legal advice.",
+    "Fees are current VFS USA figures (36-page $125, jumbo $175, Tatkal +$125, ICWF $2, VFS service $19) and vary by booklet size and validity; a lost/damaged passport or minor booklet costs differently, outside photos add ~$10–20, and online payment adds a ~3.75% convenience charge. Always confirm the exact current fees on VFS Global / Passport Seva before paying. Educational information, not legal advice.",
   sources: [
     { label: "VFS Global (India, USA)", href: "https://visa.vfsglobal.com/usa/en/ind/" },
     { label: "Passport Seva", href: "https://www.passportindia.gov.in/" },

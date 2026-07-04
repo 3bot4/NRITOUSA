@@ -53,8 +53,8 @@ export interface H1bSnapshot {
   badges?: string[];
 }
 
-/** Premium processing (I-907) fee — best-known current figure; verify on USCIS. */
-export const H1B_PREMIUM_FEE = "$2,805";
+/** Premium processing (I-907) fee — current figure (rose to $2,965 on Mar 1, 2026). */
+export const H1B_PREMIUM_FEE = "$2,965";
 export const H1B_SNAPSHOT_VERIFIED = "2026-07-04";
 export const H1B_SNAPSHOT_DISCLAIMER =
   "Planning estimates only — regular processing times vary by service center and premium fees change. Premium processing guarantees USCIS action within 15 business days, not approval. Not legal advice; verify with USCIS before relying on any date or fee.";
