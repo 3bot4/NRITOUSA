@@ -458,7 +458,7 @@ export default function PermTimelineCalculator() {
                 <option value="">Select…</option><option value="yes">Yes</option><option value="no">No</option><option value="not-sure">Not sure</option>
               </select>
             </Field>
-            <Field label="Visa category">
+            <Field label="Green card category">
               <select className={selectCls} value={inp.category} onChange={(e) => set("category", e.target.value as Category)}>
                 <option value="">Select…</option><option value="EB1">EB-1</option><option value="EB2">EB-2</option><option value="EB3">EB-3</option><option value="not-sure">Not sure</option>
               </select>
