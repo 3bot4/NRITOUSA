@@ -34,9 +34,126 @@ export interface FormsPageData {
   content: string;
 }
 
+/**
+ * Top-of-page "Form Snapshot" — the fast answer for USCIS form pages. Fee
+ * amounts reflect the best-known current USCIS fee schedule (G-1055) and MUST be
+ * confirmed on the USCIS Fee Calculator before filing; verify monthly and bump
+ * `lastVerified`. Fees vary by filing method, category, and employer size.
+ */
+export interface FormSnapshot {
+  filingFee: string;
+  feeNote?: string;
+  processingTime: string;
+  premiumProcessing: string;
+  whoFiles: string;
+  commonMistake: string;
+  sourceUrl: string;
+  lastVerified: string;
+}
+
 export interface FormsPage extends FormsPageData {
   readingTime: number;
+  snapshot?: FormSnapshot;
 }
+
+/** Official USCIS Fee Calculator — the "verify" target for every fee. */
+export const USCIS_FEE_CALCULATOR = "https://www.uscis.gov/feecalculator";
+
+/**
+ * Per-form snapshots. Fees are best-known current USCIS figures (2024 fee rule)
+ * shown with a "verify" caveat — NOT a guarantee. lastVerified: 2026-07-04.
+ */
+export const formSnapshots: Record<string, FormSnapshot> = {
+  "i-129": {
+    filingFee: "$780 (H-1B) + $600 Asylum Program Fee",
+    feeNote: "Asylum Program Fee is $300 for employers with ≤25 FTE, $0 for nonprofits. Other I-129 classifications differ.",
+    processingTime: "2–6 months regular; 15 business days with premium",
+    premiumProcessing: "Yes — I-907, 15 business days",
+    whoFiles: "U.S. employer (petitioner)",
+    commonMistake: "Missing the Asylum Program Fee or using the wrong fee for the employer size.",
+    sourceUrl: "https://www.uscis.gov/i-129",
+    lastVerified: "2026-07-04",
+  },
+  "i-140": {
+    filingFee: "$715",
+    feeNote: "Per petition. EB-1A and EB-2 NIW may be self-petitioned.",
+    processingTime: "Several months regular; 15 business days with premium",
+    premiumProcessing: "Yes — I-907, 15 business days",
+    whoFiles: "Employer (or self, for EB-1A / EB-2 NIW)",
+    commonMistake: "Assuming I-140 approval means a green card — for India EB-2/EB-3 the priority-date wait is years to decades.",
+    sourceUrl: "https://www.uscis.gov/i-140",
+    lastVerified: "2026-07-04",
+  },
+  "i-485": {
+    filingFee: "$1,440",
+    feeNote: "Most applicants age 14–78; $950 for a child under 14 filing with a parent. Biometrics included.",
+    processingTime: "Months to 2+ years (varies by office & category)",
+    premiumProcessing: "No — not available for I-485",
+    whoFiles: "The applicant (adjustment of status)",
+    commonMistake: "Filing before your priority date is current in the Visa Bulletin.",
+    sourceUrl: "https://www.uscis.gov/i-485",
+    lastVerified: "2026-07-04",
+  },
+  "i-765": {
+    filingFee: "$520 paper / $470 online",
+    feeNote: "Standalone filing. $0 for some categories (e.g. with a pending I-485). Verify your category.",
+    processingTime: "Several months (varies by category)",
+    premiumProcessing: "Limited — available for some categories (e.g. certain F-1 OPT) at a separate fee",
+    whoFiles: "The applicant (work authorization)",
+    commonMistake: "Filing under the wrong eligibility category code, or letting an EAD lapse before renewing.",
+    sourceUrl: "https://www.uscis.gov/i-765",
+    lastVerified: "2026-07-04",
+  },
+  "i-131": {
+    filingFee: "$630",
+    feeNote: "Advance Parole / re-entry permit. Fee may differ when filed with I-485 — verify.",
+    processingTime: "Several months (varies)",
+    premiumProcessing: "No regular premium processing",
+    whoFiles: "The applicant (travel document)",
+    commonMistake: "Traveling on a pending I-485 without Advance Parole and abandoning the application.",
+    sourceUrl: "https://www.uscis.gov/i-131",
+    lastVerified: "2026-07-04",
+  },
+  "i-130": {
+    filingFee: "$675 paper / $625 online",
+    processingTime: "Varies widely by relationship & category",
+    premiumProcessing: "No — not available for I-130",
+    whoFiles: "U.S. citizen or lawful permanent resident (petitioner)",
+    commonMistake: "Assuming an approved I-130 means a visa is immediately available — preference categories still wait on the Visa Bulletin.",
+    sourceUrl: "https://www.uscis.gov/i-130",
+    lastVerified: "2026-07-04",
+  },
+  "i-539": {
+    filingFee: "$470 paper / $420 online",
+    feeNote: "Plus an $85 biometrics fee for some applicants. Per application (co-applicants may be added).",
+    processingTime: "About 12–24+ months (varies widely)",
+    premiumProcessing: "Limited — available for some categories (e.g. certain F/M/J) at a separate fee",
+    whoFiles: "The applicant (extend/change nonimmigrant status)",
+    commonMistake: "Filing after your I-94 has already expired, breaking status.",
+    sourceUrl: "https://www.uscis.gov/i-539",
+    lastVerified: "2026-07-04",
+  },
+  "i-907-premium-processing": {
+    filingFee: "$2,805 (most I-129 & I-140)",
+    feeNote: "Premium fee varies by form: e.g. ~$1,965 for some I-129 (H-2B/R-1) and ~$1,685 for I-539 / I-765 categories. See the fee table below.",
+    processingTime: "15 business days for most I-129/I-140 (30 for some I-539/I-765 categories)",
+    premiumProcessing: "This IS the premium-processing request (Form I-907)",
+    whoFiles: "Whoever filed the underlying petition (employer or applicant)",
+    commonMistake: "Expecting premium processing to guarantee approval — it guarantees USCIS action (which can be an RFE), not a yes.",
+    sourceUrl: "https://www.uscis.gov/i-907",
+    lastVerified: "2026-07-04",
+  },
+  "n-400": {
+    filingFee: "$710 online / $760 paper",
+    feeNote: "Reduced-fee and fee-waiver options exist for eligible applicants.",
+    processingTime: "Several months (varies by field office)",
+    premiumProcessing: "No — not available for N-400",
+    whoFiles: "The lawful permanent resident (naturalization)",
+    commonMistake: "Filing before you meet the continuous-residence requirement — you may file at most 90 days early.",
+    sourceUrl: "https://www.uscis.gov/n-400",
+    lastVerified: "2026-07-04",
+  },
+};
 
 export const USCIS_FORMS_HUB = "/uscis/forms";
 export const USCIS_FORMS_BASE = "/uscis/forms";
@@ -840,6 +957,7 @@ Use the N-400 Readiness Checklist to calculate your earliest filing date and tra
 export const formsChildPages: FormsPage[] = rawPages.map((p) => ({
   ...p,
   readingTime: computeReadingTime(p.content),
+  snapshot: formSnapshots[p.slug],
 }));
 
 export const formsChildSlugs = rawPages.map((p) => p.slug);
