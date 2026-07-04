@@ -1,54 +1,54 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-06-29T18:58:41-04:00",
-  "asOfLabel": "Jun 29, 2026, 6:58 PM ET",
+  "asOf": "2026-07-04T18:58:14-04:00",
+  "asOfLabel": "Jul 4, 2026, 6:58 PM ET",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
-      "value": 94.53,
-      "previous": 94.7,
-      "changePct": -0.18,
+      "value": 95.2,
+      "previous": 94.36,
+      "changePct": 0.89,
       "unit": "₹",
       "decimals": 2,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-29T18:58:41-04:00",
+      "fetchedAt": "2026-07-04T18:58:14-04:00",
       "stale": false
     },
     {
       "key": "nifty50",
       "label": "NIFTY 50",
-      "value": 23946,
-      "previous": 23824,
-      "changePct": 0.51,
+      "value": 24271,
+      "previous": 23946,
+      "changePct": 1.36,
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-29T18:58:41-04:00",
+      "fetchedAt": "2026-07-04T18:58:14-04:00",
       "stale": false
     },
     {
       "key": "sp500",
       "label": "S&P 500",
-      "value": 7440,
-      "previous": 7473,
-      "changePct": -0.44,
+      "value": 7483,
+      "previous": 7357,
+      "changePct": 1.71,
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-29T18:58:41-04:00",
+      "fetchedAt": "2026-07-04T18:58:14-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4027,
-      "previous": 3990,
-      "changePct": 0.93,
+      "value": 4187,
+      "previous": 4022,
+      "changePct": 4.1,
       "unit": "$",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-06-29T18:58:41-04:00",
+      "fetchedAt": "2026-07-04T18:58:14-04:00",
       "stale": false
     }
   ],
@@ -160,6 +160,10 @@
     {
       "date": "2026-06-29",
       "value": 94.53
+    },
+    {
+      "date": "2026-07-04",
+      "value": 95.2
     }
   ]
 }
