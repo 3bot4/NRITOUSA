@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -20,6 +21,9 @@ import {
   h1bChildSlugs,
   getH1bChildPage,
   H1B_CLUSTER_BASE,
+  H1B_SNAPSHOT_VERIFIED,
+  H1B_SNAPSHOT_DISCLAIMER,
+  h1bSnapshotSources,
 } from "@/lib/h1bCluster";
 
 /* ── static params ──────────────────────────────────────────────────────── */
@@ -137,6 +141,23 @@ export default function H1bChildPage({
             </div>
           </Container>
         </header>
+
+        {/* Fast Answer snapshot */}
+        {page.snapshot && (
+          <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+            <Container>
+              <FastAnswerSnapshot
+                title={page.snapshot.title}
+                accent="sky"
+                rows={page.snapshot.rows}
+                badges={page.snapshot.badges}
+                lastVerified={H1B_SNAPSHOT_VERIFIED}
+                sources={h1bSnapshotSources}
+                disclaimer={H1B_SNAPSHOT_DISCLAIMER}
+              />
+            </Container>
+          </div>
+        )}
 
         {/* body */}
         <div className="py-8 sm:py-10">
