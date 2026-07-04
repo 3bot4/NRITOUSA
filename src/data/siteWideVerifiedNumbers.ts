@@ -347,6 +347,24 @@ export const wealthNumbers: NumberGroup = {
   },
 } as const;
 
+/** Reusable Fast Answer rows for wealth / return-to-India decision pages. */
+export const wealthReturnSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "401(k)/IRA early withdrawal penalty", value: wealthNumbers.earlyWithdrawalPenalty.value, note: "Before 59½, plus ordinary income tax and possible US withholding. Exceptions apply.", highlight: true },
+  { label: "US withholding on cash-out", value: "Often ~20–30%", note: "Plan-withheld amount is not the final tax — reconcile on your US return." },
+  { label: "Social Security eligibility", value: wealthNumbers.ssCredits.value, note: "40 credits (~10 years of work) to qualify for retirement benefits." },
+  { label: "RNOR window (India)", value: "Up to ~2–3 years", note: "Returning residents may get RNOR status; foreign income is often not taxed in India during it." },
+];
+
+export const wealthReturnSources: { label: string; href: string }[] = [
+  { label: "IRS — early distributions", href: wealthNumbers.earlyWithdrawalPenalty.sourceUrl },
+  { label: "SSA — retirement credits", href: wealthNumbers.ssCredits.sourceUrl },
+  { label: "Income Tax India", href: officialSources.incomeTaxIndia },
+];
+
+export const WEALTH_RETURN_VERIFIED = "2026-07-04";
+export const WEALTH_RETURN_DISCLAIMER =
+  "General planning figures only — penalties, rates, credit rules, and RNOR conditions depend on your specific situation and change over time. Not tax, legal, or financial advice; confirm with the official IRS/SSA/Income Tax India sources or a qualified cross-border advisor.";
+
 /* ─────────────────────────────── Education ──────────────────────────────── */
 
 export const educationNumbers: NumberGroup = {

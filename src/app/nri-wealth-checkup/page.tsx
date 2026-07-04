@@ -3,6 +3,13 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFaq from "@/components/tools/ToolFaq";
 import DisclaimerBox from "@/components/tools/DisclaimerBox";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  wealthReturnSnapshotRows,
+  wealthReturnSources,
+  WEALTH_RETURN_VERIFIED,
+  WEALTH_RETURN_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import PrivacyNotice from "@/components/nri-tax/PrivacyNotice";
 import LandingActions from "@/components/nri-tax/LandingActions";
 import { SOURCES, TOOL_DISCLAIMER } from "@/lib/nri-tax/types";
@@ -130,6 +137,20 @@ export default function NriWealthCheckupLanding() {
             organizer before speaking with your CPA, CA, attorney, or advisor.
           </p>
           <LandingActions />
+        </Container>
+      </section>
+
+      <section className="bg-ink-50/40 py-8">
+        <Container>
+          <FastAnswerSnapshot
+            title="Cross-border wealth — key numbers first"
+            accent="emerald"
+            rows={wealthReturnSnapshotRows}
+            badges={["401(k) 10% early penalty", "SS 40 credits (~10 yrs)", "RNOR ~2–3 yrs"]}
+            lastVerified={WEALTH_RETURN_VERIFIED}
+            sources={wealthReturnSources}
+            disclaimer={WEALTH_RETURN_DISCLAIMER}
+          />
         </Container>
       </section>
 

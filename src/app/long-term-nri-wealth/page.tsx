@@ -4,6 +4,13 @@ import Container from "@/components/Container";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  wealthReturnSnapshotRows,
+  wealthReturnSources,
+  WEALTH_RETURN_VERIFIED,
+  WEALTH_RETURN_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import HubLinkGroups from "@/components/HubLinkGroups";
 import RelatedHubs from "@/components/RelatedHubs";
 import CommonNriQuestions from "@/components/home/CommonNriQuestions";
@@ -163,6 +170,21 @@ export default function LongTermNriWealthPage() {
               Browse all {articles.length} guides
             </Link>
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: key wealth numbers */}
+      <section className="bg-ink-50/40 py-8">
+        <Container>
+          <FastAnswerSnapshot
+            title="Cross-border wealth — key numbers first"
+            accent="emerald"
+            rows={wealthReturnSnapshotRows}
+            badges={["401(k) 10% early penalty", "SS 40 credits (~10 yrs)", "RNOR ~2–3 yrs"]}
+            lastVerified={WEALTH_RETURN_VERIFIED}
+            sources={wealthReturnSources}
+            disclaimer={WEALTH_RETURN_DISCLAIMER}
+          />
         </Container>
       </section>
 

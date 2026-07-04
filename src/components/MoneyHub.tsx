@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import { getArticle } from "@/lib/articles";
 import { site } from "@/lib/site";
 
@@ -32,6 +33,17 @@ export type MoneyHubConfig = {
   tools: HubTool[];
   /** Primary in-hero CTA. */
   primaryCta: { label: string; href: string };
+  /** Optional "Fast Answer" numbers snapshot shown under the hero. */
+  snapshot?: {
+    title: string;
+    rows: { label: string; value: string; note?: string; highlight?: boolean }[];
+    badges?: string[];
+    lastVerified: string;
+    sources: { label: string; href: string }[];
+    disclaimer: string;
+    ctaText?: string;
+    ctaHref?: string;
+  };
 };
 
 export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
@@ -87,6 +99,25 @@ export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
           </div>
         </Container>
       </section>
+
+      {/* Fast Answer snapshot (opt-in) */}
+      {config.snapshot && (
+        <section className="bg-ink-50/40 py-8">
+          <Container>
+            <FastAnswerSnapshot
+              title={config.snapshot.title}
+              accent="emerald"
+              rows={config.snapshot.rows}
+              badges={config.snapshot.badges}
+              lastVerified={config.snapshot.lastVerified}
+              sources={config.snapshot.sources}
+              disclaimer={config.snapshot.disclaimer}
+              ctaText={config.snapshot.ctaText}
+              ctaHref={config.snapshot.ctaHref}
+            />
+          </Container>
+        </section>
+      )}
 
       {/* What's covered */}
       <section className="bg-white py-14 sm:py-20">
