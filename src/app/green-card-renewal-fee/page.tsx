@@ -4,6 +4,7 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import RenewalFeeChecker from "@/components/tools/RenewalFeeChecker";
 import EstimatedTimelineAnswer from "@/components/tools/EstimatedTimelineAnswer";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -34,16 +35,16 @@ import {
 } from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/green-card-renewal-fee";
-const TITLE = "Green Card Renewal Fee 2026: Form I-90 Cost & Fee Waiver";
+const TITLE = "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)";
 const DESC =
-  "How much does green card renewal cost? See the Form I-90 fee snapshot, online vs paper, fee-waiver basics, and always-current USCIS fee links.";
+  "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $50 cheaper. See the fee snapshot, fee-waiver basics, last-verified date, and official USCIS fee links.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 
 const SECTIONS: { h: string; body: string }[] = [
-  { h: "Where to check the official fee", body: "USCIS publishes the current Form I-90 fee on its official Fee Schedule (G-1055). Because fees change, we do not print a permanent dollar amount here — always confirm the current figure on the USCIS website before you file or pay." },
-  { h: "Online vs paper fee", body: "USCIS has, at times, charged different fees for online versus paper filing. Compare both on the current Fee Schedule so you know the exact amount for the method you choose. Online filing can also make payment and tracking easier." },
-  { h: "Is biometrics included?", body: "Whether a separate biometrics fee applies depends on current USCIS fee rules, which have changed over time. Check the Fee Schedule and the Form I-90 instructions for the latest structure rather than assuming an older arrangement." },
+  { h: "What the fee is right now", body: "As last verified, USCIS charges $415 to file Form I-90 online and $465 by paper — so filing online saves you $50. Fees change, so confirm the current figure on the USCIS Fee Schedule (G-1055) before you file or pay." },
+  { h: "Online vs paper fee", body: "Online filing is $415 versus $465 by paper — $50 cheaper — and online filing also makes payment and case tracking easier. Choose the method that fits you, but the online discount applies to most I-90 renewals." },
+  { h: "Is biometrics included?", body: "There is currently no separate biometrics fee for Form I-90 — biometrics, if required, is covered by the filing fee. Confirm on the current Fee Schedule and Form I-90 instructions, since USCIS fee structures have changed over time." },
   { h: "Fee waiver basics", body: "Some applicants who cannot pay may request a fee waiver using Form I-912. Eligibility is limited — for example, based on means-tested benefits, income, or financial hardship — and is never guaranteed. Review the official criteria carefully before requesting one." },
   { h: "Common fee mistakes", body: "Common mistakes include relying on an outdated fee amount, paying the wrong fee for your filing method, assuming biometrics is or isn't included, and paying an I-90 fee when a conditional card actually requires a different form and fee (I-751 or I-829)." },
   { h: "Refund warning", body: "USCIS filing fees are generally non-refundable, even if your application is denied or rejected. File carefully, confirm you are using the correct form, and double-check the current fee before submitting payment." },
@@ -88,19 +89,29 @@ export default function Page() {
         sourceNote={<>Last updated: {GC_RENEWAL_UPDATED_HUMAN}. {C.sourceNote}</>}
         disclaimerExtra={<p>{GC_RENEWAL_DISCLAIMER}</p>}
       >
-        {/* Quick answer */}
+        {/* Fast Answer: the actual fee, first */}
         <section className="pt-6">
           <Container>
-            <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card sm:p-6">
-              <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Much Is the Green Card Renewal Fee?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                The green card renewal fee depends on current USCIS fee rules and your filing method. Fees change, so we don&apos;t print a permanent number here — <strong>always check the official USCIS Fee Schedule</strong> before filing Form I-90. Some applicants may qualify for a fee waiver.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <a href="#fee-checker" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Get my fee checklist →</a>
-                <a href={S.uscisFeeSchedule} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-emerald-300">Fee Schedule ↗</a>
-              </div>
-            </div>
+            <FastAnswerSnapshot
+              title="How much is the green card renewal fee?"
+              answerLabel="Form I-90 filing fee (2026)"
+              answer={`${C.onlineFee} online · ${C.paperFee} paper`}
+              rows={[
+                { label: "Online (Form I-90)", value: C.onlineFee, note: C.feeSavingsOnline, highlight: true },
+                { label: "Paper (Form I-90)", value: C.paperFee, note: "Mailed filing costs $50 more." },
+                { label: "Biometrics", value: "$0", note: "No separate biometrics fee." },
+                { label: "Fee waiver", value: "Form I-912", note: "Limited eligibility — never assume you qualify." },
+              ]}
+              badges={["Online is $50 cheaper", "Fee waiver may apply"]}
+              lastVerified={GC_RENEWAL_UPDATED}
+              sources={[
+                { label: "USCIS Fee Schedule (G-1055)", href: S.uscisFeeSchedule },
+                { label: "USCIS Fee Calculator", href: "https://www.uscis.gov/feecalculator" },
+              ]}
+              disclaimer={GC_RENEWAL_DISCLAIMER}
+              ctaText="Get my personal fee checklist"
+              ctaHref="#green-card-fee-tool"
+            />
           </Container>
         </section>
 
@@ -109,7 +120,7 @@ export default function Page() {
           <Container>
             <EstimatedTimelineAnswer
               title="Green Card Renewal Fee and Timing Snapshot"
-              intro="A quick snapshot of what each filing situation may cost and how it affects timing. We never show a hardcoded dollar amount — always confirm the current fee on USCIS."
+              intro="How each filing situation affects your cost and timing. The base Form I-90 fee is $415 online / $465 paper — always confirm the current amount on USCIS before you pay."
               columns={feeTimingColumns}
               rows={feeTimingRows}
               badges={["Fees change", "Check USCIS Fee Schedule", "Online vs paper differs", "Conditional cards are different"]}
@@ -128,7 +139,7 @@ export default function Page() {
           <Container>
             <div className="mx-auto max-w-3xl">
               <h2 className="text-xl font-bold text-ink-900">Green Card Renewal Fee Snapshot</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">Costs below intentionally point to the official fee schedule instead of showing an amount that could go out of date.</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">Base Form I-90 fee: <strong className="text-emerald-700">$415 online</strong> / <strong className="text-emerald-700">$465 paper</strong>. The situations below show when your total may differ — always confirm the current amount on USCIS before you pay.</p>
 
               {/* Mobile cards */}
               <div className="mt-4 space-y-3 sm:hidden">

@@ -55,15 +55,17 @@ export const greenCardRenewalSourceLinks: { label: string; href: string }[] = [
  * `feeVerified` to true so pages can render the number with a source note.
  */
 export const greenCardRenewalConfig = {
-  lastUpdated: "Update monthly",
+  lastUpdated: "2026-07-04",
   formName: "Form I-90, Application to Replace Permanent Resident Card",
   /** Whether onlineFee/paperFee below hold a verified figure (false → show "Check USCIS Fee Schedule"). */
-  feeVerified: false,
-  onlineFee: "Check USCIS Fee Schedule",
-  paperFee: "Check USCIS Fee Schedule",
+  feeVerified: true,
+  onlineFee: "$415",
+  paperFee: "$465",
+  feeSavingsOnline: "Online is $50 cheaper than paper",
+  biometricsFee: "No separate biometrics fee",
   feeWaiverAvailable:
     "USCIS offers a fee waiver (Form I-912) for some applicants who cannot pay. Eligibility is limited — never assume you qualify.",
-  processingTimeRange: "Check USCIS Processing Times",
+  processingTimeRange: "8–14 months",
   receiptExtension:
     "USCIS has announced a 36-month validity extension for eligible lawful permanent residents who properly file Form I-90 to renew an expiring or expired Green Card. The receipt notice, presented with the expired card, may serve as temporary evidence of status.",
   sourceNote:
