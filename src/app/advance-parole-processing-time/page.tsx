@@ -20,7 +20,8 @@ import {
   EAD_UPDATED,
   EAD_UPDATED_HUMAN,
 } from "@/lib/eadCluster";
-import { eadProcessingData as D, EAD_DATA_NOTE } from "@/data/eadProcessingData";
+import { eadProcessingData as D, EAD_DATA_NOTE, eadSnapshotRows, eadSnapshotSources, EAD_ESTIMATE_VERIFIED, EAD_ESTIMATE_DISCLAIMER } from "@/data/eadProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/advance-parole-processing-time";
 const TITLE = "Advance Parole Processing Time 2026: I-131 Travel Document";
@@ -78,7 +79,22 @@ export default function Page() {
           </Link>
         }
       >
-        <section className="pb-10 pt-6 sm:pb-12">
+        {/* Fast Answer: Advance Parole timing */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="Advance Parole — how long?"
+              accent="emerald"
+              rows={eadSnapshotRows}
+              badges={["AP 4–9 months", "No regular premium"]}
+              lastVerified={EAD_ESTIMATE_VERIFIED}
+              sources={eadSnapshotSources}
+              disclaimer={EAD_ESTIMATE_DISCLAIMER}
+            />
+          </Container>
+        </section>
+
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-6">
               <div className="grid gap-3 sm:grid-cols-2">

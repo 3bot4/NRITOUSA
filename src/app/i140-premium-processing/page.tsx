@@ -20,7 +20,8 @@ import {
   I140_UPDATED,
   I140_UPDATED_HUMAN,
 } from "@/lib/i140Cluster";
-import { i140ProcessingData as D } from "@/data/i140ProcessingData";
+import { i140ProcessingData as D, i140SnapshotRows, i140SnapshotSources, I140_ESTIMATE_VERIFIED, I140_ESTIMATE_DISCLAIMER } from "@/data/i140ProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import { getPremiumFeeByForm, premiumProcessing } from "@/lib/premiumProcessing";
 
 const PATH = "/i140-premium-processing";
@@ -80,7 +81,22 @@ export default function Page() {
           </Link>
         }
       >
-        <section className="pb-10 pt-6 sm:pb-12">
+        {/* Fast Answer: I-140 premium */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="I-140 premium processing at a glance"
+              accent="brand"
+              rows={i140SnapshotRows}
+              badges={["15 business days", "Fee $2,965"]}
+              lastVerified={I140_ESTIMATE_VERIFIED}
+              sources={i140SnapshotSources}
+              disclaimer={I140_ESTIMATE_DISCLAIMER}
+            />
+          </Container>
+        </section>
+
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-6">
               {/* fee + timeline cards */}

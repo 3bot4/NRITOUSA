@@ -78,3 +78,23 @@ export const eadProcessingData: EadProcessingData = {
 /** Standard educational data-source note for the EAD cluster. */
 export const EAD_DATA_NOTE =
   "Data source: USCIS I-765 / I-131 processing times and the official automatic EAD extension page. Times vary widely by category and office and are estimates — verify your exact category on USCIS before relying on a date.";
+
+/* ─────────────── EAD / Advance Parole Fast Answer snapshot ──────────────── */
+
+export const EAD_ESTIMATE_VERIFIED = "2026-07-04";
+
+export const eadSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "EAD (most categories)", value: "3–8 months", note: "Pending I-485 / H-4 / L-2 / asylum; varies by office.", highlight: true },
+  { label: "F-1 OPT / STEM OPT", value: "2–5 months", note: "Premium processing available for these I-765 categories." },
+  { label: "Advance Parole (I-131)", value: "4–9 months", note: "No regular premium processing." },
+  { label: "Auto-extension", value: "Up to 540 days (if eligible)", note: "Eligibility changed in late 2025: many renewals filed on/after Oct 30, 2025 are not eligible; some categories were later revived. Verify your category & filing date on USCIS." },
+];
+
+export const eadSnapshotSources: { label: string; href: string }[] = [
+  { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+  { label: "USCIS Form I-765", href: "https://www.uscis.gov/i-765" },
+  { label: "USCIS Form I-131", href: "https://www.uscis.gov/i-131" },
+];
+
+export const EAD_ESTIMATE_DISCLAIMER =
+  "General planning ranges only — EAD/AP times vary widely by category and field office and change over time. Auto-extension length and eligibility depend on your category. Not legal advice; verify with USCIS before relying on any date.";

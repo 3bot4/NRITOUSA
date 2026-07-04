@@ -20,7 +20,8 @@ import {
   EAD_UPDATED,
   EAD_UPDATED_HUMAN,
 } from "@/lib/eadCluster";
-import { eadProcessingData as D, EAD_DATA_NOTE } from "@/data/eadProcessingData";
+import { eadProcessingData as D, EAD_DATA_NOTE, eadSnapshotRows, eadSnapshotSources, EAD_ESTIMATE_VERIFIED, EAD_ESTIMATE_DISCLAIMER } from "@/data/eadProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/ead-renewal-gap";
 const TITLE = "EAD Renewal Gap 2026: Avoid Losing Work Authorization";
@@ -78,7 +79,22 @@ export default function Page() {
           </Link>
         }
       >
-        <section className="pb-10 pt-6 sm:pb-12">
+        {/* Fast Answer: EAD timing & auto-extension */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="EAD renewal — timing & auto-extension"
+              accent="emerald"
+              rows={eadSnapshotRows}
+              badges={["Most EAD 3–8 mo", "Auto-ext rules changed 2025"]}
+              lastVerified={EAD_ESTIMATE_VERIFIED}
+              sources={eadSnapshotSources}
+              disclaimer={EAD_ESTIMATE_DISCLAIMER}
+            />
+          </Container>
+        </section>
+
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-6">
               <div>

@@ -45,3 +45,24 @@ export const i140ProcessingData: I140ProcessingData = {
 /** Standard educational data-source note for the I-140 cluster. */
 export const I140_DATA_NOTE =
   "Data source: USCIS I-140 processing times and Form I-907 premium processing. Times are estimates that change; verify current figures on USCIS before filing.";
+
+/* ─────────────────── I-140 Fast Answer snapshot ─────────────────────────── */
+
+export const I140_ESTIMATE_VERIFIED = "2026-07-04";
+
+export const i140SnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "Filing fee", value: "$715", note: "Employers also pay the $600 Asylum Program Fee ($300 small employer, $0 nonprofit)." },
+  { label: "Premium processing", value: "15 business days", note: "Fee $2,965. NIW / EB-1C: 45 business days.", highlight: true },
+  { label: "Regular processing", value: "~4–8 months", note: "Varies by service center." },
+  { label: "After approval (India EB)", value: "Years — Visa Bulletin", note: "Approval sets your priority date; the green-card wait is the Visa Bulletin backlog." },
+];
+
+export const i140SnapshotSources: { label: string; href: string }[] = [
+  { label: "USCIS Form I-140", href: "https://www.uscis.gov/i-140" },
+  { label: "USCIS Form I-907 (premium)", href: "https://www.uscis.gov/i-907" },
+  { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+  { label: "Visa Bulletin", href: "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" },
+];
+
+export const I140_ESTIMATE_DISCLAIMER =
+  "Planning figures only — I-140 times vary by service center and premium fees change (premium rose to $2,965 on Mar 1, 2026). For India EB-2/EB-3 the dominant wait is the Visa Bulletin, not I-140 itself. Not legal advice; verify with USCIS.";
