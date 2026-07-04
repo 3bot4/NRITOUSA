@@ -23,6 +23,7 @@ export const eadClusterLinks: ClusterLink[] = [
 ];
 
 export const eadRelatedLinks: ClusterLink[] = [
+  { href: "/i485-processing-time", label: "I-485 Processing Time", desc: "The green card stage EAD/AP are filed with" },
   { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "The petition before your green card stage" },
   { href: "/eb2-eb3-priority-date-india", label: "EB2/EB3 India Priority Date", desc: "When you can file I-485 + EAD" },
   { href: "/tools/h4-ead-navigator", label: "H-4 EAD Navigator", desc: "What an H-4 EAD spouse can do" },
