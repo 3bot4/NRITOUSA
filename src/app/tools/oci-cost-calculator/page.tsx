@@ -14,7 +14,8 @@ import {
   pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
-import { OCI_BASE, OCI_TOOLS, OCI_DATA_AS_OF, VERIFY_SOURCES } from "@/lib/oci/config";
+import { OCI_BASE, OCI_TOOLS, OCI_DATA_AS_OF, VERIFY_SOURCES, totalWeeksLabel, ociSnapshotRows, OCI_SNAPSHOT_SOURCES, OCI_SNAPSHOT_DISCLAIMER } from "@/lib/oci/config";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const tool = getTool("oci-cost-calculator")!;
 const PATH = OCI_TOOLS.cost.path;
@@ -115,7 +116,26 @@ export default function OciCostCalculatorPage() {
           </p>
         }
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: OCI fees */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="OCI cost — fee snapshot"
+              answerLabel="Fresh OCI government fee (USA)"
+              answer="$275"
+              accent="amber"
+              rows={ociSnapshotRows()}
+              badges={["Govt fee $275", `Processing ${totalWeeksLabel()}`]}
+              lastVerified={OCI_DATA_AS_OF}
+              sources={OCI_SNAPSHOT_SOURCES}
+              disclaimer={OCI_SNAPSHOT_DISCLAIMER}
+              ctaText="Calculate my exact cost"
+              ctaHref="#oci-cost-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="oci-cost-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
             <OciCostCalculator />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">

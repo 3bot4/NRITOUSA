@@ -20,7 +20,11 @@ import {
   OCI_DATA_AS_OF,
   totalWeeksLabel,
   VERIFY_SOURCES,
+  ociSnapshotRows,
+  OCI_SNAPSHOT_SOURCES,
+  OCI_SNAPSHOT_DISCLAIMER,
 } from "@/lib/oci/config";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const tool = getTool("oci-timeline-calculator")!;
 const PATH = OCI_TOOLS.timeline.path;
@@ -120,7 +124,26 @@ export default function OciTimelineCalculatorPage() {
           </p>
         }
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: OCI timeline */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="OCI processing time — at a glance"
+              answerLabel="Fresh OCI end-to-end (USA)"
+              answer={totalWeeksLabel()}
+              accent="amber"
+              rows={ociSnapshotRows()}
+              badges={[`Processing ${totalWeeksLabel()}`, "Govt fee $275"]}
+              lastVerified={OCI_DATA_AS_OF}
+              sources={OCI_SNAPSHOT_SOURCES}
+              disclaimer={OCI_SNAPSHOT_DISCLAIMER}
+              ctaText="Estimate my OCI dates"
+              ctaHref="#oci-timeline-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="oci-timeline-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
             <OciTimelineCalculator />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">

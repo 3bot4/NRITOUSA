@@ -14,7 +14,8 @@ import {
   pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
-import { OCI_BASE, OCI_TOOLS, VERIFY_SOURCES } from "@/lib/oci/config";
+import { OCI_BASE, OCI_TOOLS, VERIFY_SOURCES, OCI_DATA_AS_OF, totalWeeksLabel, ociSnapshotRows, OCI_SNAPSHOT_SOURCES, OCI_SNAPSHOT_DISCLAIMER } from "@/lib/oci/config";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const tool = getTool("oci-eligibility-checker")!;
 const PATH = OCI_TOOLS.eligibility.path;
@@ -119,7 +120,26 @@ export default function OciEligibilityCheckerPage() {
           </p>
         }
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: OCI fee & time */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="OCI card — fee & time before you check eligibility"
+              answerLabel="Fresh OCI (USA)"
+              answer={`$275 · ${totalWeeksLabel()}`}
+              accent="amber"
+              rows={ociSnapshotRows()}
+              badges={["Govt fee $275", `Processing ${totalWeeksLabel()}`]}
+              lastVerified={OCI_DATA_AS_OF}
+              sources={OCI_SNAPSHOT_SOURCES}
+              disclaimer={OCI_SNAPSHOT_DISCLAIMER}
+              ctaText="Check my eligibility"
+              ctaHref="#oci-eligibility-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="oci-eligibility-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
             <OciEligibilityChecker />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">

@@ -14,7 +14,7 @@
  */
 
 /** Plain-English "as of" stamp shown next to any figure from this file. */
-export const OCI_DATA_AS_OF = "2026-06-27";
+export const OCI_DATA_AS_OF = "2026-07-04";
 
 /** Authoritative links every OCI page must cite. */
 export const VERIFY_SOURCES = {
@@ -103,7 +103,7 @@ export const VFS_FEES: Record<string, FeeLine> = {
   service: {
     id: "vfs-service",
     label: "VFS Global service charge",
-    amount: 18.5,
+    amount: 19,
     note: "Per-application VFS processing fee. Always charged.",
   },
   icwf: {
@@ -211,6 +211,41 @@ export function totalWeeksLabel(): string {
   const hi = Math.round(TIMELINE_TOTAL.maxDays / 7);
   return `${lo}–${hi} weeks`;
 }
+
+/* ------------------------------------------------------------------ *
+ * Fast Answer snapshot (built from the fees + timeline above)
+ * ------------------------------------------------------------------ */
+
+const usd = (n: number) => `$${n % 1 === 0 ? n : n.toFixed(2)}`;
+
+/** Estimated all-in cost for a fresh adult OCI (govt + VFS + ICWF, incl. courier). */
+export function freshOciAllInLabel(): string {
+  const total =
+    GOVERNMENT_FEES.freshAdult.amount +
+    VFS_FEES.service.amount +
+    VFS_FEES.icwf.amount +
+    VFS_FEES.courierReturn.amount;
+  return `~${usd(total)}`;
+}
+
+/** Rows for the OCI "Fast Answer" snapshot — always sourced from this config. */
+export function ociSnapshotRows(): { label: string; value: string; note?: string; highlight?: boolean }[] {
+  return [
+    { label: "Fresh OCI — govt fee", value: usd(GOVERNMENT_FEES.freshAdult.amount), note: "Adult or minor; same government fee. Re-issue is also " + usd(GOVERNMENT_FEES.reissue.amount) + ".", highlight: true },
+    { label: "VFS service + ICWF", value: `${usd(VFS_FEES.service.amount)} + ${usd(VFS_FEES.icwf.amount)}`, note: "Per application; plus optional return courier " + usd(VFS_FEES.courierReturn.amount) + "." },
+    { label: "All-in (fresh adult)", value: freshOciAllInLabel(), note: "Govt + VFS + ICWF + return courier. Use the Cost Calculator for your exact case." },
+    { label: "Processing time", value: totalWeeksLabel(), note: "Two-stage clearance (consulate + MHA in India); plan for the long end." },
+  ];
+}
+
+/** Official sources for the OCI Fast Answer. */
+export const OCI_SNAPSHOT_SOURCES: { label: string; href: string }[] = [
+  { label: "VFS Global — OCI (USA)", href: "https://visa.vfsglobal.com/usa/en/ind/apply-oci-services" },
+  { label: "Consulate OCI fee schedule", href: "https://www.cgisf.gov.in/page/oci-overseas-citizenship-of-india-cards/" },
+];
+
+export const OCI_SNAPSHOT_DISCLAIMER =
+  "Fees and processing times are best-known current figures (from VFS/consulate schedules) and change without notice; MHA clearance timing varies widely. Educational planning only — confirm the exact fee and time on VFS/your consulate before applying or booking travel.";
 
 /* ------------------------------------------------------------------ *
  * Photo specification (for the Photo Checker)
