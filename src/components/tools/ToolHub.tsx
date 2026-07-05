@@ -106,9 +106,59 @@ export function ToolDeepDive({
 }) {
   return (
     <div className="space-y-12 sm:space-y-14">
+      {/* What your result means */}
+      {content.resultMeaning && (
+        <SectionCard eyebrow="After the tool" title="What your result means">
+          <p>{content.resultMeaning}</p>
+        </SectionCard>
+      )}
+
+      {/* Reference / comparison table */}
+      {content.table && (
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+            {content.table.caption ?? "Reference table"}
+          </h2>
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                  {content.table.headers.map((h) => (
+                    <th key={h} className="p-3 font-semibold">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-ink-900/5 bg-white">
+                {content.table.rows.map((row) => (
+                  <tr key={row[0]} className="align-top">
+                    {row.map((cell, i) => (
+                      <td
+                        key={i}
+                        className={
+                          i === 0
+                            ? "p-3 font-semibold text-ink-900"
+                            : "p-3 text-ink-600"
+                        }
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
       {/* Explainer */}
       {content.explain && (
-        <SectionCard eyebrow="After the tool" title={content.explain.heading}>
+        <SectionCard
+          eyebrow={content.resultMeaning || content.table ? undefined : "After the tool"}
+          title={content.explain.heading}
+        >
           <div className="space-y-3">
             {content.explain.items.map((item) => (
               <div
