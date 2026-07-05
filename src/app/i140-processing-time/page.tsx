@@ -5,6 +5,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import I140ProcessingCalculator from "@/components/tools/I140ProcessingCalculator";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -132,6 +133,20 @@ export default function Page() {
         <section className="py-10 sm:py-12">
           <Container>
             <PermClusterLinks title="Related I-140 & green card tools" links={[...i140ClusterLinks.filter((l) => l.href !== PATH), ...i140RelatedLinks]} />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/tools/priority-date-checker",
+                label: "Priority Date Checker",
+                description:
+                  "See whether your priority date is current against the latest Visa Bulletin.",
+              }}
+            />
           </Container>
         </section>
 

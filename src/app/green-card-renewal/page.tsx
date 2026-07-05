@@ -9,6 +9,7 @@ import RenewalReasonCards from "@/components/tools/RenewalReasonCards";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
   gcRenewalClusterLinks,
@@ -218,6 +219,20 @@ export default function Page() {
             <PermClusterLinks
               title="Related Green Card and Immigration Tools"
               links={[...gcRenewalClusterLinks.filter((l) => l.href !== PATH), ...gcRenewalRelatedLinks]}
+            />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/green-card-renewal-fee",
+                label: "Green Card Renewal Fee",
+                description:
+                  "See the current Form I-90 filing and biometrics fees before you file.",
+              }}
             />
           </Container>
         </section>

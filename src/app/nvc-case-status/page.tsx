@@ -6,6 +6,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import NvcTimelineChecker from "@/components/tools/NvcTimelineChecker";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -409,6 +410,20 @@ export default function Page() {
         <section className="py-10 sm:py-12">
           <Container>
             <PermClusterLinks title="Related NVC and Immigration Tools" links={[...nvcClusterLinks.filter((l) => l.href !== PATH), ...nvcRelatedLinks]} />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/nvc-processing-time",
+                label: "NVC Processing Time",
+                description:
+                  "See typical NVC document review and interview-scheduling timelines for India.",
+              }}
+            />
           </Container>
         </section>
 
