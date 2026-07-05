@@ -11,6 +11,12 @@ import Link from "next/link";
  */
 const guides: { title: string; href: string; description: string }[] = [
   {
+    title: "India Visa from USA",
+    href: "/india-visa-from-usa",
+    description:
+      "Which visa you need — eVisa, tourist, business, entry visa or OCI — with estimated fees, times, and documents.",
+  },
+  {
     title: "Indian Passport Renewal in USA",
     href: "/articles/indian-passport-renewal-usa",
     description:
