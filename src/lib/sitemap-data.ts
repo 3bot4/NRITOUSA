@@ -190,6 +190,15 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/immigration-tracker", 0.8, "weekly"),
   e("/oci", 0.9, "weekly"),
   ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),
+  // India Visa from USA cluster (hub + 7 supporting intent pages).
+  e("/india-visa-from-usa", 0.9, "monthly"),
+  e("/india-evisa-for-us-citizens", 0.85, "monthly"),
+  e("/india-tourist-visa-from-usa", 0.85, "monthly"),
+  e("/india-business-visa-from-usa", 0.85, "monthly"),
+  e("/entry-visa-india-from-usa", 0.8, "monthly"),
+  e("/india-visa-fees-usa", 0.85, "monthly"),
+  e("/india-visa-processing-time-usa", 0.85, "monthly"),
+  e("/oci-vs-india-visa", 0.85, "monthly"),
   e("/community/nri-uscis-decisions", 0.7, "weekly", immDate),
   ...clusterPages.map((p) =>
     e(clusterPath(p.slug), p.kind === "hub" ? 0.9 : 0.7, "monthly", clusterDate(p)),
