@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import H1bSalaryExplorer from "@/components/tools/H1bSalaryExplorer";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("h1b-salaries")!;
+const content = getToolHubContent("h1b-salaries")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -23,46 +24,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/tools/h1b-salaries",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "What is the average H-1B salary by job title?",
-    answer:
-      "It varies enormously by title, metro, and seniority. As a rough guide from DOL filings, median H-1B base pay for a Software Engineer runs $115k–$155k depending on the city, Senior Software Engineers $135k–$190k, and Data Scientists $110k–$150k. Use the explorer above to filter your exact title, metro, and wage level.",
-  },
-  {
-    question: "Where does this H-1B salary data come from?",
-    answer:
-      "From the US Department of Labor's quarterly LCA (Labor Condition Application) disclosure files — the official wage data employers must file for every H-1B position. We pre-aggregate millions of rows into medians and percentiles by title, metro, and wage level; no individual filing data is shown.",
-  },
-  {
-    question: "What do wage levels I–IV mean on an H-1B?",
-    answer:
-      "The DOL prevailing-wage system assigns each position a level: I (entry), II (qualified), III (experienced), and IV (fully competent/senior). It's a useful experience proxy when comparing salaries — a Level II Software Engineer and a Level IV one are very different jobs at very different pay.",
-  },
-  {
-    question: "Is LCA salary data the same as total compensation?",
-    answer:
-      "No. LCA filings report base salary only. Stock grants, bonuses, and benefits — often 20–50% of total compensation at large tech companies — are not included, so real take-home packages can be substantially higher than the numbers shown here.",
-  },
-];
-
 export default function H1bSalariesPage() {
   const url = absoluteUrl("/tools/h1b-salaries");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
@@ -98,6 +77,10 @@ export default function H1bSalariesPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
+
           <H1bSalaryExplorer />
         </Container>
       </section>
@@ -145,9 +128,11 @@ export default function H1bSalariesPage() {
         </Container>
       </section>
 
+      {/* Full SEO hub content: explainer, process, example, mistakes,
+          related links, and FAQ */}
       <section className="py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <ToolDeepDive content={content} />
         </Container>
       </section>
       </ToolFirstLayout>
