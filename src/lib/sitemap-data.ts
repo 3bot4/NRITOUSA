@@ -77,6 +77,7 @@ export const pagesEntries: SitemapEntry[] = [
   e("/education/articles", 0.8, "weekly"),
   e("/resources", 0.7, "monthly"),
   e("/free-immigrant-wealth-guide", 0.8, "monthly"),
+  e("/indian-population-in-usa", 0.8, "monthly"),
   e("/about", 0.5, "monthly"),
   e("/about-deepak", 0.5, "monthly"),
   e("/contact", 0.5, "yearly"),
