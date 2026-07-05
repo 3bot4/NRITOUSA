@@ -317,16 +317,17 @@ export const feesFaqs: FaqItem[] = [
 ];
 
 export const processingFaqs: FaqItem[] = [
-  { question: "How long does an India visa take from USA?", answer: "The eVisa takes about 3–5 business days, a regular tourist/business visa about 5–10 business days, an Entry Visa about 2–3 weeks, and OCI about 8–12 weeks." },
-  { question: "How long does the India eVisa take to process?", answer: "About 3–5 business days. Apply at least a week before travel — approval isn't guaranteed and fees (~$54–$95) are non-refundable." },
-  { question: "How long does a regular India visa take?", answer: "About 5–10 business days once VFS intake, consular processing, and return courier are counted. Plan roughly two weeks to be safe." },
-  { question: "How long does an India Entry Visa take?", answer: "About 2–3 weeks, since origin and family documents need extra review. Apply early and keep documentation complete." },
-  { question: "How long does OCI take compared to a visa?", answer: "OCI takes about 8–12 weeks — far longer than a visa — because of its two-stage clearance. If you must travel soon, use a visa (eVisa ~3–5 days)." },
+  { question: "How long does an India visa take from USA?", answer: "The eVisa takes about 3–5 business days, a regular tourist/business visa about 5–10 business days, an Entry Visa about 2–3 weeks, and OCI about 8–12 weeks. These are planning estimates, not guarantees." },
+  { question: "How long does the India eVisa take to process?", answer: "India eVisa processing is often estimated around 3–5 business days, but it can take longer if the application needs manual review or documents are unclear. Apply at least a week before travel when possible." },
+  { question: "How long does a regular India visa take through VFS?", answer: "About 5–10 business days once VFS intake, appointment availability, consular review, and return courier are counted. Plan roughly two weeks to be safe, and longer around holidays." },
+  { question: "How long does an India Entry Visa take?", answer: "About 2–3 weeks, since Indian-origin and family documents need extra review. Apply early and keep your documentation complete and consistent." },
+  { question: "Does VFS add to the processing time?", answer: "Yes. For regular and paper visas, VFS intake, appointment availability, mailing to the consulate, and return courier all add days on top of the raw consular review time." },
+  { question: "Does courier shipping count in India visa processing time?", answer: "Yes. FedEx/UPS or other courier time to and from VFS is counted on top of consular processing. A package that is delayed, returned for correction, or held for missing documents can add several business days or more." },
   { question: "Why do India visa applications get delayed?", answer: "Incomplete or inconsistent documents, name mismatches, passport-validity issues, old-Indian-passport/surrender questions, minor-child cases, consulate workload, and holidays." },
-  { question: "How early should I apply before traveling to India?", answer: "Allow about 1 week for an eVisa, 2 weeks for a regular visa, 3 weeks for an Entry Visa, and 3 months for OCI. Don't leave it to the last week." },
-  { question: "Can I expedite an urgent India visa?", answer: "Genuine emergencies (serious illness or bereavement) can often be handled in 1–3 days on a priority basis through the consulate/VFS. Don't rely on OCI for urgent travel — it takes 8–12 weeks." },
-  { question: "Does VFS add to the processing time?", answer: "Yes — for regular visas, VFS intake and return courier are why a ~5–10 business-day total is longer than the raw consular time." },
-  { question: "How do I check my India visa status?", answer: "Use the eVisa portal status check for eVisas, or VFS tracking for regular visas and OCI. Follow up if you're past 5 days (eVisa) or 10 business days (regular)." },
+  { question: "How early should I apply before traveling to India?", answer: "Allow about 1 week for a simple eVisa, 2–3 weeks for a regular visa, 3–4 weeks for an Entry Visa or minor-child case, and 8–12 weeks or more for OCI. Don't start in the final week before travel." },
+  { question: "Can I expedite an urgent India visa?", answer: "Genuine emergencies may be reviewed case by case by the relevant Indian Consulate or VFS process, but approval and timing are not guaranteed. Contact the consulate or VFS directly and keep proof of emergency ready." },
+  { question: "How do I check my India visa status?", answer: "Use the eVisa portal status check for eVisas, or VFS tracking for regular visas and OCI. Follow up if you're past about 5 business days (eVisa) or 10 business days (regular)." },
+  { question: "Is OCI faster than an India visa?", answer: "No. OCI takes about 8–12 weeks because of its two-stage clearance, far longer than a visa. If you need to travel soon, use a visa — an eVisa is often 3–5 business days — and pursue OCI separately." },
 ];
 
 export const ociFaqs: FaqItem[] = [
