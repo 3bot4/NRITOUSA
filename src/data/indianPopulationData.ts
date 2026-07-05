@@ -561,6 +561,20 @@ export const incomeBands: IncomeBand[] = [
 export const incomeNote =
   "Illustrative distribution only — not exact ACS percentages. Pew Research Center reports Indian American households have among the highest median household incomes of any Asian-origin group in the U.S. High professional representation likely translates into significant federal, state, and local tax contributions, but no single official 'tax contribution' figure is published; treat that as an inference, not a stat.";
 
+/** Sourced income/wealth numbers (approximate; verify against the source). */
+export interface StatItem {
+  value: string;
+  label: string;
+  source: string;
+}
+
+export const incomeStats: StatItem[] = [
+  { value: "≈ $145,000", label: "Median household income for Indian Americans", source: "Pew Research Center" },
+  { value: "≈ $75,000", label: "U.S. median household income (for comparison)", source: "U.S. Census Bureau" },
+  { value: "≈ 6%", label: "Indian American poverty rate (vs ~12% U.S.)", source: "Pew Research Center" },
+  { value: "Top group", label: "Among the highest-earning Asian-origin groups in the U.S.", source: "Pew Research Center" },
+];
+
 /* ------------------------------------------------------------------ *
  * Occupation clusters
  * ------------------------------------------------------------------ */
@@ -585,6 +599,35 @@ export const occupations: OccupationCluster[] = [
 
 export const occupationNote =
   "Common occupational clusters, ranked qualitatively — not exact employment percentages. Shares vary by source, metro, and definition.";
+
+/** Sourced demographic numbers (approximate; verify against the source). */
+export const demographicStats: StatItem[] = [
+  { value: "≈ 66%", label: "Foreign-born (immigrant) share of Indian Americans", source: "Pew Research Center" },
+  { value: "≈ 75%", label: "Adults (25+) with a bachelor's degree or higher (vs ~34% U.S.)", source: "Pew Research Center" },
+  { value: "≈ 79%", label: "Speak English proficiently", source: "Pew Research Center" },
+  { value: "≈ 34", label: "Median age (years)", source: "U.S. Census / Pew" },
+];
+
+/** Sourced occupation number. */
+export const occupationStat: StatItem = {
+  value: "≈ 70%",
+  label: "Work in management, business, science, and arts (professional) occupations — well above the U.S. average",
+  source: "U.S. Census ACS / Pew",
+};
+
+/** Sourced student number. */
+export const studentStats: StatItem[] = [
+  { value: "≈ 331,600", label: "Indian students in the U.S. in 2023/24 — the #1 country of origin, surpassing China", source: "IIE Open Doors" },
+  { value: "#1", label: "Largest source of international students in the U.S. (2023/24)", source: "IIE Open Doors" },
+  { value: "≈ 29%", label: "Share of all international students in the U.S. who are from India", source: "IIE Open Doors" },
+];
+
+/** Sourced H-1B number. */
+export const h1bStat: StatItem = {
+  value: "≈ 72%",
+  label: "Share of approved H-1B beneficiaries who are Indian nationals",
+  source: "USCIS",
+};
 
 /* ------------------------------------------------------------------ *
  * Visa / immigration status

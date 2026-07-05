@@ -25,10 +25,15 @@ import {
   clusterStateLinks,
   intensityMeta,
   demographics,
+  demographicStats,
   incomeBands,
   incomeNote,
+  incomeStats,
   occupations,
   occupationNote,
+  occupationStat,
+  studentStats,
+  h1bStat,
   visaStatus,
   communities,
   communitiesDisclaimer,
@@ -507,6 +512,9 @@ export default function Page() {
             title="Indian Demographics in the U.S."
             sub="The Indian population in America spans U.S.-born citizens, immigrants, students, and workers. Exact breakdowns vary by source — the categories below use estimated, ranged language."
           />
+          <div className="mt-6">
+            <StatStrip items={demographicStats} />
+          </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {demographics.map((d) => (
               <div key={d.title} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
@@ -526,6 +534,9 @@ export default function Page() {
             title="Indian Americans by Income Level"
             sub="Pew Research Center reports Indian American households have among the highest median household incomes of any Asian-origin group in the U.S."
           />
+          <div className="mt-6">
+            <StatStrip items={incomeStats} />
+          </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
             <div className="rounded-3xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
               <div className="space-y-4">
@@ -569,6 +580,13 @@ export default function Page() {
             title="What Jobs Do Indians Do in America?"
             sub="Indian Americans are highly represented in professional and technical fields. The clusters below are ranked qualitatively — they are common occupational patterns, not exact employment percentages."
           />
+          <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-4 sm:flex sm:items-center sm:gap-4">
+            <p className="text-2xl font-extrabold text-brand-600 sm:text-3xl">{occupationStat.value}</p>
+            <p className="mt-1 text-sm font-medium text-ink-700 sm:mt-0">
+              {occupationStat.label}.{" "}
+              <span className="text-[11px] uppercase tracking-wide text-ink-400">Source: {occupationStat.source}</span>
+            </p>
+          </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {occupations.map((o) => (
               <div key={o.label} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
@@ -596,6 +614,9 @@ export default function Page() {
             title="Indian Americans by Visa, Green Card, Student &amp; Citizenship Status"
             sub="Indian nationals receive a large share of H-1B visas and are one of the largest international student groups, while a growing number are green card holders and citizens."
           />
+          <div className="mt-6">
+            <StatStrip items={[h1bStat, ...studentStats]} />
+          </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {visaStatus.map((v) => (
               <div key={v.title} className="flex flex-col rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
@@ -752,19 +773,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Compact cluster index (bottom) */}
-          <div className="mx-auto mt-8 max-w-4xl">
-            <h2 className="text-lg font-bold text-ink-900">Indian Population by State</h2>
-            <p className="mt-1 text-sm text-ink-600">Jump straight to a state guide:</p>
-            <div className="mt-3 flex flex-wrap gap-2 text-sm">
-              {clusterStateLinks.map((r) => (
-                <Link key={r.code} href={r.href} className="inline-flex items-center gap-1 rounded-lg border border-ink-900/10 bg-white px-3 py-1.5 font-semibold text-brand-600 shadow-sm transition hover:border-brand-300">
-                  Indian Population in {r.name} →
-                </Link>
-              ))}
-            </div>
-          </div>
-
           <div className="mx-auto mt-8 max-w-4xl">
             <h2 className="text-lg font-bold text-ink-900">Related guides</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -812,6 +820,26 @@ function SectionHead({
       <p className="text-xs font-bold uppercase tracking-wide text-brand-600">{eyebrow}</p>
       <h2 className="mt-1 text-xl font-bold text-ink-900 sm:text-2xl">{title}</h2>
       {sub && <p className="mt-2 text-sm leading-relaxed text-ink-600">{sub}</p>}
+    </div>
+  );
+}
+
+function StatStrip({
+  items,
+  cols = "sm:grid-cols-2 lg:grid-cols-4",
+}: {
+  items: { value: string; label: string; source: string }[];
+  cols?: string;
+}) {
+  return (
+    <div className={`grid grid-cols-2 gap-3 ${cols}`}>
+      {items.map((s) => (
+        <div key={s.label} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+          <p className="text-xl font-extrabold text-brand-600 sm:text-2xl">{s.value}</p>
+          <p className="mt-1 text-xs font-medium leading-snug text-ink-700">{s.label}</p>
+          <p className="mt-1 text-[10px] uppercase tracking-wide text-ink-400">Source: {s.source}</p>
+        </div>
+      ))}
     </div>
   );
 }
