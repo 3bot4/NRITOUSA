@@ -5,6 +5,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import I485ProcessingCalculator from "@/components/tools/I485ProcessingCalculator";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
 import {
   i485TimelineRows,
@@ -344,6 +345,20 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <PermClusterLinks title="Related Green Card and Immigration Tools" links={[...i485ClusterLinks.filter((l) => l.href !== PATH), ...i485RelatedLinks]} />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/tools/green-card-tracker",
+                label: "Green Card Tracker",
+                description:
+                  "Log your priority date and see where your case sits in the current backlog.",
+              }}
+            />
           </Container>
         </section>
 

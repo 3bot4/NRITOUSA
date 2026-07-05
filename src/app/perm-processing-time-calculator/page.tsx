@@ -6,6 +6,7 @@ import PermTimelineCalculator from "@/components/tools/PermTimelineCalculator";
 import PermDolTimesPanel from "@/components/tools/PermDolTimesPanel";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
 import {
   permTimelineRows,
@@ -347,6 +348,20 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <PermClusterLinks title="Related PERM and Green Card Tools" links={[...clusterLinks.filter((l) => l.href !== PATH), ...relatedImmigrationLinks]} />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/prevailing-wage-calculator",
+                label: "Prevailing Wage Calculator",
+                description:
+                  "Estimate the DOL wage level your PERM case needs before the ETA-9089 stage.",
+              }}
+            />
           </Container>
         </section>
 
