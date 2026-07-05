@@ -77,6 +77,7 @@ export const officialSources = {
     "https://www.irs.gov/businesses/corporations/basic-questions-and-answers-on-form-8938",
   incomeTaxIndia: "https://www.incometax.gov.in/",
   rbiRemittance: "https://www.rbi.org.in/",
+  irsForm3520: "https://www.irs.gov/businesses/gifts-from-foreign-person",
   collegeBoardSat: "https://satsuite.collegeboard.org/sat/registration/fees",
   fafsa: "https://studentaid.gov/",
 } as const;
@@ -309,6 +310,75 @@ export const taxNumbers: NumberGroup = {
   },
 } as const;
 
+/** Reusable Fast Answer rows for FBAR/FATCA compliance pages. */
+export const taxComplianceSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "FBAR filing threshold", value: taxNumbers.fbarThreshold.value, note: "Aggregate high balance across ALL foreign accounts at any time in the year.", highlight: true },
+  { label: "FBAR deadline", value: taxNumbers.fbarDeadline.value, note: "Filed via FinCEN BSA, separately from your tax return." },
+  { label: "FATCA Form 8938", value: taxNumbers.fatca8938.value, note: "US single: $50k end-of-year / $75k any time; higher for MFJ & taxpayers abroad." },
+  { label: "Filed with", value: "IRS return (8938) / FinCEN (FBAR)", note: "Two separate regimes — meeting one threshold says nothing about the other." },
+];
+
+export const taxComplianceSources: { label: string; href: string }[] = [
+  { label: "IRS — FBAR", href: officialSources.irsFbar },
+  { label: "FinCEN BSA E-Filing", href: officialSources.fincenBsa },
+  { label: "IRS — Form 8938", href: officialSources.irsForm8938 },
+];
+
+export const TAX_COMPLIANCE_VERIFIED = "2026-07-04";
+export const TAX_COMPLIANCE_DISCLAIMER =
+  "Thresholds and deadlines reflect current IRS/FinCEN rules but can change, and your situation may differ. This is educational information, not tax or legal advice — confirm with the official IRS/FinCEN pages or a qualified cross-border CPA before filing.";
+
+/* ─────────── India tax sub-clusters (TDS / ITR / repatriation / gifts) ───── */
+
+/**
+ * Verified 2026-07-04 against the Income Tax Department / RBI / IRS (via public
+ * summaries). India rates carry surcharge + cess on top and depend on DTAA and
+ * your facts — shown with a verify caveat.
+ */
+export const INDIA_TAX_VERIFIED = "2026-07-04";
+export const INDIA_TAX_DISCLAIMER =
+  "India and US tax rates, thresholds, forms, and due dates change and vary with surcharge, cess, DTAA, and your specific facts. These are general planning figures — not tax or legal advice. Confirm with the Income Tax Department / RBI / IRS or a qualified cross-border CA/CPA before acting.";
+
+export const tdsSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "NRO interest — TDS", value: "30%", note: "Plus surcharge & cess. NRE/FCNR interest is tax-free.", highlight: true },
+  { label: "Property sale — LTCG TDS", value: "12.5%", note: "Held >24 months; ~14.95% with surcharge+cess, no indexation." },
+  { label: "Property sale — STCG TDS", value: "30%+", note: "Held ≤24 months; plus surcharge & cess." },
+  { label: "Lower / Nil TDS", value: "Form 13 certificate", note: "Apply to the AO to cut TDS to your real tax; claim excess via ITR." },
+];
+
+export const itrSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "ITR due date (non-audit)", value: "Jul 31", note: "Individuals without audit; extensions happen — verify each year.", highlight: true },
+  { label: "ITR due date (audit)", value: "Oct 31", note: "Cases requiring a tax audit." },
+  { label: "Which form", value: "ITR-2 / ITR-3", note: "ITR-2: no business income; ITR-3: business/profession income." },
+  { label: "Reconcile first", value: "26AS / AIS / TIS", note: "Match TDS & income before filing to avoid notices." },
+];
+
+export const repatSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "NRO repatriation limit", value: "USD 1 million / FY", note: "Per financial year from NRO balances, with paperwork.", highlight: true },
+  { label: "Form 15CA", value: "Online self-declaration", note: "Filed on the income-tax portal before remittance." },
+  { label: "Form 15CB", value: "Above ₹5 lakh / FY", note: "CA certificate required when remittances exceed ₹5 lakh in the year." },
+  { label: "NRE / FCNR", value: "Freely repatriable", note: "No 1M cap; NRO is the capped / CA-certified route." },
+];
+
+export const giftsSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "US Form 3520 threshold", value: "> $100,000 / year", note: "Report foreign gifts/bequests from a nonresident individual or estate.", highlight: true },
+  { label: "Itemize each gift", value: "> $5,000", note: "Separately identify gifts above this once the $100k trigger is met." },
+  { label: "India gift from relatives", value: "Generally not taxed", note: "Gifts from parents/close relatives are exempt in India; US reporting still applies." },
+  { label: "Indian mutual funds", value: "PFIC rules apply", note: "Complex US PFIC tax/reporting — get cross-border advice." },
+];
+
+export const indiaIncomeTaxSources: { label: string; href: string }[] = [
+  { label: "Income Tax Department (India)", href: officialSources.incomeTaxIndia },
+];
+export const repatriationSources: { label: string; href: string }[] = [
+  { label: "RBI", href: officialSources.rbiRemittance },
+  { label: "Income Tax Department (India)", href: officialSources.incomeTaxIndia },
+];
+export const giftsTaxSources: { label: string; href: string }[] = [
+  { label: "IRS — Gifts from a foreign person", href: officialSources.irsForm3520 },
+  { label: "Income Tax Department (India)", href: officialSources.incomeTaxIndia },
+];
+
 /* ───────────────────────── Wealth / return to India ─────────────────────── */
 
 export const wealthNumbers: NumberGroup = {
@@ -329,6 +399,24 @@ export const wealthNumbers: NumberGroup = {
   },
 } as const;
 
+/** Reusable Fast Answer rows for wealth / return-to-India decision pages. */
+export const wealthReturnSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "401(k)/IRA early withdrawal penalty", value: wealthNumbers.earlyWithdrawalPenalty.value, note: "Before 59½, plus ordinary income tax and possible US withholding. Exceptions apply.", highlight: true },
+  { label: "US withholding on cash-out", value: "Often ~20–30%", note: "Plan-withheld amount is not the final tax — reconcile on your US return." },
+  { label: "Social Security eligibility", value: wealthNumbers.ssCredits.value, note: "40 credits (~10 years of work) to qualify for retirement benefits." },
+  { label: "RNOR window (India)", value: "Up to ~2–3 years", note: "Returning residents may get RNOR status; foreign income is often not taxed in India during it." },
+];
+
+export const wealthReturnSources: { label: string; href: string }[] = [
+  { label: "IRS — early distributions", href: wealthNumbers.earlyWithdrawalPenalty.sourceUrl },
+  { label: "SSA — retirement credits", href: wealthNumbers.ssCredits.sourceUrl },
+  { label: "Income Tax India", href: officialSources.incomeTaxIndia },
+];
+
+export const WEALTH_RETURN_VERIFIED = "2026-07-04";
+export const WEALTH_RETURN_DISCLAIMER =
+  "General planning figures only — penalties, rates, credit rules, and RNOR conditions depend on your specific situation and change over time. Not tax, legal, or financial advice; confirm with the official IRS/SSA/Income Tax India sources or a qualified cross-border advisor.";
+
 /* ─────────────────────────────── Education ──────────────────────────────── */
 
 export const educationNumbers: NumberGroup = {
@@ -348,6 +436,23 @@ export const educationNumbers: NumberGroup = {
     sourceUrl: officialSources.fafsa,
   },
 } as const;
+
+/** Reusable Fast Answer rows for education fees & key dates. */
+export const educationSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
+  { label: "SAT registration fee", value: educationNumbers.satFee.value, note: "Fee waivers for eligible low-income US students (via school counselor).", highlight: true },
+  { label: "FAFSA opens", value: educationNumbers.fafsaOpens.value, note: "Federal financial aid application at studentaid.gov." },
+  { label: "College application fee", value: "~$50–90 each", note: "Varies by school; many waive fees for eligible applicants." },
+  { label: "ACT registration fee", value: "$68", note: "Alternative to the SAT; optional writing/science add-ons cost extra. Waivers available." },
+];
+
+export const educationSnapshotSources: { label: string; href: string }[] = [
+  { label: "College Board (SAT)", href: officialSources.collegeBoardSat },
+  { label: "Federal Student Aid (FAFSA)", href: officialSources.fafsa },
+];
+
+export const EDUCATION_VERIFIED = "2026-07-04";
+export const EDUCATION_DISCLAIMER =
+  "Fees and dates are current best-known figures and change each cycle — SAT/ACT and college application fees vary, and waivers exist for eligible students. Confirm on College Board / ACT / studentaid.gov and each college's site before relying on a number.";
 
 /** Everything, keyed by cluster — consumed by the monthly audit. */
 export const allVerifiedNumbers = {

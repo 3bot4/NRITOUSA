@@ -5,6 +5,13 @@ import Newsletter from "@/components/Newsletter";
 import RelatedHubs from "@/components/RelatedHubs";
 import H1bTransferRiskChecklist from "@/components/tools/H1bTransferRiskChecklist";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  H1B_PREMIUM_FEE,
+  H1B_SNAPSHOT_VERIFIED,
+  H1B_SNAPSHOT_DISCLAIMER,
+  h1bSnapshotSources,
+} from "@/lib/h1bCluster";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -165,6 +172,28 @@ export default function H1bHubPage() {
               ))}
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: H-1B timing & fees snapshot */}
+      <section className="bg-white pb-4">
+        <Container>
+          <FastAnswerSnapshot
+            title="H-1B timing & fees at a glance"
+            accent="sky"
+            rows={[
+              { label: "Regular processing", value: "3–6 months", note: "Varies by service center." },
+              { label: "Premium processing (I-907)", value: "15 business days", note: `Action guarantee, not approval. Fee ${H1B_PREMIUM_FEE}.`, highlight: true },
+              { label: "Transfer — start work", value: "On receipt", note: "H-1B portability after the new I-129 is filed." },
+              { label: "Extension — keep working", value: "Up to 240 days", note: "If filed before your I-94 expired." },
+              { label: "Layoff grace period", value: "Up to 60 days", note: "Cannot work; pursue a new transfer filing." },
+              { label: "6-year cap", value: "3 + 3 years", note: "Approved I-140 unlocks extensions beyond 6 years." },
+            ]}
+            badges={["15 business days premium", `Premium fee ${H1B_PREMIUM_FEE}`]}
+            lastVerified={H1B_SNAPSHOT_VERIFIED}
+            sources={h1bSnapshotSources}
+            disclaimer={H1B_SNAPSHOT_DISCLAIMER}
+          />
         </Container>
       </section>
 

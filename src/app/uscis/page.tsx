@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import HubLinkGroups from "@/components/HubLinkGroups";
 import RelatedHubs from "@/components/RelatedHubs";
 import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdGraph, absoluteUrl } from "@/lib/seo";
@@ -303,6 +304,29 @@ export default function UscisHubPage() {
             </div>
           </Container>
         </header>
+
+        <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="Common USCIS numbers at a glance"
+              accent="brand"
+              rows={[
+                { label: "Premium processing (I-907)", value: "15 business days", note: "I-129/I-140 fee $2,965; action, not approval.", highlight: true },
+                { label: "N-400 early filing", value: "90 days", note: "You may file naturalization up to 90 days early." },
+                { label: "I-90 green card renewal", value: "$415 online / $465 paper", note: "Online is $50 cheaper." },
+                { label: "Check your case", value: "Case status + Processing Times", note: "Compare your receipt date to posted times." },
+              ]}
+              badges={["Premium 15 business days", "Fees per USCIS"]}
+              lastVerified="2026-07-04"
+              sources={[
+                { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+                { label: "USCIS Fee Calculator", href: "https://www.uscis.gov/feecalculator" },
+                { label: "USCIS Case Status", href: "https://egov.uscis.gov/" },
+              ]}
+              disclaimer="USCIS fees, processing times, and rules change. Not legal advice — verify on the official USCIS site before filing or relying on any figure."
+            />
+          </Container>
+        </div>
 
         <div className="py-8 sm:py-10">
           <Container>

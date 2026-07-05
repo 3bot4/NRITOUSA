@@ -3,6 +3,13 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import HubLinkGroups from "@/components/HubLinkGroups";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  taxComplianceSnapshotRows,
+  taxComplianceSources,
+  TAX_COMPLIANCE_VERIFIED,
+  TAX_COMPLIANCE_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import RelatedHubs from "@/components/RelatedHubs";
 import Newsletter from "@/components/Newsletter";
 import { getArticle } from "@/lib/articles";
@@ -164,8 +171,25 @@ export default function IndiaTaxCompliancePage() {
         </Container>
       </section>
 
-      {/* Command center — grouped table of contents */}
+      {/* Fast Answer: FBAR/FATCA thresholds first */}
       <section className="bg-white pt-10 sm:pt-12">
+        <Container>
+          <FastAnswerSnapshot
+            title="US reporting thresholds every NRI should know"
+            accent="brand"
+            rows={taxComplianceSnapshotRows}
+            badges={["FBAR $10,000", "Due Apr 15 → auto Oct 15"]}
+            lastVerified={TAX_COMPLIANCE_VERIFIED}
+            sources={taxComplianceSources}
+            disclaimer={TAX_COMPLIANCE_DISCLAIMER}
+            ctaText="Browse all tax topics"
+            ctaHref="#command-center"
+          />
+        </Container>
+      </section>
+
+      {/* Command center — grouped table of contents */}
+      <section id="command-center" className="scroll-mt-24 bg-white pt-10 sm:pt-12">
         <Container>
           <SectionHeading
             eyebrow="Command center"

@@ -5,6 +5,13 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import PermDolTimesPanel from "@/components/tools/PermDolTimesPanel";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
+import {
+  permStageEstimateRows,
+  permEstimateSourceLinks,
+  PERM_ESTIMATE_VERIFIED,
+  PERM_ESTIMATE_DISCLAIMER,
+} from "@/data/permProcessingData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -80,8 +87,24 @@ export default function Page() {
         accent="from-amber-500 to-orange-600"
         badges={["Updated monthly", "Official DOL source", "For Indian applicants"]}
       >
+        {/* Fast Answer: PERM stage estimate first */}
+        <section className="pt-6">
+          <Container>
+            <EstimatedTimelineTable
+              title="PERM / PWD Processing Time Estimate by Stage"
+              intro="Planning ranges for the DOL portion of the green card path. The live current queue (which month DOL is processing) is in the official panel below — it changes monthly."
+              rows={permStageEstimateRows}
+              lastUpdated={PERM_ESTIMATE_VERIFIED}
+              sourceLinks={permEstimateSourceLinks}
+              disclaimer={PERM_ESTIMATE_DISCLAIMER}
+              ctaText="See the live DOL queue below"
+              ctaHref="#live-dol-queue"
+            />
+          </Container>
+        </section>
+
         {/* Current times panel */}
-        <section className="pb-10 pt-6 sm:pb-12">
+        <section id="live-dol-queue" className="scroll-mt-24 pb-10 pt-10 sm:pb-12">
           <Container>
             <PermDolTimesPanel variant="full" />
           </Container>

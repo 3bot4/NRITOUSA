@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import FormSnapshot from "@/components/FormSnapshot";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import {
   pageMetadata,
@@ -142,6 +143,15 @@ export default function UscisFormChildPage({
             </div>
           </Container>
         </header>
+
+        {/* ── Form Snapshot (fast answer) ─────────────────────────────────── */}
+        {page.snapshot && (
+          <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+            <Container>
+              <FormSnapshot formNumber={page.formNumber} data={page.snapshot} />
+            </Container>
+          </div>
+        )}
 
         {/* ── Body ────────────────────────────────────────────────────────── */}
         <div className="py-8 sm:py-10">

@@ -2,6 +2,13 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  tdsSnapshotRows,
+  indiaIncomeTaxSources,
+  INDIA_TAX_VERIFIED,
+  INDIA_TAX_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
@@ -123,6 +130,20 @@ export default function TdsClusterPage({ page }: { page: TdsPage }) {
             </div>
           </Container>
         </header>
+
+        <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="NRI TDS — rates at a glance"
+              accent="brand"
+              rows={tdsSnapshotRows}
+              badges={["NRO interest 30%", "Property LTCG 12.5%"]}
+              lastVerified={INDIA_TAX_VERIFIED}
+              sources={indiaIncomeTaxSources}
+              disclaimer={INDIA_TAX_DISCLAIMER}
+            />
+          </Container>
+        </div>
 
         <div className="py-8 sm:py-10">
           <Container>

@@ -20,7 +20,13 @@ import {
   CLUSTER_UPDATED,
   CLUSTER_UPDATED_HUMAN,
 } from "@/lib/permCluster";
-import { permProcessingData as D } from "@/data/permProcessingData";
+import {
+  permProcessingData as D,
+  permEstimateSourceLinks,
+  PERM_ESTIMATE_VERIFIED,
+  PERM_ESTIMATE_DISCLAIMER,
+} from "@/data/permProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/pwd-processing-time";
 const TITLE = "PWD Processing Time 2026: Prevailing Wage Timeline for PERM";
@@ -75,8 +81,32 @@ export default function Page() {
         accent="from-emerald-500 to-teal-600"
         badges={["Updated monthly", "Official DOL source", "Prevailing wage"]}
       >
+        {/* Fast Answer: PWD planning range first */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="How long does the PWD take?"
+              answerLabel="Prevailing Wage Determination (planning range)"
+              answer="5–7 months"
+              accent="emerald"
+              rows={[
+                { label: "PWD (this page)", value: "5–7 months", note: "First DOL step; gates everything after.", highlight: true },
+                { label: "Recruitment + quiet period", value: "2–3 months", note: "After PWD is issued." },
+                { label: "PERM analyst review", value: "12–16 months", note: "No premium processing." },
+                { label: "Total to PERM (no audit)", value: "~20–26 months", note: "PWD → certified, planning range." },
+              ]}
+              badges={["Planning range", "Official queue on DOL FLAG"]}
+              lastVerified={PERM_ESTIMATE_VERIFIED}
+              sources={permEstimateSourceLinks}
+              disclaimer={PERM_ESTIMATE_DISCLAIMER}
+              ctaText="See the live DOL PWD queue below"
+              ctaHref="#current-pwd"
+            />
+          </Container>
+        </section>
+
         {/* Intro */}
-        <section className="pb-8 pt-6">
+        <section className="pb-8 pt-10">
           <Container>
             <div className="mx-auto max-w-3xl space-y-6">
               <div>
@@ -96,7 +126,7 @@ export default function Page() {
         </section>
 
         {/* Current PWD times */}
-        <section className="pb-10">
+        <section id="current-pwd" className="scroll-mt-24 pb-10">
           <Container>
             <PermDolTimesPanel variant="pwd" />
           </Container>

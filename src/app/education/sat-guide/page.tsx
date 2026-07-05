@@ -4,6 +4,13 @@ import SectionHeading from "@/components/SectionHeading";
 import SatScoreCalc from "@/components/education/SatScoreCalc";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  educationSnapshotRows,
+  educationSnapshotSources,
+  EDUCATION_VERIFIED,
+  EDUCATION_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import { getEduCalc } from "@/lib/education";
 import { site } from "@/lib/site";
@@ -127,7 +134,24 @@ export default function SatGuidePage() {
           </p>
         }
       >
-      <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: SAT fee & key dates */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="SAT fee & key dates"
+              accent="sky"
+              rows={educationSnapshotRows}
+              badges={["SAT ~$68", "FAFSA opens Oct 1"]}
+              lastVerified={EDUCATION_VERIFIED}
+              sources={educationSnapshotSources}
+              disclaimer={EDUCATION_DISCLAIMER}
+              ctaText="Score my SAT"
+              ctaHref="#sat-tool"
+            />
+          </Container>
+        </section>
+
+      <section id="sat-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
         <Container>
           <SatScoreCalc />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">

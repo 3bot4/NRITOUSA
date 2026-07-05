@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  h1bSnapshots,
+  H1B_SNAPSHOT_VERIFIED,
+  H1B_SNAPSHOT_DISCLAIMER,
+  h1bSnapshotSources,
+} from "@/lib/h1bCluster";
 import Newsletter from "@/components/Newsletter";
 import RelatedHubs from "@/components/RelatedHubs";
 import {
@@ -194,6 +201,21 @@ export default function H1bLayoffPage() {
               ))}
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* Fast Answer: layoff grace period */}
+      <section className="bg-white pb-4">
+        <Container>
+          <FastAnswerSnapshot
+            title="H-1B layoff — the key numbers"
+            accent="sky"
+            rows={h1bSnapshots["layoff-60-day-grace-period"].rows}
+            badges={h1bSnapshots["layoff-60-day-grace-period"].badges}
+            lastVerified={H1B_SNAPSHOT_VERIFIED}
+            sources={h1bSnapshotSources}
+            disclaimer={H1B_SNAPSHOT_DISCLAIMER}
+          />
         </Container>
       </section>
 

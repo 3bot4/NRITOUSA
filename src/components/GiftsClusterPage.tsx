@@ -3,6 +3,13 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  giftsSnapshotRows,
+  giftsTaxSources,
+  INDIA_TAX_VERIFIED,
+  INDIA_TAX_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
 import {
@@ -130,6 +137,20 @@ export default function GiftsClusterPage({ page }: { page: GiftPage }) {
             </div>
           </Container>
         </header>
+
+        <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="Foreign gifts & inheritance — US reporting"
+              accent="brand"
+              rows={giftsSnapshotRows}
+              badges={["Form 3520 > $100k", "PFIC on Indian funds"]}
+              lastVerified={INDIA_TAX_VERIFIED}
+              sources={giftsTaxSources}
+              disclaimer={INDIA_TAX_DISCLAIMER}
+            />
+          </Container>
+        </div>
 
         <div className="py-8 sm:py-10">
           <Container>

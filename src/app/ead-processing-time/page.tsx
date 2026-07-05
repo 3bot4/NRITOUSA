@@ -22,7 +22,8 @@ import {
   EAD_UPDATED,
   EAD_UPDATED_HUMAN,
 } from "@/lib/eadCluster";
-import { eadProcessingData as D, EAD_DATA_NOTE } from "@/data/eadProcessingData";
+import { eadProcessingData as D, EAD_DATA_NOTE, eadSnapshotRows, eadSnapshotSources, EAD_ESTIMATE_VERIFIED, EAD_ESTIMATE_DISCLAIMER } from "@/data/eadProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/ead-processing-time";
 const TITLE = "EAD Processing Time 2026: Work Permit Timeline & Auto-Extension";
@@ -82,7 +83,24 @@ export default function Page() {
         sourceNote={<>{EAD_DATA_NOTE}</>}
         disclaimerExtra={<p>This calculator is for educational planning only and is not legal advice. Always confirm your work authorization with your immigration attorney.</p>}
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: EAD/AP timing */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="EAD & Advance Parole — how long?"
+              accent="emerald"
+              rows={eadSnapshotRows}
+              badges={["Most EAD 3–8 mo", "AP 4–9 mo"]}
+              lastVerified={EAD_ESTIMATE_VERIFIED}
+              sources={eadSnapshotSources}
+              disclaimer={EAD_ESTIMATE_DISCLAIMER}
+              ctaText="Estimate my EAD timeline"
+              ctaHref="#ead-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="ead-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
             <div className="mx-auto max-w-3xl">
               <EadProcessingCalculator />

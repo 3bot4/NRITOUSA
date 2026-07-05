@@ -35,7 +35,114 @@ export interface H1bClusterPageData {
 
 export interface H1bClusterPage extends H1bClusterPageData {
   readingTime: number;
+  snapshot?: H1bSnapshot;
 }
+
+/* ── Fast Answer snapshots (top of each H-1B page) ─────────────────────────── */
+
+export interface H1bSnapshotRow {
+  label: string;
+  value: string;
+  note?: string;
+  highlight?: boolean;
+}
+
+export interface H1bSnapshot {
+  title: string;
+  rows: H1bSnapshotRow[];
+  badges?: string[];
+}
+
+/** Premium processing (I-907) fee — current figure (rose to $2,965 on Mar 1, 2026). */
+export const H1B_PREMIUM_FEE = "$2,965";
+export const H1B_SNAPSHOT_VERIFIED = "2026-07-04";
+export const H1B_SNAPSHOT_DISCLAIMER =
+  "Planning estimates only — regular processing times vary by service center and premium fees change. Premium processing guarantees USCIS action within 15 business days, not approval. Not legal advice; verify with USCIS before relying on any date or fee.";
+export const h1bSnapshotSources: { label: string; href: string }[] = [
+  { label: "USCIS Form I-129", href: "https://www.uscis.gov/i-129" },
+  { label: "USCIS Form I-907 (premium)", href: "https://www.uscis.gov/i-907" },
+  { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
+];
+
+/** Rows most H-1B pages share (regular + premium timing). */
+const H1B_BASE_ROWS: H1bSnapshotRow[] = [
+  { label: "Regular processing", value: "3–6 months", note: "Varies by service center." },
+  { label: "Premium processing (I-907)", value: "15 business days", note: `Optional; fee ${H1B_PREMIUM_FEE}.` },
+];
+
+export const h1bSnapshots: Record<string, H1bSnapshot> = {
+  "premium-processing": {
+    title: "H-1B premium processing at a glance",
+    badges: ["15 business days", `Fee ${H1B_PREMIUM_FEE}`],
+    rows: [
+      { label: "USCIS action guarantee", value: "15 business days", note: "Approve, RFE, or deny — not a guaranteed approval.", highlight: true },
+      { label: "Premium fee (I-907)", value: H1B_PREMIUM_FEE, note: "Usually paid by the employer. Verify current amount." },
+      { label: "If an RFE is issued", value: "Clock restarts", note: "New 15-business-day window after USCIS receives the RFE response." },
+      { label: "Regular processing", value: "3–6 months", note: "If you skip premium." },
+    ],
+  },
+  transfer: {
+    title: "H-1B transfer timing at a glance",
+    badges: ["Start on receipt", "Premium 15 business days"],
+    rows: [
+      { label: "When you can start work", value: "On receipt notice", note: "H-1B portability — after the new employer files a non-frivolous I-129.", highlight: true },
+      ...H1B_BASE_ROWS,
+      { label: "Common mistake", value: "Waiting for approval", note: "You may usually start on the receipt, not the approval." },
+    ],
+  },
+  extension: {
+    title: "H-1B extension timing at a glance",
+    badges: ["240-day rule", "Premium 15 business days"],
+    rows: [
+      { label: "Keep working after I-94 expiry", value: "Up to 240 days", note: "If the extension was filed before your I-94 expired.", highlight: true },
+      ...H1B_BASE_ROWS,
+      { label: "I-94 risk", value: "File before expiry", note: "Filing after your I-94 expires can break status." },
+    ],
+  },
+  amendment: {
+    title: "H-1B amendment timing at a glance",
+    badges: ["Material change", "Premium 15 business days"],
+    rows: [
+      { label: "When required", value: "Material change", note: "New worksite/MSA or significant job change.", highlight: true },
+      ...H1B_BASE_ROWS,
+    ],
+  },
+  rfe: {
+    title: "H-1B RFE timing at a glance",
+    badges: ["Clock restarts", "Response deadline"],
+    rows: [
+      { label: "Premium clock after RFE", value: "Restarts (15 business days)", note: "From the day USCIS receives your response.", highlight: true },
+      { label: "Response deadline", value: "Set by USCIS notice", note: "Often up to ~87 days; follow the exact date on your RFE." },
+      { label: "Regular processing", value: "Adds weeks–months", note: "On top of the original timeline." },
+    ],
+  },
+  "layoff-60-day-grace-period": {
+    title: "H-1B layoff grace period at a glance",
+    badges: ["60-day grace", "Premium advised"],
+    rows: [
+      { label: "Grace period", value: "Up to 60 days", note: "Per authorized validity period after your last day; may be shorter if I-94 ends sooner.", highlight: true },
+      { label: "New employer transfer", value: "File within the grace period", note: "Premium processing (15 business days) is usually advisable." },
+      { label: "Premium fee (I-907)", value: H1B_PREMIUM_FEE, note: "Speeds action to 15 business days." },
+    ],
+  },
+  "transfer-after-layoff": {
+    title: "H-1B transfer after layoff at a glance",
+    badges: ["60-day grace", "Premium 15 business days"],
+    rows: [
+      { label: "File within", value: "60-day grace period", note: "New employer files I-129 before the grace period ends.", highlight: true },
+      ...H1B_BASE_ROWS,
+      { label: "Premium fee (I-907)", value: H1B_PREMIUM_FEE, note: "Strongly advised in a layoff situation." },
+    ],
+  },
+  "start-work-after-transfer-receipt": {
+    title: "Starting work after an H-1B transfer receipt",
+    badges: ["Portability", "Start on receipt"],
+    rows: [
+      { label: "When you can start", value: "On the receipt notice", note: "H-1B portability under AC21 — after a non-frivolous I-129 is filed.", highlight: true },
+      ...H1B_BASE_ROWS,
+    ],
+  },
+};
 
 export const H1B_CLUSTER_BASE = "/h1b";
 export const h1bChildPath = (slug: string) => `${H1B_CLUSTER_BASE}/${slug}`;
@@ -944,6 +1051,7 @@ An approved I-140 is not directly relevant to the consular officer's decision on
 export const h1bChildPages: H1bClusterPage[] = rawPages.map((p) => ({
   ...p,
   readingTime: computeReadingTime(p.content),
+  snapshot: h1bSnapshots[p.slug],
 }));
 
 export const h1bChildSlugs = h1bChildPages.map((p) => p.slug);

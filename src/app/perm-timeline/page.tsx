@@ -5,6 +5,13 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
+import {
+  permStageEstimateRows,
+  permEstimateSourceLinks,
+  PERM_ESTIMATE_VERIFIED,
+  PERM_ESTIMATE_DISCLAIMER,
+} from "@/data/permProcessingData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -90,8 +97,24 @@ export default function Page() {
           </Link>
         }
       >
+        {/* Fast Answer: PERM stage estimate first */}
+        <section className="pt-6">
+          <Container>
+            <EstimatedTimelineTable
+              title="PERM Processing Time Estimate by Stage"
+              intro="Planning ranges for the whole PERM → I-140 path. The official current queue lives on DOL FLAG and changes monthly — always verify there before relying on a date."
+              rows={permStageEstimateRows}
+              lastUpdated={PERM_ESTIMATE_VERIFIED}
+              sourceLinks={permEstimateSourceLinks}
+              disclaimer={PERM_ESTIMATE_DISCLAIMER}
+              ctaText="Estimate my personal PERM timeline"
+              ctaHref="/perm-processing-time-calculator"
+            />
+          </Container>
+        </section>
+
         {/* Overview + stages */}
-        <section className="pb-10 pt-6 sm:pb-12">
+        <section className="pb-10 pt-10 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <h2 className="text-xl font-bold text-ink-900">Full timeline overview</h2>

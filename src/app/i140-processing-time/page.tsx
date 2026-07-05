@@ -22,7 +22,8 @@ import {
   I140_UPDATED,
   I140_UPDATED_HUMAN,
 } from "@/lib/i140Cluster";
-import { I140_DATA_NOTE } from "@/data/i140ProcessingData";
+import { I140_DATA_NOTE, i140SnapshotRows, i140SnapshotSources, I140_ESTIMATE_VERIFIED, I140_ESTIMATE_DISCLAIMER } from "@/data/i140ProcessingData";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/i140-processing-time";
 const TITLE = "I-140 Processing Time 2026: Standard vs Premium";
@@ -83,7 +84,24 @@ export default function Page() {
         sourceNote={<>{I140_DATA_NOTE}</>}
         disclaimerExtra={<p>This calculator is for educational planning only and is not legal advice. Always confirm your case with your employer&rsquo;s immigration attorney.</p>}
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: I-140 timing & fees */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="I-140 processing time & fees"
+              accent="brand"
+              rows={i140SnapshotRows}
+              badges={["Premium 15 business days", "Fee $715 + $2,965 premium"]}
+              lastVerified={I140_ESTIMATE_VERIFIED}
+              sources={i140SnapshotSources}
+              disclaimer={I140_ESTIMATE_DISCLAIMER}
+              ctaText="Estimate my I-140 timeline"
+              ctaHref="#i140-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="i140-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
             <div className="mx-auto max-w-3xl">
               <I140ProcessingCalculator />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
 import {
@@ -126,6 +127,22 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
             </div>
           </Container>
         </header>
+
+        {page.feeSnapshot && (
+          <div className="border-b border-ink-900/5 bg-ink-50/40 py-6">
+            <Container>
+              <FastAnswerSnapshot
+                title={page.feeSnapshot.title}
+                accent="emerald"
+                rows={page.feeSnapshot.rows}
+                badges={page.feeSnapshot.badges}
+                lastVerified={page.feeSnapshot.lastVerified}
+                sources={page.feeSnapshot.sources}
+                disclaimer={page.feeSnapshot.disclaimer}
+              />
+            </Container>
+          </div>
+        )}
 
         <div className="py-8 sm:py-10">
           <Container>
