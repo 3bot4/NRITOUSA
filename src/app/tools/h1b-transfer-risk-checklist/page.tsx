@@ -3,20 +3,21 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import RelatedHubs from "@/components/RelatedHubs";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import H1bTransferRiskChecklist from "@/components/tools/H1bTransferRiskChecklist";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("h1b-transfer-risk-checklist")!;
+const content = getToolHubContent("h1b-transfer-risk-checklist")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -24,61 +25,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/tools/h1b-transfer-risk-checklist",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "What information do I need to use this tool?",
-    answer:
-      "Just your current employment status (employed, laid off, etc.), whether a new H1B petition has been filed, whether you have a receipt notice, I-94 validity, and whether you have travel plans or an RFE. No personal information is collected — no receipt number, A-number, or passport information.",
-  },
-  {
-    question: "Can I start working for a new employer after the H1B petition is filed?",
-    answer:
-      "Under AC21 portability, you may be able to start working once the new employer's H1B petition is filed and a receipt notice is issued — but only if you were in valid H1B status at the time of filing, your I-94 has not expired, and you have not violated your H1B terms. Confirm with your immigration attorney before starting work.",
-  },
-  {
-    question: "How long is the H1B 60-day grace period?",
-    answer:
-      "The grace period is 60 days from your last day of H1B employment — or until your I-94 expires, whichever is shorter. During this period you can remain in the US and pursue options, but you cannot work without valid authorization.",
-  },
-  {
-    question: "Should I use premium processing for an H1B transfer after layoff?",
-    answer:
-      "In most layoff situations, premium processing is strongly advisable. Regular H1B processing can take 3–6 months — which is much longer than the 60-day grace period. Premium processing guarantees USCIS will act within 15 business days. It does not guarantee approval.",
-  },
-  {
-    question: "I received an RFE on my H1B transfer. What should I do?",
-    answer:
-      "Contact your employer's immigration attorney immediately — the same day. The RFE has a hard response deadline, typically 87 days from the notice date. Missing this deadline results in automatic denial. Your attorney must lead the response.",
-  },
-  {
-    question: "Can I travel to India while my H1B transfer petition is pending?",
-    answer:
-      "This carries significant risk. You may need a new visa stamp to re-enter the US, especially if your current stamp expired or shows a previous employer. The stamping process at Indian consulates carries 221(g) administrative processing risk that can delay your return by weeks or months. Consult your attorney before booking any international travel while a petition is pending.",
-  },
-  {
-    question: "Many H1B transfer situations depend on what factors?",
-    answer:
-      "Many H1B transfer situations depend on timing (when employment ended, when the petition was filed), filing method (premium vs. regular), receipt notice status, I-94 validity, whether AC21 portability conditions are met, and your employer attorney's guidance. This tool gives educational guidance — always confirm your specific situation with your immigration attorney.",
-  },
-];
-
 export default function H1bTransferRiskChecklistPage() {
   const url = absoluteUrl("/tools/h1b-transfer-risk-checklist");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
@@ -132,6 +96,10 @@ export default function H1bTransferRiskChecklistPage() {
       {/* tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mx-auto mb-8 max-w-3xl">
+            <ToolIntro content={content} />
+          </div>
+
           <div className="mx-auto max-w-3xl">
             <H1bTransferRiskChecklist />
           </div>
@@ -163,10 +131,11 @@ export default function H1bTransferRiskChecklistPage() {
         </Container>
       </section>
 
-      {/* FAQ + disclaimer */}
+      {/* Full SEO hub content: explainer, process, timeline, documents,
+          mistakes, related links, and FAQ */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <ToolDeepDive content={content} />
         </Container>
       </section>
       <section className="py-12 sm:py-14">

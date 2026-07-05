@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import DataStamp from "@/components/tools/DataStamp";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import CitizenshipChecklist from "@/components/tools/CitizenshipChecklist";
 import citizenship from "../../../../data/citizenship-checklist.json";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -15,18 +16,16 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 
 const tool = getTool("citizenship-checklist")!;
+const content = getToolHubContent("citizenship-checklist")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
   description: tool.seoDescription,
   path: "/tools/citizenship-checklist",
 });
-
-const faq: FaqItem[] = citizenship.faq;
 
 const SEVERITY_STYLE: Record<string, string> = {
   high: "border-rose-200",
@@ -37,15 +36,16 @@ export default function CitizenshipChecklistPage() {
   const url = absoluteUrl("/tools/citizenship-checklist");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -66,7 +66,7 @@ export default function CitizenshipChecklistPage() {
         })),
       })),
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
@@ -114,6 +114,10 @@ export default function CitizenshipChecklistPage() {
       {/* Interactive tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
+
           <CitizenshipChecklist />
 
           <div className="mx-auto mt-6 max-w-3xl">
@@ -180,10 +184,11 @@ export default function CitizenshipChecklistPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Full SEO hub content: eligibility checklist, process, timeline,
+          fees, documents, mistakes, related links, and FAQ */}
       <section className="py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <ToolDeepDive content={content} />
         </Container>
       </section>
 
