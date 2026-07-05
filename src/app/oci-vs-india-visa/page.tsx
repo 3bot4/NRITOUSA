@@ -29,10 +29,10 @@ export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC
 const COMPARE = [
   { row: "What it is", oci: "Lifelong multiple-entry facility (not a visa)", visa: "Time-limited permit for a specific purpose" },
   { row: "Best for", oci: "Indian-origin, frequent / long-term travel", visa: "Single or short trips, urgent travel" },
-  { row: "Processing", oci: "Usually longer — plan ahead", visa: "eVisa often days; regular min. 3 working days" },
-  { row: "Cost", oci: "One-time gov + VFS fee", visa: "Per-application fee" },
-  { row: "Entries", oci: "Multiple, lifelong", visa: "Depends on visa type/validity" },
-  { row: "Urgent travel", oci: "Not a solution if not held", visa: "eVisa is the faster route" },
+  { row: "Processing time", oci: "8–12 weeks", visa: "eVisa 3–5 days; regular 5–10 days" },
+  { row: "Cost (all-in)", oci: "~$334 one-time", visa: "~$54 eVisa / ~$216 regular per trip" },
+  { row: "Entries", oci: "Multiple, lifelong", visa: "eVisa & 10-yr visa are multiple entry" },
+  { row: "Urgent travel", oci: "Not a solution if not held", visa: "eVisa is the faster route (3–5 days)" },
 ];
 
 const WHO = [
@@ -100,7 +100,7 @@ export default function Page() {
                 { label: "Urgent travel (no OCI yet)", value: "Visa (eVisa)", note: "OCI is not an urgent-travel fix." },
                 { label: "OCI is citizenship?", value: "No", note: "Not a visa and not citizenship." },
               ]}
-              badges={["OCI is not a visa", "OCI takes longer", "Verify eligibility"]}
+              badges={["OCI ~$334, 8–12 weeks", "eVisa ~$54, 3–5 days", "All-in estimates"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[
                 { label: "OCI services (Govt of India)", href: SRC.ociServices },

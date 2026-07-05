@@ -81,12 +81,12 @@ export default function Page() {
               answer="e-Business Visa (if eligible)"
               accent="brand"
               rows={[
-                { label: "Short, eligible trip", value: "e-Business Visa", note: "Applied online; a few business days.", highlight: true },
-                { label: "Longer / broader scope", value: "Regular Business Visa", note: "Via VFS Global / consulate." },
-                { label: "Invitation letter", value: "Usually required", note: "From the Indian company / host." },
-                { label: "Regular fee (U.S., up to 10y)", value: "~$160", note: "Government fee — verify latest." },
+                { label: "e-Business Visa (all-in)", value: "~$95", note: "3–5 business days, applied online.", highlight: true },
+                { label: "Regular Business Visa (all-in)", value: "~$216", note: "5–10 business days, via VFS." },
+                { label: "Invitation letter", value: "Required", note: "From the Indian company / host." },
+                { label: "Includes", value: "Photo + courier", note: "$12 photo, $25 courier (regular)." },
               ]}
-              badges={["Not for employment", "Verify official fees", "No approval guaranteed"]}
+              badges={["Not for employment", "All-in estimates", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[
                 { label: "India eVisa portal", href: SRC.eVisaPortal },

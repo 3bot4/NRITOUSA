@@ -28,8 +28,8 @@ export default function IndiaVisaPageFooter({
       <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
         <Container>
           <OfficialSourceBox
-            title="Official India visa sources"
-            intro="Always verify current requirements, fees, and processing times directly:"
+            title="Official India visa portals"
+            intro="Apply and download forms on the official portals:"
             links={indiaVisaSourceLinks}
           />
         </Container>

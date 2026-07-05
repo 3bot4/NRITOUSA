@@ -8,6 +8,7 @@ import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import IndiaVisaDecisionGuide from "@/components/tools/IndiaVisaDecisionGuide";
+import IndiaVisaSummaryTables from "@/components/tools/IndiaVisaSummaryTables";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
   indiaVisaArticleJsonLd,
@@ -25,7 +26,6 @@ import {
   commonMistakes,
   eVisaDocuments,
   hubFaqs,
-  processingCards,
   INDIA_VISA_PUBLISHED,
   INDIA_VISA_UPDATED,
   INDIA_VISA_UPDATED_HUMAN,
@@ -107,12 +107,12 @@ export default function Page() {
               answer="India eVisa (if eligible)"
               accent="amber"
               rows={[
-                { label: "Short tourism / family visit", value: "e-Tourist Visa", note: "Often approved in a few business days.", highlight: true },
-                { label: "Business / conference", value: "e-Business Visa", note: "For permitted business activities." },
-                { label: "Indian-origin, frequent travel", value: "OCI", note: "Lifelong facility — not a visa, plan ahead." },
-                { label: "Non-Indian spouse / U.S.-born child", value: "Entry Visa", note: "Family-based travel; OCI may also fit." },
+                { label: "Short tourism / family visit", value: "e-Tourist Visa", note: "~$54 all-in · 3–5 business days.", highlight: true },
+                { label: "Business / conference", value: "e-Business Visa", note: "~$95 all-in · 3–5 business days." },
+                { label: "Indian-origin, frequent travel", value: "OCI", note: "~$334 all-in · 8–12 weeks." },
+                { label: "Non-Indian spouse / U.S.-born child", value: "Entry Visa", note: "~$176 all-in · 2–3 weeks." },
               ]}
-              badges={["Estimates only", "Verify official fees", "No approval guaranteed"]}
+              badges={["All-in estimates", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[
                 { label: "Indian Visa Online", href: SRC.visaOnline },
@@ -148,7 +148,7 @@ export default function Page() {
           <Container>
             <div className="mx-auto max-w-5xl">
               <h2 className="text-xl font-bold text-ink-900">India Visa & OCI Comparison</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">A quick scan of visa/status types, who each suits, and estimated cost and timing. All figures are estimates — verify the latest official fee and processing time before applying.</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">A quick scan of visa/status types, who each suits, and estimated all-in cost and time. Figures are estimates for planning and can change.</p>
 
               {/* Mobile cards */}
               <div className="mt-4 space-y-3 sm:hidden">
@@ -204,28 +204,18 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Fees + processing quick modules */}
+        {/* Total cost + total time summary tables */}
         <section className="py-10 sm:py-12">
           <Container>
-            <div className="mx-auto max-w-4xl grid gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
-                <h2 className="text-lg font-bold text-ink-900">India Visa Fees from USA</h2>
-                <ul className="mt-3 space-y-2 text-sm text-ink-600">
-                  <li>• Regular tourist/business visa (U.S. nationals, up to 10 years): <strong className="text-ink-900">~$160</strong> government fee — verify latest.</li>
-                  <li>• VFS service fee (e.g. ~$15.90) may apply on top.</li>
-                  <li>• eVisa fees vary by type/validity — verify on the portal.</li>
-                </ul>
-                <Link href="/india-visa-fees-usa" className="mt-4 inline-block text-sm font-semibold text-orange-700 hover:underline">See the full India visa fee breakdown →</Link>
-              </div>
-              <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
-                <h2 className="text-lg font-bold text-ink-900">India Visa Processing Time from USA</h2>
-                <ul className="mt-3 space-y-2 text-sm text-ink-600">
-                  {processingCards.map((p) => (
-                    <li key={p.label}>• <strong className="text-ink-900">{p.label}:</strong> {p.estimate}.</li>
-                  ))}
-                </ul>
-                <Link href="/india-visa-processing-time-usa" className="mt-4 inline-block text-sm font-semibold text-orange-700 hover:underline">See detailed India visa timelines →</Link>
-              </div>
+            <h2 className="mx-auto max-w-4xl text-xl font-bold text-ink-900">India Visa Total Cost &amp; Time by Category</h2>
+            <p className="mx-auto mt-1.5 max-w-4xl text-sm leading-relaxed text-ink-600">Estimated all-in cost (government fee + service + photo + shipping) and processing time for each India visa and OCI category.</p>
+            <div className="mt-4">
+              <IndiaVisaSummaryTables accent="orange" />
+            </div>
+            <div className="mx-auto mt-5 max-w-4xl">
+              <Link href="/india-visa-fees-usa" className="text-sm font-semibold text-orange-700 hover:underline">See the full fee breakdown →</Link>
+              <span className="px-2 text-ink-300">·</span>
+              <Link href="/india-visa-processing-time-usa" className="text-sm font-semibold text-orange-700 hover:underline">See detailed timelines →</Link>
             </div>
           </Container>
         </section>
@@ -316,8 +306,8 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <OfficialSourceBox
-              title="Official India visa sources"
-              intro="Always verify current requirements, fees, and processing times directly:"
+              title="Official India visa portals"
+              intro="Apply and download forms on the official portals:"
               links={indiaVisaSourceLinks}
             />
           </Container>

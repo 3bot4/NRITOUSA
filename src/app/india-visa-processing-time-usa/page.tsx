@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import IndiaVisaPageFooter from "@/components/tools/IndiaVisaPageFooter";
+import IndiaVisaSummaryTables from "@/components/tools/IndiaVisaSummaryTables";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
   indiaVisaArticleJsonLd,
@@ -29,7 +30,7 @@ export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC
 
 const SECTIONS: { h: string; body: React.ReactNode }[] = [
   { h: "India eVisa Processing Time", body: `${C.eVisaProcessingNote}` },
-  { h: "Regular India Visa Processing Time", body: `${C.regularVisaMinimumProcessing}` },
+  { h: "Regular India Visa Processing Time", body: `${C.regularVisaProcessingNote}` },
   { h: "Tourist Visa Processing Time", body: "eTourist visas are often approved within a few business days; regular tourist visas follow the minimum-3-working-days rule after receipt and are frequently longer once VFS handling and mailing are included." },
   { h: "Business Visa Processing Time", body: "eBusiness visas are often approved within a few business days; regular business visas require a minimum of 3 working days after receipt and are often longer. Apply early for fixed-date conferences." },
   { h: "Entry Visa Processing Time", body: "Entry Visas can take longer than tourist visas because origin and family documents may need extra review. Keep documentation complete and consistent to avoid back-and-forth." },
@@ -117,6 +118,17 @@ export default function Page() {
               <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50/60 p-4">
                 <p className="text-sm text-amber-800"><strong>Don't wait until the last week</strong> if you have passport issues, a name mismatch, old Indian passport / surrender questions, a minor child application, or family/emergency travel.</p>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Total time + cost by category */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <h2 className="mx-auto max-w-4xl text-xl font-bold text-ink-900">Total India visa time &amp; cost by category</h2>
+            <p className="mx-auto mt-1.5 max-w-4xl text-sm leading-relaxed text-ink-600">Estimated processing time and all-in cost for each India visa and OCI category.</p>
+            <div className="mt-4">
+              <IndiaVisaSummaryTables accent="sky" />
             </div>
           </Container>
         </section>

@@ -46,7 +46,7 @@ const TYPE_CARDS = [
 const SECTIONS: { h: string; body: React.ReactNode }[] = [
   { h: "What Is India eVisa?", body: "The eVisa is an electronically-issued travel authorization applied for online at the official portal — no consulate visit needed. It covers e-Tourist, e-Business, and e-Medical categories for eligible nationalities, including U.S. citizens in most cases." },
   { h: "India eVisa Processing Time", body: `${C.eVisaProcessingNote} Plan a buffer around holidays, and never book non-refundable travel before you're authorized.` },
-  { h: "India eVisa Fees", body: `${C.eVisaFeeNote} A small bank or processing charge may also apply. ${C.feeDisclaimer}` },
+  { h: "India eVisa Fees", body: `${C.eVisaFeeEstimate} There are no VFS or courier costs because the eVisa is applied for online. ${C.feeDisclaimer}` },
   { h: "eVisa vs Regular India Visa", body: "For eligible short trips the eVisa is usually faster and simpler. A regular visa (via VFS/consulate) can be better for longer stays, more entries, or cases not eligible for the eVisa." },
   { h: "eVisa vs OCI", body: "An eVisa is a short-term permit; OCI is a lifelong multiple-entry facility for people of Indian origin. If you're eligible and travel often, OCI is usually more convenient, but it takes longer to obtain." },
 ];
@@ -95,15 +95,15 @@ export default function Page() {
               answer="Eligible U.S. citizens, short trips"
               accent="sky"
               rows={[
-                { label: "Best for", value: "Short tourism / business / medical", note: "Eligible nationalities, designated entry ports.", highlight: true },
-                { label: "Not ideal for", value: "Long stays, work, study", note: "Use a regular, employment, or student visa." },
-                { label: "Estimated timeline", value: "A few business days", note: "Apply early; approval not guaranteed." },
+                { label: "e-Tourist Visa (all-in)", value: "~$54", note: "$40 gov + $2 charge + $12 photo.", highlight: true },
+                { label: "e-Business / e-Medical", value: "~$95", note: "$80 gov + charge + $12 photo." },
+                { label: "Estimated timeline", value: "3–5 business days", note: "Apply about a week before travel." },
                 { label: "Where to apply", value: "Indianvisaonline.gov.in", note: "Official government portal only." },
               ]}
-              badges={["Online only", "Verify fee on portal", "No approval guaranteed"]}
+              badges={["All-in estimates", "Photo included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[{ label: "India eVisa portal", href: SRC.eVisaPortal }]}
-              disclaimer={C.eVisaFeeNote}
+              disclaimer={C.feeDisclaimer}
               ctaText="See eVisa documents"
               ctaHref="#evisa-docs"
             />

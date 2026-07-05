@@ -32,7 +32,7 @@ const COMPARE = [
   { feature: "Where to apply", evisa: "Online portal", regular: "VFS Global / consulate" },
   { feature: "Processing", evisa: "Often a few business days", regular: "Min. 3 working days after receipt; often longer" },
   { feature: "Entry ports", evisa: "Designated airports/seaports", regular: "Standard ports" },
-  { feature: "Fee (U.S. nationals)", evisa: "Varies by validity — verify", regular: "~$160 up to 10 years — verify" },
+  { feature: "Fee (U.S. nationals)", evisa: "~$54 all-in (1 year)", regular: "~$216 all-in (up to 10 years)" },
   { feature: "Multiple entry", evisa: "Depends on type/rules", regular: "Multiple-entry options for some types" },
 ];
 
@@ -48,7 +48,7 @@ const SECTIONS: { h: string; body: React.ReactNode }[] = [
   { h: "Who Should Use India Tourist Visa (Visitor Visa)?", body: "The India tourist visa — often called a visitor visa for India — suits travelers going for sightseeing, weddings, or short family visits. There is no separate 'visitor visa' category; the tourist visa (or e-Tourist Visa) is what most visitors use. Indian-origin travelers who visit often, or plan to live with family long-term, may find the OCI card or an Entry Visa more suitable." },
   { h: "India Tourist Visa Fees from USA", body: `eTourist fees vary by validity and rules. A regular tourist visa for U.S. nationals valid up to 10 years is commonly around a $160 government fee, and a VFS service fee may apply. ${C.feeDisclaimer}` },
   { h: "India Tourist Visa Processing Time", body: `eTourist visas are often approved within a few business days; regular tourist visas require a minimum of 3 working days after receipt and are frequently longer. ${C.timelineDisclaimer}` },
-  { h: "India Tourist Visa Multiple Entry Explained", body: "A multiple-entry tourist visa lets you enter India more than once while it's valid — useful if you'll leave and return during a trip. Availability depends on the visa type and current rules, so confirm before you rely on it." },
+  { h: "India Tourist Visa Multiple Entry Explained", body: "A multiple-entry tourist visa lets you enter India more than once while it's valid — useful if you'll leave and return during a trip. The 1-year e-Tourist Visa (~$54) and the 10-year regular tourist visa (~$216) are both multiple entry." },
 ];
 
 export default function Page() {
@@ -94,12 +94,12 @@ export default function Page() {
               answer="e-Tourist Visa (if eligible)"
               accent="emerald"
               rows={[
-                { label: "Short, eligible trip", value: "e-Tourist Visa", note: "Fastest, applied online.", highlight: true },
-                { label: "Longer / not eligible", value: "Regular Tourist Visa", note: "Via VFS Global / consulate." },
-                { label: "Regular fee (U.S., up to 10y)", value: "~$160", note: "Government fee — verify latest." },
+                { label: "e-Tourist Visa (all-in)", value: "~$54", note: "3–5 business days, applied online.", highlight: true },
+                { label: "Regular Tourist Visa (all-in)", value: "~$216", note: "5–10 business days, via VFS." },
+                { label: "Includes", value: "Photo + courier", note: "$12 photo, $25 courier (regular)." },
                 { label: "Passport validity", value: "6+ months", note: "Plus blank pages." },
               ]}
-              badges={["Estimates only", "Verify official fees", "No approval guaranteed"]}
+              badges={["All-in estimates", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[
                 { label: "India eVisa portal", href: SRC.eVisaPortal },

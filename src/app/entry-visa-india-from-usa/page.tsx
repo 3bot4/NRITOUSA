@@ -80,12 +80,12 @@ export default function Page() {
               answer="Indian-origin families & non-Indian relatives"
               accent="amber"
               rows={[
-                { label: "Non-Indian spouse", value: "Entry Visa", note: "Or OCI if eligible.", highlight: true },
-                { label: "U.S.-born child (Indian origin)", value: "Entry Visa / OCI", note: "Bring birth certificate + parents' docs." },
+                { label: "Entry Visa (all-in)", value: "~$176", note: "$120 gov + $19 VFS + $12 photo + $25 courier.", highlight: true },
+                { label: "Processing time", value: "2–3 weeks", note: "Origin/family documents reviewed." },
+                { label: "Non-Indian spouse / child", value: "Entry Visa or OCI", note: "OCI ~$334 if eligible, 8–12 weeks." },
                 { label: "Frequent travel", value: "Consider OCI", note: "Lifelong facility — plan ahead." },
-                { label: "Processing", value: "Can take longer", note: "Origin/family documents reviewed." },
               ]}
-              badges={["Family-based", "Verify with consulate", "No approval guaranteed"]}
+              badges={["All-in estimate", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
               sources={[{ label: "VFS Global USA", href: SRC.vfsUsa }]}
               disclaimer={C.approvalNote}
