@@ -42,7 +42,7 @@ export interface ToolTable {
 export interface ToolHubContent {
   slug: string;
   /** SoftwareApplication category. */
-  appCategory: "BusinessApplication" | "ReferenceApplication";
+  appCategory: "BusinessApplication" | "ReferenceApplication" | "FinanceApplication";
   /** Unique schema description for this page. */
   description: string;
   /** Plain-English quick answer shown above the tool. */
@@ -1501,6 +1501,868 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         question: "Can a priority date move backward?",
         answer:
           "Yes. When demand exceeds the available visa numbers, the State Department can move a cutoff backward — called retrogression — or mark a category unavailable. Cases already filed stay in line, but approvals pause until the date advances past your priority date again.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 13. FBAR / FATCA checker
+   * ------------------------------------------------------------------ */
+  "fbar-fatca-checker": {
+    slug: "fbar-fatca-checker",
+    appCategory: "FinanceApplication",
+    description:
+      "FBAR & FATCA checker for NRIs — see whether your Indian accounts (NRE, NRO, FCNR, demat, mutual funds) and other foreign assets may need to be reported on FinCEN Form 114 (FBAR) or IRS Form 8938 (FATCA), and the reporting thresholds.",
+    quickAnswer:
+      "If you're a US person (citizen, green card holder, or US tax resident), you may need to report foreign financial accounts — including NRE, NRO, FCNR, Indian demat, and mutual fund accounts — once certain thresholds are met. FBAR (FinCEN Form 114) and FATCA (Form 8938) are reporting requirements; reporting an account doesn't by itself create a tax.",
+    shortDescription:
+      "Many NRIs are surprised that Indian bank and investment accounts can be reportable in the US. This checker helps you see whether your accounts likely cross the FBAR and FATCA thresholds, and explains the difference between the two so you can file correctly.",
+    audience:
+      "US persons with Indian financial accounts — NRIs, green card holders, and Indian-origin US citizens with NRE/NRO/FCNR accounts, Indian demat/mutual funds, or other foreign assets.",
+    keyInputs: [
+      "The types of foreign accounts you hold (NRE, NRO, FCNR, demat, mutual funds, PF, etc.)",
+      "The highest balance in each account during the year (for FBAR's aggregate test)",
+      "Whether any accounts are jointly held",
+      "Your US filing status and whether you live in the US or abroad (affects 8938 thresholds)",
+      "The year-end and maximum values of specified foreign financial assets (for Form 8938)",
+    ],
+    timelineFeeNote:
+      "FBAR is filed annually to FinCEN, generally due with your tax return in April with an automatic extension to October. Form 8938 is filed with your income tax return. Thresholds and rules can change — verify current requirements before filing.",
+    resultMeaning:
+      "A 'likely reportable' result means your accounts may meet the FBAR and/or FATCA thresholds and should be reported — it does not mean you owe extra tax just for holding them. FBAR and Form 8938 are informational reports. Whether any income (like NRO interest) is taxable is a separate question handled on your tax return, often with a foreign tax credit under the DTAA.",
+    table: {
+      caption: "FBAR vs FATCA (Form 8938) at a glance",
+      headers: ["Feature", "FBAR (FinCEN 114)", "FATCA (Form 8938)"],
+      rows: [
+        ["Filed with", "FinCEN, separately (BSA e-file)", "IRS, with your tax return"],
+        ["Covers", "Foreign financial accounts", "Specified foreign financial assets"],
+        ["Threshold", "Aggregate over $10,000 at any point in the year", "Higher, and varies by filing status and US vs abroad"],
+        ["NRE / NRO / FCNR", "Reportable when threshold met", "Reportable when threshold met"],
+        ["Indian mutual funds / demat", "Generally reportable", "Generally reportable"],
+        ["Purpose", "Informational report of accounts", "Informational report of assets"],
+      ],
+    },
+    steps: [
+      "List every foreign account you hold or have signature authority over (NRE, NRO, FCNR, demat, mutual funds, PF).",
+      "Find the highest balance in each during the year and total them for the FBAR aggregate test.",
+      "If the aggregate exceeds the FBAR threshold, file FinCEN Form 114 electronically.",
+      "Separately check the Form 8938 thresholds for your filing status and residence, and file it with your tax return if met.",
+      "Report any taxable income from those accounts (e.g., NRO interest) on your return, using the DTAA foreign tax credit where applicable.",
+    ],
+    mistakes: [
+      "Assuming NRE/NRO accounts don't count because they're in India — they generally do if you're a US person.",
+      "Forgetting joint accounts or accounts where you only have signature authority.",
+      "Reporting on FBAR but missing the separate Form 8938, or vice versa.",
+      "Thinking reporting an account means you owe tax on the balance — it doesn't; only income is taxed.",
+      "Overlooking Indian mutual funds/ETFs, which can also carry PFIC complications — consult a cross-border tax pro.",
+    ],
+    example: {
+      title: "NRI on H-1B with NRE + NRO accounts",
+      body: "Ravi is a US tax resident on H-1B with an NRE savings account and an NRO account in India. During the year the two accounts together peaked above $10,000, so he files an FBAR listing both. His total specified assets are below the Form 8938 threshold for his filing status, so he doesn't file 8938 this year. He also reports his NRO interest as income on his US return and claims a foreign tax credit for the Indian TDS under the DTAA — so he isn't taxed twice.",
+    },
+    relatedLinks: [
+      { label: "RNOR & India tax residency calculator", href: "/calculators/rnor-tax-residency" },
+      { label: "FCNR vs HYSA calculator", href: "/calculators/fcnr-vs-hysa" },
+      { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
+      { label: "Form 3520 India gift checker", href: "/tools/form-3520-india-gift-checker" },
+    ],
+    faqs: [
+      {
+        question: "Do I report an NRE account on FBAR?",
+        answer:
+          "Generally yes, if you're a US person and your foreign accounts together exceed the FBAR aggregate threshold at any point in the year. An NRE account is a foreign financial account, so it counts toward the total and is listed on FinCEN Form 114 when the threshold is met.",
+      },
+      {
+        question: "Is an NRO account reportable?",
+        answer:
+          "Yes, an NRO account is a foreign financial account and is generally reportable on FBAR (and possibly Form 8938) when the thresholds are met. NRO interest is also usually taxable income in the US, though you can often claim a foreign tax credit for the Indian TDS under the DTAA.",
+      },
+      {
+        question: "What is the FBAR threshold?",
+        answer:
+          "FBAR is generally required when the aggregate value of your foreign financial accounts exceeds $10,000 at any point during the calendar year. It's an aggregate test across all your accounts, not per-account, so several smaller accounts can add up to cross it.",
+      },
+      {
+        question: "What is FATCA Form 8938?",
+        answer:
+          "Form 8938 is the FATCA report of 'specified foreign financial assets' filed with your IRS tax return. Its thresholds are higher than FBAR's and vary by filing status and whether you live in the US or abroad. It overlaps with FBAR but is a separate, additional filing.",
+      },
+      {
+        question: "Are Indian mutual funds reportable?",
+        answer:
+          "Generally yes — Indian mutual funds and demat holdings are typically reportable on FBAR and often Form 8938 when thresholds are met. Indian mutual funds can also raise PFIC (passive foreign investment company) issues on your US return, so consider a cross-border tax professional.",
+      },
+      {
+        question: "What happens if I missed an FBAR?",
+        answer:
+          "There are established ways to catch up, such as the IRS streamlined or delinquent-filing procedures, especially where the failure was non-willful. Penalties exist but are often avoidable when you come forward and correct it. Because the details matter, consult a cross-border tax professional about the right path.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 14. Form 10F generator
+   * ------------------------------------------------------------------ */
+  "form-10f-generator": {
+    slug: "form-10f-generator",
+    appCategory: "FinanceApplication",
+    description:
+      "Form 10F generator for NRIs — prepare the details for India's Form 10F used to claim DTAA tax-treaty benefits, alongside a Tax Residency Certificate (TRC) and PAN, so payers apply the correct (often lower) TDS.",
+    quickAnswer:
+      "Form 10F is commonly used by non-residents to claim DTAA tax-treaty benefits in India — typically together with a Tax Residency Certificate (TRC) from your country of residence and, where applicable, a PAN. It supplies the treaty details a payer needs to apply the correct, often reduced, TDS rate.",
+    shortDescription:
+      "When Indian income (interest, dividends, fees) is paid to a non-resident, the payer withholds TDS. Form 10F, with a TRC, lets you claim the treaty rate instead of the higher default. This tool helps you prepare the Form 10F details to give your bank, broker, or payer.",
+    audience:
+      "NRIs and other non-residents claiming India–US (or other) tax-treaty benefits on Indian income — for example, to reduce TDS on interest, dividends, or professional fees.",
+    keyInputs: [
+      "Your name, address, and country of tax residence",
+      "Your Tax Residency Certificate (TRC) details",
+      "Your PAN, where applicable",
+      "Your tax identification number in your country of residence",
+      "The period for which treaty benefits are claimed",
+    ],
+    timelineFeeNote:
+      "Form 10F is usually prepared per financial year (or as your payer requires) and given to the payer/platform before TDS is deducted. Filing/portal requirements can change — verify current rules before submitting.",
+    resultMeaning:
+      "The prepared Form 10F gives your payer the treaty-relevant details they need to apply a reduced TDS rate under the DTAA. On its own it doesn't reduce tax automatically — the payer must accept it (usually with a valid TRC), and you may still need to file an Indian return to reconcile. Keep copies for your records and any refund claim.",
+    explain: {
+      heading: "What Form 10F is and when you need it",
+      items: [
+        {
+          label: "What Form 10F is",
+          body: "A short Indian form in which a non-resident provides treaty-relevant details (residency status, TIN, period) to support a claim for DTAA benefits on Indian income.",
+        },
+        {
+          label: "When it's required",
+          body: "Typically when you want a payer in India to apply a treaty (reduced) TDS rate rather than the higher default rate — for interest, dividends, fees, and similar income.",
+        },
+        {
+          label: "Tax Residency Certificate (TRC)",
+          body: "Usually required alongside Form 10F. The TRC is issued by your country of residence (for the US, via IRS Form 6166) to prove you're a treaty resident.",
+        },
+        {
+          label: "PAN",
+          body: "Where applicable, a PAN helps ensure correct TDS treatment and is often needed to avoid a higher withholding rate and to claim refunds.",
+        },
+        {
+          label: "Treaty benefit & use cases",
+          body: "Banks (on NRO interest), companies (on dividends), brokers, and clients paying professional fees may ask for Form 10F plus a TRC before applying the treaty rate.",
+        },
+      ],
+    },
+    steps: [
+      "Obtain your Tax Residency Certificate (TRC) from your country of residence (US: IRS Form 6166).",
+      "Prepare Form 10F with your residency, TIN, PAN (where applicable), and the period claimed.",
+      "Submit Form 10F and the TRC to the payer/platform (bank, company, broker, or client) before TDS is deducted.",
+      "Keep copies of the Form 10F, TRC, and any acknowledgement for your records.",
+      "If TDS was still over-deducted, claim the excess by filing an Indian tax return.",
+    ],
+    documents: {
+      heading: "Documents to have ready",
+      items: [
+        "Tax Residency Certificate (TRC) from your country of residence",
+        "PAN card (where applicable)",
+        "Passport / proof of identity and address",
+        "Your foreign Tax Identification Number (TIN)",
+        "Details of the Indian income and payer",
+      ],
+    },
+    mistakes: [
+      "Submitting Form 10F without a valid TRC, which payers usually require.",
+      "Not having a PAN where it's needed, leading to a higher default TDS rate.",
+      "Giving Form 10F to the payer after TDS is already deducted instead of before.",
+      "Letting the TRC lapse or cover the wrong period.",
+      "Assuming Form 10F alone eliminates the need to file an Indian return to reconcile.",
+    ],
+    relatedLinks: [
+      { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
+      { label: "NRI TDS refund checklist", href: "/tools/nri-tds-refund-checklist" },
+      { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
+      { label: "Form 15CA / 15CB checklist", href: "/tools/form-15ca-15cb-checklist" },
+    ],
+    faqs: [
+      {
+        question: "What is Form 10F?",
+        answer:
+          "Form 10F is an Indian form in which a non-resident supplies treaty-relevant details to claim DTAA benefits on Indian income. It's typically provided to a payer (bank, company, broker) alongside a Tax Residency Certificate so they apply the reduced treaty TDS rate.",
+      },
+      {
+        question: "Is Form 10F mandatory for NRIs?",
+        answer:
+          "It's generally required when you want to claim treaty (DTAA) benefits — such as a reduced TDS rate — on Indian income. If you're not claiming treaty benefits, you may not need it, but payers usually ask for it (with a TRC) before applying a lower rate.",
+      },
+      {
+        question: "Do I need a TRC for Form 10F?",
+        answer:
+          "Usually yes. A Tax Residency Certificate from your country of residence (for the US, IRS Form 6166) is normally required to support the treaty claim. Form 10F provides the additional details, but the TRC is what proves your treaty residency.",
+      },
+      {
+        question: "Is a PAN required for Form 10F?",
+        answer:
+          "Where applicable, a PAN helps ensure the correct TDS rate and is often needed to avoid a higher default withholding and to claim refunds. Requirements have evolved, so confirm the current rule with your payer or a tax professional.",
+      },
+      {
+        question: "Where do I submit Form 10F?",
+        answer:
+          "You typically provide Form 10F (with your TRC) to the Indian payer or platform deducting TDS — such as your bank, the dividend-paying company, your broker, or a client. Depending on current rules, electronic filing on the Indian income-tax portal may also apply, so verify before submitting.",
+      },
+      {
+        question: "Does Form 10F reduce TDS?",
+        answer:
+          "Indirectly, yes — it supports your claim for the treaty rate so the payer can apply a lower TDS than the default. It doesn't reduce tax automatically; the payer must accept it (usually with a valid TRC), and you may still file an Indian return to reconcile any excess.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 15. Form 15CA / 15CB checklist
+   * ------------------------------------------------------------------ */
+  "form-15ca-15cb-checklist": {
+    slug: "form-15ca-15cb-checklist",
+    appCategory: "FinanceApplication",
+    description:
+      "Form 15CA & 15CB checklist for NRIs — the documents and steps to repatriate money from India to the USA, including when a Chartered Accountant's Form 15CB certificate is required and how purpose codes and property-sale proceeds are handled.",
+    quickAnswer:
+      "Form 15CA (a remitter declaration) and Form 15CB (a Chartered Accountant's certificate) may be required for certain remittances from India to the USA — especially where the taxability of the money needs to be certified before the bank will process the transfer. Not every remittance needs both.",
+    shortDescription:
+      "Banks often ask for Form 15CA (and sometimes 15CB) before releasing an outward remittance from an NRO/NRE account. This checklist explains which forms apply, when a CA certificate is needed, and the documents to gather so your repatriation isn't held up.",
+    audience:
+      "NRIs repatriating funds from India to the USA — from NRO account balances, property sale proceeds, or other income — who need to know which forms and documents the bank will require.",
+    keyInputs: [
+      "The source of the funds (NRO balance, property sale, gift, income, etc.)",
+      "The remittance amount and purpose code",
+      "Whether the funds are taxable and whether tax has been paid",
+      "Your PAN and bank/account details",
+      "Supporting documents proving the source and tax status",
+    ],
+    timelineFeeNote:
+      "15CA is filed by the remitter on the income-tax portal; 15CB (when needed) is issued by a Chartered Accountant, usually for a fee. Thresholds and exemptions change — verify current requirements with your bank/CA before filing.",
+    resultMeaning:
+      "The checklist tells you which forms your remittance likely needs and what to prepare. A completed 15CA (and 15CB where required) certifies the tax status of the money so the bank can process the outward transfer. It doesn't create a new tax — it documents that applicable Indian tax has been handled on the funds being sent.",
+    explain: {
+      heading: "The forms and when each applies",
+      items: [
+        {
+          label: "Form 15CA",
+          body: "An online declaration by the remitter (you) about the remittance and its tax status, filed on the Indian income-tax portal. It has different parts depending on amount and taxability.",
+        },
+        {
+          label: "Form 15CB",
+          body: "A certificate from a Chartered Accountant confirming the nature of the payment, taxability, and that applicable TDS/tax has been dealt with. It's typically required for larger taxable remittances.",
+        },
+        {
+          label: "CA certificate & purpose codes",
+          body: "The CA verifies the source and applies the correct purpose code (the RBI category for the remittance). The right purpose code matters for both the bank and compliance.",
+        },
+        {
+          label: "Property sale repatriation",
+          body: "Sending property-sale proceeds abroad usually requires careful documentation of the sale, capital gains, and TDS, and commonly a 15CB certificate.",
+        },
+        {
+          label: "NRO to foreign account",
+          body: "Moving money out of an NRO account to a US account is a classic 15CA/15CB scenario, subject to the annual repatriation limit.",
+        },
+        {
+          label: "When it's not required",
+          body: "Certain small or specified remittances are exempt from 15CB (and sometimes 15CA parts). Confirm the current exemptions before assuming a form is needed.",
+        },
+      ],
+    },
+    steps: [
+      "Identify the source of the funds and gather documents proving it (sale deed, income proof, tax paid).",
+      "Have a Chartered Accountant review taxability and, if required, issue Form 15CB.",
+      "File Form 15CA on the income-tax portal (the relevant part based on amount/taxability).",
+      "Obtain Form 15CB from the CA where the remittance requires it.",
+      "Submit 15CA/15CB and supporting documents to your bank to process the outward remittance.",
+    ],
+    documents: {
+      heading: "Documents typically needed",
+      items: [
+        "PAN and passport",
+        "Bank account details (NRO/NRE) and remittance request",
+        "Proof of source of funds (sale deed, income proof, gift documents)",
+        "Evidence of tax paid / TDS on the funds",
+        "Form 15CB from a Chartered Accountant (where required)",
+        "Purpose code for the remittance",
+      ],
+    },
+    mistakes: [
+      "Assuming 15CB is always required — some remittances are exempt.",
+      "Using the wrong purpose code, which can stall the transfer at the bank.",
+      "Not documenting the source of funds (especially for property sales) before requesting the remittance.",
+      "Exceeding the annual repatriation limit without realizing it.",
+      "Filing 15CA in the wrong part for the amount/taxability.",
+    ],
+    relatedLinks: [
+      { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
+      { label: "India property capital gains calculator", href: "/calculators/india-property-capital-gains" },
+      { label: "NRI TDS refund checklist", href: "/tools/nri-tds-refund-checklist" },
+      { label: "Form 10F generator", href: "/tools/form-10f-generator" },
+    ],
+    faqs: [
+      {
+        question: "What is Form 15CA?",
+        answer:
+          "Form 15CA is an online declaration filed by the remitter on the Indian income-tax portal about a foreign remittance and its tax status. It has different parts depending on the amount and whether the payment is taxable, and banks usually require it before processing an outward transfer.",
+      },
+      {
+        question: "What is Form 15CB?",
+        answer:
+          "Form 15CB is a certificate from a Chartered Accountant certifying the nature of a remittance, its taxability, and that applicable tax/TDS has been handled. It's typically required for larger taxable remittances and supports the details declared in Form 15CA.",
+      },
+      {
+        question: "Is Form 15CB always required?",
+        answer:
+          "No. Certain small or specified remittances are exempt from 15CB, and some only need parts of 15CA. Whether you need a CA certificate depends on the amount and taxability, so confirm the current thresholds and exemptions with your bank or CA.",
+      },
+      {
+        question: "Do NRIs need Form 15CA for remittance?",
+        answer:
+          "Often yes — banks commonly require Form 15CA (and 15CB where applicable) before releasing an outward remittance from an NRO/NRE account. Some specified or small remittances are exempt, so check the current rules for your specific transfer.",
+      },
+      {
+        question: "What documents are needed for repatriation?",
+        answer:
+          "Typically your PAN and passport, bank details, proof of the source of funds (such as a sale deed or income proof), evidence that applicable tax/TDS was handled, the correct purpose code, and Form 15CB from a CA where required. Property-sale repatriations need the most documentation.",
+      },
+      {
+        question: "Can I transfer property sale money to the USA?",
+        answer:
+          "Yes, within the annual repatriation limit and after taxes. You'll generally document the sale and capital gains, ensure TDS/tax is handled, obtain a 15CB certificate where required, file 15CA, and submit everything to your bank. Keep records for your Indian return and any refund claim.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 16. Form 3520 India gift checker
+   * ------------------------------------------------------------------ */
+  "form-3520-india-gift-checker": {
+    slug: "form-3520-india-gift-checker",
+    appCategory: "FinanceApplication",
+    description:
+      "Form 3520 India gift checker — see whether a large gift or inheritance from parents or relatives in India may need to be reported to the IRS on Form 3520, and understand that reporting a foreign gift usually doesn't mean tax is due.",
+    quickAnswer:
+      "A US person who receives a large gift or inheritance from a foreign person (like parents in India) may need to report it to the IRS on Form 3520 once the reporting threshold is met. Importantly, reporting a foreign gift is usually informational — it does not by itself mean US tax is owed on the gift.",
+    shortDescription:
+      "Money or property received from family in India can trigger a US reporting requirement even when no tax is due. This checker helps you see whether a gift or inheritance likely crosses the Form 3520 threshold so you can report it and avoid steep penalties for a missed form.",
+    audience:
+      "US persons (citizens, green card holders, US tax residents) receiving large gifts or inheritances from parents, relatives, or estates in India.",
+    keyInputs: [
+      "Who gave the gift (a foreign individual vs a foreign estate/trust)",
+      "The total value received from that person during the year",
+      "Whether it was a gift or an inheritance",
+      "Whether multiple related foreign persons gave amounts that should be aggregated",
+      "The tax year the amounts were received",
+    ],
+    timelineFeeNote:
+      "Form 3520 is generally filed with (and due at the same time as) your income tax return, including extensions. Reporting thresholds differ for gifts from foreign individuals vs foreign estates/trusts — verify the current thresholds before filing.",
+    resultMeaning:
+      "A 'likely reportable' result means the amount may cross the Form 3520 threshold and should be reported — not that you owe tax on the gift. Gifts and inheritances from foreign persons are generally not US-taxable income to the recipient; Form 3520 is an informational report. The main risk is a penalty for failing to file, not tax on the gift itself.",
+    explain: {
+      heading: "Foreign gifts, inheritances, and reporting",
+      items: [
+        {
+          label: "Foreign gift",
+          body: "Money or property given to you by a foreign person (not a US person) with nothing expected in return. Large foreign gifts can trigger Form 3520 reporting.",
+        },
+        {
+          label: "Inheritance",
+          body: "Amounts received from a foreign person's estate. These are also reportable on Form 3520 when the threshold is met, and are generally not US-taxable income to you.",
+        },
+        {
+          label: "Parents in India / NRI family transfers",
+          body: "A common scenario: parents in India transfer a large sum to their child in the US. If it exceeds the threshold for gifts from a foreign individual, the US-person recipient reports it on Form 3520.",
+        },
+        {
+          label: "Reporting threshold",
+          body: "There are separate thresholds for gifts from foreign individuals versus foreign estates/trusts, and related givers may need to be aggregated. Confirm the current figures before deciding.",
+        },
+        {
+          label: "Gift tax vs reporting",
+          body: "US gift tax is generally the giver's concern, and a foreign giver usually isn't subject to it. For the US recipient, Form 3520 is a report, not a tax — the two are different things.",
+        },
+        {
+          label: "Penalties for missing the form",
+          body: "The penalty risk for not filing Form 3520 can be significant, which is why reporting matters even though the gift itself usually isn't taxed. Correcting a missed form is possible.",
+        },
+      ],
+    },
+    steps: [
+      "Confirm you're a US person and identify who gave the money (a foreign individual vs a foreign estate).",
+      "Total the amounts received from that person (aggregating related foreign givers where required) for the year.",
+      "Compare the total to the current Form 3520 threshold for that type of giver.",
+      "If it meets the threshold, file Form 3520 with your tax return (usually no tax on the gift itself).",
+      "Keep documentation of the transfer (bank records, gift letter) in case of questions.",
+    ],
+    mistakes: [
+      "Assuming a large wire from parents is taxable income — foreign gifts generally aren't taxed to the recipient.",
+      "Skipping Form 3520 because 'no tax is due' — the form is still required and carries penalty risk.",
+      "Not aggregating gifts from related foreign persons toward the threshold.",
+      "Confusing the recipient's reporting with the giver's gift tax (usually the giver's concern).",
+      "Losing the paper trail (bank records, a simple gift letter) that documents the transfer.",
+    ],
+    example: {
+      title: "Parents in India send a down-payment gift to their child in the US",
+      body: "Anjali, a US green card holder, receives a large sum from her parents in India to help buy a home. Because the amount exceeds the Form 3520 threshold for gifts from a foreign individual, she reports it on Form 3520 with her tax return. She owes no US tax on the gift itself — it's an informational report — but filing protects her from the steep penalty for a missed form. She keeps the bank transfer records and a short gift letter from her parents.",
+    },
+    relatedLinks: [
+      { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
+      { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
+      { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
+      { label: "Form 15CA / 15CB checklist", href: "/tools/form-15ca-15cb-checklist" },
+    ],
+    faqs: [
+      {
+        question: "Do I pay tax on a gift from parents in India?",
+        answer:
+          "Generally no. A gift from a foreign person like your parents is usually not US-taxable income to you as the recipient. However, if it's large enough you may need to report it on Form 3520 — that's an informational report, not a tax on the gift.",
+      },
+      {
+        question: "When is Form 3520 required?",
+        answer:
+          "For US persons, Form 3520 is generally required when gifts from a foreign individual (or amounts from a foreign estate/trust) exceed the applicable reporting threshold for the year. The thresholds differ by type of giver, and related givers may need to be aggregated.",
+      },
+      {
+        question: "Is an inheritance from India taxable in the USA?",
+        answer:
+          "An inheritance from a foreign person is generally not US-taxable income to the recipient. Like large foreign gifts, though, it may need to be reported on Form 3520 once the threshold is met. Any later income the inherited assets produce can be taxable.",
+      },
+      {
+        question: "Does gift reporting mean tax is due?",
+        answer:
+          "No. Reporting a foreign gift or inheritance on Form 3520 is informational — it generally does not create a tax on the amount received. The purpose is disclosure; the main risk of skipping it is a penalty for failing to file, not tax on the gift.",
+      },
+      {
+        question: "What if I forgot Form 3520?",
+        answer:
+          "Missed Form 3520 filings can often be corrected, sometimes with reasonable-cause relief, especially where no tax was due. Because the penalties can be significant, it's best to address it promptly with a cross-border tax professional rather than ignore it.",
+      },
+      {
+        question: "Are foreign wire transfers automatically taxable?",
+        answer:
+          "No. A wire transfer itself isn't a taxable event — what matters is the nature of the money. A genuine gift or inheritance from a foreign person is generally not taxable to the US recipient, though large amounts may be reportable on Form 3520.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 17. NRI TDS refund checklist
+   * ------------------------------------------------------------------ */
+  "nri-tds-refund-checklist": {
+    slug: "nri-tds-refund-checklist",
+    appCategory: "FinanceApplication",
+    description:
+      "NRI TDS refund checklist — how to reclaim excess TDS on NRO interest, property sales, and capital gains by filing an Indian income-tax return, plus the documents (Form 16A, Form 26AS/AIS) and refund timeline.",
+    quickAnswer:
+      "NRIs can often reclaim excess TDS by filing an Indian income-tax return when the tax deducted at source is more than the actual tax liability. This is common on NRO interest and, especially, property sales — where TDS is deducted on the sale value rather than just the gain.",
+    shortDescription:
+      "NRIs frequently have far more TDS withheld than they actually owe — particularly on property sales. This checklist walks through the documents and steps to file an Indian return and claim the refund, and gives a realistic sense of the refund timeline.",
+    audience:
+      "NRIs who had Indian TDS withheld — on NRO interest, property sales, or capital gains — and want to reclaim the excess by filing an Indian income-tax return.",
+    keyInputs: [
+      "The type of income TDS was deducted on (NRO interest, property sale, capital gains)",
+      "The TDS amount withheld (from Form 16A / TDS certificate)",
+      "Your actual income and tax liability for the year",
+      "Whether you obtained a lower/nil TDS certificate",
+      "Your PAN and Indian bank account for the refund",
+    ],
+    timelineFeeNote:
+      "Refunds are claimed by filing an Indian income-tax return for the relevant year. Processing commonly takes a few weeks to several months after filing and verification. Timelines vary — treat any estimate as approximate.",
+    resultMeaning:
+      "The checklist shows whether you likely have refundable excess TDS and what to file. Because TDS (especially on property sales) is often deducted on the gross amount rather than the actual gain, the withheld tax frequently exceeds the real liability — and the difference comes back as a refund once you file and the return is processed.",
+    explain: {
+      heading: "Where excess TDS comes from",
+      items: [
+        {
+          label: "NRO interest TDS",
+          body: "Banks deduct TDS on NRO account interest at the applicable non-resident rate. If your overall Indian tax is lower (or the DTAA rate applies), part of it may be refundable.",
+        },
+        {
+          label: "Property sale TDS",
+          body: "For NRI sellers, the buyer deducts TDS on the sale consideration (not just the gain), which usually far exceeds the actual capital gains tax — creating a large refundable amount.",
+        },
+        {
+          label: "Capital gains",
+          body: "Your real tax is on the gain (after cost and any exemptions), so the gap between TDS on the sale value and tax on the gain is typically refundable.",
+        },
+        {
+          label: "Lower deduction certificate",
+          body: "A lower/nil TDS certificate (Form 13) obtained before the sale reduces the amount withheld up front, shrinking the refund you have to chase later.",
+        },
+        {
+          label: "ITR filing",
+          body: "The refund is claimed by filing an Indian income-tax return that reports the income, the tax actually due, and the TDS already paid.",
+        },
+      ],
+    },
+    steps: [
+      "Collect your Form 16A / TDS certificates showing the tax deducted.",
+      "Check Form 26AS and the AIS to confirm the TDS is credited against your PAN.",
+      "Calculate your actual tax liability on the income (e.g., gain, not sale value; DTAA rate on interest).",
+      "File your Indian income-tax return reporting the income, tax due, and TDS paid.",
+      "Verify the return and track the refund to your Indian bank account.",
+    ],
+    documents: {
+      heading: "Documents needed",
+      items: [
+        "Form 16A / TDS certificates for the deducted tax",
+        "Form 26AS and AIS (tax credit statements)",
+        "Sale deed and cost documents (for property sales)",
+        "Bank interest statements (for NRO interest)",
+        "Any lower/nil TDS certificate (Form 13)",
+        "PAN and a valid Indian bank account for the refund",
+      ],
+    },
+    mistakes: [
+      "Not filing a return because 'TDS was already deducted' — filing is how you reclaim the excess.",
+      "Assuming property-sale TDS equals the tax due — it's usually on the sale value, so much is refundable.",
+      "Filing before the TDS shows in Form 26AS/AIS, causing mismatches.",
+      "Missing the DTAA benefit on NRO interest, leaving refundable tax on the table.",
+      "Not keeping cost/sale documentation needed to prove the actual gain.",
+    ],
+    example: {
+      title: "NRI reclaiming TDS after selling a flat in India",
+      body: "Deepa, an NRI, sells a flat and the buyer withholds TDS on the full sale value — far more than her actual long-term capital gains tax. She collects the TDS certificate, confirms it in Form 26AS, computes tax on the gain (after indexed cost and a 54EC reinvestment), and files an Indian return. The tax due is much lower than the TDS withheld, so she claims a sizable refund to her NRO account. Had she obtained a lower-TDS certificate before the sale, less would have been blocked in the first place.",
+    },
+    relatedLinks: [
+      { label: "India property capital gains calculator", href: "/calculators/india-property-capital-gains" },
+      { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
+      { label: "Form 10F generator", href: "/tools/form-10f-generator" },
+      { label: "Form 15CA / 15CB checklist", href: "/tools/form-15ca-15cb-checklist" },
+    ],
+    faqs: [
+      {
+        question: "Can an NRI claim a TDS refund?",
+        answer:
+          "Yes. When the TDS deducted is more than your actual Indian tax liability, you can reclaim the excess by filing an Indian income-tax return for that year. This is common on NRO interest and especially on property sales, where TDS is deducted on the sale value.",
+      },
+      {
+        question: "How long does an NRI TDS refund take?",
+        answer:
+          "It varies. After you file and verify your return, refunds commonly take from a few weeks to several months to be processed and credited. Accurate details and a validated Indian bank account help avoid delays. Treat any timeframe as an estimate.",
+      },
+      {
+        question: "Is an ITR required for a TDS refund?",
+        answer:
+          "Yes. Filing an Indian income-tax return is the mechanism to claim a refund — it reports your actual income and tax due against the TDS already paid, and the difference is refunded. There's generally no refund without filing a return.",
+      },
+      {
+        question: "Can an NRI claim a refund on property sale TDS?",
+        answer:
+          "Yes, and it's often substantial. Because TDS on an NRI's property sale is usually deducted on the full sale consideration rather than the actual gain, the withheld amount typically exceeds the real capital gains tax — and the excess is refundable when you file.",
+      },
+      {
+        question: "What documents are needed?",
+        answer:
+          "Commonly your Form 16A/TDS certificates, Form 26AS and AIS, sale deed and cost documents (for property), bank interest statements (for NRO interest), any lower-TDS certificate, your PAN, and a valid Indian bank account for the refund.",
+      },
+      {
+        question: "What is a lower TDS certificate?",
+        answer:
+          "A lower/nil TDS certificate (Form 13) is obtained before a transaction so tax is withheld closer to your actual liability rather than the default higher rate. For property sales it prevents a large amount being blocked and refunded later — reducing the refund you have to chase.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 18. OCI cost calculator
+   * ------------------------------------------------------------------ */
+  "oci-cost-calculator": {
+    slug: "oci-cost-calculator",
+    appCategory: "ReferenceApplication",
+    description:
+      "OCI cost calculator for applicants in the USA — estimate the all-in cost of an OCI card, including the Indian government fee, VFS/service fee, courier/shipping, and optional photo and notary costs, with a last-reviewed date.",
+    quickAnswer:
+      "OCI cost in the USA usually combines several parts: the Indian government fee, the VFS/service fee, courier/return shipping, and optional costs like photos and notarization. Fees change periodically, so treat any total as an estimate and confirm the current amounts on the official VFS/portal before paying.",
+    shortDescription:
+      "The OCI 'price' isn't a single number — it's a stack of government, service, and shipping fees, plus a few optional add-ons. This tool estimates the all-in cost so you can budget, with the live fee breakdown and a last-reviewed date shown on the page.",
+    audience:
+      "People of Indian origin (and eligible spouses) in the USA applying for a new OCI card or reissue who want to budget the total cost before starting.",
+    keyInputs: [
+      "Application type (fresh OCI vs reissue/renewal)",
+      "Number of applicants (e.g., family members)",
+      "Whether you'll mail the application or apply in person",
+      "Return courier/shipping preference",
+      "Optional costs you may need (photos, notary)",
+    ],
+    timelineFeeNote:
+      "Costs are estimates that change over time — the page shows a last-reviewed date and links to official sources. Always confirm the current Indian government fee and VFS service fee before paying.",
+    resultMeaning:
+      "The estimate adds up the typical OCI cost components so you can budget the all-in amount, not just the government fee. Because fees are revised periodically, use the number as a planning estimate and verify each component against the official VFS and Indian government portals before you pay.",
+    fees: {
+      heading: "What makes up the OCI cost (estimated)",
+      items: [
+        {
+          label: "Indian government fee",
+          body: "The core fee set by the Government of India for the OCI service (fresh or reissue). This is the largest fixed component and is revised from time to time.",
+        },
+        {
+          label: "VFS / service fee",
+          body: "A separate service fee charged by VFS Global (the outsourced processor in the USA) on top of the government fee.",
+        },
+        {
+          label: "Courier / return shipping",
+          body: "Cost to mail your documents in and to have your passport/OCI returned securely — varies by carrier and speed.",
+        },
+        {
+          label: "Photo & notary (optional)",
+          body: "Passport-spec photos and any notarization you may need are usually small, optional add-ons.",
+        },
+      ],
+      note: "Fees change and vary by application type — the live breakdown and last-reviewed date are shown on this page. Verify current amounts before paying.",
+      sourceUrl: "https://visa.vfsglobal.com/usa/en/ind/apply-oci-services",
+      sourceName: "VFS Global — OCI services (USA)",
+    },
+    steps: [
+      "Prepare your documents and confirm your application type (fresh vs reissue).",
+      "Complete the online OCI application on the Indian government portal.",
+      "Book a VFS appointment or prepare a mail-in submission per current instructions.",
+      "Pay the government fee, VFS service fee, and shipping; keep receipts.",
+      "Track the application and receive the OCI by the return courier you selected.",
+    ],
+    mistakes: [
+      "Budgeting only the government fee and forgetting the VFS service fee and shipping.",
+      "Assuming last year's fees still apply — they're revised periodically.",
+      "Overlooking per-applicant costs when applying as a family.",
+      "Missing optional but sometimes-required costs (photos to spec, notarization).",
+      "Paying before confirming the current amounts on the official sources.",
+    ],
+    relatedLinks: [
+      { label: "OCI eligibility checker", href: "/tools/oci-eligibility-checker" },
+      { label: "OCI timeline calculator", href: "/tools/oci-timeline-calculator" },
+      { label: "OCI resource center", href: "/oci" },
+    ],
+    faqs: [
+      {
+        question: "How much does OCI cost in the USA?",
+        answer:
+          "There's no single fixed number — the all-in cost combines the Indian government fee, the VFS service fee, courier/shipping, and optional photo/notary costs. The live breakdown and a last-reviewed date are shown on this page; always confirm current amounts before paying.",
+      },
+      {
+        question: "What fees are included in an OCI application?",
+        answer:
+          "Typically the Indian government service fee, the VFS Global service fee, and return courier/shipping, plus optional costs like passport-spec photos and notarization. Together these make up the all-in OCI cost, which is more than the government fee alone.",
+      },
+      {
+        question: "Is the VFS fee separate?",
+        answer:
+          "Yes. VFS Global charges its own service fee on top of the Indian government fee, since VFS processes OCI applications in the USA. Both appear as separate line items, so budget for them together.",
+      },
+      {
+        question: "Does OCI renewal cost the same?",
+        answer:
+          "OCI reissue/renewal fees can differ from a fresh application, and both are revised periodically. Check the current amounts for your specific application type on the official VFS/government portal rather than assuming they match.",
+      },
+      {
+        question: "Can the OCI fee change?",
+        answer:
+          "Yes. Both the Indian government fee and the VFS service fee are revised from time to time. That's why this page shows a last-reviewed date and links to official sources — treat any figure as an estimate and verify before paying.",
+      },
+      {
+        question: "Is courier included in the OCI cost?",
+        answer:
+          "Courier/return shipping is usually a separate cost you pay for secure mailing of your documents and the return of your passport/OCI. It's part of the all-in cost but isn't part of the government or VFS service fee itself.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 19. OCI eligibility checker
+   * ------------------------------------------------------------------ */
+  "oci-eligibility-checker": {
+    slug: "oci-eligibility-checker",
+    appCategory: "ReferenceApplication",
+    description:
+      "OCI eligibility checker — see whether you qualify for an Overseas Citizen of India card based on former Indian citizenship, parent/grandparent/great-grandparent Indian origin, spouse rules, and the categories that are not eligible.",
+    quickAnswer:
+      "OCI eligibility generally depends on your Indian origin or connection: former Indian citizens, and people with a parent, grandparent, or great-grandparent who was an Indian citizen, often qualify, as can certain spouses of Indian citizens/OCIs. Some categories are not eligible — including those with certain citizenship histories — so check the specific rules.",
+    shortDescription:
+      "OCI eligibility has several qualifying routes and a few hard exclusions. This checker helps you see whether your Indian-origin connection or spouse relationship likely qualifies, and what documents you'd use to prove it — so you don't apply (and pay) before confirming.",
+    audience:
+      "People of Indian origin abroad (and spouses of Indian citizens/OCIs) who want to confirm whether they're eligible for an OCI card before applying.",
+    keyInputs: [
+      "Whether you were ever an Indian citizen",
+      "Whether a parent, grandparent, or great-grandparent was an Indian citizen",
+      "Whether you're the spouse of an Indian citizen or OCI (and marriage duration)",
+      "Whether the applicant is a minor child of eligible parents",
+      "Your current citizenship and any prior citizenship history",
+    ],
+    resultMeaning:
+      "A 'likely eligible' result points to the qualifying route (former citizen, ancestry, or spouse) and the documents you'd use to prove it. Eligibility ultimately depends on the official rules and document verification, and some categories are excluded, so treat the result as guidance and confirm against the official OCI criteria before applying.",
+    explain: {
+      heading: "Who qualifies (and who doesn't)",
+      items: [
+        {
+          label: "Former Indian citizen",
+          body: "Someone who was a citizen of India at or after independence, and later took another citizenship, is a core eligible category.",
+        },
+        {
+          label: "Child / grandchild / great-grandchild",
+          body: "A person whose parent, grandparent, or great-grandparent was an Indian citizen may qualify by ancestry, with documents tracing that link.",
+        },
+        {
+          label: "Spouse eligibility",
+          body: "A foreign-origin spouse of an Indian citizen or an OCI cardholder can be eligible, generally subject to a minimum marriage duration and other conditions.",
+        },
+        {
+          label: "Minor child",
+          body: "A minor child where both parents are Indian citizens, or one parent is an Indian citizen, may qualify depending on the situation.",
+        },
+        {
+          label: "Ineligible categories",
+          body: "Certain people are not eligible — for example, those who (or whose parents/grandparents) have been citizens of specific countries (such as Pakistan or Bangladesh) may be excluded. These exclusions are specific, so verify carefully against the official criteria.",
+        },
+      ],
+    },
+    documents: {
+      heading: "Documents that prove Indian origin",
+      items: [
+        "Current foreign passport",
+        "Naturalization/citizenship certificate (showing when you acquired foreign citizenship)",
+        "Old/expired Indian passport (or a parent's/grandparent's proof of Indian citizenship)",
+        "Birth certificate linking you to the Indian-citizen ancestor",
+        "Marriage certificate (for spouse-based applications)",
+      ],
+    },
+    steps: [
+      "Identify your qualifying route (former citizen, ancestry, or spouse).",
+      "Gather documents that prove the Indian-origin link or marriage.",
+      "Check the exclusions to confirm you're not in an ineligible category.",
+      "Confirm the current eligibility rules on the official OCI portal/VFS.",
+      "Proceed to the application only once eligibility and documents are confirmed.",
+    ],
+    mistakes: [
+      "Applying before confirming the Indian-origin link can be documented.",
+      "Assuming a distant ancestor qualifies without the paperwork to trace the link.",
+      "Overlooking the marriage-duration condition for spouse applications.",
+      "Missing an exclusion category based on prior citizenship history.",
+      "Not having the naturalization certificate that shows when Indian citizenship ended.",
+    ],
+    relatedLinks: [
+      { label: "OCI cost calculator", href: "/tools/oci-cost-calculator" },
+      { label: "OCI timeline calculator", href: "/tools/oci-timeline-calculator" },
+      { label: "OCI resource center", href: "/oci" },
+    ],
+    faqs: [
+      {
+        question: "Who is eligible for OCI?",
+        answer:
+          "Broadly, former Indian citizens and people with a parent, grandparent, or great-grandparent who was an Indian citizen, plus certain spouses of Indian citizens/OCIs, can be eligible. Some categories are excluded, so confirm your specific route against the official OCI criteria.",
+      },
+      {
+        question: "Can a US citizen of Indian origin apply for OCI?",
+        answer:
+          "Yes, typically. A US citizen who is a former Indian citizen, or who has the qualifying Indian-origin ancestry (parent/grandparent/great-grandparent who was an Indian citizen), can generally apply — provided they can document the link and aren't in an excluded category.",
+      },
+      {
+        question: "Can the spouse of an Indian-origin person apply?",
+        answer:
+          "A foreign-origin spouse of an Indian citizen or an OCI cardholder can be eligible, generally subject to a minimum marriage duration and other conditions. You'd provide a marriage certificate and the spouse's Indian citizenship/OCI proof.",
+      },
+      {
+        question: "Can a minor child apply for OCI?",
+        answer:
+          "Yes, minor children can be eligible — for example, where both parents are Indian citizens, or one parent is an Indian citizen (or OCI). The exact route depends on the parents' status, and you'd provide the child's birth certificate and the parents' documents.",
+      },
+      {
+        question: "Who is not eligible for OCI?",
+        answer:
+          "Certain categories are excluded — notably people who, or whose parents or grandparents, have been citizens of specific countries (such as Pakistan or Bangladesh). These exclusions are specific and can affect otherwise-eligible applicants, so verify carefully against the official rules.",
+      },
+      {
+        question: "What documents prove Indian origin?",
+        answer:
+          "Commonly an old/expired Indian passport, a naturalization certificate showing when you took foreign citizenship, a birth certificate linking you to an Indian-citizen ancestor, and (for ancestry claims) the ancestor's proof of Indian citizenship. Spouses add a marriage certificate.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 20. OCI timeline calculator
+   * ------------------------------------------------------------------ */
+  "oci-timeline-calculator": {
+    slug: "oci-timeline-calculator",
+    appCategory: "ReferenceApplication",
+    description:
+      "OCI timeline calculator for the USA — estimate how long an OCI card takes across each stage: document prep, submission, VFS acknowledgement, consulate processing, printing/dispatch, and courier delivery, plus the common delays to avoid.",
+    quickAnswer:
+      "The OCI timeline depends on your application type, your consulate jurisdiction, VFS processing, document quality, any police/mission review, and courier delivery. Because several independent stages are involved, treat any total as an estimate and verify current processing times before planning travel.",
+    shortDescription:
+      "OCI processing isn't one wait — it's a chain of stages, each with its own variability. This tool estimates the end-to-end timeline stage by stage and flags the common issues (photo, signature, name mismatch) that add weeks, so you can plan realistically.",
+    audience:
+      "OCI applicants in the USA who want a realistic, stage-by-stage estimate of how long their card will take and what commonly causes delays.",
+    keyInputs: [
+      "Your application type (fresh OCI vs reissue)",
+      "Your consulate jurisdiction",
+      "Whether your documents (photo, signature) meet the exact specs",
+      "Whether any additional mission/police review may apply",
+      "Your return courier/shipping choice",
+    ],
+    timelineFeeNote:
+      "Processing times vary by jurisdiction and application type and change over time — the page shows the current estimate and a last-reviewed date. Verify official processing times before booking any travel.",
+    resultMeaning:
+      "The estimate adds up the typical time for each stage so you get an end-to-end range rather than a single guess. Because any one stage (especially consulate review or a document issue) can extend the total, use the estimate for planning and avoid booking non-refundable travel that assumes the fastest path.",
+    timeline: {
+      title: "OCI timeline, stage by stage",
+      intro: "Estimated stages — actual times vary by jurisdiction and are shown live on the page.",
+      rows: [
+        { stage: "Prepare documents", estimate: "Varies (your prep)", notes: "Photo, signature, and scans to exact spec save time later." },
+        { stage: "Submit application", estimate: "Day 0", notes: "Online application + VFS mail-in or appointment." },
+        { stage: "VFS acknowledgement", estimate: "Days", notes: "VFS receives and forwards your file." },
+        { stage: "Consulate/mission processing", estimate: "The main wait", notes: "Includes any police/mission review; varies by jurisdiction." },
+        { stage: "Printed / dispatched", estimate: "After approval", notes: "OCI booklet/document is printed and sent." },
+        { stage: "Courier delivery", estimate: "Days", notes: "Return shipping to you." },
+      ],
+    },
+    steps: [
+      "Prepare documents to the exact spec (photo, signature, scans) before submitting.",
+      "Submit the online application and complete the VFS mail-in or appointment.",
+      "Watch for the VFS acknowledgement that your file was received.",
+      "Allow for consulate/mission processing — the main and most variable wait.",
+      "Track printing/dispatch and receive the OCI by your chosen courier.",
+    ],
+    mistakes: [
+      "Photo that doesn't meet the exact spec (size, background), which triggers a re-do.",
+      "Signature issues (out of the box, wrong style) that bounce the application.",
+      "Name mismatch across passport, naturalization certificate, and old Indian passport.",
+      "Missing the naturalization certificate that proves when Indian citizenship ended.",
+      "Applying under the wrong consulate jurisdiction for your address.",
+    ],
+    relatedLinks: [
+      { label: "OCI cost calculator", href: "/tools/oci-cost-calculator" },
+      { label: "OCI eligibility checker", href: "/tools/oci-eligibility-checker" },
+      { label: "OCI resource center", href: "/oci" },
+    ],
+    faqs: [
+      {
+        question: "How long does OCI take in the USA?",
+        answer:
+          "It depends on your application type and consulate jurisdiction and involves several stages — submission, VFS handling, consulate processing, printing, and courier delivery. The live estimate and a last-reviewed date are shown on this page; verify current processing times before planning travel.",
+      },
+      {
+        question: "Why is my OCI delayed?",
+        answer:
+          "Common causes include a photo or signature that doesn't meet spec, a name mismatch across documents, a missing naturalization certificate, applying under the wrong jurisdiction, or additional mission/police review. Any single stage can extend the total, which is why estimates are ranges.",
+      },
+      {
+        question: "Can I travel to India while my OCI is pending?",
+        answer:
+          "OCI is separate from a visa. If you need to travel while your OCI is being processed, you'd generally look at the appropriate Indian visa for your trip. Because rules and your document status matter, confirm your specific situation with the consulate/VFS before booking.",
+      },
+      {
+        question: "How do I track OCI status?",
+        answer:
+          "You can typically track status through the VFS/Indian government OCI portals using your application reference. This page links to the official sources; keep your reference number handy and check periodically rather than assuming a fixed date.",
+      },
+      {
+        question: "Does OCI renewal take less time?",
+        answer:
+          "A reissue/renewal can differ from a fresh application in both steps and timing, but processing still varies by jurisdiction and workload. Don't assume it's always faster — check the current estimate for your application type and consulate.",
+      },
+      {
+        question: "What causes OCI rejection or delay?",
+        answer:
+          "Frequent triggers are document-quality issues (photo/signature to spec), name mismatches across passport and citizenship documents, missing proof of when Indian citizenship ended, wrong jurisdiction, and eligibility/exclusion questions. Getting documents exactly right up front prevents most delays.",
       },
     ],
   },

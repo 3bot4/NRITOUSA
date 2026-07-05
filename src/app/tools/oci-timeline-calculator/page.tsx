@@ -3,8 +3,10 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import OciTimelineCalculator from "@/components/tools/OciTimelineCalculator";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -27,6 +29,7 @@ import {
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const tool = getTool("oci-timeline-calculator")!;
+const content = getToolHubContent("oci-timeline-calculator")!;
 const PATH = OCI_TOOLS.timeline.path;
 
 export const metadata: Metadata = pageMetadata({
@@ -61,15 +64,16 @@ export default function OciTimelineCalculatorPage() {
   const url = absoluteUrl(PATH);
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -145,6 +149,9 @@ export default function OciTimelineCalculatorPage() {
 
         <section id="oci-timeline-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
           <Container>
+            <div className="mb-8">
+              <ToolIntro content={content} />
+            </div>
             <OciTimelineCalculator />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
               <strong className="font-semibold text-ink-900">Next:</strong>{" "}
@@ -163,6 +170,14 @@ export default function OciTimelineCalculatorPage() {
                 .
               </span>
             </div>
+          </Container>
+        </section>
+
+        {/* Full SEO hub content: what result means, timeline stages, process,
+            common delays, related links (FAQ kept below) */}
+        <section className="py-12 sm:py-16">
+          <Container>
+            <ToolDeepDive content={content} hideFaq />
           </Container>
         </section>
 
