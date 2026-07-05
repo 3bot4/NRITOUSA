@@ -5,6 +5,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import EadProcessingCalculator from "@/components/tools/EadProcessingCalculator";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import SoftCta from "@/components/SoftCta";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -132,6 +133,20 @@ export default function Page() {
         <section className="py-10 sm:py-12">
           <Container>
             <PermClusterLinks title="Related EAD & green card tools" links={[...eadClusterLinks.filter((l) => l.href !== PATH), ...eadRelatedLinks]} />
+          </Container>
+        </section>
+
+        {/* Soft CTA */}
+        <section className="py-4">
+          <Container>
+            <SoftCta
+              related={{
+                href: "/tools/h4-ead-navigator",
+                label: "H-4 EAD Navigator",
+                description:
+                  "Check H-4 EAD eligibility, filing steps, and how it lines up with your I-485.",
+              }}
+            />
           </Container>
         </section>
 
