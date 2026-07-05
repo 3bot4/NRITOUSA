@@ -4,10 +4,12 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import PriorityDateChecker from "@/components/tools/PriorityDateChecker";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 import { currentBulletinNote } from "@/lib/visa-bulletin";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -19,6 +21,7 @@ import {
 import { site } from "@/lib/site";
 
 const tool = getTool("priority-date-checker")!;
+const content = getToolHubContent("priority-date-checker")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -73,15 +76,16 @@ export default function PriorityDateCheckerPage() {
   const url = absoluteUrl("/tools/priority-date-checker");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -148,12 +152,23 @@ export default function PriorityDateCheckerPage() {
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
+            <div className="mb-8">
+              <ToolIntro content={content} />
+            </div>
             <VisaBulletinAlert className="mb-6" />
             <PriorityDateChecker />
             <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
               {currentBulletinNote}
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* Full SEO hub content: concepts, process, mistakes, related links
+          (FAQ kept below) */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <ToolDeepDive content={content} hideFaq />
         </Container>
       </section>
 
