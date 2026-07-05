@@ -11,7 +11,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   commonMistakes,
   ociFaqs,
   INDIA_VISA_PUBLISHED,
@@ -82,7 +81,7 @@ export default function Page() {
         hook="OCI or a visa? See how OCI compares to the eVisa, Entry Visa, and regular tourist visa for Indian-origin U.S. citizens, non-Indian spouses, and U.S.-born children."
         accent="from-amber-500 to-orange-600"
         headerExtra={
-          <a href={SRC.ociVfs} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-amber-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-amber-700">Apply for OCI (VFS) ↗</a>
+          <a href="#oci-table" className="inline-flex items-center gap-1.5 rounded-lg bg-amber-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-amber-700">Compare OCI vs visa →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -102,10 +101,6 @@ export default function Page() {
               ]}
               badges={["OCI ~$334, 8–12 weeks", "eVisa ~$54, 3–5 days", "All-in estimates"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "OCI services (Govt of India)", href: SRC.ociServices },
-                { label: "OCI via VFS", href: SRC.ociVfs },
-              ]}
               disclaimer={C.approvalNote}
               ctaText="See the OCI vs visa table"
               ctaHref="#oci-table"

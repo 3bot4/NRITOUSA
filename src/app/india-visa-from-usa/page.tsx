@@ -17,7 +17,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   indiaVisaSourceLinks,
   indiaVisaRelatedLinks,
   visaComparisonRows,
@@ -90,10 +89,7 @@ export default function Page() {
         hook="U.S. citizen, Indian-origin family, non-Indian spouse, or U.S.-born child? See which India visa or OCI fits your trip — with estimated fees, timelines, documents, and how to apply."
         accent="from-orange-500 to-rose-600"
         headerExtra={
-          <div className="flex flex-wrap gap-2">
-            <a href="#which-india-visa" className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-orange-700">Find My Visa Type →</a>
-            <a href={SRC.visaOnline} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-orange-200 bg-white px-4 py-2 text-sm font-bold text-orange-700 transition hover:bg-orange-50">Indian Visa Online ↗</a>
-          </div>
+          <a href="#which-india-visa" className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-orange-700">Find My Visa Type →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -114,10 +110,6 @@ export default function Page() {
               ]}
               badges={["All-in estimates", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "Indian Visa Online", href: SRC.visaOnline },
-                { label: "VFS Global USA", href: SRC.vfsUsa },
-              ]}
               disclaimer={C.approvalNote}
               ctaText="Find my India visa type"
               ctaHref="#which-india-visa"
@@ -228,7 +220,7 @@ export default function Page() {
               <ol className="mt-4 space-y-3 text-sm leading-relaxed text-ink-600">
                 <li><strong className="text-ink-900">1. Confirm your category.</strong> Tourism, business, medical, family visit, study, work — or OCI if you're Indian-origin. Use the guide above.</li>
                 <li><strong className="text-ink-900">2. Check eligibility & passport validity.</strong> India generally expects 6+ months of validity and blank pages. Renew first if you're close.</li>
-                <li><strong className="text-ink-900">3. Apply on the right channel.</strong> eVisa on <a href={SRC.visaOnline} target="_blank" rel="nofollow noopener noreferrer" className="text-orange-700 underline">Indianvisaonline.gov.in</a>; regular/Entry/student/employment visas and OCI through <a href={SRC.vfsUsa} target="_blank" rel="nofollow noopener noreferrer" className="text-orange-700 underline">VFS Global USA</a>/the consulate.</li>
+                <li><strong className="text-ink-900">3. Apply on the right channel.</strong> The eVisa is applied for online; regular, Entry, student, employment visas and OCI go through VFS Global USA or the consulate. Official links are at the bottom of this page.</li>
                 <li><strong className="text-ink-900">4. Upload documents & pay.</strong> Follow the exact photo/scan specs. Keep purpose-of-travel documents ready.</li>
                 <li><strong className="text-ink-900">5. Track and travel.</strong> Check status, avoid non-refundable bookings until approved, and carry the printed authorization where required.</li>
               </ol>
@@ -306,8 +298,8 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <OfficialSourceBox
-              title="Official India visa portals"
-              intro="Apply and download forms on the official portals:"
+              title="Where to apply for your India visa"
+              intro="When you're ready, apply and check status on the official portals — the eVisa portal for eVisas, VFS Global for regular visas & OCI:"
               links={indiaVisaSourceLinks}
             />
           </Container>

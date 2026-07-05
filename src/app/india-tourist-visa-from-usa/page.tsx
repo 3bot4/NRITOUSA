@@ -11,7 +11,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   regularVisaDocuments,
   commonMistakes,
   touristFaqs,
@@ -81,7 +80,7 @@ export default function Page() {
         hook="Sightseeing, a wedding, or visiting family? The India tourist visa (also searched as the India visitor visa) covers short leisure and family trips. See whether the e-Tourist Visa or a regular tourist visa fits — with estimated fees, timelines, multiple-entry rules, and documents."
         accent="from-emerald-500 to-teal-600"
         headerExtra={
-          <a href={SRC.eVisaPortal} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">Apply for e-Tourist Visa ↗</a>
+          <a href="#tourist-docs" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-700">See tourist visa documents →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -101,10 +100,6 @@ export default function Page() {
               ]}
               badges={["All-in estimates", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "India eVisa portal", href: SRC.eVisaPortal },
-                { label: "VFS Global USA", href: SRC.vfsUsa },
-              ]}
               disclaimer={C.approvalNote}
               ctaText="See tourist visa documents"
               ctaHref="#tourist-docs"
@@ -178,7 +173,7 @@ export default function Page() {
               <ol className="mt-4 space-y-3 text-sm leading-relaxed text-ink-600">
                 <li><strong className="text-ink-900">1. Decide eVisa or regular.</strong> Eligible short trip → e-Tourist Visa. Longer/complex → regular via VFS.</li>
                 <li><strong className="text-ink-900">2. Check passport validity.</strong> 6+ months and blank pages; renew first if needed.</li>
-                <li><strong className="text-ink-900">3. Apply on the right channel.</strong> <a href={SRC.eVisaPortal} target="_blank" rel="nofollow noopener noreferrer" className="text-emerald-700 underline">eVisa portal</a> or <a href={SRC.vfsUsa} target="_blank" rel="nofollow noopener noreferrer" className="text-emerald-700 underline">VFS Global USA</a>.</li>
+                <li><strong className="text-ink-900">3. Apply on the right channel.</strong> The e-Tourist Visa is applied for online; a regular tourist visa goes through VFS Global. Official links are at the bottom of this page.</li>
                 <li><strong className="text-ink-900">4. Upload documents, pay, and track.</strong> Follow photo/scan specs; keep your application ID.</li>
               </ol>
             </div>

@@ -12,7 +12,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   eVisaDocuments,
   commonMistakes,
   eVisaFaqs,
@@ -82,7 +81,7 @@ export default function Page() {
         hook="Who can use the India online visa, how long it takes, what it costs, and the documents you need — plus the mistakes that get eVisas rejected."
         accent="from-sky-500 to-indigo-600"
         headerExtra={
-          <a href={SRC.eVisaPortal} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sky-700">Apply on official portal ↗</a>
+          <a href="#evisa-docs" className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sky-700">See eVisa documents →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -102,7 +101,6 @@ export default function Page() {
               ]}
               badges={["All-in estimates", "Photo included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[{ label: "India eVisa portal", href: SRC.eVisaPortal }]}
               disclaimer={C.feeDisclaimer}
               ctaText="See eVisa documents"
               ctaHref="#evisa-docs"

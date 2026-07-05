@@ -12,7 +12,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   feeByCategory,
   usd,
   feesFaqs,
@@ -96,10 +95,6 @@ export default function Page() {
               ]}
               badges={["All-in estimates", "Photo + shipping included", "Non-refundable"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "VFS Global USA", href: SRC.vfsUsa },
-                { label: "India eVisa portal", href: SRC.eVisaPortal },
-              ]}
               disclaimer={INDIA_VISA_ESTIMATE_DISCLAIMER}
               ctaText="See the full fee breakdown"
               ctaHref="#fee-table"

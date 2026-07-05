@@ -11,7 +11,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   entryVisaDocuments,
   commonMistakes,
   entryFaqs,
@@ -67,7 +66,7 @@ export default function Page() {
         hook="Indian-origin U.S. citizen, non-Indian spouse, or U.S.-born child visiting family in India? See when an Entry Visa fits, its documents, timelines, and how it compares to OCI."
         accent="from-rose-500 to-pink-600"
         headerExtra={
-          <a href={SRC.vfsUsa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-rose-700">VFS Global USA ↗</a>
+          <a href="#entry-docs" className="inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-rose-700">See Entry Visa documents →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -87,7 +86,6 @@ export default function Page() {
               ]}
               badges={["All-in estimate", "Photo + shipping included", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[{ label: "VFS Global USA", href: SRC.vfsUsa }]}
               disclaimer={C.approvalNote}
               ctaText="See Entry Visa documents"
               ctaHref="#entry-docs"

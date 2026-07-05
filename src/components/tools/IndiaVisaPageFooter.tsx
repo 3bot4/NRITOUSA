@@ -28,8 +28,8 @@ export default function IndiaVisaPageFooter({
       <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
         <Container>
           <OfficialSourceBox
-            title="Official India visa portals"
-            intro="Apply and download forms on the official portals:"
+            title="Where to apply for your India visa"
+            intro="When you're ready, apply and check status on the official portals — the eVisa portal for eVisas, VFS Global for regular visas & OCI:"
             links={indiaVisaSourceLinks}
           />
         </Container>

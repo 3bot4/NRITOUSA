@@ -11,7 +11,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   businessDocuments,
   commonMistakes,
   businessFaqs,
@@ -68,7 +67,7 @@ export default function Page() {
         hook="Meetings, a conference, or a company visit in India? See whether the e-Business Visa or a regular business visa fits — plus invitation-letter and company-proof requirements."
         accent="from-indigo-500 to-violet-600"
         headerExtra={
-          <a href={SRC.eVisaPortal} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-indigo-700">Apply for e-Business Visa ↗</a>
+          <a href="#business-docs" className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-indigo-700">See business visa documents →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -88,10 +87,6 @@ export default function Page() {
               ]}
               badges={["Not for employment", "All-in estimates", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "India eVisa portal", href: SRC.eVisaPortal },
-                { label: "VFS Global USA", href: SRC.vfsUsa },
-              ]}
               disclaimer={C.approvalNote}
               ctaText="See business visa documents"
               ctaHref="#business-docs"

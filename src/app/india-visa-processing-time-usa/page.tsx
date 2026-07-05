@@ -12,7 +12,6 @@ import {
 } from "@/lib/indiaVisaCluster";
 import {
   indiaVisaConfig as C,
-  indiaVisaSources as SRC,
   processingCards,
   commonMistakes,
   processingFaqs,
@@ -70,7 +69,7 @@ export default function Page() {
         hook="How long does an India visa take from the USA? See estimated timelines for eVisa, tourist, business, and Entry visas, why applications get delayed, and when to apply."
         accent="from-sky-600 to-blue-600"
         headerExtra={
-          <a href={SRC.vfsUsa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sky-700">Track on VFS ↗</a>
+          <a href="#timelines" className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sky-700">See detailed timelines →</a>
         }
         sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
         disclaimerExtra={<p>{C.timelineDisclaimer} {C.approvalNote}</p>}
@@ -90,10 +89,6 @@ export default function Page() {
               }))}
               badges={["Estimates only", "Apply early", "No approval guaranteed"]}
               lastVerified={INDIA_VISA_UPDATED}
-              sources={[
-                { label: "India eVisa portal", href: SRC.eVisaPortal },
-                { label: "VFS Global USA", href: SRC.vfsUsa },
-              ]}
               disclaimer={C.timelineDisclaimer}
               ctaText="See detailed timelines"
               ctaHref="#timelines"
