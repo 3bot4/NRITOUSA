@@ -3,10 +3,12 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import Form3520IndiaGiftChecker from "@/components/tools/Form3520IndiaGiftChecker";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -18,6 +20,7 @@ import {
 } from "@/lib/seo";
 
 const tool = getTool("form-3520-india-gift-checker")!;
+const content = getToolHubContent("form-3520-india-gift-checker")!;
 const LAST_UPDATED = "2026-06-22";
 
 export const metadata: Metadata = pageMetadata({
@@ -63,15 +66,16 @@ export default function Form3520IndiaGiftCheckerPage() {
   const url = absoluteUrl("/tools/form-3520-india-gift-checker");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "FinanceApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -124,6 +128,10 @@ export default function Form3520IndiaGiftCheckerPage() {
       {/* Checker */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
+
           <Form3520IndiaGiftChecker />
 
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
@@ -131,6 +139,14 @@ export default function Form3520IndiaGiftCheckerPage() {
             General educational checker; verify against current IRS guidance and
             India Income Tax Department rules for the relevant tax year.
           </p>
+        </Container>
+      </section>
+
+      {/* Full SEO hub content: what result means, explainer, process,
+          mistakes, example, related links (FAQ kept below) */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <ToolDeepDive content={content} hideFaq />
         </Container>
       </section>
 

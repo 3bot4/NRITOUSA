@@ -4,6 +4,15 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro } from "@/components/tools/ToolHub";
+import { getToolHubContent } from "@/lib/toolHubContent";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  taxComplianceSnapshotRows,
+  taxComplianceSources,
+  TAX_COMPLIANCE_VERIFIED,
+  TAX_COMPLIANCE_DISCLAIMER,
+} from "@/data/siteWideVerifiedNumbers";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import HubLinkGroups from "@/components/HubLinkGroups";
@@ -21,6 +30,7 @@ import {
 } from "@/lib/seo";
 
 const tool = getTool("fbar-fatca-checker")!;
+const content = getToolHubContent("fbar-fatca-checker")!;
 const LAST_UPDATED = "2026-06-10";
 
 export const metadata: Metadata = pageMetadata({
@@ -76,15 +86,16 @@ export default function FbarFatcaCheckerPage() {
   const url = absoluteUrl("/tools/fbar-fatca-checker");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "FinanceApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -132,9 +143,29 @@ export default function FbarFatcaCheckerPage() {
           </p>
         }
       >
+        {/* Fast Answer: FBAR/FATCA thresholds first */}
+        <section className="pt-6">
+          <Container>
+            <FastAnswerSnapshot
+              title="FBAR & FATCA — thresholds and deadlines"
+              accent="brand"
+              rows={taxComplianceSnapshotRows}
+              badges={["FBAR $10,000", "Due Apr 15 → auto Oct 15"]}
+              lastVerified={TAX_COMPLIANCE_VERIFIED}
+              sources={taxComplianceSources}
+              disclaimer={TAX_COMPLIANCE_DISCLAIMER}
+              ctaText="Check if I need to file"
+              ctaHref="#fbar-fatca-tool"
+            />
+          </Container>
+        </section>
+
         {/* Checker */}
-        <section className="pb-12 pt-6 sm:pb-16">
+        <section id="fbar-fatca-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
           <FbarFatcaChecker />
           <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 text-sm">
             <strong className="font-semibold text-ink-900">

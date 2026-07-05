@@ -3,8 +3,10 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import OciEligibilityChecker from "@/components/tools/OciEligibilityChecker";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -14,9 +16,11 @@ import {
   pageMetadata,
   type FaqItem,
 } from "@/lib/seo";
-import { OCI_BASE, OCI_TOOLS, VERIFY_SOURCES } from "@/lib/oci/config";
+import { OCI_BASE, OCI_TOOLS, VERIFY_SOURCES, OCI_DATA_AS_OF, totalWeeksLabel, ociSnapshotRows, OCI_SNAPSHOT_SOURCES, OCI_SNAPSHOT_DISCLAIMER } from "@/lib/oci/config";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const tool = getTool("oci-eligibility-checker")!;
+const content = getToolHubContent("oci-eligibility-checker")!;
 const PATH = OCI_TOOLS.eligibility.path;
 
 export const metadata: Metadata = pageMetadata({
@@ -57,15 +61,16 @@ export default function OciEligibilityCheckerPage() {
   const url = absoluteUrl(PATH);
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -119,8 +124,30 @@ export default function OciEligibilityCheckerPage() {
           </p>
         }
       >
-        <section className="pb-12 pt-6 sm:pb-16">
+        {/* Fast Answer: OCI fee & time */}
+        <section className="pt-6">
           <Container>
+            <FastAnswerSnapshot
+              title="OCI card — fee & time before you check eligibility"
+              answerLabel="Fresh OCI (USA)"
+              answer={`$275 · ${totalWeeksLabel()}`}
+              accent="amber"
+              rows={ociSnapshotRows()}
+              badges={["Govt fee $275", `Processing ${totalWeeksLabel()}`]}
+              lastVerified={OCI_DATA_AS_OF}
+              sources={OCI_SNAPSHOT_SOURCES}
+              disclaimer={OCI_SNAPSHOT_DISCLAIMER}
+              ctaText="Check my eligibility"
+              ctaHref="#oci-eligibility-tool"
+            />
+          </Container>
+        </section>
+
+        <section id="oci-eligibility-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
+          <Container>
+            <div className="mb-8">
+              <ToolIntro content={content} />
+            </div>
             <OciEligibilityChecker />
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
               <strong className="font-semibold text-ink-900">Eligible?</strong>{" "}
@@ -153,6 +180,14 @@ export default function OciEligibilityCheckerPage() {
                 .
               </span>
             </div>
+          </Container>
+        </section>
+
+        {/* Full SEO hub content: what result means, eligibility explainer,
+            documents, process, mistakes, related links (FAQ kept below) */}
+        <section className="py-12 sm:py-16">
+          <Container>
+            <ToolDeepDive content={content} hideFaq />
           </Container>
         </section>
 
