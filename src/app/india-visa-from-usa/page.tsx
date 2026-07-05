@@ -55,8 +55,13 @@ const SECTIONS: { h: string; body: React.ReactNode }[] = [
     body: "For most applications you'll need a passport valid at least 6 months with blank pages, a compliant passport-style photo, a completed application, and purpose-of-travel documents (itinerary, invitation letter, or hospital letter). Business, medical, Entry, and student visas add category-specific documents. See the eVisa checklist below and each supporting page for details.",
   },
   {
-    h: "Is There Visa on Arrival for Indians or U.S. Citizens Traveling to India?",
-    body: "Many people search 'visa on arrival for Indians' incorrectly. Indian citizens do not need an India visa to enter India — but may need visas for other countries. U.S. citizens should generally not rely on visa on arrival for India; the practical route is an eVisa online in advance or a regular visa through VFS/consulate. Eligible foreign nationals should check the eVisa and regular visa options before travel.",
+    h: "Is There a Visa on Arrival for U.S. Citizens in India?",
+    body: (
+      <>
+        <span className="block">U.S. citizens generally cannot just land in India and get a tourist visa at an airport counter without applying in advance. For most eligible U.S. travelers, the closest practical option is the India eVisa, which must be completed online before travel. If you are not eligible for an eVisa, you may need a regular visa through VFS Global or the appropriate Indian Consulate.</span>
+        <span className="mt-3 block">The phrase &lsquo;visa on arrival for Indians&rsquo; is often searched with mixed intent. Indian citizens do not need an India visa to enter India, but they may need visas for other countries. This guide is focused on U.S.-based travelers applying for permission to enter India.</span>
+      </>
+    ),
   },
 ];
 
@@ -91,8 +96,8 @@ export default function Page() {
         headerExtra={
           <a href="#which-india-visa" className="inline-flex items-center gap-1.5 rounded-lg bg-orange-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-orange-700">Find My Visa Type →</a>
         }
-        sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. {C.officialSourcesNote}</>}
-        disclaimerExtra={<p>{C.feeDisclaimer} {C.timelineDisclaimer} {C.approvalNote}</p>}
+        sourceNote={<>Last reviewed: {INDIA_VISA_UPDATED_HUMAN}. Fees, costs, and processing times are estimates for planning only and can change.</>}
+        disclaimerExtra={<p>{C.approvalNote}</p>}
       >
         {/* Fast answer */}
         <section className="pt-6">
@@ -202,7 +207,7 @@ export default function Page() {
             <h2 className="mx-auto max-w-4xl text-xl font-bold text-ink-900">India Visa Total Cost &amp; Time by Category</h2>
             <p className="mx-auto mt-1.5 max-w-4xl text-sm leading-relaxed text-ink-600">Estimated all-in cost (government fee + service + photo + shipping) and processing time for each India visa and OCI category.</p>
             <div className="mt-4">
-              <IndiaVisaSummaryTables accent="orange" />
+              <IndiaVisaSummaryTables accent="orange" disclaimer="Estimated costs and processing times are for planning only. Always verify current fees, timelines, and requirements with the official Indian visa portal, VFS Global, or the relevant Indian Consulate before applying." />
             </div>
             <div className="mx-auto mt-5 max-w-4xl">
               <Link href="/india-visa-fees-usa" className="text-sm font-semibold text-orange-700 hover:underline">See the full fee breakdown →</Link>
@@ -277,15 +282,21 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Common searches explained */}
+        {/* Frequently searched India visa questions (glossary) */}
         <section className="py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Common India Visa Searches Explained</h2>
+              <h2 className="text-xl font-bold text-ink-900">Frequently Searched India Visa Questions</h2>
               <div className="mt-4 space-y-3">
                 {commonSearches.map((s) => (
                   <div key={s.term} className="rounded-xl border border-ink-900/10 bg-white p-4">
-                    <Link href={s.href} className="text-sm font-bold text-orange-700 hover:underline">{s.term}</Link>
+                    <h3 className="text-sm font-bold text-ink-900">
+                      {s.href ? (
+                        <Link href={s.href} className="text-orange-700 hover:underline">{s.term}</Link>
+                      ) : (
+                        s.term
+                      )}
+                    </h3>
                     <p className="mt-1 text-xs leading-relaxed text-ink-600">{s.answer}</p>
                   </div>
                 ))}

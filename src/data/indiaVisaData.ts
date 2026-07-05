@@ -147,16 +147,18 @@ export const hubPickCards: { badge: string; title: string; body: string; href: s
 
 /* ─────────────── Hub: "common searches explained" block ─────────── */
 
-export const commonSearches: { term: string; answer: string; href: string }[] = [
-  { term: "India visa", answer: "A permit to enter India for tourism, business, medical, study, or work. U.S. citizens apply online (eVisa, ~$54–$95) or through VFS (~$216).", href: "/india-visa-from-usa" },
-  { term: "Indian visa for U.S. citizen", answer: "Most U.S. citizens use an e-Tourist or e-Business Visa (~$54–$95, 3–5 days). Longer cases use a regular visa (~$216, 5–10 days); Indian-origin travelers may prefer OCI.", href: "/india-evisa-for-us-citizens" },
-  { term: "India online visa", answer: "The eVisa applied for on Indianvisaonline.gov.in. e-Tourist ~$54, e-Business/e-Medical ~$95, approved in about 3–5 business days.", href: "/india-evisa-for-us-citizens" },
-  { term: "India tourist visa", answer: "For sightseeing and family visits. e-Tourist Visa ~$54 all-in (3–5 days); regular tourist visa ~$216 (5–10 days) for longer trips.", href: "/india-tourist-visa-from-usa" },
-  { term: "Indian travel visa", answer: "A general phrase for a visa to travel to India. For most short U.S.-based trips this is the e-Tourist Visa (~$54, 3–5 days).", href: "/india-tourist-visa-from-usa" },
-  { term: "India visa multiple entry", answer: "A visa that lets you enter India more than once during its validity. The 1-year eVisa and 10-year regular visa are multiple entry.", href: "/india-tourist-visa-from-usa" },
-  { term: "Visa on arrival for Indians", answer: "Often searched incorrectly. Indian citizens don't need a visa to enter India; U.S. citizens should use an eVisa (~$54–$95) or regular visa, not visa on arrival.", href: "/india-visa-from-usa" },
-  { term: "Entry visa India", answer: "For Indian-origin families, non-Indian spouses, and minor children — about $176 all-in and 2–3 weeks.", href: "/entry-visa-india-from-usa" },
-  { term: "OCI card vs eVisa", answer: "OCI (~$334, 8–12 weeks) is a lifelong facility; the eVisa (~$54–$95, 3–5 days) is a short-term permit. OCI is not a visa and not for urgent travel.", href: "/oci-vs-india-visa" },
+// `href` is optional: glossary items that would only point back to the hub
+// itself are left plain (no self-link) to avoid self-referencing loops.
+export const commonSearches: { term: string; answer: string; href?: string }[] = [
+  { term: "India visa", answer: "An India visa is permission for a foreign national, including most U.S. citizens, to enter India for tourism, business, medical treatment, study, work, or family-related travel. The right option depends on your purpose, stay length, and eligibility for eVisa, regular visa, Entry Visa, or OCI." },
+  { term: "Indian visa for U.S. citizen", answer: "Most U.S. citizens need either an India eVisa for short trips or a regular visa for longer or non-eVisa cases. Indian-origin U.S. citizens may also compare visa options with OCI.", href: "/india-evisa-for-us-citizens" },
+  { term: "India online visa", answer: "India online visa usually refers to the India eVisa application completed before travel. It may be used for eligible tourism, business, medical, and conference-related travel.", href: "/india-evisa-for-us-citizens" },
+  { term: "India tourist visa", answer: "An India tourist visa is used for tourism, sightseeing, weddings, and short family visits. Eligible U.S. citizens often compare e-Tourist Visa with regular tourist visa.", href: "/india-tourist-visa-from-usa" },
+  { term: "Indian travel visa", answer: "Indian travel visa is a broad search term. For U.S.-based travelers, it usually means an India tourist visa, eVisa, or another visa based on trip purpose.", href: "/india-tourist-visa-from-usa" },
+  { term: "India visa multiple entry", answer: "Multiple entry means you can enter India more than once during the visa validity period. Some India eVisas, regular tourist visas, business visas, Entry Visas, and OCI options may allow multiple entries depending on category and approval." },
+  { term: "Visa on arrival for Indians", answer: "Visa on arrival for Indians is a mixed-intent search. Indian citizens do not need a visa to enter India. U.S. citizens traveling to India should apply in advance through the India eVisa system or, when required, a regular visa through VFS/consulate." },
+  { term: "Entry visa India", answer: "Entry Visa India may be relevant for Indian-origin families, non-Indian spouses, and minor children when a tourist visa or eVisa does not fit the purpose.", href: "/entry-visa-india-from-usa" },
+  { term: "OCI card vs eVisa", answer: "OCI is a long-term facility for eligible Indian-origin travelers, while eVisa is a short-term online travel authorization. OCI is not a visa and is usually not the fastest solution for urgent travel.", href: "/oci-vs-india-visa" },
 ];
 
 /* ─────────────── Hub: decision-guide outputs ─────────── */
@@ -233,7 +235,7 @@ export const commonMistakes: { title: string; body: string }[] = [
 
 export const hubFaqs: FaqItem[] = [
   { question: "Do U.S. citizens need a visa for India?", answer: "Yes. Most short trips use an e-Tourist Visa (~$54 all-in, 3–5 business days) or e-Business Visa (~$95). Longer cases use a regular visa (~$216, 5–10 days) or Entry Visa (~$176, 2–3 weeks). Indian-origin U.S. citizens may prefer OCI (~$334, 8–12 weeks)." },
-  { question: "Can U.S. citizens get India visa on arrival?", answer: "No — U.S. citizens should not rely on visa on arrival for India. Apply for an eVisa online in advance (~$54–$95, 3–5 business days) or a regular visa through VFS (~$216, 5–10 business days)." },
+  { question: "Can U.S. citizens get visa on arrival in India?", answer: "No. U.S. citizens should apply in advance through the India eVisa system if eligible, or through VFS/consulate for a regular visa if needed." },
   { question: "How long does India visa processing take from USA?", answer: "The eVisa takes about 3–5 business days, a regular tourist/business visa about 5–10 business days, an Entry Visa about 2–3 weeks, and OCI about 8–12 weeks. Apply early to leave a buffer." },
   { question: "How much does an India visa cost for U.S. citizens?", answer: "All-in estimates: e-Tourist ~$54, e-Business/e-Medical ~$95, regular tourist/business ~$216 ($160 government fee + ~$19 VFS + ~$12 photo + ~$25 courier), Entry Visa ~$176, and OCI ~$334." },
   { question: "Is India eVisa better than a regular tourist visa?", answer: "For eligible short trips the eVisa is cheaper (~$54 vs ~$216) and faster (3–5 vs 5–10 business days). A regular tourist visa is better for longer stays, 10-year validity, or non-eVisa cases." },

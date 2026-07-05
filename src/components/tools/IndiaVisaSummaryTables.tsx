@@ -16,10 +16,13 @@ export default function IndiaVisaSummaryTables({
   accent = "orange",
   showCost = true,
   showTime = true,
+  disclaimer = INDIA_VISA_ESTIMATE_DISCLAIMER,
 }: {
   accent?: "orange" | "emerald" | "sky" | "amber" | "indigo" | "rose";
   showCost?: boolean;
   showTime?: boolean;
+  /** Override the single disclaimer line shown under the tables. */
+  disclaimer?: string;
 }) {
   const strong = {
     orange: "text-orange-700",
@@ -88,7 +91,7 @@ export default function IndiaVisaSummaryTables({
         )}
       </div>
 
-      <p className="mt-3 text-xs text-ink-400">{INDIA_VISA_ESTIMATE_DISCLAIMER}</p>
+      <p className="mt-3 text-xs text-ink-400">{disclaimer}</p>
     </div>
   );
 }
