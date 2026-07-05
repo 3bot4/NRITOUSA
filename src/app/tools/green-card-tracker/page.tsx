@@ -5,6 +5,8 @@ import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import RelatedHubs from "@/components/RelatedHubs";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
 import TrackerCharts from "@/components/tools/TrackerCharts";
@@ -32,6 +34,7 @@ import {
 import { site } from "@/lib/site";
 
 const tool = getTool("green-card-tracker")!;
+const content = getToolHubContent("green-card-tracker")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -80,15 +83,16 @@ export default function GreenCardTrackerPage() {
   const url = absoluteUrl("/tools/green-card-tracker");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -131,6 +135,9 @@ export default function GreenCardTrackerPage() {
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
           <GreenCardEstimator variant="full" />
         </Container>
       </section>
@@ -253,7 +260,15 @@ export default function GreenCardTrackerPage() {
         </Container>
       </section>
 
-      {/* FAQ + disclaimer + internal links */}
+      {/* Full SEO hub content: concepts, process, timeline, documents,
+          mistakes, example, related links (FAQ kept live below) */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <ToolDeepDive content={content} hideFaq />
+        </Container>
+      </section>
+
+      {/* FAQ (live, data-driven) + disclaimer + internal links */}
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
