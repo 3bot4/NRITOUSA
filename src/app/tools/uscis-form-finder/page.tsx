@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import UscisFormFinder from "@/components/tools/UscisFormFinder";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("uscis-form-finder")!;
+const content = getToolHubContent("uscis-form-finder")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -23,56 +24,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/tools/uscis-form-finder",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "What is the difference between I-129 and I-140?",
-    answer:
-      "I-129 is the nonimmigrant work petition — your employer files it for your H-1B or L-1 work visa. I-140 is the immigrant petition — your employer files it to start your employment-based green card process. I-129 keeps you in nonimmigrant status; I-140 begins the path to permanent residence.",
-  },
-  {
-    question: "Which form does my H-4 spouse need to work?",
-    answer:
-      "Your H-4 spouse needs Form I-765 (EAD) to get work authorization. To qualify for H-4 EAD, your I-140 must be approved (priority date does not need to be current). She also files I-539 to extend her H-4 status alongside your I-129 renewal. These are separate forms with separate processing timelines.",
-  },
-  {
-    question: "Do I need to file any form when I change jobs on H-1B?",
-    answer:
-      "Not personally — your new employer files a new I-129 H-1B transfer petition. Under AC21 portability, you can start the new job as soon as the new I-129 is filed with USCIS (not when approved) if you have been in H-1B status for at least one year and the new job is in the same or similar specialty occupation.",
-  },
-  {
-    question: "What forms do I file when my priority date becomes current?",
-    answer:
-      "When your India EB priority date becomes current in the State Department visa bulletin, you file: I-485 (adjustment of status), I-765 (EAD), and I-131 (Advance Parole) — all at the same time. USCIS usually issues a combo EAD+AP card before adjudicating the I-485 itself.",
-  },
-  {
-    question: "I changed my home address — do I need to file anything?",
-    answer:
-      "Yes. Federal law requires all non-citizens to file AR-11 (Alien's Change of Address) within 10 days of moving. File it free online at my.uscis.gov. USCIS mails all critical notices — RFEs, interview notices, approvals — to the address on file. Missing a notice because you didn't file AR-11 can have serious consequences.",
-  },
-  {
-    question: "Is premium processing (I-907) worth it?",
-    answer:
-      "It depends on timing and urgency. Premium processing may be available for some form types (like I-129 and I-140) when your H-1B is expiring, an employer needs an approved I-140 before your 6-year cap, or offer timing is critical. It guarantees 15 business day USCIS action — not approval. It is not available for I-485, I-131, or I-539. Fees and eligible categories can change — always verify the current fee and eligibility on the official USCIS Form I-907 page before filing.",
-  },
-];
-
 export default function UscisFormFinderPage() {
   const url = absoluteUrl("/tools/uscis-form-finder");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
@@ -133,6 +102,10 @@ export default function UscisFormFinderPage() {
       {/* Tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mx-auto mb-8 max-w-3xl">
+            <ToolIntro content={content} />
+          </div>
+
           <div className="mx-auto max-w-3xl">
             <UscisFormFinder />
           </div>
@@ -175,10 +148,11 @@ export default function UscisFormFinderPage() {
         </Container>
       </section>
 
-      {/* FAQ + disclaimer */}
+      {/* Full SEO hub content: goal→form table, process, mistakes,
+          related links, and FAQ */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <ToolDeepDive content={content} />
         </Container>
       </section>
       </ToolFirstLayout>

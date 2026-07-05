@@ -33,6 +33,12 @@ export interface ToolTimelineRow {
   notes?: string;
 }
 
+export interface ToolTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface ToolHubContent {
   slug: string;
   /** SoftwareApplication category. */
@@ -49,6 +55,10 @@ export interface ToolHubContent {
   keyInputs: string[];
   /** Estimated timeline or fee-range line shown above the tool. */
   timelineFeeNote?: string;
+  /** Plain-English "what your result means" shown first after the tool. */
+  resultMeaning?: string;
+  /** Optional reference/comparison table shown after the tool. */
+  table?: ToolTable;
   /** Explainer breakdown shown after the tool. */
   explain?: { heading: string; items: ToolBullet[] };
   /** Ordered step-by-step process. */
@@ -888,6 +898,609 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         question: "Can an H-4 EAD holder do freelance or 1099 work?",
         answer:
           "Yes. Freelance and 1099 self-employment are allowed while the H-4 EAD is valid, with no employer or specialty restriction. Self-employment income is reported on Schedule C and is subject to self-employment tax, so set money aside and consider quarterly estimated payments; confirm specifics with a CPA.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 7. USCIS processing times
+   * ------------------------------------------------------------------ */
+  "processing-times": {
+    slug: "processing-times",
+    appCategory: "ReferenceApplication",
+    description:
+      "USCIS processing-times explainer — how form type, service center, case category, premium processing, RFEs, and biometrics shape H-1B, I-140, I-485, EAD, Advance Parole, N-400, and H-4 EAD timelines, and how to check yours.",
+    quickAnswer:
+      "USCIS processing time depends on the form type, the service center or field office handling it, the case category, whether premium processing is available, and whether an RFE or biometrics step is added — plus overall agency workload. There is no single number; each form and location has its own posted range.",
+    shortDescription:
+      "Processing times vary widely by form and location, and the official posted range is only an estimate. This page explains what drives your timeline, how to check the official estimate for your exact form and center, and when you can raise a service request.",
+    audience:
+      "Anyone with a pending USCIS case — H-1B, green card (I-140/I-485), EAD, Advance Parole, or citizenship — who wants to understand why it's taking a certain amount of time and how to check the official estimate.",
+    keyInputs: [
+      "Your form type (e.g., I-129, I-140, I-485, I-765, I-131, N-400)",
+      "Your receipt number (the service center prefix indicates where it's processing)",
+      "The service center or field office handling your case",
+      "Your case category / subtype where the form has several",
+      "Your receipt (priority) date, to compare against the posted range",
+    ],
+    resultMeaning:
+      "A processing-time estimate is a range (often the time within which most cases at that office are completed), not a promise for your specific case. If your case is within the posted range, it's generally considered normal and it's usually too early to inquire. Only once you pass the office's 'case inquiry date' does USCIS treat it as outside normal time and let you submit a service request.",
+    table: {
+      caption: "What affects the timeline by form",
+      headers: ["Form / case type", "What affects the timeline", "What to check"],
+      rows: [
+        ["H-1B (I-129)", "Cap vs non-cap, premium processing, RFEs, center workload", "Premium option; receipt center; posted range"],
+        ["I-140 (immigrant petition)", "Category, premium processing eligibility, RFEs", "Whether premium is available for your category"],
+        ["I-485 (adjustment)", "Visa number availability, field office, interview, biometrics", "Visa bulletin; your field office backlog"],
+        ["EAD (I-765)", "Category code (e.g., c(9), c(26)), center workload, biometrics", "Your category code; whether an extension applies"],
+        ["Advance Parole (I-131)", "Filed with I-485 or standalone, center workload", "Whether it's bundled with your I-485"],
+        ["N-400 (naturalization)", "Field office backlog, interview scheduling, name checks", "Your field office; interview wait"],
+        ["H-4 EAD (I-765 c(26))", "Center workload, biometrics, no auto-extension (post Oct 30 2025)", "File early; no automatic extension for late filings"],
+        ["OCI (for Indians)", "Handled by Indian mission/VFS, not USCIS; document/apostille steps", "The consulate/VFS timeline, not USCIS"],
+      ],
+    },
+    steps: [
+      "Identify your exact form type and any subtype/category.",
+      "Find your receipt number and read the 3-letter prefix to see which center is processing.",
+      "Look up the official USCIS processing time for that form and center.",
+      "Compare your receipt date against the posted range to see if you're still within normal time.",
+      "Note the office's 'case inquiry date' — only after it passes can you submit a service request.",
+    ],
+    mistakes: [
+      "Treating the posted range as a deadline — it's an estimate, and many cases fall outside it.",
+      "Comparing your wait to someone else's without matching the form, center, and category.",
+      "Submitting a service request before the case inquiry date, which USCIS will just close.",
+      "Assuming an RFE 'resets' the clock — responding restarts active review but the case isn't back to zero.",
+      "Confusing OCI timelines (handled by the Indian mission/VFS) with USCIS processing.",
+    ],
+    relatedLinks: [
+      { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
+      { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
+      { label: "USCIS form finder", href: "/tools/uscis-form-finder" },
+      { label: "H-1B lottery timeline", href: "/tools/h1b-lottery-timeline" },
+      { label: "H-4 EAD navigator", href: "/tools/h4-ead-navigator" },
+    ],
+    faqs: [
+      {
+        question: "Why is my USCIS case taking so long?",
+        answer:
+          "Timelines depend on your form type, the service center or field office, the case category, agency workload, and whether an RFE or biometrics step was added. Some forms and offices simply have longer posted ranges than others, so a long wait is often within normal time for your specific case.",
+      },
+      {
+        question: "What is a normal USCIS processing time?",
+        answer:
+          "There's no single normal — each form and center has its own posted range on the USCIS website. If your case is within that range, it's generally considered normal. The range often represents the time within which most cases at that office are completed, not a guaranteed date.",
+      },
+      {
+        question: "Does premium processing help?",
+        answer:
+          "For eligible forms (like many I-129 and I-140 categories), premium processing gives a much faster adjudication decision for an extra fee. It speeds the decision, not visa availability or a start date, and it's not offered for every form or category.",
+      },
+      {
+        question: "When can I raise a service request?",
+        answer:
+          "Generally only after your case passes the office's 'case inquiry date,' which is when USCIS treats it as outside normal processing time. Before that date, a service request is usually closed without action, so check the inquiry date for your form and center first.",
+      },
+      {
+        question: "Does an RFE reset the timeline?",
+        answer:
+          "An RFE pauses adjudication until you respond; once USCIS receives your response, the case goes back into active review. It doesn't literally reset to zero, but it does add the response and re-review time, so an RFE typically extends the overall timeline.",
+      },
+      {
+        question: "Which service center is processing my case?",
+        answer:
+          "The first three letters of your receipt number indicate the filing system or service center (for example, IOE for the electronic system, or center codes like LIN, SRC, EAC, WAC). Use that prefix to look up the correct processing-time estimate for your case.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 8. USCIS case status meaning
+   * ------------------------------------------------------------------ */
+  "uscis-case-status-meaning": {
+    slug: "uscis-case-status-meaning",
+    appCategory: "ReferenceApplication",
+    description:
+      "USCIS case status meaning explainer — what messages like 'Case Was Received,' 'Actively Reviewing,' 'Request for Evidence,' 'Case Approved,' 'Card Is Being Produced,' 'Case Was Transferred,' and 'Decision Notice Mailed' mean, and what to do next.",
+    quickAnswer:
+      "USCIS case status messages are short updates that show roughly where your case may be in the process. They don't always explain the full reason or give an exact timeline — a status can stay the same for weeks even while work continues, and some steps don't generate a new message.",
+    shortDescription:
+      "The one-line status on the USCIS site rarely tells the whole story. This page translates the common status messages into plain English — what each likely means, what to do next, and when it's actually a reason to worry.",
+    audience:
+      "Anyone tracking a pending USCIS case online who wants to understand what their current status message means and whether they need to take any action.",
+    keyInputs: [
+      "Your current case status message (as shown on the USCIS site)",
+      "Your receipt number",
+      "The form type the status applies to",
+      "The date the status last changed",
+    ],
+    resultMeaning:
+      "A status message is a snapshot, not a full explanation. 'Actively Reviewing' doesn't guarantee a decision is imminent, and a long stretch on 'Case Was Received' is common and usually normal. Read the message alongside the official processing time for your form and center before drawing conclusions — and don't assume a status change is coming on any particular day.",
+    table: {
+      caption: "Common status messages, in plain English",
+      headers: ["Status message", "Plain meaning", "What to do next", "When to worry"],
+      rows: [
+        ["Case Was Received", "USCIS logged your filing and issued a receipt", "Save the receipt number; nothing to do", "Only if you never get a receipt notice"],
+        ["Actively Reviewing", "An officer is (or recently was) reviewing it", "Wait; keep your address updated", "If far past the posted processing time"],
+        ["Request for Evidence", "USCIS needs more documents to decide", "Respond fully before the deadline", "If the deadline is near and you're not ready"],
+        ["Case Approved", "The petition/application was approved", "Watch for the approval notice/card", "Rarely — this is good news"],
+        ["Card Is Being Produced", "An approved card is being printed", "Watch for mailing updates", "If it stalls here for many weeks"],
+        ["Case Was Transferred", "Moved to another office for workload/type", "Note the new office; expect a new estimate", "Not usually — it's routine"],
+        ["Interview Was Scheduled", "You'll be interviewed", "Prepare documents; attend on time", "If you can't make the date (reschedule early)"],
+        ["Decision Notice Was Mailed", "A decision letter is on the way", "Wait for the letter to see the outcome", "If the letter never arrives"],
+        ["Case Was Denied", "The case was denied", "Read the notice for reasons and options", "Yes — review appeal/motion options quickly"],
+      ],
+    },
+    steps: [
+      "Find your current status message on the official USCIS case status page.",
+      "Match it to the plain-English meaning in the table above.",
+      "Check whether the message requires action (e.g., an RFE deadline).",
+      "Compare the time since the last update against the posted processing time for your form.",
+      "Keep your mailing address current so you don't miss a notice or card.",
+    ],
+    mistakes: [
+      "Reading 'Actively Reviewing' as 'approval is coming soon' — it doesn't promise a timeline.",
+      "Panicking over a long 'Case Was Received' status, which is often normal.",
+      "Missing an RFE deadline because the online status wasn't checked often enough.",
+      "Assuming 'Case Was Transferred' is bad news — it's usually a routine workload move.",
+      "Ignoring the approval notice/card mailing after 'Card Is Being Produced.'",
+    ],
+    relatedLinks: [
+      { label: "USCIS processing times", href: "/tools/processing-times" },
+      { label: "USCIS notice decoder", href: "/tools/uscis-notice-decoder" },
+      { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
+      { label: "USCIS form finder", href: "/tools/uscis-form-finder" },
+    ],
+    faqs: [
+      {
+        question: "What does 'Actively Reviewing' mean?",
+        answer:
+          "It generally means an officer is reviewing, or recently reviewed, your case. It's a positive sign that the case is being worked, but it doesn't guarantee a decision on any particular date — cases can sit on this status for a while.",
+      },
+      {
+        question: "Does 'Actively Reviewing' mean approval is soon?",
+        answer:
+          "Not necessarily. It indicates review activity, not an imminent decision. An officer may still request evidence, transfer the case, or take time to decide, so treat it as progress rather than a promise of quick approval.",
+      },
+      {
+        question: "What does RFE mean?",
+        answer:
+          "RFE stands for Request for Evidence — USCIS needs more documents or information before it can decide. It comes with a response deadline, and you generally must respond completely and on time, because missing the deadline usually leads to a denial.",
+      },
+      {
+        question: "What does 'Case Was Transferred' mean?",
+        answer:
+          "It means your case was moved to another USCIS office, often to balance workload or because another office handles that case type. It's usually routine and not a bad sign, but you may see a new processing-time estimate for the new office.",
+      },
+      {
+        question: "What does 'Card Is Being Produced' mean?",
+        answer:
+          "It means your case was approved and an approved card (such as a green card or EAD) is being printed. The next updates typically relate to mailing. If it stays on this status for many weeks without a mailing update, it may be worth checking.",
+      },
+      {
+        question: "What should I do if my case is denied?",
+        answer:
+          "Read the denial notice carefully — it explains the reasons and any options, which can include an appeal or a motion to reopen or reconsider, often with short deadlines. Because timing matters, consider consulting an immigration attorney promptly. This is educational information, not legal advice.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 9. USCIS form finder
+   * ------------------------------------------------------------------ */
+  "uscis-form-finder": {
+    slug: "uscis-form-finder",
+    appCategory: "ReferenceApplication",
+    description:
+      "USCIS form finder — match your immigration goal (work visa, green card, EAD, advance parole, citizenship, change of status, family petition) to the right form: I-129, I-140, I-485, I-765, I-131, I-130, I-539, N-400, I-751, or I-90.",
+    quickAnswer:
+      "The right USCIS form depends on the benefit you're seeking — a work visa, a green card, an EAD work permit, advance parole travel, citizenship, a change or extension of status, or a family petition. Each goal maps to a specific form, and who files (you vs an employer or relative) depends on the benefit.",
+    shortDescription:
+      "USCIS has dozens of forms and picking the wrong one wastes time and fees. This finder maps common immigration goals to the usual form, who files it, and what to check — so you can confirm the right filing before you start.",
+    audience:
+      "Immigrants and their sponsors (including Indian families) trying to figure out which USCIS form matches their goal — a job petition, green card step, work permit, travel document, citizenship, or family filing.",
+    keyInputs: [
+      "Your immigration goal (work, green card, EAD, travel, citizenship, status change, family)",
+      "Who the petitioner/sponsor is (yourself, an employer, or a relative)",
+      "Your current immigration status",
+      "Your eligibility basis for the benefit",
+    ],
+    resultMeaning:
+      "A form suggestion points you to the usual filing for a given goal, but eligibility rules, evidence, and fees still apply — and some situations need more than one form (for example, filing I-485 with I-765 and I-131 together). Confirm the current form edition, fee, and requirements on the official USCIS page before filing.",
+    table: {
+      caption: "Goal → common USCIS form",
+      headers: ["Goal", "Common form", "Who usually files", "Notes"],
+      rows: [
+        ["Work visa (e.g., H-1B, L-1)", "I-129", "Employer", "Nonimmigrant worker petition"],
+        ["Employment green card petition", "I-140", "Employer", "Immigrant petition for a worker"],
+        ["Adjust status to green card", "I-485", "The applicant", "Requires a visa number to be available"],
+        ["Work permit (EAD)", "I-765", "The applicant", "Category code drives eligibility"],
+        ["Advance parole (travel)", "I-131", "The applicant", "Often filed with I-485"],
+        ["Family green card petition", "I-130", "US citizen/LPR relative", "Establishes the family relationship"],
+        ["Extend/change nonimmigrant status", "I-539", "The applicant", "E.g., H-4, B-2, F-2 changes/extensions"],
+        ["Citizenship (naturalization)", "N-400", "The applicant", "Green card holders meeting requirements"],
+        ["Remove conditions on residence", "I-751", "Conditional resident (spouse)", "For 2-year marriage-based green cards"],
+        ["Renew/replace green card", "I-90", "The applicant", "For expiring or lost green cards"],
+      ],
+    },
+    steps: [
+      "Identify your goal (work, green card, EAD, travel, citizenship, status change, or family).",
+      "Determine who the petitioner or sponsor is — you, an employer, or a relative.",
+      "Check the eligibility requirements for that benefit and form.",
+      "Confirm the current filing fee on the official USCIS fee schedule.",
+      "Gather the required evidence and use the correct current form edition before filing.",
+    ],
+    mistakes: [
+      "Filing the wrong form for the goal and losing time and fees.",
+      "Using an outdated form edition, which USCIS may reject.",
+      "Forgetting that some goals need multiple forms filed together (e.g., I-485 + I-765 + I-131).",
+      "Assuming you can self-file when the benefit requires an employer or relative petitioner.",
+      "Not checking the current fee, since fees change periodically.",
+    ],
+    relatedLinks: [
+      { label: "USCIS processing times", href: "/tools/processing-times" },
+      { label: "US citizenship (N-400) checklist", href: "/tools/citizenship-checklist" },
+      { label: "H-4 EAD navigator", href: "/tools/h4-ead-navigator" },
+      { label: "H-1B lottery timeline", href: "/tools/h1b-lottery-timeline" },
+    ],
+    faqs: [
+      {
+        question: "Which form is used for an H-1B?",
+        answer:
+          "The employer files Form I-129 (Petition for a Nonimmigrant Worker) for an H-1B. Workers can't file it themselves — H-1B is employer-sponsored, and for cap cases the employer also completes the electronic registration before filing I-129.",
+      },
+      {
+        question: "Which form is used for a green card?",
+        answer:
+          "It depends on the path. Employment cases typically use I-140 (employer petition) then I-485 (adjustment of status) if you're in the US. Family cases use I-130 (relative petition) then I-485 or consular processing. The green card 'form' is really a sequence.",
+      },
+      {
+        question: "Which form is used for an EAD?",
+        answer:
+          "Form I-765 (Application for Employment Authorization) is used to request an EAD work permit. The eligibility category code (such as c(9) for pending adjustment or c(26) for H-4) determines who qualifies and what to file with it.",
+      },
+      {
+        question: "Which form is used for citizenship?",
+        answer:
+          "Form N-400 (Application for Naturalization) is used by eligible green card holders to apply for US citizenship. You generally file it after meeting the residence, physical presence, and other requirements.",
+      },
+      {
+        question: "Can I file USCIS forms myself?",
+        answer:
+          "For applicant-filed benefits (like I-485, I-765, I-131, N-400, I-90) you can generally file yourself. Employer- or relative-sponsored benefits (like I-129 or I-130) must be filed by the petitioner. Complex cases often benefit from an immigration attorney's help.",
+      },
+      {
+        question: "Where do I check USCIS filing fees?",
+        answer:
+          "Check the official USCIS fee schedule (and the fee calculator) on uscis.gov, since fees change periodically and can differ by filing method. Always confirm the current fee for your exact form and edition before filing.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 10. USCIS notice decoder
+   * ------------------------------------------------------------------ */
+  "uscis-notice-decoder": {
+    slug: "uscis-notice-decoder",
+    appCategory: "ReferenceApplication",
+    description:
+      "USCIS notice decoder — understand I-797/I-797C notices and other USCIS mail: receipt, approval, biometrics appointment, RFE, NOID, transfer, interview, and oath notices, and which ones need a response.",
+    quickAnswer:
+      "USCIS notices explain updates like receipt, approval, biometrics, a request for evidence, a transfer, an interview, or a denial. The notice type (often an I-797 variant) and its heading tell you what it is and whether you need to take action by a deadline.",
+    shortDescription:
+      "USCIS communicates by mailed notices, and they aren't always self-explanatory. This page decodes the common notice types — what each means, whether it needs a response, and the deadline to watch — so you don't miss a required action.",
+    audience:
+      "Anyone who receives a USCIS notice (I-797/I-797C or an appointment/RFE letter) and wants to understand what it is and whether action is required.",
+    keyInputs: [
+      "The notice type / heading (e.g., I-797C, Request for Evidence, Biometrics)",
+      "The receipt number printed on the notice",
+      "The applicant/beneficiary name on the notice",
+      "Any response deadline or appointment date shown",
+    ],
+    resultMeaning:
+      "The notice heading tells you its purpose, and whether there's a deadline tells you if action is required. Receipt and approval notices are usually informational; RFEs, NOIDs, biometrics, and interview notices require you to act by a specific date. Always verify the receipt number and name match your case, and keep every notice.",
+    explain: {
+      heading: "Common USCIS notice types",
+      items: [
+        {
+          label: "I-797C, Receipt Notice",
+          body: "Confirms USCIS received your filing and shows your receipt number and received date. It's informational — no action needed — but keep it, since the receipt number tracks your case.",
+        },
+        {
+          label: "I-797, Approval Notice",
+          body: "Confirms your petition or application was approved. Depending on the case, the bottom may include an I-94 or other tear-off. Keep the original safe.",
+        },
+        {
+          label: "Biometrics Appointment Notice",
+          body: "Tells you when and where to appear for fingerprints and a photo. Bring the notice and ID on the date shown; reschedule promptly if you can't attend.",
+        },
+        {
+          label: "Request for Evidence (RFE)",
+          body: "USCIS needs more documents to decide. It lists what's needed and a hard deadline — respond fully and on time, because a missed deadline usually means denial.",
+        },
+        {
+          label: "Notice of Intent to Deny (NOID)",
+          body: "A warning that USCIS is leaning toward denial and is giving you a chance to respond with evidence and argument. It's more serious than an RFE — respond carefully by the deadline.",
+        },
+        {
+          label: "Transfer Notice",
+          body: "Says your case was moved to another office. It's usually routine; note the new office because the processing-time estimate may change.",
+        },
+        {
+          label: "Interview Notice",
+          body: "Schedules an in-person interview (common for I-485 and N-400). It lists documents to bring and the date/place — attend on time and prepare.",
+        },
+        {
+          label: "Oath (Naturalization) Notice",
+          body: "For approved N-400 cases, schedules the oath ceremony where you become a US citizen. Bring the notice and your green card as instructed.",
+        },
+      ],
+    },
+    steps: [
+      "Read the notice type/heading to identify what it is.",
+      "Check for a deadline or appointment date — that tells you if action is required.",
+      "Verify the applicant name and receipt number match your case.",
+      "Respond or attend as required (RFE, NOID, biometrics, interview) before the deadline.",
+      "Save a copy of every notice for your records.",
+    ],
+    mistakes: [
+      "Assuming an I-797C receipt notice is an approval — it only confirms receipt.",
+      "Missing an RFE or NOID deadline, which typically results in denial.",
+      "Skipping a biometrics or interview appointment without rescheduling.",
+      "Not verifying the receipt number and name match your case.",
+      "Discarding notices instead of keeping originals safe.",
+    ],
+    relatedLinks: [
+      { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
+      { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
+      { label: "USCIS processing times", href: "/tools/processing-times" },
+      { label: "USCIS form finder", href: "/tools/uscis-form-finder" },
+    ],
+    faqs: [
+      {
+        question: "What is an I-797?",
+        answer:
+          "I-797 is the family of official USCIS notices. Variants include the I-797C (receipt and other action notices) and the I-797 approval notice. The heading on the notice tells you which type it is and what it's confirming.",
+      },
+      {
+        question: "Is an I-797C an approval?",
+        answer:
+          "Not by itself. The I-797C is typically a receipt or action notice — for example, confirming USCIS received your filing or scheduling biometrics. An approval is usually communicated on an I-797 Approval Notice, so read the heading to be sure.",
+      },
+      {
+        question: "What is an RFE notice?",
+        answer:
+          "An RFE (Request for Evidence) notice means USCIS needs more documents or information before deciding. It lists exactly what's required and sets a firm deadline; you generally must respond completely and on time to avoid a denial.",
+      },
+      {
+        question: "What is a NOID?",
+        answer:
+          "A NOID (Notice of Intent to Deny) warns that USCIS is leaning toward denying your case and gives you a chance to respond with evidence and argument before it decides. It's more serious than an RFE, so respond carefully by the deadline.",
+      },
+      {
+        question: "What should I do after a biometrics notice?",
+        answer:
+          "Attend the appointment on the date and at the location shown, bringing the notice and a valid photo ID. If you can't make it, follow the notice's instructions to reschedule as early as possible so your case isn't delayed.",
+      },
+      {
+        question: "How do I know if a USCIS notice requires action?",
+        answer:
+          "Look for a deadline or an appointment date. Notices like RFEs, NOIDs, biometrics, and interviews require you to act by a specific date; receipt and approval notices are usually informational. When in doubt, read the notice fully and check the response-by date.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 11. USCIS receipt number decoder
+   * ------------------------------------------------------------------ */
+  "uscis-receipt-number-decoder": {
+    slug: "uscis-receipt-number-decoder",
+    appCategory: "ReferenceApplication",
+    description:
+      "USCIS receipt number decoder — read the 13-character receipt number: the 3-letter prefix (IOE, LIN, SRC, EAC, WAC, MSC, NBC), the fiscal year, the computer workday, and the case sequence, and what they do (and don't) tell you.",
+    quickAnswer:
+      "A USCIS receipt number can tell you which filing system or service center is handling your case from its 3-letter prefix, plus the fiscal year it was received. It does not reveal your exact processing speed or the outcome — it's an identifier, not a status.",
+    shortDescription:
+      "Your 13-character receipt number encodes where and roughly when your case entered the system. This page breaks down the format and the service-center prefixes so you can look up the right processing time and track your case.",
+    audience:
+      "Anyone with a USCIS receipt number who wants to understand what the prefix and digits mean and which service center or system is handling their case.",
+    keyInputs: [
+      "Your 13-character receipt number (from your I-797 receipt notice)",
+      "The 3-letter prefix (e.g., IOE, LIN, SRC, EAC, WAC, MSC, NBC)",
+      "The form type the receipt belongs to",
+    ],
+    resultMeaning:
+      "Decoding the receipt number tells you the handling system/center and the fiscal year received — useful for looking up the correct processing time and tracking case status. It does not predict how fast your case will move or what the decision will be, so use it to find the right official estimate rather than to guess an outcome.",
+    explain: {
+      heading: "How the receipt number is structured",
+      items: [
+        {
+          label: "First 3 letters (prefix)",
+          body: "Identify the filing system or service center handling the case (for example, IOE for the electronic ELIS system, or a physical center code). This tells you where to look up processing times.",
+        },
+        {
+          label: "Fiscal year (next 2 digits)",
+          body: "The two digits after the prefix indicate the government fiscal year the case was received — a quick way to see how old the case is.",
+        },
+        {
+          label: "Computer workday (next 3 digits)",
+          body: "Represent the workday the case was entered into the system during that fiscal year — an internal processing-day figure, not a calendar date you need to act on.",
+        },
+        {
+          label: "Case sequence number (final digits)",
+          body: "The remaining digits are the unique sequence number identifying your specific case within that batch.",
+        },
+      ],
+    },
+    table: {
+      caption: "Service center / system prefixes",
+      headers: ["Prefix", "System / center"],
+      rows: [
+        ["IOE", "USCIS electronic immigration system (ELIS) — online filings"],
+        ["LIN", "Nebraska Service Center"],
+        ["SRC", "Texas Service Center"],
+        ["EAC", "Vermont Service Center"],
+        ["WAC", "California Service Center"],
+        ["MSC", "National Benefits Center"],
+        ["NBC", "National Benefits Center (some filings)"],
+      ],
+    },
+    steps: [
+      "Find your receipt number on your I-797 receipt notice (13 characters).",
+      "Read the first 3 letters to identify the system or service center.",
+      "Note the next two digits for the fiscal year the case was received.",
+      "Use the prefix to look up the correct processing time for your form and center.",
+      "Track your case with the official USCIS case-status tool using the full receipt number.",
+    ],
+    mistakes: [
+      "Assuming the receipt number reveals your approval date — it doesn't predict speed or outcome.",
+      "Looking up processing times for the wrong center by misreading the prefix.",
+      "Confusing the internal 'workday' digits with a calendar date.",
+      "Mistyping the 13-character number when checking case status.",
+      "Assuming an online (IOE) case and a paper-center case move at the same pace.",
+    ],
+    relatedLinks: [
+      { label: "USCIS processing times", href: "/tools/processing-times" },
+      { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
+      { label: "USCIS notice decoder", href: "/tools/uscis-notice-decoder" },
+      { label: "USCIS form finder", href: "/tools/uscis-form-finder" },
+    ],
+    faqs: [
+      {
+        question: "What does IOE mean?",
+        answer:
+          "IOE is the prefix for cases in the USCIS electronic immigration system (ELIS) — typically online filings. An IOE receipt number means your case is handled through that online system rather than a specific physical service center.",
+      },
+      {
+        question: "What does LIN mean?",
+        answer:
+          "LIN is the prefix for the Nebraska Service Center. A receipt number starting with LIN means that center received and is associated with your case, which tells you where to look up the relevant processing time.",
+      },
+      {
+        question: "What does SRC mean?",
+        answer:
+          "SRC is the prefix for the Texas Service Center. A receipt beginning with SRC indicates your case is associated with that center, so you'd check the Texas Service Center's processing times for your form.",
+      },
+      {
+        question: "What does WAC mean?",
+        answer:
+          "WAC is the prefix for the California Service Center. A WAC receipt number means your case is tied to that center, so use the California Service Center's posted processing times for your form type.",
+      },
+      {
+        question: "Does the receipt number show an approval timeline?",
+        answer:
+          "No. The receipt number identifies the handling system/center and the fiscal year received, but it doesn't predict how fast your case will be decided or the outcome. Use it to find the correct official processing-time estimate rather than a guaranteed date.",
+      },
+      {
+        question: "Where is the receipt number on the I-797?",
+        answer:
+          "On an I-797/I-797C notice, the 13-character receipt number is usually printed near the top, often labeled 'Receipt Number.' It's the identifier you enter into the USCIS case-status tool to track your case.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 12. Priority date checker
+   * ------------------------------------------------------------------ */
+  "priority-date-checker": {
+    slug: "priority-date-checker",
+    appCategory: "ReferenceApplication",
+    description:
+      "Priority date checker for Indian applicants — compare your priority date against the visa bulletin's Final Action Dates and Dates for Filing for EB2/EB3 India (and other categories) to see if you're current and whether you can file I-485.",
+    quickAnswer:
+      "Your priority date is 'current' when the visa bulletin date for your category and country of chargeability reaches or passes it. Which chart applies depends on whether USCIS is using the Final Action Dates chart (for approval) or the Dates for Filing chart (to submit I-485) that month.",
+    shortDescription:
+      "The visa bulletin decides when a green card number is available to you. This checker compares your priority date to the current bulletin for your category and country, so you can see whether you're current and whether you may file your I-485.",
+    audience:
+      "Employment- and family-based green card applicants (especially EB2/EB3 India) tracking whether their priority date is current under the monthly visa bulletin.",
+    keyInputs: [
+      "Your priority date (usually your PERM filing date, or I-130/I-140 date)",
+      "Your green card category (e.g., EB2, EB3, or a family category)",
+      "Your country of chargeability (usually India for India-born applicants)",
+      "The current month's visa bulletin dates",
+      "Whether USCIS is accepting the Dates for Filing chart this month",
+    ],
+    resultMeaning:
+      "If your priority date is earlier than the applicable bulletin date for your category and country, you're 'current' for that chart. Being current on Final Action Dates means a green card can be approved; being current on Dates for Filing (in months USCIS accepts it) means you may submit your I-485. If neither chart has reached your date, you keep waiting — and remember dates can retrogress.",
+    explain: {
+      heading: "Key concepts",
+      items: [
+        {
+          label: "Priority date",
+          body: "Your place in line — usually your PERM labor certification filing date (employment) or the date the I-130/I-140 petition was filed. It's fixed to you and portable in some cases.",
+        },
+        {
+          label: "Final Action Date (FAD)",
+          body: "The cutoff that controls when a green card can actually be approved. When your priority date is earlier than the FAD for your category/country, a visa number can be issued.",
+        },
+        {
+          label: "Dates for Filing (DFF)",
+          body: "A usually-earlier cutoff that lets you file your I-485 sooner — but only in months when USCIS announces it accepts the Dates for Filing chart.",
+        },
+        {
+          label: "Country of chargeability",
+          body: "Usually your country of birth, which determines which per-country column of the bulletin applies. Heavily demanded countries like India have their own, more backlogged, dates.",
+        },
+        {
+          label: "EB2 / EB3 India",
+          body: "Both are deeply backlogged for India and move independently. Sometimes EB3 is ahead of EB2 (or vice versa), which is why some applicants consider porting between them.",
+        },
+        {
+          label: "Family-based categories",
+          body: "Family preference categories (F1–F4) have their own priority dates and bulletin columns, separate from the employment categories, and also vary by country.",
+        },
+      ],
+    },
+    steps: [
+      "Find your priority date (usually your PERM or petition filing date).",
+      "Select your green card category (e.g., EB2, EB3, or a family category).",
+      "Select your country of chargeability (usually India for India-born applicants).",
+      "Compare your priority date to the current visa bulletin's Final Action and Dates for Filing dates.",
+      "If Dates for Filing has reached your date and USCIS accepts that chart, you may be able to file your I-485.",
+    ],
+    mistakes: [
+      "Comparing your priority date to the wrong chart (Final Action vs Dates for Filing).",
+      "Filing I-485 on the Dates for Filing chart in a month USCIS isn't accepting it.",
+      "Using country of citizenship instead of country of birth for chargeability.",
+      "Assuming the bulletin only moves forward — dates can retrogress.",
+      "Using the wrong priority date (e.g., the I-140 date where the PERM date applies).",
+    ],
+    relatedLinks: [
+      { label: "Green card wait-time tracker", href: "/tools/green-card-tracker" },
+      { label: "USCIS processing times", href: "/tools/processing-times" },
+      { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
+      { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
+    ],
+    faqs: [
+      {
+        question: "What is a priority date?",
+        answer:
+          "Your priority date is your place in the green card line — usually the date your PERM labor certification (employment) or I-130/I-140 petition was filed. A green card number becomes available only once the visa bulletin's date for your category and country reaches or passes it.",
+      },
+      {
+        question: "How do I know if my priority date is current?",
+        answer:
+          "Compare your priority date to the visa bulletin date for your category and country of chargeability. If your priority date is earlier than the applicable chart's date, you're current for that chart — Final Action Dates for approval, or Dates for Filing to submit your I-485.",
+      },
+      {
+        question: "Which visa bulletin chart should I use?",
+        answer:
+          "Use the Final Action Dates chart to know when a green card can be approved. Use the Dates for Filing chart to know when you can submit your I-485 — but only in months when USCIS announces it's accepting that chart for filing.",
+      },
+      {
+        question: "What is a Final Action Date?",
+        answer:
+          "The Final Action Date is the cutoff that controls when a green card can actually be approved for your category and country. When your priority date is earlier than the Final Action Date, a visa number can be issued and your case can be approved.",
+      },
+      {
+        question: "What is Dates for Filing?",
+        answer:
+          "Dates for Filing is a usually-earlier cutoff in the visa bulletin that lets you submit your I-485 sooner — unlocking EAD and travel benefits while you wait — but only in months when USCIS announces it will accept the Dates for Filing chart.",
+      },
+      {
+        question: "Can a priority date move backward?",
+        answer:
+          "Yes. When demand exceeds the available visa numbers, the State Department can move a cutoff backward — called retrogression — or mark a category unavailable. Cases already filed stay in line, but approvals pause until the date advances past your priority date again.",
       },
     ],
   },

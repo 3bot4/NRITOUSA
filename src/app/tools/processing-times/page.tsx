@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import DataStamp from "@/components/tools/DataStamp";
 import ProcessingTimesExplorer, {
   type TimeGroup,
@@ -10,6 +11,7 @@ import ProcessingTimesExplorer, {
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import processingData from "../../../../data/processing-times.json";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -21,6 +23,7 @@ import {
 import { site } from "@/lib/site";
 
 const tool = getTool("processing-times")!;
+const content = getToolHubContent("processing-times")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -65,15 +68,16 @@ export default function ProcessingTimesPage() {
   const url = absoluteUrl("/tools/processing-times");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
@@ -117,6 +121,10 @@ export default function ProcessingTimesPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
+
           <ProcessingTimesExplorer
             groups={processingData.groups as TimeGroup[]}
           />
@@ -126,6 +134,14 @@ export default function ProcessingTimesPage() {
             source={processingData.source}
             sourceLabel={processingData.sourceLabel}
           />
+        </Container>
+      </section>
+
+      {/* Full SEO hub content: what results mean, form table, process,
+          mistakes, related links (existing FAQ kept below) */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <ToolDeepDive content={content} hideFaq />
         </Container>
       </section>
 

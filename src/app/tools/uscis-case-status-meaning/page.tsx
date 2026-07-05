@@ -3,20 +3,21 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import RelatedHubs from "@/components/RelatedHubs";
-import ToolFaq from "@/components/tools/ToolFaq";
+import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import UscisStatusTool from "@/components/tools/UscisStatusTool";
 import { getTool } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const tool = getTool("uscis-case-status-meaning")!;
+const content = getToolHubContent("uscis-case-status-meaning")!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,
@@ -24,61 +25,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/tools/uscis-case-status-meaning",
 });
 
-const faq: FaqItem[] = [
-  {
-    question: "What information do I need to use this tool?",
-    answer:
-      "Just your form type (e.g., I-129, I-485, I-765) and the current status message from the USCIS case status portal. You do NOT need to enter your receipt number, A-number, passport number, or any personal information.",
-  },
-  {
-    question: "How do I find my current USCIS status?",
-    answer:
-      "Go to egov.uscis.gov/casestatus and enter your receipt number — the 13-character code on your I-797 Notice of Action. Your receipt number looks like LIN2412345678 or IOE0123456789. Note the exact status message shown and enter it in this tool.",
-  },
-  {
-    question: "My status says \"Case Is Being Actively Reviewed\" for months — is that normal?",
-    answer:
-      "Yes, this is common. \"Actively Reviewed\" can last from a few days to many months depending on the form, service center, and current workload. Compare your wait against the published processing times at uscis.gov for your specific form and service center. Only submit an inquiry if you are outside the published window.",
-  },
-  {
-    question: "What should I do when I get an RFE?",
-    answer:
-      "Contact your immigration attorney immediately — the same day if possible. The deadline on the RFE notice (usually 87 days from the notice date, not the date you received it) is a hard cut-off. A missed RFE deadline typically results in automatic denial. Your attorney will help you gather the required evidence and prepare a complete response.",
-  },
-  {
-    question: "I-140 was approved but I can't file I-485 yet — what do I do?",
-    answer:
-      "For Indian EB applicants, I-140 approval is just the beginning. Your priority date must become current in the State Department's visa bulletin before you can file I-485 or proceed to consular processing. Monitor the visa bulletin monthly at travel.state.gov. In the meantime, keep your H1B status valid (the I-140 approval supports H1B extensions beyond 6 years) and consult your attorney about AC21 portability if you plan to change jobs.",
-  },
-  {
-    question: "Can I travel while my I-485 is pending?",
-    answer:
-      "For many I-485 applicants, leaving the United States without Advance Parole (Form I-131) can risk abandonment of the adjustment application. Some H/L visa holders may have exceptions if they maintain valid status and re-enter properly, but travel rules are fact-specific. Never travel internationally while I-485 is pending without consulting your immigration attorney and without physically holding an approved Advance Parole document.",
-  },
-  {
-    question: "My case was denied — what are my options?",
-    answer:
-      "You generally have several options: Motion to Reopen (MTR) or Motion to Reconsider (MTC) — must be filed within 33 days of the denial date; AAO appeal for certain form types; refiling with improved evidence; or federal court challenge in rare cases. Contact your immigration attorney the same day you receive a denial. The deadlines are short and missing them forecloses options.",
-  },
-];
-
 export default function UscisStatusMeaningPage() {
   const url = absoluteUrl("/tools/uscis-case-status-meaning");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "@id": `${url}#app`,
       name: tool.title,
-      description: tool.seoDescription,
+      description: content.description,
       url,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
+      applicationCategory: content.appCategory,
+      operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      author: { "@id": `${site.url}/#organization` },
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
-    faqJsonLd(faq),
+    faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
@@ -139,6 +103,10 @@ export default function UscisStatusMeaningPage() {
       {/* Tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
+          <div className="mx-auto mb-8 max-w-3xl">
+            <ToolIntro content={content} />
+          </div>
+
           <div className="mx-auto max-w-3xl">
             <UscisStatusTool />
           </div>
@@ -201,10 +169,11 @@ export default function UscisStatusMeaningPage() {
         </Container>
       </section>
 
-      {/* FAQ + disclaimer */}
+      {/* Full SEO hub content: status table, process, mistakes,
+          related links, and FAQ */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
-          <ToolFaq items={faq} />
+          <ToolDeepDive content={content} />
         </Container>
       </section>
       <section className="py-12 sm:py-14">
