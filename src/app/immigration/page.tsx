@@ -379,6 +379,11 @@ export default function ImmigrationHubPage() {
                       href: "/indian-passport-renewal-usa",
                     },
                     {
+                      label: "India Visa from USA (for U.S. citizens)",
+                      href: "/india-visa-from-usa",
+                    },
+                    { label: "OCI vs India Visa", href: "/oci-vs-india-visa" },
+                    {
                       label: "Moving to the USA Checklist",
                       href: "/articles/moving-to-usa-from-india-checklist",
                     },

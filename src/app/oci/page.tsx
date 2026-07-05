@@ -406,6 +406,22 @@ export default function OciHubPage() {
         </Container>
       </section>
 
+      {/* Visa vs OCI cross-link */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-6">
+            <h2 className="text-base font-bold text-ink-900">Not sure whether you need OCI or an India visa?</h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+              For a single short trip, a visa can be faster since OCI takes longer to obtain. Compare both in{" "}
+              <Link href="/oci-vs-india-visa" className="font-semibold text-brand-700 underline">OCI vs India visa</Link>, or see the full{" "}
+              <Link href="/india-visa-from-usa" className="font-semibold text-brand-700 underline">India visa from USA</Link> guide covering{" "}
+              <Link href="/india-evisa-for-us-citizens" className="font-semibold text-brand-700 underline">the eVisa for U.S. citizens</Link> and the{" "}
+              <Link href="/entry-visa-india-from-usa" className="font-semibold text-brand-700 underline">Entry Visa</Link> for families.
+            </p>
+          </div>
+        </Container>
+      </section>
+
       {/* FAQ */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
