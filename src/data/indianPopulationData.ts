@@ -673,9 +673,10 @@ export const worldNote =
 
 export const faqs: { question: string; answer: string }[] = [
   { question: "How many Indians live in America?", answer: "About 4.9 million people in the U.S. identify as Indian alone or in combination, based on Pew Research Center's analysis of 2021–2023 ACS/IPUMS data. The 2020 Census recorded about 4.4 million people as Asian Indian alone." },
-  { question: "How many Indians live in the USA in 2025/2026?", answer: "No official 2025/2026 count exists yet, but recent estimates put the Indian-origin population at roughly 4.9 million and rising. The community has grown about 174% since 2000, so the current figure is likely at or above 4.9 million. Confirm with the latest ACS release." },
-  { question: "Which U.S. state has the most Indians?", answer: "California typically has the largest total Indian-origin population, followed by Texas, New Jersey, New York, and Illinois. New Jersey has the highest Indian share relative to its state population." },
-  { question: "Which U.S. city has the highest Indian population?", answer: "The New York–New Jersey metro (including Edison and Jersey City) and the San Francisco Bay Area have the largest Indian populations, followed by Dallas, Chicago, Washington DC, Seattle, Atlanta, and Houston." },
+  { question: "How many Indians live in the USA?", answer: "About 4.9 million people in the USA identify as Indian-origin (Pew, 2021–2023 ACS/IPUMS), and the 2020 Census recorded 4,397,737 as Asian Indian alone. No official 2025/2026 count exists yet, but the figure is rising — the community has grown about 174% since 2000. Confirm with the latest ACS release." },
+  { question: "What state has the highest Indian population?", answer: "California typically has the largest total Indian-origin population, followed by Texas, New Jersey, New York, and Illinois. New Jersey has the highest Indian share relative to its state population — the highest concentration of any state." },
+  { question: "Which U.S. city has the highest Indian population?", answer: "The New York–New Jersey metro (including Edison and Jersey City) and the San Francisco Bay Area have the largest Indian populations, followed by Dallas–Fort Worth, Chicago, Washington DC, Seattle, Atlanta, and Houston." },
+  { question: "Where do most Indians live in the USA?", answer: "Most Indians in the USA live in large job-market states and metros — California, Texas, New Jersey, New York, Illinois, Washington, and Georgia — clustered around technology, healthcare, finance, universities, and established immigrant family networks. The New York/New Jersey area and the San Francisco Bay Area are the two biggest hubs." },
   { question: "Are Indians considered Asian in the U.S. Census?", answer: "Yes. In the U.S. Census, people with origins in India are classified under 'Asian' as 'Asian Indian.' This is different from Native Americans, who are recorded as 'American Indian or Alaska Native.'" },
   { question: "What is the difference between Indian American, Asian Indian, Indian immigrant, and Indian-origin?", answer: "'Asian Indian' is the Census race category. 'Indian immigrant' means someone born in India who moved to the U.S. 'Indian American' usually refers to people of Indian descent living in the U.S., including the U.S.-born. 'Indian-origin' or 'Indian alone or in combination' is the broadest, counting anyone identifying with Indian ancestry. These definitions produce different totals." },
   { question: "Why are there so many Indian software engineers in America?", answer: "India produces a very large number of STEM graduates, English is widely used in Indian higher education, and the H-1B visa and U.S. tech hiring have long recruited Indian engineers. Over decades this built dense professional networks that keep drawing talent." },
@@ -711,3 +712,288 @@ export const sources: SourceLink[] = [
 
 export const methodology =
   "This page combines public demographic datasets and rounded estimates. Terms like Indian American, Asian Indian, Indian immigrant, Indian-born, Indian-origin, and 'Indian alone or in combination' can produce different totals, so figures are presented as estimates and ranges rather than exact counts. Always verify a specific number against the primary source before citing it.";
+
+/* ------------------------------------------------------------------ *
+ * AI-friendly "Quick Facts" sheet (crawlable key-value pairs)
+ * ------------------------------------------------------------------ */
+
+export const quickFacts: { label: string; value: string }[] = [
+  { label: "Total Indian-origin population in U.S.", value: "About 4.9 million" },
+  { label: "2020 Census Asian Indian alone population", value: "4,397,737" },
+  { label: "Growth since 2000", value: "About 174%" },
+  { label: "Indian immigrants in the U.S.", value: "About 3.2 million" },
+  { label: "Top total-population states", value: "California, Texas, New Jersey, New York, Illinois" },
+  { label: "Highest concentration state", value: "New Jersey" },
+  { label: "Major metros", value: "New York/New Jersey, San Francisco Bay Area, Dallas–Fort Worth, Chicago, Seattle, Washington DC, Atlanta, Houston" },
+  { label: "Common occupations", value: "IT, medicine, engineering, finance, business, academia" },
+  { label: "Major visa/student categories", value: "H-1B, F-1, OPT/STEM OPT, green card holders, naturalized citizens, U.S.-born citizens" },
+];
+
+export const definitionNote =
+  "Indian American, Asian Indian, Indian immigrant, Indian-born, and Indian-origin are related but not identical categories, so totals vary by source.";
+
+/* ------------------------------------------------------------------ *
+ * State cluster — child ("micro-spoke") pages
+ * ------------------------------------------------------------------ *
+ * Keyed by the same state code as `states[]`, which supplies metros,
+ * drivers, tooltip, and per-category detail. This record adds the
+ * extra fields each /indian-population-in-<state> page needs. Content is
+ * hedged and pattern-based — no invented exact per-state counts.
+ */
+
+export interface StateChild {
+  slug: string; // e.g. "california" → /indian-population-in-california
+  metaTitle: string;
+  metaDesc: string;
+  /** One-line relative-standing summary used in the intro + fact sheet. */
+  rankLine: string;
+  /** Answer-first intro paragraph. */
+  intro: string;
+  /** Major cities / suburbs with notable Indian communities. */
+  cities: string[];
+  /** "Why Indians move here" bullet points. */
+  whyMove: string[];
+  /** University / student-hub sentence. */
+  studentHubs: string;
+  /** Regional / language community patterns (hedged). */
+  communityGroups: { group: string; note: string }[];
+  /** Economic-contribution sentence (hedged). */
+  economy: string;
+}
+
+/** Ordered list of cluster states (drives the pillar cluster grid + sitemap). */
+export const clusterStateCodes = [
+  "CA",
+  "TX",
+  "NJ",
+  "NY",
+  "IL",
+  "WA",
+  "GA",
+  "FL",
+  "VA",
+  "MD",
+  "MA",
+] as const;
+
+export const stateChild: Record<string, StateChild> = {
+  CA: {
+    slug: "california",
+    metaTitle: "Indian Population in California: Cities, Jobs, Income & Community",
+    metaDesc:
+      "How many Indians live in California, where Indian Americans live (Bay Area, Fremont, San Jose, LA), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "California typically has the largest total Indian-origin population of any U.S. state.",
+    intro:
+      "California is generally the #1 state for total Indian-origin residents, anchored by the San Francisco Bay Area's tech economy plus large communities in Los Angeles, San Diego, and Sacramento. Exact counts vary by ACS/Census definition, but California's Indian community is among the biggest and most established in the country.",
+    cities: ["San Francisco Bay Area", "Fremont", "San Jose", "Sunnyvale", "Santa Clara", "Cupertino", "Los Angeles", "San Diego", "Sacramento"],
+    whyMove: ["Bay Area tech and startup jobs", "Top universities (Stanford, UC system)", "Large H-1B employer base", "Established Indian family and business networks", "Healthcare, biotech, and finance roles"],
+    studentHubs: "Stanford, UC Berkeley, UCLA, UC San Diego, San Jose State, and the wider UC/CSU system draw large numbers of Indian graduate and STEM students who often stay for Bay Area jobs.",
+    communityGroups: [
+      { group: "Telugu", note: "Very large Bay Area tech community." },
+      { group: "Tamil", note: "Strong in software, engineering, and academia." },
+      { group: "Punjabi", note: "Historic roots in the Central Valley, trucking, and agriculture." },
+      { group: "Gujarati", note: "Business and hospitality across the state." },
+    ],
+    economy: "Indian Americans in California are heavily represented in senior tech, startups, medicine, and business, so their local economic contribution is significant — though exact tax contribution by state is not published as a simple official number.",
+  },
+  TX: {
+    slug: "texas",
+    metaTitle: "Indian Population in Texas: Dallas, Austin, Houston Jobs & Community",
+    metaDesc:
+      "How many Indians live in Texas, where they live (Dallas, Plano, Frisco, Austin, Houston, Sugar Land), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Texas has one of the largest and fastest-growing Indian-origin populations in the U.S.",
+    intro:
+      "Texas is one of the fastest-growing states for Indian Americans, especially the Dallas–Fort Worth suburbs and the Houston and Austin metros. Jobs, lower cost of living, and no state income tax draw many Indian families. Exact counts vary by definition, but Texas ranks near the top nationally.",
+    cities: ["Dallas–Fort Worth", "Plano", "Frisco", "Irving", "Austin", "Houston", "Sugar Land"],
+    whyMove: ["Tech, telecom, and IT-services jobs", "Energy and healthcare employment", "No state income tax and lower housing costs", "Fast-growing suburbs with good schools", "Large H-1B and consulting employer base"],
+    studentHubs: "UT Austin, Texas A&M, UT Dallas, UT Arlington, and the University of Houston enroll large numbers of Indian students, many staying for DFW and Austin tech jobs.",
+    communityGroups: [
+      { group: "Telugu", note: "One of the largest Telugu populations in the U.S., concentrated in DFW." },
+      { group: "Gujarati", note: "Strong in business and hospitality, especially Houston." },
+      { group: "Tamil", note: "Growing tech and engineering community." },
+      { group: "Malayali", note: "Healthcare and nursing families, especially Houston/DFW." },
+    ],
+    economy: "With heavy representation in IT, energy, healthcare, and small business, Indian Americans contribute significantly to the Texas economy, but exact tax contribution by state is not published as a simple official number.",
+  },
+  NJ: {
+    slug: "new-jersey",
+    metaTitle: "Indian Population in New Jersey: Edison, Jersey City Jobs & Community",
+    metaDesc:
+      "How many Indians live in New Jersey, where they live (Edison, Iselin, Jersey City, Princeton), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "New Jersey has the highest Indian-origin concentration of any U.S. state relative to its population.",
+    intro:
+      "New Jersey has the highest share of Indian-origin residents of any state, centered on the Edison–Iselin corridor, Jersey City, and the Princeton area. It is one of the most established Indian communities in the country, spanning professionals, business owners, and a large second generation. Exact counts vary by definition.",
+    cities: ["Edison", "Iselin", "Jersey City", "Princeton", "Parsippany", "North Brunswick", "South Brunswick"],
+    whyMove: ["NYC-area finance, pharma, and IT jobs", "Highly rated public schools", "Dense, established Indian community and businesses", "Pharmaceutical and healthcare employers", "Family and cultural networks"],
+    studentHubs: "Rutgers, NJIT, and nearby NYC-area universities enroll many Indian students, with strong feeder communities across central New Jersey.",
+    communityGroups: [
+      { group: "Gujarati", note: "Landmark community along Edison/Iselin's Oak Tree Road." },
+      { group: "Telugu", note: "Large professional and tech community." },
+      { group: "Tamil", note: "Well established across central NJ." },
+      { group: "Punjabi", note: "Significant presence in Jersey City and the north." },
+      { group: "Malayali", note: "Healthcare and nursing families statewide." },
+    ],
+    economy: "New Jersey's Indian community is dense in pharma, finance, IT, medicine, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  NY: {
+    slug: "new-york",
+    metaTitle: "Indian Population in New York: NYC, Queens, Long Island Jobs & Community",
+    metaDesc:
+      "How many Indians live in New York, where they live (Queens, NYC, Long Island, Westchester), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "New York has one of the largest total Indian-origin populations in the U.S.",
+    intro:
+      "New York is home to one of the largest and most diverse Indian communities in the country, concentrated in the New York City metro — Queens, Long Island, and the northern suburbs. It spans high-earning finance and medicine professionals as well as working-class families and small-business owners. Exact counts vary by definition.",
+    cities: ["Queens", "New York City", "Long Island", "Brooklyn", "Westchester", "Albany area"],
+    whyMove: ["Finance, medicine, and healthcare jobs", "World-class universities", "Long-established Indian neighborhoods", "Small business and retail ownership", "Global business connections"],
+    studentHubs: "NYU, Columbia, Cornell, SUNY, and CUNY campuses host large numbers of Indian students across the state.",
+    communityGroups: [
+      { group: "Punjabi", note: "Historic community in Richmond Hill, Queens." },
+      { group: "Gujarati", note: "Business and professional families across the metro." },
+      { group: "Bengali", note: "Strong cultural and academic presence." },
+      { group: "South Indian", note: "Tamil, Telugu, and Malayali communities across Queens and Long Island." },
+    ],
+    economy: "New York's Indian community spans finance, medicine, hospitality, and dense small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  IL: {
+    slug: "illinois",
+    metaTitle: "Indian Population in Illinois: Chicago & Naperville Jobs & Community",
+    metaDesc:
+      "How many Indians live in Illinois, where they live (Chicago, Naperville, Schaumburg, Aurora), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Illinois has a large, long-established Indian-origin population centered on Chicago.",
+    intro:
+      "Illinois has a large, well-established Indian community centered on the Chicago metro, especially the western suburbs like Naperville, Schaumburg, and Aurora. Devon Avenue in Chicago is a historic South Asian commercial hub. Exact counts vary by ACS/Census definition.",
+    cities: ["Chicago", "Naperville", "Schaumburg", "Aurora", "Bloomington-Normal"],
+    whyMove: ["IT, consulting, and finance jobs", "Healthcare and pharma employment", "Strong suburban schools (Naperville/Aurora)", "Established Indian businesses and temples", "Central-U.S. logistics and business base"],
+    studentHubs: "UIUC, the University of Chicago, Northwestern, and UIC draw many Indian students, with UIUC a major engineering and CS feeder.",
+    communityGroups: [
+      { group: "Gujarati", note: "Long-established business community." },
+      { group: "Telugu", note: "Growing tech and professional community." },
+      { group: "Tamil", note: "Engineering and academia families." },
+      { group: "Punjabi", note: "Historic presence around Devon Avenue." },
+    ],
+    economy: "Indian Americans in Illinois are active in IT, healthcare, finance, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  WA: {
+    slug: "washington",
+    metaTitle: "Indian Population in Washington: Seattle & Bellevue Tech Community",
+    metaDesc:
+      "How many Indians live in Washington state, where they live (Seattle, Bellevue, Redmond, Sammamish), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Washington has a fast-growing, tech-heavy Indian-origin population on the Seattle Eastside.",
+    intro:
+      "Washington state has a rapidly growing Indian community driven by big-tech hiring in Seattle and on the Eastside — Bellevue, Redmond, Kirkland, and Sammamish. It skews toward high-earning software professionals. Exact counts vary by definition, but growth over the past decade has been among the fastest nationally.",
+    cities: ["Seattle", "Bellevue", "Redmond", "Kirkland", "Sammamish"],
+    whyMove: ["Big-tech software and cloud jobs", "No state income tax", "High-paying senior engineering roles", "Growing Indian community on the Eastside", "Strong schools in Bellevue/Redmond/Sammamish"],
+    studentHubs: "The University of Washington and regional universities enroll growing numbers of Indian students feeding the Seattle-area tech workforce.",
+    communityGroups: [
+      { group: "Telugu", note: "Large, fast-growing tech community." },
+      { group: "Tamil", note: "Strong software and engineering presence." },
+      { group: "North Indian / Hindi-belt", note: "Sizable professional community on the Eastside." },
+    ],
+    economy: "Washington's Indian community is concentrated in senior tech roles, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  GA: {
+    slug: "georgia",
+    metaTitle: "Indian Population in Georgia: Atlanta, Alpharetta Jobs & Community",
+    metaDesc:
+      "How many Indians live in Georgia, where they live (Atlanta, Alpharetta, Johns Creek, Cumming), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Georgia has a high and fast-growing Indian-origin population in the Atlanta metro.",
+    intro:
+      "Georgia's Indian community is concentrated in the Atlanta metro, especially north-side suburbs like Alpharetta, Johns Creek, Cumming, and Suwanee. It is one of the faster-growing Indian populations in the Southeast. Exact counts vary by ACS/Census definition.",
+    cities: ["Atlanta", "Alpharetta", "Johns Creek", "Cumming", "Suwanee"],
+    whyMove: ["IT, telecom, and logistics jobs", "Lower housing costs than coastal hubs", "Highly rated north-Atlanta schools", "Growing tech and healthcare employers", "Established hospitality and business community"],
+    studentHubs: "Georgia Tech, Emory, and Georgia State enroll many Indian students, with Georgia Tech a major engineering and CS feeder.",
+    communityGroups: [
+      { group: "Gujarati", note: "Strong hospitality and business community." },
+      { group: "Telugu", note: "Fast-growing tech and professional community." },
+      { group: "Tamil", note: "Engineering and IT families across north Atlanta." },
+    ],
+    economy: "Indian Americans in Georgia are active in IT, hospitality, healthcare, and business, contributing significantly to the Atlanta-metro economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  FL: {
+    slug: "florida",
+    metaTitle: "Indian Population in Florida: Tampa, Orlando, Miami Jobs & Community",
+    metaDesc:
+      "How many Indians live in Florida, where they live (Tampa, Orlando, Miami, Jacksonville), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Florida has a growing Indian-origin population spread across several metros.",
+    intro:
+      "Florida's Indian community is growing and spread across Tampa, Orlando, Miami, and Jacksonville, boosted by professionals, business owners, and retirees relocating from other states. Exact counts vary by definition, but Florida is a steadily rising destination.",
+    cities: ["Tampa", "Orlando", "Miami", "Jacksonville"],
+    whyMove: ["Healthcare, hospitality, and IT jobs", "No state income tax and warm climate", "Retiree and family relocation", "Business and franchise ownership", "Growing university and tech scene"],
+    studentHubs: "The University of Florida, University of South Florida, and University of Central Florida enroll growing numbers of Indian students.",
+    communityGroups: [
+      { group: "Gujarati", note: "Strong hospitality and motel-business community." },
+      { group: "Telugu", note: "Growing tech and professional community." },
+      { group: "Malayali", note: "Healthcare and nursing families." },
+    ],
+    economy: "Florida's Indian community is active in healthcare, hospitality, business, and IT, contributing meaningfully to local economies — though exact tax contribution by state is not published as a simple official number.",
+  },
+  VA: {
+    slug: "virginia",
+    metaTitle: "Indian Population in Virginia: Northern Virginia Jobs & Community",
+    metaDesc:
+      "How many Indians live in Virginia, where they live (Fairfax, Loudoun, Arlington, Ashburn, Herndon), top jobs, universities, visa patterns, and community trends.",
+    rankLine: "Virginia has a high Indian-origin concentration in the Northern Virginia DC suburbs.",
+    intro:
+      "Virginia's Indian community is dense in Northern Virginia — Fairfax and Loudoun counties, Arlington, Ashburn, and Herndon — tied to tech, cybersecurity, and government contracting around Washington DC. It has among the highest educational attainment nationally. Exact counts vary by definition.",
+    cities: ["Northern Virginia", "Fairfax", "Loudoun", "Arlington", "Ashburn", "Herndon"],
+    whyMove: ["IT, cybersecurity, and government contracting jobs", "Top-ranked NoVA public schools", "Data-center and cloud employment", "Established professional Indian community", "Proximity to Washington DC"],
+    studentHubs: "George Mason University, the University of Virginia, and Virginia Tech enroll many Indian students, with strong NoVA feeder communities.",
+    communityGroups: [
+      { group: "Telugu", note: "Large professional and tech community." },
+      { group: "Tamil", note: "Strong IT and engineering presence." },
+      { group: "North Indian / Hindi-belt", note: "Sizable community across Fairfax and Loudoun." },
+    ],
+    economy: "Northern Virginia's Indian community is concentrated in tech, cybersecurity, and contracting, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  MD: {
+    slug: "maryland",
+    metaTitle: "Indian Population in Maryland: Montgomery County Jobs & Community",
+    metaDesc:
+      "How many Indians live in Maryland, where they live (Montgomery County, Rockville, Gaithersburg, Baltimore suburbs), top jobs, universities, and community trends.",
+    rankLine: "Maryland has a well-established Indian-origin community in the DC suburbs and Baltimore area.",
+    intro:
+      "Maryland's Indian community is established in the DC suburbs — Montgomery County, Rockville, and Gaithersburg — plus the Baltimore area, with a strong presence in medicine, biotech/NIH research, and IT. Exact counts vary by ACS/Census definition.",
+    cities: ["Montgomery County", "Rockville", "Gaithersburg", "Baltimore suburbs"],
+    whyMove: ["Medicine, biotech, and NIH research jobs", "Government and IT employment", "Strong Montgomery County schools", "Proximity to Washington DC", "Established professional community"],
+    studentHubs: "The University of Maryland and Johns Hopkins enroll many Indian students, including a large medical and research cohort.",
+    communityGroups: [
+      { group: "South Indian", note: "Tamil, Telugu, and Malayali communities across the DC suburbs." },
+      { group: "Gujarati", note: "Business and professional families." },
+      { group: "Punjabi", note: "Established community in the Baltimore-DC corridor." },
+    ],
+    economy: "Maryland's Indian community is strong in medicine, research, and IT, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+  MA: {
+    slug: "massachusetts",
+    metaTitle: "Indian Population in Massachusetts: Boston Area Jobs & Community",
+    metaDesc:
+      "How many Indians live in Massachusetts, where they live (Boston, Cambridge, Burlington, Lowell, Shrewsbury), top jobs, universities, and community trends.",
+    rankLine: "Massachusetts has a high per-capita Indian-origin population in the Boston research corridor.",
+    intro:
+      "Massachusetts has a research- and student-heavy Indian community concentrated around Boston and Cambridge, plus suburbs like Burlington, Lowell, Shrewsbury, and Worcester. It skews toward biotech, academia, medicine, and software. Exact counts vary by definition, but per-capita concentration is high.",
+    cities: ["Boston", "Cambridge", "Burlington", "Lowell", "Shrewsbury", "Worcester"],
+    whyMove: ["Biotech, academia, and medicine jobs", "World-class universities (MIT, Harvard)", "Software and deep-tech employers", "Strong schools in the western suburbs", "Research and startup ecosystem"],
+    studentHubs: "MIT, Harvard, Boston University, Northeastern, and UMass make Massachusetts one of the top U.S. destinations for Indian students.",
+    communityGroups: [
+      { group: "South Indian", note: "Large Tamil, Telugu, and Malayali research and tech community." },
+      { group: "Bengali", note: "Strong academic and cultural presence." },
+      { group: "North Indian / Hindi-belt", note: "Growing professional community in the suburbs." },
+    ],
+    economy: "Massachusetts' Indian community is concentrated in biotech, academia, medicine, and software, contributing significantly to the innovation economy — though exact tax contribution by state is not published as a simple official number.",
+  },
+};
+
+/** Cluster links for the pillar "Indian Population by State" grid. */
+export const clusterStateLinks = clusterStateCodes.map((code) => {
+  const s = states.find((x) => x.code === code)!;
+  const c = stateChild[code];
+  return {
+    code,
+    name: s.name,
+    slug: c.slug,
+    href: `/indian-population-in-${c.slug}`,
+    metros: s.metros,
+    drivers: s.drivers,
+    rankLine: c.rankLine,
+  };
+});

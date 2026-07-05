@@ -16,10 +16,14 @@ import {
   INDIAN_POP_UPDATED_HUMAN,
   INDIAN_POP_PUBLISHED,
   quickStats,
+  quickFacts,
+  definitionNote,
   keyStates,
   majorMetros,
   growthTimeline,
-  stateTable,
+  states,
+  clusterStateLinks,
+  intensityMeta,
   demographics,
   incomeBands,
   incomeNote,
@@ -53,8 +57,10 @@ export const metadata: Metadata = pageMetadata({
 
 const TOC = [
   { id: "answer", label: "Quick answer" },
+  { id: "facts", label: "Quick facts" },
   { id: "explorer", label: "Population explorer" },
   { id: "by-state", label: "Population by state" },
+  { id: "states", label: "Explore by state" },
   { id: "growth", label: "Growth timeline" },
   { id: "demographics", label: "Demographics" },
   { id: "income", label: "Income levels" },
@@ -136,26 +142,38 @@ function GrowthChart() {
 export default function Page() {
   const datasetJsonLd = {
     "@type": "Dataset",
-    name: "Indian Population in the USA — key demographic estimates",
+    name: "Indian Population in USA by State, Demographics, Income, Occupation and Immigration Status",
     description:
-      "Rounded estimates of the Indian-origin population in the United States by national total, growth over time, state concentration, income, occupation, and visa status, compiled from Pew Research Center, the U.S. Census Bureau, and the Migration Policy Institute.",
+      "A curated demographic guide and interactive explorer showing Indian-origin population patterns in the United States by state, metro area, income level, occupation, education, student status, visa status, and regional Indian community patterns.",
     url: absoluteUrl(PATH),
+    creator: { "@type": "Organization", name: site.name, "@id": `${site.url}/#organization` },
+    publisher: { "@type": "Organization", name: site.name, "@id": `${site.url}/#organization` },
     keywords: [
-      "how many Indians in America",
       "Indian population in USA",
-      "Indian American population by state",
-      "Indian demographics USA",
+      "Indian Americans",
+      "Asian Indian population",
+      "Indian immigrants",
+      "Indian American demographics",
+      "Indian population by state",
     ],
+    license: "https://www.nritousa.com/disclaimer",
     isAccessibleForFree: true,
-    creator: { "@id": `${site.url}/#organization` },
     dateModified: INDIAN_POP_UPDATED,
-    temporalCoverage: "2000/2023",
+    temporalCoverage: "2000/2026",
     spatialCoverage: "United States",
     variableMeasured: [
       "Indian-origin population",
       "Population growth rate",
       "State-level concentration",
       "Median household income (relative)",
+    ],
+    citation: [
+      "Pew Research Center — Indian Americans fact sheet",
+      "U.S. Census Bureau 2020 Census Asian population data",
+      "U.S. Census Bureau American Community Survey (ACS)",
+      "Migration Policy Institute — Indian Immigrants in the United States",
+      "USCIS H-1B reports",
+      "IIE Open Doors international students data",
     ],
   };
 
@@ -252,6 +270,25 @@ export default function Page() {
         </Container>
       </header>
 
+      {/* ------------------------------------------------- Quick Facts sheet */}
+      <section id="facts" className="scroll-mt-20 border-b border-ink-900/5 bg-white py-8 sm:py-10">
+        <Container>
+          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
+            <h2 className="text-lg font-bold text-ink-900">
+              Indian Population in USA — Quick Facts
+            </h2>
+            <dl className="mt-4 divide-y divide-ink-900/5">
+              {quickFacts.map((f) => (
+                <div key={f.label} className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:gap-4">
+                  <dt className="text-sm font-semibold text-ink-700 sm:w-72 sm:shrink-0">{f.label}</dt>
+                  <dd className="text-sm text-ink-600">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </Container>
+      </section>
+
       {/* ---------------------------------------------------------- TOC */}
       <div className="border-b border-ink-900/5 bg-white">
         <Container className="py-4">
@@ -274,13 +311,20 @@ export default function Page() {
                 Quick answer — how many Indians live in America?
               </p>
               <p className="mt-3 text-base leading-relaxed text-ink-800 sm:text-lg">
-                As of the latest available U.S. demographic estimates, about{" "}
+                As of the latest available estimates, about{" "}
                 <strong>4.9 million people</strong> in the United States identify
                 as Indian alone or in combination with other races, ethnicities,
-                or Asian origins. Census data also shows{" "}
-                <strong>Asian Indian</strong> as one of the largest Asian-origin
-                groups in America, with strong concentrations in California,
-                Texas, New Jersey, New York, Illinois, Washington, and Georgia.
+                or Asian origins. The 2020 Census recorded{" "}
+                <strong>4,397,737</strong> people as Asian Indian alone. The
+                largest Indian-origin communities are concentrated in California,
+                Texas, New Jersey, New York, Illinois, Washington, Georgia, and
+                major metro areas such as New York/New Jersey, the San Francisco
+                Bay Area, Dallas–Fort Worth, Chicago, Seattle, Washington DC,
+                Atlanta, and Houston.
+              </p>
+              <p className="mt-3 rounded-xl bg-white/70 p-3 text-xs leading-relaxed text-ink-600">
+                <span className="font-semibold text-ink-800">Definition note:</span>{" "}
+                {definitionNote}
               </p>
               <p className="mt-3 text-xs leading-relaxed text-ink-500">
                 Sources: Pew Research Center analysis of 2021–2023 ACS/IPUMS, U.S.
@@ -304,6 +348,43 @@ export default function Page() {
           <div className="mt-6">
             <IndianPopulationExplorer />
           </div>
+
+          {/* Crawlable / no-JS fallback: full data as an HTML table */}
+          <div className="mt-8">
+            <p className="text-sm font-semibold text-ink-700">
+              Heat-map style explorer showing relative Indian-origin population
+              concentration by U.S. state, including California, Texas, New Jersey,
+              New York, Illinois, Washington, Georgia, Florida, Virginia, Maryland,
+              and Massachusetts. The full data is listed below for accessibility and
+              when JavaScript is disabled.
+            </p>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+              <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+                <caption className="sr-only">
+                  Indian-origin population concentration by U.S. state, with major
+                  metros and community drivers.
+                </caption>
+                <thead>
+                  <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                    <th className="p-3 font-semibold">State</th>
+                    <th className="p-3 font-semibold">Relative concentration</th>
+                    <th className="p-3 font-semibold">Major metros</th>
+                    <th className="p-3 font-semibold">Community drivers</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-ink-900/5 bg-white">
+                  {states.map((s) => (
+                    <tr key={s.code} className="align-top">
+                      <td className="p-3 font-semibold text-ink-900">{s.name}</td>
+                      <td className="p-3 text-ink-600">{intensityMeta[s.intensity].label} — {s.rank}</td>
+                      <td className="p-3 text-ink-600">{s.metros}</td>
+                      <td className="p-3 text-ink-600">{s.drivers}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -318,16 +399,15 @@ export default function Page() {
 
           {/* Mobile cards */}
           <div className="mt-6 space-y-3 md:hidden">
-            {stateTable.map((r) => (
-              <div key={r.state} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+            {clusterStateLinks.map((r) => (
+              <Link key={r.code} href={r.href} className="block rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card transition hover:border-brand-300">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold text-ink-900">{r.state}</p>
-                  <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-semibold text-brand-700">{r.rank}</span>
+                  <p className="text-sm font-bold text-brand-700">Indian population in {r.name} →</p>
                 </div>
                 <p className="mt-1.5 text-xs text-ink-600"><span className="font-semibold text-ink-500">Metros:</span> {r.metros}</p>
                 <p className="mt-1 text-xs text-ink-600"><span className="font-semibold text-ink-500">Drivers:</span> {r.drivers}</p>
-                <p className="mt-1 text-xs text-ink-500">{r.notes}</p>
-              </div>
+                <p className="mt-1 text-xs text-ink-500">{r.rankLine}</p>
+              </Link>
             ))}
           </div>
 
@@ -337,24 +417,51 @@ export default function Page() {
               <thead>
                 <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
                   <th className="p-3 font-semibold">State</th>
-                  <th className="p-3 font-semibold">Indian population rank</th>
                   <th className="p-3 font-semibold">Major metro areas</th>
                   <th className="p-3 font-semibold">Main community drivers</th>
                   <th className="p-3 font-semibold">Notes</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-ink-900/5 bg-white">
-                {stateTable.map((r) => (
-                  <tr key={r.state} className="align-top">
-                    <td className="p-3 font-semibold text-ink-900">{r.state}</td>
-                    <td className="p-3 font-medium text-brand-700">{r.rank}</td>
+                {clusterStateLinks.map((r) => (
+                  <tr key={r.code} className="align-top">
+                    <td className="p-3 font-semibold">
+                      <Link href={r.href} className="text-brand-700 underline underline-offset-2 hover:text-brand-800">
+                        Indian population in {r.name}
+                      </Link>
+                    </td>
                     <td className="p-3 text-ink-600">{r.metros}</td>
                     <td className="p-3 text-ink-600">{r.drivers}</td>
-                    <td className="p-3 text-ink-600">{r.notes}</td>
+                    <td className="p-3 text-ink-600">{r.rankLine}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+        </Container>
+      </section>
+
+      {/* --------------------------------------------- Explore by state (cluster) */}
+      <section id="states" className="scroll-mt-20 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <Container>
+          <SectionHead
+            eyebrow="By state"
+            title="Explore Indian Population by State"
+            sub="Want state-specific details? Explore Indian population trends, cities, jobs, student hubs, and immigration patterns by state."
+          />
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {clusterStateLinks.map((r) => (
+              <Link
+                key={r.code}
+                href={r.href}
+                className="flex flex-col rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover"
+              >
+                <h3 className="text-sm font-bold text-ink-900">Indian Population in {r.name}</h3>
+                <p className="mt-1.5 flex-1 text-xs leading-relaxed text-ink-600">{r.rankLine}</p>
+                <p className="mt-2 text-[11px] text-ink-500"><span className="font-semibold text-ink-600">Metros:</span> {r.metros}</p>
+                <span className="mt-2 text-xs font-semibold text-brand-600">Explore {r.name} →</span>
+              </Link>
+            ))}
           </div>
         </Container>
       </section>
@@ -645,16 +752,31 @@ export default function Page() {
             </div>
           </div>
 
+          {/* Compact cluster index (bottom) */}
+          <div className="mx-auto mt-8 max-w-4xl">
+            <h2 className="text-lg font-bold text-ink-900">Indian Population by State</h2>
+            <p className="mt-1 text-sm text-ink-600">Jump straight to a state guide:</p>
+            <div className="mt-3 flex flex-wrap gap-2 text-sm">
+              {clusterStateLinks.map((r) => (
+                <Link key={r.code} href={r.href} className="inline-flex items-center gap-1 rounded-lg border border-ink-900/10 bg-white px-3 py-1.5 font-semibold text-brand-600 shadow-sm transition hover:border-brand-300">
+                  Indian Population in {r.name} →
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="mx-auto mt-8 max-w-4xl">
             <h2 className="text-lg font-bold text-ink-900">Related guides</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {[
                 { href: "/h1b", label: "H-1B Visa Guide for Indians", sub: "Sponsorship, lottery, and status basics." },
+                { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", sub: "Find employers that sponsor H-1B workers." },
                 { href: "/visa-bulletin", label: "Visa Bulletin Explained for Indians", sub: "Read priority dates and the green card queue." },
                 { href: "/eb2-eb3-priority-date-india", label: "Green Card Backlog for Indians", sub: "EB-2 vs EB-3 India priority dates." },
+                { href: "/green-card", label: "Green Card basics", sub: "How U.S. permanent residence works." },
                 { href: "/indian-passport-renewal-usa", label: "Indian Passport Renewal in USA", sub: "Renew your Indian passport from the U.S." },
                 { href: "/h1b-layoff", label: "H-1B Visa Layoff Options", sub: "The 60-day grace period and next steps." },
-                { href: "/free-immigrant-wealth-guide", label: "Free Immigrant Wealth Guide", sub: "Money and planning for new immigrants." },
+                { href: "/articles/moving-to-usa-from-india-checklist", label: "Moving to USA from India Checklist", sub: "Banking, housing, credit, and first-month setup." },
               ].map((r) => (
                 <Link
                   key={r.href}

@@ -46,6 +46,12 @@ const guides: { title: string; href: string; description: string }[] = [
     description:
       "Banking, housing, phone, credit, driving, insurance, and first-month setup.",
   },
+  {
+    title: "Indian Population in USA",
+    href: "/indian-population-in-usa",
+    description:
+      "Explore how many Indians live in America — by state and city, income, occupations, students, H-1B trends, green card status, and community patterns.",
+  },
 ];
 
 export default function PopularGuidesForIndians() {
