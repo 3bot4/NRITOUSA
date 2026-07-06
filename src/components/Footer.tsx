@@ -96,6 +96,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Deepak Middha — Founder", href: "/about-deepak" },
       { label: "Write for Us", href: "/contribute" },
       { label: "Contributors", href: "/contributors" },
+      { label: "Partnerships & Media", href: "/partnerships" },
       { label: "Contact", href: "/contact" },
       { label: "Terms & Conditions", href: "/terms-and-conditions" },
       { label: "Privacy Policy", href: "/privacy-policy" },
