@@ -75,6 +75,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Impact.com website ownership verification */}
+        <meta
+          name="impact-site-verification"
+          value="1d7ce766-75b7-4dfc-8576-a947042b208b"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <script
           type="application/ld+json"
