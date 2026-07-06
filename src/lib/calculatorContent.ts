@@ -1005,6 +1005,129 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       },
     ],
   },
+
+  /* ------------------------------------------------------------------ *
+   * 8. Visa-timeline rent vs buy
+   * ------------------------------------------------------------------ */
+  "rent-vs-buy-visa": {
+    slug: "rent-vs-buy-visa",
+    appCategory: "FinanceApplication",
+    keyInputs: [
+      "Your secure US visa/immigration horizon — roughly how many years you're confident you'll stay",
+      "Target home price and expected down payment",
+      "Estimated mortgage rate and property tax rate",
+      "Current monthly rent for a comparable place",
+      "Closing costs to buy (typically ~2–5%) and selling costs to exit (typically ~6–8%)",
+      "An assumed annual home-appreciation rate (kept conservative)",
+    ],
+    decisionWindow:
+      "The decision hinges on your secure US timeline, not a generic 30-year horizon. Because buying costs (closing) and selling costs are fixed no matter how long you stay, a shorter or uncertain visa window pushes the math toward renting.",
+    options: {
+      heading: "Why a visa horizon changes the rent-vs-buy math",
+      items: [
+        {
+          label: "Fixed transaction costs",
+          body: "Closing costs when you buy (often ~2–5% of price) and selling costs when you leave (agent commission plus fees, often ~6–8%) are one-time, roughly fixed amounts. The fewer years you own, the fewer months those costs get spread across — which is why a short stay rarely breaks even.",
+        },
+        {
+          label: "The visa-adjusted break-even",
+          body: "Standard US calculators often show buying winning after ~2–3 years. Once you layer in realistic selling costs and a conservative appreciation assumption, the break-even for many visa holders stretches to roughly 4–7 years. If your secure horizon is shorter than the break-even, renting is usually cheaper.",
+        },
+        {
+          label: "Relocation risk",
+          body: "A layoff, a denied extension, or a green-card delay can force a sale on someone else's timeline — sometimes into a soft market. Renting keeps that optionality; owning converts it into transaction cost and market-timing risk.",
+        },
+        {
+          label: "What buying still offers",
+          body: "If your horizon is long and reasonably secure, buying builds equity, fixes your housing cost against rent inflation, and can appreciate. The calculator is meant to tell you whether your specific timeline is long enough to capture those benefits net of costs.",
+        },
+      ],
+    },
+    resultMeaning:
+      "The calculator compares the total cost of renting against the total cost of buying-then-selling over your entered visa horizon, including closing costs, selling costs, mortgage interest, property tax, and estimated appreciation. If buying comes out cheaper, your timeline is likely past the break-even; if renting wins, the fixed transaction costs haven't had enough years to amortize. Treat the output as a planning estimate — rates, prices, and your actual length of stay will differ.",
+    taxConsequences: [
+      {
+        label: "US tax while you own",
+        body: "As a US tax resident you can generally deduct mortgage interest and property tax if you itemize (subject to the SALT cap and the standard-deduction comparison). These deductions can lower the effective cost of owning but rarely flip a short-horizon decision on their own.",
+      },
+      {
+        label: "Selling as a resident vs after you leave",
+        body: "If you sell while still a US resident and it's your main home, you may qualify to exclude a large part of the capital gain (subject to ownership/use tests). Selling a US home after you've left the US can trigger FIRPTA withholding and a non-resident filing — a real cost to factor into an exit sale.",
+      },
+      {
+        label: "India-side reporting",
+        body: "Once you're an India tax resident (ROR), worldwide income and assets can come into scope, and US property or the sale proceeds may need reporting. During an RNOR window, foreign income is often outside India's net — timing an eventual sale matters.",
+      },
+    ],
+    steps: [
+      "Estimate your secure US horizon honestly — the number of years you're confident you'll stay, not your best case.",
+      "Gather the target home price, down payment, mortgage rate, and property-tax rate for the area.",
+      "Get a realistic monthly rent for a comparable home to compare against.",
+      "Enter conservative closing (~2–5%) and selling (~6–8%) cost assumptions and a modest appreciation rate.",
+      "Run the comparison and read the break-even against your horizon — buy only if your secure timeline comfortably exceeds it.",
+      "Stress-test it: shorten the horizon by a couple of years to see how relocation risk changes the answer.",
+    ],
+    mistakes: [
+      "Using the optimistic 'best case' length of stay instead of the secure horizon you'd actually bet on.",
+      "Leaving out selling costs (6–8%) — the single biggest reason short-stay buying loses.",
+      "Assuming aggressive appreciation to make the numbers work.",
+      "Ignoring the forced-sale risk of a layoff, denied extension, or relocation on a visa.",
+      "Forgetting FIRPTA withholding and a non-resident tax filing if you sell after leaving the US.",
+      "Comparing a mortgage payment to rent without counting property tax, insurance, maintenance, and closing/selling costs.",
+    ],
+    example: {
+      title: "H-1B holder deciding whether to buy a $500k home",
+      body: "Priya is on an H-1B with a green card several years out. A $500,000 home means roughly $10,000–$25,000 in closing costs to buy and, at 6–8%, about $30,000–$40,000 in selling costs to exit — before any market move. If she's confident she'll stay 6+ years, the calculator may show buying edging out renting as those fixed costs amortize and equity builds. But if her secure horizon is closer to 3 years, the transaction costs alone swamp the benefit and renting wins comfortably. Shortening the horizon in the tool shows how quickly the answer flips.",
+    },
+    table: {
+      caption: "How the answer typically shifts with your secure visa horizon (illustrative, not a guarantee)",
+      headers: ["Secure US horizon", "Typical lean", "Why"],
+      rows: [
+        ["Under 3 years", "Rent", "Closing + selling costs can't amortize over so few years"],
+        ["3–5 years", "It depends", "Near the break-even — appreciation, rent level, and rate decide it"],
+        ["5–7+ years", "Buying often works", "Enough years for equity and appreciation to outrun fixed costs"],
+        ["Uncertain / at risk", "Lean rent", "Forced-sale risk turns fixed costs into real losses"],
+      ],
+    },
+    relatedLinks: [
+      { label: "Rent vs. Buy calculator for immigrants", href: "/calculators/rent-vs-buy-immigrant" },
+      { label: "India property capital-gains calculator", href: "/calculators/india-property-capital-gains" },
+      { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
+      { label: "Green card tracker", href: "/tools/green-card-tracker" },
+    ],
+    faqs: [
+      {
+        question: "Should I buy a house on an H-1B or other visa?",
+        answer:
+          "There's no legal barrier — visa holders can and do buy US homes. The real question is financial: buying usually only pays off if your secure US horizon comfortably exceeds the break-even (often around 4–7 years once selling costs are included). If your timeline is short or uncertain, renting is typically cheaper and keeps your options open.",
+      },
+      {
+        question: "Why is the break-even longer for visa holders than standard calculators show?",
+        answer:
+          "Standard US calculators often assume a long, certain stay and light selling costs, so buying can look like it wins after 2–3 years. Once you use realistic selling costs (6–8%), conservative appreciation, and account for the risk of an early forced sale, the break-even for many visa holders stretches to roughly 4–7 years.",
+      },
+      {
+        question: "What happens if I have to leave the US and sell the home?",
+        answer:
+          "Selling after you've left the US can trigger FIRPTA withholding on the sale proceeds and a US non-resident tax filing, on top of the usual 6–8% selling costs. A forced sale on a short timeline — or into a weak market — is the main way buying on a visa loses money, which is why the tool weights your secure horizon so heavily.",
+      },
+      {
+        question: "Can I get a mortgage on a work visa?",
+        answer:
+          "Yes. Many US lenders offer mortgages to H-1B, L-1, and other visa holders, often with standard down payments if you have US credit history and stable income. Terms can vary by lender and visa type, so it's worth comparing a few. The calculator focuses on whether buying makes sense at all for your timeline, not on loan approval.",
+      },
+      {
+        question: "Is renting really 'throwing money away'?",
+        answer:
+          "Not on a short or uncertain timeline. Renting buys flexibility and avoids the large fixed costs of buying and selling. If you'd owe ~2–5% to buy and ~6–8% to sell within a few years, those transaction costs can easily exceed the equity you'd build — so renting is often the financially rational choice, not a waste.",
+      },
+      {
+        question: "How accurate are these estimates?",
+        answer:
+          "Treat the output as a planning estimate, not a guarantee. It depends on assumptions you enter — appreciation, rates, and especially how long you actually stay — all of which can change. Use conservative inputs, stress-test a shorter horizon, and confirm specifics with a mortgage professional and tax advisor before deciding.",
+      },
+    ],
+  },
 };
 
 export function getCalculatorContent(slug: string): CalculatorContent | undefined {
