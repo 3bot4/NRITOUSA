@@ -191,6 +191,15 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/replace-green-card", 0.85, "monthly"),
   e("/i90-vs-i751", 0.8, "monthly"),
   e("/expired-green-card", 0.8, "monthly"),
+  // Trump Account (immigrant-family) cluster.
+  e("/trump-account-h1b-immigrant-families", 0.9, "monthly"),
+  e("/can-h1b-parents-open-trump-account-for-child", 0.85, "monthly"),
+  e("/trump-account-1000-eligibility", 0.85, "monthly"),
+  e("/how-to-apply-for-trump-account-form-4547", 0.85, "monthly"),
+  e("/trump-account-tax-rules-immigrants", 0.8, "monthly"),
+  e("/trump-account-moving-back-to-india", 0.8, "monthly"),
+  e("/trump-account-vs-529-for-h1b-families", 0.8, "monthly"),
+  e("/trump-account-ssn-itin-child", 0.8, "monthly"),
   // NVC (National Visa Center / consular processing) cluster.
   e("/nvc-case-status", 0.9, "monthly"),
   e("/what-is-nvc-case-number", 0.8, "monthly"),
