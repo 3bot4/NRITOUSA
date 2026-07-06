@@ -76,10 +76,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Impact.com website ownership verification */}
+        {/* Impact.com website ownership verification. The tag uses a nonstandard
+            `value` attribute (per Impact.com's snippet), which React's meta
+            types reject, so we spread a cast object to emit it verbatim. */}
         <meta
-          name="impact-site-verification"
-          value="1d7ce766-75b7-4dfc-8576-a947042b208b"
+          {...({
+            name: "impact-site-verification",
+            value: "1d7ce766-75b7-4dfc-8576-a947042b208b",
+          } as unknown as React.MetaHTMLAttributes<HTMLMetaElement>)}
         />
       </head>
       <body className="flex min-h-screen flex-col">
