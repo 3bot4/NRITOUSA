@@ -31,9 +31,9 @@ import {
 } from "@/data/indiaVisaData";
 
 const PATH = "/india-visa-from-usa";
-const TITLE = "India Visa from USA: Types, Fees, Processing Time & Application Guide";
+const TITLE = "India Visa from the USA: Types, Fees & Timelines";
 const DESC =
-  "Compare India eVisa, tourist visa, business visa, entry visa, medical visa and OCI options for U.S. citizens and Indian-origin families. See estimated fees, timelines, documents and application steps.";
+  "Compare India eVisa, tourist, business, entry and medical visas plus OCI for U.S. citizens and NRI families: fees, timelines, documents and how to apply.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 

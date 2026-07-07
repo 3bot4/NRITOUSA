@@ -16,9 +16,9 @@ const PAGE_PATH = "/uscis/receipt-number";
 const UPDATED = "2026-06-16";
 
 export const metadata: Metadata = pageMetadata({
-  title: "USCIS Receipt Number Explained | IOE, LIN, SRC, EAC, WAC, MSC Prefix Meanings",
+  title: "USCIS Receipt Number Explained: Prefix Meanings",
   description:
-    "What is a USCIS receipt number? Learn where to find it on your I-797, what the IOE, LIN, SRC, EAC, WAC, MSC prefix means, and why you should never share it publicly. Indian H1B, I-140, I-485, EAD examples included.",
+    "What a USCIS receipt number is, where to find it on your I-797, and what the IOE, LIN, SRC, EAC, WAC and MSC prefixes mean, with Indian H-1B examples.",
   path: PAGE_PATH,
 });
 

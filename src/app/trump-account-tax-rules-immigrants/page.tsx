@@ -39,9 +39,9 @@ import {
 } from "@/data/trumpAccountData";
 
 const PATH = "/trump-account-tax-rules-immigrants";
-const TITLE = "Trump Account Tax Rules for Immigrant Families: H-1B, NRI & Move-Back Tax Guide";
+const TITLE = "Trump Account Tax Rules for Immigrant Families";
 const DESC =
-  "Understand Trump Account tax rules for H-1B, green card, and Indian immigrant families: contributions, tax-deferred growth, gift tax, employer contributions, U.S. citizen child issues, and India move-back planning.";
+  "How Trump Account taxes work for H-1B and Indian immigrant families: contributions, tax-deferred growth, gift tax and India move-back planning.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 

@@ -28,9 +28,9 @@ const UPDATED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Guide for Indians | Transfer, Extension, RFE, Premium Processing",
+    title: "H-1B Guide for Indians: Transfer, Extension & RFE",
     description:
-      "Simple H1B guide for Indian workers in the USA. Understand H1B transfer, extension, amendment, RFE, premium processing, USCIS case status, layoff, grace period and travel risks.",
+      "A simple H-1B guide for Indians in the USA: transfer, extension, amendment, RFE, premium processing, case status and layoff grace-period rules.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },

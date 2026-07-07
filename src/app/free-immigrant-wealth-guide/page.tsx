@@ -7,9 +7,9 @@ import { site } from "@/lib/site";
 
 const PATH = "/free-immigrant-wealth-guide";
 
-const SEO_TITLE = "Free Immigrant Wealth Guide: Build Wealth in the USA";
+const SEO_TITLE = "Free Immigrant Wealth Guide for the USA";
 const META_DESCRIPTION =
-  "Download a free PDF guide by Deepak Middha on why many immigrants struggle to build wealth, how to avoid common money traps, and how to think about investing, real estate, retirement accounts, and passive income in the U.S.";
+  "A free PDF by Deepak Middha on why immigrants struggle to build wealth in the U.S., the money traps to avoid, and how to approach investing and retirement.";
 const OG_TITLE = "Free Immigrant Wealth Guide";
 const OG_DESCRIPTION =
   "A practical PDF guide for immigrants who want to build wealth in the U.S. without waiting years to start.";

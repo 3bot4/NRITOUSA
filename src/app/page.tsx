@@ -19,9 +19,9 @@ import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const HOME_TITLE =
-  "NRI to USA — Free Immigration, Wealth, Tax & Money Tools for Indians in the USA";
+  "NRI to USA — Free Immigration, Tax & Wealth Tools";
 const HOME_DESCRIPTION =
-  "Free calculators, checklists, and guides for Indian families in the USA managing U.S. income, India assets, taxes, retirement, property, inheritance, FBAR/FATCA, and return-to-India decisions — plus the immigration tools you know us for.";
+  "Free calculators, checklists and guides for Indians in the USA: U.S. income, India assets, taxes, retirement, FBAR/FATCA and return-to-India planning.";
 
 export const metadata: Metadata = {
   title: {

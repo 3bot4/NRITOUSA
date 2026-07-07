@@ -38,9 +38,9 @@ import {
 } from "@/data/trumpAccountData";
 
 const PATH = "/trump-account-moving-back-to-india";
-const TITLE = "Trump Account If H-1B Parents Move Back to India: Tax, Access & U.S. Citizen Child Rules";
+const TITLE = "Trump Account If H-1B Parents Move Back to India";
 const DESC =
-  "Learn what happens to your child's Trump Account if H-1B parents return to India, including account access, U.S. citizen child tax duties, Indian tax residency, foreign address issues, and records to keep.";
+  "What happens to your child's Trump Account if H-1B parents return to India: account access, U.S. citizen child tax duties, and records to keep.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 

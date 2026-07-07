@@ -23,9 +23,9 @@ const UPDATED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "Visa Bulletin Explained for Indians: EB1, EB2, EB3 Priority Dates, Final Action & Filing Dates",
+    title: "Visa Bulletin for Indians: EB1–EB3 Priority Dates",
     description:
-      "Simple guide to the visa bulletin for Indians. Understand EB1, EB2, EB3 India, priority dates, final action dates, dates for filing, retrogression and green card waiting.",
+      "A simple guide to the visa bulletin for Indians: EB1, EB2 and EB3 priority dates, final action vs. filing dates, retrogression and green-card waits.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },

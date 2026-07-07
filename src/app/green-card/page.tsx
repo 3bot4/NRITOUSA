@@ -21,9 +21,9 @@ const UPDATED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "Green Card for Indians | PERM, I-140, Priority Date, I-485 Guide",
+    title: "Green Card for Indians: PERM, I-140 & I-485 Guide",
     description:
-      "Complete green card guide for Indian H1B workers. Understand PERM, I-140, priority date, visa bulletin, I-485, EAD, Advance Parole, India backlog, EB-2 vs EB-3, AC21 portability, and CSPA for children.",
+      "Complete green-card guide for Indian H-1B workers: PERM, I-140, priority dates, I-485, EAD/AP, the India backlog, EB-2 vs EB-3, and AC21 portability.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },

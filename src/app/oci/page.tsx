@@ -20,7 +20,6 @@ import {
   OCI_DATA_AS_OF,
   VERIFY_SOURCES,
   totalWeeksLabel,
-  freshOciAllInLabel,
   ociSnapshotRows,
   OCI_SNAPSHOT_SOURCES,
   OCI_SNAPSHOT_DISCLAIMER,
@@ -33,8 +32,8 @@ const SUBTITLE =
   "Everything you need to apply, renew, transfer and manage your OCI card.";
 
 export const metadata: Metadata = pageMetadata({
-  title: `OCI Card USA 2026: Fee $275, ${totalWeeksLabel()} Processing, Eligibility & Renewal`,
-  description: `OCI card in the USA: fresh registration costs $275 government fee (all-in ${freshOciAllInLabel()}) and takes about ${totalWeeksLabel()}. Free eligibility, cost & timeline calculators, document checklist, apostille & state guides, and FAQs.`,
+  title: `OCI Card USA 2026: Fees, Timeline & Renewal`,
+  description: `OCI card from the USA: $275 government fee, ~${totalWeeksLabel()} processing, plus free eligibility, cost and timeline calculators and a document checklist.`,
   path: OCI_BASE,
 });
 
