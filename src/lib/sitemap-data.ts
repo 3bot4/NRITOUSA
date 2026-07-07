@@ -94,6 +94,7 @@ export const pagesEntries: SitemapEntry[] = [
   e("/contact", 0.5, "yearly"),
   e("/contributors", 0.5, "monthly"),
   e("/contribute", 0.5, "monthly"),
+  e("/partnerships", 0.5, "monthly"),
   e("/privacy-policy", 0.3, "yearly"),
   e("/terms-and-conditions", 0.3, "yearly"),
   e("/disclaimer", 0.3, "yearly"),

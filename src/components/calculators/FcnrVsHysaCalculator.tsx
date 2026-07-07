@@ -598,7 +598,7 @@ export default function FcnrVsHysaCalculator() {
         <ul className="space-y-2 text-sm">
           <li>
             <Link
-              href="/articles/fcnr-account-nri-usa"
+              href="/articles/fcnr-deposit-usd-yield"
               className="text-brand-600 underline hover:text-brand-700"
             >
               What is an FCNR account? →
@@ -606,7 +606,7 @@ export default function FcnrVsHysaCalculator() {
           </li>
           <li>
             <Link
-              href="/articles/nre-nro-fcnr-guide"
+              href="/articles/nre-nro-accounts-explained"
               className="text-brand-600 underline hover:text-brand-700"
             >
               NRE vs NRO vs FCNR guide →
