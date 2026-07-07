@@ -1,0 +1,6 @@
+.git
+.next
+node_modules
+data/h1b/*.xlsx
+*.dmg
+git-installer.dmg

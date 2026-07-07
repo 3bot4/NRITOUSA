@@ -98,6 +98,8 @@ export function JumpNav({ items }: { items: { label: string; href: string }[] })
 /* ------------------------------------------------------------------ *
  * "Which page should you read?" pointer block
  * ------------------------------------------------------------------ */
+const APPLY_HREF = "/how-to-apply-for-trump-account-form-4547";
+
 export function WhichPageBlock({ currentHref }: { currentHref: string }) {
   const pointers = whichPagePointers.filter((p) => p.href !== currentHref);
   return (
@@ -112,6 +114,15 @@ export function WhichPageBlock({ currentHref }: { currentHref: string }) {
           </li>
         ))}
       </ul>
+      {currentHref !== APPLY_HREF && (
+        <p className="mt-3 border-t border-ink-900/10 pt-3 text-sm text-ink-600">
+          Ready to file? Read{" "}
+          <Link href={APPLY_HREF} className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">
+            how to apply for a Trump Account
+          </Link>{" "}
+          with IRS Form 4547.
+        </p>
+      )}
     </div>
   );
 }

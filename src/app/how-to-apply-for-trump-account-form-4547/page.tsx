@@ -38,9 +38,9 @@ import {
 import type { DataRow, DataCol } from "@/data/trumpAccountData";
 
 const PATH = "/how-to-apply-for-trump-account-form-4547";
-const TITLE = "How to Apply for a Trump Account with IRS Form 4547: H-1B Parent Guide";
+const TITLE = "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide";
 const DESC =
-  "Step-by-step guide for H-1B and immigrant parents to apply for a Trump Account using IRS Form 4547, request the $1,000 pilot contribution, and avoid common mistakes.";
+  "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide for parents, eligibility checks, SSN rules, $1,000 contribution request, scam warnings, and official source links.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 
@@ -64,6 +64,41 @@ const HOWTO: (DataRow & { name: string; text: string })[] = [
   { step: "10", action: "Save records for taxes & move-back", details: "SSN card, birth certificate, Form 4547", mistake: "Losing documents needed later", name: "Save records", text: "Keep the SSN card, birth certificate/passport, and Form 4547 confirmation for future taxes and any move back to India." },
 ];
 
+/* 5-step summary table shown near the top (plain-language overview). */
+const SUMMARY_COLS: DataCol[] = [
+  { key: "step", label: "Step" },
+  { key: "action", label: "What you do", highlight: true },
+];
+const SUMMARY_ROWS: DataRow[] = [
+  { step: "Step 1", action: "Confirm the child is eligible" },
+  { step: "Step 2", action: "Check SSN and birth-year requirements" },
+  { step: "Step 3", action: "Review IRS Form 4547 instructions" },
+  { step: "Step 4", action: "Complete parent/guardian and child information" },
+  { step: "Step 5", action: "Submit only through official IRS/Treasury channels" },
+];
+
+/* Source comparison — what each source is actually for. */
+const SOURCE_COMPARE_COLS: DataCol[] = [
+  { key: "source", label: "Source" },
+  { key: "role", label: "What it's for", highlight: true },
+];
+const SOURCE_COMPARE_ROWS: DataRow[] = [
+  { source: "IRS / Treasury / TrumpAccounts.gov", role: "Official rules and filing instructions" },
+  { source: "NRItoUSA", role: "Plain-English explanation for immigrant families" },
+  { source: "TaxSaveIQ", role: "Tax calculators and long-term planning comparisons" },
+];
+
+/* Who this guide is for. */
+const WHO_FOR: React.ReactNode[] = [
+  "H-1B parents with U.S.-born children",
+  "H-4 families checking a child's eligibility",
+  "Green card (permanent resident) parents",
+  "U.S. citizen parents",
+  <>NRI families planning to <a href="/trump-account-moving-back-to-india" className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">move back to India</a></>,
+  <>Parents comparing <a href="/trump-account-vs-529-for-h1b-families" className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">a Trump Account vs a 529 plan</a></>,
+  "Anyone trying to understand IRS Form 4547 before submitting any information",
+];
+
 const FILE_OR_WAIT = [
   { h: "Apply now", body: <p>Your U.S.-born child has a valid SSN, is under 18, and (for the $1,000) is a U.S. citizen born in the {CFG.bornWindowLabel} window.</p> },
   { h: "Wait to apply", body: <p>The SSN has not been issued yet. Apply once you have the actual number that matches SSA records.</p> },
@@ -73,9 +108,11 @@ const FILE_OR_WAIT = [
 
 const JUMP = [
   { label: "Quick answer", href: "#quick-answer" },
+  { label: "Who it's for", href: "#who-for" },
+  { label: "5 steps", href: "#summary" },
   { label: "Step-by-step", href: "#steps" },
   { label: "Info checklist", href: "#checklist" },
-  { label: "File or wait?", href: "#file-or-wait" },
+  { label: "Official sources", href: "#sources" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -112,7 +149,7 @@ export default function Page() {
         ]}
         icon="📝"
         category="Immigrant Family Wealth"
-        title="How to Apply for a Trump Account Using IRS Form 4547"
+        title="How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide"
         hook="Open the account and request the $1,000 contribution with IRS Form 4547 — here's the step-by-step, the exact information you need, scam warnings, and whether to file now or wait."
         accent="from-brand-600 to-indigo-600"
         headerExtra={
@@ -129,12 +166,12 @@ export default function Page() {
               question="How do I apply for a Trump Account?"
               answer={
                 <>
-                  <p>You apply using {CFG.form}, which is used to make {CFG.formPurpose}.</p>
-                  <p>As the responsible party you provide your details and the child's (including the child's valid SSN), request the {CFG.federalContribution} only if the child qualifies, and submit per the current IRS instructions.</p>
+                  <p>To apply for a Trump Account, parents or guardians use {CFG.form} to elect an initial Trump Account for an eligible child. If the child qualifies, the same form may also be used to request the {CFG.federalContribution} federal pilot contribution.</p>
+                  <p>Before filing, confirm the child's age, valid Social Security number, citizenship/birth-year eligibility, and current IRS/Treasury instructions.</p>
                 </>
               }
-              ctaText="Walk through the steps"
-              ctaHref="#steps"
+              ctaText="See the 5 steps"
+              ctaHref="#summary"
             />
           </Container>
         </section>
@@ -142,17 +179,37 @@ export default function Page() {
         <section className="py-8">
           <Container>
             <div className="mx-auto flex max-w-3xl flex-col gap-4">
+              <WarnBox title="⚠️ NRItoUSA does not open accounts or collect your information">
+                <p>Do not enter your child's SSN or family information on random websites claiming to open a Trump Account. Use only official IRS, Treasury, or TrumpAccounts.gov instructions. NRItoUSA does not collect personal information or open accounts.</p>
+              </WarnBox>
               <WhichPageBlock currentHref={PATH} />
               <EEATBox lastUpdated={TRUMP_ACCOUNT_UPDATED_HUMAN} />
-              <WarnBox title="Do not use unofficial application links">
-                <p>Trump Accounts are new, so scam pages may appear. Start only from IRS.gov or TrumpAccounts.gov, and never enter an SSN on an unverified site.</p>
-              </WarnBox>
+            </div>
+          </Container>
+        </section>
+
+        {/* Who this guide is for */}
+        <section id="who-for" className="scroll-mt-24 py-8">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-4 text-xl font-bold text-ink-900">Who this guide is for</h2>
+              <ChecklistBox title="This page is written for" items={WHO_FOR} tone="brand" />
+            </div>
+          </Container>
+        </section>
+
+        {/* 5-step summary (plain-language overview near the top) */}
+        <section id="summary" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-4 text-xl font-bold text-ink-900">The 5 steps to apply, at a glance</h2>
+              <DataTable columns={SUMMARY_COLS} rows={SUMMARY_ROWS} caption="A quick overview — the full detail, with common mistakes, is in the step-by-step table below." />
             </div>
           </Container>
         </section>
 
         {/* Steps table (single semantic table — replaces the old ordered list) */}
-        <section id="steps" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section id="steps" className="scroll-mt-24 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <h2 className="mb-4 text-xl font-bold text-ink-900">Step-by-step: applying with Form 4547</h2>
@@ -178,9 +235,20 @@ export default function Page() {
           </Container>
         </section>
 
-        <section className="py-10 sm:py-12">
+        {/* Source comparison + official links */}
+        <section id="sources" className="scroll-mt-24 py-10 sm:py-12">
           <Container>
-            <OfficialSourceBox intro="Get the current form and instructions directly from the official sources:" links={trumpAccountSourceLinks} />
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-4 text-xl font-bold text-ink-900">Which source does what</h2>
+              <DataTable
+                columns={SOURCE_COMPARE_COLS}
+                rows={SOURCE_COMPARE_ROWS}
+                caption="Only the official sources set the rules and accept your filing. Everything else — including this page — is for understanding, not for submitting personal information."
+              />
+              <div className="mt-6">
+                <OfficialSourceBox intro="Get the current form and instructions directly from the official sources:" links={trumpAccountSourceLinks} />
+              </div>
+            </div>
           </Container>
         </section>
 
@@ -199,10 +267,13 @@ export default function Page() {
         <section className="pb-10">
           <Container>
             <NextStep
+              heading="Related Trump Account guides"
               links={[
-                { label: "Check the $1,000 eligibility", href: "/trump-account-1000-eligibility", primary: true },
+                { label: "Trump Account H-1B guide", href: "/trump-account-h1b-immigrant-families", primary: true },
+                { label: "$1,000 eligibility", href: "/trump-account-1000-eligibility" },
                 { label: "SSN vs ITIN rules", href: "/trump-account-ssn-itin-child" },
                 { label: "Moving back to India", href: "/trump-account-moving-back-to-india" },
+                { label: "Trump Account vs 529", href: "/trump-account-vs-529-for-h1b-families" },
               ]}
             />
             <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-ink-400">{TRUMP_ACCOUNT_SHORT_DISCLAIMER}</p>

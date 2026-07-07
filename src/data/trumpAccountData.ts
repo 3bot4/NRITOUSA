@@ -539,29 +539,54 @@ export const eligibilityFaqs: FaqItem[] = [
 
 export const form4547Faqs: FaqItem[] = [
   {
-    question: "What is IRS Form 4547 used for?",
+    question: "How do I apply for a Trump Account?",
     answer:
-      "Form 4547 is used to make the election to establish an initial Trump Account for the exclusive benefit of an eligible child, and to elect the $1,000 pilot program contribution if the child qualifies.",
+      "You apply using IRS Form 4547. As the responsible party (a parent or guardian) you provide your details and the child's — including the child's valid Social Security number — elect to establish the account, and, if the child qualifies, request the $1,000 pilot contribution on the same form. Submit only through official IRS/Treasury channels and follow the current instructions.",
   },
   {
-    question: "Who fills out Form 4547?",
+    question: "What is IRS Form 4547?",
     answer:
-      "The responsible party — the parent, guardian, or authorized individual — completes it on the child's behalf. The child does not fill it out.",
+      "Form 4547 is the IRS form used to make the election to establish an initial Trump Account for the exclusive benefit of an eligible child, and to elect the $1,000 pilot program contribution if the child qualifies.",
   },
   {
-    question: "Should an H-1B parent file now or wait?",
+    question: "Can I apply for a Trump Account online?",
     answer:
-      "Apply now if a U.S.-born child has a valid SSN and qualifies. Wait if the SSN has not been issued yet. Do not request the $1,000 if the child is outside the 2025–2028 window, and review carefully if the child has only an ITIN.",
+      "Only through official IRS or TrumpAccounts.gov channels once they are available. Because the program is new, the filing method and timing are set by the IRS and can change. Never enter your child's SSN on an unofficial or third-party site that claims to open the account for you.",
   },
   {
-    question: "How do I avoid Trump Account scams?",
+    question: "Who can file Form 4547 for a child?",
     answer:
-      "Start only from official sources — IRS.gov or TrumpAccounts.gov. Because the program is new, unofficial or fake application pages may appear. Never enter an SSN on an unverified site.",
+      "The responsible party — a parent, legal guardian, or otherwise authorized individual — files it on the child's behalf. The child does not complete the form.",
   },
   {
-    question: "What is the most common Form 4547 mistake for immigrant families?",
+    question: "Does my child need an SSN for a Trump Account?",
     answer:
-      "Using an ITIN in the SSN field, or requesting the $1,000 for a child born outside the 2025–2028 window. Also make sure the child's name, date of birth, and SSN match IRS/SSA records exactly.",
+      "Yes. The child needs a valid Social Security number, not an ITIN. A child with only an ITIN generally does not qualify for the account or the $1,000 pilot contribution.",
+  },
+  {
+    question: "How do I request the $1,000 Trump Account contribution?",
+    answer:
+      "If the child qualifies, you request it on the same Form 4547 used to open the account. Based on current guidance the child must be a U.S. citizen with a valid SSN, meet qualifying-child rules, and be born after December 31, 2024 and before January 1, 2029.",
+  },
+  {
+    question: "Can H-1B parents apply for a Trump Account for a U.S.-born child?",
+    answer:
+      "Generally yes, if the child qualifies. The parent's visa status is not the main test. A U.S.-born child is usually a U.S. citizen who can get a valid SSN, so the child can often be eligible, with the H-1B parent acting as the responsible party.",
+  },
+  {
+    question: "Should I apply now or wait for official instructions?",
+    answer:
+      "Apply once your child has a valid SSN and the current IRS Form 4547 and instructions are available. Wait if the SSN has not been issued yet, and always confirm the latest IRS/Treasury guidance before filing — the program is new and details can change. Contributions cannot be made before July 4, 2026.",
+  },
+  {
+    question: "Is NRItoUSA an official Trump Account application site?",
+    answer:
+      "No. NRItoUSA is an educational resource that explains the rules in plain English for immigrant families. We do not collect personal information, file Form 4547, or open accounts. Apply only through official IRS, Treasury, or TrumpAccounts.gov channels.",
+  },
+  {
+    question: "Where should I check the official Trump Account rules?",
+    answer:
+      "Use only official sources: IRS.gov (Form 4547 and instructions), TrumpAccounts.gov, and the U.S. Treasury. Rules, amounts, and forms can change, so confirm the current guidance there before you apply or contribute.",
   },
 ];
 
