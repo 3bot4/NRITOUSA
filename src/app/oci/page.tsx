@@ -26,6 +26,7 @@ import {
 } from "@/lib/oci/config";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import { ociGuides, ociGuidePath } from "@/lib/ociGuides";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 
 const TITLE = "OCI Card USA Guide (2026)";
 const SUBTITLE =
@@ -424,6 +425,32 @@ export default function OciHubPage() {
                 </span>
               </Link>
             ))}
+
+            {/* e-OCI digital card supporting page */}
+            <Link
+              href="/oci/e-oci-card"
+              className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+            >
+              <span aria-hidden className="text-2xl">
+                📱
+              </span>
+              <h3 className="mt-3 text-base font-bold tracking-tight text-ink-900 group-hover:text-brand-600">
+                e-OCI Digital Card
+              </h3>
+              <p className="mt-1.5 flex-1 text-sm leading-relaxed text-ink-500">
+                How existing OCI holders download and use the free digital e-OCI
+                card — plus email/login fixes and travel cautions.
+              </p>
+              <span className="mt-3 text-xs font-medium text-ink-400">
+                Download &amp; troubleshooting
+              </span>
+              <span className="mt-1 text-sm font-semibold text-brand-600">
+                Read guide{" "}
+                <span aria-hidden className="inline-block transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </span>
+            </Link>
           </div>
         </Container>
       </section>
@@ -477,6 +504,12 @@ export default function OciHubPage() {
               </a>
             ))}
           </div>
+        </Container>
+      </section>
+
+      <section className="bg-white pb-14">
+        <Container>
+          <ReturnToIndiaLeadMagnetCard />
         </Container>
       </section>
 

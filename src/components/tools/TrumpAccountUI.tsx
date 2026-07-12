@@ -165,6 +165,9 @@ const CLUSTER_NAV_LABELS: Record<string, string> = {
   "/trump-account-moving-back-to-india": "Moving back to India",
   "/trump-account-vs-529-for-h1b-families": "Trump Account vs 529",
   "/trump-account-ssn-itin-child": "SSN vs ITIN",
+  "/trump-account-generational-wealth-for-kids": "Generational wealth + calculator",
+  "/trump-account-tax-planning-immigrant-families": "Tax planning (withdrawals, Roth, India)",
+  "/trump-account-age-18-withdrawal-roth-conversion": "Age 18: withdrawals & Roth conversion",
 };
 
 export function TrumpClusterNav({ currentHref }: { currentHref: string }) {
@@ -281,6 +284,244 @@ export function ExampleBox({ title = "Example", children }: { title?: string; ch
 }
 
 /* ------------------------------------------------------------------ *
+ * Expert planning callout — "What I would generally consider…"
+ * Framed as an educational planning perspective, never absolute advice.
+ * ------------------------------------------------------------------ */
+export function ExpertCallout({ scenario, children }: { scenario: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl border border-violet-200 bg-violet-50/50 p-5">
+      <div className="flex items-center gap-2">
+        <span
+          className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-violet-600 text-xs font-bold text-white"
+          aria-hidden
+        >
+          DM
+        </span>
+        <p className="text-xs font-bold uppercase tracking-wide text-violet-700">Planning perspective</p>
+      </div>
+      <p className="mt-3 text-sm font-semibold text-ink-900">
+        What I would generally consider {scenario}:
+      </p>
+      <div className="mt-1.5 space-y-2 text-sm leading-relaxed text-ink-700">{children}</div>
+      <p className="mt-3 text-xs italic text-ink-400">
+        Educational planning perspective, not a personalized recommendation — verify against current guidance and your
+        own facts.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Decision flow (lightweight vertical flowchart)
+ * ------------------------------------------------------------------ */
+export interface FlowNode {
+  text: string;
+  kind?: "start" | "decision" | "action" | "end";
+  /** Optional branch annotation shown on the arrow BELOW this node. */
+  branch?: string;
+}
+const flowStyles: Record<NonNullable<FlowNode["kind"]>, string> = {
+  start: "border-brand-300 bg-brand-50 text-brand-800 font-bold",
+  decision: "border-amber-300 bg-amber-50 text-amber-900 font-semibold",
+  action: "border-ink-900/10 bg-white text-ink-700",
+  end: "border-emerald-300 bg-emerald-50 text-emerald-800 font-bold",
+};
+export function DecisionFlow({ title, nodes }: { title?: string; nodes: FlowNode[] }) {
+  return (
+    <div className="rounded-2xl border border-ink-900/10 bg-slate-50/60 p-4 sm:p-5">
+      {title && <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink-500">{title}</p>}
+      <ol className="flex flex-col items-center gap-0">
+        {nodes.map((n, i) => {
+          const kind = n.kind ?? "action";
+          return (
+            <li key={i} className="flex w-full flex-col items-center">
+              <div
+                className={`w-full max-w-md rounded-xl border px-4 py-2.5 text-center text-sm ${flowStyles[kind]}`}
+              >
+                {kind === "decision" && <span className="mr-1" aria-hidden>❓</span>}
+                {n.text}
+              </div>
+              {i < nodes.length - 1 && (
+                <div className="flex flex-col items-center py-1 text-ink-400" aria-hidden>
+                  {n.branch && (
+                    <span className="rounded-full bg-white px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wide text-ink-500 shadow-sm">
+                      {n.branch}
+                    </span>
+                  )}
+                  <span className="text-lg leading-none">↓</span>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * "Updated for 2026" trust box (freshness + reviewer credentials)
+ * ------------------------------------------------------------------ */
+export function TrustBox({ updated }: { updated: string }) {
+  return (
+    <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="rounded-full bg-emerald-600 px-2.5 py-0.5 text-[0.625rem] font-bold uppercase tracking-wide text-white">
+          Updated {updated}
+        </span>
+        <span className="text-xs font-semibold text-emerald-700">Reviewed against official IRS / Treasury guidance</span>
+      </div>
+      <p className="mt-2.5 text-sm leading-relaxed text-ink-700">
+        This guide reflects the latest publicly available IRS and Treasury guidance on Trump Accounts as of {updated}.
+        Because regulations and implementation guidance may still evolve, we update this page whenever a significant
+        federal change occurs.
+      </p>
+      <div className="mt-3 flex items-center gap-3 border-t border-emerald-200/70 pt-3">
+        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white" aria-hidden>
+          DM
+        </span>
+        <div className="text-sm text-ink-600">
+          <p>
+            Last reviewed by{" "}
+            <Link href="/about-deepak" className="font-semibold text-brand-600 underline underline-offset-2 hover:text-brand-700">
+              {author.name}
+            </Link>
+          </p>
+          <p className="text-xs text-ink-400">
+            {author.credentials} · Cross-border financial planning for immigrant families
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Quick answers — Q + 40–60 word answer + jump anchor (snippet-friendly)
+ * ------------------------------------------------------------------ */
+export interface QuickQA {
+  q: string;
+  a: string;
+  href: string;
+}
+export function QuickAnswers({ items }: { items: QuickQA[] }) {
+  return (
+    <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-600">Quick answers</p>
+      <dl className="mt-3 divide-y divide-ink-900/5">
+        {items.map((it) => (
+          <div key={it.q} className="py-3 first:pt-0 last:pb-0">
+            <dt className="text-sm font-bold text-ink-900">{it.q}</dt>
+            <dd className="mt-1 text-sm leading-relaxed text-ink-600">
+              {it.a}{" "}
+              <a href={it.href} className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">
+                Read more →
+              </a>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Horizontal life-stage timeline (responsive: row on sm+, stack on mobile)
+ * ------------------------------------------------------------------ */
+export interface TimelineStop {
+  icon: string;
+  label: string;
+  sub?: string;
+}
+export function HorizontalTimeline({ stops }: { stops: TimelineStop[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <ol className="flex min-w-max items-stretch gap-2 sm:min-w-0 sm:gap-0">
+        {stops.map((s, i) => (
+          <li key={s.label} className="flex items-center">
+            <div className="flex w-32 flex-col items-center text-center sm:w-auto sm:flex-1 sm:px-1">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-brand-200 bg-brand-50 text-xl" aria-hidden>
+                {s.icon}
+              </span>
+              <p className="mt-1.5 text-xs font-bold text-ink-900">{s.label}</p>
+              {s.sub && <p className="mt-0.5 text-[0.6875rem] leading-tight text-ink-500">{s.sub}</p>}
+            </div>
+            {i < stops.length - 1 && (
+              <span className="mx-1 flex-none self-start pt-5 text-lg text-brand-300 sm:mx-0" aria-hidden>
+                →
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Color-coded content callouts (Planning Tip / Expert Insight / etc.)
+ * ------------------------------------------------------------------ */
+export type CalloutKind = "tip" | "insight" | "note" | "mistake" | "crossborder" | "reminder" | "example";
+const calloutStyles: Record<CalloutKind, { label: string; icon: string; box: string; label2: string }> = {
+  tip: { label: "Planning tip", icon: "💡", box: "border-blue-200 bg-blue-50/60", label2: "text-blue-700" },
+  insight: { label: "Expert insight", icon: "🧭", box: "border-violet-200 bg-violet-50/50", label2: "text-violet-700" },
+  note: { label: "Important note", icon: "📌", box: "border-brand-200 bg-brand-50/50", label2: "text-brand-700" },
+  mistake: { label: "Common mistake", icon: "⚠️", box: "border-amber-200 bg-amber-50", label2: "text-amber-700" },
+  crossborder: { label: "Cross-border consideration", icon: "🌐", box: "border-teal-200 bg-teal-50/60", label2: "text-teal-700" },
+  reminder: { label: "Tax reminder", icon: "🧾", box: "border-rose-200 bg-rose-50/50", label2: "text-rose-700" },
+  example: { label: "Educational example", icon: "🧮", box: "border-sky-200 bg-sky-50/60", label2: "text-sky-700" },
+};
+export function Callout({ kind, title, children }: { kind: CalloutKind; title?: string; children: React.ReactNode }) {
+  const s = calloutStyles[kind];
+  return (
+    <div className={`rounded-2xl border p-5 text-sm leading-relaxed text-ink-700 ${s.box}`}>
+      <p className={`text-xs font-bold uppercase tracking-wide ${s.label2}`}>
+        <span className="mr-1" aria-hidden>{s.icon}</span>
+        {title ?? s.label}
+      </p>
+      <div className="mt-2 space-y-2">{children}</div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Rich author bio (E-E-A-T) — shared across cluster pages
+ * ------------------------------------------------------------------ */
+export function AuthorBio() {
+  return (
+    <div className="mx-auto max-w-3xl rounded-2xl border border-brand-100 bg-brand-50/40 p-5 shadow-card">
+      <p className="text-xs font-bold uppercase tracking-wide text-brand-600">About the author</p>
+      <div className="mt-2 flex items-start gap-3">
+        <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden>
+          DM
+        </span>
+        <div>
+          <p className="text-base font-bold text-ink-900">
+            {author.name} <span className="text-sm font-medium text-ink-400">· {author.credentials}</span>
+          </p>
+          <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+            {author.reviewerBio} His focus is cross-border tax and money decisions for Indian and immigrant families in
+            the U.S. — visa status, SSN vs ITIN, retirement accounts, and moving back to India — which is exactly where
+            Trump Account planning gets complicated. He reviews this guide against official IRS and Treasury sources and
+            keeps every tax figure framed as an illustration, not a promise.
+          </p>
+          <p className="mt-2 text-xs italic text-ink-400">
+            Educational content only — not personalized tax, legal, or investment advice. Verify current guidance and
+            consult a qualified professional for your situation.
+          </p>
+          <Link
+            href="/about-deepak"
+            className="mt-2 inline-block text-sm font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800"
+          >
+            Read more about {author.name} →
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
  * "What to do next" CTA
  * ------------------------------------------------------------------ */
 export function NextStep({
@@ -353,16 +594,36 @@ export function ScenarioCards({ scenarios }: { scenarios: Scenario[] }) {
 const TD_BASE =
   "block px-4 py-2 text-sm text-ink-700 before:mb-0.5 before:block before:text-[0.625rem] before:font-bold before:uppercase before:tracking-wide before:text-ink-400 before:content-[attr(data-label)] sm:table-cell sm:px-3 sm:py-3 sm:before:hidden";
 
-/** Generic key/value table: columns describe the header, rows are objects. */
+/**
+ * Small "► Key" marker used to flag the single most decision-relevant row in a
+ * table (scannability convention — see keyRows / keyFeatures props below).
+ */
+function KeyMarker() {
+  return (
+    <span className="mb-1 mr-2 inline-flex items-center gap-0.5 rounded-full bg-amber-400/90 px-1.5 py-px align-middle text-[0.5625rem] font-bold uppercase tracking-wide text-ink-900">
+      ► Key
+    </span>
+  );
+}
+
+/**
+ * Generic key/value table: columns describe the header, rows are objects.
+ * `keyRows` highlights the single most decision-relevant rows by their FIRST
+ * column value (subtle amber tint + left border + "► Key" marker).
+ */
 export function DataTable({
   columns,
   rows,
   caption,
+  keyRows = [],
 }: {
   columns: DataCol[];
   rows: DataRow[];
   caption?: string;
+  keyRows?: string[];
 }) {
+  const firstKey = columns[0]?.key;
+  const isKey = (r: DataRow) => firstKey != null && keyRows.includes(r[firstKey]);
   return (
     <div>
       {caption && <p className="mb-3 text-sm leading-relaxed text-ink-600">{caption}</p>}
@@ -378,19 +639,30 @@ export function DataTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-ink-900/10 sm:divide-ink-900/5">
-            {rows.map((r, ri) => (
-              <tr key={ri} className="block border-b border-ink-900/10 bg-white p-2 last:border-0 sm:table-row sm:p-0 sm:align-top">
-                {columns.map((c, ci) => (
-                  <td
-                    key={c.key}
-                    data-label={c.label}
-                    className={`${TD_BASE} ${ci === 0 ? "font-semibold text-ink-900" : ""} ${c.highlight ? "sm:bg-brand-50/40 sm:font-medium sm:text-ink-800" : ""}`}
-                  >
-                    {r[c.key]}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {rows.map((r, ri) => {
+              const key = isKey(r);
+              return (
+                <tr
+                  key={ri}
+                  className={`block border-b border-ink-900/10 p-2 last:border-0 sm:table-row sm:p-0 sm:align-top ${
+                    key ? "bg-amber-50/70 sm:bg-amber-50/50" : "bg-white"
+                  }`}
+                >
+                  {columns.map((c, ci) => (
+                    <td
+                      key={c.key}
+                      data-label={c.label}
+                      className={`${TD_BASE} ${ci === 0 ? "font-semibold text-ink-900" : ""} ${
+                        c.highlight ? "sm:bg-brand-50/40 sm:font-medium sm:text-ink-800" : ""
+                      } ${key && ci === 0 ? "border-l-4 border-l-amber-400 sm:border-l-4" : ""}`}
+                    >
+                      {key && ci === 0 && <KeyMarker />}
+                      {r[c.key]}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -398,15 +670,20 @@ export function DataTable({
   );
 }
 
-/** Feature-by-column comparison (Trump Account vs 529 vs Roth vs brokerage). */
+/**
+ * Feature-by-column comparison (Trump Account vs 529 vs Roth vs brokerage).
+ * `keyFeatures` flags the single most decision-relevant row(s) by feature name.
+ */
 export function ComparisonTable({
   columns,
   rows,
   caption,
+  keyFeatures = [],
 }: {
   columns: ComparisonColumn[];
   rows: ComparisonRow[];
   caption?: string;
+  keyFeatures?: string[];
 }) {
   return (
     <div>
@@ -424,25 +701,36 @@ export function ComparisonTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-ink-900/10 sm:divide-ink-900/5">
-            {rows.map((r) => (
-              <tr key={r.feature} className="block border-b border-ink-900/10 bg-white p-2 last:border-0 sm:table-row sm:p-0 sm:align-top">
-                <td
-                  data-label="Feature"
-                  className={`${TD_BASE} bg-ink-50/40 font-bold text-ink-900 sm:bg-transparent sm:font-semibold`}
+            {rows.map((r) => {
+              const key = keyFeatures.includes(r.feature);
+              return (
+                <tr
+                  key={r.feature}
+                  className={`block border-b border-ink-900/10 p-2 last:border-0 sm:table-row sm:p-0 sm:align-top ${
+                    key ? "bg-amber-50/70 sm:bg-amber-50/50" : "bg-white"
+                  }`}
                 >
-                  {r.feature}
-                </td>
-                {columns.map((c) => (
                   <td
-                    key={c.key}
-                    data-label={c.label}
-                    className={`${TD_BASE} ${c.highlight ? "sm:bg-brand-50/40 sm:font-medium sm:text-ink-800" : ""}`}
+                    data-label="Feature"
+                    className={`${TD_BASE} bg-ink-50/40 font-bold text-ink-900 sm:bg-transparent sm:font-semibold ${
+                      key ? "border-l-4 border-l-amber-400 sm:border-l-4" : ""
+                    }`}
                   >
-                    {r.values[c.key]}
+                    {key && <KeyMarker />}
+                    {r.feature}
                   </td>
-                ))}
-              </tr>
-            ))}
+                  {columns.map((c) => (
+                    <td
+                      key={c.key}
+                      data-label={c.label}
+                      className={`${TD_BASE} ${c.highlight ? "sm:bg-brand-50/40 sm:font-medium sm:text-ink-800" : ""}`}
+                    >
+                      {r.values[c.key]}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

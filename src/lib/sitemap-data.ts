@@ -132,6 +132,12 @@ export const taxEntries: SitemapEntry[] = [
   e("/return-to-india", 0.8, "weekly"),
   e("/nri-estate-planning", 0.8, "weekly"),
   e("/send-money-to-india", 0.8, "weekly"),
+  // Life insurance cluster (Indian-family, educational)
+  e("/life-insurance-for-indian-families-usa", 0.9, "monthly"),
+  e("/term-life-insurance-for-indian-families-usa", 0.85, "monthly"),
+  e("/indexed-universal-life-iul-for-indian-families-usa", 0.85, "monthly"),
+  e("/term-vs-iul-for-indian-families-usa", 0.85, "monthly"),
+  e("/term-life-insurance-needs-calculator-indian-families", 0.85, "monthly"),
   ...itrPages.map((p) =>
     e(itrPath(p.slug), p.kind === "pillar" ? 0.9 : 0.7, "monthly", clusterDate(p)),
   ),
@@ -161,6 +167,20 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/processing-times", 0.9, "weekly", immDate),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
+  e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
+  // H1B Lottery Results cluster (hub + 6 supporting pages).
+  e("/h1b-lottery-results", 0.9, "monthly", immDate),
+  e("/h1b-lottery-selected-next-steps", 0.8, "monthly", immDate),
+  e("/h1b-lottery-not-selected-options", 0.8, "monthly", immDate),
+  e("/h1b-second-lottery", 0.8, "monthly", immDate),
+  e("/h1b-registration-status-meaning", 0.8, "monthly", immDate),
+  e("/h1b-lottery-results-for-f1-opt-students", 0.8, "monthly", immDate),
+  e("/h1b-lottery-results-for-h4-families", 0.8, "monthly", immDate),
+  e("/h1b-lottery-results-date", 0.8, "monthly", immDate),
+  e("/h1b-lottery-chances", 0.8, "monthly", immDate),
+  e("/h1b-visa-stamping-after-selection", 0.8, "monthly", immDate),
+  e("/h1b-lottery-multiple-registrations", 0.8, "monthly", immDate),
+  e("/h1b-lottery-chance-calculator", 0.9, "monthly", immDate),
   // PERM processing-time cluster (top-level tool + supporting pages).
   e("/perm-processing-time-calculator", 0.9, "monthly"),
   e("/dol-processing-times", 0.85, "monthly"),
@@ -201,6 +221,9 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/trump-account-moving-back-to-india", 0.8, "monthly"),
   e("/trump-account-vs-529-for-h1b-families", 0.8, "monthly"),
   e("/trump-account-ssn-itin-child", 0.8, "monthly"),
+  e("/trump-account-generational-wealth-for-kids", 0.85, "monthly"),
+  e("/trump-account-tax-planning-immigrant-families", 0.85, "monthly"),
+  e("/trump-account-age-18-withdrawal-roth-conversion", 0.8, "monthly"),
   // NVC (National Visa Center / consular processing) cluster.
   e("/nvc-case-status", 0.9, "monthly"),
   e("/what-is-nvc-case-number", 0.8, "monthly"),
@@ -212,6 +235,7 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/immigration-tracker", 0.8, "weekly"),
   e("/oci", 0.9, "weekly"),
   ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),
+  e("/oci/e-oci-card", 0.8, "monthly"),
   // India Visa from USA cluster (hub + 7 supporting intent pages).
   e("/india-visa-from-usa", 0.9, "monthly"),
   e("/india-evisa-for-us-citizens", 0.85, "monthly"),

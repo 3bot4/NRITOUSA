@@ -3,6 +3,7 @@ import MoneyHub, { type MoneyHubConfig } from "@/components/MoneyHub";
 import { pageMetadata } from "@/lib/seo";
 
 const config: MoneyHubConfig = {
+  showReturnToIndiaLeadMagnet: true,
   path: "/india-property",
   breadcrumb: "India Property",
   icon: "🏠",

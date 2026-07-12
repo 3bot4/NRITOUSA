@@ -18,6 +18,7 @@ import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import HubLinkGroups from "@/components/HubLinkGroups";
 import RelatedHubs from "@/components/RelatedHubs";
 import FbarFatcaChecker from "@/components/tools/FbarFatcaChecker";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getTool } from "@/lib/tools";
 import { site } from "@/lib/site";
 import {
@@ -201,6 +202,9 @@ export default function FbarFatcaCheckerPage() {
             Thresholds summarized from FinCEN Form 114 and IRS Form 8938
             instructions; verify against current IRS guidance each tax season.
           </p>
+          <div className="mx-auto mt-8 max-w-3xl">
+            <ReturnToIndiaLeadMagnetCard />
+          </div>
         </Container>
       </section>
 

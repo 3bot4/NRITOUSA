@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
@@ -14,6 +19,25 @@ export const metadata: Metadata = pageMetadata({
   description: description,
   path: "/about",
 });
+
+// Additive structured data: an AboutPage whose mainEntity is the site-wide
+// Organization node (emitted in the root layout, resolved by @id), plus a
+// Home > About BreadcrumbList. No visible content is changed.
+const aboutJsonLd = jsonLdGraph(
+  {
+    "@type": "AboutPage",
+    "@id": `${absoluteUrl("/about")}#aboutpage`,
+    url: absoluteUrl("/about"),
+    name: title,
+    description,
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: { "@id": `${site.url}/#organization` },
+  },
+  breadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]),
+);
 
 const values = [
   {
@@ -36,6 +60,10 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       <section className="border-b border-ink-900/5 bg-white py-16 sm:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center">

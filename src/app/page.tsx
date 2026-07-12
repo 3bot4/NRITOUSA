@@ -2,19 +2,12 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Ticker from "@/components/home/Ticker";
 import HomeHero from "@/components/home/HomeHero";
+import GlobalSearch from "@/components/home/GlobalSearch";
+import MostUsedTools from "@/components/home/MostUsedTools";
 import HubCards from "@/components/home/HubCards";
-import HomeToolFinder from "@/components/home/HomeToolFinder";
-import NriWealthPlanning from "@/components/home/NriWealthPlanning";
-import CommonNriQuestions from "@/components/home/CommonNriQuestions";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
-import AllToolsGrid from "@/components/home/AllToolsGrid";
-import UscisToolsSpotlight from "@/components/home/UscisToolsSpotlight";
-import TaxComplianceSpotlight from "@/components/home/TaxComplianceSpotlight";
 import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
-import ImmigrationTrackerSpotlight from "@/components/home/ImmigrationTrackerSpotlight";
-import PermTimelineSpotlight from "@/components/home/PermTimelineSpotlight";
-import H1bLayoffSpotlight from "@/components/home/H1bLayoffSpotlight";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
@@ -50,18 +43,12 @@ export default function HomePage() {
       <HomeHero />
 
       <Container className="pb-8 pt-6 sm:pb-10">
+        {/* Clean gateway: search → most-used tools → hubs → guide → guides. */}
+        <GlobalSearch />
+        <MostUsedTools />
         <HubCards />
-        <HomeToolFinder />
-        <NriWealthPlanning />
-        <CommonNriQuestions />
-        <PopularGuidesForIndians />
-        <ImmigrationTrackerSpotlight />
-        <PermTimelineSpotlight />
-        <H1bLayoffSpotlight />
-        <UscisToolsSpotlight />
-        <TaxComplianceSpotlight />
         <LeadMagnetSpotlight />
-        <AllToolsGrid />
+        <PopularGuidesForIndians />
         <LatestUpdates />
       </Container>
 

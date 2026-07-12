@@ -4,8 +4,15 @@ import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getArticle } from "@/lib/articles";
 import { site } from "@/lib/site";
+import {
+  absoluteUrl,
+  articleUrl,
+  breadcrumbJsonLd,
+  jsonLdGraph,
+} from "@/lib/seo";
 
 /**
  * Shared template for the wealth / tax / India-money planning hubs linked from
@@ -44,6 +51,8 @@ export type MoneyHubConfig = {
     ctaText?: string;
     ctaHref?: string;
   };
+  /** Show the Return-to-India Playbook lead-magnet card under the hero. */
+  showReturnToIndiaLeadMagnet?: boolean;
 };
 
 export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
@@ -51,8 +60,48 @@ export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
     .map((s) => getArticle(s))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
+  // Additive structured data: a CollectionPage over the hub's curated links
+  // (articles + tools) plus a Home > hub BreadcrumbList. Mirrors the visual
+  // breadcrumb; no layout/content is changed. #website resolves against the
+  // site-wide node emitted in the root layout.
+  const jsonLd = jsonLdGraph(
+    {
+      "@type": "CollectionPage",
+      "@id": `${absoluteUrl(config.path)}#collection`,
+      url: absoluteUrl(config.path),
+      name: config.title,
+      description: config.intro,
+      isPartOf: { "@id": `${site.url}/#website` },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: [
+          ...articles.map((a, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: articleUrl(a.slug),
+            name: a.title,
+          })),
+          ...config.tools.map((t, i) => ({
+            "@type": "ListItem",
+            position: articles.length + i + 1,
+            url: absoluteUrl(t.href),
+            name: t.label,
+          })),
+        ],
+      },
+    },
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: config.breadcrumb, url: config.path },
+    ]),
+  );
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section
         className={`relative overflow-hidden border-b border-ink-900/5 bg-gradient-to-br ${config.accent}`}
@@ -115,6 +164,15 @@ export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
               ctaText={config.snapshot.ctaText}
               ctaHref={config.snapshot.ctaHref}
             />
+          </Container>
+        </section>
+      )}
+
+      {/* Return-to-India Playbook lead magnet (opt-in) */}
+      {config.showReturnToIndiaLeadMagnet && (
+        <section className="bg-white pt-10 sm:pt-14">
+          <Container>
+            <ReturnToIndiaLeadMagnetCard />
           </Container>
         </section>
       )}

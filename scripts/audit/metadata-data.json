@@ -1,0 +1,2050 @@
+{
+  "total": 154,
+  "dupTitles": [
+    [
+      "«title»",
+      [
+        "/about",
+        "/calculators",
+        "/contact",
+        "/contribute",
+        "/contributors",
+        "/india-tax-compliance",
+        "/long-term-nri-wealth",
+        "/resources",
+        "/send-money-to-india",
+        "/topics"
+      ]
+    ],
+    [
+      "«calc.seoTitle»",
+      [
+        "/calculators/[slug]",
+        "/education/college-rankings",
+        "/education/gpa-calculator",
+        "/education/grade-finder",
+        "/education/sat-guide",
+        "/education/tuition-calculator"
+      ]
+    ],
+    [
+      "«page.seoTitle»",
+      [
+        "/green-card/[slug]",
+        "/h1b/[slug]",
+        "/indian-passport-renewal-usa/[page]",
+        "/uscis/[slug]",
+        "/uscis/forms/[slug]",
+        "/visa-bulletin/[slug]"
+      ]
+    ],
+    [
+      "«tool.seoTitle»",
+      [
+        "/tools/citizenship-checklist",
+        "/tools/fbar-fatca-checker",
+        "/tools/flight-price-guide",
+        "/tools/form-10f-generator",
+        "/tools/form-15ca-15cb-checklist",
+        "/tools/form-3520-india-gift-checker",
+        "/tools/green-card-stage-finder",
+        "/tools/green-card-tracker",
+        "/tools/h1b-lottery-timeline",
+        "/tools/h1b-salaries",
+        "/tools/h1b-sponsor-finder",
+        "/tools/h1b-transfer-risk-checklist",
+        "/tools/h4-ead-navigator",
+        "/tools/nri-tax-filing-roadmap",
+        "/tools/nri-tds-refund-checklist",
+        "/tools/oci-cost-calculator",
+        "/tools/oci-eligibility-checker",
+        "/tools/oci-timeline-calculator",
+        "/tools/priority-date-checker",
+        "/tools/processing-times",
+        "/tools/uscis-case-status-meaning",
+        "/tools/uscis-form-finder",
+        "/tools/uscis-life-decision-checklist",
+        "/tools/uscis-notice-decoder",
+        "/tools/uscis-processing-delay-checker",
+        "/tools/uscis-receipt-number-decoder",
+        "/tools/visa-free-countries"
+      ]
+    ]
+  ],
+  "dupDescs": [
+    [
+      "«description»",
+      [
+        "/about",
+        "/calculators",
+        "/contact",
+        "/contribute",
+        "/contributors",
+        "/india-tax-compliance",
+        "/long-term-nri-wealth",
+        "/resources",
+        "/send-money-to-india",
+        "/topics"
+      ]
+    ],
+    [
+      "«calc.seoDescription»",
+      [
+        "/calculators/[slug]",
+        "/education/college-rankings",
+        "/education/gpa-calculator",
+        "/education/grade-finder",
+        "/education/sat-guide",
+        "/education/tuition-calculator"
+      ]
+    ],
+    [
+      "«page.metaDescription»",
+      [
+        "/green-card/[slug]",
+        "/h1b/[slug]",
+        "/indian-passport-renewal-usa/[page]",
+        "/uscis/[slug]",
+        "/uscis/forms/[slug]",
+        "/visa-bulletin/[slug]"
+      ]
+    ],
+    [
+      "«tool.seoDescription»",
+      [
+        "/tools/citizenship-checklist",
+        "/tools/fbar-fatca-checker",
+        "/tools/flight-price-guide",
+        "/tools/form-10f-generator",
+        "/tools/form-15ca-15cb-checklist",
+        "/tools/form-3520-india-gift-checker",
+        "/tools/green-card-stage-finder",
+        "/tools/green-card-tracker",
+        "/tools/h1b-lottery-timeline",
+        "/tools/h1b-salaries",
+        "/tools/h1b-sponsor-finder",
+        "/tools/h1b-transfer-risk-checklist",
+        "/tools/h4-ead-navigator",
+        "/tools/nri-tax-filing-roadmap",
+        "/tools/nri-tds-refund-checklist",
+        "/tools/oci-cost-calculator",
+        "/tools/oci-eligibility-checker",
+        "/tools/oci-timeline-calculator",
+        "/tools/priority-date-checker",
+        "/tools/processing-times",
+        "/tools/uscis-case-status-meaning",
+        "/tools/uscis-form-finder",
+        "/tools/uscis-life-decision-checklist",
+        "/tools/uscis-notice-decoder",
+        "/tools/uscis-processing-delay-checker",
+        "/tools/uscis-receipt-number-decoder",
+        "/tools/visa-free-countries"
+      ]
+    ]
+  ],
+  "issues": [
+    {
+      "route": "/about-deepak",
+      "issue": "description not statically found",
+      "val": "src/app/about-deepak/page.tsx"
+    },
+    {
+      "route": "/can-h1b-parents-open-trump-account-for-child",
+      "issue": "title too long (95 w/ suffix)",
+      "val": "Can H1B Parents Open a Trump Account for Their Child? H-1B, H-4 & Green Card Rules"
+    },
+    {
+      "route": "/can-h1b-parents-open-trump-account-for-child",
+      "issue": "description too long (166)",
+      "val": "H-1B parents may be able to open a Trump Account for an eligible child. See U.S.…"
+    },
+    {
+      "route": "/community/nri-uscis-decisions",
+      "issue": "description too long (192)",
+      "val": "Anonymous aggregated data on what life decisions Indian immigrants in the US are…"
+    },
+    {
+      "route": "/cookie-policy",
+      "issue": "title not statically found",
+      "val": "src/app/cookie-policy/page.tsx"
+    },
+    {
+      "route": "/cookie-policy",
+      "issue": "description not statically found",
+      "val": "src/app/cookie-policy/page.tsx"
+    },
+    {
+      "route": "/disclaimer",
+      "issue": "title not statically found",
+      "val": "src/app/disclaimer/page.tsx"
+    },
+    {
+      "route": "/disclaimer",
+      "issue": "description not statically found",
+      "val": "src/app/disclaimer/page.tsx"
+    },
+    {
+      "route": "/entry-visa-india-from-usa",
+      "issue": "title too long (92 w/ suffix)",
+      "val": "Entry Visa India from USA: Guide for Indian-Origin Families, Spouses & Children"
+    },
+    {
+      "route": "/entry-visa-india-from-usa",
+      "issue": "description too long (184)",
+      "val": "Understand when Entry Visa India may be needed for Indian-origin U.S. citizens, …"
+    },
+    {
+      "route": "/expired-green-card",
+      "issue": "title too long (75 w/ suffix)",
+      "val": "Expired Green Card: What to Do Before Travel, Work, or Renewal"
+    },
+    {
+      "route": "/green-card-renewal",
+      "issue": "title too long (63 w/ suffix)",
+      "val": "Green Card Renewal 2026: Timeline, Fee & Form I-90"
+    },
+    {
+      "route": "/green-card-renewal-fee",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)"
+    },
+    {
+      "route": "/green-card-renewal-fee",
+      "issue": "description too long (181)",
+      "val": "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $5…"
+    },
+    {
+      "route": "/h1b-layoff",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "H-1B Layoff Checklist for Indians in the USA | NRItoUSA"
+    },
+    {
+      "route": "/h1b-layoff",
+      "issue": "description too long (204)",
+      "val": "Laid off on H-1B? Use this educational checklist for Indian workers in the USA: …"
+    },
+    {
+      "route": "/h1b-sponsors/[socSlug]/[state]",
+      "issue": "title too long (71 w/ suffix)",
+      "val": "Top H-1B Sponsors for ${data.soc_title} in ${place} (2026)"
+    },
+    {
+      "route": "/how-to-apply-for-trump-account-form-4547",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide"
+    },
+    {
+      "route": "/how-to-apply-for-trump-account-form-4547",
+      "issue": "description too long (193)",
+      "val": "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide f…"
+    },
+    {
+      "route": "/i90-vs-i751",
+      "issue": "title too long (67 w/ suffix)",
+      "val": "Form I-90 vs I-751: Which Green Card Form Do You Need?"
+    },
+    {
+      "route": "/immigration",
+      "issue": "title too long (91 w/ suffix)",
+      "val": "Immigration Hub for Indians in the USA: H1B, Green Card, USCIS & Visa Bulletin"
+    },
+    {
+      "route": "/immigration",
+      "issue": "description too long (166)",
+      "val": "The immigration hub for Indians in the USA. Start by situation, then use free to…"
+    },
+    {
+      "route": "/immigration-tracker",
+      "issue": "title too long (82 w/ suffix)",
+      "val": "NRI Immigration Tracker | Visa Bulletin, Green Card, USCIS & H1B Data"
+    },
+    {
+      "route": "/immigration-tracker",
+      "issue": "description too long (173)",
+      "val": "Track EB1, EB2, EB3 India visa bulletin dates, green card backlog, I-485 invento…"
+    },
+    {
+      "route": "/india-business-visa-from-usa",
+      "issue": "title too long (95 w/ suffix)",
+      "val": "India Business Visa from USA: Documents, Invitation Letter, Fees & Processing Time"
+    },
+    {
+      "route": "/india-business-visa-from-usa",
+      "issue": "description too long (172)",
+      "val": "Learn how India business visa from USA works, including eBusiness vs regular bus…"
+    },
+    {
+      "route": "/india-evisa-for-us-citizens",
+      "issue": "title too long (90 w/ suffix)",
+      "val": "India eVisa for U.S. Citizens: Eligibility, Fees, Processing Time & Documents"
+    },
+    {
+      "route": "/india-evisa-for-us-citizens",
+      "issue": "description too long (176)",
+      "val": "Learn who can apply for India eVisa from the USA, including eTourist, eBusiness …"
+    },
+    {
+      "route": "/india-property",
+      "issue": "title too long (95 w/ suffix)",
+      "val": "India Property Planning for NRIs — Sell vs Hold, Capital Gains, TDS & Repatriation"
+    },
+    {
+      "route": "/india-tax-compliance/nri-tax-forms-limits",
+      "issue": "title not statically found",
+      "val": "src/app/india-tax-compliance/nri-tax-forms-limits/page.tsx"
+    },
+    {
+      "route": "/india-tax-compliance/nri-tax-forms-limits",
+      "issue": "description not statically found",
+      "val": "src/app/india-tax-compliance/nri-tax-forms-limits/page.tsx"
+    },
+    {
+      "route": "/india-tourist-visa-from-usa",
+      "issue": "title too long (88 w/ suffix)",
+      "val": "India Tourist Visa from USA: eVisa vs Regular Tourist Visa, Fees & Timeline"
+    },
+    {
+      "route": "/india-visa-fees-usa",
+      "issue": "title too long (86 w/ suffix)",
+      "val": "India Visa Fees for U.S. Citizens: Tourist, Business, Entry & eVisa Costs"
+    },
+    {
+      "route": "/india-visa-processing-time-usa",
+      "issue": "title too long (95 w/ suffix)",
+      "val": "India Visa Processing Time from USA: eVisa, Regular Visa, VFS & Consulate Timeline"
+    },
+    {
+      "route": "/indian-population-in-california",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-california/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-california",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-california/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-florida",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-florida/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-florida",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-florida/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-georgia",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-georgia/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-georgia",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-georgia/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-illinois",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-illinois/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-illinois",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-illinois/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-maryland",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-maryland/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-maryland",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-maryland/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-massachusetts",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-massachusetts/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-massachusetts",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-massachusetts/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-new-jersey",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-new-jersey/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-new-jersey",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-new-jersey/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-new-york",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-new-york/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-new-york",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-new-york/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-texas",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-texas/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-texas",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-texas/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-usa",
+      "issue": "title too long (80 w/ suffix)",
+      "val": "How Many Indians Live in America? Indian Population in USA by State"
+    },
+    {
+      "route": "/indian-population-in-usa",
+      "issue": "description too long (190)",
+      "val": "See how many Indians live in America, where Indian Americans live by state and c…"
+    },
+    {
+      "route": "/indian-population-in-virginia",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-virginia/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-virginia",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-virginia/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-washington",
+      "issue": "title not statically found",
+      "val": "src/app/indian-population-in-washington/page.tsx"
+    },
+    {
+      "route": "/indian-population-in-washington",
+      "issue": "description not statically found",
+      "val": "src/app/indian-population-in-washington/page.tsx"
+    },
+    {
+      "route": "/nri-estate-planning",
+      "issue": "title too long (90 w/ suffix)",
+      "val": "NRI Estate Planning — Wills, Trusts, Beneficiaries & Cross-Border Inheritance"
+    },
+    {
+      "route": "/nri-wealth-checkup/assets",
+      "issue": "description not statically found",
+      "val": "src/app/nri-wealth-checkup/assets/page.tsx"
+    },
+    {
+      "route": "/nri-wealth-checkup/dashboard",
+      "issue": "description not statically found",
+      "val": "src/app/nri-wealth-checkup/dashboard/page.tsx"
+    },
+    {
+      "route": "/nri-wealth-checkup/income",
+      "issue": "description not statically found",
+      "val": "src/app/nri-wealth-checkup/income/page.tsx"
+    },
+    {
+      "route": "/nri-wealth-checkup",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "NRI Wealth Checkup: FBAR, FATCA, India Assets & U.S. Tax Organizer"
+    },
+    {
+      "route": "/nri-wealth-checkup",
+      "issue": "description too long (181)",
+      "val": "Free educational tool for Indians in the USA to organize U.S. income, India asse…"
+    },
+    {
+      "route": "/nri-wealth-checkup/profile",
+      "issue": "description not statically found",
+      "val": "src/app/nri-wealth-checkup/profile/page.tsx"
+    },
+    {
+      "route": "/nri-wealth-checkup/report",
+      "issue": "description not statically found",
+      "val": "src/app/nri-wealth-checkup/report/page.tsx"
+    },
+    {
+      "route": "/nvc-case-status",
+      "issue": "description too long (187)",
+      "val": "Check what your NVC case status means, how long each stage may take, and what to…"
+    },
+    {
+      "route": "/nvc-document-checklist-india",
+      "issue": "description too long (181)",
+      "val": "The NVC document checklist for Indian applicants — civil documents (birth, marri…"
+    },
+    {
+      "route": "/nvc-processing-time",
+      "issue": "description too long (203)",
+      "val": "How long NVC takes after USCIS approval — case creation, fee and DS-260 steps, d…"
+    },
+    {
+      "route": "/nvc-public-inquiry",
+      "issue": "description too long (169)",
+      "val": "When to submit an NVC public inquiry, how to contact the National Visa Center, w…"
+    },
+    {
+      "route": "/oci-vs-india-visa",
+      "issue": "title too long (80 w/ suffix)",
+      "val": "OCI vs India Visa: Which Is Better for Indian-Origin U.S. Citizens?"
+    },
+    {
+      "route": "/oci-vs-india-visa",
+      "issue": "description too long (172)",
+      "val": "Compare OCI, India eVisa, Entry Visa and regular India visa for Indian-origin U.…"
+    },
+    {
+      "route": "/partnerships",
+      "issue": "description not statically found",
+      "val": "src/app/partnerships/page.tsx"
+    },
+    {
+      "route": "/privacy",
+      "issue": "no metadata export",
+      "val": ""
+    },
+    {
+      "route": "/privacy-policy",
+      "issue": "title not statically found",
+      "val": "src/app/privacy-policy/page.tsx"
+    },
+    {
+      "route": "/privacy-policy",
+      "issue": "description not statically found",
+      "val": "src/app/privacy-policy/page.tsx"
+    },
+    {
+      "route": "/renew-green-card-online",
+      "issue": "title too long (66 w/ suffix)",
+      "val": "Renew Green Card Online: Form I-90 Step-by-Step Guide"
+    },
+    {
+      "route": "/replace-green-card",
+      "issue": "title too long (73 w/ suffix)",
+      "val": "Replace Green Card: Lost, Stolen, Damaged, or Incorrect Card"
+    },
+    {
+      "route": "/return-to-india",
+      "issue": "title too long (89 w/ suffix)",
+      "val": "Retirement & Return to India — 401(k), IRA, Social Security, RNOR & Currency"
+    },
+    {
+      "route": "/terms-and-conditions",
+      "issue": "title not statically found",
+      "val": "src/app/terms-and-conditions/page.tsx"
+    },
+    {
+      "route": "/terms-and-conditions",
+      "issue": "description not statically found",
+      "val": "src/app/terms-and-conditions/page.tsx"
+    },
+    {
+      "route": "/terms-of-use",
+      "issue": "no metadata export",
+      "val": ""
+    },
+    {
+      "route": "/tools/nri-global-wealth-tax-organizer",
+      "issue": "no metadata export",
+      "val": ""
+    },
+    {
+      "route": "/tools",
+      "issue": "title too long (92 w/ suffix)",
+      "val": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA"
+    },
+    {
+      "route": "/tools",
+      "issue": "description too long (170)",
+      "val": "Free tools for Indians in the USA: NRI Wealth Checkup, FBAR/FATCA checker, green…"
+    },
+    {
+      "route": "/tools/visa-green-card",
+      "issue": "title too long (80 w/ suffix)",
+      "val": "Visa & Green Card Tools for Indians in USA | H1B, EB2, I-485, USCIS"
+    },
+    {
+      "route": "/tools/visa-green-card",
+      "issue": "description too long (167)",
+      "val": "Free visa and green card tools for Indians in the USA. Check EB1/EB2/EB3 priorit…"
+    },
+    {
+      "route": "/trump-account-1000-eligibility",
+      "issue": "title too long (91 w/ suffix)",
+      "val": "Trump Account $1,000 Eligibility: Rules for U.S.-Born Children of H-1B Parents"
+    },
+    {
+      "route": "/trump-account-1000-eligibility",
+      "issue": "description too long (173)",
+      "val": "Check who qualifies for the $1,000 Trump Account pilot contribution, including U…"
+    },
+    {
+      "route": "/trump-account-h1b-immigrant-families",
+      "issue": "title too long (94 w/ suffix)",
+      "val": "Trump Accounts for H1B Visa Holders: Complete Guide for Immigrant Families (2026)"
+    },
+    {
+      "route": "/trump-account-h1b-immigrant-families",
+      "issue": "description too long (196)",
+      "val": "Can H-1B parents open a Trump Account for a U.S.-born child? Learn eligibility, …"
+    },
+    {
+      "route": "/trump-account-ssn-itin-child",
+      "issue": "title too long (84 w/ suffix)",
+      "val": "Trump Account SSN vs ITIN Rules: Can H-4 or Immigrant Children Qualify?"
+    },
+    {
+      "route": "/trump-account-ssn-itin-child",
+      "issue": "description too long (187)",
+      "val": "A valid SSN is required for Trump Account eligibility. Learn why ITIN does not q…"
+    },
+    {
+      "route": "/trump-account-vs-529-for-h1b-families",
+      "issue": "title too long (85 w/ suffix)",
+      "val": "Trump Account vs 529 Plan for H-1B and Indian Families: Which Is Better?"
+    },
+    {
+      "route": "/trump-account-vs-529-for-h1b-families",
+      "issue": "description too long (175)",
+      "val": "Compare Trump Accounts and 529 plans for H-1B and Indian immigrant families. See…"
+    },
+    {
+      "route": "/uscis/case-status",
+      "issue": "title too long (75 w/ suffix)",
+      "val": "USCIS Case Status Meaning for Indians | H1B, I-140, I-485, EAD"
+    },
+    {
+      "route": "/uscis/forms",
+      "issue": "title too long (77 w/ suffix)",
+      "val": "USCIS Forms Explained | I-129, I-140, I-485, I-765, I-131, I-130"
+    },
+    {
+      "route": "/uscis/life-planning",
+      "issue": "title too long (82 w/ suffix)",
+      "val": "USCIS Life Planning for Indians | H1B, Green Card, Travel, Job Change"
+    },
+    {
+      "route": "/uscis/life-planning",
+      "issue": "description too long (172)",
+      "val": "Practical life planning guide for Indians dealing with USCIS delays, H1B, green …"
+    },
+    {
+      "route": "/uscis/myuscis-account",
+      "issue": "title too long (82 w/ suffix)",
+      "val": "myUSCIS Account Explained | USCIS Online Account Number & Access Code"
+    },
+    {
+      "route": "/uscis",
+      "issue": "title too long (90 w/ suffix)",
+      "val": "USCIS Guide for Indians: Case Status, Receipt Numbers, H1B & Green Card Tools"
+    },
+    {
+      "route": "/uscis/processing-times",
+      "issue": "title too long (82 w/ suffix)",
+      "val": "USCIS Processing Times Explained for Indians | H1B, I-140, I-485, EAD"
+    },
+    {
+      "route": "/what-is-nvc-case-number",
+      "issue": "description too long (172)",
+      "val": "An NVC case number is assigned after USCIS sends your approved petition to the N…"
+    }
+  ],
+  "rows": [
+    {
+      "route": "/about",
+      "file": "src/app/about/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/about"
+    },
+    {
+      "route": "/about-deepak",
+      "file": "src/app/about-deepak/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Chartered Accountant",
+      "description": null,
+      "canonical": "«author.url»"
+    },
+    {
+      "route": "/advance-parole-processing-time",
+      "file": "src/app/advance-parole-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Advance Parole Processing Time 2026",
+      "description": "How long Advance Parole (Form I-131) takes, the travel rules while it is pending, and how it pairs with your EAD.",
+      "canonical": "/advance-parole-processing-time"
+    },
+    {
+      "route": "/articles/[slug]",
+      "file": "src/app/articles/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«article.seoTitle»",
+      "description": "«article.seoDescription»",
+      "canonical": "«articlePath»"
+    },
+    {
+      "route": "/author/[slug]",
+      "file": "src/app/author/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "${author.name} — ${author.role}",
+      "description": "«author.bio»",
+      "canonical": "/author/${author.slug}"
+    },
+    {
+      "route": "/calculators/[slug]",
+      "file": "src/app/calculators/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/calculators/${calc.slug}"
+    },
+    {
+      "route": "/calculators",
+      "file": "src/app/calculators/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/calculators"
+    },
+    {
+      "route": "/can-h1b-parents-open-trump-account-for-child",
+      "file": "src/app/can-h1b-parents-open-trump-account-for-child/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Can H1B Parents Open a Trump Account for Their Child? H-1B, H-4 & Green Card Rules",
+      "description": "H-1B parents may be able to open a Trump Account for an eligible child. See U.S.-born child, H-4 child, ITIN-only child, green card, and foreign-born child scenarios.",
+      "canonical": "/can-h1b-parents-open-trump-account-for-child"
+    },
+    {
+      "route": "/community/nri-uscis-decisions",
+      "file": "src/app/community/nri-uscis-decisions/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI USCIS Life Decisions: Community Insights",
+      "description": "Anonymous aggregated data on what life decisions Indian immigrants in the US are navigating — job changes, house buying, travel, H-4 EAD, kids aging out. Contributed by the NRItoUSA community.",
+      "canonical": "/community/nri-uscis-decisions"
+    },
+    {
+      "route": "/contact",
+      "file": "src/app/contact/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/contact"
+    },
+    {
+      "route": "/contribute",
+      "file": "src/app/contribute/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/contribute"
+    },
+    {
+      "route": "/contributors",
+      "file": "src/app/contributors/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/contributors"
+    },
+    {
+      "route": "/cookie-policy",
+      "file": "src/app/cookie-policy/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/cookie-policy"
+    },
+    {
+      "route": "/disclaimer",
+      "file": "src/app/disclaimer/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/disclaimer"
+    },
+    {
+      "route": "/dol-processing-times",
+      "file": "src/app/dol-processing-times/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "DOL Processing Times 2026: PERM & PWD",
+      "description": "Track DOL PERM, PWD, analyst review, and audit review processing times with monthly updated official-source data.",
+      "canonical": "/dol-processing-times"
+    },
+    {
+      "route": "/dol-wage-levels-explained",
+      "file": "src/app/dol-wage-levels-explained/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "DOL Wage Levels Explained (I–IV)",
+      "description": "What DOL wage Level 1, 2, 3, and 4 mean, how the level is decided, and how it sets your prevailing wage for PERM and H-1B.",
+      "canonical": "/dol-wage-levels-explained"
+    },
+    {
+      "route": "/ead-processing-time",
+      "file": "src/app/ead-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "EAD Processing Time 2026",
+      "description": "Estimate your EAD (Form I-765) processing time by category, check automatic-extension eligibility, and avoid a work-authorization gap.",
+      "canonical": "/ead-processing-time"
+    },
+    {
+      "route": "/ead-renewal-gap",
+      "file": "src/app/ead-renewal-gap/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "EAD Renewal Gap: How to Avoid It",
+      "description": "How to avoid a gap in work authorization when renewing your EAD — filing windows, the automatic extension, and what employers need.",
+      "canonical": "/ead-renewal-gap"
+    },
+    {
+      "route": "/eb2-eb3-priority-date-india",
+      "file": "src/app/eb2-eb3-priority-date-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "EB2 EB3 Priority Date India Tracker",
+      "description": "Understand where your EB-2 or EB-3 India priority date stands, Final Action vs Dates for Filing, and when you can file I-485.",
+      "canonical": "/eb2-eb3-priority-date-india"
+    },
+    {
+      "route": "/education/articles",
+      "file": "src/app/education/articles/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "US Education Guides for Immigrant Families",
+      "description": "In-depth guides on the US education system for immigrant families: college costs, K-12 enrollment, the digital SAT, and top US universities.",
+      "canonical": "/education/articles"
+    },
+    {
+      "route": "/education/college-rankings",
+      "file": "src/app/education/college-rankings/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/education/college-rankings"
+    },
+    {
+      "route": "/education/gpa-calculator",
+      "file": "src/app/education/gpa-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/education/gpa-calculator"
+    },
+    {
+      "route": "/education/grade-finder",
+      "file": "src/app/education/grade-finder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/education/grade-finder"
+    },
+    {
+      "route": "/education",
+      "file": "src/app/education/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "US Education Hub for Immigrant Families",
+      "description": "Free tools and guides for the US education system: K-12 grade finder, GPA & SAT calculators, a college-cost projector, and rankings for NRI families.",
+      "canonical": "/education"
+    },
+    {
+      "route": "/education/sat-guide",
+      "file": "src/app/education/sat-guide/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/education/sat-guide"
+    },
+    {
+      "route": "/education/tuition-calculator",
+      "file": "src/app/education/tuition-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«calc.seoTitle»",
+      "description": "«calc.seoDescription»",
+      "canonical": "/education/tuition-calculator"
+    },
+    {
+      "route": "/entry-visa-india-from-usa",
+      "file": "src/app/entry-visa-india-from-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Entry Visa India from USA: Guide for Indian-Origin Families, Spouses & Children",
+      "description": "Understand when Entry Visa India may be needed for Indian-origin U.S. citizens, non-Indian spouses, minor children and family visits. See documents, fees, timelines and OCI comparison.",
+      "canonical": "/entry-visa-india-from-usa"
+    },
+    {
+      "route": "/expired-green-card",
+      "file": "src/app/expired-green-card/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Expired Green Card: What to Do Before Travel, Work, or Renewal",
+      "description": "An expired green card doesn't end your status, but it affects travel, work, and DMV. See what to do, receipt-notice extensions, and how to renew with Form I-90.",
+      "canonical": "/expired-green-card"
+    },
+    {
+      "route": "/free-immigrant-wealth-guide",
+      "file": "src/app/free-immigrant-wealth-guide/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Free Immigrant Wealth Guide for the USA",
+      "description": "A free PDF by Deepak Middha on why immigrants struggle to build wealth in the U.S., the money traps to avoid, and how to approach investing and retirement.",
+      "canonical": "/free-immigrant-wealth-guide"
+    },
+    {
+      "route": "/green-card/[slug]",
+      "file": "src/app/green-card/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "/green-card/${page.slug}"
+    },
+    {
+      "route": "/green-card",
+      "file": "src/app/green-card/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Green Card for Indians: PERM, I-140 & I-485 Guide",
+      "description": "Complete green-card guide for Indian H-1B workers: PERM, I-140, priority dates, I-485, EAD/AP, the India backlog, EB-2 vs EB-3, and AC21 portability.",
+      "canonical": "/green-card"
+    },
+    {
+      "route": "/green-card-renewal",
+      "file": "src/app/green-card-renewal/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Green Card Renewal 2026: Timeline, Fee & Form I-90",
+      "description": "Learn how to renew or replace your green card with Form I-90. See timeline, fee, documents, online filing steps, and use a free renewal checklist tool.",
+      "canonical": "/green-card-renewal"
+    },
+    {
+      "route": "/green-card-renewal-fee",
+      "file": "src/app/green-card-renewal-fee/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)",
+      "description": "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $50 cheaper. See the fee snapshot, fee-waiver basics, last-verified date, and official USCIS fee links.",
+      "canonical": "/green-card-renewal-fee"
+    },
+    {
+      "route": "/green-card-renewal-processing-time",
+      "file": "src/app/green-card-renewal-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Green Card Renewal Processing Time 2026",
+      "description": "See the green card renewal timeline, Form I-90 stages, receipt notice, biometrics, USCIS review, and how to check official processing times.",
+      "canonical": "/green-card-renewal-processing-time"
+    },
+    {
+      "route": "/h1b/[slug]",
+      "file": "src/app/h1b/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "/h1b/${page.slug}"
+    },
+    {
+      "route": "/h1b",
+      "file": "src/app/h1b/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H-1B Guide for Indians: Transfer, Extension & RFE",
+      "description": "A simple H-1B guide for Indians in the USA: transfer, extension, amendment, RFE, premium processing, case status and layoff grace-period rules.",
+      "canonical": "/h1b"
+    },
+    {
+      "route": "/h1b-layoff",
+      "file": "src/app/h1b-layoff/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H-1B Layoff Checklist for Indians in the USA | NRItoUSA",
+      "description": "Laid off on H-1B? Use this educational checklist for Indian workers in the USA: 60-day planning window, I-94, I-797, H-1B transfer, I-140, H-4 dependents, documents, money checklist, and LayoffNext tools.",
+      "canonical": "/h1b-layoff"
+    },
+    {
+      "route": "/h1b-perm-max-out-calculator",
+      "file": "src/app/h1b-perm-max-out-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "H-1B PERM Max-Out Calculator",
+      "description": "Estimate H-1B max-out risk based on PERM, I-140, priority date, and time spent outside the U.S.",
+      "canonical": "/h1b-perm-max-out-calculator"
+    },
+    {
+      "route": "/h1b-prevailing-wage",
+      "file": "src/app/h1b-prevailing-wage/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "H-1B Prevailing Wage 2026",
+      "description": "How the H-1B prevailing wage and required wage work, where the LCA wage comes from, and how wage levels affect your salary.",
+      "canonical": "/h1b-prevailing-wage"
+    },
+    {
+      "route": "/h1b-sponsors/[socSlug]/[state]",
+      "file": "src/app/h1b-sponsors/[socSlug]/[state]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Top H-1B Sponsors for ${data.soc_title} in ${place} (2026)",
+      "description": "The companies sponsoring the most H-1Bs for ${data.soc_title} roles in ${place}, ranked by certified LCA volume${ top ?",
+      "canonical": "/h1b-sponsors/${params.socSlug}/${data.stateCode.toLowerCase()}"
+    },
+    {
+      "route": "/how-to-apply-for-trump-account-form-4547",
+      "file": "src/app/how-to-apply-for-trump-account-form-4547/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide",
+      "description": "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide for parents, eligibility checks, SSN rules, $1,000 contribution request, scam warnings, and official source links.",
+      "canonical": "/how-to-apply-for-trump-account-form-4547"
+    },
+    {
+      "route": "/i140-approved-what-next",
+      "file": "src/app/i140-approved-what-next/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-140 Approved — What Next?",
+      "description": "Your I-140 is approved — what now? Priority date, when you can file I-485, H-1B extensions, and job changes explained.",
+      "canonical": "/i140-approved-what-next"
+    },
+    {
+      "route": "/i140-premium-processing",
+      "file": "src/app/i140-premium-processing/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-140 Premium Processing 2026",
+      "description": "I-140 premium processing explained — the fee, the 15 business-day timeline, which categories qualify, and when it is worth it.",
+      "canonical": "/i140-premium-processing"
+    },
+    {
+      "route": "/i140-processing-time",
+      "file": "src/app/i140-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-140 Processing Time 2026",
+      "description": "Estimate your I-140 decision window — standard vs premium processing (15 business days), the fee, and what happens after approval.",
+      "canonical": "/i140-processing-time"
+    },
+    {
+      "route": "/i485-documents-checklist",
+      "file": "src/app/i485-documents-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-485 Documents Checklist 2026",
+      "description": "A complete I-485 documents checklist — forms, proof of eligibility, identity, and supporting evidence to gather before you file.",
+      "canonical": "/i485-documents-checklist"
+    },
+    {
+      "route": "/i485-processing-time",
+      "file": "src/app/i485-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-485 Processing Time 2026",
+      "description": "Check typical I-485 green card processing timelines, what affects your case, and estimate your personal wait by category, field office, and priority date.",
+      "canonical": "/i485-processing-time"
+    },
+    {
+      "route": "/i485-timeline",
+      "file": "src/app/i485-timeline/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "I-485 Timeline 2026: Step by Step",
+      "description": "The I-485 adjustment-of-status timeline — receipt, biometrics, EAD/AP, RFE, interview, and approval — explained step by step.",
+      "canonical": "/i485-timeline"
+    },
+    {
+      "route": "/i90-vs-i751",
+      "file": "src/app/i90-vs-i751/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Form I-90 vs I-751: Which Green Card Form Do You Need?",
+      "description": "Form I-90 vs I-751 vs I-829: which green card form do you need? Compare 10-year renewal and 2-year conditional cases, and use a form-selector tool.",
+      "canonical": "/i90-vs-i751"
+    },
+    {
+      "route": "/immigration",
+      "file": "src/app/immigration/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Immigration Hub for Indians in the USA: H1B, Green Card, USCIS & Visa Bulletin",
+      "description": "The immigration hub for Indians in the USA. Start by situation, then use free tools for priority dates, green card stages, USCIS case status, H1B transfers, and more.",
+      "canonical": "/immigration"
+    },
+    {
+      "route": "/immigration-tracker",
+      "file": "src/app/immigration-tracker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI Immigration Tracker | Visa Bulletin, Green Card, USCIS & H1B Data",
+      "description": "Track EB1, EB2, EB3 India visa bulletin dates, green card backlog, I-485 inventory, H1B lottery odds, USCIS processing times, EAD, advance parole and priority date movement.",
+      "canonical": "/immigration-tracker"
+    },
+    {
+      "route": "/india-business-visa-from-usa",
+      "file": "src/app/india-business-visa-from-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Business Visa from USA: Documents, Invitation Letter, Fees & Processing Time",
+      "description": "Learn how India business visa from USA works, including eBusiness vs regular business visa, invitation letter, company proof, estimated fees, documents and processing time.",
+      "canonical": "/india-business-visa-from-usa"
+    },
+    {
+      "route": "/india-evisa-for-us-citizens",
+      "file": "src/app/india-evisa-for-us-citizens/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India eVisa for U.S. Citizens: Eligibility, Fees, Processing Time & Documents",
+      "description": "Learn who can apply for India eVisa from the USA, including eTourist, eBusiness and eMedical visa options. See estimated processing time, documents, fees and mistakes to avoid.",
+      "canonical": "/india-evisa-for-us-citizens"
+    },
+    {
+      "route": "/india-property",
+      "file": "src/app/india-property/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Property Planning for NRIs — Sell vs Hold, Capital Gains, TDS & Repatriation",
+      "description": "For Indians in the USA with property in India: sell vs hold, capital gains and TDS, repatriating sale proceeds, and inheritance — with US/India tax in mind.",
+      "canonical": "«config.path»"
+    },
+    {
+      "route": "/india-tax-compliance/[slug]",
+      "file": "src/app/india-tax-compliance/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«itr.seoTitle»",
+      "description": "«itr.metaDescription»",
+      "canonical": "«itrPath»"
+    },
+    {
+      "route": "/india-tax-compliance/nri-tax-forms-limits",
+      "file": "src/app/india-tax-compliance/nri-tax-forms-limits/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "«FORMS_LIMITS_PATH»"
+    },
+    {
+      "route": "/india-tax-compliance",
+      "file": "src/app/india-tax-compliance/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "«TAX_COMPLIANCE_PATH»"
+    },
+    {
+      "route": "/india-tourist-visa-from-usa",
+      "file": "src/app/india-tourist-visa-from-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Tourist Visa from USA: eVisa vs Regular Tourist Visa, Fees & Timeline",
+      "description": "Compare India eTourist Visa and regular tourist visa from USA. See estimated fees, processing time, required documents, multiple-entry options and common mistakes.",
+      "canonical": "/india-tourist-visa-from-usa"
+    },
+    {
+      "route": "/india-visa-fees-usa",
+      "file": "src/app/india-visa-fees-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Visa Fees for U.S. Citizens: Tourist, Business, Entry & eVisa Costs",
+      "description": "Compare estimated India visa fees for U.S. citizens, including tourist visa, business visa, entry visa, eVisa, VFS service fees, shipping and optional costs.",
+      "canonical": "/india-visa-fees-usa"
+    },
+    {
+      "route": "/india-visa-from-usa",
+      "file": "src/app/india-visa-from-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Visa from the USA: Types, Fees & Timelines",
+      "description": "Compare India eVisa, tourist, business, entry and medical visas plus OCI for U.S. citizens and NRI families: fees, timelines, documents and how to apply.",
+      "canonical": "/india-visa-from-usa"
+    },
+    {
+      "route": "/india-visa-processing-time-usa",
+      "file": "src/app/india-visa-processing-time-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "India Visa Processing Time from USA: eVisa, Regular Visa, VFS & Consulate Timeline",
+      "description": "How long does an India visa take from the USA? See estimated eVisa, tourist, business, and Entry visa processing times, VFS courier timing, and when to apply.",
+      "canonical": "/india-visa-processing-time-usa"
+    },
+    {
+      "route": "/indian-passport-renewal-usa/[page]",
+      "file": "src/app/indian-passport-renewal-usa/[page]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "«clusterPath»"
+    },
+    {
+      "route": "/indian-passport-renewal-usa",
+      "file": "src/app/indian-passport-renewal-usa/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«clusterHub.seoTitle»",
+      "description": "«clusterHub.metaDescription»",
+      "canonical": "«CLUSTER_BASE»"
+    },
+    {
+      "route": "/indian-population-in-california",
+      "file": "src/app/indian-population-in-california/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-florida",
+      "file": "src/app/indian-population-in-florida/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-georgia",
+      "file": "src/app/indian-population-in-georgia/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-illinois",
+      "file": "src/app/indian-population-in-illinois/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-maryland",
+      "file": "src/app/indian-population-in-maryland/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-massachusetts",
+      "file": "src/app/indian-population-in-massachusetts/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-new-jersey",
+      "file": "src/app/indian-population-in-new-jersey/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-new-york",
+      "file": "src/app/indian-population-in-new-york/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-texas",
+      "file": "src/app/indian-population-in-texas/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-usa",
+      "file": "src/app/indian-population-in-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "How Many Indians Live in America? Indian Population in USA by State",
+      "description": "See how many Indians live in America, where Indian Americans live by state and city, income levels, occupations, education, visa status, student trends, and economic contribution to the U.S.",
+      "canonical": "/indian-population-in-usa"
+    },
+    {
+      "route": "/indian-population-in-virginia",
+      "file": "src/app/indian-population-in-virginia/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/indian-population-in-washington",
+      "file": "src/app/indian-population-in-washington/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/long-term-nri-wealth",
+      "file": "src/app/long-term-nri-wealth/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/long-term-nri-wealth"
+    },
+    {
+      "route": "/nri-estate-planning",
+      "file": "src/app/nri-estate-planning/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI Estate Planning — Wills, Trusts, Beneficiaries & Cross-Border Inheritance",
+      "description": "Family and legacy planning for Indians in the USA: wills and trusts across US and India assets, beneficiaries, children as US citizens, and parents in India.",
+      "canonical": "«config.path»"
+    },
+    {
+      "route": "/nri-wealth-checkup/assets",
+      "file": "src/app/nri-wealth-checkup/assets/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Assets — NRI Wealth Checkup",
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/nri-wealth-checkup/dashboard",
+      "file": "src/app/nri-wealth-checkup/dashboard/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Dashboard — NRI Wealth Checkup",
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/nri-wealth-checkup/income",
+      "file": "src/app/nri-wealth-checkup/income/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Income & TDS — NRI Wealth Checkup",
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/nri-wealth-checkup",
+      "file": "src/app/nri-wealth-checkup/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI Wealth Checkup: FBAR, FATCA, India Assets & U.S. Tax Organizer",
+      "description": "Free educational tool for Indians in the USA to organize U.S. income, India assets, FBAR, FATCA, NRE/NRO, property, PFIC, foreign tax credit, and return-to-India planning questions.",
+      "canonical": "/nri-wealth-checkup"
+    },
+    {
+      "route": "/nri-wealth-checkup/profile",
+      "file": "src/app/nri-wealth-checkup/profile/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Profile — NRI Wealth Checkup",
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/nri-wealth-checkup/report",
+      "file": "src/app/nri-wealth-checkup/report/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Educational Report — NRI Wealth Checkup",
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/nvc-case-status",
+      "file": "src/app/nvc-case-status/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NVC Case Status & Timeline",
+      "description": "Check what your NVC case status means, how long each stage may take, and what to do after USCIS approval, fee payment, document submission, DQ, interview scheduling, and embassy transfer.",
+      "canonical": "/nvc-case-status"
+    },
+    {
+      "route": "/nvc-document-checklist-india",
+      "file": "src/app/nvc-document-checklist-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NVC Document Checklist (India)",
+      "description": "The NVC document checklist for Indian applicants — civil documents (birth, marriage, police clearance, passport), the Affidavit of Support, and financial evidence to upload in CEAC.",
+      "canonical": "/nvc-document-checklist-india"
+    },
+    {
+      "route": "/nvc-processing-time",
+      "file": "src/app/nvc-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NVC Processing Time",
+      "description": "How long NVC takes after USCIS approval — case creation, fee and DS-260 steps, document review, and the wait from documentarily qualified to a consular interview. General planning ranges, not guarantees.",
+      "canonical": "/nvc-processing-time"
+    },
+    {
+      "route": "/nvc-public-inquiry",
+      "file": "src/app/nvc-public-inquiry/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NVC Public Inquiry",
+      "description": "When to submit an NVC public inquiry, how to contact the National Visa Center, what to include, and why duplicate inquiries hurt. Educational guidance, not legal advice.",
+      "canonical": "/nvc-public-inquiry"
+    },
+    {
+      "route": "/oci/[slug]",
+      "file": "src/app/oci/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«guide.seoTitle»",
+      "description": "«guide.metaDescription»",
+      "canonical": "«ociGuidePath»"
+    },
+    {
+      "route": "/oci",
+      "file": "src/app/oci/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "OCI Card USA 2026: Fees, Timeline & Renewal",
+      "description": "OCI card from the USA: $275 government fee, ~${totalWeeksLabel()} processing, plus free eligibility, cost and timeline calculators and a document checklist.",
+      "canonical": "«OCI_BASE»"
+    },
+    {
+      "route": "/oci-vs-india-visa",
+      "file": "src/app/oci-vs-india-visa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "OCI vs India Visa: Which Is Better for Indian-Origin U.S. Citizens?",
+      "description": "Compare OCI, India eVisa, Entry Visa and regular India visa for Indian-origin U.S. citizens, spouses and children. See best use cases, timelines, documents and limitations.",
+      "canonical": "/oci-vs-india-visa"
+    },
+    {
+      "route": "/",
+      "file": "src/app/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI to USA — Free Immigration, Tax & Wealth Tools",
+      "description": "Free calculators, checklists and guides for Indians in the USA: U.S. income, India assets, taxes, retirement, FBAR/FATCA and return-to-India planning.",
+      "canonical": "/"
+    },
+    {
+      "route": "/partnerships",
+      "file": "src/app/partnerships/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«metaTitle»",
+      "description": null,
+      "canonical": "/partnerships"
+    },
+    {
+      "route": "/perm-processing-time-calculator",
+      "file": "src/app/perm-processing-time-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "PERM Processing Time Calculator 2026",
+      "description": "Check the current PERM timeline, PWD processing, recruitment, DOL review, audit risk, and I-140 timing, then estimate your personal case.",
+      "canonical": "/perm-processing-time-calculator"
+    },
+    {
+      "route": "/perm-timeline",
+      "file": "src/app/perm-timeline/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "PERM Timeline 2026: PWD to I-140",
+      "description": "Understand the full PERM green card timeline from PWD and recruitment to I-140 and Visa Bulletin.",
+      "canonical": "/perm-timeline"
+    },
+    {
+      "route": "/prevailing-wage-calculator",
+      "file": "src/app/prevailing-wage-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Prevailing Wage Calculator 2026",
+      "description": "Estimate your DOL wage level (I–IV) and check whether an offered wage meets the prevailing wage for PERM or H-1B.",
+      "canonical": "/prevailing-wage-calculator"
+    },
+    {
+      "route": "/privacy",
+      "file": "src/app/privacy/page.tsx",
+      "dynamic": false,
+      "hasMeta": false,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/privacy-policy",
+      "file": "src/app/privacy-policy/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/privacy-policy"
+    },
+    {
+      "route": "/pwd-processing-time",
+      "file": "src/app/pwd-processing-time/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "PWD Processing Time 2026 for PERM",
+      "description": "Learn current PWD processing time for PERM and what happens after prevailing wage approval.",
+      "canonical": "/pwd-processing-time"
+    },
+    {
+      "route": "/renew-green-card-online",
+      "file": "src/app/renew-green-card-online/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Renew Green Card Online: Form I-90 Step-by-Step Guide",
+      "description": "Renew or replace your green card online with Form I-90. See the step-by-step USCIS online filing process, documents, fees, and a readiness checklist tool.",
+      "canonical": "/renew-green-card-online"
+    },
+    {
+      "route": "/replace-green-card",
+      "file": "src/app/replace-green-card/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Replace Green Card: Lost, Stolen, Damaged, or Incorrect Card",
+      "description": "Lost, stolen, damaged, never-received, or incorrect green card? See when to file Form I-90, what documents to prepare, and how to get temporary proof.",
+      "canonical": "/replace-green-card"
+    },
+    {
+      "route": "/resources",
+      "file": "src/app/resources/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/resources"
+    },
+    {
+      "route": "/return-to-india",
+      "file": "src/app/return-to-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Retirement & Return to India — 401(k), IRA, Social Security, RNOR & Currency",
+      "description": "Planning to move back to India? What happens to your 401(k), IRA, and Social Security, how RNOR status works, and how to plan currency timing for NRIs.",
+      "canonical": "«config.path»"
+    },
+    {
+      "route": "/send-money-to-india",
+      "file": "src/app/send-money-to-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/send-money-to-india"
+    },
+    {
+      "route": "/terms-and-conditions",
+      "file": "src/app/terms-and-conditions/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/terms-and-conditions"
+    },
+    {
+      "route": "/terms-of-use",
+      "file": "src/app/terms-of-use/page.tsx",
+      "dynamic": false,
+      "hasMeta": false,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/tools/citizenship-checklist",
+      "file": "src/app/tools/citizenship-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/citizenship-checklist"
+    },
+    {
+      "route": "/tools/fbar-fatca-checker",
+      "file": "src/app/tools/fbar-fatca-checker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/fbar-fatca-checker"
+    },
+    {
+      "route": "/tools/flight-price-guide",
+      "file": "src/app/tools/flight-price-guide/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/flight-price-guide"
+    },
+    {
+      "route": "/tools/form-10f-generator",
+      "file": "src/app/tools/form-10f-generator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/form-10f-generator"
+    },
+    {
+      "route": "/tools/form-15ca-15cb-checklist",
+      "file": "src/app/tools/form-15ca-15cb-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/form-15ca-15cb-checklist"
+    },
+    {
+      "route": "/tools/form-3520-india-gift-checker",
+      "file": "src/app/tools/form-3520-india-gift-checker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/form-3520-india-gift-checker"
+    },
+    {
+      "route": "/tools/green-card-stage-finder",
+      "file": "src/app/tools/green-card-stage-finder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/green-card-stage-finder"
+    },
+    {
+      "route": "/tools/green-card-tracker",
+      "file": "src/app/tools/green-card-tracker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/green-card-tracker"
+    },
+    {
+      "route": "/tools/h1b-lottery-timeline",
+      "file": "src/app/tools/h1b-lottery-timeline/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/h1b-lottery-timeline"
+    },
+    {
+      "route": "/tools/h1b-salaries",
+      "file": "src/app/tools/h1b-salaries/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/h1b-salaries"
+    },
+    {
+      "route": "/tools/h1b-sponsor-finder",
+      "file": "src/app/tools/h1b-sponsor-finder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/h1b-sponsor-finder"
+    },
+    {
+      "route": "/tools/h1b-transfer-risk-checklist",
+      "file": "src/app/tools/h1b-transfer-risk-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/h1b-transfer-risk-checklist"
+    },
+    {
+      "route": "/tools/h4-ead-navigator",
+      "file": "src/app/tools/h4-ead-navigator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/h4-ead-navigator"
+    },
+    {
+      "route": "/tools/nri-global-wealth-tax-organizer",
+      "file": "src/app/tools/nri-global-wealth-tax-organizer/page.tsx",
+      "dynamic": false,
+      "hasMeta": false,
+      "title": null,
+      "description": null,
+      "canonical": null
+    },
+    {
+      "route": "/tools/nri-tax-filing-roadmap",
+      "file": "src/app/tools/nri-tax-filing-roadmap/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/nri-tax-filing-roadmap"
+    },
+    {
+      "route": "/tools/nri-tds-refund-checklist",
+      "file": "src/app/tools/nri-tds-refund-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/nri-tds-refund-checklist"
+    },
+    {
+      "route": "/tools/oci-cost-calculator",
+      "file": "src/app/tools/oci-cost-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "«PATH»"
+    },
+    {
+      "route": "/tools/oci-eligibility-checker",
+      "file": "src/app/tools/oci-eligibility-checker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "«PATH»"
+    },
+    {
+      "route": "/tools/oci-timeline-calculator",
+      "file": "src/app/tools/oci-timeline-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "«PATH»"
+    },
+    {
+      "route": "/tools",
+      "file": "src/app/tools/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA",
+      "description": "Free tools for Indians in the USA: NRI Wealth Checkup, FBAR/FATCA checker, green card tracker, H-1B salaries, USCIS tools, India tax calculators, and retirement planning.",
+      "canonical": "/tools"
+    },
+    {
+      "route": "/tools/priority-date-checker",
+      "file": "src/app/tools/priority-date-checker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/priority-date-checker"
+    },
+    {
+      "route": "/tools/processing-times",
+      "file": "src/app/tools/processing-times/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/processing-times"
+    },
+    {
+      "route": "/tools/uscis-case-status-meaning",
+      "file": "src/app/tools/uscis-case-status-meaning/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-case-status-meaning"
+    },
+    {
+      "route": "/tools/uscis-form-finder",
+      "file": "src/app/tools/uscis-form-finder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-form-finder"
+    },
+    {
+      "route": "/tools/uscis-life-decision-checklist",
+      "file": "src/app/tools/uscis-life-decision-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-life-decision-checklist"
+    },
+    {
+      "route": "/tools/uscis-notice-decoder",
+      "file": "src/app/tools/uscis-notice-decoder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-notice-decoder"
+    },
+    {
+      "route": "/tools/uscis-processing-delay-checker",
+      "file": "src/app/tools/uscis-processing-delay-checker/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-processing-delay-checker"
+    },
+    {
+      "route": "/tools/uscis-receipt-number-decoder",
+      "file": "src/app/tools/uscis-receipt-number-decoder/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/uscis-receipt-number-decoder"
+    },
+    {
+      "route": "/tools/visa-free-countries",
+      "file": "src/app/tools/visa-free-countries/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visa-free-countries"
+    },
+    {
+      "route": "/tools/visa-green-card",
+      "file": "src/app/tools/visa-green-card/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Visa & Green Card Tools for Indians in USA | H1B, EB2, I-485, USCIS",
+      "description": "Free visa and green card tools for Indians in the USA. Check EB1/EB2/EB3 priority dates, H1B lottery odds, H4 EAD eligibility, USCIS case status, and processing times.",
+      "canonical": "/tools/visa-green-card"
+    },
+    {
+      "route": "/topics/[slug]",
+      "file": "src/app/topics/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«topic.seoTitle»",
+      "description": "«topic.seoDescription»",
+      "canonical": "«topicPath»"
+    },
+    {
+      "route": "/topics",
+      "file": "src/app/topics/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«title»",
+      "description": "«description»",
+      "canonical": "/topics"
+    },
+    {
+      "route": "/trump-account-1000-eligibility",
+      "file": "src/app/trump-account-1000-eligibility/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account $1,000 Eligibility: Rules for U.S.-Born Children of H-1B Parents",
+      "description": "Check who qualifies for the $1,000 Trump Account pilot contribution, including U.S.-born children of H-1B parents, valid SSN rules, citizenship, birth window, and Form 4547.",
+      "canonical": "/trump-account-1000-eligibility"
+    },
+    {
+      "route": "/trump-account-h1b-immigrant-families",
+      "file": "src/app/trump-account-h1b-immigrant-families/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Accounts for H1B Visa Holders: Complete Guide for Immigrant Families (2026)",
+      "description": "Can H-1B parents open a Trump Account for a U.S.-born child? Learn eligibility, $1,000 pilot contribution rules, SSN vs ITIN, Form 4547, taxes, and what happens if your family moves back to India.",
+      "canonical": "/trump-account-h1b-immigrant-families"
+    },
+    {
+      "route": "/trump-account-moving-back-to-india",
+      "file": "src/app/trump-account-moving-back-to-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account If H-1B Parents Move Back to India",
+      "description": "What happens to your child's Trump Account if H-1B parents return to India: account access, U.S. citizen child tax duties, and records to keep.",
+      "canonical": "/trump-account-moving-back-to-india"
+    },
+    {
+      "route": "/trump-account-ssn-itin-child",
+      "file": "src/app/trump-account-ssn-itin-child/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account SSN vs ITIN Rules: Can H-4 or Immigrant Children Qualify?",
+      "description": "A valid SSN is required for Trump Account eligibility. Learn why ITIN does not qualify, what this means for H-4 children, U.S.-born children, and foreign-born children of Indian families.",
+      "canonical": "/trump-account-ssn-itin-child"
+    },
+    {
+      "route": "/trump-account-tax-rules-immigrants",
+      "file": "src/app/trump-account-tax-rules-immigrants/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account Tax Rules for Immigrant Families",
+      "description": "How Trump Account taxes work for H-1B and Indian immigrant families: contributions, tax-deferred growth, gift tax and India move-back planning.",
+      "canonical": "/trump-account-tax-rules-immigrants"
+    },
+    {
+      "route": "/trump-account-vs-529-for-h1b-families",
+      "file": "src/app/trump-account-vs-529-for-h1b-families/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account vs 529 Plan for H-1B and Indian Families: Which Is Better?",
+      "description": "Compare Trump Accounts and 529 plans for H-1B and Indian immigrant families. See which works better for U.S. education, studying in India, moving back, taxes, and flexibility.",
+      "canonical": "/trump-account-vs-529-for-h1b-families"
+    },
+    {
+      "route": "/uscis/[slug]",
+      "file": "src/app/uscis/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "/uscis/${page.slug}"
+    },
+    {
+      "route": "/uscis/case-status",
+      "file": "src/app/uscis/case-status/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "USCIS Case Status Meaning for Indians | H1B, I-140, I-485, EAD",
+      "description": "Understand common USCIS case status messages in simple language for H1B, I-140, I-485, EAD, Advance Parole, green card and Indian applicants.",
+      "canonical": "/uscis/case-status"
+    },
+    {
+      "route": "/uscis/forms/[slug]",
+      "file": "src/app/uscis/forms/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "/uscis/forms/${page.slug}"
+    },
+    {
+      "route": "/uscis/forms",
+      "file": "src/app/uscis/forms/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "USCIS Forms Explained | I-129, I-140, I-485, I-765, I-131, I-130",
+      "description": "Simple USCIS forms guide for Indians in the USA. Understand I-129, I-140, I-485, I-765, I-131, I-130, I-539, I-907, AR-11 and N-400.",
+      "canonical": "/uscis/forms"
+    },
+    {
+      "route": "/uscis/life-planning",
+      "file": "src/app/uscis/life-planning/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "USCIS Life Planning for Indians | H1B, Green Card, Travel, Job Change",
+      "description": "Practical life planning guide for Indians dealing with USCIS delays, H1B, green card backlog, I-485, travel to India, job changes, buying a house, EAD and family decisions.",
+      "canonical": "/uscis/life-planning"
+    },
+    {
+      "route": "/uscis/myuscis-account",
+      "file": "src/app/uscis/myuscis-account/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "myUSCIS Account Explained | USCIS Online Account Number & Access Code",
+      "description": "Learn how myUSCIS works for Indian applicants. Understand USCIS online account number, access code, paper-filed cases, notices, case updates and privacy tips.",
+      "canonical": "/uscis/myuscis-account"
+    },
+    {
+      "route": "/uscis",
+      "file": "src/app/uscis/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "USCIS Guide for Indians: Case Status, Receipt Numbers, H1B & Green Card Tools",
+      "description": "USCIS guide for Indians in the USA. Decode case status, receipt number prefixes, processing times, H1B, EB-2/EB-3 green card, I-485, EAD, and visa bulletin.",
+      "canonical": "/uscis"
+    },
+    {
+      "route": "/uscis/processing-times",
+      "file": "src/app/uscis/processing-times/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "USCIS Processing Times Explained for Indians | H1B, I-140, I-485, EAD",
+      "description": "Understand USCIS processing times, receipt dates, service centers, premium processing, delays, case inquiries, and what Indian applicants should check.",
+      "canonical": "/uscis/processing-times"
+    },
+    {
+      "route": "/uscis/receipt-number",
+      "file": "src/app/uscis/receipt-number/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "USCIS Receipt Number Explained: Prefix Meanings",
+      "description": "What a USCIS receipt number is, where to find it on your I-797, and what the IOE, LIN, SRC, EAC, WAC and MSC prefixes mean, with Indian H-1B examples.",
+      "canonical": "/uscis/receipt-number"
+    },
+    {
+      "route": "/visa-bulletin/[slug]",
+      "file": "src/app/visa-bulletin/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.metaDescription»",
+      "canonical": "/visa-bulletin/${page.slug}"
+    },
+    {
+      "route": "/visa-bulletin",
+      "file": "src/app/visa-bulletin/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Visa Bulletin for Indians: EB1–EB3 Priority Dates",
+      "description": "A simple guide to the visa bulletin for Indians: EB1, EB2 and EB3 priority dates, final action vs. filing dates, retrogression and green-card waits.",
+      "canonical": "/visa-bulletin"
+    },
+    {
+      "route": "/what-is-nvc-case-number",
+      "file": "src/app/what-is-nvc-case-number/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "What Is an NVC Case Number?",
+      "description": "An NVC case number is assigned after USCIS sends your approved petition to the National Visa Center. Learn its format, see an example, and find where to locate it for CEAC.",
+      "canonical": "/what-is-nvc-case-number"
+    }
+  ]
+}

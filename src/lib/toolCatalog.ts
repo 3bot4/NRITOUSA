@@ -136,6 +136,19 @@ const FLAGSHIP: CatalogItem[] = [
     categories: ["Immigration", "USCIS"],
     keywords: "immigration tracker dashboard visa bulletin green card line",
   },
+  {
+    label: "Term Life Needs Calculator",
+    title: "Term Life Insurance Needs Calculator for Indian Families",
+    description:
+      "Estimate your family's term life insurance coverage gap — U.S. income replacement, mortgage, children, and India/home-country support and debts. Educational only.",
+    href: "/term-life-insurance-needs-calculator-indian-families",
+    icon: "🛡️",
+    accent: "from-emerald-600 to-teal-600",
+    kind: "Calculator",
+    categories: ["Wealth"],
+    keywords:
+      "term life insurance needs calculator coverage gap protection nri h1b family india support death benefit",
+  },
 ];
 
 function buildCatalog(): CatalogItem[] {

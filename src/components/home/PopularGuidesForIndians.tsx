@@ -29,6 +29,12 @@ const guides: { title: string; href: string; description: string }[] = [
       "Learn how priority dates, final action dates, and dates for filing work.",
   },
   {
+    title: "H1B Lottery Results 2026/2027",
+    href: "/h1b-lottery-results",
+    description:
+      "How to check H1B lottery results, what Selected / Submitted / Not Selected mean, second-lottery chances, and next steps for F-1 OPT, H-4, and families.",
+  },
+  {
     title: "EB-2 India Green Card Wait Time",
     href: "/tools/green-card-tracker",
     description:
@@ -57,12 +63,20 @@ const guides: { title: string; href: string; description: string }[] = [
 export default function PopularGuidesForIndians() {
   return (
     <section aria-labelledby="popular-guides-h" className="mb-10">
-      <h2
-        id="popular-guides-h"
-        className="text-lg font-bold tracking-tight text-ink-900"
-      >
-        Popular guides for Indians in the USA
-      </h2>
+      <div className="flex items-end justify-between gap-3">
+        <h2
+          id="popular-guides-h"
+          className="text-lg font-bold tracking-tight text-ink-900"
+        >
+          Popular guides for Indians in the USA
+        </h2>
+        <Link
+          href="/education/articles"
+          className="shrink-0 text-sm font-semibold text-brand-600 hover:text-brand-700"
+        >
+          View all guides <span aria-hidden>→</span>
+        </Link>
+      </div>
       <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => (
           <Link

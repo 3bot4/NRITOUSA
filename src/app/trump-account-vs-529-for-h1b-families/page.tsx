@@ -204,6 +204,7 @@ export default function Page() {
                 { label: "Tax rules for immigrants", href: "/trump-account-tax-rules-immigrants", primary: true },
                 { label: "Moving back to India", href: "/trump-account-moving-back-to-india" },
                 { label: "Main H-1B guide", href: "/trump-account-h1b-immigrant-families" },
+                { label: "Trump Account tax planning for immigrant families", href: "/trump-account-tax-planning-immigrant-families" },
               ]}
             />
             <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-ink-400">{TRUMP_ACCOUNT_SHORT_DISCLAIMER}</p>

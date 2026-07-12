@@ -1,40 +1,40 @@
 import Link from "next/link";
 
 /**
- * Top-level hub navigation for the homepage. Five crawlable cards that route
- * visitors into the site's main hubs (immigration, tax, FBAR/FATCA, wealth) plus
- * the full tools index. Kept deliberately simple — labels + one-liners — so the
- * homepage reads as a clear table of contents.
+ * Top-level hub navigation for the homepage. Six crawlable cards that route
+ * visitors into the site's main hubs (immigration, USCIS, tax, wealth, return
+ * to India) plus the full tools index. Kept deliberately simple — labels +
+ * one-liners — so the homepage reads as a clear table of contents.
  */
 const hubs = [
   {
     href: "/immigration",
     icon: "🛂",
-    title: "Immigration Hub",
-    blurb: "H1B, green card, USCIS, visa bulletin & priority dates.",
+    title: "Immigration",
+    blurb: "H1B, green card, visa bulletin & priority dates.",
+  },
+  {
+    href: "/uscis",
+    icon: "🗂️",
+    title: "USCIS",
+    blurb: "Case status, receipt numbers, processing times & forms.",
   },
   {
     href: "/india-tax-compliance",
     icon: "🧾",
-    title: "India Tax & Compliance Hub",
+    title: "Tax & Compliance",
     blurb: "FBAR, FATCA, DTAA, ITR, TDS, repatriation & calculators.",
-  },
-  {
-    href: "/tools/fbar-fatca-checker",
-    icon: "🏦",
-    title: "FBAR/FATCA Center",
-    blurb: "US reporting for NRE/NRO, FDs & Indian mutual funds.",
   },
   {
     href: "/long-term-nri-wealth",
     icon: "🌉",
-    title: "NRI Wealth Hub",
+    title: "Wealth",
     blurb: "India vs US investing, property, retirement & estate.",
   },
   {
     href: "/return-to-india",
     icon: "🛬",
-    title: "Return to India Hub",
+    title: "Return to India",
     blurb: "401(k), RNOR status, currency timing & moving-back checklist.",
   },
   {

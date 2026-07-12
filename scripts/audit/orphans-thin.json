@@ -1,0 +1,144 @@
+{
+  "orphans": [],
+  "low": [
+    {
+      "route": "/education/grade-finder",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-california",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-florida",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-georgia",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-illinois",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-maryland",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-massachusetts",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-new-jersey",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-new-york",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-texas",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-virginia",
+      "incoming": 1
+    },
+    {
+      "route": "/indian-population-in-washington",
+      "incoming": 1
+    },
+    {
+      "route": "/partnerships",
+      "incoming": 1
+    },
+    {
+      "route": "/resources",
+      "incoming": 2
+    },
+    {
+      "route": "/tools/flight-price-guide",
+      "incoming": 2
+    },
+    {
+      "route": "/tools/h1b-sponsor-finder",
+      "incoming": 2
+    }
+  ],
+  "thin": [
+    {
+      "route": "/education/college-rankings",
+      "hasFaq": true,
+      "hasIntro": true,
+      "lines": 176
+    },
+    {
+      "route": "/education/gpa-calculator",
+      "hasFaq": true,
+      "hasIntro": true,
+      "lines": 210
+    },
+    {
+      "route": "/education/tuition-calculator",
+      "hasFaq": true,
+      "hasIntro": true,
+      "lines": 234
+    },
+    {
+      "route": "/h1b-perm-max-out-calculator",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 130
+    },
+    {
+      "route": "/tools/flight-price-guide",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 240
+    },
+    {
+      "route": "/tools/green-card-stage-finder",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 194
+    },
+    {
+      "route": "/tools/h1b-sponsor-finder",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 163
+    },
+    {
+      "route": "/tools/nri-tax-filing-roadmap",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 293
+    },
+    {
+      "route": "/tools/uscis-life-decision-checklist",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 171
+    },
+    {
+      "route": "/tools/uscis-processing-delay-checker",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 181
+    },
+    {
+      "route": "/tools/visa-free-countries",
+      "hasFaq": true,
+      "hasIntro": false,
+      "lines": 158
+    },
+    {
+      "route": "/tools/visa-green-card",
+      "hasFaq": true,
+      "hasIntro": true,
+      "lines": 485
+    }
+  ],
+  "toolCount": 32
+}

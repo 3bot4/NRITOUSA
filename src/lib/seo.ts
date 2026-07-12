@@ -224,6 +224,10 @@ export function articleJsonLd(article: Article) {
     dateModified: article.updated ?? article.date,
     author: {
       "@type": "Person",
+      // Same @id as the author's ProfilePage Person node (about-deepak for the
+      // owner, /author/<slug> for contributors), so the article's author and
+      // the profile page resolve to one entity for E-E-A-T.
+      "@id": `${absoluteUrl(by.url)}#person`,
       name: by.name,
       ...(by.role ? { jobTitle: by.role } : {}),
       url: absoluteUrl(by.url),

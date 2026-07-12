@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import LeadMagnet from "@/components/calculators/LeadMagnet";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import RelatedHubs from "@/components/RelatedHubs";
 import { calculators, getCalculator } from "@/lib/calculators";
@@ -44,6 +45,17 @@ const REGISTRY: Record<string, React.ComponentType> = {
   "dtaa-foreign-tax-credit": DtaaReliefCalculator,
   "fcnr-vs-hysa": FcnrVsHysaCalculator,
 };
+
+/** Calculators whose intent is U.S.→India relocation — these surface the
+ *  Return-to-India Playbook lead-magnet card beneath the tool output. */
+const RETURN_TO_INDIA_CALCS = new Set([
+  "rnor-tax-residency",
+  "india-property-capital-gains",
+  "401k-return-to-india",
+  "remittance-tcs-cost",
+  "dtaa-foreign-tax-credit",
+  "fcnr-vs-hysa",
+]);
 
 export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
@@ -168,6 +180,12 @@ export default function CalculatorPage({
           )}
 
           <Calculator />
+
+          {RETURN_TO_INDIA_CALCS.has(calc.slug) && (
+            <div className="mt-8">
+              <ReturnToIndiaLeadMagnetCard />
+            </div>
+          )}
 
           <div className="mt-8">
             <LeadMagnet

@@ -63,6 +63,21 @@ export const trumpAccountClusterLinks: ClusterLink[] = [
     label: "SSN vs ITIN Rules",
     desc: "Can a child without an SSN qualify? Valid-SSN rule explained",
   },
+  {
+    href: "/trump-account-generational-wealth-for-kids",
+    label: "Generational Wealth & Millionaire Calculator",
+    desc: "How $5,000/year could grow over decades — with a projection calculator",
+  },
+  {
+    href: "/trump-account-tax-planning-immigrant-families",
+    label: "Trump Account Tax Planning",
+    desc: "Withdrawals, Roth conversion, college, age-18 control, and India-move scenarios",
+  },
+  {
+    href: "/trump-account-age-18-withdrawal-roth-conversion",
+    label: "Trump Account at 18: Withdrawals & Roth Conversion",
+    desc: "The age-18 pivot, withdrawal tax and penalty, exceptions, and the Roth conversion window",
+  },
 ];
 
 /** Related tools elsewhere on the site. */

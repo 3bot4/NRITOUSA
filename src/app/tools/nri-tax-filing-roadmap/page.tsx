@@ -8,6 +8,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import RelatedGuides from "@/components/tools/RelatedGuides";
 import RelatedToolsStrip from "@/components/RelatedToolsStrip";
 import NriTaxFilingRoadmap from "@/components/tools/NriTaxFilingRoadmap";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getTool } from "@/lib/tools";
 import { site } from "@/lib/site";
 import {
@@ -160,6 +161,9 @@ export default function NriTaxFilingRoadmapPage() {
         <section id="roadmap" className="scroll-mt-24 pb-12 pt-6 sm:pb-16">
           <Container>
             <NriTaxFilingRoadmap />
+            <div className="mx-auto mt-8 max-w-3xl">
+              <ReturnToIndiaLeadMagnetCard />
+            </div>
           </Container>
         </section>
 

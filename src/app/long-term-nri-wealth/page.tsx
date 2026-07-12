@@ -14,6 +14,7 @@ import {
 import HubLinkGroups from "@/components/HubLinkGroups";
 import RelatedHubs from "@/components/RelatedHubs";
 import CommonNriQuestions from "@/components/home/CommonNriQuestions";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getArticle, getArticlesByTopic } from "@/lib/articles";
 import { getTopic } from "@/lib/topics";
 import {
@@ -22,6 +23,10 @@ import {
   giftPillar,
   giftSupportPages,
 } from "@/lib/giftsCluster";
+import {
+  lifeInsuranceClusterLinks,
+  otherLifeInsuranceLinks,
+} from "@/lib/lifeInsuranceCluster";
 import {
   absoluteUrl,
   articleUrl,
@@ -400,6 +405,83 @@ export default function LongTermNriWealthPage() {
         </Container>
       </section>
 
+      {/* Life insurance cluster */}
+      <section className="py-14 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Protection & life insurance"
+            title="Life insurance for Indian families in the U.S."
+            description="Educational guides to term insurance, IUL, and protection planning — what to know before you speak with a state-licensed insurance agent."
+            action={{
+              label: "Start the guide",
+              href: lifeInsuranceClusterLinks[0].href,
+            }}
+          />
+
+          {/* Pillar — prominent lead card */}
+          <Link
+            href={lifeInsuranceClusterLinks[0].href}
+            className="group flex flex-col gap-2 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden
+                className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-2xl shadow-sm"
+              >
+                🛡️
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">
+                  Pillar guide
+                </p>
+                <h3 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  Life Insurance for Indian Families in the U.S.
+                </h3>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  {lifeInsuranceClusterLinks[0].desc}
+                </p>
+              </div>
+            </div>
+            <span className="flex-none text-sm font-semibold text-emerald-600 group-hover:text-emerald-700">
+              Read the guide{" "}
+              <span
+                aria-hidden
+                className="inline-block transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </span>
+          </Link>
+
+          {/* Supporting pages */}
+          <div className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {otherLifeInsuranceLinks(lifeInsuranceClusterLinks[0].href).map((p) => (
+              <Link
+                key={p.href}
+                href={p.href}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                  {p.href.includes("calculator") ? "Calculator" : "Guide"}
+                </span>
+                <h3 className="mt-2 text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-600">
+                  {p.label}
+                </h3>
+                <p className="mt-1 line-clamp-2 flex-1 text-xs leading-relaxed text-ink-500">
+                  {p.desc}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Retirement and estate planning */}
       <section className="bg-white py-14 sm:py-20">
         <Container>
@@ -435,6 +517,13 @@ export default function LongTermNriWealthPage() {
       <section className="py-14 sm:py-20">
         <Container>
           <CommonNriQuestions />
+        </Container>
+      </section>
+
+      {/* Return-to-India Playbook lead magnet */}
+      <section className="pb-6">
+        <Container>
+          <ReturnToIndiaLeadMagnetCard />
         </Container>
       </section>
 

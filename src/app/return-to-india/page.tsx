@@ -9,6 +9,7 @@ import {
 } from "@/data/siteWideVerifiedNumbers";
 
 const config: MoneyHubConfig = {
+  showReturnToIndiaLeadMagnet: true,
   path: "/return-to-india",
   breadcrumb: "Return to India",
   icon: "✈️",

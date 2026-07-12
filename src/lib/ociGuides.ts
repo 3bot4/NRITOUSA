@@ -157,6 +157,11 @@ The consulate processes and forwards your case to MHA in India for clearance.
 Once granted, your OCI is printed and dispatched back via your chosen return courier.
 :::
 
+:::tip
+title: After approval — download your e-OCI
+Once your OCI is granted, existing cardholders can also generate the free digital **e-OCI card** from the OCI Services Portal. See the [e-OCI card guide](${OCI_BASE}/e-oci-card) for the download steps, travel cautions, and email/login fixes.
+:::
+
 ## Common mistakes that delay OCI
 :::warn
 - **Wrong photo** — OCI photos are square with a white background and a large centered face (not US passport style).

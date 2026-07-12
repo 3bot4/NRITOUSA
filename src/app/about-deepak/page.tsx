@@ -100,7 +100,7 @@ const toolsBuilt = [
   { label: "Visa-Free Travel", href: "/tools/visa-free-countries" },
   { label: "Processing Times", href: "/tools/processing-times" },
   {
-    label: "IUL vs 401(k) Calculator",
+    label: "IUL vs 401(k) article",
     href: "/articles/iul-vs-401k-honest-comparison",
   },
   {

@@ -12,6 +12,7 @@ import {
 } from "@/data/siteWideVerifiedNumbers";
 import RelatedHubs from "@/components/RelatedHubs";
 import Newsletter from "@/components/Newsletter";
+import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getArticle } from "@/lib/articles";
 import {
   TAX_COMPLIANCE_PATH,
@@ -950,6 +951,13 @@ export default function IndiaTaxCompliancePage() {
               );
             })}
           </div>
+        </Container>
+      </section>
+
+      {/* Return-to-India Playbook lead magnet */}
+      <section className="bg-white pt-4 pb-6">
+        <Container>
+          <ReturnToIndiaLeadMagnetCard />
         </Container>
       </section>
 

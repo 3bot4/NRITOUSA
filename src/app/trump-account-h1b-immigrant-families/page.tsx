@@ -322,6 +322,7 @@ export default function Page() {
                 { label: "Check the $1,000 eligibility", href: "/trump-account-1000-eligibility", primary: true },
                 { label: "How to apply (Form 4547)", href: "/how-to-apply-for-trump-account-form-4547" },
                 { label: "SSN vs ITIN rules", href: "/trump-account-ssn-itin-child" },
+                { label: "Trump Account tax planning for immigrant families", href: "/trump-account-tax-planning-immigrant-families" },
               ]}
             />
             <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-ink-400">{TRUMP_ACCOUNT_SHORT_DISCLAIMER}</p>
