@@ -1,7 +1,7 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-07-11T18:49:26-04:00",
-  "asOfLabel": "Jul 11, 2026, 6:49 PM ET",
+  "asOf": "2026-07-12T18:50:06-04:00",
+  "asOfLabel": "Jul 12, 2026, 6:50 PM ET",
   "items": [
     {
       "key": "usdinr",
@@ -12,7 +12,7 @@
       "unit": "₹",
       "decimals": 2,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-11T18:49:26-04:00",
+      "fetchedAt": "2026-07-12T18:50:06-04:00",
       "stale": false
     },
     {
@@ -24,7 +24,7 @@
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-11T18:49:26-04:00",
+      "fetchedAt": "2026-07-12T18:50:06-04:00",
       "stale": false
     },
     {
@@ -36,27 +36,23 @@
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-11T18:49:26-04:00",
+      "fetchedAt": "2026-07-12T18:50:06-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4114,
-      "previous": 4155,
-      "changePct": -0.99,
+      "value": 4088,
+      "previous": 4145,
+      "changePct": -1.38,
       "unit": "$",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-11T18:49:26-04:00",
+      "fetchedAt": "2026-07-12T18:50:06-04:00",
       "stale": false
     }
   ],
   "usdinrHistory": [
-    {
-      "date": "2026-05-13",
-      "value": 95.67
-    },
     {
       "date": "2026-05-14",
       "value": 95.77
@@ -171,6 +167,10 @@
     },
     {
       "date": "2026-07-11",
+      "value": 95.37
+    },
+    {
+      "date": "2026-07-12",
       "value": 95.37
     }
   ]
