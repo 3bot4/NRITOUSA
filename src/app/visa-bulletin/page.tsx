@@ -14,21 +14,29 @@ import {
 import { site } from "@/lib/site";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { CURRENT_VISA_BULLETIN } from "@/lib/visaBulletinDates";
-import { currentBulletinNote } from "@/lib/visa-bulletin";
+import {
+  currentBulletinNote,
+  getApplicableChart,
+  getBulletinLabel,
+} from "@/lib/visa-bulletin";
+import { formatDate } from "@/lib/format";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 import Eb5SetAsidePanel from "@/components/Eb5SetAsidePanel";
 
 const PAGE_PATH = "/visa-bulletin";
-const UPDATED = "2026-06-16";
+const PUBLISHED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "Visa Bulletin for Indians: EB1–EB3 Priority Dates",
+    title: "Visa Bulletin for India: EB-1, EB-2 & EB-3 Dates",
     description:
-      "A simple guide to the visa bulletin for Indians: EB1, EB2 and EB3 priority dates, final action vs. filing dates, retrogression and green-card waits.",
+      "Check the latest India visa bulletin dates for EB-1, EB-2 and EB-3, understand Final Action and Filing dates, and use our priority-date tools.",
     path: PAGE_PATH,
     type: "article",
-    openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },
+    openGraph: {
+      publishedTime: PUBLISHED,
+      modifiedTime: CURRENT_VISA_BULLETIN.lastUpdated,
+    },
   });
 }
 
@@ -37,56 +45,30 @@ const crumbs = [
   { name: "Visa Bulletin Guide", url: PAGE_PATH },
 ];
 
+// Hub-level FAQs only — category-specific and process-specific questions are
+// owned by the child pages (eb1/eb2/eb3-india, priority-date, final-action,
+// retrogression, priority-date-current-what-next). Keeping the hub FAQ small
+// avoids duplicating FAQPage content across the cluster.
 const faqs: FaqItem[] = [
   {
     question: "What is the visa bulletin?",
     answer:
-      "The visa bulletin is a monthly publication from the US Department of State that shows priority date cutoffs for each employment-based (EB) and family-based immigration category by country. For Indian H1B workers pursuing green cards, it determines when their priority date is current — which triggers eligibility to file or receive approval of Form I-485 (adjustment of status).",
+      "The visa bulletin is a monthly publication from the US Department of State that sets priority-date cutoffs for each employment-based (EB) and family-based category by country. For Indian applicants pursuing employment green cards, it determines when a priority date is current — which controls eligibility to file or receive approval of Form I-485 (adjustment of status).",
   },
   {
-    question: "What is a priority date and where do I find it?",
+    question: "Why are the India visa bulletin dates so much further back than other countries?",
     answer:
-      "Your priority date is the date your PERM labor certification was filed with the Department of Labor (for EB-2 and EB-3). For EB-1 and EB-2 NIW, it is the I-140 filing date. It is found on your PERM filing receipt or I-140 approval notice. Your priority date establishes your place in the visa queue — earlier is better.",
+      "US law limits each country of birth to 7% of the annual employment-based green cards. India accounts for far more than 7% of EB-2 and EB-3 demand, so unused demand piles up into a backlog measured in years to decades. Country of birth — not citizenship — determines which cutoff applies to you.",
   },
   {
-    question: "What is the Final Action Date?",
+    question: "Which chart lets me file I-485 — Final Action Dates or Dates for Filing?",
     answer:
-      "The Final Action Date (Table A in the visa bulletin) is the cutoff date for green card approval. Your priority date must be earlier than this date for USCIS to approve your I-485. This is the most important date to monitor.",
+      "Final Action Dates (Table A) always control when a green card can be approved. Dates for Filing (Table B) is an earlier cutoff that can let you file I-485 sooner and unlock EAD/Advance Parole — but only in months USCIS authorizes it. Confirm which chart USCIS is accepting for adjustment of status at uscis.gov/visabulletininfo, and see our Final Action Date vs Dates for Filing guide for the full comparison.",
   },
   {
-    question: "What is the Dates for Filing chart?",
+    question: "How often does the visa bulletin change and where do I verify it?",
     answer:
-      "The Dates for Filing (Table B) is an earlier cutoff that sometimes allows you to file I-485 before your Final Action Date is current. Filing under Table B lets you get an EAD and Advance Parole while waiting for your Final Action Date to advance. Table B is only usable when USCIS specifically authorizes it each month — check uscis.gov/visabulletininfo.",
-  },
-  {
-    question: "Why is EB-2 India so far behind?",
-    answer:
-      "US immigration law limits each country to 7% of annual employment-based green cards. India accounts for a much larger share of EB-2 and EB-3 applicants than 7%, creating a massive backlog. As of the July 2026 Visa Bulletin, EB-2 India is Unavailable — no EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits.",
-  },
-  {
-    question: "What is retrogression?",
-    answer:
-      "Retrogression means the visa bulletin moved a cutoff date backward — to an earlier date than the previous month. If your priority date was current last month but is not current this month due to retrogression, your I-485 (if pending) stays open but cannot be approved until your date is current again. If I-485 was not yet filed, you must wait for the date to advance again.",
-  },
-  {
-    question: "Should I file under EB-2 or EB-3 for India?",
-    answer:
-      "Both EB-2 and EB-3 India have significant backlogs, and neither is consistently faster. In some months EB-3 India is more current; in others EB-2 is ahead. Many Indian applicants pursue both categories simultaneously — filing PERM in EB-2 for their primary path and EB-3 for potential downgrade flexibility. Consult your attorney on the current relative cutoff movement.",
-  },
-  {
-    question: "What does 'C' (Current) mean for India EB-1?",
-    answer:
-      "If the visa bulletin shows 'C' (Current) for EB-1 India, it means all priority dates in EB-1 qualify for that month — there is no backlog for that category. This is much better than EB-2 or EB-3 India, and is one reason why qualifying for EB-1 (extraordinary ability, outstanding researcher, or multinational executive) is strategically valuable for Indians.",
-  },
-  {
-    question: "Can I file I-485 before my priority date is current?",
-    answer:
-      "Only if USCIS has authorized the Dates for Filing (Table B) chart for that month AND your priority date qualifies under Table B. Check uscis.gov/visabulletininfo each month for the USCIS Adjustment of Status Filing Chart announcement. Filing under Table B gives you EAD and AP but your case won't be approved until your Final Action Date is also current.",
-  },
-  {
-    question: "My priority date just became current. What do I do?",
-    answer:
-      "Act promptly. Contact your employer's immigration attorney immediately. Begin assembling the I-485 package: Form I-485, Supplement J, I-131 (Advance Parole), I-765 (EAD), I-864 (Affidavit of Support), and I-693 medical exam from a USCIS civil surgeon. File as quickly as possible — dates can retrogress the following month.",
+      "The State Department publishes a new bulletin around the 8th–10th of each month for the following month, and dates can move forward, hold, or retrogress. Always verify the current month at travel.state.gov and confirm the USCIS filing chart at uscis.gov/visabulletininfo before making any filing decision.",
   },
 ];
 
@@ -97,11 +79,11 @@ export default function VisaBulletinPage() {
   const articleJsonLd = {
     "@type": "Article",
     "@id": `${url}#article`,
-    headline: "Visa Bulletin Explained for Indians: EB1, EB2, EB3 Priority Dates",
+    headline: "Visa Bulletin for India: Current EB-1, EB-2 & EB-3 Dates",
     description:
-      "Complete visa bulletin guide for Indian H1B workers — EB-1, EB-2, EB-3 India priority dates, final action dates, dates for filing, retrogression, and what to do when your date becomes current.",
-    datePublished: UPDATED,
-    dateModified: UPDATED,
+      "The India visa bulletin hub — current EB-1, EB-2 and EB-3 Final Action and Filing dates, plus links to the specialist category guides and priority-date tools.",
+    datePublished: PUBLISHED,
+    dateModified: bulletin.lastUpdated,
     author: { "@type": "Organization", name: site.publisher },
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -150,28 +132,74 @@ export default function VisaBulletinPage() {
             <span>Updated {bulletin.month} {bulletin.year}</span>
           </div>
           <h1 className="mt-3 text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">
-            Visa Bulletin Explained for Indians:<br className="hidden sm:block" /> EB-1, EB-2, EB-3 Priority Dates
+            Visa Bulletin for India
           </h1>
           <p className="mt-3 text-lg leading-relaxed text-ink-500">
-            The visa bulletin is the monthly publication that controls when Indian H1B workers can file or receive approval of their green card. This guide explains every part — priority date, Final Action Date, Dates for Filing, retrogression, and what to do when your date becomes current.
+            The monthly cutoff dates that control when Indian applicants can file or receive approval of an employment-based green card. This hub shows the current EB-1, EB-2 and EB-3 India dates at a glance, then routes you to the specialist guide for your category.
           </p>
         </div>
 
-        {/* July 2026 standing alert */}
-        <VisaBulletinAlert className="mb-8" />
+        {/* standing alert (single source of truth) */}
+        <VisaBulletinAlert className="mb-6" />
 
-        {/* July 2026 bulletin note */}
-        <div className="mb-8 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
+        {/* current-month bulletin note */}
+        <div className="mb-6 rounded-2xl border border-amber-100 bg-amber-50/60 p-5 text-sm leading-relaxed text-amber-900">
           {currentBulletinNote}
         </div>
 
-        {/* ── SECTION 1: Quick answer ─────────────────────────────────────────── */}
+        {/* ── At-a-glance overview + primary CTAs ─────────────────────────────── */}
         <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
-          <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">Quick answer</p>
           <p className="text-sm leading-relaxed text-ink-800">
-            The visa bulletin sets monthly cutoff dates for green card approval by category (EB-1/EB-2/EB-3) and country. Your <strong>priority date</strong> (PERM filing date) must be <strong>earlier than</strong> the published cutoff to file or receive I-485 approval. For July 2026, EB-2 India is <strong>Unavailable</strong> (no numbers for the remainder of FY 2026) and EB-3 India advanced to January 1, 2014 — Indian backlogs remain measured in years to decades.
+            The visa bulletin sets monthly cutoff dates for green card approval by
+            category (EB-1/EB-2/EB-3) and country. Your <strong>priority date</strong>{" "}
+            must be <strong>earlier than</strong> the published cutoff to file or
+            receive I-485 approval. Current EB-1, EB-2 and EB-3 India dates are in
+            the tables below; open a category guide for full analysis.
           </p>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-600">
+            <span>
+              <strong className="font-semibold text-ink-800">USCIS filing chart this month:</strong>{" "}
+              {getApplicableChart().label}
+            </span>
+            <span aria-hidden>·</span>
+            <span>{getBulletinLabel()} bulletin, data verified {formatDate(CURRENT_VISA_BULLETIN.lastUpdated)}</span>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href="/tools/priority-date-checker"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
+            >
+              Check my priority date →
+            </Link>
+            <Link
+              href="/tools/green-card-tracker"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 transition hover:border-blue-300"
+            >
+              Estimate my wait
+            </Link>
+          </div>
         </div>
+
+        {/* ── Cluster navigation: route to specialist pages ───────────────────── */}
+        <nav aria-label="Visa bulletin guides" className="mb-10 rounded-2xl border border-ink-900/5 bg-white p-5">
+          <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-3">Jump to the right guide</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { href: "/visa-bulletin/eb1-india", label: "EB-1 India priority date & backlog" },
+              { href: "/visa-bulletin/eb2-india", label: "EB-2 India priority date & backlog" },
+              { href: "/visa-bulletin/eb3-india", label: "EB-3 India priority date & backlog" },
+              { href: "/visa-bulletin/priority-date", label: "What is a priority date?" },
+              { href: "/visa-bulletin/final-action-date-vs-date-of-filing", label: "Final Action Date vs Dates for Filing" },
+              { href: "/visa-bulletin/retrogression", label: "Visa bulletin retrogression explained" },
+              { href: "/visa-bulletin/priority-date-current-what-next", label: "Priority date current — what next" },
+              { href: "/visa-bulletin/monthly-update", label: "How to track the monthly update" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} className="text-sm font-medium text-brand-600 hover:text-brand-700">
+                {l.label} →
+              </Link>
+            ))}
+          </div>
+        </nav>
 
         {/* ── SECTION 2: What is the visa bulletin? ──────────────────────────── */}
         <section className="mb-10">
@@ -448,47 +476,17 @@ export default function VisaBulletinPage() {
           </p>
         </section>
 
-        {/* ── SECTION 12: What happens when current ──────────────────────────── */}
+        {/* ── When your date becomes current (summary + link to owner page) ───── */}
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">What happens when your priority date becomes current?</h2>
-          <div className="space-y-2">
-            {[
-              { n: "1", text: "Check Table A and USCIS Table B authorization immediately" },
-              { n: "2", text: "Contact your employer's immigration attorney the same day" },
-              { n: "3", text: "Schedule a USCIS civil surgeon for I-693 medical exam (books up fast)" },
-              { n: "4", text: "Prepare I-485 package: I-485 + Supp J + I-131 + I-765 + I-864 + I-693" },
-              { n: "5", text: "File I-485 as fast as possible — do not wait until end of month" },
-              { n: "6", text: "Do NOT travel internationally after filing until Advance Parole is approved" },
-            ].map((s) => (
-              <div key={s.n} className="flex items-start gap-3 rounded-xl border border-ink-900/5 bg-white p-3">
-                <span className="flex-none flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-800">{s.n}</span>
-                <p className="text-sm text-ink-700">{s.text}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-3 text-xs text-ink-500">
-            <Link href="/visa-bulletin/priority-date-current-what-next" className="text-brand-600 underline">Full guide: priority date current — what to do next →</Link>
+          <p className="text-sm leading-relaxed text-ink-600">
+            When your priority date is earlier than the applicable cutoff, you may be able to file — or have USCIS approve — your I-485, but only under the chart USCIS authorizes that month, and dates can retrogress, so act promptly with your attorney. The step-by-step package, timing, and travel cautions are covered in the full guide.
           </p>
-        </section>
-
-        {/* ── SECTION 13: Common mistakes ─────────────────────────────────────── */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Common mistakes Indians make with the visa bulletin</h2>
-          <div className="space-y-2">
-            {[
-              { bad: "Assuming Table B is always available", fix: "USCIS must authorize Table B each month — check uscis.gov/visabulletininfo every month" },
-              { bad: "Confusing PERM certification date with PERM filing date", fix: "Your priority date is the PERM filing date (when ETA-9089 was submitted to DOL), not when DOL certified it" },
-              { bad: "Waiting until the last week of the month to file I-485", fix: "File in the first 2 weeks of the month — dates can retrogress and windows close fast" },
-              { bad: "Traveling internationally after filing I-485 without AP", fix: "Never travel without an approved Advance Parole — it can cause your I-485 to be considered abandoned" },
-              { bad: "Not tracking the bulletin monthly", fix: "Set a recurring calendar reminder for the 9th of each month to check the new bulletin" },
-              { bad: "Assuming EB-3 is always faster than EB-2 for India", fix: "EB-2 and EB-3 India move independently — check the actual current bulletin, not assumptions" },
-            ].map((m, i) => (
-              <div key={i} className="rounded-xl border border-ink-900/5 bg-white p-4">
-                <p className="text-sm font-semibold text-rose-700">✗ {m.bad}</p>
-                <p className="mt-1 text-sm text-emerald-700">✓ {m.fix}</p>
-              </div>
-            ))}
-          </div>
+          <p className="mt-3 text-sm">
+            <Link href="/visa-bulletin/priority-date-current-what-next" className="font-medium text-brand-600 hover:text-brand-700">
+              Full guide: priority date current — what to do next →
+            </Link>
+          </p>
         </section>
 
         {/* ── SECTION 14: Priority Date Checker tool ──────────────────────────── */}

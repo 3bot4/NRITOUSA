@@ -23,10 +23,10 @@ const guides: { title: string; href: string; description: string }[] = [
       "VFS process, documents, fees, photos, processing time, and common mistakes.",
   },
   {
-    title: "Visa Bulletin Explained for Indians",
-    href: "/articles/visa-bulletin-explained-for-indians",
+    title: "Visa Bulletin for India",
+    href: "/visa-bulletin",
     description:
-      "Learn how priority dates, final action dates, and dates for filing work.",
+      "Current EB-1, EB-2 & EB-3 India dates, final action vs. filing dates, and priority-date tools.",
   },
   {
     title: "H1B Lottery Results 2026/2027",

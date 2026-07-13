@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import VisaBulletinCategoryStatus from "@/components/VisaBulletinCategoryStatus";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -133,6 +134,16 @@ export default function VisaBulletinChildPage({
         <div className="py-8 sm:py-10">
           <Container>
             <div className="mx-auto">
+              {/* Live current-status card for EB category pages — every value
+                  comes from the centralized bulletin data, so the evergreen
+                  article body below can stay date-free. */}
+              {page.category && (
+                <VisaBulletinCategoryStatus
+                  category={page.category}
+                  className="mx-auto mb-8 max-w-[720px]"
+                />
+              )}
+
               <ArticleBody content={page.content} />
 
               {/* tool CTA */}
@@ -150,9 +161,10 @@ export default function VisaBulletinChildPage({
               {/* disclaimer */}
               <div className="mx-auto mt-6 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">A quick note: </strong>
-                This guide is educational and not legal or immigration advice. Visa bulletin cutoff dates change monthly and this guide cannot show real-time data. Always verify the current month's bulletin at{" "}
-                <a href="https://travel.state.gov" className="text-brand-600 underline" rel="nofollow noopener" target="_blank">travel.state.gov</a>{" "}
-                and consult a licensed immigration attorney for your specific situation.
+                This guide is educational and not legal or immigration advice. Visa bulletin cutoff dates change monthly. Always verify the current month's bulletin at the{" "}
+                <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" className="text-brand-600 underline" rel="nofollow noopener" target="_blank">Department of State</a>{" "}
+                and the filing chart in use at{" "}
+                <a href="https://www.uscis.gov/visabulletininfo" className="text-brand-600 underline" rel="nofollow noopener" target="_blank">USCIS</a>, and consult a licensed immigration attorney for your specific situation.
               </div>
 
               <div className="mx-auto mt-6 max-w-[720px] text-sm">

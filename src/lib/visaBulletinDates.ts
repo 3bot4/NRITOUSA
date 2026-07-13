@@ -100,10 +100,14 @@ export const CURRENT_VISA_BULLETIN: VisaBulletinData = {
     EB3: dff("eb3"),
   },
 
-  // MANUAL each month — USCIS is using Final Action Dates (Table A) for July
-  // 2026 employment-based adjustment of status, so Table B cannot be used to
-  // file I-485 this month. Verify at uscis.gov/visabulletininfo.
-  usingDatesForFiling: false,
+  // Which USCIS Adjustment of Status filing chart applies this month — read
+  // from the single source of truth (`adjustmentOfStatusChart` in current.json)
+  // so the checker, hub, tracker, and category pages never disagree. USCIS is
+  // using Final Action Dates for July 2026, so Table B cannot be used to file
+  // I-485 this month. Verify at uscis.gov/visabulletininfo.
+  usingDatesForFiling:
+    (currentData as { adjustmentOfStatusChart?: string })
+      .adjustmentOfStatusChart === "dates-for-filing",
 
   lastUpdated: currentData.lastUpdated,
 };

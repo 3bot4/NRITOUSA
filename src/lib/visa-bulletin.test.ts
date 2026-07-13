@@ -20,8 +20,11 @@ import {
   estimateWait,
   expandSeries,
   formatCutoff,
+  getApplicableChart,
+  getBulletinLabel,
   getCutoffs,
   getEb5SetAside,
+  getMovement,
   getSeries,
   isCurrent,
   isUnavailableVisaValue,
@@ -174,5 +177,53 @@ describe("EB-5 set-aside categories (July 2026)", () => {
         expect(formatCutoff(cut!.fad)).not.toMatch(/NaN|Invalid/);
       }
     }
+  });
+});
+
+describe("month label + applicable chart", () => {
+  it("getBulletinLabel renders a full month + year", () => {
+    expect(getBulletinLabel()).toMatch(
+      /^(January|February|March|April|May|June|July|August|September|October|November|December) \d{4}$/
+    );
+  });
+
+  it("getApplicableChart returns a coherent chart + label", () => {
+    const c = getApplicableChart();
+    expect(["final-action", "dates-for-filing"]).toContain(c.chart);
+    expect(c.usingDatesForFiling).toBe(c.chart === "dates-for-filing");
+    expect(c.label).toBe(
+      c.chart === "dates-for-filing" ? "Dates for Filing" : "Final Action Dates"
+    );
+  });
+});
+
+describe("getMovement is C/U-safe and consistent across every category", () => {
+  it("classifies C as current and U as unavailable, never doing date math", () => {
+    for (const cat of CATEGORIES) {
+      for (const co of COUNTRIES) {
+        const m = getMovement(cat, co);
+        const { fad } = getCutoffs(cat, co);
+        if (fad === "C") {
+          expect(m.status).toBe("current");
+          expect(m.monthsMoved).toBeNull();
+        } else if (fad === "U") {
+          expect(m.status).toBe("unavailable");
+          expect(m.monthsMoved).toBeNull();
+        }
+        // monthsMoved is either null or a finite number — never NaN.
+        if (m.monthsMoved !== null) expect(Number.isFinite(m.monthsMoved)).toBe(true);
+        expect(m.currentMonthLabel).not.toMatch(/NaN|Invalid|undefined/);
+        expect(m.priorMonthLabel).not.toMatch(/NaN|Invalid|undefined/);
+      }
+    }
+  });
+
+  it("detects the EB-1 India July-2026 retrogression from history", () => {
+    // History: EB-1 India FAD 2026-06 = 2022-12-15, 2026-07 = 2022-10-15.
+    const m = getMovement("eb1", "india");
+    expect(m.status).toBe("retrogressed");
+    expect(m.priorFad).toBe("2022-12-15");
+    expect(m.monthsMoved).not.toBeNull();
+    expect(m.monthsMoved!).toBeLessThan(0);
   });
 });

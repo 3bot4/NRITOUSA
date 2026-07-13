@@ -84,6 +84,16 @@ const nextConfig = {
         destination: "/indian-passport-renewal-usa",
         permanent: true,
       },
+      // The "Visa Bulletin Explained for Indians" legacy article was consolidated
+      // into the /visa-bulletin hub, which owns the "visa bulletin for India"
+      // intent. A hard 301 (statusCode, not `permanent`/308) preserves the
+      // article's link equity and prevents an indexable duplicate. Only this
+      // exact legacy URL is redirected.
+      {
+        source: "/articles/visa-bulletin-explained-for-indians",
+        destination: "/visa-bulletin",
+        statusCode: 301,
+      },
     ];
   },
 };

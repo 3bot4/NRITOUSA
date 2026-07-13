@@ -347,3 +347,145 @@ export function expandSeries(
   }
   return out;
 }
+
+/* --------------------- month label + applicable chart -------------------- */
+
+const MONTHS_FULL = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+/** Human label for a "YYYY-MM" bulletin month, e.g. "July 2026". */
+export function formatBulletinMonth(ym: string = bulletin.month): string {
+  const [y, m] = ym.split("-").map(Number);
+  return `${MONTHS_FULL[m - 1]} ${y}`;
+}
+
+/** The current bulletin month label, e.g. "July 2026". */
+export function getBulletinLabel(): string {
+  return formatBulletinMonth(bulletin.month);
+}
+
+export type AdjustmentChart = "final-action" | "dates-for-filing";
+
+export interface ApplicableChart {
+  chart: AdjustmentChart;
+  /** Short label, e.g. "Final Action Dates". */
+  label: string;
+  /** True when USCIS is accepting Dates for Filing (Table B) for AOS this month. */
+  usingDatesForFiling: boolean;
+}
+
+/**
+ * Which USCIS Adjustment of Status filing chart applies this month. Single
+ * source of truth: `adjustmentOfStatusChart` in current.json. USCIS announces
+ * this each month at uscis.gov/visabulletininfo; update the JSON alongside the
+ * cutoff data. Defaults to Final Action Dates when the field is absent.
+ */
+export function getApplicableChart(): ApplicableChart {
+  const chart =
+    (currentData as { adjustmentOfStatusChart?: AdjustmentChart })
+      .adjustmentOfStatusChart ?? "final-action";
+  return {
+    chart,
+    label:
+      chart === "dates-for-filing" ? "Dates for Filing" : "Final Action Dates",
+    usingDatesForFiling: chart === "dates-for-filing",
+  };
+}
+
+/** Official U.S. Department of State Visa Bulletin landing page. */
+export const DOS_VISA_BULLETIN_URL =
+  "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html";
+
+/** Official USCIS Adjustment of Status Filing Charts page. */
+export const USCIS_FILING_CHART_URL =
+  "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin";
+
+/* --------------------------- month-over-month ---------------------------- */
+
+/** Step-function value of a change-point series at a given month index. */
+function seriesValueAt(points: SeriesPoint[], mi: number): Cutoff | null {
+  let v: Cutoff | null = null;
+  for (const [ym, cutoff] of points) {
+    if (monthIndex(ym) > mi) break;
+    v = cutoff;
+  }
+  return v;
+}
+
+export type MovementStatus =
+  | "current" // FAD is "C" — no backlog
+  | "unavailable" // FAD is "U" — no visa numbers this month
+  | "advanced" // cutoff moved forward vs. last month
+  | "no-movement" // cutoff held (moved less than ~1 day)
+  | "retrogressed" // cutoff moved backward vs. last month
+  | "unknown"; // no comparable prior-month data
+
+export interface CategoryMovement {
+  status: MovementStatus;
+  category: EbCategory;
+  country: BulletinCountry;
+  /** Current-month Final Action Date (raw cutoff). */
+  currentFad: Cutoff;
+  /** Current-month Dates for Filing (raw cutoff). */
+  currentDff: Cutoff;
+  /** Prior-month Final Action Date, or null when unknown. */
+  priorFad: Cutoff | null;
+  /** Whole months the FAD moved (+ forward, − backward). Null when N/A. */
+  monthsMoved: number | null;
+  currentMonthLabel: string;
+  priorMonthLabel: string;
+}
+
+/**
+ * Month-over-month movement of a category's Final Action Date, computed from the
+ * centralized history series — never a hand-written note, so every page shows
+ * the same movement. "C"/"U" values are classified as current/unavailable rather
+ * than run through date math (movement is meaningless for those states).
+ */
+export function getMovement(
+  category: EbCategory,
+  country: BulletinCountry
+): CategoryMovement {
+  const { fad, dff } = getCutoffs(category, country);
+  const currentMi = monthIndex(bulletin.month);
+  const priorMi = currentMi - 1;
+  const priorMonthYm = `${Math.floor(priorMi / 12)}-${String(
+    (priorMi % 12) + 1
+  ).padStart(2, "0")}`;
+
+  const base: CategoryMovement = {
+    status: "unknown",
+    category,
+    country,
+    currentFad: fad,
+    currentDff: dff,
+    priorFad: null,
+    monthsMoved: null,
+    currentMonthLabel: formatBulletinMonth(bulletin.month),
+    priorMonthLabel: formatBulletinMonth(priorMonthYm),
+  };
+
+  if (isCurrent(fad)) return { ...base, status: "current" };
+  if (isUnavailableVisaValue(fad)) return { ...base, status: "unavailable" };
+
+  const series = getSeries(category, country);
+  const prior = series ? seriesValueAt(series.fad, priorMi) : null;
+  base.priorFad = prior;
+
+  if (!prior || !isValidVisaDate(prior)) {
+    // Prior month was Current, Unavailable, or has no data. If it was
+    // Unavailable and there is now a dated cutoff, numbers returned (forward);
+    // if it was Current and there is now a cutoff, the category retrogressed.
+    if (prior === "U") return { ...base, status: "advanced" };
+    if (prior === "C") return { ...base, status: "retrogressed" };
+    return { ...base, status: "unknown" };
+  }
+
+  const moved = monthIndex(fad) - monthIndex(prior);
+  base.monthsMoved = moved;
+  if (moved > 0.03) return { ...base, status: "advanced" };
+  if (moved < -0.03) return { ...base, status: "retrogressed" };
+  return { ...base, status: "no-movement" };
+}
