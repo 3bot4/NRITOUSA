@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
-import StoryCard from "@/components/success-stories/StoryCard";
 import StoryFilterGrid, {
   type StoryCardData,
 } from "@/components/success-stories/StoryFilterGrid";
@@ -18,6 +17,7 @@ import {
   getPublishedStories,
   getStoryContributor,
   storyPath,
+  upcomingThemes,
 } from "@/lib/successStories";
 
 const PATH = "/success-stories";
@@ -28,21 +28,6 @@ export const metadata: Metadata = pageMetadata({
     "Original interviews with Indian immigrant professionals, physicians, executives and founders sharing career, money and life lessons from America.",
   path: PATH,
 });
-
-/** Journeys we cover — an honest taxonomy of what this section is building toward. */
-const coverageTopics = [
-  "Technology",
-  "Medicine",
-  "Entrepreneurship",
-  "Finance",
-  "Consulting",
-  "Leadership",
-  "Education",
-  "Career Transitions",
-  "Women Leaders",
-  "Community Impact",
-  "Return to India",
-];
 
 /** Genuinely useful resources for a reader's own journey (three, not spammed). */
 const resources = [
@@ -72,7 +57,8 @@ export default function SuccessStoriesHubPage() {
     contributor: getStoryContributor(story),
   }));
 
-  // Featured is shown in its own hero card; the grid holds the remainder.
+  // Featured shows in its own panel; the grid holds every OTHER published story
+  // (so a story is never shown twice). Simple grid until 9+ stories exist.
   const gridItems = items.filter((it) => it.story.slug !== featured?.slug);
 
   const jsonLd = jsonLdGraph(
@@ -138,8 +124,8 @@ export default function SuccessStoriesHubPage() {
               comes from a textbook. It comes from someone who was recently in your
               shoes — who figured out the first apartment, the first tax return, the
               first job change, the decision to invest, or the choice to move back
-              to India. These are the details search engines can&apos;t fabricate,
-              and they&apos;re why first-hand experience matters.
+              to India. These are the practical details that generic career and
+              immigration advice often misses.
             </p>
             <p>
               This section collects real journeys of Indian immigrants and NRIs
@@ -168,96 +154,108 @@ export default function SuccessStoriesHubPage() {
         </Container>
       </section>
 
-      {/* Featured story */}
+      {/* Featured story — single representation, no duplicate card */}
       {featured && (
         <section className="border-t border-ink-900/5 bg-slate-50/60 py-14 sm:py-16">
           <Container>
-            <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-              Featured story
-            </h2>
-            <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-              <div className="max-w-xl">
-                <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">
-                  Meet the founder
-                </p>
-                <h3 className="mt-2 text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
-                  <Link
-                    href={storyPath(featured.slug)}
-                    className="hover:text-brand-700"
-                  >
-                    {featured.title}
-                  </Link>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                Featured story
+              </h2>
+              <Link
+                href={storyPath(featured.slug)}
+                className="group mt-8 block rounded-2xl border border-ink-900/10 bg-white p-7 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:p-9"
+              >
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                  <span className="rounded-full bg-accent-100 px-2.5 py-1 uppercase tracking-wider text-accent-700">
+                    Founder Journey
+                  </span>
+                  <span className="rounded-full bg-brand-50 px-2.5 py-1 uppercase tracking-wider text-brand-700">
+                    {featured.category}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-2xl font-extrabold leading-tight text-ink-900 group-hover:text-brand-700 sm:text-3xl">
+                  {featured.title}
                 </h3>
                 <p className="mt-4 leading-8 text-ink-600">{featured.teaser}</p>
                 <blockquote className="mt-5 border-l-4 border-brand-500 pl-4 text-lg font-medium italic text-ink-800">
                   “{featured.pullQuote}”
                 </blockquote>
-                <Link
-                  href={storyPath(featured.slug)}
-                  className="mt-6 inline-flex items-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
-                >
+                <span className="mt-6 inline-flex items-center text-sm font-semibold text-brand-600 group-hover:text-brand-700">
                   Read the story →
-                </Link>
-              </div>
-              <div className="mx-auto w-full max-w-sm">
-                <StoryCard
-                  story={featured}
-                  contributor={getStoryContributor(featured)}
-                  position={1}
-                  featured
-                />
-              </div>
+                </span>
+              </Link>
             </div>
           </Container>
         </section>
       )}
 
-      {/* More stories */}
-      <section className="py-14 sm:py-16">
-        <Container>
-          <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-            {gridItems.length > 0 ? "More journeys" : "More journeys coming soon"}
-          </h2>
-          {gridItems.length === 0 ? (
-            <p className="mt-3 max-w-2xl text-ink-600">
-              We&apos;re interviewing more immigrant professionals now. New stories
-              are published regularly — subscribe below to get them, or explore the
-              practical guides while you wait.
-            </p>
-          ) : (
+      {/* More journeys — simple grid, only when other stories exist */}
+      {gridItems.length > 0 && (
+        <section className="py-14 sm:py-16">
+          <Container>
+            <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+              More journeys
+            </h2>
             <div className="mt-8">
               <StoryFilterGrid items={gridItems} />
             </div>
-          )}
-        </Container>
-      </section>
+          </Container>
+        </section>
+      )}
 
-      {/* Journeys we cover (honest taxonomy) */}
-      <section className="border-t border-ink-900/5 bg-slate-50/60 py-14 sm:py-16">
+      {/* Coming next + contribute CTA */}
+      <section className="border-t border-ink-900/5 py-14 sm:py-16">
         <Container>
-          <div className="max-w-3xl">
+          <div className="mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-              Journeys we cover
+              Coming next
             </h2>
             <p className="mt-3 text-ink-600">
-              The kinds of immigrant experiences this section is building toward.
+              We publish new immigrant journeys regularly. Themes we&apos;re
+              working on next:
             </p>
-          </div>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {coverageTopics.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-ink-900/10 bg-white px-3.5 py-1.5 text-sm font-medium text-ink-600"
-              >
-                {t}
-              </span>
-            ))}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {upcomingThemes.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-ink-900/10 bg-white px-3.5 py-1.5 text-sm font-medium text-ink-600"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-card sm:p-7">
+              <h3 className="text-lg font-bold text-ink-900">
+                Know an immigrant journey worth telling?
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                Share your own journey, or nominate an Indian immigrant
+                professional to be featured. We interview, verify, and review every
+                story with the subject before it&apos;s published.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/contribute"
+                  className="rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
+                >
+                  Share your immigrant journey
+                </Link>
+                <Link
+                  href="/contact"
+                  className="rounded-xl border border-ink-900/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 hover:bg-ink-900/[0.03]"
+                >
+                  Nominate a professional
+                </Link>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* Trust block */}
-      <section className="py-14 sm:py-16">
+      <section className="border-t border-ink-900/5 bg-slate-50/60 py-14 sm:py-16">
         <Container>
           <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-7 shadow-card sm:p-8">
             <h2 className="text-xl font-bold tracking-tight text-ink-900">
@@ -266,7 +264,7 @@ export default function SuccessStoriesHubPage() {
             <ul className="mt-4 space-y-2.5 text-ink-700">
               {[
                 "Built from direct interviews or first-person submissions",
-                "Identity, role, and career details verified against approved sources",
+                "Identity, role, and career details reviewed against available sources",
                 "Reviewed by the subject for factual accuracy before publishing",
                 "Edited independently — inclusion is never sold and implies no endorsement",
                 "Corrections welcomed and made promptly",
@@ -293,26 +291,28 @@ export default function SuccessStoriesHubPage() {
       </section>
 
       {/* Practical resources */}
-      <section className="border-t border-ink-900/5 bg-slate-50/60 py-14 sm:py-16">
+      <section className="py-14 sm:py-16">
         <Container>
-          <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-            Practical resources for your own journey
-          </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {resources.map((r) => (
-              <Link
-                key={r.href}
-                href={r.href}
-                className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
-              >
-                <span className="font-bold text-ink-900 group-hover:text-brand-700">
-                  {r.title}
-                </span>
-                <span className="mt-2 text-sm leading-relaxed text-ink-500">
-                  {r.blurb}
-                </span>
-              </Link>
-            ))}
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+              Practical resources for your own journey
+            </h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {resources.map((r) => (
+                <Link
+                  key={r.href}
+                  href={r.href}
+                  className="group flex flex-col rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                >
+                  <span className="font-bold text-ink-900 group-hover:text-brand-700">
+                    {r.title}
+                  </span>
+                  <span className="mt-2 text-sm leading-relaxed text-ink-500">
+                    {r.blurb}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </Container>
       </section>

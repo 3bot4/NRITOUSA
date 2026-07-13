@@ -9,6 +9,44 @@ Every story is a `SuccessStory` object + a matching `Contributor`. Only stories
 with `publicationStatus: "published"` are routed, indexed, added to the sitemap,
 or shown in the hub. Everything below governs how a story earns that status.
 
+**The binding project rule lives in [`src/app/success-stories/CLAUDE.md`](../../src/app/success-stories/CLAUDE.md)** —
+read it first. `assertPublishableStory` (in successStories.ts) throws at build if
+a required field is missing, so an incomplete/ad-hoc story can never ship.
+
+## Story types (visible classification — drives schema authorship)
+
+| Type | Badge | Author (schema) | Featured person |
+|------|-------|-----------------|-----------------|
+| `interview` | Interview | Editorial Team / named interviewer | subject (`about`), reviewer; set `interviewMeta` |
+| `first-person` | First-Person Contribution | the contributor (Person) | author; link internal profile |
+| `editorial-profile` | Editorial Profile | Editorial Team | subject (`about`) |
+| `founder-journey` | Founder Journey | Editorial Team | subject (`about`) — used for Deepak |
+| `expert-commentary` | Expert Commentary | the expert (Person) | author |
+| `career-case-study` | Career Case Study | Editorial Team | subject (`about`) |
+
+Never auto-make the featured person the author. Attribution is derived in
+`resolveAttribution` / `STORY_TYPE_META`.
+
+## Standard page order (skip a section only when truly N/A)
+Breadcrumbs → classification → H1 → summary → featured image → authorship/review
+→ editorial disclosure → journey-at-a-glance → key lessons → TOC (long stories)
+→ journey body → career timeline → practical takeaways → sources & verification →
+featured-person profile → related guides → related stories → final CTA →
+disclaimer → corrections link.
+
+## Financial-language rules (YMYL)
+- Separate **personal experience / general principle / advice requiring individual evaluation**.
+- Debt to buy an income-producing asset **remains a liability**; productive
+  leverage depends on cash flow, financing costs, liquidity, market conditions, risk.
+- Saving is the foundation; long-term wealth usually needs savings moved into
+  productive assets — not "you can't save your way to wealth."
+- Immigration uncertainty shouldn't freeze **all** planning; use what fits the
+  reader's status, liquidity, horizon, risk — not "invest before the green card."
+- Note the **vesting schedule** wherever an employer match appears.
+- Never present personal outcomes as guaranteed results. Avoid: guaranteed
+  success, secret formula, anyone can achieve this, risk-free, best investment,
+  proven path, highest-paid, most successful.
+
 ---
 
 ## 1. How to add a new story (reusable template)
@@ -57,6 +95,40 @@ internalLinks · leadMagnet · relatedStories · consentStatus · publicationSta
 ```
 
 ---
+
+## 2b. Weekly publishing workflow (one new story per week)
+
+**Before publication**
+1. Confirm written permission (name + story)
+2. Confirm image rights (or use the monogram)
+3. Confirm the approved LinkedIn URL
+4. Confirm name spelling
+5. Confirm current and former roles
+6. Confirm employer names (label former vs current)
+7. Review quotations with the subject
+8. Verify dates and timeline
+9. Set the correct `storyType` classification
+10. Choose one primary search intent → `seoTitle`
+11. Select relevant internal links (natural anchors, no over-linking)
+12. Prepare unique `title` / `seoTitle` / `metaDescription`
+13. Confirm the 1200×630 OG image renders
+14. Fill structured-data fields (schema is generated from the model)
+15. Subject review
+16. Editorial review
+17. Check mobile layout (~380px)
+18. Validate schema (Rich Results + schema.org)
+19. Story auto-adds to the sitemap once `published` (verify)
+20. Request indexing in Search Console where appropriate
+
+**After publication**
+1. It appears on the hub automatically
+2. Linked from the contributor profile (`storyUrls`)
+3. Add related-story links as the library grows
+4. Share an approved LinkedIn post (draft per subject)
+5. Add to the contributor's LinkedIn Featured/Publications where appropriate
+6. Monitor Search Console impressions and queries
+7. Update professional details when notified
+8. Re-review the page at least annually (bump `verificationDate` + `modifiedDate`)
 
 ## 3. Future subjects (pipeline — NOT published)
 
@@ -132,8 +204,18 @@ NRItoUSA Editorial Team from Source A + B; quotations are Deepak's own words.
 Interviewee/subject = Deepak. **Remaining gate before production deploy:** Deepak's
 final review + approval of this specific page (he is the site owner/reviewer).
 
+**Financial language (reframed 2026-07-13):** exact investment-gain figures
+(e.g. "$10k→$80k") were removed from the visible page — they are self-reported,
+not independently verified, and could read as expected results. Leverage,
+save-your-way, pre-green-card investing, and employer-match wording were reframed
+per the YMYL rules above (personal experience vs general principle vs
+individual-evaluation). Debt figures remain only as starting-point context.
+
 **Not used / pending:** no approved professional headshot exists → initials
-monogram (site-wide convention). Do not synthesize a photo.
+monogram (site-wide convention). Do not synthesize a photo. **Owner action:** add
+a real approved headshot at `/public/contributors/deepak-middha.jpg` and set
+`approvedPhoto` on the contributor to replace the monogram in the hero, cards,
+and OG image.
 
 ---
 

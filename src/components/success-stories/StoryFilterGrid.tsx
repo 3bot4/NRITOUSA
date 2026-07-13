@@ -12,13 +12,14 @@ export interface StoryCardData {
 }
 
 /**
- * Grid of story cards with category filtering. The filter bar only appears once
- * there are at least two categories to choose between — so the launch view (one
- * story) never shows a lonely, pointless filter. Filtering is client-side over
- * an already-rendered list (no network, no heavy JS), which keeps it fast and
- * accessible. When the grid is empty it shows an honest empty state instead of
- * fabricating cards.
+ * Grid of story cards with optional category filtering. Per the section scaling
+ * rule, filter chips only appear once the library is large enough to warrant
+ * them (9+ stories) AND more than one category exists — so small launches show a
+ * simple grid, never a lonely filter. Filtering is client-side over an
+ * already-rendered list (no network, no heavy JS). An empty grid shows an honest
+ * empty state instead of fabricating cards.
  */
+const FILTER_THRESHOLD = 9;
 export default function StoryFilterGrid({ items }: { items: StoryCardData[] }) {
   const categories = useMemo(() => {
     const set = new Set(items.map((it) => it.story.category));
@@ -51,7 +52,7 @@ export default function StoryFilterGrid({ items }: { items: StoryCardData[] }) {
 
   return (
     <div>
-      {categories.length > 2 && (
+      {items.length >= FILTER_THRESHOLD && categories.length > 2 && (
         <div
           role="group"
           aria-label="Filter stories by category"

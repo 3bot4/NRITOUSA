@@ -3,26 +3,34 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
-import ContributorAvatar from "@/components/success-stories/ContributorAvatar";
 import StoryTimeline from "@/components/success-stories/StoryTimeline";
 import StoryInterview from "@/components/success-stories/StoryInterview";
+import StoryMeta from "@/components/success-stories/StoryMeta";
+import JourneyAtAGlance from "@/components/success-stories/JourneyAtAGlance";
+import SourcesVerification from "@/components/success-stories/SourcesVerification";
+import StoryProfileCard from "@/components/success-stories/StoryProfileCard";
+import {
+  EditorialDisclosure,
+  KeyLessons,
+  StoryToc,
+} from "@/components/success-stories/StoryBlocks";
 import {
   StoryGuideCta,
   TrackedResourceLink,
-  TrackedLinkedinLink,
 } from "@/components/success-stories/TrackedLinks";
+import { renderInline } from "@/components/success-stories/prose";
 import {
   breadcrumbJsonLd,
   jsonLdGraph,
   pageMetadata,
   successStoryArticleJsonLd,
 } from "@/lib/seo";
-import { formatDate } from "@/lib/format";
 import {
   getPublishableStory,
   getPublishedStories,
   getStoryContributor,
   personId,
+  resolveAttribution,
   storyPath,
 } from "@/lib/successStories";
 
@@ -62,7 +70,7 @@ export default function SuccessStoryPage({
   if (!story) notFound();
 
   const contributor = getStoryContributor(story);
-  const authorIsSubject = story.byline.writtenBy === contributor.fullName;
+  const attribution = resolveAttribution(story, contributor);
 
   const jsonLd = jsonLdGraph(
     successStoryArticleJsonLd({
@@ -71,16 +79,15 @@ export default function SuccessStoryPage({
       description: story.metaDescription,
       datePublished: story.publicationDate,
       dateModified: story.modifiedDate,
-      authorIsSubject,
+      authorIsSubject: attribution.authorIsSubject,
       subject: {
         personId: personId(contributor),
         name: contributor.fullName,
         profileUrl: contributor.authorPageUrl,
         jobTitle: contributor.currentTitle,
-        sameAs: [
-          contributor.linkedinUrl,
-          contributor.personalWebsite,
-        ].filter((x): x is string => Boolean(x)),
+        sameAs: [contributor.linkedinUrl, contributor.personalWebsite].filter(
+          (x): x is string => Boolean(x),
+        ),
       },
     }),
     breadcrumbJsonLd([
@@ -90,6 +97,15 @@ export default function SuccessStoryPage({
     ]),
   );
 
+  const toc = [
+    { id: "glance", label: "Journey at a glance" },
+    { id: "lessons", label: "Key lessons" },
+    { id: "journey", label: "The journey" },
+    { id: "timeline", label: "Career & immigration timeline" },
+    { id: "takeaways", label: "Practical takeaways" },
+    { id: "sources", label: "Sources & verification" },
+  ];
+
   return (
     <>
       <script
@@ -98,7 +114,7 @@ export default function SuccessStoryPage({
       />
 
       <article>
-        {/* Hero */}
+        {/* 1–7. Hero: breadcrumbs, classification, H1, summary, authorship, disclosure */}
         <header className="border-b border-ink-900/5 bg-white py-12 sm:py-16">
           <Container>
             <div className="mx-auto max-w-3xl">
@@ -118,11 +134,11 @@ export default function SuccessStoryPage({
               </nav>
 
               <div className="mt-6 flex flex-wrap items-center gap-2 text-xs font-semibold">
+                <span className="rounded-full bg-accent-100 px-2.5 py-1 uppercase tracking-wider text-accent-700">
+                  {attribution.classificationLabel}
+                </span>
                 <span className="rounded-full bg-brand-50 px-2.5 py-1 uppercase tracking-wider text-brand-700">
                   {story.category}
-                </span>
-                <span className="rounded-full bg-accent-100 px-2.5 py-1 uppercase tracking-wider text-accent-700">
-                  Meet the founder
                 </span>
               </div>
 
@@ -133,31 +149,14 @@ export default function SuccessStoryPage({
                 {story.subtitle}
               </p>
 
-              {/* Byline + meta */}
-              <div className="mt-6 flex flex-col gap-4 border-t border-ink-900/5 pt-6 sm:flex-row sm:items-center sm:gap-5">
-                <ContributorAvatar contributor={contributor} size={56} />
-                <div className="text-sm">
-                  <p className="text-ink-700">
-                    <span className="font-semibold text-ink-900">
-                      Interview with {contributor.fullName}
-                    </span>{" "}
-                    · {contributor.currentTitle}
-                  </p>
-                  <p className="mt-0.5 text-ink-500">
-                    Written &amp; edited by {story.byline.writtenBy} · Reviewed by{" "}
-                    {story.byline.reviewedBy}
-                  </p>
-                  <p className="mt-0.5 text-ink-400">
-                    Published {formatDate(story.publicationDate)} · Last reviewed{" "}
-                    {formatDate(story.verificationDate)} · {story.readingTime} min
-                    read
-                  </p>
-                </div>
-              </div>
+              <StoryMeta
+                story={story}
+                contributor={contributor}
+                attribution={attribution}
+              />
 
-              {/* Founder disclosure */}
-              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-ink-700">
-                {story.disclosure}
+              <div className="mt-6">
+                <EditorialDisclosure story={story} />
               </div>
             </div>
           </Container>
@@ -165,99 +164,94 @@ export default function SuccessStoryPage({
 
         <Container>
           <div className="mx-auto max-w-3xl py-12 sm:py-16">
-            {/* Opening scene */}
-            <div className="space-y-5 text-lg leading-8 text-ink-800">
-              {story.openingScene.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+            {/* 8. Journey at a glance */}
+            <div id="glance" className="scroll-mt-24">
+              <JourneyAtAGlance data={story.journeyAtAGlance} />
             </div>
 
-            {/* Key takeaways */}
-            <section
-              aria-labelledby="takeaways-heading"
-              className="mt-12 rounded-2xl border border-brand-100 bg-brand-50/50 p-6 sm:p-7"
-            >
-              <h2
-                id="takeaways-heading"
-                className="text-lg font-bold tracking-tight text-ink-900"
-              >
-                Key takeaways
-              </h2>
-              <ul className="mt-4 space-y-3">
-                {story.takeaways.map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-ink-700">
-                    <span
-                      aria-hidden
-                      className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white"
-                    >
-                      ✓
-                    </span>
-                    <span className="leading-relaxed">{t}</span>
-                  </li>
+            {/* 9. Key lessons */}
+            <div id="lessons" className="mt-12 scroll-mt-24">
+              <KeyLessons lessons={story.keyLessons} />
+            </div>
+
+            {/* 10. Table of contents */}
+            <div className="mt-12">
+              <StoryToc items={toc} />
+            </div>
+
+            {/* 11–19. The journey (opening + Q&A body) */}
+            <section id="journey" className="mt-14 scroll-mt-24">
+              <div className="space-y-5 text-lg leading-8 text-ink-800">
+                {story.openingScene.map((p, i) => (
+                  <p key={i}>{renderInline(p, `open-${i}`)}</p>
                 ))}
-              </ul>
-            </section>
-
-            {/* Timeline */}
-            <section aria-labelledby="timeline-heading" className="mt-14">
-              <h2
-                id="timeline-heading"
-                className="text-2xl font-bold tracking-tight text-ink-900"
-              >
-                Career &amp; immigration timeline
-              </h2>
-              <p className="mt-2 text-sm text-ink-500">
-                Each milestone is drawn from Deepak&apos;s published writing and
-                author biography.
-              </p>
-              <div className="mt-8">
-                <StoryTimeline milestones={story.timeline} />
               </div>
-            </section>
 
-            {/* Mid-article lead-magnet CTA */}
-            <StoryGuideCta
-              location="mid-article"
-              storySlug={story.slug}
-              subjectName={contributor.fullName}
-              label="The full playbook, free"
-              sublabel="This story draws from Deepak's Immigrant Wealth Guide — the money traps and an investment checklist for new immigrants. Emailed as a free PDF."
-            />
+              {/* One contextual, in-story link to the email-gated guide (lead-gen #1) */}
+              <p className="mt-6 leading-8 text-ink-700">
+                Deepak later distilled these lessons into a free{" "}
+                <StoryGuideCta
+                  variant="inline"
+                  location="mid-article"
+                  storySlug={story.slug}
+                  subjectName={contributor.fullName}
+                  label="Immigrant Wealth Guide"
+                />{" "}
+                — the version below is his story in his own words, adapted from
+                that writing.
+              </p>
 
-            {/* Interview */}
-            <section aria-labelledby="interview-heading" className="mt-14">
-              <h2
-                id="interview-heading"
-                className="text-2xl font-bold tracking-tight text-ink-900"
-              >
-                In his words
+              {story.financialFraming && (
+                <p className="mt-6 rounded-2xl border border-ink-900/10 bg-slate-50/70 p-4 text-sm leading-relaxed text-ink-600">
+                  {story.financialFraming}
+                </p>
+              )}
+
+              <h2 className="mt-10 text-2xl font-bold tracking-tight text-ink-900">
+                The journey, in Deepak&apos;s words
               </h2>
               <p className="mt-2 text-sm text-ink-500">
-                Adapted and condensed from Deepak&apos;s book and bio; quotations
-                are his own words.
+                Questions developed by the Editorial Team; answers adapted and
+                condensed from Deepak&apos;s published book. Quotations are his
+                own words.
               </p>
               <div className="mt-8">
                 <StoryInterview exchanges={story.interview} />
               </div>
             </section>
 
-            {/* Reader checklist */}
+            {/* 20. Career & immigration timeline */}
+            <section id="timeline" className="mt-14 scroll-mt-24">
+              <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                Career &amp; immigration timeline
+              </h2>
+              <p className="mt-2 text-sm text-ink-500">
+                Each milestone is drawn from Deepak&apos;s published writing and
+                approved biography.
+              </p>
+              <div className="mt-8">
+                <StoryTimeline milestones={story.timeline} />
+              </div>
+            </section>
+
+            {/* 21. Actionable takeaways */}
             <section
-              aria-labelledby="checklist-heading"
-              className="mt-14 rounded-2xl border border-ink-900/10 bg-white p-6 shadow-card sm:p-7"
+              id="takeaways"
+              aria-labelledby="takeaways-heading"
+              className="mt-14 scroll-mt-24 rounded-2xl border border-brand-100 bg-brand-50/50 p-6 sm:p-7"
             >
               <h2
-                id="checklist-heading"
+                id="takeaways-heading"
                 className="text-xl font-bold tracking-tight text-ink-900"
               >
-                A practical checklist from Deepak&apos;s journey
+                Practical takeaways
               </h2>
               <ul className="mt-4 space-y-3">
-                {story.checklist.items.map((item) => (
+                {story.takeaways.items.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-ink-700">
                     <span
                       aria-hidden
-                      className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700"
+                      className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white"
                     >
                       ✓
                     </span>
@@ -265,47 +259,31 @@ export default function SuccessStoryPage({
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 rounded-xl bg-slate-50 p-4 text-xs leading-relaxed text-ink-500">
-                {story.checklist.disclaimer}
+              <p className="mt-5 rounded-xl bg-white/70 p-4 text-xs leading-relaxed text-ink-500">
+                {story.takeaways.disclaimer}
               </p>
             </section>
 
-            {/* Book / guide callout */}
-            {story.bookCallout && (
-              <section className="mt-14 rounded-2xl border border-ink-900/10 bg-ink-900 p-7 text-white sm:p-8">
-                <p className="text-xs font-semibold uppercase tracking-wider text-accent-400">
-                  From the author
-                </p>
-                <h2 className="mt-2 text-xl font-bold">
-                  {story.bookCallout.title}
-                </h2>
-                <p className="mt-3 leading-relaxed text-white/80">
-                  {story.bookCallout.description}
-                </p>
-                <TrackedResourceLink
-                  href={story.bookCallout.url}
-                  event={{
-                    story_slug: story.slug,
-                    subject_name: contributor.fullName,
-                    resource_name: "book-callout",
-                  }}
-                  className="mt-5 inline-flex items-center rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-ink-900 hover:bg-white/90"
-                >
-                  Read the free guide →
-                </TrackedResourceLink>
-                <p className="mt-3 text-xs text-white/50">
-                  {story.bookCallout.note}
-                </p>
-              </section>
-            )}
+            {/* 22. Sources & verification */}
+            <div id="sources" className="mt-14 scroll-mt-24">
+              <SourcesVerification
+                sources={story.sources}
+                verificationNote="Professional information was drawn from Deepak's own published book and his approved founder biography, and reviewed by Deepak for factual accuracy. Personal outcomes he describes are his own experience, not independently verified investment results."
+              />
+            </div>
 
-            {/* Keep exploring — internal links */}
+            {/* 23. Featured-person profile */}
+            <div className="mt-14">
+              <StoryProfileCard story={story} contributor={contributor} />
+            </div>
+
+            {/* 24. Related NRItoUSA guides (educational internal links) */}
             <section aria-labelledby="explore-heading" className="mt-14">
               <h2
                 id="explore-heading"
                 className="text-xl font-bold tracking-tight text-ink-900"
               >
-                Keep exploring
+                Related NRI to USA guides
               </h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {story.internalLinks.map((link) => (
@@ -330,73 +308,55 @@ export default function SuccessStoryPage({
               </div>
             </section>
 
-            {/* End lead-magnet CTA */}
+            {/* 25. Related success stories */}
+            <section className="mt-14">
+              <h2 className="text-xl font-bold tracking-tight text-ink-900">
+                More NRI success stories
+              </h2>
+              <p className="mt-3 text-ink-600">
+                We publish new immigrant journeys regularly.{" "}
+                <Link
+                  href="/success-stories"
+                  className="font-semibold text-brand-600 underline"
+                >
+                  Browse the Success Stories hub
+                </Link>{" "}
+                to see what&apos;s next.
+              </p>
+            </section>
+
+            {/* 26. Final CTA (lead-gen #2, after related resources) */}
             <StoryGuideCta
               location="end-article"
               storySlug={story.slug}
               subjectName={contributor.fullName}
-              label="Start where Deepak wishes he had"
-              sublabel="Get the Free Immigrant Wealth Guide — the mindset traps, the currency-risk math, and a step-by-step investment checklist for new immigrants."
+              label="Get Deepak's Free Immigrant Wealth Guide"
+              sublabel="The mindset traps, the currency-risk math, and a step-by-step investment checklist for new immigrants — emailed as a free PDF."
             />
 
-            {/* Connect */}
-            <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-ink-900/5 bg-slate-50/60 p-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="font-bold text-ink-900">
-                  More about {contributor.fullName}
-                </p>
-                <p className="mt-1 text-sm text-ink-500">
-                  His full founder profile, credentials, and the tools he&apos;s
-                  built.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href={contributor.authorPageUrl}
-                  className="rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
-                >
-                  View profile
-                </Link>
-                {contributor.linkedinUrl && (
-                  <TrackedLinkedinLink
-                    href={contributor.linkedinUrl}
-                    event={{
-                      story_slug: story.slug,
-                      subject_name: contributor.fullName,
-                    }}
-                    className="rounded-xl border border-ink-900/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 hover:bg-ink-900/[0.03]"
-                  >
-                    LinkedIn ↗
-                  </TrackedLinkedinLink>
-                )}
-              </div>
-            </div>
-
-            {/* Related / back to hub */}
-            <div className="mt-10 border-t border-ink-900/5 pt-8">
-              <p className="text-sm text-ink-500">
-                More journeys are on the way. In the meantime, browse the{" "}
-                <Link
-                  href="/free-immigrant-wealth-guide"
-                  className="font-semibold text-brand-600 underline"
-                >
-                  Immigrant Wealth Guide
-                </Link>{" "}
-                or explore{" "}
-                <Link
-                  href="/long-term-nri-wealth"
-                  className="font-semibold text-brand-600 underline"
-                >
-                  long-term NRI wealth
-                </Link>
-                .
+            {/* 27–28. Disclaimer + corrections link */}
+            <div className="mt-12 border-t border-ink-900/5 pt-6 text-xs leading-relaxed text-ink-400">
+              <p>
+                This profile is educational and reflects Deepak&apos;s personal
+                experience and published writing. It is not individualized
+                financial, tax, legal, investment, or immigration advice, and
+                personal outcomes are not a promise of future results.
               </p>
-              <Link
-                href="/success-stories"
-                className="mt-4 inline-block text-sm font-semibold text-brand-600 hover:text-brand-700"
-              >
-                ← All NRI Success Stories
-              </Link>
+              <p className="mt-2">
+                <Link
+                  href="/success-stories/editorial-methodology"
+                  className="font-semibold text-brand-600 underline"
+                >
+                  Corrections &amp; editorial policy
+                </Link>{" "}
+                ·{" "}
+                <Link
+                  href="/success-stories"
+                  className="font-semibold text-brand-600 underline"
+                >
+                  All NRI Success Stories
+                </Link>
+              </p>
             </div>
           </div>
         </Container>

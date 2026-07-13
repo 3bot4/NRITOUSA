@@ -1,10 +1,11 @@
 import type { InterviewExchange } from "@/lib/successStories";
+import { renderInline } from "./prose";
 
 /**
- * Q&A interview block. Each exchange is a question heading followed by one or
- * more answer paragraphs and an optional verbatim pull-quote (the subject's own
- * words). No FAQ schema is emitted for this — it's an editorial interview, not
- * a support FAQ, so marking it up as FAQPage would misrepresent the content.
+ * Q&A body. Each exchange is a question heading followed by one or more answer
+ * paragraphs (which may carry inline internal links) and an optional verbatim
+ * pull-quote (the subject's own words). No FAQPage/QAPage schema is emitted —
+ * this is editorial prose, and marking it up as an FAQ would misrepresent it.
  */
 export default function StoryInterview({
   exchanges,
@@ -23,7 +24,7 @@ export default function StoryInterview({
           </h3>
           <div className="mt-3 space-y-4 leading-8 text-ink-700">
             {ex.answer.map((p, j) => (
-              <p key={j}>{p}</p>
+              <p key={j}>{renderInline(p, `q${i}-p${j}`)}</p>
             ))}
           </div>
           {ex.quote && (
