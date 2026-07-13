@@ -298,6 +298,98 @@ export function authorProfileJsonLd(author: Author, authored: Article[]) {
   };
 }
 
+/* ------------------------------------------------------------------ *
+ * Success Stories schema
+ * ------------------------------------------------------------------ */
+
+/**
+ * CollectionPage + ItemList for the Success Stories hub. Pass ONLY published,
+ * indexable stories (drafts must never appear here) with their canonical URLs.
+ */
+export function successStoriesCollectionJsonLd(
+  items: { url: string; name: string }[],
+) {
+  const url = absoluteUrl("/success-stories");
+  return {
+    "@type": "CollectionPage",
+    "@id": `${url}#collection`,
+    name: "NRI Success Stories",
+    description:
+      "Original interviews and first-person journeys of Indian immigrant professionals, physicians, executives, and founders in the USA.",
+    url,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: it.url,
+        name: it.name,
+      })),
+    },
+  };
+}
+
+/**
+ * Article schema for a success story. The author is the actual writer (the
+ * Editorial Team / Organization) and the subject is referenced via `about`
+ * using their persistent Person @id — never marking the interviewee as author.
+ */
+export function successStoryArticleJsonLd(opts: {
+  slug: string;
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  authorIsSubject: boolean;
+  subject: {
+    personId: string;
+    name: string;
+    profileUrl: string;
+    sameAs?: string[];
+    jobTitle?: string;
+  };
+}) {
+  const url = absoluteUrl(`/success-stories/${opts.slug}`);
+  const personNode = {
+    "@type": "Person",
+    "@id": opts.subject.personId,
+    name: opts.subject.name,
+    url: absoluteUrl(opts.subject.profileUrl),
+    ...(opts.subject.jobTitle ? { jobTitle: opts.subject.jobTitle } : {}),
+    ...(opts.subject.sameAs?.length ? { sameAs: opts.subject.sameAs } : {}),
+  };
+
+  return {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: opts.title,
+    description: opts.description,
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified,
+    // The writer. When the subject genuinely authored the piece, reference the
+    // subject's Person entity; otherwise the Editorial Team (Organization).
+    author: opts.authorIsSubject
+      ? personNode
+      : {
+          "@type": "Organization",
+          "@id": `${site.url}/#organization`,
+          name: `${site.name} Editorial Team`,
+        },
+    ...(opts.authorIsSubject
+      ? {}
+      : { about: personNode, mentions: personNode }),
+    publisher: { "@id": `${site.url}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    image: absoluteUrl(`/success-stories/${opts.slug}/opengraph-image`),
+    articleSection: "NRI Success Stories",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+  };
+}
+
 /** Wrap one or more schema nodes into a single @graph document. */
 export function jsonLdGraph(...nodes: object[]) {
   return {

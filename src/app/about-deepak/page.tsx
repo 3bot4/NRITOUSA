@@ -51,8 +51,13 @@ const credentials = [
   },
   {
     icon: "✍️",
-    title: "Published author",
+    title: "Two-time published author",
     body: "Author of immigrant wealth and options-income books.",
+  },
+  {
+    icon: "📈",
+    title: "Founder of OptionLeo",
+    body: "Teaches options income as a systematic, numbers-driven discipline — not a lottery ticket.",
   },
 ];
 
@@ -139,7 +144,17 @@ const personJsonLd = {
     "U.S. immigration basics",
     "India tax compliance",
   ],
-  sameAs: [author.linkedin, ...author.books.map((b) => b.url)],
+  sameAs: [
+    author.linkedin,
+    "https://optionleo.com",
+    ...author.books.map((b) => b.url),
+  ],
+  // The founder story is an editorial page ABOUT this person.
+  subjectOf: {
+    "@type": "Article",
+    "@id": `${site.url}/success-stories/deepak-middha#article`,
+    url: `${site.url}/success-stories/deepak-middha`,
+  },
 };
 
 const profilePageJsonLd = {
@@ -230,10 +245,12 @@ export default function AboutDeepakPage() {
                 Deepak Middha is the founder of {site.name} and{" "}
                 <strong>{site.owner}</strong>. He is a Chartered Accountant with
                 deep experience in accounting, taxes, fund administration, and
-                immigrant personal finance — including over 15 years in the hedge
-                fund industry. He has worked in hedge fund and private equity
-                administration in the United States and has passed the Series 65
-                Uniform Investment Adviser Law Examination.
+                immigrant personal finance — including more than 17 years in the
+                hedge fund and alternative-investment industry. He has worked in
+                hedge fund and private equity administration in the United States,
+                has passed the Series 65 Uniform Investment Adviser Law
+                Examination, is the founder of OptionLeo, and is a two-time
+                published financial author.
               </p>
               <p>
                 As an immigrant himself, Deepak has personally seen the real
@@ -244,6 +261,34 @@ export default function AboutDeepakPage() {
                 hard-to-find answers into simple guides, calculators, checklists,
                 and tools that immigrants can actually use.
               </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* B2. Founder story CTA */}
+      <section className="pb-4">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <div className="flex flex-col gap-4 rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-card sm:flex-row sm:items-center sm:justify-between sm:p-7">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                  Founder story
+                </p>
+                <h2 className="mt-1 text-lg font-bold text-ink-900">
+                  From India to America: Deepak&apos;s journey
+                </h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                  How he arrived with student and marriage loans, taught himself to
+                  invest, and built {site.name}.
+                </p>
+              </div>
+              <Link
+                href="/success-stories/deepak-middha"
+                className="flex-none rounded-xl bg-brand-600 px-5 py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-700"
+              >
+                Read the story →
+              </Link>
             </div>
           </div>
         </Container>
@@ -440,7 +485,18 @@ export default function AboutDeepakPage() {
             <p className="mt-3 leading-8 text-ink-700">
               {site.name} welcomes updates, corrections, and suggestions so the
               guides stay useful for immigrant families. If something is unclear
-              or out of date, we want to hear about it.
+              or out of date, we want to hear about it. See how we verify and
+              correct our stories in the{" "}
+              <Link
+                href="/success-stories/editorial-methodology"
+                className="font-semibold text-brand-600 underline"
+              >
+                editorial methodology
+              </Link>
+              .
+            </p>
+            <p className="mt-2 text-sm text-ink-400">
+              Profile last verified: July 13, 2026.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link

@@ -94,6 +94,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "About", href: "/about" },
       { label: "Deepak Middha — Founder", href: "/about-deepak" },
+      { label: "NRI Success Stories", href: "/success-stories" },
       { label: "Write for Us", href: "/contribute" },
       { label: "Contributors", href: "/contributors" },
       { label: "Partnerships & Media", href: "/partnerships" },

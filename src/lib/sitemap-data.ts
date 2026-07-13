@@ -34,6 +34,7 @@ import { lifePlanningChildPages } from "@/lib/uscisLifePlanningCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
+import { getPublishedStories, storyPath } from "@/lib/successStories";
 import { site } from "@/lib/site";
 
 export interface SitemapEntry {
@@ -94,6 +95,13 @@ export const pagesEntries: SitemapEntry[] = [
   e("/contact", 0.5, "yearly"),
   e("/contributors", 0.5, "monthly"),
   e("/contribute", 0.5, "monthly"),
+  // Success Stories — hub, methodology, and each published story. Draft/stub
+  // stories are intentionally excluded (see lib/successStories publication gate).
+  e("/success-stories", 0.7, "weekly"),
+  e("/success-stories/editorial-methodology", 0.4, "yearly"),
+  ...getPublishedStories().map((s) =>
+    e(storyPath(s.slug), 0.7, "monthly", new Date(s.modifiedDate)),
+  ),
   e("/partnerships", 0.5, "monthly"),
   e("/privacy-policy", 0.3, "yearly"),
   e("/terms-and-conditions", 0.3, "yearly"),
