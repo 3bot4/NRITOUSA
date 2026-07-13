@@ -1,62 +1,58 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-07-12T18:50:06-04:00",
-  "asOfLabel": "Jul 12, 2026, 6:50 PM ET",
+  "asOf": "2026-07-13T18:55:59-04:00",
+  "asOfLabel": "Jul 13, 2026, 6:55 PM ET",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
-      "value": 95.37,
-      "previous": 95.21,
-      "changePct": 0.17,
+      "value": 95.62,
+      "previous": 95.6,
+      "changePct": 0.02,
       "unit": "₹",
       "decimals": 2,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-12T18:50:06-04:00",
+      "fetchedAt": "2026-07-13T18:55:59-04:00",
       "stale": false
     },
     {
       "key": "nifty50",
       "label": "NIFTY 50",
-      "value": 24207,
-      "previous": 24430,
-      "changePct": -0.91,
+      "value": 24211,
+      "previous": 24399,
+      "changePct": -0.77,
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-12T18:50:06-04:00",
+      "fetchedAt": "2026-07-13T18:55:59-04:00",
       "stale": false
     },
     {
       "key": "sp500",
       "label": "S&P 500",
-      "value": 7575,
-      "previous": 7483,
-      "changePct": 1.23,
+      "value": 7515,
+      "previous": 7537,
+      "changePct": -0.29,
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-12T18:50:06-04:00",
+      "fetchedAt": "2026-07-13T18:55:59-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4088,
-      "previous": 4145,
-      "changePct": -1.38,
+      "value": 4011,
+      "previous": 4071,
+      "changePct": -1.47,
       "unit": "$",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-12T18:50:06-04:00",
+      "fetchedAt": "2026-07-13T18:55:59-04:00",
       "stale": false
     }
   ],
   "usdinrHistory": [
-    {
-      "date": "2026-05-14",
-      "value": 95.77
-    },
     {
       "date": "2026-05-15",
       "value": 95.97
@@ -172,6 +168,10 @@
     {
       "date": "2026-07-12",
       "value": 95.37
+    },
+    {
+      "date": "2026-07-13",
+      "value": 95.62
     }
   ]
 }
