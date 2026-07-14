@@ -53,12 +53,12 @@ const faq: FaqItem[] = [
   {
     question: "What does 'C' (Current) mean in the visa bulletin?",
     answer:
-      "Current means all priority dates in that category and country combination qualify — there is no cutoff date. Anyone with an approved I-140 or met filing requirements in that category can proceed. For India EB-2 and EB-3, 'C' would mean no backlog exists — which is not the case as of 2026. 'C' typically applies to EB-1 India and most non-India EB categories.",
+      "'C' means Current — the chart does not impose a priority-date cutoff for that category and country that bulletin month. It does not by itself remove the other eligibility, filing, admissibility, petition, documentation, or visa-availability requirements that may apply. Current status is more commonly seen where demand does not exceed available visa numbers; India EB-1, EB-2, and EB-3 may each have a cutoff date, become Current, or become Unavailable depending on the bulletin month. Adjustment-of-status applicants must also confirm which chart USCIS permits them to use that month.",
   },
   {
     question: "What does 'U' (Unavailable) mean in the visa bulletin?",
     answer:
-      "Unavailable means no visa numbers are available for that category and country combination this month — regardless of priority date. This typically happens at the end of the fiscal year (September) or when demand in other categories has consumed all available numbers. Check the following month's bulletin.",
+      "'U' means Unavailable — no immigrant visa number is available for final issuance in that category and country under that chart for the bulletin month. Other petition preparation, case maintenance, or procedural steps may still be possible, and adjustment-of-status filing eligibility must be evaluated separately using the chart USCIS authorizes that month. This can happen near the end of the fiscal year or when demand has consumed the available numbers.",
   },
   {
     question: "How often is the visa bulletin updated and when?",

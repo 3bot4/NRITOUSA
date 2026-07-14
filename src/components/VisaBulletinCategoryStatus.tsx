@@ -139,9 +139,11 @@ export default function VisaBulletinCategoryStatus({
     },
   ];
 
+  const headingId = `vb-status-${category}-${country}`;
+
   return (
     <section
-      aria-label={`${label} current visa bulletin status`}
+      aria-labelledby={headingId}
       className={`rounded-2xl border ${meta.tone} p-5 sm:p-6 ${className}`}
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -149,8 +151,8 @@ export default function VisaBulletinCategoryStatus({
           <p className="text-xs font-bold uppercase tracking-wider text-ink-500">
             {getBulletinLabel()} visa bulletin
           </p>
-          <h2 className="mt-0.5 text-lg font-bold text-ink-900">
-            {label} — current status
+          <h2 id={headingId} className="mt-0.5 text-lg font-bold text-ink-900">
+            Current {label} priority date
           </h2>
         </div>
         <span

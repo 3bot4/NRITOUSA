@@ -95,17 +95,20 @@ These are different:
 | | Priority Date | I-140 Filing Date |
 |---|---|---|
 | **What it is** | Date PERM was filed with DOL (or I-140 for EB-1/NIW) | Date I-140 petition was filed with USCIS |
-| **Who controls it** | Set automatically at PERM submission | Filed by employer after PERM certification |
-| **Why it matters** | Determines place in visa queue | Triggers the 180-day AC21 clock for portability |
+| **Who controls it** | Set when the PERM is filed with DOL | Filed by employer after PERM certification |
+| **Why it matters** | Determines place in visa queue | Approved I-140 may support priority-date retention and, in qualifying cases, H-1B extensions beyond six years |
 
 For EB-2/EB-3: your priority date is the PERM filing date, not the I-140 filing date.
 
+An I-140 does not by itself start the I-485 portability clock. Job portability under INA §204(j) is a separate rule that generally depends on an eligible Form I-485 that has remained **pending for at least 180 days**, together with a new job in the same or a similar occupational classification.
+
 ## Can a priority date be transferred?
 
-In some situations, yes — a priority date from an earlier approved I-140 can sometimes be "ported" to a new I-140:
-- If your first employer's I-140 was approved and you change employers, the new employer may be able to use your old priority date
-- This is not automatic — it requires the attorney to request it and the old I-140 must not have been revoked
-- Consult your immigration attorney before relying on priority date porting
+In some situations, yes. An applicant may often retain the priority date from an earlier approved employment-based petition for a later employment-based petition, subject to applicable regulations and exceptions:
+- If your first employer's I-140 was approved and you change employers, the new employer's petition may be able to keep your earlier priority date
+- Priority-date retention is **separate** from the "same or similar occupational classification" analysis used for certain I-485 portability cases under INA §204(j) — retention does not turn on whether the new job is the same or similar
+- Retention may be unavailable when the earlier approval is revoked for reasons such as fraud, willful misrepresentation, material error, or invalidation of the underlying labor certification
+- This is not automatic; the attorney must claim the earlier date, and outcomes depend on case facts — consult your immigration attorney
 
 :::cta
 Check the current visa bulletin to see where your priority date stands.
@@ -118,7 +121,7 @@ Check the current visa bulletin to see where your priority date stands.
 Your original priority date generally stays the same once your PERM (or I-140) is filed — it is the monthly visa bulletin cutoffs that move, not your date. There are limited exceptions: a refiled PERM creates a new date, and in certain situations you may be able to keep or recapture an earlier date from a previously approved I-140. Confirm which date applies to your case with your immigration attorney.
 
 #### What if my PERM was denied or withdrawn?
-A denied PERM does not establish a priority date. If the PERM was refiled, the new filing date becomes the new priority date. If your I-140 was previously approved (for at least 180 days), your attorney may be able to preserve the old priority date even after the employer withdraws the I-140 — discuss this immediately with your attorney.
+A denied PERM does not establish a priority date. If the PERM was refiled, the new filing date becomes the new priority date. An I-140 that has been approved for at least 180 days is generally protected from automatic revocation if the employer later withdraws it, which can help preserve the earlier priority date. The effect of a withdrawal can still depend on timing, petition history, and the basis for any revocation — discuss your specific situation with your immigration attorney.
 
 #### My priority date is 2020 — am I current for EB-2 India?
 Check the current visa bulletin Final Action Date for India EB-2. Based on historical patterns, a 2020 priority date for India EB-2 is likely not current yet — but verify with the official bulletin since dates change monthly.
@@ -170,19 +173,19 @@ Table A is always the governing chart for green card approval. Your priority dat
 A priority date that is current under Table A means USCIS can approve your green card.
 
 :::info
-If the bulletin shows "C" (Current) for your category and country, all priority dates in that category qualify — your date is automatically current.
+"C" means **Current** — the chart does not impose a priority-date cutoff for that category and country that bulletin month. Current does not by itself remove the other eligibility, filing, admissibility, petition, documentation, or visa-availability requirements that may apply, and adjustment-of-status applicants must still confirm which chart USCIS permits them to use that month.
 :::
 
 ## How to use Table B (Dates for Filing)
 
 If USCIS authorizes Table B use that month:
 - Your priority date only needs to be earlier than the Table B date to FILE I-485
-- Filing I-485 gives you access to EAD (work permit) and Advance Parole (travel) while waiting
+- Filing I-485 lets you **apply** for an EAD (work permit) and Advance Parole (travel) — each is a separate application (Forms I-765 and I-131), and approval is not automatic
 - Filing under Table B does NOT mean your green card will be approved — USCIS holds the case until your Final Action Date (Table A) is also current
 - If your Final Action Date retrogresses after you file, your I-485 stays pending — you do not refile
 
 :::good
-**Filing under Table B while waiting for Final Action Date** is a powerful strategy for Indian applicants. It lets you get an EAD (so you're not dependent on H1B status) and AP (for travel) while you wait for your Table A date to catch up.
+**Filing under Table B while waiting for Final Action Date** is a valuable option for many Indian applicants. It lets you apply for an EAD (so you may not be dependent on H1B status) and Advance Parole (for travel) while you wait for your Table A date to catch up. The EAD and Advance Parole are separate applications and are not granted automatically.
 :::
 
 ## Step-by-step: which chart to check
@@ -190,7 +193,7 @@ If USCIS authorizes Table B use that month:
 1. Find your priority date (from your PERM receipt or I-140 approval notice)
 2. Go to [travel.state.gov](https://travel.state.gov) and open the current month's visa bulletin
 3. Check Table A for your EB category (EB-1/EB-2/EB-3) and India row
-4. If your priority date is earlier than Table A (and the category is not "U"): you can file I-485 and be approved
+4. If your priority date is earlier than Table A (and the category is not "U"): you may be able to file I-485 and, if all other requirements are met, have it approved
 5. If not: go to [uscis.gov/visabulletininfo](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart) to check if Table B is authorized this month
 6. If Table B is authorized and your priority date is earlier than Table B: you can file I-485
 
@@ -198,8 +201,8 @@ If USCIS authorizes Table B use that month:
 
 For India EB-2 and EB-3, Table B typically shows dates 6–18 months ahead of Table A. This matters because:
 
-- If your priority date falls in the Table B range, you can file I-485 now and get EAD/AP
-- If your priority date is before both tables, your green card can be approved
+- If your priority date falls in the Table B range, you may be able to file I-485 now and apply for EAD/AP (separate applications)
+- If your priority date is before both tables, your green card may be approved if all other requirements are met
 - If your priority date is after both tables, you are still waiting
 
 :::tip
@@ -402,7 +405,7 @@ Given the long backlog, the most important things Indian EB-2 workers can do:
 
 :::steps
 1. File PERM as early as possible — your priority date is set at PERM filing, not PERM approval
-2. Get I-140 approved promptly — unlocks 3-year H1B extensions and the 180-day AC21 clock
+2. Get I-140 approved promptly — an approved I-140 may support priority-date retention and, in qualifying cases, H-1B extensions beyond the normal six-year limit (this is separate from INA §204(j) I-485 portability, which generally depends on an eligible I-485 that has been pending at least 180 days)
 3. Monitor the visa bulletin monthly — be ready to file I-485 quickly when your date becomes current under Table A or Table B
 4. Protect your children with CSPA analysis — for long waits, children aging out is a real risk
 5. Consult your attorney about EB-3 downgrade — depending on relative cutoff dates, EB-3 may currently be faster
@@ -468,9 +471,9 @@ The key insight: EB-2 and EB-3 India move independently every month. In some mon
 If you have an approved EB-2 I-140, you may be able to file a new EB-3 I-140 to take advantage of a more current EB-3 India cutoff date. This is called an EB-3 downgrade.
 
 :::compare
-**Downgrade pros:** If EB-3 India is currently more current than EB-2 India, downgrade lets you file I-485 (and get EAD/AP) sooner.
+**Downgrade pros:** If EB-3 India is currently more current than EB-2 India, downgrade lets you file I-485 (and apply for EAD/AP) sooner.
 
-**Downgrade cons:** Requires a new PERM process (costly, takes 12–18 months), a new I-140 filing, and your employer must be willing. The priority date from the original EB-2 PERM may be portable to the new EB-3 I-140 if the new PERM is for the same or similar job.
+**Downgrade cons:** Generally requires a new EB-3 I-140 filing and your employer's participation. Depending on the existing certified PERM, the position requirements, and the role, the employer may be able to rely on the existing labor certification rather than starting a completely new PERM — employer counsel should confirm. The earlier EB-2 priority date can often be retained on the new EB-3 I-140 (retention is separate from the §204(j) "same or similar" test).
 :::
 
 [Read the full EB-2 to EB-3 downgrade guide →](/visa-bulletin/eb2-to-eb3-downgrade)
@@ -494,11 +497,11 @@ If you originally filed I-485 under EB-3 and your employer now has an approved E
 #### Can I file PERM in both EB-2 and EB-3 simultaneously?
 Some employers allow concurrent PERM filings in both categories for the same employee. This gives the employee two I-140 petitions with potentially different priority dates. Discuss with your employer's immigration attorney.
 
-#### My employer is willing to file a new EB-3 PERM for downgrade. Will my old EB-2 priority date carry over?
-Possibly. If the new EB-3 I-140 is for the same or similar position as the original EB-2, and the EB-2 I-140 was not withdrawn, the old priority date may be portable. This is not automatic — the employer's attorney must request priority date portability when filing the new I-140.
+#### If I downgrade to EB-3, will my old EB-2 priority date carry over?
+Often yes. An earlier approved EB-2 I-140 can generally let the new EB-3 I-140 keep the earlier priority date, subject to applicable rules. This priority-date retention is separate from the "same or similar occupation" test used for I-485 portability under INA §204(j), and it can be unavailable if the earlier approval was revoked for reasons such as fraud, willful misrepresentation, material error, or invalidation of the labor certification. Your employer's attorney claims the earlier date when filing the new I-140.
 
 #### If EB-3 India is currently faster, should I immediately downgrade?
-Not necessarily. The relative movement of EB-2 and EB-3 India changes every month. Downgrading requires a full PERM process and costs time and money. Work with your attorney to model the expected wait under each category before deciding.
+Not necessarily. The relative movement of EB-2 and EB-3 India changes every month, and a downgrade generally requires a new EB-3 I-140 (and, depending on the existing certified PERM, possibly a new PERM), costing time and money. Work with your attorney to model the expected wait under each category before deciding.
 `,
   },
 
@@ -618,7 +621,7 @@ Not all priority date currency is the same:
 :::compare
 **Table A current (Final Action Dates):** USCIS can both accept your I-485 filing AND approve it. Best case.
 
-**Table B current (Dates for Filing):** USCIS can accept your I-485 filing, but will hold it until Table A is also current. Still valuable — you get EAD and AP while waiting.
+**Table B current (Dates for Filing):** USCIS can accept your I-485 filing, but will hold it until Table A is also current. Still valuable — you can **apply** for an EAD and Advance Parole while waiting (separate Forms I-765 and I-131; approval is not automatic).
 :::
 
 Check both the State Department visa bulletin (travel.state.gov) and the USCIS Visa Bulletin Acceptance memo (uscis.gov/visabulletininfo) to know which chart you are filing under.
@@ -661,10 +664,10 @@ Priority date windows can close quickly. If retrogression occurs after you see y
 
 ## Step 5: Track receipt notices
 
-After filing, USCIS will mail receipt notices (I-797) for I-485, I-131, and I-765. Track them at egov.uscis.gov. Expect:
-- Biometrics appointment letter: 4–8 weeks after filing
-- EAD/AP approval: 3–6 months
-- Interview notice: varies by field office — can be 1–3+ years
+After filing, USCIS will mail receipt notices (I-797) for I-485, I-131, and I-765. Track them at egov.uscis.gov. Timeframes vary widely by service center, workload, and case, and are not guaranteed — as general ranges only:
+- Biometrics appointment letter: often a few weeks to a couple of months after filing
+- EAD/AP: often several months, but varies
+- Interview notice (if required): varies by field office and can be well over a year
 
 ## Step 6: Do not travel until AP is approved
 
@@ -692,10 +695,10 @@ If USCIS schedules an interview but your priority date is not current at the tim
     title: "EB-2 to EB-3 Downgrade for Indians: When, Why, and How",
     seoTitle: "EB-2 to EB-3 Downgrade India | How to Downgrade, Priority Date Porting",
     metaDescription:
-      "When does an EB-2 to EB-3 downgrade make sense for Indian applicants? How to file a new EB-3 PERM and I-140, port the priority date, and weigh the risks.",
+      "When does an EB-2 to EB-3 downgrade make sense for Indian applicants? How to file a new EB-3 I-140, when a new PERM is or isn't needed, retain the priority date, and weigh the risks.",
     navLabel: "EB-2 to EB-3 Downgrade",
     excerpt:
-      "An EB-2 to EB-3 downgrade can let Indian applicants file I-485 sooner if EB-3 India is more current — but it requires a new PERM and carries real costs and risks.",
+      "An EB-2 to EB-3 downgrade can let Indian applicants file I-485 sooner if EB-3 India is more current — it generally requires a new EB-3 I-140 (sometimes a new PERM) and carries real costs and risks.",
     date: "2026-06-16",
     content: `
 :::warn
@@ -703,16 +706,16 @@ If USCIS schedules an interview but your priority date is not current at the tim
 :::
 
 :::summary
-An EB-2 to EB-3 downgrade means filing a new PERM and I-140 in the EB-3 category to take advantage of a more favorable EB-3 India cutoff date. This allows applicants to file I-485 (and get EAD/AP) sooner if EB-3 India is currently ahead of EB-2 India. The original EB-2 I-140 is typically kept active — only the new EB-3 I-140 is used for I-485 filing.
+An EB-2 to EB-3 downgrade means filing a new EB-3 I-140 to take advantage of a more favorable EB-3 India cutoff date. Depending on the existing certified PERM, the employer may be able to rely on it rather than running a completely new PERM — counsel should confirm. This can let applicants file I-485 (and apply for EAD/AP) sooner if EB-3 India is currently ahead of EB-2 India. The original EB-2 I-140 is typically kept active — only the new EB-3 I-140 is used for I-485 filing.
 :::
 
 ## When does a downgrade make sense?
 
 A downgrade makes sense when:
 1. EB-3 India Final Action Date OR Dates for Filing is more current than EB-2 India
-2. Your employer is willing to undergo a new PERM process
+2. Your employer is willing to file a new EB-3 I-140 (and a new PERM, if the existing labor certification can't be used)
 3. Your current job description qualifies under EB-3 requirements (bachelor's + 2 years)
-4. You want to file I-485 sooner to get EAD and Advance Parole
+4. You want to file I-485 sooner and apply for EAD and Advance Parole
 
 :::warn
 **Check the current visa bulletin before assuming EB-3 is faster.** EB-2 and EB-3 India dates move independently every month. If EB-2 India is currently more current than EB-3 India, a downgrade would be counterproductive.
@@ -720,24 +723,24 @@ A downgrade makes sense when:
 
 ## The downgrade process
 
-### Step 1: New PERM filing (6–18 months)
-Your employer must file a new PERM with the Department of Labor for the EB-3 category. This involves:
+### Step 1: Confirm the labor certification for EB-3
+A downgrade is filed as a **new EB-3 I-140**. Depending on the existing certified PERM (Form ETA-9089) — its stated minimum requirements, the offered role, and the case history — the employer may be able to rely on the existing labor certification for the EB-3 filing, or may need to run a new PERM. Employer immigration counsel should determine which applies. If a **new PERM** is required, it involves:
 - A new prevailing wage determination (PWD) from DOL
 - Full recruitment process (posting the job and documenting no qualified US workers applied)
 - Filing ETA-9089 with DOL
 
 :::info
-The EB-3 PERM typically needs to be for the same or similar position as the EB-2 PERM to allow priority date porting. The attorney will advise on how to describe the position to maintain continuity.
+Whether the existing labor certification can support the EB-3 I-140 depends on the case. This question is separate from the §204(j) "same or similar" test used for I-485 portability. Your attorney will advise on the correct approach.
 :::
 
 ### Step 2: I-140 filing for EB-3
-Once PERM is certified (valid 180 days), file I-140 in the EB-3 category:
+File the new I-140 in the EB-3 category (based on the existing or a new PERM):
 - Premium processing available — 15 business days
-- File promptly after PERM certification — the 180-day window is short
-- Request priority date portability from the original EB-2 PERM date
+- If a new PERM is used, file promptly after certification — a certified PERM is valid for 180 days
+- Claim the earlier EB-2 priority date on the EB-3 I-140 (see Step 3)
 
-### Step 3: Priority date portability
-If the new EB-3 I-140 is for the same or similar position, USCIS should honor the original EB-2 PERM priority date. The older priority date is noted in the I-140 filing. This is not automatic — the attorney must request it explicitly.
+### Step 3: Priority date retention
+The new EB-3 I-140 can generally **retain** the original EB-2 priority date, subject to applicable rules. Retention does **not** depend on the §204(j) "same or similar" test — the attorney claims the earlier date in the I-140 filing, and it must be requested explicitly. Retention can be unavailable if the earlier approval was revoked for reasons such as fraud, willful misrepresentation, material error, or invalidation of the labor certification.
 
 ### Step 4: File I-485 under EB-3
 Once the EB-3 I-140 is approved with the original priority date, check if EB-3 India is current. If yes (under Table A or Table B), file I-485 under EB-3.
@@ -746,10 +749,10 @@ Once the EB-3 I-140 is approved with the original priority date, check if EB-3 I
 
 :::bad
 **Risks to consider:**
-- New PERM can take 12–18 months and costs $3,000–$8,000+ in employer legal fees
-- If EB-3 India retrogresses back behind EB-2 India, you spent money for no gain
-- Priority date portability is not guaranteed — USCIS may not honor it
-- If your job duties changed significantly, the new PERM may not qualify for priority date porting
+- If a new PERM is required, it can take 12–18 months and cost $3,000–$8,000+ in employer legal fees
+- If EB-3 India retrogresses back behind EB-2 India, you may have spent money for no gain
+- Priority-date retention is not guaranteed and depends on case facts
+- Retention can be unavailable if the earlier I-140 was revoked for fraud, willful misrepresentation, material error, or invalidation of the labor certification
 :::
 
 ## Keep the EB-2 I-140 active
@@ -761,10 +764,10 @@ Once the EB-3 I-140 is approved with the original priority date, check if EB-3 I
 ### Frequently asked questions
 
 #### Does my employer have to support the downgrade?
-Yes — an EB-3 PERM requires employer participation. Your employer must be willing to pay for the new PERM and I-140 process. If your employer is unwilling, a downgrade is not possible.
+Yes — a downgrade requires employer participation. The employer files the new EB-3 I-140 (and a new PERM, if the existing labor certification can't be used) and typically pays for the process. If your employer is unwilling, a downgrade is not possible.
 
 #### Can I downgrade even if I am the same employer but in a different city/role?
-Possibly, but the new PERM must accurately describe the actual job requirements and location. Any significant change in duties may require starting with a new priority date rather than porting the old one. Your attorney must evaluate this.
+Possibly, but any labor certification relied on must accurately describe the actual job requirements and location. A significant change in duties can affect whether the existing certification supports the EB-3 filing and whether the earlier priority date is retained. Your attorney must evaluate this.
 
 #### I filed I-485 under EB-3. Can I also use my EB-2 I-140 if EB-2 becomes more current later?
 Yes — this is called interfiling. See the [EB-3 to EB-2 interfiling guide →](/visa-bulletin/eb3-to-eb2-interfiling).
@@ -834,7 +837,7 @@ Interfiling makes sense when:
 - You want USCIS to approve sooner under the EB-2 track
 
 :::tip
-Some applicants file I-485 under EB-3 specifically to get EAD/AP quickly (if EB-3 India Dates for Filing is authorized), then plan to interfile under EB-2 when EB-2 India Final Action Date advances to their date. This two-step approach is used by experienced immigration attorneys.
+Some applicants file I-485 under EB-3 specifically to apply for EAD/AP earlier (if EB-3 India Dates for Filing is authorized), then plan to interfile under EB-2 when EB-2 India Final Action Date advances to their date. This two-step approach is used by experienced immigration attorneys.
 :::
 
 ### Frequently asked questions
@@ -946,8 +949,25 @@ Begin preparing 2–3 months before you expect your date to become current. Civi
 
 /* ─── export ─────────────────────────────────────────────────────────────── */
 
+/**
+ * Pages that received meaningful immigration-accuracy corrections in the
+ * 2026-07 pass (AC21/180-day, EB-2→EB-3 downgrade, priority-date retention vs.
+ * §204(j), Current/Unavailable meaning, and I-485/EAD/AP wording). Their
+ * dateModified is bumped accordingly; datePublished (`date`) is left unchanged.
+ */
+const CONTENT_UPDATED_2026_07 = new Set([
+  "priority-date",
+  "final-action-date-vs-date-of-filing",
+  "eb2-india",
+  "eb3-india",
+  "priority-date-current-what-next",
+  "eb2-to-eb3-downgrade",
+  "eb3-to-eb2-interfiling",
+]);
+
 export const visaBulletinChildPages: VisaBulletinPage[] = rawPages.map((p) => ({
   ...p,
+  updated: p.updated ?? (CONTENT_UPDATED_2026_07.has(p.slug) ? "2026-07-14" : undefined),
   readingTime: computeReadingTime(p.content),
 }));
 

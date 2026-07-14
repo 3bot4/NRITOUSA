@@ -121,8 +121,11 @@ function WaitVerdict({
             Category unavailable
           </p>
           <p className="mt-1 text-xs text-ink-500">
-            No immigrant visa numbers are authorized for this category and country
-            of birth this month. No action is possible — monitor future bulletins.
+            No immigrant visa number is available for final issuance in this
+            category and country of birth under this chart this month, regardless
+            of priority date. Whether another filing or case step is available
+            depends on your process stage and the chart USCIS authorizes — monitor
+            future bulletins and confirm your options with your attorney.
           </p>
         </div>
       );
