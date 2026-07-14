@@ -133,6 +133,7 @@ export const articlesEntries: SitemapEntry[] = articles.map((a) =>
  * ------------------------------------------------------------------ */
 export const taxEntries: SitemapEntry[] = [
   e("/long-term-nri-wealth", 0.9, "weekly"),
+  e("/india-investments/should-nris-keep-investments-in-india", 0.9, "monthly"),
   e("/india-tax-compliance", 0.9, "weekly"),
   e("/india-tax-compliance/nri-tax-forms-limits", 0.9, "weekly"),
   e("/nri-wealth-checkup", 0.9, "weekly"),
