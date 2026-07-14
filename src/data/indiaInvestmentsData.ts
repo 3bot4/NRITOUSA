@@ -58,7 +58,7 @@ export const keyTakeaways: string[] = [
   "As a US person you are taxed on worldwide income. Interest, dividends, and capital gains from India go on your US return whether or not you repatriate the money.",
   "TDS is not your final tax bill. India often withholds tax at a flat rate; your actual liability can be lower, and refunds or treaty relief may apply if you file correctly.",
   "The DTAA and the US foreign tax credit exist to prevent double taxation — but they are not automatic. They require the right paperwork (TRC, Form 10F, Form 1116) and still depend on your facts.",
-  "Indian mutual funds are usually PFICs for US tax purposes. That means Form 8621 and a punitive default tax regime, which is why many NRIs reconsider holding them.",
+  "Indian mutual funds are usually PFICs for US tax purposes. US persons who hold them generally must file Form 8621 (subject to filing triggers and limited exceptions) and face a punitive default regime — which is why many NRIs reconsider holding them.",
   "NRE interest is tax-free in India but fully taxable in the US. NRO interest is taxable in both — with a US foreign tax credit for the Indian tax.",
   "Currency matters as much as tax. Measured in dollars, rupee assets carry exchange-rate risk that can quietly erode India returns over long horizons.",
   "Reporting is mandatory, not optional. FBAR (FinCEN 114) and FATCA (Form 8938) cover Indian accounts, and penalties for missing them are severe.",
@@ -141,7 +141,7 @@ export const residentVsNriRows: ComparisonRow[] = [
     feature: "Repatriation",
     values: {
       resident: "Not relevant.",
-      nri: "NRE/FCNR freely repatriable; NRO up to ~US$1M/year with 15CA/15CB paperwork.",
+      nri: "NRE/FCNR freely repatriable; NRO up to ~US$1M per financial year, subject to eligible funds, taxes, 15CA/15CB, and bank review.",
     },
   },
   {
@@ -194,7 +194,7 @@ export const nreVsNroRows: ComparisonRow[] = [
     feature: "Repatriation",
     values: {
       nre: "Principal and interest freely repatriable.",
-      nro: "Up to about US$1 million per financial year with Form 15CA/15CB.",
+      nro: "Up to about US$1 million per financial year — subject to eligible funds, taxes paid, Form 15CA/15CB, and your bank's review.",
     },
   },
   {
@@ -231,8 +231,8 @@ export const dividendStepRows: DataRow[] = [
     what: "TDS on NRI dividends is commonly ~20% plus surcharge and cess under domestic law (Section 195).",
   },
   {
-    step: "3. Treaty (DTAA) rate",
-    what: "The India–US treaty caps dividend tax (commonly cited as 25%, or 15% for some corporate holders). You claim the lower rate by giving the payer a Tax Residency Certificate and Form 10F — it is not applied automatically.",
+    step: "3. Treaty (DTAA) cap",
+    what: "The India–US treaty places a cap on eligible dividend taxation, but the treaty rate is not automatically lower than India's domestic rate in every case. Compare the applicable domestic-law rate and the treaty cap, satisfy the documentation (a Tax Residency Certificate and Form 10F where applicable), and use the beneficial rate you are eligible for. It is never applied automatically.",
   },
   {
     step: "4. File India ITR",
@@ -301,7 +301,7 @@ export const instrumentRows: DataRow[] = [
   {
     instrument: "Indian equity mutual funds",
     hold: "Complicated for US persons.",
-    friction: "Almost always PFICs → Form 8621, punitive default tax.",
+    friction: "Usually PFICs; US holders generally must file Form 8621, with a punitive default regime.",
     note: "The single biggest reason NRIs restructure their India portfolio.",
   },
   {
@@ -442,7 +442,7 @@ export const caseStudies: Scenario[] = [
     situation: "Holds direct shares paying meaningful dividends; is in a high US bracket.",
     verdict: "Manageable",
     verdictTone: "review",
-    detail: "Direct shares avoid PFIC. The work is claiming the DTAA rate (TRC + Form 10F), recovering excess TDS, and taking a US foreign tax credit. Whether to keep or diversify is a portfolio-concentration and currency question more than a pure tax one.",
+    detail: "Direct shares avoid PFIC. The work is comparing the domestic and treaty rates and claiming whichever beneficial rate they're eligible for (with a TRC and Form 10F), recovering excess TDS, and taking a US foreign tax credit. Whether to keep or diversify is a portfolio-concentration and currency question more than a pure tax one.",
   },
   {
     label: "NRI with Indian mutual funds bought years ago",
@@ -511,7 +511,7 @@ export const quickAnswers: QuickQA[] = [
   },
   {
     q: "Are Indian mutual funds a problem for US taxpayers?",
-    a: "Usually. They are almost always PFICs, which means Form 8621 and a punitive default tax regime. This is the most common reason NRIs restructure their India portfolio.",
+    a: "Usually. They are typically PFICs, so US holders generally must file Form 8621 and face a punitive default tax regime. This is the most common reason NRIs restructure their India portfolio.",
     href: "#mutual-funds",
   },
   {
@@ -563,7 +563,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Should I close my NRO account?",
     answer:
-      "Usually not. An NRO account is the correct home for India-sourced income such as rent, dividends, and pension, and for balances you had before moving. The common issue is recovering excess TDS and reporting the interest correctly, not closing the account. You can repatriate up to about US$1 million per year from an NRO account with Form 15CA/15CB.",
+      "Usually not. An NRO account is the correct home for India-sourced income such as rent, dividends, and pension, and for balances you had before moving. The common issue is recovering excess TDS and reporting the interest correctly, not closing the account. You can repatriate up to about US$1 million per financial year from an NRO account, subject to eligible balances, taxes paid, Form 15CA/15CB, and your authorized-dealer bank's review.",
   },
   {
     question: "What is the difference between NRE and NRO accounts?",
@@ -578,7 +578,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How are NRI dividends from Indian companies taxed?",
     answer:
-      "Since FY2020-21, dividends are taxable in the investor's hands. For NRIs, the company withholds TDS, commonly around 20% plus surcharge and cess. You may be able to claim a lower treaty rate under the DTAA with a Tax Residency Certificate and Form 10F, and recover any excess by filing an Indian return. On the US side the dividend is taxable, usually with a foreign tax credit for the Indian tax.",
+      "Since FY2020-21, dividends are taxable in the investor's hands. For NRIs, the company withholds TDS under domestic law (commonly around 20% plus surcharge and cess). The India–US treaty caps eligible dividend taxation, but the treaty rate is not automatically lower than the domestic rate in every case — compare both, and if the treaty cap is beneficial and you can meet the documentation (a Tax Residency Certificate and Form 10F where applicable), use that rate. Excess withholding may be recoverable by filing an Indian return, and on the US side the dividend is taxable, usually with a foreign tax credit for the Indian tax.",
   },
   {
     question: "What is TDS and is it my final tax?",
@@ -598,7 +598,7 @@ export const faqs: FaqItem[] = [
   {
     question: "What is a PFIC and why does it matter for Indian mutual funds?",
     answer:
-      "A Passive Foreign Investment Company is a non-US pooled investment. Indian mutual funds, many ETFs, and ULIPs typically qualify. For US taxpayers, PFICs are reported on Form 8621 and, by default, taxed under a punitive regime that can tax gains at high rates with an interest charge. Elections that soften this usually are not available for Indian funds, which is why PFICs drive many NRI decisions.",
+      "A Passive Foreign Investment Company is a non-US pooled investment. Indian mutual funds, many ETFs, and ULIPs typically qualify. US persons who hold them generally must file Form 8621 for each fund — though whether a return is required in a given year can depend on filing thresholds and limited exceptions. By default, PFICs are taxed under a punitive regime that can tax gains at high rates with an interest charge, and the elections that soften this usually are not available for Indian funds, which is why PFICs drive many NRI decisions.",
   },
   {
     question: "Do I need to file FBAR for my Indian accounts?",
@@ -653,7 +653,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Can I repatriate money from my NRO account to the US?",
     answer:
-      "Yes, up to about US$1 million per financial year from your NRO account, after taxes, using Form 15CA and a Chartered Accountant's Form 15CB. NRE and FCNR balances are freely repatriable without that annual cap. Keep documentation of the source of funds and the tax paid, because your bank and the US side may both ask.",
+      "Yes — up to about US$1 million per financial year from your NRO account, subject to eligible balances, taxes paid, and your authorized-dealer bank's review, using Form 15CA and a Chartered Accountant's Form 15CB. NRE and FCNR balances are freely repatriable without that annual cap. Keep documentation of the source of funds and the tax paid, because your bank and the US side may both ask.",
   },
   {
     question: "Are gifts from parents in India taxable in the US?",

@@ -22,6 +22,21 @@ export interface ClusterLink {
 /* ------------------------------------------------------------------ *
  * Publish / review metadata (single source of truth for the page dates)
  * ------------------------------------------------------------------ */
+/** Topical keywords for Article schema (not stuffed on-page). */
+export const INDIA_INVESTMENTS_KEYWORDS = [
+  "should NRI keep investments in India",
+  "NRI investment in India",
+  "India vs US investing",
+  "NRI mutual fund taxation",
+  "PFIC Indian mutual funds",
+  "NRI dividend tax",
+  "NRE vs NRO",
+  "India US DTAA",
+  "foreign tax credit India USA",
+  "NRI capital gains tax",
+  "returning to India investments",
+];
+
 export const INDIA_INVESTMENTS_PUBLISHED = "2026-07-14";
 export const INDIA_INVESTMENTS_UPDATED = "2026-07-14";
 export const INDIA_INVESTMENTS_UPDATED_HUMAN = "July 14, 2026";
@@ -224,7 +239,7 @@ export function indiaInvestmentsWebPageJsonLd(opts: {
     isPartOf: { "@id": `${site.url}/#website` },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: absoluteUrl(opts.path + "/opengraph-image"),
+      url: absoluteUrl(site.ogImage),
       width: 1200,
       height: 630,
     },
@@ -261,8 +276,9 @@ export function indiaInvestmentsArticleJsonLd(opts: {
     mainEntityOfPage: { "@id": `${url}#webpage` },
     isPartOf: { "@id": `${url}#webpage` },
     url,
-    image: absoluteUrl(opts.path + "/opengraph-image"),
+    image: absoluteUrl(site.ogImage),
     articleSection: "NRI Investing",
+    keywords: INDIA_INVESTMENTS_KEYWORDS.join(", "),
     inLanguage: "en-US",
     isAccessibleForFree: true,
   };

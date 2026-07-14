@@ -8,7 +8,6 @@ import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import Newsletter from "@/components/Newsletter";
 import {
   QuickAnswer,
-  JumpNav,
   QuickAnswers,
   ComparisonTable,
   DataTable,
@@ -18,6 +17,10 @@ import {
   ScenarioCards,
   NextStep,
 } from "@/components/tools/TrumpAccountUI";
+import ArticleToc from "@/components/india-investments/ArticleToc";
+import KeepInvestmentAssistant from "@/components/india-investments/KeepInvestmentAssistant";
+import FrameworkChecklist from "@/components/india-investments/FrameworkChecklist";
+import AccountTransitionDiagram from "@/components/india-investments/AccountTransitionDiagram";
 import { author } from "@/lib/author";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
@@ -123,27 +126,30 @@ function Takeaway({ children }: { children: React.ReactNode }) {
   );
 }
 
-const JUMP = [
-  { label: "Quick answer", href: "#quick-answer" },
-  { label: "Key takeaways", href: "#key-takeaways" },
-  { label: "Resident vs NRI", href: "#compare-status" },
-  { label: "What changes", href: "#what-changes" },
-  { label: "Stocks", href: "#stocks" },
-  { label: "Mutual funds", href: "#mutual-funds" },
-  { label: "Fixed deposits", href: "#fd" },
-  { label: "NRE vs NRO", href: "#nre-nro" },
-  { label: "Dividend tax", href: "#dividends" },
-  { label: "Capital gains", href: "#capital-gains" },
-  { label: "US tax impact", href: "#us-tax" },
-  { label: "Move to US?", href: "#move-us" },
-  { label: "Keep in India?", href: "#keep-india" },
-  { label: "Returning", href: "#returning" },
-  { label: "Mistakes", href: "#mistakes" },
-  { label: "Case studies", href: "#cases" },
-  { label: "Decision tree", href: "#decision-tree" },
-  { label: "By instrument", href: "#instruments" },
-  { label: "Tools", href: "#tools" },
-  { label: "FAQ", href: "#faq" },
+/** Table-of-contents / section registry — each id MUST render on the page. */
+const JUMP: { id: string; label: string }[] = [
+  { id: "quick-answer", label: "Quick answer" },
+  { id: "key-takeaways", label: "Key takeaways" },
+  { id: "compare-status", label: "Resident vs NRI" },
+  { id: "what-changes", label: "What changes" },
+  { id: "stocks", label: "Stocks" },
+  { id: "mutual-funds", label: "Mutual funds" },
+  { id: "fd", label: "Fixed deposits" },
+  { id: "nre-nro", label: "NRE vs NRO" },
+  { id: "dividends", label: "Dividend tax" },
+  { id: "capital-gains", label: "Capital gains" },
+  { id: "us-tax", label: "US tax impact" },
+  { id: "move-us", label: "Move to US?" },
+  { id: "keep-india", label: "Keep in India?" },
+  { id: "returning", label: "Returning" },
+  { id: "mistakes", label: "Mistakes" },
+  { id: "cases", label: "Case studies" },
+  { id: "assistant", label: "Decision assistant" },
+  { id: "decision-tree", label: "Decision tree" },
+  { id: "instruments", label: "By instrument" },
+  { id: "framework", label: "6-step plan" },
+  { id: "tools", label: "Tools" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export default function Page() {
@@ -243,10 +249,8 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Sticky jump nav */}
-        <div className="mt-8">
-          <JumpNav items={JUMP} />
-        </div>
+        {/* Long-page navigation: desktop sticky rail + mobile collapsible + back-to-top */}
+        <ArticleToc items={JUMP} />
 
         {/* 2 — Key takeaways */}
         <PlainSection id="key-takeaways">
@@ -333,6 +337,8 @@ export default function Page() {
               from that one change.
             </p>
           </Callout>
+
+          <AccountTransitionDiagram />
         </AltSection>
 
         {/* SECTION 2 — Indian stocks */}
@@ -391,10 +397,12 @@ export default function Page() {
 
           <WarnBox title="Why Indian mutual funds are a US-tax headache">
             <p>
-              Each Indian fund is generally a PFIC, reported on <strong>Form 8621</strong>. By default (the Section 1291
-              regime), gains and certain distributions can be taxed at the highest ordinary rates with an interest charge
-              for &quot;deferred&quot; tax. Elections that soften this (QEF or mark-to-market) usually require information
-              Indian funds do not provide, so they are often unavailable.
+              Each Indian fund is generally a PFIC. US persons who hold them typically must file{" "}
+              <strong>Form 8621</strong> for each fund, though whether a return is required in a given year can depend on
+              filing thresholds and limited exceptions. By default (the Section 1291 regime), gains and certain
+              distributions can be taxed at the highest ordinary rates with an interest charge for &quot;deferred&quot;
+              tax. Elections that soften this (QEF or mark-to-market) usually require information Indian funds do not
+              provide, so they are often unavailable.
             </p>
             <p>
               Continuing SIPs makes it worse — every monthly purchase is another PFIC lot to track. This is why many NRIs
@@ -497,21 +505,25 @@ export default function Page() {
             actually <em>owe</em> are often different numbers. Here is what really happens, step by step.
           </Lead>
           <div className="mt-5">
-            <DataTable columns={dividendStepCols} rows={dividendStepRows} keyRows={["3. Treaty (DTAA) rate", "5. Report on US return"]} />
+            <DataTable columns={dividendStepCols} rows={dividendStepRows} keyRows={["3. Treaty (DTAA) cap", "5. Report on US return"]} />
           </div>
 
           <Callout kind="note" title="TDS vs actual liability">
             <p>
-              TDS is a flat amount withheld at source. Your real Indian liability depends on your total Indian income, and
-              the treaty may cap the rate — so you may be owed a refund. Claiming it generally means filing an Indian
-              return. On the US side, the foreign tax credit prevents the dividend being taxed twice, subject to limits.
+              TDS is a flat amount withheld at source, not necessarily your final bill. Your real Indian liability depends
+              on your total Indian income. The treaty places a cap on eligible dividend tax, but it is{" "}
+              <strong>not automatically lower</strong> than the domestic rate — compare both and use the beneficial rate
+              you qualify for (with a Tax Residency Certificate and Form 10F). If you were over-withheld, filing an Indian
+              return can recover the excess. On the US side, the foreign tax credit prevents the dividend being taxed
+              twice, subject to limits.
             </p>
           </Callout>
 
           <P>
-            Blanket statements like &quot;NRIs pay 20% on dividends&quot; are misleading. The withholding, the treaty
-            rate, your India return, and your US foreign tax credit all interact, and the net result depends on your
-            income and paperwork (a Tax Residency Certificate and Form 10F to claim the treaty rate).
+            Blanket statements like &quot;NRIs pay 20% on dividends&quot; — or &quot;the treaty always cuts your
+            rate&quot; — are both misleading. The domestic-law rate, the treaty cap, your India return, and your US
+            foreign tax credit all interact, and the net result depends on your income and the documentation you can
+            support.
           </P>
         </PlainSection>
 
@@ -651,17 +663,30 @@ export default function Page() {
           </div>
         </AltSection>
 
-        {/* SECTION 14 — Decision tree */}
-        <PlainSection id="decision-tree">
-          <H2>14. A simple decision tree</H2>
+        {/* SECTION 14a — Interactive decision assistant (enhances, never replaces, the static tree below) */}
+        <PlainSection id="assistant">
+          <H2>14. Try it: “Should I keep this India investment?”</H2>
           <Lead>
-            Run each India holding through this, one asset at a time. It points you to the right analysis — it is not a
-            verdict on your specific situation.
+            Answer seven quick questions about one asset and get an educational read — the main issue to review and where
+            to go next. It never tells you to buy or sell, stores nothing on a server, and the static decision tree below
+            works without it.
+          </Lead>
+          <div className="mt-5">
+            <KeepInvestmentAssistant />
+          </div>
+        </PlainSection>
+
+        {/* SECTION 14b — Static decision tree (indexable, works without JavaScript) */}
+        <AltSection id="decision-tree">
+          <H2>The decision tree, step by step</H2>
+          <Lead>
+            Prefer to work it through yourself? Run each India holding through this, one asset at a time. It points you to
+            the right analysis — it is not a verdict on your specific situation.
           </Lead>
           <div className="mt-5">
             <DecisionFlow title="Should I keep this investment in India?" nodes={decisionFlowNodes} />
           </div>
-        </PlainSection>
+        </AltSection>
 
         {/* SECTION 15 — Instrument comparison */}
         <AltSection id="instruments">
@@ -679,23 +704,14 @@ export default function Page() {
           </div>
         </AltSection>
 
-        {/* HowTo framework */}
+        {/* Six-step framework — interactive checklist (content works without JS) */}
         <PlainSection id="framework">
-          <H2>A six-step framework to decide</H2>
-          <Lead>When you are ready to work through your own portfolio, this is the order that keeps you out of trouble.</Lead>
-          <ol className="mt-5 space-y-3">
-            {howToSteps.map((s, i) => (
-              <li key={s.name} className="flex gap-3 rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
-                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white" aria-hidden>
-                  {i + 1}
-                </span>
-                <div>
-                  <p className="text-sm font-bold text-ink-900">{s.name}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-600">{s.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <H2>Your six-step action checklist</H2>
+          <Lead>
+            When you are ready to work through your own portfolio, this is the order that keeps you out of trouble. Tick
+            each step off as you go — progress is saved in your browser only.
+          </Lead>
+          <FrameworkChecklist />
           <p className="mt-5 text-xs leading-relaxed text-ink-500">{II_DATA_NOTE}</p>
         </PlainSection>
 
