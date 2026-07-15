@@ -37,7 +37,18 @@ function SectionCard({
   );
 }
 
-export function ToolIntro({ content }: { content: ToolHubContent }) {
+export function ToolIntro({
+  content,
+  verifyNote,
+}: {
+  content: ToolHubContent;
+  /**
+   * Override the default "verify with official sources" banner. Pass this for
+   * non-immigration tools (e.g. the tax checker) so the banner does not
+   * reference USCIS / State Department / DOL.
+   */
+  verifyNote?: React.ReactNode;
+}) {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       {/* Quick answer */}
@@ -85,12 +96,16 @@ export function ToolIntro({ content }: { content: ToolHubContent }) {
         </ul>
       </div>
 
-      {/* Important verify banner */}
+      {/* Important verify banner (overridable for non-immigration tools) */}
       <div className="rounded-xl border border-amber-200 bg-amber-50/60 px-4 py-3 text-xs leading-relaxed text-amber-900">
-        <strong className="font-bold">Important:</strong> immigration rules, fees, and
-        processing times change. Use this as an estimate and verify with official
-        sources (uscis.gov, travel.state.gov, dol.gov) before filing or making
-        decisions. This is not legal advice.
+        {verifyNote ?? (
+          <>
+            <strong className="font-bold">Important:</strong> immigration rules,
+            fees, and processing times change. Use this as an estimate and verify
+            with official sources (uscis.gov, travel.state.gov, dol.gov) before
+            filing or making decisions. This is not legal advice.
+          </>
+        )}
       </div>
     </div>
   );
@@ -173,19 +188,26 @@ export function ToolDeepDive({
         </SectionCard>
       )}
 
-      {/* Step-by-step process */}
-      <SectionCard title="Step-by-step process">
-        <ol className="space-y-3">
-          {content.steps.map((step, i) => (
-            <li key={step} className="flex gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700">
-                {i + 1}
-              </span>
-              <span className="pt-0.5 text-sm leading-relaxed text-ink-700">{step}</span>
-            </li>
-          ))}
-        </ol>
-      </SectionCard>
+      {/* Step-by-step process. The <ol> conveys order to assistive tech; the
+          visual number badge is aria-hidden so a screen reader announces the
+          position once, not twice. */}
+      {content.steps.length > 0 && (
+        <SectionCard title="Step-by-step process">
+          <ol className="space-y-3">
+            {content.steps.map((step, i) => (
+              <li key={step} className="flex gap-3">
+                <span
+                  aria-hidden
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700"
+                >
+                  {i + 1}
+                </span>
+                <span className="pt-0.5 text-sm leading-relaxed text-ink-700">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </SectionCard>
+      )}
 
       {/* Timeline */}
       {content.timeline && (
@@ -249,18 +271,20 @@ export function ToolDeepDive({
       )}
 
       {/* Common mistakes */}
-      <SectionCard title="Common mistakes to avoid">
-        <ul className="space-y-2">
-          {content.mistakes.map((m) => (
-            <li key={m} className="flex gap-2 text-sm leading-relaxed text-ink-700">
-              <span aria-hidden className="mt-0.5 text-rose-500">
-                ✕
-              </span>
-              <span>{m}</span>
-            </li>
-          ))}
-        </ul>
-      </SectionCard>
+      {content.mistakes.length > 0 && (
+        <SectionCard title="Common mistakes to avoid">
+          <ul className="space-y-2">
+            {content.mistakes.map((m) => (
+              <li key={m} className="flex gap-2 text-sm leading-relaxed text-ink-700">
+                <span aria-hidden className="mt-0.5 text-rose-500">
+                  ✕
+                </span>
+                <span>{m}</span>
+              </li>
+            ))}
+          </ul>
+        </SectionCard>
+      )}
 
       {/* Example scenario */}
       {content.example && (

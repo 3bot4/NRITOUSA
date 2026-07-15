@@ -41,6 +41,7 @@ export default function ToolFirstLayout({
   accent = "from-brand-600 to-indigo-600",
   sourceNote,
   headerExtra,
+  topDisclaimer,
   disclaimerIntro,
   disclaimerPoints,
   disclaimerExtra,
@@ -59,6 +60,12 @@ export default function ToolFirstLayout({
   sourceNote?: React.ReactNode;
   /** Optional small links/CTAs under the badges (kept compact). */
   headerExtra?: React.ReactNode;
+  /**
+   * Override the one-line header disclaimer text (before the "Full disclaimer
+   * below" link). Use for non-immigration tools so it does not say
+   * "immigration". Defaults to the generic estimate line.
+   */
+  topDisclaimer?: React.ReactNode;
   disclaimerIntro?: React.ReactNode;
   /** Override the disclaimer bullet list (e.g. tax-only tools). */
   disclaimerPoints?: string[];
@@ -130,8 +137,9 @@ export default function ToolFirstLayout({
           {headerExtra && <div className="mt-3">{headerExtra}</div>}
 
           <p className="mt-4 text-xs leading-relaxed text-ink-400">
-            Educational estimate only. Not legal, tax, immigration, or financial
-            advice.{" "}
+            {topDisclaimer ?? (
+              <>Educational estimate only. Not legal, tax, immigration, or financial advice.</>
+            )}{" "}
             <a
               href={`#${FULL_DISCLAIMER_ID}`}
               className="font-medium text-brand-600 underline underline-offset-2"

@@ -1887,20 +1887,13 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         },
       ],
     },
-    steps: [
-      "Confirm you're a US person and identify who gave the money (a foreign individual vs a foreign estate).",
-      "Total the amounts received from that person (aggregating related foreign givers where required) for the year.",
-      "Compare the total to the current Form 3520 threshold for that type of giver.",
-      "If it meets the threshold, file Form 3520 separately from Form 1040 (usually no tax on the gift itself).",
-      "Keep documentation of the transfer (bank records, gift letter) in case of questions.",
-    ],
-    mistakes: [
-      "Assuming a large wire from parents is taxable income — foreign gifts generally aren't taxed to the recipient.",
-      "Skipping Form 3520 because 'no tax is due' — the form is still required and carries penalty risk.",
-      "Not aggregating gifts from related foreign persons toward the threshold.",
-      "Confusing the recipient's reporting with the giver's gift tax (usually the giver's concern).",
-      "Losing the paper trail (bank records, a simple gift letter) that documents the transfer.",
-    ],
+    // Intentionally empty: the interactive checker already walks the user
+    // through the process, and the step-by-step / common-mistakes narratives
+    // are covered in depth by the pillar and cash-gift guides. Keeping them
+    // here would reproduce a second full guide below the tool (ToolDeepDive
+    // hides these sections when the arrays are empty).
+    steps: [],
+    mistakes: [],
     example: {
       title: "Parents in India send a down-payment gift to their child in the US",
       body: "Anjali, a US green card holder, receives a large sum from her parents in India to help buy a home. Because the aggregate exceeds the $100,000 Form 3520 threshold for gifts from a nonresident individual, she files Form 3520 — separately from her Form 1040 — for that tax year. She owes no US tax on the gift itself; it's an informational report, but filing protects her from the steep penalty for a missed form. She keeps the bank transfer records and a short gift letter from her parents.",

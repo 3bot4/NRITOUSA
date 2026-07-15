@@ -142,6 +142,28 @@ export const indiaGiftRemittanceRules = {
  * Formatting helpers so pages render the centralized figures consistently
  * ------------------------------------------------------------------ */
 
+/**
+ * The US Form 3520 aggregate is measured by the recipient's US tax year — the
+ * calendar year for an individual calendar-year filer.
+ */
+export function usCalendarYear(date: Date): number {
+  return date.getFullYear();
+}
+
+/**
+ * The India LRS/TCS position is measured by the sender's Indian financial year,
+ * which starts in April. Returns a label like "2025-26". This is why a February
+ * and the following April fall in the SAME US calendar year but TWO different
+ * Indian financial years.
+ */
+export function indianFinancialYear(date: Date): string {
+  const startMonthIndex = indiaGiftRemittanceRules.indianFinancialYearStartMonth - 1; // April → 3
+  const startYear =
+    date.getMonth() >= startMonthIndex ? date.getFullYear() : date.getFullYear() - 1;
+  const endTwoDigit = String((startYear + 1) % 100).padStart(2, "0");
+  return `${startYear}-${endTwoDigit}`;
+}
+
 /** "$100,000" from 100000. */
 export const fmtUsd = (n: number): string => `$${n.toLocaleString("en-US")}`;
 

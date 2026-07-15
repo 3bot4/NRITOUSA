@@ -110,6 +110,9 @@ export default function Form3520IndiaGiftCheckerPage() {
         title={TITLE}
         hook="Money or assets from family in India? Answer a few questions to flag whether Form 3520, foreign-trust, FBAR/FATCA, or PFIC review may apply — and what to collect."
         accent={tool.accent}
+        topDisclaimer={
+          <>Educational screening only — not tax or legal advice, and not a filing determination.</>
+        }
         disclaimerIntro="This tool is for general education and screening only. It is not tax or legal advice and does not provide a filing determination. Form 3520, PFIC, and FBAR/FATCA rules and thresholds change over time and depend on your facts."
         disclaimerPoints={[
           "For educational screening only — not a filing determination.",
@@ -147,7 +150,20 @@ export default function Form3520IndiaGiftCheckerPage() {
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mb-8">
-            <ToolIntro content={content} />
+            <ToolIntro
+              content={content}
+              verifyNote={
+                <>
+                  <strong className="font-bold">Important:</strong> Tax
+                  thresholds, filing instructions and remittance procedures can
+                  change. Verify current requirements with the IRS, FinCEN, RBI
+                  and the Indian Income Tax Department. For advice concerning
+                  your facts, consult a qualified cross-border CPA and an Indian
+                  Chartered Accountant. This is educational screening, not a
+                  filing determination.
+                </>
+              }
+            />
           </div>
 
           <Form3520IndiaGiftChecker />

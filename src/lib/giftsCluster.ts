@@ -271,7 +271,7 @@ Generally no — receiving a genuine gift or inheritance from a foreign person i
 It depends on the source. Gifts or bequests from a nonresident individual or a foreign estate use the ${USD_100K} aggregate test; purported gifts from a foreign corporation or partnership use a separate, annually-indexed threshold (${ENTITY_2026} for tax year 2026); and a foreign-trust distribution is reviewed under Part III rather than any gift threshold.
 
 ### Does it matter whether I received the money in India or the US?
-For the Form 3520 test itself, not much — that turns on the gift or bequest. But money or securities held in an Indian account become FBAR and Form 8938 review items once they are yours, and a later remittance to the US may require bank/FEMA documentation depending on the source and route. Real estate held in a US account does not create FBAR merely by being here.
+For the Form 3520 test itself, not much — that turns on the gift or bequest. But money or securities held in an Indian account become FBAR and Form 8938 review items once they are yours, and a later remittance to the US may require bank/FEMA documentation depending on the source and route. Money received directly into and retained in a US financial account does not create an FBAR filing requirement merely because the funds came from India. Form 3520 may still apply based on your US-person status, source category and annual aggregate. Note that directly held foreign real estate is generally not itself a foreign financial account for FBAR, though a foreign bank account holding rent or sale proceeds may count toward the thresholds, and Form 8938 treatment can be fact-specific.
 
 ### What is different about inheriting Indian mutual funds?
 Indian mutual funds are generally PFICs for US tax. Receiving them is not taxable, but holding and selling them can trigger Form 8621 and special default ("excess distribution") tax rules. This is the one inherited asset where getting US advice before acting can save the most — see the inherited mutual funds and PFIC guide.
@@ -414,11 +414,11 @@ title: For the resident sender (your parents)
 :::
 
 ## Worked example
-**Two parents, an aggregate above the threshold, different calendars.** Suppose your father wires you the equivalent of **\\$70,000** in December and your mother wires **\\$60,000** the following February, both toward your US home.
+**Two parents, an aggregate above the threshold, different Indian financial years.** Suppose your father transfers **\\$70,000** in **February 2026** and your mother transfers **\\$60,000** in **April 2026**, both toward your US home.
 
-- **US side:** the two are **related donors**, so you aggregate them to **\\$130,000** — above ${USD_100K} — and file **Form 3520 Part IV** for that US tax year (both wires fall in the same US calendar year). There is **no automatic US income tax** on the receipt; each gift above ${USD_5K} is identified individually on the form.
-- **India side:** each parent runs their **own** LRS limit and their **own** ${TCS_RATE_PCT}-above-${LRS_TCS_THRESHOLD_LABEL} TCS math as the resident sender — the amounts are **not** combined for India TCS the way they are for US Form 3520.
-- **Calendars:** the December and February wires sit in **one US calendar year** but **two Indian financial years** (the February wire is in the next Indian FY). Keep each sender's records aligned to the right period.
+- **US side:** the two are **related donors**, so you aggregate them to **\\$130,000** in **US calendar year 2026** — above ${USD_100K} — and should review **Form 3520 Part IV** for that year. Receipt of a genuine foreign gift is **generally not US taxable income** to you; each gift above ${USD_5K} is identified individually on the form.
+- **India side:** **February 2026** falls in **Indian financial year 2025–26**, while **April 2026** falls in **Indian financial year 2026–27**. Each resident sender applies their **own** LRS usage and TCS position (${TCS_RATE_PCT} above ${LRS_TCS_THRESHOLD_LABEL}) under the applicable Indian financial year and their own bank records.
+- **Don't mix the two systems:** US Form 3520 aggregation combines both parents into one US-calendar-year total; the Indian LRS/TCS position is **per sender and per Indian financial year**. They do **not** use the same year or the same person.
 
 :::cta
 title: Check whether your gift needs Form 3520
@@ -442,7 +442,7 @@ The gift itself is generally exempt in India when it is from a parent, but as th
 Yes. The gift is generally not taxable income to you, but your lender will want a gift letter confirming it is a gift, not a loan, plus a source-of-funds trail. If foreign gifts in the year exceed ${USD_100K}, Form 3520 also applies. Start the transfers early to meet your closing date.
 
 ### Does receiving a gift affect my FBAR?
-The gift itself is not an account, but once it is sitting in — or routed through — an Indian account you hold, that account counts toward your FBAR and FATCA review once it is yours. Money received directly into a US account does not create FBAR merely by being here.`,
+The gift itself is not an account, but once it is sitting in — or routed through — an Indian account you hold, that account counts toward your FBAR and FATCA review once it is yours. Money received directly into and retained in a US financial account does not create an FBAR filing requirement merely because the funds came from India.`,
   },
 
   /* ------------------- INHERITED INDIAN PROPERTY -------------------- */
