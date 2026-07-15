@@ -42,6 +42,7 @@ export default function ToolFirstLayout({
   sourceNote,
   headerExtra,
   disclaimerIntro,
+  disclaimerPoints,
   disclaimerExtra,
   disclaimerDefaultOpen,
   children,
@@ -59,6 +60,8 @@ export default function ToolFirstLayout({
   /** Optional small links/CTAs under the badges (kept compact). */
   headerExtra?: React.ReactNode;
   disclaimerIntro?: React.ReactNode;
+  /** Override the disclaimer bullet list (e.g. tax-only tools). */
+  disclaimerPoints?: string[];
   disclaimerExtra?: React.ReactNode;
   disclaimerDefaultOpen?: boolean;
   children: React.ReactNode;
@@ -160,6 +163,7 @@ export default function ToolFirstLayout({
         <Container>
           <BottomDisclaimer
             intro={disclaimerIntro}
+            points={disclaimerPoints}
             defaultOpen={disclaimerDefaultOpen}
           >
             {disclaimerExtra}

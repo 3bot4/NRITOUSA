@@ -22,17 +22,21 @@ const POINTS = [
  * by default (mobile + desktop), needs no JS, and causes no layout shift.
  *
  * - `intro` overrides the default intro paragraph.
+ * - `points` overrides the default bullet list (e.g. a tax-only tool that must
+ *   not reference USCIS / State Department immigration agencies).
  * - `children` carries any tool-specific disclaimer/assumptions/source copy so
  *   existing wording is preserved (moved here, never deleted).
  * - `defaultOpen` lets desktop-heavy pages expand it if their design prefers.
  */
 export default function BottomDisclaimer({
   intro,
+  points = POINTS,
   children,
   defaultOpen = false,
   className = "",
 }: {
   intro?: React.ReactNode;
+  points?: string[];
   children?: React.ReactNode;
   defaultOpen?: boolean;
   className?: string;
@@ -55,7 +59,7 @@ export default function BottomDisclaimer({
       <div className="space-y-4 border-t border-ink-900/5 px-5 py-5 text-sm leading-relaxed text-ink-500">
         <p>{intro ?? DEFAULT_INTRO}</p>
         <ul className="list-disc space-y-1.5 pl-5">
-          {POINTS.map((p) => (
+          {points.map((p) => (
             <li key={p}>{p}</li>
           ))}
         </ul>

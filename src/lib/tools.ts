@@ -359,16 +359,16 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "form-3520-india-gift-checker",
-    title: "Form 3520 India Gift & Inheritance Checker",
+    title: "Form 3520 India Gift and Inheritance Checker",
     label: "Form 3520 Gift Checker",
     group: "Money & Finance",
     description:
-      "Money or assets from family in India? Answer a few questions — who gave it, the donor type, the value, the asset, and where it landed — to get a Form 3520, FBAR/FATCA, and PFIC review flag, the documents to collect, and questions for your CPA and CA. Educational only — it never computes any tax. Runs entirely in your browser.",
+      "Money or assets from family in India? Answer a few questions — the tax year, the source, the aggregate value, the asset, and where it landed — to get a Form 3520 result with the threshold used, plus FBAR/FATCA and PFIC review flags, the documents to collect, and questions for your CPA and CA. Educational only — it never computes any tax. Runs entirely in your browser.",
     icon: "🎁",
     accent: "from-rose-500 to-pink-600",
-    seoTitle: "Form 3520 Checker for Indian Gifts & Inheritance (US NRIs)",
+    seoTitle: "Form 3520 Gift Checker for India | Free Tool",
     seoDescription:
-      "Free checker for US-based Indians: see whether a gift or inheritance from India needs Form 3520, FBAR/FATCA, or PFIC review, plus documents and CPA/CA questions.",
+      "Check whether a gift or inheritance from India may trigger Form 3520, foreign-trust, FBAR/FATCA or PFIC review. No signup or personal data.",
     status: "live",
     tags: ["tax-compliance"],
   },

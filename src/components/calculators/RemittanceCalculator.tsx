@@ -15,7 +15,7 @@ import {
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 
-const TCS_THRESHOLD = 700000; // ₹7 lakh per FY under LRS
+const TCS_THRESHOLD = 1000000; // ₹10 lakh per FY under LRS (raised from ₹7 lakh, FY 2025-26)
 const TCS_RATES: Record<string, number> = {
   family: 0.2,
   investment: 0.2,
@@ -142,7 +142,7 @@ export default function RemittanceCalculator() {
                 { value: "education-loan", label: "Education via loan (0.5%)" },
                 { value: "medical", label: "Medical (5%)" },
               ]}
-              hint="TCS applies above ₹7 lakh per financial year."
+              hint="TCS applies above ₹10 lakh per financial year."
             />
           )}
         </>
@@ -192,7 +192,7 @@ export default function RemittanceCalculator() {
           />
 
           <p className="text-xs leading-relaxed text-ink-400">
-            Estimate only. TCS assumes this is your transfer above the ₹7 lakh
+            Estimate only. TCS assumes this is your transfer above the ₹10 lakh
             annual threshold for the chosen purpose; rules and the US remittance
             fee change. Verify current rates with your provider and a tax
             professional.

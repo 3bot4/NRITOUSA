@@ -250,7 +250,7 @@ href: /nri-wealth-checkup
 - **Pick your form:** [ITR-2 for NRIs](/india-tax-compliance/itr-2-for-nri) · [ITR-3 for NRIs](/india-tax-compliance/itr-3-for-nri)
 - **Match the records:** [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri)
 - **Gather the paperwork:** [NRI India tax documents checklist](/india-tax-compliance/nri-india-tax-documents-checklist)
-- **Related guides:** [DTAA](/articles/double-taxation-dtaa-india-usa) · [Indian income on a US return](/articles/indian-income-us-tax-return) · [NRE/NRO accounts](/articles/nre-nro-accounts-explained) · [Repatriating property-sale proceeds](/articles/repatriate-india-property-sale-usa) · [Form 3520 on foreign gifts](/articles/gifting-money-india-tax-implications) · [PFIC & Indian mutual funds](/articles/pfic-indian-mutual-funds-trap) · [FBAR / FATCA](/articles/fbar-fatca-nri-guide)
+- **Related guides:** [DTAA](/articles/double-taxation-dtaa-india-usa) · [Indian income on a US return](/articles/indian-income-us-tax-return) · [NRE/NRO accounts](/articles/nre-nro-accounts-explained) · [Repatriating property-sale proceeds](/articles/repatriate-india-property-sale-usa) · [Form 3520 on foreign gifts](/india-tax-compliance/gift-from-parents-india-to-usa) · [PFIC & Indian mutual funds](/articles/pfic-indian-mutual-funds-trap) · [FBAR / FATCA](/articles/fbar-fatca-nri-guide)
 - **Tools:** [Form 10F generator](/tools/form-10f-generator) · [all calculators](/calculators)
 
 ## Frequently asked questions

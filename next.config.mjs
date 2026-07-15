@@ -94,6 +94,20 @@ const nextConfig = {
         destination: "/visa-bulletin",
         statusCode: 301,
       },
+      // The "gifting money from India / cash gift from parents" article was
+      // consolidated into the Foreign Gifts, Inheritance & Form 3520 cluster.
+      // The cash-gift page owns that intent, so a single-hop hard 301
+      // (statusCode 301, not `permanent`/308) preserves link equity and
+      // prevents an indexable duplicate. The old article has been removed from
+      // articles.ts (so it is absent from the sitemap, search index, and
+      // related-guide cards) and every internal link points directly at the
+      // destination — no redirect chain. Next.js preserves query strings on
+      // redirect because the destination declares none.
+      {
+        source: "/articles/gifting-money-india-tax-implications",
+        destination: "/india-tax-compliance/gift-from-parents-india-to-usa",
+        statusCode: 301,
+      },
     ];
   },
 };

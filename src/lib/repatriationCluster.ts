@@ -180,7 +180,7 @@ What you'll need varies by **where the money came from**. The source drives the 
 :::tip
 title: Don't forget the US side
 - Whatever the source, once the money is in the US it interacts with your **US return, FBAR, and FATCA**. A large gift from parents can raise **Form 3520** questions; the underlying Indian accounts feed **FBAR/FATCA**.
-- See [DTAA & double taxation](/articles/double-taxation-dtaa-india-usa), [gifting money from India](/articles/gifting-money-india-tax-implications), and [FBAR / FATCA](/articles/fbar-fatca-nri-guide).
+- See [DTAA & double taxation](/articles/double-taxation-dtaa-india-usa), [gifting money from India](/india-tax-compliance/gift-from-parents-india-to-usa), and [FBAR / FATCA](/articles/fbar-fatca-nri-guide).
 :::
 
 ## 6. Documents checklist

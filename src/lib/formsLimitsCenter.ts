@@ -148,7 +148,7 @@ export const US_FORMS: FormRow[] = [
     deadline: "Generally due with your income tax return, including extensions.",
     documents: "Date and amount of each gift/inheritance, donor relationship, supporting transfer records.",
     related: [
-      { label: "Gifting money from India & Form 3520", href: "/articles/gifting-money-india-tax-implications" },
+      { label: "Gifting money from India & Form 3520", href: "/india-tax-compliance/gift-from-parents-india-to-usa" },
       { label: "Inheriting Indian assets & US tax", href: "/articles/inheriting-indian-assets-us-tax" },
     ],
     source: { label: "IRS Form 3520", href: "https://www.irs.gov/forms-pubs/about-form-3520" },
@@ -500,7 +500,7 @@ export const SITUATIONS: SituationCard[] = [
     icon: "🎁",
     label: "I received money from parents",
     blurb: "Form 3520 reporting of large foreign gifts from relatives.",
-    href: "/articles/gifting-money-india-tax-implications",
+    href: "/india-tax-compliance/gift-from-parents-india-to-usa",
     accent: "from-rose-500 to-pink-600",
   },
   {
@@ -559,7 +559,7 @@ export const RELATED_RESOURCES: RelatedLink[] = [
   { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
   { label: "FBAR / FATCA guide", href: "/articles/fbar-fatca-nri-guide" },
   { label: "PFIC & Indian mutual funds", href: "/articles/pfic-indian-mutual-funds-trap" },
-  { label: "Form 3520 on foreign gifts", href: "/articles/gifting-money-india-tax-implications" },
+  { label: "Form 3520 on foreign gifts", href: "/india-tax-compliance/gift-from-parents-india-to-usa" },
   { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
   { label: "Form 10F generator", href: "/tools/form-10f-generator" },
   { label: "India property capital-gains calculator", href: "/calculators/india-property-capital-gains" },

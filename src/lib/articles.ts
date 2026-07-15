@@ -534,7 +534,7 @@ Yes. PPF is a foreign financial account and counts toward the $10,000 FBAR thres
 Yes. FBAR uses the **highest balance at any point** in the year, not the year-end balance. A brief spike above the combined $10,000 still triggers the requirement.
 
 ### What if my accounts are joint with my parents in India?
-If you have signature authority or ownership, report your interest in the account. An account solely in your parents' names, which you can't access, is not yours to report — though gifts you later receive may trigger [Form 3520](/articles/gifting-money-india-tax-implications).
+If you have signature authority or ownership, report your interest in the account. An account solely in your parents' names, which you can't access, is not yours to report — though gifts you later receive may trigger [Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa).
 
 ### Can I file the FBAR myself?
 Yes — it's free on the BSA E-Filing System and many people do it themselves. If you have many accounts, PFIC mutual funds, or missed prior years, a CPA is worth the few hundred dollars.
@@ -654,7 +654,7 @@ If you pass the **Substantial Presence Test**, you're a US resident alien taxed 
 - US residents are taxed on **worldwide income** — Indian source income is fully reportable.
 - Your status hinges on the **Substantial Presence Test** (31 days this year + a 183-day weighted formula).
 - Reportable: **rent, FD/savings interest, NRO interest, dividends, mutual-fund and stock capital gains, PPF interest.**
-- **Not income:** gifts and inheritance (but [gifts over $100k need Form 3520](/articles/gifting-money-india-tax-implications)).
+- **Not income:** gifts and inheritance (but [gifts over $100k need Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa)).
 - The **Foreign Tax Credit (Form 1116)** prevents double taxation on what you report.
 - Reporting income is **separate** from [FBAR/FATCA account disclosure](/articles/fbar-fatca-nri-guide) — you may owe both.
 :::
@@ -688,7 +688,7 @@ Once you're a **resident alien**, the worldwide-income rule applies and India is
 | PPF interest | **Yes** | The US doesn't recognize PPF's Indian exemption |
 
 ## What is *not* taxable income
-- **Gifts from parents or relatives** — a gift is not income to you. (But a foreign gift over **$100,000** in a year must be *disclosed* on [Form 3520](/articles/gifting-money-india-tax-implications) — disclosure, not tax.)
+- **Gifts from parents or relatives** — a gift is not income to you. (But a foreign gift over **$100,000** in a year must be *disclosed* on [Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa) — disclosure, not tax.)
 - **Inheritance** — not income, though valuation and basis rules apply when you later sell inherited assets.
 - **Return of your own principal** — moving your own savings from India to the US isn't income; only the *earnings* on it are.
 
@@ -816,102 +816,6 @@ No. They're reportable both as income and, typically, on FBAR/FATCA. Indian inst
 
 ## The bottom line
 Indian mutual funds feel familiar and safe, but as a US resident they're a tax trap: top-rate taxation, an interest penalty, and a Form 8621 for every fund every year. The clean path is simple — invest through US-domiciled funds for your growth, keep India exposure (if you want it) in direct stocks or US-listed funds, and work with a CPA to exit existing Indian funds on your terms. Your portfolio should compound for you, not for the IRS.`,
-  },
-  {
-    slug: "gifting-money-india-tax-implications",
-    title: "Is a Cash Gift From Parents in India Taxable in the USA?",
-    seoTitle: "Cash Gifts From India: Taxable in the USA?",
-    excerpt:
-      "Parents sending money for a house or wedding? Good news: gifts aren't taxed. But Form 3520 is mandatory over $100k, and missing it carries a 25% penalty.",
-    topic: "taxes",
-    date: "2026-06-05",
-    featured: false,
-    content: `Your parents in India wire you a large sum — for a home down payment, a wedding, or to share family savings — and a small panic sets in: *will the IRS tax this?* The reassuring headline: **a genuine gift is not taxable income to you in the US**. But there's a critical disclosure form, and the penalty for skipping it is brutal relative to how easy it is to file.
-
-:::summary
-A bona fide **gift from your non-US parents is not taxable income** to you in the US — you owe **zero tax** on it. However, if foreign gifts total **more than $100,000** in a year, you must **disclose** them on **Form 3520** (a reporting form, not a tax). Missing Form 3520 can cost up to **25% of the gift**. On the India side, parents using the LRS may face **20% TCS** on large outward remittances, which is creditable on their Indian return.
-:::
-
-:::key
-- **Gifts are not income** in the US — receiving money from parents is tax-free to you.
-- File **Form 3520** if foreign gifts exceed **$100,000** in a calendar year (disclosure only, no tax).
-- The Form 3520 penalty for non-filing is steep: up to **25% of the gift amount**.
-- **US gift tax falls on the giver, not the receiver** — and non-US parents gifting from India generally owe no US gift tax.
-- On the **India side**, your parents may incur **20% TCS** on remittances above ₹7 lakh under the LRS (creditable against their Indian tax).
-- Keep a **gift letter** and the wire records to prove it's a gift, not a loan or hidden income.
-:::
-
-## The core rule: gifts aren't income
-In the US tax system, a genuine gift is **never taxable income to the person receiving it.** Your parents can send you $50,000 or $500,000 and your US income tax on that money is **zero**. Where US "gift tax" exists at all, it's a tax on the **giver** — and crucially, your parents in India, as non-US persons gifting non-US-situated assets (cash held abroad), are **outside the US gift tax net** entirely. So neither side typically owes US tax on a parent-to-child cash gift from India.
-
-(For comparison, the US gift-tax annual exclusion for *US givers* is **$19,000 per recipient in 2025** — but that's about Americans gifting, not about your Indian parents.)
-
-## The catch: Form 3520 disclosure
-Here's the part that trips people up. While the gift isn't taxed, large foreign gifts must be **reported**. If you (a US person) receive **more than $100,000** in gifts from a non-US individual or estate during the year, you must file **Form 3520** ("Annual Return To Report Transactions With Foreign Trusts and Receipt of Certain Foreign Gifts").
-
-Key facts about Form 3520:
-
-- It's an **information return** — filing it creates **no tax liability**.
-- The **$100,000 threshold is aggregate** per year (combine gifts from your parents, and related givers count together).
-- It's due with your tax return (including extensions) but **filed separately** to the IRS service center in Ogden, Utah.
-
-:::note
-**Don't skip it.** The penalty for failing to file Form 3520 on a reportable foreign gift is **5% of the gift per month, up to 25% total**. On a $200,000 gift, that's a potential **$50,000 penalty** — for failing to file a form that itself triggers no tax. This is one of the most disproportionate penalties in the code, and exactly why disclosure is non-negotiable.
-:::
-
-:::cta
-title: See the full gifts, inheritance & Form 3520 picture
-body: This article is part of a wider hub covering cash gifts, down-payment gifts, inheritance of Indian property and mutual funds, Form 3520, FBAR/FATCA, PFIC, and the Indian documentation — with a free checker.
-button: Open the gifts & Form 3520 hub
-href: /india-tax-compliance/foreign-gifts-inheritance-form-3520-india
-:::
-
-## What about the bank and large deposits?
-When a large sum lands, your bank may file routine compliance reports — but this is normal and automatic, not a red flag:
-
-- **Currency Transaction Reports (CTRs)** apply to **physical cash** transactions over $10,000, not to ordinary bank wires.
-- **International wires** are recorded through the banking system as standard practice.
-
-You don't need to do anything about the bank's filings. Your responsibility is the income-tax/Form 3520 side, not the bank's.
-
-## The India side: TCS on outward remittances
-Don't forget your parents' end of the transfer. Under India's **Liberalised Remittance Scheme (LRS)**, resident individuals can remit up to **$250,000 per year** abroad. Since recent changes, remittances above **₹7 lakh** in a year can attract **Tax Collected at Source (TCS) of 20%** for most purposes (lower rates apply to education and medical). The good news for your parents: **TCS is not an extra tax** — it's creditable against their Indian income tax or refundable when they file their ITR. Still, it affects cash flow, so plan the timing.
-
-## How to document the gift properly
-Paper-trail discipline protects you if questions ever arise:
-
-- Ask your parents to provide a simple **gift letter**: "This is a gift of [amount] to [your name] for [purpose, e.g., home purchase]. No repayment is expected." Signed and dated.
-- Keep the **wire transfer confirmation** and your **bank statement** showing the deposit.
-- Retain everything for **at least 7 years**.
-
-This documentation makes clear the money is a **gift, not a loan or disguised income** — the distinction the IRS cares about.
-
-## The practical sequence
-1. Your parents remit the funds from India (mindful of LRS limits and TCS).
-2. The money lands in your US account; any bank compliance filing is automatic.
-3. If total foreign gifts for the year exceed **$100,000**, you file **Form 3520** with your return.
-4. You keep the gift letter and wire records for 7+ years.
-5. You owe **no US income or gift tax** on the gift itself.
-
-## Frequently asked questions
-
-### Do I have to pay US tax on money my parents send me?
-No. A genuine gift is not taxable income to you. You may need to *report* it on Form 3520 if foreign gifts exceed $100,000 in a year, but reporting creates no tax.
-
-### What if the gift is under $100,000?
-No Form 3520 is required for foreign gifts below the $100,000 aggregate threshold, and there's still no income tax. Keep documentation anyway.
-
-### Is it better to receive it as a gift or a loan?
-A gift is simplest and tax-free. A loan creates interest and imputed-income complications. If it's truly a gift, document it as one.
-
-### Can my parents send money for a house down payment?
-Yes. Lenders often allow gift funds for a down payment but will want a gift letter confirming no repayment is owed — the same letter that protects you for tax purposes. See [buying a home on a visa](/articles/buying-first-home-on-visa).
-
-### Does receiving a gift affect my FBAR?
-The gift itself isn't an account, but once it's sitting in (or routed through) your Indian accounts it counts toward [FBAR/FATCA](/articles/fbar-fatca-nri-guide) balances. Track it.
-
-## The bottom line
-Money from your parents in India is one of the few genuinely tax-free transfers you'll encounter — you owe nothing in US income or gift tax. The only real risk is administrative: file **Form 3520** if foreign gifts cross $100,000, keep a gift letter and wire records, and mind the Indian LRS/TCS rules on your parents' side. Handle the paperwork and family can support your life in America with zero tax drama.`,
   },
   {
     slug: "what-happens-to-401k-leaving-usa",
@@ -1492,7 +1396,7 @@ Rarely. The cost is usually hidden in a worse exchange rate. Compare the rupees 
 Sending your own after-tax US dollars to your NRE account isn't taxed. The interest earned on an NRE account is tax-free in India, though it's [taxable in the US](/articles/double-taxation-dtaa-india-usa).
 
 ### How much can I send to India per year?
-There's no US limit on sending your own money, though large gifts to others have [reporting rules](/articles/gifting-money-india-tax-implications). Banks file routine reports on large transfers automatically.
+There's no US limit on sending your own money, though large gifts to others have [reporting rules](/india-tax-compliance/gift-from-parents-india-to-usa). Banks file routine reports on large transfers automatically.
 
 ## The bottom line
 Stop reading the fee and start reading the rupees. Compare the final landed amount, default to transparent services like Wise, grab promo rates for first transfers, fund from your bank (not a card), and route to an NRE account. Done consistently, that keeps hundreds of dollars a year out of the spread.`,
@@ -1581,49 +1485,49 @@ Bringing Indian property money to the US is a process, not a gamble: pay the TDS
     title: "India's 20% TCS on Foreign Remittances: What NRIs Must Know",
     seoTitle: "India's 20% TCS on Foreign Remittances",
     excerpt:
-      "Sending money out of India under the LRS? A 20% TCS can apply above ₹7 lakh. Here's who it hits, the exceptions, and how to claim it back.",
+      "Sending money out of India under the LRS? A 20% TCS can apply above ₹10 lakh. Here's who it hits, the exceptions, and how to claim it back.",
     topic: "money-transfer",
     date: "2026-05-24",
     featured: false,
     content: `If your parents are sending you money from India, you may hit a confusing line on the statement: a **20% Tax Collected at Source (TCS)**. It feels like a penalty for sending your own money, but it isn't a new tax — it's a *prepayment* of income tax the bank collects upfront and the sender reclaims later. Knowing when it applies and how to recover it prevents nasty surprises and the false belief the money is lost.
 
 :::summary
-**TCS** applies to money sent abroad by **Indian residents** under the **Liberalised Remittance Scheme (LRS)**. Since October 2023, the rate is **20% on amounts above ₹7 lakh** per year for most purposes (lower for education and medical). TCS is **not an extra tax** — it's creditable against the sender's Indian income tax or **refundable** when they file their ITR. It primarily affects **residents** (like parents sending gifts), not NRO repatriation by NRIs.
+**TCS** applies to money sent abroad by **Indian residents** under the **Liberalised Remittance Scheme (LRS)**. The rate is **20% on amounts above ₹10 lakh** per year for most purposes (lower for education and medical); the ₹10 lakh threshold applies from **FY 2025-26**, raised from the earlier ₹7 lakh. TCS is **not an extra tax** — it's creditable against the sender's Indian income tax or **refundable** when they file their ITR. It primarily affects **residents** (like parents sending gifts), not NRO repatriation by NRIs.
 :::
 
 :::key
 - TCS applies to **residents remitting abroad under the LRS**, not to most NRI NRO repatriation.
-- Rate: **20% on remittances above ₹7 lakh** in a financial year (most purposes), since **October 1, 2023**.
-- **Education funded by a loan**: just **0.5%**; other education/medical: **5%** above ₹7 lakh.
+- Rate: **20% on remittances above ₹10 lakh** in a financial year (most purposes); the threshold was raised to ₹10 lakh from **FY 2025-26**.
+- **Education funded by a loan** and other education/medical remittances follow lower, separate treatment — verify the current rate for your purpose before sending.
 - TCS is **collected upfront by the bank** but is **creditable/refundable** via the sender's Indian ITR.
-- It affects cash flow, not final tax — plan timing around the **₹7 lakh** threshold.
-- Relevant when **parents send you gifts** from India — see [gift tax rules](/articles/gifting-money-india-tax-implications).
+- It affects cash flow, not final tax — plan timing around the **₹10 lakh** threshold.
+- Relevant when **parents send you gifts** from India — see [gift tax rules](/india-tax-compliance/gift-from-parents-india-to-usa).
 :::
 
 ## What TCS actually is
 **Tax Collected at Source** is exactly what it sounds like: the bank collects a slice of tax *at the moment of the transaction* and deposits it against your PAN. It's a mechanism to improve tax compliance and tracking — **not a separate or additional tax**. Whatever is collected as TCS shows up in the remitter's **Form 26AS** and can be set off against their total income tax liability for the year, or refunded if they've overpaid.
 
 ## When does the 20% apply?
-TCS on foreign remittances flows from the **Liberalised Remittance Scheme (LRS)**, under which a resident individual can send up to **USD 250,000 abroad per financial year**. Since **October 1, 2023**:
+TCS on foreign remittances flows from the **Liberalised Remittance Scheme (LRS)**, under which a resident individual can send up to **USD 250,000 abroad per financial year**. The general treatment, with the threshold raised to **₹10 lakh from FY 2025-26**:
 
 | Purpose of remittance | TCS rate |
 |---|---|
-| Education financed by an education loan | **0.5%** (above ₹7 lakh) |
-| Education/medical (self-funded) | **5%** (above ₹7 lakh) |
-| Gifts, investments, travel, maintenance, etc. | **20%** (above ₹7 lakh) |
+| Education financed by an education loan | **Lower / concessional** (verify current rate) |
+| Education/medical (self-funded) | **5%** (above ₹10 lakh) |
+| Gifts, investments, travel, maintenance, etc. | **20%** (above ₹10 lakh) |
 
-The **₹7 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹7 lakh, generally no TCS applies (with some exceptions for tour packages).
+The **₹10 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹10 lakh, generally no TCS applies (with some exceptions for tour packages). Education- and medical-purpose rates are concessional and change periodically — confirm the current figure for your purpose.
 
 ## Who this really affects
 This is the part that trips people up:
 
-- **Indian residents remitting abroad** — yes. This includes **your parents sending you a gift** or money for a house. Above ₹7 lakh, the 20% TCS applies to them (creditable on their return).
+- **Indian residents remitting abroad** — yes. This includes **your parents sending you a gift** or money for a house. Above ₹10 lakh, the 20% TCS applies to them (creditable on their return).
 - **NRIs repatriating from an NRO account** — generally **not** under the LRS/TCS regime; that follows the [property/NRO repatriation rules](/articles/repatriate-india-property-sale-usa) with Forms 15CA/15CB instead.
 
 So when you read about "20% TCS on money sent to the US," it's mostly about **resident senders**, not NRIs moving their own NRO funds.
 
 :::note
-**For parents gifting you money:** the 20% TCS reduces the cash that arrives now, but your parents recover it against their Indian income tax or as a refund when they file. It's a timing/cash-flow issue, not a permanent 20% loss. Plan large gifts with this in mind, and remember the [US Form 3520](/articles/gifting-money-india-tax-implications) side if the gift exceeds $100,000.
+**For parents gifting you money:** the 20% TCS reduces the cash that arrives now, but your parents recover it against their Indian income tax or as a refund when they file. It's a timing/cash-flow issue, not a permanent 20% loss. Plan large gifts with this in mind, and remember the [US Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa) side if the gift exceeds $100,000.
 :::
 
 ## How to claim it back
@@ -1641,16 +1545,16 @@ There's nothing the US-side recipient needs to do about Indian TCS — it's the 
 No. It's a prepayment of income tax collected upfront. The remitter credits it against their Indian tax or gets it refunded when filing their ITR.
 
 ### Does TCS apply when my parents send me money?
-Yes, if they're Indian residents remitting above ₹7 lakh in a year under the LRS, the 20% TCS generally applies — recoverable on their return. The gift itself isn't taxable to you in the US, but [Form 3520](/articles/gifting-money-india-tax-implications) may apply over $100k.
+Yes, if they're Indian residents remitting above ₹10 lakh in a year under the LRS, the 20% TCS generally applies — recoverable on their return. The gift itself isn't taxable to you in the US, but [Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa) may apply over $100k.
 
 ### Do NRIs pay TCS when repatriating NRO funds?
 Generally no — NRO repatriation follows the 15CA/15CB process, not the LRS TCS regime. See [repatriating property proceeds](/articles/repatriate-india-property-sale-usa).
 
 ### What's the threshold before TCS kicks in?
-₹7 lakh per individual per financial year, aggregated across remittances, for most purposes.
+₹10 lakh per individual per financial year, aggregated across remittances, for most purposes.
 
 ## The bottom line
-The 20% TCS sounds alarming but is mostly a cash-flow timing issue for **resident senders** — your parents, not you as an NRI moving NRO funds. It kicks in above ₹7 lakh, varies by purpose, and is fully creditable or refundable on the sender's Indian return. Plan large gifts and remittances around the threshold, keep the Form 26AS records, and treat TCS as a temporary withholding rather than a tax you lose.`,
+The 20% TCS sounds alarming but is mostly a cash-flow timing issue for **resident senders** — your parents, not you as an NRI moving NRO funds. It kicks in above ₹10 lakh, varies by purpose, and is fully creditable or refundable on the sender's Indian return. Plan large gifts and remittances around the threshold, keep the Form 26AS records, and treat TCS as a temporary withholding rather than a tax you lose.`,
   },
   {
     slug: "invest-indian-stock-market-nri",
@@ -3259,14 +3163,14 @@ Don't abandon your HSA when you leave the US — it's a lifelong, triple-tax-adv
     content: `Many NRIs fund part of their first US home with savings or family money from India — completely legal, but a large transfer into a US **escrow account** under a closing deadline is exactly where things go wrong unplanned. Between the **LRS limit**, **TCS**, lender "**source of funds**" rules, and US **gift documentation**, a rushed transfer can delay closing or trigger questions. Here's how to move down-payment money from India to the US smoothly.
 
 :::summary
-You can fund a US down payment from India under the **LRS ($250,000 per person per financial year)**. Large remittances may incur **20% TCS** (recoverable on the sender's Indian return) and lenders will demand a **paper trail showing the source of funds**. If parents send the money, document it as a **gift** (lender gift letter + [US Form 3520](/articles/gifting-money-india-tax-implications) if over $100k). Start the transfers **early** to meet your closing date.
+You can fund a US down payment from India under the **LRS ($250,000 per person per financial year)**. Large remittances may incur **20% TCS** (recoverable on the sender's Indian return) and lenders will demand a **paper trail showing the source of funds**. If parents send the money, document it as a **gift** (lender gift letter + [US Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa) if over $100k). Start the transfers **early** to meet your closing date.
 :::
 
 :::key
 - The **LRS caps remittances at $250,000 per individual per Indian financial year** — use multiple family members for larger sums.
-- Remittances above ₹7 lakh may attract **20% TCS**, recoverable on the [Indian return](/articles/tcs-india-remittance-tax).
+- Remittances above ₹10 lakh may attract **20% TCS**, recoverable on the [Indian return](/articles/tcs-india-remittance-tax).
 - Lenders require a documented **"source of funds"** — keep statements and a clear trail.
-- If family gifts the money, get a **lender gift letter**; file [Form 3520](/articles/gifting-money-india-tax-implications) if foreign gifts exceed $100k.
+- If family gifts the money, get a **lender gift letter**; file [Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa) if foreign gifts exceed $100k.
 - **Season the funds** in your US account before closing where possible.
 - Start transfers **weeks early** — escrow deadlines don't forgive bank delays.
 :::
@@ -3275,7 +3179,7 @@ You can fund a US down payment from India under the **LRS ($250,000 per person p
 Under India's **Liberalised Remittance Scheme**, each resident individual can send up to **USD 250,000 per financial year (April–March)** abroad. For a down payment larger than that, families commonly have **multiple members each remit** within their own limits (for example, both parents), legally aggregating more than $250k. Plan this across the right people and, if needed, across two financial years.
 
 ## TCS on the transfer
-Remittances above **₹7 lakh** in a financial year generally attract **20% Tax Collected at Source** for non-education/medical purposes. Important: **TCS is recoverable** — the resident sender credits it against their Indian income tax or claims a refund when filing. It affects **cash flow now**, not the final cost. The full mechanics are in our [TCS guide](/articles/tcs-india-remittance-tax). (Separately, mind the new [US 1% remittance fee](/articles/us-1-percent-remittance-fee) by funding electronically.)
+Remittances above **₹10 lakh** in a financial year generally attract **20% Tax Collected at Source** for non-education/medical purposes. Important: **TCS is recoverable** — the resident sender credits it against their Indian income tax or claims a refund when filing. It affects **cash flow now**, not the final cost. The full mechanics are in our [TCS guide](/articles/tcs-india-remittance-tax). (Separately, mind the new [US 1% remittance fee](/articles/us-1-percent-remittance-fee) by funding electronically.)
 
 ## Lenders will ask: "where did this money come from?"
 US mortgage lenders scrutinize large deposits to prevent fraud and money laundering. Any big inflow into your account before closing must have a **documented source**:
@@ -3290,7 +3194,7 @@ Undocumented large deposits can **stall or sink** your loan approval.
 A family gift is a common and clean way to fund a down payment, but handle both sides:
 
 - **US lender side**: a **gift letter** is usually required so the lender knows it's not a hidden loan increasing your debt.
-- **US tax side**: the gift isn't taxable to you, but if foreign gifts exceed **$100,000** in a year you must file **[Form 3520](/articles/gifting-money-india-tax-implications)** (disclosure, no tax).
+- **US tax side**: the gift isn't taxable to you, but if foreign gifts exceed **$100,000** in a year you must file **[Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa)** (disclosure, no tax).
 - **India side**: the sending relatives are subject to the LRS limit and TCS.
 
 :::note
@@ -3312,7 +3216,7 @@ A family gift is a common and clean way to fund a down payment, but handle both 
 Each resident can remit up to $250,000 per Indian financial year under the LRS. Families often combine multiple members' limits for a larger down payment.
 
 ### Is there tax on transferring my own money for a house?
-Sending your own funds isn't US income tax. Indian TCS (20% above ₹7 lakh) may apply to the resident sender but is recoverable on their Indian return.
+Sending your own funds isn't US income tax. Indian TCS (20% above ₹10 lakh) may apply to the resident sender but is recoverable on their Indian return.
 
 ### What does the lender need to see?
 A documented source of funds: Indian bank statements, wire records, and — if it's family money — a gift letter confirming no repayment is owed.
@@ -3386,7 +3290,7 @@ Before co-signing, explore lower-risk options:
 
 - The borrower makes a **larger down payment** to qualify on their own.
 - The borrower **builds credit and income** for a year first (see [building credit from zero](/articles/build-us-credit-score-from-zero)).
-- You **gift** funds toward the down payment instead — bounded risk, no ongoing liability (mind [gift rules](/articles/gifting-money-india-tax-implications)).
+- You **gift** funds toward the down payment instead — bounded risk, no ongoing liability (mind [gift rules](/india-tax-compliance/gift-from-parents-india-to-usa)).
 
 ## Frequently asked questions
 
@@ -3649,13 +3553,13 @@ FCNR deposits are an underused tool for NRIs who want a solid fixed yield on the
     content: `Funding a US degree from India is a huge undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** — as low as **0.5%** versus the **20%** on general remittances — but only if you classify and document correctly. Here's how to fund US tuition from India while keeping transfer taxes minimal.
 
 :::summary
-Under India's LRS, **education remittances get preferential TCS treatment**: **0.5%** above ₹7 lakh if funded by an **education loan**, and **5%** above ₹7 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
+Under India's LRS, **education remittances get preferential TCS treatment**: **0.5%** above ₹10 lakh if funded by an **education loan**, and **5%** above ₹10 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
 :::
 
 :::key
 - Education remittances enjoy **lower TCS** than the 20% general rate.
-- **Loan-funded education: just 0.5% TCS** above ₹7 lakh.
-- **Self-funded education: 5% TCS** above ₹7 lakh.
+- **Loan-funded education: just 0.5% TCS** above ₹10 lakh.
+- **Self-funded education: 5% TCS** above ₹10 lakh.
 - TCS is a **prepayment** — fully creditable/refundable on the sender's [Indian return](/articles/tcs-india-remittance-tax).
 - **Document the education purpose** (admission letter, fee invoice) to claim the lower rate.
 - Fund **electronically** to also dodge the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
@@ -3665,13 +3569,13 @@ Under India's LRS, **education remittances get preferential TCS treatment**: **0
 India's policy deliberately makes it cheaper to send money abroad for **education** than for general purposes like investing or gifting. The Liberalised Remittance Scheme applies **reduced TCS rates** to qualifying education remittances, recognizing that families shouldn't be penalized for funding a child's degree. The savings versus the 20% general rate are substantial.
 
 ## The education TCS rates
-| Remittance type | TCS rate (above ₹7 lakh) |
+| Remittance type | TCS rate (above ₹10 lakh) |
 |---|---|
 | Education funded by an **education loan** | **0.5%** |
 | Education **self-funded** (own money) | **5%** |
 | General (gifts, investment, travel) | **20%** |
 
-The **₹7 lakh threshold** is per individual per financial year; below it, generally no TCS applies. The **loan-funded 0.5%** rate is dramatically lower — a strong incentive to route tuition through an education loan where it makes sense.
+The **₹10 lakh threshold** is per individual per financial year; below it, generally no TCS applies. The **loan-funded 0.5%** rate is dramatically lower — a strong incentive to route tuition through an education loan where it makes sense.
 
 ## TCS is recoverable — it's not a real cost
 As with all TCS, this is a **prepayment of income tax**, not an extra charge. The resident sender (often the parent) sees it in their **Form 26AS** and **credits it against their Indian income tax** or claims a **refund** when filing their ITR. So even the 5% self-funded rate is recovered later — it's a cash-flow timing issue, fully explained in our [TCS guide](/articles/tcs-india-remittance-tax).
@@ -3685,13 +3589,13 @@ As with all TCS, this is a **prepayment of income tax**, not an extra charge. Th
 6. **File the Indian ITR** to recover the TCS.
 
 :::note
-**Watch both countries' rules.** The Indian TCS is on the **sending (resident) side**. Separately, large amounts a student receives could intersect with [US gift reporting](/articles/gifting-money-india-tax-implications) if structured as gifts, and any Indian accounts the student holds may trigger [FBAR](/articles/fbar-fatca-nri-guide). Keep tuition payments clearly tied to education to keep it simple.
+**Watch both countries' rules.** The Indian TCS is on the **sending (resident) side**. Separately, large amounts a student receives could intersect with [US gift reporting](/india-tax-compliance/gift-from-parents-india-to-usa) if structured as gifts, and any Indian accounts the student holds may trigger [FBAR](/articles/fbar-fatca-nri-guide). Keep tuition payments clearly tied to education to keep it simple.
 :::
 
 ## Frequently asked questions
 
 ### What is the TCS rate on education remittances from India?
-0.5% above ₹7 lakh if funded by an education loan, or 5% above ₹7 lakh if self-funded — much lower than the 20% on general remittances.
+0.5% above ₹10 lakh if funded by an education loan, or 5% above ₹10 lakh if self-funded — much lower than the 20% on general remittances.
 
 ### Is the education TCS refundable?
 Yes. Like all TCS, it's a prepayment of income tax that the sender credits against their tax liability or recovers as a refund when filing their Indian return.
@@ -3796,7 +3700,7 @@ Selling Indian investments as a US resident means navigating two tax systems, bu
 
 :::key
 - **Inheritance is not taxable income** in the US — receiving it costs no income tax.
-- Foreign inheritances/gifts over **$100,000** in a year require **[Form 3520](/articles/gifting-money-india-tax-implications)** (disclosure, no tax).
+- Foreign inheritances/gifts over **$100,000** in a year require **[Form 3520](/india-tax-compliance/gift-from-parents-india-to-usa)** (disclosure, no tax).
 - The **Form 3520 penalty** for non-filing reaches **25% of the amount** — don't skip it.
 - Inherited assets generally get a **step-up in basis** to value at the date of death, cutting future gains tax.
 - **India has no inheritance/estate tax**, but **selling** inherited property triggers Indian capital gains/TDS.
@@ -3811,7 +3715,7 @@ Tax-free does not mean report-free. If you receive **more than $100,000** in **g
 
 - It's an **information return** — filing it creates **no tax**.
 - The penalty for **not** filing is steep: up to **25% of the amount received**.
-- It's the same form used for large [foreign gifts](/articles/gifting-money-india-tax-implications).
+- It's the same form used for large [foreign gifts](/india-tax-compliance/gift-from-parents-india-to-usa).
 
 This is the single most important compliance step. A tax-free inheritance becomes a costly mistake only if you fail to disclose it.
 
@@ -6080,7 +5984,7 @@ India assets — property, FDs, NRE/NRO balances, investments — can play a rol
 Many retirees plan extended India stays. That's a genuine rupee expense — travel, a home base, daily costs — and a legitimate reason to hold some rupee assets. Estimate this realistically and fund it from India holdings, separating it from your dollar core.
 
 ## Supporting family in India
-Ongoing support for parents or relatives is a recurring rupee cost. Sizing an India buffer for this is sensible. Just keep it distinct from your retirement nest egg so the two goals don't quietly compete. See [gifting money to India and tax implications](/articles/gifting-money-india-tax-implications).
+Ongoing support for parents or relatives is a recurring rupee cost. Sizing an India buffer for this is sensible. Just keep it distinct from your retirement nest egg so the two goals don't quietly compete. See [gifting money to India and tax implications](/india-tax-compliance/gift-from-parents-india-to-usa).
 
 ## Estate planning
 Retirement and estate planning are inseparable for cross-border families. Coordinate US and India wills, beneficiary designations, and property titles now — see [estate planning for NRIs with India assets](/articles/estate-planning-usa-india-assets). The tax interaction on inherited assets is covered in [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax).
@@ -7281,7 +7185,7 @@ Compare remittance services before you transfer — rates vary significantly on 
 | ICICI Money2India | Good if recipient has ICICI account |
 | Bank wire | Worst rate — avoid for large transfers |
 
-Be aware of **TCS (Tax Collected at Source)** in India: remittances above ₹7 lakh per year attract 20% TCS, which you can reclaim in India via ITR but ties up cash. See [TCS on India remittances explained](/articles/tcs-india-remittance-tax).
+Be aware of **TCS (Tax Collected at Source)** in India: remittances above ₹10 lakh per year attract 20% TCS, which you can reclaim in India via ITR but ties up cash. See [TCS on India remittances explained](/articles/tcs-india-remittance-tax).
 
 ### ITIN (if applicable)
 If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using [IRS Form W-7](https://www.irs.gov/individuals/individual-taxpayer-identification-number) submitted with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.

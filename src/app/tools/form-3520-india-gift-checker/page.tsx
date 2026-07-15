@@ -21,11 +21,15 @@ import {
 
 const tool = getTool("form-3520-india-gift-checker")!;
 const content = getToolHubContent("form-3520-india-gift-checker")!;
-const LAST_UPDATED = "2026-06-22";
+const LAST_UPDATED = "2026-07-15";
+const TITLE = "Form 3520 India Gift and Inheritance Checker";
+const SEO_TITLE = "Form 3520 Gift Checker for India | Free Tool";
+const SEO_DESCRIPTION =
+  "Check whether a gift or inheritance from India may trigger Form 3520, foreign-trust, FBAR/FATCA or PFIC review. No signup or personal data.";
 
 export const metadata: Metadata = pageMetadata({
-  title: tool.seoTitle,
-  description: tool.seoDescription,
+  title: SEO_TITLE,
+  description: SEO_DESCRIPTION,
   path: "/tools/form-3520-india-gift-checker",
 });
 
@@ -33,32 +37,32 @@ const faq: FaqItem[] = [
   {
     question: "Is this a tax calculator?",
     answer:
-      "No. This is an educational checker, not a calculator — it never computes any tax, penalty, or threshold figure. It maps a few situational answers to a Form 3520, FBAR/FATCA, and PFIC review flag, the documents to collect, and questions for your CPA and CA. Your actual obligations depend on facts and current-year rules only a cross-border professional can confirm.",
+      "No. This is an educational screening tool, not a calculator — it never computes any tax or penalty figure. It maps a few situational answers to a Form 3520 result (with the threshold and tax year used), FBAR/FATCA, and PFIC review flags, the documents to collect, and questions for your CPA and CA. Your actual obligations depend on facts and current-year rules only a cross-border professional can confirm.",
   },
   {
     question: "Is a gift or inheritance from India taxable in the US?",
     answer:
-      "Generally no — receiving a gift or inheritance from a foreign person is not taxable income to you in the US. The catch is reporting: large foreign gifts and bequests can require Form 3520 (a disclosure, not a tax), and the income the assets later earn is taxable. The checker flags the reporting side.",
+      "Generally no — receiving a genuine gift or inheritance from a foreign person is not taxable income to you in the US. The catch is reporting: large foreign gifts and bequests can require Form 3520 (a disclosure, not a tax), and the income the assets later earn is taxable. Covered-expatriate gifts and foreign-trust transactions can follow special rules. The checker flags the reporting side.",
   },
   {
     question: "What is the Form 3520 threshold for a gift from my parents?",
     answer:
-      "Gifts and bequests from a nonresident alien individual or a foreign estate are reported on Form 3520 when the year's total exceeds US $100,000. Gifts from a foreign corporation or partnership use a separate, much lower threshold the IRS adjusts annually for inflation. The tests are on the aggregate, and related donors can be combined.",
+      "Gifts and bequests from a nonresident alien individual or a foreign estate are reported on Form 3520 when the year's total exceeds US $100,000. Purported gifts from a foreign corporation or partnership use a separate, much lower threshold the IRS indexes annually — $20,573 for tax year 2026 and $20,116 for 2025. A foreign trust follows a different rule entirely. The tests are on the aggregate, and related donors can be combined.",
   },
   {
-    question: "Why does the asset type matter?",
+    question: "Why are foreign trusts treated differently?",
     answer:
-      "Because it drives the other US filings. Indian mutual funds are generally PFICs (possible Form 8621 with punitive default rules), Indian financial accounts feed FBAR and FATCA, and property or shares raise cost-basis questions for a future sale. The checker raises the relevant flags based on what you received.",
+      "A distribution from a foreign trust is reviewed under Form 3520 Part III (and possibly Form 3520-A) — not the ordinary $100,000 gift test. The checker routes a foreign-trust answer to a specialist-review result rather than applying the gift threshold.",
   },
   {
     question: "Does it matter whether the money landed in India or the USA?",
     answer:
-      "For Form 3520, not much — that test is about the gift itself. But money or securities sitting in an Indian account become FBAR/FATCA items once they're yours, and moving them to the US later needs repatriation paperwork (Form 15CA/15CB). The checker adds those steps when relevant.",
+      "For the Form 3520 test itself, not much — that turns on the gift or bequest. But money or securities held in an Indian account become FBAR/FATCA review items once they're yours, and any later remittance to the US may require bank/FEMA documentation (such as Form 15CA/15CB) depending on the source and route. The checker adds those steps when relevant, without claiming a filing is always required.",
   },
   {
     question: "Is Form 3520 a tax on the gift?",
     answer:
-      "No. Form 3520 is an information return — a disclosure. There is generally no US tax on receiving a foreign gift or inheritance. The risk is the penalty for failing to file or filing late, which can be a percentage of the unreported amount, so the filing itself is what matters.",
+      "No. Form 3520 is an information return — a disclosure filed separately from Form 1040. There is generally no US tax on receiving a foreign gift or inheritance. The risk is the penalty for failing to file or filing late, which can be a percentage of the unreported amount, so the filing itself is what matters.",
   },
 ];
 
@@ -66,12 +70,12 @@ export default function Form3520IndiaGiftCheckerPage() {
   const url = absoluteUrl("/tools/form-3520-india-gift-checker");
   const jsonLd = jsonLdGraph(
     {
-      "@type": "SoftwareApplication",
+      "@type": "WebApplication",
       "@id": `${url}#app`,
-      name: tool.title,
-      description: content.description,
+      name: TITLE,
+      description: SEO_DESCRIPTION,
       url,
-      applicationCategory: content.appCategory,
+      applicationCategory: "FinanceApplication",
       operatingSystem: "Web",
       isAccessibleForFree: true,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -103,15 +107,20 @@ export default function Form3520IndiaGiftCheckerPage() {
         ]}
         icon={tool.icon}
         category={tool.group}
-        title={tool.title}
-        hook="Money or assets from family in India? Answer a few questions to flag whether Form 3520, FBAR/FATCA, or PFIC review may apply — and what to collect."
+        title={TITLE}
+        hook="Money or assets from family in India? Answer a few questions to flag whether Form 3520, foreign-trust, FBAR/FATCA, or PFIC review may apply — and what to collect."
         accent={tool.accent}
+        disclaimerIntro="This tool is for general education and screening only. It is not tax or legal advice and does not provide a filing determination. Form 3520, PFIC, and FBAR/FATCA rules and thresholds change over time and depend on your facts."
+        disclaimerPoints={[
+          "For educational screening only — not a filing determination.",
+          "Not tax or legal advice.",
+          "Thresholds, forms, due dates, and rules can change at any time.",
+          "Verify current rules with the IRS, FinCEN, the RBI, and the Indian Income Tax Department before acting.",
+          "Consult a qualified cross-border CPA (US side) and a Chartered Accountant (CA) (India side) when it matters to your situation.",
+        ]}
         disclaimerExtra={
           <p>
-            This Form 3520 checker is for educational purposes only and does not
-            compute any tax, penalty, or threshold amount. Form 3520, PFIC, and
-            FBAR/FATCA rules and thresholds change over time and depend on your
-            facts — always verify current rules with the{" "}
+            Verify current rules with the{" "}
             <a
               href="https://www.irs.gov"
               className="text-brand-600 underline"
@@ -120,7 +129,16 @@ export default function Form3520IndiaGiftCheckerPage() {
             >
               IRS
             </a>{" "}
-            and consult a qualified cross-border CPA (US side) and a Chartered
+            and the{" "}
+            <a
+              href="https://www.incometax.gov.in"
+              className="text-brand-600 underline"
+              rel="nofollow noopener"
+              target="_blank"
+            >
+              Indian Income Tax Department
+            </a>
+            , and consult a qualified cross-border CPA (US side) and a Chartered
             Accountant (CA) (India side).
           </p>
         }
@@ -144,25 +162,24 @@ export default function Form3520IndiaGiftCheckerPage() {
 
       {/* Full SEO hub content: what result means, explainer, process,
           mistakes, example, related links (FAQ kept below) */}
-      <section className="py-12 sm:py-16">
+      <section className="no-print py-12 sm:py-16">
         <Container>
           <ToolDeepDive content={content} hideFaq />
         </Container>
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-12 sm:py-16">
+      <section className="no-print bg-white py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
         </Container>
       </section>
 
       {/* Related guides + disclaimer */}
-      <section className="py-12 sm:py-16">
+      <section className="no-print py-12 sm:py-16">
         <Container>
           <RelatedGuides
             slugs={[
-              "gifting-money-india-tax-implications",
               "inheriting-indian-assets-us-tax",
               "fbar-fatca-nri-guide",
               "pfic-indian-mutual-funds-trap",
@@ -171,15 +188,21 @@ export default function Form3520IndiaGiftCheckerPage() {
             extras={[
               {
                 href: "/india-tax-compliance/foreign-gifts-inheritance-form-3520-india",
-                title: "Gifts, Inheritance & Form 3520 (full hub)",
+                title: "Foreign gifts & inheritance from India (pillar guide)",
                 description:
-                  "The pillar guide: cash gifts, inheritance, property, Form 3520, FBAR/FATCA, PFIC, and Indian documentation.",
+                  "The overview: cash gifts, inheritance, property, Form 3520, FBAR/FATCA, PFIC, and Indian documentation.",
+              },
+              {
+                href: "/india-tax-compliance/gift-from-parents-india-to-usa",
+                title: "Gift from parents in India to the USA",
+                description:
+                  "Cash gifts from Indian parents to a US child, including home down payments — tax, Form 3520, LRS/TCS, and documents.",
               },
               {
                 href: "/india-tax-compliance/form-3520-indian-gift-inheritance-checklist",
-                title: "Form 3520 Checklist for Indian Gifts & Inheritance",
+                title: "Form 3520 checklist for Indian gifts & inheritance",
                 description:
-                  "When a gift or inheritance must be reported, the two thresholds, documents, deadlines, and CPA questions.",
+                  "The step-by-step checklist: thresholds, donor types, deadlines, records, and CPA questions.",
               },
             ]}
           />
@@ -187,12 +210,12 @@ export default function Form3520IndiaGiftCheckerPage() {
       </section>
 
       {/* Related tax & compliance tools (5 interlinks → hub) */}
-      <section className="bg-slate-50/60 py-12 sm:py-16">
+      <section className="no-print bg-slate-50/60 py-12 sm:py-16">
         <Container>
           <RelatedToolsStrip currentHref="/tools/form-3520-india-gift-checker" />
         </Container>
       </section>
-      <section className="py-12 sm:py-14">
+      <section className="no-print py-12 sm:py-14">
         <Container>
           <RelatedHubs hubs={["tax", "taxRoadmap", "fbar", "wealthCheckup"]} />
         </Container>

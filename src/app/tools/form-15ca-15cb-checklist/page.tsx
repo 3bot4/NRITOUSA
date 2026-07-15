@@ -157,10 +157,15 @@ export default function Form15ChecklistPage() {
               "nre-nro-accounts-explained",
               "repatriate-india-property-sale-usa",
               "double-taxation-dtaa-india-usa",
-              "gifting-money-india-tax-implications",
               "fbar-fatca-nri-guide",
             ]}
             extras={[
+              {
+                href: "/india-tax-compliance/gift-from-parents-india-to-usa",
+                title: "Gift from parents in India to the USA",
+                description:
+                  "When money from parents is taxable in the US, the Form 3520 threshold, current LRS/TCS rules, and the documents to keep.",
+              },
               {
                 href: "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
                 title: "Form 15CA & 15CB for NRIs (full guide)",

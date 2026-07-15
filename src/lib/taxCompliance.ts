@@ -144,9 +144,12 @@ export const TAX_TOPIC_GROUPS: TaxTopicGroup[] = [
     title: "Transfers, gifts & retirement accounts",
     description:
       "TCS on remittances, gift-tax rules across borders, and what happens to your 401(k)/IRA when you move back.",
+    // The "gifting money from India / Form 3520" intent now lives in the
+    // Foreign Gifts, Inheritance & Form 3520 cluster (surfaced separately on
+    // this hub via GIFT_CLUSTER_SECTION), so the old /articles slug is removed
+    // here rather than pointing through a 301.
     slugs: [
       "tcs-india-remittance-tax",
-      "gifting-money-india-tax-implications",
       "what-happens-to-401k-leaving-usa",
       "transfer-401k-to-india-nps-ppf",
     ],

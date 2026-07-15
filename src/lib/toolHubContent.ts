@@ -1848,14 +1848,14 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     audience:
       "US persons (citizens, green card holders, US tax residents) receiving large gifts or inheritances from parents, relatives, or estates in India.",
     keyInputs: [
-      "Who gave the gift (a foreign individual vs a foreign estate/trust)",
+      "Who the source was (a nonresident individual, a foreign estate, a foreign corporation/partnership, or a foreign trust)",
       "The total value received from that person during the year",
       "Whether it was a gift or an inheritance",
       "Whether multiple related foreign persons gave amounts that should be aggregated",
       "The tax year the amounts were received",
     ],
     timelineFeeNote:
-      "Form 3520 is generally filed with (and due at the same time as) your income tax return, including extensions. Reporting thresholds differ for gifts from foreign individuals vs foreign estates/trusts — verify the current thresholds before filing.",
+      "Form 3520 is filed separately from Form 1040 — not attached to it. For most calendar-year individuals it is generally due April 15 (June 15 if you live and work abroad), and a valid return extension generally moves it no later than October 15. Reporting rules differ for gifts from foreign individuals, foreign estates, foreign corporations/partnerships, and foreign trusts — verify the current instructions before filing.",
     resultMeaning:
       "A 'likely reportable' result means the amount may cross the Form 3520 threshold and should be reported — not that you owe tax on the gift. Gifts and inheritances from foreign persons are generally not US-taxable income to the recipient; Form 3520 is an informational report. The main risk is a penalty for failing to file, not tax on the gift itself.",
     explain: {
@@ -1875,7 +1875,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         },
         {
           label: "Reporting threshold",
-          body: "There are separate thresholds for gifts from foreign individuals versus foreign estates/trusts, and related givers may need to be aggregated. Confirm the current figures before deciding.",
+          body: "The rule depends on the source. Gifts or bequests from a nonresident individual or a foreign estate use the aggregate $100,000 test; purported gifts from a foreign corporation or partnership use a separate, annually-indexed threshold; and a foreign trust follows Part III rules rather than a gift threshold. Related givers may need to be aggregated. Confirm the current figures before deciding.",
         },
         {
           label: "Gift tax vs reporting",
@@ -1891,7 +1891,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       "Confirm you're a US person and identify who gave the money (a foreign individual vs a foreign estate).",
       "Total the amounts received from that person (aggregating related foreign givers where required) for the year.",
       "Compare the total to the current Form 3520 threshold for that type of giver.",
-      "If it meets the threshold, file Form 3520 with your tax return (usually no tax on the gift itself).",
+      "If it meets the threshold, file Form 3520 separately from Form 1040 (usually no tax on the gift itself).",
       "Keep documentation of the transfer (bank records, gift letter) in case of questions.",
     ],
     mistakes: [
@@ -1903,7 +1903,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     ],
     example: {
       title: "Parents in India send a down-payment gift to their child in the US",
-      body: "Anjali, a US green card holder, receives a large sum from her parents in India to help buy a home. Because the amount exceeds the Form 3520 threshold for gifts from a foreign individual, she reports it on Form 3520 with her tax return. She owes no US tax on the gift itself — it's an informational report — but filing protects her from the steep penalty for a missed form. She keeps the bank transfer records and a short gift letter from her parents.",
+      body: "Anjali, a US green card holder, receives a large sum from her parents in India to help buy a home. Because the aggregate exceeds the $100,000 Form 3520 threshold for gifts from a nonresident individual, she files Form 3520 — separately from her Form 1040 — for that tax year. She owes no US tax on the gift itself; it's an informational report, but filing protects her from the steep penalty for a missed form. She keeps the bank transfer records and a short gift letter from her parents.",
     },
     relatedLinks: [
       { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
@@ -1920,7 +1920,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "When is Form 3520 required?",
         answer:
-          "For US persons, Form 3520 is generally required when gifts from a foreign individual (or amounts from a foreign estate/trust) exceed the applicable reporting threshold for the year. The thresholds differ by type of giver, and related givers may need to be aggregated.",
+          "For US persons, Form 3520 is generally required when gifts or bequests from a nonresident individual or a foreign estate exceed $100,000 for the year, or when a purported gift from a foreign corporation or partnership exceeds the separate, annually-indexed threshold. A distribution from a foreign trust follows different Part III rules rather than a gift threshold. Related givers may need to be aggregated.",
       },
       {
         question: "Is an inheritance from India taxable in the USA?",

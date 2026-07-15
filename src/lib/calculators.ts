@@ -239,7 +239,7 @@ export const calculators: CalculatorMeta[] = [
       cta: "Send me the transfer playbook",
     },
     quickSummary:
-      "India charges 20% TCS on outward remittances above ₹7 lakh per year (as of October 2023); you can reclaim TCS as an income tax credit when filing in India. Enter your transfer amount, provider, and current exchange rate to see total fees, TCS withheld, exchange-rate margin, and the net USD (or INR) amount received on the other end.",
+      "India charges 20% TCS on outward remittances above ₹10 lakh per year for most purposes (the threshold was raised to ₹10 lakh from FY 2025-26); you can reclaim TCS as an income tax credit when filing in India. Enter your transfer amount, provider, and current exchange rate to see total fees, TCS withheld, exchange-rate margin, and the net USD (or INR) amount received on the other end.",
     audience: "NRIs and Indians sending money between India and the USA — whether transferring savings, paying for education, or repatriating property sale proceeds",
     dataChecked: "2026-06-01",
     officialSource: "Income Tax Act, 1961, Section 206C(1G) (TCS on remittances); RBI Liberalised Remittance Scheme (LRS)",
