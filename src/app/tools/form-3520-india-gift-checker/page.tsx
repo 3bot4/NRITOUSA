@@ -159,8 +159,9 @@ export default function Form3520IndiaGiftCheckerPage() {
                   change. Verify current requirements with the IRS, FinCEN, RBI
                   and the Indian Income Tax Department. For advice concerning
                   your facts, consult a qualified cross-border CPA and an Indian
-                  Chartered Accountant. This is educational screening, not a
-                  filing determination.
+                  Chartered Accountant. This tool provides an educational
+                  screening result only. It does not determine whether you have
+                  a filing obligation and is not tax, legal or financial advice.
                 </>
               }
             />

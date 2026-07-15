@@ -61,8 +61,14 @@ describe("cash-gift worked example is corrected", () => {
   });
 
   it("aggregates to $130,000 in US calendar year 2026 and flags Part IV", () => {
+    expect(content).toContain("130,000");
     expect(content).toContain("US calendar year 2026");
     expect(content).toContain("Form 3520 Part IV");
+  });
+
+  it("does not describe December + following February as one US calendar year", () => {
+    expect(content).not.toMatch(/December[\s\S]{0,120}same US calendar year/i);
+    expect(content).not.toMatch(/December[\s\S]{0,120}two Indian financial years/i);
   });
 
   it("maps Feb 2026 to Indian FY 2025–26 and April 2026 to FY 2026–27", () => {
@@ -112,33 +118,105 @@ describe("checker content does not duplicate a full pillar article", () => {
 });
 
 describe("no duplicated list numbering can be introduced via content", () => {
+  const CLUSTER_SLUGS = [
+    PILLAR,
+    CASH_GIFT,
+    "form-3520-indian-gift-inheritance-checklist",
+  ];
+
   it("no checker step/mistake carries a manual '1.' style numeric prefix", () => {
     const c = getToolHubContent("form-3520-india-gift-checker")!;
     for (const s of [...c.steps, ...c.mistakes, ...c.keyInputs]) {
       expect(s).not.toMatch(/^\s*\d+\.\s/);
     }
   });
+
+  it("no cluster page content contains a literal duplicated 'N. N' pattern", () => {
+    for (const slug of CLUSTER_SLUGS) {
+      const content = getGiftPage(slug)!.content;
+      const m = content.match(/(\d+)\.\s+(\d+)\b/);
+      if (m) {
+        // Only fail when the two numbers are equal (true duplicate marker).
+        expect(m[1], `${slug}: "${m[0]}"`).not.toBe(m[2]);
+      }
+    }
+  });
+
+  it("no :::steps item keeps a second number after the leading marker is stripped", () => {
+    for (const slug of CLUSTER_SLUGS) {
+      const content = getGiftPage(slug)!.content;
+      const blocks = content.match(/:::steps([\s\S]*?):::/g) ?? [];
+      for (const block of blocks) {
+        for (const raw of block.split("\n")) {
+          const line = raw.trim();
+          if (!/^\d+\.\s/.test(line)) continue;
+          // ArticleBody's StepsBox strips the leading "N. " and renders one badge.
+          const afterStrip = line.replace(/^\d+\.\s+/, "");
+          expect(afterStrip, `${slug}: "${line}"`).not.toMatch(/^\d+\.\s/);
+        }
+      }
+    }
+  });
 });
 
 describe("checker page disclaimer is tax-specific (no immigration boilerplate)", () => {
   const src = readFileSync(CHECKER_PAGE, "utf8");
+  // JSX wraps prose across indented lines; collapse whitespace to mirror how the
+  // text actually renders before asserting on multi-word phrases.
+  const flat = src.replace(/\s+/g, " ");
+  const flatLower = flat.toLowerCase();
 
-  it("contains no USCIS / travel.state.gov / DOL references in its own source", () => {
-    expect(src.toLowerCase()).not.toContain("uscis");
-    expect(src.toLowerCase()).not.toContain("travel.state.gov");
-    expect(src.toLowerCase()).not.toContain("dol.gov");
-    expect(src.toLowerCase()).not.toContain("immigration processing");
+  it("contains no immigration boilerplate or immigration sources in its own source", () => {
+    for (const banned of [
+      "immigration rules",
+      "immigration fees",
+      "immigration processing times",
+      "immigration processing",
+      "uscis.gov",
+      "uscis",
+      "travel.state.gov",
+      "dol.gov",
+    ]) {
+      expect(flatLower, banned).not.toContain(banned);
+    }
   });
 
-  it("supplies tax-specific override props referencing IRS/FinCEN/RBI/Indian ITD", () => {
-    expect(src).toContain("verifyNote");
-    expect(src).toContain("topDisclaimer");
-    expect(src).toContain("Indian Income Tax Department");
-    expect(src).toContain("FinCEN");
+  it("references the correct tax authorities and professionals", () => {
+    expect(flat).toContain("IRS");
+    expect(flat).toContain("FinCEN");
+    expect(flat).toContain("RBI");
+    expect(flat).toContain("Indian Income Tax Department");
+    expect(flat).toContain("cross-border CPA");
+    expect(flat).toContain("Indian Chartered Accountant");
   });
 
-  it("keeps an educational-screening (not a filing determination) disclaimer", () => {
-    expect(src).toContain("not a filing determination");
+  it("includes the required educational-screening limitation sentence", () => {
+    expect(flat).toContain("provides an educational screening result only");
+    expect(flat).toContain(
+      "does not determine whether you have a filing obligation"
+    );
+  });
+
+  it("supplies the tax-specific override props", () => {
+    expect(flat).toContain("verifyNote");
+    expect(flat).toContain("topDisclaimer");
+  });
+});
+
+describe("checker hub content has no immigration language", () => {
+  it("the checker's toolHubContent entry references no immigration sources", () => {
+    const c = getToolHubContent("form-3520-india-gift-checker")!;
+    const blob = JSON.stringify(c).toLowerCase();
+    for (const banned of [
+      "immigration rules",
+      "immigration fees",
+      "immigration processing",
+      "uscis",
+      "travel.state.gov",
+      "dol.gov",
+    ]) {
+      expect(blob, banned).not.toContain(banned);
+    }
   });
 });
 

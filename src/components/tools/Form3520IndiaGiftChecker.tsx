@@ -439,7 +439,9 @@ export default function Form3520IndiaGiftChecker() {
                 <time dateTime={result.lastVerified}>
                   {formatDate(result.lastVerified)}
                 </time>
-                . This is educational screening, not a filing determination.
+                . This tool provides an educational screening result only. It
+                does not determine whether you have a filing obligation and is
+                not tax, legal or financial advice.
               </p>
             </ResultCard>
 
