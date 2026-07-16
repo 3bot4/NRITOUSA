@@ -38,11 +38,19 @@ function parseArgs(argv: string[]): Args {
 
 const abs = (p: string) => (isAbsolute(p) ? p : resolve(REPO_ROOT, p));
 
-/** Aggregate rows of one dimension by a key, summing clicks/impressions. */
+type Agg = { clicks: number; impressions: number; position: number | null };
+
+/**
+ * Aggregate rows of one dimension by a key, summing clicks/impressions.
+ *
+ * `pick` selects which period to read, so the same function aggregates the
+ * current and previous periods of a Compare-mode export.
+ */
 function aggregate(
   rows: GscRow[],
   keyOf: (r: GscRow) => string | null,
-): Map<string, { clicks: number; impressions: number; position: number | null }> {
+  pick: (r: GscRow) => { clicks: number; impressions: number; position: number | null } | null = (r) => r,
+): Map<string, Agg> {
   const acc = new Map<
     string,
     { clicks: number; impressions: number; posWeighted: number; posImpr: number }
@@ -50,18 +58,20 @@ function aggregate(
   for (const r of rows) {
     const k = keyOf(r);
     if (k == null) continue;
+    const m = pick(r);
+    if (!m) continue;
     const cur = acc.get(k) ?? { clicks: 0, impressions: 0, posWeighted: 0, posImpr: 0 };
-    cur.clicks += r.clicks;
-    cur.impressions += r.impressions;
+    cur.clicks += m.clicks;
+    cur.impressions += m.impressions;
     // Average position must be impression-weighted; a plain mean over rows
     // lets a 1-impression row at #3 outweigh a 900-impression row at #40.
-    if (r.position != null && r.impressions > 0) {
-      cur.posWeighted += r.position * r.impressions;
-      cur.posImpr += r.impressions;
+    if (m.position != null && m.impressions > 0) {
+      cur.posWeighted += m.position * m.impressions;
+      cur.posImpr += m.impressions;
     }
     acc.set(k, cur);
   }
-  const out = new Map<string, { clicks: number; impressions: number; position: number | null }>();
+  const out = new Map<string, Agg>();
   for (const [k, v] of acc) {
     out.set(k, {
       clicks: v.clicks,
@@ -116,39 +126,53 @@ function main() {
 
   const byDim = (rows: GscRow[], d: string) => rows.filter((r) => r.dimension === d);
 
+  /**
+   * Previous-period source, in preference order:
+   *   1. Compare columns inside this export — same query, same filters, so the
+   *      two periods are guaranteed comparable.
+   *   2. A separate --previous folder.
+   *
+   * Preferring (1) also means passing both cannot double-count.
+   */
+  const inFile = cur.rows.some((r) => r.previous !== null);
+  if (inFile && prev) {
+    cur.warnings.push(
+      "export already contains Previous-period columns — ignoring --previous",
+    );
+  }
+
+  /** Current + previous aggregate for one dimension, whatever the source. */
+  const pair = (dim: string, keyOf: (r: GscRow) => string | null) => {
+    const current = aggregate(byDim(cur.rows, dim), keyOf);
+    if (inFile) {
+      return [current, aggregate(byDim(cur.rows, dim), keyOf, (r) => r.previous)] as const;
+    }
+    return [current, prev ? aggregate(byDim(prev.rows, dim), keyOf) : null] as const;
+  };
+
   /** Query→page pairs only exist when the export was filtered to one page. */
   const queryPageRows = cur.rows.filter((r) => r.query && r.page);
 
   const report = {
     generatedAt: new Date().toISOString(),
     siteUrl: site.url,
-    source: { current: args.dir, previous: args.previous },
+    source: { current: args.dir, previous: inFile ? "(in-file compare)" : args.previous },
+    /**
+     * The scope Search Console applied. Read `totals` through this: a Page
+     * filter makes them that page's totals, not the site's.
+     */
+    filters: cur.filters,
     files: { current: cur.files, previous: prev?.files ?? null },
     warnings: [...cur.warnings, ...(prev?.warnings.map((w) => `[previous] ${w}`) ?? [])],
     totals: {
       clicks: byDim(cur.rows, "pages").reduce((s, r) => s + r.clicks, 0),
       impressions: byDim(cur.rows, "pages").reduce((s, r) => s + r.impressions, 0),
     },
-    pages: normalizeEntity(
-      aggregate(byDim(cur.rows, "pages"), (r) => r.page),
-      prev ? aggregate(byDim(prev.rows, "pages"), (r) => r.page) : null,
-    ),
-    queries: normalizeEntity(
-      aggregate(byDim(cur.rows, "queries"), (r) => r.query),
-      prev ? aggregate(byDim(prev.rows, "queries"), (r) => r.query) : null,
-    ),
-    devices: normalizeEntity(
-      aggregate(byDim(cur.rows, "devices"), (r) => r.device),
-      prev ? aggregate(byDim(prev.rows, "devices"), (r) => r.device) : null,
-    ),
-    countries: normalizeEntity(
-      aggregate(byDim(cur.rows, "countries"), (r) => r.country),
-      prev ? aggregate(byDim(prev.rows, "countries"), (r) => r.country) : null,
-    ),
-    dates: normalizeEntity(
-      aggregate(byDim(cur.rows, "dates"), (r) => r.date),
-      null,
-    ),
+    pages: normalizeEntity(...pair("pages", (r) => r.page)),
+    queries: normalizeEntity(...pair("queries", (r) => r.query)),
+    devices: normalizeEntity(...pair("devices", (r) => r.device)),
+    countries: normalizeEntity(...pair("countries", (r) => r.country)),
+    dates: normalizeEntity(aggregate(byDim(cur.rows, "dates"), (r) => r.date), null),
     queryPage: queryPageRows.map((r) => ({
       page: r.page,
       query: r.query,
@@ -156,6 +180,7 @@ function main() {
       impressions: r.impressions,
       ctr: r.ctr,
       position: r.position,
+      previousPosition: r.previous?.position ?? null,
     })),
   };
 
@@ -166,8 +191,16 @@ function main() {
   );
 
   console.log("\n═══ Search Console Import ═══");
+  if (Object.keys(cur.filters).length) {
+    console.log("Export scope (from Filters.csv):");
+    for (const [k, v] of Object.entries(cur.filters)) {
+      console.log(`  ${k.padEnd(14)} ${v}`);
+    }
+    console.log("");
+  }
   for (const f of cur.files) {
     console.log(`  ${f.file.padEnd(24)} ${f.dimension.padEnd(10)} ${f.rows} rows` +
+      (f.comparison ? " +compare" : "") +
       (f.skipped ? ` (${f.skipped} empty skipped)` : ""));
   }
   console.log(
@@ -175,7 +208,8 @@ function main() {
       `Query-page pairs: ${report.queryPage.length}`,
   );
   console.log(
-    `Totals: ${report.totals.clicks} clicks · ${report.totals.impressions} impressions`,
+    `Totals: ${report.totals.clicks} clicks · ${report.totals.impressions} impressions` +
+      (cur.filters.Page ? `  (scoped to Page ${cur.filters.Page})` : ""),
   );
   for (const w of report.warnings) console.log(`  ⚠ ${w}`);
   console.log("\nWrote reports/gsc-normalized.json\n");

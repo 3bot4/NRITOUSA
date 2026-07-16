@@ -80,16 +80,47 @@ const ALIASES: Record<string, string[]> = {
 
 const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 
-function resolveColumns(header: string[]): Record<string, number> {
-  const map: Record<string, number> = {};
+/**
+ * When "Compare" is enabled in Search Console, every metric column is prefixed
+ * with its period: "Last 28 days Clicks" / "Previous 28 days Clicks", or
+ * "Last 3 months Impressions" / "Previous 3 months Impressions".
+ *
+ * That is a strictly better export than two separate folders — both periods
+ * come from one query, over identical filters, so the comparison cannot be
+ * skewed by mismatched date ranges. Strip the prefix to recover the metric and
+ * remember which period it belongs to.
+ */
+const PERIOD_PREFIX = /^(last|previous)\s+.+?\s+(clicks|impressions|ctr|position)$/;
+
+interface ColumnMap {
+  current: Record<string, number>;
+  previous: Record<string, number>;
+  /** True when the export carried Previous-period columns. */
+  hasComparison: boolean;
+}
+
+function resolveColumns(header: string[]): ColumnMap {
+  const current: Record<string, number> = {};
+  const previous: Record<string, number> = {};
+
   header.forEach((h, i) => {
     const n = norm(h);
+
+    const period = PERIOD_PREFIX.exec(n);
+    if (period) {
+      const [, which, metric] = period;
+      const target = which === "previous" ? previous : current;
+      if (!(metric in target)) target[metric] = i;
+      return;
+    }
+
     for (const [key, aliases] of Object.entries(ALIASES)) {
-      if (key in map) continue;
-      if (aliases.includes(n)) map[key] = i;
+      if (key in current) continue;
+      if (aliases.includes(n)) current[key] = i;
     }
   });
-  return map;
+
+  return { current, previous, hasComparison: Object.keys(previous).length > 0 };
 }
 
 /** "1.83%" → 0.0183 · "0.9" → 0.009 when it is clearly a percent string. */
@@ -111,7 +142,15 @@ function parseNum(raw: string): number | null {
  * Rows
  * ------------------------------------------------------------------ */
 
-export interface GscRow {
+export interface GscMetrics {
+  clicks: number;
+  impressions: number;
+  /** Fraction (0.0183 = 1.83%). Recomputed when absent and derivable. */
+  ctr: number | null;
+  position: number | null;
+}
+
+export interface GscRow extends GscMetrics {
   /** Which CSV this came from ("queries" | "pages" | "devices" | ...). */
   dimension: string;
   query: string | null;
@@ -120,11 +159,8 @@ export interface GscRow {
   country: string | null;
   device: string | null;
   date: string | null;
-  clicks: number;
-  impressions: number;
-  /** Fraction (0.0183 = 1.83%). Recomputed when absent and derivable. */
-  ctr: number | null;
-  position: number | null;
+  /** Previous-period metrics, when the export was run in Compare mode. */
+  previous: GscMetrics | null;
 }
 
 /** Absolute on-site URL → path. Leaves off-site/odd values untouched. */
@@ -157,8 +193,17 @@ function dimensionOf(file: string): string {
 
 export interface ImportResult {
   rows: GscRow[];
-  files: { file: string; dimension: string; rows: number; skipped: number }[];
+  files: {
+    file: string;
+    dimension: string;
+    rows: number;
+    skipped: number;
+    /** The export carried Previous-period columns (Compare mode). */
+    comparison: boolean;
+  }[];
   warnings: string[];
+  /** Search Console's own Filters.csv, e.g. { Page: "+/foo", Date: "Last 28 days" }. */
+  filters: Record<string, string>;
 }
 
 export function importDir(dir: string, siteUrl: string): ImportResult {
@@ -174,12 +219,23 @@ export function importDir(dir: string, siteUrl: string): ImportResult {
   const rows: GscRow[] = [];
   const files: ImportResult["files"] = [];
   const warnings: string[] = [];
+  const filters: Record<string, string> = {};
 
   if (csvs.length === 0) warnings.push(`No .csv files found in ${dir}`);
 
   for (const name of csvs.sort()) {
     const dimension = dimensionOf(name);
-    if (dimension === "filters") continue; // metadata, not measurements
+
+    // Filters.csv is metadata, not measurements — but it records the scope the
+    // export was taken under (e.g. Page: "+/indian-passport-renewal-usa"). That
+    // scope decides how the numbers may be read: totals from a page-filtered
+    // export are that page's totals, NOT the site's.
+    if (dimension === "filters") {
+      for (const [k, v] of parseCsv(readFileSync(join(dir, name), "utf8")).slice(1)) {
+        if (k) filters[k] = v ?? "";
+      }
+      continue;
+    }
 
     const table = parseCsv(readFileSync(join(dir, name), "utf8"));
     if (table.length < 2) {
@@ -188,30 +244,57 @@ export function importDir(dir: string, siteUrl: string): ImportResult {
     }
 
     const cols = resolveColumns(table[0]);
-    if (cols.clicks == null && cols.impressions == null) {
+    if (cols.current.clicks == null && cols.current.impressions == null) {
       warnings.push(
         `${name}: no clicks/impressions column (header: ${table[0].join(" | ")}) — skipped`,
       );
       continue;
     }
     for (const need of ["ctr", "position"]) {
-      if (cols[need] == null) {
+      if (cols.current[need] == null) {
         warnings.push(`${name}: no "${need}" column — left null for these rows`);
       }
     }
 
+    /** Read one period's metrics out of a row. */
+    const metricsFrom = (
+      r: string[],
+      map: Record<string, number>,
+    ): GscMetrics => {
+      const at = (k: string) => (map[k] == null ? "" : (r[map[k]] ?? ""));
+      const clicks = parseNum(at("clicks")) ?? 0;
+      const impressions = parseNum(at("impressions")) ?? 0;
+      const ctr = parseCtr(at("ctr"));
+      return {
+        clicks,
+        impressions,
+        ctr: ctr ?? (impressions > 0 ? clicks / impressions : null),
+        // Position 0 is Search Console's "no data for this period", not rank
+        // zero — treat it as unknown so a brand-new page doesn't look like it
+        // ranked #1 and then collapsed.
+        position: parseNum(at("position")) || null,
+      };
+    };
+
     let kept = 0;
     let skipped = 0;
     for (const r of table.slice(1)) {
-      const cell = (k: string) => (cols[k] == null ? "" : (r[cols[k]] ?? ""));
-      const clicks = parseNum(cell("clicks")) ?? 0;
-      const impressions = parseNum(cell("impressions")) ?? 0;
-      if (clicks === 0 && impressions === 0) {
+      const cell = (k: string) =>
+        cols.current[k] == null ? "" : (r[cols.current[k]] ?? "");
+      const cur = metricsFrom(r, cols.current);
+      const prev = cols.hasComparison ? metricsFrom(r, cols.previous) : null;
+
+      // Drop only rows that are empty in BOTH periods; a row that had traffic
+      // last period and none now is exactly what decline detection needs.
+      const emptyNow = cur.clicks === 0 && cur.impressions === 0;
+      const emptyBefore =
+        !prev || (prev.clicks === 0 && prev.impressions === 0);
+      if (emptyNow && emptyBefore) {
         skipped++;
         continue;
       }
+
       const rawPage = cell("page");
-      const ctr = parseCtr(cell("ctr"));
       rows.push({
         dimension,
         query: cell("query") || null,
@@ -219,17 +302,21 @@ export function importDir(dir: string, siteUrl: string): ImportResult {
         country: cell("country") || null,
         device: cell("device")?.toLowerCase() || null,
         date: cell("date") || null,
-        clicks,
-        impressions,
-        ctr: ctr ?? (impressions > 0 ? clicks / impressions : null),
-        position: parseNum(cell("position")),
+        ...cur,
+        previous: prev,
       });
       kept++;
     }
-    files.push({ file: name, dimension, rows: kept, skipped });
+    files.push({
+      file: name,
+      dimension,
+      rows: kept,
+      skipped,
+      comparison: cols.hasComparison,
+    });
   }
 
-  return { rows, files, warnings };
+  return { rows, files, warnings, filters };
 }
 
 /* ------------------------------------------------------------------ *

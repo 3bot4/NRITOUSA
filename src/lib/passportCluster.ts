@@ -146,7 +146,7 @@ Track status on the Passport Seva portal with your ARN; the new passport returns
 :::
 
 ## Documents, in one line each
-Bring every document as **original plus a self-attested photocopy** — missing copies are the #1 reason people get turned away. The essentials: printed form with ARN, current passport, proof of US status, proof of US address, proof of Indian address, two Indian-spec photos, and your fee + appointment receipts. The complete, situation-by-situation list is on the [documents page](/indian-passport-renewal-usa/documents).
+Bring every document as **original plus a self-attested photocopy** — missing copies are the #1 reason people get turned away. The essentials: printed form with ARN, current passport, proof of US status, US address proof, Indian address proof, two Indian-spec photos, and your fee + appointment receipts. The complete, situation-by-situation list — including what counts as US and Indian address proof — is on the [documents page](/indian-passport-renewal-usa/documents).
 
 ## Fees
 Fees are paid in USD when you apply. Complete your application on Passport Seva/GPSP, then follow VFS portal instructions for payment and appointment — confirm the exact payment step on VFS for your jurisdiction before submitting. VFS adds a service charge of roughly $15–25 per application.
@@ -572,8 +572,8 @@ Bring every document as **original plus a self-attested photocopy**. The core se
 | Printed application form | With ARN number from Passport Seva |
 | Current Indian passport | Original + copy of first & last 2 pages |
 | Proof of US status | I-797/I-94, Green Card, F1 visa, or EAD |
-| Proof of US address | Utility bill, bank statement, or lease (last 3 months) |
-| Proof of Indian address | Aadhaar, voter ID, or similar |
+| US address proof | Utility bill, bank statement, or lease (last 3 months) |
+| Indian address proof | Aadhaar, voter ID, or similar |
 | 2 passport photos | Indian specs — 2"x2", white background |
 | Fee payment receipt | Printed from Passport Seva |
 | Appointment confirmation | Printed VFS letter |
@@ -635,14 +635,17 @@ Children need extras: birth certificate, **both parents' passports and US status
 ### Do I really need photocopies if I bring originals?
 Yes. VFS requires both — originals to verify, copies to submit. Self-attest each copy.
 
-### What counts as proof of US address?
-A utility bill, bank statement, or lease issued in the last ~3 months showing your name and US address.
+### What counts as US address proof?
+A utility bill, bank statement, or lease issued in the last ~3 months showing your name and US address. (VFS and Passport Seva call this "proof of address" — "address proof" is the same thing.)
+
+### What counts as Indian address proof?
+Aadhaar, voter ID, or a similar Indian document. Bring it as original plus a self-attested photocopy, like everything else on the checklist. The accepted list varies by jurisdiction and changes — confirm it on VFS for your center before your appointment.
 
 ### My name differs slightly between documents — is that a problem?
 A mismatch (even a middle name) can cause delays. Bring supporting documents and, if needed, an affidavit explaining the difference.
 
 ## The bottom line
-Assemble the core set, add the documents your situation requires, photocopy and self-attest everything, and bring Indian-spec photos. Then head back to the [main guide](/indian-passport-renewal-usa) or your [city page](/indian-passport-renewal-usa) to book the appointment.
+Assemble the core set, add the documents your situation requires, photocopy and self-attest everything, and bring Indian-spec photos. Then head back to the [main guide](/indian-passport-renewal-usa) to book the appointment — or go straight to your center: [Chicago](/indian-passport-renewal-usa/chicago), [New York](/indian-passport-renewal-usa/new-york), [San Francisco](/indian-passport-renewal-usa/san-francisco), or [Houston](/indian-passport-renewal-usa/houston-texas).
 
 :::cta
 title: Stay ahead of your renewal
