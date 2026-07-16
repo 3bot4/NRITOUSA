@@ -47,7 +47,9 @@ data/h1b/*.xlsx
 # for a site we own — it is nobody else's business and must never ship to the
 # public bundle. The normalized aggregate in reports/ is derived from these and
 # is also untracked. Drop the unzipped CSVs in seo-data/gsc/YYYY-MM-DD/.
-/seo-data/
+# The README is the one tracked file — it documents where to put the exports.
+/seo-data/*
+!/seo-data/README.md
 
 # Generated SEO reports (route inventory, audit findings, opportunity scoring).
 # Regenerate with `npm run seo:inventory` / `seo:audit` / `seo:opportunities`.
