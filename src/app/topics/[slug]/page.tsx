@@ -6,7 +6,7 @@ import Container from "@/components/Container";
 import { topicHeroImage } from "@/lib/stockImages";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
-import { topics, getTopic } from "@/lib/topics";
+import { liveTopics, getTopic } from "@/lib/topics";
 import { getArticlesByTopic } from "@/lib/articles";
 import {
   breadcrumbJsonLd,
@@ -17,7 +17,9 @@ import {
 } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return topics.map((t) => ({ slug: t.slug }));
+  // Retired topics 301 to the page that absorbed them (next.config.mjs), so
+  // prerendering their route would only produce a page the redirect shadows.
+  return liveTopics.map((t) => ({ slug: t.slug }));
 }
 
 export function generateMetadata({

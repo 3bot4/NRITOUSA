@@ -84,6 +84,18 @@ const nextConfig = {
         destination: "/indian-passport-renewal-usa",
         permanent: true,
       },
+      // /topics/education duplicated /education/articles exactly — same
+      // <title>, same four articles listed, same intent — so the two competed
+      // for one query cluster. /education/articles is the winner: it is linked
+      // site-wide from the footer (881 inbound internal links vs 5) and lives
+      // in the /education hub next to the GPA/grade/SAT/tuition tools. A hard
+      // 301 (statusCode, not `permanent`/308) preserves link equity. The topic
+      // survives as a taxonomy — see `retiredTo` in lib/topics.
+      {
+        source: "/topics/education",
+        destination: "/education/articles",
+        statusCode: 301,
+      },
       // The "Visa Bulletin Explained for Indians" legacy article was consolidated
       // into the /visa-bulletin hub, which owns the "visa bulletin for India"
       // intent. A hard 301 (statusCode, not `permanent`/308) preserves the

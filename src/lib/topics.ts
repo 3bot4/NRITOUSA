@@ -132,6 +132,11 @@ export const topics: Topic[] = [
     seoTitle: "India-USA Money Transfer & NRI Finance Guides",
     seoDescription:
       "Guides on sending money to India, bringing money to the USA, NRI bank accounts, property, investments, and cross-border finance.",
+    // /topics/money-transfer was consolidated into /send-money-to-india, which
+    // now owns this intent and 301s from the old URL (next.config.mjs). The
+    // topic itself stays: nine articles use the slug for their chip and
+    // breadcrumb. topicHubPath() sends every link to the destination.
+    retiredTo: "/send-money-to-india",
   },
   {
     slug: "insurance",
@@ -204,6 +209,14 @@ export const topics: Topic[] = [
     seoTitle: "US Education Guides for Immigrant Families",
     seoDescription:
       "Guides on the US education system for immigrants: K-12 enrollment, grade levels, GPA, the digital SAT, college costs, and top universities.",
+    // /topics/education and /education/articles were the same page twice: byte
+    // -identical <title>, the same four eduArticleSlugs listed, same intent.
+    // /education/articles wins on architecture — it is linked from the
+    // site-wide footer (881 inbound internal links vs 5) and sits in the
+    // /education hub beside the GPA, grade, SAT and tuition tools, so it can
+    // answer the intent with more than a link list. The topic stays as a
+    // taxonomy for the four articles' chips and breadcrumbs.
+    retiredTo: "/education/articles",
   },
   {
     slug: "stories",
@@ -225,4 +238,26 @@ export function getTopic(slug: string): Topic | undefined {
 
 export function getTopicTitle(slug: string): string {
   return getTopic(slug)?.title ?? slug;
+}
+
+/**
+ * Topics that still own a page at /topics/<slug>. Retired topics keep working
+ * as a taxonomy but their URL 301s away, so they must not be emitted into the
+ * sitemap or generateStaticParams — a redirecting URL in a sitemap is a
+ * contradictory signal, and Search Console reports it as an error.
+ */
+export const liveTopics: Topic[] = topics.filter((t) => !t.retiredTo);
+
+/**
+ * Where a LINK to this topic should point.
+ *
+ * For a live topic that's its own page; for a retired one it's the page that
+ * absorbed the topic (e.g. money-transfer → /send-money-to-india), so no
+ * internal link, breadcrumb, or JSON-LD URL ever targets a 301.
+ *
+ * Distinct from seo.ts `topicPath()`, which always returns the topic route's
+ * own URL and is what /topics/[slug] uses for its self-canonical.
+ */
+export function topicHubPath(slug: string): string {
+  return getTopic(slug)?.retiredTo ?? `/topics/${slug}`;
 }

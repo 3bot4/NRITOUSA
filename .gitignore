@@ -42,3 +42,13 @@ audit-report.*.md
 # raw DOL OFLC LCA disclosure files — large (100-600 MB), never committed.
 # Only the rolled-up data/h1b/sponsors.csv produced by data/h1b/etl.py is tracked.
 data/h1b/*.xlsx
+
+# Raw Search Console exports (seo:gsc-import input). Private performance data
+# for a site we own — it is nobody else's business and must never ship to the
+# public bundle. The normalized aggregate in reports/ is derived from these and
+# is also untracked. Drop the unzipped CSVs in seo-data/gsc/YYYY-MM-DD/.
+/seo-data/
+
+# Generated SEO reports (route inventory, audit findings, opportunity scoring).
+# Regenerate with `npm run seo:inventory` / `seo:audit` / `seo:opportunities`.
+/reports/

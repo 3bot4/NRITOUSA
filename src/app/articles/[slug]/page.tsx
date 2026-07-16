@@ -12,7 +12,7 @@ import type { PageCategory } from "@/lib/recommendedToolsConfig";
 import IulComparisonCalculator from "@/components/calculators/IulComparisonCalculator";
 import TuitionCalc from "@/components/education/TuitionCalc";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
-import { getTopic } from "@/lib/topics";
+import { getTopic, topicHubPath } from "@/lib/topics";
 import { resolveByline } from "@/lib/byline";
 import { formatDate } from "@/lib/format";
 import {
@@ -23,7 +23,6 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
-  topicPath,
 } from "@/lib/seo";
 
 /**
@@ -100,7 +99,7 @@ export default function ArticlePage({
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Guides", url: "/topics" },
-      ...(topic ? [{ name: topic.title, url: topicPath(topic.slug) }] : []),
+      ...(topic ? [{ name: topic.title, url: topicHubPath(topic.slug) }] : []),
       { name: article.title, url: articlePath(article.slug) },
     ]),
     ...(faqs.length ? [faqJsonLd(faqs)] : [])
@@ -134,7 +133,7 @@ export default function ArticlePage({
                   <>
                     <span aria-hidden>/</span>
                     <Link
-                      href={topicPath(topic.slug)}
+                      href={topicHubPath(topic.slug)}
                       className="hover:text-brand-600"
                     >
                       {topic.title}
@@ -147,7 +146,7 @@ export default function ArticlePage({
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-ink-400">
                 {topic && (
                   <Link
-                    href={topicPath(topic.slug)}
+                    href={topicHubPath(topic.slug)}
                     className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${topic.accent} px-3 py-1 font-semibold text-white`}
                   >
                     <span>{topic.icon}</span>
@@ -209,7 +208,7 @@ export default function ArticlePage({
               {topic && (
                 <div className="mx-auto mt-6 max-w-[720px] text-sm">
                   <Link
-                    href={topicPath(topic.slug)}
+                    href={topicHubPath(topic.slug)}
                     className="font-medium text-brand-600 hover:text-brand-700"
                   >
                     ← More {topic.title} guides

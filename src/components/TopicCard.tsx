@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Topic } from "@/types";
+import { topicHubPath } from "@/lib/topics";
 
 export default function TopicCard({
   topic,
@@ -10,7 +11,7 @@ export default function TopicCard({
 }) {
   return (
     <Link
-      href={`/topics/${topic.slug}`}
+      href={topicHubPath(topic.slug)}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
     >
       <div className="flex items-center gap-2.5">

@@ -12,6 +12,18 @@ export interface Topic {
   seoTitle?: string;
   /** SEO meta description override (falls back to description). ~140–160 chars. */
   seoDescription?: string;
+  /**
+   * Set when this topic's OWN page (/topics/<slug>) has been retired and 301s
+   * elsewhere, but the topic survives as a taxonomy — articles still carry the
+   * slug for their chip, breadcrumb, and grouping.
+   *
+   * The value is the path that now owns the topic's search intent. Everything
+   * that LINKS to a topic must route through topicHubPath() so it points here
+   * instead of at the 301; the sitemap and /topics/[slug] static params must
+   * skip retired topics entirely. See next.config.mjs `redirects()` — the two
+   * are cross-checked by src/lib/topics.retired.test.ts.
+   */
+  retiredTo?: string;
 }
 
 export interface Article {

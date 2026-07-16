@@ -34,6 +34,14 @@ const config: MoneyHubConfig = {
     { label: "India Tax & Compliance hub", href: "/india-tax-compliance", kind: "Hub" },
   ],
   primaryCta: { label: "Calculate capital gains", href: "/calculators/india-property-capital-gains" },
+  relatedGuides: [
+    {
+      label: "Should NRIs keep their investments in India?",
+      href: "/india-investments/should-nris-keep-investments-in-india",
+      blurb:
+        "Property is one piece of the picture. This guide weighs keeping vs exiting your Indian mutual funds, FDs, and real estate once you're a US taxpayer.",
+    },
+  ],
 };
 
 export const metadata: Metadata = pageMetadata({

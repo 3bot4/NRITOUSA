@@ -9,14 +9,21 @@
  *   /sitemap-tax.xml         → India tax & NRI wealth clusters
  *   /sitemap-immigration.xml → USCIS / H-1B / green card / visa bulletin / passport
  *
- * Every entry is a 200-status, self-canonical, indexable URL on
+ * Every entry must be a 200-status, self-canonical, indexable URL on
  * https://www.nritousa.com. Redirect routes (/privacy, /terms-of-use,
  * /topics/money-transfer, /articles/indian-passport-renewal-usa,
  * /tools/nri-global-wealth-tax-organizer), noindex app states
  * (/nri-wealth-checkup/{income,assets,dashboard,profile,report}), API routes,
- * and author pages are deliberately excluded — see /seo-indexing-audit.md.
+ * and author pages are excluded — see /seo-indexing-audit.md.
+ *
+ * That exclusion is now ENFORCED, not just documented: this list is built from
+ * `liveTopics` and asserted by src/lib/sitemap.redirects.test.ts, which
+ * cross-checks every path here against the redirect sources in next.config.mjs
+ * and the in-app permanentRedirect() stubs. The comment previously claimed
+ * /topics/money-transfer was excluded while `topics.map(...)` kept emitting it
+ * — Search Console saw a 301 inside a submitted sitemap for months.
  */
-import { topics } from "@/lib/topics";
+import { liveTopics } from "@/lib/topics";
 import { articles } from "@/lib/articles";
 import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
@@ -103,11 +110,18 @@ export const pagesEntries: SitemapEntry[] = [
     e(storyPath(s.slug), 0.7, "monthly", new Date(s.modifiedDate)),
   ),
   e("/partnerships", 0.5, "monthly"),
+  // Email-capture landing page for the Return to India PDF. It is a live,
+  // indexable conversion page and was missing from every sitemap.
+  e("/return-to-india-checklist", 0.8, "monthly"),
   e("/privacy-policy", 0.3, "yearly"),
   e("/terms-and-conditions", 0.3, "yearly"),
   e("/disclaimer", 0.3, "yearly"),
   e("/cookie-policy", 0.3, "yearly"),
-  ...topics.map((t) => e(`/topics/${t.slug}`, 0.8, "weekly")),
+  e("/affiliate-disclosure", 0.3, "yearly"),
+  // liveTopics, not topics: a retired topic (e.g. money-transfer) 301s to the
+  // page that absorbed it, and a redirecting URL must never be submitted in a
+  // sitemap. Locked in by src/lib/topics.retired.test.ts.
+  ...liveTopics.map((t) => e(`/topics/${t.slug}`, 0.8, "weekly")),
 ];
 
 /* ------------------------------------------------------------------ *
@@ -119,6 +133,10 @@ export const toolsEntries: SitemapEntry[] = [
   ),
   ...calculators.map((c) => e(`/calculators/${c.slug}`, 0.8, "monthly")),
   ...eduCalcs.map((c) => e(`/education/${c.slug}`, 0.8, "monthly")),
+  // Category hub that groups the visa/green-card tools. It lives under /tools/
+  // but is a hand-built page rather than a lib/tools entry, so the map above
+  // never picked it up and it was absent from every sitemap.
+  e("/tools/visa-green-card", 0.7, "monthly"),
 ];
 
 /* ------------------------------------------------------------------ *

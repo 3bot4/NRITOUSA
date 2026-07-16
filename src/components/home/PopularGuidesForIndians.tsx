@@ -18,7 +18,8 @@ const guides: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Indian Passport Renewal in USA",
-    href: "/articles/indian-passport-renewal-usa",
+    // The pillar lives at the top-level cluster URL; /articles/… 301s here.
+    href: "/indian-passport-renewal-usa",
     description:
       "VFS process, documents, fees, photos, processing time, and common mistakes.",
   },

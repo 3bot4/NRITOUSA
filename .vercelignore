@@ -4,3 +4,7 @@ node_modules
 data/h1b/*.xlsx
 *.dmg
 git-installer.dmg
+# Private Search Console exports and generated SEO reports must never be
+# uploaded to the deployment — nothing in src/ imports them.
+seo-data
+reports

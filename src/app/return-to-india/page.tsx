@@ -40,6 +40,14 @@ const config: MoneyHubConfig = {
     { label: "FBAR/FATCA risk checker", href: "/tools/fbar-fatca-checker", kind: "Tool" },
   ],
   primaryCta: { label: "Model your 401(k) move", href: "/calculators/401k-return-to-india" },
+  relatedGuides: [
+    {
+      label: "Should NRIs keep their investments in India?",
+      href: "/india-investments/should-nris-keep-investments-in-india",
+      blurb:
+        "The other half of the move: what to do with the mutual funds, FDs, and property you still hold in India — and how the US taxes them while you're here.",
+    },
+  ],
   snapshot: {
     title: "Return-to-India money decisions — key numbers first",
     rows: wealthReturnSnapshotRows,

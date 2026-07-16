@@ -40,6 +40,16 @@ export type MoneyHubConfig = {
   tools: HubTool[];
   /** Primary in-hero CTA. */
   primaryCta: { label: string; href: string };
+  /**
+   * Deep-dive pillars that live at their own top-level route rather than under
+   * /articles, so `articleSlugs` cannot reach them.
+   *
+   * Without this a pillar can sit in the sitemap at priority 0.9 with zero
+   * inbound internal links — discoverable in theory, unsupported in practice.
+   * Only link a guide a reader of THIS hub would actually want next; the point
+   * is the contextual relevance, not the link count.
+   */
+  relatedGuides?: { label: string; href: string; blurb: string }[];
   /** Optional "Fast Answer" numbers snapshot shown under the hero. */
   snapshot?: {
     title: string;
@@ -247,6 +257,44 @@ export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
                     className="text-brand-600 transition-transform group-hover:translate-x-0.5"
                   >
                     →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* In-depth guides that live outside /articles */}
+      {config.relatedGuides && config.relatedGuides.length > 0 && (
+        <section className="bg-slate-50/60 py-14 sm:py-20">
+          <Container>
+            <SectionHeading
+              eyebrow="Go deeper"
+              title="In-depth guides"
+              description="Longer reads that answer the bigger decision behind this topic."
+            />
+            <div className="grid items-stretch gap-3 sm:grid-cols-2">
+              {config.relatedGuides.map((g) => (
+                <Link
+                  key={g.href}
+                  href={g.href}
+                  className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                >
+                  <span className="text-sm font-bold leading-snug tracking-tight text-ink-900 group-hover:text-brand-700">
+                    {g.label}
+                  </span>
+                  <span className="mt-1.5 flex-1 text-xs leading-relaxed text-ink-500">
+                    {g.blurb}
+                  </span>
+                  <span className="mt-3 text-xs font-semibold text-brand-600">
+                    Read the guide{" "}
+                    <span
+                      aria-hidden
+                      className="inline-block transition-transform group-hover:translate-x-0.5"
+                    >
+                      →
+                    </span>
                   </span>
                 </Link>
               ))}

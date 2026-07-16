@@ -12,7 +12,11 @@
     "test": "vitest run",
     "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts",
     "audit:intent-numbers": "node scripts/audit-user-intent-numbers.ts",
-    "audit:monthly-numbers": "node scripts/audit-monthly-numbers.ts"
+    "audit:monthly-numbers": "node scripts/audit-monthly-numbers.ts",
+    "seo:inventory": "vite-node -c vitest.config.ts scripts/seo/route-inventory.ts",
+    "seo:audit": "vite-node -c vitest.config.ts scripts/seo/audit.ts --",
+    "seo:gsc-import": "vite-node -c vitest.config.ts scripts/seo/gsc-import.ts --",
+    "seo:opportunities": "vite-node -c vitest.config.ts scripts/seo/opportunities.ts --"
   },
   "dependencies": {
     "next": "^14.2.35",

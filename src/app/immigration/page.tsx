@@ -97,6 +97,12 @@ const situationCards = [
     href: "/immigration-tracker",
     icon: "📈",
   },
+  {
+    title: "I'm deciding whether to hire a lawyer",
+    desc: "Typical attorney fee ranges for H-1B, green card, and F-1/OPT cases — who usually pays, flat fee vs hourly, and how lawyer fees differ from USCIS filing fees.",
+    href: "/immigration-attorney-lawyer-cost",
+    icon: "⚖️",
+  },
 ];
 
 const faqs = [

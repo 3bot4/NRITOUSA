@@ -93,7 +93,8 @@ const topics = [
 const toolsBuilt = [
   {
     label: "NRI Wealth & Tax Organizer",
-    href: "/tools/nri-global-wealth-tax-organizer",
+    // The organizer became the wealth checkup; /tools/… 301s here.
+    href: "/nri-wealth-checkup",
   },
   { label: "FBAR / FATCA Checker", href: "/tools/fbar-fatca-checker" },
   { label: "USCIS Hub", href: "/uscis" },
