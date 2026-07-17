@@ -44,6 +44,12 @@ const situationCards = [
     icon: "🟢",
   },
   {
+    title: "I need to know what benefits my family can get",
+    desc: "Medicaid, CHIP, SNAP, ACA subsidies and tax credits by immigration status — plus what public charge actually covers.",
+    href: "/usa-government-benefits-immigrants",
+    icon: "🧭",
+  },
+  {
     title: "I received a USCIS notice",
     desc: "Decode an RFE, NOID, NOA1/NOA2, or transfer notice and know what to do next.",
     href: "/tools/uscis-notice-decoder",

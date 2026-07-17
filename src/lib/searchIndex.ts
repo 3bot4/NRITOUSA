@@ -98,6 +98,17 @@ const KIND_TO_TYPE: Record<string, SearchType> = {
  * badge and elevated priority.
  */
 const CURATED: SearchItem[] = [
+  // ---- Flagship top-level pages ----------------------------------------
+  {
+    title: "Government Benefits for Immigrants",
+    description:
+      "Check which U.S. benefits your family may qualify for by immigration status, state, income and work history — with public charge and I-864 sponsor rules explained separately.",
+    href: "/usa-government-benefits-immigrants",
+    type: "Tool",
+    priority: 82,
+    keywords:
+      "government benefits immigrants green card holders h1b visa holders public charge medicaid snap chip wic marketplace aca subsidy unemployment social security medicare ssi tanf fafsa tax credits mixed status families five year rule i-864 sponsor repayment food stamps welfare",
+  },
   // ---- Hubs -------------------------------------------------------------
   {
     title: "Immigration Hub",

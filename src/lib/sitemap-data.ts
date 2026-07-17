@@ -25,6 +25,7 @@
  */
 import { liveTopics } from "@/lib/topics";
 import { articles } from "@/lib/articles";
+import { GB_UPDATED } from "@/lib/governmentBenefitsCluster";
 import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
 import { eduCalcs } from "@/lib/education";
@@ -195,6 +196,9 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
+  // Government benefits pillar + household screener. Several underlying rules
+  // change between Oct 2026 and Jan 2027, so this is reviewed monthly.
+  e("/usa-government-benefits-immigrants", 0.9, "monthly", new Date(GB_UPDATED)),
   // H1B Lottery Results cluster (hub + 6 supporting pages).
   e("/h1b-lottery-results", 0.9, "monthly", immDate),
   e("/h1b-lottery-selected-next-steps", 0.8, "monthly", immDate),

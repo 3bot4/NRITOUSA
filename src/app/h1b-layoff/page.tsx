@@ -591,6 +591,7 @@ export default function H1bLayoffPage() {
             <div className="grid gap-3 sm:grid-cols-2">
               {[
                 { href: "/immigration", label: "Immigration Hub", desc: "Start by situation and find the right tool or guide" },
+                { href: "/usa-government-benefits-immigrants", label: "Government Benefits for Immigrants", desc: "Unemployment, ACA coverage and what your family may qualify for after a job loss" },
                 { href: "/tools", label: "All Tools", desc: "Every free calculator and checklist in one place" },
                 { href: "/uscis", label: "USCIS Hub", desc: "Case status, receipt numbers, forms, and processing times" },
                 { href: "/h1b", label: "H-1B Guide for Indians", desc: "Transfer, extension, RFE, premium processing, and travel" },

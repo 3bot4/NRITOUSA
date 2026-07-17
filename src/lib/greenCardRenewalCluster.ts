@@ -37,6 +37,11 @@ export const gcRenewalRelatedLinks: ClusterLink[] = [
   { href: "/nvc-case-status", label: "NVC Case Status", desc: "Consular processing case stage" },
   { href: "/immigration-tracker", label: "Immigration Tracker", desc: "Track your immigration journey" },
   { href: "/uscis/case-status", label: "USCIS Case Status", desc: "Understand your case status messages" },
+  {
+    href: "/usa-government-benefits-immigrants",
+    label: "Government Benefits for Immigrants",
+    desc: "What your family may qualify for — and why renewal has no public-charge test",
+  },
 ];
 
 export function otherRenewalLinks(currentHref: string): ClusterLink[] {
