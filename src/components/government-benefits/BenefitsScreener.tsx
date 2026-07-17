@@ -200,10 +200,16 @@ export default function BenefitsScreener() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      {/* Trust notice — always visible, above the form. */}
+      {/*
+        The ONE concise notice above the tool. The hero carries a single-line
+        version that links to the full disclaimer, and the complete disclaimer
+        sits below the article — so this must not restate either of them.
+      */}
       <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-sm leading-relaxed text-amber-900">
-        <p className="font-bold">This is an educational screening, not an eligibility decision.</p>
-        <p className="mt-1">{GB_SCREENER_NOTE}</p>
+        <p>
+          <span className="font-bold">Educational screening, not a decision. </span>
+          {GB_SCREENER_NOTE}
+        </p>
       </div>
 
       <form onSubmit={onSubmit} className="mt-4 space-y-5">

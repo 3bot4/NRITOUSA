@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
@@ -13,7 +14,9 @@ import {
   DecisionFlow,
   NextStep,
 } from "@/components/tools/TrumpAccountUI";
-import ArticleToc from "@/components/india-investments/ArticleToc";
+import { TocRail, TocInline, BackToTop } from "@/components/government-benefits/PillarToc";
+import StatusMatrix from "@/components/government-benefits/StatusMatrix";
+import BenefitsTimeline from "@/components/government-benefits/BenefitsTimeline";
 import BenefitsScreener from "@/components/government-benefits/BenefitsScreener";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
@@ -29,7 +32,6 @@ import {
 } from "@/lib/governmentBenefitsCluster";
 import {
   faqs,
-  keyDates,
   publicCharge,
   benefitFacts,
   povertyGuidelinesFact,
@@ -40,6 +42,8 @@ import {
   documentsChecklist,
   denialSteps,
   officialSourceLinks,
+  stateExamples,
+  STATE_EXAMPLES_NOTE,
   OFFICIAL_SOURCES_REVIEWED,
   RULES_LAST_VERIFIED_HUMAN,
   GB_DISCLAIMER,
@@ -97,7 +101,7 @@ const JUMP = [
   { id: "five-year", label: "The five-year waiting period" },
   { id: "public-charge", label: "Public charge explained" },
   { id: "i864", label: "I-864 sponsor repayment" },
-  { id: "state-benefits", label: "State-funded benefits" },
+  { id: "state-benefits", label: "Why your state changes the answer" },
   { id: "applying-safely", label: "Applying safely" },
   { id: "documents", label: "Documents you need" },
   { id: "denied", label: "If you are denied" },
@@ -211,8 +215,32 @@ export default function Page() {
           "For immigration consequences, consult a qualified immigration attorney or DOJ-accredited representative. For official eligibility, contact the administering agency or a certified benefits counselor.",
         ]}
       >
-        <div className="space-y-12">
-          <ArticleToc items={JUMP} />
+        {/*
+          PAGE SHELL.
+
+          ToolFirstLayout renders {children} raw — its header is wrapped in a
+          <Container> but the body is not — so a page MUST supply its own. The
+          first version of this page didn't, which is why the article ran the
+          full width of the viewport and why the shared ArticleToc's `-mx-4`
+          mobile bar bled 16px past the document edge at every width.
+
+          The <Container> here is the same max-w-6xl used by the header above,
+          so the shell's edges line up with the hero exactly. At xl the TOC gets
+          its OWN grid column (it can no longer overlap anything by
+          construction), and the article column carries `min-w-0` so the wide
+          status table can shrink inside it instead of forcing the grid open.
+        */}
+        <Container className="py-8 sm:py-10">
+          <div className="xl:grid xl:grid-cols-[240px_minmax(0,1fr)] xl:gap-8">
+            <aside className="hidden xl:block">
+              <TocRail items={JUMP} />
+            </aside>
+
+            {/* Not a <main>: the root layout already renders one. */}
+            <div data-article-main className="min-w-0 space-y-12">
+              <div className="xl:hidden">
+                <TocInline items={JUMP} />
+              </div>
 
           {/* ---------------- Answer first ---------------- */}
           <section id="quick-answer" className="scroll-mt-24">
@@ -279,10 +307,46 @@ export default function Page() {
                 Compare by immigration status
               </Link>
             </div>
+
+            {/* Your fastest path — four destinations, no prose. */}
+            <nav
+              aria-label="Your fastest path"
+              className="mx-auto mt-4 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-4"
+            >
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-500">
+                Your fastest path
+              </p>
+              <ol className="mt-2 grid gap-2 sm:grid-cols-2">
+                {[
+                  { href: "#screener", n: "1", label: "Check your household", desc: "Per-person results in about a minute" },
+                  { href: "#whats-changing", n: "2", label: "Review upcoming rule changes", desc: "Three changes land by January 2027" },
+                  { href: "#status-table", n: "3", label: "Compare immigration statuses", desc: "Nine statuses × ten programs" },
+                  { href: "#public-charge", n: "4", label: "Understand public charge", desc: "What actually counts, and when" },
+                ].map((s) => (
+                  <li key={s.href}>
+                    <Link
+                      href={s.href}
+                      className="flex min-h-[44px] items-center gap-3 rounded-xl border border-ink-900/10 px-3 py-2 transition hover:border-brand-300 hover:bg-brand-50/40"
+                    >
+                      <span
+                        aria-hidden
+                        className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700"
+                      >
+                        {s.n}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-ink-900">{s.label}</span>
+                        <span className="block text-xs text-ink-500">{s.desc}</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           </section>
 
           {/* ---------------- The tool ---------------- */}
-          <section id="screener" className="scroll-mt-24">
+          <section id="screener" data-screener className="scroll-mt-24">
             <h2 className="sr-only">Benefits eligibility screener</h2>
             <BenefitsScreener />
           </section>
@@ -296,39 +360,7 @@ export default function Page() {
               you read an article about immigrant benefits written before 2026, assume parts of it
               are now wrong.
             </P>
-            <div className="space-y-3">
-              {keyDates.map((d) => (
-                <div
-                  key={d.id}
-                  className={`rounded-2xl border p-4 ${
-                    d.status === "in-effect"
-                      ? "border-ink-900/10 bg-white"
-                      : "border-amber-200 bg-amber-50/50"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-baseline gap-2">
-                    <span className="rounded-full border border-ink-900/10 bg-white px-2.5 py-0.5 text-xs font-bold text-ink-700">
-                      {d.date}
-                    </span>
-                    <span
-                      className={`text-xs font-bold uppercase tracking-wide ${
-                        d.status === "in-effect" ? "text-ink-500" : "text-amber-700"
-                      }`}
-                    >
-                      {d.status === "in-effect" ? "Already in effect" : "Upcoming"}
-                    </span>
-                  </div>
-                  <p className="mt-1.5 font-bold text-ink-900">{d.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-700">{d.what}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
-                    <span className="font-semibold text-ink-800">Who this affects:</span> {d.who}
-                  </p>
-                  <p className="mt-2 text-xs text-ink-500">
-                    <Ext href={d.sourceUrl}>{d.sourceName} ↗</Ext> · verified {d.lastVerified}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <BenefitsTimeline />
             <Callout kind="note" title="Why this page keeps saying 'before' and 'after' September 18, 2026">
               Because the public-charge rule genuinely has two regimes, and which one applies to you
               depends on when you received a benefit and when you file. Getting that distinction
@@ -344,11 +376,11 @@ export default function Page() {
               because the underlying law is conditional — a yes/no grid would be easier to read and
               more often wrong. Income and state rules still decide most outcomes.
             </P>
-            <DataTable
+            <StatusMatrix
               columns={statusTableCols}
               rows={statusTableRows}
               caption="Labels: 'Often eligible' means the status usually clears the status test, subject to income and state rules. 'May be eligible' means it depends on facts we can't see. 'Usually not eligible' means the status test is generally not met — exceptions in the last column. 'State-dependent' and 'work-history dependent' mean exactly what they say."
-              keyRows={["Green card holder, under 5 years", "H-1B / L-1 and dependents (H-4, L-2)"]}
+              emphasise={["Green card holder, under 5 years", "H-1B / L-1 and dependents (H-4, L-2)"]}
             />
             <Callout kind="mistake" title="The mistake this table exists to prevent">
               Families look at the H-1B row, see &ldquo;usually not eligible&rdquo; across the
@@ -912,20 +944,46 @@ export default function Page() {
 
           {/* ---------------- State ---------------- */}
           <section id="state-benefits" className="scroll-mt-24 space-y-4">
-            <H2 id="state-benefits-h">State-funded benefits that differ from federal benefits</H2>
+            <H2 id="state-benefits-h">Why your state can change the answer</H2>
             <P>
-              States can spend their own money on people federal rules exclude, and many do. This is
-              why a national answer to &ldquo;can immigrants get X?&rdquo; is close to useless, and
-              why this page routes you to your state rather than guessing.
+              States can spend their own money on people federal rules exclude, and they can also
+              narrow a programme federal rules would allow. That is why a national answer to
+              &ldquo;can immigrants get X?&rdquo; is close to useless, and why this page routes you
+              to your state rather than guessing.
             </P>
             <P>
-              Several states cover children, pregnant people, or adults regardless of immigration
-              status or during the federal five-year bar. Only some states have paid family leave.
-              Unemployment tests, TANF design, LIHEAP windows, and child care subsidies all vary.
-              In-state tuition rules are state law and several states key them to high school
-              attendance rather than status. Before you conclude your family is excluded from
-              something, check your state agency.
+              Below are three specific, verified illustrations — one programme each. We do not label
+              any state &ldquo;generous&rdquo; or &ldquo;strict&rdquo;, because the first example
+              shows the same state being broader for one group and narrower for another in the same
+              year.
             </P>
+            <div className="space-y-3">
+              {stateExamples.map((s) => (
+                <div key={s.state + s.program} className="rounded-2xl border border-ink-900/10 bg-white p-4">
+                  <div className="flex flex-wrap items-baseline gap-2">
+                    <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-700">
+                      {s.state}
+                    </span>
+                    <span className="text-sm font-bold text-ink-900">{s.program}</span>
+                    <span className="text-xs text-ink-400">· {s.year}</span>
+                  </div>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                    <span className="font-semibold text-ink-800">Who: </span>
+                    {s.who}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-700">{s.detail}</p>
+                  <p className="mt-2 break-words text-xs text-ink-500">
+                    <Ext href={s.sourceUrl}>{s.sourceName} ↗</Ext> · verified {s.lastVerified}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Callout kind="note" title="Read these as examples, not summaries">
+              {STATE_EXAMPLES_NOTE} Other things that vary by state and are worth checking directly:
+              TANF design, LIHEAP application windows, child care subsidies, and in-state tuition —
+              which several states key to where a student attended high school rather than to
+              immigration status.
+            </Callout>
           </section>
 
           {/* ---------------- Applying safely ---------------- */}
@@ -1071,8 +1129,11 @@ export default function Page() {
             law or government-benefits administration. Nothing on this page is immigration advice.
           </p>
 
-          <Newsletter />
-        </div>
+              <Newsletter />
+            </div>
+          </div>
+        </Container>
+        <BackToTop />
       </ToolFirstLayout>
     </>
   );

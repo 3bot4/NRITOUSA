@@ -288,7 +288,57 @@ export interface KeyDate {
   sourceName: string;
   sourceUrl: string;
   lastVerified: string;
-  status: "in-effect" | "upcoming";
+}
+
+/**
+ * The date the page reasons from.
+ *
+ * DELIBERATELY NOT `new Date()`. Whether a rule is "in effect" is a legal
+ * statement, and deriving it from the visitor's device clock means a wrong
+ * system time (or a timezone west of UTC on the boundary day) could tell someone
+ * a benefit rule has changed when it has not. This is a maintained, verified
+ * constant that moves when a human re-checks the sources — the same discipline
+ * every figure on this page follows.
+ */
+export const AS_OF_DATE = RULES_LAST_VERIFIED;
+export const AS_OF_DATE_HUMAN = RULES_LAST_VERIFIED_HUMAN;
+
+export type TimelineStatus = "in-effect" | "next" | "upcoming";
+
+export const TIMELINE_STATUS_LABEL: Record<TimelineStatus, string> = {
+  "in-effect": "In effect",
+  next: "Next change",
+  upcoming: "Upcoming",
+};
+
+/**
+ * Single derivation of every event's status from {@link AS_OF_DATE}. Status is
+ * never stored on the event, so a badge can't contradict its own date.
+ * Returns events sorted chronologically.
+ */
+export function timelineEvents(
+  asOf: string = AS_OF_DATE,
+): { event: KeyDate; status: TimelineStatus }[] {
+  const sorted = [...keyDates].sort((a, b) => a.dateIso.localeCompare(b.dateIso));
+  let nextAssigned = false;
+  return sorted.map((event) => {
+    if (event.dateIso <= asOf) return { event, status: "in-effect" as const };
+    if (!nextAssigned) {
+      nextAssigned = true;
+      return { event, status: "next" as const };
+    }
+    return { event, status: "upcoming" as const };
+  });
+}
+
+/** Summary used by the answer-first banner above the timeline. */
+export function timelineSummary(asOf: string = AS_OF_DATE) {
+  const all = timelineEvents(asOf);
+  return {
+    inEffect: all.filter((e) => e.status === "in-effect").map((e) => e.event),
+    next: all.find((e) => e.status === "next")?.event ?? null,
+    later: all.filter((e) => e.status === "upcoming").map((e) => e.event),
+  };
 }
 
 export const keyDates: KeyDate[] = [
@@ -302,7 +352,6 @@ export const keyDates: KeyDate[] = [
     sourceName: "OBBBA §71302 (P.L. 119-21)",
     sourceUrl: "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
     lastVerified: RULES_LAST_VERIFIED,
-    status: "in-effect",
   },
   {
     id: "medicaid-oct",
@@ -314,7 +363,6 @@ export const keyDates: KeyDate[] = [
     sourceName: "OBBBA §71109 (P.L. 119-21), adding 42 U.S.C. §1396b(v)(5)",
     sourceUrl: "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
     lastVerified: RULES_LAST_VERIFIED,
-    status: "upcoming",
   },
   {
     id: "public-charge-sept",
@@ -326,7 +374,6 @@ export const keyDates: KeyDate[] = [
     sourceName: "DHS final rule, 91 FR (doc. 2026-14539)",
     sourceUrl: "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility",
     lastVerified: RULES_LAST_VERIFIED,
-    status: "upcoming",
   },
   {
     id: "ptc-2027",
@@ -338,7 +385,6 @@ export const keyDates: KeyDate[] = [
     sourceName: "OBBBA §71301 (P.L. 119-21), amending 26 U.S.C. §36B(e)",
     sourceUrl: "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
     lastVerified: RULES_LAST_VERIFIED,
-    status: "upcoming",
   },
 ];
 
@@ -771,6 +817,73 @@ export const faqs: FaqItem[] = [
       "This is the one scenario where the September 2026 transition creates a genuinely time-sensitive question. DHS says officers will not consider non-cash benefits received before the effective date. But it also says that where someone was approved or certified for benefits covering a period extending past the effective date, and there is no evidence they disenrolled or withdrew, the receipt occurring on or after the effective date can be considered. That is a specific interaction between your enrolment and your filing date, and it deserves individual legal advice — not a decision made from a web page, and not a panicked disenrollment from coverage your family needs.",
   },
 ];
+
+/* ------------------------------------------------------------------ *
+ * Why your state can change the answer.
+ *
+ * DELIBERATELY NOT a "generous vs strict states" list. A state can be broader
+ * than federal rules for one program and narrower for another — California below
+ * is exactly that — so a single global label for a state would be inaccurate,
+ * would age badly, and would sound like a political judgement rather than an
+ * eligibility fact. Each example names ONE program, ONE affected group, the
+ * applicable date, and links the state's own agency.
+ *
+ * RULE: every example must be verified against the STATE's official agency (or
+ * the federal agency that maintains the official cross-state list). If it cannot
+ * be verified, delete it — do not reason from absence of evidence. A prior draft
+ * of this list included Washington Paid Family & Medical Leave "regardless of
+ * immigration status"; the official page never says that, so it was removed.
+ * ------------------------------------------------------------------ */
+export interface StateExample {
+  state: string;
+  program: string;
+  /** Precisely who is affected — never "immigrants" in general. */
+  who: string;
+  detail: string;
+  year: string;
+  sourceName: string;
+  sourceUrl: string;
+  lastVerified: string;
+}
+
+export const stateExamples: StateExample[] = [
+  {
+    state: "California",
+    program: "Medi-Cal (the state's Medicaid program)",
+    who: "Children aged 0–18, and people who are pregnant",
+    detail:
+      "California uses state funds to offer full-scope Medi-Cal to children aged 0–18 regardless of immigration status, and to people who are pregnant during pregnancy and for one year after the birth outcome, regardless of immigration status. The same state narrowed a different group at the same time: from January 1, 2026 adults without Satisfactory Immigration Status can no longer newly enrol in full Medi-Cal, though people already enrolled can keep coverage by renewing on time. One state, broader for children and narrower for adults, in the same year.",
+    year: "2026",
+    sourceName: "California DHCS — Medi-Cal Immigrant Eligibility FAQs",
+    sourceUrl: "https://www.dhcs.ca.gov/medi-cal-immigrant-eligibility-faqs/",
+    lastVerified: RULES_LAST_VERIFIED,
+  },
+  {
+    state: "Only some states",
+    program: "Paid family and medical leave",
+    who: "Workers who meet that state's hours or earnings test",
+    detail:
+      "Paid family and medical leave is a state programme, not a federal one, and it simply does not exist in most states. The U.S. Department of Labor maintains the official list: thirteen states plus the District of Columbia have enacted programmes, and Maryland, Delaware, Minnesota and Maine begin paying benefits during 2026. Whether this exists for your family is decided entirely by where you work, not by your immigration status — check the DOL map, then your state's programme for its own eligibility rules.",
+    year: "2026",
+    sourceName: "U.S. DOL Women's Bureau — State Paid Family & Medical Leave Laws",
+    sourceUrl: "https://www.dol.gov/agencies/wb/paid-leave/State-Paid-Family-Medical-Leave-Laws",
+    lastVerified: RULES_LAST_VERIFIED,
+  },
+  {
+    state: "Every state",
+    program: "Unemployment insurance",
+    who: "Anyone claiming after a job loss",
+    detail:
+      "There is no national unemployment benefit. Each state sets its own formula, base period, weekly maximum, and duration — and each state decides how it treats a work-visa holder whose authorisation ended with the job. Two families with identical earnings in different states can receive very different amounts, or one may receive nothing. This is the clearest case on this page where a national answer is worthless and only your state agency can tell you.",
+    year: "2026",
+    sourceName: "U.S. DOL — find your state unemployment office",
+    sourceUrl: "https://www.dol.gov/general/topic/unemployment-insurance",
+    lastVerified: RULES_LAST_VERIFIED,
+  },
+];
+
+export const STATE_EXAMPLES_NOTE =
+  "State examples illustrate individual programs, not overall benefit eligibility. They are not a summary of everything a state offers, and they change with state budgets and legislation.";
 
 /* ------------------------------------------------------------------ *
  * Documents checklist (used on-page + in the optional emailed checklist)

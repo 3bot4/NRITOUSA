@@ -1,7 +1,16 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { faqs, officialSourceLinks, keyDates, benefitFacts } from "@/data/governmentBenefitsData";
+import {
+  faqs,
+  officialSourceLinks,
+  keyDates,
+  benefitFacts,
+  stateExamples,
+  timelineEvents,
+  timelineSummary,
+  AS_OF_DATE,
+} from "@/data/governmentBenefitsData";
 
 const pageSrc = readFileSync(resolve(__dirname, "page.tsx"), "utf8");
 
@@ -123,12 +132,85 @@ describe("content safety", () => {
     for (const d of keyDates) {
       expect(d.dateIso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(d.sourceUrl).toMatch(/^https:\/\//);
-      expect(["in-effect", "upcoming"]).toContain(d.status);
     }
   });
 
   it("keeps public charge and I-864 in separate sections", () => {
     expect(sectionIds()).toContain("public-charge");
     expect(sectionIds()).toContain("i864");
+  });
+});
+
+/* ------------------------------------------------------------------ *
+ * Timeline status is DERIVED, never stored — a badge must not be able to
+ * contradict its own date, and device time must never decide a legal claim.
+ * ------------------------------------------------------------------ */
+describe("timeline status derivation", () => {
+  it("returns events in chronological order regardless of authoring order", () => {
+    const dates = timelineEvents().map((e) => e.event.dateIso);
+    expect(dates).toEqual([...dates].sort());
+    // The source array is deliberately NOT chronological; prove sorting matters.
+    const authored = keyDates.map((k) => k.dateIso);
+    expect(authored).not.toEqual([...authored].sort());
+  });
+
+  it("marks a date on or before the as-of date as in effect", () => {
+    const events = timelineEvents("2026-07-16");
+    const jan = events.find((e) => e.event.dateIso === "2026-01-01");
+    expect(jan?.status).toBe("in-effect");
+  });
+
+  it("marks exactly one future event as the next change", () => {
+    const events = timelineEvents("2026-07-16");
+    expect(events.filter((e) => e.status === "next")).toHaveLength(1);
+    // On 2026-07-16 the soonest future change is public charge on 2026-09-18.
+    expect(events.find((e) => e.status === "next")?.event.dateIso).toBe("2026-09-18");
+  });
+
+  it("re-derives correctly as the as-of date moves — no stale badges", () => {
+    // After the public-charge transition, Medicaid (Oct 1) becomes "next".
+    const later = timelineEvents("2026-09-20");
+    expect(later.find((e) => e.event.dateIso === "2026-09-18")?.status).toBe("in-effect");
+    expect(later.find((e) => e.status === "next")?.event.dateIso).toBe("2026-10-01");
+
+    // Once every date has passed, nothing claims to be upcoming.
+    const allPast = timelineEvents("2030-01-01");
+    expect(allPast.every((e) => e.status === "in-effect")).toBe(true);
+    expect(timelineSummary("2030-01-01").next).toBeNull();
+  });
+
+  it("never derives status from the device clock", () => {
+    const src = readFileSync(
+      resolve(__dirname, "../../data/governmentBenefitsData.ts"),
+      "utf8",
+    );
+    // AS_OF_DATE must be a maintained constant, not Date.now()/new Date().
+    expect(AS_OF_DATE).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    const asOfBlock = src.slice(src.indexOf("export const AS_OF_DATE"), src.indexOf("export type TimelineStatus"));
+    expect(asOfBlock).not.toMatch(/new Date\(\)|Date\.now\(\)/);
+  });
+});
+
+describe("state examples", () => {
+  it("never labels a state generous, strict, best or worst", () => {
+    const blob = JSON.stringify(stateExamples).toLowerCase();
+    // Word boundaries, not substrings: "strict" lives inside "district of
+    // Columbia", which is a legitimate place name.
+    for (const word of ["generous", "strict", "best state", "worst state", "harsh", "hostile"]) {
+      expect(blob, `state examples must not label a state "${word}"`).not.toMatch(
+        new RegExp(`\\b${word}\\b`),
+      );
+    }
+  });
+
+  it("names one program, an affected group, a year and an official source each", () => {
+    expect(stateExamples.length).toBeGreaterThanOrEqual(3);
+    for (const s of stateExamples) {
+      expect(s.program.length).toBeGreaterThan(3);
+      expect(s.who.length).toBeGreaterThan(3);
+      expect(s.year).toMatch(/^\d{4}$/);
+      expect(s.sourceUrl).toMatch(/^https:\/\/[a-z0-9.-]*\.(gov|ca\.gov)\//);
+      expect(s.lastVerified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
   });
 });
