@@ -191,6 +191,87 @@ describe("timeline status derivation", () => {
   });
 });
 
+/* ------------------------------------------------------------------ *
+ * Legal accuracy after DHS final rule 2026-14539.
+ * These guard the page AND the FAQ schema, which read the same arrays.
+ * ------------------------------------------------------------------ */
+describe("public-charge legal accuracy", () => {
+  const dataSrc = readFileSync(
+    resolve(__dirname, "../../data/governmentBenefitsData.ts"),
+    "utf8",
+  );
+  const logicSrc = readFileSync(
+    resolve(__dirname, "../../components/government-benefits/benefitsScreenerLogic.ts"),
+    "utf8",
+  );
+  const faqBlob = faqs.map((f) => `${f.question} ${f.answer}`).join(" ");
+
+  it("never states the retired 'primarily dependent' standard as current law", () => {
+    // The phrase may ONLY appear as something the new rule removed.
+    for (const [name, src] of [["page", pageSrc], ["data", dataSrc], ["logic", logicSrc]] as const) {
+      for (const m of src.matchAll(/likely to become primarily dependent/gi)) {
+        throw new Error(`${name}: states the retired standard as current law near "${src.slice(Math.max(0, m.index! - 60), m.index! + 60)}"`);
+      }
+    }
+    expect(faqBlob).not.toMatch(/likely to become primarily dependent/i);
+  });
+
+  it("uses the current statutory formulation", () => {
+    expect(faqBlob + pageSrc).toMatch(/likely at any time to become a public charge/i);
+  });
+
+  it("never claims tax credits are not public assistance / never public-charge negatives", () => {
+    const all = pageSrc + dataSrc + logicSrc;
+    expect(all).not.toMatch(/tax credits are not public assistance/i);
+    expect(all).not.toMatch(/never been public-charge negatives/i);
+    expect(all).not.toMatch(/never been a ground for deporting/i);
+  });
+
+  it("keeps FAQ text and FAQ schema identical by construction", () => {
+    // Both ToolFaq and faqJsonLd receive the SAME `faqs` array, so visible text
+    // and JSON-LD cannot diverge. Assert the wiring, not a copy.
+    expect(pageSrc).toContain("faqJsonLd(faqs)");
+    expect(pageSrc).toContain("<ToolFaq items={faqs} />");
+  });
+
+  it("renames the misleading FAQ and answers it with the date-scoped wording", () => {
+    const q = faqs.find((f) => f.question === "What benefits were excluded under the 2022 public-charge rule?");
+    expect(q, "renamed FAQ must exist").toBeTruthy();
+    expect(q!.answer).toMatch(/before September 18, 2026/);
+    expect(q!.answer).toMatch(/no single benefit automatically determines the outcome/i);
+    expect(q!.answer).toMatch(/Non-means-tested earned benefits/i);
+    expect(faqs.find((f) => f.question === "What benefits are generally not considered?")).toBeUndefined();
+  });
+
+  it("never publishes a definitive post-September counted/not-counted list", () => {
+    // publicCharge must expose the 2022 list only, never a post-transition one.
+    expect(dataSrc).toMatch(/excludedUnder2022/);
+    expect(dataSrc).not.toMatch(/notCountedAfter|excludedAfter|countedAfter/);
+  });
+
+  it("states both transition rules and never merges them", () => {
+    expect(pageSrc).toMatch(/Two different transition rules/i);
+    expect(pageSrc + dataSrc).toMatch(/postmarked or electronically submitted and accepted before September 18, 2026/i);
+  });
+
+  it("carries the guidance-monitoring notice", () => {
+    expect(dataSrc).toMatch(/additional implementation guidance will be issued on or before September 18, 2026/i);
+  });
+
+  it("cites the final rule by document number and links a primary source", () => {
+    expect(dataSrc).toContain("2026-14539");
+    expect(dataSrc).toContain("https://public-inspection.federalregister.gov/2026-14539.pdf");
+    expect(dataSrc).toContain("https://www.federalregister.gov/d/2026-14539");
+  });
+
+  it("uses American spelling in this guide's visible copy", () => {
+    const all = pageSrc + dataSrc + logicSrc;
+    for (const b of [/naturalis/i, /authoris/i, /\bprogramme\b/i, /sceptic/i, /individualis/i, /totalis/i]) {
+      expect(all, `British spelling ${b} found`).not.toMatch(b);
+    }
+  });
+});
+
 describe("state examples", () => {
   it("never labels a state generous, strict, best or worst", () => {
     const blob = JSON.stringify(stateExamples).toLowerCase();

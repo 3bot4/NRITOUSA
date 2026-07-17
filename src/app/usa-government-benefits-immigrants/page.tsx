@@ -361,6 +361,15 @@ export default function Page() {
               are now wrong.
             </P>
             <BenefitsTimeline />
+
+            <Callout kind="tip" title="Already filed?">
+              {publicCharge.filingDateProtection} That is a rule about your{" "}
+              <strong>filing date</strong>. A separate rule covers your{" "}
+              <strong>receipt date</strong>: benefits received before September 18, 2026 are
+              treated consistently with the 2022 rule. The two are different tests — see{" "}
+              <A href="#public-charge">public charge explained</A>.
+            </Callout>
+
             <Callout kind="note" title="Why this page keeps saying 'before' and 'after' September 18, 2026">
               Because the public-charge rule genuinely has two regimes, and which one applies to you
               depends on when you received a benefit and when you file. Getting that distinction
@@ -394,21 +403,21 @@ export default function Page() {
           <section id="citizens" className="scroll-mt-24 space-y-4">
             <H2 id="citizens-h">U.S. citizen benefits</H2>
             <P>
-              U.S. citizens — whether born here or naturalised — have the broadest access. There is
+              U.S. citizens — whether born here or naturalized — have the broadest access. There is
               no public-charge test, no five-year waiting period, and no qualified-immigrant test.
               What remains are the ordinary rules everyone faces: income limits, state rules, work
               history for earned benefits, and program-specific tests.
             </P>
             <P>
-              Naturalised citizens are treated identically to U.S.-born citizens for every benefit
-              program. Nothing about benefit use before naturalisation carries forward, and lawfully
-              receiving a benefit you qualified for is not a bar to naturalisation in the first
+              Naturalized citizens are treated identically to U.S.-born citizens for every benefit
+              program. Nothing about benefit use before naturalization carries forward, and lawfully
+              receiving a benefit you qualified for is not a bar to naturalization in the first
               place.
             </P>
-            <Callout kind="insight" title="The one thing that still matters after naturalising">
+            <Callout kind="insight" title="The one thing that still matters after naturalizing">
               If you signed a Form I-864 to sponsor a relative, becoming a citizen does not end{" "}
               <em>your</em> obligation as a sponsor. It ends when the person you sponsored
-              naturalises or is credited with 40 qualifying quarters — see the{" "}
+              naturalizes or is credited with 40 qualifying quarters — see the{" "}
               <A href="#i864">sponsor section</A>.
             </Callout>
           </section>
@@ -592,17 +601,27 @@ export default function Page() {
               <FactChip f={benefitFacts.snapQuarters} />
             </div>
             <Callout kind="insight" title="WIC and school meals do not ask about status">
-              WIC has no immigration status requirement, and USDA has long stated that WIC
-              participation does not make someone a public charge. School meals are available to
-              enrolled children — federal law preserves that access for anyone eligible for public
-              education. If your family needs food help and you are anxious about status, these two
-              are the least complicated places to start.
+              WIC has no immigration status requirement, and school meals are available to enrolled
+              children — federal law preserves that access for anyone eligible for public education.
+              On public charge: WIC and school meals received before September 18, 2026 are excluded
+              under the 2022 framework. Beginning September 18, the rule no longer provides a
+              categorical regulatory exclusion for means-tested programs, but receipt still does not
+              automatically produce a public-charge finding, and benefits received by a child
+              generally are not treated as benefits received by a parent.
             </Callout>
+            <WarnBox title="Do not cancel nutrition assistance based on general online information">
+              The rule does not direct or require anyone to disenroll from means-tested public
+              benefits. If the adjustment applicant personally receives a means-tested benefit that
+              will continue after September 18, obtain individualized advice before making a change
+              — do not act on a web page alone.
+            </WarnBox>
             <P>
-              TANF is the exception in this section. It is <strong>cash assistance</strong>, which
-              means it is counted under the public-charge rule both before and after the September
-              2026 transition. If anyone in the household has an admission or adjustment filing
-              ahead, get advice before applying for cash aid specifically.
+              TANF is the exception in this section. It is <strong>cash assistance</strong>, one of
+              the limited categories USCIS considers under the 2022 framework and a means-tested
+              benefit that may be considered under the framework beginning September 18, 2026.
+              Receipt is one factor and does not automatically result in denial. If anyone in the
+              household has an admission or adjustment filing ahead, get individualized advice
+              before applying for cash aid specifically.
             </P>
           </section>
 
@@ -618,10 +637,10 @@ export default function Page() {
             <P>
               For H-1B and other work-visa holders the answer is genuinely
               &ldquo;state-dependent,&rdquo; and understanding <em>why</em> helps. There are two
-              tests. The first — was the work performed while lawfully present and authorised? — is
+              tests. The first — was the work performed while lawfully present and authorized? — is
               usually satisfied. The second is the obstacle: you must be able, available, and{" "}
-              <strong>legally authorised to work now</strong>. When an H-1B job ends, work
-              authorisation typically ends with it unless you are within a grace period or have a
+              <strong>legally authorized to work now</strong>. When an H-1B job ends, work
+              authorization typically ends with it unless you are within a grace period or have a
               pending change of status. That is why many states deny.
             </P>
             <Callout kind="tip" title="What to actually do">
@@ -654,7 +673,7 @@ export default function Page() {
               <strong>is</strong> counted under public charge.
             </P>
             <Callout kind="crossborder" title="For Indian nationals specifically">
-              The United States and India do not currently have a totalisation agreement in force.
+              The United States and India do not currently have a totalization agreement in force.
               That means U.S. and Indian coverage cannot be combined to reach 40 credits, and it is
               a common source of disappointment for people who split a career between the two
               countries. If you are planning a return, the{" "}
@@ -666,11 +685,29 @@ export default function Page() {
           <section id="tax-credits" className="scroll-mt-24 space-y-4">
             <H2 id="tax-credits-h">Tax credits available to immigrant families</H2>
             <P>
-              Tax credits are <strong>not public assistance</strong>. They are part of the tax code,
-              they are claimed on a return, and they have never been public-charge negatives. They
-              follow tax rules, not the qualified-immigrant test — which is why an H-1B family that
-              cannot get SNAP can often claim the Child Tax Credit.
+              Tax credits are claimed through the tax system rather than traditional benefit
+              agencies. Under the 2022 public-charge rule, tax credits were not considered.
+              Beginning September 18, 2026, however, DHS permits officers to consider means-tested
+              tax credits received by an applicant as one factor in the totality of the
+              circumstances. Claiming a tax credit does not automatically result in a public-charge
+              finding.
             </P>
+            <P>
+              Eligibility itself is unchanged: tax credits follow tax rules, not the
+              qualified-immigrant test — which is why an H-1B family that cannot get SNAP can often
+              claim the Child Tax Credit.
+            </P>
+            <Callout kind="note" title="Two separate questions">
+              Tax eligibility and public-charge treatment are separate questions. A family may
+              legally qualify for a credit even when its receipt could be reviewed in a later
+              public-charge determination. DHS also notes that means-tested credits reach both
+              low- and middle-income families and &ldquo;may not always be indicative of a lack of
+              self-sufficiency&rdquo; — consideration of tax credits is, in the rule&rsquo;s own
+              words, &ldquo;just one aspect of one consideration in the totality of the
+              circumstances.&rdquo; See the final rule&rsquo;s discussion of tax credits in its
+              response to comments (section on Tax Credits),{" "}
+              <Ext href={publicCharge.ruleUrl}>DHS final rule {publicCharge.ruleDocNumber}</Ext>.
+            </Callout>
             <div className="grid gap-3 sm:grid-cols-2">
               <FactChip f={benefitFacts.ctcMax} />
               <FactChip f={benefitFacts.actcMax} />
@@ -776,11 +813,18 @@ export default function Page() {
               because the rule is mid-transition.
             </P>
             <P>
-              Public charge is a test of whether someone applying for <strong>admission</strong> or{" "}
-              <strong>adjustment of status</strong> is likely to become primarily dependent on the
-              government. It is not a test applied to green card renewal, and it is not applied at
-              naturalisation. It has never been a ground for deporting someone for using benefits
-              they were entitled to.
+              Public charge is a ground of inadmissibility used to determine whether someone
+              applying for <strong>admission</strong> or <strong>adjustment of status</strong> is
+              likely at any time to become a public charge. Beginning September 18, 2026, officers
+              will make an individualized determination based on the totality of the
+              applicant&rsquo;s circumstances, without the 2022 rule&rsquo;s &ldquo;primarily
+              dependent&rdquo; standard. It is not a test applied to green card renewal, and it is
+              not applied at naturalization.
+            </P>
+            <P>
+              Lawfully receiving a benefit does not automatically make someone deportable.
+              Public-charge inadmissibility and the separate, narrowly defined public-charge
+              deportability provisions are different legal issues.
             </P>
 
             <h3 className="pt-2 text-lg font-bold text-ink-900">Who it applies to, and who is exempt</h3>
@@ -790,16 +834,24 @@ export default function Page() {
               U nonimmigrants, and others. If you are in an exempt category, benefit use should not
               create a public-charge problem for that application.
             </P>
+            <P>
+              Lawfully receiving a benefit does not automatically make someone deportable.
+              Public-charge inadmissibility and the separate, narrowly defined public-charge
+              deportability provisions are different legal issues.
+            </P>
 
             <h3 className="pt-2 text-lg font-bold text-ink-900">
               Benefits received before September 18, 2026
             </h3>
             <P>
-              The 2022 rule governs, and it is narrow. Only two things count:
+              The 2022 framework governs, and it is narrow. Only two categories are considered —
+              and even then, receipt is one factor and is not automatically decisive:
             </P>
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-rose-700">Counted</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-rose-700">
+                  Considered under the 2022 framework
+                </p>
                 <ul className="mt-2 space-y-1.5">
                   {publicCharge.countedBefore.map((t) => (
                     <li key={t} className="flex gap-2 text-sm text-ink-700">
@@ -811,10 +863,10 @@ export default function Page() {
               </div>
               <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-4">
                 <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">
-                  Not counted
+                  Excluded under the 2022 framework
                 </p>
                 <ul className="mt-2 space-y-1.5">
-                  {publicCharge.notCountedBefore.map((t) => (
+                  {publicCharge.excludedUnder2022.map((t) => (
                     <li key={t} className="flex gap-2 text-sm text-ink-700">
                       <span aria-hidden className="mt-0.5 flex-none text-emerald-500">✓</span>
                       <span>{t}</span>
@@ -829,18 +881,50 @@ export default function Page() {
             </h3>
             <P>
               DHS removes the 2022 rule&rsquo;s regulations and does{" "}
-              <strong>not replace them with a new list</strong>. Officers return to a discretionary,
+              <strong>not replace them with a new list</strong>. Officers make an individualized,
               case-by-case assessment of the totality of the circumstances, weighing the statutory
               minimum factors — {publicCharge.statutoryFactors.join(", ").toLowerCase()} — plus any
-              Form I-864, plus receipt of means-tested public benefits. There is no regulatory
-              definition of which benefits count, and no single benefit is automatically decisive.
+              Form I-864, plus an applicant&rsquo;s receipt of means-tested public benefits. There is
+              no regulatory definition of which benefits count, and{" "}
+              <strong>no single benefit automatically determines the outcome</strong>.
+            </P>
+            <P>
+              Non-means-tested earned benefits — {publicCharge.earnedOutsideCategory.join(", ")} —
+              remain outside that means-tested category.
             </P>
             <Callout kind="tip" title="How to read any 'what counts after September 2026' list you find online">
-              Sceptically. DHS deliberately declined to define which means-tested benefits officers
+              Skeptically. DHS deliberately declined to define which means-tested benefits officers
               may weigh — that discretion is the point of the rule. Any site publishing a confident
               counts/doesn&rsquo;t-count table for the new framework is telling you something the
               government has not said.
             </Callout>
+
+            <h3 className="pt-2 text-lg font-bold text-ink-900">
+              Two different transition rules — do not mix them up
+            </h3>
+            <P>
+              People routinely merge these. They are separate tests answering separate questions.
+            </P>
+            <DataTable
+              columns={[
+                { key: "q", label: "Which date?" },
+                { key: "what", label: "What it decides", highlight: true },
+                { key: "rule", label: "The rule" },
+              ]}
+              rows={[
+                {
+                  q: "Your FILING date",
+                  what: "Which framework governs your application",
+                  rule: "An adjustment application properly postmarked or electronically submitted and accepted before September 18, 2026 continues under the 2022 rule — even if it is still pending long after that date.",
+                },
+                {
+                  q: "Your RECEIPT date",
+                  what: "Which benefits an officer may weigh",
+                  rule: "Benefits received before September 18, 2026 are treated consistently with the 2022 rule. Receipt of means-tested benefits by the applicant on or after that date may be considered in the totality of the circumstances.",
+                },
+              ]}
+              caption="A family can be protected by one of these and not the other. Read them separately."
+            />
 
             <WarnBox title="The protection most coverage misses">
               The rule states that receipt of means-tested benefits{" "}
@@ -871,18 +955,19 @@ export default function Page() {
             </P>
 
             <WarnBox title="A filing detail that matters more than the benefit">
-              On Form I-485 you must <strong>exclude</strong> income received from means-tested
-              public benefits when reporting household income. Including it can lead to a
-              misrepresentation finding — a far more serious problem than the benefit itself. Read
-              the form instructions carefully, or have them reviewed. Note also that USCIS is issuing
-              a revised Form I-485; older editions will not be accepted on or after the effective date.
+              The revised Form I-485 instructions require applicants to{" "}
+              <strong>exclude</strong> income received from means-tested public benefits when
+              reporting household income. Incorrectly including that income may raise a
+              misrepresentation issue. Applicants should follow the current form instructions or
+              obtain individualized legal assistance. Note also that USCIS is issuing a revised Form
+              I-485; older editions will not be accepted on or after the effective date.
             </WarnBox>
 
             <h3 className="pt-2 text-lg font-bold text-ink-900">Returning after a long trip abroad</h3>
             <P>
               A permanent resident returning from a brief trip is generally not treated as seeking a
               new admission. An extended absence can change that analysis. If you have been outside
-              the U.S. for a long stretch and have used benefits, get individualised advice before
+              the U.S. for a long stretch and have used benefits, get individualized advice before
               you travel back rather than after you land.
             </P>
 
@@ -890,7 +975,7 @@ export default function Page() {
             <DecisionFlow
               title="Is public charge actually your question?"
               nodes={[
-                { text: "Are you applying for admission, a visa, or adjustment of status?", kind: "start", branch: "No → public charge does not apply. Renewal and naturalisation are outside it." },
+                { text: "Are you applying for admission, a visa, or adjustment of status?", kind: "start", branch: "No → public charge does not apply. Renewal and naturalization are outside it." },
                 { text: "Are you in an exempt category (refugee, asylee, VAWA, T/U, and others)?", kind: "decision", branch: "Yes → exempt from the public-charge ground." },
                 { text: "Who is actually receiving the benefit?", kind: "decision", branch: "A family member who is not applying → generally not considered." },
                 { text: "Is the benefit cash assistance (SSI, TANF, General Assistance) or long-term institutional care?", kind: "decision", branch: "No, and received before Sept 18, 2026 → not counted under the 2022 rule." },
@@ -925,12 +1010,12 @@ export default function Page() {
                 { key: "i864", label: "I-864 sponsor reimbursement", highlight: true },
               ]}
               rows={[
-                { q: "What is it?", pc: "A test of whether an intending immigrant is likely to become primarily dependent on government support", i864: "A contract debt — a sponsor's promise to repay certain benefits" },
+                { q: "What is it?", pc: "A ground of inadmissibility — whether an applicant is likely at any time to become a public charge, judged on the totality of their circumstances", i864: "A contract debt — a sponsor's promise to repay certain benefits" },
                 { q: "Who decides?", pc: "USCIS or a consular officer", i864: "The benefit-granting agency, and ultimately a court" },
                 { q: "When?", pc: "At admission or adjustment of status — looking forward", i864: "After a benefit has been paid — looking backward" },
                 { q: "Who bears it?", pc: "The immigrant applicant", i864: "The sponsor" },
-                { q: "Consequence", pc: "The application can be denied", i864: "The sponsor may owe money. It cannot block a green card" },
-                { q: "Which benefits?", pc: "Cash aid + long-term institutional care before Sept 18, 2026; discretionary after", i864: "Federal means-tested benefits — commonly SNAP, non-emergency Medicaid, SSI, TANF, CHIP" },
+                { q: "Consequence", pc: "The application can be denied — but no single benefit automatically causes denial", i864: "The sponsor may owe money. It cannot block a green card" },
+                { q: "Which benefits?", pc: "Cash aid + long-term institutional care for receipt before Sept 18, 2026; means-tested benefits may be considered for receipt on or after, as one factor", i864: "Federal means-tested benefits — commonly SNAP, non-emergency Medicaid, SSI, TANF, CHIP" },
                 { q: "When does it end?", pc: "It is a one-time test at the application", i864: "At citizenship, 40 qualifying quarters, death, or loss of LPR status + departure" },
               ]}
               caption="Two different legal tracks that families routinely merge into one fear. You can face one, both, or neither."
@@ -947,12 +1032,12 @@ export default function Page() {
             <H2 id="state-benefits-h">Why your state can change the answer</H2>
             <P>
               States can spend their own money on people federal rules exclude, and they can also
-              narrow a programme federal rules would allow. That is why a national answer to
+              narrow a program federal rules would allow. That is why a national answer to
               &ldquo;can immigrants get X?&rdquo; is close to useless, and why this page routes you
               to your state rather than guessing.
             </P>
             <P>
-              Below are three specific, verified illustrations — one programme each. We do not label
+              Below are three specific, verified illustrations — one program each. We do not label
               any state &ldquo;generous&rdquo; or &ldquo;strict&rdquo;, because the first example
               shows the same state being broader for one group and narrower for another in the same
               year.
@@ -998,7 +1083,7 @@ export default function Page() {
               {[
                 "Apply through .gov sites and your state agency — every link in the sources box below goes to one.",
                 "Never pay to apply for a free benefit. Applications for SNAP, Medicaid, CHIP, WIC and unemployment are free.",
-                "A benefit agency will not ask for your A-number to enrol a child who is a citizen.",
+                "A benefit agency will not ask for your A-number to enroll a child who is a citizen.",
                 "Be wary of anyone promising an eligibility 'guarantee' — no website can determine your eligibility, including this one.",
                 "For immigration questions, use an attorney or a DOJ-accredited representative. Avoid notarios and unlicensed consultants.",
               ].map((t) => (
@@ -1069,6 +1154,17 @@ export default function Page() {
               show the year that applies rather than guessing. When a number matters to a decision,
               click through and confirm it.
             </P>
+            <Callout kind="note" title="Guidance still to come">
+              {publicCharge.guidanceNotice} The primary source for everything on this page about the
+              new framework is{" "}
+              <Ext href={publicCharge.ruleUrl}>
+                DHS final rule {publicCharge.ruleDocNumber} (full text)
+              </Ext>
+              , which publishes in the Federal Register on {publicCharge.rulePublicationDate} at{" "}
+              <Ext href={publicCharge.ruleFrUrl}>federalregister.gov/d/{publicCharge.ruleDocNumber}</Ext>
+              . The statutory ground itself is{" "}
+              <Ext href={publicCharge.statuteUrl}>INA §212(a)(4), 8 U.S.C. §1182(a)(4)</Ext>.
+            </Callout>
             <OfficialSourceBox
               title="Official government sources"
               intro="Every link goes to a government agency or official program page — never to a commercial site that charges for a free application:"

@@ -22,8 +22,8 @@ export const GB_PATH = "/usa-government-benefits-immigrants";
 export const GB_URL = absoluteUrl(GB_PATH);
 
 export const GB_PUBLISHED = "2026-07-16";
-export const GB_UPDATED = "2026-07-16";
-export const GB_UPDATED_HUMAN = "July 16, 2026";
+export const GB_UPDATED = "2026-07-17";
+export const GB_UPDATED_HUMAN = "July 17, 2026";
 export const GB_READING_MINUTES = 34;
 
 /** Topical keywords for Article schema (never stuffed on-page). */

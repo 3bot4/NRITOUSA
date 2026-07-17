@@ -225,14 +225,14 @@ describe("scenario: recently laid-off H-1B worker", () => {
     expect(ui.estimate?.monthly).toBeUndefined();
   });
 
-  it("explains the work-authorisation obstacle rather than saying a flat no", () => {
+  it("explains the work-authorization obstacle rather than saying a flat no", () => {
     const r = screen(laidOff);
-    expect(find(r, "unemployment").immigrationNote).toMatch(/authorised to work/i);
+    expect(find(r, "unemployment").immigrationNote).toMatch(/authorized to work/i);
   });
 
-  it("treats unemployment as not counted for public charge", () => {
+  it("treats unemployment as outside the means-tested category", () => {
     const r = screen(laidOff);
-    expect(find(r, "unemployment").publicCharge).toBe("not-counted");
+    expect(find(r, "unemployment").publicCharge).toBe("outside-category");
   });
 });
 
@@ -292,10 +292,12 @@ describe("scenario: senior immigrant with limited U.S. work history", () => {
     expect(find(r, "medicare").why).toMatch(/five years of continuous residence|Part A premium/i);
   });
 
-  it("is honest that SSI is hard and counted for public charge", () => {
+  it("is honest that SSI is hard, and that receipt is considerable but not decisive", () => {
     const r = screen(senior);
     const ssi = find(r, "ssi");
-    expect(ssi.publicCharge).toBe("counted");
+    // Cash aid is considerable under both frameworks — but never automatic.
+    expect(ssi.publicCharge).toBe("may-consider");
+    expect(ssi.publicChargeNote).toMatch(/not automatically decisive|does not automatically result in denial/i);
     // No 40 quarters → should not be presented as a strong possibility.
     expect(ssi.tier).toBe("unlikely");
   });
@@ -382,7 +384,7 @@ describe("output guarantees", () => {
     }
   });
 
-  it("labels cash assistance as counted and non-cash as not counted, before the transition", () => {
+  it("treats means-tested programs as 'may be considered', never categorically counted/not counted", () => {
     const r = screen(
       inputs({
         persons: [person({ status: "lpr", label: "You", gcYears: 7 })],
@@ -391,10 +393,14 @@ describe("output guarantees", () => {
         work: { currentlyWorking: false, recentlyLaidOff: false, usWorkYears: 12, paidSsTax: "yes" },
       }),
     );
-    expect(find(r, "ssi").publicCharge).toBe("counted");
-    expect(find(r, "tanf").publicCharge).toBe("counted");
-    expect(find(r, "snap").publicCharge).toBe("not-counted");
-    expect(find(r, "medicaid").publicCharge).toBe("not-counted");
+    // Cash aid and non-cash means-tested benefits alike: considerable, not decisive.
+    expect(find(r, "ssi").publicCharge).toBe("may-consider");
+    expect(find(r, "tanf").publicCharge).toBe("may-consider");
+    expect(find(r, "snap").publicCharge).toBe("may-consider");
+    expect(find(r, "medicaid").publicCharge).toBe("may-consider");
+    // Earned benefits sit outside the means-tested category entirely.
+    expect(find(r, "social-security").publicCharge).toBe("outside-category");
+    expect(find(r, "workers-comp").publicCharge).toBe("outside-category");
   });
 
   it("always warns against blindly adding programs together", () => {
@@ -426,6 +432,172 @@ describe("output guarantees", () => {
       expect(p.publicChargeNote.length).toBeGreaterThan(10);
       expect(p.immigrationNote.length).toBeGreaterThan(10);
     }
+  });
+
+  /* ---------------------------------------------------------------- *
+   * PUBLIC-CHARGE OUTPUT SAFETY — DHS final rule 2026-14539.
+   * ---------------------------------------------------------------- */
+
+  it("never emits a banned public-charge phrase for any household", () => {
+    // The four phrases the output must never contain: the first two because DHS
+    // adopted no post-2026-09-18 exclusion list, the last two because no single
+    // benefit is ever outcome-determinative.
+    const banned = [
+      /\bsafe\b/i,
+      /definitely not counted/i,
+      /will hurt your green card/i,
+      /automatically disqualifying/i,
+    ];
+    const statuses: ImmigrationStatus[] = [
+      "us-citizen", "lpr", "h1b", "h4", "f1", "refugee", "asylee", "tps",
+      "parolee", "pending-aos", "other-lawful",
+    ];
+    for (const status of statuses) {
+      const r = screen(
+        inputs({
+          persons: [person({ status, label: "You" })],
+          circumstances: [
+            "needs-food", "low-income", "needs-health-insurance", "disability",
+            "age-65-plus", "recently-lost-job", "child-under-5",
+          ],
+          householdSize: 4,
+          annualIncome: 20000,
+        }),
+      );
+      const blob = [
+        ...r.programs.map((p) => `${p.publicChargeNote} ${p.why} ${p.immigrationNote}`),
+        ...r.immigrationFlags,
+      ].join(" ");
+      for (const b of banned) {
+        expect(blob, `banned phrase ${b} leaked for status ${status}`).not.toMatch(b);
+      }
+    }
+  });
+
+  it("never says a single benefit automatically causes denial", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "pending-aos", label: "You" })],
+        circumstances: ["needs-food", "low-income", "disability", "age-65-plus"],
+        annualIncome: 11000,
+        householdSize: 3,
+      }),
+    );
+    const blob = r.programs.map((p) => p.publicChargeNote).join(" ") + r.immigrationFlags.join(" ");
+    expect(blob).not.toMatch(/automatically (results in|causes) (a )?(denial|public-charge finding)\b(?! )/i);
+    // …and must affirmatively say the opposite somewhere.
+    expect(blob).toMatch(/does not automatically|no single benefit|one factor/i);
+  });
+
+  it("scenario: H-1B applicant personally receiving unemployment → outside the means-tested category", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "h1b", label: "You" })],
+        circumstances: ["recently-lost-job"],
+        work: { currentlyWorking: false, recentlyLaidOff: true, usWorkYears: 6, paidSsTax: "yes" },
+      }),
+    );
+    const ui = find(r, "unemployment");
+    expect(ui.publicCharge).toBe("outside-category");
+    expect(ui.publicChargeNote).toMatch(/generally outside means-tested public-benefit consideration/i);
+  });
+
+  it("scenario: H-1B parent with a U.S.-citizen child receiving SNAP → child's receipt is not the parent's", () => {
+    const r = screen(
+      inputs({
+        persons: [
+          person({ id: "a", label: "You", status: "h1b", age: 38 }),
+          person({ id: "c", label: "Child", status: "us-born-child", age: 7 }),
+        ],
+        householdSize: 2,
+        annualIncome: 18000,
+        circumstances: ["needs-food", "school-age-child"],
+      }),
+    );
+    const snap = find(r, "snap");
+    expect(snap.who).toContain("Child");
+    expect(snap.who).not.toContain("You");
+    expect(snap.publicChargeNote).toMatch(
+      /generally not treated as the applicant's receipt; household financial circumstances may still be relevant/i,
+    );
+  });
+
+  it("scenario: applicant claiming a means-tested tax credit → may be considered from Sept 18, not automatic", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "pending-aos", label: "You" })],
+        tax: { filesUsReturn: "yes", childrenWithSsn: 2, filerHasSsn: "yes" },
+        annualIncome: 42000,
+        householdSize: 4,
+      }),
+    );
+    const ctc = find(r, "ctc");
+    expect(ctc.publicCharge).toBe("may-consider");
+    expect(ctc.publicChargeNote).toMatch(/September 18, 2026/);
+    expect(ctc.publicChargeNote).toMatch(/one factor in the totality/i);
+    expect(ctc.publicChargeNote).toMatch(/does not automatically result in a public-charge finding/i);
+    // Tax eligibility and public charge must be presented as separate questions.
+    expect(ctc.publicChargeNote).toMatch(/separate questions/i);
+    // The old, now-wrong claim must be gone.
+    expect(ctc.publicChargeNote).not.toMatch(/not public assistance/i);
+  });
+
+  it("scenario: adjustment applicant receiving SNAP — both transition rules are stated and kept distinct", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "pending-aos", label: "You" })],
+        circumstances: ["needs-food", "low-income"],
+        annualIncome: 15000,
+        householdSize: 3,
+      }),
+    );
+    const flags = r.immigrationFlags.join(" ");
+    // Filing-date rule
+    expect(flags).toMatch(/postmarked or electronically submitted and accepted before September 18, 2026/i);
+    expect(flags).toMatch(/FILING date/);
+    // Receipt-date rule
+    expect(flags).toMatch(/RECEIPT date/);
+    expect(flags).toMatch(/received before September 18, 2026 are treated consistently with the 2022 rule/i);
+    // Never merged
+    expect(flags).toMatch(/different question from your filing date/i);
+    // SNAP itself carries the pre/post distinction
+    expect(find(r, "snap").publicChargeNote).toMatch(/before September 18, 2026: excluded under the 2022 framework/i);
+    expect(find(r, "snap").publicChargeNote).toMatch(/may be considered — individual review recommended/i);
+  });
+
+  it("scenario: refugee/asylee is flagged as exempt from public charge", () => {
+    for (const status of ["refugee", "asylee"] as ImmigrationStatus[]) {
+      const r = screen(inputs({ persons: [person({ status, label: "You" })], annualIncome: 14000 }));
+      expect(r.immigrationFlags.join(" ")).toMatch(/exempt from the public-charge ground/i);
+    }
+  });
+
+  it("states the correct public-charge definition and never the 'primarily dependent' standard", () => {
+    const r = screen(
+      inputs({ persons: [person({ status: "pending-aos", label: "You" })], annualIncome: 30000 }),
+    );
+    const flags = r.immigrationFlags.join(" ");
+    expect(flags).toMatch(/ground of inadmissibility/i);
+    expect(flags).toMatch(/likely at any time to become a public charge/i);
+    expect(flags).toMatch(/individualized determination based on the totality/i);
+    // The 2022 standard must only ever appear as something REMOVED.
+    expect(flags).toMatch(/without the 2022 rule's "primarily dependent" standard/i);
+    // Renewal + naturalization are outside it.
+    expect(flags).toMatch(/not assessed at green card renewal or at naturalization/i);
+  });
+
+  it("never tells anyone to disenroll", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "pending-aos", label: "You" })],
+        circumstances: ["needs-food", "child-under-5", "pregnant"],
+        annualIncome: 16000,
+        householdSize: 4,
+      }),
+    );
+    const blob = r.immigrationFlags.join(" ") + r.programs.map((p) => p.publicChargeNote).join(" ");
+    expect(blob).toMatch(/does not direct or require anyone to disenroll/i);
+    expect(blob).not.toMatch(/you should (cancel|disenroll|stop receiving)/i);
   });
 
   it("groups results into the documented display buckets", () => {

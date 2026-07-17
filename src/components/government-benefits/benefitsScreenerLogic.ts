@@ -14,7 +14,7 @@
  *    potentially eligible" / "requires agency review".
  *  • EVERY PERSON IS EVALUATED SEPARATELY. A parent's temporary visa must
  *    never suppress a U.S.-citizen child's result. This is the single most
- *    important behaviour in this file and it is covered by tests.
+ *    important behavior in this file and it is covered by tests.
  *  • Program eligibility, public charge, and I-864 sponsor reimbursement are
  *    three independent axes. They are computed independently and never merged.
  *  • Where a rule is genuinely state-set (Medicaid levels, unemployment, TANF,
@@ -68,7 +68,7 @@ export type ImmigrationStatus =
 export const STATUS_LABELS: Record<ImmigrationStatus, string> = {
   "us-citizen": "U.S. citizen",
   "us-born-child": "U.S.-born citizen child",
-  naturalized: "Naturalised citizen",
+  naturalized: "Naturalized citizen",
   lpr: "Green card holder",
   "conditional-lpr": "Conditional green card holder",
   h1b: "H-1B",
@@ -168,10 +168,21 @@ export type Tier =
   /** Raises an immigration question worth reviewing. */
   | "immigration";
 
+/**
+ * How a program sits relative to public charge.
+ *
+ * The old "not-counted" / "counted" pair was replaced: both were categorical
+ * claims the final rule does not support. DHS declined to codify a post-
+ * 2026-09-18 exclusion list, so nothing means-tested can be called permanently
+ * "not counted"; and no benefit is ever automatically decisive, so nothing can
+ * simply be called "counted".
+ */
 export type PublicChargeTreatment =
-  | "not-counted"
-  | "counted"
-  | "review"
+  /** Non-means-tested earned benefit — outside the category DHS weighs. */
+  | "outside-category"
+  /** Means-tested: excluded under 2022, may be considered from 2026-09-18. */
+  | "may-consider"
+  /** Public charge is not assessed here at all (renewal, naturalization). */
   | "not-applicable";
 
 export type Confidence = "higher" | "medium" | "preliminary";
@@ -286,17 +297,50 @@ const isChild = (p: Person) => (p.age ?? 99) < 18;
  * Shared notes
  * ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ *
+ * Public-charge result strings.
+ *
+ * These are legal statements, so they are centralised here rather than written
+ * per-program. Every one is traceable to DHS final rule 2026-14539.
+ *
+ * BANNED outputs (a benefit is never outcome-determinative, and we must never
+ * imply a benefit is permanently "safe" under a framework DHS left open):
+ *   "Safe" · "Definitely not counted" · "Will hurt your green card" ·
+ *   "Automatically disqualifying"
+ * These are enforced by tests.
+ *
+ * TWO SEPARATE TRANSITION RULES — never merge them:
+ *   FILING date  → which framework governs the application (an I-485 accepted
+ *                  before 2026-09-18 stays under the 2022 rule while pending).
+ *   RECEIPT date → which benefits may be weighed.
+ * ------------------------------------------------------------------ */
+
+/** Non-means-tested earned benefits sit outside the category DHS weighs. */
 const PC_EARNED =
-  "Not counted. Earned benefits funded by payroll taxes have never been public-charge negatives, before or after the September 18, 2026 transition.";
+  "Generally outside means-tested public-benefit consideration. Unemployment insurance, Social Security retirement, government pensions and veterans' benefits are earned, non-means-tested benefits rather than means-tested public assistance.";
+
+/** Means-tested tax credits — considerable from the effective date. */
 const PC_TAX =
-  "Not counted. Tax credits are not public assistance and are not treated as public-charge negatives.";
-const PC_NONCASH =
-  "Not counted for benefits received before September 18, 2026 (the 2022 rule excludes it). On or after that date DHS removes the list and officers may weigh means-tested benefits in the totality of the circumstances — no single benefit is decisive, and receipt before the transition is still judged under the old standard.";
+  "Tax eligibility and public-charge treatment are separate questions. Tax credits were not considered under the 2022 framework. For credits received or applied for on or after September 18, 2026, DHS permits officers to consider an applicant's means-tested tax credits as one factor in the totality of the circumstances. Claiming a credit you legally qualify for does not automatically result in a public-charge finding.";
+
+/** Means-tested non-cash benefits (SNAP, Medicaid, CHIP, WIC, housing…). */
+const PC_MEANS_TESTED =
+  "Received before September 18, 2026: excluded under the 2022 framework. Received by the applicant on or after that date: may be considered — individual review recommended. Receipt is one factor in a case-by-case determination and no single benefit automatically determines the outcome. Benefits received by a family member who is not the applicant are generally not treated as the applicant's receipt.";
+
+/** Cash assistance — considered under BOTH frameworks, still not decisive. */
 const PC_CASH =
-  "Counted. This is cash assistance for income maintenance, which the 2022 rule counts and the new framework continues to weigh. If you have an admission or adjustment of status filing ahead, get individual legal advice before applying.";
+  "May be considered — individual review recommended. Under the 2022 framework, receipt of cash assistance for income maintenance is one of the limited benefit categories USCIS considers, but it is not automatically decisive. Under the framework beginning September 18, 2026 it may likewise be considered as one factor. If an admission or adjustment of status filing is ahead, get individualized advice.";
+
+/** Public charge simply does not reach the person or the program. */
+const PC_NA =
+  "Public charge is a ground of inadmissibility assessed at admission or adjustment of status. It is not assessed at green card renewal or at naturalization.";
 
 const SPONSOR_MEANS_TESTED =
   "If the person was sponsored on Form I-864, this is one of the programs an agency may ask the sponsor to reimburse. That is a contract debt owed by the sponsor — it is not public charge and it cannot block a green card.";
+
+/** Appended wherever a household child may receive a means-tested benefit. */
+const PC_CHILD_RECEIPT =
+  "Generally not treated as the applicant's receipt; household financial circumstances may still be relevant.";
 
 /* ------------------------------------------------------------------ *
  * The screener
@@ -331,13 +375,13 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     who: labels(marketplacePeople),
     why: marketplacePeople.length
       ? "Lawfully present immigrants can buy a Marketplace plan. Buying a plan is separate from qualifying for a subsidy."
-      : "Marketplace enrolment requires lawful presence.",
+      : "Marketplace enrollment requires lawful presence.",
     immigrationNote:
       "Marketplace access turns on being lawfully present, which is broader than the 'qualified immigrant' test used by Medicaid and SNAP. Work and student visa holders are lawfully present.",
     stateNote:
-      "Some states run their own exchange with their own enrolment periods and, in a few cases, their own state subsidies.",
-    publicCharge: "not-counted",
-    publicChargeNote: PC_NONCASH,
+      "Some states run their own exchange with their own enrollment periods and, in a few cases, their own state subsidies.",
+    publicCharge: "may-consider",
+    publicChargeNote: PC_MEANS_TESTED,
     applyLabel: "HealthCare.gov",
     applyUrl: "https://www.healthcare.gov/immigrants/lawfully-present-immigrants/",
   });
@@ -371,7 +415,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     incomeNote:
       "The credit is calculated from your estimated annual household income (MAGI) against the cost of the benchmark plan where you live. The Marketplace does the real calculation.",
     stateNote: "Benchmark plan costs — and therefore the subsidy — vary by county.",
-    publicCharge: "not-counted",
+    publicCharge: "may-consider",
     publicChargeNote: PC_TAX,
     applyLabel: "HealthCare.gov — see if you qualify for savings",
     applyUrl: "https://www.healthcare.gov/lower-costs/",
@@ -405,8 +449,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       : "Medicaid uses the 'qualified immigrant' test plus, for many people, a five-year waiting period. Work and student visa holders are generally outside federal Medicaid regardless of income.",
     incomeNote: "State-set. Many states use 138% of the poverty guideline for adults; children's limits are typically much higher.",
     stateNote: `Check your state's actual limits — this is the single most state-dependent program on this page.`,
-    publicCharge: "not-counted",
-    publicChargeNote: PC_NONCASH,
+    publicCharge: "may-consider",
+    publicChargeNote: PC_MEANS_TESTED,
     sponsorNote: SPONSOR_MEANS_TESTED,
     applyLabel: "Medicaid.gov — apply through your state",
     applyUrl: "https://www.medicaid.gov/about-us/where-can-people-get-help-medicaid-chip/index.html",
@@ -430,8 +474,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
         "Many states take the federal option to cover lawfully residing children without the five-year wait. A U.S.-citizen child is covered on their own status, whatever their parents hold.",
       incomeNote: "State-set, and typically generous — do not rule your children out on income alone.",
       stateNote: "Every state runs CHIP differently, including the name it uses.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "InsureKidsNow.gov",
       applyUrl: "https://www.insurekidsnow.gov/",
     });
@@ -448,9 +492,9 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "This is one of the areas where states most often use the federal option — or their own funds — to cover people the general federal rules exclude.",
       stateNote: "Ask your state specifically about pregnancy coverage; do not assume the adult rules apply.",
-      publicCharge: "not-counted",
+      publicCharge: "may-consider",
       publicChargeNote:
-        "Not counted under the 2022 rule. The new framework's preamble specifically notes that officers consider pregnancy to be a temporary condition when weighing Medicaid used for prenatal care.",
+        "Excluded under the 2022 framework for receipt before September 18, 2026. For receipt on or after that date, an applicant's means-tested benefits may be considered — one factor, never automatically decisive. The rule's preamble notes officers consider pregnancy to be a temporary condition when weighing Medicaid used for prenatal care.",
       applyLabel: "Medicaid.gov — pregnancy coverage",
       applyUrl: "https://www.medicaid.gov/medicaid/eligibility/index.html",
     });
@@ -466,9 +510,9 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     immigrationNote:
       "This is available regardless of immigration status. The statute that narrows federal Medicaid payment from October 1, 2026 expressly preserves it.",
     stateNote: "Administered by your state Medicaid agency.",
-    publicCharge: "not-counted",
+    publicCharge: "may-consider",
     publicChargeNote:
-      "Not counted under the 2022 rule. Emergency care should never be avoided over an immigration concern.",
+      "Excluded under the 2022 framework for receipt before September 18, 2026. For receipt on or after that date there is no categorical regulatory exclusion. Emergency care should never be avoided over an immigration concern, and the rule does not require anyone to disenroll from benefits.",
     applyLabel: "Medicaid.gov",
     applyUrl: "https://www.medicaid.gov/medicaid/eligibility/index.html",
   });
@@ -481,8 +525,9 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     who: labels(persons),
     why: "Federally funded health centers see patients regardless of immigration status or ability to pay, charging on a sliding scale based on income.",
     immigrationNote: "No immigration status test and no qualified-immigrant test.",
-    publicCharge: "not-counted",
-    publicChargeNote: "Not counted under the 2022 rule.",
+    publicCharge: "may-consider",
+    publicChargeNote:
+      "Excluded under the 2022 framework for receipt before September 18, 2026. For receipt on or after that date there is no categorical regulatory exclusion — but emergency care should never be avoided over an immigration concern.",
     applyLabel: "Find a health center (HRSA)",
     applyUrl: "https://findahealthcenter.hrsa.gov/",
   });
@@ -499,10 +544,10 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       who: labels(medicarePeople),
       why: q40
         ? "With about 40 credits of covered work, premium-free Part A is generally available at 65."
-        : "Without 40 credits, a green card holder aged 65+ with five years of continuous residence as a permanent resident can generally still enrol by paying a Part A premium.",
+        : "Without 40 credits, a green card holder aged 65+ with five years of continuous residence as a permanent resident can generally still enroll by paying a Part A premium.",
       immigrationNote:
         "Medicare is an earned benefit. Citizens and green card holders with 40 quarters are treated the same. Green card holders short of 40 quarters need five years of continuous permanent residence to buy in.",
-      publicCharge: "not-counted",
+      publicCharge: "outside-category",
       publicChargeNote: PC_EARNED,
       applyLabel: "Medicare.gov — eligibility",
       applyUrl: "https://www.medicare.gov/basics/get-started-with-medicare",
@@ -539,8 +584,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       : "SNAP now requires two things at once: a status on the narrow post-2025 list, and an exception to the five-year bar (being under 18, 40 quarters of work, military service, or five years as a qualified immigrant).",
     incomeNote: "Roughly 130% of the poverty guideline for gross income, but deductions matter and the state calculates it.",
     stateNote: "Applications, interviews, and deductions are handled by your state agency.",
-    publicCharge: "not-counted",
-    publicChargeNote: PC_NONCASH,
+    publicCharge: "may-consider",
+    publicChargeNote: PC_MEANS_TESTED,
     sponsorNote: SPONSOR_MEANS_TESTED,
     applyLabel: "USDA FNS — apply in your state",
     applyUrl: "https://www.fns.usda.gov/snap/state-directory",
@@ -557,8 +602,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "WIC does not require proof of immigration status, and USDA has long stated that WIC participation does not make someone a public charge.",
       incomeNote: "Commonly around 185% of the poverty guideline, set by the state agency.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "USDA FNS — find your state WIC agency",
       applyUrl: "https://www.fns.usda.gov/wic",
     });
@@ -575,8 +620,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "No immigration status test. Federal law preserves school meal access for anyone eligible for public education.",
       incomeNote: "Roughly 130% of the poverty guideline for free meals and 185% for reduced price — the school or district applies it.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "USDA FNS — school meals",
       applyUrl: "https://www.fns.usda.gov/nslp",
     });
@@ -594,7 +639,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "TANF uses the qualified-immigrant test and, in most states, the five-year bar. Some states cover people sooner with state funds.",
       stateNote: "Entirely state-designed. Check your state's actual program.",
-      publicCharge: "counted",
+      publicCharge: "may-consider",
       publicChargeNote: PC_CASH,
       sponsorNote: SPONSOR_MEANS_TESTED,
       applyLabel: "Benefits.gov — TANF by state",
@@ -616,8 +661,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "Head Start does not require immigration status. State child care subsidy rules vary — some tie eligibility to the child, who may be a citizen.",
       stateNote: "Child care assistance is state-administered with waiting lists in many areas.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "Find a Head Start program",
       applyUrl: "https://eclkc.ohs.acf.hhs.gov/center-locator",
     });
@@ -635,13 +680,13 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       program: "Unemployment insurance",
       tier: "state-check",
       who: labels(persons.filter((p) => isLawfullyPresent(p))),
-      why: "Unemployment is an earned, state-run benefit funded by employer taxes. It turns on your recent covered wages, why the job ended, and whether you are able, available, and authorised to work now.",
+      why: "Unemployment is an earned, state-run benefit funded by employer taxes. It turns on your recent covered wages, why the job ended, and whether you are able, available, and authorized to work now.",
       immigrationNote: visaWorkers.length
-        ? `${visaWorkers.map((p) => p.label).join(", ")} is on a work or student visa. Federal law requires that the work was performed while lawfully present and authorised — that part is usually satisfied. The obstacle is the second test: you must be authorised to work *now*. When a sponsored job ends, work authorisation often ends with it unless you are in a grace period or have a pending change of status, which is why many states deny. Apply and let the state decide rather than assuming.`
-        : "Green card holders and citizens have ongoing work authorisation, so the authorisation obstacle that blocks many visa holders does not apply. There is no five-year bar for unemployment.",
+        ? `${visaWorkers.map((p) => p.label).join(", ")} is on a work or student visa. Federal law requires that the work was performed while lawfully present and authorized — that part is usually satisfied. The obstacle is the second test: you must be authorized to work *now*. When a sponsored job ends, work authorization often ends with it unless you are in a grace period or have a pending change of status, which is why many states deny. Apply and let the state decide rather than assuming.`
+        : "Green card holders and citizens have ongoing work authorization, so the authorization obstacle that blocks many visa holders does not apply. There is no five-year bar for unemployment.",
       stateNote:
         "Benefit amounts, formulas, and the treatment of visa holders vary by state. Only your state agency can determine this.",
-      publicCharge: "not-counted",
+      publicCharge: "outside-category",
       publicChargeNote: PC_EARNED,
       applyLabel: "DOL — find your state unemployment office",
       applyUrl: "https://www.dol.gov/general/topic/unemployment-insurance",
@@ -668,7 +713,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     immigrationNote:
       "Social Security is an earned benefit, not a means-tested one. Lawfully present people who have the credits can draw on their record. There is no five-year bar. Credits require work under a Social Security number valid for work.",
     incomeNote: "Your benefit is calculated from your own earnings record, not from current household income.",
-    publicCharge: "not-counted",
+    publicCharge: "outside-category",
     publicChargeNote: PC_EARNED,
     applyLabel: "SSA — check your record and estimate",
     applyUrl: "https://www.ssa.gov/myaccount/",
@@ -701,7 +746,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "SSI's immigration rules are stricter than Medicaid's or SNAP's. Work by a spouse or parent can count toward the 40 quarters for SSI specifically. Refugees and asylees have a time-limited window.",
       incomeNote: "SSI has strict income AND resource limits. SSA calculates both.",
-      publicCharge: "counted",
+      publicCharge: "may-consider",
       publicChargeNote: PC_CASH,
       sponsorNote: SPONSOR_MEANS_TESTED,
       applyLabel: "SSA — SSI for noncitizens",
@@ -724,9 +769,9 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     immigrationNote:
       "This is not a federal means-tested public benefit. It is insurance your employer is required to carry, and it is generally available regardless of immigration status in most states.",
     stateNote: "Entirely state-run; rules and deadlines vary.",
-    publicCharge: "not-counted",
+    publicCharge: "outside-category",
     publicChargeNote:
-      "Not counted. Workers' compensation is not a means-tested public benefit — it is employer-funded insurance. It should not be confused with public assistance.",
+      "Generally outside means-tested public-benefit consideration. Workers' compensation is employer-funded insurance, not means-tested public assistance.",
     applyLabel: "DOL — workers' compensation",
     applyUrl: "https://www.dol.gov/general/topic/workcomp",
   });
@@ -749,7 +794,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     immigrationNote:
       "Tax credits follow tax rules, not the qualified-immigrant test. Beginning with tax year 2025 the filer also needs a valid SSN; on a joint return at least one spouse must have one and the other needs an SSN or ITIN. Visa-holder parents with SSNs and U.S.-citizen children commonly qualify.",
     incomeNote: "The credit phases out at higher incomes and the refundable portion depends on earned income.",
-    publicCharge: "not-counted",
+    publicCharge: "may-consider",
     publicChargeNote: PC_TAX,
     applyLabel: "IRS — Child Tax Credit",
     applyUrl: "https://www.irs.gov/credits-deductions/individuals/child-tax-credit",
@@ -775,9 +820,9 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       ? "The EITC requires a Social Security number valid for employment for the filer, the spouse on a joint return, and every qualifying child. ITIN filers cannot claim it."
       : "The EITC is a refundable credit for people who work and have low to moderate earned income. The outcome depends on your earned income, filing status, and children.",
     immigrationNote:
-      "The SSN requirement is the gate here, not immigration status as such. An SSN issued only to receive a federally funded benefit, and which does not authorise work, does not count. Nonresident aliens generally cannot claim the EITC.",
+      "The SSN requirement is the gate here, not immigration status as such. An SSN issued only to receive a federally funded benefit, and which does not authorize work, does not count. Nonresident aliens generally cannot claim the EITC.",
     incomeNote: "Income limits depend on filing status and number of children; the IRS assistant applies them.",
-    publicCharge: "not-counted",
+    publicCharge: "may-consider",
     publicChargeNote: PC_TAX,
     applyLabel: "IRS — EITC assistant",
     applyUrl: "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc",
@@ -801,7 +846,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       why: "An ITIN household is not shut out of the tax code. The Child and Dependent Care Credit, education credits, and the Saver's Credit follow different rules from the EITC.",
       immigrationNote:
         "The EITC and the Child Tax Credit have hard SSN requirements. Several other credits do not. Do not assume an ITIN means no credits — have a preparer check.",
-      publicCharge: "not-counted",
+      publicCharge: "may-consider",
       publicChargeNote: PC_TAX,
       applyLabel: "IRS — credits and deductions",
       applyUrl: "https://www.irs.gov/credits-deductions-for-individuals",
@@ -826,8 +871,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
         "Federal student aid uses its own 'eligible noncitizen' list — narrower than 'lawfully present' but not the same as the qualified-immigrant test either.",
       stateNote:
         "State aid and in-state tuition are set by state law. Several states grant in-state tuition based on where the student attended high school rather than on immigration status, and some run their own aid programs. Check your state before concluding there is no help.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "StudentAid.gov — eligibility for non-U.S. citizens",
       applyUrl: "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens",
     });
@@ -845,8 +890,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "Federal housing programs use their own eligible-status list. Mixed-status families can often receive prorated assistance based on the eligible members rather than being refused outright.",
       stateNote: "Administered by your local housing agency, not the state or federal government directly.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "HUD — Housing Choice Vouchers",
       applyUrl: "https://www.hud.gov/helping-americans/housing-choice-vouchers",
     });
@@ -859,8 +904,8 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       immigrationNote:
         "LIHEAP rules are set by the state. Many states do not apply an immigration test to the household when a member is eligible.",
       stateNote: "Funding is limited and often runs out — apply as early in the season as you can.",
-      publicCharge: "not-counted",
-      publicChargeNote: PC_NONCASH,
+      publicCharge: "may-consider",
+      publicChargeNote: PC_MEANS_TESTED,
       applyLabel: "HHS — find your state LIHEAP office",
       applyUrl: "https://www.acf.hhs.gov/ocs/map/liheap-map-state-and-territory-contact-listing",
     });
@@ -873,7 +918,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
   );
   if (pcSubject.length) {
     immigrationFlags.push(
-      `Public charge applies when someone applies for admission or adjustment of status. On these facts that could be relevant to ${pcSubject.map((p) => p.label).join(", ")}. It does not apply to green card renewal or naturalisation.`,
+      `Public charge is a ground of inadmissibility used to determine whether someone applying for admission or adjustment of status is likely at any time to become a public charge. On these facts it could be relevant to ${pcSubject.map((p) => p.label).join(", ")}. From September 18, 2026 officers make an individualized determination based on the totality of the applicant's circumstances, without the 2022 rule's "primarily dependent" standard. It is not assessed at green card renewal or at naturalization.`,
     );
   }
   const exempt = persons.filter((p) => ["refugee", "asylee"].includes(p.status));
@@ -888,9 +933,38 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       `${sponsored.map((p) => p.label).join(", ")} was sponsored on Form I-864. That is a separate issue from public charge: if a sponsored immigrant receives a federal means-tested benefit, the agency can ask the sponsor to reimburse it. It creates a debt for the sponsor — it cannot block a green card. The obligation usually ends at citizenship or 40 qualifying quarters.`,
     );
   }
+  /* ---- The two transition rules, always stated, never merged ---- */
   immigrationFlags.push(
-    "On Form I-485 you must exclude income received from means-tested public benefits when reporting household income. Including it can create a misrepresentation problem, which is far more serious than the benefit itself. Read the instructions carefully or have them reviewed.",
+    "Already filed? Adjustment-of-status applications properly postmarked or electronically submitted and accepted before September 18, 2026 continue under the 2022 rule, even if they remain pending after that date. That is about your FILING date.",
   );
+  immigrationFlags.push(
+    "Separately, benefits received before September 18, 2026 are treated consistently with the 2022 rule. Receipt of means-tested benefits by the applicant on or after that date may be considered in the totality of the circumstances. That is about your RECEIPT date — a different question from your filing date.",
+  );
+  immigrationFlags.push(
+    "The rule does not direct or require anyone to disenroll from means-tested public benefits. Do not cancel nutrition assistance, health coverage, or any other necessary help based only on general online information. If the adjustment applicant personally receives a means-tested benefit that will continue after September 18, get individualized advice before making a change.",
+  );
+  immigrationFlags.push(
+    "The revised Form I-485 instructions require applicants to exclude income received from means-tested public benefits when reporting household income. Incorrectly including that income may raise a misrepresentation issue. Follow the current form instructions or obtain individualized legal assistance.",
+  );
+
+  /*
+    Whose receipt is it? DHS "will generally not consider the application for,
+    certification or approval to receive, or receipt of public benefits by the
+    alien's family members" unless that family member is themselves applying.
+    So where a means-tested result lands on a child, say so on the result
+    itself — this is the single most reassuring and most missed point for
+    mixed-status families. The qualification is kept: the applicant's own income
+    is a mandatory factor, so household circumstances can still be relevant.
+  */
+  const childLabels = new Set(persons.filter(isChild).map((p) => p.label));
+  for (const prog of programs) {
+    if (prog.publicCharge !== "may-consider") continue;
+    const onlyChildren = prog.who.length > 0 && prog.who.every((w) => childLabels.has(w));
+    const someChildren = prog.who.some((w) => childLabels.has(w));
+    if (onlyChildren || someChildren) {
+      prog.publicChargeNote = `${prog.publicChargeNote} ${PC_CHILD_RECEIPT}`;
+    }
+  }
 
   notInTotal.push("Medicaid, CHIP, WIC and school meals — these are coverage and food, not cash; a dollar value would be invented");
   notInTotal.push("Any state-run program — the state sets the amount");

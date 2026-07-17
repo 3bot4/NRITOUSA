@@ -88,10 +88,23 @@ const tierStyle: Record<Tier, { icon: string; chip: string; label: string }> = {
   immigration: { icon: "▲", chip: "border-violet-300 bg-violet-50 text-violet-800", label: "Worth professional review" },
 };
 
+/**
+ * Public-charge labels.
+ *
+ * These are legal statements. "Safe", "definitely not counted", "will hurt your
+ * green card" and "automatically disqualifying" are all forbidden — the first
+ * two because DHS adopted no post-September exclusion list, the last two
+ * because no single benefit is ever outcome-determinative. Enforced by tests.
+ */
 const pcStyle: Record<ProgramResult["publicCharge"], { label: string; cls: string }> = {
-  "not-counted": { label: "Public charge: generally not counted", cls: "text-emerald-700" },
-  counted: { label: "Public charge: generally counted", cls: "text-rose-700" },
-  review: { label: "Public charge: requires professional review", cls: "text-violet-700" },
+  "outside-category": {
+    label: "Public charge: generally outside means-tested public-benefit consideration",
+    cls: "text-emerald-700",
+  },
+  "may-consider": {
+    label: "Public charge: may be considered — individual review recommended",
+    cls: "text-amber-700",
+  },
   "not-applicable": { label: "Public charge: does not apply", cls: "text-ink-500" },
 };
 

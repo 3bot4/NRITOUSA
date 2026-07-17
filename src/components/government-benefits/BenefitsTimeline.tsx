@@ -40,8 +40,14 @@ export default function BenefitsTimeline() {
     <div data-timeline className="space-y-5">
       {/* ---------- Answer-first status banner ---------- */}
       <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-4 sm:p-5">
+        {/*
+          NOT "If you are reading this today". That framing implied a live date
+          the page cannot know: it is statically rendered and AS_OF_DATE is a
+          maintained constant, so it would have gone stale and misstated which
+          rules are in force. "Page updated" is what we can actually assert.
+        */}
         <p className="text-xs font-bold uppercase tracking-wide text-brand-700">
-          If you are reading this today — {AS_OF_DATE_HUMAN}
+          Page updated {AS_OF_DATE_HUMAN}
         </p>
         <dl className="mt-3 space-y-2.5 text-sm leading-relaxed">
           <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">

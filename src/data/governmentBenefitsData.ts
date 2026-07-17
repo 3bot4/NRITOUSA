@@ -68,11 +68,11 @@ import type { FaqItem } from "@/lib/seo";
  * ------------------------------------------------------------------ */
 
 /** ISO date every rule on this page was last checked against its source. */
-export const RULES_LAST_VERIFIED = "2026-07-16";
-export const RULES_LAST_VERIFIED_HUMAN = "July 16, 2026";
+export const RULES_LAST_VERIFIED = "2026-07-17";
+export const RULES_LAST_VERIFIED_HUMAN = "July 17, 2026";
 
-/** Number of distinct official sources reviewed (E-E-A-T line). */
-export const OFFICIAL_SOURCES_REVIEWED = 14;
+// OFFICIAL_SOURCES_REVIEWED is derived from officialSourceLinks below — never
+// hand-maintained. (It had already drifted to 14 against a list of 20.)
 
 export const GB_DISCLAIMER =
   "This page is educational information, not legal, immigration, tax, or benefits advice. It does not create an attorney-client relationship. Benefit agencies make all final eligibility decisions, and immigration consequences depend on individual facts. Rules, dollar figures, and dates change — several of the rules described here change during 2026 and 2027. Always confirm with the official agency or a qualified professional before you apply, decline, or disenroll from anything.";
@@ -96,7 +96,10 @@ export const officialSourceLinks: SourceLink[] = [
   { label: "USA.gov — government benefits", href: "https://www.usa.gov/benefits" },
   { label: "USCIS — Public Charge Resources", href: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge" },
   { label: "USCIS Policy Manual Vol. 8, Part G — Public Charge", href: "https://www.uscis.gov/policy-manual/volume-8-part-g" },
-  { label: "Federal Register — Public Charge Ground of Inadmissibility (final rule)", href: "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility" },
+  { label: "DHS final rule 2026-14539 — Public Charge Ground of Inadmissibility (full text)", href: "https://public-inspection.federalregister.gov/2026-14539.pdf" },
+  { label: "Federal Register document page for the final rule", href: "https://www.federalregister.gov/d/2026-14539" },
+  { label: "USCIS — Form I-485 and current instructions", href: "https://www.uscis.gov/i-485" },
+  { label: "INA §212(a)(4), 8 U.S.C. §1182(a)(4) — public charge ground", href: "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1182&num=0&edition=prelim" },
   { label: "HealthCare.gov — coverage for lawfully present immigrants", href: "https://www.healthcare.gov/immigrants/lawfully-present-immigrants/" },
   { label: "HealthCare.gov — immigration statuses that qualify", href: "https://www.healthcare.gov/immigrants/immigration-status/" },
   { label: "Medicaid.gov — noncitizen eligibility in Medicaid & CHIP", href: "https://www.medicaid.gov/medicaid/enrollment-strategies/downloads/overview-of-eligibility-for-non-citizens-in-medicaid-and-chip.pdf" },
@@ -113,6 +116,9 @@ export const officialSourceLinks: SourceLink[] = [
   { label: "HRSA — find a community health center", href: "https://findahealthcenter.hrsa.gov/" },
   { label: "DOJ — find free/low-cost legal help (accredited reps)", href: "https://www.justice.gov/eoir/list-pro-bono-legal-service-providers" },
 ];
+
+/** Number of distinct official sources reviewed (E-E-A-T line). Derived. */
+export const OFFICIAL_SOURCES_REVIEWED = officialSourceLinks.length;
 
 /* ------------------------------------------------------------------ *
  * Verified facts. Every changeable number lives here.
@@ -191,7 +197,7 @@ export const benefitFacts: Record<string, VerifiedFact> = {
     sourceName: "Medicare.gov — eligibility",
     sourceUrl: "https://www.medicare.gov/basics/get-started-with-medicare",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "A green card holder aged 65+ with fewer than 40 quarters may still be able to enrol by paying a Part A premium if they have been a permanent resident with 5 years of continuous residence. Those with 40 quarters generally get premium-free Part A.",
+    note: "A green card holder aged 65+ with fewer than 40 quarters may still be able to enroll by paying a Part A premium if they have been a permanent resident with 5 years of continuous residence. Those with 40 quarters generally get premium-free Part A.",
   },
   fiveYearBar: {
     label: "Five-year bar — federal means-tested benefits for many qualified immigrants",
@@ -221,7 +227,7 @@ export const benefitFacts: Record<string, VerifiedFact> = {
     sourceName: "USCIS — Affidavit of Support",
     sourceUrl: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/affidavit-of-support",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Divorce does NOT end the obligation. The sponsor's duty typically continues until the sponsored immigrant naturalises or is credited with 40 qualifying quarters (usually about 10 years of work).",
+    note: "Divorce does NOT end the obligation. The sponsor's duty typically continues until the sponsored immigrant naturalizes or is credited with 40 qualifying quarters (usually about 10 years of work).",
   },
 };
 
@@ -391,13 +397,47 @@ export const keyDates: KeyDate[] = [
 /* ------------------------------------------------------------------ *
  * Public charge — the two regimes, stated precisely.
  * ------------------------------------------------------------------ */
+/**
+ * PUBLIC CHARGE — the two frameworks, stated precisely.
+ *
+ * Every string below is traceable to DHS final rule 2026-14539. The two
+ * transition rules are DIFFERENT tests and must never be merged:
+ *
+ *   (1) FILING DATE decides WHICH FRAMEWORK governs the application.
+ *       "[T]his final rule will apply to applications for admission made on or
+ *       after the effective date of this final rule and applications for
+ *       adjustment of status postmarked or electronically submitted on or after
+ *       that date and accepted by USCIS pursuant to 8 CFR 103.2(a)(1) and
+ *       (a)(2)." → An I-485 accepted before 2026-09-18 stays under the 2022
+ *       rule even while pending afterwards.
+ *
+ *   (2) RECEIPT DATE decides WHICH BENEFITS may be weighed.
+ *       "DHS will not consider the receipt of previously excluded means-tested
+ *       public benefits if such benefits were received before the effective
+ *       date... However, if the alien continues to receive these benefits on or
+ *       after the effective date... DHS will consider that receipt in the
+ *       totality of the circumstances."
+ *
+ * NEVER publish a post-2026-09-18 "counted / not counted" list. DHS expressly
+ * declined to codify one ("not codifying replacement regulations to exclude
+ * them from consideration, or adopting binding definitions"). Benefit receipt is
+ * ONE factor; no single benefit is outcome-determinative.
+ *
+ * NEVER tell anyone to disenroll. The rule says: "this rule does not direct or
+ * require aliens to disenroll from means-tested public benefits."
+ */
 export const publicCharge = {
   transitionDate: "September 18, 2026",
   transitionDateIso: "2026-09-18",
   ruleDocNumber: "2026-14539",
   ruleFiledDate: "July 16, 2026",
   rulePublicationDate: "July 20, 2026",
-  ruleUrl: "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility",
+  /** Public-inspection copy (authoritative until the FR version publishes). */
+  ruleUrl: "https://public-inspection.federalregister.gov/2026-14539.pdf",
+  /** Permanent Federal Register document link, live from the publication date. */
+  ruleFrUrl: "https://www.federalregister.gov/d/2026-14539",
+  statuteUrl:
+    "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1182&num=0&edition=prelim",
   /** Statutory minimum factors — INA 212(a)(4)(B)(i). Unchanged by either rule. */
   statutoryFactors: [
     "Age",
@@ -406,24 +446,44 @@ export const publicCharge = {
     "Assets, resources, and financial status",
     "Education and skills",
   ],
-  /** What the 2022 rule counts — governs benefits received before the transition. */
+  /**
+   * The 2022 rule's limited list. Governs benefits RECEIVED before the
+   * transition date, and applications accepted before it.
+   */
   countedBefore: [
     "Supplemental Security Income (SSI)",
     "Cash assistance for income maintenance under Temporary Assistance for Needy Families (TANF)",
     "State, local, tribal, or territorial cash assistance for income maintenance (often called General Assistance)",
     "Long-term institutionalization at government expense",
   ],
-  notCountedBefore: [
+  excludedUnder2022: [
     "SNAP and other nutrition programs (WIC, school meals)",
-    "Medicaid — other than for long-term institutionalization",
+    "Medicaid — other than for long-term institutional care",
     "CHIP",
     "Housing benefits and rental assistance",
     "Energy assistance (LIHEAP)",
     "Marketplace premium tax credits and other tax credits",
     "Unemployment insurance and other earned benefits",
     "Emergency disaster relief, immunizations, and testing for communicable diseases",
-    "School lunch, Head Start, child care assistance",
+    "School meals, Head Start, child care assistance",
   ],
+  /**
+   * Non-means-tested earned benefits sit outside the means-tested category the
+   * new framework weighs. This is a category distinction, not an exclusion list.
+   */
+  earnedOutsideCategory: [
+    "Unemployment insurance",
+    "Social Security retirement",
+    "Government pensions",
+    "Veterans' benefits",
+  ],
+  /** USCIS has said more guidance is coming; do not present this as settled. */
+  guidanceNotice:
+    "USCIS has stated that additional implementation guidance will be issued on or before September 18, 2026. This page will be reviewed again when that guidance is published.",
+  filingDateProtection:
+    "Adjustment-of-status applications properly postmarked or electronically submitted and accepted before September 18, 2026 continue under the 2022 rule, even if they remain pending after that date.",
+  noDisenrollNotice:
+    "The rule does not direct or require anyone to disenroll from means-tested public benefits. Do not cancel nutrition assistance, health coverage, or any other necessary help based only on general online information.",
 };
 
 /* ------------------------------------------------------------------ *
@@ -453,7 +513,7 @@ export const statusTableCols: DataCol[] = [
 
 export const statusTableRows: DataRow[] = [
   {
-    status: "U.S. citizen (born or naturalised)",
+    status: "U.S. citizen (born or naturalized)",
     aca: "Often eligible",
     medicaid: "Often eligible — state-dependent",
     food: "Often eligible",
@@ -576,7 +636,7 @@ export const programCatalogCols: DataCol[] = [
   { key: "program", label: "Program" },
   { key: "what", label: "What it is" },
   { key: "who", label: "Who runs it" },
-  { key: "pc", label: "Public charge (before Sept 18, 2026)", highlight: true },
+  { key: "pc", label: "Public charge — receipt before Sept 18, 2026", highlight: true },
 ];
 
 export const programCatalogRows: DataRow[] = [
@@ -585,18 +645,18 @@ export const programCatalogRows: DataRow[] = [
   { program: "CHIP", what: "Children's health coverage", who: "Federal + state", pc: "Not counted" },
   { program: "Emergency Medicaid", what: "Emergency treatment regardless of status", who: "Federal + state", pc: "Not counted" },
   { program: "Community health centers", what: "Sliding-scale clinics, no status test", who: "HRSA-funded", pc: "Not counted" },
-  { program: "Medicare", what: "Health coverage at 65+ / disability", who: "Federal", pc: "Not counted — earned benefit" },
+  { program: "Medicare", what: "Health coverage at 65+ / disability", who: "Federal", pc: "Excluded; earned benefit" },
   { program: "SNAP", what: "Monthly food benefit", who: "Federal + state", pc: "Not counted" },
   { program: "WIC", what: "Food + nutrition for pregnancy and young children", who: "Federal + state", pc: "Not counted" },
   { program: "School meals", what: "Free/reduced breakfast and lunch", who: "Federal + school district", pc: "Not counted" },
-  { program: "TANF", what: "Cash assistance for families", who: "Federal + state", pc: "COUNTED (cash aid)" },
+  { program: "TANF", what: "Cash assistance for families", who: "Federal + state", pc: "Considered (cash aid) — one factor, not decisive" },
   { program: "Child care assistance / Head Start", what: "Subsidised child care and early education", who: "Federal + state", pc: "Not counted" },
-  { program: "Unemployment insurance", what: "Wage replacement after job loss", who: "State", pc: "Not counted — earned benefit" },
-  { program: "Social Security retirement / SSDI / survivors", what: "Earned benefits from payroll taxes", who: "Federal", pc: "Not counted — earned benefit" },
-  { program: "SSI", what: "Cash for aged/blind/disabled with low income", who: "Federal", pc: "COUNTED (cash aid)" },
-  { program: "Workers' compensation", what: "Injury benefit paid via employer insurance", who: "State", pc: "Not counted — not a means-tested public benefit" },
-  { program: "Paid family / medical leave", what: "State wage replacement for leave", who: "State (only some states)", pc: "Not counted — earned benefit" },
-  { program: "Child Tax Credit / EITC / other credits", what: "Tax credits claimed on a return", who: "Federal (IRS)", pc: "Not counted — tax credits are not public assistance" },
+  { program: "Unemployment insurance", what: "Wage replacement after job loss", who: "State", pc: "Excluded; non-means-tested earned benefit" },
+  { program: "Social Security retirement / SSDI / survivors", what: "Earned benefits from payroll taxes", who: "Federal", pc: "Excluded; non-means-tested earned benefit" },
+  { program: "SSI", what: "Cash for aged/blind/disabled with low income", who: "Federal", pc: "Considered (cash aid) — one factor, not decisive" },
+  { program: "Workers' compensation", what: "Injury benefit paid via employer insurance", who: "State", pc: "Excluded; not a means-tested public benefit" },
+  { program: "Paid family / medical leave", what: "State wage replacement for leave", who: "State (only some states)", pc: "Excluded; earned benefit" },
+  { program: "Child Tax Credit / EITC / other credits", what: "Tax credits claimed on a return", who: "Federal (IRS)", pc: "Excluded before Sept 18, 2026; means-tested credits may be considered after" },
   { program: "Federal student aid (FAFSA)", what: "Grants and loans for college", who: "Federal (ED)", pc: "Not counted" },
   { program: "Housing vouchers / public housing", what: "Rent assistance", who: "Federal + local housing agency", pc: "Not counted" },
   { program: "LIHEAP", what: "Help with energy bills", who: "Federal + state", pc: "Not counted" },
@@ -624,7 +684,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Can an H-4 spouse qualify for benefits?",
     answer:
-      "An H-4 spouse is lawfully present, so they can generally buy Marketplace coverage and be included on a family tax return. They are not a qualified immigrant, so SNAP, Medicaid, TANF, and SSI are generally unavailable. WIC, school meals, emergency care, and community health centers do not ask about qualified-immigrant status. If the H-4 spouse has an EAD and a work record, unemployment may be possible depending on the state and on whether they remain authorised to work.",
+      "An H-4 spouse is lawfully present, so they can generally buy Marketplace coverage and be included on a family tax return. They are not a qualified immigrant, so SNAP, Medicaid, TANF, and SSI are generally unavailable. WIC, school meals, emergency care, and community health centers do not ask about qualified-immigrant status. If the H-4 spouse has an EAD and a work record, unemployment may be possible depending on the state and on whether they remain authorized to work.",
   },
   {
     question: "Can F-1 students receive government assistance?",
@@ -644,32 +704,32 @@ export const faqs: FaqItem[] = [
   {
     question: "Does Medicaid affect a green card application?",
     answer:
-      "For benefits received before September 18, 2026, no — the 2022 rule counts only cash assistance for income maintenance and long-term institutionalization at government expense, and ordinary Medicaid is neither. From September 18, 2026, DHS removes that narrow list and officers may weigh means-tested benefits, including non-cash benefits, in a totality-of-the-circumstances assessment. The rule expressly says receipt before the effective date is judged under the old, narrower standard. Public charge also does not apply to everyone — renewals, naturalisation, and exempt categories are outside it.",
+      "For benefits received before September 18, 2026, the 2022 framework considers only cash assistance for income maintenance and long-term institutionalization at government expense, and ordinary Medicaid is neither. From September 18, 2026, DHS removes that narrow list and officers may weigh an applicant's means-tested benefits, including non-cash benefits, in a totality-of-the-circumstances assessment — receipt is one factor and does not automatically result in denial. Two separate protections matter: an application accepted before September 18 stays under the 2022 rule even while pending, and benefits received before that date are judged under the 2022 rule. Public charge also does not apply to everyone — renewals, naturalization, and exempt categories are outside it.",
   },
   {
     question: "Does CHIP affect immigration status?",
     answer:
-      "CHIP is not counted under the 2022 public-charge rule that governs benefits received before September 18, 2026. From that date the regulatory list disappears and officers have discretion, so there is no longer a published list guaranteeing CHIP is excluded. CHIP has never been a basis for deportation, and it is not counted at naturalisation. If you are planning an adjustment of status filing, this is a good question for an immigration attorney rather than a general web page.",
+      "CHIP is excluded under the 2022 framework that governs benefits received before September 18, 2026. From that date DHS provides no categorical regulatory exclusion for means-tested programs, so officers have discretion — but receipt is one factor and does not automatically produce a public-charge finding. Benefits received by a child generally are not treated as benefits received by a parent. Public charge is not assessed at naturalization. If you are planning an adjustment of status filing, this is a question for an immigration attorney rather than a general web page.",
   },
   {
     question: "Does SNAP affect a green card?",
     answer:
-      "Not for benefits received before September 18, 2026 — SNAP is expressly outside the 2022 rule's list. From that date, officers regain discretion to weigh means-tested benefits, and SNAP is a means-tested benefit. Two things soften this: receipt before the effective date is judged under the old standard, and public charge is a totality test in which no single benefit is decisive. Separately, most people who could receive SNAP as green card holders are past the point where public charge applies to them.",
+      "SNAP received before September 18, 2026 is excluded under the 2022 framework. For receipt on or after that date, SNAP is a means-tested benefit and an applicant's receipt may be considered — one factor in a case-by-case determination, never automatically decisive. Two protections matter: an application accepted before September 18 stays under the 2022 rule, and benefits received before that date are judged under the 2022 rule. SNAP received by an eligible child generally is not treated as the parent's receipt. Most people who can receive SNAP as green card holders are already past the stage where public charge applies.",
   },
   {
     question: "Does WIC count under public charge?",
     answer:
-      "WIC is not counted under the 2022 rule that governs receipt before September 18, 2026, and USDA has long stated that WIC participation does not make someone a public charge. WIC also does not require proof of immigration status. After the transition date there is no regulatory list, so nothing is formally guaranteed to be excluded — but WIC is a short-term nutrition program for pregnancy and young children, and the new rule specifically notes that officers consider that pregnancy is a temporary condition.",
+      "WIC received before September 18, 2026 is excluded under the 2022 public-charge framework. Beginning September 18, the DHS rule no longer provides a categorical regulatory exclusion for means-tested programs. Receipt still does not automatically produce a public-charge finding, and benefits received by a child generally are not treated as benefits received by a parent. WIC does not require proof of immigration status. Do not cancel WIC based only on general online information — the rule does not require anyone to disenroll. If the adjustment applicant personally receives a benefit that will continue after September 18, get individualized advice first.",
   },
   {
     question: "Do free school meals affect immigration status?",
     answer:
-      "School meals are not counted under the 2022 public-charge rule, and the National School Lunch and School Breakfast Programs do not test immigration status — they are available to enrolled children. Federal law preserves school meal access for anyone eligible for public education. There is no history of school meals being used against a family in an immigration case.",
+      "School meals received by an eligible child generally are not treated as benefits received by a parent. Meals received before September 18, 2026 are excluded under the 2022 framework; for benefits received on or after that date, the new rule does not provide a categorical list of excluded means-tested programs. The National School Lunch and School Breakfast Programs do not test immigration status, and federal law preserves school meal access for anyone eligible for public education.",
   },
   {
     question: "Can H-1B workers claim unemployment?",
     answer:
-      "It depends on the state, and the practical answer is often no. Unemployment is an earned, state-run benefit funded by employer taxes, and federal law requires that the work was performed while lawfully present and authorised. The obstacle is usually the other test: you must be able, available, and legally authorised to work now. An H-1B worker whose employment ends generally loses work authorisation unless they are in a grace period or have a pending change of status, which is why many states deny. Some states pay for the period while authorisation still exists. File with your state agency and let them decide rather than assuming.",
+      "It depends on the state, and the practical answer is often no. Unemployment is an earned, state-run benefit funded by employer taxes, and federal law requires that the work was performed while lawfully present and authorized. The obstacle is usually the other test: you must be able, available, and legally authorized to work now. An H-1B worker whose employment ends generally loses work authorization unless they are in a grace period or have a pending change of status, which is why many states deny. Some states pay for the period while authorization still exists. File with your state agency and let them decide rather than assuming.",
   },
   {
     question: "Can receiving unemployment affect visa status?",
@@ -679,7 +739,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Can green card holders receive unemployment?",
     answer:
-      "Generally yes, if they meet the same tests as anyone else: enough recent covered wages, job loss through no fault of their own, and being able, available, and authorised to work. Permanent residents have ongoing work authorisation, so the authorisation obstacle that blocks many visa holders does not apply. There is no five-year bar for unemployment — it is an earned benefit, not a means-tested one.",
+      "Generally yes, if they meet the same tests as anyone else: enough recent covered wages, job loss through no fault of their own, and being able, available, and authorized to work. Permanent residents have ongoing work authorization, so the authorization obstacle that blocks many visa holders does not apply. There is no five-year bar for unemployment — it is an earned benefit, not a means-tested one.",
   },
   {
     question: "Can visa holders buy Marketplace insurance?",
@@ -694,12 +754,12 @@ export const faqs: FaqItem[] = [
   {
     question: "Can green card holders receive Medicare?",
     answer:
-      "Yes, in the normal ways. At 65+ with 40 quarters of covered work, a green card holder generally gets premium-free Part A just like a citizen. With fewer than 40 quarters, a green card holder aged 65+ who has been a permanent resident with five years of continuous residence can generally enrol by paying a Part A premium. Medicare is an earned benefit and is not counted under the 2022 public-charge rule.",
+      "Yes, in the normal ways. At 65+ with 40 quarters of covered work, a green card holder generally gets premium-free Part A just like a citizen. With fewer than 40 quarters, a green card holder aged 65+ who has been a permanent resident with five years of continuous residence can generally enroll by paying a Part A premium. Medicare is an earned benefit and is not counted under the 2022 public-charge rule.",
   },
   {
     question: "How many work credits are needed for Social Security?",
     answer:
-      "Forty credits — about ten years of work — for retirement benefits. You earn credits by working in jobs where Social Security tax is withheld, under a Social Security number valid for work, and you can earn at most four credits per year. Disability benefits can require fewer credits depending on your age when you become disabled. If you have worked in both the U.S. and another country, a totalisation agreement may let you combine coverage — though the U.S. and India do not currently have one in force.",
+      "Forty credits — about ten years of work — for retirement benefits. You earn credits by working in jobs where Social Security tax is withheld, under a Social Security number valid for work, and you can earn at most four credits per year. Disability benefits can require fewer credits depending on your age when you become disabled. If you have worked in both the U.S. and another country, a totalization agreement may let you combine coverage — though the U.S. and India do not currently have one in force.",
   },
   {
     question: "Can immigrants receive Social Security retirement benefits?",
@@ -709,17 +769,17 @@ export const faqs: FaqItem[] = [
   {
     question: "Can green card holders receive SSI?",
     answer:
-      "It is much harder than most people expect, and SSI is the one program where the caution is real. SSI requires qualified-immigrant status, and a green card holder who entered on or after August 22, 1996 is generally not eligible for the first five years as a permanent resident — even with 40 quarters. Most permanent residents qualify only through 40 qualifying quarters (work by a spouse or parent can count for SSI) or through military service. SSI is also cash assistance, which means it is counted under the public-charge rule both before and after the September 2026 transition.",
+      "It is much harder than most people expect. SSI requires qualified-immigrant status, and a green card holder who entered on or after August 22, 1996 is generally not eligible for the first five years as a permanent resident — even with 40 quarters. Most permanent residents qualify only through 40 qualifying quarters (work by a spouse or parent can count for SSI) or through military service. On public charge: under the 2022 framework, receipt of SSI is one of the limited benefit categories USCIS considers, but it is not automatically decisive. Under the framework beginning September 18, 2026, SSI may be considered — receipt is one factor and does not automatically result in denial.",
   },
   {
     question: "Can immigrants claim the Child Tax Credit?",
     answer:
-      "Often yes, if the tax rules are met. The child must have a Social Security number valid for employment — a child with an ITIN is not a qualifying child for this credit. Beginning with tax year 2025, the filer also needs a valid Social Security number; on a joint return, at least one spouse must have one and the other needs an SSN or ITIN. The maximum was $2,200 per qualifying child for tax year 2025, with up to $1,700 refundable. Tax credits are not public assistance and are not counted under the 2022 public-charge rule.",
+      "Often yes, if the tax rules are met. The child must have a Social Security number valid for employment — a child with an ITIN is not a qualifying child for this credit. Beginning with tax year 2025, the filer also needs a valid Social Security number; on a joint return, at least one spouse must have one and the other needs an SSN or ITIN. The maximum was $2,200 per qualifying child for tax year 2025, with up to $1,700 refundable. Tax eligibility and public-charge treatment are separate questions: tax credits were not considered under the 2022 framework, but from September 18, 2026 DHS permits officers to consider means-tested tax credits received by an applicant as one factor in the totality of the circumstances. Claiming a credit you legally qualify for does not automatically result in a public-charge finding.",
   },
   {
     question: "Can ITIN holders claim the Earned Income Tax Credit?",
     answer:
-      "No. The EITC requires a Social Security number valid for employment for the filer, the spouse on a joint return, and any qualifying children. An SSN issued only to receive a federally funded benefit, and one that does not authorise work, does not count. ITIN filers may still qualify for other tax benefits — such as the Child and Dependent Care Credit or education credits — so an ITIN household should not assume it gets nothing.",
+      "No. The EITC requires a Social Security number valid for employment for the filer, the spouse on a joint return, and any qualifying children. An SSN issued only to receive a federally funded benefit, and one that does not authorize work, does not count. ITIN filers may still qualify for other tax benefits — such as the Child and Dependent Care Credit or education credits — so an ITIN household should not assume it gets nothing.",
   },
   {
     question: "Can green card holders complete FAFSA?",
@@ -734,7 +794,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Do government benefits affect citizenship applications?",
     answer:
-      "Lawfully receiving a benefit you qualify for is not a bar to naturalisation, and there is no public-charge test at naturalisation. Two things do matter. Getting a benefit through fraud or misrepresentation goes to good moral character. And for men who lived in the U.S. between 18 and 26, Selective Service registration can come up. Public charge is a test for admission and adjustment of status — a different stage entirely.",
+      "Lawfully receiving a benefit you qualify for is not a bar to naturalization, and there is no public-charge test at naturalization. Two things do matter. Getting a benefit through fraud or misrepresentation goes to good moral character. And for men who lived in the U.S. between 18 and 26, Selective Service registration can come up. Public charge is a ground of inadmissibility assessed at admission and adjustment of status — a different stage entirely.",
   },
   {
     question: "Does public charge apply when renewing a green card?",
@@ -742,9 +802,9 @@ export const faqs: FaqItem[] = [
       "No. Renewing a green card with Form I-90 is a document replacement — you are already a permanent resident, and you are not applying for admission or adjustment of status, so there is no public-charge test. This is one of the most common sources of unnecessary fear. Where the question genuinely arises for existing permanent residents is returning from a long trip abroad, where a lengthy absence can raise whether you are seeking a new admission.",
   },
   {
-    question: "Does public charge apply to naturalisation?",
+    question: "Does public charge apply to naturalization?",
     answer:
-      "No. Public charge is a ground of inadmissibility applied when someone seeks admission to the U.S. or adjusts to permanent resident status. Naturalisation applies different tests — continuous residence, physical presence, good moral character, English and civics. Using benefits you were entitled to does not create a public-charge problem at the naturalisation stage.",
+      "No. Public charge is a ground of inadmissibility applied when someone seeks admission to the U.S. or adjusts to permanent resident status. Naturalization applies different tests — continuous residence, physical presence, good moral character, English and civics. Using benefits you were entitled to does not create a public-charge problem at the naturalization stage.",
   },
   {
     question: "Are benefits received by children counted against parents?",
@@ -754,22 +814,22 @@ export const faqs: FaqItem[] = [
   {
     question: "What benefits are considered under the current public-charge rule?",
     answer:
-      "It depends on when the benefit was received. For receipt before September 18, 2026, the 2022 rule governs and counts only cash assistance for income maintenance — SSI, TANF cash aid, and state or local General Assistance — plus long-term institutionalization at government expense. For receipt on or after September 18, 2026, DHS removes that list and does not replace it with a new one. Officers may weigh means-tested public benefits within the totality of the circumstances, and no single benefit is automatically decisive. Because there is no published list for the new framework, be sceptical of any site that gives you a confident 'counts / does not count' table for the post-September period.",
+      "It depends on when the benefit was received and when the application was filed. For receipt before September 18, 2026, the 2022 framework governs and considers only cash assistance for income maintenance — SSI, TANF cash aid, and state or local General Assistance — plus long-term institutionalization at government expense. For receipt on or after September 18, 2026, DHS removes that list and does not replace it. Officers may weigh an applicant's receipt of means-tested public benefits within the totality of the circumstances, and no single benefit automatically determines the outcome. Because DHS did not adopt a regulatory list for the new framework, be skeptical of any site offering a confident 'counts / does not count' table for the post-September period.",
   },
   {
-    question: "What benefits are generally not considered?",
+    question: "What benefits were excluded under the 2022 public-charge rule?",
     answer:
-      "Under the 2022 rule governing receipt before September 18, 2026: SNAP and other nutrition programs, WIC, school meals, CHIP, Medicaid other than long-term institutional care, housing benefits, energy assistance, tax credits, unemployment and other earned benefits, emergency disaster relief, and immunizations or testing for communicable diseases. Earned benefits and tax credits are conceptually different from public assistance and have never been treated as public-charge negatives.",
+      "For benefits received before September 18, 2026, the 2022 framework excludes SNAP and other nutrition programs, WIC, school meals, CHIP, Medicaid other than long-term institutional care, housing assistance, LIHEAP, tax credits, unemployment and other earned benefits, emergency disaster relief, and immunizations or testing for communicable diseases. Beginning September 18, DHS may consider an applicant's receipt of means-tested public benefits, including means-tested tax credits, but no single benefit automatically determines the outcome. Non-means-tested earned benefits such as unemployment insurance, Social Security retirement, government pensions and veterans' benefits remain outside that category.",
   },
   {
     question: "Can an immigration sponsor be required to repay benefits?",
     answer:
-      "Yes, and this is separate from public charge. A sponsor who signed Form I-864 makes a legally enforceable promise to the U.S. government. If the sponsored immigrant receives a federal means-tested public benefit, the agency that paid it can ask the sponsor to reimburse it and can sue if the sponsor refuses. The programs usually named are SNAP, non-emergency Medicaid, SSI, TANF, and CHIP. The obligation typically ends when the sponsored immigrant naturalises, is credited with 40 qualifying quarters, dies, or loses permanent residence and leaves. Divorce does not end it.",
+      "Yes, and this is separate from public charge. A sponsor who signed Form I-864 makes a legally enforceable promise to the U.S. government. If the sponsored immigrant receives a federal means-tested public benefit, the agency that paid it can ask the sponsor to reimburse it and can sue if the sponsor refuses. The programs usually named are SNAP, non-emergency Medicaid, SSI, TANF, and CHIP. The obligation typically ends when the sponsored immigrant naturalizes, is credited with 40 qualifying quarters, dies, or loses permanent residence and leaves. Divorce does not end it.",
   },
   {
     question: "What is the difference between public charge and sponsor repayment?",
     answer:
-      "Different tests, different actors, different consequences. Public charge asks whether an intending immigrant is likely to become primarily dependent on the government, and it decides whether an application for admission or adjustment is approved — it is USCIS or a consular officer looking forward. I-864 reimbursement is contract enforcement: a benefit agency asking the sponsor for money already spent, looking backward. Public charge can block a green card. Sponsor reimbursement cannot — it creates a debt. A family can face one, both, or neither.",
+      "Different tests, different actors, different consequences. Public charge is a ground of inadmissibility asking whether an applicant is likely at any time to become a public charge, judged on the totality of their circumstances; it decides whether an application for admission or adjustment is approved — USCIS or a consular officer looking forward. I-864 reimbursement is contract enforcement: a benefit agency asking the sponsor for money already spent, looking backward. Public charge can block a green card, though no single benefit automatically causes denial. Sponsor reimbursement cannot block a green card — it creates a debt. A family can face one, both, or neither.",
   },
   {
     question: "Do state benefits have different immigration rules?",
@@ -799,7 +859,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Where can I get free or low-cost immigration advice?",
     answer:
-      "The Department of Justice publishes a list of free and low-cost legal service providers, and maintains the roster of accredited representatives — non-attorneys authorised to give immigration advice through recognised organisations. Legal aid organisations, law school clinics, and community organisations in areas with large immigrant populations often run free consultations. Avoid 'notarios' and consultants who are not attorneys or accredited representatives.",
+      "The Department of Justice publishes a list of free and low-cost legal service providers, and maintains the roster of accredited representatives — non-attorneys authorized to give immigration advice through recognized organizations. Legal aid organizations, law school clinics, and community organizations in areas with large immigrant populations often run free consultations. Avoid 'notarios' and consultants who are not attorneys or accredited representatives.",
   },
   {
     question: "How often are benefit rules updated?",
@@ -814,7 +874,7 @@ export const faqs: FaqItem[] = [
   {
     question: "I am already enrolled in a benefit and have an adjustment of status filing coming up. What should I know?",
     answer:
-      "This is the one scenario where the September 2026 transition creates a genuinely time-sensitive question. DHS says officers will not consider non-cash benefits received before the effective date. But it also says that where someone was approved or certified for benefits covering a period extending past the effective date, and there is no evidence they disenrolled or withdrew, the receipt occurring on or after the effective date can be considered. That is a specific interaction between your enrolment and your filing date, and it deserves individual legal advice — not a decision made from a web page, and not a panicked disenrollment from coverage your family needs.",
+      "This is the one scenario where the September 2026 transition creates a genuinely time-sensitive question. DHS says officers will not consider non-cash benefits received before the effective date. But it also says that where someone was approved or certified for benefits covering a period extending past the effective date, and there is no evidence they disenrolled or withdrew, the receipt occurring on or after the effective date can be considered. That is a specific interaction between your enrollment and your filing date, and it deserves individual legal advice — not a decision made from a web page, and not a panicked disenrollment from coverage your family needs.",
   },
 ];
 
@@ -852,7 +912,7 @@ export const stateExamples: StateExample[] = [
     program: "Medi-Cal (the state's Medicaid program)",
     who: "Children aged 0–18, and people who are pregnant",
     detail:
-      "California uses state funds to offer full-scope Medi-Cal to children aged 0–18 regardless of immigration status, and to people who are pregnant during pregnancy and for one year after the birth outcome, regardless of immigration status. The same state narrowed a different group at the same time: from January 1, 2026 adults without Satisfactory Immigration Status can no longer newly enrol in full Medi-Cal, though people already enrolled can keep coverage by renewing on time. One state, broader for children and narrower for adults, in the same year.",
+      "California uses state funds to offer full-scope Medi-Cal to children aged 0–18 regardless of immigration status, and to people who are pregnant during pregnancy and for one year after the birth outcome, regardless of immigration status. The same state narrowed a different group at the same time: from January 1, 2026 adults without Satisfactory Immigration Status can no longer newly enroll in full Medi-Cal, though people already enrolled can keep coverage by renewing on time. One state, broader for children and narrower for adults, in the same year.",
     year: "2026",
     sourceName: "California DHCS — Medi-Cal Immigrant Eligibility FAQs",
     sourceUrl: "https://www.dhcs.ca.gov/medi-cal-immigrant-eligibility-faqs/",
@@ -863,7 +923,7 @@ export const stateExamples: StateExample[] = [
     program: "Paid family and medical leave",
     who: "Workers who meet that state's hours or earnings test",
     detail:
-      "Paid family and medical leave is a state programme, not a federal one, and it simply does not exist in most states. The U.S. Department of Labor maintains the official list: thirteen states plus the District of Columbia have enacted programmes, and Maryland, Delaware, Minnesota and Maine begin paying benefits during 2026. Whether this exists for your family is decided entirely by where you work, not by your immigration status — check the DOL map, then your state's programme for its own eligibility rules.",
+      "Paid family and medical leave is a state program, not a federal one, and it simply does not exist in most states. The U.S. Department of Labor maintains the official list: thirteen states plus the District of Columbia have enacted programs, and Maryland, Delaware, Minnesota and Maine begin paying benefits during 2026. Whether this exists for your family is decided entirely by where you work, not by your immigration status — check the DOL map, then your state's program for its own eligibility rules.",
     year: "2026",
     sourceName: "U.S. DOL Women's Bureau — State Paid Family & Medical Leave Laws",
     sourceUrl: "https://www.dol.gov/agencies/wb/paid-leave/State-Paid-Family-Medical-Leave-Laws",
@@ -874,7 +934,7 @@ export const stateExamples: StateExample[] = [
     program: "Unemployment insurance",
     who: "Anyone claiming after a job loss",
     detail:
-      "There is no national unemployment benefit. Each state sets its own formula, base period, weekly maximum, and duration — and each state decides how it treats a work-visa holder whose authorisation ended with the job. Two families with identical earnings in different states can receive very different amounts, or one may receive nothing. This is the clearest case on this page where a national answer is worthless and only your state agency can tell you.",
+      "There is no national unemployment benefit. Each state sets its own formula, base period, weekly maximum, and duration — and each state decides how it treats a work-visa holder whose authorization ended with the job. Two families with identical earnings in different states can receive very different amounts, or one may receive nothing. This is the clearest case on this page where a national answer is worthless and only your state agency can tell you.",
     year: "2026",
     sourceName: "U.S. DOL — find your state unemployment office",
     sourceUrl: "https://www.dol.gov/general/topic/unemployment-insurance",
