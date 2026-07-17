@@ -668,9 +668,10 @@ export default function Page() {
             <P>
               Disability and survivor benefits work off the same record. SSDI can require fewer
               credits depending on your age when you became disabled, and survivor benefits pay a
-              worker&rsquo;s family from the worker&rsquo;s record. These are different from SSI —
-              which despite the similar name is means-tested, is much harder for immigrants, and{" "}
-              <strong>is</strong> counted under public charge.
+              worker&rsquo;s family from the worker&rsquo;s record. These are different from SSI,
+              which is means-tested and has stricter eligibility rules for many immigrants. SSI may
+              be considered in a public-charge determination, but receiving it does not
+              automatically result in denial.
             </P>
             <Callout kind="crossborder" title="For Indian nationals specifically">
               The United States and India do not currently have a totalization agreement in force.
@@ -800,8 +801,10 @@ export default function Page() {
               August 22, 1996 is generally not eligible for SSI for the first five years as a
               permanent resident <em>even with 40 quarters</em>. Most permanent residents reach SSI
               only through 40 qualifying quarters (where a spouse&rsquo;s or parent&rsquo;s work can
-              count) or through military service. SSI is also cash — so it is counted under public
-              charge, and it is reimbursable by an I-864 sponsor.
+              count) or through military service. SSI is cash assistance and may be considered in a
+              public-charge determination, but it is not automatically decisive. If received by a
+              sponsored immigrant, the benefit agency may also seek reimbursement from a Form I-864
+              sponsor.
             </WarnBox>
           </section>
 

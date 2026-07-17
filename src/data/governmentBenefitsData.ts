@@ -829,7 +829,7 @@ export const faqs: FaqItem[] = [
   {
     question: "What is the difference between public charge and sponsor repayment?",
     answer:
-      "Different tests, different actors, different consequences. Public charge is a ground of inadmissibility asking whether an applicant is likely at any time to become a public charge, judged on the totality of their circumstances; it decides whether an application for admission or adjustment is approved — USCIS or a consular officer looking forward. I-864 reimbursement is contract enforcement: a benefit agency asking the sponsor for money already spent, looking backward. Public charge can block a green card, though no single benefit automatically causes denial. Sponsor reimbursement cannot block a green card — it creates a debt. A family can face one, both, or neither.",
+      "Different tests, different actors, different consequences. Public charge is a ground of inadmissibility asking whether an applicant is likely at any time to become a public charge, judged on the totality of their circumstances; it decides whether an application for admission or adjustment is approved — USCIS or a consular officer looking forward. I-864 reimbursement is contract enforcement: a benefit agency asking the sponsor for money already spent, looking backward. Public charge can block a green card, though no single benefit automatically causes denial. Sponsor reimbursement cannot block a green card — at most it can lead to a repayment claim against the sponsor, subject to the applicable rules. Neither consequence follows automatically merely because a benefit was received. A family can face one, both, or neither.",
   },
   {
     question: "Do state benefits have different immigration rules?",

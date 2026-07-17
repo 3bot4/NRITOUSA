@@ -586,6 +586,86 @@ describe("output guarantees", () => {
     expect(flags).toMatch(/not assessed at green card renewal or at naturalization/i);
   });
 
+  it("scenario: applicant personally receiving SSI → considered, never automatic", () => {
+    // An LPR sponsored on I-864: the one realistic profile where SSI eligibility,
+    // public charge and sponsor reimbursement can all be live at once. (A
+    // pending-AOS filer is not a qualified immigrant, so SSI does not arise.)
+    const r = screen(
+      inputs({
+        persons: [
+          person({ status: "lpr", label: "You", age: 67, gcYears: 7, sponsoredI864: "yes" }),
+        ],
+        circumstances: ["age-65-plus", "disability", "low-income"],
+        annualIncome: 10000,
+        householdSize: 2,
+        work: { currentlyWorking: false, recentlyLaidOff: false, usWorkYears: 12, paidSsTax: "yes" },
+      }),
+    );
+    const ssi = find(r, "ssi");
+    expect(ssi.publicCharge).toBe("may-consider");
+    expect(ssi.publicChargeNote).toMatch(/may be considered — individual review recommended/i);
+    expect(ssi.publicChargeNote).toMatch(/not automatically decisive/i);
+
+    // Sponsor reimbursement: a POTENTIAL claim, kept separate, never automatic.
+    expect(ssi.sponsorNote).toMatch(/may seek reimbursement/i);
+    expect(ssi.sponsorNote).toMatch(/subject to the applicable rules/i);
+    expect(ssi.sponsorNote).toMatch(/it is not public charge/i);
+    expect(ssi.sponsorNote).toMatch(/does not follow automatically/i);
+
+    // The SSI immigration flag must carry the corrected framing.
+    const flags = r.immigrationFlags.join(" ");
+    expect(flags).toMatch(/SSI may be considered in a public-charge determination/i);
+    expect(flags).toMatch(/one factor and does not automatically result in denial/i);
+    expect(flags).toMatch(/separate sponsor-reimbursement questions may also arise/i);
+  });
+
+  it("never emits a categorical SSI or sponsor claim for any household", () => {
+    const banned = [
+      /automatically counted against you/i,
+      /will cause denial/i,
+      /\bdisqualifying\b/i,
+      /sponsor must repay/i,
+      /automatically reimbursable/i,
+      /\breimbursable\b/i,
+      /SSI is counted/i,
+      /counted under public charge/i,
+      /counted under the public-charge rule/i,
+    ];
+    for (const status of ["lpr", "pending-aos", "refugee", "us-citizen"] as ImmigrationStatus[]) {
+      const r = screen(
+        inputs({
+          persons: [person({ status, label: "You", age: 67, sponsoredI864: "yes" })],
+          circumstances: ["age-65-plus", "disability", "low-income", "needs-food"],
+          annualIncome: 10000,
+          householdSize: 3,
+          work: { currentlyWorking: false, recentlyLaidOff: false, usWorkYears: 12, paidSsTax: "yes" },
+        }),
+      );
+      const blob = [
+        ...r.programs.map((p) => `${p.publicChargeNote} ${p.sponsorNote ?? ""} ${p.why}`),
+        ...r.immigrationFlags,
+      ].join(" ");
+      for (const b of banned) {
+        expect(blob, `banned SSI/sponsor phrase ${b} leaked for ${status}`).not.toMatch(b);
+      }
+    }
+  });
+
+  it("keeps cash-aid programs consistent — TANF is framed like SSI, not categorically", () => {
+    const r = screen(
+      inputs({
+        persons: [person({ status: "lpr", label: "You", gcYears: 7 })],
+        circumstances: ["low-income", "needs-food"],
+        annualIncome: 12000,
+        householdSize: 3,
+      }),
+    );
+    const flags = r.immigrationFlags.join(" ");
+    expect(flags).toMatch(/limited benefit categories USCIS considers under the 2022 framework/i);
+    expect(flags).toMatch(/does not automatically result in denial/i);
+    expect(flags).not.toMatch(/counted under the public-charge rule both before and after/i);
+  });
+
   it("never tells anyone to disenroll", () => {
     const r = screen(
       inputs({

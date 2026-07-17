@@ -335,8 +335,15 @@ const PC_CASH =
 const PC_NA =
   "Public charge is a ground of inadmissibility assessed at admission or adjustment of status. It is not assessed at green card renewal or at naturalization.";
 
+/**
+ * Sponsor reimbursement is a POTENTIAL contractual repayment claim, never an
+ * automatic consequence of receiving a benefit. Never write "reimbursable" or
+ * "the sponsor must repay" — both assert an outcome that does not follow
+ * automatically. Kept explicitly distinct from public charge (an admissibility
+ * determination); neither consequence is automatic. Enforced by tests.
+ */
 const SPONSOR_MEANS_TESTED =
-  "If the person was sponsored on Form I-864, this is one of the programs an agency may ask the sponsor to reimburse. That is a contract debt owed by the sponsor — it is not public charge and it cannot block a green card.";
+  "If the person was sponsored on Form I-864, the responsible agency may seek reimbursement from the sponsor for this program, subject to the applicable rules. That is a potential contractual repayment claim against the sponsor — it is not public charge, it does not follow automatically from receiving the benefit, and it cannot block a green card.";
 
 /** Appended wherever a household child may receive a means-tested benefit. */
 const PC_CHILD_RECEIPT =
@@ -646,7 +653,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
       applyUrl: "https://www.benefits.gov/benefit/613",
     });
     immigrationFlags.push(
-      "TANF is cash assistance for income maintenance — one of the few benefits counted under the public-charge rule both before and after the September 18, 2026 transition. If anyone in the household has an admission or adjustment of status filing ahead, get legal advice before applying for cash aid.",
+      "TANF is cash assistance for income maintenance — one of the limited benefit categories USCIS considers under the 2022 framework, and a benefit that may likewise be considered under the framework beginning September 18, 2026. Receipt is one factor and does not automatically result in denial. If anyone in the household has an admission or adjustment of status filing ahead, get individualized legal advice before applying for cash aid.",
     );
   }
 
@@ -754,7 +761,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
     });
     if (ssiPeople.length) {
       immigrationFlags.push(
-        "SSI is cash assistance for income maintenance and is counted under the public-charge rule in both the current and the new framework. It is also a program a sponsor may be asked to reimburse. If anyone in the household has an adjustment of status filing ahead, this specific combination is worth paid legal advice.",
+        "SSI may be considered in a public-charge determination. Receipt is one factor and does not automatically result in denial. If a Form I-864 applies, separate sponsor-reimbursement questions may also arise — that is a potential contractual repayment claim against the sponsor, not an admissibility finding, and neither consequence follows automatically from receiving the benefit. If anyone in the household has an adjustment of status filing ahead, this combination is worth individualized legal advice.",
       );
     }
   }
@@ -930,7 +937,7 @@ export function screen(inputs: ScreenerInputs): ScreenerResult {
   const sponsored = persons.filter((p) => p.sponsoredI864 === "yes");
   if (sponsored.length) {
     immigrationFlags.push(
-      `${sponsored.map((p) => p.label).join(", ")} was sponsored on Form I-864. That is a separate issue from public charge: if a sponsored immigrant receives a federal means-tested benefit, the agency can ask the sponsor to reimburse it. It creates a debt for the sponsor — it cannot block a green card. The obligation usually ends at citizenship or 40 qualifying quarters.`,
+      `Form I-864 sponsorship applies to: ${sponsored.map((p) => p.label).join(", ")}. That is a separate issue from public charge. If a sponsored immigrant receives a federal means-tested benefit, the responsible agency may seek reimbursement from the sponsor, subject to the applicable rules — a potential contractual repayment claim, not an automatic debt, and not an admissibility finding. It cannot block a green card. The obligation usually ends at citizenship or 40 qualifying quarters.`,
     );
   }
   /* ---- The two transition rules, always stated, never merged ---- */
