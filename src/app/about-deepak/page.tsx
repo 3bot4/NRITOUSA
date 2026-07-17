@@ -440,6 +440,18 @@ export default function AboutDeepakPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-6 text-sm text-ink-500">
+              Also published in IndiaWest:{" "}
+              <a
+                href="https://indiawest.com/trump-accounts-and-birthright-citizenship-what-h-1b-families-should-know/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-600 hover:text-brand-700"
+              >
+                Trump Accounts &amp; Birthright Citizenship: What H-1B Families
+                Should Know ↗
+              </a>
+            </p>
           </div>
         </Container>
       </section>
