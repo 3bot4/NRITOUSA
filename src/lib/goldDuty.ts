@@ -3,7 +3,11 @@
  * Every constant comes from goldDutyConfig (src/data/goldCustomsData.ts) —
  * nothing is hardcoded here — so a CBIC rule change is a one-place edit.
  * Unit-tested in goldDuty.test.ts (acceptance cases: under limit, over-limit
- * jewellery, bars, child traveler, family of three).
+ * jewellery, bars, child traveler, family of three, over-cap, invalid input).
+ *
+ * The estimate uses the USER'S OWN value estimate. Customs actually assesses
+ * duty on CBIC-notified tariff values and notified exchange rates — the UI
+ * says so next to every result.
  */
 import { goldDutyConfig as cfg } from "@/data/goldCustomsData";
 
@@ -22,14 +26,19 @@ export interface GoldDutyInput {
 }
 
 export interface GoldDutyResult {
-  /** Grams covered by the duty-free jewellery allowance. */
+  /** Grams covered by the duty-free jewellery allowance (Rule 6). */
   freeGrams: number;
   dutiableGrams: number;
   freeValueUsd: number;
   dutiableValueUsd: number;
-  /** Duty rate applied to the dutiable portion (percent). */
+  /** Total duty rate applied to the dutiable portion (percent). */
   ratePct: number;
+  /** Rate components for display: [label, percent] pairs. */
+  rateComponents: { label: string; pct: number }[];
+  /** True when the concessional 6% passenger-gold route applies. */
   eligibleConcession: boolean;
+  /** True when the standard (illustrative) assessment was used. */
+  usedIllustrativeStandardRate: boolean;
   /** True when the total exceeds the per-passenger cap (1 kg). */
   overCap: boolean;
   dutyUsd: number;
@@ -40,11 +49,13 @@ export interface GoldDutyResult {
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
 export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
-  const grams = Math.max(0, input.grams);
-  const valueUsd = Math.max(0, input.valueUsd);
+  const grams = Number.isFinite(input.grams) ? Math.max(0, input.grams) : 0;
+  const valueUsd = Number.isFinite(input.valueUsd) ? Math.max(0, input.valueUsd) : 0;
   const warnings: string[] = [];
 
-  // Duty-free allowance: jewellery only, >1 year abroad, weight by category.
+  // Rule 6 allowance: jewellery only, >1 year abroad, weight by passenger
+  // category. Eligibility is passenger-specific (resident/tourist of Indian
+  // origin) — the UI asks the residency question directly.
   const isFemale = input.category === "woman" || input.category === "girl-child";
   const isChild = input.category === "girl-child" || input.category === "boy-child";
   let freeGrams = 0;
@@ -54,20 +65,20 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
   ) {
     freeGrams = Math.min(
       grams,
-      isFemale ? cfg.freeJewelleryGramsWoman : cfg.freeJewelleryGramsOther,
+      isFemale ? cfg.freeJewelleryGramsFemale : cfg.freeJewelleryGramsOther,
     );
     if (isChild) {
       warnings.push(
-        "The Baggage Rules 2026 do not separately spell out a child's allowance. This estimate assumes the adult weight limits apply — verify with CBIC before relying on it.",
+        "Rule 6 speaks of passengers without a separate child provision. This estimate assumes the same weights apply to an eligible child — verify with CBIC before relying on it.",
       );
     }
   } else if (input.form === "jewellery") {
     warnings.push(
-      "The duty-free jewellery allowance generally requires more than 1 year of stay abroad — your stay is shorter, so the full weight is treated as dutiable.",
+      "The Rule 6 jewellery allowance requires more than 1 year of residence abroad — this traveler's stay is shorter, so the full weight is treated as dutiable.",
     );
   } else {
     warnings.push(
-      "Gold coins, bars, and biscuits get no duty-free allowance — the full weight is dutiable.",
+      "Gold coins, bars, and biscuits get no duty-free jewellery allowance — the full weight is dutiable and must be declared at the Red Channel.",
     );
   }
 
@@ -76,19 +87,33 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
   const freeValueUsd = round2(freeGrams * valuePerGram);
   const dutiableValueUsd = round2(dutiableGrams * valuePerGram);
 
-  // Concessional 6% route vs standard baggage rate.
+  // Concessional passenger-gold route (Notification 45/2025-Customs) vs the
+  // illustrative standard assessment.
   const overCap = grams > cfg.maxGramsPerPassenger;
   const eligibleConcession =
     input.monthsAbroad >= cfg.minMonthsAbroadForConcession && !overCap;
-  const ratePct = eligibleConcession ? cfg.concessionalRatePct : cfg.standardRatePct;
+  const ratePct = eligibleConcession
+    ? cfg.concessionalRatePct
+    : cfg.standardRatePctIllustrative;
+  const rateComponents = eligibleConcession
+    ? [
+        { label: "Customs duty (Notification 45/2025-Customs)", pct: cfg.concessionalBcdPct },
+        { label: "AIDC", pct: cfg.concessionalAidcPct },
+      ]
+    : [{ label: "Illustrative standard baggage assessment — confirm with Customs", pct: cfg.standardRatePctIllustrative }];
 
   if (overCap) {
     warnings.push(
-      `The eligible-passenger route is capped at ${cfg.maxGramsPerPassenger} g (1 kg) per person. Amounts above that are not permitted as passenger baggage — this estimate applies the standard rate, but expect the excess to be refused or detained.`,
+      `The eligible-passenger route is capped at ${cfg.maxGramsPerPassenger} g (1 kg) per person. Amounts above that are not permitted as passenger baggage — expect the excess to be refused or detained. The figure shown is only an illustration.`,
     );
   } else if (!eligibleConcession) {
     warnings.push(
-      `The concessional ${cfg.concessionalRatePct}% rate generally requires at least ${cfg.minMonthsAbroadForConcession} months abroad — the standard baggage rate of about ${cfg.standardRatePct}% is used instead.`,
+      `The concessional ${cfg.concessionalRatePct}% route generally requires at least ${cfg.minMonthsAbroadForConcession} months abroad. The estimate uses an illustrative ${cfg.standardRatePctIllustrative}% standard assessment — the actual general baggage assessment may differ and can be substantially higher; confirm with Customs.`,
+    );
+  }
+  if (eligibleConcession && dutiableGrams > 0) {
+    warnings.push(
+      "Duty on the concessional route must be paid in convertible foreign currency, and customs values the gold at CBIC-notified tariff values — not your purchase receipt. Your estimate below uses your own value.",
     );
   }
 
@@ -101,7 +126,9 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
     freeValueUsd,
     dutiableValueUsd,
     ratePct,
+    rateComponents,
     eligibleConcession,
+    usedIllustrativeStandardRate: !eligibleConcession,
     overCap,
     dutyUsd,
     dutyInr,

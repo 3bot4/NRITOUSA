@@ -33,12 +33,12 @@ describe("calcGoldDuty", () => {
     expect(r.dutiableValueUsd).toBe(20000);
     expect(r.ratePct).toBe(cfg.concessionalRatePct);
     expect(r.dutyUsd).toBe(1200);
-    expect(r.warnings.join(" ")).toMatch(/no duty-free allowance/i);
+    expect(r.warnings.join(" ")).toMatch(/no duty-free jewellery allowance/i);
   });
 
   it("handles a child traveler with the gender-based weight and a verify-with-CBIC warning (girl, 14 months, 50 g / $5,000)", () => {
     const r = calcGoldDuty({ category: "girl-child", monthsAbroad: 14, form: "jewellery", grams: 50, valueUsd: 5000 });
-    expect(r.freeGrams).toBe(cfg.freeJewelleryGramsWoman); // 40 g free
+    expect(r.freeGrams).toBe(cfg.freeJewelleryGramsFemale); // 40 g free
     expect(r.dutiableGrams).toBe(10);
     expect(r.dutyUsd).toBe(60); // $1,000 × 6%
     expect(r.warnings.join(" ")).toMatch(/child/i);
@@ -59,7 +59,7 @@ describe("calcGoldDuty", () => {
     expect(dad.dutyUsd).toBe(66); // 6% concessional
 
     expect(uncle.freeGrams).toBe(0); // <12 months → no allowance
-    expect(uncle.ratePct).toBe(cfg.standardRatePct); // <6 months → 36%
+    expect(uncle.ratePct).toBe(cfg.standardRatePctIllustrative); // <6 months → 36%
     expect(uncle.dutyUsd).toBe(792); // $2,200 × 36%
 
     // No pooling: mom's spare allowance never offsets dad's excess.
@@ -71,7 +71,38 @@ describe("calcGoldDuty", () => {
     const r = calcGoldDuty({ category: "man", monthsAbroad: 24, form: "bars", grams: 1200, valueUsd: 120000 });
     expect(r.overCap).toBe(true);
     expect(r.eligibleConcession).toBe(false);
-    expect(r.ratePct).toBe(cfg.standardRatePct);
+    expect(r.ratePct).toBe(cfg.standardRatePctIllustrative);
     expect(r.warnings.join(" ")).toMatch(/1 kg/i);
+  });
+});
+
+describe("calcGoldDuty edge cases", () => {
+  it("handles empty/invalid inputs without NaN", () => {
+    const r = calcGoldDuty({ category: "man", monthsAbroad: 12, form: "jewellery", grams: NaN, valueUsd: NaN });
+    expect(r.dutyUsd).toBe(0);
+    expect(r.dutyInr).toBe(0);
+    expect(Number.isFinite(r.dutiableValueUsd)).toBe(true);
+  });
+
+  it("applies boundaries exactly at 12 months (allowance) and 6 months (concession)", () => {
+    const at12 = calcGoldDuty({ category: "woman", monthsAbroad: 12, form: "jewellery", grams: 40, valueUsd: 4000 });
+    expect(at12.freeGrams).toBe(40);
+    const at6 = calcGoldDuty({ category: "man", monthsAbroad: 6, form: "coins", grams: 100, valueUsd: 10000 });
+    expect(at6.eligibleConcession).toBe(true);
+    expect(at6.ratePct).toBe(cfg.concessionalRatePct);
+  });
+
+  it("survives very large values and clamps negatives", () => {
+    const big = calcGoldDuty({ category: "man", monthsAbroad: 24, form: "bars", grams: 1000, valueUsd: 1e9 });
+    expect(big.dutyUsd).toBe(1e9 * cfg.concessionalRatePct / 100);
+    const neg = calcGoldDuty({ category: "man", monthsAbroad: 24, form: "bars", grams: -50, valueUsd: -100 });
+    expect(neg.dutiableGrams).toBe(0);
+    expect(neg.dutyUsd).toBe(0);
+  });
+
+  it("exposes the rate formula components for display", () => {
+    const r = calcGoldDuty({ category: "man", monthsAbroad: 24, form: "bars", grams: 100, valueUsd: 10000 });
+    expect(r.rateComponents.map((c) => c.pct)).toEqual([cfg.concessionalBcdPct, cfg.concessionalAidcPct]);
+    expect(r.rateComponents.reduce((s, c) => s + c.pct, 0)).toBe(r.ratePct);
   });
 });

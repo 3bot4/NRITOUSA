@@ -3,12 +3,16 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
+import TrackedSourceBox from "@/components/tools/TrackedSourceBox";
+import TrackedLink from "@/components/tools/TrackedLink";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import NriTdsEstimator from "@/components/tools/NriTdsEstimator";
+import NriTdsChecklists from "@/components/tools/NriTdsChecklists";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
   essentialsArticleJsonLd,
+  essentialsSoftwareAppJsonLd,
   otherEssentialsLinks,
   NRI_TDS_PUBLISHED,
   NRI_TDS_UPDATED,
@@ -20,7 +24,11 @@ import {
   ltcgTdsRows,
   stcgRow,
   form13Steps,
+  threeConcepts,
+  ownershipExamples,
+  transactionTimeline,
   nriTdsSourceLinks,
+  nriTdsSources,
   NRI_TDS_DISCLAIMER,
 } from "@/data/nriPropertySaleTdsData";
 
@@ -30,6 +38,12 @@ const DESC =
   "TDS rates when an NRI sells property in India, how to apply for a lower-TDS certificate (Form 13), capital gains, US tax reporting & repatriation. 2026 guide.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
+
+const sourceLink = (href: string, label: string) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-600 underline underline-offset-2">
+    {label}
+  </a>
+);
 
 interface Block {
   h3?: string;
@@ -41,28 +55,30 @@ interface Section {
   blocks: Block[];
 }
 
-const SECTIONS: Section[] = [
+const SECTIONS_TOP: Section[] = [
   {
     id: "full-sale-price",
-    h2: "Why TDS on Sale of Property for NRIs Hits the Full Sale Price — Not Your Gain",
+    h2: "Why TDS on Sale of Property for NRIs Is Commonly Withheld on the Full Sale Price",
     blocks: [
       {
         paras: [
           <>
             When a <em>resident</em> sells property, the buyer deducts a modest 1% under the familiar rules. When the
             seller is an NRI, a different provision applies — {cfg.sectionOld}, carried forward as {cfg.sectionNew} for
-            deductions from April 1, 2026 — and it instructs the buyer to deduct tax on the <strong>entire sale
-            consideration</strong>, not your profit. Sell a flat for ₹2 crore that you bought for ₹1.6 crore, and the
-            buyer&apos;s default obligation is roughly 14.95% of ₹2 crore — about ₹29.9 lakh withheld against a true
-            tax bill closer to ₹5–6 lakh on the ₹40 lakh gain.
+            deductions from April 1, 2026. The law applies to <strong>sums chargeable to tax</strong> — it does not
+            declare your entire sale price to be income. In practice, though, without an Assessing Officer&apos;s
+            lower/nil certificate or another accepted determination, buyers commonly withhold using the{" "}
+            <strong>gross amount payable</strong>, because they cannot independently establish the NRI seller&apos;s
+            taxable gain and the shortfall liability would be theirs. Sell a flat for ₹2 crore bought at ₹1.6 crore,
+            and the common withholding is roughly ₹26–30 lakh against a true tax bill closer to ₹5–6 lakh on the ₹40
+            lakh gain.
           </>,
           <>
-            This is not the government claiming your principal; it is a withholding mechanism. India cannot easily
-            chase a seller who has left the country, so it collects up front from the buyer and settles up later —
-            either through a refund when you file your Indian return, or, far better, by never over-deducting in the
-            first place via a lower-TDS certificate (next section). The practical takeaway when you are an NRI selling
-            property in India: the TDS question must be planned <em>before</em> the sale agreement is signed, because
-            the deduction happens at payment, and getting over-deducted money back means waiting on{" "}
+            This is a withholding mechanism, not confiscation. India collects up front from the buyer and settles later
+            — either through a refund when you file your Indian return, or, far better, by never over-withholding in
+            the first place via a lower-TDS certificate (next section). The practical takeaway when you are an NRI
+            selling property in India: the TDS question must be planned <em>before</em> the sale agreement is signed,
+            because the deduction happens at payment, and getting over-withheld money back means waiting on{" "}
             <Link href="/india-tax-compliance/nri-property-sale-tds-refund" className="font-semibold text-brand-600 underline underline-offset-2">
               the NRI property-sale TDS refund process
             </Link>{" "}
@@ -76,7 +92,7 @@ const SECTIONS: Section[] = [
           <>
             Expect a well-advised buyer to be cautious to the point of paranoia — the liability for wrong deduction
             sits on them, with interest and penalties. They will ask for your PAN, proof of the holding period, and
-            either deduct at the full default rate or ask you to produce a lower-deduction certificate naming them.
+            either withhold at the full default rate or ask you to produce a lower-deduction certificate naming them.
             Sellers who treat this as buyer unreasonableness lose deals; sellers who arrive with the certificate close
             faster and at better terms. If the flat was inherited, the previous owner&apos;s holding period and cost
             generally carry over to you — a point worth having your CA document early, since it usually converts the
@@ -94,12 +110,15 @@ const SECTIONS: Section[] = [
         paras: [
           <>
             Searches for how to <em>avoid</em> TDS on sale of property by NRI are really asking the wrong question —
-            TDS on an NRI sale cannot be lawfully avoided, and schemes that promise otherwise (under-reporting the
-            consideration, routing through a resident relative) create real prosecution risk for both sides. What the
-            law does provide is a way to <strong>reduce the deduction to your actual tax liability</strong>: a lower or
-            nil deduction certificate issued by the Assessing Officer under the Form 13 process. Nil is genuinely
-            possible where exemptions (Section 54/54EC reinvestment, treaty positions, brought-forward losses) wipe out
-            the taxable gain.
+            withholding on an NRI sale cannot be lawfully avoided, and schemes that promise otherwise (under-reporting
+            the consideration, routing through a resident relative) create real prosecution risk for both sides. What
+            the law provides is a way to <strong>align the withholding with your actual expected liability</strong>:
+            Form 13 is the principal <em>seller-side</em> route for requesting a lower or nil deduction certificate
+            from the Assessing Officer — see the{" "}
+            {sourceLink(nriTdsSources.ldcGuidance, "Income Tax Department's official lower/no-deduction guidance")}.
+            The buyer should take professional advice about any payer-side determination procedure available under
+            current law. Nil is genuinely possible where exemptions (Section 54/54EC reinvestment, treaty positions,
+            brought-forward losses) wipe out the taxable gain.
           </>,
         ],
       },
@@ -107,10 +126,10 @@ const SECTIONS: Section[] = [
         h3: "The Form 13 timeline, realistically",
         paras: [
           <>
-            The steps and timing below are typical as of {NRI_TDS_UPDATED_HUMAN}; jurisdictions differ, and the
-            certificate must be in hand <em>before</em> the buyer pays, so start the moment a buyer is identified. For
-            the deeper procedural walkthrough — documents, portal mechanics, common rejection reasons — see the
-            dedicated{" "}
+            The steps below reflect practitioner experience as of {NRI_TDS_UPDATED_HUMAN} — there is{" "}
+            <strong>no statutory processing deadline</strong>, jurisdictions differ, and the certificate must be in
+            hand <em>before</em> the buyer pays, so start the moment a buyer is identified. For the deeper procedural
+            walkthrough — documents, portal mechanics, common rejection reasons — see the dedicated{" "}
             <Link href="/india-tax-compliance/form-13-lower-tds-certificate-nri" className="font-semibold text-brand-600 underline underline-offset-2">
               Form 13 lower TDS certificate guide for NRIs
             </Link>
@@ -120,6 +139,9 @@ const SECTIONS: Section[] = [
       },
     ],
   },
+];
+
+const SECTIONS_BOTTOM: Section[] = [
   {
     id: "capital-gains",
     h2: "Capital Gains Calculation for NRIs",
@@ -128,27 +150,29 @@ const SECTIONS: Section[] = [
         h3: "Capital gains vs TDS for NRI on sale of property: two different numbers",
         paras: [
           <>
-            Property held more than {cfg.ltcgHoldingMonths} months is long-term. For transfers on or after July 23,
-            2024, long-term gains are taxed at a flat <strong>{cfg.ltcgBasePct}% without indexation</strong> — the
-            Finance (No. 2) Act, 2024 removed the old 20%-with-indexation regime, and the transitional option to choose
-            the old computation was limited to resident individuals, so NRIs are generally on the flat {cfg.ltcgBasePct}%
-            for pre-2024 purchases too. Your gain is simply sale price minus actual cost (plus improvement costs and
-            transfer expenses). Held {cfg.ltcgHoldingMonths} months or less, the gain is short-term and taxed at your
-            slab rate. Run your numbers in the{" "}
+            Immovable property held more than {cfg.ltcgHoldingMonths} months is long-term. For transfers{" "}
+            <strong>on or after July 23, 2024</strong>, long-term gains are taxed at a flat{" "}
+            <strong>{cfg.ltcgBasePct}% without indexation</strong> — and the transitional option to compute under the
+            older 20%-with-indexation method was limited to <em>resident</em> individuals and HUFs, so nonresidents
+            generally do not get it, even for property bought long before 2024. Transfers <strong>before</strong> July
+            23, 2024 followed the older regime — different math entirely, reviewed with your CA. Your gain is sale
+            price minus acquisition cost, documented improvement cost, and transfer expenses — each evaluated
+            separately. This is confirmed in the{" "}
+            {sourceLink(nriTdsSources.itr2ValidationRules, "CBDT's ITR-2 validation rules (AY 2025-26)")}. Run your
+            numbers in the{" "}
             <Link href="/calculators/india-property-capital-gains" className="font-semibold text-brand-600 underline underline-offset-2">
               India property capital gains calculator
-            </Link>
-            .
+            </Link>{" "}
+            or the estimator above.
           </>,
           <>
-            Two exemptions matter most, both available to NRIs and both date-stamped here as of{" "}
-            {NRI_TDS_UPDATED_HUMAN}: reinvesting the gain in one residential house in India within the statutory window
-            (the classic Section 54 route under the 1961 Act — renumbered under the Income-tax Act, 2025, but your CA
-            will know it by the old name for years), and investing up to ₹50 lakh of gains in notified capital-gains
-            bonds within six months (the Section 54EC route, five-year lock-in). Claimed correctly — ideally inside the
-            Form 13 application — they reduce not just your final tax but the TDS itself. Both come with conditions and
-            deadlines that are unforgiving, so treat this paragraph as a map, not the territory: verify current section
-            numbers, windows, and caps at incometax.gov.in or with your CA.
+            Two exemptions matter most, both available to NRIs, both date-stamped here as of {NRI_TDS_UPDATED_HUMAN}:
+            reinvesting the gain in one residential house in India within the statutory window (the Section 54 route),
+            and investing gains up to the statutory cap in notified capital-gains bonds within six months (the Section
+            54EC route, with a lock-in). Claimed correctly — ideally inside the Form 13 application — they reduce not
+            just your final tax but the withholding itself. Both carry unforgiving conditions and deadlines: verify the
+            current windows, caps, and section numbering under the Income-tax Act, 2025 with your CA before committing
+            money.
           </>,
         ],
       },
@@ -163,23 +187,25 @@ const SECTIONS: Section[] = [
           <>
             If you are a US citizen, green card holder, or otherwise a US tax resident, the IRS taxes your worldwide
             income — the India property sale goes on your US return for the year of sale. The gain is recomputed under
-            US rules: cost and sale price translated to dollars at the exchange rates on the respective dates, no
-            Indian indexation, and US long-term rates (0/15/20% plus possibly the 3.8% net investment income tax) if
-            held over a year. Currency movement alone can make the US-computed gain larger or smaller than the Indian
-            one — a rupee that fell between purchase and sale often shrinks the dollar gain.
+            US rules: purchase and sale amounts translated to dollars at their own historical exchange rates, no Indian
+            indexation in the US basis, and US long-term rates if held over a year. Currency movement alone can make
+            the US-computed gain larger or smaller than the Indian one. If the property was ever rented,{" "}
+            <strong>depreciation recapture</strong> may apply — US rules assume allowable depreciation whether or not
+            you claimed it. And your state may tax the gain on its own terms, without foreign tax credits.
           </>,
           <>
             Double taxation is generally managed, not automatic: the US–India treaty lets India tax the gain on Indian
             real estate, and the US then allows a <strong>foreign tax credit</strong> for Indian tax actually paid —
-            typically claimed on Form 1116. The traps are timing (TDS withheld is not yet &quot;tax paid&quot; — the
-            credit ties to the final Indian liability for the right year) and rate mismatch (excess Indian tax above
-            the US tax on that income doesn&apos;t refund against US wages). Estimate the interaction with the{" "}
+            typically claimed via {sourceLink(nriTdsSources.irs1116, "Form 1116")}, subject to its{" "}
+            {sourceLink(nriTdsSources.irsFtc, "limitation rules")}. The traps are timing (withheld TDS is not yet
+            &quot;tax paid&quot; — the credit ties to the final Indian liability for the right year) and rate mismatch.
+            One reporting nuance: directly held foreign real estate is not itself an FBAR-reportable account — FBAR and
+            Form 8938 concern foreign financial <em>accounts and assets</em> — but the sale proceeds landing in your
+            NRO account absolutely count toward those account thresholds. Estimate the interaction with the{" "}
             <Link href="/calculators/dtaa-foreign-tax-credit" className="font-semibold text-brand-600 underline underline-offset-2">
               DTAA foreign tax credit calculator
             </Link>
-            , and have a cross-border CPA prepare the actual return — this is squarely their territory. Bank-account
-            reporting (FBAR/FATCA) also follows the money: sale proceeds sitting in your NRO account count toward those
-            thresholds.
+            , and have a cross-border CPA prepare the actual return.
           </>,
         ],
       },
@@ -192,19 +218,28 @@ const SECTIONS: Section[] = [
       {
         paras: [
           <>
-            The money path: sale proceeds land in your <strong>NRO account</strong>; from there, RBI rules generally
-            permit remitting up to <strong>{cfg.repatriationLimitUsd} per financial year</strong> abroad. The bank will
-            want the tax paperwork before wiring anything — a chartered accountant&apos;s certificate (Form 15CB) plus
-            your own declaration (Form 15CA), confirming Indian tax on the sale was deducted or paid. (The Income-tax
-            Act, 2025 renumbered several forms effective April 2026; banks and CAs are transitioning, so don&apos;t be
-            surprised to see new form numbers doing the same job — verify the current ones on incometax.gov.in.)
+            The money path: sale proceeds land in your <strong>NRO account</strong>; from there, RBI&apos;s FEMA
+            framework generally permits remitting up to <strong>{cfg.repatriationLimitUsd} per financial year</strong>{" "}
+            of eligible balances and sale proceeds — see the {sourceLink(nriTdsSources.rbi, "RBI's remittance rules")}{" "}
+            (Master Direction on Remittance of Assets). Treat it as a facility, not a promise: repatriation is subject
+            to bank review, source documentation, tax compliance, and the applicable FEMA conditions — not every sale
+            amount can automatically be wired the week after closing.
           </>,
           <>
-            Practical sequencing: finish the TDS story first (deduction at the certificate rate, or deduction plus a
-            plan for the refund), then start the remittance file. Our{" "}
-            <Link href="/india-tax-compliance/repatriating-property-sale-proceeds-india-usa" className="font-semibold text-brand-600 underline underline-offset-2">
+            The bank&apos;s file typically includes <strong>Form 15CA</strong> (your declaration — its applicable part
+            depends on the payment circumstances) and, where required, <strong>Form 15CB</strong> (a CA&apos;s
+            certificate). 15CB is <em>not</em> automatically required for every remittance — requirements depend on
+            taxability, amount, and the remittance rules — so let your CA and bank map the exact paperwork. Practical
+            sequencing: finish the TDS story first (withholding at the certificate rate, or withholding plus a refund
+            plan), then start the remittance file. Our{" "}
+            <TrackedLink
+              href="/india-tax-compliance/repatriating-property-sale-proceeds-india-usa"
+              eventName="repatriation_guide_clicked"
+              toolSlug="nri-selling-property-in-india-tds"
+              className="font-semibold text-brand-600 underline underline-offset-2"
+            >
               guide to repatriating property sale proceeds from India to the USA
-            </Link>{" "}
+            </TrackedLink>{" "}
             walks the bank-side process, and the{" "}
             <Link href="/tools/form-15ca-15cb-checklist" className="font-semibold text-brand-600 underline underline-offset-2">
               Form 15CA/15CB checklist tool
@@ -233,15 +268,12 @@ const SECTIONS: Section[] = [
         paras: [
           <>
             Buyers search these terms too, usually in mild panic — so, briefly: buying from an NRI makes <em>you</em>{" "}
-            the deductor. As of {NRI_TDS_UPDATED_HUMAN} that means deducting at the correct rate on each payment
-            (including installments and advances), depositing it with the government, filing the quarterly TDS return
-            for non-resident payments, and issuing the seller a TDS certificate. Historically you also needed a{" "}
-            <strong>TAN</strong> (Tax Deduction Account Number) — a genuine nuisance for one-off home buyers — but that
-            requirement is scheduled to end on <strong>{cfg.tanRemovalDate}</strong>, after which buyers can deposit
-            against their PAN, mirroring the resident-purchase process. Deducting at 1% &quot;like a normal
-            purchase&quot; is the classic, expensive mistake: the shortfall, interest, and penalties land on the buyer.
-            When the seller presents a lower-deduction certificate, verify it names you and your PAN, and deduct exactly
-            the certificate rate.
+            the deductor. As of {NRI_TDS_UPDATED_HUMAN} that means (1) confirming the seller&apos;s nonresident status,
+            (2) deducting at the correct or certificate rate on <em>each</em> payment — advances and installments
+            included, (3) depositing the tax on time, (4) filing the required TDS statement, and (5) issuing the seller
+            a TDS certificate. Deducting 1% &quot;like a normal purchase&quot; is the classic, expensive mistake: the
+            shortfall, interest, and penalties land on the buyer. When the seller presents a lower-deduction
+            certificate, verify it names you and your PAN, and deduct exactly the certificate rate.
           </>,
         ],
       },
@@ -271,8 +303,37 @@ const SECTIONS: Section[] = [
   },
 ];
 
+function renderSection(s: Section) {
+  return (
+    <div key={s.id} id={s.id} className="scroll-mt-24">
+      <h2 className="text-xl font-bold text-ink-900">{s.h2}</h2>
+      <div className="mt-3 space-y-6">
+        {s.blocks.map((b, i) => (
+          <div key={i}>
+            {b.h3 && <h3 className="text-base font-bold text-ink-900">{b.h3}</h3>}
+            <div className="mt-1.5 space-y-3">
+              {b.paras.map((p, j) => (
+                <p key={j} className="text-sm leading-relaxed text-ink-600">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
   const jsonLd = jsonLdGraph(
+    essentialsSoftwareAppJsonLd({
+      path: PATH,
+      name: "NRI Property Sale TDS & Capital Gains Estimator",
+      description:
+        "Free educational estimator separating an NRI seller's estimated capital gain, estimated final Indian tax, and illustrative TDS withholding — with every assumption listed.",
+      applicationCategory: "FinanceApplication",
+    }),
     essentialsArticleJsonLd({
       path: PATH,
       headline: TITLE,
@@ -302,9 +363,9 @@ export default function Page() {
         icon="🏠"
         category="NRI Tax & Property"
         title="NRI Selling Property in India: TDS, Capital Gains Tax & Repatriation Guide (2026)"
-        hook="An NRI selling property in India faces TDS on the FULL sale price — often 13–15% withheld against a much smaller real tax bill. Here is exactly how the rates work, how the Form 13 lower-TDS certificate fixes it, what the IRS expects, and how the money comes home."
+        hook="An NRI selling property in India commonly sees 13–15% of the FULL sale price withheld against a much smaller real tax bill. Here is how withholding, capital gains, and final tax differ, how the Form 13 lower-TDS certificate aligns them, what the IRS expects, and how the money comes home."
         accent="from-emerald-600 to-teal-700"
-        badges={["Rates as of July 2026", "Form 13 step-by-step", "US reporting covered", "Repatriation path"]}
+        badges={["Rates as of July 2026", "Form 13 step-by-step", "Educational estimator", "US reporting covered"]}
         headerExtra={
           <div className="flex flex-wrap gap-2">
             <a
@@ -314,36 +375,64 @@ export default function Page() {
               See the TDS rates →
             </a>
             <a
-              href="#form-13"
+              href="#tds-estimator"
               className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
             >
-              How to reduce TDS
+              Try the estimator
             </a>
           </div>
         }
         topDisclaimer={<>Educational information only. Not tax or legal advice.</>}
         sourceNote={
           <>
-            Reviewed by Deepak Middha, CA · Last updated {NRI_TDS_UPDATED_HUMAN}. Rates verified against
-            incometax.gov.in and the Income-tax Act, 2025 transition — official links at the end of this page.
+            Reviewed by Deepak Middha, CA · Last updated {NRI_TDS_UPDATED_HUMAN}. Rates verified against Income Tax
+            Department sources and the Income-tax Act, 2025 transition — official links throughout and at the end of
+            this page.
           </>
         }
         disclaimerPoints={[
-          "Indian tax rates, surcharge slabs, section numbers, and forms change with Finance Acts — always verify current figures.",
+          "Indian tax rates, surcharge rules, section numbers, and forms change with Finance Acts — always verify current figures.",
+          "Surcharge depends on the seller's income circumstances; joint ownership needs seller-by-seller analysis.",
           "A property sale is a high-value transaction: engage a qualified CA in India and a cross-border CPA in the US.",
-          "This guide is educational information, not tax, legal, or investment advice.",
+          "This guide and estimator are educational — they file nothing and replace no professional.",
         ]}
         disclaimerExtra={<p>{NRI_TDS_DISCLAIMER}</p>}
       >
-        {/* Rates table — the core answer, first */}
-        <section id="tds-rates" className="scroll-mt-24 pt-6">
+        {/* Three concepts — the framing everything else depends on */}
+        <section className="pt-6">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">Three Numbers People Conflate — Rate, Withholding, and Final Tax</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                Most confusion about TDS for NRI property sales comes from treating these as one number. They are not
+                automatically identical — the entire strategy below is about closing the gap between them.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {threeConcepts.map((c) => (
+                  <div key={c.title} className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4">
+                    <p className="text-sm font-bold text-ink-900">{c.title}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">{c.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Rates table */}
+        <section id="tds-rates" className="scroll-mt-24 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <h2 className="text-xl font-bold text-ink-900">TDS on Sale of Property by NRI: Current Rates</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
-                As of {NRI_TDS_UPDATED_HUMAN}, buyers must deduct about 13–14.95% of the <strong>full sale value</strong>{" "}
-                on long-term sales by NRIs (12.5% base + surcharge by sale-value slab + 4% cess), and roughly 31.2–39%
-                on short-term sales.
+                As of {NRI_TDS_UPDATED_HUMAN}: long-term base rate {cfg.ltcgBasePct}% plus surcharge and {cfg.cessPct}%
+                cess; short-term commonly withheld around 31.2–39%.{" "}
+                <strong>
+                  The rows below are illustrative withholding assumptions keyed to the payment amount — the surcharge
+                  the law actually requires depends on the seller&apos;s status and aggregate income circumstances, not
+                  the property&apos;s price.
+                </strong>{" "}
+                Assumed: individual nonresident seller, no certificate, single seller.
               </p>
 
               {/* Mobile cards */}
@@ -351,7 +440,7 @@ export default function Page() {
                 {[...ltcgTdsRows, stcgRow].map((r) => (
                   <div key={r.saleValue} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
                     <p className="text-sm font-bold text-ink-900">{r.saleValue}</p>
-                    <p className="mt-1 text-xs font-semibold text-emerald-700">Effective TDS: {r.effectiveRate}</p>
+                    <p className="mt-1 text-xs font-semibold text-emerald-700">Illustrative withholding: {r.effectiveRate}</p>
                     <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
                       <span className="font-semibold text-ink-500">Surcharge:</span> {r.surcharge}
                     </p>
@@ -365,9 +454,9 @@ export default function Page() {
                 <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                   <thead>
                     <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
-                      <th className="p-3 font-semibold">Sale value / holding</th>
-                      <th className="p-3 font-semibold">Surcharge</th>
-                      <th className="p-3 font-semibold">Effective TDS</th>
+                      <th className="p-3 font-semibold">Payment / holding</th>
+                      <th className="p-3 font-semibold">Surcharge (assumed)</th>
+                      <th className="p-3 font-semibold">Illustrative withholding</th>
                       <th className="p-3 font-semibold">Notes</th>
                     </tr>
                   </thead>
@@ -384,47 +473,51 @@ export default function Page() {
                 </table>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-ink-500">
-                Long-term = held more than {cfg.ltcgHoldingMonths} months; base LTCG rate {cfg.ltcgBasePct}% (no
-                indexation) for transfers on/after July 23, 2024. Deduction happens under {cfg.sectionOld}, now{" "}
-                {cfg.sectionNew} for deductions from April 1, 2026. TDS applies to the full sale consideration unless a
-                lower-deduction certificate says otherwise. Verify current rates at incometax.gov.in — link at the end
-                of this page.
-              </p>
-
-              <h3 className="mt-6 text-base font-bold text-ink-900">
-                Short-term sale of property by NRI: TDS at slab rates
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
-                Sell within {cfg.ltcgHoldingMonths} months of buying and the gain is short-term: taxed at your slab
-                rate, with buyers commonly instructed to deduct at the top {cfg.stcgBasePct}% (plus surcharge and cess)
-                to stay safe. Between the higher rate and the full-sale-value base, short-term exits are punishing —
-                if you are anywhere near the {cfg.ltcgHoldingMonths}-month line, the closing date is worth negotiating.
+                Long-term = held more than {cfg.ltcgHoldingMonths} months; {cfg.ltcgBasePct}% (no indexation) applies
+                to transfers on/after July 23, 2024. Deduction happens under {cfg.sectionOld}, now {cfg.sectionNew} for
+                deductions from April 1, 2026. Foreign companies and other entity sellers have different structures.{" "}
+                <strong>Joint ownership and multiple sellers require seller-by-seller calculations</strong> — see the
+                examples below. Verify current rates at incometax.gov.in.
               </p>
             </div>
           </Container>
         </section>
 
-        {/* Guide sections */}
+        {/* Estimator */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-xl font-bold text-ink-900">NRI Property TDS Estimator</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                An educational estimator that keeps the three numbers separate — and shows a range instead of false
+                precision when your aggregate income is unknown.
+              </p>
+              <div className="mt-4">
+                <NriTdsEstimator />
+              </div>
+              <div className="mt-4 rounded-xl border border-ink-900/10 bg-white p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-ink-500">Methodology &amp; assumptions</p>
+                <p className="mt-1 text-xs leading-relaxed text-ink-600">
+                  Long-term = held &gt;{cfg.ltcgHoldingMonths} months; LTCG at {cfg.ltcgBasePct}% (no indexation) for
+                  sales on/after July 23, 2024, plus surcharge (from aggregate income when provided; otherwise a
+                  nil-to-{cfg.ltcgSurchargeCapPct}% range) and {cfg.cessPct}% cess. Short-term shown as a slab-taxed
+                  planning band. Withholding without a certificate is an illustration of common buyer practice (gross
+                  payment × rate, surcharge assumed from payment size). Per-seller math via the ownership percentage.
+                  Section 54/54EC inputs are user estimates. The tool computes locally in your browser, sends no
+                  entered data anywhere, files nothing, and does not replace a CA. Last verified {NRI_TDS_UPDATED_HUMAN}.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Top guide sections + Form 13 steps */}
         <section className="py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-10">
-              {SECTIONS.slice(0, 2).map((s) => (
-                <div key={s.id} id={s.id} className="scroll-mt-24">
-                  <h2 className="text-xl font-bold text-ink-900">{s.h2}</h2>
-                  <div className="mt-3 space-y-6">
-                    {s.blocks.map((b, i) => (
-                      <div key={i}>
-                        {b.h3 && <h3 className="text-base font-bold text-ink-900">{b.h3}</h3>}
-                        <div className="mt-1.5 space-y-3">
-                          {b.paras.map((p, j) => (
-                            <p key={j} className="text-sm leading-relaxed text-ink-600">
-                              {p}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              {SECTIONS_TOP.map((s) => (
+                <div key={s.id}>
+                  {renderSection(s)}
                   {s.id === "form-13" && (
                     <div className="mt-5 space-y-3">
                       {form13Steps.map((st) => (
@@ -444,42 +537,104 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Remaining sections */}
-        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        {/* TAN change status box */}
+        <section className="pb-10 sm:pb-12">
           <Container>
-            <div className="mx-auto max-w-3xl space-y-10">
-              {SECTIONS.slice(2).map((s) => (
-                <div key={s.id} id={s.id} className="scroll-mt-24">
-                  <h2 className="text-xl font-bold text-ink-900">{s.h2}</h2>
-                  <div className="mt-3 space-y-6">
-                    {s.blocks.map((b, i) => (
-                      <div key={i}>
-                        {b.h3 && <h3 className="text-base font-bold text-ink-900">{b.h3}</h3>}
-                        <div className="mt-1.5 space-y-3">
-                          {b.paras.map((p, j) => (
-                            <p key={j} className="text-sm leading-relaxed text-ink-600">
-                              {p}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+            <div className="mx-auto max-w-3xl rounded-2xl border border-sky-200 bg-sky-50/60 p-5">
+              <p className="text-sm font-bold text-ink-900">📌 Buyer paperwork is changing on {cfg.tanChangeDate}</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl bg-white p-3.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-ink-500">Transactions through September 30, 2026</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink-600">
+                    Follow the currently applicable process: the buyer obtains a TAN, deposits the deducted tax, and
+                    files the nonresident TDS statement (Form 27Q), then issues the TDS certificate.
+                  </p>
                 </div>
-              ))}
+                <div className="rounded-xl bg-white p-3.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-ink-500">Eligible transactions from October 1, 2026</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink-600">
+                    A <strong>resident individual/HUF buyer</strong> purchasing immovable property from a nonresident
+                    may be able to use a PAN-based challan-cum-statement process (the Finance Act 2026 amendment to
+                    Section 397(1)(c) of the Income-tax Act, 2025), subject to the enacted provision, effective date,
+                    prescribed statement, and operational rules. Company, firm, and LLP buyers still need TAN + Form
+                    27Q. Confirm the live process with a professional before relying on it.
+                  </p>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
 
+        {/* Remaining guide sections */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl space-y-10">{SECTIONS_BOTTOM.map(renderSection)}</div>
+          </Container>
+        </section>
+
+        {/* Joint ownership examples */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">Joint Ownership &amp; Multiple Parties: Six Common Scenarios</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                Compliance is generally <strong>seller-specific and payment-specific</strong> — each seller&apos;s
+                share and each payment event carries its own analysis.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {ownershipExamples.map((ex) => (
+                  <div key={ex.title} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">{ex.title}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">{ex.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Transaction timeline */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">The Transaction Timeline, Start to Finish</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                The sequence matters more than the speed — most expensive mistakes are steps done out of order. No
+                rigid deadlines are implied except where the law prescribes them.
+              </p>
+              <ol className="mt-4 space-y-3">
+                {transactionTimeline.map((t, i) => (
+                  <li key={t.phase} className="flex gap-3 rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+                    <span aria-hidden className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="text-sm font-bold text-ink-900">{t.phase}</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-ink-600">{t.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Container>
+        </section>
+
+        {/* Checklists */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <NriTdsChecklists />
+          </Container>
+        </section>
+
         {/* FAQ */}
-        <section className="py-12 sm:py-16">
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-12 sm:py-16">
           <Container>
             <ToolFaq items={nriTdsFaqs} />
           </Container>
         </section>
 
         {/* Related pages */}
-        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+        <section className="py-10 sm:py-12">
           <Container>
             <PermClusterLinks
               title="Related NRI property & tax guides"
@@ -492,7 +647,7 @@ export default function Page() {
                 {
                   href: "/india-tax-compliance/nri-property-sale-tds-refund",
                   label: "NRI Property Sale TDS Refund",
-                  desc: "Already over-deducted? How to reclaim it via your Indian return",
+                  desc: "Already over-withheld? How to reclaim it via your Indian return",
                 },
                 {
                   href: "/india-property",
@@ -511,17 +666,19 @@ export default function Page() {
         </section>
 
         {/* Official sources — external links live here, at the end */}
-        <section className="py-10 sm:py-12">
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <OfficialSourceBox
+            <TrackedSourceBox
               title="Official tax sources"
-              intro="Always verify current TDS rates, forms, and remittance rules directly with the official sources:"
+              intro="Always verify current TDS rates, certificate procedures, forms, and remittance rules directly with the official sources:"
               links={nriTdsSourceLinks}
+              eventName="official_tax_source_clicked"
+              toolSlug="nri-selling-property-in-india-tds"
             />
           </Container>
         </section>
 
-        <section className="pb-12">
+        <section className="py-10 pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={NRI_TDS_UPDATED_HUMAN} />
           </Container>

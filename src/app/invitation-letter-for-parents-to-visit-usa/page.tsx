@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
+import TrackedSourceBox from "@/components/tools/TrackedSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import InvitationLetterGenerator from "@/components/tools/InvitationLetterGenerator";
@@ -123,12 +123,14 @@ export default function Page() {
                   </p>
                   <p>
                     What actually decides a parents&apos; B-2 case is the law every officer applies — INA 214(b), which
-                    presumes every applicant is an intending immigrant until <em>they</em> demonstrate otherwise. Your
-                    parents&apos; own ties to India (home, pension, family, travel history) and their DS-160 answers
-                    carry the case. The letter&apos;s real job is quieter: it documents the visit story cleanly, keeps
-                    everyone&apos;s dates and facts consistent, and gives your parents something concrete to hand over
-                    when asked &quot;who are you visiting?&quot; Families include one because it costs nothing and
-                    removes ambiguity — just never expect it to rescue a weak case.
+                    presumes every applicant is an intending immigrant until <em>they</em> demonstrate otherwise.
+                    Evidence of your parents&apos; own circumstances — home, pension, family, travel history — may help
+                    demonstrate their reasons to return, but the consular officer evaluates the application as a whole,
+                    with the DS-160 and interview at the center. The letter&apos;s real job is quieter: it documents the
+                    visit story cleanly and keeps everyone&apos;s dates and facts consistent. They may carry it in case
+                    the officer requests supporting information — each post controls how supporting documents are
+                    submitted or reviewed. Families include one because it costs nothing and removes ambiguity — just
+                    never expect it to rescue a weak case.
                   </p>
                 </div>
               </div>
@@ -163,13 +165,14 @@ export default function Page() {
                     </p>
                     <p className="mt-3">
                       The purpose of this visit is [tourism and spending time with our family]. I am employed as [your
-                      occupation] at [employer]. During their stay, they will live with me at my residence, and I will
-                      be responsible for their accommodation, food, local transportation, and other day-to-day expenses.
+                      occupation] at [employer]. During their stay, they will [stay with me at my residence / stay in
+                      hotel accommodation]. [They will bear the cost of their own round-trip airfare. / I will bear the
+                      cost of their airfare.] [I will be responsible for their day-to-day expenses. / They will bear
+                      their own expenses.]
                     </p>
                     <p className="mt-3">
-                      They maintain strong family, financial, and social ties to India and intend to return before the
-                      expiry of their authorized period of stay. This visit is temporary and for the purpose stated
-                      above.
+                      They maintain family, financial, and social ties to India and intend to return before the expiry
+                      of their authorized period of stay. This visit is temporary and for the purpose stated above.
                     </p>
                     <p className="mt-3">
                       I request you to kindly consider their B-2 visitor visa application favorably. Please feel free to
@@ -269,8 +272,8 @@ export default function Page() {
                 <h2 className="text-xl font-bold text-ink-900">Do Parents Need a Notarized Letter?</h2>
                 <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-600">
                   <p>
-                    No. Notarization adds no official weight to an invitation letter — consular officers neither require
-                    nor credit it, because a notary only verifies who signed, not whether the contents are true. The
+                    Generally, no. Notarization adds no official weight to an invitation letter — consular officers do
+                    not require it, and a notary only verifies who signed, not whether the contents are true. The
                     persistent notarization myth comes from other countries&apos; visitor-visa processes (and from
                     notary services happy to take the fee). Sign the letter in ink, and spend the notary money on a good
                     printout of your bank statement instead. If a visa consultant insists a U.S. B-2 letter must be
@@ -315,10 +318,12 @@ export default function Page() {
         {/* Official sources — external links live here, at the end */}
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <OfficialSourceBox
+            <TrackedSourceBox
               title="Official visa sources"
-              intro="Always verify current B-2 visitor visa requirements, fees, and appointment procedures directly with the official sources:"
+              intro="Always verify current B-2 visitor visa requirements, passport validity rules, fees, and appointment procedures directly with the official sources:"
               links={invitationSourceLinks}
+              eventName="official_visa_source_clicked"
+              toolSlug="invitation-letter-for-parents-to-visit-usa"
             />
           </Container>
         </section>
