@@ -152,6 +152,9 @@ export const articlesEntries: SitemapEntry[] = articles.map((a) =>
  * ------------------------------------------------------------------ */
 export const taxEntries: SitemapEntry[] = [
   e("/long-term-nri-wealth", 0.9, "weekly"),
+  // NRI cross-border essentials (see lib/nriEssentialsCluster.ts)
+  e("/nri-selling-property-in-india-tds", 0.85, "monthly", new Date("2026-07-18")),
+  e("/gold-limit-usa-to-india", 0.85, "monthly", new Date("2026-07-18")),
   e("/india-investments/should-nris-keep-investments-in-india", 0.9, "monthly"),
   e("/india-tax-compliance", 0.9, "weekly"),
   e("/india-tax-compliance/nri-tax-forms-limits", 0.9, "weekly"),
@@ -196,6 +199,7 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
+  e("/invitation-letter-for-parents-to-visit-usa", 0.85, "monthly", new Date("2026-07-18")),
   // Government benefits pillar + household screener. Several underlying rules
   // change between Oct 2026 and Jan 2027, so this is reviewed monthly.
   e("/usa-government-benefits-immigrants", 0.9, "monthly", new Date(GB_UPDATED)),

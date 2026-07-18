@@ -36,6 +36,12 @@ const config: MoneyHubConfig = {
   primaryCta: { label: "Calculate capital gains", href: "/calculators/india-property-capital-gains" },
   relatedGuides: [
     {
+      label: "NRI selling property in India: TDS, capital gains & repatriation",
+      href: "/nri-selling-property-in-india-tds",
+      blurb:
+        "The full sale playbook: TDS rates on the sale value, the Form 13 lower-TDS certificate, US tax reporting, and bringing the proceeds to the USA.",
+    },
+    {
       label: "Should NRIs keep their investments in India?",
       href: "/india-investments/should-nris-keep-investments-in-india",
       blurb:

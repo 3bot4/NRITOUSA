@@ -166,6 +166,36 @@ const CURATED: SearchItem[] = [
     keywords: "oci card resource center eligibility fees timeline",
   },
   {
+    title: "NRI Selling Property in India: TDS Guide",
+    description:
+      "TDS rates on NRI property sales, Form 13 lower-TDS certificate, US tax reporting and repatriation.",
+    href: "/nri-selling-property-in-india-tds",
+    type: "Guide",
+    priority: 62,
+    keywords:
+      "nri selling property india tds sale form 13 lower tds certificate capital gains repatriation",
+  },
+  {
+    title: "Gold Limit USA to India + Duty Calculator",
+    description:
+      "How much gold you can carry from the USA to India duty-free, customs duty rates, and a free calculator.",
+    href: "/gold-limit-usa-to-india",
+    type: "Calculator",
+    priority: 62,
+    keywords:
+      "gold limit usa to india customs duty calculator carry jewellery coins bars baggage rules",
+  },
+  {
+    title: "Invitation Letter for Parents to Visit USA",
+    description:
+      "Free B-2 invitation letter generator with PDF download, sample letter, and documents checklist.",
+    href: "/invitation-letter-for-parents-to-visit-usa",
+    type: "Tool",
+    priority: 62,
+    keywords:
+      "invitation letter parents visit usa b2 visitor visa generator sample format pdf",
+  },
+  {
     title: "India Property for NRIs",
     description:
       "Buying, selling, renting and the capital-gains tax rules on Indian property from the USA.",
