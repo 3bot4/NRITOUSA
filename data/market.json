@@ -1,18 +1,18 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-07-18T18:50:47-04:00",
-  "asOfLabel": "Jul 18, 2026, 6:50 PM ET",
+  "asOf": "2026-07-19T18:53:00-04:00",
+  "asOfLabel": "Jul 19, 2026, 6:53 PM ET",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
-      "value": 96.28,
+      "value": 96.27,
       "previous": 95.33,
-      "changePct": 1,
+      "changePct": 0.99,
       "unit": "₹",
       "decimals": 2,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-18T18:50:47-04:00",
+      "fetchedAt": "2026-07-19T18:53:00-04:00",
       "stale": false
     },
     {
@@ -24,7 +24,7 @@
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-18T18:50:47-04:00",
+      "fetchedAt": "2026-07-19T18:53:00-04:00",
       "stale": false
     },
     {
@@ -36,27 +36,23 @@
       "unit": "",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-18T18:50:47-04:00",
+      "fetchedAt": "2026-07-19T18:53:00-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4019,
-      "previous": 3997,
-      "changePct": 0.55,
+      "value": 4002,
+      "previous": 4061,
+      "changePct": -1.45,
       "unit": "$",
       "decimals": 0,
       "source": "Yahoo Finance EOD",
-      "fetchedAt": "2026-07-18T18:50:47-04:00",
+      "fetchedAt": "2026-07-19T18:53:00-04:00",
       "stale": false
     }
   ],
   "usdinrHistory": [
-    {
-      "date": "2026-05-22",
-      "value": 95.7
-    },
     {
       "date": "2026-05-25",
       "value": 95.24
@@ -172,6 +168,10 @@
     {
       "date": "2026-07-18",
       "value": 96.28
+    },
+    {
+      "date": "2026-07-19",
+      "value": 96.27
     }
   ]
 }
