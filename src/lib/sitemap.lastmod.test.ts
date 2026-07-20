@@ -22,20 +22,35 @@ describe("sitemap lastmod", () => {
   });
 
   it("never uses a build-time timestamp", () => {
-    // A date built with `new Date()` lands within milliseconds of now. Any
-    // entry dated today-or-later is almost certainly a build stamp, not a
-    // real content-modification date.
-    const startOfToday = new Date();
-    startOfToday.setHours(0, 0, 0, 0);
+    // A `new Date()` default lands within milliseconds of module import, so
+    // the tell is proximity to *now* — not "is it dated today". The baseline
+    // is legitimately allowed to be today's date (that is when a content pass
+    // happened); what it must never be is the current clock reading.
+    //
+    // Deliberately not `setHours(0,0,0,0)`: that made the test pass only
+    // because the runner's local midnight sat ahead of the baseline's UTC
+    // midnight, so it would have failed in a UTC CI container on the day the
+    // baseline was set.
+    const WINDOW_MS = 5 * 60 * 1000;
+    const now = Date.now();
 
     const buildStamped = allEntries.filter(
-      (entry) => entry.lastModified.getTime() >= startOfToday.getTime(),
+      (entry) => Math.abs(now - entry.lastModified.getTime()) < WINDOW_MS,
     );
 
     expect(
       buildStamped.map((entry) => entry.path),
-      "entries dated today — did a `new Date()` default come back?",
+      "entries dated within minutes of now — did a `new Date()` default come back?",
     ).toEqual([]);
+  });
+
+  it("uses a date-only baseline, never a wall-clock instant", () => {
+    // A committed constant parses to exact UTC midnight. A captured timestamp
+    // would carry hours/minutes/seconds.
+    expect(CONTENT_BASELINE.getUTCHours()).toBe(0);
+    expect(CONTENT_BASELINE.getUTCMinutes()).toBe(0);
+    expect(CONTENT_BASELINE.getUTCSeconds()).toBe(0);
+    expect(CONTENT_BASELINE.getUTCMilliseconds()).toBe(0);
   });
 
   it("has a stable baseline that is not computed at import time", () => {
