@@ -14,6 +14,7 @@ import marketData from "../../data/market.json";
 import config from "../../data/homepage-config.json";
 import i485Inventory from "../../data/i485-inventory/current.json";
 import processingTimes from "../../data/processing-times.json";
+import visaBulletinCurrent from "../../data/visa-bulletin/current.json";
 import h1bTimeline from "../../data/h1b-lottery-timeline.json";
 import {
   getCutoffs,
@@ -41,6 +42,34 @@ export interface MarketItem {
 const marketItems = marketData.items as MarketItem[];
 
 export const marketAsOfLabel: string = marketData.asOfLabel;
+
+/**
+ * "As of" label for the homepage ticker, which carries ONLY immigration items
+ * (EB priority dates, I-485 backlog, H-1B odds, bulletin countdown, processing
+ * times).
+ *
+ * Deliberately NOT marketAsOfLabel. That value is the timestamp of the market
+ * data refresh, so the ticker used to attribute State Department and USCIS
+ * figures to a twice-daily market job — claiming a monthly bulletin was current
+ * "as of 6:53 PM ET". It is now derived from the underlying immigration data,
+ * using the older of the two feeds so the label never overstates freshness.
+ */
+export const immigrationAsOfLabel: string = (() => {
+  const bulletinDate = visaBulletinCurrent.lastUpdated;
+  const processingDate = processingTimes.lastUpdated;
+  const oldest = [bulletinDate, processingDate]
+    .filter(Boolean)
+    .sort()[0] as string | undefined;
+  if (!oldest) return "see linked sources";
+  const d = new Date(oldest);
+  if (Number.isNaN(d.getTime())) return "see linked sources";
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+})();
 
 /** Sources backing the four market items, de-duplicated, for the attribution line. */
 export const marketSources: string[] = Array.from(

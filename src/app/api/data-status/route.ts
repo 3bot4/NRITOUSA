@@ -76,30 +76,17 @@ export async function GET() {
   const root = process.cwd();
   const sources: SourceStatus[] = [];
 
-  // ── 1. Market data (automated 2x/day, threshold 12h = 0.5 days) ──────────
-  const market = readJson<Record<string, unknown> | null>(
-    join(root, "data", "market.json"),
-    null
-  );
-  if (!market) {
-    sources.push({ key: "market", label: "Market Data (USD/INR, NIFTY 50, S&P 500, Gold)", lastUpdated: null, maxAgeDays: 0.5, ageDays: null, status: "missing" });
-  } else {
-    const days = ageDays(market.asOf as string);
-    const notes: string[] = [];
-    const staleItems = ((market.items as Array<{ key: string; stale?: boolean }>) ?? [])
-      .filter((i) => i.stale)
-      .map((i) => i.key);
-    if (staleItems.length) notes.push(`Items using stale fallback: ${staleItems.join(", ")}`);
-    sources.push({
-      key: "market",
-      label: "Market Data (USD/INR, NIFTY 50, S&P 500, Gold)",
-      lastUpdated: market.asOf as string,
-      maxAgeDays: 0.5,
-      ageDays: Math.round(days * 100) / 100,
-      status: staleItems.length ? "warn" : ageStatus(days, 0.5),
-      ...(notes.length && { notes }),
-    });
-  }
+  // ── 1. Market data — RETIRED, intentionally not monitored ────────────────
+  // The twice-daily refresh workflow was removed on 2026-07-20: no page renders
+  // USD/INR, NIFTY 50, S&P 500 or gold any more. The homepage ticker carries
+  // immigration figures only, and its "as of" label now derives from the visa
+  // bulletin and processing-times feeds rather than the market timestamp.
+  //
+  // data/market.json is left in place (still imported by lib/market.ts) but is
+  // deliberately absent from this report: with nothing refreshing it, a 12-hour
+  // threshold would raise a stale alert every day forever and train whoever
+  // watches this endpoint to ignore it. Restore this block only alongside a
+  // job that actually updates the file.
 
   // ── 2. Visa Bulletin (monthly, threshold 35 days) ─────────────────────────
   const vb = readJson<Record<string, unknown> | null>(
