@@ -292,7 +292,7 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <OfficialSourceBox
-              title="Official sources"
+              title="Official IRS and Treasury sources"
               intro="Trump Account rules are new and evolving. Verify current guidance directly with these official sources before you apply or contribute:"
               links={trumpAccountSourceLinks}
             />

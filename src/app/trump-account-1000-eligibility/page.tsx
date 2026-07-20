@@ -174,7 +174,7 @@ export default function Page() {
 
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <OfficialSourceBox intro="Confirm the current $1,000 pilot rules directly with the official sources:" links={trumpAccountSourceLinks} />
+            <OfficialSourceBox title="Official IRS and Treasury sources" intro="Confirm the current $1,000 pilot rules directly with the official sources:" links={trumpAccountSourceLinks} />
           </Container>
         </section>
 

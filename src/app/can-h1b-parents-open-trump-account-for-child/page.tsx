@@ -191,7 +191,7 @@ export default function Page() {
 
         <section className="border-t border-ink-900/5 bg-white py-12 sm:py-16">
           <Container>
-            <OfficialSourceBox intro="Confirm current eligibility rules directly with the official sources:" links={trumpAccountSourceLinks} />
+            <OfficialSourceBox title="Official IRS and Treasury sources" intro="Confirm current eligibility rules directly with the official sources:" links={trumpAccountSourceLinks} />
           </Container>
         </section>
 

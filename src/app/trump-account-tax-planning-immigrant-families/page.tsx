@@ -339,7 +339,7 @@ export default function Page() {
           <p className="mt-4 max-w-3xl text-sm text-ink-600">
             New here? Start with the{" "}
             <Link href="/trump-account-h1b-immigrant-families" className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">
-              main H-1B guide
+              main Trump Account guide for immigrant families
             </Link>{" "}
             or check{" "}
             <Link href="/trump-account-1000-eligibility" className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">
@@ -1057,6 +1057,7 @@ export default function Page() {
           <Container>
             <div className="mx-auto flex max-w-3xl flex-col gap-4">
               <OfficialSourceBox
+                title="Official IRS and Treasury sources"
                 intro="Trump Account rules, amounts, and tax treatment are set by the IRS and Treasury and can change. The tax figures on this page are illustrations, not official amounts — verify current guidance with the official sources:"
                 links={trumpAccountSourceLinks}
               />

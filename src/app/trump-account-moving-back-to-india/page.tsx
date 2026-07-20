@@ -210,7 +210,7 @@ export default function Page() {
 
         <section className="py-10 sm:py-12">
           <Container>
-            <OfficialSourceBox intro="Verify current rules with the official sources, and check your provider's foreign-address policy:" links={trumpAccountSourceLinks} />
+            <OfficialSourceBox title="Official IRS and Treasury sources" intro="Verify current rules with the official sources, and check your provider's foreign-address policy:" links={trumpAccountSourceLinks} />
           </Container>
         </section>
 

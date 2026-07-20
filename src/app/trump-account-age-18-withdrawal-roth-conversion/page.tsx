@@ -579,6 +579,7 @@ export default function Page() {
           <Container>
             <div className="mx-auto flex max-w-3xl flex-col gap-4">
               <OfficialSourceBox
+                title="Official IRS and Treasury sources"
                 intro="Trump Account rules, timing, and tax treatment are set by the IRS and Treasury and can change. Figures on this page are illustrations — verify current guidance with the official sources:"
                 links={trumpAccountSourceLinks}
               />

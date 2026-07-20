@@ -502,6 +502,7 @@ export default function Page() {
         <section className="border-t border-ink-900/5 py-10 sm:py-12">
           <Container>
             <OfficialSourceBox
+              title="Official IRS and Treasury sources"
               intro="Trump Account rules, amounts, and investment options are set by the IRS and Treasury and can change. Verify current guidance with the official sources:"
               links={trumpAccountSourceLinks}
             />
