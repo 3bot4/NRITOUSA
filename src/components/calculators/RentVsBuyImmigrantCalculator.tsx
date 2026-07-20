@@ -18,7 +18,8 @@ import { validateAll, PERCENT, GROWTH_RATE } from "@/lib/calc/validation";
 import { homeTaxBenefit } from "@/lib/calc/homeTaxBenefit";
 import {
   standardDeduction,
-  SALT_CAP_2026,
+  saltCapFor,
+  SALT_2026,
   CURRENT_US_TAX_YEAR,
   type FilingStatus,
 } from "@/lib/calc/usTaxConfig";
@@ -277,7 +278,10 @@ function buildModel(s: Record<string, string>): Model {
   const itemize = s.itemize === "yes";
   const filingStatus = (s.filing as FilingStatus) ?? "mfj";
   const stdDeduction = standardDeduction(filingStatus);
-  const saltCap = SALT_CAP_2026.amount;
+  // SALT cap after the official 2026 OBBB high-income phase-down for the
+  // entered MAGI and filing status.
+  const magi = num(s.magi);
+  const saltCap = saltCapFor(filingStatus, magi);
   const otherItemized = num(s.otherItemized);
   const otherSalt = num(s.otherSalt);
   const benefitFor = (mortgageInterest: number, propertyTax: number) =>
@@ -635,6 +639,7 @@ export default function RentVsBuyImmigrantCalculator() {
     // C2 — tax deduction (defaults to standard deduction → zero home benefit)
     filing: "mfj",
     itemize: "no",
+    magi: "0",
     otherItemized: "0",
     otherSalt: "0",
     // D — immigration
@@ -687,6 +692,9 @@ export default function RentVsBuyImmigrantCalculator() {
 
   const model = buildModel(s);
   const imm = deriveImmigration(s);
+  // Render-scope copies for the tax-deduction UI (buildModel keeps its own).
+  const filingStatus = (s.filing as FilingStatus) ?? "mfj";
+  const saltCap = saltCapFor(filingStatus, num(s.magi));
   const { standardBE } = model;
 
   const immigrantBE =
@@ -845,6 +853,15 @@ export default function RentVsBuyImmigrantCalculator() {
             {s.itemize === "yes" && (
               <>
                 <NumberField
+                  label="Modified AGI (MAGI)"
+                  value={s.magi}
+                  onChange={(v) => set("magi", v)}
+                  prefix="$"
+                  min={0}
+                  step={5000}
+                  hint={`Drives the SALT-cap phase-down. For ${filingStatus === "mfs" ? "MFS" : "your status"}, the ${CURRENT_US_TAX_YEAR} cap is $${saltCap.toLocaleString()} at this MAGI.`}
+                />
+                <NumberField
                   label="Other itemized deductions (non-home)"
                   value={s.otherItemized}
                   onChange={(v) => set("otherItemized", v)}
@@ -860,7 +877,7 @@ export default function RentVsBuyImmigrantCalculator() {
                   prefix="$"
                   min={0}
                   step={500}
-                  hint={`State income/sales tax before property tax. SALT is capped at $${SALT_CAP_2026.amount.toLocaleString()} (verify the exact current-year cap).`}
+                  hint={`State income/sales tax before property tax. ${CURRENT_US_TAX_YEAR} SALT cap: $${SALT_2026.general.baseCap.toLocaleString()} ($${SALT_2026.mfs.baseCap.toLocaleString()} MFS), phasing down above $${SALT_2026.general.magiThreshold.toLocaleString()} MAGI.`}
                 />
               </>
             )}
@@ -1061,7 +1078,7 @@ export default function RentVsBuyImmigrantCalculator() {
                   <li>Mortgage P&amp;I of <strong>{usd(model.payment)}/mo</strong> over a {num(s.term)}-year term.</li>
                   <li>Down payment + closing costs are invested at {num(s.invret)}% if you rent.</li>
                   <li>{s.itemize === "yes"
-                    ? `Homeownership tax benefit computed as the incremental deduction over your standard deduction (${CURRENT_US_TAX_YEAR}), at your ${num(s.fed) + num(s.state)}% combined marginal rate, SALT capped at $${SALT_CAP_2026.amount.toLocaleString()} (verify the current-year cap).`
+                    ? `Homeownership tax benefit computed as the incremental deduction over your standard deduction (${CURRENT_US_TAX_YEAR}), at your ${num(s.fed) + num(s.state)}% combined marginal rate. SALT capped at $${saltCap.toLocaleString()} for your MAGI and filing status (2026 OBBB cap, phased down above $${SALT_2026.general.magiThreshold.toLocaleString()}).`
                     : "You take the standard deduction, so homeownership adds no incremental tax benefit."}</li>
                   <li>Home appreciates {num(s.appr)}%/yr; rent rises {num(s.rentinc)}%/yr.</li>
                   <li>The Immigrant Lens is a <strong>planning heuristic</strong>, not an actuarial or statistically predicted probability: it caps your planning horizon at ~{imm.effectiveHorizon} years and adds a {imm.riskPremiumYears}-year break-even risk premium based on the inputs you chose.</li>

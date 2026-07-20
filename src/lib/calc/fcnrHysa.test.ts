@@ -61,21 +61,21 @@ describe("gross interest is consistent with the maturity value", () => {
 
 describe("Indian tax follows NRI / RNOR / ROR status", () => {
   it("is exempt from Indian tax while NRI", () => {
-    expect(run({ indiaStatus: "nri" }).final.indianTax).toBe(0);
+    expect(run({ indiaStatus: "nri" }).final.indianTaxBeforeFtc).toBe(0);
   });
 
   it("is exempt from Indian tax while RNOR", () => {
-    expect(run({ indiaStatus: "rnor" }).final.indianTax).toBe(0);
+    expect(run({ indiaStatus: "rnor" }).final.indianTaxBeforeFtc).toBe(0);
   });
 
   it("applies Indian tax once ROR", () => {
     const r = run({ indiaStatus: "ror" });
-    expect(r.final.indianTax).toBeGreaterThan(0);
+    expect(r.final.indianTaxBeforeFtc).toBeGreaterThan(0);
   });
 
   it("never applies Indian tax to a non-Indian-source instrument (HYSA)", () => {
     const r = run({ indiaStatus: "ror", indianSource: false });
-    expect(r.final.indianTax).toBe(0);
+    expect(r.final.indianTaxBeforeFtc).toBe(0);
   });
 
   it("ROR pays more total tax than NRI at the same rates", () => {
@@ -139,3 +139,65 @@ describe("edge cases", () => {
     }
   });
 });
+
+describe("ROR foreign tax credit — separate values, lower-of, no double-add", () => {
+  const ror = (over: Partial<FcnrInputs> = {}) =>
+    run({ indiaStatus: "ror", indiaRate: 0.3, usFederalRate: 0.24, stateRate: 0.05, ...over });
+
+  it("FTC is zero when not modeled (default)", () => {
+    const r = ror({ ftcTreatment: "not_modeled" });
+    expect(r.final.foreignTaxCredit).toBe(0);
+    // combined = fed + state + indian, all separate and additive here.
+    expect(r.final.cumulativeTax).toBeCloseTo(
+      r.final.usFederalTax + r.final.stateTax + r.final.indianTaxBeforeFtc,
+      2,
+    );
+  });
+
+  it("estimate credits the lower of Indian tax and US federal tax", () => {
+    const r = ror({ ftcTreatment: "estimate" });
+    // Indian 30% > US federal 24%, so FTC is capped at the US federal tax.
+    expect(r.final.foreignTaxCredit).toBeCloseTo(r.final.usFederalTax, 2);
+    expect(r.final.foreignTaxCredit).toBeLessThanOrEqual(r.final.indianTaxBeforeFtc);
+  });
+
+  it("does NOT simply add full Indian + full US when FTC is estimated", () => {
+    const notModeled = ror({ ftcTreatment: "not_modeled" });
+    const estimate = ror({ ftcTreatment: "estimate" });
+    expect(estimate.final.cumulativeTax).toBeLessThan(notModeled.final.cumulativeTax);
+  });
+
+  it("combined net tax = fed + state + indian − FTC, and reconciles", () => {
+    const r = ror({ ftcTreatment: "estimate" });
+    expect(r.final.cumulativeTax).toBeCloseTo(
+      r.final.usFederalTax + r.final.stateTax + r.final.indianTaxBeforeFtc - r.final.foreignTaxCredit,
+      2,
+    );
+    expect(r.reconciles).toBe(true);
+  });
+
+  it("keeps US and Indian tax as separate fields (never merged)", () => {
+    const r = ror({ ftcTreatment: "not_modeled" });
+    expect(r.final.usFederalTax).toBeGreaterThan(0);
+    expect(r.final.indianTaxBeforeFtc).toBeGreaterThan(0);
+    // The Indian figure is not folded into the US figure.
+    expect(r.final.usFederalTax).not.toBeCloseTo(
+      r.final.usFederalTax + r.final.indianTaxBeforeFtc,
+      2,
+    );
+  });
+
+  it("FTC never exceeds Indian tax, so combined tax is never negative", () => {
+    const r = ror({ ftcTreatment: "estimate", usFederalRate: 0.9, indiaRate: 0.1 });
+    expect(r.final.foreignTaxCredit).toBeLessThanOrEqual(r.final.indianTaxBeforeFtc);
+    expect(r.final.cumulativeTax).toBeGreaterThanOrEqual(0);
+  });
+
+  it("NRI/RNOR carry no Indian tax and no FTC regardless of treatment", () => {
+    for (const st of ["nri", "rnor"] as const) {
+      const r = run({ indiaStatus: st, ftcTreatment: "estimate", indiaRate: 0.3 });
+      expect(r.final.indianTaxBeforeFtc).toBe(0);
+      expect(r.final.foreignTaxCredit).toBe(0);
+    }
+  });
+})

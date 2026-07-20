@@ -292,13 +292,16 @@ export default function RnorCalculator() {
             />
 
             <p className="text-xs leading-relaxed text-ink-400">
-              Estimate only, based on section 6 of the Income-tax Act 1961 and
-              measured on the Indian financial year (1 April – 31 March). This
-              tool does not model dual-status years, the DTAA tie-breaker,
-              income characterisation, or whether you are &ldquo;liable to
-              tax&rdquo; in another country as that term is used in section
-              6(1A). Confirm with a qualified cross-border tax professional
-              before acting on your status.
+              Estimate only, based on the residence rules historically in
+              section 6 of the Income-tax Act, 1961, measured on the Indian
+              financial year (1 April – 31 March). The Income-tax Act, 2025 came
+              into force on 1 April 2026 and, with the Income-tax Rules, 2026,
+              governs current-year status; the corresponding provisions may be
+              renumbered, so treat any section number as indicative and verify
+              the current provision. This tool does not model dual-status years,
+              the DTAA tie-breaker, income characterisation, or whether you are
+              &ldquo;liable to tax&rdquo; in another country. Confirm with a
+              qualified cross-border tax professional before acting.
             </p>
           </>
         )

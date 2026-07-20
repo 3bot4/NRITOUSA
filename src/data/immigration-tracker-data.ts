@@ -15,6 +15,11 @@
 import currentBulletin from "../../data/visa-bulletin/current.json";
 import processingTimesRaw from "../../data/processing-times.json";
 import inventoryRaw from "../../data/i485-inventory/current.json";
+import homepageConfig from "../../data/homepage-config.json";
+import {
+  visaBulletinState,
+  monthLabel as bulletinMonthLabel,
+} from "@/lib/visaBulletinState";
 import { getH1bPremiumFee, getPremiumFeeByForm, premiumProcessing } from "@/lib/premiumProcessing";
 
 // Premium processing fees come from the central source of truth in
@@ -287,12 +292,29 @@ export const processingTimes = {
   ],
 } as const;
 
+// ─── Visa Bulletin timing (shared source) ──────────────────────────────────
+// Effective vs latest-published vs next-expected, derived from the same
+// visaBulletinState module the homepage ticker uses, so the two never disagree.
+
+const _bulletinState = visaBulletinState(
+  new Date(),
+  (homepageConfig.bulletinReleases as string[]) ?? [],
+);
+
+export const bulletinTiming = {
+  effectiveMonthLabel: bulletinMonthLabel(_bulletinState.effectiveMonth),
+  latestPublishedMonthLabel: bulletinMonthLabel(_bulletinState.latestPublishedMonth),
+  nextExpectedMonthLabel: _bulletinState.nextExpectedMonth
+    ? bulletinMonthLabel(_bulletinState.nextExpectedMonth)
+    : null,
+  nextPublicationDate: _bulletinState.nextPublicationDate,
+} as const;
+
 // ─── Countdowns ───────────────────────────────────────────────────────────────
 
 export const countdowns = {
   // MANUALLY MAINTAINED — update after each bulletin release
-  nextVisaBulletinEstimatedDate: "2026-08-14",
-  nextVisaBulletinCountdownLabel: "~57 days",
+  nextVisaBulletinEstimatedDate: bulletinTiming.nextPublicationDate ?? "",
   currentBulletinMonth: currentBulletin.bulletinMonth,
   note: "Visa Bulletins typically release mid-month. Estimated timing only — no guarantee.",
 } as const;

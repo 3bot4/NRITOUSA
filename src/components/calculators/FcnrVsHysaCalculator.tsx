@@ -243,40 +243,49 @@ function ResultCard({
   title,
   subtitle,
   grossRate,
-  afterTaxRate,
   netGain,
   totalValue,
-  totalTax,
+  usFederalTax,
+  usStateTax,
+  indianTaxBeforeFtc,
+  foreignTaxCredit,
+  combinedNetTax,
   grossEarned,
   isWinner,
   winnerAdv,
+  showWinner,
 }: {
   title: string;
   subtitle: string;
   grossRate: number;
-  afterTaxRate: number;
   netGain: number;
   totalValue: number;
-  totalTax: number;
+  usFederalTax: number;
+  usStateTax: number;
+  indianTaxBeforeFtc: number;
+  foreignTaxCredit: number;
+  combinedNetTax: number;
   grossEarned: number;
   isWinner: boolean;
   winnerAdv: number;
+  showWinner: boolean;
 }) {
+  const highlight = isWinner && showWinner;
   return (
     <div
       className={`overflow-hidden rounded-2xl border-2 bg-white shadow-card transition-all ${
-        isWinner ? "border-teal-400" : "border-ink-900/5"
+        highlight ? "border-teal-400" : "border-ink-900/5"
       }`}
     >
       <div
         className={`px-5 py-3 text-sm font-bold uppercase tracking-wider text-white ${
-          isWinner
+          highlight
             ? "bg-gradient-to-r from-teal-500 to-cyan-600"
             : "bg-gradient-to-r from-slate-500 to-slate-600"
         }`}
       >
         <span>{title}</span>
-        {isWinner && (
+        {highlight && (
           <span className="ml-2 rounded-full bg-white/20 px-2 py-0.5 text-[0.65rem]">
             ★ Better choice by {usd(winnerAdv, 0)}
           </span>
@@ -285,10 +294,10 @@ function ResultCard({
       <div className="space-y-0 p-5">
         <p className="mb-4 text-xs text-ink-400">{subtitle}</p>
         <div className="border-b border-ink-900/5 pb-3">
-          <p className="text-xs text-ink-500">Total value at maturity</p>
+          <p className="text-xs text-ink-500">Estimated value at maturity</p>
           <p
             className={`text-3xl font-extrabold tracking-tight ${
-              isWinner ? "text-teal-600" : "text-ink-900"
+              highlight ? "text-teal-600" : "text-ink-900"
             }`}
           >
             {usd(totalValue, 0)}
@@ -300,24 +309,39 @@ function ResultCard({
             <span className="font-semibold">{pct(grossRate)}</span>
           </div>
           <div className="flex justify-between border-b border-ink-900/5 py-1.5">
-            <span className="text-ink-500">After-tax effective rate</span>
-            <span className="font-semibold">{pct(afterTaxRate)}</span>
-          </div>
-          <div className="flex justify-between border-b border-ink-900/5 py-1.5">
             <span className="text-ink-500">Gross interest earned</span>
             <span className="font-semibold">{usd(grossEarned, 0)}</span>
           </div>
+          {/* Each tax on its own line — never merged. */}
           <div className="flex justify-between border-b border-ink-900/5 py-1.5">
-            <span className="text-ink-500">US tax paid (total)</span>
-            <span className="font-semibold text-rose-600">
-              −{usd(totalTax, 0)}
-            </span>
+            <span className="text-ink-500">US federal tax</span>
+            <span className="font-semibold text-rose-600">−{usd(usFederalTax, 0)}</span>
+          </div>
+          <div className="flex justify-between border-b border-ink-900/5 py-1.5">
+            <span className="text-ink-500">US state tax</span>
+            <span className="font-semibold text-rose-600">−{usd(usStateTax, 0)}</span>
+          </div>
+          {indianTaxBeforeFtc > 0 && (
+            <>
+              <div className="flex justify-between border-b border-ink-900/5 py-1.5">
+                <span className="text-ink-500">Estimated Indian tax (before FTC)</span>
+                <span className="font-semibold text-rose-600">−{usd(indianTaxBeforeFtc, 0)}</span>
+              </div>
+              <div className="flex justify-between border-b border-ink-900/5 py-1.5">
+                <span className="text-ink-500">Foreign tax credit</span>
+                <span className="font-semibold text-emerald-600">
+                  {foreignTaxCredit > 0 ? `+${usd(foreignTaxCredit, 0)}` : "Not modeled"}
+                </span>
+              </div>
+            </>
+          )}
+          <div className="flex justify-between border-b border-ink-900/5 py-1.5">
+            <span className="text-ink-600">Combined net tax</span>
+            <span className="font-semibold text-rose-600">−{usd(combinedNetTax, 0)}</span>
           </div>
           <div className="flex justify-between py-1.5">
             <span className="font-semibold text-ink-700">Net after-tax gain</span>
-            <span className="font-bold text-emerald-600">
-              +{usd(netGain, 0)}
-            </span>
+            <span className="font-bold text-emerald-600">+{usd(netGain, 0)}</span>
           </div>
         </div>
       </div>
@@ -335,12 +359,14 @@ export default function FcnrVsHysaCalculator() {
   const [s, set] = useUrlState({
     amount: "25000",
     tenure: "5",
-    fcnrRate: "5.50",
-    hysaRate: "4.50",
+    fcnrRate: "",
+    hysaRate: "",
     federalTax: "24",
     stateTax: "0",
     indiaStatus: "nri",
     compounding: "annual",
+    indiaRate: "",
+    ftc: "not_modeled",
   });
 
   const val = validateAll(
@@ -350,19 +376,22 @@ export default function FcnrVsHysaCalculator() {
       hysaRate: s.hysaRate,
       federalTax: s.federalTax,
       stateTax: s.stateTax,
+      indiaRate: s.indiaRate,
     },
     {
       amount: { label: "Investment amount", ...USD_AMOUNT, required: true },
-      fcnrRate: { label: "FCNR interest rate", min: 0, max: 100, required: true },
-      hysaRate: { label: "US HYSA / CD rate", min: 0, max: 100, required: true },
+      // Rates are NOT required: blank is allowed and suppresses the comparison
+      // until both are entered (item 1F), rather than erroring.
+      fcnrRate: { label: "FCNR interest rate", min: 0, max: 100 },
+      hysaRate: { label: "US HYSA / CD rate", min: 0, max: 100 },
       federalTax: { label: "Federal tax rate", ...PERCENT, required: true },
       stateTax: { label: "State income tax rate", ...PERCENT, required: true },
+      indiaRate: { label: "Indian marginal tax rate", ...PERCENT },
     },
   );
   const fieldErrors = Object.values(val.errors).filter(Boolean) as string[];
 
   const principal = val.values.amount;
-  // Tenure is a fixed set of options, so clamping cannot mislead here.
   const tenure = Math.max(1, Math.min(10, Math.round(num(s.tenure))));
   const fcnrGross = val.values.fcnrRate / 100;
   const hysaGross = val.values.hysaRate / 100;
@@ -370,18 +399,29 @@ export default function FcnrVsHysaCalculator() {
   const stateRate = val.values.stateTax / 100;
   const indiaStatus = s.indiaStatus as IndiaStatus;
   const compounding = s.compounding as Compounding;
-  // Indian tax on FCNR interest (once ROR) — modelled at the top marginal slab.
-  const INDIA_ROR_RATE = 0.3;
+  const ftcTreatment = (s.ftc === "estimate" ? "estimate" : "not_modeled") as
+    | "estimate"
+    | "not_modeled";
+
+  // Gating (items 1C / 1F).
+  const bothRatesEntered = s.fcnrRate.trim() !== "" && s.hysaRate.trim() !== "";
+  const isRor = indiaStatus === "ror";
+  const indiaRateEntered = s.indiaRate.trim() !== "";
+  const rorAssumptionsMissing = isRor && !indiaRateEntered;
+  // Indian tax is included only when ROR AND a rate is supplied — never a
+  // silent 30%.
+  const indiaRateForModel = isRor && indiaRateEntered ? val.values.indiaRate / 100 : 0;
+  const showWinner = bothRatesEntered && !rorAssumptionsMissing;
 
   const calc = useMemo(() => {
-    // One reconciling period model per instrument (see lib/calc/fcnrHysa).
     const common = {
       years: tenure,
       compounding,
       indiaStatus,
-      indiaRate: INDIA_ROR_RATE,
+      indiaRate: indiaRateForModel,
       usFederalRate: fedRate,
       stateRate,
+      ftcTreatment,
     };
     const fcnr = runFcnrModel({
       ...common,
@@ -421,21 +461,21 @@ export default function FcnrVsHysaCalculator() {
       hysaNetGain: hysa.final.netGain,
       fcnrGrossEarned: fcnr.final.cumulativeGrossInterest,
       hysaGrossEarned: hysa.final.cumulativeGrossInterest,
-      fcnrTax: fcnr.final.cumulativeTax,
-      hysaTax: hysa.final.cumulativeTax,
-      fcnrIndianTax: fcnr.final.indianTax,
+      fcnrFederal: fcnr.final.usFederalTax,
+      fcnrState: fcnr.final.stateTax,
+      fcnrIndianBeforeFtc: fcnr.final.indianTaxBeforeFtc,
+      fcnrFtc: fcnr.final.foreignTaxCredit,
+      fcnrCombinedTax: fcnr.final.cumulativeTax,
+      hysaFederal: hysa.final.usFederalTax,
+      hysaState: hysa.final.stateTax,
+      hysaCombinedTax: hysa.final.cumulativeTax,
       fcnrWins,
       advantage: round2(advantage),
       fcnrSeries: yearly(fcnrGross, true),
       hysaSeries: yearly(hysaGross, false),
       reconciles: fcnr.reconciles && hysa.reconciles,
     };
-  }, [principal, tenure, fcnrGross, hysaGross, fedRate, stateRate, indiaStatus, compounding]);
-
-  // After-tax effective rates, for the result cards' display only.
-  const totalTaxRate = Math.min(1, fedRate + stateRate + (indiaStatus === "ror" ? INDIA_ROR_RATE : 0));
-  const fcnrAfterTax = fcnrGross * (1 - totalTaxRate);
-  const hysaAfterTax = hysaGross * (1 - Math.min(1, fedRate + stateRate));
+  }, [principal, tenure, fcnrGross, hysaGross, fedRate, stateRate, indiaStatus, compounding, indiaRateForModel, ftcTreatment]);
 
   const advantagePct =
     calc.advantage > 0 && Math.min(calc.fcnrFinal, calc.hysaFinal) > 0
@@ -504,6 +544,7 @@ export default function FcnrVsHysaCalculator() {
               min={0}
               max={100}
               step={0.05}
+              placeholder="e.g. 5.50"
               error={val.errors.fcnrRate}
               hint="Enter the rate your bank quotes for your currency and term — check its official FCNR rate page. Rates vary by bank, term and currency and change often."
             />
@@ -516,6 +557,7 @@ export default function FcnrVsHysaCalculator() {
               min={0}
               max={100}
               step={0.05}
+              placeholder="e.g. 4.50"
               error={val.errors.hysaRate}
               hint="Enter your bank's current advertised APY."
             />
@@ -541,8 +583,35 @@ export default function FcnrVsHysaCalculator() {
                 { value: "rnor", label: "RNOR — Resident, Not Ordinarily Resident" },
                 { value: "ror", label: "ROR — Resident & Ordinarily Resident" },
               ]}
-              hint="FCNR interest is exempt from Indian income tax while you are NRI or RNOR. Once you become ROR, it becomes taxable in India."
+              hint="FCNR interest is generally Indian-tax exempt while the depositor qualifies as NRI or RNOR and generally becomes taxable after becoming ROR, subject to current law and individual circumstances."
             />
+
+            {isRor && (
+              <>
+                <NumberField
+                  label="Estimated Indian marginal tax rate"
+                  value={s.indiaRate}
+                  onChange={(v) => set("indiaRate", v)}
+                  suffix="%"
+                  min={0}
+                  max={100}
+                  step={0.5}
+                  placeholder="required for ROR"
+                  error={val.errors.indiaRate}
+                  hint="Your Indian slab rate on this interest as ROR. Left blank, Indian tax is not included — the tool never assumes a rate."
+                />
+                <SelectField
+                  label="Foreign tax credit treatment"
+                  value={s.ftc}
+                  onChange={(v) => set("ftc", v)}
+                  options={[
+                    { value: "not_modeled", label: "Not modeled (adds US + Indian tax)" },
+                    { value: "estimate", label: "Estimate (simplified lower-of credit)" },
+                  ]}
+                  hint="The FTC can offset Indian tax against US tax on the same income. Left as 'Not modeled', the combined figure may overstate your true tax."
+                />
+              </>
+            )}
 
             <SelectField
               label="US federal marginal rate (2026)"
@@ -570,56 +639,97 @@ export default function FcnrVsHysaCalculator() {
             <InvalidInputPanel errors={fieldErrors} />
           ) : (
           <>
+            {!bothRatesEntered && (
+              <Callout tone="note">
+                <strong>Enter both rates to compare.</strong> Fill in the FCNR
+                and the HYSA/CD rate above — the calculator does not pick a
+                &ldquo;better choice&rdquo; until you provide both current rates.
+              </Callout>
+            )}
+            {bothRatesEntered && rorAssumptionsMissing && (
+              <Callout tone="bad">
+                <strong>Indian tax exposure not included.</strong> You selected
+                ROR, where FCNR interest is taxable in India — but no Indian
+                marginal rate is entered, so the figures below reflect US tax
+                only and no &ldquo;better choice&rdquo; is shown. Add your
+                estimated Indian marginal rate (and choose an FTC treatment) to
+                include it.
+              </Callout>
+            )}
+
             <ResultCard
               title="FCNR (Indian bank foreign-currency deposit)"
-              subtitle={`Fixed deposit at an Indian bank · ${pct(num(s.fcnrRate))} gross · ${
-                indiaStatus === "ror"
-                  ? "Indian tax applies (ROR)"
+              subtitle={`Fixed deposit at an Indian bank · ${
+                s.fcnrRate.trim() === "" ? "rate not entered" : pct(num(s.fcnrRate)) + " gross"
+              } · ${
+                isRor
+                  ? indiaRateEntered
+                    ? "Indian tax applies (ROR)"
+                    : "ROR — Indian tax not yet included"
                   : "Indian-tax exempt while NRI/RNOR"
               }`}
               grossRate={fcnrGross * 100}
-              afterTaxRate={fcnrAfterTax * 100}
               netGain={calc.fcnrNetGain}
               totalValue={calc.fcnrFinal}
-              totalTax={calc.fcnrTax}
+              usFederalTax={calc.fcnrFederal}
+              usStateTax={calc.fcnrState}
+              indianTaxBeforeFtc={calc.fcnrIndianBeforeFtc}
+              foreignTaxCredit={calc.fcnrFtc}
+              combinedNetTax={calc.fcnrCombinedTax}
               grossEarned={calc.fcnrGrossEarned}
               isWinner={calc.fcnrWins}
               winnerAdv={calc.advantage}
+              showWinner={showWinner}
             />
 
             <ResultCard
               title="HYSA / CD (US account)"
-              subtitle={`High-yield savings or CD at a US bank · ${pct(num(s.hysaRate))} gross`}
+              subtitle={`High-yield savings or CD at a US bank · ${
+                s.hysaRate.trim() === "" ? "rate not entered" : pct(num(s.hysaRate)) + " gross"
+              }`}
               grossRate={hysaGross * 100}
-              afterTaxRate={hysaAfterTax * 100}
               netGain={calc.hysaNetGain}
               totalValue={calc.hysaFinal}
-              totalTax={calc.hysaTax}
+              usFederalTax={calc.hysaFederal}
+              usStateTax={calc.hysaState}
+              indianTaxBeforeFtc={0}
+              foreignTaxCredit={0}
+              combinedNetTax={calc.hysaCombinedTax}
               grossEarned={calc.hysaGrossEarned}
               isWinner={!calc.fcnrWins}
               winnerAdv={calc.advantage}
+              showWinner={showWinner}
             />
 
-            {/* plain-English summary */}
-            <div className="rounded-xl bg-slate-50 px-5 py-4 text-sm leading-relaxed text-ink-700">
-              {calc.advantage < 1 ? (
-                <span>
-                  At your inputs, FCNR and HYSA/CD return almost identical
-                  after-tax gains over {tenure} year{tenure > 1 ? "s" : ""}.
-                </span>
-              ) : (
-                <span>
-                  <strong>{winnerName}</strong> earns you{" "}
-                  <strong>{usd(calc.advantage, 0)} more</strong> after US taxes
-                  over {tenure} year{tenure > 1 ? "s" : ""} — a{" "}
-                  <strong>{advantagePct.toFixed(1)}% advantage</strong> at your{" "}
-                  {s.federalTax}%
-                  {num(s.stateTax) > 0 ? ` + ${s.stateTax}%` : ""} tax
-                  bracket. {loserName} trails by that margin despite identical
-                  tax treatment.
-                </span>
-              )}
-            </div>
+            {isRor && indiaRateEntered && ftcTreatment === "estimate" && (
+              <Callout tone="note">
+                The foreign tax credit shown is a <strong>simplified lower-of
+                estimate</strong> — the Indian tax on this interest, capped at
+                the US federal tax on the same interest. It is not a Form 1116
+                computation; the real credit depends on your whole return,
+                separate income baskets, and currency timing.
+              </Callout>
+            )}
+
+            {/* plain-English summary — only when a definitive comparison is valid */}
+            {showWinner && (
+              <div className="rounded-xl bg-slate-50 px-5 py-4 text-sm leading-relaxed text-ink-700">
+                {calc.advantage < 1 ? (
+                  <span>
+                    At your inputs, FCNR and HYSA/CD return almost identical
+                    after-tax gains over {tenure} year{tenure > 1 ? "s" : ""}.
+                  </span>
+                ) : (
+                  <span>
+                    <strong>{winnerName}</strong> earns you{" "}
+                    <strong>{usd(calc.advantage, 0)} more</strong> after tax over{" "}
+                    {tenure} year{tenure > 1 ? "s" : ""} — a{" "}
+                    <strong>{advantagePct.toFixed(1)}% advantage</strong>.{" "}
+                    {loserName} trails by that margin.
+                  </span>
+                )}
+              </div>
+            )}
 
             <ResultActions
               title="FCNR vs HYSA comparison"

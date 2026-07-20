@@ -283,10 +283,12 @@ export default function DtaaReliefCalculator() {
             >
               Form 67
             </a>{" "}
-            furnished under Rule 128 — its timing depends on your return type
-            (139(1), 139(4) or an updated 139(8A) return), so confirm the
-            current deadline on the official guidance rather than assuming it
-            must precede the original return. See our{" "}
+            and supporting documents are generally furnished on or before the
+            end of the assessment year relevant to the previous year in which
+            the income is offered or assessed to tax in India; when foreign
+            income is included through an updated return under section 139(8A),
+            they must be furnished on or before the date the updated return is
+            filed. Verify the current instructions before filing. See our{" "}
             <Link
               href="/articles/double-taxation-dtaa-india-usa"
               className="text-brand-600 underline"

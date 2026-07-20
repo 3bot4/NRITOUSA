@@ -378,7 +378,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       "Which forms apply (Form 67 in India, Form 1116 in the US, Form 10F where a TRC is needed)",
     ],
     decisionWindow:
-      "Foreign tax credit is claimed for the tax year the income arises. In India, Form 67 is furnished under Rule 128, and the timing depends on the return you file — an original return under section 139(1), a belated return under 139(4), or an updated return under 139(8A) can each carry different Form 67 timing. The old rule that it must always be filed by the original return due date has changed, so confirm the current deadline for your return type on the official Form 67 guidance before filing. In the US, Form 1116 is filed with your annual return.",
+      "Foreign tax credit is claimed for the tax year the income arises. In India, Form 67 and supporting documents are generally furnished on or before the end of the assessment year relevant to the previous year in which the income is offered or assessed to tax in India. When foreign income is included through an updated return under section 139(8A), the relevant documents must be furnished on or before the date the updated return is filed. Always verify the current instructions before filing. In the US, Form 1116 is filed with your annual return.",
     options: {
       heading: "How DTAA relief actually works",
       items: [

@@ -22,6 +22,7 @@ import {
   h1bLottery,
   processingTimes,
   countdowns,
+  bulletinTiming,
   dashboardDisclaimers,
 } from "@/data/immigration-tracker-data";
 import { formatCutoff, bulletin } from "@/lib/visa-bulletin";
@@ -296,24 +297,43 @@ export default function ImmigrationTrackerDashboard({
           </a>
         </div>
 
-        {/* Distinguish the bulletin CURRENTLY IN EFFECT from the latest one
-            already PUBLISHED. The State Department publishes each month's
-            bulletin in the middle of the prior month, so a later month is
-            typically already out even though this card shows the effective one. */}
-        <div className="mb-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-xs text-blue-900">
-          These figures are for the bulletin <strong>currently in effect</strong>.
-          The State Department usually publishes the next month&apos;s bulletin
-          around mid-month, so a later bulletin may already be available — always
-          check the{" "}
-          <a
-            href={visaBulletinIndia.officialSourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold underline"
-          >
-            official Visa Bulletin
-          </a>{" "}
-          for the latest published month before acting.
+        {/* Effective vs published vs next-expected, from the shared
+            visaBulletinState source (same as the homepage ticker). */}
+        <div className="mb-4 grid gap-2 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-xs text-blue-900 sm:grid-cols-3">
+          <div>
+            <p className="font-semibold uppercase tracking-wide text-blue-700">Currently effective</p>
+            <p className="mt-0.5 text-sm font-bold">{bulletinTiming.effectiveMonthLabel}</p>
+          </div>
+          <div>
+            <p className="font-semibold uppercase tracking-wide text-blue-700">Latest published</p>
+            <p className="mt-0.5 text-sm font-bold">{bulletinTiming.latestPublishedMonthLabel}</p>
+          </div>
+          <div>
+            <p className="font-semibold uppercase tracking-wide text-blue-700">Next expected</p>
+            <p className="mt-0.5 text-sm font-bold">
+              {bulletinTiming.nextExpectedMonthLabel
+                ? `${bulletinTiming.nextExpectedMonthLabel} bulletin`
+                : "—"}
+            </p>
+            {bulletinTiming.nextPublicationDate && (
+              <p className="text-[11px] text-blue-800/70">
+                est. publication ~{new Date(bulletinTiming.nextPublicationDate + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })} (estimate)
+              </p>
+            )}
+          </div>
+          <p className="sm:col-span-3 text-[11px] text-blue-800/70">
+            The figures below are for the bulletin currently in effect. A later
+            bulletin is often already published — check the{" "}
+            <a
+              href={visaBulletinIndia.officialSourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline"
+            >
+              official Visa Bulletin
+            </a>{" "}
+            for the latest month.
+          </p>
         </div>
 
         {/* July 2026 retrogression note + source */}
@@ -415,17 +435,26 @@ export default function ImmigrationTrackerDashboard({
             confidenceNote="Based on USCIS inventory data when available; manually transcribed and maintained."
           />
 
-          {/* Next Visa Bulletin */}
+          {/* Next EXPECTED Visa Bulletin — names the month being published next,
+              never a bulletin that is already out. */}
           <StatCard
             icon="📆"
             accent="from-sky-600 to-blue-600"
-            label="Next Visa Bulletin"
-            value={`~${bulletinCountdown} days`}
-            subvalue={`Est. ${countdowns.nextVisaBulletinEstimatedDate}`}
+            label="Next expected bulletin"
+            value={
+              bulletinTiming.nextExpectedMonthLabel
+                ? `${bulletinTiming.nextExpectedMonthLabel} bulletin`
+                : "—"
+            }
+            subvalue={
+              bulletinTiming.nextPublicationDate
+                ? `~${bulletinCountdown} days · est. ${bulletinTiming.nextPublicationDate}`
+                : "estimate"
+            }
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel="Estimated — not official"
             sourceUrl="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
-            note={countdowns.note}
+            note={`${bulletinTiming.latestPublishedMonthLabel} is already published; ${bulletinTiming.effectiveMonthLabel} is in effect. ${countdowns.note}`}
             confidence="estimate"
             confidenceNote="Estimated timing only, not an official release date."
           />

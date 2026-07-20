@@ -16,6 +16,7 @@ import i485Inventory from "../../data/i485-inventory/current.json";
 import processingTimes from "../../data/processing-times.json";
 import visaBulletinCurrent from "../../data/visa-bulletin/current.json";
 import h1bTimeline from "../../data/h1b-lottery-timeline.json";
+import { visaBulletinState } from "@/lib/visaBulletinState";
 import {
   getCutoffs,
   getSeries,
@@ -198,15 +199,29 @@ function marketTickerItem(item: MarketItem): TickerItem {
 
 /* -------------------- immigration-specific ticker items ------------------- */
 
-/** Days until the next Visa Bulletin — "Next Bulletin: 29 days · Jul 15". */
+/**
+ * Next Visa Bulletin ticker item. Names the month that will actually be
+ * published next (the September bulletin, not August, once August is out) so
+ * it never mislabels an already-published bulletin as "next".
+ */
 function nextBulletinTickerItem(): TickerItem | null {
   const nb = nextBulletin();
   if (!nb) return null;
+  const state = visaBulletinState(new Date(), (config.bulletinReleases as string[]) ?? []);
+  const monthShort = state.nextExpectedMonth
+    ? new Date(`${state.nextExpectedMonth}-01T00:00:00Z`).toLocaleDateString("en-US", {
+        month: "short",
+        timeZone: "UTC",
+      })
+    : null;
+  const display = monthShort
+    ? `${monthShort} VB · ~${nb.label}`
+    : `${nb.days}d · ${nb.label}`;
   return {
     key: "nextbulletin",
-    label: "Next Bulletin",
-    display: nb.days === 0 ? "Today!" : `${nb.days}d · ${nb.label}`,
-    change: nb.days <= 3 ? "releasing soon" : "State Dept",
+    label: "Next expected",
+    display,
+    change: nb.days <= 3 ? "releasing soon" : "est. date",
     direction: nb.days <= 7 ? "up" : "flat",
     kind: "differentiator",
     href: "/visa-bulletin",

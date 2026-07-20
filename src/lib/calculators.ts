@@ -70,7 +70,7 @@ export const calculators: CalculatorMeta[] = [
       "Your India tax status depends on how many days you've spent there over the last several years. Enter your day count to find out if you're NRI (taxed on India-sourced income only), RNOR (transitional status with limited global-income exposure), or ordinary resident (taxed on worldwide income).",
     audience: "NRIs planning to return to India, and Indians who recently moved to the US who want to understand when their global income starts being taxable in India",
     dataChecked: "2026-06-01",
-    officialSource: "Income Tax Act, 1961, Section 6 (residence rules); Indian Income Tax Department",
+    officialSource: "Residence rules under the Income-tax Act, 1961 (Section 6) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. Indian Income Tax Department.",
   },
   {
     slug: "india-property-capital-gains",
@@ -99,7 +99,7 @@ export const calculators: CalculatorMeta[] = [
       "Capital-gains tax and TDS are two different calculations, and this calculator keeps them separate. Long-term gains on property transferred on or after 23 July 2024 are taxed at 12.5% without indexation; short-term gains are taxed at your applicable slab rate, not at a fixed rate. Separately, under Section 195 the buyer withholds TDS on the full sale consideration — not on your gain — unless you obtain a lower/nil deduction certificate, so the amount withheld is usually far larger than the tax you actually owe and the difference is reclaimed by filing an Indian return. Repatriation of up to USD 1 million per financial year is subject to RBI/FEMA conditions and your bank's review.",
     audience: "US-based NRIs and Indian-Americans who own or have inherited property in India and are considering a sale",
     dataChecked: "2026-06-01",
-    officialSource: "Income Tax Act, 1961, Sections 48, 54, 54EC, 195; RBI Master Circular on repatriation",
+    officialSource: "Capital-gains and TDS provisions under the Income-tax Act, 1961 (Sections 48, 54, 54EC, 195) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. RBI Master Circular on repatriation.",
   },
   {
     slug: "401k-return-to-india",
@@ -216,7 +216,7 @@ export const calculators: CalculatorMeta[] = [
       "India charges 20% TCS on outward remittances above ₹10 lakh per year for most purposes (the threshold was raised to ₹10 lakh from FY 2025-26); you can reclaim TCS as an income tax credit when filing in India. Enter your transfer amount, provider, and current exchange rate to see total fees, TCS withheld, exchange-rate margin, and the net USD (or INR) amount received on the other end.",
     audience: "NRIs and Indians sending money between India and the USA — whether transferring savings, paying for education, or repatriating property sale proceeds",
     dataChecked: "2026-06-01",
-    officialSource: "Income Tax Act, 1961, Section 206C(1G) (TCS on remittances); RBI Liberalised Remittance Scheme (LRS)",
+    officialSource: "TCS on remittances under the Income-tax Act, 1961 (Section 206C(1G)) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. RBI Liberalised Remittance Scheme (LRS).",
   },
   {
     slug: "fcnr-vs-hysa",

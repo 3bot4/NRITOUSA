@@ -107,36 +107,54 @@ export function marginalRateOptions(
 ): { value: string; label: string }[] {
   const s = ty.single.brackets;
   const m = ty.marriedJoint.brackets;
-  const fmtK = (n: number) => `$${Math.round(n / 1000)}k`;
-  // Build "single X–Y / married X–Y" labels for the 22%+ bands.
+  // EXACT thresholds (no rounded "$50k–$106k" ranges) for all seven brackets.
+  const dollars = (n: number) => `$${n.toLocaleString("en-US")}`;
+  const band = (arr: TaxBracket[], i: number) =>
+    i + 1 < arr.length
+      ? `${dollars(arr[i].from)}–${dollars(arr[i + 1].from - 1)}`
+      : `${dollars(arr[i].from)}+`;
   const rows: { value: string; label: string }[] = [];
-  for (let i = 2; i < s.length; i++) {
-    const rate = s[i].rate;
-    const sHi = i + 1 < s.length ? `–${fmtK(s[i + 1].from)}` : "+";
-    const mHi = i + 1 < m.length ? `–${fmtK(m[i + 1].from)}` : "+";
-    const pct = `${Math.round(rate * 100)}%`;
+  for (let i = 0; i < s.length; i++) {
+    const pct = `${Math.round(s[i].rate * 100)}%`;
     rows.push({
-      value: String(Math.round(rate * 100)),
-      label: `${pct} (single ${fmtK(s[i].from)}${sHi} / married ${fmtK(m[i].from)}${mHi})`,
+      value: String(Math.round(s[i].rate * 100)),
+      label: `${pct} (single ${band(s, i)} / MFJ ${band(m, i)})`,
     });
   }
   return rows;
 }
 
 /**
- * OBBB state-and-local-tax deduction cap.
+ * OBBB state-and-local-tax (SALT) deduction cap for 2026.
  *
- * The $10,000 TCJA cap was replaced by the One Big Beautiful Bill Act with a
- * higher cap that phases down for high earners. The exact 2026 figure could not
- * be confirmed against a primary IRS/Treasury page at the time of writing
- * (irs.gov and congress.gov reads were unavailable), so this is marked
- * unverified and callers must NOT present a tax benefit as fact on the strength
- * of it. The rent-vs-buy tool defaults its tax benefit to zero and only uses
- * this cap once the user explicitly opts into itemizing and supplies their own
- * figures — so an approximate cap never silently drives a result.
+ * Verified figures — base cap, MFS cap, phase-down MAGI thresholds and floors —
+ * from the IRS correction to the 2026 Form 1040-ES (see `saltSource`). The
+ * phase-down MECHANISM (the cap is reduced by 30% of the amount by which MAGI
+ * exceeds the threshold, never below the floor) is the OBBB statutory rule;
+ * it reconciles exactly with the IRS figures — $40,400 − 0.30 × ($606,333 −
+ * $505,000) = $10,000, the point at which the general cap reaches its floor.
  */
-export const SALT_CAP_2026 = {
-  amount: 40_000,
-  verified: false,
-  note: "OBBB raised the SALT cap above the former $10,000. The exact 2026 amount and high-income phasedown should be verified before relying on any benefit figure.",
+export const SALT_2026 = {
+  saltSource:
+    "https://www.irs.gov/forms-pubs/correction-to-state-and-local-income-tax-deduction-amount-in-the-2026-form-1040-es",
+  checkedDate: "2026-07-20",
+  /** Per-filing-status base cap, phase-down threshold and floor. */
+  general: { baseCap: 40_400, magiThreshold: 505_000, floor: 10_000 },
+  mfs: { baseCap: 20_200, magiThreshold: 252_500, floor: 5_000 },
+  /** Reduction rate applied to MAGI above the threshold. */
+  phasedownRate: 0.3,
 } as const;
+
+/**
+ * The SALT cap applicable to a filing status at a given MAGI, after the OBBB
+ * high-income phase-down. MFS uses its own base, threshold and floor; all other
+ * statuses use the general figures.
+ *
+ * cap = max(floor, baseCap − 0.30 × max(0, MAGI − threshold))
+ */
+export function saltCapFor(status: FilingStatus, magi: number): number {
+  const band = status === "mfs" ? SALT_2026.mfs : SALT_2026.general;
+  const excess = Math.max(0, (Number.isFinite(magi) ? magi : 0) - band.magiThreshold);
+  const reduced = band.baseCap - SALT_2026.phasedownRate * excess;
+  return Math.max(band.floor, reduced);
+}
