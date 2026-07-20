@@ -10,9 +10,11 @@ import {
   num,
   usd,
   pct,
+  InvalidInputPanel,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import { validateAll, USD_AMOUNT, PERCENT } from "@/lib/calc/validation";
 
 /* ─────────────────── helpers ─────────────────── */
 
@@ -353,13 +355,33 @@ export default function FcnrVsHysaCalculator() {
     stateTax: "0",
   });
 
-  const principal = num(s.amount);
+  const val = validateAll(
+    {
+      amount: s.amount,
+      fcnrRate: s.fcnrRate,
+      hysaRate: s.hysaRate,
+      federalTax: s.federalTax,
+      stateTax: s.stateTax,
+    },
+    {
+      amount: { label: "Investment amount", ...USD_AMOUNT, required: true },
+      fcnrRate: { label: "FCNR interest rate", min: 0, max: 100, required: true },
+      hysaRate: { label: "US HYSA / CD rate", min: 0, max: 100, required: true },
+      federalTax: { label: "Federal tax rate", ...PERCENT, required: true },
+      stateTax: { label: "State income tax rate", ...PERCENT, required: true },
+    },
+  );
+  const fieldErrors = Object.values(val.errors).filter(Boolean) as string[];
+
+  const principal = val.values.amount;
+  // Tenure is a fixed set of options, so clamping cannot mislead here.
   const tenure = Math.max(1, Math.min(10, Math.round(num(s.tenure))));
-  const fcnrGross = num(s.fcnrRate) / 100;
-  const hysaGross = num(s.hysaRate) / 100;
-  const fedRate = num(s.federalTax) / 100;
-  const stateRate = num(s.stateTax) / 100;
-  const totalTaxRate = fedRate + stateRate;
+  const fcnrGross = val.values.fcnrRate / 100;
+  const hysaGross = val.values.hysaRate / 100;
+  const fedRate = val.values.federalTax / 100;
+  const stateRate = val.values.stateTax / 100;
+  // Combined rate cannot exceed 100%, which would produce a negative yield.
+  const totalTaxRate = Math.min(1, fedRate + stateRate);
 
   const fcnrAfterTax = fcnrGross * (1 - totalTaxRate);
   const hysaAfterTax = hysaGross * (1 - totalTaxRate);
@@ -416,7 +438,10 @@ export default function FcnrVsHysaCalculator() {
               value={s.amount}
               onChange={(v) => set("amount", v)}
               prefix="$"
-              hint="Range: $1,000–$500,000"
+              min={0}
+              step={1000}
+              error={val.errors.amount}
+              hint="Typical range: $1,000–$500,000"
             />
 
             {/* tenure slider */}
@@ -458,6 +483,10 @@ export default function FcnrVsHysaCalculator() {
               value={s.fcnrRate}
               onChange={(v) => set("fcnrRate", v)}
               suffix="%"
+              min={0}
+              max={100}
+              step={0.05}
+              error={val.errors.fcnrRate}
               hint="SBI 5.50% · HDFC 5.50% · ICICI 5.40% · Axis 5.60% — as of Jun 2026"
             />
 
@@ -466,6 +495,10 @@ export default function FcnrVsHysaCalculator() {
               value={s.hysaRate}
               onChange={(v) => set("hysaRate", v)}
               suffix="%"
+              min={0}
+              max={100}
+              step={0.05}
+              error={val.errors.hysaRate}
               hint="Typical HYSA: 4.3–4.8% · 1-yr CD: 4.5–5.0%"
             />
 
@@ -482,11 +515,18 @@ export default function FcnrVsHysaCalculator() {
               value={s.stateTax}
               onChange={(v) => set("stateTax", v)}
               suffix="%"
+              min={0}
+              max={100}
+              step={0.05}
+              error={val.errors.stateTax}
               hint="No state tax: TX, FL, WA, NV, SD, WY, TN, NH · CA: 9.3%+ · NY: 6.85%+"
             />
           </>
         }
         results={
+          !val.ok ? (
+            <InvalidInputPanel errors={fieldErrors} />
+          ) : (
           <>
             <ResultCard
               title="FCNR (Indian bank USD deposit)"
@@ -548,6 +588,7 @@ export default function FcnrVsHysaCalculator() {
               ]}
             />
           </>
+          )
         }
       />
 

@@ -10,9 +10,11 @@ import {
   Callout,
   usd,
   num,
+  InvalidInputPanel,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import { validateAll, PERCENT, GROWTH_RATE } from "@/lib/calc/validation";
 
 /**
  * Rent vs. Buy calculator built for immigrants and visa holders.
@@ -618,6 +620,36 @@ export default function RentVsBuyImmigrantCalculator() {
   const [assumptionsOpen, setAssumptionsOpen] = useState(false);
 
   const lensOn = s.lens === "on";
+  const val = validateAll(
+    {
+      price: s.price, down: s.down, rate: s.rate, closing: s.closing,
+      proptax: s.proptax, hoa: s.hoa, ins: s.ins, maint: s.maint,
+      appr: s.appr, selling: s.selling, rent: s.rent, rentinc: s.rentinc,
+      rins: s.rins, deposit: s.deposit, invret: s.invret, state: s.state,
+      pmfee: s.pmfee,
+    },
+    {
+      price: { label: "Home price", min: 0, max: 100_000_000, required: true },
+      down: { label: "Down payment", ...PERCENT, required: true },
+      rate: { label: "Mortgage interest rate", min: 0, max: 50, required: true },
+      closing: { label: "Buying closing costs", ...PERCENT, required: true },
+      proptax: { label: "Property tax", ...PERCENT, required: true },
+      hoa: { label: "HOA fee", min: 0, max: 100_000 },
+      ins: { label: "Home insurance", min: 0, max: 100_000 },
+      maint: { label: "Maintenance", ...PERCENT, required: true },
+      appr: { label: "Home appreciation", min: -50, max: 50, required: true },
+      selling: { label: "Selling closing costs", ...PERCENT, required: true },
+      rent: { label: "Monthly rent", min: 0, max: 1_000_000, required: true },
+      rentinc: { label: "Annual rent increase", min: -50, max: 50, required: true },
+      rins: { label: "Renter's insurance", min: 0, max: 100_000 },
+      deposit: { label: "Security deposit", min: 0, max: 1_000_000 },
+      invret: { label: "Investment return if renting", ...GROWTH_RATE, required: true },
+      state: { label: "State marginal tax rate", ...PERCENT, required: true },
+      pmfee: { label: "Property management fee", ...PERCENT },
+    },
+  );
+  const fieldErrors = Object.values(val.errors).filter(Boolean) as string[];
+
   const model = buildModel(s);
   const imm = deriveImmigration(s);
   const { standardBE } = model;
@@ -709,9 +741,9 @@ export default function RentVsBuyImmigrantCalculator() {
           />
 
           <Section title="🏠 Your home purchase">
-            <NumberField label="Home price" value={s.price} onChange={(v) => set("price", v)} prefix="$" />
-            <NumberField label="Down payment" value={s.down} onChange={(v) => set("down", v)} suffix="%" />
-            <NumberField label="Mortgage interest rate" value={s.rate} onChange={(v) => set("rate", v)} suffix="%" step="0.1" />
+            <NumberField label="Home price" value={s.price} onChange={(v) => set("price", v)} prefix="$" min={0} max={100000000} step={5000} error={val.errors.price} />
+            <NumberField label="Down payment" value={s.down} onChange={(v) => set("down", v)} suffix="%" min={0} max={100} step={1} error={val.errors.down} />
+            <NumberField label="Mortgage interest rate" value={s.rate} onChange={(v) => set("rate", v)} suffix="%" min={0} max={50} step={0.125} error={val.errors.rate} />
             <SelectField
               label="Loan term"
               value={s.term}
@@ -722,31 +754,31 @@ export default function RentVsBuyImmigrantCalculator() {
                 { value: "15", label: "15 years" },
               ]}
             />
-            <NumberField label="Buying closing costs" value={s.closing} onChange={(v) => set("closing", v)} suffix="%" />
-            <NumberField label="Property tax / year" value={s.proptax} onChange={(v) => set("proptax", v)} suffix="%" hint="As a % of home value." />
-            <NumberField label="HOA fee / month" value={s.hoa} onChange={(v) => set("hoa", v)} prefix="$" />
-            <NumberField label="Home insurance / month" value={s.ins} onChange={(v) => set("ins", v)} prefix="$" />
-            <NumberField label="Maintenance / year" value={s.maint} onChange={(v) => set("maint", v)} suffix="%" hint="As a % of home value." />
-            <NumberField label="Home appreciation / year" value={s.appr} onChange={(v) => set("appr", v)} suffix="%" />
-            <NumberField label="Selling closing costs" value={s.selling} onChange={(v) => set("selling", v)} suffix="%" />
+            <NumberField label="Buying closing costs" value={s.closing} onChange={(v) => set("closing", v)} suffix="%" min={0} max={100} step={0.25} error={val.errors.closing} />
+            <NumberField label="Property tax / year" value={s.proptax} onChange={(v) => set("proptax", v)} suffix="%" hint="As a % of home value." min={0} max={100} step={0.1} error={val.errors.proptax} />
+            <NumberField label="HOA fee / month" value={s.hoa} onChange={(v) => set("hoa", v)} prefix="$" min={0} max={100000} step={25} error={val.errors.hoa} />
+            <NumberField label="Home insurance / month" value={s.ins} onChange={(v) => set("ins", v)} prefix="$" min={0} max={100000} step={25} error={val.errors.ins} />
+            <NumberField label="Maintenance / year" value={s.maint} onChange={(v) => set("maint", v)} suffix="%" hint="As a % of home value." min={0} max={100} step={0.25} error={val.errors.maint} />
+            <NumberField label="Home appreciation / year" value={s.appr} onChange={(v) => set("appr", v)} suffix="%" min={-50} max={50} step={0.25} error={val.errors.appr} />
+            <NumberField label="Selling closing costs" value={s.selling} onChange={(v) => set("selling", v)} suffix="%" min={0} max={100} step={0.25} error={val.errors.selling} />
           </Section>
 
           <Section title="🔑 Your rental situation">
-            <NumberField label="Monthly rent" value={s.rent} onChange={(v) => set("rent", v)} prefix="$" />
-            <NumberField label="Annual rent increase" value={s.rentinc} onChange={(v) => set("rentinc", v)} suffix="%" />
-            <NumberField label="Renter's insurance / month" value={s.rins} onChange={(v) => set("rins", v)} prefix="$" />
-            <NumberField label="Security deposit" value={s.deposit} onChange={(v) => set("deposit", v)} prefix="$" />
+            <NumberField label="Monthly rent" value={s.rent} onChange={(v) => set("rent", v)} prefix="$" min={0} max={1000000} step={50} error={val.errors.rent} />
+            <NumberField label="Annual rent increase" value={s.rentinc} onChange={(v) => set("rentinc", v)} suffix="%" min={-50} max={50} step={0.25} error={val.errors.rentinc} />
+            <NumberField label="Renter's insurance / month" value={s.rins} onChange={(v) => set("rins", v)} prefix="$" min={0} max={100000} step={5} error={val.errors.rins} />
+            <NumberField label="Security deposit" value={s.deposit} onChange={(v) => set("deposit", v)} prefix="$" min={0} max={1000000} step={100} error={val.errors.deposit} />
           </Section>
 
           <Section title="📈 Your financial profile">
-            <NumberField label="Investment return if renting" value={s.invret} onChange={(v) => set("invret", v)} suffix="%" hint="Return on the cash you'd otherwise tie up." />
+            <NumberField label="Investment return if renting" value={s.invret} onChange={(v) => set("invret", v)} suffix="%" hint="Return on the cash you'd otherwise tie up." min={-100} max={100} step={0.25} error={val.errors.invret} />
             <SelectField
               label="Federal marginal tax rate"
               value={s.fed}
               onChange={(v) => set("fed", v)}
               options={["10", "12", "22", "24", "32", "35", "37"].map((r) => ({ value: r, label: `${r}%` }))}
             />
-            <NumberField label="State marginal tax rate" value={s.state} onChange={(v) => set("state", v)} suffix="%" />
+            <NumberField label="State marginal tax rate" value={s.state} onChange={(v) => set("state", v)} suffix="%" min={0} max={100} step={0.1} error={val.errors.state} />
           </Section>
 
           <Section
@@ -798,12 +830,15 @@ export default function RentVsBuyImmigrantCalculator() {
               options={["Very unlikely", "Possible", "Likely", "Very likely"].map((v) => ({ value: v, label: v }))}
             />
             <YesNoField label="If you relocate, would you rent the home out?" value={s.rentout} onChange={(v) => set("rentout", v)} />
-            <NumberField label="Property management fee" value={s.pmfee} onChange={(v) => set("pmfee", v)} suffix="%" hint="Of monthly rent, if you rent it out." />
+            <NumberField label="Property management fee" value={s.pmfee} onChange={(v) => set("pmfee", v)} suffix="%" hint="Of monthly rent, if you rent it out." min={0} max={100} step={0.5} error={val.errors.pmfee} />
           </Section>
         </div>
 
         {/* ---------------- Results ---------------- */}
         <div className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+          {!val.ok && <InvalidInputPanel errors={fieldErrors} />}
+          {val.ok && (
+          <>
           {/* Verdict banner */}
           <div className={`overflow-hidden rounded-2xl bg-gradient-to-br ${verdictMeta.accent} p-6 text-white shadow-card`}>
             <p className="text-3xl">{verdictMeta.emoji}</p>
@@ -928,6 +963,8 @@ export default function RentVsBuyImmigrantCalculator() {
               { label: "Visa risk", value: band.label },
             ]}
           />
+          </>
+          )}
         </div>
       </div>
 

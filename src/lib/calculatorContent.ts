@@ -152,7 +152,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     steps: [
       "Confirm your 401(k) plan's rules for former employees and non-US-resident account holders.",
       "Before you leave the US, decide whether to keep the 401(k) or roll it to an IRA (a direct rollover avoids tax).",
-      "File a US W-8BEN with the plan/IRA custodian once you're a non-resident so treaty rates and correct withholding apply.",
+      "File a US W-8BEN with the plan/IRA custodian once you're a non-resident. Distributions to foreign payees are generally withheld at 30% unless valid documentation establishes eligibility for a lower treaty rate; submitting the form starts that process but does not by itself guarantee any particular rate, and custodians differ in what they require and whether they will apply a treaty rate at all.",
       "Map your India residency timeline (year of return → RNOR window → ROR) using the RNOR calculator.",
       "Sequence any withdrawals into low-income US tax years and, ideally, RNOR years on the India side.",
       "Each year you withdraw, file the US return (Form 1040-NR) and claim India foreign tax credit (Form 67) if India also taxes it.",
@@ -160,13 +160,13 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     mistakes: [
       "Cashing out the full balance on the way out the door and eating the 10% penalty plus withholding when keeping it invested was cheaper.",
       "Taking an indirect rollover (a check to yourself) and missing the 60-day window, turning a tax-free move into a taxable distribution.",
-      "Forgetting to file W-8BEN, so the custodian applies default withholding instead of the treaty rate.",
+      "Forgetting to file W-8BEN, so the custodian has no documentation on file and applies the default 30% withholding.",
       "Assuming India never taxes the 401(k) — it can, once you're ROR — and not planning withdrawals inside the RNOR window.",
       "Overlooking US FBAR/FATCA and India Schedule FA reporting on the accounts involved.",
     ],
     example: {
       title: "H-1B worker returning to India with an $80,000 401(k)",
-      body: "Priya, 34, moves back to India after six years on H-1B. Cashing out her $80,000 balance before leaving would trigger ~22% federal tax plus the 10% penalty and 20% up-front withholding — she'd keep well under $55,000. Instead she rolls it to a Traditional IRA, files W-8BEN, and leaves it invested. Over 20 years at ~6% it could grow past $250,000 before tax. She plans to draw it down gradually in retirement, using her RNOR years and the DTAA foreign tax credit to keep the combined India+US bite low.",
+      body: "Priya, 34, moves back to India after six years on H-1B. Taking a taxable cash distribution of her $80,000 balance before leaving would cost roughly 22% in federal income tax plus the 10% additional tax on an early distribution — about $25,600, leaving her around $54,400 once she files. Withholding at the time of payment would hold back more than that up front, but the excess comes back as a refund rather than adding to the cost. Instead she completes a direct trustee-to-trustee rollover to a Traditional IRA — which is not a withdrawal and creates no distribution — files W-8BEN, and leaves it invested. Over 20 years at ~6% it could grow past $250,000 before tax. She plans to draw it down gradually in retirement, using her RNOR years and the DTAA foreign tax credit to keep the combined India+US bite low.",
     },
     timeline: {
       title: "401(k) timeline: before you leave → after you're ROR",
@@ -210,7 +210,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       {
         question: "Should I withdraw my 401(k) before leaving the USA?",
         answer:
-          "Rarely, unless the balance is small or you're over 59½. Cashing out before leaving typically triggers ordinary US income tax, a 10% early-withdrawal penalty if you're under 59½, and 20% up-front withholding — so you usually keep far less than the headline balance.",
+          "Usually, you should not take a taxable cash distribution solely because you are leaving the United States. Depending on your plan and custodian, you may be able to leave the balance in the employer plan or complete a direct trustee-to-trustee rollover to a Traditional IRA. A rollover is not the same as withdrawing the money for personal use — it moves the balance between retirement accounts without creating a distribution. Compare plan fees, investment options, custodian policies for foreign addresses, early-distribution tax, withholding and India taxation before deciding.",
       },
       {
         question: "Is a 401(k) taxable in India?",
@@ -263,11 +263,11 @@ export const calculatorContent: Record<string, CalculatorContent> = {
         },
         {
           label: "Roth conversion",
-          body: "Step two is converting that Traditional IRA to a Roth. Because the contribution was after-tax, converting it soon after (before it earns much) usually creates little or no additional tax.",
+          body: "Step two is converting that Traditional IRA to a Roth. A backdoor Roth is not automatically tax-free: the contribution was after-tax, so converting before it earns much limits the taxable amount, but any earnings in the interim are taxable and the pro-rata rule can make a large share of the conversion taxable regardless of timing.",
         },
         {
           label: "The pro-rata rule",
-          body: "The catch: the IRS treats all your Traditional/SEP/SIMPLE IRAs as one pool. If you hold pre-tax IRA money, part of every conversion is taxable in proportion to the pre-tax share — so a clean backdoor Roth usually requires little or no pre-tax IRA balance.",
+          body: "The catch: the IRS treats all your Traditional/SEP/SIMPLE IRAs as one pool, measured by their combined balance on December 31 of the conversion year — not on the day you convert. If you hold pre-tax IRA money at that point, part of every conversion is taxable in proportion to the pre-tax share, so a clean backdoor Roth usually requires little or no pre-tax IRA balance at year end.",
         },
         {
           label: "Form 8606",
@@ -276,11 +276,11 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       ],
     },
     resultMeaning:
-      "The tool tells you whether your income blocks a direct Roth contribution (so a backdoor is worth considering) and flags whether existing pre-tax IRA balances would make the pro-rata rule create tax on a conversion. A 'clean' result means the strategy can likely be done with little tax; a pro-rata warning means you'd want to move pre-tax IRA money into an employer 401(k) first, or accept a partial tax hit.",
+      "The tool tells you whether your income blocks a direct Roth contribution (so a backdoor is worth considering) and flags whether existing pre-tax IRA balances would make the pro-rata rule create tax on a conversion. A 'clean' result means the strategy can likely be done with little tax; a pro-rata warning means you would want to reduce pre-tax IRA balances before year end, or accept a partial tax hit. Moving pre-tax IRA money into an employer 401(k) is one way to do that, but employer plans are not required to accept incoming rollovers — confirm with your plan administrator before relying on it.",
     taxConsequences: [
       {
         label: "Tax on the conversion",
-        body: "If you have no pre-tax IRA balances and convert soon after contributing, the conversion is usually close to tax-free — you already paid tax on the contributed dollars.",
+        body: "If you have no pre-tax IRA balances at year end and convert soon after contributing, the taxable amount is usually small — you already paid tax on the contributed dollars. Any earnings between contribution and conversion are still taxable income, so the conversion is rarely exactly zero-tax.",
       },
       {
         label: "Pro-rata tax",
@@ -297,7 +297,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     ],
     steps: [
       "Check your MAGI against the Roth phase-out for your filing status to confirm you actually need the backdoor.",
-      "Reduce or eliminate pre-tax Traditional/SEP/SIMPLE IRA balances (e.g. roll them into a 401(k)) to avoid the pro-rata rule.",
+      "Reduce or eliminate pre-tax Traditional/SEP/SIMPLE IRA balances before December 31 to limit the pro-rata rule. Rolling them into an employer 401(k) is a common route, but check first — plans are not obliged to accept incoming rollovers.",
       "Contribute after-tax money to a Traditional IRA (non-deductible).",
       "Convert the Traditional IRA to a Roth IRA — ideally soon after, before it earns much.",
       "File Form 8606 for the year to report the non-deductible contribution and the conversion.",
@@ -312,7 +312,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     ],
     example: {
       title: "High-income H-1B couple, married filing jointly",
-      body: "Arjun and Meera are on H-1B, file jointly, and have a MAGI above the direct-Roth phase-out, so they can't contribute to a Roth directly. Neither holds any pre-tax IRA balance. Each contributes the annual limit to a Traditional IRA (non-deductible) and converts to a Roth a few days later — the conversion is essentially tax-free. They each file Form 8606. Because they may return to India in a few years, they note that qualified Roth withdrawals are US-tax-free but India could tax the growth once they become ROR, so they plan around their RNOR window.",
+      body: "Arjun and Meera are on H-1B, file jointly, and have a 2026 MAGI of $260,000 — above the $242,000–$252,000 direct-Roth phase-out — so they can't contribute to a Roth directly. Neither holds any pre-tax IRA balance. Each contributes the $7,500 annual limit to a Traditional IRA (non-deductible) and converts to a Roth a few days later; only the small amount of earnings in those few days is taxable. They each file Form 8606. Because they may return to India in a few years, they note that qualified Roth withdrawals are US-tax-free but India could tax the growth once they become ROR, so they plan around their RNOR window.",
     },
     relatedLinks: [
       { label: "401(k) return-to-India calculator", href: "/calculators/401k-return-to-india" },
@@ -321,6 +321,16 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
     ],
     faqs: [
+      {
+        question: "What are the 2026 Roth IRA income limits and contribution limits?",
+        answer:
+          "For tax year 2026 the IRA contribution limit is $7,500, rising to $8,600 if you are 50 or older (a $1,100 catch-up). Direct Roth contributions phase out between $153,000 and $168,000 of MAGI for single filers and heads of household, and between $242,000 and $252,000 for married couples filing jointly. A married person filing separately who lived with their spouse at any time during the year phases out between $0 and $10,000; one who lived apart for the entire year is treated as single for this purpose.",
+      },
+      {
+        question: "Is a backdoor Roth tax-free?",
+        answer:
+          "Not automatically. The contribution itself is after-tax, so it is not taxed again on conversion, but two things can create tax: any earnings between the contribution and the conversion are taxable, and the pro-rata rule taxes part of the conversion in proportion to your combined pre-tax Traditional, SEP and SIMPLE IRA balance on December 31 of the conversion year. Someone with a large pre-tax IRA balance can find most of a backdoor conversion taxable.",
+      },
       {
         question: "Can H-1B workers do a backdoor Roth IRA?",
         answer:
@@ -636,7 +646,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
         },
         {
           label: "Repatriation documents",
-          body: "To move the proceeds to the US you'll typically need Form 15CA/15CB certification and bank paperwork, within the annual repatriation limit.",
+          body: "To move the proceeds to the US you will need bank paperwork and, depending on the remittance, a Form 15CA declaration and a Form 15CB certificate from a Chartered Accountant. Whether 15CB is required depends on the nature, taxability and amount of the remittance — not every transfer needs one, so confirm which applies to yours. The USD 1 million per financial year facility is itself subject to RBI/FEMA conditions, eligible balances, payment of applicable taxes, documentation and your authorised dealer bank's review.",
         },
       ],
     },
@@ -665,19 +675,19 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       "If TDS on the full sale value would far exceed your actual tax, apply for a lower/nil TDS certificate (Form 13) before signing.",
       "At sale, ensure the buyer deducts TDS at the correct NRI rate and deposits it under your PAN — then collect the TDS certificate.",
       "To defer or reduce tax, reinvest the gain under Section 54/54EC within the statutory deadlines.",
-      "Prepare Form 15CA/15CB and bank documents to repatriate the net proceeds within the annual limit.",
+      "Prepare the bank documents to repatriate the net proceeds, together with Form 15CA and — where your remittance requires it — a Form 15CB certificate from a Chartered Accountant.",
       "File your India return to reclaim any excess TDS, and claim the DTAA foreign tax credit on your US return if applicable.",
     ],
     mistakes: [
       "Letting the buyer deduct TDS on the full sale value without a lower-TDS certificate, locking up a large refund for months.",
       "Missing the Section 54/54EC reinvestment deadlines and losing the exemption.",
       "Not confirming the TDS was deposited under your PAN, which stalls the refund.",
-      "Forgetting Form 15CA/15CB, so the bank won't release the repatriation.",
+      "Leaving the Form 15CA/15CB question until the last minute — the bank will not release the remittance until whichever of them your transfer requires is in place.",
       "Overlooking the US return — as a US resident you must report the gain and claim the DTAA credit.",
     ],
     example: {
       title: "NRI selling a Bengaluru flat bought in 2012",
-      body: "Anil, a US green-card holder, sells a flat he bought in 2012 for ₹40 lakh at ₹1.2 crore. The buyer, cautious about NRI rules, would otherwise deduct TDS on the full ₹1.2 crore. Anil applies for a lower-TDS certificate so tax is withheld closer to his real long-term capital gain. He reinvests part of the gain in 54EC bonds to reduce tax, files Form 15CA/15CB to repatriate the balance, reclaims the small excess TDS on his India return, and claims a DTAA foreign tax credit on his US return so the gain isn't taxed twice in full.",
+      body: "Anil, a US green-card holder, sells a flat he bought in 2012 for ₹40 lakh at ₹1.2 crore. The buyer, cautious about NRI rules, would otherwise deduct TDS on the full ₹1.2 crore. Anil applies for a lower-TDS certificate so tax is withheld closer to his real long-term capital gain. He reinvests part of the gain in 54EC bonds to reduce tax, completes the Form 15CA/15CB paperwork his bank requires for the remittance, reclaims the small excess TDS on his India return, and claims a DTAA foreign tax credit on his US return so the gain isn't taxed twice in full.",
     },
     timeline: {
       title: "NRI property sale timeline",
@@ -730,12 +740,12 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       {
         question: "Can an NRI repatriate property sale money to the USA?",
         answer:
-          "Yes, within the annual repatriation limit and after taxes. You'll typically need Form 15CA/15CB certification and supporting bank documents. Proceeds from property are generally repatriable subject to those limits and paperwork.",
+          "Generally yes, after applicable taxes, under the USD 1 million per financial year facility for NRO balances. That facility is not automatic: it is subject to RBI/FEMA conditions, eligible balances, payment of applicable taxes, supporting documentation and your authorised dealer bank's review. You will need bank documents plus Form 15CA, and a Form 15CB certificate from a Chartered Accountant where your particular remittance requires one — that depends on the nature, taxability and amount of the transfer rather than applying to every remittance.",
       },
       {
         question: "What documents are needed after a property sale?",
         answer:
-          "Commonly the sale deed, the TDS certificate showing tax deposited under your PAN, proof of purchase cost and improvements, any lower-TDS certificate, and Form 15CA/15CB for repatriation. Keep them for your India return and any US DTAA credit claim.",
+          "Commonly the sale deed, the TDS certificate showing tax deposited under your PAN, proof of purchase cost and improvements, any lower-TDS certificate, and the Form 15CA (and Form 15CB where required) for the remittance. Keep them for your India return and any US DTAA credit claim.",
       },
       {
         question: "Is the capital gain taxable in both India and the USA?",
@@ -961,7 +971,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     ],
     example: {
       title: "Engineer returning to India after 8 years in the US",
-      body: "Kavita returns to India mid-year after eight years on H-1B and a green card. For the first couple of years she qualifies as RNOR, so her US 401(k) withdrawals and brokerage gains are largely outside India's tax net. She uses that window to draw down part of her 401(k) and rebalance her US portfolio before ROR kicks in. She tracks her days carefully each financial year, sets up NRO/FCNR accounts, and once she becomes ROR she reports worldwide income in India and claims DTAA foreign tax credits for the US tax already paid.",
+      body: "Kavita returns to India mid-year after eight years on H-1B and a green card. On her own day counts and history she qualifies as RNOR for the next two financial years — how long RNOR lasts is not a fixed number of years and depends entirely on the section 6(6) tests applied to your own record, so it has to be re-checked every year. While it lasts, her US 401(k) withdrawals and brokerage gains are largely outside India's tax net. She uses that window to draw down part of her 401(k) and rebalance her US portfolio before ROR kicks in. She tracks her days carefully each financial year, sets up NRO/FCNR accounts, and once she becomes ROR she reports worldwide income in India and claims DTAA foreign tax credits for the US tax already paid.",
     },
     timeline: {
       title: "Residency timeline after you return",
@@ -993,12 +1003,12 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     updated: "2026-07-20",
     expertiseTags: ["India tax residency", "RNOR & return planning", "US-India cross-border tax"],
     quickAnswer:
-      "Your India tax residency turns on days present in the financial year (April–March). You are a Resident if you spend 182+ days in India that year, or 60+ days that year plus 365+ days across the preceding four years. A Resident then qualifies as RNOR — the valuable transitional status where most foreign income stays outside India's tax net — if you were a Non-Resident in 9 of the 10 preceding years, or spent 729 days or fewer in India across the preceding 7 years. Most returning NRIs get 2 to 3 RNOR years before becoming ROR and being taxed on worldwide income.",
+      "Your India tax residency turns on days present in the Indian financial year (1 April – 31 March), not the US calendar year. You are a Resident if you spend 182 or more days in India that year, or meet a second test: 60 or more days that year plus 365 or more days across the preceding four years. That 60-day limb is relaxed to 182 days for an Indian citizen leaving India for employment abroad, and for an Indian citizen or PIO visiting India — though a visitor whose income other than from foreign sources exceeds ₹15 lakh is tested at 120 days instead. A separate deemed-residency rule can make an Indian citizen resident regardless of days if their income other than from foreign sources exceeds ₹15 lakh and they are not liable to tax in any other country. A Resident then qualifies as RNOR — the transitional status where most foreign income stays outside India's tax net — if they were a Non-Resident in 9 of the 10 preceding years, or spent 729 days or fewer in India across the preceding 7 years. How many RNOR years you get is not a fixed number: it depends entirely on your own day counts and history, and must be re-tested every financial year.",
     takeaways: [
       "Count 182 days: spending 182 or more days in India in a financial year makes you Resident for that year.",
-      "Watch the second test too — 60 days in the current year plus 365 days across the previous four also makes you Resident.",
-      "Qualify as RNOR by being Non-Resident in 9 of the previous 10 years, or present 729 days or fewer over the previous 7 years.",
-      "Expect roughly 2 to 3 RNOR years after returning — the window where foreign income such as 401(k) withdrawals largely escapes India tax.",
+      "Watch the second test too — 60 days in the current year plus 365 days across the previous four also makes you Resident. That 60-day limb relaxes to 182 days if you are an Indian citizen leaving for employment abroad, or an Indian citizen/PIO visiting India — but tightens to 120 days for a visitor whose income other than from foreign sources exceeds ₹15 lakh.",
+      "Qualify as RNOR by being Non-Resident in 9 of the previous 10 years, or present 729 days or fewer over the previous 7 years. The 120-day visitor category and anyone caught by the deemed-residency rule are RNOR by statute.",
+      "How long RNOR lasts is not a fixed number of years — it depends on your own day counts and history, and is re-tested every financial year.",
       "Time your return around March 31: arriving early in a financial year burns days that could have preserved an extra RNOR year.",
     ],
     howItWorks: {

@@ -11,9 +11,11 @@ import {
   usd,
   inr,
   num,
+  InvalidInputPanel,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import { validateAll, FX_USD_INR } from "@/lib/calc/validation";
 
 const TCS_THRESHOLD = 1000000; // ₹10 lakh per FY under LRS (raised from ₹7 lakh, FY 2025-26)
 const TCS_RATES: Record<string, number> = {
@@ -43,10 +45,21 @@ export default function RemittanceCalculator() {
   const setFee = (v: string) => set("fee", v);
   const setCash = (v: string) => set("cash", v);
 
-  const amt = num(amount);
-  const R = num(rate) || 1; // INR per USD
-  const mgn = num(margin) / 100;
-  const flat = num(fee);
+  const v = validateAll(
+    { amount, rate, margin, fee },
+    {
+      amount: { label: "Transfer amount", min: 0, max: 1_000_000_000, required: true },
+      rate: { label: "Mid-market rate", ...FX_USD_INR, required: true },
+      margin: { label: "Provider margin", min: 0, max: 100, required: true },
+      fee: { label: "Flat transfer fee", min: 0, max: 1_000_000, required: true },
+    },
+  );
+  const fieldErrors = Object.values(v.errors).filter(Boolean) as string[];
+
+  const amt = v.values.amount;
+  const R = v.values.rate; // INR per USD; validated to be >= 1
+  const mgn = v.values.margin / 100;
+  const flat = v.values.fee;
   const usIndia = direction === "us-india";
 
   let recv = 0; // in destination currency
@@ -97,6 +110,9 @@ export default function RemittanceCalculator() {
             value={amount}
             onChange={setAmount}
             prefix={usIndia ? "$" : "₹"}
+            min={0}
+            step={100}
+            error={v.errors.amount}
           />
           <NumberField
             label="Mid-market rate (USD/INR)"
@@ -104,6 +120,9 @@ export default function RemittanceCalculator() {
             onChange={setRate}
             prefix="₹"
             suffix="/ $1"
+            min={1}
+            step={0.5}
+            error={v.errors.rate}
             hint="The true rate before any provider margin."
           />
           <NumberField
@@ -111,6 +130,10 @@ export default function RemittanceCalculator() {
             value={margin}
             onChange={setMargin}
             suffix="%"
+            min={0}
+            max={100}
+            step={0.1}
+            error={v.errors.margin}
             hint="The hidden spread (banks ~2–4%, fintechs ~0.3–1%)."
           />
           <NumberField
@@ -118,6 +141,9 @@ export default function RemittanceCalculator() {
             value={fee}
             onChange={setFee}
             prefix={usIndia ? "$" : "₹"}
+            min={0}
+            step={1}
+            error={v.errors.fee}
           />
           {usIndia ? (
             <SelectField
@@ -148,6 +174,9 @@ export default function RemittanceCalculator() {
         </>
       }
       results={
+        !v.ok ? (
+          <InvalidInputPanel errors={fieldErrors} />
+        ) : (
         <>
           <ResultPanel title="What actually arrives" accent="from-cyan-500 to-teal-600">
             <Stat label="Net amount received" value={dstFmt(recv)} big tone="good" />
@@ -198,6 +227,7 @@ export default function RemittanceCalculator() {
             professional.
           </p>
         </>
+        )
       }
     />
   );

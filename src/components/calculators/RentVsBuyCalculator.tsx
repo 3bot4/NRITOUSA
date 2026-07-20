@@ -10,9 +10,11 @@ import {
   Callout,
   usd,
   num,
+  InvalidInputPanel,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import { validateAll, PERCENT, GROWTH_RATE } from "@/lib/calc/validation";
 
 /**
  * Rent-vs-buy comparison anchored to a visa horizon (how long you can be sure
@@ -39,13 +41,27 @@ export default function RentVsBuyCalculator() {
   const setHorizon = (v: string) => set("horizon", v);
   const setInvReturn = (v: string) => set("invReturn", v);
 
-  const P = num(price);
-  const dpPct = num(down) / 100;
-  const i = num(rate) / 100 / 12;
+  const val = validateAll(
+    { price, down, rate, rent, appr, rentInc, invReturn },
+    {
+      price: { label: "Home price", min: 0, max: 100_000_000, required: true },
+      down: { label: "Down payment", ...PERCENT, required: true },
+      rate: { label: "Mortgage rate", min: 0, max: 50, required: true },
+      rent: { label: "Comparable monthly rent", min: 0, max: 1_000_000, required: true },
+      appr: { label: "Home appreciation", min: -50, max: 50, required: true },
+      rentInc: { label: "Rent increase", min: -50, max: 50, required: true },
+      invReturn: { label: "Investment return", ...GROWTH_RATE, required: true },
+    },
+  );
+  const fieldErrors = Object.values(val.errors).filter(Boolean) as string[];
+
+  const P = val.values.price;
+  const dpPct = val.values.down / 100;
+  const i = val.values.rate / 100 / 12;
   const N = Math.max(1, num(horizon));
-  const apprR = num(appr) / 100;
-  const rentR = num(rentInc) / 100;
-  const invR = num(invReturn) / 100;
+  const apprR = val.values.appr / 100;
+  const rentR = val.values.rentInc / 100;
+  const invR = val.values.invReturn / 100;
 
   // Fixed assumptions (typical US averages)
   const TERM = 30;
@@ -72,7 +88,7 @@ export default function RentVsBuyCalculator() {
   let maint = 0;
   let totalRent = 0;
   let homeValue = P;
-  let monthlyRent = num(rent);
+  let monthlyRent = val.values.rent;
   for (let y = 0; y < N; y++) {
     propTax += homeValue * PROP_TAX;
     maint += homeValue * MAINT;
@@ -113,22 +129,29 @@ export default function RentVsBuyCalculator() {
             ]}
             hint="How long you can be confident you'll stay — the key variable."
           />
-          <NumberField label="Home price" value={price} onChange={setPrice} prefix="$" />
-          <NumberField label="Down payment" value={down} onChange={setDown} suffix="%" />
-          <NumberField label="Mortgage rate" value={rate} onChange={setRate} suffix="%" />
-          <NumberField label="Comparable monthly rent" value={rent} onChange={setRent} prefix="$" />
-          <NumberField label="Home appreciation / year" value={appr} onChange={setAppr} suffix="%" />
-          <NumberField label="Rent increase / year" value={rentInc} onChange={setRentInc} suffix="%" />
+          <NumberField label="Home price" value={price} onChange={setPrice} prefix="$" min={0} max={100000000} step={5000} error={val.errors.price} />
+          <NumberField label="Down payment" value={down} onChange={setDown} suffix="%" min={0} max={100} step={1} error={val.errors.down} />
+          <NumberField label="Mortgage rate" value={rate} onChange={setRate} suffix="%" min={0} max={50} step={0.125} error={val.errors.rate} />
+          <NumberField label="Comparable monthly rent" value={rent} onChange={setRent} prefix="$" min={0} max={1000000} step={50} error={val.errors.rent} />
+          <NumberField label="Home appreciation / year" value={appr} onChange={setAppr} suffix="%" min={-50} max={50} step={0.25} error={val.errors.appr} />
+          <NumberField label="Rent increase / year" value={rentInc} onChange={setRentInc} suffix="%" min={-50} max={50} step={0.25} error={val.errors.rentInc} />
           <NumberField
             label="Investment return if you rent & invest"
             value={invReturn}
             onChange={setInvReturn}
             suffix="%"
+            min={-100}
+            max={100}
+            step={0.25}
+            error={val.errors.invReturn}
             hint="Return on the down payment you'd otherwise tie up."
           />
         </>
       }
       results={
+        !val.ok ? (
+          <InvalidInputPanel errors={fieldErrors} />
+        ) : (
         <>
           <ResultPanel
             title={`Over your ${N}-year timeline`}
@@ -190,6 +213,7 @@ export default function RentVsBuyCalculator() {
             professional.
           </p>
         </>
+        )
       }
     />
   );

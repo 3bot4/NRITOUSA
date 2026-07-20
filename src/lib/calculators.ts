@@ -96,7 +96,7 @@ export const calculators: CalculatorMeta[] = [
       cta: "Send me the repatriation pack",
     },
     quickSummary:
-      "NRIs selling property in India owe LTCG tax (12.5% with indexation removed, effective July 2024) or STCG tax (30%) plus TDS, and can repatriate up to USD 1 million per year after taxes. Enter your sale details to estimate tax liability, TDS withheld, and the net amount you can transfer to the US.",
+      "Capital-gains tax and TDS are two different calculations, and this calculator keeps them separate. Long-term gains on property transferred on or after 23 July 2024 are taxed at 12.5% without indexation; short-term gains are taxed at your applicable slab rate, not at a fixed rate. Separately, under Section 195 the buyer withholds TDS on the full sale consideration — not on your gain — unless you obtain a lower/nil deduction certificate, so the amount withheld is usually far larger than the tax you actually owe and the difference is reclaimed by filing an Indian return. Repatriation of up to USD 1 million per financial year is subject to RBI/FEMA conditions and your bank's review.",
     audience: "US-based NRIs and Indian-Americans who own or have inherited property in India and are considering a sale",
     dataChecked: "2026-06-01",
     officialSource: "Income Tax Act, 1961, Sections 48, 54, 54EC, 195; RBI Master Circular on repatriation",
@@ -153,10 +153,11 @@ export const calculators: CalculatorMeta[] = [
       cta: "Send me the backdoor Roth guide",
     },
     quickSummary:
-      "In 2025, direct Roth IRA contributions phase out at $150,000–$165,000 MAGI (single) and $236,000–$246,000 (married filing jointly). The backdoor Roth strategy — contribute to a Traditional IRA then convert — lets high earners bypass these limits, but only works tax-free if you have no existing pre-tax Traditional IRA balances (the pro-rata rule).",
+      "For tax year 2026, direct Roth IRA contributions phase out at $153,000–$168,000 MAGI (single or head of household) and $242,000–$252,000 (married filing jointly). The IRA contribution limit is $7,500, or $8,600 if you are 50 or older. The backdoor Roth strategy — a non-deductible Traditional IRA contribution followed by a Roth conversion — lets high earners contribute above these limits, but it is not automatically tax-free: the pro-rata rule taxes part of the conversion in proportion to any pre-tax Traditional, SEP or SIMPLE IRA balance, and the conversion must be reported on Form 8606.",
     audience: "High-income immigrants and NRIs in the US who earn above the Roth IRA direct-contribution income limits",
-    dataChecked: "2026-01-01",
-    officialSource: "IRS Publication 590-A; IRS Notice 2014-54",
+    dataChecked: "2026-07-20",
+    officialSource:
+      "IRS, \"401(k) limit increases to $24,500 for 2026; IRA limit increases to $7,500\"; IRS Publication 590-A; IRS Notice 2014-54",
   },
   {
     slug: "rent-vs-buy-visa",

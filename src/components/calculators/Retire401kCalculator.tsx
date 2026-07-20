@@ -2,147 +2,266 @@
 
 import {
   NumberField,
+  ToggleField,
   CalcGrid,
   ResultPanel,
   Stat,
   Row,
   Callout,
+  InvalidInputPanel,
   usd,
-  num,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import {
+  calculateRetire401k,
+  IRS_FOREIGN_WITHHOLDING_SOURCE,
+} from "@/lib/calc/retire401k";
 
-/**
- * Compares cashing out a 401(k) on leaving the US (penalty + withholding)
- * vs leaving it to compound and withdrawing in retirement. Estimate only.
- */
 export default function Retire401kCalculator() {
   const [s, set] = useUrlState({
     balance: "100000",
     age: "35",
-    bracket: "30",
+    taxRate: "24",
+    withholding: "30",
     years: "20",
     ret: "7",
+    futureRate: "24",
+    exception: "no",
   });
-  const { balance, age, bracket, years, ret } = s;
-  const setBalance = (v: string) => set("balance", v);
-  const setAge = (v: string) => set("age", v);
-  const setBracket = (v: string) => set("bracket", v);
-  const setYears = (v: string) => set("years", v);
-  const setRet = (v: string) => set("ret", v);
 
-  const bal = num(balance);
-  const a = num(age);
-  const taxRate = Math.min(100, Math.max(0, num(bracket))) / 100;
-  const yrs = Math.max(0, num(years));
-  const r = num(ret) / 100;
+  const hasException = s.exception === "yes";
 
-  // Option A — cash out now
-  const penaltyRate = a < 59.5 ? 0.1 : 0;
-  const penalty = bal * penaltyRate;
-  const taxNow = bal * taxRate;
-  const netNow = Math.max(0, bal - penalty - taxNow);
-  const lostNow = penalty + taxNow;
+  const r = calculateRetire401k({
+    balance: s.balance,
+    age: s.age,
+    effectiveTaxRate: s.taxRate,
+    withholdingRate: s.withholding,
+    years: s.years,
+    expectedReturn: s.ret,
+    futureTaxRate: s.futureRate,
+    hasEarlyDistributionException: hasException,
+  });
 
-  // Option B — leave to compound, withdraw later
-  const futureGross = bal * Math.pow(1 + r, yrs);
-  const futureAfterTax = futureGross * (1 - taxRate);
-  // What the cashed-out amount would grow to if reinvested elsewhere at same return
-  const netNowGrown = netNow * Math.pow(1 + r, yrs);
-  const advantage = futureAfterTax - netNowGrown;
+  const errorList = Object.values(r.errors).filter(Boolean) as string[];
 
   return (
     <CalcGrid
       inputs={
         <>
-          <NumberField label="Current 401(k) balance" value={balance} onChange={setBalance} prefix="$" />
           <NumberField
-            label="Your age today"
-            value={age}
-            onChange={setAge}
-            suffix="yrs"
-            hint="Under 59½ triggers the 10% early-withdrawal penalty."
+            label="Current 401(k) balance"
+            value={s.balance}
+            onChange={(v) => set("balance", v)}
+            prefix="$"
+            min={0}
+            step={1000}
+            error={r.errors.balance}
           />
           <NumberField
-            label="Tax / withholding rate"
-            value={bracket}
-            onChange={setBracket}
+            label="Your age today"
+            value={s.age}
+            onChange={(v) => set("age", v)}
+            suffix="yrs"
+            min={0}
+            max={120}
+            step={1}
+            error={r.errors.age}
+            hint="Under 59½ can trigger a 10% additional tax — unless an exception applies."
+          />
+          <ToggleField
+            label="An exception to the 10% additional tax applies to me"
+            checked={hasException}
+            onChange={(v) => set("exception", v ? "yes" : "no")}
+            hint="Recognised exceptions include separation from service at 55 or later, substantially equal periodic payments, disability and certain medical costs. Confirm your situation qualifies before relying on this."
+          />
+          <NumberField
+            label="Estimated effective US tax rate on the distribution"
+            value={s.taxRate}
+            onChange={(v) => set("taxRate", v)}
             suffix="%"
-            hint="~30% is the standard non-resident withholding; use your bracket if you'll still be a US resident."
+            min={0}
+            max={100}
+            step={1}
+            error={r.errors.effectiveTaxRate}
+            hint="Your own rate, based on total income for the year and filing status. Not the withholding rate."
+          />
+          <NumberField
+            label="Withholding rate applied by the plan"
+            value={s.withholding}
+            onChange={(v) => set("withholding", v)}
+            suffix="%"
+            min={0}
+            max={100}
+            step={1}
+            error={r.errors.withholdingRate}
+            hint="Distributions to foreign payees are generally withheld at 30% unless valid documentation establishes a lower treaty rate."
           />
           <NumberField
             label="Years until you withdraw / retire"
-            value={years}
-            onChange={setYears}
+            value={s.years}
+            onChange={(v) => set("years", v)}
             suffix="yrs"
+            min={0}
+            max={100}
+            step={1}
+            error={r.errors.years}
           />
           <NumberField
             label="Expected annual return"
-            value={ret}
-            onChange={setRet}
+            value={s.ret}
+            onChange={(v) => set("ret", v)}
             suffix="%"
-            hint="Long-run US equity returns are often modeled at 6–8%."
+            min={-100}
+            max={100}
+            step={0.5}
+            error={r.errors.expectedReturn}
+            hint="Long-run US equity returns are often modelled at 6–8%."
+          />
+          <NumberField
+            label="Estimated tax rate at future withdrawal"
+            value={s.futureRate}
+            onChange={(v) => set("futureRate", v)}
+            suffix="%"
+            min={0}
+            max={100}
+            step={1}
+            error={r.errors.futureTaxRate}
+            hint="May differ from today's rate, and may depend on your India residency status by then."
           />
         </>
       }
       results={
-        <>
-          <ResultPanel title="Option A — cash out now" accent="from-rose-500 to-pink-600">
-            <Stat label="Net cash in hand today" value={usd(netNow)} big tone="bad" />
-            <Row label="10% early-withdrawal penalty" value={usd(penalty)} />
-            <Row label={`Tax / withholding (${(taxRate * 100).toFixed(0)}%)`} value={usd(taxNow)} />
-            <Row label="Total lost to penalty + tax" value={usd(lostNow)} />
-          </ResultPanel>
+        !r.ok ? (
+          <InvalidInputPanel errors={errorList} />
+        ) : (
+          <>
+            <Callout tone="note">
+              <strong>These are five different actions, not one.</strong> Leaving
+              the balance in the employer plan, a direct trustee-to-trustee
+              rollover to a Traditional IRA, a taxable cash distribution,
+              periodic future distributions, and a Roth conversion each have
+              different tax consequences. This calculator compares only a{" "}
+              <strong>taxable cash distribution now</strong> against{" "}
+              <strong>leaving the balance invested</strong>. A rollover is not a
+              withdrawal and is not modelled here.
+            </Callout>
 
-          <ResultPanel title="Option B — leave it to compound" accent="from-indigo-500 to-blue-700">
-            <Stat
-              label={`Projected balance in ${yrs} years`}
-              value={usd(futureGross)}
-              big
-              tone="good"
+            <ResultPanel
+              title="Option A — taxable cash distribution now"
+              accent="from-rose-500 to-pink-600"
+            >
+              <Stat
+                label="Cash received initially (after withholding)"
+                value={usd(r.cashReceivedInitially)}
+                big
+                tone="warn"
+                sub="What lands in your account on day one"
+              />
+              <div className="pt-1">
+                <Row label="Gross distribution" value={usd(r.grossDistribution)} />
+                <Row label="Estimated income tax on the distribution" value={usd(r.estimatedIncomeTax)} />
+                <Row
+                  label="Additional tax on early distribution"
+                  value={
+                    r.earlyDistributionApplies
+                      ? usd(r.earlyDistributionTax)
+                      : "Not applicable"
+                  }
+                />
+                <Row label="Estimated total tax liability" value={usd(r.totalTaxLiability)} />
+                <Row label="Upfront withholding (a prepayment)" value={usd(r.upfrontWithholding)} />
+                <Row
+                  label={
+                    r.withholdingReconciliation >= 0
+                      ? "Estimated refund when you file"
+                      : "Estimated further tax payable when you file"
+                  }
+                  value={usd(Math.abs(r.withholdingReconciliation))}
+                />
+              </div>
+              <Stat
+                label="Estimated eventual after-tax value"
+                value={usd(r.netAfterTaxValue)}
+                tone="default"
+                sub="After the refund or balancing payment settles"
+              />
+              <Callout tone="note">
+                Withholding is a <strong>prepayment</strong> against your tax
+                bill, not an extra tax. It reduces the cash you see on day one;
+                it is not subtracted a second time from your eventual value.
+                Withholding is also not necessarily your final liability — that
+                is settled when you file.
+              </Callout>
+            </ResultPanel>
+
+            <ResultPanel
+              title="Option B — leave it invested and withdraw later"
+              accent="from-indigo-500 to-blue-700"
+            >
+              <Stat
+                label={`Projected balance in ${s.years} years`}
+                value={usd(r.projectedFutureBalance)}
+                big
+                tone="good"
+              />
+              <Row label="After estimated tax at withdrawal" value={usd(r.futureAfterTaxValue)} />
+              <Row
+                label="Option A's net proceeds, reinvested"
+                value={usd(r.distributionReinvestedValue)}
+              />
+              <Stat
+                label="Advantage of keeping it invested"
+                value={usd(Math.abs(r.advantageOfKeeping))}
+                tone={r.advantageOfKeeping > 0 ? "good" : "warn"}
+                sub={r.advantageOfKeeping > 0 ? undefined : "Cashing out compares favourably on these assumptions"}
+              />
+            </ResultPanel>
+
+            <ResultPanel title="Assumptions behind this result" accent="from-slate-500 to-slate-700">
+              <ul className="space-y-2">
+                {r.assumptions.map((a, i) => (
+                  <li key={i} className="text-sm leading-relaxed text-ink-600">
+                    • {a}
+                  </li>
+                ))}
+              </ul>
+            </ResultPanel>
+
+            <ResultActions
+              title="401(k): cash distribution vs keeping it invested"
+              shareText="I compared taking a taxable 401(k) distribution on leaving the US against leaving it invested:"
+              fileName="401k-distribution-vs-keep"
+              rows={[
+                { label: "Cash received initially", value: usd(r.cashReceivedInitially) },
+                { label: "Estimated total tax liability", value: usd(r.totalTaxLiability) },
+                { label: "Eventual after-tax value", value: usd(r.netAfterTaxValue) },
+                { label: `Keep ${s.years}y, after-tax`, value: usd(r.futureAfterTaxValue) },
+              ]}
             />
-            <Row label="After estimated tax at withdrawal" value={usd(futureAfterTax)} />
-            <Row label="If you cashed out & reinvested instead" value={usd(netNowGrown)} />
-            <Stat
-              label="Advantage of keeping it invested"
-              value={usd(Math.max(0, advantage))}
-              tone={advantage > 0 ? "good" : "warn"}
-            />
-          </ResultPanel>
 
-          <Callout tone={advantage > 0 ? "good" : "note"}>
-            {advantage > 0 ? (
-              <>
-                <strong>Keeping it invested looks far better.</strong> Cashing
-                out forfeits {usd(lostNow)} immediately. Under the India–US DTAA,
-                you can usually keep the account and manage withdrawals
-                tax-efficiently after you leave.
-              </>
-            ) : (
-              <>Run both scenarios with your real bracket and timeline — and confirm DTAA treatment before deciding.</>
-            )}
-          </Callout>
-
-          <ResultActions
-            title="401(k): cash out vs keep"
-            shareText="I compared cashing out my 401(k) on leaving the US vs letting it compound:"
-            fileName="401k-cashout-vs-keep"
-            rows={[
-              { label: "Cash out now (net)", value: usd(netNow) },
-              { label: "Lost to penalty + tax", value: usd(lostNow) },
-              { label: `Keep ${yrs}y, after-tax`, value: usd(futureAfterTax) },
-              { label: "Advantage of keeping", value: usd(Math.max(0, advantage)) },
-            ]}
-          />
-
-          <p className="text-xs leading-relaxed text-ink-400">
-            Estimate only. Actual tax depends on residency, DTAA treaty
-            positions, state tax, and distribution type. The 10% penalty applies
-            to most withdrawals before age 59½. Consult a cross-border tax
-            professional.
-          </p>
-        </>
+            <p className="text-xs leading-relaxed text-ink-400">
+              Estimate only. Distributions to foreign payees are generally
+              subject to 30% withholding unless valid documentation establishes
+              eligibility for a lower treaty rate — submitting a Form W-8BEN
+              does not by itself guarantee any particular rate, and plans and
+              custodians differ in what documentation they require and whether
+              they will apply a treaty rate at all. Actual tax depends on
+              residency, treaty position, state tax and the type of
+              distribution, and India may also tax the same money depending on
+              your residency status there. Consult a cross-border tax
+              professional.{" "}
+              <a
+                href={IRS_FOREIGN_WITHHOLDING_SOURCE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline"
+              >
+                IRS: plan distributions to foreign persons
+              </a>
+            </p>
+          </>
+        )
       }
     />
   );

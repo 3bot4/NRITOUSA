@@ -3,188 +3,297 @@
 import {
   NumberField,
   SelectField,
+  ToggleField,
   CalcGrid,
   ResultPanel,
   Stat,
   Row,
   Callout,
+  InvalidInputPanel,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import {
+  calculateRnor,
+  type Citizenship,
+  type LiableElsewhere,
+  type PresenceReason,
+} from "@/lib/calc/rnor";
 
-/**
- * India tax-residency classifier (Income-tax Act, section 6) — simplified.
- * Determines NRI / RNOR / ROR from days of presence, and flags when global
- * income becomes taxable in India. Estimates only; not tax advice.
- */
+const STATUS_META = {
+  NRI: {
+    tone: "good" as const,
+    accent: "from-emerald-500 to-teal-600",
+    full: "Non-Resident Indian",
+    tax: "Only your India-source income is taxable in India. Your US salary, 401(k), and US investments are not taxed by India.",
+  },
+  RNOR: {
+    tone: "warn" as const,
+    accent: "from-amber-500 to-orange-600",
+    full: "Resident but Not Ordinarily Resident",
+    tax: "Your foreign (US) income is generally not taxed in India — this is a transitional window. India-source income remains taxable.",
+  },
+  ROR: {
+    tone: "bad" as const,
+    accent: "from-rose-500 to-pink-600",
+    full: "Resident & Ordinarily Resident",
+    tax: "Your worldwide income is taxable in India — including US salary, 401(k)/IRA distributions, and global capital gains, with DTAA credit for US tax paid.",
+  },
+  REVIEW: {
+    tone: "warn" as const,
+    accent: "from-slate-500 to-slate-700",
+    full: "Professional review required",
+    tax: "Your situation turns on a question this calculator cannot resolve from day counts alone.",
+  },
+} as const;
+
 export default function RnorCalculator() {
   const [s, set] = useUrlState({
     curr: "90",
     last4: "300",
     last7: "500",
     nriYears: "9",
-    visiting: "yes",
+    citizenship: "indianCitizen",
+    reason: "visiting",
     highIncome: "no",
+    liable: "yes",
+    dual: "no",
   });
-  const { curr, last4, last7, nriYears, visiting, highIncome } = s;
-  const setCurr = (v: string) => set("curr", v);
-  const setLast4 = (v: string) => set("last4", v);
-  const setLast7 = (v: string) => set("last7", v);
-  const setNriYears = (v: string) => set("nriYears", v);
-  const setVisiting = (v: string) => set("visiting", v);
-  const setHighIncome = (v: string) => set("highIncome", v);
 
-  const c = Math.max(0, parseFloat(curr) || 0);
-  const d4 = Math.max(0, parseFloat(last4) || 0);
-  const d7 = Math.max(0, parseFloat(last7) || 0);
-  const nri = Math.max(0, Math.min(10, parseFloat(nriYears) || 0));
-  const isVisiting = visiting === "yes";
-  const over15 = highIncome === "yes";
+  const r = calculateRnor({
+    daysCurrentFy: s.curr,
+    daysPrior4Fy: s.last4,
+    daysPrior7Fy: s.last7,
+    nonResidentYears: s.nriYears,
+    citizenship: s.citizenship as Citizenship,
+    presenceReason: s.reason as PresenceReason,
+    incomeOver15Lakh: s.highIncome === "yes",
+    liableToTaxElsewhere: s.liable as LiableElsewhere,
+    possibleDualResidence: s.dual === "yes",
+  });
 
-  // Second-condition threshold (the "60-day + 365-day in prior 4 yrs" test).
-  // For an Indian citizen/PIO visiting India, 60 is relaxed to 182 — or to 120
-  // if their India-source income exceeds ₹15 lakh.
-  const secondThreshold = isVisiting ? (over15 ? 120 : 182) : 60;
-
-  const cond1 = c >= 182;
-  const cond2 = c >= secondThreshold && d4 >= 365;
-  const isResident = cond1 || cond2;
-
-  // The 120-day category is always RNOR by law.
-  const residentVia120 = isVisiting && over15 && !cond1 && c >= 120 && c < 182 && d4 >= 365;
-
-  const rnorByHistory = nri >= 9 || d7 <= 729;
-  const isRNOR = isResident && (rnorByHistory || residentVia120);
-  const isROR = isResident && !isRNOR;
-
-  const status = !isResident ? "NRI" : isRNOR ? "RNOR" : "ROR";
-
-  const statusMeta =
-    status === "NRI"
-      ? {
-          tone: "good" as const,
-          full: "Non-Resident Indian",
-          tax: "Only your India-source income is taxable in India. Your US salary, 401(k), and US investments are not taxed by India.",
-        }
-      : status === "RNOR"
-        ? {
-            tone: "warn" as const,
-            full: "Resident but Not Ordinarily Resident",
-            tax: "Your foreign (US) income is generally NOT taxed in India — this is your transitional window. India income is taxable. Use this period before you become ROR.",
-          }
-        : {
-            tone: "bad" as const,
-            full: "Resident & Ordinarily Resident",
-            tax: "Your WORLDWIDE income is taxable in India — including US salary, 401(k)/IRA distributions, and global capital gains (with DTAA credit for US tax paid).",
-          };
+  const meta = STATUS_META[r.status];
+  const errorList = Object.values(r.errors).filter(Boolean) as string[];
 
   return (
     <CalcGrid
       inputs={
         <>
+          <Callout tone="note">
+            India&apos;s financial year runs <strong>1 April – 31 March</strong>.
+            Residency is decided on that year, not the US calendar year — count
+            your days accordingly.
+          </Callout>
+
           <NumberField
             label="Days in India — current financial year"
-            value={curr}
-            onChange={setCurr}
+            value={s.curr}
+            onChange={(v) => set("curr", v)}
             suffix="days"
-            hint="India's FY runs 1 April – 31 March."
+            min={0}
+            max={366}
+            step={1}
+            error={r.errors.daysCurrentFy}
           />
           <NumberField
             label="Days in India — previous 4 financial years (total)"
-            value={last4}
-            onChange={setLast4}
+            value={s.last4}
+            onChange={(v) => set("last4", v)}
             suffix="days"
-            hint="Used for the 60/120/182-day + 365-day resident test."
+            min={0}
+            max={1464}
+            step={1}
+            error={r.errors.daysPrior4Fy}
+            hint="Used for the 365-day limb of the second residency test."
           />
           <NumberField
             label="Days in India — previous 7 financial years (total)"
-            value={last7}
-            onChange={setLast7}
+            value={s.last7}
+            onChange={(v) => set("last7", v)}
             suffix="days"
-            hint="≤ 729 days here keeps you RNOR."
+            min={0}
+            max={2562}
+            step={1}
+            error={r.errors.daysPrior7Fy}
+            hint="729 days or fewer keeps you RNOR under section 6(6)(b)."
           />
           <NumberField
-            label="Years you were an NRI in the last 10"
-            value={nriYears}
-            onChange={setNriYears}
+            label="Years you were a non-resident in the last 10"
+            value={s.nriYears}
+            onChange={(v) => set("nriYears", v)}
             suffix="/ 10"
-            hint="NRI in ≥ 9 of the last 10 years keeps you RNOR."
+            min={0}
+            max={10}
+            step={1}
+            error={r.errors.nonResidentYears}
+            hint="Non-resident in 9 or more keeps you RNOR under section 6(6)(a)."
           />
           <SelectField
-            label="Are you an Indian citizen / PIO visiting India?"
-            value={visiting}
-            onChange={setVisiting}
+            label="Your citizenship / origin status"
+            value={s.citizenship}
+            onChange={(v) => set("citizenship", v)}
             options={[
-              { value: "yes", label: "Yes — citizen/PIO on a visit" },
-              { value: "no", label: "No — other" },
+              { value: "indianCitizen", label: "Indian citizen" },
+              { value: "pio", label: "Person of Indian Origin (not an Indian citizen)" },
+              { value: "other", label: "Neither" },
             ]}
-            hint="Visitors get a relaxed day threshold."
           />
           <SelectField
-            label="India-source income over ₹15 lakh this year?"
-            value={highIncome}
-            onChange={setHighIncome}
+            label="Which describes your year?"
+            value={s.reason}
+            onChange={(v) => set("reason", v)}
+            options={[
+              { value: "visiting", label: "Living abroad, visiting India" },
+              {
+                value: "leavingForEmployment",
+                label: "Left India this year for employment abroad / as crew of an Indian ship",
+              },
+              { value: "other", label: "Neither — e.g. living in India" },
+            ]}
+            hint="Each category gets a different day threshold under Explanation 1 to section 6(1)."
+          />
+          <SelectField
+            label="Income other than from foreign sources over ₹15 lakh?"
+            value={s.highIncome}
+            onChange={(v) => set("highIncome", v)}
             options={[
               { value: "no", label: "No — ₹15 lakh or less" },
               { value: "yes", label: "Yes — over ₹15 lakh" },
             ]}
-            hint="Triggers the 120-day rule for visitors."
+            hint="Drives both the 120-day rule for visitors and the deemed-residency rule."
+          />
+          {s.citizenship === "indianCitizen" && s.highIncome === "yes" && (
+            <SelectField
+              label="Are you liable to tax in another country?"
+              value={s.liable}
+              onChange={(v) => set("liable", v)}
+              options={[
+                { value: "yes", label: "Yes — liable to tax elsewhere" },
+                { value: "no", label: "No — not liable to tax in any other country" },
+                { value: "unsure", label: "I'm not sure" },
+              ]}
+              hint="Decides whether the deemed-residency rule in section 6(1A) applies to you."
+            />
+          )}
+          <ToggleField
+            label="I may also be treated as a tax resident of another country"
+            checked={s.dual === "yes"}
+            onChange={(v) => set("dual", v ? "yes" : "no")}
+            hint="If both countries treat you as resident, the DTAA tie-breaker decides — not day counts."
           />
         </>
       }
       results={
-        <>
-          <ResultPanel
-            title="Your India tax status"
-            accent={
-              status === "NRI"
-                ? "from-emerald-500 to-teal-600"
-                : status === "RNOR"
-                  ? "from-amber-500 to-orange-600"
-                  : "from-rose-500 to-pink-600"
-            }
-          >
-            <Stat label={statusMeta.full} value={status} big tone={statusMeta.tone} />
-            <Callout tone={statusMeta.tone === "bad" ? "bad" : statusMeta.tone === "good" ? "good" : "note"}>
-              {statusMeta.tax}
-            </Callout>
-            <div className="pt-1">
-              <Row label="Resident test (182 days)" value={cond1 ? "Met" : "Not met"} />
-              <Row
-                label={`Resident test (${secondThreshold} + 365 days)`}
-                value={cond2 ? "Met" : "Not met"}
+        !r.ok ? (
+          <InvalidInputPanel errors={errorList} />
+        ) : (
+          <>
+            <ResultPanel title="Your India tax status" accent={meta.accent}>
+              <Stat
+                label={meta.full}
+                value={r.status === "REVIEW" ? "Review needed" : r.status}
+                big
+                tone={meta.tone}
               />
-              <Row label="RNOR by history" value={isResident ? (rnorByHistory || residentVia120 ? "Yes" : "No") : "n/a"} />
-            </div>
-          </ResultPanel>
+              <Callout
+                tone={
+                  meta.tone === "bad" ? "bad" : meta.tone === "good" ? "good" : "note"
+                }
+              >
+                {meta.tax}
+              </Callout>
 
-          {status === "RNOR" && (
-            <Callout tone="good">
-              <strong>Plan around this window.</strong> Once you no longer
-              qualify as RNOR (typically after ~2–3 years back in India), you
-              become ROR and your global US assets become taxable in India.
-              Consider timing 401(k)/IRA withdrawals, RSU sales, and US gains
-              while still RNOR.
-            </Callout>
-          )}
+              {r.status === "REVIEW" ? (
+                <div className="space-y-3">
+                  {r.reviewReasons.map((reason, i) => (
+                    <p key={i} className="text-sm leading-relaxed text-ink-600">
+                      {reason}
+                    </p>
+                  ))}
+                  <p className="text-sm font-semibold text-ink-800">
+                    Take this to a cross-border tax professional rather than
+                    relying on a day-count answer.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <ul className="space-y-2 pt-1">
+                    {r.reasons.map((reason, i) => (
+                      <li key={i} className="text-sm leading-relaxed text-ink-600">
+                        • {reason}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-1">
+                    <Row
+                      label="182-day test"
+                      value={r.meets182DayTest ? "Met" : "Not met"}
+                    />
+                    <Row
+                      label={`Second test (${r.secondLimbThreshold} days + 365 days)`}
+                      value={r.meetsSecondLimbTest ? "Met" : "Not met"}
+                    />
+                    <Row
+                      label="Deemed resident (s.6(1A))"
+                      value={r.isDeemedResident ? "Yes" : "No"}
+                    />
+                    <Row
+                      label="Not-ordinarily-resident tests"
+                      value={
+                        !r.isResident
+                          ? "n/a"
+                          : r.rnorByHistory || r.rnorBy120DayCategory
+                            ? "Met"
+                            : "Not met"
+                      }
+                    />
+                  </div>
+                </>
+              )}
+            </ResultPanel>
 
-          <ResultActions
-            title="My India tax residency status"
-            shareText={`This calculator says my India tax status is ${status} (${statusMeta.full}):`}
-            fileName="india-tax-residency"
-            rows={[
-              { label: "Status", value: `${status} — ${statusMeta.full}` },
-              { label: "182-day test", value: cond1 ? "Met" : "Not met" },
-              { label: `${secondThreshold}+365-day test`, value: cond2 ? "Met" : "Not met" },
-            ]}
-          />
+            {r.status === "RNOR" && (
+              <Callout tone="good">
+                <strong>RNOR is a transitional status.</strong> While it lasts,
+                your foreign income is generally outside India&apos;s net, which
+                is why timing 401(k)/IRA withdrawals, RSU sales and US capital
+                gains matters. How many years it lasts depends entirely on your
+                own day counts and history under the section 6(6) tests — it is
+                not a fixed number of years, and it must be re-tested every
+                financial year.
+              </Callout>
+            )}
 
-          <p className="text-xs leading-relaxed text-ink-400">
-            Estimate only. The deemed-residency rule, dual-status years, and
-            DTAA tie-breakers can change your result. Confirm with a qualified
-            cross-border tax professional.
-          </p>
-        </>
+            <ResultActions
+              title="My India tax residency status"
+              shareText={
+                r.status === "REVIEW"
+                  ? "This calculator flagged my India tax residency as needing professional review:"
+                  : `This calculator says my India tax status is ${r.status} (${meta.full}):`
+              }
+              fileName="india-tax-residency"
+              rows={[
+                { label: "Status", value: `${r.status} — ${meta.full}` },
+                { label: "182-day test", value: r.meets182DayTest ? "Met" : "Not met" },
+                {
+                  label: `${r.secondLimbThreshold}+365-day test`,
+                  value: r.meetsSecondLimbTest ? "Met" : "Not met",
+                },
+                { label: "Deemed resident", value: r.isDeemedResident ? "Yes" : "No" },
+              ]}
+            />
+
+            <p className="text-xs leading-relaxed text-ink-400">
+              Estimate only, based on section 6 of the Income-tax Act 1961 and
+              measured on the Indian financial year (1 April – 31 March). This
+              tool does not model dual-status years, the DTAA tie-breaker,
+              income characterisation, or whether you are &ldquo;liable to
+              tax&rdquo; in another country as that term is used in section
+              6(1A). Confirm with a qualified cross-border tax professional
+              before acting on your status.
+            </p>
+          </>
+        )
       }
     />
   );

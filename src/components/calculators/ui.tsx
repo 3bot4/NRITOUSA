@@ -25,10 +25,20 @@ export const inr = (n: number, digits = 0) =>
 export const pct = (n: number, digits = 1) =>
   isFinite(n) ? `${n.toFixed(digits)}%` : "—";
 
-/** Parse a possibly-formatted numeric string into a number (0 on blank). */
+/**
+ * Parse a possibly-formatted numeric string into a FINITE number (0 on blank
+ * or unusable input).
+ *
+ * Note the isFinite guard: parseFloat("Infinity") returns Infinity, which is
+ * not NaN, so the previous isNaN-only check let it through and it propagated
+ * into results as "Infinity" or NaN.
+ *
+ * Prefer `validateField` from @/lib/calc/validation for new code — it reports
+ * WHY an input was rejected instead of silently substituting zero.
+ */
 export const num = (s: string) => {
   const n = parseFloat(String(s).replace(/[, ]/g, ""));
-  return isNaN(n) ? 0 : n;
+  return Number.isFinite(n) ? n : 0;
 };
 
 /* ------------------------------ inputs -------------------------------- */
@@ -42,6 +52,9 @@ export function NumberField({
   placeholder,
   hint,
   step,
+  min,
+  max,
+  error,
 }: {
   label: string;
   value: string;
@@ -50,24 +63,55 @@ export function NumberField({
   suffix?: string;
   placeholder?: string;
   hint?: string;
-  step?: string;
+  step?: string | number;
+  min?: number;
+  max?: number;
+  /** Field-level message from the shared validator. Blocks the result. */
+  error?: string | null;
 }) {
+  const id = React.useId();
+  const hintId = `${id}-hint`;
+  const errorId = `${id}-error`;
+  const invalid = Boolean(error);
+
+  // HTML min/max are a usability aid only — the same values are enforced in
+  // calculation code, because URL-state lets any value reach the calculator.
+  const describedBy =
+    [error ? errorId : null, hint ? hintId : null].filter(Boolean).join(" ") ||
+    undefined;
+
   return (
-    <label className="block">
-      <span className="text-sm font-semibold text-ink-800">{label}</span>
-      <div className="mt-1.5 flex items-stretch overflow-hidden rounded-xl border border-ink-900/10 bg-white focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-500/20">
+    <div className="block">
+      <label
+        htmlFor={id}
+        className="text-sm font-semibold text-ink-800"
+      >
+        {label}
+      </label>
+      <div
+        className={`mt-1.5 flex items-stretch overflow-hidden rounded-xl border bg-white ${
+          invalid
+            ? "border-rose-500 focus-within:border-rose-500 focus-within:ring-2 focus-within:ring-rose-500/20"
+            : "border-ink-900/10 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-500/20"
+        }`}
+      >
         {prefix && (
           <span className="flex items-center bg-slate-50 px-3 text-sm font-medium text-ink-500">
             {prefix}
           </span>
         )}
         <input
+          id={id}
           type="number"
           inputMode="decimal"
           step={step}
+          min={min}
+          max={max}
           value={value}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
+          aria-invalid={invalid || undefined}
+          aria-describedby={describedBy}
           className="w-full bg-transparent px-3 py-2.5 text-ink-900 outline-none placeholder:text-ink-400"
         />
         {suffix && (
@@ -76,8 +120,57 @@ export function NumberField({
           </span>
         )}
       </div>
-      {hint && <span className="mt-1 block text-xs text-ink-400">{hint}</span>}
-    </label>
+      {error && (
+        <span
+          id={errorId}
+          role="alert"
+          className="mt-1 block text-xs font-semibold text-rose-600"
+        >
+          {error}
+        </span>
+      )}
+      {hint && (
+        <span id={hintId} className="mt-1 block text-xs text-ink-400">
+          {hint}
+        </span>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Shown in place of results when any input is invalid, so the calculator never
+ * displays a number derived from bad data.
+ */
+export function InvalidInputPanel({ errors }: { errors: string[] }) {
+  return (
+    <div
+      role="alert"
+      className="rounded-2xl border border-rose-200 bg-rose-50/70 p-6 shadow-card"
+    >
+      <p className="text-sm font-bold text-rose-900">
+        Check your inputs to see a result
+      </p>
+      <ul className="mt-2 space-y-1">
+        {errors.map((e, i) => (
+          <li key={i} className="text-sm leading-relaxed text-rose-800">
+            • {e}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Prominent tax-year marker placed next to calculator inputs. */
+export function TaxYearBadge({ year, note }: { year: number; note?: string }) {
+  return (
+    <div className="mb-1 flex flex-wrap items-center gap-2 rounded-xl bg-brand-50 px-3 py-2">
+      <span className="rounded-lg bg-brand-600 px-2 py-0.5 text-xs font-bold text-white">
+        Tax year {year}
+      </span>
+      {note && <span className="text-xs text-ink-600">{note}</span>}
+    </div>
   );
 }
 
@@ -110,6 +203,99 @@ export function SelectField({
       </select>
       {hint && <span className="mt-1 block text-xs text-ink-400">{hint}</span>}
     </label>
+  );
+}
+
+export function DateField({
+  label,
+  value,
+  onChange,
+  hint,
+  error,
+  max,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  hint?: string;
+  error?: string | null;
+  max?: string;
+}) {
+  const id = React.useId();
+  const hintId = `${id}-hint`;
+  const errorId = `${id}-error`;
+  const invalid = Boolean(error);
+
+  return (
+    <div className="block">
+      <label htmlFor={id} className="text-sm font-semibold text-ink-800">
+        {label}
+      </label>
+      <input
+        id={id}
+        type="date"
+        value={value}
+        max={max}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={invalid || undefined}
+        aria-describedby={
+          [error ? errorId : null, hint ? hintId : null].filter(Boolean).join(" ") ||
+          undefined
+        }
+        className={`mt-1.5 w-full rounded-xl border bg-white px-3 py-2.5 text-ink-900 outline-none ${
+          invalid
+            ? "border-rose-500 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20"
+            : "border-ink-900/10 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
+        }`}
+      />
+      {error && (
+        <span id={errorId} role="alert" className="mt-1 block text-xs font-semibold text-rose-600">
+          {error}
+        </span>
+      )}
+      {hint && (
+        <span id={hintId} className="mt-1 block text-xs text-ink-400">
+          {hint}
+        </span>
+      )}
+    </div>
+  );
+}
+
+export function ToggleField({
+  label,
+  checked,
+  onChange,
+  hint,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  hint?: string;
+}) {
+  const id = React.useId();
+  const hintId = `${id}-hint`;
+  return (
+    <div>
+      <div className="flex items-start gap-3">
+        <input
+          id={id}
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
+          aria-describedby={hint ? hintId : undefined}
+          className="mt-0.5 h-5 w-5 flex-none rounded border-ink-900/20 text-brand-600 focus:ring-2 focus:ring-brand-500/30"
+        />
+        <label htmlFor={id} className="text-sm font-semibold text-ink-800">
+          {label}
+        </label>
+      </div>
+      {hint && (
+        <span id={hintId} className="mt-1 block pl-8 text-xs text-ink-400">
+          {hint}
+        </span>
+      )}
+    </div>
   );
 }
 

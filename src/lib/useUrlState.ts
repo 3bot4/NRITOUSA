@@ -9,8 +9,10 @@ import { useEffect, useRef, useState } from "react";
  * - Hydrates from the query string once on mount.
  * - Writes changed fields back to the URL (debounced, replaceState — no history
  *   spam). Only fields that differ from defaults are written, keeping links short.
- * - All values are strings (matching the calculators' input state). Non-sensitive
- *   by design: only the calculator inputs the user typed, never anything else.
+ * - All values are strings (matching the calculators' input state). The query
+ *   string therefore contains the financial assumptions the user typed — which
+ *   may be private — but never a name, email address or anything the user did
+ *   not enter into the calculator itself. Share copy must say so.
  */
 export function useUrlState<T extends Record<string, string>>(
   defaults: T

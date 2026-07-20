@@ -184,8 +184,9 @@ export default function ResultActions({
         Share or save this scenario
       </p>
       <p className="mt-1 text-xs text-ink-400">
-        The link contains your inputs, so anyone opening it sees the same
-        scenario. No personal data is included.
+        The shared link may contain the financial assumptions entered in this
+        calculator. Do not share it if you consider those amounts private. Names
+        and email addresses are not included.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button

@@ -124,6 +124,26 @@ function VerifyNote({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Official-source link rendered beside a time-sensitive claim, so the reader can
+ * check the rule at its origin rather than trusting this page's summary.
+ */
+function SourceLink({ href, label }: { href: string; label: string }) {
+  return (
+    <>
+      {" "}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold underline"
+      >
+        Source: {label}
+      </a>
+    </>
+  );
+}
+
 /* ------------------------------ main component -------------------------- */
 
 const GOAL_OPTS: { v: Goal; label: string; emoji: string }[] = [
@@ -535,7 +555,7 @@ export default function H4EadNavigator() {
         <SectionTitle
           kicker="EAD renewal gap calculator"
           title="Will you have a work gap at renewal?"
-          sub="Renewals filed on/after Oct 30, 2025 no longer get an automatic extension — so timing matters more than ever."
+          sub={`Renewals filed on/after Oct 30, 2025 no longer get an automatic extension — so timing matters more than ever. See the DHS rule and USCIS processing times linked with the results below.`}
         />
         <div className="grid gap-4 sm:grid-cols-3">
           <label className="block">
@@ -602,6 +622,10 @@ export default function H4EadNavigator() {
                 the DHS interim final rule means a timely filing no longer extends your EAD.
                 You must <strong>stop working</strong> when the card on file expires
                 ({fmt(calc.ee)}) and may only resume once the new EAD is approved and received.
+                <SourceLink
+                  href={rulesData.autoExtension.source}
+                  label="DHS interim final rule, Federal Register"
+                />
               </VerifyNote>
             )}
 
@@ -632,6 +656,10 @@ export default function H4EadNavigator() {
               available for H-4 EAD category (c)(26) — for Form I-765 USCIS only accepts it from
               F-1 students in categories (c)(3)(A), (c)(3)(B) and (c)(3)(C). You cannot pay to
               speed up an H-4 EAD.
+              <SourceLink
+                href={rulesData.premiumProcessing.source}
+                label={rulesData.premiumProcessing.sourceLabel}
+              />
             </li>
             <li>• File the H-4/EAD with the H-1B extension, but don&apos;t assume they&apos;re approved together.</li>
           </ul>
@@ -893,6 +921,14 @@ function RiskCard({ calc }: { calc: CalcResult }) {
         {risk === "none"
           ? "Based on current processing ranges, your renewal should be approved before authorization lapses — but verify."
           : `Estimated gap of roughly ${optDays === 0 ? "0" : optDays}–${pessDays} days at current ${calc.minM}–${calc.maxM} month processing, with ${calc.autoExt ? "the pre-2025 auto-extension applied" : "no auto-extension"}.`}
+      </p>
+      <p className="mt-1 text-xs text-ink-500">
+        Processing times change month to month and vary by service center — check
+        your own form category and office.
+        <SourceLink
+          href={rulesData.processing.source}
+          label={rulesData.processing.sourceLabel}
+        />
       </p>
     </div>
   );
