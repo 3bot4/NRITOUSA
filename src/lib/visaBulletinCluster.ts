@@ -578,25 +578,32 @@ Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and
   {
     slug: "eb3-india",
     kind: "guide",
-    title: "EB-3 India Priority Dates: Requirements, Downgrade from EB-2, and Backlog",
-    seoTitle: "EB-3 India Priority Date 2026 | EB-3 Backlog, Downgrade from EB-2",
+    title: "EB-3 India Priority Date 2026: Backlog, Movement & Downgrade",
+    seoTitle: "EB-3 India Priority Date 2026: Backlog & Movement",
     metaDescription:
-      "EB-3 India priority dates, requirements (bachelor's degree, skilled worker), EB-3 backlog for Indians, and the EB-2 to EB-3 downgrade strategy explained.",
+      "EB-3 India: final action date sat at Jan 1, 2014 in July 2026. Live cutoffs, movement history, downgrade-from-EB-2 rules, and interfiling explained.",
     navLabel: "EB-3 India",
     category: "eb3",
     excerpt:
       "EB-3 India covers bachelor's-degree holders and skilled workers — and while the backlog is similar to EB-2, the relative cutoff movement can make EB-3 strategically useful.",
     date: "2026-06-16",
+    updated: "2026-07-20",
     content: `
-:::info
-The current EB-3 India Final Action Date, Dates for Filing, and this month's movement are shown in the live status panel above, from the latest Department of State bulletin. EB-3 India moves independently of EB-2 India — in some months EB-3 is ahead, in others behind — which is what makes the EB-2/EB-3 downgrade and interfiling strategies worth watching. There are months when one category posts a cutoff while the other is Unavailable. Always confirm the current month against the official bulletin.
+:::quickanswer
+The EB-3 India priority date is shown live in the panel above — in the **July 2026** bulletin the Final Action Date was **January 1, 2014** with Dates for Filing at **January 15, 2015**, meaning only India-born applicants who filed PERM before those dates could act. EB-3 covers professionals with a **bachelor's degree** and skilled workers with **2+ years** of experience, and it moves **independently of EB-2 India** — in July 2026 EB-3 posted a date while EB-2 India was **Unavailable**, which is exactly when a downgrade becomes worth discussing.
 :::
 
-:::summary
-EB-3 is the third preference employment-based category for skilled workers (2+ years of training/experience), professionals (bachelor's degree), and other workers. For India, EB-3 has its own backlog, which sometimes moves faster and sometimes slower than EB-2 India. Some applicants pursue both categories simultaneously.
+:::key
+- Check both charts every month — EB-3 India posted **January 1, 2014** (Final Action) while EB-2 India was Unavailable in July 2026.
+- Qualify under EB-3 with a **bachelor's degree** (professionals) or **2+ years** of training/experience (skilled workers).
+- Plan around India's **7% per-country cap** — roughly **9,800** employment green cards a year across EB-1, EB-2 and EB-3 combined.
+- Keep your **original priority date** when downgrading: an approved EB-2 I-140 generally lets the new EB-3 petition retain the earlier date.
+- Expect movement of only **1–3 months per calendar year** in typical years, so model decades — not years — for a new EB-3 India filing.
 :::
 
-## EB-3 requirements
+EB-3 India is the third-preference employment green card queue for India-born professionals holding a bachelor's degree and skilled workers with at least two years of experience — and it matters most as the category that sometimes runs *ahead* of EB-2 India. This guide is for anyone tracking the visa bulletin EB-3 India charts, weighing an EB-2 to EB-3 downgrade, or considering interfiling back to EB-2. The number that frames everything: India's 7% per-country cap allows roughly 9,800 employment-based green cards a year across all categories, against India-born demand many times larger, which is why the EB-3 India final action date has sat around 2014 for years. Below: EB-3 requirements, where the eb3 priority date india stands right now, recent EB-3 India movement and what can honestly be said about predictions, the downgrade and interfiling strategies, and how to read the EB-3 row yourself.
+
+## What Are the EB-3 India Requirements?
 
 **Skilled workers:** Positions requiring at least 2 years of training or experience that are not temporary or seasonal.
 
@@ -606,9 +613,27 @@ EB-3 is the third preference employment-based category for skilled workers (2+ y
 
 Most Indian H1B workers qualify under the "professionals" sub-category.
 
-## EB-3 India backlog
+## What Is the EB-3 India Priority Date Right Now?
+
+The live panel at the top of this page shows the current EB-3 India Final Action Date and Dates for Filing from the latest Department of State bulletin, with recent months' movement in the table beneath it. As of the July 2026 bulletin:
+
+| Chart (July 2026) | EB-3 India | EB-2 India | Rest of World |
+|---|---|---|---|
+| Final Action Date | January 1, 2014 | Unavailable | August 1, 2024 |
+| Dates for Filing | January 15, 2015 | January 15, 2015 | Current |
+
+> Source: U.S. Department of State Visa Bulletin, July 2026. Cutoffs change monthly — the live panel above always reflects the current month.
+
+## Why Is the EB-3 India Backlog So Long?
 
 Like EB-2, EB-3 India suffers from the per-country 7% cap. The Final Action Date for EB-3 India has sat around 2014 in recent bulletins and moves at a broadly similar pace to EB-2 India — though not always identically. The two can diverge sharply: there are months when EB-3 India posts a cutoff date while EB-2 India is Unavailable (see the current status above).
+
+| Supply vs demand (typical year) | Number |
+|---|---|
+| Employment-based green cards worldwide | ~140,000 |
+| EB-3 worldwide share (28.6%) | ~40,040 |
+| India ceiling, all EB categories combined | ~9,800 (7%) |
+| Typical EB-3 India cutoff movement | 1–3 months per calendar year |
 
 The key insight: EB-2 and EB-3 India move independently every month. In some months EB-3 India is more current than EB-2 India; in others, EB-2 is ahead. This creates the strategic opportunity of filing I-140 in both categories.
 
@@ -616,7 +641,7 @@ The key insight: EB-2 and EB-3 India move independently every month. In some mon
 **Historical pattern:** EB-3 India was temporarily ahead of EB-2 India in the late 2010s, prompting many applicants to downgrade from EB-2 to EB-3. The two have since moved at similar speeds. Always check the current bulletin rather than relying on historical trends.
 :::
 
-## EB-2 to EB-3 downgrade strategy
+## Should You Downgrade from EB-2 to EB-3?
 
 If you have an approved EB-2 I-140, you may be able to file a new EB-3 I-140 to take advantage of a more current EB-3 India cutoff date. This is called an EB-3 downgrade.
 
@@ -628,13 +653,13 @@ If you have an approved EB-2 I-140, you may be able to file a new EB-3 I-140 to 
 
 [Read the full EB-2 to EB-3 downgrade guide →](/visa-bulletin/eb2-to-eb3-downgrade)
 
-## EB-3 to EB-2 interfiling
+## What Is EB-3 to EB-2 Interfiling?
 
 If you originally filed I-485 under EB-3 and your employer now has an approved EB-2 I-140, you may be able to request USCIS to adjudicate your I-485 under EB-2 — a process called interfiling. This is useful when EB-2 India becomes more current than EB-3.
 
 [Read the full EB-3 to EB-2 interfiling guide →](/visa-bulletin/eb3-to-eb2-interfiling)
 
-## How to read EB-3 India in the visa bulletin
+## How Do You Read the EB-3 India Row in the Visa Bulletin?
 
 1. Open the current month's visa bulletin at travel.state.gov
 2. Go to Table A (Final Action Dates) or Table B (Dates for Filing) — whichever applies
@@ -642,15 +667,31 @@ If you originally filed I-485 under EB-3 and your employer now has an approved E
 4. Find the India column
 5. Compare the printed date to your priority date — if your date is earlier than the printed date, you are current. If the cell shows "U" (Unavailable), no priority date is current that month
 
-### Frequently asked questions
+## How EB-3 India Connects to the Rest of Your Case
 
-#### Can I file PERM in both EB-2 and EB-3 simultaneously?
+Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline), carried by the approved [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) once the date clears the applicable chart. Because EB-2 and EB-3 India leapfrog each other, the practical move is to watch both rows monthly with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If EB-3 pulls ahead, read the [EB-2 to EB-3 downgrade guide](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers after you filed under EB-3, [interfiling](/visa-bulletin/eb3-to-eb2-interfiling) is the route back. New to the charts? Start with [how to read the visa bulletin](/visa-bulletin).
+
+## Frequently asked questions
+
+### What is the EB-3 India priority date right now?
+It changes monthly. In the July 2026 bulletin, the EB-3 India Final Action Date was January 1, 2014 and Dates for Filing was January 15, 2015 — the live panel at the top of this page always shows the current month straight from the DOS bulletin.
+
+### Is EB-3 India faster than EB-2 India?
+Sometimes. The two move independently and leapfrog each other: in July 2026 EB-3 India posted a January 1, 2014 Final Action Date while EB-2 India was Unavailable, making EB-3 the only one of the two where cases could be approved that month. Compare both rows in the current bulletin before deciding anything.
+
+### How long is the EB-3 India wait for a new filing?
+At the historical pace of roughly 1–3 months of cutoff movement per calendar year against a ~9,800-per-year all-category ceiling for India, a new EB-3 India filing should be planned in decades rather than years. No service can credibly predict monthly movement.
+
+### Can I file PERM in both EB-2 and EB-3 simultaneously?
 Some employers allow concurrent PERM filings in both categories for the same employee. This gives the employee two I-140 petitions with potentially different priority dates. Discuss with your employer's immigration attorney.
 
-#### If I downgrade to EB-3, will my old EB-2 priority date carry over?
+### If I downgrade to EB-3, will my old EB-2 priority date carry over?
 Often yes. An earlier approved EB-2 I-140 can generally let the new EB-3 I-140 keep the earlier priority date, subject to applicable rules. This priority-date retention is separate from the "same or similar occupation" test used for I-485 portability under INA §204(j), and it can be unavailable if the earlier approval was revoked for reasons such as fraud, willful misrepresentation, material error, or invalidation of the labor certification. Your employer's attorney claims the earlier date when filing the new I-140.
 
-#### If EB-3 India is currently faster, should I immediately downgrade?
+### Does a downgrade require a brand-new PERM?
+Not always. Depending on the existing certified PERM, the position's stated requirements, and the role, the employer may be able to rely on the existing labor certification for the EB-3 petition rather than restarting recruitment. Employer counsel must confirm this for your specific case.
+
+### If EB-3 India is currently faster, should I immediately downgrade?
 Not necessarily. The relative movement of EB-2 and EB-3 India changes every month, and a downgrade generally requires a new EB-3 I-140 (and, depending on the existing certified PERM, possibly a new PERM), costing time and money. Work with your attorney to model the expected wait under each category before deciding.
 `,
   },
@@ -659,20 +700,31 @@ Not necessarily. The relative movement of EB-2 and EB-3 India changes every mont
   {
     slug: "retrogression",
     kind: "guide",
-    title: "Visa Bulletin Retrogression Explained: What It Means for Indian Green Card Applicants",
-    seoTitle: "Visa Bulletin Retrogression Explained | India EB-2 EB-3 Priority Dates",
+    title: "Visa Bulletin Retrogression 2026: What It Means for You",
+    seoTitle: "Visa Bulletin Retrogression 2026: Meaning & Impact",
     metaDescription:
-      "What is retrogression in the visa bulletin? Why do India EB-2 and EB-3 priority dates move backward, and what happens to a pending I-485 when retrogression occurs.",
+      "Retrogression means the visa bulletin cutoff moved backward. What it does to a pending I-485 (nothing), why it happens, and India EB-2/EB-3 examples.",
     navLabel: "Retrogression Explained",
     excerpt:
       "Retrogression happens when the visa bulletin moves backward — and for Indian applicants with pending I-485, it can feel alarming. Here is exactly what it means.",
     date: "2026-06-16",
+    updated: "2026-07-20",
     content: `
-:::summary
-Retrogression means the State Department moved the visa bulletin Final Action Date or Dates for Filing backward — to an earlier date than the previous month. Priority dates that were "current" last month may no longer be current. For applicants with a pending I-485, retrogression freezes adjudication but does NOT cause denial or require refiling.
+:::quickanswer
+**Retrogression** means the Department of State moved a visa bulletin cutoff **backward** — to an earlier date than the previous month — so priority dates that were current last month no longer are. It happens when demand for a category exceeds the visa numbers available that year. If your **I-485 is already pending, nothing bad happens**: USCIS simply cannot approve it until your date is current again, and your EAD and Advance Parole keep renewing. In the **July 2026** bulletin, EB-1 India retrogressed from Dec 15, 2022 to **Oct 15, 2022**, and EB-2 India went fully **Unavailable**.
 :::
 
-## What is retrogression?
+:::key
+- Understand the core rule: retrogression **pauses** approvals, it never denies or abandons a pending I-485.
+- Keep renewing **EAD and Advance Parole** — both ride on the pending I-485, not on your date being current.
+- Watch **October 1**: the new fiscal year restores visa numbers, and dates often retrogress right after a summer surge.
+- Expect the extreme form too — a category can go to **"U" (Unavailable)**, meaning zero visa numbers, as EB-2 India did in July 2026.
+- Never commit to job changes, travel, or financial plans on the assumption a date will advance — check the bulletin each month around the **8th–10th**.
+:::
+
+Visa bulletin retrogression is the single most alarming thing an Indian green card applicant can see in a monthly bulletin — and usually the least dangerous. This guide explains what retrogression means, why priority dates move backward, what actually happens to a pending I-485 when it hits, and how the India EB-2 and EB-3 categories have behaved historically. The reassuring headline: a pending I-485 is never denied because of retrogression; USCIS just holds the case, and your work and travel authorization continue. Below: the definition with a worked example, the visa-number math that causes it, the difference between a retrogressed date and an "Unavailable" category, what to do in each filing situation, India's retrogression history, and how to track it monthly.
+
+## What Is Retrogression in the Visa Bulletin?
 
 Each month, the State Department sets new priority date cutoffs in the visa bulletin. In most months, dates move forward (advancing toward more recent dates). In some months, dates move backward — this is retrogression.
 
@@ -686,7 +738,7 @@ A priority date of Dec 1, 2022 that was current in June would not be current in 
 **Retrogression can go all the way to "Unavailable."** One recent example: in the July 2026 bulletin, EB-1 India retrogressed from Dec 15, 2022 to Oct 15, 2022, while **EB-2 India and EB-5 India Unreserved both became Unavailable ("U")** for the remainder of that fiscal year — no visa numbers at all, the most extreme form of backward movement. EB-3 India, by contrast, held a posted cutoff. For the current month's dates and which chart USCIS is using, check the live [EB-1 India](/visa-bulletin/eb1-india), [EB-2 India](/visa-bulletin/eb2-india) and [EB-3 India](/visa-bulletin/eb3-india) status.
 :::
 
-## Why does retrogression happen?
+## Why Do Priority Dates Move Backward?
 
 The annual supply of employment-based green cards is ~140,000. The distribution depends on:
 - Unused family-based visa numbers that roll over to employment-based categories
@@ -699,7 +751,7 @@ When demand is high, dates advance slowly or retrogress. When family-based visas
 **Fiscal year end surge:** September is the last month of the US government fiscal year. The State Department often aggressively advances dates in July–August to use all remaining visa numbers, then retrogresses sharply in October when the new fiscal year begins.
 :::
 
-## What retrogression means for I-485 applicants
+## What Happens to a Pending I-485 During Retrogression?
 
 If your I-485 is already filed and pending:
 
@@ -716,7 +768,24 @@ If you have NOT filed I-485 yet and retrogression hits:
 - You cannot file I-485 during retrogression (unless a Table B window is still open and authorized)
 - You wait for the date to advance forward again
 
-## Retrogression history for India
+| Your situation when retrogression hits | What happens | What you should do |
+|---|---|---|
+| I-485 pending, date retrogressed | Case held, not denied | Nothing — keep renewing EAD/AP |
+| I-485 pending, category went "U" | Case held, no approvals that month | Nothing — wait for the new fiscal year |
+| I-485 not yet filed, date retrogressed | Filing window closed | Watch Table B monthly for a reopening |
+| I-485 approved before retrogression | Unaffected | None — approval stands |
+| EAD/AP renewal pending | Unaffected | File renewals on the normal schedule |
+
+## India Retrogression History: What Has Actually Happened
+
+First, the distinction that trips people up:
+
+| Bulletin entry | What it means | Can cases be approved? |
+|---|---|---|
+| A later date than last month | Normal forward movement | Yes, for dates earlier than the cutoff |
+| An earlier date than last month | Retrogression | Yes, but only for the smaller earlier-date group |
+| **U (Unavailable)** | No visa numbers at all this month | No — nobody in that category/country |
+| C (Current) | No backlog | Yes, any priority date |
 
 India EB-2 and EB-3 have experienced multiple retrogression events:
 - **Late 2000s / early 2010s:** India EB-2 dates moved forward aggressively, then retrogressed sharply
@@ -728,21 +797,34 @@ India EB-2 and EB-3 have experienced multiple retrogression events:
 Never book plans (job changes, international travel, financial decisions) based on an assumption that your priority date will advance by a certain amount in a certain timeframe. Retrogression can happen in any month.
 :::
 
-## How to track retrogression
+## How Do You Track Retrogression Each Month?
 
 - **Monthly:** Check the new visa bulletin around the 8th–10th of each month at travel.state.gov
 - **Sign up for email alerts** at the State Department website
 - **Ask your employer's attorney** to notify you of significant changes
 
-### Frequently asked questions
+## How Retrogression Connects to the Rest of Your Case
 
-#### My priority date was current last month, but this month's bulletin shows retrogression. Will USCIS still approve my I-485 this month?
+Retrogression is a visa-supply event, not a USCIS processing event — which is why your [USCIS case status](/uscis/case-status) can sit unchanged for months while the bulletin moves. Your [priority date](/visa-bulletin/priority-date) itself never changes; only the cutoff it is measured against does. Track the categories directly on [EB-1 India](/visa-bulletin/eb1-india), [EB-2 India](/visa-bulletin/eb2-india) and [EB-3 India](/visa-bulletin/eb3-india), compare your own date with the [Priority Date Checker](/tools/priority-date-checker), and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If a retrogression closes your filing window before you filed, [what to do when your date is current](/visa-bulletin/priority-date-current-what-next) explains how quickly to move next time.
+
+## Frequently asked questions
+
+### What does retrogression mean in the visa bulletin?
+Retrogression means the Department of State moved a category's cutoff date backward, to an earlier date than the previous month, because demand exceeded the visa numbers available. Applicants whose priority dates were current the previous month may no longer be current.
+
+### Does retrogression cancel or deny my pending I-485?
+No. A pending I-485 is simply held — never denied, abandoned, or required to be refiled. USCIS resumes adjudication when your priority date is current again, and your EAD and Advance Parole remain renewable throughout.
+
+### What is the difference between retrogression and "Unavailable"?
+Retrogression moves the cutoff to an earlier date, so a smaller group can still be approved. "U" (Unavailable) means no visa numbers exist for that category and country that month, so nobody can be approved regardless of priority date. EB-2 India was Unavailable in July 2026.
+
+### My priority date was current last month, but this month's bulletin shows retrogression. Will USCIS still approve my I-485 this month?
 If USCIS already adjudicated your case in the prior month (when your date was current), approval may still happen. If not, USCIS will hold the case until your date is current again. Ask your attorney to check your specific case status.
 
-#### Can retrogression affect my EAD or AP renewal?
+### Can retrogression affect my EAD or AP renewal?
 No — EAD and AP renewals are tied to your pending I-485 status, not to whether your priority date is currently current. As long as I-485 is pending, you can renew EAD and AP.
 
-#### What is the difference between retrogression and a visa number "cutback"?
+### What is the difference between retrogression and a visa number "cutback"?
 They refer to the same thing — the visa bulletin date moving backward. "Retrogression" is the common term used in immigration practice.
 `,
   },

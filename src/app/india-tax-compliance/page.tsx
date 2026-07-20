@@ -4,6 +4,9 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import HubLinkGroups from "@/components/HubLinkGroups";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
+import ToolFaq from "@/components/tools/ToolFaq";
 import {
   taxComplianceSnapshotRows,
   taxComplianceSources,
@@ -28,6 +31,8 @@ import {
   breadcrumbJsonLd,
   jsonLdGraph,
   pageMetadata,
+  faqJsonLd,
+  toolArticleJsonLd,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import {
@@ -58,7 +63,41 @@ import { FORMS_LIMITS_PATH } from "@/lib/formsLimitsCenter";
 
 const title = "India Tax & Compliance for US NRIs";
 const description =
-  "The cross-border tax hub for NRIs in the USA: calculators for property gains, remittance TCS, and RNOR; an FBAR/FATCA checker; and DTAA guides.";
+  "NRI tax compliance hub: FBAR at $10,000, FATCA from $50,000, RNOR day-count rules, TDS on property, and DTAA relief — with calculators for each.";
+
+/** Hub FAQs — also emitted as FAQPage JSON-LD. */
+const hubFaqs = [
+  {
+    question: "What are the tax compliance rules for NRIs in India?",
+    answer:
+      "Your India tax obligations depend on residential status, which is set by days present in the April-March financial year: 182 days or more makes you Resident, as does 60 days in the year plus 365 across the previous four. Non-residents are taxed only on India-sourced income such as rent, capital gains, and NRO interest, usually collected through TDS, and may need to file an ITR to reclaim excess TDS.",
+  },
+  {
+    question: "Do NRIs have to file an income tax return in India?",
+    answer:
+      "You must file if your India-sourced income exceeds the basic exemption limit, and you should file whenever TDS was deducted at more than your actual liability — that refund is only recoverable through a return. Filing is also required to carry forward capital losses and is often needed as documentation for repatriation.",
+  },
+  {
+    question: "What is the TDS rate for NRIs?",
+    answer:
+      "TDS on NRI income is deducted at source at rates that vary by income type — NRO interest, rent, and capital gains each carry their own rate, and property sales attract TDS on the sale consideration rather than on the gain. Because the deducted amount frequently exceeds the real liability, a lower-deduction certificate or an ITR refund claim is often worth pursuing.",
+  },
+  {
+    question: "What is Form 15CA and 15CB used for?",
+    answer:
+      "They are the compliance pair for remitting money out of India. Form 15CA is your declaration to the bank about the remittance, and Form 15CB is a chartered accountant's certificate confirming the tax treatment. Which parts apply depends on the amount and whether the income is taxable in India.",
+  },
+  {
+    question: "Do I need to report Indian bank accounts on my US taxes?",
+    answer:
+      "Yes, once thresholds are crossed. FBAR (FinCEN Form 114) is required if all your foreign accounts combined exceeded $10,000 at any point in the year, and FATCA Form 8938 applies from $50,000 year-end or $75,000 peak for a single filer living in the US. NRE, NRO, fixed deposits, PPF, and demat accounts all count toward these tests.",
+  },
+  {
+    question: "How does the DTAA prevent double taxation for NRIs?",
+    answer:
+      "The India-US treaty assigns taxing rights and allows a foreign tax credit, so tax paid in one country generally offsets liability on the same income in the other. In practice most US-resident NRIs claim a US foreign tax credit for Indian tax already deducted, which requires keeping TDS certificates and Indian return documentation.",
+  },
+];
 
 export const metadata: Metadata = pageMetadata({
   title: title,
@@ -79,6 +118,14 @@ export default function IndiaTaxCompliancePage() {
   const topicArticles = resolve(TAX_TOPIC_SLUGS);
 
   const jsonLd = jsonLdGraph(
+    faqJsonLd(hubFaqs),
+    toolArticleJsonLd({
+      path: TAX_COMPLIANCE_PATH,
+      headline: title,
+      description,
+      datePublished: "2026-06-16",
+      dateModified: TAX_COMPLIANCE_VERIFIED,
+    }),
     {
       "@type": "CollectionPage",
       "@id": `${absoluteUrl(TAX_COMPLIANCE_PATH)}#collection`,
@@ -168,6 +215,128 @@ export default function IndiaTaxCompliancePage() {
             >
               Browse all tax topics
             </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Quick Answer + takeaways + thresholds tables */}
+      <section className="border-b border-ink-900/5 bg-white py-10">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <ReviewedByline date={TAX_COMPLIANCE_VERIFIED} />
+
+            <div className="mt-5 rounded-2xl border border-emerald-300 bg-emerald-50/70 p-5 sm:p-6">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-emerald-700">
+                Quick Answer
+              </p>
+              <p className="text-[0.95rem] leading-relaxed text-ink-800">
+                NRI tax compliance runs on two tracks at once. On the <strong>India side</strong>, your
+                residential status is decided by days present in the April–March financial year — <strong>182
+                days</strong> or more makes you Resident, as does 60 days plus 365 across the prior four — and
+                non-residents are taxed only on India-sourced income, usually collected through TDS. On the{" "}
+                <strong>US side</strong>, you report the same Indian accounts regardless: <strong>FBAR</strong>{" "}
+                once all foreign accounts combined top <strong>$10,000</strong> at any point, and{" "}
+                <strong>Form 8938</strong> from <strong>$50,000</strong> year-end for a single filer in the US.
+                The DTAA then prevents the same income being taxed twice through the foreign tax credit.
+              </p>
+            </div>
+
+            {/* Key takeaways */}
+            <div className="mt-6 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• File an <strong>FBAR</strong> if all your foreign accounts combined exceeded <strong>$10,000</strong> at any moment in the year — it is an aggregate test, not per account.</li>
+                <li>• Add <strong>Form 8938</strong> from <strong>$50,000</strong> (year-end) or <strong>$75,000</strong> (peak) if you file single and live in the US; double those figures when married filing jointly.</li>
+                <li>• Count your India days carefully — <strong>182 days</strong> in a financial year changes your Indian residential status and what India can tax.</li>
+                <li>• Reclaim over-deducted <strong>TDS</strong> by filing an Indian return; on property sales TDS applies to the sale value, not the gain.</li>
+                <li>• Claim <strong>DTAA</strong> relief through the US foreign tax credit rather than assuming income is exempt — keep TDS certificates as evidence.</li>
+              </ul>
+            </div>
+
+            {/* Opening keyword paragraph */}
+            <p className="mt-6 text-base leading-relaxed text-ink-700">
+              NRI tax compliance means satisfying two tax systems that do not talk to each other. This hub is
+              for Indians living in the USA who still hold NRE/NRO accounts, fixed deposits, mutual funds, or
+              property in India, and who need to know what India taxes, what the US requires them to report,
+              and how NRI income tax rules and the DTAA fit together. The two numbers that drive most of it:
+              182 days of presence decides your Indian residential status, and $10,000 in combined foreign
+              accounts triggers US FBAR reporting. Below you&apos;ll find the reporting thresholds side by
+              side, the India-side obligations including TDS rates and Form 15CA/15CB, calculators for
+              property gains, remittance TCS and RNOR status, and topic guides for each situation.
+            </p>
+
+            {/* Table 1 — US reporting thresholds */}
+            <h2 className="mt-8 text-xl font-bold tracking-tight text-ink-900">
+              What Do You Have to Report to the US?
+            </h2>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+              <table className="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                    <th className="p-3 font-semibold">Filing</th>
+                    <th className="p-3 font-semibold">Threshold</th>
+                    <th className="p-3 font-semibold">Filed with</th>
+                    <th className="p-3 font-semibold">Deadline</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-ink-900/5 bg-white">
+                  {[
+                    ["FBAR (FinCEN 114)", "Over $10,000 combined, any point in the year", "FinCEN (BSA e-file)", "Apr 15, auto-extended to Oct 15"],
+                    ["Form 8938 (FATCA)", "$50,000 year-end / $75,000 peak (single, in US)", "IRS, with your return", "With the tax return"],
+                    ["Form 8938 (married jointly, in US)", "$100,000 year-end / $150,000 peak", "IRS, with your return", "With the tax return"],
+                    ["Form 8938 (living abroad, single)", "$200,000 year-end / $300,000 peak", "IRS, with your return", "With the tax return"],
+                    ["Schedule B, Part III", "Any foreign account", "IRS, with your return", "With the tax return"],
+                  ].map((r) => (
+                    <tr key={r[0]} className="align-top">
+                      <td className="p-3 font-semibold text-ink-900">{r[0]}</td>
+                      <td className="p-3 text-ink-600">{r[1]}</td>
+                      <td className="p-3 text-ink-600">{r[2]}</td>
+                      <td className="p-3 text-ink-600">{r[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 text-xs text-ink-500">
+              Per FinCEN Form 114 and IRS Form 8938 instructions. Verify against current IRS guidance each
+              filing season.
+            </p>
+
+            {/* Table 2 — India-side obligations */}
+            <h2 className="mt-8 text-xl font-bold tracking-tight text-ink-900">
+              What Does India Still Tax When You Live in the USA?
+            </h2>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+              <table className="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                    <th className="p-3 font-semibold">India income or action</th>
+                    <th className="p-3 font-semibold">Taxable for a non-resident?</th>
+                    <th className="p-3 font-semibold">What to watch</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-ink-900/5 bg-white">
+                  {[
+                    ["NRE account interest", "Exempt in India", "Still US-taxable income and FBAR-reportable"],
+                    ["NRO account interest", "Taxable, TDS deducted at source", "File an ITR to reclaim excess TDS"],
+                    ["Rental income from India property", "Taxable, TDS applies", "Deductions available; ITR usually worthwhile"],
+                    ["Sale of India property", "Capital gains taxable; TDS on sale value", "Consider a lower-deduction certificate"],
+                    ["Indian mutual funds / shares", "Capital gains taxable", "PFIC questions arise on the US side"],
+                    ["Remitting money out of India", "Not income, but compliance applies", "Form 15CA/15CB and LRS limits"],
+                  ].map((r) => (
+                    <tr key={r[0]} className="align-top">
+                      <td className="p-3 font-semibold text-ink-900">{r[0]}</td>
+                      <td className="p-3 text-ink-600">{r[1]}</td>
+                      <td className="p-3 text-ink-600">{r[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 text-xs text-ink-500">
+              General education, not advice. Rates and rules change with each Finance Act — confirm with a
+              qualified CA before acting.
+            </p>
           </div>
         </Container>
       </section>
@@ -958,6 +1127,22 @@ export default function IndiaTaxCompliancePage() {
       <section className="bg-white pt-4 pb-6">
         <Container>
           <ReturnToIndiaLeadMagnetCard />
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white pt-4 pb-10">
+        <Container>
+          <ToolFaq items={hubFaqs} />
+        </Container>
+      </section>
+
+      {/* Author bio */}
+      <section className="bg-white pb-10">
+        <Container>
+          <AuthorBioBox
+            tags={["US-India cross-border tax", "FBAR & FATCA reporting", "NRI compliance"]}
+          />
         </Container>
       </section>
 

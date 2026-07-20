@@ -250,16 +250,21 @@ Your SSN is a master key, and the first 30 days decide whether you spend the nex
   },
   {
     slug: "rent-apartment-no-credit-history",
+    answerFirst: true,
+    expertiseTags: ["US newcomer finance", "Building US credit", "Immigrant housing"],
     title: "How to Rent an Apartment in the USA Without Credit History",
-    seoTitle: "Rent a US Apartment With No Credit History",
+    seoTitle: "Rent an Apartment With No Credit History (2026 Guide)",
+    seoDescription:
+      "No US credit score? Landlords want income around 3x rent, a bigger deposit, or a guarantor. The 4 strategies that get newcomers approved, plus real costs.",
     excerpt:
       "No credit score, no US rental history, no problem. Here's exactly how to get your lease approved with income proof, deposits, and guarantor services.",
     topic: "housing",
     date: "2026-06-03",
+    updated: "2026-07-20",
     featured: false,
     content: `Your first apartment search collides with the newcomer credit problem: managers run a credit check and your US file is empty, so big complexes often auto-reject. But thousands of newcomers sign leases every month with zero US history — because a landlord's real fear isn't a low score, it's not getting paid. Solve that and the keys are yours.
 
-:::summary
+:::quickanswer
 Landlords want proof you'll pay. With **no US credit**, you win approval by showing **income roughly 3x the rent** (an employer letter plus pay stubs), offering a **larger deposit or prepaid rent**, lining up a **guarantor service** if needed, and targeting **smaller private landlords** over algorithm-driven corporate complexes. Budget **3x the monthly rent in cash** for move-in costs.
 :::
 
@@ -312,6 +317,20 @@ Where you apply matters as much as how:
 - **Small private landlords** (a few units, owner-managed, often listed on Facebook Marketplace, Zillow "by owner," or local desi community groups) evaluate you as a person. They're your best bet.
 - **Sublets and roommate situations** sidestep formal screening almost entirely for your first few months while you build history.
 
+## What Does Moving In Actually Cost?
+
+Budget roughly **3x the monthly rent** in cash before you sign. On a $2,000 apartment that is about $6,000 up front — more in broker-fee cities.
+
+| Cost at move-in | Typical amount | Notes |
+|---|---|---|
+| First month's rent | 1x monthly rent | Due at signing |
+| Security deposit | 1x–2x monthly rent | Higher deposit is a common no-credit workaround |
+| Last month's rent | 0–1x monthly rent | Requested more often from no-credit applicants |
+| Application fee | $25–$75 per adult | Usually non-refundable |
+| Broker fee (NYC and similar) | Up to ~15% of annual rent | Not charged in most US cities |
+| Guarantor service fee | ~5%–10% of annual rent | One-time, if you use one |
+| Renters insurance | $10–$25 / month | Usually required by the lease |
+
 ## Budget for the real move-in cost
 The sticker rent is only part of it. At signing, expect:
 
@@ -344,6 +363,15 @@ Only if your rent is reported. Standard leases don't report to bureaus, but **re
 
 ### How much should I save before apartment hunting?
 Plan for roughly **3x the monthly rent** to cover first month, deposit, and fees — more in cities with broker fees like New York.
+
+### Can I rent an apartment without an SSN?
+Often yes. Many landlords accept a passport, visa or I-94, and an employer offer letter in place of an SSN, though they may not be able to run a standard credit check — which is exactly when a larger deposit or a guarantor closes the gap. Smaller private landlords are far more flexible here than large corporate complexes.
+
+### What is a guarantor service and what does it cost?
+A guarantor service co-signs your lease and pays the landlord if you default. Providers typically charge a percentage of annual rent — commonly in the region of 5%–10% — as a one-time fee, and they underwrite on your income rather than your US credit history. Confirm the landlord accepts third-party guarantors before paying anything.
+
+### Do I need a US bank account to rent?
+Practically, yes. Most landlords require rent by check, ACH, or an online portal, all of which need a US account. Open one as soon as you have your passport and visa documents — many banks let newcomers open an account before the SSN arrives.
 
 ## The bottom line
 A blank US credit report is a speed bump, not a wall. Lead with income proof, sweeten the deal with a larger deposit or a guarantor, and aim at flexible private landlords. Get all promises in writing, photograph the unit at move-in, and keep every receipt — in US rentals, if it isn't in the lease, it doesn't exist. Once you're settled, start [building your credit score](/articles/build-us-credit-score-from-zero) so your next lease is effortless.`,
@@ -5383,17 +5411,21 @@ Convert both to the same currency and adjust for inflation. Take the rupee retur
   },
   {
     slug: "india-fd-vs-us-investments",
+    answerFirst: true,
+    expertiseTags: ["NRI investing", "US-India taxation", "Cross-border wealth"],
     title: "India FD vs US Investments: What Long-Term NRIs Should Understand",
-    seoTitle: "India FD vs US Investments for NRIs",
+    seoTitle: "India FD vs US Investments 2026: Real Returns Compared",
+    seoDescription:
+      "A 7% India FD isn't 7% in dollars. Compare FD vs US investments after INR depreciation, inflation, and tax in both countries — with worked numbers.",
     excerpt:
       "Learn how NRIs should compare India fixed deposits with US investments after considering inflation, currency depreciation, taxes, and liquidity.",
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
-    updated: "2026-06-06",
+    updated: "2026-07-20",
     featured: true,
     content: `A 7% fixed deposit feels irresistible next to a US savings account — and the India FD is the most emotionally comfortable investment many NRIs own. But comparing the two on headline rate alone is one of the most common long-term NRI mistakes; the honest version includes inflation, currency depreciation, and taxes in both countries. This isn't an argument that FDs are bad — it's an argument for comparing them the right way.
 
-:::summary
+:::quickanswer
 India FD rates look high partly because India's inflation and currency depreciation are also higher. To compare fairly, convert returns into the **currency you'll actually spend** and adjust for inflation and taxes in both countries. FDs make sense for rupee goals, an India emergency buffer, or money you'll spend in India. For dollar goals over long horizons, US diversified investments have historically offered higher real, dollar-denominated growth — with more volatility. None of this is personalized advice.
 :::
 
@@ -5439,6 +5471,21 @@ US investments can be sold and the cash used domestically within days. Pulling F
 | Best suited for | Rupee goals | Dollar goals |
 
 The honest takeaway: FDs can win for rupee goals and stability; broad US investing has historically won for long-term dollar growth, with more ups and downs along the way.
+
+## Where Should NRIs Actually Hold Cash? (Rate Comparison)
+
+Compare like with like: an India FD pays in rupees, a US high-yield savings account or T-bill pays in dollars. The right column is the one that matches the currency you will actually spend.
+
+| Instrument | Currency | Typical use | Tax treatment for a US-resident NRI |
+|---|---|---|---|
+| NRE fixed deposit | INR | Rupee goals, India family support | Interest exempt in India; taxable US income; FBAR/FATCA reportable |
+| NRO fixed deposit | INR | India-source income (rent, dividends) | Taxable in India with TDS; US-taxable with foreign tax credit |
+| FCNR deposit | Foreign currency | Avoiding INR conversion risk | Interest exempt in India; US-taxable; no currency risk |
+| US high-yield savings | USD | Emergency fund, near-term spending | Ordinary US income; FDIC insured |
+| US Treasury bills | USD | Short-term dollar savings | Federal tax, exempt from state tax |
+| US index funds | USD | Long-term dollar goals | Long-term capital gains rates if held 1+ year |
+
+> Rates move constantly and are not listed here for that reason — check current rates before comparing. What does not move is the structural point: an INR return has to clear both India inflation and rupee depreciation before it beats a USD return for a dollar goal.
 
 ## When FDs may still make sense
 - You're holding an **India emergency buffer** for parents or property.
@@ -6123,16 +6170,20 @@ Yes. Money invested in India property is in rupees; if the child later sells and
   },
   {
     slug: "10-year-nri-wealth-checklist",
+    answerFirst: true,
+    expertiseTags: ["NRI financial planning", "Cross-border wealth", "Estate & tax planning"],
     title: "NRI Wealth Checklist After 10 Years in the USA",
-    seoTitle: "NRI Wealth Checklist After 10 Years in USA",
+    seoTitle: "NRI Wealth Checklist 2026: 11 Steps After 10 Years in USA",
+    seoDescription:
+      "An 11-point annual review for settled NRIs: US plan, India accounts, FBAR/FATCA, 401k/IRA/HSA, insurance, estate documents, and retirement location.",
     excerpt:
       "A practical checklist for NRIs living in the USA for 10+ years covering investments, India assets, taxes, insurance, estate planning, and retirement.",
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
-    updated: "2026-06-06",
+    updated: "2026-07-20",
     content: `After a decade in the US, your financial life has quietly grown complicated: US accounts and India accounts, maybe property in both, retirement plans half-optimized, and an estate plan you've been meaning to write. This checklist is for the settled NRI who needs to step back, take inventory across both countries, and tidy up the pieces that drift when life gets busy. Work through it once a year and you'll catch the gaps before they become expensive.
 
-:::summary
+:::quickanswer
 This is a practical, cross-border review for NRIs settled 10+ years in the US: update your **US financial plan**, review **India accounts and property**, confirm **tax reporting** (FBAR/FATCA), optimize **401k/IRA/HSA**, check **insurance**, create or update **estate documents**, organize **India documents**, talk to your **children about assets**, build a **USD emergency fund**, and revisit your **retirement location plan**. This is educational information, not personalized advice — confirm specifics with professionals.
 :::
 
@@ -6176,6 +6227,18 @@ Keep several months of expenses in a dollar account, separate from investments, 
 
 ## 11. Review your retirement location plan
 Where you'll retire drives almost everything: your spending currency, healthcare planning, and where your assets should sit. Even a tentative answer sharpens the rest of the plan — see [NRI retirement planning with India assets](/articles/nri-retirement-usa-india-currency-risk).
+
+## What Should You Review Each Year? (Annual Scorecard)
+
+| Area | Review this | How often | Red flag |
+|---|---|---|---|
+| US investments | Allocation, fees, contribution rates | Annually | No rebalance in 2+ years |
+| India bank accounts | NRE/NRO classification, KYC, nominees | Annually | Resident account never converted to NRO |
+| India property | Title, taxes paid, tenant, purpose | Annually | Missing mutation or unpaid dues |
+| US tax reporting | FBAR ($10,000 aggregate), FATCA Form 8938 | Every filing season | Any year missed |
+| Retirement accounts | 401k match, IRA, HSA limits | Annually | Leaving employer match unused |
+| Insurance | Term life cover, disability, health | Every 2 years or life event | No cover for dependants |
+| Estate documents | US will, India will, beneficiaries | Every 3 years or life event | Beneficiary forms never updated |
 
 ## A quick annual scorecard
 | Area | Reviewed this year? |

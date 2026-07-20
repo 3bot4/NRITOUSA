@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import UscisReceiptDecoder from "@/components/tools/UscisReceiptDecoder";
 import {
   absoluteUrl,
@@ -16,9 +18,9 @@ const PAGE_PATH = "/uscis/receipt-number";
 const UPDATED = "2026-06-16";
 
 export const metadata: Metadata = pageMetadata({
-  title: "USCIS Receipt Number Explained: Prefix Meanings",
+  title: "USCIS Receipt Number: Format & Prefix Meanings 2026",
   description:
-    "What a USCIS receipt number is, where to find it on your I-797, and what the IOE, LIN, SRC, EAC, WAC and MSC prefixes mean, with Indian H-1B examples.",
+    "A USCIS receipt number is 13 characters on your I-797, like LIN2412345678. What IOE, LIN, SRC, EAC, WAC and MSC mean, and where to find yours.",
   path: PAGE_PATH,
 });
 
@@ -152,10 +154,8 @@ export default function ReceiptNumberPage() {
               What the 13-character code on your I-797 really means — and why the
               first 3 letters (IOE, LIN, SRC, EAC, WAC, MSC) matter for Indian applicants.
             </p>
-            <p className="mt-2 text-xs text-ink-400">
-              Updated {new Date(UPDATED).toLocaleDateString("en-US", { month: "long", year: "numeric", day: "numeric" })}
-              {" · "}~8 min read
-            </p>
+            <p className="mt-2 text-xs text-ink-400">~8 min read</p>
+            <ReviewedByline date={UPDATED} className="mt-3" />
           </div>
         </Container>
       </section>
@@ -185,6 +185,34 @@ export default function ReceiptNumberPage() {
                 <strong className="text-rose-700">Never post your full receipt number, A-number, passport number, date of birth, address, or employer details publicly</strong> — these are sensitive immigration identifiers linked to your record. Only enter your full receipt number on the official USCIS portal at egov.uscis.gov.
               </li>
             </ul>
+          </div>
+
+          {/* Key takeaways */}
+          <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+            <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+              <li>• Look for <strong>13 characters</strong> — 3 letters followed by 10 digits — printed at the top-left of your Form I-797 Notice of Action.</li>
+              <li>• Read the prefix as the <strong>intake point</strong>, not the current location: IOE means online filing, LIN Nebraska, SRC Texas, EAC Vermont, WAC California, MSC the National Benefits Center.</li>
+              <li>• Decode the next <strong>2 digits</strong> as the fiscal year USCIS received the case, and the following 3 as the computer workday.</li>
+              <li>• Enter it only at <strong>egov.uscis.gov/casestatus</strong> — the sole official status portal, and no login is required.</li>
+              <li>• Never post the full number publicly; it is a sensitive identifier tied to your immigration record.</li>
+            </ul>
+          </div>
+
+          {/* Opening keyword paragraph */}
+          <div className="mx-auto mt-6 max-w-3xl">
+            <p className="text-base leading-relaxed text-ink-700">
+              A USCIS receipt number is the 13-character code that identifies your case for its entire life
+              — every status check, every service request, and every enquiry runs on it. This page is for
+              anyone holding an I-797 Notice of Action who wants to know the USCIS receipt number format,
+              what the three-letter prefix actually tells you, and where to find the number if the notice
+              went to an employer or attorney. The single most misunderstood point: the prefix records where
+              USCIS first took the case in, and cases are routinely transferred afterwards, so a Nebraska
+              prefix does not guarantee Nebraska is still adjudicating it. Below: the format broken down
+              character by character, a prefix decoder, where the number appears on each notice type, what
+              to do when the portal says the number cannot be found, and how the receipt number relates to
+              your A-number and online account number.
+            </p>
           </div>
         </Container>
       </section>
@@ -597,6 +625,45 @@ export default function ReceiptNumberPage() {
                 </div>
               ))}
             </dl>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── How this connects ────────────────────────────────────────────── */}
+      <section className="bg-white py-10 sm:py-12">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-xl font-bold tracking-tight text-ink-900">
+              How your receipt number connects to the rest of your case
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink-700">
+              The receipt number is the key to every other USCIS surface. You use it alone on the{" "}
+              <Link href="/uscis/case-status" className="font-semibold text-brand-600 underline">
+                case status portal
+              </Link>{" "}
+              to read the current status message, and you pair it with a mailed{" "}
+              <Link href="/uscis/online-access-code" className="font-semibold text-brand-600 underline">
+                online access code
+              </Link>{" "}
+              to link a paper-filed case into your{" "}
+              <Link href="/uscis/myuscis-account" className="font-semibold text-brand-600 underline">
+                myUSCIS account
+              </Link>{" "}
+              — the difference between those two tools is covered in{" "}
+              <Link href="/uscis/myuscis-vs-case-status" className="font-semibold text-brand-600 underline">
+                myUSCIS vs case status
+              </Link>
+              . The prefix also hints at which service center took the case in, which is worth comparing
+              against the posted{" "}
+              <Link href="/uscis/processing-times" className="font-semibold text-brand-600 underline">
+                USCIS processing times
+              </Link>{" "}
+              before concluding that your case is delayed.
+            </p>
+            <AuthorBioBox
+              className="mt-8"
+              tags={["USCIS notices & receipts", "Case status decoding", "H-1B and green card filings"]}
+            />
           </div>
         </Container>
       </section>

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import Newsletter from "@/components/Newsletter";
 import {
   pageMetadata,
@@ -197,6 +199,9 @@ export default function UscisChildPage({
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
+              {page.answerFirst && (
+                <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
+              )}
             </div>
           </Container>
         </header>
@@ -206,6 +211,13 @@ export default function UscisChildPage({
           <Container>
             <div className="mx-auto">
               <ArticleBody content={page.content} />
+
+              {page.answerFirst && (
+                <AuthorBioBox
+                  className="mt-8"
+                  tags={["USCIS accounts & notices", "Case status decoding", "Immigrant life planning"]}
+                />
+              )}
 
               {/* Tool CTA */}
               <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-blue-100 bg-blue-50/50 p-5 text-sm">

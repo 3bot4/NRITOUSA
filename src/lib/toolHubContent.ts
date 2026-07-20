@@ -1627,6 +1627,52 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
       { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
     ],
+    updated: "2026-07-20",
+    expertiseTags: ["Visa bulletin & priority dates", "Employment green cards", "India backlog analysis"],
+    takeaways: [
+      "Compare your date against two charts every month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
+      "Read the rule literally: your priority date must be strictly earlier than the posted cutoff for you to act.",
+      "Check the new bulletin around the 8th-10th of each month; it takes effect the following month.",
+      "Know the codes — 'C' means current with no backlog, and 'U' means no visa numbers at all that month.",
+      "Remember country of birth, not citizenship, decides which column applies to you.",
+    ],
+    howItWorks: {
+      heading: "How this priority date check works",
+      body:
+        "The checker performs the same comparison an attorney would, against the same published data. It reads the current month's Final Action Dates and Dates for Filing for your category and country of chargeability from the centralized visa bulletin dataset this site maintains from the Department of State's monthly release, then compares those cutoffs to the priority date you enter. If your date falls before the posted cutoff you are shown as current for that chart; if the cell holds 'C' everyone is current, and if it holds 'U' no visa numbers exist that month and nobody in that category is current regardless of date. It also surfaces which chart USCIS has announced for adjustment-of-status filings that month, because being current on Dates for Filing without USCIS accepting that chart does not open a filing window. The tool makes no prediction about future movement and stores nothing you enter.",
+    },
+    connects: {
+      heading: "How your priority date fits the rest of the process",
+      body:
+        "The date you enter here was set the day your PERM was filed (or your I-140, for EB-1 and EB-2 NIW), and it is the number every later stage waits on. When the checker shows you as current, the next step is the I-485 filing window; when it does not, the practical questions become how fast your category is moving and whether a different category would be faster. The explainer pages cover what the date means and how each category is behaving this month.",
+      links: [
+        { label: "What is a priority date?", href: "/visa-bulletin/priority-date" },
+        { label: "Priority date current - what next", href: "/visa-bulletin/priority-date-current-what-next" },
+        { label: "EB-2 India priority date", href: "/visa-bulletin/eb2-india" },
+        { label: "EB-3 India priority date", href: "/visa-bulletin/eb3-india" },
+        { label: "Green card wait time tracker", href: "/tools/green-card-tracker" },
+      ],
+    },
+    table: {
+      caption: "How to read your result",
+      headers: ["What the bulletin shows", "What it means", "What you can do"],
+      rows: [
+        ["A date later than yours", "You are current for that chart", "Act — file or await approval, per the chart"],
+        ["A date earlier than yours", "Not current yet", "Wait; watch monthly movement"],
+        ["C (Current)", "No backlog in that category", "Any priority date qualifies"],
+        ["U (Unavailable)", "No visa numbers that month", "Nobody is approved; wait for the new fiscal year"],
+      ],
+    },
+    tables: [
+      {
+        caption: "Final Action Dates vs Dates for Filing",
+        headers: ["Chart", "Also called", "What it controls", "When it applies"],
+        rows: [
+          ["Final Action Dates", "Table A", "When a green card can actually be approved", "Always"],
+          ["Dates for Filing", "Table B", "When an I-485 may be submitted", "Only in months USCIS announces it accepts Chart B"],
+        ],
+      },
+    ],
     faqs: [
       {
         question: "What is a priority date?",

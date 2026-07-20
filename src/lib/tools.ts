@@ -43,9 +43,9 @@ export const tools: ToolMeta[] = [
       "Compare your EB green card priority date against the current visa bulletin Final Action Date and Dates for Filing for India. Uses manually updated monthly bulletin data — always verify with the official State Department bulletin.",
     icon: "📅",
     accent: "from-blue-700 to-indigo-600",
-    seoTitle: "Priority Date Checker for Indians | EB-1 EB-2 EB-3 India Visa Bulletin",
+    seoTitle: "Priority Date Checker 2026: Is Your Date Current?",
     seoDescription:
-      "Check where your green card priority date stands against the current EB-1, EB-2, and EB-3 India visa bulletin cutoffs. Educational tool for Indian H1B workers — no personal info needed.",
+      "Check if your priority date is current against this month’s visa bulletin for EB-1, EB-2 and EB-3 India — both Final Action and Dates for Filing charts.",
     status: "live",
     tags: [],
   },

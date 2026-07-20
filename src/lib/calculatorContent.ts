@@ -67,6 +67,24 @@ export interface CalculatorContent {
   relatedLinks: CalcLink[];
   /** Page-specific FAQs — also emitted as FAQPage JSON-LD. */
   faqs: CalcFaq[];
+  /**
+   * ISO date this hub's content and figures were last verified. Presence also
+   * opts the page into the answer-first chrome (byline row + author bio box),
+   * so untouched calculators render exactly as before.
+   */
+  updated?: string;
+  /** Expertise tags for the author bio box at the foot of the page. */
+  expertiseTags?: string[];
+  /** Answer-first summary shown directly under the H1, with specific numbers. */
+  quickAnswer?: string;
+  /** Key takeaways: 4-5 standalone facts, each carrying a specific number. */
+  takeaways?: string[];
+  /** Plain-language formula / inputs / assumptions behind the calculator. */
+  howItWorks?: { heading: string; body: string };
+  /** How this topic interacts with adjacent processes, with internal links. */
+  connects?: { heading: string; body: string; links: CalcLink[] };
+  /** Additional reference tables rendered after `table`. */
+  tables?: CalcTable[];
 }
 
 export const calculatorContent: Record<string, CalculatorContent> = {
@@ -971,6 +989,56 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
       { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
       { label: "FCNR vs HYSA calculator", href: "/calculators/fcnr-vs-hysa" },
+    ],
+    updated: "2026-07-20",
+    expertiseTags: ["India tax residency", "RNOR & return planning", "US-India cross-border tax"],
+    quickAnswer:
+      "Your India tax residency turns on days present in the financial year (April–March). You are a Resident if you spend 182+ days in India that year, or 60+ days that year plus 365+ days across the preceding four years. A Resident then qualifies as RNOR — the valuable transitional status where most foreign income stays outside India's tax net — if you were a Non-Resident in 9 of the 10 preceding years, or spent 729 days or fewer in India across the preceding 7 years. Most returning NRIs get 2 to 3 RNOR years before becoming ROR and being taxed on worldwide income.",
+    takeaways: [
+      "Count 182 days: spending 182 or more days in India in a financial year makes you Resident for that year.",
+      "Watch the second test too — 60 days in the current year plus 365 days across the previous four also makes you Resident.",
+      "Qualify as RNOR by being Non-Resident in 9 of the previous 10 years, or present 729 days or fewer over the previous 7 years.",
+      "Expect roughly 2 to 3 RNOR years after returning — the window where foreign income such as 401(k) withdrawals largely escapes India tax.",
+      "Time your return around March 31: arriving early in a financial year burns days that could have preserved an extra RNOR year.",
+    ],
+    howItWorks: {
+      heading: "How this RNOR status is calculated",
+      body:
+        "The calculator applies the Income Tax Act's day-count tests in the order the law does, using India's April-to-March financial year rather than the US calendar year. First it decides residency: you are Resident if you were physically present in India for 182 days or more in the year being assessed, or for 60 days or more in that year combined with 365 days or more across the four preceding years. Only if you are Resident does the second test run, because RNOR is a sub-category of Resident, not an alternative to Non-Resident. There you qualify as RNOR if you were a Non-Resident in 9 out of the 10 preceding years, or if your total presence across the 7 preceding years is 729 days or fewer — meeting either condition is enough. Days are counted as days of physical presence, and part-days of arrival and departure are generally counted, which is why the tool asks for dates rather than approximate months. Two limits are worth stating: the 60-day threshold is extended to 182 days for certain Indian citizens leaving for employment abroad and for some visiting NRIs, and separate rules apply to high-income Indian citizens deemed resident. Confirm your specific facts with a CA before acting.",
+    },
+    connects: {
+      heading: "How RNOR fits your wider return-to-India plan",
+      body:
+        "RNOR is the tax window that makes the sequencing of a return decision matter. Because foreign income is largely outside India's net while you are RNOR, the years you choose to withdraw from a 401(k) or IRA, sell US holdings, or repatriate savings can materially change the total tax you pay across both countries. It also interacts with US-side obligations that do not stop when you move: FBAR and FATCA reporting continue while you remain a US person, and NRE/NRO account classification has to be corrected once your residency changes.",
+      links: [
+        { label: "Returning to India checklist", href: "/return-to-india-checklist" },
+        { label: "401(k) when returning to India", href: "/calculators/401k-return-to-india" },
+        { label: "FBAR & FATCA checker", href: "/tools/fbar-fatca-checker" },
+        { label: "India tax compliance for NRIs", href: "/india-tax-compliance" },
+      ],
+    },
+    table: {
+      caption: "India tax residency tests at a glance (financial year: April 1 – March 31)",
+      headers: ["Status", "Test", "What India taxes"],
+      rows: [
+        ["Non-Resident (NRI)", "Fewer than 182 days, and not caught by the 60+365 test", "India-sourced income only"],
+        ["Resident", "182+ days this year, OR 60+ days this year and 365+ days in the previous 4 years", "Depends on RNOR vs ROR below"],
+        ["RNOR", "Resident, AND Non-Resident in 9 of the last 10 years OR 729 days or fewer in the last 7 years", "India income, plus foreign income only if from an India-controlled business"],
+        ["ROR", "Resident and not meeting either RNOR condition", "Worldwide income"],
+      ],
+    },
+    tables: [
+      {
+        caption: "Typical RNOR window after returning to India",
+        headers: ["Year after return", "Usual status", "Planning implication"],
+        rows: [
+          ["Year of return (partial year)", "Often still Non-Resident", "Days before return do not count as presence"],
+          ["Year 1 full year back", "Usually RNOR", "Foreign income largely outside India tax"],
+          ["Year 2", "Usually RNOR", "Last clear year for foreign-income planning"],
+          ["Year 3", "RNOR or ROR depending on day counts", "Check the 7-year 729-day test carefully"],
+          ["Year 4 onward", "ROR", "Worldwide income taxable in India"],
+        ],
+      },
     ],
     faqs: [
       {

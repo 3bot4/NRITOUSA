@@ -21,6 +21,12 @@ import { computeReadingTime } from "@/lib/format";
 export type GreenCardPageKind = "guide" | "reference";
 
 export interface GreenCardPageData {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
   slug: string;
   kind: GreenCardPageKind;
   title: string;
@@ -123,16 +129,32 @@ Yes. Employers are not legally required to continue sponsoring after PERM certif
   /* ────────────────────── I-140 APPROVED WHAT NEXT ──────────────────────── */
   {
     slug: "i-140-approved-what-next",
+    answerFirst: true,
     kind: "guide",
-    title: "I-140 Approved: What Happens Next for Indian EB Applicants",
-    seoTitle: "I-140 Approved — What Next for Indians | Priority Date, Visa Bulletin, H1B",
+    title: "I-140 Approved: What Next? Timeline to Green Card (2026)",
+    seoTitle: "I-140 Approved: What Next? Timeline to Green Card",
     metaDescription:
-      "I-140 approved — what does it mean for Indian EB applicants? Understand what the I-140 approval unlocks: priority date establishment, H1B extensions beyond 6 years, AC21 portability, and the long wait ahead.",
+      "I-140 approved: unlocks 3-year H-1B extensions and, after 180 days, AC21 portability. Next steps, the I-485 wait, and the full timeline to your green card.",
     navLabel: "I-140 Approved — What Next",
     excerpt:
       "I-140 approval is a milestone, not the finish line. For Indian EB applicants, the approved I-140 establishes your priority date and unlocks H1B extensions — but the wait for visa availability can be decades.",
     date: "2026-06-16",
-    content: `**I-140 (Immigrant Petition for Alien Workers)** approval is Stage 2 of the employment-based green card process. It means USCIS has determined that you qualify for the specific EB category your employer petitioned. But for Indian EB applicants, this is far from the end of the road.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+An approved I-140 means USCIS agrees you qualify for your EB category — it is **Stage 2 of 3**, not the finish line. It immediately unlocks **3-year H-1B extensions** beyond the six-year cap, locks in your **priority date**, and after **180 days** gives you AC21 job portability. What it does *not* do is let you file I-485: for India-born EB-2 and EB-3 applicants that wait typically runs **years to decades** until your priority date is current in the visa bulletin.
+:::
+
+:::key
+- File H-1B extensions in **3-year** increments from now on — available the moment the I-140 is approved, even with a badly backlogged priority date.
+- Wait **180 days** after approval before relying on AC21 portability to change employers in a same or similar occupation.
+- Budget **$1,440** per adult for the I-485 when your date finally becomes current, plus **$715** if a new I-140 is ever needed.
+- Track two charts monthly — Final Action Dates and Dates for Filing — because only one of them opens your I-485 window.
+- Keep the approval notice permanently: an I-140 approved **365+ days** still supports H-1B extensions even if the employer later withdraws it.
+:::
+
+If your I-140 was just approved, the honest answer to "what next" is: one important door opens, and one long wait begins. This guide is for India-born EB-2 and EB-3 applicants who have the approval notice in hand and want to know exactly what it unlocks, what it does not, and what the remaining timeline to a green card looks like. The single most useful fact: I-140 approval is what lets your H-1B run past six years in three-year blocks, so your status is secure while the priority-date queue moves. Below: what the approval actually means, the full I-140-to-green-card timeline with realistic stage estimates, the steps to take this month, when you can file I-485, how AC21 portability and job changes work after approval, and what happens if your employer withdraws the petition.
+
+**I-140 (Immigrant Petition for Alien Workers)** approval is Stage 2 of the employment-based green card process. It means USCIS has determined that you qualify for the specific EB category your employer petitioned. But for Indian EB applicants, this is far from the end of the road.
 
 :::info
 title: What I-140 approval means
@@ -143,7 +165,7 @@ title: What I-140 approval means
 - You must still wait for your priority date to become current in the visa bulletin before filing I-485
 :::
 
-## What I-140 approval does NOT mean
+## What Does I-140 Approval NOT Mean?
 
 :::bad
 title: I-140 approval does not mean
@@ -153,13 +175,24 @@ title: I-140 approval does not mean
 - The wait is almost over — for Indian EB-2/EB-3, the wait typically continues for many years
 :::
 
-## The priority date: your most important number
+## When Can You File I-485 After I-140 Approval?
 
-Your **priority date** is the date that determines your place in the EB green card queue. For most Indian EB-2 and EB-3 applicants, this date was set years ago — and they are still waiting. Check the current State Department visa bulletin to understand where your priority date stands relative to the cutoff dates.
+Only when your priority date is current on the chart USCIS is accepting that month. Your **priority date** determines your place in the EB green card queue. For most Indian EB-2 and EB-3 applicants, this date was set years ago — and they are still waiting.
+
+| Stage after I-140 approval | Typical timing | What it depends on |
+|---|---|---|
+| H-1B extension eligibility | Immediate | I-140 approval alone |
+| AC21 job portability | 180 days after approval | Same or similar occupation |
+| Priority date becomes current | Years to decades (India EB-2/EB-3) | Monthly visa bulletin |
+| I-485 filing window opens | The month your date is current | Which chart USCIS accepts |
+| I-485 processing | ~8–14 months typically | USCIS service center |
+| EAD / Advance Parole | ~3–8 months after I-485 filing | Separate applications |
+
+> Timings are planning estimates. Verify the current month's cutoffs at travel.state.gov and current form processing times at uscis.gov.
 
 See: [Priority date explained](/green-card/priority-date)
 
-## H1B extensions beyond 6 years
+## Can You Extend H-1B Beyond 6 Years After I-140 Approval?
 
 One of the most immediately valuable effects of I-140 approval for Indian H1B workers is the ability to extend H1B beyond the standard 6-year cap:
 
@@ -171,7 +204,7 @@ title: H1B extension after I-140 approval
 - An I-140 approved for 365+ days also provides 1-year H1B extensions even if the petition was withdrawn
 :::
 
-## What to do immediately after I-140 approval
+## What Should You Do Immediately After I-140 Approval?
 
 :::steps
 Note your I-140 approval notice receipt date — this may affect AC21 portability timing (180 days).
@@ -182,13 +215,40 @@ Ask your employer about any plans to withdraw the I-140 — understand what thei
 If you are approaching the 180-day mark post-approval, understand your AC21 portability rights before making any job changes.
 :::
 
-## What AC21 portability means at this stage
+## Can You Change Jobs After I-140 Approval? (AC21)
 
 Once your I-140 has been approved for **180 days**, you gain green card portability under AC21 — meaning if you later change employers, the approved I-140 continues to support your green card application as long as the new job is in a same or similar occupational classification. This significantly reduces the risk of changing jobs while the green card process is pending.
 
 See: [AC21 portability explained](/green-card/ac21)
 
+## What Will the Rest of the Green Card Cost?
+
+Fees below are the current USCIS amounts for the stages that remain after I-140 approval. Employer-side costs (PERM, the I-140 itself) are typically the employer's responsibility.
+
+| Filing | Fee | Who usually pays |
+|---|---|---|
+| I-485 adjustment of status (each adult) | $1,440 | Often the employee or employer, per policy |
+| I-765 EAD (with I-485) | Filed with I-485 | Employee |
+| I-131 Advance Parole (with I-485) | Filed with I-485 | Employee |
+| New I-140, if ever refiled | $715 | Employer |
+| I-140 premium processing (optional) | $2,805 | Employer |
+
+> Per the USCIS fee schedule (Form G-1055). Always confirm the current amount on uscis.gov before paying.
+
+## How I-140 Approval Connects to the Rest of Your Case
+
+The approval is the hinge between the employer-driven half of the process and the queue-driven half. Behind you sits [PERM](/perm-timeline), which set the priority date you now carry; ahead sits the [visa bulletin](/visa-bulletin) wait and then [I-485](/i485-processing-time). Two things are worth doing this month: check where your date actually stands with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If your category is deeply backlogged, read [EB-2 India](/visa-bulletin/eb2-india) and the [EB-2 to EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) option — and if a layoff ever hits, the approved I-140 is what protects your [H-1B extensions](/h1b-layoff).
+
 ## Frequently asked questions
+
+### I-140 approved — what happens next?
+Three things happen immediately: your priority date is locked in, you become eligible for 3-year H-1B extensions beyond the six-year cap, and a 180-day clock starts toward AC21 job portability. What does not happen is I-485 eligibility — that waits until your priority date is current in the visa bulletin.
+
+### How long after I-140 approval can I file I-485?
+It depends entirely on your priority date and country of birth, not on the approval date. Rest-of-World applicants in a current category can often file immediately; India-born EB-2 and EB-3 applicants typically wait years to decades. Check the current month's chart before assuming anything.
+
+### Does I-140 approval mean my green card is approved?
+No. The I-140 approves the *petition* — that you qualify for the category. The green card itself is granted at the I-485 (or consular) stage, which cannot even begin until a visa number is available for your priority date.
 
 ### My I-140 was approved years ago. Can I still use it?
 Generally yes — as long as your priority date becomes current and the I-140 was not withdrawn/revoked, it remains valid. An I-140 approved for 180+ days and then withdrawn by the employer can still support your application under AC21 if you are in a same or similar occupation. Consult your attorney.
@@ -543,18 +603,32 @@ Theoretically yes — a different employer can sponsor an EB-3 PERM. But this in
   /* ────────────────────── GREEN CARD BACKLOG INDIA ──────────────────────── */
   {
     slug: "green-card-backlog-india",
+    answerFirst: true,
     kind: "reference",
-    title: "The India Green Card Backlog Explained: Why the Wait Is Decades Long",
-    seoTitle: "India Green Card Backlog | Why It Exists, How Long, What Indians Can Do",
+    title: "India Green Card Backlog 2026: Wait Times & Why It Exists",
+    seoTitle: "India Green Card Backlog 2026: Wait Times by Category",
     metaDescription:
-      "Why does the India green card backlog exist? Understand the per-country cap, annual limits, EB-2 and EB-3 India wait times, and what Indian H1B workers can do while waiting.",
+      "India green card backlog: ~9,800 EB visas a year (7% cap) vs over a million waiting. Wait times by category, the math behind it, and what you can do.",
     navLabel: "India Green Card Backlog",
     excerpt:
       "The India green card backlog exists because annual per-country limits cap India's share of EB visas — while India produces far more qualified applicants than the cap allows each year.",
     date: "2026-06-16",
-    content: `The **India green card backlog** is one of the most significant immigration challenges facing Indian H1B workers in the United States. Wait times for Indian nationals in EB-2 and EB-3 categories can span decades — in some cases longer than a working lifetime.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+The India green card backlog exists because US law caps employment-based green cards at about **140,000 a year** and forbids any one country from taking more than **7%** — roughly **9,800 a year for India** across EB-1, EB-2 and EB-3 combined. India-born demand is many times that, so the queue has grown to well over a million people including dependents. Practically: **EB-2 and EB-3 India cutoffs sit around 2014–2015**, EB-2 India was **Unavailable** in the July 2026 bulletin, and new filings in those categories should be planned in **decades, not years**.
+:::
 
-## Why the backlog exists
+:::key
+- Plan around India's hard ceiling: **~9,800** employment green cards a year, 7% of the ~140,000 total, across all EB categories.
+- Expect EB-2 and EB-3 India final action dates to sit in the **2014–2015** range, moving only **1–3 months per calendar year** in typical years.
+- Know your fastest realistic route: **EB-1** India runs years rather than decades for those who qualify.
+- Protect your position regardless of the wait — an approved I-140 gives **3-year H-1B extensions** indefinitely and AC21 portability after **180 days**.
+- Watch your children's ages: **CSPA** calculations decide whether a child over 21 keeps a place in your case.
+:::
+
+The India green card backlog is the defining constraint on Indian professional immigration to the US — a queue so long that a worker who files today in EB-2 may reach the front after retirement. This page explains why the backlog exists, how long the wait actually is by category, and what India-born H-1B workers can legitimately do about it. The one number that explains everything: the 7% per-country cap gives India roughly 9,800 employment-based green cards a year against demand many multiples larger. Below: the supply-and-demand math, current wait times by category with the live cutoffs, how many Indians are estimated to be waiting, why unused visas rarely rescue the queue, the legislative picture, and the strategies applicants actually use while they wait.
+
+## Why Does the India Green Card Backlog Exist?
 
 The employment-based green card system has two constraints that together create the India backlog:
 
@@ -567,7 +641,19 @@ title: The two limits that create the India backlog
 
 The result: India generates a large fraction of all employment-based green card petitions (because of the large number of Indian workers in H1B-eligible fields), but receives only 7% of the annual allocation. The gap between demand and supply has created a backlog spanning decades.
 
-## How long is the current wait?
+| The math behind the backlog | Number |
+|---|---|
+| Employment-based green cards per year (worldwide) | ~140,000 including dependents |
+| Maximum share for any one country | 7% |
+| India's effective annual ceiling, all EB categories | ~9,800 |
+| EB-1 worldwide allocation (28.6%) | ~40,040 |
+| EB-2 worldwide allocation (28.6%) | ~40,040 |
+| EB-3 worldwide allocation (28.6%) | ~40,040 |
+| Annual limit last raised by Congress | 1990 |
+
+> Dependents count against the cap, so a single applicant with a spouse and two children consumes four of India's ~9,800 numbers.
+
+## How Long Is the India Green Card Wait by Category?
 
 The current wait for Indian nationals in EB-2 and EB-3 varies by priority date and fluctuates monthly with the visa bulletin. Because visa bulletin dates are forward-looking estimates, official sources do not publish definitive wait times. What is known:
 
@@ -579,7 +665,18 @@ title: India green card wait — general education only
 - Always check the current official visa bulletin at [travel.state.gov](https://travel.state.gov) for the most accurate current state
 :::
 
-## What the backlog means practically
+Where the categories actually stood in the July 2026 bulletin:
+
+| Category (India) | Final Action Date | Dates for Filing | Practical read |
+|---|---|---|---|
+| EB-1 India | October 15, 2022 | December 1, 2023 | Years, not decades — fastest route |
+| EB-2 India | Unavailable | January 15, 2015 | No approvals that month at all |
+| EB-3 India | January 1, 2014 | January 15, 2015 | Posted a date while EB-2 could not |
+| EB-5 India (Unreserved) | Unavailable | May 1, 2024 | Set-aside categories were Current |
+
+> Source: U.S. Department of State Visa Bulletin, July 2026. These change monthly — check the live [EB-1](/visa-bulletin/eb1-india), [EB-2](/visa-bulletin/eb2-india) and [EB-3](/visa-bulletin/eb3-india) status pages for the current month.
+
+## What Does the Backlog Mean for You Practically?
 
 For Indian workers currently on H1B:
 
@@ -592,15 +689,15 @@ title: Practical implications of the backlog
 - EAD and Advance Parole become available once you can file I-485 (when priority date is current)
 :::
 
-## Why unused visas from other categories don't help India
+## Why Don't Unused Visas From Other Countries Clear the Queue?
 
 Some EB-1 and EB-2 visa numbers go unused by other countries. In those situations, unused numbers "waterfall" down to other categories within the same fiscal year. This can temporarily advance India's EB-3 priority date. However, this is unpredictable and cannot be relied upon for planning.
 
-## Legislative prospects
+## Could Legislation Fix the India Backlog?
 
 Various immigration reform proposals have addressed the per-country cap, including bills that would remove country limits for employment-based visas. As of this writing, no such legislation has been enacted. Monitor news and consult your attorney about any legislative changes.
 
-## Strategies Indian applicants use while waiting
+## What Can You Do While Waiting in the Backlog?
 
 :::steps
 Get PERM filed as soon as your employer will sponsor it — this sets the earliest possible priority date.
@@ -611,7 +708,20 @@ Ensure children have their own pending I-485 before turning 21 — understand CS
 Plan career moves using AC21 portability — you can change employers after 180 days without losing your priority date.
 :::
 
+## How the Backlog Connects to the Rest of Your Life in the US
+
+The backlog is not just a waiting problem — it shapes every other decision. Because your place in line is set at [PERM filing](/perm-timeline) and carried by the [approved I-140](/green-card/i-140-approved-what-next), filing early matters more than anything else you can control. While you wait, the I-140 is what keeps your [H-1B renewable past six years](/h1b) and what protects you in a [layoff](/h1b-layoff); your children's eligibility depends on [CSPA](/green-card/cspa-kids-aging-out) math; and your spouse's ability to work runs through the [H-4 EAD](/tools/h4-ead-navigator). Check where you actually stand with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining years with the [Green Card Tracker](/tools/green-card-tracker).
+
 ## Frequently asked questions
+
+### How long is the green card wait for Indians?
+It depends on category and priority date. EB-1 India has recently run a few years; EB-2 and EB-3 India cutoffs sit around 2014–2015, which means new filings in those categories face waits measured in decades under current law. EB-2 India was Unavailable entirely in the July 2026 bulletin.
+
+### How many Indians are waiting for a green card?
+Published analyses of USCIS and State Department inventory data put the India-born employment-based queue at well over a million people once dependents are counted. Because dependents consume visa numbers too, the effective queue is far longer than the count of principal applicants alone.
+
+### Why is the India green card backlog so long?
+Two rules multiply against each other: a fixed annual supply of about 140,000 employment-based green cards, and a 7% per-country ceiling that limits India to roughly 9,800 a year. India-born demand vastly exceeds that share, and the annual limits have not been meaningfully raised since 1990.
 
 ### Will the backlog ever clear?
 The backlog clears for individuals when their priority date becomes current — which for some recent Indian applicants may be many decades away under current law. Legislative reform could accelerate this, but it is not guaranteed.

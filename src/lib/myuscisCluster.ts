@@ -21,6 +21,12 @@ import { computeReadingTime } from "@/lib/format";
 export type MyuscisPageKind = "guide" | "reference";
 
 export interface MyuscisPageData {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
   slug: string;
   kind: MyuscisPageKind;
   title: string;
@@ -119,20 +125,32 @@ href: /uscis/add-paper-case-to-account
   /* ── 2. Online Access Code ───────────────────────────────────────────── */
   {
     slug: "online-access-code",
+    answerFirst: true,
     kind: "reference",
-    title: "USCIS Online Access Code Explained | How to Use It",
-    seoTitle: "USCIS Online Access Code: What It Is and How to Enter It",
+    title: "USCIS Online Access Code: How to Get and Use It (2026)",
+    seoTitle: "USCIS Online Access Code: How to Get and Use It",
     metaDescription:
-      "What is a USCIS online access code? How it arrives by mail, how to use it to link a paper-filed case to your myUSCIS account, and what to do if it expires.",
+      "A USCIS online access code is a one-time mailed code that links a paper case to myUSCIS. Where to find it, how to enter it, and what if it expired.",
     navLabel: "Online Access Code",
     excerpt:
       "A USCIS online access code is a one-time code mailed to you that lets you add a paper-filed case to your myUSCIS account without needing the petitioner's involvement.",
     date: "2026-06-16",
-    content: `:::summary
-A **USCIS online access code** is a one-time alphanumeric code that USCIS mails to the address on your paper petition. You enter it on my.uscis.gov to link that petition to your myUSCIS account, so you can view updates and track the case online. It is separate from your receipt number and online account number.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+A **USCIS online access code** is a one-time alphanumeric code that USCIS **mails on paper** to the address on your petition. You enter it at **my.uscis.gov** together with your **13-character receipt number** to link a paper-filed case to your online account, so you can track it like an online filing. It is **not** your receipt number and **not** your USCIS online account number. There is **no way to look it up online** — if it never arrived or expired, call USCIS at **1-800-375-5283** or have your attorney link the case with your online account number instead.
 :::
 
-## What is the USCIS online access code?
+:::key
+- Look for a **separate mailed notice** — the access code does not appear on your I-797C receipt notice.
+- Enter it with your **13-character receipt number** (for example EAC, LIN, WAC, SRC or IOE) at my.uscis.gov.
+- Act quickly: codes carry an **expiration date** printed on the notice.
+- Check the address on the petition, not your current one — USCIS mails the code to the address **on file at filing**.
+- Skip the code entirely if your attorney entered your **online account number** on the petition before filing.
+:::
+
+If USCIS mailed you a notice with an access code and you are not sure what to do with it, this page is the short version: it is the key that links a paper-filed petition to your online myUSCIS dashboard. This guide is for anyone whose employer or attorney filed on paper — H-1B I-129 petitions, family I-130s, I-485s — who wants online status visibility instead of waiting for mailed notices. The single most important thing to know: the code arrives **only by postal mail**, cannot be retrieved from any website, and expires, so if the notice went to an old address you need to call USCIS rather than hunt for it online. Below: exactly what the code is and where to find it on the notice, how to enter it step by step, how it differs from the receipt number and online account number, what to do when it expires or never arrives, and the common errors that stop a case from linking.
+
+## What Is a USCIS Online Access Code?
 
 When USCIS receives a **paper-filed petition** (such as an I-129 H1B filed by an employer on paper), they send a **Notice of Action (I-797C)** with a receipt number — and in some cases they also mail a **separate notice containing an online access code** to the beneficiary's address.
 
@@ -146,7 +164,7 @@ title: Your access code is mailed to your address on file
 USCIS sends the online access code to the address listed on your paper petition — not necessarily your current address. If you have moved since filing, the notice may go to the old address. Check with your employer's attorney about the address used on the petition.
 :::
 
-## How to use an online access code
+## How Do You Enter a USCIS Online Access Code?
 
 :::steps
 title: Steps to enter your online access code
@@ -157,23 +175,57 @@ title: Steps to enter your online access code
 5. The case will appear in your myUSCIS dashboard with available status updates
 :::
 
-## Access code vs online account number
+## Access Code vs Receipt Number vs Online Account Number
 
-Both are ways to link a paper case to your myUSCIS account — but they work differently:
+These three numbers get confused constantly. Only one of them is the access code:
+
+| Identifier | Looks like | Where it comes from | What it does |
+|---|---|---|---|
+| **Online access code** | Short alphanumeric code | Mailed on a separate USCIS notice | One-time link of a paper case to your account |
+| **Receipt number** | 13 characters, e.g. EAC2412345678 | Printed on your I-797C | Permanently identifies the case |
+| **USCIS online account number** | 12-digit number | Shown in your myUSCIS profile | Given to your attorney *before* filing |
+| **A-number** | A + 8–9 digits | On green card / notices | Identifies you, not the case |
+
+Both the access code and the online account number can link a paper case — but they work differently:
 
 :::compare
 ✓ Online access code: USCIS mails it to your address. You enter it yourself on myUSCIS. Works even if your attorney did not enter your account number on the petition.
 ✗ Online account number: You give it to your attorney before filing. They enter it on the paper petition. Requires coordination before the petition is filed.
 :::
 
-## What if my access code expired or I never received one?
+## What If Your Access Code Expired or Never Arrived?
 
 If the code has expired or you never received a code notice:
 - Your **employer's attorney** can link the case on their end using your online account number
 - You can contact USCIS to request a new code (call 1-800-375-5283)
 - For basic status, you can always use egov.uscis.gov with just your receipt number
 
+| Your situation | What to do | Realistic timing |
+|---|---|---|
+| Code notice never arrived | Confirm the address used on the petition, then call USCIS | Allow time for re-mailing |
+| Code expired | Call 1-800-375-5283 and request a new code | New notice arrives by mail |
+| Moved since filing | File Form AR-11 change of address, then request a new code | Update address first |
+| Code rejected as invalid | Re-enter without spaces, all uppercase | Immediate |
+| Case still not showing after entry | Wait 24–48 hours for systems to sync | 1–2 days |
+| Need status right now | Use egov.uscis.gov with the receipt number alone | Immediate |
+
+## How This Connects to the Rest of Your USCIS Account
+
+Linking a paper case is one step in a bigger picture: the [myUSCIS account](/uscis/myuscis-account) is where notices, RFEs and decisions appear online, while the [case status portal](/uscis/case-status) shows the one-line status using only a receipt number. If you are unsure which tool to use, the [myUSCIS vs case status comparison](/uscis/myuscis-vs-case-status) lays out what each one can and cannot show. Your [receipt number](/uscis/receipt-number) is the constant across all of them — and once the case is linked, [what each status message means](/uscis/case-status) becomes the next thing worth understanding.
+
 ## Frequently asked questions
+
+### How do I get a USCIS online access code?
+You do not request it in advance — USCIS mails it automatically on a separate notice to the address on your paper petition. There is no way to look it up online. If it never arrived or has expired, call USCIS at 1-800-375-5283 to request a new one, or ask your attorney to link the case using your online account number instead.
+
+### Where do I find my USCIS online access code?
+On the paper notice USCIS mailed you — it is a separate document from the I-797C receipt notice, and the code is printed on it along with an expiration date. It does not appear anywhere in your online account, in email, or on the receipt notice itself.
+
+### How long is a USCIS online access code valid?
+Each notice prints its own expiration date, so check the notice rather than assuming. Once it lapses you cannot reuse it; call USCIS for a replacement or link the case through your online account number.
+
+### Can I add a paper-filed case to myUSCIS without an access code?
+Yes, if your attorney entered your 12-digit USCIS online account number on the petition before filing — then the case links automatically. Without either the code or that pre-filing coordination, you cannot self-link, but you can still check status at egov.uscis.gov with the receipt number.
 
 ### Does every paper petition come with an online access code?
 Not always. Access code notices are sent for many paper-filed cases but not all. Whether you receive one depends on USCIS systems and the specific form. Your attorney can also link the case using your online account number.
@@ -289,18 +341,30 @@ href: /tools/uscis-case-status-meaning
   /* ── 4. myUSCIS vs Case Status ───────────────────────────────────────── */
   {
     slug: "myuscis-vs-case-status",
+    answerFirst: true,
     kind: "guide",
-    title: "myUSCIS Account vs USCIS Case Status Check: What Is the Difference?",
-    seoTitle: "myUSCIS vs USCIS Case Status | Which to Use for Indians",
+    title: "myUSCIS vs Case Status: What's the Difference? (2026)",
+    seoTitle: "myUSCIS vs USCIS Case Status: What's the Difference?",
     metaDescription:
-      "Should you use myUSCIS or the USCIS case status portal? Understand the difference between my.uscis.gov and egov.uscis.gov for checking H1B, I-485, and EAD cases.",
+      "myUSCIS (my.uscis.gov) needs a login and shows all cases plus alerts; the case status portal needs only a 13-digit receipt number. Which to use, and when.",
     navLabel: "myUSCIS vs Case Status",
     excerpt:
       "myUSCIS (my.uscis.gov) is a full account dashboard. The case status portal (egov.uscis.gov) is a quick receipt number lookup. Here is when to use each.",
     date: "2026-06-16",
-    content: `:::summary
-**myUSCIS** (my.uscis.gov) is your personal immigration account — you log in, see all your linked cases, receive notifications, and in some cases respond to RFEs online. The **USCIS case status portal** (egov.uscis.gov/casestatus) is a quick public lookup by receipt number, no account needed. Both show the same underlying status, but myUSCIS offers more features.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+They are two different USCIS websites. **myUSCIS** (my.uscis.gov) is a **personal account** — you log in, see every linked case in one dashboard, get email/text alerts, and for some forms respond to RFEs or file online. The **case status portal** (egov.uscis.gov/casestatus) is a **public lookup** needing only your **13-character receipt number** and no login. Both read the **same underlying case record**, so the status itself never differs — myUSCIS simply does more with it. A paper-filed case only appears in myUSCIS after you link it with an **online access code** or your attorney's use of your online account number.
 :::
+
+:::key
+- Use the **case status portal** for a 10-second check — receipt number only, no account, works for anyone's case.
+- Create **myUSCIS** if you want alerts: it notifies you on status change instead of you refreshing daily.
+- Expect **identical status data** from both — they read one database, so a mismatch is a display delay, not two different answers.
+- Link paper-filed cases first — they show in myUSCIS only after an **access code** or pre-filing online account number.
+- Know the limit: creating an account is **read-only** and never affects, triggers, or delays adjudication.
+:::
+
+If you have ever wondered why your case shows up on one USCIS website but not the other, this is the explanation. myUSCIS and the case status portal look similar, serve different jobs, and confuse a lot of applicants — especially those on employer-filed H-1B petitions where the paper case does not automatically appear in a personal account. This guide covers what each site does, which one to use in which situation, why a paper-filed case may be missing from myUSCIS, whether the two can disagree, and what an account genuinely adds for H-1B, I-485, EAD and N-400 applicants. The short version: the portal answers "what is my status right now," while myUSCIS answers "tell me the moment anything changes."
 
 ## Quick comparison
 
@@ -314,7 +378,7 @@ href: /tools/uscis-case-status-meaning
 | Underlying status data | Same | Same |
 | Filing new applications | Some forms | No |
 
-## When to use the case status portal
+## When Should You Use the Case Status Portal?
 
 Use **egov.uscis.gov/casestatus** when:
 - You want a quick status check with just your receipt number
@@ -322,7 +386,7 @@ Use **egov.uscis.gov/casestatus** when:
 - You are checking status on behalf of a family member using their receipt number
 - You just want to see the current status message without logging in
 
-## When to use myUSCIS
+## When Should You Use myUSCIS?
 
 Use **my.uscis.gov** when:
 - You want status notifications without manually checking
@@ -336,7 +400,7 @@ title: Both show the same status data
 Do not worry if the status on myUSCIS and egov.uscis.gov shows slightly different wording — the underlying case record is the same. USCIS updates both systems from the same database. If there is a discrepancy, wait 24 hours before taking action.
 :::
 
-## Is myUSCIS required for Indians on H1B or I-485?
+## Is a myUSCIS Account Required for H-1B or I-485?
 
 No, a myUSCIS account is not required for most immigration processes. Your attorney and employer handle all official filings. However, it is useful for:
 
@@ -348,7 +412,32 @@ title: When myUSCIS adds real value for Indians
 - **N-400 applicants:** N-400 for naturalization can be filed online through myUSCIS.
 :::
 
+## Why Isn't My Case Showing in myUSCIS?
+
+Almost always because it was **filed on paper and never linked** — not because something is wrong. A case appears in your account only if it was filed online under your account, or you linked it afterwards.
+
+| Symptom | Most likely cause | Fix |
+|---|---|---|
+| Employer-filed H-1B missing | Paper I-129, never linked to you | Link with the mailed online access code |
+| Case linked but no updates | Normal — status only changes at real milestones | Enable alerts, check the portal |
+| "Case not found" in the portal | Receipt number mistyped, or too recently filed | Re-enter without spaces; allow a few days |
+| Attorney sees updates you don't | Case sits in the attorney's account | Ask them to add your online account number |
+| Status differs between the two sites | Display sync delay | Wait 24–48 hours before acting |
+
+## How This Connects to the Rest of Your USCIS Account
+
+These two sites are the front door; the details live elsewhere. To link a paper case you need the [online access code](/uscis/online-access-code) USCIS mails you, and every lookup on either site needs your [receipt number](/uscis/receipt-number) — the 13-character code whose prefix also tells you which service center holds the case. Once you can see a status, [what each status message means](/uscis/case-status) is the next question, and the [myUSCIS account guide](/uscis/myuscis-account) covers setup, alerts and privacy.
+
 ## Frequently asked questions
+
+### What is the difference between myUSCIS and USCIS case status?
+myUSCIS is a personal account requiring a login that shows all your linked cases, sends alerts, and allows online filing or RFE responses for some forms. The case status portal is a public page that returns one case's status from a 13-character receipt number with no account. Both read the same case record.
+
+### Why is my case not showing in my myUSCIS account?
+Most often because it was filed on paper and has not been linked to your account. Paper cases appear only after you enter the online access code USCIS mails you, or if your attorney entered your USCIS online account number on the petition before filing.
+
+### Can I add my case to my myUSCIS account?
+Yes, if it was paper-filed and you have the online access code that USCIS mailed to the address on the petition — enter it with your receipt number under "Add a case." Without a code, ask your attorney to link it using your 12-digit online account number, or call USCIS at 1-800-375-5283 for a replacement code.
 
 ### Does creating a myUSCIS account affect my pending case?
 No. Creating an account and linking a case is read-only from USCIS's side — it does not change your case, trigger a review, or affect adjudication in any way.

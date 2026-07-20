@@ -649,21 +649,29 @@ href: /topics
   {
     slug: "documents",
     kind: "content",
-    title: "Indian Passport Renewal Documents in the USA: Full Checklist (2026)",
-    seoTitle: "Documents Required for Indian Passport Renewal in USA (2026)",
+    title: "Documents Required for Indian Passport Renewal in USA 2026",
+    seoTitle: "Documents for Indian Passport Renewal in USA 2026",
     metaDescription:
-      "Full checklist of documents required for Indian passport renewal in USA. Original + photocopy requirements, VFS checklist, and common rejection reasons.",
+      "Document checklist for Indian passport renewal in the USA: 8 core documents, originals plus self-attested copies, address proof, and Annexure forms.",
     navLabel: "Documents checklist",
     excerpt:
       "The complete, situation-by-situation document checklist for renewing your Indian passport from the US — and the photocopy rules that trip people up at VFS.",
     date: "2026-06-14",
-    content: `Missing documents — and missing photocopies — are the number-one reason applications stall at the VFS counter. This is the complete checklist, including the extras you need for name changes, students, dependents, and lost passports. For the overall process, see the [main guide](/indian-passport-renewal-usa).
-
-:::summary
-Bring every document as **original plus a self-attested photocopy**. The core set is the same for everyone; specific situations (marriage name change, F1/OPT, H4/L2 dependents, lost/stolen) add a few documents on top. Confirm the latest checklist on the **VFS site** before your appointment — requirements change.
+    content: `:::quickanswer
+Indian passport renewal in the USA needs **8 core documents**, each brought as an **original plus a self-attested photocopy**: your printed Passport Seva application with ARN, your current passport, proof of valid US status, US address proof, Indian address proof, **2 photos in Indian 2"x2" specs**, the fee receipt, and your VFS appointment letter. Specific situations add more — a marriage certificate for a name change, an I-20 for F-1 students, the principal's I-797 for H-4/L-2 dependents, and a police report plus affidavit for a lost passport. Missing photocopies are the single most common reason applications stall at the counter.
 :::
 
-## The core checklist — everyone needs these
+:::key
+- Bring **originals AND self-attested photocopies** of every document — VFS verifies the original and keeps the copy.
+- Budget **2 photos at 2"x2"** in Indian specs with a plain white background; US drugstore passport photos are routinely rejected.
+- Show US address proof dated within the **last 3 months** — utility bill, bank statement, or lease in your name.
+- Add situation documents: marriage certificate (name change), I-20 (F-1), principal's I-797 (H-4/L-2), police report (lost passport).
+- Expect extra paperwork for minors: birth certificate, **both parents'** passports and status proof, and **Annexure D** consent if one parent cannot attend.
+:::
+
+Missing documents — and missing photocopies — are the number-one reason applications stall at the VFS counter. This page is the complete list of documents required for Indian passport renewal in the USA, written for H-1B, L-1, F-1/OPT, H-4 and green card holders applying through VFS Global. The rule that catches most people: every single item must arrive as an original **and** a self-attested copy, and Indian-spec photos are not the same as US ones. Below: the 8-document core checklist, what counts as address proof on both the US and India side, the add-on documents for each situation, the Annexure forms and when you need them, photo specifications, minor applicant requirements, and the rejection reasons worth avoiding. For the overall process, see the [main guide](/indian-passport-renewal-usa).
+
+## What Documents Do You Need? (Core Checklist)
 | Document | Notes |
 | --- | --- |
 | Printed application form | With ARN number from Passport Seva |
@@ -681,7 +689,7 @@ Bring every document as **original plus a self-attested photocopy**. The core se
 - Print everything — ARN form, fee receipt, appointment letter — don't rely on phone screens
 :::
 
-## Add-on documents by situation
+## What Extra Documents Does Your Situation Need?
 
 :::info
 title: Name change after marriage
@@ -708,7 +716,35 @@ title: Lost or stolen passport
 - Processing takes longer — see the [processing-time page](/indian-passport-renewal-usa/processing-time)
 :::
 
-## Photo specifications
+## What Counts as Address Proof?
+
+You need **both** a US address proof (where you live now) and an Indian address proof (the address printed in your passport). Each must be an original plus a self-attested copy.
+
+| US address proof — any one | Indian address proof — any one |
+|---|---|
+| Utility bill (electricity, gas, water, internet), last 3 months | Aadhaar card |
+| Bank or credit-card statement, last 3 months | Voter ID (EPIC) |
+| Signed lease or mortgage statement | Ration card |
+| State driver's license or state ID | Registered rent agreement |
+| Employer letter on letterhead (as supporting proof) | Utility bill in a parent's name with relationship proof |
+
+> Accepted lists vary by consulate jurisdiction and change over time. Confirm yours on VFS before the appointment — a mismatch between the address on your form and on the proof is a common rejection.
+
+## Which Annexure Form Do You Need?
+
+Annexures are standard declaration forms. Most straightforward renewals need none, but these come up often:
+
+| Annexure | When you need it | Notarized? |
+|---|---|---|
+| Annexure D | One parent cannot attend a minor's appointment (consent of absent parent) | Yes |
+| Annexure E | Standard declaration used in several reissue situations | Often |
+| Annexure F | Tatkal (fast-track) applications | Yes |
+| Affidavit of loss | Lost or stolen passport, alongside the police report | Yes |
+| Name-change declaration | Name differs across documents, or change after marriage/divorce | Yes |
+
+> Annexure numbering and requirements are set by the Ministry of External Affairs and change periodically — download the current form from Passport Seva or VFS rather than reusing an old PDF.
+
+## What Are the Photo Requirements?
 Indian photos differ from US ones — wrong format is a top rejection reason.
 
 :::good
@@ -724,7 +760,7 @@ Indian photos differ from US ones — wrong format is a top rejection reason.
 - Don't reuse an old photo — it must be recent
 :::
 
-## Minor (child) applicants
+## What Documents Do Minors (Children) Need?
 Children need extras: birth certificate, **both parents' passports and US status proof**, and 2 child photos. If one parent can't attend VFS, the absent parent provides a notarized consent (Annexure D). The child must attend for biometrics.
 
 ## Frequently asked questions
@@ -740,6 +776,19 @@ Aadhaar, voter ID, or a similar Indian document. Bring it as original plus a sel
 
 ### My name differs slightly between documents — is that a problem?
 A mismatch (even a middle name) can cause delays. Bring supporting documents and, if needed, an affidavit explaining the difference.
+
+### What is Annexure E for Indian passport renewal?
+Annexure E is one of the standard declaration forms used in certain reissue situations. Whether you need it depends on your specific case and jurisdiction, and the Ministry of External Affairs updates the annexure set periodically — always download the current version from Passport Seva or VFS rather than reusing a saved copy.
+
+### What documents does a minor need for Indian passport renewal?
+The child's birth certificate, the current passport, **both parents'** passports and US status proof, two Indian-spec photos, and the printed application. If one parent cannot attend, that parent signs a notarized Annexure D consent. The child must attend in person for biometrics.
+
+### Do I need to submit my old passport?
+Yes — you submit the current passport and it is returned to you, usually cancelled, alongside the new one. Keep both together when travelling, since a valid US visa stamp in the cancelled book remains usable for entry.
+
+## How This Connects to the Rest of Your Renewal
+
+The document set is one of three things that decide whether your appointment goes smoothly — the others are [fees and the Tatkal decision](/indian-passport-renewal-usa) and [realistic processing times](/indian-passport-renewal-usa/processing-time). Your consulate jurisdiction determines which VFS center reviews these documents, so confirm yours first: [Chicago](/indian-passport-renewal-usa/chicago), [New York](/indian-passport-renewal-usa/new-york), [San Francisco](/indian-passport-renewal-usa/san-francisco), or [Houston](/indian-passport-renewal-usa/houston-texas). If US visa stamping is next on your list, note that consulates typically want at least 6 months of passport validity — see [H-1B stamping after selection](/h1b-visa-stamping-after-selection).
 
 ## The bottom line
 Assemble the core set, add the documents your situation requires, photocopy and self-attest everything, and bring Indian-spec photos. Then head back to the [main guide](/indian-passport-renewal-usa) to book the appointment — or go straight to your center: [Chicago](/indian-passport-renewal-usa/chicago), [New York](/indian-passport-renewal-usa/new-york), [San Francisco](/indian-passport-renewal-usa/san-francisco), or [Houston](/indian-passport-renewal-usa/houston-texas).

@@ -21,6 +21,12 @@ import { computeReadingTime } from "@/lib/format";
 export type LifePlanningPageKind = "life-decision" | "guide";
 
 export interface LifePlanningPageData {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
   slug: string;
   kind: LifePlanningPageKind;
   title: string;
@@ -45,20 +51,32 @@ const rawPages: LifePlanningPageData[] = [
   /* ── 1. Buying a house ─────────────────────────────────────────────── */
   {
     slug: "buy-house-while-waiting-for-green-card",
+    answerFirst: true,
     kind: "life-decision",
-    title: "Can You Buy a House While Waiting for a Green Card?",
-    seoTitle: "Buy a House While Waiting for Green Card | H1B, I-485 India",
+    title: "Buying a House on H-1B in 2026: Mortgage Rules & Risks",
+    seoTitle: "Buying a House on H-1B: Mortgage Rules & Risks 2026",
     metaDescription:
-      "Can you buy a house on H-1B or with I-485 pending? Plain-English guide for Indian NRIs — mortgage eligibility, ITIN, down payment, and what happens if you have to leave.",
+      "Yes, you can buy a house on H-1B or with I-485 pending. Loan types by visa status, down payment (3.5%–20%), FHA rules, and what happens if you must leave.",
     navLabel: "Buy a House (Green Card Pending)",
     excerpt:
       "You can buy a house on H-1B or with I-485 pending. The real question is whether it makes sense given your timeline, down payment, and what happens if your case is delayed or you have to leave.",
     date: "2026-06-16",
-    content: `:::summary
-**You can legally buy a house in the US on H-1B or with I-485 pending.** Nonimmigrant visa holders and even undocumented individuals have the legal right to purchase property in the US. The questions to answer are about money, mortgage, risk, and your specific immigration timeline.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+**Yes — you can legally buy a house on H-1B or with an I-485 pending.** US law places no citizenship or immigration-status restriction on owning property, and H-1B holders qualify for ordinary conventional and **FHA** mortgages on the same terms as citizens, including **3.5% down** on FHA. What lenders actually want is a valid **I-94**, an **SSN** (or ITIN with some lenders), a documented **2-year work history**, and typically at least **1 year of visa validity** remaining. The real question is not legality but risk: what happens to the mortgage if you have to leave.
 :::
 
-## Can you get a mortgage on H-1B?
+:::key
+- Qualify like any borrower: valid I-94, SSN, and a documented 2-year work history — **no citizenship requirement** exists for a US mortgage.
+- Put down as little as **3.5% with FHA** or **5%–20% conventional**; foreign-national loans without US credit need **20–40%**.
+- Expect lenders to want at least **~1 year** of remaining visa validity, and many prefer to see an approved I-140 for stability.
+- Keep **6 months** of mortgage reserves — the H-1B **60-day** grace period after a layoff is your entire runway.
+- Remember the mortgage does not require US residence: if you leave, you can **rent it out** and file a US return on the rental income.
+:::
+
+Buying a house while your green card is years away is one of the most common financial decisions Indian H-1B families face — and the legal part is the easy part. This guide is for H-1B, H-4 EAD, and I-485-pending buyers who want to know which loan types they actually qualify for, how much down payment each requires, how immigration timing changes the risk, and what happens to the property if a layoff or a denied case forces them to leave. The short answer to the underlying worry: property ownership has **no effect whatsoever** on your immigration case, and a mortgage does not require you to remain in the country. Below: mortgage eligibility by visa status, the loan-type comparison table, timing the purchase around your immigration stage, exit scenarios, and a financial readiness checklist.
+
+## Can You Get a Mortgage on an H-1B Visa?
 
 :::info
 title: H-1B mortgage basics
@@ -68,7 +86,29 @@ title: H-1B mortgage basics
 - **ITIN loans**: Some lenders accept ITIN instead of SSN — useful if you are in a status transition
 :::
 
-## Timing the purchase around your immigration stage
+| Loan type | Available on a work visa? | Typical minimum down payment | Notes |
+|---|---|---|---|
+| Conventional (Fannie/Freddie) | Yes | 5% (3% some programs) | Needs SSN, 2-year work history; PMI under 20% |
+| **FHA** | Yes, with valid EAD or work-authorized status | **3.5%** | Requires SSN; lender verifies work authorization |
+| VA | Only if you are a qualifying service member/veteran | 0% | Rare for visa holders |
+| ITIN loan | Yes | 15%–25% | For borrowers without an SSN; higher rates |
+| Foreign national loan | Yes | 20%–40% | No US credit history required; highest rates |
+| Jumbo | Yes | 10%–20% | Stricter reserves; visa validity scrutinised |
+
+> Down payments and overlays vary by lender. Confirm current requirements with the lender and, where FHA rules matter, with HUD guidance.
+
+### Which visa statuses can borrow?
+
+| Your status | Conventional | FHA | What lenders look at |
+|---|---|---|---|
+| H-1B | Yes | Yes | I-797/I-94 validity, ideally 1+ year remaining |
+| H-4 with EAD | Yes | Yes | EAD validity and documented income |
+| L-1 | Yes | Yes | Same as H-1B |
+| F-1 / OPT | Case by case | Case by case | Short status horizon is the obstacle |
+| I-485 pending with EAD | Yes | Yes | Often viewed favourably — approved I-140 helps |
+| Green card holder | Yes | Yes | Treated as a permanent resident borrower |
+
+## When Should You Buy Relative to Your Immigration Stage?
 
 :::compare
 left: Lower risk to buy
@@ -86,7 +126,7 @@ right_items:
 - Strong possibility of needing to return to India
 :::
 
-## What happens to the house if your case is denied or you leave?
+## What Happens to the House If You Have to Leave the US?
 
 :::warn
 title: Scenarios to plan for before buying
@@ -96,7 +136,7 @@ title: Scenarios to plan for before buying
 - **Employer closes / you lose H-1B**: You have a 60-day grace period to find new H-1B sponsorship. If you cannot, you may need to leave — plan mortgage and housing accordingly.
 :::
 
-## Financial checklist before buying
+## Are You Financially Ready to Buy?
 
 :::info
 title: Questions to answer before signing
@@ -107,21 +147,32 @@ title: Questions to answer before signing
 - If buying near a specific employer, what is your plan if you change jobs via AC21?
 :::
 
-## FAQ
+## How This Connects to the Rest of Your Immigration and Money Picture
 
-:::faq
-Q: Does buying a house affect my green card case?
-A: No. Property ownership does not affect USCIS adjudication of any petition or application. It does not demonstrate immigrant intent for nonimmigrant status in a way that would trigger any issue with USCIS.
+A home purchase sits on top of two timelines you do not fully control. The immigration one runs through your [priority date](/visa-bulletin/priority-date) and the [India backlog](/green-card/green-card-backlog-india) — the longer that wait, the longer you will hold the property in nonimmigrant status, and the more the [60-day layoff grace period](/h1b-layoff) matters as a risk. The money one runs through your India-side assets: a down payment funded from Indian savings can trigger [FBAR and FATCA reporting](/tools/fbar-fatca-checker), and if you ever move back, rental income and the eventual sale interact with [RNOR rules](/return-to-india). If your spouse's income is on the loan, their [H-4 EAD renewal timing](/tools/h4-ead-navigator) becomes a mortgage risk too.
 
-Q: Can my H-4 spouse be on the mortgage?
-A: Yes — if your H-4 spouse has an EAD (work authorization), they can be a co-borrower with documented income. Without work authorization, they can be a non-occupant co-borrower, but their income typically cannot be counted.
+## Frequently asked questions
 
-Q: Can I use my Indian savings as a down payment?
-A: Yes. Large down payments from foreign accounts need to be documented (bank statements showing the source of funds) to satisfy anti-money-laundering requirements. An FBAR/FATCA filing obligation may apply.
+### Can I buy a house on an H-1B visa?
+Yes. US law places no immigration-status restriction on buying property, and H-1B holders qualify for conventional and FHA mortgages on standard terms with a valid I-94, an SSN, and a documented two-year work history. Most lenders also want to see roughly a year or more of remaining visa validity.
 
-Q: What if I buy a house and then get laid off?
-A: You have 60 days (H-1B grace period) to find another employer. If you cannot secure new H-1B sponsorship and must leave, you can rent the property or sell it. Plan for this in advance with a property management or real estate attorney.
-:::
+### Can I get an FHA loan on a work visa?
+Yes. FHA loans are available to non-permanent residents who are authorized to work in the US, with the same 3.5% minimum down payment. The lender verifies work authorization through your EAD or visa documentation; individual lenders may add their own overlays.
+
+### Does buying a house affect my green card case?
+No. Property ownership does not affect USCIS adjudication of any petition or application. It does not demonstrate immigrant intent in a way that creates a problem for your nonimmigrant status.
+
+### Can my H-4 spouse be on the mortgage?
+Yes — if your H-4 spouse has an EAD, they can be a co-borrower with documented income. Without work authorization, they can be a non-occupant co-borrower, but their income typically cannot be counted toward qualifying.
+
+### Can I use my Indian savings as a down payment?
+Yes. Large down payments sourced from foreign accounts must be documented with bank statements showing the source of funds, to satisfy anti-money-laundering rules. Holding those accounts may also trigger FBAR or FATCA reporting obligations.
+
+### What if I buy a house and then get laid off?
+You have a 60-day H-1B grace period to find new sponsorship. If you cannot and must leave, you can rent the property out or sell it — a mortgage does not require you to live in the US. Plan that scenario with a property manager or real estate attorney before you buy, not after.
+
+### How much down payment do I need as a visa holder?
+It depends on the loan: 3.5% on FHA, typically 5%–20% conventional, 15%–25% on an ITIN loan, and 20%–40% on a foreign-national loan with no US credit history. Anything under 20% on a conventional loan adds private mortgage insurance.
 
 :::cta
 href: /tools/uscis-life-decision-checklist

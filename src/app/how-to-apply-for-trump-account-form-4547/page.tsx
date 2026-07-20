@@ -4,6 +4,8 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import {
   QuickAnswer,
   JumpNav,
@@ -40,9 +42,13 @@ import type { DataRow, DataCol } from "@/data/trumpAccountData";
 const PATH = "/how-to-apply-for-trump-account-form-4547";
 const TITLE = "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide";
 const DESC =
-  "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide for parents, eligibility checks, SSN rules, $1,000 contribution request, scam warnings, and official source links.";
+  "How to apply for a Trump Account with IRS Form 4547: 5 steps, SSN rules, the $1,000 pilot contribution window, and what immigrant families need to check.";
 
-export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
+export const metadata: Metadata = pageMetadata({
+  title: "How to Apply for a Trump Account: IRS Form 4547 Guide",
+  description: DESC,
+  path: PATH,
+});
 
 const HOWTO_COLS: DataCol[] = [
   { key: "step", label: "Step" },
@@ -184,6 +190,7 @@ export default function Page() {
               </WarnBox>
               <WhichPageBlock currentHref={PATH} />
               <EEATBox lastUpdated={TRUMP_ACCOUNT_UPDATED_HUMAN} />
+              <ReviewedByline date={TRUMP_ACCOUNT_UPDATED} className="mt-4" />
             </div>
           </Container>
         </section>
@@ -283,6 +290,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={TRUMP_ACCOUNT_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["Trump Accounts & child savings", "Immigrant family finance", "US tax-advantaged accounts"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

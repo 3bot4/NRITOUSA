@@ -22,6 +22,12 @@ import { computeReadingTime } from "@/lib/format";
 export type UscisClusterPageKind = "status" | "reference";
 
 export interface UscisClusterPageData {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
   slug: string;
   kind: UscisClusterPageKind;
   title: string;

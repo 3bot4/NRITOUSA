@@ -4,6 +4,8 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import H1bLotteryChanceCalculator from "@/components/tools/H1bLotteryChanceCalculator";
 import {
   breadcrumbJsonLd,
@@ -19,9 +21,9 @@ import {
 
 const PATH = "/h1b-lottery-chance-calculator";
 const H1 = "H-1B Lottery Chance Calculator 2027";
-const TITLE = "H-1B Lottery Chance Calculator 2027 | Wage Level Odds Estimator";
+const TITLE = "H-1B Lottery Chance Calculator 2027: Estimate Your Odds";
 const DESC =
-  "Estimate your FY 2027 H-1B lottery selection odds using wage level, U.S. master's cap status, registration volume, and future attempts. Educational calculator for Indian, F-1 OPT, and STEM OPT applicants.";
+  "Estimate your FY 2027 H-1B odds against the 85,000 cap. Wage level (Level I=1 entry to Level IV=4), master's cap, and multi-year attempts.";
 
 const PUBLISHED = "2026-07-08";
 const UPDATED = "2026-07-08";
@@ -164,6 +166,25 @@ export default function Page() {
           </p>
         }
       >
+        {/* Byline + takeaways */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={UPDATED} />
+              <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+                <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                  <li>• Compete against a fixed cap of <strong>85,000</strong> visas — 65,000 regular plus 20,000 reserved for US master&apos;s holders.</li>
+                  <li>• Weight your entries under FY 2027 rules: <strong>Level I = 1 entry</strong> rising to <strong>Level IV = 4 entries</strong> by OEWS wage level.</li>
+                  <li>• Add a second draw with a qualifying <strong>US master&apos;s degree</strong> — foreign master&apos;s degrees do not access the 20,000 cap.</li>
+                  <li>• Expect one entry per person regardless of how many employers register you — beneficiary-centric selection since FY 2025.</li>
+                  <li>• Compound your odds across years: staying in valid status (for example on <strong>STEM OPT</strong>) buys additional attempts.</li>
+                </ul>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Calculator (above the fold) */}
         <section className="pb-10 pt-6 sm:pb-14">
           <Container>
@@ -264,6 +285,49 @@ export default function Page() {
         <section className="bg-white py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl space-y-4">
+              <SectionH2 id="rate-history">H-1B selection rate history</SectionH2>
+              <p className="text-sm leading-relaxed text-ink-600">
+                The calculator&rsquo;s volume assumptions are anchored to what USCIS has actually published.
+                Rates rose sharply once beneficiary-centric selection removed duplicate registrations in
+                FY 2025, even though the 85,000 cap never changed.
+              </p>
+              <div className="overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+                <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                      <th className="p-3 font-semibold">Cap season</th>
+                      <th className="p-3 font-semibold">Eligible registrations</th>
+                      <th className="p-3 font-semibold">Selected (all rounds)</th>
+                      <th className="p-3 font-semibold">Approx. rate</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink-900/5 bg-white">
+                    {[
+                      ["FY 2023 (Mar 2022)", "~484,000", "~127,600", "~26%"],
+                      ["FY 2024 (Mar 2023)", "~759,000", "~188,400", "~25%"],
+                      ["FY 2025 (Mar 2024)", "~470,000", "~134,000", "~29%"],
+                      ["FY 2026 (Mar 2025)", "~344,000", "~118,700", "~35%"],
+                      ["FY 2027 (Mar 2026)", "Per USCIS announcement", "First wage-weighted year", "Model it above"],
+                    ].map((r) => (
+                      <tr key={r[0]} className="align-top">
+                        <td className="p-3 font-semibold text-ink-900">{r[0]}</td>
+                        <td className="p-3 text-ink-600">{r[1]}</td>
+                        <td className="p-3 text-ink-600">{r[2]}</td>
+                        <td className="p-3 text-ink-600">{r[3]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-ink-500">
+                Source: USCIS H-1B cap season announcements and registration data (rounded). Read the full
+                explainer at{" "}
+                <Link href="/h1b-lottery-chances" className="font-semibold text-orange-600 underline">
+                  H-1B lottery chances
+                </Link>
+                .
+              </p>
+
               <SectionH2 id="wage-levels">H-1B wage levels explained</SectionH2>
               <div className="overflow-x-auto rounded-2xl border border-ink-900/10">
                 <table className="w-full min-w-[640px] border-collapse text-left text-sm">
@@ -437,6 +501,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["H-1B cap season", "Lottery odds analysis", "US work visas"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

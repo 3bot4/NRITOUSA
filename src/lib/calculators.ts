@@ -52,9 +52,9 @@ export const calculators: CalculatorMeta[] = [
       "Find out if you're an NRI, RNOR, or ordinary resident (ROR) for Indian tax — and exactly when your global US income starts becoming taxable in India.",
     icon: "🗓️",
     accent: "from-rose-500 to-pink-600",
-    seoTitle: "RNOR & India Tax Residency Calculator for NRIs",
+    seoTitle: "RNOR Status Calculator 2026: 182-Day India Residency Test",
     seoDescription:
-      "Enter your days in India to find your tax status (NRI, RNOR, or ROR) and when your worldwide income becomes taxable in India.",
+      "Check your India tax residency: the 182-day rule, the 60+365 test, and whether you qualify as RNOR — the window where foreign income is exempt.",
     related: [
       "substantial-presence-test-explained",
       "indian-income-us-tax-return",

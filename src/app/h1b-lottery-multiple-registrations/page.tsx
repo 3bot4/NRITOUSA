@@ -15,9 +15,9 @@ const PAGE_PATH = "/h1b-lottery-multiple-registrations";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Multiple Registrations: Multiple Job Offers & the Rules (2026/2027)",
+    title: "H-1B Multiple Registrations 2027: One Person, One Entry",
     description:
-      "Can multiple employers register you in the H1B lottery? How beneficiary-centric selection works, what multiple genuine job offers mean, the ban on duplicate and fraudulent registrations, and what a Denied status signals.",
+      "Can multiple employers register you for the H-1B lottery? Yes — but you still get one entry. The beneficiary-centric rule, duplicates, and Denied status.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -56,6 +56,21 @@ const faqs: FaqItem[] = [
     question: "Is it legal to have several job offers going into the lottery?",
     answer:
       "Having multiple genuine job offers is legal, and each real employer can register you. What's illegal is fabricating offers, colluding among related entities, or submitting duplicate registrations to boost odds. Keep everything bona fide: real roles, real intent to employ, and one clean registration per employer. When in doubt, ask an immigration attorney.",
+  },
+  {
+    question: "Can multiple employers register me for the H1B lottery?",
+    answer:
+      "Yes, and it is entirely legal when each offer is genuine. But under beneficiary-centric selection you still receive only one entry in the draw regardless of how many employers register you, so your odds do not change. The real benefit is optionality: if you are selected, each registering employer may file a petition, giving you a choice of offers.",
+  },
+  {
+    question: "What does a Denied H1B registration status mean?",
+    answer:
+      "Denied usually means the same employer submitted more than one registration for the same beneficiary in the same cap season — a prohibited duplicate. USCIS invalidates the duplicate registrations rather than penalising you automatically, but the underlying conduct matters, so ask your employer or attorney to explain what happened.",
+  },
+  {
+    question: "Did the beneficiary-centric rule change H-1B odds?",
+    answer:
+      "Substantially. Eliminating duplicate registrations cut the eligible pool from roughly 759,000 in FY 2024 to about 470,000 in FY 2025 and around 344,000 in FY 2026, which raised the published selection rate from roughly 25% to about 35% even though the 85,000 cap never changed.",
   },
 ];
 
@@ -104,15 +119,30 @@ export default function Page() {
       <section className="bg-white py-8 sm:py-12">
         <Container>
           <div className="mx-auto max-w-3xl space-y-6">
+            {/* Key takeaways */}
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Expect <strong>one entry per person</strong> no matter how many employers register you — beneficiary-centric selection has applied since FY 2025.</li>
+                <li>• Accept multiple genuine offers freely: several real employers may register you, and each can file if you are selected.</li>
+                <li>• Never allow a <strong>duplicate</strong> registration by the same employer — USCIS invalidates it and the status shows <strong>Denied</strong>.</li>
+                <li>• Understand what changed: eliminating duplicates cut eligible registrations from about <strong>759,000</strong> in FY 2024 to roughly <strong>344,000</strong> by FY 2026.</li>
+                <li>• Treat "guaranteed selection" schemes as fraud — they risk denials, revocations, and long-term bars.</li>
+              </ul>
+            </div>
+
             <p className="text-sm leading-relaxed text-ink-700">
-              For years, some applicants tried to improve their odds by having many employers register them — a
-              practice that distorted the lottery. USCIS closed that door with the <strong>beneficiary-centric</strong>{" "}
-              selection: the draw now picks individuals, so one person means one entry. Understanding this protects you
-              from bad advice and from arrangements that could jeopardize your immigration record.
+              A common question during cap season is whether lining up several job offers improves your H-1B lottery
+              chances. It does not — and understanding exactly why protects you from bad advice and from arrangements
+              that could damage your immigration record. This guide covers the beneficiary-centric rule that governs
+              multiple registrations, the difference between legitimate multiple offers and prohibited duplicates, what
+              a <strong>Denied</strong> registration status actually means, and how to choose between employers if you
+              are selected. For years, some applicants tried to improve their odds by having many employers register
+              them — a practice that distorted the lottery until USCIS closed that door.
             </p>
 
             <SectionHeading kicker="The rule" id="beneficiary">
-              How beneficiary-centric selection works
+              Can Multiple Employers Register You for the H-1B Lottery?
             </SectionHeading>
             <p className="text-sm leading-relaxed text-ink-700">
               When USCIS runs the lottery, it de-duplicates by person first, then selects among unique beneficiaries. So
@@ -131,7 +161,7 @@ export default function Page() {
             />
 
             <SectionHeading kicker="Legit vs not" id="legit">
-              Legitimate multiple offers vs gaming the system
+              Legitimate Multiple Offers vs Prohibited Duplicates
             </SectionHeading>
             <div className="grid gap-3 sm:grid-cols-2">
               <ChecklistCard
@@ -154,6 +184,23 @@ export default function Page() {
                 ]}
               />
             </div>
+
+            <SectionHeading kicker="The numbers" id="impact">
+              How Much Did the Duplicate Ban Change the Odds?
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Removing duplicate registrations shrank the pool without touching the 85,000 cap — which is
+              exactly why per-person odds improved.
+            </p>
+            <CompareTable
+              columns={["Cap season", "Eligible registrations", "Approx. selection rate"]}
+              rows={[
+                ["FY 2024 (before beneficiary-centric)", "~759,000", "~25%"],
+                ["FY 2025 (first beneficiary-centric year)", "~470,000", "~29%"],
+                ["FY 2026", "~344,000", "~35%"],
+                ["FY 2027", "Per USCIS announcement", "First wage-weighted year"],
+              ]}
+            />
 
             <SectionHeading kicker="Status" id="denied">
               What a &ldquo;Denied&rdquo; status means

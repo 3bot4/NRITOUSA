@@ -1,6 +1,8 @@
 import Link from "next/link";
 import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
 import ToolFaq from "@/components/tools/ToolFaq";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import type { CalculatorContent } from "@/lib/calculatorContent";
 
 /**
@@ -48,14 +50,29 @@ export function CalculatorIntro({
 }) {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
+      {/* Byline row — only on hubs rebuilt to the answer-first template. */}
+      {content.updated && <ReviewedByline date={content.updated} />}
+
       {/* Quick answer */}
-      <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-5 shadow-card sm:p-6">
+      <div
+        className={`rounded-2xl border p-5 shadow-card sm:p-6 ${
+          content.updated
+            ? "border-emerald-300 bg-emerald-50/70"
+            : "border-brand-200 bg-brand-50/50"
+        }`}
+      >
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-white/80 px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-wide text-brand-700">
-            Quick answer
+          <span
+            className={`inline-flex items-center rounded-full bg-white/80 px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-wide ${
+              content.updated ? "text-emerald-700" : "text-brand-700"
+            }`}
+          >
+            {content.updated ? "Quick Answer" : "Quick answer"}
           </span>
         </div>
-        <p className="mt-3 text-sm leading-relaxed text-ink-800">{quickSummary}</p>
+        <p className="mt-3 text-sm leading-relaxed text-ink-800">
+          {content.quickAnswer ?? quickSummary}
+        </p>
 
         <dl className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
@@ -76,6 +93,23 @@ export function CalculatorIntro({
           )}
         </dl>
       </div>
+
+      {/* Key takeaways — numeric, standalone facts */}
+      {content.takeaways && content.takeaways.length > 0 && (
+        <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">
+            Key takeaways
+          </p>
+          <ul className="space-y-2.5">
+            {content.takeaways.map((t) => (
+              <li key={t} className="flex gap-2.5 text-sm leading-relaxed text-ink-700">
+                <span aria-hidden className="mt-0.5 text-brand-500">▸</span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Key inputs */}
       <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
@@ -105,6 +139,13 @@ export function CalculatorIntro({
 export function CalculatorDeepDive({ content }: { content: CalculatorContent }) {
   return (
     <div className="space-y-12 sm:space-y-14">
+      {/* How this calculation works — formula, inputs, assumptions */}
+      {content.howItWorks && (
+        <SectionCard eyebrow="Behind the calculator" title={content.howItWorks.heading}>
+          <p>{content.howItWorks.body}</p>
+        </SectionCard>
+      )}
+
       {/* What the result means */}
       <SectionCard eyebrow="After the calculator" title="What your result means">
         <p>{content.resultMeaning}</p>
@@ -251,8 +292,32 @@ export function CalculatorDeepDive({ content }: { content: CalculatorContent }) 
         </ul>
       </SectionCard>
 
+      {/* How this connects to adjacent processes */}
+      {content.connects && (
+        <SectionCard eyebrow="In context" title={content.connects.heading}>
+          <p>{content.connects.body}</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {content.connects.links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="inline-flex items-center gap-1 rounded-lg border border-ink-900/10 bg-white px-3 py-1.5 text-xs font-semibold text-brand-600 transition hover:border-brand-300"
+                >
+                  {l.label} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </SectionCard>
+      )}
+
       {/* FAQ */}
       <ToolFaq items={content.faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
+
+      {/* Author bio + editorial disclosure */}
+      {content.expertiseTags && content.expertiseTags.length > 0 && (
+        <AuthorBioBox className="max-w-3xl" tags={content.expertiseTags} />
+      )}
     </div>
   );
 }

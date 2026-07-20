@@ -5,6 +5,8 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import I485ProcessingCalculator from "@/components/tools/I485ProcessingCalculator";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import SoftCta from "@/components/SoftCta";
 import ImmigrationTimelineTable from "@/components/tools/ImmigrationTimelineTable";
 import {
@@ -42,8 +44,9 @@ const DESC =
   "Check typical I-485 green card processing timelines, what affects your case, and estimate your personal wait by category, field office, and priority date.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "I-485 Processing Time 2026",
-  description: DESC,
+  title: "I-485 Processing Time 2026: Typical 8-14 Month Timeline",
+  description:
+    "I-485 processing typically runs 8-14 months for employment-based cases. Stage-by-stage timeline, delay causes, and a personal estimate calculator.",
   path: PATH,
 });
 
@@ -192,6 +195,15 @@ export default function Page() {
         sourceNote={<>Last updated: {I485_UPDATED_HUMAN}. {I485_DATA_NOTE}</>}
         disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
+        {/* Byline row */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={I485_UPDATED} />
+            </div>
+          </Container>
+        </section>
+
         {/* Quick answer */}
         <section className="pt-6">
           <Container>
@@ -373,6 +385,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={I485_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["I-485 & adjustment of status", "USCIS processing times", "Employment green cards"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

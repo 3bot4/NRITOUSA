@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import ArticleByline from "@/components/ArticleByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
@@ -190,6 +191,10 @@ export default function ArticlePage({
                 }
                 return <ArticleBody content={article.content} />;
               })()}
+
+              {article.answerFirst && article.expertiseTags && (
+                <AuthorBioBox className="mt-10" tags={article.expertiseTags} />
+              )}
 
               <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">

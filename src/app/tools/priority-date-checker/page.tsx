@@ -16,6 +16,7 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
+  toolArticleJsonLd,
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -89,6 +90,13 @@ export default function PriorityDateCheckerPage() {
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
+    toolArticleJsonLd({
+      path: "/tools/priority-date-checker",
+      headline: tool.seoTitle,
+      description: content.description,
+      datePublished: "2026-06-16",
+      dateModified: content.updated ?? "2026-06-16",
+    }),
     faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },

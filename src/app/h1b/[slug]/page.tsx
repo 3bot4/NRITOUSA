@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import Newsletter from "@/components/Newsletter";
 import PremiumProcessingFeeTable from "@/components/tools/PremiumProcessingFeeTable";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
@@ -138,6 +140,9 @@ export default function H1bChildPage({
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
+              {page.answerFirst && (
+                <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
+              )}
             </div>
           </Container>
         </header>
@@ -164,6 +169,13 @@ export default function H1bChildPage({
           <Container>
             <div className="mx-auto">
               <ArticleBody content={page.content} />
+
+              {page.answerFirst && (
+                <AuthorBioBox
+                  className="mt-8"
+                  tags={["H-1B status & transfers", "US work visas", "Immigrant career planning"]}
+                />
+              )}
 
               {/* fee table for premium-processing slug */}
               {page.slug === "premium-processing" && (

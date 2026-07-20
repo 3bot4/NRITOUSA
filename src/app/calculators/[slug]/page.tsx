@@ -21,6 +21,7 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
+  toolArticleJsonLd,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -94,6 +95,17 @@ export default function CalculatorPage({
 
   const url = absoluteUrl(`/calculators/${calc.slug}`);
   const jsonLd = jsonLdGraph(
+    ...(content?.updated
+      ? [
+          toolArticleJsonLd({
+            path: `/calculators/${calc.slug}`,
+            headline: calc.seoTitle,
+            description: calc.seoDescription,
+            datePublished: "2026-06-16",
+            dateModified: content.updated,
+          }),
+        ]
+      : []),
     // Valid SoftwareApplication node: applicationCategory + operatingSystem +
     // a free `offers` object (price "0"). No unsupported fields.
     {

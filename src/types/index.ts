@@ -27,6 +27,14 @@ export interface Topic {
 }
 
 export interface Article {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
+  /** Expertise tags for the author bio box (renders when `answerFirst`). */
+  expertiseTags?: string[];
   slug: string;
   title: string;
   /** SEO <title> override (falls back to `title`). Keep under ~60 chars. */

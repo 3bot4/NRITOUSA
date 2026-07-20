@@ -21,6 +21,12 @@ import { computeReadingTime } from "@/lib/format";
 export type H1bClusterPageKind = "guide" | "reference";
 
 export interface H1bClusterPageData {
+  /**
+   * Opt in to the answer-first template chrome (byline row + author bio box).
+   * Set only on pages rebuilt to that template, so untouched siblings render
+   * exactly as before.
+   */
+  answerFirst?: boolean;
   slug: string;
   kind: H1bClusterPageKind;
   title: string;
@@ -577,16 +583,32 @@ Discuss the business impact with HR — an expired employee who cannot legally w
   /* ─────────────────────── LAYOFF / 60-DAY GRACE PERIOD ─────────────────── */
   {
     slug: "layoff-60-day-grace-period",
+    answerFirst: true,
     kind: "guide",
-    title: "H1B Layoff and the 60-Day Grace Period: What It Means and What to Do",
-    seoTitle: "H1B Layoff 60-Day Grace Period | What Counts, Options, Next Steps",
+    title: "H-1B 60-Day Grace Period 2026: Rules, Options & Timing",
+    seoTitle: "H-1B 60-Day Grace Period: Rules, Options & Timing",
     metaDescription:
-      "Laid off on H1B? Understand the 60-day grace period, what it allows, what it does not allow, your options (new H1B transfer, COS, departure), and why timing is everything.",
+      "Laid off on H-1B? You get 60 days from your last day of employment (or until I-94 expiry) to transfer, change status, or depart. You cannot work during it.",
     navLabel: "Layoff & 60-Day Grace",
     excerpt:
       "The 60-day H1B grace period after involuntary termination gives you a window to pursue options. But it is not an automatic safety net — unauthorized work ends it immediately.",
     date: "2026-06-16",
-    content: `If your H1B employment ends — through a layoff, termination, or resignation — you enter what is commonly called the **60-day grace period**. This is a regulatory provision giving H1B holders up to 60 days (or until their I-94 expires, whichever is shorter) to take corrective action without immediately falling out of status.
+    updated: "2026-07-20",
+    content: `:::quickanswer
+If your H-1B job ends, you get up to **60 calendar days** — counted from your **last day of employment**, or until your **I-94 expires, whichever comes first** — to stay in the US lawfully while you fix your status. In that window you may have a new employer file an **H-1B transfer**, file a **change of status** (H-4, F-1, O-1), or depart. What you may **not** do is work for anyone, in any form, including freelance or unpaid-then-paid arrangements. The grace period is granted **per authorized validity period** and is discretionary, not an entitlement.
+:::
+
+:::key
+- Start counting from your **last day of employment**, not your final paycheck or severance end date.
+- Take the shorter of **60 days or your I-94 expiry** — an I-94 ending in 30 days gives you 30 days, not 60.
+- Do **not work at all** during the grace period; a new H-1B transfer must be filed *and* receipted before you resume work.
+- Contact an immigration attorney within the **first few days** — options narrow fast as the clock runs.
+- Protect the long game: an **approved I-140** preserves your priority date and supports 3-year H-1B extensions with the next employer.
+:::
+
+Being laid off on an H-1B starts a clock that most people misunderstand in the same two ways: they think it starts later than it does, and they think it allows work. It does neither. This guide is for H-1B workers (and H-4 families) who have just been notified, or who want a plan in place before it happens. The number that governs everything: 60 days from your last day of employment, capped by your I-94 end date. Below: exactly what the grace period allows and forbids, how to count your deadline, each of your three real options with timing, what happens to your green card process and I-140, how the H-4 family is affected, and the mistakes that cost people their status.
+
+If your H1B employment ends — through a layoff, termination, or resignation — you enter what is commonly called the **60-day grace period**. This is a regulatory provision giving H1B holders up to 60 days (or until their I-94 expires, whichever is shorter) to take corrective action without immediately falling out of status.
 
 :::warn
 title: The 60-day grace period is not unlimited protection
@@ -596,7 +618,7 @@ title: The 60-day grace period is not unlimited protection
 - If your I-94 expires before 60 days, the grace period is shorter
 :::
 
-## What the 60-day grace period allows
+## What Does the 60-Day Grace Period Allow?
 
 :::info
 title: What you CAN do during the grace period
@@ -607,13 +629,13 @@ title: What you CAN do during the grace period
 - Consult with attorneys and evaluate options
 :::
 
-## What the 60-day grace period does NOT allow
+## What Does the Grace Period NOT Allow?
 
 - Working for any employer without valid, approved work authorization
 - Freelancing, contract work, or consulting — even brief or informal arrangements
 - Volunteering for compensation
 
-## Your options during the 60-day window
+## What Are Your Options During the 60 Days?
 
 ### Option 1: New employer files an H1B transfer
 
@@ -632,9 +654,27 @@ You can file a change of status to another visa category, such as:
 
 If you have no viable US options or need time to regroup, you can depart the US. From outside the US, you are not subject to the grace period pressure and can continue pursuing options (including a new H1B from outside the US or through consular processing).
 
-## Counting the 60 days
+| Option | Filing deadline | Can you work? | Realistic timing |
+|---|---|---|---|
+| New employer H-1B transfer | Filed within the 60 days | Only after filing **and** receipt notice | Receipt in days–weeks; premium processing 15 business days |
+| Change of status to H-4 | Filed within the 60 days | No (H-4 EAD is a separate later filing) | Months to adjudicate; status preserved while pending |
+| Change of status to F-1 | Filed within the 60 days | No (limited on-campus work later) | Months; needs an I-20 first |
+| Change of status to O-1 | Filed within the 60 days | After approval | Evidence-heavy; premium processing available |
+| Depart the US | Before day 61 | N/A | Removes deadline pressure entirely |
 
-The 60 days begins on your **last day of H1B employment** — not your last day on payroll or when HR processes your termination paperwork. The clock starts when your employment relationship ends.
+> A timely-filed transfer or change-of-status petition generally lets you remain while it is pending, but approval is never guaranteed — file early rather than on day 59.
+
+## How Do You Count Your 60 Days?
+
+The 60 days begins on your **last day of H1B employment** — not your last day on payroll or when HR processes your termination paperwork. The clock starts when your employment relationship ends. It is **60 calendar days**, not business days, and it is capped by your I-94.
+
+| Scenario | Last day of employment | I-94 expiry | Your actual deadline |
+|---|---|---|---|
+| Standard layoff | March 1 | Aug 2027 | April 30 (60 days) |
+| I-94 expiring soon | March 1 | March 31 | **March 31** (I-94 wins) |
+| WARN notice period, still on payroll | May 1 (end of notice) | Aug 2027 | June 30 — clock starts May 1 |
+| Severance paid through June | March 1 | Aug 2027 | April 30 — severance does not extend it |
+| Resignation | Your last working day | Aug 2027 | 60 days from that day |
 
 :::bad
 title: Common mistakes during the grace period
@@ -645,13 +685,33 @@ title: Common mistakes during the grace period
 - Ignoring the grace period because you have job offers in progress
 :::
 
-## The role of WARN Act and severance
+## Do WARN Notice and Severance Extend the Grace Period?
 
 Some employers covered by the WARN Act provide 60-day notice of layoff, during which you remain on payroll. If you are on payroll through a WARN Act notice period, you are still employed and the grace period has not started. Confirm the exact last day of employment with HR.
 
 Severance pay after termination does NOT extend your employment period — the grace period starts from the last day you were actively employed, not when severance payments end.
 
+## What Happens to Your Green Card Process and Family?
+
+A layoff does not erase the green card progress you have made. An **approved I-140** keeps your priority date, and if it has been approved 180+ days it generally survives the employer withdrawing it — which is what lets a new employer support 3-year H-1B extensions beyond the six-year cap. A pending **PERM or unapproved I-140**, by contrast, usually does not survive the employer relationship. On the family side, **H-4 dependents** hold status derivative of yours, so their status and any H-4 EAD ride on you securing a new petition within the window.
+
+## How This Connects to the Rest of Your Case
+
+The grace period is a status problem, a green card problem, and a money problem at once. On status, the next step is usually an [H-1B transfer after layoff](/h1b/transfer-after-layoff) — read it before accepting any offer. On the green card, check what your [approved I-140 preserves](/green-card/i-140-approved-what-next) and where your [priority date](/visa-bulletin/priority-date) stands, since a long [India backlog](/green-card/green-card-backlog-india) makes I-140 retention especially valuable. For the family, the [H-4 EAD navigator](/tools/h4-ead-navigator) covers what happens to spousal work authorization, and the broader [H-1B layoff checklist](/h1b-layoff) covers the financial runway.
+
 ## Frequently asked questions
+
+### How long is the H-1B grace period after a layoff?
+Up to 60 calendar days from your last day of employment, or until your I-94 expires — whichever is shorter. It is granted per authorized validity period and is discretionary rather than guaranteed, so file any transfer or change-of-status petition well before day 60.
+
+### When does the 60-day grace period start?
+On your last day of actual H-1B employment. It does not start when your final paycheck arrives, when severance ends, or when HR completes termination paperwork. If you are on payroll through a WARN Act notice period, you are still employed and the clock has not begun.
+
+### Can I work during the H-1B 60-day grace period?
+No. You cannot work for any employer in any capacity — including freelance, contract, consulting, or informal arrangements — until a new petition is filed and you have a receipt notice. Unauthorized work jeopardizes your status and future filings.
+
+### Can I travel internationally during the grace period?
+It is risky. Leaving the US during the grace period generally means you cannot re-enter in H-1B status without a valid visa and a new approved petition, and re-entry may cut your remaining options short. Speak to an attorney before booking anything.
 
 ### I was laid off. Can I do consulting or freelance work during the 60-day period?
 No. Any work — including freelancing, consulting, or informal arrangements — without a valid work authorization constitutes unauthorized employment and immediately jeopardizes your status.
