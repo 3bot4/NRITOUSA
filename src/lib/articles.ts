@@ -6419,7 +6419,7 @@ Typically a premium load of roughly 5–10% off every payment, monthly cost-of-i
       "Public, private, Ivy, community — what each really costs, who qualifies for in-state tuition and FAFSA, and how immigrant families pay for a degree.",
     topic: "education",
     date: "2025-08-20",
-    updated: "2025-08-20",
+    updated: "2026-07-20",
     featured: true,
     content: `The number that stops every immigrant parent cold is the sticker price: a private US university now advertises over $80,000 a year once you add housing. It looks impossible. But the sticker price is rarely what families actually pay, and the gap between the headline number and the real cost is enormous — if you understand how the system works.
 
@@ -6516,7 +6516,7 @@ Yes. Anyone with a Social Security number or ITIN can open a 529 plan regardless
       "Free public K-12 for every child, how grade placement works, school types, enrollment documents, ESL support, and IEPs — explained for new parents.",
     topic: "education",
     date: "2025-08-18",
-    updated: "2025-08-18",
+    updated: "2026-07-20",
     featured: true,
     content: `If you've just moved to the United States with school-age children, the system can feel disorienting: unfamiliar grade names, "districts," report cards with letter grades, and rules that vary by state. The good news is that the foundation is simple and welcoming — public education is free for every child, and schools are legally required to enroll your kids regardless of immigration status.
 
@@ -6620,7 +6620,7 @@ An IEP provides specialized instruction for students with a qualifying disabilit
       "The digital SAT format, SAT vs ACT, what scores mean, registration and fee waivers, free prep, and how test-optional works — for immigrant families.",
     topic: "education",
     date: "2025-08-16",
-    updated: "2025-08-16",
+    updated: "2026-07-20",
     featured: false,
     content: `For an immigrant family, the SAT and ACT can feel like a black box: unfamiliar tests that somehow decide college options. They matter less than they used to — many schools are now test-optional — but a strong score still opens doors and earns scholarship money, which is exactly why it's worth understanding how the system works in 2025.
 
@@ -6717,7 +6717,7 @@ No. Test-optional means a score is optional, not ignored. Submit your score if i
       "Top US universities for Indian students in CS and engineering, the most affordable public flagships, scholarships, and how OPT and transfer paths work.",
     topic: "education",
     date: "2025-08-14",
-    updated: "2025-08-14",
+    updated: "2026-07-20",
     featured: false,
     content: `Indian students have long been among the strongest performers in US STEM programs, and the reasons are practical: rigorous math-and-science schooling back home, a clear career focus, and a community that shares hard-won knowledge about which schools deliver. This guide covers the universities that consistently work for Indian immigrant families — balancing prestige, cost, and post-graduation outcomes.
 
