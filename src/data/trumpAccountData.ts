@@ -774,7 +774,7 @@ export interface PointerLink {
   href: string;
 }
 export const whichPagePointers: PointerLink[] = [
-  { text: "Want the full overview? Read the main H-1B guide.", href: "/trump-account-h1b-immigrant-families" },
+  { text: "Want the full overview? Read the main Trump Account guide for immigrant families.", href: "/trump-account-h1b-immigrant-families" },
   { text: "Only checking the $1,000? Read the $1,000 eligibility guide.", href: "/trump-account-1000-eligibility" },
   { text: "Applying now? Read the Form 4547 guide.", href: "/how-to-apply-for-trump-account-form-4547" },
   { text: "Leaving the U.S.? Read the moving-back-to-India guide.", href: "/trump-account-moving-back-to-india" },
@@ -927,12 +927,12 @@ export const form4547Faqs: FaqItem[] = [
   {
     question: "Can I apply for a Trump Account online?",
     answer:
-      "Only through official IRS or TrumpAccounts.gov channels once they are available. Because the program is new, the filing method and timing are set by the IRS and can change. Never enter your child's SSN on an unofficial or third-party site that claims to open the account for you.",
+      "Yes. The IRS now lets you view and submit Trump Account elections online through your IRS Individual Account. You can also make the election by filing Form 4547 with your e-filed current-year tax return, which the IRS describes as the fastest route. Use only official IRS or TrumpAccounts.gov channels — never enter your child's SSN on an unofficial or third-party site that claims to open the account for you.",
   },
   {
     question: "Who can file Form 4547 for a child?",
     answer:
-      "The responsible party — a parent, legal guardian, or otherwise authorized individual — files it on the child's behalf. The child does not complete the form.",
+      "An authorized individual files it on the child's behalf; the child does not complete the form. For opening an account, the IRS recognises legal guardians, parents, adult siblings and grandparents, in that priority order. To elect the $1,000 pilot contribution as well, the person making the election must anticipate that the child will be their qualifying child for the tax year of the election — so the two elections do not always have the same eligible filer. Whoever files becomes the responsible party and can select investments, request transfers, or name a successor.",
   },
   {
     question: "Does my child need an SSN for a Trump Account?",

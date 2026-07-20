@@ -42,7 +42,7 @@ import type { DataRow, DataCol } from "@/data/trumpAccountData";
 const PATH = "/how-to-apply-for-trump-account-form-4547";
 const TITLE = "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide";
 const DESC =
-  "How to apply for a Trump Account with IRS Form 4547: 5 steps, SSN rules, the $1,000 pilot contribution window, and what immigrant families need to check.";
+  "How to apply for a Trump Account with IRS Form 4547: 5 stages, SSN rules, the $1,000 pilot contribution window, and what immigrant families need to check.";
 
 export const metadata: Metadata = pageMetadata({
   title: "How to Apply for a Trump Account: IRS Form 4547 Guide",
@@ -58,7 +58,7 @@ const HOWTO_COLS: DataCol[] = [
 ];
 
 const HOWTO: (DataRow & { name: string; text: string })[] = [
-  { step: "1", action: "Confirm child age and SSN", details: "Child under 18 by year-end with a valid SSN", mistake: "Using an ITIN in the SSN field", name: "Confirm child age and SSN", text: "Check the child is under 18 by year-end and has a valid Social Security number (not an ITIN)." },
+  { step: "1", action: "Confirm child age and SSN", details: "Under 18 at year-end; SSN valid for employment, issued before the election", mistake: "Using an ITIN, or an SSN card marked “Not Valid for Employment”", name: "Confirm child age and SSN", text: "Check the child is under 18 at year-end and has a Social Security number that is valid for employment and was issued before you make the election — not an ITIN. If the card is marked “Not Valid for Employment” but the child is now a U.S. citizen or permanent resident, request a new card from the Social Security Administration first." },
   { step: "2", action: "Confirm $1,000 eligibility", details: "If requesting it: U.S. citizen, born 2025–2028", mistake: "Requesting it for a child outside the window", name: "Confirm $1,000 eligibility", text: "If you plan to request the pilot contribution, confirm U.S. citizenship and a birth after Dec 31, 2024 and before Jan 1, 2029." },
   { step: "3", action: "Go to the official source", details: "Start from IRS.gov or TrumpAccounts.gov", mistake: "Using an unofficial or fake site", name: "Go to the official source", text: "Start only from official IRS or TrumpAccounts.gov pages to get the current Form 4547." },
   { step: "4", action: "Complete responsible-party section", details: "Your legal name and taxpayer info", mistake: "Missing or mismatched taxpayer details", name: "Complete responsible-party section", text: "Enter the responsible party's legal name and taxpayer information." },
@@ -70,17 +70,19 @@ const HOWTO: (DataRow & { name: string; text: string })[] = [
   { step: "10", action: "Save records for taxes & move-back", details: "SSN card, birth certificate, Form 4547", mistake: "Losing documents needed later", name: "Save records", text: "Keep the SSN card, birth certificate/passport, and Form 4547 confirmation for future taxes and any move back to India." },
 ];
 
-/* 5-step summary table shown near the top (plain-language overview). */
+/* 5-stage summary table shown near the top (plain-language overview).
+   The detailed checklist below expands these same five stages into 10
+   individual actions — keep the two consistent if either is edited. */
 const SUMMARY_COLS: DataCol[] = [
-  { key: "step", label: "Step" },
+  { key: "step", label: "Stage" },
   { key: "action", label: "What you do", highlight: true },
 ];
 const SUMMARY_ROWS: DataRow[] = [
-  { step: "Step 1", action: "Confirm the child is eligible" },
-  { step: "Step 2", action: "Check SSN and birth-year requirements" },
-  { step: "Step 3", action: "Review IRS Form 4547 instructions" },
-  { step: "Step 4", action: "Complete parent/guardian and child information" },
-  { step: "Step 5", action: "Submit only through official IRS/Treasury channels" },
+  { step: "Stage 1", action: "Confirm the child is eligible" },
+  { step: "Stage 2", action: "Check SSN and birth-year requirements" },
+  { step: "Stage 3", action: "Review IRS Form 4547 instructions" },
+  { step: "Stage 4", action: "Complete parent/guardian and child information" },
+  { step: "Stage 5", action: "Submit only through official IRS/Treasury channels" },
 ];
 
 /* Source comparison — what each source is actually for. */
@@ -115,8 +117,8 @@ const FILE_OR_WAIT = [
 const JUMP = [
   { label: "Quick answer", href: "#quick-answer" },
   { label: "Who it's for", href: "#who-for" },
-  { label: "5 steps", href: "#summary" },
-  { label: "Step-by-step", href: "#steps" },
+  { label: "5 stages", href: "#summary" },
+  { label: "Detailed checklist", href: "#steps" },
   { label: "Info checklist", href: "#checklist" },
   { label: "Official sources", href: "#sources" },
   { label: "FAQ", href: "#faq" },
@@ -176,7 +178,7 @@ export default function Page() {
                   <p>Before filing, confirm the child's age, valid Social Security number, citizenship/birth-year eligibility, and current IRS/Treasury instructions.</p>
                 </>
               }
-              ctaText="See the 5 steps"
+              ctaText="See the 5 stages"
               ctaHref="#summary"
             />
           </Container>
@@ -209,8 +211,8 @@ export default function Page() {
         <section id="summary" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="mb-4 text-xl font-bold text-ink-900">The 5 steps to apply, at a glance</h2>
-              <DataTable columns={SUMMARY_COLS} rows={SUMMARY_ROWS} caption="A quick overview — the full detail, with common mistakes, is in the step-by-step table below." />
+              <h2 className="mb-4 text-xl font-bold text-ink-900">The 5 stages to apply, at a glance</h2>
+              <DataTable columns={SUMMARY_COLS} rows={SUMMARY_ROWS} caption="A quick overview. The detailed checklist below breaks these same five stages into the individual actions, with the common mistakes at each one." />
             </div>
           </Container>
         </section>
@@ -219,7 +221,19 @@ export default function Page() {
         <section id="steps" className="scroll-mt-24 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="mb-4 text-xl font-bold text-ink-900">Step-by-step: applying with Form 4547</h2>
+              <h2 className="mb-4 text-xl font-bold text-ink-900">Detailed checklist: every action, in order</h2>
+              <p className="mb-4 text-sm leading-relaxed text-ink-600">
+                This expands the five stages above into the individual actions you
+                actually take, with the mistake most people make at each one. It
+                covers four distinct things that are easy to confuse:{" "}
+                <strong>electing to open the account</strong>,{" "}
+                <strong>requesting the $1,000 pilot contribution</strong> (a separate
+                election, only for eligible children),{" "}
+                <strong>activating the account</strong> once Treasury contacts the
+                responsible party, and{" "}
+                <strong>contributing or choosing an eligible investment</strong>{" "}
+                afterwards.
+              </p>
               <DataTable columns={HOWTO_COLS} rows={HOWTO} />
             </div>
           </Container>
@@ -253,7 +267,11 @@ export default function Page() {
                 caption="Only the official sources set the rules and accept your filing. Everything else — including this page — is for understanding, not for submitting personal information."
               />
               <div className="mt-6">
-                <OfficialSourceBox intro="Get the current form and instructions directly from the official sources:" links={trumpAccountSourceLinks} />
+                <OfficialSourceBox
+                  title="Official IRS and Treasury sources"
+                  intro="Trump Accounts are administered by the IRS and the Treasury, not by USCIS. Get the current form and instructions directly from the official sources:"
+                  links={trumpAccountSourceLinks}
+                />
               </div>
             </div>
           </Container>
