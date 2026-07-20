@@ -8,8 +8,12 @@
  *    ("Asian Indian alone", "Indian alone or in combination", "Indian
  *    immigrant", "Indian-born", "Indian-origin").
  *  - State-level values are relative concentrations / rankings, NOT exact
- *    counts, unless an exact ACS figure is cited. They are labelled as
- *    estimates so the page never overstates precision.
+ *    counts. The page states this next to the explorer so it never overstates
+ *    precision. If exact per-state counts are ever added, pull them from a
+ *    single ACS table under ONE definition and cite the table and year — do not
+ *    mix "Asian Indian alone" with "alone or in combination" or "Indian-born".
+ *  - Never combine figures from different definitions into a single growth
+ *    rate or a single connected chart series. See growthTimeline below.
  *  - Never invent a "highest taxpayer" style claim. Income/tax language is
  *    kept to sourced, hedged phrasing.
  */
@@ -35,9 +39,9 @@ export const quickStats: QuickStat[] = [
     note: "Indian alone or in combination (Pew, 2021–2023 ACS/IPUMS).",
   },
   {
-    label: "Growth since 2000",
-    value: "≈ 174%",
-    note: "Up from about 1.8M in 2000 (Pew).",
+    label: "Growth since 2010",
+    value: "50%+",
+    note: "Asian Indian alone: 2020 Census vs 2010 Census — one consistent definition (U.S. Census Bureau).",
   },
   {
     label: "2020 Census — Asian Indian alone",
@@ -75,12 +79,22 @@ export interface GrowthPoint {
   basis: string;
 }
 
+/**
+ * ONE CONSISTENT DEFINITION ONLY: "Asian Indian alone", as recorded by the
+ * decennial Census. Do NOT add Pew "Indian-origin" or "alone or in combination"
+ * points to this series — mixing definitions on a single connected line implies
+ * a precise growth rate that the underlying sources do not support. If another
+ * definition is worth charting, add it as a separate, separately-labelled
+ * series rather than another point here.
+ */
 export const growthTimeline: GrowthPoint[] = [
-  { year: 2000, value: 1.8, label: "≈ 1.8M", basis: "Indian-origin (Pew)" },
-  { year: 2010, value: 2.8, label: "≈ 2.8M", basis: "Asian Indian alone (Census, approx.)" },
+  { year: 2010, value: 2.8, label: "≈ 2.8M", basis: "Asian Indian alone (2010 Census)" },
   { year: 2020, value: 4.4, label: "≈ 4.4M", basis: "Asian Indian alone (2020 Census)" },
-  { year: 2023, value: 4.9, label: "≈ 4.9M", basis: "Indian alone or in combination (Pew)" },
 ];
+
+/** Definition used by every point in {@link growthTimeline}. */
+export const GROWTH_TIMELINE_DEFINITION =
+  "Asian Indian alone (decennial Census)";
 
 /* ------------------------------------------------------------------ *
  * State-level data — relative concentration, not exact counts
@@ -143,7 +157,7 @@ export const states: StateInfo[] = [
     tooltip:
       "California: Large Indian-origin population; strong tech, business, student, and family-based immigration communities.",
     population:
-      "Typically ranked #1 for total Indian-origin residents. Estimate: verify with the latest ACS table.",
+      "Typically ranked #1 for total Indian-origin residents.",
     income:
       "Bay Area Indian households are among the highest-earning metro cohorts, driven by senior tech and startup roles.",
     occupation:
@@ -167,7 +181,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Texas: Fast-growing Indian communities in Dallas, Austin, and Houston.",
     population:
-      "Among the fastest-growing Indian populations in the U.S., especially in the Dallas suburbs. Estimate/range.",
+      "Among the fastest-growing Indian populations in the U.S., especially in the Dallas suburbs.",
     income:
       "Strong professional incomes with a lower cost of living than coastal metros, aiding homeownership.",
     occupation:
@@ -191,7 +205,7 @@ export const states: StateInfo[] = [
     tooltip:
       "New Jersey: One of the highest Indian-origin concentrations relative to state population.",
     population:
-      "Consistently the highest Indian share of any state's population. Estimate; verify with ACS.",
+      "Consistently the highest Indian share of any state's population.",
     income:
       "High household incomes tied to NYC-area finance, pharma, and IT roles.",
     occupation:
@@ -215,7 +229,7 @@ export const states: StateInfo[] = [
     tooltip:
       "New York: Large Indian-origin population across NYC, Queens, and Long Island.",
     population:
-      "One of the largest total Indian populations, centered on the NYC metro. Estimate/range.",
+      "One of the largest total Indian populations, centered on the NYC metro.",
     income:
       "Wide income range — high-earning finance/medicine professionals alongside working-class and small-business families.",
     occupation:
@@ -238,7 +252,7 @@ export const states: StateInfo[] = [
     drivers: "Tech, healthcare, business",
     tooltip: "Illinois: Strong Chicago-area Indian community.",
     population:
-      "Large, established Chicago-area population, especially the western suburbs. Estimate/range.",
+      "Large, established Chicago-area population, especially the western suburbs.",
     income:
       "Strong professional incomes in the Naperville/Aurora corridor.",
     occupation:
@@ -262,7 +276,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Washington: Tech-heavy Indian professional population in Seattle/Bellevue.",
     population:
-      "Rapid growth driven by big-tech hiring on the Eastside. Estimate/range.",
+      "Rapid growth driven by big-tech hiring on the Eastside.",
     income:
       "Among the highest metro incomes, tied to senior software and cloud roles.",
     occupation:
@@ -286,7 +300,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Georgia: Fast-growing Atlanta-area Indian community in tech, business, and healthcare.",
     population:
-      "Strong, growing Atlanta-metro population, especially north-side suburbs. Estimate/range.",
+      "Strong, growing Atlanta-metro population, especially north-side suburbs.",
     income:
       "Solid professional incomes with lower housing costs than coastal hubs.",
     occupation:
@@ -310,7 +324,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Florida: Growing Indian communities in Tampa, Orlando, and Miami.",
     population:
-      "Steadily growing, boosted by retirees and internal migration. Estimate/range.",
+      "Steadily growing, boosted by retirees and internal migration.",
     income:
       "Mixed — professionals, business owners, and retirees.",
     occupation:
@@ -332,7 +346,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Virginia: High Indian-origin population around the DC metro in tech and government-contracting roles.",
     population:
-      "Dense Indian population in the Northern Virginia DC suburbs. Estimate/range.",
+      "Dense Indian population in the Northern Virginia DC suburbs.",
     income:
       "Very high household incomes tied to tech and federal contracting.",
     occupation:
@@ -355,7 +369,7 @@ export const states: StateInfo[] = [
     tooltip:
       "Maryland: Strong Indian community in the DC suburbs, healthcare, and research.",
     population:
-      "Established DC-suburb and Baltimore-area population. Estimate/range.",
+      "Established DC-suburb and Baltimore-area population.",
     income: "High incomes in medicine, research, and tech.",
     occupation:
       "Medicine, biotech/NIH research, IT, and government.",
@@ -373,7 +387,7 @@ export const states: StateInfo[] = [
     drivers: "Medicine, academia, tech",
     tooltip:
       "Pennsylvania: Growing Indian community in medicine, academia, and tech near Philadelphia and Pittsburgh.",
-    population: "Moderate but growing, centered on suburban Philadelphia. Estimate/range.",
+    population: "Moderate but growing, centered on suburban Philadelphia.",
     income: "Solid professional incomes in medicine and tech.",
     occupation: "Medicine, pharma, academia, and IT.",
     education: "High attainment near CMU, Penn, and Drexel.",
@@ -390,7 +404,7 @@ export const states: StateInfo[] = [
     drivers: "Academia, biotech, tech, students",
     tooltip:
       "Massachusetts: Research- and student-heavy Indian community around Boston and Cambridge.",
-    population: "High per-capita concentration in the Boston research corridor. Estimate/range.",
+    population: "High per-capita concentration in the Boston research corridor.",
     income: "High incomes in biotech, academia, and tech.",
     occupation: "Biotech, academia, medicine, and software.",
     education: "Among the highest attainment; MIT/Harvard/BU draw.",
@@ -407,7 +421,7 @@ export const states: StateInfo[] = [
     drivers: "Automotive engineering, medicine, academia",
     tooltip:
       "Michigan: Engineering- and medicine-focused Indian community around Detroit and Ann Arbor.",
-    population: "Long-established engineering/medicine community. Estimate/range.",
+    population: "Long-established engineering/medicine community.",
     income: "Solid professional incomes in engineering and medicine.",
     occupation: "Automotive/mechanical engineering, medicine, and academia.",
     education: "High attainment near the University of Michigan.",
@@ -424,7 +438,7 @@ export const states: StateInfo[] = [
     drivers: "Tech, research, healthcare",
     tooltip:
       "North Carolina: Fast-growing Indian tech and research community around the Research Triangle.",
-    population: "Rapid growth in the Research Triangle and Charlotte. Estimate/range.",
+    population: "Rapid growth in the Research Triangle and Charlotte.",
     income: "Strong professional incomes with affordable housing.",
     occupation: "IT, biotech/research, banking, and healthcare.",
     education: "High attainment near Duke, UNC, and NC State.",
@@ -441,7 +455,7 @@ export const states: StateInfo[] = [
     drivers: "Tech, semiconductors, business",
     tooltip:
       "Arizona: Growing Indian tech and semiconductor community around Phoenix and Chandler.",
-    population: "Growing, boosted by semiconductor and tech expansion. Estimate/range.",
+    population: "Growing, boosted by semiconductor and tech expansion.",
     income: "Solid tech and professional incomes.",
     occupation: "Semiconductors, IT, business, and healthcare.",
     education: "High attainment near ASU and tech employers.",
@@ -458,7 +472,7 @@ export const states: StateInfo[] = [
     drivers: "Medicine, academia, IT",
     tooltip:
       "Ohio: Established Indian community in medicine, academia, and IT across major metros.",
-    population: "Steady, long-established community. Estimate/range.",
+    population: "Steady, long-established community.",
     income: "Solid incomes in medicine and IT.",
     occupation: "Medicine, academia, IT, and business.",
     education: "High attainment near OSU and Case Western.",
@@ -716,7 +730,7 @@ export const worldNote =
 
 export const faqs: { question: string; answer: string }[] = [
   { question: "How many Indians live in America?", answer: "About 4.9 million people in the U.S. identify as Indian alone or in combination, based on Pew Research Center's analysis of 2021–2023 ACS/IPUMS data. The 2020 Census recorded about 4.4 million people as Asian Indian alone." },
-  { question: "How many Indians live in the USA?", answer: "About 4.9 million people in the USA identify as Indian-origin (Pew, 2021–2023 ACS/IPUMS), and the 2020 Census recorded 4,397,737 as Asian Indian alone. No official 2025/2026 count exists yet, but the figure is rising — the community has grown about 174% since 2000. Confirm with the latest ACS release." },
+  { question: "How many Indians live in the USA?", answer: "About 4.9 million people in the USA identify as Indian-origin (Pew, 2021–2023 ACS/IPUMS), and the 2020 Census recorded 4,397,737 as Asian Indian alone. These are two different definitions and are not interchangeable. No official 2025/2026 count exists yet, but the figure is rising: on the Census’s own consistent “Asian Indian alone” basis, the count grew more than 50% between the 2010 and 2020 Censuses. Confirm with the latest ACS release." },
   { question: "What state has the highest Indian population?", answer: "California typically has the largest total Indian-origin population, followed by Texas, New Jersey, New York, and Illinois. New Jersey has the highest Indian share relative to its state population — the highest concentration of any state." },
   { question: "Which U.S. city has the highest Indian population?", answer: "The New York–New Jersey metro (including Edison and Jersey City) and the San Francisco Bay Area have the largest Indian populations, followed by Dallas–Fort Worth, Chicago, Washington DC, Seattle, Atlanta, and Houston." },
   { question: "Where do most Indians live in the USA?", answer: "Most Indians in the USA live in large job-market states and metros — California, Texas, New Jersey, New York, Illinois, Washington, and Georgia — clustered around technology, healthcare, finance, universities, and established immigrant family networks. The New York/New Jersey area and the San Francisco Bay Area are the two biggest hubs." },
@@ -730,7 +744,7 @@ export const faqs: { question: string; answer: string }[] = [
   { question: "How do Indians contribute to the U.S. economy?", answer: "Through high-skilled work in tech, medicine, engineering, and finance; founding and leading companies; owning small businesses; paying university tuition as students; and — given high household incomes — significant tax and local spending. No single official 'Indian American tax contribution' figure is published." },
   { question: "Are Indians in America mostly citizens, green card holders, or visa holders?", answer: "It's a mix. There are large numbers of naturalized and U.S.-born citizens, a large population of green card holders (many stuck in the employment-based backlog), and hundreds of thousands of H-1B and F-1 visa holders. The balance shifts as immigrants naturalize over time." },
   { question: "Where do Telugu, Punjabi, Gujarati, Tamil, and Malayali communities live in the USA?", answer: "Telugu communities are strong in Texas, California, New Jersey, and the DC area; Punjabis in California and New York/New Jersey; Gujaratis in New Jersey, Texas, Illinois, and Georgia; Tamils in California, Texas, and the Northeast; and Malayalis in Texas, New York, New Jersey, and Florida. These are community patterns, not exact counts." },
-  { question: "Is the Indian population in America growing?", answer: "Yes. Pew reports the Indian-origin population grew from about 1.8 million in 2000 to about 4.9 million in 2023 — roughly 174% growth — driven by work visas, students, family immigration, and a growing U.S.-born generation." },
+  { question: "Is the Indian population in America growing?", answer: "Yes. On the Census’s consistent “Asian Indian alone” measure, the population grew more than 50% between the 2010 and 2020 Censuses, reaching 4,397,737. Pew separately estimates about 4.9 million people of Indian origin using a broader definition. Because those definitions differ, they should not be combined into a single growth rate. The growth is driven by work visas, students, family immigration, and a growing U.S.-born generation." },
   { question: "What is the NRI population in the USA?", answer: "If NRI is read as Indian citizens living in the US (rather than US citizens of Indian origin), the closest measure is the foreign-born Indian immigrant population — about 2.8 million per Migration Policy Institute analysis of ACS data — spanning H-1B and other visa holders, green card holders, and students. The broader Indian-origin community, including the US-born generation, is about 4.9 million." },
 ];
 
@@ -745,7 +759,7 @@ export interface SourceLink {
 }
 
 export const sources: SourceLink[] = [
-  { label: "Pew Research Center — Indian Americans fact sheet", href: "https://www.pewresearch.org/race-and-ethnicity/fact-sheet/asian-americans-indians-in-the-u-s/", note: "≈4.9M Indian-origin; ≈174% growth since 2000 (2021–2023 ACS/IPUMS)." },
+  { label: "Pew Research Center — Indian Americans fact sheet", href: "https://www.pewresearch.org/race-and-ethnicity/fact-sheet/asian-americans-indians-in-the-u-s/", note: "≈4.9M Indian-origin, a broader definition than the Census “Asian Indian alone” count (2021–2023 ACS/IPUMS)." },
   { label: "U.S. Census Bureau — 2020 Census Asian population", href: "https://www.census.gov/library/stories/2023/05/2020-census-dhc-a-asian-population.html", note: "Asian Indian alone: 4,397,737; up 50%+ since 2010." },
   { label: "U.S. Census Bureau — American Community Survey (ACS)", href: "https://www.census.gov/programs-surveys/acs", note: "Detailed race, ancestry, income, and geography tables." },
   { label: "Migration Policy Institute — Indian Immigrants in the U.S.", href: "https://www.migrationpolicy.org/article/indian-immigrants-united-states", note: "≈3.2M Indian immigrants; one of the largest origin groups." },
@@ -764,7 +778,7 @@ export const methodology =
 export const quickFacts: { label: string; value: string }[] = [
   { label: "Total Indian-origin population in U.S.", value: "About 4.9 million" },
   { label: "2020 Census Asian Indian alone population", value: "4,397,737" },
-  { label: "Growth since 2000", value: "About 174%" },
+  { label: "Growth, 2010→2020 Census", value: "50%+ (Asian Indian alone)" },
   { label: "Indian immigrants in the U.S.", value: "About 3.2 million" },
   { label: "Top total-population states", value: "California, Texas, New Jersey, New York, Illinois" },
   { label: "Highest concentration state", value: "New Jersey" },

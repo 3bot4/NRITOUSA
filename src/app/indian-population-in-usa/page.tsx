@@ -104,7 +104,7 @@ function GrowthChart() {
     <svg
       viewBox={`0 0 ${W} ${H}`}
       role="img"
-      aria-label="Line chart of the Indian population in the USA growing from about 1.8 million in 2000 to about 4.9 million in 2023."
+      aria-label="Line chart of the Asian Indian alone population recorded by the decennial Census, growing from about 2.8 million in 2010 to about 4.4 million in 2020."
       className="w-full"
     >
       {[0, 1, 2, 3, 4, 5].map((g) => (
@@ -166,7 +166,7 @@ export default function Page() {
     license: "https://www.nritousa.com/disclaimer",
     isAccessibleForFree: true,
     dateModified: INDIAN_POP_UPDATED,
-    temporalCoverage: "2000/2026",
+    temporalCoverage: "2010/2023",
     spatialCoverage: "United States",
     variableMeasured: [
       "Indian-origin population",
@@ -489,7 +489,7 @@ export default function Page() {
           <SectionHead
             eyebrow="Trend"
             title="Indian Population Growth Timeline"
-            sub="The Indian-origin population roughly tripled between 2000 and 2023 — one of the fastest-growing origin groups in the country."
+            sub="On the Census's consistent “Asian Indian alone” measure, the population grew more than 50% between the 2010 and 2020 Censuses — one of the fastest-growing origin groups in the country. Figures from different definitions are not charted together."
           />
           <div className="mt-6 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
             <div className="rounded-3xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
