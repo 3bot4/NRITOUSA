@@ -22,8 +22,13 @@ export default function HomeHero() {
             managing U.S. income, India assets, taxes, retirement, property,
             inheritance, and return-to-India decisions.
           </p>
+          {/* Not "Data updated daily": most tools here run on annual or monthly
+              figures (IRS limits, DOL wage data, visa bulletin), so a blanket
+              daily-refresh claim was false. Every calculator and tool renders
+              its own last-checked date, which is the accurate version. */}
           <p className="mt-1.5 text-[13px] text-ink-400">
-            20+ free tools · 50+ guides · Data updated daily
+            20+ free tools · 50+ guides · Official sources shown · Every tool
+            displays its last-checked date
           </p>
           <p className="mx-auto mt-2 max-w-xl text-xs leading-relaxed text-ink-400">
             Built for Indian immigrants, NRIs, H-1B workers, green card

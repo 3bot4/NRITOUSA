@@ -28,6 +28,7 @@ import { articles } from "@/lib/articles";
 import { GB_UPDATED } from "@/lib/governmentBenefitsCluster";
 import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
+import { getToolHubContent } from "@/lib/toolHubContent";
 import { eduCalcs } from "@/lib/education";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { ociGuides, ociGuidePath } from "@/lib/ociGuides";
@@ -61,15 +62,39 @@ export interface SitemapEntry {
   priority: number;
 }
 
-/** Build date for evergreen pages that don't carry their own updated stamp. */
-const now = new Date();
+/**
+ * Fallback <lastmod> for evergreen pages that carry no updated stamp of their
+ * own.
+ *
+ * This is deliberately a COMMITTED CONSTANT, not `new Date()`. Using the build
+ * date stamped every such URL with the deployment timestamp, so a layout tweak
+ * or an unrelated deploy told Google that ~117 pages had all changed that day.
+ * That trains crawlers to distrust the signal and wastes crawl budget on pages
+ * whose content did not move.
+ *
+ * Bump this ONLY when the affected pages actually change materially. Better
+ * still, give the page its own date (see `dataChecked` on calculators and
+ * `updated` on tool hub content) so it stops depending on this constant.
+ */
+export const CONTENT_BASELINE = new Date("2026-07-20");
 
 const e = (
   path: string,
   priority: number,
   changeFrequency: SitemapEntry["changeFrequency"] = "monthly",
-  lastModified: Date = now,
+  lastModified: Date = CONTENT_BASELINE,
 ): SitemapEntry => ({ path, priority, changeFrequency, lastModified });
+
+/**
+ * Parse a page's own date stamp, falling back to the baseline when it is
+ * missing or unparseable — a bad string must never become an Invalid Date in
+ * the XML.
+ */
+const pageDate = (raw: string | undefined): Date => {
+  if (!raw) return CONTENT_BASELINE;
+  const d = new Date(raw);
+  return Number.isNaN(d.getTime()) ? CONTENT_BASELINE : d;
+};
 
 const clusterDate = (p: { updated?: string; date: string }) =>
   new Date(p.updated ?? p.date);
@@ -129,10 +154,21 @@ export const pagesEntries: SitemapEntry[] = [
  * 2. Tools — interactive tools + calculators
  * ------------------------------------------------------------------ */
 export const toolsEntries: SitemapEntry[] = [
+  // Tool hub content carries an `updated` stamp for the tools that have been
+  // through a content pass; the rest fall back to the committed baseline.
   ...tools.map((t) =>
-    e(`/tools/${t.slug}`, t.status === "live" ? 0.8 : 0.4, "monthly"),
+    e(
+      `/tools/${t.slug}`,
+      t.status === "live" ? 0.8 : 0.4,
+      "monthly",
+      pageDate(getToolHubContent(t.slug)?.updated),
+    ),
   ),
-  ...calculators.map((c) => e(`/calculators/${c.slug}`, 0.8, "monthly")),
+  // `dataChecked` is the calculator's real content-review date — exactly what
+  // <lastmod> is supposed to report.
+  ...calculators.map((c) =>
+    e(`/calculators/${c.slug}`, 0.8, "monthly", pageDate(c.dataChecked)),
+  ),
   ...eduCalcs.map((c) => e(`/education/${c.slug}`, 0.8, "monthly")),
   // Category hub that groups the visa/green-card tools. It lives under /tools/
   // but is a hand-built page rather than a lib/tools entry, so the map above
@@ -280,7 +316,10 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/india-visa-fees-usa", 0.85, "monthly"),
   e("/india-visa-processing-time-usa", 0.85, "monthly"),
   e("/oci-vs-india-visa", 0.85, "monthly"),
-  e("/community/nri-uscis-decisions", 0.7, "weekly", immDate),
+  // /community/nri-uscis-decisions is intentionally absent: it still shows
+  // placeholder figures rather than real aggregated responses, so it carries
+  // `robots: noindex, follow`. Submitting a noindex URL in a sitemap is
+  // contradictory. Re-add it here when the page carries real data.
   ...clusterPages.map((p) =>
     e(clusterPath(p.slug), p.kind === "hub" ? 0.9 : 0.7, "monthly", clusterDate(p)),
   ),

@@ -6,12 +6,21 @@ import { site } from "@/lib/site";
 
 const PAGE_PATH = "/community/nri-uscis-decisions";
 
-export const metadata: Metadata = pageMetadata({
-  title: "NRI USCIS Life Decisions: Community Insights",
-  description:
-    "Anonymous aggregated data on what life decisions Indian immigrants in the US are navigating — job changes, house buying, travel, H-4 EAD, kids aging out. Contributed by the NRItoUSA community.",
-  path: PAGE_PATH,
-});
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "NRI USCIS Life Decisions: Community Insights",
+    description:
+      "A preview of the community insights page for what life decisions Indian immigrants in the US are navigating — job changes, house buying, travel, H-4 EAD, kids aging out. Currently showing placeholder figures while responses are collected.",
+    path: PAGE_PATH,
+  }),
+  // noindex until real aggregated responses replace the placeholder figures.
+  // `follow` is deliberate: the page links out to the live checklist tool, and
+  // that link equity should still flow. The URL is also excluded from the XML
+  // sitemap (see sitemap-data.ts) — submitting a noindex URL is contradictory.
+  // Remove both when the page carries real data, and disclose methodology,
+  // sample size, collection dates and limitations at that point.
+  robots: { index: false, follow: true },
+};
 
 const crumbs = [
   { name: "Home", url: "/" },
@@ -94,7 +103,7 @@ export default function NriDecisionsCommunityPage() {
                 NRI USCIS Life Decisions: Community Insights
               </h1>
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
-                Anonymous, aggregated data from Indian immigrants navigating USCIS delays alongside real life — jobs, houses, travel, family. No personal information collected or displayed.
+                Once enough responses are collected, this page will show anonymous, aggregated data from Indian immigrants navigating USCIS delays alongside real life — jobs, houses, travel, family. The figures below are placeholders, not survey results. No personal information is collected or displayed.
               </p>
             </div>
           </Container>
