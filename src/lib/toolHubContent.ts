@@ -59,6 +59,8 @@ export interface ToolHubContent {
   resultMeaning?: string;
   /** Optional reference/comparison table shown after the tool. */
   table?: ToolTable;
+  /** Additional reference tables rendered after `table`. */
+  tables?: ToolTable[];
   /** Explainer breakdown shown after the tool. */
   explain?: { heading: string; items: ToolBullet[] };
   /** Ordered step-by-step process. */
@@ -83,6 +85,26 @@ export interface ToolHubContent {
   relatedLinks: ToolLink[];
   /** Page-specific FAQs — also emitted as FAQPage JSON-LD. */
   faqs: ToolFaqItem[];
+  /**
+   * ISO date this hub's content and figures were last verified. Renders the
+   * byline row ("Reviewed by … · Updated … · verified") above the tool.
+   */
+  updated?: string;
+  /** Expertise tags for the author bio box at the foot of the page. */
+  expertiseTags?: string[];
+  /**
+   * Plain-language explanation of the formula, inputs, and assumptions behind
+   * the tool's output — rendered directly under the tool. Required for
+   * calculator-style tools; this is what makes the page citable.
+   */
+  howItWorks?: { heading: string; body: string };
+  /** Key takeaways: 4–5 standalone facts, each with a specific number. */
+  takeaways?: string[];
+  /**
+   * How this topic interacts with adjacent processes. `body` is plain prose;
+   * `links` render below it as contextual internal links.
+   */
+  connects?: { heading: string; body: string; links: ToolLink[] };
 }
 
 export const toolHubContent: Record<string, ToolHubContent> = {
@@ -203,6 +225,44 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "USCIS notice decoder", href: "/tools/uscis-notice-decoder" },
       { label: "Green card wait-time tracker", href: "/tools/green-card-tracker" },
     ],
+    table: {
+      caption: "N-400 naturalization requirements and fees at a glance",
+      headers: ["Requirement", "Standard (5-year) path", "Married to US citizen (3-year) path"],
+      rows: [
+        ["Time as a permanent resident", "5 years", "3 years"],
+        ["Physical presence in the US", "At least 30 months", "At least 18 months"],
+        ["Continuous residence", "Unbroken for the full period", "Unbroken for the full period"],
+        ["Earliest filing", "90 days before you complete 5 years", "90 days before you complete 3 years"],
+        ["State/district residence", "3 months before filing", "3 months before filing"],
+        ["N-400 filing fee", "$760 online / $710 paper", "$760 online / $710 paper"],
+        ["Tests at interview", "English + civics (6 of 10 correct)", "English + civics (6 of 10 correct)"],
+      ],
+    },
+    updated: "2026-07-19",
+    expertiseTags: ["Naturalization & N-400", "USCIS filing requirements", "Green card to citizenship"],
+    takeaways: [
+      "Budget $760 to file Form N-400 online ($710 by paper), which includes biometrics, per the USCIS fee schedule.",
+      "Meet the residence rule first: 5 years as a permanent resident, or 3 years if you are married to and living with a US citizen.",
+      "Count your days — you need physical presence in the US for at least half the qualifying period (30 months of 5 years, or 18 months of 3).",
+      "File up to 90 days early: USCIS accepts the N-400 three months before you complete the residence requirement.",
+      "Prepare for two tests at the interview — English (reading, writing, speaking) and 100-question civics, with 6 of 10 correct to pass.",
+    ],
+    howItWorks: {
+      heading: "How this citizenship checklist is built",
+      body:
+        "The checklist maps your answers onto the statutory N-400 requirements rather than scoring you. Your green card date and marital basis select the residence track (5 years, or 3 years married to a US citizen), and the tool then applies the two separate clocks that trip most applicants: continuous residence, which absences of 6 months or more can break, and physical presence, which requires at least half the qualifying period on US soil. Your answers about travel, taxes, selective service, and legal history flag the good-moral-character items USCIS examines. The document list is assembled from the official N-400 instructions for your specific situation — name changes, prior marriages, tax balances, and trips abroad each add their own evidence. Fees shown come from the current USCIS fee schedule. Nothing is stored, and the tool never asks for your A-number.",
+    },
+    connects: {
+      heading: "How naturalization connects to your green card and travel",
+      body:
+        "Citizenship eligibility runs on the clock that started the day you became a permanent resident, so anything that disturbs that status disturbs the timeline — long trips abroad can break continuous residence, and an expired card complicates I-9 and travel even though your status continues. Renewing the green card and applying for citizenship are separate filings with separate fees, and many people do both when a card expires mid-process.",
+      links: [
+        { href: "/green-card-renewal", label: "Green card renewal (Form I-90)" },
+        { href: "/expired-green-card", label: "Travelling with an expired green card" },
+        { href: "/uscis/case-status", label: "USCIS case status meaning" },
+        { href: "/uscis/processing-times", label: "USCIS processing times" },
+      ],
+    },
     faqs: [
       {
         question: "When can I apply for US citizenship?",
@@ -233,6 +293,16 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         question: "What happens at the citizenship interview?",
         answer:
           "A USCIS officer reviews your N-400, verifies your documents and travel history, and administers the English test (reading, writing, speaking) and the civics test. If you pass and are approved, you're scheduled for the oath ceremony, where you officially become a US citizen.",
+      },
+      {
+        question: "What documents do I need for the N-400 citizenship application?",
+        answer:
+          "At minimum: a copy of both sides of your green card, the $760 online filing fee, and evidence for anything that applies to you — marriage certificate and your spouse's proof of citizenship for the 3-year path, divorce decrees, legal name-change documents, tax transcripts if you owe or filed late, selective service registration for men who lived here between 18 and 26, and a full list of trips outside the US.",
+      },
+      {
+        question: "What are the naturalization requirements in 2026?",
+        answer:
+          "Be at least 18, hold a green card for 5 years (or 3 if married to and living with a US citizen), have physical presence in the US for at least half that period, keep continuous residence unbroken, live in your state or district for 3 months, show good moral character, and pass the English and civics tests. You may file up to 90 days before completing the residence period.",
       },
     ],
   },
@@ -334,6 +404,44 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
       { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
     ],
+    table: {
+      caption: "What drives the India green card wait",
+      headers: ["Factor", "Figure", "Effect on your wait"],
+      rows: [
+        ["Employment green cards per year (worldwide)", "~140,000", "Fixed ceiling set by statute"],
+        ["Per-country cap", "7% (~9,800 for India, all EB categories)", "The single biggest cause of the India backlog"],
+        ["EB-1 worldwide share", "28.6% (~40,040)", "Shortest India queue of the three categories"],
+        ["EB-2 / EB-3 worldwide share", "28.6% each", "Deepest India backlogs — often a decade or more"],
+        ["Bulletin publication", "8th–10th monthly, effective next month", "When your cutoff can move"],
+        ["Typical annual cutoff movement (EB-2 India)", "1–3 months per calendar year", "Why estimates run to decades for new filings"],
+      ],
+    },
+    updated: "2026-07-19",
+    expertiseTags: ["Green card backlog analysis", "Visa bulletin data", "Employment-based immigration"],
+    takeaways: [
+      "Expect the India queue to be governed by one number: the 7% per-country cap, about 9,800 employment green cards a year across EB-1, EB-2 and EB-3 combined.",
+      "Compare against both charts each month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
+      "Treat any wait estimate as a scenario, not a promise: cutoffs can retrogress, and EB-2 India was marked Unavailable in the July 2026 bulletin.",
+      "Check the new bulletin around the 8th–10th of each month; it takes effect the following month.",
+      "Keep your I-140 approved — it lets you retain your priority date across employers and categories, including an EB-3 downgrade.",
+    ],
+    howItWorks: {
+      heading: "How this green card wait time is calculated",
+      body:
+        "The tracker projects forward from published Department of State data, not from crowd-sourced reports. It reads the current month's Final Action Date and Dates for Filing for your category and country from the same central bulletin dataset used across this site, then measures historical movement: how many months of cutoff advancement each category has actually delivered per calendar year, taken from the change-point history of past bulletins. Dividing the gap between your priority date and the current cutoff by that observed velocity produces the estimate, and the tool shows an optimistic and pessimistic band because velocity is volatile rather than linear. Three limits are built in deliberately: months marked Unavailable contribute no movement, retrogression can push a date backward and reset the math, and estimates are capped rather than extrapolated indefinitely for the deepest backlogs. Nothing here predicts policy or legislative change.",
+    },
+    connects: {
+      heading: "How the tracker fits your actual filing decisions",
+      body:
+        "A wait estimate only matters next to the filings it gates. Your priority date is set at PERM filing, carried by the approved I-140, and cashed in at I-485 — so the tracker tells you roughly when the I-485 window opens, while USCIS processing times tell you how long each form itself takes. If the estimate is long, the practical levers are a category change (EB-1 or an EB-3 downgrade), H-1B extensions beyond six years on the approved I-140, and CSPA planning for children who may age out.",
+      links: [
+        { href: "/tools/priority-date-checker", label: "Priority Date Checker" },
+        { href: "/visa-bulletin/eb2-india", label: "EB-2 India priority date" },
+        { href: "/visa-bulletin/eb1-india", label: "EB-1 India priority date" },
+        { href: "/visa-bulletin/eb2-to-eb3-downgrade", label: "EB-2 to EB-3 downgrade" },
+        { href: "/i485-timeline", label: "I-485 timeline" },
+      ],
+    },
     faqs: [
       {
         question: "Why is the India green card wait so long?",
@@ -364,6 +472,16 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         question: "What does retrogression mean?",
         answer:
           "Retrogression is when the visa bulletin moves backward — the final action date for a category becomes earlier than it was. It happens when demand outpaces the available visa numbers, and it can delay cases that looked close to approval, especially for heavily backlogged categories like India EB2/EB3.",
+      },
+      {
+        question: "How long is the green card wait time for India?",
+        answer:
+          "It depends entirely on your category and priority date. EB-1 India has recently sat a few years back, while EB-2 and EB-3 India cutoffs sit around a decade or more back — and EB-2 India was marked Unavailable in the July 2026 bulletin. The structural cause is the 7% per-country cap, roughly 9,800 employment green cards a year for India across all categories.",
+      },
+      {
+        question: "How is the green card wait time calculated?",
+        answer:
+          "This tracker measures the gap between your priority date and the current Final Action Date, then divides it by how fast that category's cutoff has actually moved in past bulletins. Because movement is volatile — often only 1 to 3 months of advancement per calendar year for EB-2 India — the result is shown as an optimistic-to-pessimistic band rather than a single date.",
       },
     ],
   },
@@ -858,6 +976,44 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "USCIS notice decoder", href: "/tools/uscis-notice-decoder" },
       { label: "H-1B transfer risk checklist", href: "/tools/h1b-transfer-risk-checklist" },
     ],
+    table: {
+      caption: "H-4 EAD at a glance: eligibility, filing, and timing",
+      headers: ["Item", "Rule as of July 2026", "Why it matters"],
+      rows: [
+        ["Qualifying basis", "H-1B spouse has an approved I-140, or H-1B time beyond 6 years under AC21", "H-4 status alone never qualifies you"],
+        ["Form and category", "Form I-765, category c(26)", "Filed by the H-4 spouse, not the employer"],
+        ["Earliest renewal filing", "Up to 180 days before EAD expiry", "The only real lever you control on timing"],
+        ["Automatic extension", "Removed for renewals filed on/after Oct 30, 2025", "Work must stop at EAD expiry — plan around it"],
+        ["Work allowed", "Any employer, 1099, or your own business", "No wage floor or specialty-occupation test"],
+        ["Validity limit", "Tied to your H-4 I-94 end date", "EAD cannot outlive the underlying H-4 status"],
+      ],
+    },
+    updated: "2026-07-19",
+    expertiseTags: ["H-4 EAD & work authorization", "USCIS filing timelines", "Immigrant family planning"],
+    takeaways: [
+      "File Form I-765 up to 180 days before your current EAD expires — H-4 EAD processing commonly runs several months to over a year.",
+      "Do not count on an automatic extension: a DHS rule effective October 30, 2025 removed it for H-4 EAD renewals filed on or after that date.",
+      "Qualify through the H-1B spouse: an approved I-140, or H-1B time granted beyond six years under AC21 — H-4 status alone is not enough.",
+      "Work without restriction while the EAD is valid — any employer, 1099 freelance, or your own business, with no wage or specialty-occupation rule.",
+      "Stop working the day the EAD expires or H-4 status lapses; the EAD is only as valid as the underlying H-4 I-94.",
+    ],
+    howItWorks: {
+      heading: "How this H-4 EAD estimate works",
+      body:
+        "The navigator is a rules engine over the published H-4 EAD criteria, not a prediction model. Your eligibility answer comes from one branch: does the H-1B spouse have an approved I-140, or H-1B time granted beyond the six-year limit under AC21? Either path yields eligibility to apply under category c(26); neither does not. The renewal-gap estimate then subtracts today's date from your EAD expiration to give days remaining, compares that to the 180-day early-filing window, and — because the automatic extension no longer applies to renewals filed on or after October 30, 2025 — treats your EAD expiry as a hard stop for work authorization rather than assuming a bridge. Processing-time ranges shown are the currently posted USCIS figures for the form and category, not user-reported averages; verify your service center's current time before relying on any date.",
+    },
+    connects: {
+      heading: "How H-4 EAD connects to the rest of your family's case",
+      body:
+        "The H-4 EAD is downstream of your spouse's green card progress: the I-140 approval that unlocks it is the same approval that sets the priority date deciding when you can file I-485. That means a long India backlog is what keeps you on H-4 EAD renewals for years, and each renewal now needs its own 180-day lead time. If your spouse changes jobs or is laid off, both H-4 status and the EAD ride on the H-1B remaining valid, so plan the two together.",
+      links: [
+        { href: "/i140-processing-time", label: "I-140 processing time" },
+        { href: "/visa-bulletin/priority-date", label: "What is a priority date?" },
+        { href: "/ead-processing-time", label: "EAD processing time" },
+        { href: "/ead-renewal-gap", label: "EAD renewal gap planning" },
+        { href: "/h1b-layoff", label: "H-1B layoff: what happens to H-4" },
+      ],
+    },
     faqs: [
       {
         question: "Who qualifies for an H-4 EAD?",
@@ -1566,6 +1722,44 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
       { label: "Form 3520 India gift checker", href: "/tools/form-3520-india-gift-checker" },
     ],
+    tables: [
+      {
+        caption: "FATCA (Form 8938) reporting thresholds by filing status",
+        headers: ["Your situation", "Total value on the last day of the year", "OR total value at any time during the year"],
+        rows: [
+          ["Single / married filing separately, living in the US", "Over $50,000", "Over $75,000"],
+          ["Married filing jointly, living in the US", "Over $100,000", "Over $150,000"],
+          ["Single / married filing separately, living abroad", "Over $200,000", "Over $300,000"],
+          ["Married filing jointly, living abroad", "Over $400,000", "Over $600,000"],
+          ["FBAR (all filers, for comparison)", "No year-end test", "Over $10,000 aggregate"],
+        ],
+      },
+    ],
+    updated: "2026-07-19",
+    expertiseTags: ["FBAR & FATCA reporting", "NRI cross-border tax", "US-India compliance"],
+    takeaways: [
+      "File an FBAR (FinCEN Form 114) if all your foreign accounts combined exceeded $10,000 at any point during the year — even for a single day.",
+      "File Form 8938 (FATCA) at much higher thresholds: $50,000 on the last day of the year or $75,000 at any time for a single filer living in the US.",
+      "Double those FATCA thresholds if married filing jointly ($100,000 year-end / $150,000 peak), and roughly quadruple them if you live abroad.",
+      "Aggregate every account: NRE, NRO, fixed deposits, PPF, demat, and Indian mutual funds all count toward the $10,000 FBAR test.",
+      "The FBAR is due April 15 with an automatic extension to October 15 — no request needed — and is filed to FinCEN, not with your tax return.",
+    ],
+    howItWorks: {
+      heading: "How this FBAR and FATCA check works",
+      body:
+        "The checker applies the two statutory tests independently, because they are genuinely different rules that catch different people. For the FBAR it sums the maximum balance of every foreign financial account you report during the calendar year and compares that aggregate to the $10,000 threshold — the test is the peak combined balance at any moment, not the year-end balance, and not per account. For Form 8938 it applies the FATCA threshold matched to your filing status and residence: $50,000 year-end or $75,000 peak for a single filer in the US, $100,000 / $150,000 for married filing jointly, and the substantially higher thresholds that apply if your tax home is abroad. Because the two tests use different definitions of a reportable asset, the tool can legitimately tell you that one applies and the other does not. It performs no currency conversion for you: convert using the Treasury year-end rate before entering balances, and confirm anything unusual with a cross-border CPA.",
+    },
+    connects: {
+      heading: "How FBAR and FATCA fit your wider India tax picture",
+      body:
+        "Reporting an account is not the same as being taxed on it, but the two travel together. Interest on NRO deposits is taxed in India via TDS and is also reportable US income, with DTAA relief claimed through the foreign tax credit; Indian mutual funds raise separate PFIC questions that the FBAR total does not capture. Your residency status drives all of it — the year you move back to India, RNOR treatment changes both what India taxes and what you keep reporting to the US.",
+      links: [
+        { href: "/india-tax-compliance", label: "India tax & compliance for NRIs" },
+        { href: "/nri-selling-property-in-india-tds", label: "TDS on selling property in India" },
+        { href: "/return-to-india", label: "Returning to India: RNOR rules" },
+        { href: "/tools/nri-tax-filing-roadmap", label: "NRI tax filing roadmap" },
+      ],
+    },
     faqs: [
       {
         question: "Do I report an NRE account on FBAR?",
@@ -1596,6 +1790,21 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         question: "What happens if I missed an FBAR?",
         answer:
           "There are established ways to catch up, such as the IRS streamlined or delinquent-filing procedures, especially where the failure was non-willful. Penalties exist but are often avoidable when you come forward and correct it. Because the details matter, consult a cross-border tax professional about the right path.",
+      },
+      {
+        question: "Do I need to file FBAR?",
+        answer:
+          "You must file FinCEN Form 114 if the combined maximum balance of all your foreign financial accounts exceeded $10,000 at any point during the calendar year. It is an aggregate test across every account — NRE, NRO, fixed deposits, PPF, demat — not a per-account test, and even a single day above the threshold triggers it.",
+      },
+      {
+        question: "What is the difference between FBAR and FATCA?",
+        answer:
+          "FBAR (FinCEN Form 114) is filed with FinCEN at a $10,000 aggregate threshold and covers foreign financial accounts. FATCA (Form 8938) is filed with your tax return at much higher thresholds — $50,000 year-end or $75,000 peak for a single filer in the US, doubled for married filing jointly — and covers a broader set of specified foreign financial assets. Many NRIs must file both.",
+      },
+      {
+        question: "What is the FBAR deadline?",
+        answer:
+          "The FBAR is due April 15, with an automatic extension to October 15 that requires no request or form. It is filed electronically to FinCEN through the BSA E-Filing System, separately from your federal tax return.",
       },
     ],
   },

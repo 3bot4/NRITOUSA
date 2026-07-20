@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import PriorityDateChecker from "@/components/tools/PriorityDateChecker";
 import {
   pageMetadata,
@@ -28,9 +30,9 @@ const PUBLISHED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "Visa Bulletin for India: EB-1, EB-2 & EB-3 Dates",
+    title: "Visa Bulletin Explained for Indians: How to Read It",
     description:
-      "Check the latest India visa bulletin dates for EB-1, EB-2 and EB-3, understand Final Action and Filing dates, and use our priority-date tools.",
+      "Visa bulletin explained: published the 8th–10th monthly. How to read the India EB-1/EB-2/EB-3 charts, dates for filing vs final action, and current dates.",
     path: PAGE_PATH,
     type: "article",
     openGraph: {
@@ -69,6 +71,16 @@ const faqs: FaqItem[] = [
     question: "How often does the visa bulletin change and where do I verify it?",
     answer:
       "The State Department publishes a new bulletin around the 8th–10th of each month for the following month, and dates can move forward, hold, or retrogress. Always verify the current month at travel.state.gov and confirm the USCIS filing chart at uscis.gov/visabulletininfo before making any filing decision.",
+  },
+  {
+    question: "How do I read the visa bulletin?",
+    answer:
+      "Three steps: find your category row (EB-1, EB-2, or EB-3), read down the column for your country of birth — India for most readers here — and compare the date shown to your own priority date. If your priority date is earlier than the posted cutoff, you may act that month. 'C' means current with no backlog, and 'U' means no visa numbers are available at all that month.",
+  },
+  {
+    question: "What does 'C' mean in the visa bulletin?",
+    answer:
+      "'C' stands for Current: there is no backlog for that category and country, so any priority date qualifies that month. Rest of World applicants often see 'C' in categories where India shows a date years in the past, because the 7% per-country cap only binds high-demand countries like India and China.",
   },
 ];
 
@@ -132,10 +144,55 @@ export default function VisaBulletinPage() {
             <span>Updated {bulletin.month} {bulletin.year}</span>
           </div>
           <h1 className="mt-3 text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">
-            Visa Bulletin for India
+            Visa Bulletin Explained for Indians: How to Read the Charts
           </h1>
           <p className="mt-3 text-lg leading-relaxed text-ink-500">
             The monthly cutoff dates that control when Indian applicants can file or receive approval of an employment-based green card. This hub shows the current EB-1, EB-2 and EB-3 India dates at a glance, then routes you to the specialist guide for your category.
+          </p>
+          <ReviewedByline date={CURRENT_VISA_BULLETIN.lastUpdated} className="mt-4" />
+
+          {/* Quick Answer */}
+          <div className="mt-5 rounded-2xl border border-emerald-300 bg-emerald-50/70 p-5">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-emerald-700">
+              Quick Answer
+            </p>
+            <p className="text-[0.95rem] leading-relaxed text-ink-800">
+              The visa bulletin is a monthly Department of State chart, published around the{" "}
+              <strong>8th–10th</strong> of each month, that lists cutoff dates by green card category and
+              country of birth. Read it in three steps: find your <strong>category row</strong>{" "}
+              (EB-1/EB-2/EB-3), read down the <strong>India column</strong>, and compare that date to your
+              own priority date — if yours is <strong>earlier</strong>, you may act. Two charts exist:{" "}
+              <strong>Final Action Dates</strong> (Table A) control approval, and{" "}
+              <strong>Dates for Filing</strong> (Table B) control when you may submit an I-485 in the months
+              USCIS accepts it. &quot;C&quot; means current with no backlog; &quot;U&quot; means no visas
+              are available that month.
+            </p>
+          </div>
+
+          {/* Key takeaways */}
+          <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+            <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+              <li>• Check the new bulletin around the <strong>8th–10th</strong> of each month — it takes effect the <strong>following</strong> month.</li>
+              <li>• Compare against <strong>two</strong> charts every time: Final Action Dates for approval, Dates for Filing for submitting the I-485.</li>
+              <li>• Remember why India is slower: the <strong>7% per-country cap</strong> gives India roughly <strong>9,800</strong> employment green cards a year across all categories.</li>
+              <li>• Read your date as a threshold — your priority date must be <strong>strictly earlier</strong> than the posted cutoff, and &quot;U&quot; means nobody is approved that month.</li>
+              <li>• Confirm which chart USCIS accepts for adjustment of status each month at uscis.gov/visabulletininfo — it changes.</li>
+            </ul>
+          </div>
+
+          {/* Opening keyword paragraph */}
+          <p className="mt-5 text-base leading-relaxed text-ink-700">
+            The visa bulletin explained in plain terms: it is the monthly Department of State publication
+            that decides when an Indian applicant&apos;s green card can move forward. This guide is for
+            H-1B workers, PERM and I-140 filers, and families trying to learn how to read the visa bulletin
+            without wading through State Department formatting. The number that explains everything is the
+            7% per-country cap — roughly 9,800 employment-based green cards a year for India across EB-1,
+            EB-2, and EB-3 combined, against demand many times larger, which is why the India column moves
+            in weeks while Rest of World shows &quot;C&quot;. Below: what the visa bulletin is and who
+            publishes it, how to read the India charts step by step, the difference between dates for filing
+            vs final action date, what &quot;current&quot; and &quot;unavailable&quot; mean, the live EB-1,
+            EB-2 and EB-3 India dates for this month, and what to do the month your date is finally current.
           </p>
         </div>
 
@@ -203,7 +260,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 2: What is the visa bulletin? ──────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">What is the visa bulletin?</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">What Is the Visa Bulletin?</h2>
           <p className="text-sm leading-relaxed text-ink-600 mb-4">
             The US Department of State publishes the visa bulletin around the 8th–10th of each month. It sets the priority date cutoffs for employment-based and family-based immigration for each country.
           </p>
@@ -227,7 +284,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 3: Why Indians should care ─────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Why Indians should care about the visa bulletin</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">Why Does the Visa Bulletin Matter So Much for Indians?</h2>
           <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5">
             <p className="font-semibold text-amber-900 mb-2">The per-country 7% cap creates massive India backlogs</p>
             <ul className="space-y-1.5 text-sm text-amber-800">
@@ -242,7 +299,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 4: Priority date ────────────────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Priority date explained</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">What Is a Priority Date and How Do You Find Yours?</h2>
           <div className="overflow-x-auto rounded-2xl border border-ink-900/5">
             <table className="w-full text-sm">
               <thead>
@@ -273,7 +330,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 5: Final Action Date ────────────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Final Action Date (Table A) explained</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">How Do You Read the Final Action Date (Table A)?</h2>
           <p className="text-sm text-ink-600 mb-4">
             The Final Action Date is the most important cutoff. Your priority date must be <strong>earlier than</strong> this date for USCIS to approve your green card. This date is always published — it is never optional. When a category shows <strong>&ldquo;U&rdquo; (Unavailable)</strong>, no visa numbers are authorized that month and no case can be approved regardless of priority date.
           </p>
@@ -316,7 +373,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 6: Dates for Filing ─────────────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Dates for Filing (Table B) explained</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">Dates for Filing vs Final Action Date: What's the Difference?</h2>
           <p className="text-sm text-ink-600 mb-4">
             Table B shows earlier cutoff dates that sometimes allow you to file I-485 before Final Action Date is current — but only when USCIS authorizes it each month.
           </p>
@@ -365,7 +422,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 7: Which chart for I-485 ───────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Which chart matters for filing I-485?</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">Which Chart Matters for Filing Your I-485?</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4">
               <p className="font-semibold text-emerald-900 mb-1">Table A (Final Action Date)</p>
@@ -457,7 +514,7 @@ export default function VisaBulletinPage() {
 
         {/* ── SECTION 11: Retrogression ───────────────────────────────────────── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">Retrogression: when dates move backward</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">What Is Retrogression, and Why Do Dates Move Backward?</h2>
           <p className="text-sm text-ink-600 mb-4">
             Retrogression means the bulletin moved a cutoff date to an earlier date than the prior month — reducing the number of qualifying priority dates. It happens when visa demand is high and the per-country cap is consumed.
           </p>
@@ -478,7 +535,7 @@ export default function VisaBulletinPage() {
 
         {/* ── When your date becomes current (summary + link to owner page) ───── */}
         <section className="mb-10">
-          <h2 className="text-xl font-bold text-ink-900 mb-3">What happens when your priority date becomes current?</h2>
+          <h2 className="text-xl font-bold text-ink-900 mb-3">What Happens When Your Priority Date Becomes Current?</h2>
           <p className="text-sm leading-relaxed text-ink-600">
             When your priority date is earlier than the applicable cutoff, you may be able to file — or have USCIS approve — your I-485, but only under the chart USCIS authorizes that month, and dates can retrogress, so act promptly with your attorney. The step-by-step package, timing, and travel cautions are covered in the full guide.
           </p>
@@ -567,6 +624,13 @@ export default function VisaBulletinPage() {
             ))}
           </div>
         </section>
+
+        {/* author bio */}
+        <div className="mb-10">
+          <AuthorBioBox
+            tags={["Visa bulletin & priority dates", "Employment green cards", "India backlog analysis"]}
+          />
+        </div>
 
         {/* disclaimer */}
         <div className="mb-10 rounded-2xl border border-ink-900/5 bg-ink-50/50 p-5 text-xs leading-relaxed text-ink-500">

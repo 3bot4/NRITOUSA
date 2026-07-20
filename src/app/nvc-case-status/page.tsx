@@ -6,6 +6,8 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import NvcTimelineChecker from "@/components/tools/NvcTimelineChecker";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import SoftCta from "@/components/SoftCta";
 import {
   breadcrumbJsonLd,
@@ -43,8 +45,9 @@ const DESC =
   "Check what your NVC case status means, how long each stage may take, and what to do after USCIS approval, fee payment, document submission, DQ, interview scheduling, and embassy transfer.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "NVC Case Status & Timeline",
-  description: DESC,
+  title: "NVC Case Status 2026: Timeline, Meaning & Timeframes",
+  description:
+    "NVC case status explained: what each CEAC stage means, official NVC timeframes, how long after documentarily qualified the interview takes, and next steps.",
   path: PATH,
 });
 
@@ -120,6 +123,15 @@ export default function Page() {
         sourceNote={<>Last updated: {NVC_UPDATED_HUMAN}. {NVC_DATA_NOTE}</>}
         disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
+        {/* Byline row */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={NVC_UPDATED} />
+            </div>
+          </Container>
+        </section>
+
         {/* Fast Answer: NVC fees first (stage timing table follows below) */}
         <section className="pt-6">
           <Container>
@@ -142,6 +154,35 @@ export default function Page() {
               NVC is the Department of State stage for consular processing (interview abroad). If you are adjusting status inside the U.S., see{" "}
               <Link href="/i485-processing-time" className="text-brand-600 underline">I-485 processing time</Link> instead.
             </p>
+
+            {/* Key takeaways */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Check your status only in the official <strong>CEAC</strong> portal — you need the NVC case number and invoice ID from your welcome letter.</li>
+                <li>• Expect the welcome letter within roughly <strong>a few weeks</strong> of USCIS forwarding the approved petition, then allow the posted NVC review timeframe for documents.</li>
+                <li>• Treat <strong>Documentarily Qualified (DQ)</strong> as &quot;documents accepted&quot;, not &quot;interview scheduled&quot; — the wait after DQ runs from about a month to many months by post.</li>
+                <li>• Pay both NVC fees in CEAC and allow the posted clearing time before the DS-260 unlocks — unpaid fees are the most common stall.</li>
+                <li>• For preference categories, no interview is scheduled until your <strong>priority date is current</strong> in the visa bulletin; immediate relatives are exempt.</li>
+              </ul>
+            </div>
+
+            {/* Opening keyword paragraph */}
+            <div className="mx-auto mt-6 max-w-3xl">
+              <p className="text-base leading-relaxed text-ink-700">
+                NVC case status is where your immigrant visa case stands at the National Visa Center — the
+                Department of State stage that sits between USCIS petition approval and your consular
+                interview. This page is for anyone tracking an NVC case number in CEAC and trying to
+                decode what each status actually means: Case Created, fees paid, DS-260 submitted,
+                documents in review, Documentarily Qualified, In Transit, Ready, Administrative
+                Processing, Issued. The single most useful fact: <strong>DQ does not mean your interview
+                is scheduled</strong> — it means your paperwork is complete and the case now waits on
+                embassy appointment availability. Below you&apos;ll find NVC processing times stage by
+                stage, the official NVC timeframes to compare against, what an NVC welcome letter is and
+                when it arrives, how long NVC takes to schedule an interview, and a checker that maps your
+                current stage to the next concrete action.
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -298,6 +339,24 @@ export default function Page() {
               Want typical ranges? Open the{" "}
               <Link href="/nvc-processing-time" className="font-semibold text-brand-600 underline">NVC processing time</Link> guide to compare against the planning estimates above.
             </div>
+
+            {/* How this calculation works */}
+            <div className="mx-auto mt-8 max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">How this NVC stage estimate works</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                The checker is a decision tree over the official NVC sequence, not a prediction engine.
+                Your yes/no answers — has USCIS approved the petition, have both fees cleared, is the
+                DS-260 submitted, are civil and financial documents uploaded, has NVC accepted them — place
+                you at exactly one stage in the flow (Case Created → Fees → DS-260 → Documents → Review →
+                Documentarily Qualified → Interview Scheduling → Embassy). Each stage maps to its next
+                required action and to the planning range shown in the timeline table above, which is built
+                from the Department of State&apos;s posted NVC timeframes rather than user-reported data.
+                Two rules override everything else: nothing advances past DQ until an embassy appointment
+                exists, and for preference categories nothing schedules until your priority date is current
+                in the visa bulletin. The tool stores no data and never asks for your case number or
+                invoice ID.
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -438,6 +497,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={NVC_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["Consular processing", "NVC & CEAC", "Family immigration timelines"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

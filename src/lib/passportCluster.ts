@@ -94,24 +94,32 @@ const rawPages: ClusterPageData[] = [
   {
     slug: "",
     kind: "hub",
-    title: "Indian Passport Renewal in the USA: The Complete 2026 Guide",
-    seoTitle:
-      "Indian Passport Renewal in USA (2026): VFS Guide, Documents & Fees",
+    title: "Indian Passport Renewal in USA 2026: Fees, Documents & Timeline",
+    seoTitle: "Indian Passport Renewal in USA 2026: Fees & Timeline",
     metaDescription:
-      "Renew your Indian passport in the USA with this 2026 VFS guide. Documents, fees, photo rules, processing time, Tatkal vs normal, and common mistakes to avoid.",
+      "Indian passport renewal in USA: $146 total (36-page) via VFS Global, 6–12 weeks. 2026 fees, documents, address proof and Tatkal guide.",
     navLabel: "Start here",
     excerpt:
       "The complete hub for renewing your Indian passport from the US — the VFS Global process, documents, fees, photo specs, city-by-city centers, and processing times.",
     date: "2026-06-14",
-    content: `Renewing an Indian passport from the US is a paperwork exercise, not a hard one — but a single wrong photo or a missing photocopy at the VFS counter can cost you weeks. This is the master guide: the full process here, plus deep dives on your nearest center, the exact documents, and realistic timelines.
+    updated: "2026-07-19",
+    content: `:::quickanswer
+To renew an Indian passport in the USA, apply online at Passport Seva (choose "Reissue"), then pay and book an appointment through **VFS Global** — the total for a standard 36-page booklet is about **$146** ($125 fee + $19 VFS charge + $2 ICWF), or roughly **$271 with Tatkal** (+$125). Normal processing typically takes **6–12 weeks**; Tatkal takes **3–5 weeks**. Most straightforward renewals need **no police verification**.
+:::
+
+:::key
+- Budget **$146 total** for a normal 36-page renewal ($125 booklet + $19 VFS service + $2 ICWF); a 60-page jumbo runs **$196**, per VFS USA fees as of July 2026.
+- Expect **6–12 weeks** for normal processing and **3–5 weeks** for Tatkal — start **3–4 months** before your passport expires or you travel.
+- Book your VFS appointment **4–6 weeks ahead**; slots at the 5 US centers fill fast, especially Nov–Feb and Jun–Aug.
+- Bring **originals + self-attested photocopies** of every document and two **2"x2" Indian-spec photos** — missing copies and US-spec photos are the top 2 rejection reasons.
+- File under the consulate that covers **your state of residence**, not the nearest city — check the jurisdiction table below.
+:::
+
+Indian passport renewal in the USA runs through VFS Global on behalf of the five Indian consulates — and if you get the photo, the photocopies, and the jurisdiction right, it is a routine paperwork exercise. This hub is written for every Indian citizen living in the US on H-1B, L-1, F-1/OPT, H4, or a green card who needs to renew an Indian passport without flying home. The single most important number: a normal renewal typically takes **6–12 weeks** door to door, so start 3–4 months before expiry or travel. Below you'll find the step-by-step VFS Global Indian passport renewal process, the full 2026 fee table in USD, what counts as address proof for Indian passport renewal in the USA, Indian-spec photo rules, the consulate jurisdiction map, realistic processing times, and Tatkal vs normal — plus deep-dive pages for your [city center](/indian-passport-renewal-usa/san-francisco), the [documents checklist](/indian-passport-renewal-usa/documents), and [processing times](/indian-passport-renewal-usa/processing-time).
 
 :::warn
 title: Verify before applying
 - Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
-:::
-
-:::summary
-Indian citizens on any valid US status (H1B, L1, F1/OPT, H4, Green Card) renew through **VFS Global** on behalf of the Indian Consulate. Complete your application on **Passport Seva/GPSP**, then follow the **VFS portal instructions for payment and appointment**. Normal processing runs **6–12 weeks**, Tatkal **3–5 weeks**. Most renewals need **no police verification**. Start 3–4 months before expiry or travel.
 :::
 
 :::info
@@ -120,7 +128,7 @@ title: Explore this guide
 - **Go deeper:** the full [documents checklist](/indian-passport-renewal-usa/documents) and realistic [processing times](/indian-passport-renewal-usa/processing-time)
 :::
 
-## Who can renew in the USA
+## Who Can Renew an Indian Passport in the USA?
 Any Indian citizen with valid US immigration status can renew here — the visa stamp can be expired as long as the underlying status (H1B, etc.) is current.
 
 :::info
@@ -133,8 +141,8 @@ title: You should renew if any of these is true
 
 > OCI/PIO cardholders (US citizens of Indian origin) follow a different process — this guide is for Indian passport holders.
 
-## The VFS Global process, step by step
-The consulates outsource passport services to VFS Global. You do the application and payment yourself online first; VFS only handles document intake and biometrics.
+## How Do You Renew an Indian Passport in the USA? (VFS Global, Step by Step)
+The renewal takes about 30–45 minutes of online work plus one in-person VFS visit. The consulates outsource passport services to VFS Global. You do the application and payment yourself online first; VFS only handles document intake and biometrics.
 
 :::steps
 Create an account on [passportindia.gov.in](https://passportindia.gov.in) and choose "Reissue of Passport" — not "Fresh Passport."
@@ -145,22 +153,37 @@ Attend on the day with all originals + photocopies; VFS verifies documents and c
 Track status on the Passport Seva portal with your ARN; the new passport returns by speed post.
 :::
 
-## Documents, in one line each
+## What Documents Do You Need? (One Line Each)
 Bring every document as **original plus a self-attested photocopy** — missing copies are the #1 reason people get turned away. The essentials: printed form with ARN, current passport, proof of US status, US address proof, Indian address proof, two Indian-spec photos, and your fee + appointment receipts. The complete, situation-by-situation list — including what counts as US and Indian address proof — is on the [documents page](/indian-passport-renewal-usa/documents).
 
-## Fees
-Fees are paid in USD when you apply. Complete your application on Passport Seva/GPSP, then follow VFS portal instructions for payment and appointment — confirm the exact payment step on VFS for your jurisdiction before submitting. VFS adds a service charge of roughly $15–25 per application.
+## How Much Are Indian Passport Renewal Fees in the USA? (2026)
+A standard 36-page renewal costs about **$146 all-in** — the $125 booklet fee plus VFS Global's $19 service charge and the $2 ICWF contribution. Fees are paid in USD through the VFS portal per its instructions for your jurisdiction. Figures below are per VFS USA, last verified July 2026.
 
-| Service | Normal | Tatkal |
+| Item | 36-page booklet | 60-page (jumbo) |
 | --- | --- | --- |
-| 36-page (10 yr) | ~$98 | ~$176 |
-| 60-page (10 yr) | ~$111 | ~$190 |
-| Minor under 15 (5 yr) | ~$45 | ~$101 |
-| Lost/stolen | ~$162 | N/A |
+| Passport booklet fee (normal) | $125 | $175 |
+| Tatkal surcharge (if chosen) | +$125 | +$125 |
+| ICWF contribution | $2 | $2 |
+| VFS Global service charge | $19 | $19 |
+| **Total — normal** | **$146** | **$196** |
+| **Total — Tatkal** | **$271** | **$321** |
 
-> Fees change — always confirm current rates on [passportindia.gov.in](https://passportindia.gov.in) before paying.
+> Lost/damaged replacements and minor (under-15) booklets are priced differently, return courier is extra, and online payment adds a ~3.75% convenience charge. Fees change — always confirm current rates on [VFS Global](https://visa.vfsglobal.com/usa) before paying.
 
-## Photo requirements
+## What Address Proof Works for Indian Passport Renewal in the USA?
+You need **US address proof** (for where you live now) and, if your passport shows an Indian address you want to keep, the consulates generally reprint the same Indian address — the practical burden is the US side. Any one current document from the left column typically works; pairs of weaker documents can back each other up.
+
+| Commonly accepted US address proof | Watch out for |
+| --- | --- |
+| State driver's license / state ID | Address must match your application exactly |
+| Utility bill (electricity, gas, water, internet) | Typically within the last 3 months |
+| Bank or credit-card statement | Within the last 3 months; e-statements printed are usually fine |
+| Lease agreement / mortgage statement | Must show your name and full address |
+| Employer letter on letterhead | Helpful as a supporting (second) proof |
+
+> If you recently moved, update your driver's license or bring two matching secondary proofs. Mismatched addresses between the form and the proof are a common return-to-sender reason. Full details on the [documents checklist](/indian-passport-renewal-usa/documents).
+
+## What Are the Photo Requirements?
 Indian passport photos are **not** the same as US ones, and the wrong format is one of the most common rejections.
 
 :::good
@@ -176,7 +199,7 @@ Indian passport photos are **not** the same as US ones, and the wrong format is 
 - Don't use CVS/Walgreens "US passport" photos — get them at an Indian grocery/photo shop and bring the spec sheet
 :::
 
-## Which center do I go to?
+## Which VFS Center Do I Go To?
 VFS routes you by **consulate jurisdiction** — the consulate that covers the state you live in, not the nearest city. Pick yours:
 
 | Consulate | Covers (broadly) | Local guide |
@@ -186,8 +209,8 @@ VFS routes you by **consulate jurisdiction** — the consulate that covers the s
 | San Francisco | West Coast | [San Francisco →](/indian-passport-renewal-usa/san-francisco) |
 | Houston | South-central | [Houston / Texas →](/indian-passport-renewal-usa/houston-texas) |
 
-## Processing time
-Plan for the long end of these ranges, especially in peak seasons (Nov–Feb, Jun–Aug). The full breakdown — and how to track status — is on the [processing-time page](/indian-passport-renewal-usa/processing-time).
+## How Long Does Indian Passport Renewal Take in the USA?
+Typically **6–12 weeks** for a normal renewal, measured from VFS submission to the new booklet arriving by mail. Plan for the long end of these ranges, especially in peak seasons (Nov–Feb, Jun–Aug). The full breakdown — and how to track status — is on the [processing-time page](/indian-passport-renewal-usa/processing-time).
 
 | Service | Estimated time |
 | --- | --- |
@@ -195,10 +218,10 @@ Plan for the long end of these ranges, especially in peak seasons (Nov–Feb, Ju
 | Tatkal renewal | 3–5 weeks |
 | Lost passport | 8–16 weeks |
 
-## Police verification
-This is the part NRIs worry about most — and usually needn't. A straightforward renewal where your Indian address is unchanged and you have no pending cases needs **no police verification**. It's only triggered for fresh passports, a changed Indian address, lost/stolen cases, or a criminal record — in which case the consulate routes it to your local police station in India.
+## Do You Need Police Verification?
+Usually not. A straightforward renewal where your Indian address is unchanged and you have no pending cases needs **no police verification**. It's only triggered for fresh passports, a changed Indian address, lost/stolen cases, or a criminal record — in which case the consulate routes it to your local police station in India.
 
-## Tatkal vs Normal
+## Tatkal vs Normal: Which Should You Choose?
 Tatkal ("immediate") is faster but costs ~$70–80 more and needs an extra self-declaration (Annexure F). Neither option guarantees a specific date.
 
 :::compare
@@ -221,19 +244,34 @@ right: Choose Tatkal if
 - **Booking too late** — slots fill weeks out and processing can take 12 weeks; start 3–4 months early
 :::
 
+## How This Connects to the Rest of Your Immigration Life
+Your Indian passport is the anchor document for almost every other process, so time the renewal around what's next. If you'll need **US visa stamping** (say, [H-1B stamping after selection](/h1b-visa-stamping-after-selection)), renew the passport first — consulates want at least 6 months of validity, and your old passport with the valid visa travels alongside the new one. If a family member is applying for an **OCI card**, the passport number on file matters — see the [OCI resource center](/oci). Green-card-track families should also keep passports current for [I-485 filings](/i485-documents-checklist) and international travel on advance parole, and every visa applicant needs 6+ months of passport validity beyond the intended stay for an [India visa from the USA](/india-visa-from-usa).
+
 ## Frequently asked questions
+
+### How do I renew my Indian passport in the USA?
+Apply online at passportindia.gov.in (choose "Reissue of Passport"), then pay and book an appointment through VFS Global per the portal instructions for your jurisdiction, and appear in person with originals + photocopies. The whole flow typically takes 6–12 weeks; the step-by-step process is above.
+
+### How long does Indian passport renewal take in the USA?
+Typically 6–12 weeks for normal processing and 3–5 weeks for Tatkal, from VFS submission to delivery. Peak seasons (Nov–Feb, Jun–Aug) run toward the long end — see the [processing-time breakdown](/indian-passport-renewal-usa/processing-time).
+
+### How much does it cost to renew an Indian passport in the USA?
+About $146 all-in for a normal 36-page booklet ($125 fee + $19 VFS + $2 ICWF) and about $271 with Tatkal, per VFS USA as of July 2026. A 60-page jumbo booklet totals $196 normal / $321 Tatkal.
 
 ### Can I renew if I have a Green Card?
 Yes. Green Card holders renew at VFS just like visa holders — bring the Green Card as proof of US status.
 
-### Can I renew an already-expired passport?
+### Can I renew an already-expired Indian passport?
 Yes, there's no deadline to renew an expired Indian passport. You just can't travel internationally on it until the new one arrives.
 
 ### What happens to the US visa in my old passport?
 It stays valid. Ask VFS to return your old passport stamped "CANCELLED" and travel with both books together — old (valid US visa) and new.
 
-### Is a VFS appointment mandatory?
-Yes — walk-ins aren't accepted. Book online in advance.
+### Is a VFS appointment mandatory for Indian passport renewal?
+Yes — walk-ins aren't accepted. Book online at visa.vfsglobal.com/usa; slots often fill 3–6 weeks out.
+
+### How early can I renew — can I apply 1 year before expiry?
+Yes. India lets you reissue a passport up to 12 months before expiry, and you should — many countries (and US visa stamping) require 6+ months of remaining validity.
 
 ## The bottom line
 Complete your application on Passport Seva/GPSP and follow VFS for payment and appointment, book your center early, and bring originals plus Indian-spec photos and photocopies of everything. Get those three right and the rest is just waiting — so start 3–4 months ahead of any expiry or trip. Use the city and detail pages below to nail the specifics for your situation.
@@ -401,27 +439,46 @@ href: /topics
     slug: "san-francisco",
     kind: "city",
     title:
-      "Indian Passport Renewal in San Francisco: VFS Center & Process (2026)",
-    seoTitle: "Indian Passport Renewal in San Francisco (2026): VFS Guide",
+      "Indian Passport Renewal in San Francisco 2026: Fees & Timeline",
+    seoTitle: "Indian Passport Renewal San Francisco 2026: Fees & Time",
     metaDescription:
-      "Indian passport renewal in San Francisco Bay Area. VFS address, appointment tips, documents, fees, and processing time for California NRIs.",
+      "Indian passport renewal in San Francisco: $146 total, 6–12 weeks (3–5 Tatkal). SF consulate jurisdiction, VFS booking and documents.",
     navLabel: "San Francisco",
     excerpt:
       "Renewing your Indian passport in San Francisco — the VFS Global center, the Consulate jurisdiction it serves, and how to book and apply from the West Coast.",
     date: "2026-06-14",
-    content: `If you live on the West Coast, your Indian passport renewal runs through the **Consulate General of India, San Francisco** and its VFS Global Passport Seva Center. The steps are the same nationwide; you just file under San Francisco's jurisdiction. This page covers the SF-specific bits — the [full process is in the main guide](/indian-passport-renewal-usa).
+    updated: "2026-07-19",
+    content: `:::quickanswer
+To renew an Indian passport in San Francisco, apply on Passport Seva (choose "Reissue"), then pay and book a VFS Global appointment at the **San Francisco Passport Seva Center**, which serves the **Consulate General of India, San Francisco** jurisdiction — Northern California and much of the Western US. Total cost is about **$146** for a standard 36-page booklet ($125 + $19 VFS + $2 ICWF), or roughly **$271 with Tatkal**. Processing typically takes **6–12 weeks** normal and **3–5 weeks** Tatkal, and Bay Area slots often fill **4–6 weeks** out.
+:::
+
+:::key
+- Budget **$146** total for a normal 36-page renewal in San Francisco, or **$271** with Tatkal, per current VFS USA fees.
+- Book **4–6 weeks ahead** — the Bay Area is the highest-demand Indian passport jurisdiction in the US.
+- Confirm your state falls under **San Francisco**, not Houston or New York: Northern California, Oregon, Washington, Nevada and neighbours generally do; Southern California may not.
+- Expect **6–12 weeks** for normal processing and **3–5 weeks** for Tatkal, returned by speed post.
+- Bring **originals plus self-attested photocopies** of every document and two **2"x2" Indian-spec photos** — US drugstore photos are rejected.
+:::
+
+If you live on the West Coast, your Indian passport renewal in San Francisco runs through the **Consulate General of India, San Francisco** and its VFS Global Passport Seva Center. This page is for Bay Area and Northern California residents on H-1B, L-1, F-1/OPT, H4, or a green card who need SFO-specific details — the consulate jurisdiction, VFS booking, fees in USD, and realistic processing time — rather than the generic national walkthrough. The number that matters most locally: appointment slots at the San Francisco center commonly run 4–6 weeks out, so book before you need to travel. Below: exactly who files under San Francisco, how to book the VFS appointment, the full 2026 fee table, what to bring, timelines, and where to get Indian-spec photos in the Bay Area. The [full nationwide process is in the main guide](/indian-passport-renewal-usa).
 
 :::warn
 title: Verify before applying
 - Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
 :::
 
-:::summary
-San Francisco's consulate covers much of the **Western US**. Complete your application on **Passport Seva/GPSP**, then follow the **VFS portal instructions for payment and appointment** at the San Francisco center, and submit in person. With the Bay Area's large tech-immigrant population, slots go quickly — book early and confirm the current address/hours on the **official VFS site**.
-:::
+## Which States Fall Under the San Francisco Indian Consulate?
+The Consulate General of India, San Francisco generally covers the Western US. Jurisdiction follows **the state you live in**, not the nearest city — and Southern California is the classic trap, since it commonly falls under a different consulate.
 
-## Who files under San Francisco
-The Consulate General of India, San Francisco generally handles jurisdiction for Western states — including California (northern), Oregon, Washington, Nevada, Idaho, Montana, Wyoming, Colorado, Utah, Alaska, Hawaii, and others. Note that **Southern California and some Southwest states** may fall under a different consulate — check the list.
+| Typically under San Francisco | Usually a different consulate |
+| --- | --- |
+| Northern California | Southern California (verify — often another post) |
+| Oregon, Washington | Texas, Oklahoma → Houston |
+| Nevada, Idaho, Montana | Georgia, Florida → Atlanta |
+| Wyoming, Utah, Colorado | New York, New Jersey → New York |
+| Alaska, Hawaii | Illinois, Michigan, Ohio → Chicago |
+
+> Jurisdiction lists change. Confirm your exact state and region on the SF consulate and VFS USA sites before booking — applying at the wrong center means starting over.
 
 :::info
 title: Confirm your jurisdiction first
@@ -430,8 +487,8 @@ title: Confirm your jurisdiction first
 - The authoritative state list is on the SF consulate and VFS websites
 :::
 
-## Booking the San Francisco VFS center
-Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa). Choose the **San Francisco Passport Seva Center**, select a slot, and print the confirmation.
+## How Do You Book a VFS Appointment in San Francisco?
+Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) after completing your Passport Seva application. Choose the **San Francisco Passport Seva Center**, select a slot, and print the confirmation. Walk-ins are not accepted.
 
 :::tip
 - The Bay Area is high-demand — book **4–6 weeks ahead** and check mornings for released slots
@@ -439,7 +496,21 @@ Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa). Choose 
 - Build in travel time; confirm parking near the center in advance
 :::
 
-## What to bring
+## What Does Indian Passport Renewal Cost in San Francisco?
+The same national VFS USA fee schedule applies — about **$146 all-in** for a normal 36-page booklet. Fees below were last verified July 2026; confirm on VFS before paying.
+
+| Item | 36-page booklet | 60-page (jumbo) |
+| --- | --- | --- |
+| Passport booklet fee (normal) | $125 | $175 |
+| Tatkal surcharge (if chosen) | +$125 | +$125 |
+| ICWF contribution | $2 | $2 |
+| VFS Global service charge | $19 | $19 |
+| **Total — normal** | **$146** | **$196** |
+| **Total — Tatkal** | **$271** | **$321** |
+
+> Return courier is extra and online payment adds a ~3.75% convenience charge. Lost, damaged, and minor booklets are priced differently.
+
+## What Documents Do You Need to Bring?
 Identical to the national checklist — originals **plus** self-attested photocopies of each. The full situation-by-situation list (name change, F1/OPT, dependents, lost passport) is on the [documents page](/indian-passport-renewal-usa/documents).
 
 :::warn
@@ -448,22 +519,48 @@ Identical to the national checklist — originals **plus** self-attested photoco
 - Carry proof of **valid US status** (I-797/I-94, Green Card, F1 + I-20)
 :::
 
-## Timeline from San Francisco
-Processing follows the [national processing times](/indian-passport-renewal-usa/processing-time) — about **6–12 weeks normal**, **3–5 weeks Tatkal**. The new passport returns by speed post to your mailing address.
+## How Long Does Indian Passport Renewal Take in San Francisco?
+Processing follows the [national processing times](/indian-passport-renewal-usa/processing-time) — about **6–12 weeks normal**, **3–5 weeks Tatkal**, measured from VFS submission to delivery by speed post. Add the appointment lead time on the front, which in the Bay Area is often the longest single wait.
+
+| Stage | Typical time (SFO) |
+| --- | --- |
+| Getting a VFS appointment slot | 4–6 weeks |
+| VFS document intake to dispatch | 1–2 weeks |
+| Passport processing (normal) | 6–12 weeks total |
+| Passport processing (Tatkal) | 3–5 weeks total |
+| Speed post return delivery | 3–7 days |
+
+## How This Connects to Your Other Filings
+Time the renewal around what comes next. If you need **US visa stamping** in India — for example [H-1B stamping after selection](/h1b-visa-stamping-after-selection) — renew first, since consulates expect at least 6 months of passport validity and your old passport with the valid visa travels alongside the new booklet. Bay Area families applying for an [OCI card](/oci) should note the passport number on file changes with a new booklet, and anyone filing [I-485 adjustment of status](/i485-documents-checklist) needs a current passport in the evidence set.
 
 ## Frequently asked questions
 
-### I live in Southern California — is that San Francisco's jurisdiction?
-Not always. Parts of Southern California and the Southwest can fall under a different consulate. Verify your state/region on the VFS USA site before booking.
+### How long does Indian passport renewal take in San Francisco?
+Typically 6–12 weeks for normal processing and 3–5 weeks for Tatkal from VFS submission, plus 4–6 weeks to get an appointment slot in the Bay Area. Plan 3–4 months ahead of any travel.
 
-### Are Bay Area appointments hard to get?
+### How much does Indian passport renewal cost in San Francisco?
+About $146 total for a normal 36-page booklet ($125 fee + $19 VFS service + $2 ICWF), or about $271 with Tatkal. A 60-page jumbo booklet is $196 normal / $321 Tatkal, per VFS USA as of July 2026.
+
+### I live in Southern California — is that San Francisco's jurisdiction?
+Not always. Parts of Southern California and the Southwest can fall under a different consulate. Verify your state and region on the VFS USA site before booking, since applying at the wrong center means starting over.
+
+### Which states does the San Francisco Indian consulate cover?
+Generally Northern California, Oregon, Washington, Nevada, Idaho, Montana, Wyoming, Utah, Colorado, Alaska, and Hawaii. Texas routes to Houston, the Southeast to Atlanta, the Northeast to New York, and the Midwest to Chicago. Always confirm on the official list.
+
+### Are Bay Area VFS appointments hard to get?
 They can be, given the large Indian tech community. Book 4–6 weeks ahead and watch for released morning slots.
 
 ### Where do I get Indian-spec photos in the Bay Area?
-South-Asian photo shops in Fremont, Sunnyvale, and similar areas know the 2"x2" white-background format.
+South-Asian photo shops in Fremont, Sunnyvale, and similar areas know the 2"x2" white-background format. US drugstore passport photos use the wrong background and framing and are commonly rejected.
+
+### Can I renew my Indian passport in San Francisco if it has already expired?
+Yes. There is no deadline to renew an expired Indian passport, and the same reissue process applies. You just cannot travel internationally until the new booklet arrives.
+
+### Do I need to visit the VFS center in person?
+Yes. Walk-ins are not accepted and the appointment is mandatory, because VFS captures biometrics and verifies your original documents in person.
 
 ## The bottom line
-San Francisco renewals are the standard national process filed under the Western consulate. Confirm your state (Northern vs Southern California matters), book the in-demand VFS slot early, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for the rest.
+San Francisco renewals are the standard national process filed under the Western consulate. Confirm your state (Northern vs Southern California matters), book the in-demand VFS slot early, budget about $146 normal or $271 Tatkal, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for the rest.
 
 :::cta
 title: Stay ahead of your renewal

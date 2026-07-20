@@ -459,11 +459,12 @@ export const renewOnlineFaqs: FaqEntry[] = [
 ];
 
 export const feeFaqs: FaqEntry[] = [
-  { question: "How much does it cost to renew a green card?", answer: "The cost depends on current USCIS fee rules and whether you file online or by mail. Fees change, so always confirm the current Form I-90 fee on the official USCIS Fee Schedule (G-1055)." },
-  { question: "What is the Form I-90 fee?", answer: "The Form I-90 fee is set by USCIS and can change. Check the official USCIS Fee Schedule for the current amount rather than relying on an older figure." },
-  { question: "Is online filing cheaper than paper filing?", answer: "Online and paper filing fees can differ. Compare both on the official USCIS Fee Schedule before you decide how to file." },
-  { question: "Is biometrics included in the I-90 fee?", answer: "Whether a separate biometrics fee applies depends on current USCIS fee rules. Check the USCIS Fee Schedule and Form I-90 instructions for the latest structure." },
-  { question: "Can I get a fee waiver for green card renewal?", answer: "Some applicants who cannot pay may qualify for a fee waiver using Form I-912. Eligibility is limited and not guaranteed — review the official criteria." },
+  { question: "How much does it cost to renew a green card?", answer: "As last verified against the USCIS Fee Schedule (G-1055), renewing a green card costs $415 if you file Form I-90 online or $465 by paper. Fees change, so always confirm the current amount on the official fee schedule before paying." },
+  { question: "What is the Form I-90 fee?", answer: "The Form I-90 filing fee is $415 for online filing and $465 for paper filing, as last verified. USCIS adjusts fees periodically — check the official USCIS Fee Schedule for the current amount rather than relying on an older figure." },
+  { question: "Is online filing cheaper than paper filing?", answer: "Yes — as last verified, filing Form I-90 online costs $415 versus $465 by paper, a $50 saving. Online filing also gives you easier payment and case tracking. Compare both on the official USCIS Fee Schedule before you file." },
+  { question: "Is biometrics included in the I-90 fee?", answer: "Yes — there is currently no separate biometrics fee for Form I-90; biometrics, if required, is covered by the filing fee. Check the USCIS Fee Schedule and Form I-90 instructions for the latest structure, since this has changed over time." },
+  { question: "Can I get a fee waiver for green card renewal?", answer: "Some applicants who cannot pay may qualify for a fee waiver using Form I-912 — generally based on a means-tested benefit, household income at or below 150% of the Federal Poverty Guidelines, or financial hardship. Eligibility is limited and never guaranteed — review the official criteria." },
+  { question: "Is the green card replacement fee the same as the renewal fee?", answer: "Yes — replacing a lost, stolen, or damaged card uses the same Form I-90 and the same $415 online / $465 paper fee, as last verified. What changes is the reason you select and the evidence you attach, not the fee." },
   { question: "Do I pay if USCIS made an error?", answer: "If USCIS caused the error on your card, the fee may not apply. If the error came from your original application, a fee may be due. Check the Form I-90 instructions." },
   { question: "Are USCIS fees refundable?", answer: "USCIS filing fees are generally not refundable, even if a request is denied. File carefully and confirm eligibility before paying." },
 ];

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
 import ToolFaq from "@/components/tools/ToolFaq";
-import type { ToolHubContent } from "@/lib/toolHubContent";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
+import type { ToolHubContent, ToolTable } from "@/lib/toolHubContent";
 
 /**
  * Static SEO context that turns a thin immigration tool into a mini-hub.
@@ -51,10 +53,24 @@ export function ToolIntro({
 }) {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      {/* Quick answer */}
-      <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-5 shadow-card sm:p-6">
-        <span className="inline-flex items-center rounded-full bg-white/80 px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-wide text-brand-700">
-          Quick answer
+      {/* Byline row — wired to the content's verified/updated date */}
+      {content.updated && <ReviewedByline date={content.updated} />}
+
+      {/* Quick answer — the answer-first tint is reserved for rebuilt hubs
+          (those declaring `updated`); every other tool keeps its existing look. */}
+      <div
+        className={`rounded-2xl border p-5 shadow-card sm:p-6 ${
+          content.updated
+            ? "border-emerald-300 bg-emerald-50/70"
+            : "border-brand-200 bg-brand-50/50"
+        }`}
+      >
+        <span
+          className={`inline-flex items-center rounded-full bg-white/80 px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-wide ${
+            content.updated ? "text-emerald-700" : "text-brand-700"
+          }`}
+        >
+          {content.updated ? "Quick Answer" : "Quick answer"}
         </span>
         <p className="mt-3 text-sm leading-relaxed text-ink-800">{content.quickAnswer}</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-600">{content.shortDescription}</p>
@@ -78,6 +94,25 @@ export function ToolIntro({
           )}
         </dl>
       </div>
+
+      {/* Key takeaways — numeric, standalone facts */}
+      {content.takeaways && content.takeaways.length > 0 && (
+        <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">
+            Key takeaways
+          </p>
+          <ul className="space-y-2.5">
+            {content.takeaways.map((t) => (
+              <li key={t} className="flex gap-2.5 text-sm leading-relaxed text-ink-700">
+                <span aria-hidden className="mt-0.5 text-brand-500">
+                  ▸
+                </span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Key inputs / documents */}
       <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
@@ -111,6 +146,46 @@ export function ToolIntro({
   );
 }
 
+/** One reference/comparison table rendered as clean semantic <table> markup. */
+export function ReferenceTable({ table }: { table: ToolTable }) {
+  return (
+    <div className="mx-auto max-w-3xl">
+      <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+        {table.caption ?? "Reference table"}
+      </h2>
+      <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+        <table className="w-full border-collapse text-left text-sm">
+          <thead>
+            <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+              {table.headers.map((h) => (
+                <th key={h} className="p-3 font-semibold">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-ink-900/5 bg-white">
+            {table.rows.map((row) => (
+              <tr key={row[0]} className="align-top">
+                {row.map((cell, i) => (
+                  <td
+                    key={i}
+                    className={
+                      i === 0 ? "p-3 font-semibold text-ink-900" : "p-3 text-ink-600"
+                    }
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export function ToolDeepDive({
   content,
   hideFaq = false,
@@ -121,6 +196,13 @@ export function ToolDeepDive({
 }) {
   return (
     <div className="space-y-12 sm:space-y-14">
+      {/* How this calculation works — formula, inputs, assumptions */}
+      {content.howItWorks && (
+        <SectionCard eyebrow="Behind the tool" title={content.howItWorks.heading}>
+          <p>{content.howItWorks.body}</p>
+        </SectionCard>
+      )}
+
       {/* What your result means */}
       {content.resultMeaning && (
         <SectionCard eyebrow="After the tool" title="What your result means">
@@ -128,44 +210,11 @@ export function ToolDeepDive({
         </SectionCard>
       )}
 
-      {/* Reference / comparison table */}
-      {content.table && (
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
-            {content.table.caption ?? "Reference table"}
-          </h2>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
-            <table className="w-full border-collapse text-left text-sm">
-              <thead>
-                <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
-                  {content.table.headers.map((h) => (
-                    <th key={h} className="p-3 font-semibold">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-ink-900/5 bg-white">
-                {content.table.rows.map((row) => (
-                  <tr key={row[0]} className="align-top">
-                    {row.map((cell, i) => (
-                      <td
-                        key={i}
-                        className={
-                          i === 0
-                            ? "p-3 font-semibold text-ink-900"
-                            : "p-3 text-ink-600"
-                        }
-                      >
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      {/* Reference / comparison tables */}
+      {[...(content.table ? [content.table] : []), ...(content.tables ?? [])].map(
+        (tbl) => (
+          <ReferenceTable key={tbl.caption ?? tbl.headers.join("|")} table={tbl} />
+        )
       )}
 
       {/* Explainer */}
@@ -299,6 +348,25 @@ export function ToolDeepDive({
         </div>
       )}
 
+      {/* How this connects to adjacent processes */}
+      {content.connects && (
+        <SectionCard eyebrow="In context" title={content.connects.heading}>
+          <p>{content.connects.body}</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {content.connects.links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex items-center gap-1 rounded-lg border border-ink-900/10 bg-white px-3 py-1.5 text-xs font-semibold text-brand-600 transition hover:border-brand-300"
+                >
+                  {link.label} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </SectionCard>
+      )}
+
       {/* Related links */}
       <SectionCard title="Related NRITOUSA tools">
         <ul className="grid gap-2 sm:grid-cols-2">
@@ -324,6 +392,12 @@ export function ToolDeepDive({
       {/* FAQ */}
       {!hideFaq && (
         <ToolFaq items={content.faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
+      )}
+
+      {/* Author bio + editorial disclosure — only on hubs that opt in by
+          declaring expertise tags, so untouched tool pages are unchanged. */}
+      {content.expertiseTags && content.expertiseTags.length > 0 && (
+        <AuthorBioBox className="max-w-3xl" tags={content.expertiseTags} />
       )}
     </div>
   );

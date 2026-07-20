@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermTimelineCalculator from "@/components/tools/PermTimelineCalculator";
@@ -40,8 +43,9 @@ const DESC =
   "Check the current PERM timeline, PWD processing, recruitment, DOL review, audit risk, and I-140 timing, then estimate your personal case.";
 
 export const metadata: Metadata = pageMetadata({
-  title: TITLE,
-  description: DESC,
+  title: "PERM Processing Time 2026: DOL Timeline Calculator",
+  description:
+    "PERM processing time: plan 20–26 months from PWD filing to certification with no audit. Live DOL queue dates, stage-by-stage timeline, and a calculator.",
   path: PATH,
 });
 
@@ -204,6 +208,15 @@ export default function Page() {
         sourceNote={<>Last updated: {CLUSTER_UPDATED_HUMAN}. {DOL_DATA_NOTE}</>}
         disclaimerExtra={<p>{TIMELINE_DISCLAIMER}</p>}
       >
+        {/* Byline row */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={CLUSTER_UPDATED} />
+            </div>
+          </Container>
+        </section>
+
         {/* Quick answer */}
         <section className="pt-6">
           <Container>
@@ -221,6 +234,35 @@ export default function Page() {
                 <a href="#perm-calculator" className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-blue-800">Use the calculator →</a>
                 <a href={D.dolSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-blue-300">DOL FLAG processing times ↗</a>
               </div>
+            </div>
+
+            {/* Key takeaways */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Plan <strong>20–26 months</strong> from PWD filing to PERM certification on a clean, no-audit case — the DOL review alone is only part of it.</li>
+                <li>• Expect no shortcut: <strong>PERM has no premium processing</strong>, unlike the I-140 that follows it.</li>
+                <li>• Build in the mandatory <strong>30-day quiet period</strong> after recruitment ends before the ETA-9089 can be filed.</li>
+                <li>• Add several months if audited — audited cases move to a separate, slower DOL queue.</li>
+                <li>• Remember what the wait buys you: your <strong>priority date</strong> is set on the PERM filing date, so earlier filing means an earlier place in the green card queue.</li>
+              </ul>
+            </div>
+
+            {/* Opening keyword paragraph */}
+            <div className="mx-auto mt-6 max-w-3xl">
+              <p className="text-base leading-relaxed text-ink-700">
+                PERM processing time is the stretch between your employer starting the labor
+                certification and the Department of Labor certifying it — and for most people it is the
+                slowest controllable part of an employment green card. This page is for H-1B workers and
+                employers tracking DOL PERM processing times across all four stages: the prevailing wage
+                determination (PWD), recruitment, the ETA-9089 filing, and analyst review or audit. The
+                headline number to plan around is <strong>20–26 months</strong> from PWD filing to
+                certification when nothing is audited, with PERM offering no premium-processing escape
+                hatch. Below you&apos;ll find a stage-by-stage PERM timeline for 2026, the live DOL FLAG
+                queue dates, what PWD processing time is running, how long a PERM audit adds, a calculator
+                that estimates your own dates, and how PERM connects to the I-140 and the priority-date
+                wait that follows.
+              </p>
             </div>
           </Container>
         </section>
@@ -341,6 +383,54 @@ export default function Page() {
             <div className="mx-auto mt-6 max-w-3xl">
               <PermTimelineCalculator />
             </div>
+
+            {/* How this calculation works */}
+            <div className="mx-auto mt-8 max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">How this PERM estimate is calculated</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                The estimate is built from the Department of Labor&apos;s own published queue positions, not
+                from crowd-sourced case reports. DOL states on its FLAG dashboard which filing month it is
+                currently processing for each queue — prevailing wage determinations, PERM analyst review,
+                and audits are tracked separately. The calculator measures the distance between the month
+                DOL is working on now and your own filing month, converts that backlog into remaining
+                months, and then adds the fixed statutory pieces that no queue can shorten: the recruitment
+                period and the mandatory 30-day quiet period before the ETA-9089 can be filed. If you flag
+                your case as audited, it switches to the audit queue&apos;s slower position instead of the
+                standard analyst queue. Two assumptions are worth stating plainly: the model assumes DOL
+                continues advancing at its recent pace, which can and does change month to month, and it
+                treats PERM as having no premium processing, because it does not. Everything after
+                certification — the I-140 and the priority-date wait — is estimated separately, since those
+                run on USCIS and visa-bulletin timelines rather than DOL ones.
+              </p>
+            </div>
+
+            {/* How this connects */}
+            <div className="mx-auto mt-8 max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">How PERM timing connects to the rest of your green card</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                PERM is the stage that sets your place in line. The date DOL receives your ETA-9089 becomes
+                your{" "}
+                <Link href="/visa-bulletin/priority-date" className="font-semibold text-brand-600 underline">
+                  priority date
+                </Link>
+                , so every month of PWD or recruitment delay pushes that date later in a queue where, for
+                India, a single month can matter. After certification the employer files the{" "}
+                <Link href="/i140-processing-time" className="font-semibold text-brand-600 underline">
+                  I-140
+                </Link>{" "}
+                — which <em>can</em> be premium processed — and only once your priority date is current can
+                you move to{" "}
+                <Link href="/i485-timeline" className="font-semibold text-brand-600 underline">
+                  I-485
+                </Link>
+                . PERM timing also drives H-1B planning: an approved I-140, or a PERM pending 365+ days,
+                is what supports extensions beyond the six-year limit. Check where your date stands with the{" "}
+                <Link href="/tools/priority-date-checker" className="font-semibold text-brand-600 underline">
+                  Priority Date Checker
+                </Link>
+                .
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -376,6 +466,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={CLUSTER_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["PERM & DOL timelines", "Employment green cards", "H-1B to green card planning"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

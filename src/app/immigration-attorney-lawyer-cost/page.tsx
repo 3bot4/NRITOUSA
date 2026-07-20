@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -15,14 +17,14 @@ import { site } from "@/lib/site";
  * ------------------------------------------------------------------ */
 const PATH = "/immigration-attorney-lawyer-cost";
 const H1 =
-  "Immigration Attorney Cost in USA: H-1B, Green Card, F-1 & Visa Lawyer Fees";
+  "Immigration Attorney Cost in USA 2026: Lawyer Fees by Case Type";
 const META_TITLE =
-  "Immigration Lawyer Cost in USA: H-1B, Green Card & Visa Attorney Fees";
+  "Immigration Attorney Cost 2026: $100–$15,000 by Case Type";
 const META_DESC =
-  "Wondering how much an immigration lawyer costs in the USA? Compare H-1B lawyer fees, green card attorney fees, F-1 visa legal costs, hidden charges, payment plans, and budgeting tips for NRI and immigrant families.";
+  "Immigration lawyer cost in the USA: $100–$400 a consultation, $1,500–$5,000 H-1B, $3,000–$8,000 marriage green card, $5,000–$15,000 employment green card.";
 const PUBLISHED_ISO = "2026-07-07";
-const UPDATED_ISO = "2026-07-07";
-const UPDATED_HUMAN = "July 7, 2026";
+const UPDATED_ISO = "2026-07-19";
+const UPDATED_HUMAN = "July 19, 2026";
 
 export const metadata: Metadata = pageMetadata({
   title: META_TITLE,
@@ -532,18 +534,29 @@ export default function Page() {
             </h1>
             <div className={bodyText}>
               <p>
-                Many immigrants and NRI families delay speaking with a lawyer because they do not know
-                the cost. The problem is that &ldquo;immigration lawyer fee&rdquo; can mean many things:
-                a one-time consultation, a flat-fee petition, hourly work, an RFE response, or full
-                green card representation.
-              </p>
-              <p>
-                This guide explains typical fee structures, what affects pricing, how to compare
-                attorneys, and how to budget for H-1B, green card, student visa, family visa, and
-                citizenship-related legal costs.
+                An immigration attorney in the USA typically costs <strong>$100–$400</strong> for a
+                consultation and <strong>$1,500–$15,000+</strong> for full representation depending on the
+                case. This guide is for H-1B workers, green card applicants, F-1 students, and NRI families
+                who want real numbers before making the call — including how much an immigration lawyer costs
+                for a green card, what H-1B attorney fees run and who legally pays them, immigration lawyer
+                fees by case type, the hidden costs that never appear in the quote, and how to compare fee
+                structures. Attorney fees are always separate from USCIS filing fees, so every table below
+                keeps the two apart.
               </p>
             </div>
-            <p className="mt-4 text-xs text-ink-400">Last updated: {UPDATED_HUMAN}</p>
+            <ReviewedByline date={UPDATED_ISO} className="mt-4" />
+
+            {/* Key takeaways */}
+            <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Budget <strong>$100–$400</strong> for an initial consultation — many firms credit it toward the case fee if you hire them.</li>
+                <li>• Expect <strong>$1,500–$5,000+</strong> in H-1B attorney fees, and know that employer-side H-1B legal and filing costs are generally the <strong>employer&apos;s</strong> responsibility.</li>
+                <li>• Plan <strong>$3,000–$8,000+</strong> for a marriage green card and <strong>$5,000–$15,000+</strong> for an employment green card billed by stage (PERM, I-140, I-485).</li>
+                <li>• Add USCIS fees separately — the I-140 is <strong>$715</strong> and each adult I-485 is <strong>$1,440</strong>, none of it included in the legal fee.</li>
+                <li>• Ask in writing whether an <strong>RFE response</strong> is included; it&apos;s the single most common surprise bill at <strong>$1,000–$5,000+</strong>.</li>
+              </ul>
+            </div>
           </div>
         </Container>
       </section>
@@ -601,14 +614,15 @@ export default function Page() {
       <section id="quick-answer" className="scroll-mt-24 py-8">
         <Container>
           <div className={proseWrap}>
-            <Callout tone="info" title="Quick answer: How much does an immigration lawyer cost?">
+            <Callout tone="info" title="Quick Answer: How much does an immigration lawyer cost?">
               <p>
-                In the U.S., many immigration attorneys charge either a flat fee or an hourly rate. A
-                simple consultation may cost around <strong>$100–$400</strong>, while full case
-                representation may range from a few hundred dollars for a simple form review to several
-                thousand dollars for H-1B, family green card, employment green card, waivers, or complex
-                cases. Attorney fees are separate from USCIS filing fees, premium processing fees,
-                medical exams, translations, and other expenses.
+                An immigration lawyer in the USA typically charges <strong>$100–$400</strong> for a
+                consultation and a flat fee for representation: about <strong>$1,500–$5,000+</strong> for an
+                H-1B petition, <strong>$3,000–$8,000+</strong> for a marriage green card, and{" "}
+                <strong>$5,000–$15,000+</strong> for an employment-based green card billed across PERM, I-140,
+                and I-485. These are legal fees only — USCIS filing fees (for example <strong>$715</strong> for
+                the I-140 and <strong>$1,440</strong> per adult I-485), premium processing, medical exams, and
+                translations are all separate and paid on top.
               </p>
             </Callout>
           </div>
@@ -619,7 +633,11 @@ export default function Page() {
       <section id="fee-ranges" className="scroll-mt-24 py-8">
         <Container>
           <div className={proseWrap}>
-            <SectionH2 id="fee-ranges-h">Typical Immigration Attorney Fee Ranges</SectionH2>
+            <SectionH2 id="fee-ranges-h">How Much Does an Immigration Lawyer Cost by Case Type?</SectionH2>
+            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+              Between <strong>$100</strong> for a short consultation and <strong>$15,000+</strong> for a
+              complex employment green card or waiver. The table below is the fastest way to locate your case.
+            </p>
             <DataTable cols={feeRangeCols} rows={feeRangeRows} />
             <p className="mt-3 text-sm leading-relaxed text-ink-600">
               These are general market ranges, not guaranteed quotes. A simple case may cost less, while
@@ -638,7 +656,7 @@ export default function Page() {
         <Container>
           <div className={proseWrap}>
             <SectionH2 id="lawyer-vs-govt-h">
-              Immigration lawyer fee vs government filing fee: do not mix them
+              Are USCIS Filing Fees Included in Immigration Lawyer Fees?
             </SectionH2>
             <div className={bodyText}>
               <p>
@@ -685,7 +703,7 @@ export default function Page() {
       <section id="h1b-who-pays" className="scroll-mt-24 py-10">
         <Container>
           <div className={proseWrap}>
-            <SectionH2 id="h1b-who-pays-h">H-1B lawyer cost: who usually pays?</SectionH2>
+            <SectionH2 id="h1b-who-pays-h">What Are H-1B Attorney Fees, and Who Pays Them?</SectionH2>
             <div className={bodyText}>
               <p>
                 For most H-1B employer-sponsored filings, the employer usually pays required
@@ -724,7 +742,7 @@ export default function Page() {
         <Container>
           <div className={proseWrap}>
             <SectionH2 id="green-card-cost-h">
-              Green card lawyer cost: family vs employment-based
+              How Much Does an Immigration Lawyer Cost for a Green Card?
             </SectionH2>
             <div className={bodyText}>
               <p>
@@ -782,7 +800,7 @@ export default function Page() {
       <section id="fee-structures" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10">
         <Container>
           <div className={proseWrap}>
-            <SectionH2 id="fee-structures-h">Common immigration attorney fee structures</SectionH2>
+            <SectionH2 id="fee-structures-h">What Are the Common Immigration Lawyer Fee Structures?</SectionH2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {feeStructures.map((f, i) => (
                 <div key={f.title} className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
@@ -811,7 +829,7 @@ export default function Page() {
       <section id="hidden-costs" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10">
         <Container>
           <div className={proseWrap}>
-            <SectionH2 id="hidden-costs-h">Hidden immigration legal costs many families forget</SectionH2>
+            <SectionH2 id="hidden-costs-h">What Hidden Costs Should You Expect Beyond the Attorney Fee?</SectionH2>
             <DataTable cols={hiddenCols} rows={hiddenRows} />
             <div className="mt-5">
               <Callout tone="tip" title="Budget tip">
@@ -950,6 +968,42 @@ export default function Page() {
         </Container>
       </section>
 
+      {/* How this connects */}
+      <section className="py-10">
+        <Container>
+          <div className={proseWrap}>
+            <SectionH2 id="connects">How Legal Fees Fit Into Your Total Immigration Cost</SectionH2>
+            <p className="mt-4 text-sm leading-relaxed text-ink-600">
+              Attorney fees are only one line in a much longer budget, and the other lines are fixed by the
+              government. On the employment green card path, you pay the lawyer per stage while separately
+              owing USCIS <strong>$715</strong> for the I-140 (see{" "}
+              <Link href="/i140-processing-time" className="font-semibold text-brand-700 underline underline-offset-2">
+                I-140 processing time
+              </Link>
+              ), an optional <strong>$2,805</strong> for premium processing, and <strong>$1,440</strong> per
+              adult{" "}
+              <Link href="/i485-processing-time" className="font-semibold text-brand-700 underline underline-offset-2">
+                I-485
+              </Link>
+              . Timing matters too: the years you spend waiting on an India{" "}
+              <Link href="/visa-bulletin/priority-date" className="font-semibold text-brand-700 underline underline-offset-2">
+                priority date
+              </Link>{" "}
+              often mean extra H-1B extensions, each with its own legal bill, and a{" "}
+              <Link href="/h1b-layoff" className="font-semibold text-brand-700 underline underline-offset-2">
+                layoff
+              </Link>{" "}
+              or transfer adds an unplanned petition. If you are renewing a green card rather than applying,
+              most people need no attorney at all — see the{" "}
+              <Link href="/green-card-renewal-fee" className="font-semibold text-brand-700 underline underline-offset-2">
+                green card renewal fee
+              </Link>{" "}
+              instead.
+            </p>
+          </div>
+        </Container>
+      </section>
+
       {/* Conclusion */}
       <section className="py-10">
         <Container>
@@ -1003,6 +1057,15 @@ export default function Page() {
               ))}
             </ul>
           </div>
+        </Container>
+      </section>
+
+      {/* Author bio */}
+      <section className="border-t border-ink-900/5 py-10">
+        <Container>
+          <AuthorBioBox
+            tags={["Immigration cost planning", "USCIS fees", "Immigrant family budgeting"]}
+          />
         </Container>
       </section>
 

@@ -177,6 +177,27 @@ function SummaryBox({ lines, keyId }: { lines: string[]; keyId: string }) {
   );
 }
 
+/**
+ * Answer-first "Quick Answer" box rendered directly under the H1. Must fully
+ * answer the page's primary query (with specific numbers) on its own.
+ */
+function QuickAnswerBox({ lines, keyId }: { lines: string[]; keyId: string }) {
+  const body = lines.join("\n").trim();
+  const blocks = body.split(/\n\n+/);
+  return (
+    <div className="my-5 rounded-2xl border border-emerald-300 bg-emerald-50/70 p-5">
+      <p className="mb-2 text-xs font-bold uppercase tracking-wider text-emerald-700">
+        Quick Answer
+      </p>
+      {blocks.map((b, i) => (
+        <p key={i} className="text-[0.95rem] leading-[1.6] text-ink-800">
+          {renderInline(b, `${keyId}-p-${i}`)}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function KeyTakeaways({ items, keyId }: { items: string[]; keyId: string }) {
   return (
     <div className="my-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm">
@@ -558,6 +579,9 @@ export default function ArticleBody({ content }: { content: string }) {
           break;
         case "cta":
           elements.push(<CtaCard key={keyId} lines={buf} keyId={keyId} />);
+          break;
+        case "quickanswer":
+          elements.push(<QuickAnswerBox key={keyId} lines={buf} keyId={keyId} />);
           break;
         default:
           elements.push(<SummaryBox key={keyId} lines={buf} keyId={keyId} />);

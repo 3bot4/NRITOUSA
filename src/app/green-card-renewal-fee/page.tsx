@@ -8,6 +8,8 @@ import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
   gcRenewalClusterLinks,
@@ -35,19 +37,19 @@ import {
 } from "@/data/greenCardRenewalTimelineData";
 
 const PATH = "/green-card-renewal-fee";
-const TITLE = "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)";
+const TITLE = "Green Card Renewal Fee 2026: $415 Online, $465 Paper";
 const DESC =
-  "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $50 cheaper. See the fee snapshot, fee-waiver basics, last-verified date, and official USCIS fee links.";
+  "Green card renewal costs $415 online or $465 by paper (Form I-90) — online saves $50. Fee snapshot, fee-waiver basics, and USCIS sources.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH });
 
 const SECTIONS: { h: string; body: string }[] = [
-  { h: "What the fee is right now", body: "As last verified, USCIS charges $415 to file Form I-90 online and $465 by paper — so filing online saves you $50. Fees change, so confirm the current figure on the USCIS Fee Schedule (G-1055) before you file or pay." },
-  { h: "Online vs paper fee", body: "Online filing is $415 versus $465 by paper — $50 cheaper — and online filing also makes payment and case tracking easier. Choose the method that fits you, but the online discount applies to most I-90 renewals." },
-  { h: "Is biometrics included?", body: "There is currently no separate biometrics fee for Form I-90 — biometrics, if required, is covered by the filing fee. Confirm on the current Fee Schedule and Form I-90 instructions, since USCIS fee structures have changed over time." },
-  { h: "Fee waiver basics", body: "Some applicants who cannot pay may request a fee waiver using Form I-912. Eligibility is limited — for example, based on means-tested benefits, income, or financial hardship — and is never guaranteed. Review the official criteria carefully before requesting one." },
-  { h: "Common fee mistakes", body: "Common mistakes include relying on an outdated fee amount, paying the wrong fee for your filing method, assuming biometrics is or isn't included, and paying an I-90 fee when a conditional card actually requires a different form and fee (I-751 or I-829)." },
-  { h: "Refund warning", body: "USCIS filing fees are generally non-refundable, even if your application is denied or rejected. File carefully, confirm you are using the correct form, and double-check the current fee before submitting payment." },
+  { h: "How Much Is a Green Card Renewal in 2026?", body: "As last verified, USCIS charges $415 to file Form I-90 online and $465 by paper — so filing online saves you $50. There is no separate biometrics fee on top. Fees change, so confirm the current figure on the USCIS Fee Schedule (G-1055) before you file or pay." },
+  { h: "What Is the I-90 Filing Fee — Online vs Paper?", body: "The Form I-90 filing fee is $415 online versus $465 by paper — $50 cheaper online — and online filing also makes payment and case tracking easier. Choose the method that fits you, but the online discount applies to most I-90 renewals." },
+  { h: "Is the Permanent Resident Card Renewal Fee the Same Thing?", body: "Yes — \"permanent resident card renewal fee,\" \"green card renewal fee,\" and \"Form I-90 fee\" all refer to the same $415 (online) / $465 (paper) charge. The green card is officially Form I-551, the Permanent Resident Card, and Form I-90 is the application used to renew or replace it." },
+  { h: "Is Biometrics Included in the Fee?", body: "There is currently no separate biometrics fee for Form I-90 — biometrics, if required, is covered by the filing fee. Confirm on the current Fee Schedule and Form I-90 instructions, since USCIS fee structures have changed over time." },
+  { h: "Can You Get a Fee Waiver for Form I-90?", body: "Some applicants who cannot pay may request a fee waiver using Form I-912. Eligibility is limited — for example, based on means-tested benefits, income at or below 150% of the Federal Poverty Guidelines, or financial hardship — and is never guaranteed. Review the official criteria carefully before requesting one." },
+  { h: "Common Fee Mistakes and the Refund Rule", body: "Common mistakes include relying on an outdated fee amount, paying the wrong fee for your filing method, assuming biometrics is or isn't included, and paying an I-90 fee when a conditional card actually requires a different form and fee (I-751 or I-829). And remember: USCIS filing fees are generally non-refundable, even if your application is denied or rejected." },
 ];
 
 export default function Page() {
@@ -89,6 +91,15 @@ export default function Page() {
         sourceNote={<>Last updated: {GC_RENEWAL_UPDATED_HUMAN}. {C.sourceNote}</>}
         disclaimerExtra={<p>{GC_RENEWAL_DISCLAIMER}</p>}
       >
+        {/* Byline row (date wired to the cluster's last-modified value) */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={GC_RENEWAL_UPDATED} />
+            </div>
+          </Container>
+        </section>
+
         {/* Fast Answer: the actual fee, first */}
         <section className="pt-6">
           <Container>
@@ -112,6 +123,34 @@ export default function Page() {
               ctaText="Get my personal fee checklist"
               ctaHref="#green-card-fee-tool"
             />
+
+            {/* Key takeaways */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Budget <strong>$415</strong> to renew your green card online, or <strong>$465</strong> by paper — filing online saves $50, per the USCIS Fee Schedule (G-1055).</li>
+                <li>• Expect <strong>no separate biometrics fee</strong> — biometrics, if required, is covered by the I-90 filing fee.</li>
+                <li>• File Form I-90 <strong>within 6 months of expiry</strong> — your receipt notice then extends the card's validity (currently by 36 months) while USCIS processes it.</li>
+                <li>• Check Form I-912 fee-waiver eligibility before paying if your income is at or below <strong>150% of the Federal Poverty Guidelines</strong>.</li>
+                <li>• Don't pay the I-90 fee for a <strong>conditional 2-year card</strong> — that renewal is Form I-751 with its own fee.</li>
+              </ul>
+            </div>
+
+            {/* Opening keyword paragraph */}
+            <div className="mx-auto mt-6 max-w-3xl">
+              <p className="text-base leading-relaxed text-ink-700">
+                The green card renewal fee — officially the Form I-90 filing fee for renewing a Permanent
+                Resident Card — is <strong>$415 online or $465 by paper</strong> as last verified against the
+                USCIS Fee Schedule. This page is for lawful permanent residents whose 10-year card is expired
+                or expiring, and for anyone comparing the permanent resident card renewal fee, the green card
+                replacement fee for a lost or damaged card, and the separate I-751 path for conditional cards.
+                Below you&apos;ll find the exact 2026 fee breakdown by filing method, when your total can differ
+                from the base fee, how the fee-waiver rules work, a 60-second checker that builds your personal
+                fee checklist, and how the fee connects to{" "}
+                <a href="/green-card-renewal-processing-time" className="font-semibold text-brand-600 hover:text-brand-700">processing time</a>{" "}
+                and the rest of the renewal process.
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -195,6 +234,40 @@ export default function Page() {
           <Container>
             <div className="mx-auto max-w-3xl">
               <RenewalFeeChecker />
+
+              {/* How this calculation works */}
+              <div className="mt-8">
+                <h2 className="text-xl font-bold text-ink-900">How this fee checklist is calculated</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  The checker starts from the base Form I-90 fee on the USCIS Fee Schedule (G-1055) —
+                  <strong> $415 online / $465 paper</strong> as last verified — then adjusts for your answers:
+                  your filing method picks which base fee applies; your card situation flags cases that use a
+                  different form entirely (a conditional 2-year card routes to Form I-751, not I-90); and your
+                  income answer flags possible Form I-912 fee-waiver eligibility (generally means-tested
+                  benefits, income at or below 150% of the Federal Poverty Guidelines, or financial hardship).
+                  It performs no math beyond that mapping — every dollar figure comes from the verified fee
+                  table above, and the result always links you to the official USCIS fee page to confirm before
+                  you pay.
+                </p>
+              </div>
+
+              {/* How this connects */}
+              <div className="mt-8">
+                <h2 className="text-xl font-bold text-ink-900">How the fee connects to the rest of your renewal</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  Paying the fee is step one of a longer timeline: after filing, your I-797 receipt extends an
+                  expiring card&apos;s validity while the case runs — see{" "}
+                  <a href="/green-card-renewal-processing-time" className="font-semibold text-brand-600 hover:text-brand-700">how long I-90 processing takes</a>{" "}
+                  and the{" "}
+                  <a href="/green-card-renewal" className="font-semibold text-brand-600 hover:text-brand-700">full step-by-step renewal guide</a>.
+                  If your card is lost, stolen, or damaged, the same fee applies but the evidence differs —
+                  see <a href="/replace-green-card" className="font-semibold text-brand-600 hover:text-brand-700">replacing a green card</a>.
+                  And if your card is a conditional 2-year card, stop — you need{" "}
+                  <a href="/i90-vs-i751" className="font-semibold text-brand-600 hover:text-brand-700">Form I-751, not I-90</a>,
+                  with a different fee. Renewal has no public-charge test — paying with a fee waiver does not
+                  affect your status.
+                </p>
+              </div>
             </div>
           </Container>
         </section>
@@ -203,11 +276,10 @@ export default function Page() {
         <section className="py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Green card renewal fee, explained</h2>
-              <div className="mt-5 space-y-5">
+              <div className="space-y-7">
                 {SECTIONS.map((s) => (
                   <div key={s.h}>
-                    <h3 className="text-base font-bold text-ink-900">{s.h}</h3>
+                    <h2 className="text-xl font-bold text-ink-900">{s.h}</h2>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{s.body}</p>
                   </div>
                 ))}
@@ -238,6 +310,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={GC_RENEWAL_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["USCIS fees & forms", "Green card renewal", "Immigrant family finances"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

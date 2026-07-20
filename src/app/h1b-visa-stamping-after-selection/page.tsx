@@ -15,9 +15,9 @@ const PAGE_PATH = "/h1b-visa-stamping-after-selection";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Visa Stamping After Selection: India Guide (2026/2027)",
+    title: "H1B Visa Stamping After Selection: India Guide (2026/27)",
     description:
-      "After your H1B is selected and approved, what about visa stamping in India? The difference between change of status and consular processing, the India stamping steps, 221(g) administrative processing, and travel timing for Indian applicants.",
+      "H1B visa stamping in India: $205 MRV fee, DS-160 to interview, dropbox eligibility, documents checklist, and when you don't need a stamp.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -56,6 +56,21 @@ const faqs: FaqItem[] = [
     question: "Should I travel to India for stamping right after approval?",
     answer:
       "Only after weighing the risk. If you're already working on an approved change of status, leaving the U.S. means you'll need a valid visa stamp to return, which exposes you to interview wait times and possible 221(g) delays. Don't book non-refundable travel until you've confirmed appointment availability and discussed timing with your employer's immigration attorney.",
+  },
+  {
+    question: "Am I eligible for dropbox for H1B stamping?",
+    answer:
+      "Generally only if you're renewing a visa in the same class with no prior refusals — under 2025 Department of State guidance the window tightened to roughly 12 months after the prior visa's expiry, and first-time H-1B applicants need an interview. Rules change and consulates apply them individually, so confirm on the official visa appointment portal before booking.",
+  },
+  {
+    question: "What documents are needed for H1B visa stamping in India?",
+    answer:
+      "The core set: passport valid 6+ months, DS-160 confirmation, appointment letter, MRV fee receipt ($205), one 2x2 photo, the I-797 approval notice, the I-129 petition copy with certified LCA, an employment letter, and 2–3 months of pay stubs. Third-party placements should add a client letter or statement of work. Carry originals plus copies.",
+  },
+  {
+    question: "How much does H1B visa stamping cost?",
+    answer:
+      "The nonimmigrant visa application (MRV) fee is $205 per applicant — including each H-4 family member — paid before booking the appointment, per the Department of State. Photos, document printing, and travel are extra; there is no separate issuance fee for Indian nationals.",
   },
 ];
 
@@ -103,10 +118,27 @@ export default function Page() {
       <section className="bg-white py-8 sm:py-12">
         <Container>
           <div className="mx-auto max-w-3xl space-y-6">
+            {/* Key takeaways */}
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Skip the trip if you were approved as a <strong>change of status</strong> — you can work without a stamp and only need one to re-enter after travel.</li>
+                <li>• Budget the <strong>$205 DS-160 (MRV) fee</strong> per applicant and complete the DS-160 before booking any appointment, per the Department of State.</li>
+                <li>• Check <strong>dropbox (interview waiver)</strong> eligibility before assuming an interview — a prior visa in the same class within the qualifying window can save weeks.</li>
+                <li>• Carry the full document set — passport (6+ months validity), I-797, DS-160 confirmation, LCA, pay records — missing paperwork is the top 221(g) trigger.</li>
+                <li>• Expect consulate wait times to vary widely by city and season; confirm current slots at Mumbai, Delhi, Hyderabad, Chennai, or Kolkata before booking travel.</li>
+              </ul>
+            </div>
+
             <p className="text-sm leading-relaxed text-ink-700">
-              A common point of confusion: being selected, then approved, does not automatically mean you must rush to
-              India for a visa stamp. Whether you need stamping — and when — depends entirely on how your petition was
-              filed and whether you plan to travel. Get this right and you avoid an unnecessary, risky trip.
+              H1B visa stamping in the USA context actually happens outside the USA — at a US consulate, for Indian
+              applicants usually in India — and it is the step that converts an approved petition into a visa you can
+              travel on. This guide is for workers handling H1B visa stamping after lottery selection and petition
+              approval: whether you need h1b stamping in India at all, the DS-160-to-interview process step by step,
+              h1b dropbox eligibility, the h1b stamping documents checklist, common h1b visa interview questions, and
+              221(g) risk. The single most important fact: an approved <strong>change of status</strong> means you can
+              start working without any stamp — you only need stamping to re-enter the US after international travel.
+              Get this distinction right and you avoid an unnecessary, risky trip.
             </p>
 
             <SectionHeading kicker="First question" id="need">
@@ -145,6 +177,59 @@ export default function Page() {
               Consulate locations for Indians commonly include Mumbai, New Delhi, Hyderabad, Chennai, and Kolkata.
               Appointment availability, wait times, and interview-waiver (dropbox) rules vary by location and year —
               always check current requirements before booking.
+            </p>
+
+            <SectionHeading kicker="Interview waiver" id="dropbox">
+              Who is eligible for the H1B dropbox (interview waiver)?
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              The interview waiver — universally called <strong>dropbox</strong> — lets qualifying applicants submit
+              documents without an in-person interview. Eligibility rules are set by the Department of State and
+              applied per consulate, and they have changed repeatedly — as of 2025 guidance the window generally
+              tightened to renewals in the <strong>same visa class within 12 months</strong> of the prior visa&rsquo;s
+              expiry. Treat the table below as the checklist of what officers look at, and confirm the current rules
+              on the official appointment portal before assuming dropbox.
+            </p>
+            <CompareTable
+              columns={["Factor", "Typically helps dropbox", "Typically forces an interview"]}
+              rows={[
+                ["Prior US visa", "Prior visa in the same class (H-1B renewing H-1B)", "First-ever H-1B stamp"],
+                ["Time since prior visa expired", "Within the current qualifying window (recently 12 months)", "Expired outside the window"],
+                ["Prior refusals / 221(g)", "None", "Any prior refusal usually requires an interview"],
+                ["Biometrics on file", "Ten-prints previously captured", "No prior fingerprints"],
+                ["Age", "Under 14 or over 79 (separate waiver track)", "—"],
+              ]}
+            />
+
+            <SectionHeading kicker="Checklist" id="documents">
+              H1B stamping documents checklist
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Carry originals plus copies, organized — the officer may ask for none of it, but a 221(g) slip for a
+              missing document costs weeks. Employers and attorneys typically prepare the petition set; you assemble
+              the personal set.
+            </p>
+            <CompareTable
+              columns={["Category", "Documents"]}
+              rows={[
+                ["Identity & application", "Passport valid 6+ months with old passports; DS-160 confirmation; appointment letter; MRV fee receipt ($205); one 2x2 photo per specs"],
+                ["Petition", "Original/copy of I-797 approval notice; full I-129 petition copy; certified LCA"],
+                ["Employment proof", "Offer/employment-verification letter; recent pay stubs (2–3 months); latest W-2 or tax transcript if renewing"],
+                ["Third-party placement", "Client letter, statement of work, or vendor letters showing the work location and control"],
+                ["Education", "Degree certificates and transcripts; evaluation if the degree is non-US"],
+              ]}
+            />
+
+            <SectionHeading kicker="Prepare" id="interview-questions">
+              Common H1B visa interview questions
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Most interviews last under five minutes and stick to a familiar script: <em>Who is your employer and
+              what do they do? What is your role and daily work? What is your salary? Where will you work — client
+              site or employer office? What is your highest degree and how does it relate? Have you been to the US
+              before, and on what status?</em> Answer briefly and consistently with the DS-160 and petition — the
+              officer is checking that the person, the paperwork, and the job line up, not testing technical skill.
+              Inconsistent answers about client placement are the most common trigger for extra scrutiny.
             </p>
 
             <SectionHeading kicker="Risk" id="221g">

@@ -4,7 +4,8 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import { ToolIntro } from "@/components/tools/ToolHub";
+import AuthorBioBox from "@/components/AuthorBioBox";
+import { ToolIntro, ReferenceTable } from "@/components/tools/ToolHub";
 import { getToolHubContent } from "@/lib/toolHubContent";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
@@ -27,6 +28,7 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
+  toolArticleJsonLd,
   type FaqItem,
 } from "@/lib/seo";
 
@@ -100,6 +102,13 @@ export default function FbarFatcaCheckerPage() {
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
+    toolArticleJsonLd({
+      path: "/tools/fbar-fatca-checker",
+      headline: tool.seoTitle,
+      description: content.description,
+      datePublished: "2026-06-16",
+      dateModified: content.updated ?? "2026-06-16",
+    }),
     faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
@@ -204,6 +213,53 @@ export default function FbarFatcaCheckerPage() {
           </p>
           <div className="mx-auto mt-8 max-w-3xl">
             <ReturnToIndiaLeadMagnetCard />
+          </div>
+        </Container>
+      </section>
+
+      {/* Threshold reference tables + how the check works + context */}
+      <section className="bg-white py-12 sm:py-16">
+        <Container>
+          <div className="space-y-12">
+            {[...(content.table ? [content.table] : []), ...(content.tables ?? [])].map(
+              (tbl) => (
+                <ReferenceTable key={tbl.caption ?? tbl.headers.join("|")} table={tbl} />
+              )
+            )}
+
+            {content.howItWorks && (
+              <div className="mx-auto max-w-3xl">
+                <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+                  {content.howItWorks.heading}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-700">
+                  {content.howItWorks.body}
+                </p>
+              </div>
+            )}
+
+            {content.connects && (
+              <div className="mx-auto max-w-3xl">
+                <h2 className="text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+                  {content.connects.heading}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-700">
+                  {content.connects.body}
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {content.connects.links.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="inline-flex items-center gap-1 rounded-lg border border-ink-900/10 bg-white px-3 py-1.5 text-xs font-semibold text-brand-600 transition hover:border-brand-300"
+                      >
+                        {l.label} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </Container>
       </section>
@@ -406,6 +462,10 @@ export default function FbarFatcaCheckerPage() {
       <section className="py-12 sm:py-16">
         <Container>
           <ToolFaq items={faq} />
+          <AuthorBioBox
+            className="mt-10"
+            tags={["FBAR & FATCA reporting", "NRI cross-border tax", "US-India compliance"]}
+          />
         </Container>
       </section>
 

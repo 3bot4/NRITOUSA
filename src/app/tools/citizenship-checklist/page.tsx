@@ -15,6 +15,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  toolArticleJsonLd,
   pageMetadata,
 } from "@/lib/seo";
 
@@ -66,6 +67,13 @@ export default function CitizenshipChecklistPage() {
         })),
       })),
     },
+    toolArticleJsonLd({
+      path: "/tools/citizenship-checklist",
+      headline: tool.seoTitle,
+      description: content.description,
+      datePublished: "2026-06-16",
+      dateModified: content.updated ?? "2026-06-16",
+    }),
     faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },

@@ -4,7 +4,10 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import VisaBulletinCategoryStatus from "@/components/VisaBulletinCategoryStatus";
+import VisaBulletinMovementHistory from "@/components/VisaBulletinMovementHistory";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -127,6 +130,7 @@ export default function VisaBulletinChildPage({
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
+              <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
             </div>
           </Container>
         </header>
@@ -138,10 +142,16 @@ export default function VisaBulletinChildPage({
                   comes from the centralized bulletin data, so the evergreen
                   article body below can stay date-free. */}
               {page.category && (
-                <VisaBulletinCategoryStatus
-                  category={page.category}
-                  className="mx-auto mb-8 max-w-[720px]"
-                />
+                <>
+                  <VisaBulletinCategoryStatus
+                    category={page.category}
+                    className="mx-auto mb-8 max-w-[720px]"
+                  />
+                  <VisaBulletinMovementHistory
+                    category={page.category}
+                    className="mb-8"
+                  />
+                </>
               )}
 
               <ArticleBody content={page.content} />
@@ -172,6 +182,15 @@ export default function VisaBulletinChildPage({
                   ← Back to Visa Bulletin Guide
                 </Link>
               </div>
+
+              <AuthorBioBox
+                className="mt-6"
+                tags={[
+                  "Visa bulletin & priority dates",
+                  "Employment-based green cards",
+                  "NRI immigration planning",
+                ]}
+              />
             </div>
           </Container>
         </div>

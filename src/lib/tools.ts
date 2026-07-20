@@ -178,9 +178,9 @@ export const tools: ToolMeta[] = [
       "What can an H-4 EAD spouse actually do? A playful pathfinder to matched work & business ideas, myth-vs-reality answers, an EAD renewal gap calculator, and tappable start-earning / start-a-business checklists.",
     icon: "💍",
     accent: "from-fuchsia-500 to-pink-600",
-    seoTitle: "H-4 EAD: What Work Is Allowed? (2026 Guide)",
+    seoTitle: "H-4 EAD 2026: Processing Time, Renewal & Work Rules",
     seoDescription:
-      "What can an H-4 EAD spouse do — jobs, freelance, LLC, daycare, tiffin? Interactive pathfinder, myth-vs-reality, and an EAD renewal gap calculator.",
+      "H-4 EAD guide: file I-765 up to 180 days early, no automatic extension after Oct 30 2025. Eligibility, processing time, and what work is allowed.",
     status: "live",
   },
   {
@@ -192,9 +192,9 @@ export const tools: ToolMeta[] = [
       "Personalized N-400 naturalization checklist: compute your earliest filing date, find out which civics test applies to you (2025 vs 2008), surface your risk areas, and track every step to the oath.",
     icon: "🦅",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "US Citizenship (N-400) Checklist — 2026",
+    seoTitle: "US Citizenship Checklist 2026: N-400 Documents & Fees",
     seoDescription:
-      "Free N-400 naturalization checklist for green card holders: earliest filing date calculator, the 2025 civics test rule, and documents to gather.",
+      "N-400 citizenship checklist: $760 online fee, 5-year (or 3-year) residence rule, earliest filing date, and the full document list for your interview.",
     status: "live",
   },
   {
@@ -206,9 +206,9 @@ export const tools: ToolMeta[] = [
       "See how many applicants are ahead of you in line from the USCIS I-485 inventory, the current visa bulletin cutoff for your EB category, how far your priority date is behind, and an honest estimated wait range.",
     icon: "🟢",
     accent: "from-emerald-500 to-teal-600",
-    seoTitle: "Green Card Wait Time Tracker for Indians | EB-2 EB-3 India Priority Date 2026",
+    seoTitle: "Green Card Tracker India 2026: EB-2 & EB-3 Wait Time",
     seoDescription:
-      "How long is the India green card wait? Free tracker using USCIS I-485 inventory and visa bulletin Final Action Dates for EB-2 and EB-3 India. No personal info needed.",
+      "Green card wait time for India: track EB-1, EB-2 and EB-3 priority dates against the live visa bulletin and estimate your remaining wait. Free, no signup.",
     status: "live",
   },
   {
@@ -306,9 +306,9 @@ export const tools: ToolMeta[] = [
       "Answer a few questions about your Indian accounts to see whether FBAR or FATCA (Form 8938) may need review — with a document checklist and CPA question list. Educational only.",
     icon: "🧾",
     accent: "from-rose-500 to-pink-600",
-    seoTitle: "FBAR and FATCA Checker for NRIs in the USA",
+    seoTitle: "FBAR vs FATCA 2026: $10,000 and $50,000 Thresholds",
     seoDescription:
-      "Use this educational FBAR and FATCA checker to understand whether India bank accounts, FDs, NRE/NRO, or foreign assets may need review.",
+      "Do you need to file FBAR or FATCA? FBAR at $10,000 combined foreign accounts; Form 8938 at $50,000+. Check both thresholds for your NRE/NRO accounts.",
     status: "live",
     tags: ["tax-compliance"],
   },

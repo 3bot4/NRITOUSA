@@ -3,6 +3,8 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import Newsletter from "@/components/Newsletter";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import SectionHeading from "@/components/SectionHeading";
 import { formatDate } from "@/lib/format";
 import {
@@ -124,6 +126,10 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
+              <ReviewedByline
+                date={page.updated ?? page.date}
+                className="mt-4"
+              />
             </div>
           </Container>
         </header>
@@ -186,6 +192,15 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
                   </Link>
                 </div>
               )}
+
+              <AuthorBioBox
+                className="mt-6"
+                tags={[
+                  "Indian passport & VFS process",
+                  "NRI documentation",
+                  "US immigration timelines",
+                ]}
+              />
             </div>
           </Container>
         </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import UscisStatusTool from "@/components/tools/UscisStatusTool";
 import {
   pageMetadata,
@@ -20,10 +22,9 @@ const UPDATED = "2026-06-16";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title:
-      "USCIS Case Status Meaning for Indians | H1B, I-140, I-485, EAD",
+    title: "USCIS Case Status Meaning 2026: Every Message Decoded",
     description:
-      "Understand common USCIS case status messages in simple language for H1B, I-140, I-485, EAD, Advance Parole, green card and Indian applicants.",
+      "Decode every USCIS case status message: check it with your 13-character receipt number at egov.uscis.gov. What each status means and when to worry.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },
@@ -294,8 +295,7 @@ export default function UscisStatusHubPage() {
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">
-                USCIS Case Status Explained for Indians: H1B, I&#8209;140,
-                I&#8209;485, EAD &amp; Green Card
+                USCIS Case Status Meaning 2026: What Every Message Means
               </h1>
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 Plain-English guide to every common USCIS case status — what it
@@ -303,6 +303,7 @@ export default function UscisStatusHubPage() {
                 H1B workers, green card applicants, EAD holders, and Indian
                 immigrants.
               </p>
+              <ReviewedByline date={UPDATED} className="mt-4" />
             </div>
           </Container>
         </header>
@@ -313,7 +314,7 @@ export default function UscisStatusHubPage() {
 
               {/* ── Quick Answer ──────────────────────────────────────────── */}
               <section>
-                <h2 className="text-xl font-bold text-ink-900 mb-3">Quick answer</h2>
+                <h2 className="text-xl font-bold text-ink-900 mb-3">Quick Answer</h2>
                 <div className="rounded-2xl border border-blue-100 bg-blue-50/40 p-5 text-sm leading-relaxed text-ink-800">
                   <p>
                     Your USCIS case status is the current stage of your petition or
@@ -339,6 +340,32 @@ export default function UscisStatusHubPage() {
                     means your green card is on its way.
                   </p>
                 </div>
+
+                {/* Key takeaways */}
+                <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+                  <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                    <li>• Check status with the <strong>13-character receipt number</strong> from your I-797 (for example LIN2412345678 or IOE0123456789) at egov.uscis.gov — no login required.</li>
+                    <li>• Treat <strong>&quot;Case Was Received&quot;</strong> and <strong>&quot;Actively Reviewed&quot;</strong> as normal — many cases sit in Actively Reviewed for months with no update.</li>
+                    <li>• Act immediately on <strong>&quot;Request for Evidence Was Sent&quot;</strong> — RFE deadlines are typically <strong>87 days</strong>, and missing one usually means denial.</li>
+                    <li>• Only file a service request after your case passes the <strong>posted outside-normal-processing-time date</strong> on the USCIS processing times page.</li>
+                    <li>• Create a <strong>myUSCIS account</strong> and add your receipt number for email/text alerts instead of refreshing the status page daily.</li>
+                  </ul>
+                </div>
+
+                {/* Opening keyword paragraph */}
+                <p className="mt-5 text-base leading-relaxed text-ink-700">
+                  Your USCIS case status is the one-line message USCIS shows for each pending petition, and
+                  learning to read it saves a lot of unnecessary worry. This guide is written for H-1B
+                  workers, I-140 and I-485 filers, EAD and Advance Parole applicants, and family petitioners
+                  — anyone who wants to check their USCIS case status and know what the wording actually
+                  signals. The most important thing to understand: most statuses are routine adjudication
+                  stages, and only a few (Request for Evidence, Notice of Intent to Deny, Case Was Rejected)
+                  demand action from you. Below you&apos;ll find how to check your USCIS case status with a
+                  receipt number, what each status message means form by form, why a case status may not be
+                  updating, how myUSCIS account alerts work, and when a case is genuinely delayed enough to
+                  contact USCIS.
+                </p>
               </section>
 
               {/* ── Tool Widget ───────────────────────────────────────────── */}
@@ -412,6 +439,53 @@ export default function UscisStatusHubPage() {
                     </tbody>
                   </table>
                 </div>
+              </section>
+
+              {/* ── Response deadlines table ──────────────────────────────── */}
+              <section>
+                <h2 className="text-xl font-bold text-ink-900 mb-3">
+                  How Long Do You Have to Respond? USCIS Deadlines
+                </h2>
+                <p className="mb-4 text-sm leading-relaxed text-ink-700">
+                  Only a few statuses start a clock, but those clocks are unforgiving — missing one
+                  usually means denial and refiling. Deadlines below are the standard maximums USCIS
+                  sets; your actual notice always states the controlling date, so go by the notice.
+                </p>
+                <div className="overflow-x-auto rounded-2xl border border-ink-900/5">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-ink-50 text-left text-xs font-semibold uppercase tracking-wide text-ink-500">
+                        <th className="px-4 py-3">If your status says</th>
+                        <th className="px-4 py-3">Typical deadline</th>
+                        <th className="px-4 py-3 hidden sm:table-cell">What happens if you miss it</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["Request for Evidence Was Sent", "Up to 87 days", "Case decided on the existing record — usually denied"],
+                        ["Notice of Intent to Deny (NOID)", "Typically 30 days", "Denial is issued as proposed"],
+                        ["Notice of Intent to Revoke (NOIR)", "Typically 30 days", "Prior approval is revoked"],
+                        ["Biometrics appointment notice", "Attend on the scheduled date", "Case may be denied for abandonment"],
+                        ["Interview notice", "Attend on the scheduled date", "Case may be denied for abandonment"],
+                        ["Case Was Rejected", "Refile — no deadline", "No case exists; fee is returned, filing date is lost"],
+                      ].map((row, i) => (
+                        <tr
+                          key={row[0]}
+                          className={`border-t border-ink-900/5 ${i % 2 === 0 ? "bg-white" : "bg-ink-50/30"}`}
+                        >
+                          <td className="px-4 py-3 font-medium text-ink-900">{row[0]}</td>
+                          <td className="px-4 py-3 font-semibold text-ink-800">{row[1]}</td>
+                          <td className="hidden px-4 py-3 text-ink-600 sm:table-cell">{row[2]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs text-ink-500">
+                  Per USCIS. Response windows are set in the notice itself and can be shorter — read
+                  the deadline printed on your Form I-797 and count from the notice date, not the day
+                  you received it.
+                </p>
               </section>
 
               {/* ── Status deep-dives ─────────────────────────────────────── */}
@@ -522,6 +596,42 @@ export default function UscisStatusHubPage() {
               </section>
 
               {/* ── Disclaimer footer ─────────────────────────────────────── */}
+              {/* ── How this connects ─────────────────────────────────────── */}
+              <section>
+                <h2 className="text-xl font-bold text-ink-900 mb-3">
+                  How case status connects to the rest of your case
+                </h2>
+                <p className="text-sm leading-relaxed text-ink-700">
+                  A status message only makes sense next to the two numbers behind it. The first is your{" "}
+                  <Link href="/uscis/receipt-number" className="font-semibold text-brand-600 underline">
+                    receipt number
+                  </Link>
+                  , which encodes the service center handling your case — and service centers move at very
+                  different speeds, so compare against the posted{" "}
+                  <Link href="/uscis/processing-times" className="font-semibold text-brand-600 underline">
+                    USCIS processing times
+                  </Link>{" "}
+                  before assuming anything is stuck. The second is your{" "}
+                  <Link href="/visa-bulletin/priority-date" className="font-semibold text-brand-600 underline">
+                    priority date
+                  </Link>
+                  : for Indian applicants an approved I-140 is not a finish line, because the{" "}
+                  <Link href="/i485-processing-time" className="font-semibold text-brand-600 underline">
+                    I-485 stage
+                  </Link>{" "}
+                  cannot begin until the visa bulletin lets it. If your case is consular rather than
+                  adjustment-based, the equivalent tracker is{" "}
+                  <Link href="/nvc-case-status" className="font-semibold text-brand-600 underline">
+                    NVC case status
+                  </Link>{" "}
+                  in CEAC, not USCIS.
+                </p>
+              </section>
+
+              <AuthorBioBox
+                tags={["USCIS case processing", "Receipt numbers & RFEs", "Green card stages"]}
+              />
+
               <div className="rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">A quick note: </strong>
                 This guide is educational and reflects general information, not

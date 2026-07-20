@@ -15,9 +15,9 @@ const PAGE_PATH = "/h1b-lottery-chances";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Lottery Chances 2026/2027: How Selection Odds Really Work",
+    title: "H1B Lottery Chances 2027: Odds by Year & Wage Level",
     description:
-      "How H1B lottery odds actually work: the 85,000 cap, registrations vs selections, the U.S. master's advantage, beneficiary-centric selection, and what Indian applicants can (and can't) do to improve their chances.",
+      "H1B lottery chances: ~35% selected in FY 2026, ~25% in FY 2024. Year-by-year odds, FY 2027 wage-weighted rules, and the master's advantage.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -56,6 +56,21 @@ const faqs: FaqItem[] = [
     question: "Is there any legitimate way to increase my chances?",
     answer:
       "Under the FY 2027 wage-weighted selection, a genuinely higher OEWS wage level gives you more weighted entries (Level I = 1 up to Level IV = 4). Beyond that, the legitimate levers are earning a qualifying U.S. master's degree (to access the advanced-degree cap) and giving yourself more attempts over time by staying in valid status (for example via STEM OPT). Wage level must reflect a real role and salary — avoid anyone promising 'guaranteed' selection, which is a scam. You can estimate your odds with our H-1B lottery chance calculator.",
+  },
+  {
+    question: "What are the chances of H1B selection in 2027?",
+    answer:
+      "It depends on your wage level for the first time: FY 2027's wage-weighted draw gives a Level IV role about 4x the entries of a Level I role. For context, the published selection rate was roughly 35% of eligible registrations in FY 2026 and about 25% in the peak-volume FY 2024 season. USCIS publishes FY 2027's actual numbers after the cycle — use the H-1B lottery chance calculator to model your profile.",
+  },
+  {
+    question: "What is the H1B selection rate history?",
+    answer:
+      "Approximate selection rates from USCIS data: ~45% in FY 2021, ~43% in FY 2022, ~26% in FY 2023, ~25% in FY 2024, ~29% in FY 2025 (the first beneficiary-centric year), and ~35% in FY 2026. The rate rises when duplicate registrations fall or volume drops, since the 85,000-visa cap is fixed.",
+  },
+  {
+    question: "Will there be a second H1B lottery in 2027?",
+    answer:
+      "Nobody knows in advance — USCIS runs a second selection only if petition filings fall short of the 85,000 cap, as happened in FY 2021, FY 2022, FY 2024, and FY 2025. A second round pulls from the same Submitted pool automatically, so there is nothing extra to file. Historically it adds only a few percentage points to the year's overall odds.",
   },
 ];
 
@@ -151,6 +166,71 @@ export default function Page() {
               individual&rsquo;s selection probability drops. That is why odds &ldquo;feel&rdquo; worse in some years:
               the cap didn&rsquo;t shrink, the weighted pool of applicants grew. USCIS publishes the registration and
               selection counts after each cycle, so you can see the ratio for any given year.
+            </p>
+
+            <SectionHeading kicker="History" id="rate-history">
+              H1B selection rate history, year by year
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              The best predictor of what &ldquo;your chances&rdquo; feel like is the published ratio of selections to
+              eligible registrations. Two structural shifts show up clearly: beneficiary-centric selection (FY 2025)
+              removed duplicate entries and roughly <strong>halved the pool</strong>, and wage-weighting (FY 2027)
+              makes the rate depend on your wage level for the first time. Figures are rounded from USCIS cap-season
+              announcements.
+            </p>
+            <CompareTable
+              columns={["Cap season", "Eligible registrations", "Selected (all rounds)", "Approx. selection rate"]}
+              rows={[
+                ["FY 2021 (Mar 2020)", "~274,000", "~124,400", "~45%"],
+                ["FY 2022 (Mar 2021)", "~309,000", "~131,900", "~43%"],
+                ["FY 2023 (Mar 2022)", "~484,000", "~127,600", "~26%"],
+                ["FY 2024 (Mar 2023)", "~759,000", "~188,400", "~25%"],
+                ["FY 2025 (Mar 2024)", "~470,000", "~134,000", "~29%"],
+                ["FY 2026 (Mar 2025)", "~344,000", "~118,700", "~35%"],
+              ]}
+            />
+
+            <SectionHeading kicker="FY 2027" id="chances-2027">
+              What are the chances of H1B selection in 2027?
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              For the FY 2027 season there is no single answer anymore — your rate depends on your{" "}
+              <strong>OEWS wage level</strong>, because each registration now carries weighted entries. If overall
+              volume stays near recent seasons (~340k–470k eligible registrations for ~85,000 visas), a Level IV role
+              holds roughly <strong>4x the entries</strong> of a Level I role in the same draw. The realistic planning
+              bands:
+            </p>
+            <CompareTable
+              columns={["Your profile (FY 2027)", "Relative entries", "Practical read"]}
+              rows={[
+                ["Level I wage, bachelor's only", "1x, one draw", "Lowest band — plan a strong backup (STEM OPT, cap-exempt)"],
+                ["Level II wage, bachelor's only", "2x, one draw", "Around the pool average"],
+                ["Level III–IV wage", "3–4x, one draw", "Meaningfully above average"],
+                ["Any level + U.S. master's", "Same entries, two draws", "Adds the 20,000 advanced-degree second draw"],
+              ]}
+            />
+            <p className="text-xs text-ink-500">
+              Model your own numbers — wage level, master&rsquo;s cap, volume scenario, and multi-year attempts — with
+              the{" "}
+              <Link href="/h1b-lottery-chance-calculator" className="font-semibold text-orange-600 underline">
+                H-1B lottery chance calculator
+              </Link>
+              . This page is the explainer; the calculator is the tool.
+            </p>
+
+            <SectionHeading kicker="Second round" id="second-lottery">
+              Will a second lottery improve your 2027 chances?
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Sometimes there is a second draw: if petition filings fall short of the cap, USCIS re-selects from the
+              same Submitted pool — it happened in FY 2021, FY 2022, FY 2024, and FY 2025, but not every year, and
+              it is never pre-announced. A second round typically adds only a few percentage points (FY 2025&rsquo;s
+              added ~13,600 selections against a ~350k unselected pool). Keep your registration&rsquo;s status
+              visible and read{" "}
+              <Link href="/h1b-second-lottery" className="font-semibold text-orange-600 underline">
+                will there be a second H-1B lottery?
+              </Link>{" "}
+              — but never build your plan around one.
             </p>
 
             <SectionHeading kicker="The advantage" id="masters">

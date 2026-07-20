@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import RelatedHubs, { type HubKey } from "@/components/RelatedHubs";
 import {
   breadcrumbJsonLd,
@@ -290,9 +292,9 @@ export function H1bLotteryShell({
             <h1 className="text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">{h1}</h1>
             <div className="mt-3 text-lg leading-relaxed text-ink-600">{intro}</div>
             <p className="mt-2 text-xs text-ink-400">
-              Updated {lotteryUpdatedLabel}
-              {readingTime ? ` · ${readingTime}` : ""} · Reviewed each cap season
+              {readingTime ? `${readingTime} · ` : ""}Reviewed each cap season
             </p>
+            <ReviewedByline date={LOTTERY_UPDATED} className="mt-3" />
             {quickAnswer ? (
               <div className="mt-6">
                 <QuickAnswer question={quickAnswer.question}>{quickAnswer.answer}</QuickAnswer>
@@ -313,6 +315,16 @@ export function H1bLotteryShell({
             </h2>
             <FaqList faqs={faqs} />
           </div>
+        </Container>
+      </section>
+
+      {/* author bio */}
+      <section className="bg-ink-50/40 pb-10">
+        <Container>
+          <AuthorBioBox
+            className="max-w-3xl"
+            tags={["H-1B lottery & cap season", "US work visas", "Immigrant career planning"]}
+          />
         </Container>
       </section>
 

@@ -16,9 +16,9 @@ const PAGE_PATH = "/h1b-lottery-results";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Lottery Results 2026/2027: How to Check Status, Selection Meaning, and Next Steps",
+    title: "H1B Lottery Results FY 2027: Dates, Status & Next Steps",
     description:
-      "Learn how to check H1B lottery results, what selected or not selected means, second lottery chances, next steps after selection, and options for F-1 OPT, STEM OPT, H-4, and immigrant families.",
+      "H1B lottery results FY 2027: late-March release, ~35% selection rate last season, what Selected/Submitted mean, second-round odds, and next steps.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -151,6 +151,8 @@ export default function H1bLotteryResultsPage() {
             <div className="flex flex-wrap gap-2">
               {[
                 { id: "summary", label: "Quick summary" },
+                { id: "dates", label: "FY 2027 dates" },
+                { id: "selection-rate", label: "Selection rate" },
                 { id: "how-to-check", label: "How to check" },
                 { id: "status-meaning", label: "Status meaning" },
                 { id: "selected", label: "If selected" },
@@ -199,6 +201,62 @@ export default function H1bLotteryResultsPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* FY2027 dates + selection rates */}
+      <section className="bg-white py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-3xl space-y-5">
+            <SectionHeading id="dates" kicker="Timeline">
+              When do H1B lottery results come out? (FY 2027 dates)
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Initial results land in <strong>late March</strong>, days after the registration window closes — USCIS
+              then notifies employers on a rolling basis. The FY 2027 season follows the standard cap calendar:
+            </p>
+            <CompareTable
+              columns={["Milestone", "FY 2027 timing"]}
+              rows={[
+                ["Registration window", "Early–mid March 2026, per the USCIS announcement"],
+                ["Initial selection results", "Late March – early April 2026, in employer USCIS accounts"],
+                ["Petition filing window opens", "April 1, 2026 — at least 90 days to file Form I-129"],
+                ["Possible second-round selection", "Historically July–August, only if the cap isn't reached — never guaranteed"],
+                ["Earliest H-1B start date", "October 1, 2026 (the first day of FY 2027)"],
+              ]}
+            />
+
+            <SectionHeading id="selection-rate" kicker="The odds">
+              H1B lottery selection rate by year
+            </SectionHeading>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Selection rates swing with registration volume — and they improved sharply after USCIS moved to
+              beneficiary-centric selection in FY 2025, which collapsed duplicate registrations. Figures below are
+              from USCIS-published registration data (rounded); FY 2027 adds wage-weighted selection, so per-person
+              odds now also depend on OEWS wage level.
+            </p>
+            <CompareTable
+              columns={["Cap season", "Eligible registrations", "Selected (all rounds)", "Approx. rate"]}
+              rows={[
+                ["FY 2024 (Mar 2023)", "~759,000", "~188,400", "~25%"],
+                ["FY 2025 (Mar 2024)", "~470,000", "~134,000", "~29%"],
+                ["FY 2026 (Mar 2025)", "~344,000", "~118,700", "~35%"],
+                ["FY 2027 (Mar 2026)", "Per USCIS announcement", "First wage-weighted year", "See calculator below"],
+              ]}
+            />
+            <p className="text-xs text-ink-500">
+              Source: USCIS H-1B cap season announcements and registration data. Estimate your own FY 2027 odds with
+              the{" "}
+              <Link href="/h1b-lottery-chance-calculator" className="font-semibold text-orange-600 underline">
+                H-1B lottery chance calculator
+              </Link>{" "}
+              or read{" "}
+              <Link href="/h1b-lottery-chances" className="font-semibold text-orange-600 underline">
+                how the odds actually work
+              </Link>
+              .
+            </p>
           </div>
         </Container>
       </section>

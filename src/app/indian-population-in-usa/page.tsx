@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import IndianPopulationExplorer from "@/components/IndianPopulationExplorer";
 import {
   pageMetadata,
@@ -48,9 +50,9 @@ import {
 
 const PATH = "/indian-population-in-usa";
 const TITLE =
-  "How Many Indians Live in America? Indian Population in USA by State";
+  "Indian Population in USA 2026: 4.9 Million by State";
 const DESC =
-  "See how many Indians live in America, where Indian Americans live by state and city, income levels, occupations, education, visa status, student trends, and economic contribution to the U.S.";
+  "About 4.9 million people of Indian origin live in the USA. Population by state and metro, income, jobs, visa status, and growth data with sources.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -269,9 +271,7 @@ export default function Page() {
               {majorMetros.join(" · ")}
             </p>
           </div>
-          <p className="mt-3 text-xs text-ink-400">
-            Last updated: {INDIAN_POP_UPDATED_HUMAN}
-          </p>
+          <ReviewedByline date={INDIAN_POP_UPDATED} className="mt-4" />
         </Container>
       </header>
 
@@ -337,6 +337,18 @@ export default function Page() {
                 Institute, USCIS, Open Doors/IIE, and U.S. Census ACS tables where
                 available.
               </p>
+            </div>
+
+            {/* Key takeaways */}
+            <div className="mt-6 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• Count on roughly <strong>4.9 million</strong> people of Indian origin in the US (Pew, 2021–2023 ACS analysis); the 2020 Census recorded <strong>4,397,737</strong> "Asian Indian alone."</li>
+                <li>• Look to <strong>California, Texas, and New Jersey</strong> first — the three states with the highest Indian populations, led by metros like the Bay Area, NYC/NJ, and Dallas–Fort Worth.</li>
+                <li>• Expect a young, high-earning profile: Indian American median household income sits far above the US median in ACS data.</li>
+                <li>• Remember the mix: the community spans US citizens, green card holders, <strong>H-1B workers</strong> (Indians receive the largest share of H-1B approvals), and <strong>330,000+</strong> Indian students.</li>
+                <li>• Treat every figure as an estimate with a stated source and year — definitions ("alone" vs "in combination") change the totals by hundreds of thousands.</li>
+              </ul>
             </div>
           </div>
         </Container>
@@ -772,6 +784,11 @@ export default function Page() {
               <p className="text-xs text-ink-400">Last updated: {INDIAN_POP_UPDATED_HUMAN}</p>
             </div>
           </div>
+
+          <AuthorBioBox
+            className="mt-6"
+            tags={["US immigration data", "Indian diaspora research", "Census & ACS sources"]}
+          />
 
           <div className="mx-auto mt-8 max-w-4xl">
             <h2 className="text-lg font-bold text-ink-900">Related guides</h2>

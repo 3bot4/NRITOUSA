@@ -9,6 +9,8 @@ import RenewalReasonCards from "@/components/tools/RenewalReasonCards";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
+import ReviewedByline from "@/components/ReviewedByline";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import SoftCta from "@/components/SoftCta";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 import {
@@ -52,12 +54,12 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const GUIDE: { h: string; body: string }[] = [
-  { h: "What is green card renewal?", body: "Green card renewal is the process of getting a new Permanent Resident Card when your current 10-year card is expiring or has expired. It does not change your status — it updates the physical card that proves you are a lawful permanent resident. Most people renew using Form I-90." },
-  { h: "Who should file Form I-90?", body: "Form I-90 is generally for lawful permanent residents with a 10-year card that is expiring or expired, or whose card is lost, stolen, damaged, has incorrect information, or whose name has legally changed. It is also used when a card was never received." },
-  { h: "Who should not file Form I-90?", body: "Conditional permanent residents with a 2-year card usually should not use Form I-90 to remove conditions. Marriage-based conditional residents generally file Form I-751, and EB-5 investor conditional residents generally file Form I-829. Filing the wrong form can cause serious delays." },
-  { h: "Green card renewal vs replacement", body: "Renewal usually refers to getting a new card when a 10-year card expires. Replacement usually refers to a lost, stolen, damaged, or incorrect card. Both are typically handled on Form I-90, but the reason you select affects the evidence and, sometimes, the fee." },
-  { h: "Green card renewal documents", body: "A simple renewal may need little beyond your application, while a name change requires legal name-change evidence and a USCIS-error correction may require different documentation. Keep a clear copy or photo of your current card. Always follow the official Form I-90 instructions for your specific reason." },
-  { h: "How to renew green card online", body: "Many residents file Form I-90 online by creating a free USCIS account, completing the form, uploading any required evidence, paying the fee, and submitting. Online filing usually makes it easier to upload documents and track the case. Some situations may still require mail filing." },
+  { h: "What Is Green Card Renewal?", body: "Green card renewal is the process of getting a new Permanent Resident Card when your current 10-year card is expiring or has expired. It does not change your status — it updates the physical card that proves you are a lawful permanent resident. Most people renew using Form I-90." },
+  { h: "Who Should File the I-90 Form for Green Card Renewal?", body: "Form I-90 is generally for lawful permanent residents with a 10-year card that is expiring or expired, or whose card is lost, stolen, damaged, has incorrect information, or whose name has legally changed. It is also used when a card was never received." },
+  { h: "Who Should Not File Form I-90?", body: "Conditional permanent residents with a 2-year card usually should not use Form I-90 to remove conditions. Marriage-based conditional residents generally file Form I-751, and EB-5 investor conditional residents generally file Form I-829. Filing the wrong form can cause serious delays." },
+  { h: "Renew vs Replace a Permanent Resident Card: What's the Difference?", body: "Renewal usually refers to getting a new card when a 10-year card expires. Replacement usually refers to a lost, stolen, damaged, or incorrect card. Both are typically handled on Form I-90, but the reason you select affects the evidence and, sometimes, the fee." },
+  { h: "What Documents Do You Need for Green Card Renewal?", body: "A simple renewal may need little beyond your application, while a name change requires legal name-change evidence and a USCIS-error correction may require different documentation. Keep a clear copy or photo of your current card. Always follow the official Form I-90 instructions for your specific reason." },
+  { h: "How Do You Renew a Green Card Online?", body: "Many residents file Form I-90 online by creating a free USCIS account, completing the form, uploading any required evidence, paying the fee ($415 online as last verified), and submitting. Online filing usually makes it easier to upload documents and track the case. Some situations may still require mail filing." },
   { h: "What happens after filing I-90", body: "USCIS issues a receipt notice (Form I-797C). For eligible renewal applicants, that notice may extend green card validity. USCIS may schedule biometrics or reuse prior biometrics, review the application, possibly request more evidence, and — if approved — produce and mail the new card." },
   { h: "Biometrics for green card renewal", body: "USCIS may require a biometrics appointment for fingerprints, photo, and signature, or it may reuse previous biometrics. Watch for an appointment notice or a reuse notice in your USCIS account. Completing biometrics is a routine step and does not by itself mean approval is imminent." },
   { h: "Receipt notice and temporary proof", body: "USCIS has announced a validity extension (up to 36 months) for eligible I-90 renewals. The receipt notice, presented with your expired card, may serve as temporary evidence of status. Keep the notice with your card and follow USCIS instructions. If you need urgent proof, ask about an ADIT/I-551 stamp." },
@@ -105,18 +107,54 @@ export default function Page() {
         sourceNote={<>Last updated: {GC_RENEWAL_UPDATED_HUMAN}. {C.sourceNote}</>}
         disclaimerExtra={<p>{GC_RENEWAL_DISCLAIMER}</p>}
       >
+        {/* Byline row */}
+        <section className="pt-5">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <ReviewedByline date={GC_RENEWAL_UPDATED} />
+            </div>
+          </Container>
+        </section>
+
         {/* Quick answer */}
         <section className="pt-6">
           <Container>
             <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card sm:p-6">
               <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Do You Renew a Green Card?</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                Most lawful permanent residents renew or replace a 10-year green card by filing <strong>Form I-90</strong> with USCIS. You may need Form I-90 if your card is expired, expiring, lost, stolen, damaged, has incorrect information, or your name changed. Conditional permanent residents with a 2-year card usually should <strong>not</strong> use Form I-90 to remove conditions; they generally need Form I-751 or I-829 depending on the case.
+                Most lawful permanent residents renew or replace a 10-year green card by filing <strong>Form I-90</strong> with USCIS — <strong>$415 online / $465 by paper</strong> as last verified — and a practical planning range for processing is about <strong>8–14 months</strong>. Your I-797 receipt notice extends an eligible expiring card&apos;s validity (currently by up to <strong>36 months</strong>) while the case runs. Conditional permanent residents with a 2-year card usually should <strong>not</strong> use Form I-90 to remove conditions; they generally need Form I-751 or I-829 depending on the case.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <a href="#green-card-renewal-tool" className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-emerald-700">Use the checklist tool →</a>
                 <a href={S.formI90} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-ink-900/10 bg-white px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:border-emerald-300">Form I-90 ↗</a>
               </div>
+            </div>
+
+            {/* Key takeaways */}
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
+                <li>• File Form I-90 <strong>within 6 months</strong> of your card&apos;s expiration date — earlier filing risks rejection, later filing risks proof-of-status gaps.</li>
+                <li>• Budget <strong>$415 online / $465 paper</strong> for the I-90 fee, per the USCIS Fee Schedule (G-1055).</li>
+                <li>• Plan around <strong>8–14 months</strong> of processing and rely on the receipt notice&apos;s <strong>36-month</strong> validity extension in the meantime.</li>
+                <li>• Never file I-90 for a <strong>2-year conditional card</strong> — marriage-based cases file Form I-751 in the 90 days before expiry.</li>
+                <li>• Renew online through a free USCIS account for the lower fee, document uploads, and case tracking.</li>
+              </ul>
+            </div>
+
+            {/* Opening keyword paragraph */}
+            <div className="mx-auto mt-6 max-w-3xl">
+              <p className="text-base leading-relaxed text-ink-700">
+                Green card renewal is the Form I-90 process that replaces an expiring or expired 10-year
+                Permanent Resident Card — and this guide walks through every step of how to renew a green card
+                in 2026. It is written for lawful permanent residents renewing on time, catching up on an
+                already-expired card, or replacing a lost or damaged one, whether you file the green card
+                renewal online or by mail. The single most important number: file within <strong>6 months of
+                expiry</strong> and expect roughly <strong>8–14 months</strong> of processing, bridged by the
+                receipt notice&apos;s 36-month extension. Below: the full timeline stage by stage, the I-90 form
+                and fee, who should <em>not</em> use I-90, documents by situation, online filing steps, what
+                happens after you file, and a 60-second checklist tool personalized to your case.
+              </p>
             </div>
           </Container>
         </section>
@@ -185,6 +223,21 @@ export default function Page() {
             <div className="mx-auto mt-6 max-w-3xl">
               <GreenCardRenewalChecker />
             </div>
+
+            {/* How this calculation works */}
+            <div className="mx-auto mt-8 max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">How this checklist is calculated</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                The checker maps your answers onto the official Form I-90 rules rather than doing any
+                prediction: your card type decides the form (10-year card → I-90; 2-year conditional card →
+                I-751/I-829), your reason (expiring, expired, lost, damaged, wrong data, name change) selects
+                the evidence list from the Form I-90 instructions, and your timing sets the urgency level —
+                inside the 6-month renewal window, already expired, or expired with travel booked. Fee figures
+                come from the same verified table used across this site ($415 online / $465 paper, as last
+                verified), and the timeline estimate reflects the 8–14 month planning range with the 36-month
+                receipt extension. It stores nothing and always links to USCIS to confirm before you file.
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -192,11 +245,10 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-white py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Green card renewal, explained in detail</h2>
-              <div className="mt-5 space-y-5">
+              <div className="space-y-6">
                 {GUIDE.map((g) => (
                   <div key={g.h}>
-                    <h3 className="text-base font-bold text-ink-900">{g.h}</h3>
+                    <h2 className="text-lg font-bold text-ink-900">{g.h}</h2>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{g.body}</p>
                   </div>
                 ))}
@@ -248,6 +300,10 @@ export default function Page() {
         <section className="pb-12">
           <Container>
             <AuthorReviewLine lastUpdated={GC_RENEWAL_UPDATED_HUMAN} />
+            <AuthorBioBox
+              className="mt-6 max-w-3xl"
+              tags={["USCIS forms & timelines", "Green card renewal", "Immigrant family planning"]}
+            />
           </Container>
         </section>
       </ToolFirstLayout>

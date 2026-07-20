@@ -29,6 +29,7 @@ import {
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
+  toolArticleJsonLd,
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -96,6 +97,13 @@ export default function GreenCardTrackerPage() {
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-US",
     },
+    toolArticleJsonLd({
+      path: "/tools/green-card-tracker",
+      headline: tool.seoTitle,
+      description: content.description,
+      datePublished: "2026-06-16",
+      dateModified: content.updated ?? "2026-06-16",
+    }),
     faqJsonLd(faq),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },

@@ -390,6 +390,42 @@ export function successStoryArticleJsonLd(opts: {
   };
 }
 
+/**
+ * Article schema for a tool/calculator hub page. Tool pages carry both a
+ * SoftwareApplication node (the tool itself) and this Article node (the
+ * surrounding guide content), so the guide has an author and a dateModified
+ * wired to the content's verified date — never hardcoded at the call site.
+ */
+export function toolArticleJsonLd(opts: {
+  path: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  const url = absoluteUrl(opts.path);
+  return {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: opts.headline,
+    description: opts.description,
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified,
+    author: {
+      "@type": "Person",
+      "@id": `${absoluteUrl("/about-deepak")}#person`,
+      name: "Deepak Middha",
+      jobTitle: "Founder & Author",
+      url: absoluteUrl("/about-deepak"),
+    },
+    publisher: { "@id": `${site.url}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+  };
+}
+
 /** Wrap one or more schema nodes into a single @graph document. */
 export function jsonLdGraph(...nodes: object[]) {
   return {

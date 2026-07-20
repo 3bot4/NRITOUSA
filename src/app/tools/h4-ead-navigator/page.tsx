@@ -10,6 +10,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
   jsonLdGraph,
+  toolArticleJsonLd,
   pageMetadata,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -55,6 +56,13 @@ export default function H4EadNavigatorPage() {
       inLanguage: "en-US",
     },
     howTo,
+    toolArticleJsonLd({
+      path: "/tools/h4-ead-navigator",
+      headline: tool.seoTitle,
+      description: content.description,
+      datePublished: "2026-06-16",
+      dateModified: content.updated ?? "2026-06-16",
+    }),
     faqJsonLd(content.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
