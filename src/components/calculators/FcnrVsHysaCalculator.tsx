@@ -680,58 +680,19 @@ export default function FcnrVsHysaCalculator() {
         </ul>
       </div>
 
-      {/* FAQ schema block (hidden, for SEO) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Is FCNR interest taxable in the USA?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes. FCNR interest earned by a US resident or citizen is taxable as ordinary income in the USA at your marginal federal rate, plus any applicable state income tax. It is exempt from Indian tax under FEMA.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Is FCNR better than a US high-yield savings account?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "It depends on the current rate differential and your tax bracket. When FCNR rates exceed HYSA rates, FCNR wins on after-tax yield. Use this calculator to compare your specific numbers.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What is the current FCNR interest rate for USD?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "As of mid-2026, major Indian banks offer around 5.40–5.60% p.a. on USD FCNR deposits. SBI and HDFC are at 5.50%, Axis at 5.60%, ICICI at 5.40%. Rates change monthly — verify directly with your bank.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Do I need to file FBAR for an FCNR account?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes. An FCNR account at an Indian bank is a foreign financial account. If your total foreign account balances exceed $10,000 at any point during the year, you must file FinCEN Form 114 (FBAR) annually by April 15.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What happens if I withdraw FCNR before maturity?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "If you close an FCNR deposit before one year, you earn zero interest. After one year but before maturity, a 1% penalty is applied to the contracted interest rate.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
+      {/* No FAQPage schema is emitted here.
+       *
+       * This component previously injected a second, hidden FAQPage block —
+       * five questions that appeared nowhere in the rendered page. Google
+       * requires FAQPage content to be visible to the user, so hidden markup
+       * risks losing the rich result or drawing a manual action, and the page
+       * was also emitting two competing FAQPage nodes at once.
+       *
+       * The page's real FAQ lives in calculatorContent.ts ("fcnr-vs-hysa"),
+       * is rendered by CalculatorDeepDive, and is serialized to schema by
+       * calculators/[slug]/page.tsx — visible and machine-readable stay in
+       * sync by construction. Add new FAQs there, never here.
+       */}
     </div>
   );
 }
