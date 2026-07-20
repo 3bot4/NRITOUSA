@@ -24,7 +24,7 @@ const entries: ToolEntry[] = [
   { name: "RNOR & Tax Residency", benefit: "Are you NRI, RNOR, or ROR for India tax?", href: "/calculators/rnor-tax-residency", cat: "money", icon: "scale" },
   { name: "India Property Capital Gains", benefit: "Tax, TDS & repatriation on a property sale", href: "/calculators/india-property-capital-gains", cat: "money", icon: "home" },
   { name: "Backdoor Roth Eligibility", benefit: "Check eligibility and the pro-rata trap", href: "/calculators/backdoor-roth-eligibility", cat: "money", icon: "dollar" },
-  { name: "Rent vs Buy (Visa)", benefit: "Tied to your real US visa horizon", href: "/calculators/rent-vs-buy-visa", cat: "docs", icon: "home" },
+  { name: "Rent vs Buy (Visa)", benefit: "Tied to your real US visa horizon", href: "/calculators/rent-vs-buy-immigrant", cat: "docs", icon: "home" },
   { name: "Visa-Free Travel", benefit: "Where an Indian passport goes without a visa", href: "/tools/visa-free-countries", cat: "travel", icon: "passport" },
   { name: "Processing Times", benefit: "Current USCIS, OCI & stamping waits", href: "/tools/processing-times", cat: "docs", icon: "clock" },
 ];

@@ -94,7 +94,6 @@ const CALC_CATEGORIES: Record<string, ChipCategory[]> = {
   "india-property-capital-gains": ["Property", "Tax"],
   "401k-return-to-india": ["Retirement", "Wealth"],
   "backdoor-roth-eligibility": ["Retirement", "Wealth"],
-  "rent-vs-buy-visa": ["Property", "Wealth"],
   "rent-vs-buy-immigrant": ["Property", "Wealth"],
   "remittance-tcs-cost": ["Wealth", "Tax"],
   "fcnr-vs-hysa": ["Wealth", "Tax"],

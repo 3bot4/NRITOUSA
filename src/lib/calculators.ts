@@ -160,37 +160,9 @@ export const calculators: CalculatorMeta[] = [
       "IRS, \"401(k) limit increases to $24,500 for 2026; IRA limit increases to $7,500\"; IRS Publication 590-A; IRS Notice 2014-54",
   },
   {
-    slug: "rent-vs-buy-visa",
-    title: "Visa-Timeline Rent vs Buy Calculator",
-    label: "Rent vs Buy (Visa)",
-    category: "Housing, Cars & Remittances",
-    description:
-      "Standard calculators assume you'll stay 30 years. This one ties the rent-vs-buy decision to your real US visa horizon, including selling costs if you relocate.",
-    icon: "🔑",
-    accent: "from-sky-500 to-blue-600",
-    seoTitle: "Visa-Timeline Rent vs Buy Calculator",
-    seoDescription:
-      "Should an H-1B or visa holder rent or buy? Compare total cost over your secure US timeline, including closing costs, selling costs, and appreciation.",
-    related: [
-      "rent-vs-buy-house-immigrants",
-      "buying-first-home-on-visa",
-      "how-much-rent-can-you-afford",
-    ],
-    leadMagnet: {
-      heading: "Deciding whether to buy on a visa?",
-      body: "Get our free home-buying-on-a-visa checklist, including mortgage options for non-citizens.",
-      cta: "Send me the visa home-buying guide",
-    },
-    quickSummary:
-      "On a visa, the financial break-even on buying vs renting is typically 4–7 years — far longer than the 2–3 years standard calculators suggest — because closing costs (2–5%) and selling costs (6–8%) are fixed regardless of how long you stay. Enter your visa horizon and local home prices to see whether buying makes financial sense on your specific timeline.",
-    audience: "H-1B, L-1, O-1, and other visa holders in the US who are on a defined immigration timeline and considering buying a home",
-    dataChecked: "2026-06-01",
-    officialSource: "No single official source; estimates based on typical US closing and selling cost ranges",
-  },
-  {
     slug: "rent-vs-buy-immigrant",
     title: "Rent vs. Buy Calculator for Immigrants & Visa Holders",
-    label: "Rent vs Buy (Immigrant)",
+    label: "Rent vs Buy (Visa)",
     category: "Housing, Cars & Remittances",
     description:
       "The only rent vs. buy calculator that factors in your visa, immigration timeline, and relocation risk — built for visa holders, not 30-year US citizens.",
@@ -198,10 +170,11 @@ export const calculators: CalculatorMeta[] = [
     accent: "from-emerald-500 to-teal-600",
     seoTitle: "Rent vs. Buy Calculator for Visa Holders",
     seoDescription:
-      "Built for visa holders: accounts for visa type, immigration timeline, and relocation risk. See the immigrant-adjusted break-even — rent or buy.",
+      "Should an H-1B or visa holder rent or buy? Built for visa holders: accounts for visa type, immigration timeline, and relocation risk, plus closing costs, selling costs, and appreciation. See the immigrant-adjusted break-even.",
     related: [
       "rent-vs-buy-house-immigrants",
       "buying-first-home-on-visa",
+      "how-much-rent-can-you-afford",
       "selling-us-home-nri-firpta",
       "transfer-money-india-us-home-downpayment",
     ],
@@ -211,10 +184,10 @@ export const calculators: CalculatorMeta[] = [
       cta: "Send me the visa home-buying guide",
     },
     quickSummary:
-      "Unlike standard rent-vs-buy calculators, this one factors in your visa type, immigration uncertainty, and the risk of an unplanned relocation. See the immigrant-adjusted break-even point and a cost comparison that reflects the real tradeoffs for non-citizens in the US housing market.",
-    audience: "Immigrants and visa holders at any stage of the US immigration process who are deciding whether to rent or buy a home",
-    dataChecked: "2026-06-01",
-    officialSource: "No single official source; uses standard US housing market cost assumptions",
+      "On a visa, the financial break-even on buying vs renting is typically 4–7 years — far longer than the 2–3 years standard calculators suggest — because closing costs (2–5%) and selling costs (6–8%) are fixed regardless of how long you stay. Unlike a generic calculator, this one also factors in your visa type, immigration timeline, and relocation risk to produce an immigrant-adjusted break-even, then lets you toggle that off to see the plain textbook number for comparison.",
+    audience: "Immigrants and visa holders at any stage of the US immigration process — H-1B, L-1, O-1, F-1 OPT, and green-card holders — who are deciding whether to rent or buy a home",
+    dataChecked: "2026-07-20",
+    officialSource: "No single official source; estimates based on typical US closing and selling cost ranges",
   },
   {
     slug: "remittance-tcs-cost",
@@ -316,7 +289,6 @@ export const calculatorCategories = [
  */
 export const usInvestingCalculatorSlugs = [
   "backdoor-roth-eligibility",
-  "rent-vs-buy-visa",
   "rent-vs-buy-immigrant",
 ];
 

@@ -20,7 +20,7 @@ const intents: Intent[] = [
   { q: "How long is visa stamping taking?", href: "/tools/processing-times", cat: "docs", icon: "clock" },
   { q: "Cash out my 401k before moving back?", href: "/calculators/401k-return-to-india", cat: "money", icon: "dollar" },
   { q: "What does sending money to India cost?", href: "/calculators/remittance-tcs-cost", cat: "money", icon: "send" },
-  { q: "Should I rent or buy on a visa?", href: "/calculators/rent-vs-buy-visa", cat: "docs", icon: "home" },
+  { q: "Should I rent or buy on a visa?", href: "/calculators/rent-vs-buy-immigrant", cat: "docs", icon: "home" },
   { q: "Am I still an NRI for tax?", href: "/calculators/rnor-tax-residency", cat: "money", icon: "scale" },
 ];
 

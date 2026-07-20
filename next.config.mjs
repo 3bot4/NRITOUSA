@@ -120,6 +120,23 @@ const nextConfig = {
         destination: "/india-tax-compliance/gift-from-parents-india-to-usa",
         statusCode: 301,
       },
+      // /calculators/rent-vs-buy-visa and /calculators/rent-vs-buy-immigrant
+      // targeted the same rent-vs-buy-on-a-visa intent with near-identical
+      // titles. GA showed rent-vs-buy-immigrant winning traffic (1,676 vs 253
+      // views/30d) and its calculator component is the more complete one (visa
+      // type, I-140, relocation risk), so it absorbs the weaker page's hub
+      // content (quick answer, FAQs, break-even table) and becomes canonical.
+      // A hard 301 (statusCode, not `permanent`/308) preserves rent-vs-buy-visa's
+      // link equity. The slug has been removed from calculators.ts (so it is
+      // absent from the sitemap, search index, and related-tool cards) and
+      // every internal link points directly at the destination — no redirect
+      // chain. Next.js preserves query strings on redirect because the
+      // destination declares none.
+      {
+        source: "/calculators/rent-vs-buy-visa",
+        destination: "/calculators/rent-vs-buy-immigrant",
+        statusCode: 301,
+      },
     ];
   },
 };

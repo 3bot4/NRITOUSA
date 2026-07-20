@@ -23,7 +23,7 @@ const QUICK_PICKS: { label: string; href: string; icon: string }[] = [
   { label: "Green Card Stage Finder", href: "/tools/green-card-stage-finder", icon: "🟢" },
   { label: "India Property Sale Calculator", href: "/calculators/india-property-capital-gains", icon: "🏘️" },
   { label: "401(k) Cash Out vs Keep", href: "/calculators/401k-return-to-india", icon: "🏦" },
-  { label: "Rent vs Buy (Visa)", href: "/calculators/rent-vs-buy-visa", icon: "🔑" },
+  { label: "Rent vs Buy (Visa)", href: "/calculators/rent-vs-buy-immigrant", icon: "🔑" },
 ];
 
 export default function HomeToolFinder() {

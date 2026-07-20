@@ -399,7 +399,6 @@ const TOP_SEARCHED_HREFS: string[] = [
   "/articles/what-happens-to-401k-leaving-usa", // Your 401(k) When You Move Back to India
   "/trump-account-h1b-immigrant-families", // Trump Accounts for H1B Visa Holders
   "/calculators/401k-return-to-india", // 401(k) Cash Out vs Keep Calculator
-  "/calculators/rent-vs-buy-visa", // Visa-Timeline Rent vs Buy Calculator
   "/articles/india-fd-vs-us-investments", // India FD vs US Investments for NRIs
   "/tools/green-card-tracker", // Green Card Wait Time Estimator
 ];

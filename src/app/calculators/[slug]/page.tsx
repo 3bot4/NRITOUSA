@@ -29,7 +29,6 @@ import RnorCalculator from "@/components/calculators/RnorCalculator";
 import PropertyGainsCalculator from "@/components/calculators/PropertyGainsCalculator";
 import Retire401kCalculator from "@/components/calculators/Retire401kCalculator";
 import BackdoorRothCalculator from "@/components/calculators/BackdoorRothCalculator";
-import RentVsBuyCalculator from "@/components/calculators/RentVsBuyCalculator";
 import RentVsBuyImmigrantCalculator from "@/components/calculators/RentVsBuyImmigrantCalculator";
 import RemittanceCalculator from "@/components/calculators/RemittanceCalculator";
 import DtaaReliefCalculator from "@/components/calculators/DtaaReliefCalculator";
@@ -40,7 +39,6 @@ const REGISTRY: Record<string, React.ComponentType> = {
   "india-property-capital-gains": PropertyGainsCalculator,
   "401k-return-to-india": Retire401kCalculator,
   "backdoor-roth-eligibility": BackdoorRothCalculator,
-  "rent-vs-buy-visa": RentVsBuyCalculator,
   "rent-vs-buy-immigrant": RentVsBuyImmigrantCalculator,
   "remittance-tcs-cost": RemittanceCalculator,
   "dtaa-foreign-tax-credit": DtaaReliefCalculator,

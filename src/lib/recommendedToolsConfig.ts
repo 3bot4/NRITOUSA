@@ -223,7 +223,7 @@ const hit = (hay: string, words: string[]) => words.some((w) => hay.includes(w))
 export function detectCategory(text: string): PageCategory {
   const h = text.toLowerCase();
   // Finance signals win over immigration so finance tools that merely mention
-  // "visa" (e.g. rent-vs-buy-visa) still route correctly.
+  // "visa" (e.g. rent-vs-buy-immigrant) still route correctly.
   if (hit(h, KW.tax)) return "tax";
   if (hit(h, KW.invest)) return "investing";
   if (hit(h, KW.options)) return "options";
