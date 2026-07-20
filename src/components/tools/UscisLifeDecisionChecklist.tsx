@@ -313,7 +313,7 @@ function buildResult(
         summary: "H-4 EAD has NO automatic 180-day extension. If your EAD expires before renewal is approved, you must stop working. File the I-765 renewal 6 months before expiration and financially plan for a potential gap.",
         checklist: [
           "File I-765 renewal at least 6 months before current EAD expiration",
-          "Check if premium processing is currently available for I-765 H-4 EAD (verify at uscis.gov)",
+          "Plan without premium processing — Form I-907 is not available for H-4 EAD category (c)(26)",
           "Confirm I-140 is still approved and H-1B is still valid (H-4 EAD eligibility requires both)",
           "File I-539 if H-4 status is also expiring (alongside H-1B I-129 renewal)",
           "Build 3–6 months of household expense reserves for potential EAD gap",

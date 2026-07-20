@@ -22,8 +22,16 @@ export interface EadCategory {
   /** General planning range in months. */
   monthsLow: number;
   monthsHigh: number;
-  /** Whether a timely-filed renewal in this category currently gets the automatic extension. */
+  /**
+   * Whether a timely-filed renewal in this category gets the automatic extension
+   * TODAY. A DHS interim final rule effective Oct 30, 2025 removed the automatic
+   * extension for renewals filed on or after that date, so this is now `false`
+   * for every standard category. Categories that qualified under the OLD rule are
+   * flagged via `autoExtensionPreRule` for people who filed before the cutoff.
+   */
   autoExtension: boolean;
+  /** Qualified for the up-to-540-day extension on renewals filed BEFORE 2025-10-30. */
+  autoExtensionPreRule: boolean;
   /** Whether I-765 premium processing is available for this category. */
   premiumEligible: boolean;
 }
@@ -36,11 +44,14 @@ export interface EadProcessingData {
   advanceParoleInfoUrl: string;
 
   /**
-   * Automatic EAD extension length for eligible, timely-filed renewals.
-   * USCIS increased this to up to 540 days for certain categories — always
-   * re-verify the current figure and eligible categories at the official page.
+   * Automatic EAD extension length that applied to eligible, timely-filed
+   * renewals RECEIVED BEFORE `autoExtensionRemovedDate`. Retained because those
+   * filings are still running; it does NOT apply to renewals filed today.
    */
   autoExtensionDays: number;
+
+  /** ISO date the automatic extension was removed for new filings. */
+  autoExtensionRemovedDate: string;
 
   /** Advance Parole (Form I-131) general planning range, months. */
   advanceParoleMonthsLow: number;
@@ -50,7 +61,7 @@ export interface EadProcessingData {
 }
 
 export const eadProcessingData: EadProcessingData = {
-  lastUpdated: "Sanity-check against current USCIS processing times",
+  lastUpdated: "2026-07-19",
   uscisProcessingTimesUrl: "https://egov.uscis.gov/processing-times/",
   autoExtensionInfoUrl:
     "https://www.uscis.gov/working-in-the-united-states/automatic-employment-authorization-document-ead-extension",
@@ -61,17 +72,24 @@ export const eadProcessingData: EadProcessingData = {
 
   autoExtensionDays: 540,
 
+  /**
+   * DHS interim final rule removing the automatic EAD extension. Renewals
+   * RECEIVED on or after this date get no automatic extension.
+   * https://www.federalregister.gov/documents/2025/10/30/2025-19702/removal-of-the-automatic-extension-of-employment-authorization-documents
+   */
+  autoExtensionRemovedDate: "2025-10-30",
+
   advanceParoleMonthsLow: 4,
   advanceParoleMonthsHigh: 9,
 
   categories: [
-    { key: "c09", code: "(c)(9)", label: "Pending I-485 / adjustment of status", monthsLow: 3, monthsHigh: 8, autoExtension: true, premiumEligible: false },
-    { key: "c26", code: "(c)(26)", label: "H-4 spouse of H-1B", monthsLow: 3, monthsHigh: 8, autoExtension: true, premiumEligible: false },
-    { key: "a18", code: "(a)(18)", label: "L-2 spouse of L-1", monthsLow: 3, monthsHigh: 8, autoExtension: true, premiumEligible: false },
-    { key: "c08", code: "(c)(8)", label: "Pending asylum applicant", monthsLow: 3, monthsHigh: 10, autoExtension: true, premiumEligible: false },
-    { key: "c03b", code: "(c)(3)(B)", label: "F-1 student — post-completion OPT", monthsLow: 2, monthsHigh: 5, autoExtension: false, premiumEligible: true },
-    { key: "c03c", code: "(c)(3)(C)", label: "F-1 student — STEM OPT extension", monthsLow: 2, monthsHigh: 5, autoExtension: false, premiumEligible: true },
-    { key: "other", code: "varies", label: "Other / not sure", monthsLow: 3, monthsHigh: 10, autoExtension: false, premiumEligible: false },
+    { key: "c09", code: "(c)(9)", label: "Pending I-485 / adjustment of status", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
+    { key: "c26", code: "(c)(26)", label: "H-4 spouse of H-1B", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
+    { key: "a18", code: "(a)(18)", label: "L-2 spouse of L-1", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
+    { key: "c08", code: "(c)(8)", label: "Pending asylum applicant", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
+    { key: "c03b", code: "(c)(3)(B)", label: "F-1 student — post-completion OPT", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, premiumEligible: true },
+    { key: "c03c", code: "(c)(3)(C)", label: "F-1 student — STEM OPT extension", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, premiumEligible: true },
+    { key: "other", code: "varies", label: "Other / not sure", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: false, premiumEligible: false },
   ],
 };
 
@@ -87,7 +105,7 @@ export const eadSnapshotRows: { label: string; value: string; note?: string; hig
   { label: "EAD (most categories)", value: "3–8 months", note: "Pending I-485 / H-4 / L-2 / asylum; varies by office.", highlight: true },
   { label: "F-1 OPT / STEM OPT", value: "2–5 months", note: "Premium processing available for these I-765 categories." },
   { label: "Advance Parole (I-131)", value: "4–9 months", note: "No regular premium processing." },
-  { label: "Auto-extension", value: "Up to 540 days (if eligible)", note: "Eligibility changed in late 2025: many renewals filed on/after Oct 30, 2025 are not eligible; some categories were later revived. Verify your category & filing date on USCIS." },
+  { label: "Auto-extension", value: "Ended for new filings", note: "A DHS interim final rule effective Oct 30, 2025 removed the automatic extension. Renewals filed on/after that date get none; renewals filed before it keep up to 540 days. Limited exceptions apply where provided by law or Federal Register notice (e.g. certain TPS documentation)." },
 ];
 
 export const eadSnapshotSources: { label: string; href: string }[] = [

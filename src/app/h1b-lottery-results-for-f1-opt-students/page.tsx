@@ -35,12 +35,12 @@ const faqs: FaqItem[] = [
   {
     question: "What is cap-gap for F-1 OPT students?",
     answer:
-      "Cap-gap is a rule that automatically extends an F-1 student's status — and, if the student is on OPT, their work authorization — from the OPT end date until the H-1B start date, when a cap-subject H-1B petition requesting an October 1 start is timely filed while the student is in a valid F-1 period. It exists to bridge the gap between when OPT ends and when the H-1B begins on October 1.",
+      "Cap-gap bridges the gap between when your F-1 status or OPT ends and when H-1B employment can begin. Two different things can be extended, and they are not the same: your F-1 status, and — only if you were in a period of authorized post-completion OPT when the petition was filed — your employment authorization. A student whose OPT had already ended and who was in the 60-day grace period can get the status extension without work authorization. It applies when a timely cap-subject petition requesting a change of status is filed while you are in a valid F-1 period. Under current USCIS rules the extension runs until April 1 of the fiscal year the H-1B is requested for, or the validity start date of the approved petition, whichever comes first — so it is not simply 'up to October 1.'",
   },
   {
     question: "Does cap-gap apply if I'm not selected in the lottery?",
     answer:
-      "No. Cap-gap only helps if your registration is selected and your employer files a timely cap-subject petition requesting an October 1 start while you are in a valid F-1 status or grace period. If you are not selected, there is no cap-gap; you rely on your existing OPT/STEM OPT end date and any other options.",
+      "No. Cap-gap only helps if your registration is selected and your employer files a timely cap-subject petition requesting a change of status while you are in a valid F-1 status or grace period. If you are not selected, there is no cap-gap; you rely on your existing OPT/STEM OPT end date and any other options.",
   },
   {
     question: "Should I apply for STEM OPT before the lottery result?",
@@ -50,7 +50,7 @@ const faqs: FaqItem[] = [
   {
     question: "What happens to my work authorization if the petition is denied after cap-gap?",
     answer:
-      "If your cap-gap authorization is in effect and the H-1B petition is later denied, your cap-gap work authorization generally ends. Timelines can be tight, so it's important to know your OPT end date, keep in touch with your DSO, and have a backup plan ready. Confirm your specific situation with your school's international office and an attorney.",
+      "Cap-gap ends if the petition is denied, rejected, revoked, or withdrawn — in each of those cases the extension of status and any cap-gap work authorization stop, and you do not get to run to April 1. A denial after your original OPT end date means you must stop working immediately. Any remaining time depends on your own circumstances, including whether a grace period applies, and the rules differ between a denial and a withdrawal. Tell your DSO as soon as you hear of any outcome so SEVIS reflects your actual status, and speak to an immigration attorney straight away rather than assuming you have a cushion.",
   },
   {
     question: "Do I get a new I-20 if I'm selected?",
@@ -88,9 +88,11 @@ export default function Page() {
         answer: (
           <>
             Generally yes, through <strong>cap-gap</strong> — <em>if</em> your employer files a timely cap-subject
-            petition requesting an October 1 start while you are in valid F-1 status. Cap-gap extends your F-1 status
-            and (on OPT) your work authorization until the petition is decided, up to the start date. Confirm your OPT
-            end date and get a cap-gap I-20 from your DSO.
+            petition requesting a change of status while you are in valid F-1 status. Cap-gap extends your F-1 status,
+            and extends <em>work authorization</em> only if you were in authorized post-completion OPT when the
+            petition was filed. It runs until <strong>April 1</strong> of the fiscal year the H-1B is requested for, or
+            the approved petition&rsquo;s validity start date, whichever comes first. Confirm your OPT end date and get
+            a cap-gap I-20 from your DSO.
           </>
         ),
       }}

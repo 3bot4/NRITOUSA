@@ -131,15 +131,26 @@ export function ToolIntro({
         </ul>
       </div>
 
-      {/* Important verify banner (overridable for non-immigration tools) */}
+      {/* Important verify banner. Defaults to the agency boilerplate that matches
+          the tool's category, and is fully overridable via `verifyNote`. */}
       <div className="rounded-xl border border-amber-200 bg-amber-50/60 px-4 py-3 text-xs leading-relaxed text-amber-900">
         {verifyNote ?? (
-          <>
-            <strong className="font-bold">Important:</strong> immigration rules,
-            fees, and processing times change. Use this as an estimate and verify
-            with official sources (uscis.gov, travel.state.gov, dol.gov) before
-            filing or making decisions. This is not legal advice.
-          </>
+          content.appCategory === "FinanceApplication" ? (
+            <>
+              <strong className="font-bold">Important:</strong> tax rules,
+              thresholds, and filing deadlines change. Use this as an estimate and
+              verify with official sources (irs.gov, fincen.gov, treasury.gov, and
+              the BSA E-Filing System at bsaefiling.fincen.treas.gov) before filing
+              or making decisions. This is not tax or legal advice.
+            </>
+          ) : (
+            <>
+              <strong className="font-bold">Important:</strong> immigration rules,
+              fees, and processing times change. Use this as an estimate and verify
+              with official sources (uscis.gov, travel.state.gov, dol.gov) before
+              filing or making decisions. This is not legal advice.
+            </>
+          )
         )}
       </div>
     </div>

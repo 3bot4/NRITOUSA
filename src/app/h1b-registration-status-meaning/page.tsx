@@ -121,7 +121,7 @@ export default function Page() {
                   ["Selected", "Chosen; employer may now file the petition.", "Confirm your employer is filing; gather documents; plan the LCA + I-129."],
                   ["Not Selected", "Not chosen after all rounds for the year.", "Switch to backup options; re-register next cycle."],
                   ["Denied", "Duplicate registration by the same employer.", "Ask the employer/attorney to correct duplicates; only one counts."],
-                  ["Invalidated – Failed Payment", "Fee didn't clear; registration voided.", "Not eligible for selection; employer must review payment handling."],
+                  ["Invalidated-Failed Payment", "Fee didn't clear; registration voided.", "Not eligible for selection; employer must review payment handling."],
                 ]}
               />
             </div>

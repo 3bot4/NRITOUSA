@@ -139,7 +139,7 @@ export default function Page() {
                 "Your registration status changes inside your employer's USCIS organizational account.",
                 "Your employer or its immigration attorney emails you your exact status.",
                 "USCIS posts an official notice on its website that the initial selection is complete.",
-                "If you had a personal myUSCIS account before registration, a status may appear there too.",
+                "There is no beneficiary view: organizational accounts have no employee role, and USCIS offers no public name-based result lookup.",
               ]}
             />
             <Callout tone="bad" title="Ignore these 'signals'">

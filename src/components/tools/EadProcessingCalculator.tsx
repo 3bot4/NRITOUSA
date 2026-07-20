@@ -109,7 +109,9 @@ function compute(inp: Inputs): Result {
   } else if (inp.kind === "renewal" && !cat.autoExtension) {
     autoExtValue = "No auto-extension";
     autoExtTone = "warn";
-    autoExtDetail = `${cat.label} renewals do not currently get the automatic extension. If your EAD expires before the renewal is approved, you may have a work-authorization gap. File as early as USCIS allows and ask your attorney.`;
+    autoExtDetail = cat.autoExtensionPreRule
+      ? `${cat.label} (${cat.code}) renewals no longer get an automatic extension. A DHS interim final rule effective October 30, 2025 removed it, so a renewal received on or after that date does not extend your EAD — you must stop working when the card expires and may only resume once the new EAD is approved and received. If your renewal was received BEFORE October 30, 2025, the previous up-to-${D.autoExtensionDays}-day extension still runs. Confirm your receipt date on your Form I-797C.`
+      : `${cat.label} (${cat.code}) renewals do not get an automatic extension. If your EAD expires before the renewal is approved, you are not authorized to work in the interim. File as early as USCIS allows and ask your attorney.`;
   } else if (inp.kind === "new") {
     autoExtValue = "N/A (new EAD)";
     autoExtTone = "info";
@@ -124,7 +126,7 @@ function compute(inp: Inputs): Result {
   const nextSteps: string[] = [];
   if (inp.kind === "renewal") {
     nextSteps.push("File your EAD renewal as early as USCIS permits (often up to 180 days before expiry) to reduce gap risk.");
-    if (!cat.autoExtension) nextSteps.push("Your category has no auto-extension — track the decision closely and plan for a possible gap in work authorization.");
+    if (!cat.autoExtension) nextSteps.push("Renewals filed on or after October 30, 2025 get no automatic extension — plan for a gap in work authorization if the EAD expires before approval, and confirm the receipt date on your Form I-797C.");
   }
   if (cat.premiumEligible && inp.premium !== "yes") {
     nextSteps.push("Premium processing (~30 business days) is available for your category if you need the EAD faster.");

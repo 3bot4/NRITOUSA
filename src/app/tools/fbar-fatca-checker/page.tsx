@@ -54,6 +54,11 @@ const faq: FaqItem[] = [
       "FATCA (Foreign Account Tax Compliance Act) requires certain taxpayers to report specified foreign financial assets on IRS Form 8938, filed with the federal tax return. Its thresholds are much higher than FBAR's and depend on filing status and where you live — starting at more than $50,000 (year-end) for single filers living in the US. Many NRIs end up filing both FBAR and Form 8938 for the same accounts.",
   },
   {
+    question: "If I have to file FBAR, do I automatically have to file Form 8938?",
+    answer:
+      "No — the two tests are independent, and you have to run each one separately. FBAR is triggered when the combined maximum value of your foreign financial accounts tops $10,000 at any point in the calendar year; that is an aggregate test across all accounts, not a per-account one. Form 8938 uses its own, much higher thresholds that depend on your filing status and on whether you meet the IRS definition of living abroad. You can easily owe one and not the other, or both. Note too that reporting an account does not itself create any tax — but income from that account, such as NRE/NRO interest, may still be taxable on your US return.",
+  },
+  {
     question: "Are NRE and NRO accounts foreign accounts for US reporting?",
     answer:
       "Generally yes. NRE and NRO accounts are accounts at financial institutions located outside the US, so they typically count toward FBAR and FATCA totals — even though NRE interest is tax-free in India. NRE/NRO interest is also generally taxable income on a US return. The India-side tax treatment doesn't change the US-side reporting picture.",
@@ -66,7 +71,7 @@ const faq: FaqItem[] = [
   {
     question: "What exchange rate should I use to convert INR to USD?",
     answer:
-      "FBAR instructions point to the US Treasury's Bureau of the Fiscal Service year-end exchange rate for converting maximum account values. Whatever source you use, be consistent across all accounts and keep a note of the rate and date — inconsistent conversions are one of the most common DIY mistakes. A CPA can confirm the right rate for your forms.",
+      "For FBAR, you convert each account's maximum value during the calendar year to US dollars using the Treasury Reporting Rates of Exchange for the last day of that calendar year — published by the Treasury Bureau of the Fiscal Service. Form 8938 is separate: value specified foreign financial assets at fair market value in US dollars following the Form 8938 instructions for that year. Always pull the rate for the year you are actually reporting, apply one consistent source across every account, and keep a record of the rate and where it came from — inconsistent conversions are one of the most common DIY mistakes.",
   },
   {
     question: "Is FBAR the same as a tax return?",

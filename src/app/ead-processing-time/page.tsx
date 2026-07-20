@@ -123,7 +123,7 @@ export default function Page() {
                       <th className="py-2 pr-3">Category</th>
                       <th className="py-2 pr-3">Code</th>
                       <th className="py-2 pr-3">Planning range</th>
-                      <th className="py-2">Auto-extension</th>
+                      <th className="py-2">Auto-extension (filed on/after Oct 30, 2025)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,9 +133,12 @@ export default function Page() {
                         <td className="py-2 pr-3 text-ink-500">{c.code}</td>
                         <td className="py-2 pr-3 text-ink-700">~{c.monthsLow}–{c.monthsHigh} mo</td>
                         <td className="py-2">
-                          {c.autoExtension
-                            ? <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">Up to {D.autoExtensionDays} days</span>
-                            : <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">None</span>}
+                          <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">None</span>
+                          {c.autoExtensionPreRule && (
+                            <span className="mt-1 block text-xs text-ink-500">
+                              Up to {D.autoExtensionDays} days if received before Oct 30, 2025
+                            </span>
+                          )}
                         </td>
                       </tr>
                     ))}

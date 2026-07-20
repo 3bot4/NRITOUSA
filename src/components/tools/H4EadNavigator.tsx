@@ -48,6 +48,7 @@ interface CalcResult {
   filedLate: boolean;
   autoExt: boolean;
   protectedUntil: Date;
+  i94EndsFirst: boolean;
   gap: {
     optDays: number;
     pessDays: number;
@@ -254,12 +255,13 @@ export default function H4EadNavigator() {
 
     // auto-extension only for timely renewals received BEFORE the cutoff
     const autoExt = !!fd && fd < cutoff && fd <= ee;
-    let protectedUntil = ee;
-    if (autoExt) {
-      let cap = addDays(ee, rulesData.autoExtension.preRule.maxDays);
-      if (i94 && i94 < cap) cap = i94;
-      protectedUntil = cap;
-    }
+    let protectedUntil = autoExt
+      ? addDays(ee, rulesData.autoExtension.preRule.maxDays)
+      : ee;
+    // H-4 employment authorization can never outlast H-4 status: the I-94 end
+    // date caps the protected period whether or not an auto-extension applies.
+    const i94EndsFirst = !!i94 && i94 < protectedUntil;
+    if (i94 && i94EndsFirst) protectedUntil = i94;
 
     let gap: null | {
       optDays: number;
@@ -287,6 +289,7 @@ export default function H4EadNavigator() {
       filedLate: !!fd && fd > ee,
       autoExt,
       protectedUntil,
+      i94EndsFirst,
       gap,
       minM,
       maxM,
@@ -585,9 +588,30 @@ export default function H4EadNavigator() {
 
             {calc.filedTooEarly && (
               <VerifyNote>
-                You generally can&apos;t file more than {rulesData.filingWindowDays} days
-                before your EAD expires — your planned date is before the window opens
-                ({fmt(calc.windowOpens)}).
+                USCIS asks you not to file a renewal more than {rulesData.filingWindowDays} days
+                before your current EAD expires, and your planned date is before that window opens
+                ({fmt(calc.windowOpens)}). USCIS generally does not backdate a renewal EAD to the
+                end of your current card, so filing earlier does not buy you extra validity.
+              </VerifyNote>
+            )}
+
+            {calc.fd && !calc.autoExt && (
+              <VerifyNote>
+                <strong>No automatic extension applies to this filing.</strong> Because your
+                renewal is filed on or after {fmt(parseDate(rulesData.autoExtension.eliminatedDate))},
+                the DHS interim final rule means a timely filing no longer extends your EAD.
+                You must <strong>stop working</strong> when the card on file expires
+                ({fmt(calc.ee)}) and may only resume once the new EAD is approved and received.
+              </VerifyNote>
+            )}
+
+            {calc.i94EndsFirst && (
+              <VerifyNote>
+                <strong>Your H-4 I-94 expires before your work authorization would otherwise
+                end.</strong> H-4 employment authorization cannot outlast H-4 status, so the
+                controlling date here is your I-94 end date ({fmt(calc.protectedUntil)}), not the
+                date printed on the EAD. You would need an approved H-4 extension to keep working
+                beyond it.
               </VerifyNote>
             )}
           </div>
@@ -603,13 +627,18 @@ export default function H4EadNavigator() {
           </p>
           <ul className="mt-2 space-y-1 text-xs text-ink-600">
             <li>• File as early as possible in the 180-day window.</li>
-            <li>• Where eligible, consider premium processing (Form I-907) — verify current eligibility for H-4 c(26).</li>
+            <li>
+              • <strong>Premium processing is not an option here.</strong> Form I-907 is not
+              available for H-4 EAD category (c)(26) — for Form I-765 USCIS only accepts it from
+              F-1 students in categories (c)(3)(A), (c)(3)(B) and (c)(3)(C). You cannot pay to
+              speed up an H-4 EAD.
+            </li>
             <li>• File the H-4/EAD with the H-1B extension, but don&apos;t assume they&apos;re approved together.</li>
           </ul>
         </div>
 
         <VerifyNote>
-          ⚠️ {rulesData.todoNote} Rules change — always confirm on{" "}
+          ⚠️ {rulesData.verifyNote} Rules change — always confirm on{" "}
           <a href="https://www.uscis.gov/i-765" target="_blank" rel="noopener noreferrer" className="font-semibold underline">
             uscis.gov
           </a>{" "}

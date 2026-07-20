@@ -150,7 +150,7 @@ export default function Page() {
                 ["Approved as change of status, staying in the U.S.", "Not to work", "You're already in H-1B status; you can begin employment without a stamp."],
                 ["Approved as change of status, then travel abroad", "Yes, to re-enter", "You need a valid H-1B visa stamp to be admitted back into the U.S."],
                 ["Abroad / consular processing chosen", "Yes", "You must be stamped at a U.S. consulate before entering in H-1B status."],
-                ["Existing valid H-1B stamp from before", "Maybe not", "A still-valid stamp for the same employer may allow re-entry — confirm with your attorney."],
+                ["Existing valid H-1B stamp from before", "Maybe not", "An unexpired H-1B stamp is not limited to the employer named on it. It can generally be used to re-enter to work for a new employer, provided you carry that employer's original approved I-797 approval notice and the visa itself is still valid. The stamp alone is not enough — the approval notice is what evidences the current petition. Confirm with your attorney."],
               ]}
             />
             <Callout tone="info" title="The key distinction">

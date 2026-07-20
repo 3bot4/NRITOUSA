@@ -1,10 +1,8 @@
 {
-  "lastUpdated": "2026-06-10",
+  "lastUpdated": "2026-07-19",
   "source": "https://www.uscis.gov/i-765",
   "sourceLabel": "USCIS — Form I-765 / EAD rules",
-  "verifyNote": "Immigration rules change frequently. Every value here MUST be re-verified on uscis.gov before relying on it, and confirmed with an immigration attorney for your situation.",
-  "todo": true,
-  "todoNote": "TODO (verify before launch on uscis.gov): (1) the Oct 30, 2025 removal of EAD auto-extension and its exact applicability to H-4 c(26); (2) current I-765 processing-time ranges for c(26) initial and renewal; (3) whether premium processing (I-907) is available for c(26) H-4 EAD; (4) the 180-day early-filing window.",
+  "verifyNote": "Immigration rules change frequently. Confirm current rules on uscis.gov and with an immigration attorney for your own situation.",
   "filingWindowDays": 180,
   "filingWindowNote": "USCIS generally lets you file an I-765 renewal up to 180 days before your current EAD expires. File as early in this window as possible.",
   "autoExtension": {
@@ -27,19 +25,18 @@
     "unit": "months",
     "renewalMonths": [3, 9],
     "initialMonths": [5, 14],
-    "postedVsActualNote": "USCIS often posts ~6 months, but in practice many H-4 EAD (c(26)) cases take 9–14 months, and you usually can't even submit a service request until the case passes the posted time. Treat the high end as realistic.",
-    "source": "https://egov.uscis.gov/processing-times",
-    "todo": true
+    "postedVsActualNote": "Processing time depends on the form category and the USCIS office or service center handling your case, and it changes month to month. Check your own case category and location on the official USCIS processing-times tool rather than relying on a general range. You usually cannot submit a case inquiry until your case is outside the posted time for your form and office.",
+    "source": "https://egov.uscis.gov/processing-times/",
+    "sourceLabel": "USCIS — Check Case Processing Times"
   },
   "premiumProcessing": {
-    "available": "verify",
-    "note": "Premium processing (Form I-907, 30-business-day window for many I-765 categories) MAY be available for some EAD categories. Confirm current eligibility for H-4 c(26) on uscis.gov before relying on it.",
-    "source": "https://www.uscis.gov/i-907",
-    "todo": true
+    "available": false,
+    "note": "Premium processing (Form I-907) is NOT available for H-4 EAD category (c)(26). For Form I-765, USCIS limits premium processing to F-1 student categories (c)(3)(A), (c)(3)(B) and (c)(3)(C) requesting OPT or a STEM OPT extension. An I-907 filed for a (c)(26) application will be rejected. There is no way to pay to speed up an H-4 EAD.",
+    "source": "https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing",
+    "sourceLabel": "USCIS — How Do I Request Premium Processing?"
   },
   "concurrentFiling": {
-    "note": "You can file the H-4 extension (I-539) and H-4 EAD (I-765) together with the H-1B I-129. But USCIS is no longer required to adjudicate them together (the concurrent-adjudication requirement expired Jan 18, 2025), so the EAD can lag the H-1B approval by many months.",
-    "todo": true
+    "note": "You can file the H-4 extension (I-539) and H-4 EAD (I-765) together with the H-1B I-129. USCIS is not required to adjudicate them together, so the EAD can lag the H-1B approval by many months."
   },
   "dependencyRisk": "An H-4 EAD is valid only while the H-4 status is valid, which depends on the H-1B spouse maintaining H-1B status. If the H-1B lapses (job loss, status issue), the H-4 and the EAD — and any job or business run on it — are affected."
 }

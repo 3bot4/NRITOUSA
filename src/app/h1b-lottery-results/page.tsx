@@ -35,12 +35,12 @@ const faqs: FaqItem[] = [
   {
     question: "How do I check my H1B lottery result?",
     answer:
-      "H1B registration results are shown inside the USCIS online organizational account used to submit the registration — that account belongs to your employer or its immigration attorney, not to you as the employee. In most cases you learn your result when your employer or the company's lawyer tells you. Each registration in that account shows a status such as Submitted, Selected, or Not Selected. If you have your own myUSCIS account and were registered, you may also see a status there, but the employer's account is the authoritative source.",
+      "H1B registration results are shown inside the USCIS online organizational account used to submit the registration — that account belongs to your employer or its immigration attorney, not to you as the employee. Each registration in that account shows a status such as Submitted, Selected, or Not Selected. USCIS organizational accounts have no beneficiary role, so as the employee you cannot log in and see your own registration status, and there is no public page where you can look up your result by name. You learn your result when your employer or the company's lawyer tells you — ask them in writing.",
   },
   {
     question: "Can I check H1B lottery results myself?",
     answer:
-      "Usually not directly. The lottery (electronic registration) is run through the employer's USCIS organizational account, so the employer or attorney sees the official result first and is expected to inform you. You cannot walk into a public USCIS page and look up your name. If you created a personal myUSCIS account before registration, a status may appear there, but the safest step is to ask your employer or its immigration attorney in writing for your exact registration status.",
+      "No. The lottery (electronic registration) is run through the employer's USCIS organizational account, and that account has no beneficiary role — there is no login that shows an employee their own registration status, and no public USCIS page where you can look up your name. The employer or attorney of record sees the official result and is expected to inform you, so ask them in writing for your exact registration status.",
   },
   {
     question: "What does selected mean in H1B lottery?",
@@ -75,7 +75,7 @@ const faqs: FaqItem[] = [
   {
     question: "What should F-1 OPT students do after H1B selection?",
     answer:
-      "If you are on F-1 OPT or STEM OPT and your registration is selected and your employer files the petition on time with an October 1 start, cap-gap relief generally extends your F-1 status and work authorization past your OPT end date until the petition is decided (up to the start date). Confirm your OPT end date, tell your DSO, keep your I-20 and EAD current, and make sure your employer files during the window. Get a cap-gap I-20 from your school's international office.",
+      "If you are on F-1 OPT or STEM OPT and your registration is selected and your employer files a timely change-of-status petition, cap-gap generally extends your F-1 status past your OPT end date — and extends your work authorization too, if you were in authorized post-completion OPT when the petition was filed. It runs until April 1 of the fiscal year the H-1B is requested for, or the approved petition's validity start date, whichever comes first, and it ends early if the petition is denied, rejected, revoked or withdrawn. Confirm your OPT end date, tell your DSO, keep your I-20 and EAD current, and get a cap-gap I-20 from your school's international office.",
   },
   {
     question: "What are my options if I am not selected?",
@@ -103,7 +103,7 @@ const statusTableRows: (string | React.ReactNode)[][] = [
   ["Selected", "Chosen in the lottery; employer may now file a cap-subject petition.", "Confirm your employer is filing; gather documents; plan the LCA + I-129."],
   ["Not Selected", "Not chosen after all selection rounds for the year.", "Stay on OPT/STEM OPT if eligible; explore cap-exempt, L-1, O-1; re-register next year."],
   ["Denied", "A duplicate registration for the same person by the same employer.", "Ask the employer/attorney to fix duplicate filings; only one registration per person per employer counts."],
-  ["Invalidated – Failed Payment", "Registration was invalidated because the fee payment did not clear.", "Not eligible for selection. Employer must re-check payment and registration handling."],
+  ["Invalidated-Failed Payment", "Registration was invalidated because the fee payment did not clear.", "Not eligible for selection. Employer must re-check payment and registration handling."],
 ];
 
 const cardWrap = "grid gap-3 sm:grid-cols-2";
@@ -129,8 +129,9 @@ export default function H1bLotteryResultsPage() {
         question: "Are H1B lottery results out?",
         answer: (
           <>
-            USCIS runs the H-1B registration selection once per year, typically in <strong>March</strong>, and can
-            run additional rounds later if the cap is not reached. This page is maintained for the latest{" "}
+            USCIS runs an <strong>initial selection</strong> from the registration pool each year, typically in{" "}
+            <strong>March</strong>, with possible additional rounds later if the cap is not reached. This page is
+            maintained for the latest{" "}
             <strong>{FY_LABEL} cap season</strong> and is reviewed each year. Because results appear in the
             employer&rsquo;s USCIS account first, the fastest way to know your status is to ask your employer or its
             immigration attorney in writing. Do not rely on social-media rumors about exact dates.
@@ -278,7 +279,7 @@ export default function H1bLotteryResultsPage() {
               {[
                 "Your employer or its immigration attorney logs into the USCIS organizational account and opens the registration for the current fiscal year.",
                 "Each registration shows a status (Submitted, Selected, Not Selected, Denied, or Invalidated). The attorney or HR normally emails selected candidates first.",
-                "As an employee, you usually cannot check directly. If you created a personal myUSCIS account before registration, a status may appear there, but treat the employer's account as authoritative.",
+                "As an employee you cannot check directly — USCIS organizational accounts have no beneficiary role, and there is no public name-based lookup. Ask your employer or its attorney in writing.",
                 "A Selection Notice (with a beneficiary confirmation number) is required for the employer to file the cap-subject petition. Ask for a copy for your records.",
                 "If you are unsure, ask your employer or attorney in writing: “What is my exact H-1B registration status for this fiscal year?” Keep the reply.",
               ].map((item) => (
@@ -325,7 +326,7 @@ export default function H1bLotteryResultsPage() {
                 { t: "Selected", d: "Chosen in the lottery. Your employer may file a full cap-subject H-1B petition during the filing window. Not an approval." },
                 { t: "Not Selected", d: "Not chosen after all selection rounds for the fiscal year. No cap-subject petition can be filed for you this year." },
                 { t: "Denied", d: "A duplicate registration was found — the same employer submitted more than one registration for the same person. Only one counts." },
-                { t: "Invalidated – Failed Payment", d: "The registration fee payment did not go through, so the registration was invalidated and is not eligible for selection." },
+                { t: "Invalidated-Failed Payment", d: "The registration fee payment did not go through, so the registration was invalidated and is not eligible for selection." },
               ].map((c) => (
                 <div key={c.t} className="rounded-xl border border-ink-900/5 bg-ink-50/40 p-4">
                   <p className="text-sm font-semibold text-ink-900">{c.t}</p>

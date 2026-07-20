@@ -104,9 +104,16 @@ export default function Page() {
                     <p className="text-sm font-bold text-ink-900">1. File early</p>
                     <p className="mt-1.5 text-xs leading-relaxed text-ink-600">File your renewal as early as USCIS allows — often up to 180 days before your current EAD expires. This is the most reliable protection regardless of category.</p>
                   </div>
-                  <div className="rounded-2xl border border-emerald-200 bg-emerald-50/40 p-5 shadow-card">
-                    <p className="text-sm font-bold text-ink-900">2. Automatic extension</p>
-                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">Eligible categories get up to {D.autoExtensionDays} days of automatic extension on a timely-filed renewal — you keep working on your receipt notice plus the expired card. Verify the current rule on USCIS.</p>
+                  <div className="rounded-2xl border border-amber-200 bg-amber-50/40 p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">2. Automatic extension has ended</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                      A DHS interim final rule effective October 30, 2025 removed the automatic
+                      EAD extension. A renewal <strong>received on or after</strong> that date does
+                      not extend your card — you must stop working when it expires. Only renewals
+                      received <strong>before</strong> that date still run on the previous
+                      up-to-{D.autoExtensionDays}-day extension. Check the receipt date on your
+                      Form I-797C and verify on USCIS.
+                    </p>
                   </div>
                 </div>
               </div>

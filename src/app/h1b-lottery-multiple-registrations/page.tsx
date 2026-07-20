@@ -127,7 +127,7 @@ export default function Page() {
                 <li>• Accept multiple genuine offers freely: several real employers may register you, and each can file if you are selected.</li>
                 <li>• Never allow a <strong>duplicate</strong> registration by the same employer — USCIS invalidates it and the status shows <strong>Denied</strong>.</li>
                 <li>• Understand what changed: eliminating duplicates cut eligible registrations from about <strong>759,000</strong> in FY 2024 to roughly <strong>344,000</strong> by FY 2026.</li>
-                <li>• Treat "guaranteed selection" schemes as fraud — they risk denials, revocations, and long-term bars.</li>
+                <li>• Treat &ldquo;guaranteed selection&rdquo; schemes as fraud — USCIS says it may deny or revoke the petitions involved and refer the matter to federal law enforcement.</li>
               </ul>
             </div>
 
@@ -156,7 +156,7 @@ export default function Page() {
                 ["One genuine employer registers you", "One", "A single chance; one employer able to file if selected."],
                 ["Three unrelated genuine employers register you", "Still one", "Same odds; but up to three employers able to file if selected — more choice."],
                 ["Same employer registers you twice", "Invalidated (Denied)", "Duplicate — prohibited; the registrations are thrown out."],
-                ["Fake/colluding registrations to boost odds", "Fraud risk", "Denials, revocations, and possible bans — never do this."],
+                ["Fake/colluding registrations to boost odds", "Fraud risk", "USCIS may deny or revoke the petitions and refer the matter to federal law enforcement — never do this."],
               ]}
             />
 

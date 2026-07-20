@@ -50,7 +50,7 @@ const faqs: FaqItem[] = [
   {
     question: "When does my H-1B employment start after selection?",
     answer:
-      "For cap-subject petitions, the requested start date is normally October 1 of the relevant fiscal year. You cannot begin H-1B employment before that date on the basis of the cap-subject approval. If you are on F-1 OPT that ends before October 1, cap-gap may bridge the gap — confirm with your DSO and attorney.",
+      "For cap-subject petitions, the requested start date is normally October 1 of the relevant fiscal year. You cannot begin H-1B employment before that date on the basis of the cap-subject approval. If you are on F-1 OPT that ends before then, cap-gap may bridge the gap: it extends your F-1 status, and your work authorization too if you were in authorized post-completion OPT when the petition was filed, until April 1 of that fiscal year or the approved petition's validity start date, whichever is earlier. Confirm with your DSO and attorney.",
   },
   {
     question: "Is it safe to travel to India after being selected but before approval?",
@@ -203,8 +203,9 @@ export default function Page() {
             </SectionHeading>
             <p className="text-sm leading-relaxed text-ink-700">
               Cap-subject H-1B employment normally starts <strong>October 1</strong>. You cannot begin H-1B work before
-              that date based on the cap-subject approval. If you are on F-1 OPT ending before October 1, cap-gap may
-              bridge you — see the{" "}
+              that date based on the cap-subject approval. If you are on F-1 OPT ending before then, cap-gap may bridge
+              you — and it can run past October 1, until April 1 of the relevant fiscal year or the approved
+              petition&rsquo;s start date, whichever is earlier. See the{" "}
               <Link href="/h1b-lottery-results-for-f1-opt-students" className="font-semibold text-orange-600 underline">
                 F-1 OPT guide
               </Link>

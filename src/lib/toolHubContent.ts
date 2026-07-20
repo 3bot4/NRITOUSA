@@ -900,7 +900,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       "Documents proving the qualifying basis (I-140 approval, etc.)",
     ],
     timelineFeeNote:
-      "H-4 EAD (category c(26)) processing commonly takes several months to over a year, and a DHS rule effective October 30, 2025 removed the automatic extension for renewals filed on or after that date. File as early as possible within the renewal window and verify current processing times before relying on any date.",
+      "H-4 EAD (category c(26)) processing time depends on your form category and the USCIS office handling the case, and it changes month to month — check your own case on the official USCIS processing-times tool at egov.uscis.gov/processing-times. A DHS rule effective October 30, 2025 removed the automatic extension for renewals filed on or after that date, so file as early as the renewal window allows.",
     explain: {
       heading: "How H-4 EAD eligibility and rules work",
       items: [
@@ -991,7 +991,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     updated: "2026-07-19",
     expertiseTags: ["H-4 EAD & work authorization", "USCIS filing timelines", "Immigrant family planning"],
     takeaways: [
-      "File Form I-765 up to 180 days before your current EAD expires — H-4 EAD processing commonly runs several months to over a year.",
+      "File Form I-765 up to 180 days before your current EAD expires — check your own timeline on the USCIS processing-times tool, since it varies by category and office.",
       "Do not count on an automatic extension: a DHS rule effective October 30, 2025 removed it for H-4 EAD renewals filed on or after that date.",
       "Qualify through the H-1B spouse: an approved I-140, or H-1B time granted beyond six years under AC21 — H-4 status alone is not enough.",
       "Work without restriction while the EAD is valid — any employer, 1099 freelance, or your own business, with no wage or specialty-occupation rule.",
@@ -1028,7 +1028,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "How long does an H-4 EAD take?",
         answer:
-          "As of 2026 it commonly takes several months to over a year, and processing times fluctuate. Because a DHS rule removed the automatic extension for renewals filed on or after October 30, 2025, a long processing time can now mean a work gap — so file as early as the window allows.",
+          "There is no single answer: USCIS processing time for Form I-765 depends on the eligibility category and the office or service center handling your case, and it is updated monthly. Check your own case at egov.uscis.gov/processing-times. Because a DHS rule removed the automatic extension for renewals filed on or after October 30, 2025, a long processing time can now mean a work gap — so file as early as the window allows. Premium processing is not available for category (c)(26).",
       },
       {
         question: "Can an H-4 EAD be renewed early?",
