@@ -145,13 +145,19 @@ export const h1bLottery = {
   // the selection process is wage-weighted (see selectionMethodChange), so a
   // single blended selection rate no longer describes any individual's chances.
   fiscalYear: "FY 2026",
-  oddsDisplay: "~28%",
-  selectedRegistrations: 114017,
-  eligibleRegistrations: 409153,
+  oddsDisplay: "~35%",
+  selectedRegistrations: 120141,
+  eligibleRegistrations: 343981,
+  // Beneficiary-basis figures for the same season, kept separate so the two
+  // definitions are never blended: 336,153 eligible unique beneficiaries and
+  // 118,660 selected (~35.3%). The headline above uses the registrations basis
+  // consistently across every year in historicalData.
+  eligibleBeneficiaries: 336153,
+  selectedBeneficiaries: 118660,
   calculationNote:
-    "Approximate odds = selected ÷ eligible unique registrations for FY 2026, the final year of the uniform random lottery. USCIS rounds/adjusts counts; treat as an estimate. Actual odds also vary by cap type (regular 65k vs. advanced-degree 20k exemption).",
-  previousYearOddsDisplay: "~24% (FY 2025)",
-  changeDisplay: "+4 pp vs. FY 2025",
+    "Selection rate = selected ÷ eligible registrations, on a registrations basis for every year shown. FY 2026 was the final season selected by uniform random lottery. On a unique-beneficiary basis FY 2026 was 118,660 of 336,153 (~35.3%) — a different denominator, so do not compare the two bases directly. Odds also vary by cap type (regular 65k vs. advanced-degree 20k exemption).",
+  previousYearOddsDisplay: "~29% (FY 2025)",
+  changeDisplay: "+6 pp vs. FY 2025",
 
   /**
    * FY 2027 onward: DHS replaced the uniform random lottery with a weighted
@@ -180,10 +186,14 @@ export const h1bLottery = {
   officialSourceName: "USCIS H-1B Electronic Registration Data",
   officialSourceUrl:
     "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupation/h-1b-electronic-registration-process",
+  // Registrations basis throughout: selected ÷ eligible registrations.
+  // FY 2024 selected is the combined total of the initial drawing (110,791)
+  // and the second drawing (77,609) — the earlier version of this table
+  // mistakenly carried that initial-drawing figure into the FY 2025 row.
   historicalData: [
-    { year: "FY 2024", oddsDisplay: "~35%", selected: 188400, eligible: 540000 },
-    { year: "FY 2025", oddsDisplay: "~24%", selected: 110791, eligible: 470342 },
-    { year: "FY 2026", oddsDisplay: "~28%", selected: 114017, eligible: 409153 },
+    { year: "FY 2024", oddsDisplay: "~25%", selected: 188400, eligible: 758994 },
+    { year: "FY 2025", oddsDisplay: "~29%", selected: 135137, eligible: 470342 },
+    { year: "FY 2026", oddsDisplay: "~35%", selected: 120141, eligible: 343981 },
   ],
 } as const;
 
