@@ -1492,7 +1492,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       caption: "Service center / system prefixes",
       headers: ["Prefix", "System / center"],
       rows: [
-        ["IOE", "USCIS electronic immigration system (ELIS) — online filings"],
+        ["IOE", "USCIS electronic immigration system (ELIS) — online filings and electronically processed paper filings"],
         ["LIN", "Nebraska Service Center"],
         ["SRC", "Texas Service Center"],
         ["EAC", "Vermont Service Center"],
@@ -1525,7 +1525,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "What does IOE mean?",
         answer:
-          "IOE is the prefix for cases in the USCIS electronic immigration system (ELIS) — typically online filings. An IOE receipt number means your case is handled through that online system rather than a specific physical service center.",
+          "IOE is the prefix for cases in the USCIS electronic immigration system (ELIS). It means your case is handled through that electronic system rather than a specific physical service center. It is typically an online filing, but not necessarily — USCIS also assigns IOE numbers to paper filings processed or digitised electronically. Unlike traditional service-center numbers, the digits following IOE do not encode a fiscal year and computer workday.",
       },
       {
         question: "What does LIN mean?",

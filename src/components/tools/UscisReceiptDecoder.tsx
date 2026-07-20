@@ -32,7 +32,7 @@ const PREFIX_DATA: Record<Exclude<Prefix, "">, PrefixInfo> = {
     center: "USCIS ELIS (online filing system)",
     location: "Electronic — no physical service center",
     description:
-      "IOE receipts are issued for applications filed through USCIS's online portal (myUSCIS / ELIS). Since 2020, USCIS has expanded online filing to many common forms. Your case is routed to an appropriate service center for adjudication — the IOE prefix just means you filed online.",
+      "IOE identifies USCIS's electronic immigration system (ELIS) rather than a physical service center. It usually means the application was filed online, but not always — USCIS also assigns IOE numbers to paper filings it processes or digitises electronically, so an IOE prefix is not proof you filed online. Your case is still routed to an appropriate office for adjudication. Note that the digits after IOE are not a fiscal year and computer workday, so the traditional service-center decoding does not apply to them.",
     commonForms: ["I-485", "I-765", "I-131", "I-90", "N-400", "I-539"],
     doesNotTell: [
       "Which physical service center is adjudicating your case",
@@ -189,7 +189,7 @@ export default function UscisReceiptDecoder() {
             className="mt-1 w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
           >
             <option value="">Select prefix…</option>
-            <option value="IOE">IOE — online filing</option>
+            <option value="IOE">IOE — electronic processing (ELIS)</option>
             <option value="LIN">LIN — Nebraska</option>
             <option value="SRC">SRC — Texas</option>
             <option value="EAC">EAC — Vermont</option>

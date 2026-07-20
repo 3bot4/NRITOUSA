@@ -28,12 +28,12 @@ const faq: FaqItem[] = [
   {
     question: "What is a USCIS receipt number?",
     answer:
-      "A USCIS receipt number is a unique 13-character identifier assigned to every immigration application or petition when USCIS accepts it. It looks like LIN2412345678 or IOE0123456789. You use it to track your case status at egov.uscis.gov. It is printed on your Form I-797 Notice of Action.",
+      "A USCIS receipt number is a unique identifier assigned to every immigration application or petition when USCIS accepts it. The format is always the same: 13 characters made up of three letters followed by ten numbers, like LIN2412345678 or IOE0123456789. It is printed on your Form I-797 Notice of Action, and you use it to track your case status at egov.uscis.gov/casestatus.",
   },
   {
     question: "What does the 3-letter prefix on my receipt number mean?",
     answer:
-      "The first three letters often indicate the initial USCIS system, service center, or intake location associated with the receipt number — IOE = filed online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center. However, the prefix does not always prove where your case is currently being processed, because USCIS may transfer or route cases internally. The prefix does NOT tell you how long your case will take or whether it will be approved.",
+      "The first three letters often indicate the initial USCIS system, service center, or intake location associated with the receipt number — IOE = electronic processing, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center. The prefix records the intake point and does not prove where your case is currently being adjudicated, because USCIS transfers cases between offices and processes many electronically. The prefix does NOT tell you how long your case will take or whether it will be approved.",
   },
   {
     question: "Where do I find my receipt number?",
@@ -58,7 +58,7 @@ const faq: FaqItem[] = [
   {
     question: "Is IOE receipt number the same as other receipt numbers?",
     answer:
-      "Functionally yes — you check an IOE receipt number the same way at egov.uscis.gov. IOE simply means you filed your application online through the USCIS website rather than by paper mail. The IOE prefix has been expanding since 2020 as USCIS expands online filing.",
+      "Functionally yes — it is still 13 characters (three letters and ten numbers) and you check it the same way at egov.uscis.gov. The difference is what IOE signals: it identifies USCIS's electronic processing system, not a particular service center. It does not necessarily mean you filed online — USCIS also assigns IOE numbers to paper filings that are processed or digitized electronically. One practical consequence: the digits after IOE are not a fiscal year and computer workday, so the traditional service-center decoding does not apply.",
   },
   {
     question: "What should I NOT share my receipt number with?",
@@ -174,7 +174,7 @@ export default function ReceiptNumberPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 flex-none text-indigo-400">▸</span>
-                The <strong>first three letters</strong> often indicate the initial USCIS system or intake location (IOE = online, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center) — but USCIS may transfer cases internally, so the prefix does not always reflect where your case is currently being processed.
+                The <strong>first three letters</strong> often indicate the initial USCIS system or intake location (IOE = electronic processing, LIN = Nebraska, SRC = Texas, EAC = Vermont, WAC = California, MSC/NBC = National Benefits Center) — but USCIS transfers cases internally and processes many electronically, so the prefix does not reflect where your case is currently being adjudicated.
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 flex-none text-indigo-400">▸</span>
@@ -192,8 +192,8 @@ export default function ReceiptNumberPage() {
             <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
             <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
               <li>• Look for <strong>13 characters</strong> — 3 letters followed by 10 digits — printed at the top-left of your Form I-797 Notice of Action.</li>
-              <li>• Read the prefix as the <strong>intake point</strong>, not the current location: IOE means online filing, LIN Nebraska, SRC Texas, EAC Vermont, WAC California, MSC the National Benefits Center.</li>
-              <li>• Decode the next <strong>2 digits</strong> as the fiscal year USCIS received the case, and the following 3 as the computer workday.</li>
+              <li>• Read the prefix as the <strong>intake point</strong>, not the current location: IOE signals electronic processing (not necessarily an online filing), LIN Nebraska, SRC Texas, EAC Vermont, WAC California, MSC the National Benefits Center.</li>
+              <li>• On <strong>traditional service-center</strong> numbers only, the next <strong>2 digits</strong> are the fiscal year and the following 3 the computer workday — this decoding does not apply to IOE numbers.</li>
               <li>• Enter it only at <strong>egov.uscis.gov/casestatus</strong> — the sole official status portal, and no login is required.</li>
               <li>• Never post the full number publicly; it is a sensitive identifier tied to your immigration record.</li>
             </ul>
@@ -273,6 +273,14 @@ export default function ReceiptNumberPage() {
               <p className="text-xs font-bold uppercase tracking-wide text-ink-500 mb-3">
                 Receipt number structure
               </p>
+              <p className="mb-3 text-xs leading-relaxed text-ink-600">
+                Every receipt number is <strong>13 characters — three letters followed by ten
+                numbers</strong>. That much is universal. The character-by-character breakdown
+                below is the <strong>traditional service-center format</strong> (LIN, SRC, EAC,
+                WAC). It does <strong>not</strong> apply to <span className="font-mono">IOE</span>{" "}
+                numbers, which come from USCIS&rsquo;s electronic system — the digits after an IOE
+                prefix are not a fiscal year and workday, so don&rsquo;t try to decode them this way.
+              </p>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs sm:text-sm">
                   <thead>
@@ -297,10 +305,10 @@ export default function ReceiptNumberPage() {
                       <td className="py-2 text-ink-600">FY the case was filed (e.g., 24 = FY2024)</td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-medium text-ink-800">Day of year</td>
+                      <td className="py-2 font-medium text-ink-800">Computer workday</td>
                       <td className="py-2 text-ink-600">3 digits</td>
                       <td className="py-2 font-mono text-indigo-700">123</td>
-                      <td className="py-2 text-ink-600">Day of the fiscal year received</td>
+                      <td className="py-2 text-ink-600">Computer workday the case was entered — a processing-day count, not a calendar date</td>
                     </tr>
                     <tr>
                       <td className="py-2 font-medium text-ink-800">Sequence</td>
@@ -358,9 +366,9 @@ export default function ReceiptNumberPage() {
                   {[
                     {
                       prefix: "IOE",
-                      center: "Online filing (ELIS)",
-                      location: "Electronic",
-                      common: "I-485, I-765, I-131, N-400 filed online",
+                      center: "Electronic processing (ELIS)",
+                      location: "Electronic — not a physical service center",
+                      common: "I-485, I-765, I-131, N-400 — filed online or digitised by USCIS",
                     },
                     {
                       prefix: "LIN",
