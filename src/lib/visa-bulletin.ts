@@ -489,3 +489,22 @@ export function getMovement(
   if (moved < -0.03) return { ...base, status: "retrogressed" };
   return { ...base, status: "no-movement" };
 }
+
+/**
+ * True when the stored bulletin month is older than the current calendar month.
+ *
+ * The cutoff data in data/visa-bulletin/current.json is MANUALLY MAINTAINED and
+ * has to be updated when each new bulletin is published (around the 8th-10th).
+ * If that update is missed, the site would otherwise keep presenting last
+ * month's cutoffs as though they were current. Callers should surface a visible
+ * warning when this returns true rather than showing the result as authoritative.
+ *
+ * A bulletin for a FUTURE month is not stale — bulletins are published ahead of
+ * the month they govern.
+ */
+export function isBulletinStale(ym: string = bulletin.month): boolean {
+  const [y, m] = ym.split("-").map(Number);
+  if (!y || !m) return true;
+  const now = new Date();
+  return y * 12 + (m - 1) < now.getFullYear() * 12 + now.getMonth();
+}

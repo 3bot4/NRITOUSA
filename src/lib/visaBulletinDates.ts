@@ -138,11 +138,23 @@ export function comparePriorityDate(
   return priorityDate < cutoffDate ? "current" : "not-current";
 }
 
-/** Return true if the bulletin data is from the current calendar month. */
+/**
+ * Return true if the stored BULLETIN month is the current calendar month.
+ *
+ * This deliberately keys off the bulletin month (`data.month` / `data.year`),
+ * not `lastUpdated`. Those are different things: the July bulletin is normally
+ * published — and this file updated — in mid-June, so comparing `lastUpdated`
+ * flagged correct current-month data as stale, and would have called data
+ * "fresh" whenever someone touched the file, however old the bulletin was.
+ * The bulletin month is the thing that actually goes out of date.
+ */
 export function isBulletinFresh(data: VisaBulletinData): boolean {
   const now = new Date();
-  return (
-    data.year === now.getFullYear() &&
-    new Date(data.lastUpdated).getMonth() === now.getMonth()
-  );
+  const bulletinMonthIndex = MONTH_NAMES.indexOf(data.month);
+  if (bulletinMonthIndex === -1) return false;
+  // Fresh only if the bulletin is for this month or later (a bulletin is
+  // published ahead of its month, so a future month is not stale).
+  const bulletinOrdinal = data.year * 12 + bulletinMonthIndex;
+  const nowOrdinal = now.getFullYear() * 12 + now.getMonth();
+  return bulletinOrdinal >= nowOrdinal;
 }

@@ -6,6 +6,8 @@ import {
   getApplicableChart,
   formatCutoff,
   getBulletinLabel,
+  formatBulletinMonth,
+  isBulletinStale,
   formatMonths,
   CATEGORY_SHORT,
   COUNTRY_LABELS,
@@ -191,7 +193,29 @@ export default function VisaBulletinCategoryStatus({
         </span>
         <span aria-hidden>·</span>
         <span>Data verified {formatDate(bulletin.lastUpdated)}</span>
+        <span aria-hidden>·</span>
+        <span>Manually maintained from the published bulletin — not a live feed</span>
       </div>
+
+      {isBulletinStale() && (
+        <div className="mt-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
+          <strong className="font-bold">
+            These cutoffs may be out of date.
+          </strong>{" "}
+          The bulletin stored here is for {formatBulletinMonth()}, which is
+          earlier than the current month. A newer Visa Bulletin has probably been
+          published. Treat the dates above as historical and check the{" "}
+          <a
+            href={bulletin.source || DOS_VISA_BULLETIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline"
+          >
+            official Department of State bulletin
+          </a>{" "}
+          before relying on them.
+        </div>
+      )}
 
       <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
         <a
