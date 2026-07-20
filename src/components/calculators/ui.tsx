@@ -277,21 +277,24 @@ export function ToggleField({
   const hintId = `${id}-hint`;
   return (
     <div>
-      <div className="flex items-start gap-3">
+      {/* The whole row is the label, so the tap target is the full width and at
+          least 44px tall rather than just the 20px checkbox itself. */}
+      <label
+        htmlFor={id}
+        className="flex min-h-[44px] cursor-pointer items-center gap-3 py-1"
+      >
         <input
           id={id}
           type="checkbox"
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           aria-describedby={hint ? hintId : undefined}
-          className="mt-0.5 h-5 w-5 flex-none rounded border-ink-900/20 text-brand-600 focus:ring-2 focus:ring-brand-500/30"
+          className="h-6 w-6 flex-none rounded border-ink-900/20 text-brand-600 focus:ring-2 focus:ring-brand-500/30"
         />
-        <label htmlFor={id} className="text-sm font-semibold text-ink-800">
-          {label}
-        </label>
-      </div>
+        <span className="text-sm font-semibold text-ink-800">{label}</span>
+      </label>
       {hint && (
-        <span id={hintId} className="mt-1 block pl-8 text-xs text-ink-400">
+        <span id={hintId} className="mt-0.5 block pl-9 text-xs text-ink-400">
           {hint}
         </span>
       )}
@@ -310,14 +313,18 @@ export function CalcGrid({
   results: React.ReactNode;
 }) {
   return (
+    // min-w-0 on both columns: grid items default to min-width:auto, so any
+    // wide descendant (a chart with a min-width, a long unbroken number) would
+    // stretch the track and scroll the whole page sideways on phones rather
+    // than scrolling inside its own container.
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card sm:p-7">
+      <div className="min-w-0 rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card sm:p-7">
         <p className="mb-5 text-xs font-bold uppercase tracking-wider text-ink-400">
           Your details
         </p>
         <div className="space-y-4">{inputs}</div>
       </div>
-      <div className="space-y-4">{results}</div>
+      <div className="min-w-0 space-y-4">{results}</div>
     </div>
   );
 }

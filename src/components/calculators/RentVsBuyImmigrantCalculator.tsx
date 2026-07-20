@@ -726,9 +726,13 @@ export default function RentVsBuyImmigrantCalculator() {
         </p>
       </div>
 
+      {/* min-w-0 on both columns: grid items default to min-width:auto, which
+          lets a wide child (the 560px-min chart) stretch the whole track and
+          scroll the page sideways on phones instead of scrolling inside its own
+          overflow-x-auto wrapper. */}
       <div className="grid gap-6 lg:grid-cols-[1fr_1.05fr]">
         {/* ---------------- Inputs ---------------- */}
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           <Toggle
             on={lensOn}
             onChange={(v) => set("lens", v ? "on" : "off")}
@@ -835,7 +839,7 @@ export default function RentVsBuyImmigrantCalculator() {
         </div>
 
         {/* ---------------- Results ---------------- */}
-        <div className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+        <div className="min-w-0 space-y-4 lg:sticky lg:top-6 lg:self-start">
           {!val.ok && <InvalidInputPanel errors={fieldErrors} />}
           {val.ok && (
           <>
