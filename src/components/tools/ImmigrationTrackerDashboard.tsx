@@ -433,10 +433,10 @@ export default function ImmigrationTrackerDashboard({
             lastUpdated={h1bLottery.lastUpdated}
             sourceLabel={h1bLottery.officialSourceName}
             sourceUrl={h1bLottery.officialSourceUrl}
-            note="Lottery odds vary by year and registration rules. Estimate only."
+            note={`Historic rate for ${h1bLottery.fiscalYear}, the last cap season selected by uniform random lottery. From ${h1bLottery.selectionMethodChange.appliesFrom} selection is wage-weighted, so this figure does not describe current individual odds — see the note below.`}
             learnMoreHref="/h1b"
             confidence={["calculated", "estimate"]}
-            confidenceNote="Calculated from USCIS registration/selection data. Odds vary by year and rules."
+            confidenceNote="Calculated from USCIS registration/selection data for a past cap season. Superseded as a predictor by the weighted selection process."
           />
 
           {/* Processing time cards */}
@@ -597,6 +597,33 @@ export default function ImmigrationTrackerDashboard({
               sourceLabel={h1bLottery.officialSourceName}
             />
           </div>
+        </div>
+
+        {/* The selection method itself changed — more consequential than any
+            single year's rate, so it sits with the data rather than in a
+            footnote. */}
+        <div className="mt-3 rounded-xl border-l-4 border-amber-400 bg-amber-50/70 px-4 py-3">
+          <p className="text-sm font-bold text-ink-900">
+            How selection works changed from{" "}
+            {h1bLottery.selectionMethodChange.appliesFrom}
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-ink-700">
+            {h1bLottery.selectionMethodChange.summary}
+          </p>
+          <p className="mt-2 text-xs text-ink-500">
+            Source:{" "}
+            <a
+              href={h1bLottery.selectionMethodChange.ruleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline"
+            >
+              {h1bLottery.selectionMethodChange.ruleTitle}
+            </a>{" "}
+            — {h1bLottery.selectionMethodChange.citation}, published{" "}
+            {h1bLottery.selectionMethodChange.publishedDate}, effective{" "}
+            {h1bLottery.selectionMethodChange.effectiveDate}.
+          </p>
         </div>
 
         <p className="mt-2 text-xs text-ink-400">

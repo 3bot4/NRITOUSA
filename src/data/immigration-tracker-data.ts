@@ -139,14 +139,43 @@ export const i485BacklogIndia = {
 
 export const h1bLottery = {
   // MANUALLY MAINTAINED — update after each USCIS H-1B selection announcement
+  //
+  // The figures below describe FY 2026, the last cap season selected by a
+  // UNIFORM RANDOM lottery. Do not present them as current odds: from FY 2027
+  // the selection process is wage-weighted (see selectionMethodChange), so a
+  // single blended selection rate no longer describes any individual's chances.
   fiscalYear: "FY 2026",
   oddsDisplay: "~28%",
   selectedRegistrations: 114017,
   eligibleRegistrations: 409153,
   calculationNote:
-    "Approximate odds = selected ÷ eligible unique registrations. USCIS rounds/adjusts counts; treat as an estimate. Actual odds vary by cap type (regular 65k vs. advanced-degree 20k exemption).",
+    "Approximate odds = selected ÷ eligible unique registrations for FY 2026, the final year of the uniform random lottery. USCIS rounds/adjusts counts; treat as an estimate. Actual odds also vary by cap type (regular 65k vs. advanced-degree 20k exemption).",
   previousYearOddsDisplay: "~24% (FY 2025)",
   changeDisplay: "+4 pp vs. FY 2025",
+
+  /**
+   * FY 2027 onward: DHS replaced the uniform random lottery with a weighted
+   * selection process. Verified against the Federal Register record for the
+   * final rule (see citation below) — not a secondary summary.
+   *
+   * Deliberately carries no FY 2027 selection counts. Reported figures from
+   * secondary sources conflicted at the time of writing and uscis.gov could not
+   * be verified directly, so no FY 2027 numbers are published here. Add them
+   * only from the USCIS announcement itself.
+   */
+  selectionMethodChange: {
+    appliesFrom: "FY 2027",
+    effectiveDate: "2026-02-27",
+    publishedDate: "2025-12-29",
+    citation: "90 FR 60864",
+    ruleTitle:
+      "Weighted Selection Process for Registrants and Petitioners Seeking To File Cap-Subject H-1B Petitions",
+    ruleUrl:
+      "https://www.federalregister.gov/documents/2025/12/29/2025-23853/weighted-selection-process-for-registrants-and-petitioners-seeking-to-file-cap-subject-h-1b",
+    summary:
+      "From the FY 2027 cap season, H-1B registrations are no longer selected by a uniform random lottery. A DHS final rule effective February 27, 2026 introduced a weighted selection process that generally favours higher-paid registrations, while keeping registrations at all wage levels eligible. Because selection odds now depend on the offered wage relative to Department of Labor wage levels, a single blended selection rate does not describe an individual registrant's chances. Check your own wage level and the current USCIS announcement.",
+  },
+
   lastUpdated: "2026-07-20",
   officialSourceName: "USCIS H-1B Electronic Registration Data",
   officialSourceUrl:
