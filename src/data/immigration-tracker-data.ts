@@ -147,7 +147,7 @@ export const h1bLottery = {
     "Approximate odds = selected ÷ eligible unique registrations. USCIS rounds/adjusts counts; treat as an estimate. Actual odds vary by cap type (regular 65k vs. advanced-degree 20k exemption).",
   previousYearOddsDisplay: "~24% (FY 2025)",
   changeDisplay: "+4 pp vs. FY 2025",
-  lastUpdated: "2025-04-05",
+  lastUpdated: "2026-07-20",
   officialSourceName: "USCIS H-1B Electronic Registration Data",
   officialSourceUrl:
     "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupation/h-1b-electronic-registration-process",
