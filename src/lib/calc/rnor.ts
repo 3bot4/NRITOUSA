@@ -261,3 +261,27 @@ export function calculateRnor(input: RnorRawInputs): RnorResult {
     rnorBy120DayCategory,
   };
 }
+
+/**
+ * India foreign-asset disclosure (Schedule FA) guidance by residency status.
+ *
+ * Per the ITR instructions, Schedule FA generally does NOT need to be completed
+ * by NR or RNOR taxpayers, and generally becomes relevant once a taxpayer is
+ * Resident and Ordinarily Resident (ROR) — subject to the applicable return
+ * instructions for the year. This never says Schedule FA applies merely because
+ * someone is "resident" (RNOR is resident but is not ordinarily resident).
+ *
+ * Source: Income Tax Department — ITR-2 instructions.
+ */
+export function scheduleFaGuidance(status: RnorStatus): string {
+  switch (status) {
+    case "NRI":
+      return "As a non-resident, you generally do not complete Schedule FA (foreign-asset disclosure) on the India return.";
+    case "RNOR":
+      return "As RNOR, you generally do not complete Schedule FA — it generally becomes relevant only once you are Resident and Ordinarily Resident (ROR).";
+    case "ROR":
+      return "As Resident and Ordinarily Resident (ROR), Schedule FA foreign-asset disclosure generally applies — report qualifying foreign assets per the ITR instructions for the year.";
+    case "REVIEW":
+      return "Your residency status could not be determined here, and Schedule FA obligations follow from it — resolve your status with a professional first.";
+  }
+}

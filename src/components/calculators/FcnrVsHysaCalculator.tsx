@@ -15,23 +15,13 @@ import {
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { validateAll, USD_AMOUNT, PERCENT } from "@/lib/calc/validation";
+import { runFcnrModel, type Compounding, type IndiaStatus } from "@/lib/calc/fcnrHysa";
+import { marginalRateOptions } from "@/lib/calc/usTaxConfig";
 
 /* ─────────────────── helpers ─────────────────── */
 
 function round2(n: number) {
   return Math.round(n * 100) / 100;
-}
-
-function buildYearSeries(
-  principal: number,
-  afterTaxRate: number,
-  years: number
-): number[] {
-  const pts: number[] = [principal];
-  for (let y = 1; y <= years; y++) {
-    pts.push(principal * Math.pow(1 + afterTaxRate, y));
-  }
-  return pts;
 }
 
 /* ─────────────────── inline SVG chart ─────────────────── */
@@ -337,13 +327,9 @@ function ResultCard({
 
 /* ─────────────────── main calculator ─────────────────── */
 
-const TAX_BRACKETS = [
-  { value: "22", label: "22% (single $47k–$100k / married $94k–$201k)" },
-  { value: "24", label: "24% (single $100k–$191k / married $201k–$383k)" },
-  { value: "32", label: "32% (single $191k–$243k / married $383k–$487k)" },
-  { value: "35", label: "35% (single $243k–$609k / married $487k–$731k)" },
-  { value: "37", label: "37% (over $609k single / $731k married)" },
-];
+// 2026 marginal-rate ranges, generated from the sourced IRS 2026 config
+// (Single + MFJ thresholds, the ranges the IRS release publishes).
+const TAX_BRACKETS = marginalRateOptions();
 
 export default function FcnrVsHysaCalculator() {
   const [s, set] = useUrlState({
@@ -353,6 +339,8 @@ export default function FcnrVsHysaCalculator() {
     hysaRate: "4.50",
     federalTax: "24",
     stateTax: "0",
+    indiaStatus: "nri",
+    compounding: "annual",
   });
 
   const val = validateAll(
@@ -380,44 +368,74 @@ export default function FcnrVsHysaCalculator() {
   const hysaGross = val.values.hysaRate / 100;
   const fedRate = val.values.federalTax / 100;
   const stateRate = val.values.stateTax / 100;
-  // Combined rate cannot exceed 100%, which would produce a negative yield.
-  const totalTaxRate = Math.min(1, fedRate + stateRate);
-
-  const fcnrAfterTax = fcnrGross * (1 - totalTaxRate);
-  const hysaAfterTax = hysaGross * (1 - totalTaxRate);
+  const indiaStatus = s.indiaStatus as IndiaStatus;
+  const compounding = s.compounding as Compounding;
+  // Indian tax on FCNR interest (once ROR) — modelled at the top marginal slab.
+  const INDIA_ROR_RATE = 0.3;
 
   const calc = useMemo(() => {
-    const fcnrFinal = principal * Math.pow(1 + fcnrAfterTax, tenure);
-    const hysaFinal = principal * Math.pow(1 + hysaAfterTax, tenure);
+    // One reconciling period model per instrument (see lib/calc/fcnrHysa).
+    const common = {
+      years: tenure,
+      compounding,
+      indiaStatus,
+      indiaRate: INDIA_ROR_RATE,
+      usFederalRate: fedRate,
+      stateRate,
+    };
+    const fcnr = runFcnrModel({
+      ...common,
+      principal,
+      annualRate: fcnrGross,
+      indianSource: true, // FCNR is Indian-source: Indian tax applies once ROR
+    });
+    const hysa = runFcnrModel({
+      ...common,
+      principal,
+      annualRate: hysaGross,
+      indianSource: false, // US-source interest: no Indian tax here
+    });
 
-    const fcnrGrossEarned = principal * fcnrGross * tenure;
-    const hysaGrossEarned = principal * hysaGross * tenure;
-    const fcnrTax = fcnrGrossEarned * totalTaxRate;
-    const hysaTax = hysaGrossEarned * totalTaxRate;
-    const fcnrNetGain = fcnrFinal - principal;
-    const hysaNetGain = hysaFinal - principal;
-
+    const fcnrFinal = fcnr.final.endingBalance;
+    const hysaFinal = hysa.final.endingBalance;
     const fcnrWins = fcnrFinal >= hysaFinal;
     const advantage = Math.abs(fcnrFinal - hysaFinal);
 
-    const fcnrSeries = buildYearSeries(principal, fcnrAfterTax, 10);
-    const hysaSeries = buildYearSeries(principal, hysaAfterTax, 10);
+    // 10-year chart series from the SAME model, so the picture matches the
+    // headline figures (endingBalance at each year boundary).
+    const yearly = (rate: number, indianSource: boolean) => {
+      const pts: number[] = [principal];
+      for (let y = 1; y <= 10; y++) {
+        pts.push(
+          runFcnrModel({ ...common, years: y, principal, annualRate: rate, indianSource })
+            .final.endingBalance,
+        );
+      }
+      return pts;
+    };
 
     return {
       fcnrFinal: round2(fcnrFinal),
       hysaFinal: round2(hysaFinal),
-      fcnrNetGain: round2(fcnrNetGain),
-      hysaNetGain: round2(hysaNetGain),
-      fcnrGrossEarned: round2(fcnrGrossEarned),
-      hysaGrossEarned: round2(hysaGrossEarned),
-      fcnrTax: round2(fcnrTax),
-      hysaTax: round2(hysaTax),
+      fcnrNetGain: fcnr.final.netGain,
+      hysaNetGain: hysa.final.netGain,
+      fcnrGrossEarned: fcnr.final.cumulativeGrossInterest,
+      hysaGrossEarned: hysa.final.cumulativeGrossInterest,
+      fcnrTax: fcnr.final.cumulativeTax,
+      hysaTax: hysa.final.cumulativeTax,
+      fcnrIndianTax: fcnr.final.indianTax,
       fcnrWins,
       advantage: round2(advantage),
-      fcnrSeries,
-      hysaSeries,
+      fcnrSeries: yearly(fcnrGross, true),
+      hysaSeries: yearly(hysaGross, false),
+      reconciles: fcnr.reconciles && hysa.reconciles,
     };
-  }, [principal, fcnrAfterTax, hysaAfterTax, tenure, fcnrGross, hysaGross, totalTaxRate]);
+  }, [principal, tenure, fcnrGross, hysaGross, fedRate, stateRate, indiaStatus, compounding]);
+
+  // After-tax effective rates, for the result cards' display only.
+  const totalTaxRate = Math.min(1, fedRate + stateRate + (indiaStatus === "ror" ? INDIA_ROR_RATE : 0));
+  const fcnrAfterTax = fcnrGross * (1 - totalTaxRate);
+  const hysaAfterTax = hysaGross * (1 - Math.min(1, fedRate + stateRate));
 
   const advantagePct =
     calc.advantage > 0 && Math.min(calc.fcnrFinal, calc.hysaFinal) > 0
@@ -487,7 +505,7 @@ export default function FcnrVsHysaCalculator() {
               max={100}
               step={0.05}
               error={val.errors.fcnrRate}
-              hint="SBI 5.50% · HDFC 5.50% · ICICI 5.40% · Axis 5.60% — as of Jun 2026"
+              hint="Enter the rate your bank quotes for your currency and term — check its official FCNR rate page. Rates vary by bank, term and currency and change often."
             />
 
             <NumberField
@@ -499,11 +517,35 @@ export default function FcnrVsHysaCalculator() {
               max={100}
               step={0.05}
               error={val.errors.hysaRate}
-              hint="Typical HYSA: 4.3–4.8% · 1-yr CD: 4.5–5.0%"
+              hint="Enter your bank's current advertised APY."
             />
 
             <SelectField
-              label="US federal tax bracket"
+              label="Compounding frequency"
+              value={s.compounding}
+              onChange={(v) => set("compounding", v)}
+              options={[
+                { value: "annual", label: "Annual" },
+                { value: "semiannual", label: "Semi-annual" },
+                { value: "quarterly", label: "Quarterly" },
+              ]}
+              hint="Assumption for this estimate. FCNR interest is compounded on the schedule set by the bank under RBI rules — confirm your deposit's actual frequency."
+            />
+
+            <SelectField
+              label="Your India residency status"
+              value={s.indiaStatus}
+              onChange={(v) => set("indiaStatus", v)}
+              options={[
+                { value: "nri", label: "NRI — Non-Resident" },
+                { value: "rnor", label: "RNOR — Resident, Not Ordinarily Resident" },
+                { value: "ror", label: "ROR — Resident & Ordinarily Resident" },
+              ]}
+              hint="FCNR interest is exempt from Indian income tax while you are NRI or RNOR. Once you become ROR, it becomes taxable in India."
+            />
+
+            <SelectField
+              label="US federal marginal rate (2026)"
               value={s.federalTax}
               onChange={(v) => set("federalTax", v)}
               options={TAX_BRACKETS}
@@ -529,8 +571,12 @@ export default function FcnrVsHysaCalculator() {
           ) : (
           <>
             <ResultCard
-              title="FCNR (Indian bank USD deposit)"
-              subtitle={`Fixed deposit at an Indian bank in USD · ${pct(num(s.fcnrRate))} gross · no India tax under FEMA`}
+              title="FCNR (Indian bank foreign-currency deposit)"
+              subtitle={`Fixed deposit at an Indian bank · ${pct(num(s.fcnrRate))} gross · ${
+                indiaStatus === "ror"
+                  ? "Indian tax applies (ROR)"
+                  : "Indian-tax exempt while NRI/RNOR"
+              }`}
               grossRate={fcnrGross * 100}
               afterTaxRate={fcnrAfterTax * 100}
               netGain={calc.fcnrNetGain}
@@ -612,9 +658,13 @@ export default function FcnrVsHysaCalculator() {
         </Callout>
 
         <Callout tone="bad">
-          <strong>FCNR early closure:</strong> If you close the deposit before 1
-          year, you earn zero interest. After 1 year, a 1% penalty applies on
-          the contracted rate.
+          <strong>FCNR early closure:</strong> FCNR deposits generally earn no
+          interest if closed before 12 months. If closed after 12 months but
+          before maturity, banks typically pay interest for the period held and
+          may apply a penalty on the contracted rate. The exact rule —
+          including any penalty percentage — is <strong>bank-specific</strong>,
+          so check your own bank&apos;s FCNR terms rather than assuming a single
+          universal figure.
         </Callout>
 
         <Callout tone="note">

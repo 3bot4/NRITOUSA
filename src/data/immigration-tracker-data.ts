@@ -184,8 +184,10 @@ export const h1bLottery = {
 
   lastUpdated: "2026-07-20",
   officialSourceName: "USCIS H-1B Electronic Registration Data",
+  // Current USCIS path (temporary-workers / occupations, plural); the older
+  // /h-1b-specialty-occupation/ path was obsolete.
   officialSourceUrl:
-    "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupation/h-1b-electronic-registration-process",
+    "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-process",
   // Registrations basis throughout: selected ÷ eligible registrations.
   // FY 2024 selected is the combined total of the initial drawing (110,791)
   // and the second drawing (77,609) — the earlier version of this table

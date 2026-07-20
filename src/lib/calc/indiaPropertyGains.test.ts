@@ -306,3 +306,40 @@ describe("surcharge", () => {
     expect(run().warnings.join(" ")).toContain("total Indian income");
   });
 });
+
+describe("repatriation follows final tax, not day-one TDS cash (item 5)", () => {
+  it("net proceeds reconcile: cash-after-TDS + excess-TDS refund = net after final tax", () => {
+    const r = run();
+    expect(r.netProceedsAfterFinalTax).toBeCloseTo(
+      r.immediateCashAfterTds + r.excessTdsRefundable,
+      2,
+    );
+  });
+
+  it("every USD figure uses the same exchange rate", () => {
+    const r = run({ fxRate: "80" });
+    expect(r.immediateCashUsd).toBeCloseTo(r.immediateCashAfterTds / 80, 2);
+    expect(r.netProceedsUsd).toBeCloseTo(r.netProceedsAfterFinalTax / 80, 2);
+  });
+
+  it("repatriable amount is based on net-proceeds-after-final-tax, not cash-after-TDS", () => {
+    const r = run();
+    // Cash after TDS is smaller than net after final tax (excess TDS refunded),
+    // so a repatriable figure keyed to net proceeds must exceed the cash-after-TDS USD.
+    expect(r.netProceedsUsd).toBeGreaterThan(r.immediateCashUsd);
+    // With ample headroom, repatriable equals the net-proceeds USD, not cash-after-TDS USD.
+    expect(r.estimatedRepatriableUsd).toBeCloseTo(r.netProceedsUsd, 2);
+    expect(r.estimatedRepatriableUsd).not.toBeCloseTo(r.immediateCashUsd, 2);
+  });
+
+  it("is capped by remaining repatriation headroom", () => {
+    const r = run({ alreadyRepatriated: "999000" });
+    expect(r.estimatedRepatriableUsd).toBeLessThanOrEqual(1000);
+  });
+
+  it("does not compute a repatriable figure when the final tax is not calculable", () => {
+    const r = run({ termMode: "short" }); // no slab rate -> tax not calculable
+    expect(r.taxCalculable).toBe(false);
+    expect(r.estimatedRepatriableUsd).toBe(0);
+  });
+})

@@ -15,6 +15,7 @@ import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import {
   calculateRnor,
+  scheduleFaGuidance,
   type Citizenship,
   type LiableElsewhere,
   type PresenceReason,
@@ -261,6 +262,13 @@ export default function RnorCalculator() {
                 own day counts and history under the section 6(6) tests — it is
                 not a fixed number of years, and it must be re-tested every
                 financial year.
+              </Callout>
+            )}
+
+            {r.status !== "REVIEW" && (
+              <Callout tone="note">
+                <strong>Schedule FA (foreign-asset disclosure):</strong>{" "}
+                {scheduleFaGuidance(r.status)}
               </Callout>
             )}
 

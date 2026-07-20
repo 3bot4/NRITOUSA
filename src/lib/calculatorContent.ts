@@ -378,7 +378,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       "Which forms apply (Form 67 in India, Form 1116 in the US, Form 10F where a TRC is needed)",
     ],
     decisionWindow:
-      "Foreign tax credit is claimed for the tax year the income arises. In India, Form 67 generally must be filed on or before your income-tax return deadline; in the US, Form 1116 is filed with your annual return.",
+      "Foreign tax credit is claimed for the tax year the income arises. In India, Form 67 is furnished under Rule 128, and the timing depends on the return you file — an original return under section 139(1), a belated return under 139(4), or an updated return under 139(8A) can each carry different Form 67 timing. The old rule that it must always be filed by the original return due date has changed, so confirm the current deadline for your return type on the official Form 67 guidance before filing. In the US, Form 1116 is filed with your annual return.",
     options: {
       heading: "How DTAA relief actually works",
       items: [
@@ -499,7 +499,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       items: [
         {
           label: "FCNR basics",
-          body: "A Foreign Currency Non-Resident (FCNR) deposit lets an NRI hold a fixed deposit in a foreign currency (like USD) at an Indian bank. There's no rupee conversion, so you avoid INR/USD currency risk on the principal, and the interest is exempt from Indian tax for NRIs.",
+          body: "A Foreign Currency Non-Resident (FCNR) deposit lets an NRI hold a fixed deposit in a foreign currency (like USD) at an Indian bank. There's no rupee conversion, so you avoid INR/USD currency risk on the principal. The interest is exempt from Indian income tax while you are a non-resident (NRI) or Resident but Not Ordinarily Resident (RNOR); once you become Resident and Ordinarily Resident (ROR), the interest becomes taxable in India. FCNR is a FEMA deposit category — that governs eligibility and repatriation, not the income-tax exemption, which is a separate income-tax provision.",
         },
         {
           label: "HYSA basics",
@@ -580,7 +580,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       {
         question: "Is FCNR interest taxable in India?",
         answer:
-          "No — FCNR interest is exempt from Indian income tax for NRIs. That exemption is one of the main attractions of an FCNR deposit, and it becomes especially useful if you return to India while the deposit is still running.",
+          "FCNR interest is exempt from Indian income tax while you qualify as a non-resident (NRI) or as Resident but Not Ordinarily Resident (RNOR) — so the exemption continues through the RNOR window after you return. It ends once you become Resident and Ordinarily Resident (ROR), at which point the interest is taxable in India. The exemption is an income-tax provision; do not confuse it with FEMA, which governs the deposit's eligibility and repatriation.",
       },
       {
         question: "Is HYSA interest taxable for NRIs?",
@@ -783,7 +783,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
         },
         {
           label: "Purpose matters",
-          body: "TCS treatment varies by purpose: remittances for education (especially via an education loan), medical treatment, investment, and family maintenance can each be treated differently, with different thresholds and rates.",
+          body: "TCS treatment varies by purpose and applies only above the ₹10 lakh aggregate threshold per financial year. Remittances for overseas education funded by a qualifying loan under Section 80E(3)(b) are exempt from TCS collection; education not funded by such a loan, medical treatment, investment, and family maintenance are treated differently. Rates change between Finance Acts, so confirm the current-year rate for your purpose.",
         },
         {
           label: "Bank fees and FX spread",
@@ -930,7 +930,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
         },
         {
           label: "Accounts and reporting",
-          body: "As your status shifts, so does reporting: NRE/NRO/FCNR account rules, plus India's foreign-asset disclosure (Schedule FA) once you're a resident, and US FBAR/FATCA if you remain a US person.",
+          body: "As your status shifts, so does reporting: NRE/NRO/FCNR account rules, plus India's foreign-asset disclosure (Schedule FA), and US FBAR/FATCA if you remain a US person. Per the ITR instructions, Schedule FA generally does not need to be completed by NR or RNOR taxpayers and generally becomes relevant once you are Resident and Ordinarily Resident (ROR) — subject to the applicable return instructions for the year.",
         },
       ],
     },
@@ -951,7 +951,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       },
       {
         label: "Reporting obligations",
-        body: "Residents must disclose foreign assets (Schedule FA) on the India return; US persons continue FBAR/FATCA. Getting reporting right matters as much as the tax itself.",
+        body: "Schedule FA foreign-asset disclosure generally applies once you are Resident and Ordinarily Resident (ROR) — not to NR or RNOR taxpayers — per the ITR instructions; US persons continue FBAR/FATCA. Getting reporting right matters as much as the tax itself.",
       },
     ],
     steps: [
@@ -959,13 +959,13 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       "Enter your day counts and residency history to classify yourself as NRI, RNOR, or ROR.",
       "Estimate when your status will flip to ROR — that's the deadline for RNOR-window planning.",
       "During RNOR years, plan to realize foreign income (401(k) draws, US brokerage gains, FCNR interest) while it's largely untaxed in India.",
-      "Set up correct account types (NRE/NRO/FCNR) and prepare for Schedule FA disclosure once you're resident.",
+      "Set up correct account types (NRE/NRO/FCNR) and prepare for Schedule FA disclosure once you become Resident and Ordinarily Resident (ROR) — NR and RNOR taxpayers generally do not complete Schedule FA.",
       "Once ROR, report worldwide income and use the DTAA/Form 67 to avoid double taxation.",
     ],
     mistakes: [
       "Miscounting days in India and misclassifying your status for the year.",
       "Wasting the RNOR window — not realizing foreign income before ROR brings worldwide income into India's net.",
-      "Forgetting Schedule FA foreign-asset disclosure once you become a resident.",
+      "Forgetting Schedule FA foreign-asset disclosure once you become Resident and Ordinarily Resident (ROR) — though NR and RNOR taxpayers generally do not complete it.",
       "Assuming NRI/RNOR status carries over automatically — it's re-assessed every financial year.",
       "Overlooking continued US FBAR/FATCA obligations if you remain a US person.",
     ],

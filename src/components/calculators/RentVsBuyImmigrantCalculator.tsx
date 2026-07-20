@@ -15,6 +15,13 @@ import {
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { validateAll, PERCENT, GROWTH_RATE } from "@/lib/calc/validation";
+import { homeTaxBenefit } from "@/lib/calc/homeTaxBenefit";
+import {
+  standardDeduction,
+  SALT_CAP_2026,
+  CURRENT_US_TAX_YEAR,
+  type FilingStatus,
+} from "@/lib/calc/usTaxConfig";
 
 /**
  * Rent vs. Buy calculator built for immigrants and visa holders.
@@ -231,6 +238,10 @@ interface YearPoint {
   endValue: number;
   remaining: number;
   sellingCost: number;
+  /** Cost of buying before any homeownership tax benefit. */
+  netBuyBeforeBenefit: number;
+  /** Cumulative homeownership tax benefit (already x marginal rate). */
+  taxBenefit: number;
 }
 
 interface Model {
@@ -259,7 +270,27 @@ function buildModel(s: Record<string, string>): Model {
   const rins = num(s.rins);
 
   const invR = num(s.invret) / 100;
-  const dedRate = (num(s.fed) + num(s.state)) / 100;
+  const marginalRate = (num(s.fed) + num(s.state)) / 100;
+  // Homeownership tax benefit inputs. Defaults to standard-deduction mode, so
+  // the benefit is zero unless the user opts into itemizing and their itemized
+  // total actually beats the standard deduction.
+  const itemize = s.itemize === "yes";
+  const filingStatus = (s.filing as FilingStatus) ?? "mfj";
+  const stdDeduction = standardDeduction(filingStatus);
+  const saltCap = SALT_CAP_2026.amount;
+  const otherItemized = num(s.otherItemized);
+  const otherSalt = num(s.otherSalt);
+  const benefitFor = (mortgageInterest: number, propertyTax: number) =>
+    homeTaxBenefit({
+      mortgageInterest,
+      propertyTax,
+      otherSaltPaid: otherSalt,
+      otherItemized,
+      standardDeduction: stdDeduction,
+      saltCap,
+      marginalRate,
+      itemize,
+    });
 
   const down = P * dpPct;
   const loan = Math.max(0, P - down);
@@ -291,7 +322,7 @@ function buildModel(s: Record<string, string>): Model {
   const propTaxY1 = P * propTaxPct;
   const maintY1 = P * maintPct;
   const interestY1 = cumIntAt[12];
-  const dedY1 = (interestY1 + Math.min(propTaxY1, 10000)) * dedRate;
+  const dedY1 = benefitFor(interestY1, propTaxY1).taxBenefit;
   const monthlyBuy =
     payment + propTaxY1 / 12 + ins + hoa + maintY1 / 12 - dedY1 / 12;
   const monthlyRent = rent0 + rins;
@@ -301,16 +332,23 @@ function buildModel(s: Record<string, string>): Model {
     const cumMortgage = payment * Math.min(m, n);
     const remaining = balAt[m];
 
-    // Accumulate appreciating yearly carrying costs and rent.
+    // Accumulate appreciating yearly carrying costs and rent, plus the tax
+    // benefit computed PER YEAR (the incremental-deduction test is annual —
+    // summing years is correct, applying the formula to cumulative totals is
+    // not). Each year uses that year's mortgage interest and property tax.
     let cumPropTax = 0;
     let cumMaint = 0;
     let cumRent = 0;
+    let taxDeduction = 0; // cumulative tax BENEFIT (already x marginal rate)
     let hv = P;
     let mr = rent0;
     for (let y = 0; y < Y; y++) {
-      cumPropTax += hv * propTaxPct;
+      const yearPropTax = hv * propTaxPct;
+      const yearInterest = cumIntAt[(y + 1) * 12] - cumIntAt[y * 12];
+      cumPropTax += yearPropTax;
       cumMaint += hv * maintPct;
       cumRent += mr * 12;
+      taxDeduction += benefitFor(yearInterest, yearPropTax).taxBenefit;
       hv *= 1 + apprR;
       mr *= 1 + rentR;
     }
@@ -318,24 +356,14 @@ function buildModel(s: Record<string, string>): Model {
     const cumIns = ins * 12 * Y;
     const cumRins = rins * 12 * Y;
 
-    // Mortgage-interest + capped SALT deduction (rough).
-    const taxDeduction =
-      (cumIntAt[m] + Math.min(cumPropTax, 10000 * Y)) * dedRate;
-
     const endValue = P * Math.pow(1 + apprR, Y);
     const sellingCost = endValue * sellingPct;
     const equity = endValue - remaining - sellingCost;
 
-    const netBuy =
-      down +
-      closing +
-      cumMortgage +
-      cumPropTax +
-      cumMaint +
-      cumHoa +
-      cumIns -
-      taxDeduction -
-      equity;
+    // Cost of buying BEFORE the tax benefit, then after.
+    const netBuyBeforeBenefit =
+      down + closing + cumMortgage + cumPropTax + cumMaint + cumHoa + cumIns - equity;
+    const netBuy = netBuyBeforeBenefit - taxDeduction;
 
     // Renter invests the cash the buyer sank upfront; only the gain offsets rent.
     const invested = down + closing;
@@ -352,6 +380,8 @@ function buildModel(s: Record<string, string>): Model {
       endValue,
       remaining,
       sellingCost,
+      netBuyBeforeBenefit,
+      taxBenefit: taxDeduction,
     });
   }
 
@@ -602,6 +632,11 @@ export default function RentVsBuyImmigrantCalculator() {
     invret: "7",
     fed: "22",
     state: "5",
+    // C2 — tax deduction (defaults to standard deduction → zero home benefit)
+    filing: "mfj",
+    itemize: "no",
+    otherItemized: "0",
+    otherSalt: "0",
     // D — immigration
     visa: "H-1B",
     yrs: "3",
@@ -785,6 +820,52 @@ export default function RentVsBuyImmigrantCalculator() {
             <NumberField label="State marginal tax rate" value={s.state} onChange={(v) => set("state", v)} suffix="%" min={0} max={100} step={0.1} error={val.errors.state} />
           </Section>
 
+          <Section title={`🧾 Tax deduction (${CURRENT_US_TAX_YEAR})`}>
+            <SelectField
+              label="Filing status"
+              value={s.filing}
+              onChange={(v) => set("filing", v)}
+              options={[
+                { value: "mfj", label: "Married filing jointly" },
+                { value: "single", label: "Single" },
+                { value: "hoh", label: "Head of household" },
+                { value: "mfs", label: "Married filing separately" },
+              ]}
+            />
+            <SelectField
+              label="Do you itemize deductions?"
+              value={s.itemize}
+              onChange={(v) => set("itemize", v)}
+              options={[
+                { value: "no", label: "No — I take the standard deduction" },
+                { value: "yes", label: "Yes — I itemize" },
+              ]}
+              hint="If you take the standard deduction, homeownership gives no extra tax benefit — so this defaults to no benefit."
+            />
+            {s.itemize === "yes" && (
+              <>
+                <NumberField
+                  label="Other itemized deductions (non-home)"
+                  value={s.otherItemized}
+                  onChange={(v) => set("otherItemized", v)}
+                  prefix="$"
+                  min={0}
+                  step={500}
+                  hint="Charity and other itemized deductions unrelated to the home."
+                />
+                <NumberField
+                  label="Other state/local tax already paid (SALT)"
+                  value={s.otherSalt}
+                  onChange={(v) => set("otherSalt", v)}
+                  prefix="$"
+                  min={0}
+                  step={500}
+                  hint={`State income/sales tax before property tax. SALT is capped at $${SALT_CAP_2026.amount.toLocaleString()} (verify the exact current-year cap).`}
+                />
+              </>
+            )}
+          </Section>
+
           <Section
             title="🛂 Immigration & visa profile"
             note="These inputs are unique to our calculator. They adjust the break-even for the real uncertainty in your immigration path."
@@ -886,9 +967,38 @@ export default function RentVsBuyImmigrantCalculator() {
             </div>
             <Callout tone={monthlyDiff > 0 ? "note" : "good"}>
               Buying costs <strong>{usd(Math.abs(monthlyDiff))}</strong>{" "}
-              {monthlyDiff > 0 ? "more" : "less"} per month than renting (all-in,
-              after the mortgage-interest tax deduction).
+              {monthlyDiff > 0 ? "more" : "less"} per month than renting (all-in).
             </Callout>
+          </ResultPanel>
+
+          {/* Homeownership tax benefit — incremental, not an automatic multiply */}
+          <ResultPanel title={`Homeownership tax benefit (over ${snapYear}y)`} accent="from-emerald-500 to-teal-600">
+            <Row label="Cost of buying before tax benefit" value={usd(snap.netBuyBeforeBenefit)} />
+            <Row
+              label="Estimated incremental deduction"
+              value={
+                num(s.fed) + num(s.state) > 0
+                  ? usd(snap.taxBenefit / ((num(s.fed) + num(s.state)) / 100))
+                  : "—"
+              }
+            />
+            <Row label="Estimated tax benefit" value={usd(snap.taxBenefit)} />
+            <Stat label="Cost of buying after tax benefit" value={usd(snap.netBuy)} />
+            {s.itemize !== "yes" && (
+              <Callout tone="note">
+                You&apos;re set to the <strong>standard deduction</strong>, so
+                homeownership adds no incremental tax benefit here. Switch to
+                itemizing above only if your itemized deductions actually exceed
+                your standard deduction — otherwise the mortgage-interest and
+                property-tax deductions change nothing.
+              </Callout>
+            )}
+            {s.itemize === "yes" && snap.taxBenefit <= 0 && (
+              <Callout tone="note">
+                Even itemizing, your deductions with the home don&apos;t exceed
+                your standard deduction, so the incremental benefit is zero.
+              </Callout>
+            )}
           </ResultPanel>
 
           {/* Chart */}
@@ -908,6 +1018,10 @@ export default function RentVsBuyImmigrantCalculator() {
           {lensOn && (
             <div className="rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card">
               <RiskMeter pct={imm.riskPct} />
+              <p className="mt-2 text-xs italic text-ink-400">
+                A planning heuristic from the inputs you selected — not an
+                actuarial or statistically predicted probability of any outcome.
+              </p>
               <p className="mt-3 text-sm leading-relaxed text-ink-600">
                 {band.label === "Very Low" &&
                   "Your status is settled. Buy on the financial merits alone — visa risk barely moves your math."}
@@ -946,9 +1060,11 @@ export default function RentVsBuyImmigrantCalculator() {
                 <ul className="space-y-1.5">
                   <li>Mortgage P&amp;I of <strong>{usd(model.payment)}/mo</strong> over a {num(s.term)}-year term.</li>
                   <li>Down payment + closing costs are invested at {num(s.invret)}% if you rent.</li>
-                  <li>Mortgage-interest and property-tax deductions applied at {num(s.fed) + num(s.state)}% combined, SALT capped at $10k/yr.</li>
+                  <li>{s.itemize === "yes"
+                    ? `Homeownership tax benefit computed as the incremental deduction over your standard deduction (${CURRENT_US_TAX_YEAR}), at your ${num(s.fed) + num(s.state)}% combined marginal rate, SALT capped at $${SALT_CAP_2026.amount.toLocaleString()} (verify the current-year cap).`
+                    : "You take the standard deduction, so homeownership adds no incremental tax benefit."}</li>
                   <li>Home appreciates {num(s.appr)}%/yr; rent rises {num(s.rentinc)}%/yr.</li>
-                  <li>The Immigrant Lens caps your planning horizon at ~{imm.effectiveHorizon} years and adds a {imm.riskPremiumYears}-year break-even risk premium.</li>
+                  <li>The Immigrant Lens is a <strong>planning heuristic</strong>, not an actuarial or statistically predicted probability: it caps your planning horizon at ~{imm.effectiveHorizon} years and adds a {imm.riskPremiumYears}-year break-even risk premium based on the inputs you chose.</li>
                   <li>Estimates only — excludes PMI, local market swings, and PITI escrow nuances.</li>
                 </ul>
               </div>
@@ -978,15 +1094,13 @@ export default function RentVsBuyImmigrantCalculator() {
           Why this calculator is different
         </h2>
         <p className="mt-3 text-[1.0625rem] leading-8 text-ink-700">
-          Standard calculators assume you&rsquo;ll stay. For immigrants, that
-          assumption is the single biggest error in the math. We built this tool
-          after noticing that visa holders face three unique risks that shift the
-          break-even point significantly: <strong>(1)</strong> visa uncertainty
-          shortens your reliable horizon, <strong>(2)</strong> the cultural pull
-          toward buying a bigger home than you need increases your downside
-          exposure, and <strong>(3)</strong> career-driven relocation is far more
-          common in immigrant professional paths than in the general US
-          population. Factor in all three, and the math looks very different.
+          Standard calculators assume you&rsquo;ll stay for decades. When your
+          reliable horizon is shorter or less certain, that assumption is the
+          biggest error in the math. This tool lets you set two things a generic
+          calculator ignores: <strong>(1)</strong> how many years you can rely on
+          your current status, and <strong>(2)</strong> how likely a job move is
+          to force a sale. Both shorten the horizon over which fixed buy/sell
+          costs have to be recovered, which is what moves the break-even.
         </p>
         <p className="mt-3 text-sm text-ink-500">
           For the full framework — including which home to buy and when — read{" "}

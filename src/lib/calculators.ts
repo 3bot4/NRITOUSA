@@ -227,7 +227,7 @@ export const calculators: CalculatorMeta[] = [
       "Compare FCNR fixed deposit returns vs a US High-Yield Savings Account or CD after US income tax. See net returns, tax impact, and a 10-year compounding chart.",
     icon: "🏦",
     accent: "from-teal-500 to-cyan-600",
-    seoTitle: "FCNR vs HYSA Calculator — Compare After-Tax Returns | NRI to USA",
+    seoTitle: "FCNR vs HYSA Calculator — Compare After-Tax Returns",
     seoDescription:
       "Compare FCNR fixed deposit returns vs US HYSA or CD after US income tax. Free calculator for NRIs shows net returns, tax impact, and 10-year compounding graph.",
     related: [],

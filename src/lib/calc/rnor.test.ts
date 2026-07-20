@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateRnor, type RnorRawInputs } from "./rnor";
+import { calculateRnor, scheduleFaGuidance, type RnorRawInputs } from "./rnor";
 
 const base: RnorRawInputs = {
   daysCurrentFy: "90",
@@ -256,3 +256,27 @@ describe("result never overstates certainty", () => {
     }
   });
 });
+
+describe("Schedule FA disclosure messaging", () => {
+  it("NR / NRI: does not complete Schedule FA", () => {
+    const m = scheduleFaGuidance("NRI");
+    expect(m).toContain("do not complete Schedule FA");
+    expect(m).not.toMatch(/applies/i);
+  });
+
+  it("RNOR: does not complete Schedule FA, relevant only at ROR", () => {
+    const m = scheduleFaGuidance("RNOR");
+    expect(m).toContain("do not complete Schedule FA");
+    expect(m).toContain("ROR");
+  });
+
+  it("ROR: Schedule FA generally applies", () => {
+    const m = scheduleFaGuidance("ROR");
+    expect(m).toContain("generally applies");
+  });
+
+  it("never says Schedule FA applies merely because resident (RNOR case)", () => {
+    // The bug being guarded: treating RNOR (a resident) as needing Schedule FA.
+    expect(scheduleFaGuidance("RNOR")).not.toContain("generally applies");
+  });
+})

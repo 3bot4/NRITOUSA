@@ -283,7 +283,10 @@ export default function DtaaReliefCalculator() {
             >
               Form 67
             </a>{" "}
-            filed before your Indian return. See our{" "}
+            furnished under Rule 128 — its timing depends on your return type
+            (139(1), 139(4) or an updated 139(8A) return), so confirm the
+            current deadline on the official guidance rather than assuming it
+            must precede the original return. See our{" "}
             <Link
               href="/articles/double-taxation-dtaa-india-usa"
               className="text-brand-600 underline"

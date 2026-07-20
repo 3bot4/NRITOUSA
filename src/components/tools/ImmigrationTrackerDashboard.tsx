@@ -284,7 +284,7 @@ export default function ImmigrationTrackerDashboard({
       <section aria-labelledby="vb-heading">
         <div className="mb-4 flex items-center justify-between gap-3">
           <SectionHeading>
-            <span id="vb-heading">Visa Bulletin — India ({bulletin.month})</span>
+            <span id="vb-heading">Visa Bulletin — India (in effect: {bulletin.month})</span>
           </SectionHeading>
           <a
             href={visaBulletinIndia.officialSourceUrl}
@@ -294,6 +294,26 @@ export default function ImmigrationTrackerDashboard({
           >
             Official bulletin ↗
           </a>
+        </div>
+
+        {/* Distinguish the bulletin CURRENTLY IN EFFECT from the latest one
+            already PUBLISHED. The State Department publishes each month's
+            bulletin in the middle of the prior month, so a later month is
+            typically already out even though this card shows the effective one. */}
+        <div className="mb-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-xs text-blue-900">
+          These figures are for the bulletin <strong>currently in effect</strong>.
+          The State Department usually publishes the next month&apos;s bulletin
+          around mid-month, so a later bulletin may already be available — always
+          check the{" "}
+          <a
+            href={visaBulletinIndia.officialSourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline"
+          >
+            official Visa Bulletin
+          </a>{" "}
+          for the latest published month before acting.
         </div>
 
         {/* July 2026 retrogression note + source */}
@@ -461,7 +481,7 @@ export default function ImmigrationTrackerDashboard({
                 note={item.note}
                 learnMoreHref={item.learnMoreHref}
                 confidence="uscis-estimate"
-                confidenceNote="Processing times are estimates, not guarantees."
+                confidenceNote="Estimates only — actual times vary by form, category and the USCIS office/service center handling your case. Not a national USCIS guarantee. Check your own case on the official processing-times tool."
                 premiumFeeType={
                   premiumFeeForm ? PREMIUM_FEE_TYPE[premiumFeeForm] : undefined
                 }
@@ -898,7 +918,7 @@ export default function ImmigrationTrackerDashboard({
         </a>
         {" · "}
         <a
-          href="https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupation/h-1b-electronic-registration-process"
+          href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-process"
           target="_blank"
           rel="noopener noreferrer"
           className="text-brand-600 underline"

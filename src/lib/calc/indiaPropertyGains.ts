@@ -99,6 +99,10 @@ export interface PropertyResult {
   /* 11–14: cash and repatriation */
   netProceedsAfterFinalTax: number;
   immediateCashAfterTds: number;
+  /** Immediate cash after TDS, in USD at the entered rate. */
+  immediateCashUsd: number;
+  /** Net proceeds after final tax, in USD at the same entered rate. */
+  netProceedsUsd: number;
   estimatedRepatriableUsd: number;
   remainingHeadroomUsd: number;
   exceedsRepatriationLimit: boolean;
@@ -258,9 +262,18 @@ export function calculateProperty(input: PropertyRawInputs): PropertyResult {
     0,
     REPATRIATION_LIMIT_USD - values.alreadyRepatriated,
   );
-  const netUsd = fx > 0 ? Math.max(0, immediateCashAfterTds) / fx : 0;
-  const estimatedRepatriableUsd = Math.min(netUsd, remainingHeadroomUsd);
-  const exceedsRepatriationLimit = netUsd > remainingHeadroomUsd;
+
+  // Every USD figure uses the SAME exchange-rate input.
+  const immediateCashUsd = fx > 0 ? Math.max(0, immediateCashAfterTds) / fx : 0;
+  const netProceedsUsd = fx > 0 ? Math.max(0, netProceedsAfterFinalTax) / fx : 0;
+
+  // Repatriation follows the FINAL tax position, not the day-one cash after
+  // TDS — the excess TDS is refunded (or a shortfall paid) when the return is
+  // filed, and only then is the true net available. Capped by the remaining
+  // RBI/FEMA headroom. Undefined when the final tax cannot be computed.
+  const repatriationBasisUsd = taxCalculable ? netProceedsUsd : 0;
+  const estimatedRepatriableUsd = Math.min(repatriationBasisUsd, remainingHeadroomUsd);
+  const exceedsRepatriationLimit = repatriationBasisUsd > remainingHeadroomUsd;
 
   /* ---------------- contextual notices ---------------- */
   if (input.isInherited) {
@@ -303,6 +316,8 @@ export function calculateProperty(input: PropertyRawInputs): PropertyResult {
     excessTdsRefundable,
     netProceedsAfterFinalTax,
     immediateCashAfterTds,
+    immediateCashUsd,
+    netProceedsUsd,
     estimatedRepatriableUsd,
     remainingHeadroomUsd,
     exceedsRepatriationLimit,

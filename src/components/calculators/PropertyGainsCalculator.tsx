@@ -332,20 +332,33 @@ export default function PropertyGainsCalculator() {
               />
             </ResultPanel>
 
-            {/* Outputs 11–14 — cash and repatriation */}
+            {/* Outputs 11–14 — cash and repatriation, kept distinct */}
             <ResultPanel title="4. Cash & repatriation" accent="from-cyan-500 to-teal-600">
               <Stat
-                label="Immediate cash received after TDS"
-                value={inr(r.immediateCashAfterTds)}
-                sub="What actually reaches you at completion"
+                label="Cash immediately available after buyer TDS"
+                value={`${inr(r.immediateCashAfterTds)} · ${usd(r.immediateCashUsd)}`}
+                sub="What reaches you at completion, before the final tax is settled"
               />
               <Row
-                label="Net proceeds after estimated final tax"
-                value={shortTermNeedsRate ? "—" : inr(r.netProceedsAfterFinalTax)}
+                label="Estimated refund (excess TDS) / additional tax"
+                value={
+                  shortTermNeedsRate
+                    ? "—"
+                    : `${r.excessTdsRefundable >= 0 ? "refund " : "pay "}${inr(Math.abs(r.excessTdsRefundable))}`
+                }
               />
               <Row
-                label="Estimated repatriable amount"
-                value={usd(r.estimatedRepatriableUsd)}
+                label="Estimated net proceeds after final tax"
+                value={
+                  shortTermNeedsRate
+                    ? "—"
+                    : `${inr(r.netProceedsAfterFinalTax)} · ${usd(r.netProceedsUsd)}`
+                }
+              />
+              <Stat
+                label="Estimated amount potentially available for repatriation"
+                value={shortTermNeedsRate ? "—" : usd(r.estimatedRepatriableUsd)}
+                sub="After final tax, documentation and applicable RBI/FEMA limits — not the day-one cash after TDS"
               />
               <Row
                 label="Remaining annual repatriation headroom"
