@@ -234,7 +234,7 @@ export default function I140ProcessingCalculator() {
           </div>
 
           <div className="grid gap-2 sm:grid-cols-2">
-            <Link href="/i140-approved-what-next" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-indigo-400 hover:shadow-sm">→ I-140 approved — what next</Link>
+            <Link href="/green-card/i-140-approved-what-next" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-indigo-400 hover:shadow-sm">→ I-140 approved — what next</Link>
             <Link href="/eb2-eb3-priority-date-india" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-indigo-400 hover:shadow-sm">→ When can I file I-485?</Link>
           </div>
 

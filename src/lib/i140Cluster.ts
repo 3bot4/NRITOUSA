@@ -2,7 +2,8 @@
  * Shared helpers for the I-140 cluster:
  *   /i140-processing-time (main tool)
  *   /i140-premium-processing
- *   /i140-approved-what-next
+ *   (the "I-140 approved — what next" guide now lives at
+ *    /green-card/i-140-approved-what-next; this cluster links out to it)
  *
  * Mirrors src/lib/permCluster.ts / wageCluster.ts.
  */
@@ -19,7 +20,7 @@ export interface ClusterLink {
 export const i140ClusterLinks: ClusterLink[] = [
   { href: "/i140-processing-time", label: "I-140 Processing Time", desc: "Standard vs premium decision estimate" },
   { href: "/i140-premium-processing", label: "I-140 Premium Processing", desc: "Fee, timeline & eligibility" },
-  { href: "/i140-approved-what-next", label: "I-140 Approved — What Next", desc: "Priority date, I-485 & H-1B extensions" },
+  { href: "/green-card/i-140-approved-what-next", label: "I-140 Approved — What Next", desc: "Priority date, I-485 & H-1B extensions" },
 ];
 
 export const i140RelatedLinks: ClusterLink[] = [

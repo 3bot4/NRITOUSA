@@ -357,7 +357,7 @@ function buildResult(
         relatedArticles: [
           { href: "/uscis/forms/i-485", label: "I-485 Form Explained" },
           { href: "/uscis/travel-to-india-while-i485-pending", label: "Travel with I-485 Pending" },
-          { href: "/uscis/kids-aging-out-cspa", label: "Kids Aging Out (CSPA)" },
+          { href: "/green-card/cspa-kids-aging-out", label: "Kids Aging Out (CSPA)" },
         ],
         relatedTools: [
           { href: "/tools/priority-date-checker", label: "Priority Date Checker" },
@@ -384,7 +384,7 @@ function buildResult(
           "India EB-2/EB-3 backlogs of 15–50+ years make aging out a near-certainty without an independent path",
         ],
         relatedArticles: [
-          { href: "/uscis/kids-aging-out-cspa", label: "Kids Aging Out (CSPA): Full Guide" },
+          { href: "/green-card/cspa-kids-aging-out", label: "Kids Aging Out (CSPA): Full Guide" },
         ],
         relatedTools: [
           { href: "/tools/priority-date-checker", label: "Priority Date Checker" },

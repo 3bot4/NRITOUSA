@@ -82,7 +82,7 @@ const DECISIONS = [
   { emoji: "💍", title: "H-4 EAD renewal gap", risk: "medium", href: "/uscis/h4-ead-renewal-delay" },
   { emoji: "🏢", title: "Side business on H-1B", risk: "medium", href: "/uscis/start-side-business-on-h1b" },
   { emoji: "📍", title: "Moving states", risk: "medium", href: "/uscis/moving-states-address-change" },
-  { emoji: "👦", title: "Kids aging out (CSPA)", risk: "high", href: "/uscis/kids-aging-out-cspa" },
+  { emoji: "👦", title: "Kids aging out (CSPA)", risk: "high", href: "/green-card/cspa-kids-aging-out" },
   { emoji: "👨‍👩‍👧", title: "Parents visiting USA", risk: "low", href: "/uscis/parents-visiting-usa-while-case-pending" },
   { emoji: "⚠️", title: "Layoff during green card", risk: "high", href: "/uscis/layoff-green-card-process" },
 ];

@@ -137,6 +137,34 @@ const nextConfig = {
         destination: "/calculators/rent-vs-buy-immigrant",
         statusCode: 301,
       },
+      // The top-level /i140-approved-what-next tool page duplicated the newer,
+      // more complete /green-card/i-140-approved-what-next cluster guide (same
+      // "I-140 approved, what next" intent). The nested green-card page is the
+      // survivor: it carries the answer-first template, author byline/bio,
+      // fuller timeline table, and richer schema. A single-hop hard 301
+      // (statusCode 301, not `permanent`/308) preserves link equity and
+      // prevents an indexable duplicate. The old page dir has been deleted and
+      // the slug removed from sitemap-data.ts, so it is absent from the
+      // sitemap and search index, and every internal link points directly at
+      // the destination — no redirect chain.
+      {
+        source: "/i140-approved-what-next",
+        destination: "/green-card/i-140-approved-what-next",
+        statusCode: 301,
+      },
+      // /uscis/kids-aging-out-cspa (USCIS Life Planning cluster) duplicated the
+      // /green-card/cspa-kids-aging-out guide on the same CSPA / children-aging-
+      // out intent. The green-card page is the survivor and owns the CSPA topic;
+      // the life-planning cluster keeps a contextual link to it from the hub. A
+      // single-hop hard 301 (statusCode 301, not `permanent`/308) preserves link
+      // equity. The slug has been removed from uscisLifePlanningCluster.ts, so it
+      // is absent from the sitemap and search index, and every internal link
+      // points directly at the destination — no redirect chain.
+      {
+        source: "/uscis/kids-aging-out-cspa",
+        destination: "/green-card/cspa-kids-aging-out",
+        statusCode: 301,
+      },
     ];
   },
 };

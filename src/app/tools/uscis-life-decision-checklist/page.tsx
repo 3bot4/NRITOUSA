@@ -144,7 +144,7 @@ export default function UscisLifeDecisionChecklistPage() {
                 { href: "/uscis/layoff-green-card-process", label: "Layoff During Green Card", desc: "60-day grace period, I-140 portability, AC21" },
                 { href: "/uscis/h4-ead-renewal-delay", label: "H-4 EAD Renewal Gap", desc: "No auto-extension, file 6 months early, income gap planning" },
                 { href: "/uscis/start-side-business-on-h1b", label: "Side Business on H-1B", desc: "Passive vs active work distinction, EAD path" },
-                { href: "/uscis/kids-aging-out-cspa", label: "Kids Aging Out (CSPA)", desc: "CSPA formula, India EB backlog risk, independent paths" },
+                { href: "/green-card/cspa-kids-aging-out", label: "Kids Aging Out (CSPA)", desc: "CSPA formula, India EB backlog risk, independent paths" },
                 { href: "/uscis/moving-states-address-change", label: "Moving States (H-1B / I-485)", desc: "H-1B amendment, LCA, AR-11, field office transfer" },
               ].map((g) => (
                 <Link key={g.href} href={g.href}

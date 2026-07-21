@@ -1,6 +1,7 @@
 /**
  * I-140 processing data — editable config for the I-140 cluster
- * (/i140-processing-time, /i140-premium-processing, /i140-approved-what-next).
+ * (/i140-processing-time, /i140-premium-processing; the "I-140 approved —
+ *  what next" guide now lives at /green-card/i-140-approved-what-next).
  *
  * Fee amounts are NOT duplicated here — they live in the single source of truth
  * src/lib/premiumProcessing.ts (getPremiumFeeByForm("I-140")). This file holds

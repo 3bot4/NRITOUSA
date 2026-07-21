@@ -263,10 +263,11 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/prevailing-wage-calculator", 0.9, "monthly"),
   e("/dol-wage-levels-explained", 0.8, "monthly"),
   e("/h1b-prevailing-wage", 0.8, "monthly"),
-  // I-140 cluster.
+  // I-140 cluster. (The top-level "I-140 approved — what next" tool page was
+  // consolidated into /green-card/i-140-approved-what-next — see the 301 in
+  // next.config.mjs. It is intentionally absent from this sitemap.)
   e("/i140-processing-time", 0.9, "monthly"),
   e("/i140-premium-processing", 0.85, "monthly"),
-  e("/i140-approved-what-next", 0.8, "monthly"),
   // EAD / Advance Parole cluster.
   e("/ead-processing-time", 0.9, "monthly"),
   e("/advance-parole-processing-time", 0.85, "monthly"),

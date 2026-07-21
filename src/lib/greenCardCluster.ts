@@ -257,7 +257,10 @@ Generally yes — as long as your priority date becomes current and the I-140 wa
 Yes, unless the I-140 has been approved for 180+ days, in which case a withdrawal by the employer generally does not affect your ability to use it for H1B extensions and eventual I-485 filing (subject to AC21 conditions). After 180 days, the I-140 retains its value for your use even if the employer withdraws it.
 
 ### Do I need a new I-140 if I change employers?
-Not necessarily. Under AC21, if your I-140 was approved for 180+ days and you move to a same or similar occupation, you can port the I-140 to a new employer's sponsorship. Your new employer does NOT need to restart the PERM and I-140 process for the ported petition. However, some employers choose to file a new PERM and I-140 anyway for additional protection. Consult your attorney.`,
+Not necessarily. Under AC21, if your I-140 was approved for 180+ days and you move to a same or similar occupation, you can port the I-140 to a new employer's sponsorship. Your new employer does NOT need to restart the PERM and I-140 process for the ported petition. However, some employers choose to file a new PERM and I-140 anyway for additional protection. Consult your attorney.
+
+### Can I keep my priority date if a new I-140 is filed?
+Yes — priority date retention lets you carry your earlier priority date onto a new EB-2 or EB-3 I-140, for example in an EB-3 downgrade or EB-2 upgrade. You keep your original place in the queue instead of starting over, and your attorney handles the interfiling or new filing.`,
   },
 
   /* ───────────────────────── PRIORITY DATE ──────────────────────────────── */
@@ -943,6 +946,8 @@ CSPA age = (child's age on the date the visa number becomes available) minus (th
 
 If the CSPA age is under 21, the child retains child status even if their biological age is 21 or older.
 :::
+
+**Worked example:** Say a child turns 21 on June 1, the visa number becomes available on April 1, and the I-140 was pending 90 days. The CSPA age is 21 minus roughly three months — about 20 years and 9 months, which is under 21, so the child keeps child status. Because the days the I-140 spent pending are subtracted, filing the I-140 early and letting it stay pending longer both work in your child's favor.
 
 **Important caveats:**
 - "Visa number becomes available" means the first time the priority date becomes current in the Final Action Date chart

@@ -11,7 +11,6 @@ import { computeReadingTime } from "@/lib/format";
  *     ├─ /uscis/h4-ead-renewal-delay
  *     ├─ /uscis/start-side-business-on-h1b
  *     ├─ /uscis/moving-states-address-change
- *     ├─ /uscis/kids-aging-out-cspa
  *     ├─ /uscis/parents-visiting-usa-while-case-pending
  *     └─ /uscis/layoff-green-card-process
  *
@@ -644,85 +643,7 @@ A: Almost certainly yes. Texas and California are different MSAs. Your employer 
 :::`,
   },
 
-  /* ── 8. Kids aging out ──────────────────────────────────────────── */
-  {
-    slug: "kids-aging-out-cspa",
-    kind: "life-decision",
-    title: "Kids Aging Out of Green Card Process: CSPA and What Indian Parents Must Know",
-    seoTitle: "Kids Aging Out of Green Card (CSPA) | Indian Parents I-485 Guide",
-    metaDescription:
-      "Your child may age out of the green card process when they turn 21. CSPA (Child Status Protection Act) protects some children — but not all. Guide for Indian families waiting for EB green card.",
-    navLabel: "Kids Aging Out (CSPA)",
-    excerpt:
-      "A child included in your EB green card application 'ages out' and loses their derivative beneficiary status when they turn 21 — unless CSPA applies. India EB backlogs make this a real risk for many families.",
-    date: "2026-06-16",
-    content: `:::summary
-**"Aging out" means a child turns 21 and can no longer qualify as a derivative beneficiary on a parent's employment-based green card application.** The Child Status Protection Act (CSPA) provides a formula that may extend a child's eligibility, but it does not protect every child. For Indian EB applicants with 10–50 year waits, this is a serious and often devastating issue.
-:::
-
-## The aging out problem for Indian EB families
-
-:::warn
-title: India EB backlogs and children aging out
-If your child was 5 when you filed PERM and India's EB-2 wait is 15+ years, they will be over 21 when you can file I-485. Without CSPA protection or a separate petition, they cannot be included as a derivative beneficiary. They would need to adjust status through their own separate path (marriage, work, F-1 student → OPT → H-1B → their own green card).
-:::
-
-## How CSPA works (simplified)
-
-:::info
-title: CSPA formula for EB derivative beneficiaries
-CSPA calculates an "age" for the child that may be lower than their actual age. The formula:
-
-**CSPA Age = (Actual Age on date visa number became available) − (Number of days I-140 was pending)**
-
-Example: Child turns 21 on June 1. Visa number became available April 1. I-140 was pending 90 days.
-CSPA Age = 21 − (2 months) = ~20 years and 10 months → still under 21 = protected.
-
-CSPA also requires the child to "seek to acquire" the green card within one year of the visa number becoming available.
-:::
-
-## Who CSPA helps — and who it doesn't
-
-:::compare
-left: CSPA may protect
-right: CSPA may NOT protect
-left_items:
-- Child included in an approved I-140 petition filed when child was a minor
-- Visa number became available when child was still under 21 under the CSPA formula
-- Family acted promptly (filed I-485 within one year of visa availability)
-right_items:
-- Child is many years past 21 when India priority dates finally become current
-- I-140 was not filed in time to create a pending period for CSPA calculation
-- Family failed to act within one year of visa number availability
-- Child was not included in parent's I-140 filing
-:::
-
-## What to do now
-
-:::info
-title: Action steps for parents worried about aging out
-1. **Document your child's birthdate and your I-140 filing/approval dates** — calculate CSPA age with your attorney
-2. **File I-140 early** — the longer the I-140 is pending, the more CSPA "time" your child accumulates
-3. **File I-485 immediately when priority date becomes current** — do not delay
-4. **Concurrent filing**: if your priority date becomes current under "Dates for Filing," file I-485 immediately even if Final Action Date isn't current — this creates CSPA time for your child
-5. **Plan B**: Help older children establish independent immigration paths (F-1, OPT, H-1B) in case CSPA does not protect them
-:::
-
-## FAQ
-
-:::faq
-Q: My child is 18 and our India EB-2 priority date is 2015 — are we in trouble?
-A: This depends on when the priority date becomes current. If it becomes current before your child turns 21, and you file I-485 promptly, CSPA may protect them. If the priority date doesn't become current until after they turn 21, they likely need an independent immigration path. Calculate this scenario with your attorney now — do not wait.
-
-Q: My I-140 is approved and my child is 19 — should I do anything now?
-A: Yes: (a) Make sure your child is formally listed as a derivative beneficiary in your I-140, (b) Calculate CSPA age with your attorney, (c) Prepare I-485 filing documents so you can file immediately when the date becomes current, (d) Explore F-1 student visa for your child as a parallel path.
-
-Q: My child just turned 22 — is all hope lost?
-A: Not necessarily. If CSPA protected them and you were delayed in filing due to visa bulletin retrogression, there may be arguments to preserve their status. Consult an experienced attorney — this is one of the most complex areas of immigration law.
-:::`,
-  },
-
-  /* ── 9. Parents visiting while case pending ────────────────────────── */
+  /* ── 8. Parents visiting while case pending ────────────────────────── */
   {
     slug: "parents-visiting-usa-while-case-pending",
     kind: "life-decision",
@@ -798,7 +719,7 @@ A: This question is reversed — for Indian parents visiting the US, the B-2 rul
 :::`,
   },
 
-  /* ── 10. Layoff during green card ─────────────────────────────────── */
+  /* ── 9. Layoff during green card ─────────────────────────────────── */
   {
     slug: "layoff-green-card-process",
     kind: "life-decision",
