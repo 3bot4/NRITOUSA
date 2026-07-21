@@ -15,7 +15,7 @@ import {
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { validateAll, USD_AMOUNT, PERCENT } from "@/lib/calc/validation";
-import { runFcnrModel, type Compounding, type IndiaStatus } from "@/lib/calc/fcnrHysa";
+import { runFcnrModel, canRecommendFcnr, type Compounding, type IndiaStatus } from "@/lib/calc/fcnrHysa";
 import { marginalRateOptions } from "@/lib/calc/usTaxConfig";
 
 /* ─────────────────── helpers ─────────────────── */
@@ -30,10 +30,12 @@ function CompoundingChart({
   fcnrSeries,
   hysaSeries,
   tenure,
+  showDelta,
 }: {
   fcnrSeries: number[];
   hysaSeries: number[];
   tenure: number;
+  showDelta: boolean;
 }) {
   const W = 720;
   const H = 300;
@@ -188,7 +190,7 @@ function CompoundingChart({
             strokeLinejoin="round"
           />
           {/* yr 5 callout */}
-          {diff5 > 0 && (
+          {showDelta && diff5 > 0 && (
             <g>
               <circle cx={x(5)} cy={y(fcnrAt5)} r="4" fill="#0d9488" />
               <circle cx={x(5)} cy={y(hysaAt5)} r="3.5" fill="#64748b" />
@@ -204,7 +206,7 @@ function CompoundingChart({
             </g>
           )}
           {/* yr 10 callout */}
-          {diff10 > 0 && (
+          {showDelta && diff10 > 0 && (
             <g>
               <circle cx={x(10)} cy={y(fcnrAt10)} r="4" fill="#0d9488" />
               <circle cx={x(10)} cy={y(hysaAt10)} r="3.5" fill="#64748b" />
@@ -240,6 +242,7 @@ function CompoundingChart({
 /* ─────────────────── result card ─────────────────── */
 
 function ResultCard({
+  endingLabel,
   title,
   subtitle,
   grossRate,
@@ -269,6 +272,7 @@ function ResultCard({
   isWinner: boolean;
   winnerAdv: number;
   showWinner: boolean;
+  endingLabel: string;
 }) {
   const highlight = isWinner && showWinner;
   return (
@@ -294,7 +298,7 @@ function ResultCard({
       <div className="space-y-0 p-5">
         <p className="mb-4 text-xs text-ink-400">{subtitle}</p>
         <div className="border-b border-ink-900/5 pb-3">
-          <p className="text-xs text-ink-500">Estimated value at maturity</p>
+          <p className="text-xs text-ink-500">{endingLabel}</p>
           <p
             className={`text-3xl font-extrabold tracking-tight ${
               highlight ? "text-teal-600" : "text-ink-900"
@@ -407,11 +411,27 @@ export default function FcnrVsHysaCalculator() {
   const bothRatesEntered = s.fcnrRate.trim() !== "" && s.hysaRate.trim() !== "";
   const isRor = indiaStatus === "ror";
   const indiaRateEntered = s.indiaRate.trim() !== "";
-  const rorAssumptionsMissing = isRor && !indiaRateEntered;
+  const ftcEstimate = ftcTreatment === "estimate";
   // Indian tax is included only when ROR AND a rate is supplied — never a
   // silent 30%.
   const indiaRateForModel = isRor && indiaRateEntered ? val.values.indiaRate / 100 : 0;
-  const showWinner = bothRatesEntered && !rorAssumptionsMissing;
+
+  // Recommendation readiness (item 1): a definitive comparison is only valid
+  // for NRI/RNOR (US tax only), or for ROR once BOTH an Indian rate is given
+  // AND the FTC is a simplified estimate. ROR with "Not modeled" FTC would add
+  // full US + full Indian tax, overstating liability, so no winner is shown.
+  const canShowRecommendation = canRecommendFcnr({
+    bothRatesEntered,
+    isRor,
+    indiaRateEntered,
+    ftcEstimate,
+  });
+  const showWinner = canShowRecommendation;
+
+  // Distinct incomplete states for messaging.
+  const rorNeedsRate = isRor && !indiaRateEntered;
+  const rorFtcNotModeled = bothRatesEntered && isRor && indiaRateEntered && !ftcEstimate;
+  const isEstimatedComparison = isRor && indiaRateEntered && ftcEstimate;
 
   const calc = useMemo(() => {
     const common = {
@@ -618,7 +638,7 @@ export default function FcnrVsHysaCalculator() {
               value={s.federalTax}
               onChange={(v) => set("federalTax", v)}
               options={TAX_BRACKETS}
-              hint="Both FCNR and HYSA interest are taxed as ordinary income in the USA at your marginal rate."
+              hint="This is your top marginal bracket; the rate does not apply to every dollar of taxable income. Both FCNR and HYSA interest are taxed as ordinary income in the USA at your marginal rate."
             />
 
             <NumberField
@@ -646,7 +666,7 @@ export default function FcnrVsHysaCalculator() {
                 &ldquo;better choice&rdquo; until you provide both current rates.
               </Callout>
             )}
-            {bothRatesEntered && rorAssumptionsMissing && (
+            {bothRatesEntered && rorNeedsRate && (
               <Callout tone="bad">
                 <strong>Indian tax exposure not included.</strong> You selected
                 ROR, where FCNR interest is taxable in India — but no Indian
@@ -656,8 +676,24 @@ export default function FcnrVsHysaCalculator() {
                 include it.
               </Callout>
             )}
+            {rorFtcNotModeled && (
+              <Callout tone="bad">
+                <strong>Comparison incomplete — foreign tax credit is not
+                modeled.</strong> The figures below add US tax and estimated
+                Indian tax before any FTC, which may <strong>overstate</strong>{" "}
+                your true combined liability — the US foreign tax credit can
+                offset Indian tax against US tax on the same interest. No
+                &ldquo;better choice&rdquo;, advantage or recommendation is shown
+                until you set the FTC treatment to the simplified estimate above.
+              </Callout>
+            )}
 
             <ResultCard
+              endingLabel={
+                rorFtcNotModeled
+                  ? "Illustrative ending value before foreign-tax-credit adjustment"
+                  : "Estimated value at maturity"
+              }
               title="FCNR (Indian bank foreign-currency deposit)"
               subtitle={`Fixed deposit at an Indian bank · ${
                 s.fcnrRate.trim() === "" ? "rate not entered" : pct(num(s.fcnrRate)) + " gross"
@@ -683,6 +719,11 @@ export default function FcnrVsHysaCalculator() {
             />
 
             <ResultCard
+              endingLabel={
+                rorFtcNotModeled
+                  ? "Illustrative ending value before foreign-tax-credit adjustment"
+                  : "Estimated value at maturity"
+              }
               title="HYSA / CD (US account)"
               subtitle={`High-yield savings or CD at a US bank · ${
                 s.hysaRate.trim() === "" ? "rate not entered" : pct(num(s.hysaRate)) + " gross"
@@ -716,8 +757,19 @@ export default function FcnrVsHysaCalculator() {
               <div className="rounded-xl bg-slate-50 px-5 py-4 text-sm leading-relaxed text-ink-700">
                 {calc.advantage < 1 ? (
                   <span>
-                    At your inputs, FCNR and HYSA/CD return almost identical
-                    after-tax gains over {tenure} year{tenure > 1 ? "s" : ""}.
+                    {isEstimatedComparison ? "Using a simplified FTC assumption, " : ""}
+                    FCNR and HYSA/CD return almost identical after-tax gains over{" "}
+                    {tenure} year{tenure > 1 ? "s" : ""}.
+                  </span>
+                ) : isEstimatedComparison ? (
+                  <span>
+                    <strong>Estimated difference using a simplified FTC
+                    assumption:</strong> {winnerName} comes out roughly{" "}
+                    <strong>{usd(calc.advantage, 0)} ahead</strong> over {tenure}{" "}
+                    year{tenure > 1 ? "s" : ""}. This is an estimate, not a
+                    recommendation — the real foreign tax credit depends on your
+                    whole return, so confirm with a cross-border tax professional
+                    before acting.
                   </span>
                 ) : (
                   <span>
@@ -753,6 +805,7 @@ export default function FcnrVsHysaCalculator() {
         fcnrSeries={calc.fcnrSeries}
         hysaSeries={calc.hysaSeries}
         tenure={tenure}
+        showDelta={showWinner}
       />
 
       {/* important notices */}

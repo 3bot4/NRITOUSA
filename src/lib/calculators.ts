@@ -69,7 +69,7 @@ export const calculators: CalculatorMeta[] = [
     quickSummary:
       "Your India tax status depends on how many days you've spent there over the last several years. Enter your day count to find out if you're NRI (taxed on India-sourced income only), RNOR (transitional status with limited global-income exposure), or ordinary resident (taxed on worldwide income).",
     audience: "NRIs planning to return to India, and Indians who recently moved to the US who want to understand when their global income starts being taxable in India",
-    dataChecked: "2026-06-01",
+    dataChecked: "2026-07-20",
     officialSource: "Residence rules under the Income-tax Act, 1961 (Section 6) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. Indian Income Tax Department.",
   },
   {
@@ -98,7 +98,7 @@ export const calculators: CalculatorMeta[] = [
     quickSummary:
       "Capital-gains tax and TDS are two different calculations, and this calculator keeps them separate. Long-term gains on property transferred on or after 23 July 2024 are taxed at 12.5% without indexation; short-term gains are taxed at your applicable slab rate, not at a fixed rate. Separately, under Section 195 the buyer withholds TDS on the full sale consideration — not on your gain — unless you obtain a lower/nil deduction certificate, so the amount withheld is usually far larger than the tax you actually owe and the difference is reclaimed by filing an Indian return. Repatriation of up to USD 1 million per financial year is subject to RBI/FEMA conditions and your bank's review.",
     audience: "US-based NRIs and Indian-Americans who own or have inherited property in India and are considering a sale",
-    dataChecked: "2026-06-01",
+    dataChecked: "2026-07-20",
     officialSource: "Capital-gains and TDS provisions under the Income-tax Act, 1961 (Sections 48, 54, 54EC, 195) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. RBI Master Circular on repatriation.",
   },
   {
@@ -215,7 +215,7 @@ export const calculators: CalculatorMeta[] = [
     quickSummary:
       "India charges 20% TCS on outward remittances above ₹10 lakh per year for most purposes (the threshold was raised to ₹10 lakh from FY 2025-26); you can reclaim TCS as an income tax credit when filing in India. Enter your transfer amount, provider, and current exchange rate to see total fees, TCS withheld, exchange-rate margin, and the net USD (or INR) amount received on the other end.",
     audience: "NRIs and Indians sending money between India and the USA — whether transferring savings, paying for education, or repatriating property sale proceeds",
-    dataChecked: "2026-06-01",
+    dataChecked: "2026-07-20",
     officialSource: "TCS on remittances under the Income-tax Act, 1961 (Section 206C(1G)) and, for periods from 1 April 2026, the corresponding provisions of the Income-tax Act, 2025 / Income-tax Rules, 2026 — which may be renumbered; verify the current section before relying on a number. RBI Liberalised Remittance Scheme (LRS).",
   },
   {
@@ -240,7 +240,7 @@ export const calculators: CalculatorMeta[] = [
     quickSummary:
       "FCNR deposits and US HYSAs or CDs can both hold USD, but their tax treatment differs: FCNR interest is exempt from Indian tax but fully taxable on a US federal return. Enter current FCNR and HYSA rates plus your US marginal tax bracket to compare net after-tax returns over 1–5 years, with a compounding chart.",
     audience: "NRIs holding USD savings who are comparing FCNR fixed deposits at Indian banks versus US high-yield savings accounts or CDs",
-    dataChecked: "2026-06-01",
+    dataChecked: "2026-07-20",
     officialSource: "IRS Publication 550 (investment income); FEMA 1999 (FCNR account rules); RBI Master Circular on NRI accounts",
   },
   {
@@ -269,7 +269,7 @@ export const calculators: CalculatorMeta[] = [
     quickSummary:
       "Under the India–USA Double Taxation Avoidance Agreement (DTAA), income taxes you paid in India on India-sourced income can offset your US federal tax bill via the Foreign Tax Credit (IRS Form 1116). The credit is limited to the US tax that would have applied on that same income — you cannot use it to reduce tax on other income. Enter your India income and tax paid to estimate how much double taxation you avoid.",
     audience: "US-resident NRIs and green card holders with income from India — such as rental income, fixed deposit interest, dividends, or capital gains — who want to claim DTAA relief on their US tax return",
-    dataChecked: "2026-06-01",
+    dataChecked: "2026-07-20",
     officialSource: "India–USA DTAA (1989, as amended); IRS Form 1116 instructions; IRS Publication 514",
   },
 ];

@@ -107,21 +107,47 @@ export function marginalRateOptions(
 ): { value: string; label: string }[] {
   const s = ty.single.brackets;
   const m = ty.marriedJoint.brackets;
-  // EXACT thresholds (no rounded "$50k–$106k" ranges) for all seven brackets.
   const dollars = (n: number) => `$${n.toLocaleString("en-US")}`;
-  const band = (arr: TaxBracket[], i: number) =>
-    i + 1 < arr.length
-      ? `${dollars(arr[i].from)}–${dollars(arr[i + 1].from - 1)}`
-      : `${dollars(arr[i].from)}+`;
+  // Official "over" structure, formatted from the numeric thresholds — never
+  // hand-adjusted $12,399 / $50,399 endpoints. The first band is "≤ next.from",
+  // middle bands are "> from to ≤ next.from", the top band is "> from".
+  const band = (arr: TaxBracket[], i: number) => {
+    if (i === 0) return `≤ ${dollars(arr[i + 1].from)}`;
+    if (i + 1 < arr.length)
+      return `> ${dollars(arr[i].from)} to ≤ ${dollars(arr[i + 1].from)}`;
+    return `> ${dollars(arr[i].from)}`;
+  };
   const rows: { value: string; label: string }[] = [];
   for (let i = 0; i < s.length; i++) {
     const pct = `${Math.round(s[i].rate * 100)}%`;
     rows.push({
       value: String(Math.round(s[i].rate * 100)),
-      label: `${pct} (single ${band(s, i)} / MFJ ${band(m, i)})`,
+      label: `${pct} — Single: ${band(s, i)} · MFJ: ${band(m, i)}`,
     });
   }
   return rows;
+}
+
+/**
+ * The marginal bracket rate (decimal) for a given taxable income and status,
+ * using the official "over" boundaries: a bracket applies to income OVER its
+ * `from` threshold, so income exactly at a threshold stays in the lower bracket.
+ * MFS/HOH fall back to Single when they carry no published bracket table.
+ */
+export function bracketRateFor(income: number, status: FilingStatus, ty: UsTaxYear = currentUsTax()): number {
+  const brackets =
+    status === "mfj"
+      ? ty.marriedJoint.brackets
+      : status === "mfs"
+        ? ty.marriedSeparate.brackets ?? ty.single.brackets
+        : status === "hoh"
+          ? ty.headOfHousehold.brackets ?? ty.single.brackets
+          : ty.single.brackets;
+  const x = Number.isFinite(income) ? income : 0;
+  for (let i = brackets.length - 1; i >= 1; i--) {
+    if (x > brackets[i].from) return brackets[i].rate;
+  }
+  return brackets[0].rate;
 }
 
 /**

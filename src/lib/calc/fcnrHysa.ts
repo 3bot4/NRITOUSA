@@ -186,3 +186,23 @@ export function runFcnrModel(input: FcnrInputs): FcnrResult {
 
   return { rows, final, reconciles };
 }
+
+/**
+ * Whether a definitive FCNR-vs-HYSA recommendation may be shown.
+ *
+ * Valid only when both rates are entered AND either the depositor is NRI/RNOR
+ * (US tax only) OR — for ROR — an Indian marginal rate is supplied AND the FTC
+ * is treated as a simplified estimate. ROR with "Not modeled" FTC would add
+ * full US + full Indian tax and overstate liability, so no winner is shown.
+ */
+export function canRecommendFcnr(opts: {
+  bothRatesEntered: boolean;
+  isRor: boolean;
+  indiaRateEntered: boolean;
+  ftcEstimate: boolean;
+}): boolean {
+  return (
+    opts.bothRatesEntered &&
+    (!opts.isRor || (opts.indiaRateEntered && opts.ftcEstimate))
+  );
+}

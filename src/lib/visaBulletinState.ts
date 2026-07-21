@@ -23,6 +23,26 @@ export interface BulletinState {
   nextPublicationDate: string | null;
 }
 
+/**
+ * Date the immigration data (visa bulletin, processing times, tracker figures)
+ * was last re-verified against official sources by a human. This is a distinct
+ * concept from the source-data month, the bulletin publication date, and the
+ * bulletin effective month — do not conflate them. Shared by the homepage
+ * ticker and the immigration tracker so both show the same "last verified".
+ */
+export const IMMIGRATION_LAST_VERIFIED = "2026-07-20";
+
+/** Human label, e.g. "Jul 20, 2026". */
+export const immigrationLastVerifiedLabel = (() => {
+  const d = new Date(`${IMMIGRATION_LAST_VERIFIED}T00:00:00Z`);
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+})();
+
 const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Add `n` months to a "YYYY-MM" key. */

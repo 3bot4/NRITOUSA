@@ -332,7 +332,7 @@ export default function ImmigrationTrackerDashboard({
             >
               official Visa Bulletin
             </a>{" "}
-            for the latest month.
+            for the latest month. Last verified: {bulletinTiming.lastVerifiedLabel}.
           </p>
         </div>
 
@@ -340,7 +340,7 @@ export default function ImmigrationTrackerDashboard({
         <div className="mb-4 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
           {visaBulletinIndia.retrogressionNote}
           <span className="mt-1 block text-xs text-amber-800/80">
-            {visaBulletinIndia.sourceNote} Last verified: {visaBulletinIndia.lastVerified}.
+            {visaBulletinIndia.sourceNote} Last verified: {bulletinTiming.lastVerifiedLabel}.
           </span>
         </div>
 

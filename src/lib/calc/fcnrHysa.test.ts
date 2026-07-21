@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runFcnrModel, type FcnrInputs } from "./fcnrHysa";
+import { runFcnrModel, canRecommendFcnr, type FcnrInputs } from "./fcnrHysa";
 
 const base: FcnrInputs = {
   principal: 25_000,
@@ -199,5 +199,30 @@ describe("ROR foreign tax credit — separate values, lower-of, no double-add", 
       expect(r.final.indianTaxBeforeFtc).toBe(0);
       expect(r.final.foreignTaxCredit).toBe(0);
     }
+  });
+})
+
+describe("recommendation readiness (canRecommendFcnr)", () => {
+  const rec = (o: Partial<Parameters<typeof canRecommendFcnr>[0]> = {}) =>
+    canRecommendFcnr({ bothRatesEntered: true, isRor: false, indiaRateEntered: false, ftcEstimate: false, ...o });
+
+  it("no recommendation until both rates are entered", () => {
+    expect(rec({ bothRatesEntered: false })).toBe(false);
+  });
+
+  it("NRI/RNOR with both rates → ordinary comparison allowed", () => {
+    expect(rec({ isRor: false })).toBe(true);
+  });
+
+  it("ROR with no Indian rate → no recommendation", () => {
+    expect(rec({ isRor: true, indiaRateEntered: false, ftcEstimate: true })).toBe(false);
+  });
+
+  it("ROR with Indian rate but FTC not modeled → no recommendation", () => {
+    expect(rec({ isRor: true, indiaRateEntered: true, ftcEstimate: false })).toBe(false);
+  });
+
+  it("ROR with Indian rate AND simplified FTC estimate → comparison allowed", () => {
+    expect(rec({ isRor: true, indiaRateEntered: true, ftcEstimate: true })).toBe(true);
   });
 })

@@ -19,6 +19,7 @@ import homepageConfig from "../../data/homepage-config.json";
 import {
   visaBulletinState,
   monthLabel as bulletinMonthLabel,
+  immigrationLastVerifiedLabel,
 } from "@/lib/visaBulletinState";
 import { getH1bPremiumFee, getPremiumFeeByForm, premiumProcessing } from "@/lib/premiumProcessing";
 
@@ -308,6 +309,8 @@ export const bulletinTiming = {
     ? bulletinMonthLabel(_bulletinState.nextExpectedMonth)
     : null,
   nextPublicationDate: _bulletinState.nextPublicationDate,
+  // Same shared verification date the homepage ticker uses.
+  lastVerifiedLabel: immigrationLastVerifiedLabel,
 } as const;
 
 // ─── Countdowns ───────────────────────────────────────────────────────────────
