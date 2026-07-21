@@ -884,7 +884,7 @@ For the majority of returning NRIs, **rolling into a Traditional IRA** is the wi
 
 ## The withdrawal traps to understand
 ### The 10% early-withdrawal penalty
-If you withdraw before age **59½**, the IRS adds a **10% penalty** on top of ordinary income tax. On a $100,000 balance, cashing out early can easily cost $30,000–$40,000 between tax and penalty. This is why "just take the money to India" is usually the worst choice.
+If you withdraw before age **59½**, the IRS adds a **10% penalty** on top of ordinary income tax. On a $100,000 balance, cashing out early can easily cost $30,000–$40,000 between tax and penalty — [estimate your own number with the 401(k) return-to-India calculator](/calculators/401k-return-to-india). This is why "just take the money to India" is usually the worst choice.
 
 ### The 30% nonresident withholding
 Once you're a **nonresident alien**, US payers generally must withhold **30%** on retirement distributions. The India-US tax treaty provides only limited relief on lump-sum 401(k) distributions, so plan for the 30% and reconcile via a **Form 1040-NR** to recover any excess.
@@ -893,7 +893,7 @@ Once you're a **nonresident alien**, US payers generally must withhold **30%** o
 Once you become **ordinarily resident** in India again, India taxes your worldwide income, including US retirement withdrawals. The [DTAA](/articles/double-taxation-dtaa-india-usa) prevents true double taxation through foreign tax credits, but you do have to account for both systems.
 
 ## The RNOR golden window
-Here's the planning nugget most people miss. When you return to India after years abroad, you typically qualify as **RNOR — Resident but Not Ordinarily Resident** — for about **2 to 3 years**. During RNOR status, your **foreign income is generally not taxed in India.** That makes the RNOR window a uniquely efficient time to take 401(k)/IRA distributions: you may owe US tax (and the 30% withholding), but India won't pile on. Many advisors structure withdrawals to fall inside this window.
+Here's the planning nugget most people miss. When you return to India after years abroad, you typically qualify as **RNOR — Resident but Not Ordinarily Resident** — for about **2 to 3 years**. During RNOR status, your **foreign income is generally not taxed in India.** That makes the RNOR window a uniquely efficient time to take 401(k)/IRA distributions: you may owe US tax (and the 30% withholding), but India won't pile on. Many advisors structure withdrawals to fall inside this window — check roughly how long yours might last with the [RNOR tax-residency calculator](/calculators/rnor-tax-residency).
 
 :::note
 **Roth accounts behave differently abroad.** Qualified [Roth IRA](/articles/roth-ira-vs-traditional-nri) withdrawals are tax-free in the US, but India does **not** recognize the Roth's tax-free status once you're ordinarily resident — it may tax the growth. Roths are still excellent, but the cross-border math is less simple than "tax-free forever."
@@ -1544,7 +1544,7 @@ TCS on foreign remittances flows from the **Liberalised Remittance Scheme (LRS)*
 | Education/medical (self-funded) | **5%** (above ₹10 lakh) |
 | Gifts, investments, travel, maintenance, etc. | **20%** (above ₹10 lakh) |
 
-The **₹10 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹10 lakh, generally no TCS applies (with some exceptions for tour packages). Education- and medical-purpose rates are concessional and change periodically — confirm the current figure for your purpose.
+The **₹10 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹10 lakh, generally no TCS applies (with some exceptions for tour packages). Education- and medical-purpose rates are concessional and change periodically — confirm the current figure for your purpose, and [estimate the TCS and total cost of a transfer with the remittance & TCS cost calculator](/calculators/remittance-tcs-cost).
 
 ## Who this really affects
 This is the part that trips people up:
@@ -1666,7 +1666,7 @@ Use NRE-linked investing if you want your principal and gains to be freely repat
 Both can tax the gains, but the DTAA lets you credit Indian tax against your US tax, so you don't pay twice on the same gain.
 
 ## The bottom line
-You can absolutely invest in India's market as a US NRI — just do it the smart way. Set up an NRE-linked NRI trading and Demat account, buy **direct stocks or US-listed India ETFs** rather than PFIC-laden Indian mutual funds, accept that you're a buy-and-hold investor, and report cleanly on both tax systems with DTAA credits. Get the structure right once and you can participate in India's growth without handing the gains back to the IRS in penalties.`,
+You can absolutely invest in India's market as a US NRI — just do it the smart way. Set up an NRE-linked NRI trading and Demat account, buy **direct stocks or US-listed India ETFs** rather than PFIC-laden Indian mutual funds, accept that you're a buy-and-hold investor, and report cleanly on both tax systems with DTAA credits. Get the structure right once and you can participate in India's growth without handing the gains back to the IRS in penalties. Just as important as the *how* is the *how much*: weigh where [India investments fit in a cross-border portfolio](/india-investments/should-nris-keep-investments-in-india) before you size the allocation.`,
   },
   {
     slug: "h1b-first-tax-return-guide",
@@ -3546,7 +3546,7 @@ Tax-free interest in India plus full repatriability makes FCNR attractive on the
 
 When it's **less** ideal:
 
-- If a **US high-yield savings account** offers comparable rates with full liquidity, the FCNR lock-in may not be worth it — compare current yields.
+- If a **US high-yield savings account** offers comparable rates with full liquidity, the FCNR lock-in may not be worth it — [compare the two after tax with the FCNR vs HYSA calculator](/calculators/fcnr-vs-hysa).
 - If you actually **want rupee exposure** (e.g., spending in India), an NRE rupee deposit might suit you better.
 
 ## How to open one
@@ -3775,6 +3775,8 @@ Here's the provision that matters when you eventually **sell** an inherited asse
 3. **Get a date-of-death valuation** to establish your stepped-up basis.
 4. **Report any inherited Indian accounts** on [FBAR/FATCA](/articles/fbar-fatca-nri-guide).
 5. **Plan the sale** (if selling) for both Indian capital-gains tax and US reporting, with a [DTAA credit](/articles/double-taxation-dtaa-india-usa).
+
+If you're planning your own legacy rather than receiving one, the same cross-border traps apply in reverse — see the guide to [estate planning for cross-border NRI families](/nri-estate-planning).
 
 ## Frequently asked questions
 
@@ -4300,7 +4302,7 @@ A common rule is 10–15× your annual income, adjusted for debts and goals. Con
 You can buy US term life as a visa holder or green card holder. Insurers may ask about travel and immigration status, but coverage is widely available. Premiums are based mainly on age and health, so buying earlier is cheaper.
 
 ## What about policies in India?
-Some NRIs keep an Indian term policy too. That can work, but confirm it pays out for death abroad and that premiums/claims work cross-border. For income earned and family living in the US, a US policy is usually simpler.
+Some NRIs keep an Indian term policy too. That can work, but confirm it pays out for death abroad and that premiums/claims work cross-border. For income earned and family living in the US, a US policy is usually simpler. For a deeper walkthrough built around Indian-family situations — H-1B households, a single income, or supporting parents in India — see our guide to [life insurance for Indian families in the US](/life-insurance-for-indian-families-usa).
 
 | Feature | Term life | Whole life |
 | --- | --- | --- |
@@ -5369,6 +5371,8 @@ US residents are taxed on worldwide income and must report foreign accounts via 
 - You want to avoid the [PFIC trap](/articles/pfic-indian-mutual-funds-trap) and FBAR-heavy portfolios.
 
 ## A simple decision framework
+For the deeper, asset-by-asset version of this call, see the pillar guide on [whether NRIs should keep investments in India](/india-investments/should-nris-keep-investments-in-india). The quick version is a handful of honest questions:
+
 | Question | Leans India | Leans USA |
 |---|---|---|
 | Where will you retire? | India | USA |
@@ -5470,7 +5474,7 @@ US investments can be sold and the cash used domestically within days. Pulling F
 | Liquidity to spend in USD | Slower | Fast |
 | Best suited for | Rupee goals | Dollar goals |
 
-The honest takeaway: FDs can win for rupee goals and stability; broad US investing has historically won for long-term dollar growth, with more ups and downs along the way.
+The honest takeaway: FDs can win for rupee goals and stability; broad US investing has historically won for long-term dollar growth, with more ups and downs along the way. The FD-versus-US question is really one slice of a bigger allocation decision — [how much to keep invested in India](/india-investments/should-nris-keep-investments-in-india) across every asset you hold, not just deposits.
 
 ## Where Should NRIs Actually Hold Cash? (Rate Comparison)
 
@@ -5576,7 +5580,7 @@ Selling India property as a US resident or OCI holder involves capital-gains tax
 After selling, bringing proceeds to the US has its own rules and limits, typically routed through an NRO account with documentation and CA certification. See [repatriating India property sale proceeds](/articles/repatriate-india-property-sale-usa) and the US tax angle in [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax).
 
 ## Why planning early matters
-Every problem above shrinks dramatically if parents, while healthy, (1) clean up titles, (2) write a clear India will, (3) assemble a documented file, (4) help children get PAN/OCI, and (5) have an honest conversation about whether the children even want the property. See [what NRIs should know before buying India property for their children](/articles/buying-india-property-for-children).
+Every problem above shrinks dramatically if parents, while healthy, (1) clean up titles, (2) write a clear India will, (3) assemble a documented file, (4) help children get PAN/OCI, and (5) have an honest conversation about whether the children even want the property. See [what NRIs should know before buying India property for their children](/articles/buying-india-property-for-children). That conversation also feeds the larger family question of [how much a family should keep invested in India](/india-investments/should-nris-keep-investments-in-india) — property included — once the next generation is US-based.
 
 ## Common mistakes
 :::warn
@@ -5760,7 +5764,7 @@ Your biggest future bills are likely in dollars: a home, your children's US coll
 These three are large, non-negotiable, and dollar-denominated. They deserve dollar funding. If your retirement plan leans on India assets, read [NRI retirement planning with India assets](/articles/nri-retirement-usa-india-currency-risk) and consider building dollar reserves deliberately.
 
 ## How to think in terms of future currency needs
-List your future goals and tag each with a currency. Parents' care, India travel, a home you'll use → rupees. US retirement, college, healthcare, emergencies → dollars. Then hold roughly enough rupee assets to cover rupee goals, and shift the surplus toward dollars over time. This isn't about abandoning India; it's about matching money to purpose.
+List your future goals and tag each with a currency. Parents' care, India travel, a home you'll use → rupees. US retirement, college, healthcare, emergencies → dollars. Then hold roughly enough rupee assets to cover rupee goals, and shift the surplus toward dollars over time. This isn't about abandoning India; it's about matching money to purpose. For a fuller, asset-by-asset framework on [deciding what to keep invested in India](/india-investments/should-nris-keep-investments-in-india), work through the pillar guide.
 
 ## A balanced approach
 - Keep an **India buffer** sized to real rupee needs (family, property, travel).
@@ -5829,7 +5833,7 @@ NRIs with cross-border assets often need **coordinated planning in both countrie
 :::
 
 ## Why cross-border estate planning matters
-When assets sit in two legal systems, gaps appear at the seams: probate in one country doesn't automatically apply in the other, succession rules differ, and tax treatment varies. Without deliberate planning, heirs can face years of paperwork, frozen assets, family disputes, and avoidable tax. Coordination is the whole game.
+When assets sit in two legal systems, gaps appear at the seams: probate in one country doesn't automatically apply in the other, succession rules differ, and tax treatment varies. Without deliberate planning, heirs can face years of paperwork, frozen assets, family disputes, and avoidable tax. Coordination is the whole game. For the tools, checklists, and guides that fit together, start from the [NRI estate-planning hub](/nri-estate-planning).
 
 ## US assets vs India assets
 US assets — brokerage, 401k/IRA, bank accounts, US real estate — are governed by US and state law, with tools like beneficiary designations, transfer-on-death registrations, and trusts. India assets — property, NRO/NRE accounts, India investments — are governed by Indian succession law and require Indian instruments. Treating them as one pool is the core error.

@@ -79,7 +79,7 @@ const relatedLinks = [
   { href: "/h1b-registration-status-meaning", label: "Registration Status Meaning", desc: "What Denied and Invalidated mean" },
   { href: "/h1b-lottery-chances", label: "H1B Lottery Chances", desc: "Why multiple registrations don't raise odds" },
   { href: "/h1b-lottery-chance-calculator", label: "H-1B Lottery Chance Calculator", desc: "Estimate your FY 2027 odds by wage level" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", desc: "Research employers that file H-1B petitions" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Research employers that file H-1B petitions" },
   { href: "/h1b-lottery-selected-next-steps", label: "Selected: Next Steps", desc: "Choosing which offer to proceed with" },
 ];
 
@@ -224,7 +224,7 @@ export default function Page() {
               your petition. Weigh the role, salary and LCA wage, worksite, the employer&rsquo;s H-1B track record, and
               whether they&rsquo;ll support your future green-card process. Research an employer&rsquo;s filing history
               with the{" "}
-              <Link href="/h1b-sponsors" className="font-semibold text-orange-600 underline">
+              <Link href="/tools/h1b-sponsor-finder" className="font-semibold text-orange-600 underline">
                 H-1B Sponsor Finder
               </Link>
               , then move to{" "}

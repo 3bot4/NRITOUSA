@@ -88,7 +88,7 @@ const relatedLinks = [
   { href: "/h1b-lottery-chance-calculator", label: "H-1B Lottery Chance Calculator", desc: "Estimate your FY 2027 selection odds by wage level" },
   { href: "/h1b", label: "H-1B Guide for Indians", desc: "Transfer, extension, RFE, premium processing, and travel" },
   { href: "/h1b-layoff", label: "H-1B Layoff Checklist", desc: "60-day window, I-140, H-4 family, and money runway" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", desc: "Search employers that filed H-1B petitions" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Search employers that filed H-1B petitions" },
   { href: "/green-card", label: "Green Card Process for Indians", desc: "EB-2/EB-3, I-140, priority date, and I-485" },
   { href: "/tools/fbar-fatca-checker", label: "FBAR / FATCA Checker", desc: "US reporting for NRE/NRO, FDs, and Indian mutual funds" },
   { href: "/india-tax-compliance", label: "India Tax & Compliance", desc: "FBAR, FATCA, DTAA, ITR, TDS, and repatriation" },

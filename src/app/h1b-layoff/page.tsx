@@ -601,6 +601,7 @@ export default function H1bLayoffPage() {
                 { href: "/nri-wealth-checkup", label: "NRI Wealth Checkup", desc: "Educational FBAR/FATCA and US-India money checklist" },
                 { href: "/tools/nri-tax-filing-roadmap", label: "DIY NRI Tax Filing Roadmap", desc: "Which US and India forms may apply before you file" },
                 { href: "/tools/fbar-fatca-checker", label: "FBAR / FATCA Checker", desc: "US reporting for NRE/NRO, FDs, and Indian mutual funds" },
+                { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "What legal help typically costs if your case gets complex after a layoff" },
               ].map((g) => (
                 <Link key={g.href} href={g.href} className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
                   <p className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{g.label}</p>

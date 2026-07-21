@@ -606,6 +606,9 @@ export default function H1bHubPage() {
                 { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H1B case delayed? Educational assessment" },
                 { href: "/tools/uscis-case-status-meaning", label: "Case Status Meaning Tool", desc: "What does your current USCIS status mean?" },
                 { href: "/tools/h1b-transfer-risk-checklist", label: "H1B Transfer Risk Checklist", desc: "Assess your transfer situation and documents" },
+                { href: "/h1b-lottery-results", label: "H-1B Lottery Results Hub", desc: "How to check your registration status and what each result means" },
+                { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Search which employers actually file H-1B petitions" },
+                { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "Typical lawyer fees for H-1B cases and RFEs, and when hiring one is worth it" },
               ].map((g) => (
                 <Link key={g.href} href={g.href} className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
                   <p className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{g.label}</p>

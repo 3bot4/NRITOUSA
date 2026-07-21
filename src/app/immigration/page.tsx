@@ -399,6 +399,10 @@ export default function ImmigrationHubPage() {
                       label: "Moving to the USA Checklist",
                       href: "/articles/moving-to-usa-from-india-checklist",
                     },
+                    {
+                      label: "Trump Account for H-1B Families",
+                      href: "/trump-account-h1b-immigrant-families",
+                    },
                     { label: "USCIS Hub", href: "/uscis" },
                   ].map((l) => (
                     <Link

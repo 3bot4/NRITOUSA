@@ -107,7 +107,7 @@ export function stateMetadata(slug: string): Metadata {
 
 const IMMIGRATION_LINKS = [
   { href: "/h1b", label: "H-1B Visa Guide" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder" },
   { href: "/h1b-layoff", label: "H-1B Layoff Options" },
   { href: "/visa-bulletin", label: "Visa Bulletin Explained for Indians" },
   { href: "/eb2-eb3-priority-date-india", label: "EB-2 / EB-3 India Dates" },
@@ -117,7 +117,7 @@ const IMMIGRATION_LINKS = [
 const RELATED_LINKS = [
   { href: "/indian-population-in-usa", label: "Indian population in USA" },
   { href: "/h1b", label: "H-1B Visa Guide" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder" },
   { href: "/visa-bulletin", label: "Visa Bulletin Explained for Indians" },
   { href: "/green-card", label: "Green Card basics" },
   { href: "/articles/moving-to-usa-from-india-checklist", label: "Moving to USA from India Checklist" },

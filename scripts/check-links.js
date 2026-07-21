@@ -84,6 +84,61 @@ const authorSlugs = slugsFrom(path.join(SRC, "lib", "authors.ts"));
 const routes = staticRoutes();
 
 /* --------------------------------------------------------------- */
+/* Nested cluster [slug] routes                                     */
+/*                                                                  */
+/* Several top-level hubs render their children through a shared    */
+/* /<base>/[slug] route whose slugs come from cluster data files    */
+/* (see each route's generateStaticParams). staticRoutes() skips    */
+/* dynamic dirs, so without this map every cluster child link would */
+/* be reported as broken — the historical false-positive class.     */
+/* Precompute the full set of valid /<base>/<slug> paths from the   */
+/* same `slug:` fields the pages are generated from.                */
+/* --------------------------------------------------------------- */
+const dynamicClusters = {
+  "/green-card": ["greenCardCluster.ts"],
+  "/visa-bulletin": ["visaBulletinCluster.ts"],
+  "/h1b": ["h1bCluster.ts"],
+  "/uscis": ["uscisCluster.ts", "myuscisCluster.ts", "uscisLifePlanningCluster.ts"],
+  "/uscis/forms": ["uscisFormsCluster.ts"],
+  "/india-tax-compliance": [
+    "itrCluster.ts",
+    "tdsCluster.ts",
+    "repatriationCluster.ts",
+    "giftsCluster.ts",
+  ],
+  "/oci": ["ociGuides.ts"],
+  "/success-stories": ["successStories.ts"],
+  "/indian-passport-renewal-usa": ["passportCluster.ts"],
+};
+
+/**
+ * Cluster child slugs come from two shapes: page objects with a `slug: "..."`
+ * field, and a pillar constant like `ITR_PILLAR_SLUG = "..."` referenced as
+ * `slug: ITR_PILLAR_SLUG`. Capture both so pillar pages aren't reported broken.
+ */
+function clusterSlugs(file) {
+  const text = fs.readFileSync(file, "utf8");
+  const set = new Set();
+  for (const re of [
+    /slug:\s*["'`]([^"'`]+)["'`]/g,
+    /_SLUG\s*=\s*["'`]([^"'`]+)["'`]/g,
+  ]) {
+    let m;
+    while ((m = re.exec(text)) !== null) set.add(m[1]);
+  }
+  return set;
+}
+
+const dynamicRoutes = new Set();
+for (const [base, files] of Object.entries(dynamicClusters)) {
+  for (const f of files) {
+    const full = path.join(SRC, "lib", f);
+    if (!fs.existsSync(full)) continue;
+    for (const slug of clusterSlugs(full)) dynamicRoutes.add(`${base}/${slug}`);
+  }
+}
+
+/* --------------------------------------------------------------- */
 /* Extract internal links from every source file                   */
 /* --------------------------------------------------------------- */
 const linkPatterns = [
@@ -95,7 +150,12 @@ const broken = [];
 let checked = 0;
 
 for (const file of walk(SRC)) {
-  const text = fs.readFileSync(file, "utf8");
+  // Test files are not rendered pages — they reference paths (legacy URLs,
+  // regex examples) as data/assertions, which would be false positives.
+  if (/\.test\.(t|j)sx?$/.test(file)) continue;
+  // Strip block comments so `[label](/href)`-style doc examples in comments
+  // aren't mistaken for real links.
+  const text = fs.readFileSync(file, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
   for (const pattern of linkPatterns) {
     let m;
     while ((m = pattern.exec(text)) !== null) {
@@ -118,6 +178,7 @@ for (const file of walk(SRC)) {
 
 function isValid(link) {
   if (routes.has(link)) return true;
+  if (dynamicRoutes.has(link)) return true;
   // normalize trailing slash
   if (link.length > 1 && link.endsWith("/") && routes.has(link.slice(0, -1)))
     return true;
@@ -142,7 +203,7 @@ function isValid(link) {
 /* --------------------------------------------------------------- */
 console.log(
   `Checked ${checked} internal links across the codebase.\n` +
-    `Known routes: ${routes.size} static, ${topicSlugs.size} topics, ${calculatorSlugs.size} calculators, ${articleSlugs.size} articles, ${authorSlugs.size} authors.\n`
+    `Known routes: ${routes.size} static, ${dynamicRoutes.size} cluster [slug], ${topicSlugs.size} topics, ${calculatorSlugs.size} calculators, ${articleSlugs.size} articles, ${authorSlugs.size} authors.\n`
 );
 
 if (broken.length === 0) {

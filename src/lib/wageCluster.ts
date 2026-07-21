@@ -29,7 +29,7 @@ export const wageRelatedLinks: ClusterLink[] = [
   { href: "/pwd-processing-time", label: "PWD Processing Time", desc: "Prevailing wage determination timeline" },
   { href: "/dol-processing-times", label: "DOL Processing Times", desc: "PERM, PWD & audit review queues" },
   { href: "/tools/h1b-salaries", label: "H-1B Salary Explorer", desc: "Real certified H-1B wages by role & city" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", desc: "Employers that sponsor by role & state" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Employers that sponsor by role & state" },
   { href: "/h1b", label: "H-1B Guide", desc: "The full H-1B process for Indians" },
 ];
 

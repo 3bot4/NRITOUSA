@@ -47,6 +47,12 @@ const config: MoneyHubConfig = {
       blurb:
         "The other half of the move: what to do with the mutual funds, FDs, and property you still hold in India — and how the US taxes them while you're here.",
     },
+    {
+      label: "Bringing gold from the US to India",
+      href: "/gold-limit-usa-to-india",
+      blurb:
+        "Duty-free allowances and the customs limits on gold you carry back when you relocate — plus what has to be declared on arrival.",
+    },
   ],
   snapshot: {
     title: "Return-to-India money decisions — key numbers first",

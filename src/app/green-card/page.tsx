@@ -501,6 +501,7 @@ export default function GreenCardPage() {
               { href: "/nvc-case-status", label: "What happens after USCIS approval", desc: "NVC case status, timeline & next steps" },
               { href: "/uscis/processing-times", label: "USCIS Processing Times", desc: "Current I-140, I-485, EAD processing ranges" },
               { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What your USCIS case status message means" },
+              { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "What a lawyer typically charges for employment green card cases, and when to hire one" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
                 className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-green-400 hover:shadow-sm">

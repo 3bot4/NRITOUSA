@@ -539,6 +539,7 @@ export default function UscisHubPage() {
                     { label: "Green Card Process for Indians", href: "/green-card" },
                     { label: "Visa Bulletin Explained", href: "/visa-bulletin" },
                     { label: "Visa & Green Card Tools Hub", href: "/tools/visa-green-card" },
+                    { label: "Immigration Attorney Cost Guide", href: "/immigration-attorney-lawyer-cost" },
                   ].map((l) => (
                     <Link key={l.href} href={l.href}
                       className="rounded-xl border border-ink-900/5 bg-white px-4 py-3 font-medium text-brand-600 hover:border-brand-300 hover:text-brand-700 transition">

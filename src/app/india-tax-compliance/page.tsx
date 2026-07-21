@@ -410,6 +410,15 @@ export default function IndiaTaxCompliancePage() {
                   { label: "FCNR vs HYSA", href: "/calculators/fcnr-vs-hysa" },
                 ],
               },
+              {
+                title: "Wealth, estate & assets",
+                links: [
+                  { label: "Should NRIs keep investments in India?", href: "/india-investments/should-nris-keep-investments-in-india" },
+                  { label: "NRI Estate Planning & Legacy", href: "/nri-estate-planning" },
+                  { label: "Gold customs limit (US → India)", href: "/gold-limit-usa-to-india" },
+                  { label: "Life insurance for Indian families", href: "/life-insurance-for-indian-families-usa" },
+                ],
+              },
             ]}
           />
         </Container>

@@ -220,12 +220,14 @@ export default function LongTermNriWealthPage() {
                   { label: "FCNR vs HYSA", href: "/calculators/fcnr-vs-hysa" },
                   { label: "India FD vs US Investments", href: "/articles/india-fd-vs-us-investments" },
                   { label: "Invest more in USA or India?", href: "/articles/invest-in-usa-or-india" },
+                  { label: "Should NRIs keep investments in India?", href: "/india-investments/should-nris-keep-investments-in-india" },
                 ],
               },
               {
                 title: "Property & legacy",
                 links: [
                   { label: "India Property Sale Calculator", href: "/calculators/india-property-capital-gains" },
+                  { label: "NRI Estate Planning Hub", href: "/nri-estate-planning" },
                   { label: "Inheriting Indian assets (US tax)", href: "/articles/inheriting-indian-assets-us-tax" },
                   { label: "Estate planning checklist", href: "/articles/estate-planning-usa-india-assets" },
                   { label: "US-born kids & India property", href: "/articles/us-kids-india-property-problems" },

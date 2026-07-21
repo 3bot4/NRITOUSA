@@ -648,7 +648,7 @@ export default function Page() {
             <RelatedPill href="/green-card" label="Green Card" />
             <RelatedPill href="/visa-bulletin" label="Visa Bulletin" />
             <RelatedPill href="/eb2-eb3-priority-date-india" label="EB-2/EB-3 India Dates" />
-            <RelatedPill href="/h1b-sponsors" label="H-1B Sponsor Finder" />
+            <RelatedPill href="/tools/h1b-sponsor-finder" label="H-1B Sponsor Finder" />
           </div>
         </Container>
       </section>
@@ -795,7 +795,7 @@ export default function Page() {
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {[
                 { href: "/h1b", label: "H-1B Visa Guide for Indians", sub: "Sponsorship, lottery, and status basics." },
-                { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", sub: "Find employers that sponsor H-1B workers." },
+                { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", sub: "Find employers that sponsor H-1B workers." },
                 { href: "/visa-bulletin", label: "Visa Bulletin Explained for Indians", sub: "Read priority dates and the green card queue." },
                 { href: "/eb2-eb3-priority-date-india", label: "Green Card Backlog for Indians", sub: "EB-2 vs EB-3 India priority dates." },
                 { href: "/green-card", label: "Green Card basics", sub: "How U.S. permanent residence works." },

@@ -68,14 +68,20 @@ function parseRedirects(): Redirect[] {
   return out;
 }
 
-/** Every .ts/.tsx file under src/, excluding this test. */
+/**
+ * Every .ts/.tsx file under src/, excluding *.test.ts(x). Test files are not
+ * rendered pages and never emit links; some (e.g. consolidation.batch3.test.ts)
+ * legitimately list these legacy URLs as data to assert nothing links to them,
+ * so scanning them would be a false positive.
+ */
 function sourceFiles(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
     const full = join(dir, name);
     if (statSync(full).isDirectory()) sourceFiles(full, out);
     else if (
       (full.endsWith(".ts") || full.endsWith(".tsx")) &&
-      !full.endsWith(`consolidation.batch1.test.ts`)
+      !full.endsWith(".test.ts") &&
+      !full.endsWith(".test.tsx")
     ) {
       out.push(full);
     }

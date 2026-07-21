@@ -64,7 +64,7 @@ const relatedLinks = [
   { href: "/h1b-lottery-selected-next-steps", label: "Selected: Next Steps", desc: "The petition process after selection" },
   { href: "/h1b-lottery-not-selected-options", label: "Not Selected: Options", desc: "STEM OPT, cap-exempt, and more" },
   { href: "/h1b-lottery-chances", label: "H1B Lottery Chances", desc: "Why a U.S. master's and more attempts matter" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", desc: "Find employers that file H-1B petitions" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Find employers that file H-1B petitions" },
   { href: "/free-immigrant-wealth-guide", label: "Free Immigrant Wealth Guide", desc: "Money basics for new grads on OPT" },
 ];
 

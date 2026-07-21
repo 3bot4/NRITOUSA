@@ -64,8 +64,9 @@ const relatedLinks = [
   { href: "/h1b-lottery-results-for-f1-opt-students", label: "For F-1 OPT Students", desc: "STEM OPT extension and staying in status" },
   { href: "/h1b-lottery-chances", label: "H1B Lottery Chances", desc: "Understand the odds before you re-register" },
   { href: "/h1b-lottery-chance-calculator", label: "H-1B Lottery Chance Calculator", desc: "Estimate your FY 2027 odds by wage level" },
-  { href: "/h1b-sponsors", label: "H-1B Sponsor Finder", desc: "Find employers that file H-1B petitions" },
+  { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Find employers that file H-1B petitions" },
   { href: "/h1b-layoff", label: "H-1B Layoff Checklist", desc: "If a job ends too: status, family, and money" },
+  { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "When paid legal help is worth it as you weigh O-1, cap-exempt, and other options" },
   { href: "/free-immigrant-wealth-guide", label: "Free Immigrant Wealth Guide", desc: "Build your financial backup plan" },
   { href: "/nri-wealth-checkup", label: "NRI Wealth Checkup", desc: "US–India money and reporting checklist" },
 ];

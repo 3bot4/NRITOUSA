@@ -195,6 +195,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       ],
     },
     relatedLinks: [
+      { label: "What happens to your 401(k) when you move back to India", href: "/articles/what-happens-to-401k-leaving-usa" },
       { label: "RNOR & India tax residency calculator", href: "/calculators/rnor-tax-residency" },
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
       { label: "Form 10F generator", href: "/tools/form-10f-generator" },
@@ -567,6 +568,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       body: "Sanjay, on an H-1B and a US tax resident, has $50,000 he won't need for three years. An Indian bank offers an FCNR USD deposit at a slightly higher rate than his US HYSA. But because he's a US tax resident, the FCNR interest is still taxable on his US return, so the after-tax edge shrinks — and the FCNR locks the money for the term and adds FBAR reporting. Since he wants flexibility and is staying in the US for now, the HYSA is the simpler fit. If he were about to move back to India, the FCNR's India-tax exemption and full repatriability would tilt the other way.",
     },
     relatedLinks: [
+      { label: "FCNR deposits explained: earn USD yield without currency risk", href: "/articles/fcnr-deposit-usd-yield" },
       { label: "RNOR & India tax residency calculator", href: "/calculators/rnor-tax-residency" },
       { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
       { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
@@ -716,6 +718,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       ],
     },
     relatedLinks: [
+      { label: "NRI selling property in India: TDS rates & rules explained", href: "/nri-selling-property-in-india-tds" },
       { label: "NRI TDS refund checklist", href: "/tools/nri-tds-refund-checklist" },
       { label: "Form 15CA / 15CB checklist", href: "/tools/form-15ca-15cb-checklist" },
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
@@ -856,6 +859,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       ],
     },
     relatedLinks: [
+      { label: "India's 20% TCS on foreign remittances explained", href: "/articles/tcs-india-remittance-tax" },
       { label: "Form 15CA / 15CB checklist", href: "/tools/form-15ca-15cb-checklist" },
       { label: "NRI TDS refund checklist", href: "/tools/nri-tds-refund-checklist" },
       { label: "FCNR vs HYSA calculator", href: "/calculators/fcnr-vs-hysa" },
@@ -995,6 +999,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       ],
     },
     relatedLinks: [
+      { label: "The RNOR window and your 401(k) when you move back to India", href: "/articles/what-happens-to-401k-leaving-usa" },
       { label: "401(k) return-to-India calculator", href: "/calculators/401k-return-to-india" },
       { label: "DTAA & foreign tax credit calculator", href: "/calculators/dtaa-foreign-tax-credit" },
       { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
