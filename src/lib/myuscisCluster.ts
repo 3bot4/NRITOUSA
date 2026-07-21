@@ -631,16 +631,17 @@ href: /tools/uscis-notice-decoder
   {
     slug: "rfe-notice",
     kind: "guide",
-    title: "USCIS RFE Notice Explained | What to Do When You Get an RFE",
-    seoTitle: "USCIS RFE Notice Explained | Request for Evidence for Indians",
+    title: "USCIS RFE Notice: How to Decode It and Respond",
+    seoTitle: "USCIS RFE Notice: Decode It & Response Checklist",
     metaDescription:
-      "Received a USCIS RFE? Understand what a Request for Evidence notice means, the 87-day deadline, what USCIS is asking for, and how to respond for H1B, I-140, I-485, EAD.",
+      "Decode your USCIS RFE notice field by field — the response deadline, legal basis, specific issues, and submission instructions — then work the response checklist. For H-1B, I-140, I-485 and EAD.",
     navLabel: "RFE Notice",
     excerpt:
-      "An RFE (Request for Evidence) is not a denial — it is USCIS asking for more documentation. You have up to 87 days to respond. Missing the deadline typically results in denial.",
+      "Holding a USCIS RFE? This guide decodes the notice field by field — deadline, legal basis, the specific issues — and gives you a response checklist so nothing is missed before the deadline.",
     date: "2026-06-16",
+    updated: "2026-07-21",
     content: `:::summary
-A **Request for Evidence (RFE)** is an official USCIS notice (on Form I-797) asking for additional documentation or clarification on your pending case. It is **not a denial**. Many cases with RFEs are ultimately approved. The critical fact: you have a **hard deadline** — usually **87 days** from the notice date — to submit your response. A late or incomplete response results in automatic denial.
+This guide is for when you are **holding the actual RFE notice** and need to read it correctly. A **Request for Evidence (RFE)** is an official USCIS notice (on Form I-797) asking for more documentation or clarification — it is **not a denial**, and many cases with RFEs are approved. The critical field is the **response deadline**, usually **87 days** from the notice date; a late or incomplete response results in automatic denial. For the bigger picture — what an RFE is and why USCIS issues them — see the [RFE meaning & process guide](/uscis/request-for-evidence-rfe).
 :::
 
 ## What an RFE notice contains
@@ -693,6 +694,14 @@ A complete, well-organized RFE response with a strong legal brief is significant
 ## RFE vs NOID
 
 An RFE (Request for Evidence) is asking for more evidence — a relatively normal part of adjudication. A NOID (Notice of Intent to Deny) is more serious: USCIS is telling you they plan to deny but giving you a chance to respond. NOIDs have shorter response windows (usually 30 days) and represent a higher-risk situation requiring urgent attorney involvement.
+
+## Which RFE guide do I need?
+
+| What you need | Guide |
+|---|---|
+| What an RFE is, why you got one, likely outcomes | [RFE meaning & process guide](/uscis/request-for-evidence-rfe) |
+| Decode the fields on your actual notice + a response checklist | **You are here** — RFE notice guide |
+| H-1B-specific RFE types and evidence | [H-1B RFE guide](/h1b/rfe) |
 
 ## Frequently asked questions
 

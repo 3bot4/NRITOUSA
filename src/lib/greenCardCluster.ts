@@ -266,86 +266,99 @@ Yes — priority date retention lets you carry your earlier priority date onto a
   /* ───────────────────────── PRIORITY DATE ──────────────────────────────── */
   {
     slug: "priority-date",
+    answerFirst: true,
     kind: "guide",
-    title: "Priority Date Explained for Indian Green Card Applicants",
-    seoTitle: "Priority Date Green Card India | Final Action Date, Visa Bulletin Explained",
+    title: "Your Green Card Priority Date: From PERM to I-485",
+    seoTitle: "Green Card Priority Date: PERM to I-485 Journey (India)",
     metaDescription:
-      "What is a priority date for the green card? Understand how it is set, the visa bulletin, Final Action Date vs Date for Filing, retrogression, and what Indian EB-2 and EB-3 applicants need to know.",
+      "How your green card priority date is created at PERM filing, carried by an approved I-140, retained when you change jobs, and cashed in at I-485 — the stage-by-stage employment green card journey for Indian applicants.",
     navLabel: "Priority Date",
     excerpt:
-      "Your priority date is your place in the employment-based green card queue. For Indian EB applicants, understanding the visa bulletin, Final Action Date, and retrogression is essential for long-term planning.",
+      "Your priority date is created once, at PERM filing, then travels with you through I-140, the wait, and I-485. This guide follows the date through every stage of the employment green card — how it is set, kept, and used.",
     date: "2026-06-16",
-    content: `Your **priority date** is the date that establishes your position in the employment-based (EB) green card queue. Think of it as your place in a very long line. For Indian EB applicants in the EB-2 and EB-3 categories, this line can stretch decades.
+    updated: "2026-07-21",
+    content: `Your **priority date** is created once — the day your PERM is filed — and then travels with you through the entire employment green card. This guide follows the date through each stage: how it is created, how an approved I-140 lets you keep it when you change employers, and how it is finally cashed in at the I-485 or consular stage. For how the monthly visa bulletin decides *when* your date reaches the front, see the [visa bulletin priority-date guide](/visa-bulletin/priority-date).
+
+:::key
+- Your date is set at **PERM (ETA-9089) filing** — or, for EB-1 and EB-2 NIW, at **I-140 filing** — and never changes on its own afterward.
+- An **approved I-140** is what lets the date survive a job change and support **3-year H-1B extensions** past the six-year cap.
+- Retention (keeping an old date on a new petition) is **separate** from I-485 job portability under INA §204(j).
+- The date is only "spent" at the very end — when it is current and you file [I-485](/green-card/i-485) or go through consular processing.
+- Check where your date stands each month with the [Priority Date Checker](/tools/priority-date-checker).
+:::
+
+## Where does a priority date come from?
+
+For most Indian H-1B workers in EB-2 or EB-3, the priority date is the day the Department of Labor accepted your employer's **PERM labor certification (Form ETA-9089)** for processing. It exists from that moment — before the I-140 is even filed.
 
 :::info
-title: Priority date quick facts
-- Set at the date your **PERM was filed** (for EB-2/EB-3 with PERM) or your **I-140 was filed** (for EB-1, EB-2 NIW)
-- Printed on your I-797 PERM receipt and your I-140 receipt and approval notice
-- Checked monthly against the State Department visa bulletin at [travel.state.gov](https://travel.state.gov)
-- Must be "current" before you can file I-485 or proceed to consular processing
+**Two things that are commonly confused with it:**
+- The **prevailing-wage request (Form ETA-9141)** filed before PERM does **not** establish your employment-based priority date — only the ETA-9089 filing does.
+- For **EB-1** (no PERM) and **EB-2 NIW** (self-petition), there is no PERM, so the priority date is the date the **I-140 was filed** with USCIS.
 :::
 
-## The visa bulletin: how priority dates become current
+## How the priority date travels through each stage
 
-The **State Department Visa Bulletin** is published monthly and shows which priority dates are currently authorized to proceed. It has two charts:
+The date is set once and then does a different job at every stage of the process. This is the whole journey in one view:
 
-:::compare
-Final Action Date (Part A) | Dates for Filing (Part B)
-The cutoff date for **final** processing — you need this date for I-485 to be approved | An earlier cutoff date USCIS sometimes allows for I-485 filing (when USCIS approves use of this chart)
-More conservative — moves forward slowly | Less conservative — can be years ahead of Final Action Date
-Required to complete green card | USCIS announces monthly whether this chart is usable for new I-485 filings
+| Stage | What happens to your priority date |
+|---|---|
+| **PERM (ETA-9089)** filed with DOL | Priority date is **created** on the filing date |
+| **I-140** filed and approved | Date is **locked to the petition**; an approved I-140 protects it and unlocks H-1B extensions |
+| **The wait** | Date sits in the queue; the [visa bulletin](/visa-bulletin/priority-date) moves the cutoff toward it each month |
+| **Date becomes current** | The date is now usable — the [I-485 filing window](/visa-bulletin/priority-date-current-what-next) opens |
+| **I-485 / consular processing** | Date is **cashed in**; a visa number is used and the green card is issued |
+
+The single most valuable action is filing PERM early, because the filing date *is* your place in line. Nothing later — not I-140 premium processing, not a faster attorney — moves the date forward.
+
+## Keeping your priority date when you change employers
+
+This is where the priority date matters most day-to-day. Once your **I-140 has been approved**, the date can follow you to a new employer instead of resetting.
+
+:::good
+title: What an approved I-140 protects
+- After the I-140 has been **approved for 180+ days**, it is generally protected from automatic revocation if your old employer withdraws it — so the priority date survives the job change.
+- A new employer can file a fresh I-140 and **retain your earlier priority date** on it.
+- The approved I-140 also supports **3-year H-1B extensions** beyond the normal six-year limit.
 :::
-
-Each month, USCIS publishes a notice on whether the Date for Filing chart may be used for that month. If USCIS approves use of Part B, you may file I-485 even if your Final Action Date has not yet arrived — but your case will not be approved until the Final Action Date passes.
-
-## Why India has a separate column
-
-The visa bulletin has separate columns for India, China, Mexico, Philippines, and all other countries. The **per-country annual limit** means that no more than 7% of all employment-based green cards can go to nationals of any single country. Because India generates a disproportionately large share of EB petitions (especially EB-2 and EB-3), its queue is far longer than the worldwide column.
 
 :::warn
-title: India-specific waiting times (educational estimates)
-Current wait times for Indian nationals in EB-2 and EB-3 are extremely long — often 10, 20, or more years depending on priority date. These are not guarantees and fluctuate based on annual usage patterns. Always check the current official visa bulletin and speak with your attorney for your specific situation.
+title: The risky window: I-140 approved less than 180 days
+If you leave before your I-140 has been approved for 180 days and the employer withdraws it, you can lose that priority date. Before that mark, keep the sponsoring relationship intact if you can, and talk to your attorney before moving. The full decision guide is [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
 :::
 
-## Retrogression: when priority dates move backward
+Keeping the date is **priority-date retention**. It is a different rule from **I-485 job portability under INA §204(j)**, which lets someone with an I-485 that has been *pending at least 180 days* move to a same-or-similar job. Retention does not depend on the "same or similar" test at all — see [AC21 portability explained](/green-card/ac21) for how the two rules fit together.
 
-**Retrogression** happens when the visa bulletin moves the cutoff date backwards — further into the past. This means that priority dates that were previously current become "unavailable" again.
+## Transferring a priority date to a new petition
 
-:::bad
-title: What retrogression means for you
-- If your priority date retrogresssed after your I-485 was already filed: your case is put on hold until the date becomes current again — but you keep your EAD and Advance Parole
-- If you had not yet filed I-485 when retrogression hits: you must wait for the date to become current again before filing
-- Retrogression can happen without warning and can affect your planning significantly
+An applicant can often **carry an earlier priority date from an approved employment-based I-140 onto a later one** — for example, from a first employer's approved EB-2 I-140 onto a new employer's petition, or from EB-2 onto an [EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) filing.
+
+:::info
+- Retention is **not automatic** — your attorney must claim the earlier date when the new I-140 is filed.
+- It can be **unavailable** if the earlier approval was revoked for fraud, willful misrepresentation, a material error, or invalidation of the underlying labor certification.
+- A refiled PERM (for example after a denial or withdrawal) generally creates a **new** priority date; you keep the old one only through a still-valid approved I-140.
 :::
 
-## How to read your priority date relative to the visa bulletin
+## Cashing in the date: I-485 or consular processing
 
-:::steps
-Go to the current State Department Visa Bulletin at [travel.state.gov](https://travel.state.gov).
-Find the Part A (Final Action Dates) table for Employment-Based immigration.
-Find the India column and the row for your category (EB-1, EB-2, or EB-3).
-The date shown is the cutoff — if your priority date is **before** this date, you are current. If your priority date is **on or after** this date, you are not yet current.
-Also check whether USCIS has authorized use of Part B (Dates for Filing) for this month — if so, the Part B date may allow you to file I-485 earlier.
-:::
+The priority date is only "spent" at the final stage. When your date is current under the chart USCIS is honoring that month, you either file **I-485 (adjustment of status)** from inside the US or complete **consular processing** through the [National Visa Center](/nvc-case-status) if you are abroad. Being current is a prerequisite for filing — it is not a promise of how fast USCIS then adjudicates. For what "current" means and how the two visa-bulletin charts work, use the [visa bulletin priority-date guide](/visa-bulletin/priority-date).
 
 ## Frequently asked questions
 
-### How do I find my priority date?
-Your priority date is printed on:
-- The I-797 receipt notice for your PERM application
-- The I-140 receipt and approval notices
-- Any I-485 receipt if you have already filed
+### Where do I find my priority date?
+It is printed on your I-140 receipt and approval notices (Form I-797) and on the PERM filing receipt from DOL; if you have already filed I-485, it is carried onto that receipt too. For PERM-based EB-2/EB-3 cases it is the PERM *filing* date — ask your employer's attorney to confirm the exact date.
 
-Ask your employer's immigration attorney to confirm the exact date.
+### Does my priority date reset if I change jobs?
+Not if your I-140 is approved. After the I-140 has been approved for 180+ days, the date survives even if the old employer withdraws the petition, and a new employer can retain it on a fresh I-140. If you leave before that 180-day mark and the I-140 is withdrawn, the date is at risk — see [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
 
-### My priority date has been current for 2 months but USCIS is slow. Is that normal?
-Yes — being current in the visa bulletin is a prerequisite for filing I-485, not a guarantee of how quickly USCIS will process it. I-485 itself takes months to years after filing. See: [I-485 adjustment of status](/green-card/i-485)
+### Can I keep my EB-2 priority date if I downgrade to EB-3?
+Usually yes. An earlier approved EB-2 I-140 generally lets a new EB-3 I-140 keep the same priority date. This retention is separate from the §204(j) "same or similar" portability test and can be lost only if the earlier approval was revoked for cause. Your attorney claims the earlier date on the new petition.
 
-### Can my priority date from a previous employer be used with a new employer?
-Yes — under AC21, if your I-140 was approved for 180+ days and you change to a same or similar occupation, your priority date remains with you even after the employer change. The priority date does not reset when you change employers under AC21.
+### Does premium processing move my priority date forward?
+No. Premium processing only speeds the I-140 *decision* to 15 business days. Your priority date, and the visa-bulletin wait behind it, are completely unaffected.
 
-### What happens if my priority date becomes current but then retrogresses before my I-485 is approved?
-If you already filed I-485 before retrogression: your case stays open and your EAD/AP typically remain valid until a decision is made. If you have not yet filed: you wait for the date to become current again. This is one reason some applicants file I-485 as early as possible when the Date for Filing chart is usable.`,
+### My priority date is current — why is my I-485 still pending?
+Being current lets you file (or lets USCIS approve) — it is not a processing-speed guarantee. The I-485 itself still takes months after filing. Track the adjudication stage on the [I-485 filing guide](/green-card/i-485).`,
   },
 
   /* ──────────────────────────── I-485 ───────────────────────────────────── */
@@ -521,16 +534,26 @@ Processing times for EAD/AP vary — check uscis.gov/check-processing-times. Fil
   /* ─────────────────────── EB-2 vs EB-3 INDIA ───────────────────────────── */
   {
     slug: "eb2-vs-eb3-india",
+    answerFirst: true,
     kind: "reference",
-    title: "EB-2 vs EB-3 for Indians: Which Category Has a Shorter Green Card Wait?",
-    seoTitle: "EB-2 vs EB-3 for Indians | Which Has Shorter Wait, Downgrade Strategy",
+    title: "EB-2 vs EB-3 for Indians: Which Category Should You Choose?",
+    seoTitle: "EB-2 vs EB-3 for Indians: Which to Choose + Downgrade",
     metaDescription:
-      "EB-2 vs EB-3 green card for Indian applicants: which category has a shorter priority date queue? When does EB-3 downgrade make sense? What is EB-2 NIW? India-specific analysis.",
+      "EB-2 vs EB-3 for Indian green card applicants: the eligibility, trade-offs, EB-2 NIW self-petition, and when an EB-3 downgrade makes sense. The decision guide — for live dates, see the bulletin pages.",
     navLabel: "EB-2 vs EB-3 for India",
     excerpt:
-      "EB-2 and EB-3 both face severe backlogs for Indian nationals. Sometimes EB-3 moves faster than EB-2 — making downgrade from EB-2 to EB-3 a strategy worth understanding.",
+      "EB-2 and EB-3 both face severe India backlogs, and neither is reliably faster. This is the decision guide: eligibility, the NIW self-petition, and when a downgrade helps — with the live dates kept on the visa-bulletin pages.",
     date: "2026-06-16",
-    content: `Indian applicants in employment-based green card categories primarily fall into **EB-2** (advanced degree or exceptional ability) and **EB-3** (skilled workers, professionals). Both categories are heavily oversubscribed for Indian nationals, but their relative wait times have shifted significantly over the years.
+    updated: "2026-07-21",
+    content: `Most Indian employment green card applicants qualify for **EB-2** (advanced degree or exceptional ability) or **EB-3** (skilled worker or professional). Neither category is reliably faster for India — their cutoffs leapfrog each other — so the choice comes down to your eligibility, whether the **EB-2 NIW** self-petition is open to you, and whether a **downgrade** currently helps. This page is the decision guide; for the current cutoff dates, use the live [EB-2 India](/visa-bulletin/eb2-india) and [EB-3 India](/visa-bulletin/eb3-india) pages.
+
+:::info
+title: How this page fits with the other EB-2/EB-3 India pages
+- **This page** — the permanent EB-2 vs EB-3 decision: eligibility, NIW, downgrade strategy.
+- [EB-2 India](/visa-bulletin/eb2-india) / [EB-3 India](/visa-bulletin/eb3-india) — the **live cutoff dates** and monthly movement.
+- [Wait-time scenarios](/eb2-eb3-priority-date-india) — rough **how-long estimates** by priority date (labeled estimates).
+- [India green card backlog](/green-card/green-card-backlog-india) — the **causes and scale** of the wait.
+:::
 
 ## EB-2 for India: advanced degree or exceptional ability
 
@@ -713,7 +736,7 @@ Plan career moves using AC21 portability — you can change employers after 180 
 
 ## How the Backlog Connects to the Rest of Your Life in the US
 
-The backlog is not just a waiting problem — it shapes every other decision. Because your place in line is set at [PERM filing](/perm-timeline) and carried by the [approved I-140](/green-card/i-140-approved-what-next), filing early matters more than anything else you can control. While you wait, the I-140 is what keeps your [H-1B renewable past six years](/h1b) and what protects you in a [layoff](/h1b-layoff); your children's eligibility depends on [CSPA](/green-card/cspa-kids-aging-out) math; and your spouse's ability to work runs through the [H-4 EAD](/tools/h4-ead-navigator). Check where you actually stand with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining years with the [Green Card Tracker](/tools/green-card-tracker).
+The backlog is not just a waiting problem — it shapes every other decision. Because your place in line is set at [PERM filing](/perm-timeline) and carried by the [approved I-140](/green-card/i-140-approved-what-next), filing early matters more than anything else you can control. While you wait, the I-140 is what keeps your [H-1B renewable past six years](/h1b) and what protects you in a [layoff](/h1b-layoff); your children's eligibility depends on [CSPA](/green-card/cspa-kids-aging-out) math; and your spouse's ability to work runs through the [H-4 EAD](/tools/h4-ead-navigator). Check where you actually stand with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining years with the [Green Card Tracker](/tools/green-card-tracker). To weigh which category to file under, read [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india); to gauge how many years a given date implies, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india).
 
 ## Frequently asked questions
 
@@ -739,176 +762,201 @@ The per-country cap is based on your country of birth, not citizenship or reside
   /* ─────────────────────── CHANGE JOBS AFTER I-140 ──────────────────────── */
   {
     slug: "change-jobs-after-i140",
+    answerFirst: true,
     kind: "guide",
-    title: "Changing Jobs After I-140 Approval: AC21 Portability for Indians",
-    seoTitle: "Change Jobs After I-140 Approval | AC21 Portability Green Card India",
+    title: "Changing Jobs After I-140 Approval: Your Options & Risks",
+    seoTitle: "Changing Jobs After I-140 Approval (AC21) — India",
     metaDescription:
-      "Can you change jobs after I-140 is approved? Understand AC21 green card portability, the 180-day rule, same-or-similar occupation requirement, and how job changes affect your green card process.",
+      "Your I-140 is approved and you want to change jobs. How the 180-day approval mark protects your priority date, what employer withdrawal does, whether to move before or after filing I-485, and the Supplement J you'll need.",
     navLabel: "Change Jobs After I-140",
     excerpt:
-      "After your I-140 has been approved for 180 days, AC21 allows you to change employers and preserve your green card priority date — provided the new job is in the same or similar occupational classification.",
+      "Your I-140 is approved and you have an offer. This guide covers the decisions that follow: keeping your priority date, what happens if the old employer withdraws, whether to move before or after I-485, and the same-or-similar test.",
     date: "2026-06-16",
-    content: `One of the most important and frequently misunderstood aspects of the India green card process is the ability to **change employers** after I-140 approval without losing your green card progress. This is governed by **AC21 (American Competitiveness in the Twenty-First Century Act)** portability provisions.
+    updated: "2026-07-21",
+    content: `Your I-140 is approved and you have an offer from a new employer. What you can safely do next turns on two things: whether the I-140 has been approved for **180 days**, and whether your **I-485 is on file**. This guide walks through the decisions after I-140 approval — protecting your priority date, surviving an employer withdrawal, and timing the move around I-485. For the underlying law behind these rules, see [AC21 portability explained](/green-card/ac21).
+
+:::key
+- The **180-day I-140 approval mark** is what protects your priority date from an employer's withdrawal — cross it before you leave if you can.
+- Your **priority date is retained** on a new employer's I-140 even if you switch, as long as the earlier approval stays valid.
+- Whether you've filed **I-485** changes the move: with I-485 pending 180+ days you use §204(j) portability; without it, you rely on retention and file later.
+- The new job must be **same or similar** by SOC code — that test is applied when USCIS reviews the case.
+- None of this speeds the India wait — it only protects your place in line while you change jobs.
+:::
+
+## The two dates that decide your options
+
+Two separate 180-day marks come up, and confusing them is the most common mistake:
+
+| Milestone | 180-day mark | What it governs |
+|---|---|---|
+| **I-140 approved** | 180 days after **approval** | Protects the approved I-140 (and your priority date) from **automatic revocation** if the old employer withdraws |
+| **I-485 filed** | 180 days after **filing**, while it stays pending | Unlocks **§204(j) job portability** — changing to a same-or-similar job with the case on file |
+
+Your priority date rides on the approved I-140; §204(j) portability rides on the pending I-485. See the retention mechanics in [your green card priority date](/green-card/priority-date).
+
+## Decision table: your situation after I-140 approval
 
 :::info
-title: AC21 green card portability in plain language
-- After your I-140 has been **approved for at least 180 days**, you can change employers
-- Your priority date and approved I-140 "port" to your new situation
-- The new job must be in the **same or similar occupational classification** as the job on the original PERM/I-140
-- You do not need your original employer to file a new I-140 — the old one is used
-- Your new employer does not need to restart PERM and I-140 (for the ported petition)
+title: Match your situation
+- **I-140 approved 180+ days, no I-485 yet (date not current):** Lower risk. You can change employers; the old I-140 keeps your priority date even if withdrawn. Your new employer files a fresh I-140 to retain the date, and you file I-485 later when your date is current.
+- **I-140 approved less than 180 days, no I-485 yet:** Higher risk. If the old employer withdraws before the 180-day mark, that I-140 can be revoked and the priority date lost. Cross 180 days first if you can.
+- **I-485 pending 180+ days:** Best position. Use §204(j) portability to a same-or-similar job and file Supplement J.
+- **I-485 pending less than 180 days:** Wait for the 180-day I-485 mark before relying on §204(j); moving earlier adds legal risk.
 :::
 
-## The 180-day rule
-
-The 180-day clock starts from the date your I-140 was approved by USCIS. To use AC21 portability:
-
-- I-140 must be approved (not just pending)
-- 180 days must have elapsed since I-140 approval
-- Your I-485 must be pending (or you must be within a reasonable time of filing)
-- The new job must qualify as same or similar
+## Employer withdrawal: before vs after 180 days
 
 :::warn
-title: Before 180 days: higher risk zone
-If your I-140 has been approved for less than 180 days and you leave your sponsoring employer, the employer can withdraw the I-140. A withdrawn I-140 (before 180 days) generally cannot be used for portability — you would lose that priority date. After 180 days, the employer's withdrawal does not affect your ability to use the I-140.
+title: The withdrawal timing that matters
+If your I-140 has been **approved 180+ days**, an old employer's withdrawal generally does **not** cost you the priority date — the approval is protected from automatic revocation (absent fraud, misrepresentation, or a material error). If the I-140 has been approved for **less than 180 days** and the employer withdraws, USCIS can revoke it and you can lose that date. When possible, do not leave a sponsoring employer until the 180-day approval mark passes.
 :::
 
-## What counts as "same or similar" occupation
+## Timing the move around your I-485
 
-The same-or-similar test is based on **SOC (Standard Occupational Classification) codes** — the government's occupational taxonomy. Generally:
+- **Before you can file I-485 (date not current):** you rely on **priority-date retention**. A new employer files a new I-140 that keeps your earlier date; you file I-485 when the date is current.
+- **After I-485 is on file and pending 180+ days:** you rely on **§204(j) portability** and confirm the new job with Supplement J — no new I-140 required for the pending case, though many employers file one anyway for a clean record.
+
+## What counts as "same or similar" — and what to document
+
+The same-or-similar test is based on **SOC (Standard Occupational Classification) codes**.
 
 :::good
-title: Likely same or similar (general guidance — consult attorney)
-- Software engineer → software engineer, senior software engineer, tech lead, engineering manager
+title: Usually same or similar (general guidance — confirm with your attorney)
+- Software engineer → senior software engineer, tech lead, engineering manager
 - Data scientist → data analyst, ML engineer, research scientist
-- Financial analyst → finance manager, investment analyst, senior financial analyst
-- Doctor → physician in same specialty, attending physician in same specialty
+- Financial analyst → finance manager, investment analyst
 :::
 
 :::bad
-title: Likely NOT same or similar (general guidance)
+title: Often NOT same or similar
 - Software engineer → product manager (different SOC category)
-- Financial analyst → immigration attorney (different field entirely)
-- Engineer → entrepreneur/startup founder (depends on role specifics)
+- Financial analyst → a role in an unrelated field
+- Engineer → founder of an unrelated startup (fact-specific)
 :::
 
-The test is fact-specific. Your attorney will review the job description at portability time and document the same-or-similar analysis.
-
-## What happens to your PERM
-
-Your PERM is tied to the original employer's petition. When you port your I-140 to a new employer:
-
-- The original PERM is not "transferred" — you use the approved I-140, not the PERM
-- The new employer does not file a new PERM for the ported job
-- However, the new employer must confirm through Supplement J (filed with your I-485) that the bona fide job offer is in the same or similar occupation
-
-## What you need to document for AC21 portability
-
-When USCIS reviews your I-485 after a job change, you (or your new employer's attorney) will need to show:
+When USCIS reviews the case after a job change, you (through your attorney) generally provide:
 
 :::steps
-A copy of the original I-140 approval notice (proving 180+ days).
-A letter from the new employer describing the new position and its duties.
-A Supplement J (I-485 Supplement J) confirming the job offer in the same or similar occupation.
-Potentially a comparative SOC analysis showing the original and new job codes align.
-Your resume showing continuity of work in the same field.
+A copy of the I-140 approval notice showing the approval date and the 180-day math.
+A letter from the new employer describing the position and its duties.
+Form I-485 Supplement J confirming the same-or-similar job offer.
+A comparative SOC analysis aligning the original and new job codes.
+Your resume showing continuity of work in the same occupation.
 :::
+
+## Which job-change guide do I need?
+
+| Your situation | Guide |
+|---|---|
+| I want the rules and eligibility for AC21 itself | [AC21 concept & eligibility](/green-card/ac21) |
+| My I-140 is approved and I'm weighing a specific move | **You are here** — options & risks after I-140 approval |
+| I want to know my risk at my exact stage | [Changing jobs at each green card stage](/uscis/change-job-during-green-card) |
 
 ## Frequently asked questions
 
-### Can I change employers multiple times and still keep the priority date?
-Yes — as long as each successive job is in the same or similar occupational classification as the original I-140 job, you can port through multiple employer changes.
+### Can I change employers multiple times and still keep my priority date?
+Yes — as long as each successive job is in the same or similar occupational classification and your approved I-140 stays valid, the priority date can be retained across multiple employer changes.
 
-### My new employer wants to file a brand new PERM and I-140. Is that better?
-It can be. Some applicants file a "fresh" I-140 with the new employer while also relying on the ported I-140. This provides backup protection and lets the new employer formally own the sponsorship. There is no requirement to do this — portability is sufficient — but some employers prefer clean sponsorship. The ported I-140 has the earlier priority date; a new I-140 would have a later priority date.
+### If I change jobs before I-485 is filed, do I lose my green card progress?
+Not if your I-140 has been approved 180+ days. The priority date is retained; your new employer files a fresh I-140 that keeps the earlier date, and you file I-485 when your date is current. What you cannot yet use is §204(j) portability — that needs a pending I-485.
 
-### What if I change jobs but my I-485 has not yet been filed (priority date not current)?
-You can still port the I-140 even if I-485 has not been filed. When your priority date becomes current, you will file I-485 using the ported I-140 with an employer who can confirm the same-or-similar offer at that future time. This requires planning — ensure your new employer is aware of this and willing to provide the Supplement J when needed.`,
+### My new employer wants to file a brand-new PERM and I-140. Is that better?
+Sometimes. A fresh I-140 gives the new employer clean ownership of the sponsorship and can serve as a backup, and it can **retain your earlier priority date**. A brand-new PERM restarts recruitment but does not reset your retained date. Portability alone is often sufficient — discuss the trade-off with your attorney.
+
+### Does moving jobs change how long my India wait is?
+No. Retention and portability protect your existing place in line — they do not advance the [visa bulletin](/visa-bulletin/priority-date) cutoff. Your wait is governed by your priority date and the monthly bulletin, not by which employer sponsors you.`,
   },
 
   /* ─────────────────────────── AC21 ─────────────────────────────────────── */
   {
     slug: "ac21",
+    answerFirst: true,
     kind: "guide",
-    title: "AC21 Portability Explained: H1B and Green Card Rights After 180 Days",
-    seoTitle: "AC21 Portability | H1B and Green Card Job Change Rights for Indians",
+    title: "AC21 Portability Explained: H-1B & Green Card Job Mobility",
+    seoTitle: "AC21 Portability Explained: H-1B & Green Card Rights",
     metaDescription:
-      "AC21 portability explained for Indian workers: H1B work authorization after transfer receipt, and green card priority date preservation after I-140 approval. Conditions, risks, and documentation.",
+      "What AC21 is and who qualifies: two portability protections for Indian workers — H-1B work authorization after a transfer receipt (INA 214(n)) and green card priority-date preservation after I-140 approval (INA 204(j)). Conditions and limits.",
     navLabel: "AC21 Portability",
     excerpt:
-      "AC21 provides two critical protections for Indian workers: H1B work authorization portability after a transfer receipt notice, and green card priority date portability after I-140 approval for 180+ days.",
+      "AC21 is the law behind job mobility for Indian H-1B and green card applicants. It grants two separate portability rights — one for H-1B work authorization, one for the green card priority date. This is the concept and eligibility guide.",
     date: "2026-06-16",
-    content: `**AC21 (American Competitiveness in the Twenty-First Century Act)** is a 2000 law that provides important job mobility protections for H1B workers and employment-based green card applicants. For Indian workers navigating long H1B and green card timelines, understanding AC21 is critical.
+    updated: "2026-07-21",
+    content: `**AC21 (American Competitiveness in the Twenty-First Century Act)**, a 2000 law, is the statute that lets H-1B workers and employment green card applicants change jobs without starting over. It grants **two separate portability rights**: one under INA §214(n) for H-1B work authorization, and one under INA §204(j) for the green card. This page defines each right and its eligibility rules — the concept behind the two more task-specific guides linked below.
 
-AC21 provides **two separate portability protections** — one for H1B workers and one for green card applicants. These are related but distinct.
+:::key
+- **§214(n) — H-1B portability:** work for a new employer as soon as a non-frivolous I-129 transfer is filed and receipted, no approval needed.
+- **§204(j) — green card portability:** move to a same-or-similar job with your existing I-140 once the **I-485 has been pending 180+ days**.
+- The two rights are **independent** — you can use H-1B portability long before the green card §204(j) right ever applies.
+- §204(j) portability is different from **priority-date retention**, which keeps an old date on a new petition regardless of "same or similar."
+- AC21 protects the *ability to move* — it does not speed up the India [visa bulletin](/visa-bulletin/priority-date) wait.
+:::
 
-## AC21 protection #1: H1B work authorization portability
+## AC21 protection #1: H-1B work authorization portability (§214(n))
 
-Under INA Section 214(n), when an H1B holder files a new I-129 petition with a new employer, they may work for the new employer **as soon as the petition is filed and a receipt notice is issued** — without waiting for USCIS to approve the transfer.
+Under INA §214(n), when an H-1B holder files a new I-129 petition with a new employer, they may begin working for that employer **as soon as the petition is filed and a receipt notice is issued** — without waiting for USCIS to approve the transfer.
 
 :::info
-title: H1B portability conditions (all must be met)
-- You were last admitted to the US in valid H1B status
-- Your current H1B status has not expired (valid I-94)
-- You have not violated any conditions of your H1B status
+title: H-1B portability conditions (all must be met)
+- You were last admitted to the US in valid H-1B status
+- Your current H-1B status has not expired (valid I-94)
+- You have not violated any conditions of your H-1B status
 - The new I-129 petition is non-frivolous and filed before your current status expires
 :::
 
-If these conditions are met, you may work for the new employer after the petition is filed and receipted — no approval required. See also: [H1B Transfer: When Can You Start Work?](/h1b/start-work-after-transfer-receipt)
+If these conditions are met, you may work for the new employer once the petition is filed and receipted — no approval required. See also: [H-1B transfer: when can you start work?](/h1b/start-work-after-transfer-receipt)
 
-## AC21 protection #2: Green card priority date portability
+## AC21 protection #2: Green card portability (§204(j))
 
-Under INA Section 204(j), if your I-140 has been approved for at least 180 days and your I-485 has been pending or is about to be filed, you can change employers and maintain your priority date (and the approved I-140) for your green card application.
+Under INA §204(j), if your **I-485 has been pending for at least 180 days**, you can change employers to a same-or-similar job and keep your existing I-140 and priority date supporting the green card.
 
 :::info
-title: Green card portability conditions
-- I-140 approved for 180+ days
-- The new job is in the same or similar occupational classification (same SOC group generally)
-- Your I-485 is pending OR your priority date is current enough that filing is imminent
+title: Green card §204(j) portability conditions
+- Your I-485 has been **pending for at least 180 days** (this is the clock that governs §204(j) — not the I-140 approval date)
+- The new job is in the **same or similar occupational classification** (same SOC group, generally)
+- The I-140 was approved (or is approvable) and the bona fide job offer still exists
 :::
 
-Once these conditions are met, the employer's withdrawal of the I-140 does not affect your ability to continue the green card process.
+Job portability under §204(j) is confirmed to USCIS with **Supplement J**, which the new employer signs to certify the same-or-similar job offer. An approved I-140 **does not by itself start the I-485 portability clock** — that clock runs from I-485 filing.
 
-## How AC21 green card portability works in practice
-
-When you file I-485 (now or in the future), you include **Supplement J** — a form confirming the job offer is in the same or similar occupation as the I-140. Your new employer signs this confirmation.
-
-USCIS then evaluates whether the ported I-140 supports your I-485. The officer looks at:
-- Whether the I-140 was approved for 180+ days before the job change
-- Whether the new job is same or similar by SOC code comparison
-- Whether the bona fide job offer still exists
-
-## Documenting your AC21 portability claim
-
-:::steps
-Retain copies of your I-140 approval notice (showing approval date).
-Calculate the 180-day mark from the approval date.
-Secure a letter from your new employer describing the new position and confirming it aligns with the I-140 job.
-Have your attorney prepare a Supplement J and an AC21 portability memo documenting the SOC analysis.
-Keep records of continuous employment in the same occupation across employers.
+:::info
+title: Portability vs. retention — a distinction worth keeping straight
+**§204(j) portability** decides whether you can *change jobs* on a pending I-485 (turns on the 180-day I-485 pendency + same/similar test). **Priority-date retention** decides whether an *old date* can move onto a *new petition* (turns on a still-valid approved I-140, not on "same or similar"). The retention rules live in [your green card priority date](/green-card/priority-date).
 :::
 
 ## When AC21 does NOT protect you
 
 :::bad
 title: Situations where AC21 portability may not apply
-- I-140 withdrawn by employer before 180 days of approval — the I-140 cannot be used for portability
+- I-140 withdrawn by the employer before it was approved 180+ days — that I-140 generally cannot support the case
 - New job in a materially different occupation (different SOC category)
-- I-140 was denied (not just a pending RFE) — denied I-140 cannot be ported
-- You violated H1B status before the transfer was filed
-- Gap in employment or unauthorized work periods
+- I-140 was **denied** (not just a pending RFE) — a denied I-140 cannot be ported
+- You violated H-1B status before the transfer was filed
+- Gaps in employment or unauthorized work periods
 :::
+
+Building your documentation for a specific job change — the Supplement J, the SOC same-or-similar memo, the timing — is covered step by step in [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
+
+## Which job-change guide do I need?
+
+| Your situation | Guide |
+|---|---|
+| I want the rules and eligibility for AC21 itself | **You are here** — AC21 concept & eligibility |
+| My I-140 is approved and I'm weighing a specific move | [Changing jobs after I-140 approval](/green-card/change-jobs-after-i140) |
+| I want to know my risk at my exact stage | [Changing jobs at each green card stage](/uscis/change-job-during-green-card) |
 
 ## Frequently asked questions
 
-### I changed jobs before my I-140 was 180 days old. Did I lose my priority date?
-If your employer withdrew the I-140 before 180 days, you generally lose that priority date and the ability to port that I-140. If the I-140 was NOT withdrawn, you might still be able to port it even if you changed jobs before 180 days — consult your attorney for your specific facts.
+### What is the difference between AC21's two protections?
+§214(n) lets you *work* for a new H-1B employer the moment your transfer is receipted. §204(j) lets you *change jobs without losing your green card* once your I-485 has been pending 180 days. They are separate rights with separate conditions — most people use H-1B portability years before §204(j) is ever relevant.
 
-### AC21 says "same or similar" — how strictly does USCIS apply this?
-USCIS has issued policy guidance on this. The test is based on SOC codes. A well-documented comparison showing the two roles share the same core duties, required education, and occupational category typically satisfies the requirement. Occupational level changes (individual contributor to manager in the same field) are generally acceptable.
+### Does the 180-day AC21 clock run from my I-140 approval?
+No. The §204(j) 180-day clock runs from when your **I-485 was filed and has stayed pending** — not from I-140 approval. The I-140 approval date matters for a different rule (priority-date retention and protection from automatic revocation on employer withdrawal).
 
-### Does AC21 protect me if I change from a large company to a startup?
-The size or nature of the employer does not affect AC21 portability — only the occupational classification of the role matters. A startup in the same field with a qualifying role is fine.`,
+### AC21 says "same or similar" — how strictly does USCIS apply it?
+The test is based on SOC codes and USCIS policy guidance. A well-documented comparison showing the two roles share core duties, required education, and occupational category typically satisfies it. Moving from individual contributor to manager in the same field is generally acceptable.
+
+### Does AC21 protect me if I move from a large company to a startup?
+The size or type of employer does not affect AC21 — only the occupational classification of the role matters. A startup role in the same field is fine.`,
   },
 
   /* ─────────────────────── CSPA / AGING OUT ─────────────────────────────── */

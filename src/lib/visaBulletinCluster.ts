@@ -146,6 +146,8 @@ In some situations, yes. An applicant may often retain the priority date from an
 
 The priority date is set by [PERM](/perm-timeline), carried by the [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) — so each stage interacts with it differently. Filing PERM earlier moves your date earlier; I-140 premium processing speeds the petition but never the date; and the month your date clears the applicable chart is the month the [I-485 filing window](/visa-bulletin/priority-date-current-what-next) opens. Category also matters: the same date waits very differently in [EB-1 India](/visa-bulletin/eb1-india) vs [EB-2 India](/visa-bulletin/eb2-india) vs [EB-3 India](/visa-bulletin/eb3-india). Track all of it monthly with the [Priority Date Checker](/tools/priority-date-checker).
 
+This page explains how to *read* the priority date on the bulletin. For how the date is created, kept across job changes, and used at each stage of the employment green card, follow the full journey in [your green card priority date, from PERM to I-485](/green-card/priority-date).
+
 :::cta
 Check the current visa bulletin to see where your priority date stands.
 [Check official visa bulletin →](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html)
@@ -394,7 +396,7 @@ If you are a researcher or academic who cannot qualify for EB-1B (e.g., you don'
 
 ## How EB-1 India Connects to the Rest of Your Case
 
-Your EB-1 priority date is set when the I-140 is filed (see [what a priority date is](/visa-bulletin/priority-date)), and you can [file I-485](/visa-bulletin/priority-date-current-what-next) only once that date clears the applicable chart — check yours against the stored bulletin data with the [Priority Date Checker](/tools/priority-date-checker) and model the full wait with the [Green Card Tracker](/tools/green-card-tracker). If you already hold an approved EB-2 I-140 from a PERM case, its earlier priority date can typically be retained for the EB-1 petition, instantly crediting years of queue time. New to the bulletin itself? Start with the [visa bulletin explained for Indians](/articles/visa-bulletin-explained-for-indians).
+Your EB-1 priority date is set when the I-140 is filed (see [what a priority date is](/visa-bulletin/priority-date)), and you can [file I-485](/visa-bulletin/priority-date-current-what-next) only once that date clears the applicable chart — check yours against the stored bulletin data with the [Priority Date Checker](/tools/priority-date-checker) and model the full wait with the [Green Card Tracker](/tools/green-card-tracker). If you already hold an approved EB-2 I-140 from a PERM case, its earlier priority date can typically be retained for the EB-1 petition, instantly crediting years of queue time. New to the bulletin itself? Start with the [visa bulletin explained for Indians](/visa-bulletin).
 
 ## Frequently asked questions
 
@@ -544,7 +546,7 @@ Given the long backlog, the most important things Indian EB-2 workers can do:
 
 ## How EB-2 India Connects to the Rest of Your Case
 
-Your EB-2 priority date is set the day your employer files PERM (see [what a priority date is](/visa-bulletin/priority-date)) — so the [PERM processing timeline](/perm-timeline) directly delays it. Once the I-140 is approved, the date can be retained across employers and categories, including an [EB-2→EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) or a later [EB-1 petition](/visa-bulletin/eb1-india). Track where you stand each month with the [Priority Date Checker](/tools/priority-date-checker), model your total wait with the [Green Card Tracker](/tools/green-card-tracker), and know [what to do the month your date goes current](/visa-bulletin/priority-date-current-what-next).
+Your EB-2 priority date is set the day your employer files PERM (see [what a priority date is](/visa-bulletin/priority-date)) — so the [PERM processing timeline](/perm-timeline) directly delays it. Once the I-140 is approved, the date can be retained across employers and categories, including an [EB-2→EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) or a later [EB-1 petition](/visa-bulletin/eb1-india). Track where you stand each month with the [Priority Date Checker](/tools/priority-date-checker), model your total wait with the [Green Card Tracker](/tools/green-card-tracker), and know [what to do the month your date goes current](/visa-bulletin/priority-date-current-what-next). For a rough sense of how many years a given date implies, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and weigh the category choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 
 ## Frequently asked questions
 
@@ -669,7 +671,7 @@ If you originally filed I-485 under EB-3 and your employer now has an approved E
 
 ## How EB-3 India Connects to the Rest of Your Case
 
-Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline), carried by the approved [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) once the date clears the applicable chart. Because EB-2 and EB-3 India leapfrog each other, the practical move is to watch both rows monthly with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If EB-3 pulls ahead, read the [EB-2 to EB-3 downgrade guide](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers after you filed under EB-3, [interfiling](/visa-bulletin/eb3-to-eb2-interfiling) is the route back. New to the charts? Start with [how to read the visa bulletin](/visa-bulletin).
+Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline), carried by the approved [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) once the date clears the applicable chart. Because EB-2 and EB-3 India leapfrog each other, the practical move is to watch both rows monthly with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If EB-3 pulls ahead, read the [EB-2 to EB-3 downgrade guide](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers after you filed under EB-3, [interfiling](/visa-bulletin/eb3-to-eb2-interfiling) is the route back. New to the charts? Start with [how to read the visa bulletin](/visa-bulletin). To gauge how long a given date might take, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and compare categories in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 
 ## Frequently asked questions
 

@@ -412,14 +412,15 @@ Same as extension: 3–6 months regular processing, 15 business days with premiu
     slug: "rfe",
     kind: "guide",
     title: "H1B RFE Explained: Common Types, Deadlines, and What to Do",
-    seoTitle: "H1B RFE Meaning | Common RFE Types, Deadline, Response for Indians",
+    seoTitle: "H1B RFE: Common Types, Deadline & Response for Indians",
     metaDescription:
-      "Received an H1B RFE? Understand what a Request for Evidence means, the most common H1B RFE types (specialty occupation, employer-employee), the response deadline, and what not to do.",
+      "The H-1B-specific RFE guide: the most common H-1B RFE types (specialty occupation, employer-employee, maintenance of status, wage/LCA), the response deadline, and what not to do.",
     navLabel: "H1B RFE",
     excerpt:
-      "An H1B RFE is not a denial — but it has a hard deadline. Understand what triggers RFEs on H1B petitions, what evidence USCIS wants, and why your attorney must lead the response.",
+      "An H1B RFE is not a denial — but it has a hard deadline. This guide focuses on H-1B petitions: what triggers RFEs, what evidence USCIS wants, and why your attorney must lead the response.",
     date: "2026-06-16",
-    content: `A **Request for Evidence (RFE)** on an H1B petition means USCIS needs additional documentation before it can adjudicate your case. An RFE is not a denial. Many H1B petitions receive RFEs and are ultimately approved — but only with a complete, timely, well-documented response.
+    updated: "2026-07-21",
+    content: `A **Request for Evidence (RFE)** on an H1B petition means USCIS needs additional documentation before it can adjudicate your case. An RFE is not a denial. Many H1B petitions receive RFEs and are ultimately approved — but only with a complete, timely, well-documented response. This page focuses on **H-1B-specific** RFEs; for what an RFE is in general and the end-to-end process, see the [RFE meaning & process guide](/uscis/request-for-evidence-rfe), and to decode your actual notice use the [RFE notice guide](/uscis/rfe-notice).
 
 :::warn
 title: RFE deadline is critical
@@ -487,6 +488,14 @@ USCIS will review the response and may:
 ## Premium processing and RFEs
 
 If you are on premium processing, the 15-business-day clock **restarts** from the day USCIS receives your RFE response. So a premium processing case with an RFE will take longer than 15 business days total, but USCIS is still committed to acting within 15 business days of the response receipt.
+
+## Which RFE guide do I need?
+
+| What you need | Guide |
+|---|---|
+| What an RFE is, why you got one, likely outcomes | [RFE meaning & process guide](/uscis/request-for-evidence-rfe) |
+| Decode the fields on your actual notice + a response checklist | [RFE notice guide](/uscis/rfe-notice) |
+| H-1B-specific RFE types and evidence | **You are here** — H-1B RFE guide |
 
 ## Frequently asked questions
 

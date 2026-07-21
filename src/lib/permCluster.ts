@@ -27,7 +27,7 @@ export const clusterLinks: ClusterLink[] = [
   { href: "/pwd-processing-time", label: "PWD Processing Time", desc: "Prevailing wage timeline before PERM" },
   { href: "/perm-timeline", label: "PERM Timeline", desc: "Step-by-step green card process after H-1B" },
   { href: "/h1b-perm-max-out-calculator", label: "H-1B PERM Max-Out Calculator", desc: "Six-year limit & extension risk" },
-  { href: "/eb2-eb3-priority-date-india", label: "EB2 / EB3 India Priority Date", desc: "Where your India priority date stands" },
+  { href: "/eb2-eb3-priority-date-india", label: "EB-2 / EB-3 India Wait Scenarios", desc: "Illustrative wait-time estimates by priority date" },
 ];
 
 /** Related existing immigration tools/pages linked from cluster pages. */

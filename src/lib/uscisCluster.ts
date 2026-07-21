@@ -236,15 +236,16 @@ href: /tools/uscis-case-status-meaning
   {
     slug: "request-for-evidence-rfe",
     kind: "status",
-    title: "USCIS RFE: What \"Request for Evidence Was Sent\" Means",
-    seoTitle: "USCIS RFE Meaning: What to Do When You Get a Request for Evidence",
+    title: "USCIS RFE Meaning: Why You Got One and What Happens Next",
+    seoTitle: "USCIS RFE Meaning: Why You Got One & What Next",
     metaDescription:
-      "USCIS sent an RFE — what does it mean for H1B, I-140, I-485, EAD? RFE response deadline, types of RFEs for Indians, and what to do next.",
+      "What a USCIS Request for Evidence means for H-1B, I-140, I-485 or EAD — why USCIS issues RFEs, how the response process works, the likely outcomes, and RFE vs NOID. An RFE is not a denial.",
     navLabel: "RFE (Request for Evidence)",
     excerpt:
-      "An RFE is not a denial. Here's what USCIS is asking for, how long you have to respond, what happens if you don't, and how to give USCIS what it needs.",
+      "An RFE is not a denial. This is the plain-English guide to what a Request for Evidence means, why USCIS issues them, how the response process works, and what outcomes to expect.",
     date: "2026-06-16",
-    content: `A **Request for Evidence (RFE)** means USCIS reviewed your case and found that the current record is not sufficient to approve or deny it — the officer needs more documentation, clarification, or proof. It is **not a denial**. But how you respond matters enormously.
+    updated: "2026-07-21",
+    content: `A **Request for Evidence (RFE)** means USCIS reviewed your case and found that the current record is not sufficient to approve or deny it — the officer needs more documentation, clarification, or proof. It is **not a denial**. This page explains what an RFE is, why USCIS issues them, and how the response process works. If you are holding the notice and want to decode its fields line by line and work a checklist, use the [RFE notice guide](/uscis/rfe-notice); for H-1B-specific RFE types, see the [H-1B RFE guide](/h1b/rfe).
 
 :::warn
 title: RFE deadline is a hard deadline
@@ -271,12 +272,9 @@ title: Common reasons Indians receive RFEs
 
 ## What the RFE notice contains
 
-Your RFE notice (sent by mail and visible on case status) will specify:
-1. The **evidence requested** — usually a detailed list of document types
-2. The **response deadline** (always treat as from the date on the notice, not receipt)
-3. Where to send your response (return envelope or address listed)
+At a high level, your RFE notice (sent by mail and visible on case status) specifies the **evidence requested**, the **response deadline** (from the date on the notice, not receipt), and **where to send** your response. Your attorney receives the original if they are the attorney of record.
 
-> Your attorney will receive the original if they're the attorney of record. Make sure they have your current contact details.
+To decode every field on the notice — the legal basis, the specific issues, and the submission instructions — and to work a step-by-step response checklist, use the dedicated [RFE notice guide](/uscis/rfe-notice).
 
 ## How to respond to an RFE
 
@@ -311,6 +309,16 @@ right: Green card RFEs (common)
 ✓ I-485 medical/inadmissibility
 ✓ I-485 prior overstay or status gap
 :::
+
+For the H-1B side in depth — specialty occupation, employer-employee relationship, maintenance of status, and wage/LCA RFEs — see the [H-1B RFE guide](/h1b/rfe).
+
+## Which RFE guide do I need?
+
+| What you need | Guide |
+|---|---|
+| What an RFE is, why you got one, likely outcomes | **You are here** — RFE meaning & process |
+| Decode the fields on your actual notice + a response checklist | [RFE notice guide](/uscis/rfe-notice) |
+| H-1B-specific RFE types and evidence | [H-1B RFE guide](/h1b/rfe) |
 
 ## Frequently asked questions
 

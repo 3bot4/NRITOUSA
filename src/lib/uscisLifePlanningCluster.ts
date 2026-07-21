@@ -183,83 +183,101 @@ Answer a few questions to get a personalized risk and checklist for your home bu
   /* ── 2. Changing jobs during green card ────────────────────────────── */
   {
     slug: "change-job-during-green-card",
+    answerFirst: true,
     kind: "life-decision",
-    title: "Changing Jobs During the Green Card Process: AC21 and What to Know",
-    seoTitle: "Change Job During Green Card Process | AC21 Portability for Indians",
+    title: "Changing Jobs at Each Green Card Stage: A Risk Guide",
+    seoTitle: "Change Jobs During Green Card: Stage-by-Stage Risk",
     metaDescription:
-      "Can you change jobs while your green card is pending? AC21 portability lets you switch to a same-or-similar job after 180 days with I-485 pending. Guide for Indian H1B workers.",
+      "Where you are in the green card process decides how risky a job change is. A stage-by-stage guide — PERM pending, I-140 pending, I-140 approved, I-485 pending, and after the green card — for Indian H-1B workers.",
     navLabel: "Change Job (Green Card Process)",
     excerpt:
-      "You can change jobs during the green card process — but timing, AC21 eligibility, and the new job's SOC code all matter. Changing too early can risk your priority date and I-140.",
+      "The safest time to change jobs depends entirely on your stage. This guide walks each one — PERM pending, I-140 pending, I-140 approved, I-485 pending, and post-green-card — so you can see the risk before you move.",
     date: "2026-06-16",
-    content: `:::summary
-**Yes, you can change jobs during the green card process — but the rules depend on where you are in the process.** The key statute is AC21 (American Competitiveness in the 21st Century Act), which allows I-485 applicants to change to a same or similar job after the I-485 has been pending for 180 days.
+    updated: "2026-07-21",
+    content: `Whether a job change is safe depends almost entirely on **where you are** in the green card process. The same move that costs you your priority date at the PERM stage is routine once your I-485 has been pending six months. This guide is the stage-by-stage map — find your stage, see the risk, and know what protects you. For the law itself, see [AC21 portability explained](/green-card/ac21); for the post-approval decision in depth, see [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
+
+:::key
+- **Earlier stages are riskier.** At PERM, a move restarts the clock; after I-485 has been pending 180 days, you have real portability protection.
+- The **priority date** only becomes portable once your **I-140 is approved** — before that, a job change can reset it.
+- **§204(j) portability** (change to a same-or-similar job) needs an **I-485 pending 180+ days**.
+- An **EAD** from a pending I-485 lets you work for any employer, but the *green card* still depends on a qualifying job offer.
+- When in doubt about your stage, run the [H-1B Transfer Risk Checklist](/tools/h1b-transfer-risk-checklist) and talk to your attorney before moving.
 :::
 
-## The AC21 window
+## Find your stage
 
-:::info
-title: AC21 portability rules
-- Your I-485 must have been pending for **at least 180 days** (counting from filing receipt date)
-- Your I-140 must be **approved** (I-140 portability is separate)
-- The new job must be in the **same or similar occupational classification** (same SOC code or closely related)
-- You file an I-485 supplement J (Form I-485J) to notify USCIS of the job change
-- You do not need USCIS approval to change jobs under AC21 — you just notify
-:::
+| Your stage | Job-change risk | Why |
+|---|---|---|
+| **PERM pending** | 🔴 High | PERM is tied to the employer; leaving generally restarts the process and can cost the priority date |
+| **I-140 pending (approved)** | 🟠 Elevated | Priority date not yet locked by an approval; a withdrawal can undo it |
+| **I-140 approved < 180 days** | 🟠 Elevated | Withdrawal before the 180-day approval mark can revoke the I-140 |
+| **I-140 approved 180+ days, no I-485** | 🟡 Moderate | Priority date is retained even if withdrawn; new employer files a fresh I-140 |
+| **I-485 pending 180+ days** | 🟢 Lower | §204(j) portability applies — move to a same-or-similar job and file Supplement J |
+| **Green card issued** | 🟢 Lowest | You are a permanent resident; normal employment rules apply |
 
-## Stages and risk levels
-
-:::compare
-left: Safer to change jobs
-right: Riskier — plan carefully
-left_items:
-- I-485 has been pending 180+ days (AC21 applies)
-- New job is same SOC code or directly comparable specialty
-- I-140 approved for 180+ days (protected even if employer withdraws)
-- EAD in hand — you can work for any employer
-right_items:
-- PERM is still pending — changing employers restarts PERM
-- I-140 is pending or approved for less than 180 days
-- New job is in a different occupational field (AC21 portability risk)
-- I-485 filed recently (less than 180 days ago)
-:::
-
-## What happens to PERM if you change jobs
+## Stage 1 — PERM pending
 
 :::warn
-title: PERM is tied to the employer — it does NOT port
-If your PERM Labor Certification is still pending or was recently approved and you haven't filed I-140 yet, changing employers **restarts the entire process**. Your new employer would need to start a new PERM. Your priority date from the old PERM is generally lost unless the new employer can demonstrate the same or similar job. This is the most common and most painful mistake in the green card process.
+title: PERM is tied to the employer — it does not port
+If your PERM labor certification is still pending (or approved but you haven't filed I-140 yet), changing employers generally **restarts the process**: the new employer must start a new PERM, and your original priority date is usually lost. This is the most common and most painful mistake in the green card process. If a move is unavoidable at this stage, get attorney advice on whether any earlier date can be preserved.
 :::
 
-## I-140 portability after approval
+## Stage 2 — I-140 pending
+
+Your priority date exists but is not yet locked in by an approval. If you change employers while the I-140 is pending and the old employer withdraws it, you can lose that date. Some workers wait for the I-140 approval (premium processing can shorten the wait to 15 business days) before making a move.
+
+## Stage 3 — I-140 approved
+
+This is the turning point. Once the I-140 has been **approved for 180 days**, it is generally protected from automatic revocation if the old employer withdraws it — so your priority date survives the change, and a new employer can file a fresh I-140 that **retains the earlier date**.
 
 :::info
-title: Protecting your priority date when changing employers
-- If your I-140 was approved and you change employers before 180 days: **priority date is at risk**
-- If your I-140 was approved AND has been approved for 180+ days: the priority date survives even if the old employer withdraws the I-140 (USCIS policy under AC21 § 106(c))
-- The surviving priority date can be used by a new employer filing a new I-140 on your behalf
+title: Before vs after the 180-day approval mark
+- **Approved less than 180 days:** a withdrawal by the old employer can revoke the I-140 and cost the priority date — cross the 180-day mark first if you can.
+- **Approved 180+ days:** the priority date is safe even if withdrawn; you have not yet filed I-485, so you are relying on **retention**, not §204(j) portability.
 :::
 
-## FAQ
+The full post-approval decision — retention, withdrawal, and I-485 timing — is covered in [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
 
-:::faq
-Q: I just got an offer from a FAANG company — my I-485 has been pending for 210 days. Can I switch?
-A: Likely yes if the new job is same or similar SOC classification. Software engineer to software engineer is straightforward. Software engineer to product manager may need attorney analysis. File I-485J promptly after starting the new job.
+## Stage 4 — I-485 pending
 
-Q: Does my new employer need to file anything?
-A: Your attorney files Form I-485J (Confirmation of Bona Fide Job Offer) with USCIS. Some attorneys include a cover letter with the AC21 same-or-similar analysis. The new employer does not file a new I-140 for I-485 portability, but should file a new I-140 for green card continuation under the new employer.
+Once your I-485 has been **pending for at least 180 days**, INA §204(j) lets you change to a **same or similar** job and keep the case. You notify USCIS with **Form I-485 Supplement J** confirming the new job offer — no USCIS pre-approval needed. If your I-485 has been pending less than 180 days, wait for the 180-day mark before relying on §204(j).
 
-Q: My old employer's attorney has my I-140 documents — can I get copies?
-A: You are entitled to a copy of your I-797 I-140 approval notice. Request this from HR before you leave. The underlying PERM and I-140 application belongs to the employer — but your I-140 approval notice is a document about you.
-
-Q: I changed jobs and USCIS sent an RFE about AC21 — what now?
-A: Respond through your attorney with same-or-similar analysis: SOC codes for old and new job, job description comparison, and documentation of your qualifications for the new role. AC21 RFEs are common and many are resolved with a good response.
+:::info
+title: Working on an EAD vs. keeping the green card
+An EAD tied to a pending I-485 lets you work for **any** employer immediately. But the green card itself still depends on a qualifying **same-or-similar** job offer at adjudication — so an EAD is not a license to take any role without portability analysis.
 :::
+
+## Stage 5 — After the green card
+
+Once your green card is issued you are a lawful permanent resident and can change jobs freely under normal employment rules. Keep in mind that if you plan to **naturalize**, an unusually abrupt job change right after approval can, in rare cases, raise questions about whether the sponsored job offer was bona fide — a concern for a small minority of cases, not most.
+
+## Which job-change guide do I need?
+
+| Your situation | Guide |
+|---|---|
+| I want the rules and eligibility for AC21 itself | [AC21 concept & eligibility](/green-card/ac21) |
+| My I-140 is approved and I'm weighing a specific move | [Changing jobs after I-140 approval](/green-card/change-jobs-after-i140) |
+| I want to know my risk at my exact stage | **You are here** — stage-by-stage risk guide |
+
+## Frequently asked questions
+
+### My I-485 has been pending 210 days and I have a FAANG offer — can I switch?
+Likely yes, if the new job is in the same or similar SOC classification. Software engineer to software engineer is straightforward; software engineer to product manager usually needs attorney analysis. File Supplement J promptly after you start the new role.
+
+### Does my new employer need to file anything when I port under §204(j)?
+Your attorney files Form I-485 Supplement J (Confirmation of Bona Fide Job Offer), often with a cover letter documenting the same-or-similar analysis. For the pending I-485, no new I-140 is required, though many new employers file one anyway to own the sponsorship cleanly.
+
+### My old employer's attorney has my I-140 documents — can I get copies?
+You are entitled to a copy of your own I-797 I-140 approval notice — request it from HR before you leave. The underlying PERM and I-140 petition belong to the employer, but the approval notice is a record about you.
+
+### I changed jobs and USCIS sent an RFE about AC21 — what now?
+Respond through your attorney with a same-or-similar analysis: SOC codes for the old and new jobs, a job-description comparison, and evidence of your qualifications for the new role. AC21 RFEs are common and many are resolved with a well-documented response. See the general [RFE response guide](/uscis/request-for-evidence-rfe).
 
 :::cta
+title: Not sure how risky your move is?
+body: Run the H-1B Transfer Risk Checklist to assess your stage before you change employers.
+button: H-1B Transfer Risk Checklist
 href: /tools/h1b-transfer-risk-checklist
-label: H1B Transfer Risk Checklist →
-Assess your risk profile for changing employers.
 :::`,
   },
 
