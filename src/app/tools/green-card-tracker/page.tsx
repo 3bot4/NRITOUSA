@@ -63,7 +63,7 @@ const faq: FaqItem[] = [
   {
     question: "Why is the India backlog so much longer than other countries?",
     answer:
-      "US law caps employment-based green cards at roughly 140,000 per year across all categories, and no single country of birth may use more than 7% (about 9,800) of them. Because demand from India far exceeds that 7% share every year, the unused demand piles up into a multi-decade backlog for EB-2 and EB-3 India.",
+      "US law sets a worldwide employment-based preference level of at least 140,000 per year, and under INA §202 no single country of birth may use more than 7% of the combined family-sponsored and employment-based preference limits (a proration cap, not a fixed India quota). Because demand from India far exceeds that prorated share every year, the unused demand piles up into a multi-decade backlog for EB-2 and EB-3 India.",
   },
   {
     question: "Can my priority date move backwards (retrogression)?",
@@ -244,12 +244,13 @@ export default function GreenCardTrackerPage() {
             </div>
             <div className="rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card">
               <h3 className="text-base font-bold text-ink-900">
-                The 7% per-country cap
+                The 7% per-country limit
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                No country of birth can use more than 7% of each year&apos;s
-                employment-based green cards — about 9,800. Indian demand is
-                many multiples of that, so the queue compounds year after year.
+                Under INA §202, no country of birth can use more than 7% of the
+                combined family and employment preference limits — a proration
+                cap, not a fixed India quota. Indian demand is many multiples of
+                that prorated share, so the queue compounds year after year.
                 Country of <em>birth</em>, not citizenship, is what counts.
               </p>
             </div>

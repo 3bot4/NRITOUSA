@@ -210,7 +210,7 @@ function buildResult(
         what: "Your I-797 Notice of Action shows the form type in the heading (e.g., 'I-129 - Petition for Nonimmigrant Worker' or 'I-485 - Application to Register Permanent Residence'). The form type tells you which petition or application the notice relates to. Use the USCIS Notice Decoder to understand what the notice itself means.",
         whoFiles: "Depends on the form shown on your notice",
         slug: "",
-        warning: "If you received an RFE (Request for Evidence), contact your attorney immediately. RFEs have hard response deadlines — typically 87 days from the notice date.",
+        warning: "If you received an RFE (Request for Evidence), contact your attorney immediately. RFEs have hard response deadlines — follow the exact date on the notice (standard max ~84 days, ≈87 with US mailing time; some forms 30 days).",
         relatedLinks: [
           { href: "/tools/uscis-notice-decoder", label: "USCIS Notice Decoder" },
           { href: "/uscis/i-797-notice", label: "I-797 Notice Types Explained" },

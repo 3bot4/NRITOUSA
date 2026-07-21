@@ -81,7 +81,7 @@ const faqs: FaqItem[] = [
   {
     question: "I received an H1B RFE. What do I do?",
     answer:
-      "Contact your employer's immigration attorney the same day. The RFE has a hard deadline (typically 87 days from the notice date). Missing it results in automatic denial. Do not submit anything without attorney guidance.",
+      "Contact your employer's immigration attorney the same day. The RFE has a hard deadline printed on the notice — for H-1B I-129, generally up to about 84 days (≈87 with US mailing time). Missing it is serious: USCIS may deny the petition as abandoned or decide it on the existing record. Do not submit anything without attorney guidance.",
   },
   {
     question: "Can I keep my H1B status if I am laid off?",
@@ -393,7 +393,7 @@ export default function H1bHubPage() {
               <Link href="/h1b/rfe" className="text-xs font-semibold text-orange-600 underline">Full RFE guide →</Link>
             </div>
             <div className="rounded-xl border border-rose-200 bg-rose-50/50 p-4 text-xs text-rose-900">
-              <strong className="font-semibold">RFE deadline is hard:</strong> The response deadline printed on the RFE notice (typically 87 days from the notice date) is an absolute cut-off. Missing it results in automatic denial with very limited recourse. Contact your employer's attorney the same day you learn of an RFE.
+              <strong className="font-semibold">RFE deadline is hard:</strong> The response deadline printed on the RFE notice (for H-1B I-129, generally up to about 84 days, ≈87 with US mailing time) is the date that controls, and USCIS must receive your response by it. Missing it is serious — USCIS may deny the petition as abandoned or decide it on the existing record. Contact your employer's attorney the same day you learn of an RFE.
             </div>
             <p className="text-sm leading-relaxed text-ink-700">
               An H1B Request for Evidence (RFE) is not a denial — USCIS needs more documentation before it can adjudicate. Common triggers include specialty occupation challenges, employer-employee relationship questions (common for consulting/staffing), and LCA compliance issues. Many H1B petitions with RFEs are approved with a complete, attorney-prepared response.

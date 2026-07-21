@@ -50,18 +50,18 @@ const rawPages: VisaBulletinPageData[] = [
     updated: "2026-07-19",
     content: `
 :::quickanswer
-Your **priority date** is the date your PERM labor certification (Form ETA-9089) was filed with the Department of Labor — or, for EB-1 and EB-2 NIW, the date your I-140 was filed with USCIS. It is your place in the green card queue: you can only move forward in months when the visa bulletin cutoff for your category and country is **later** than your date. Because India is capped at 7% of the ~140,000 yearly employment green cards (**~9,800 visas**), an India-born EB-2/EB-3 priority date typically waits **years to decades**.
+Your **priority date** is the date your PERM labor certification (Form ETA-9089) was filed with the Department of Labor — or, for EB-1 and EB-2 NIW, the date your I-140 was filed with USCIS. It is your place in the green card queue: you can only move forward in months when the visa bulletin cutoff for your category and country is **later** than your date. Because the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand, an India-born EB-2/EB-3 priority date typically waits **years to decades**.
 :::
 
 :::key
 - Find your priority date on the **PERM filing receipt** or your **I-140 approval notice (Form I-797)** — it is the PERM *filing* date, not the approval date.
 - Check it monthly against **two charts** — Final Action Dates and Dates for Filing — in the DOS visa bulletin, published around the **8th–10th** of each month.
 - "Current" (C) means **no backlog** — you can file/approve regardless of your date; a posted date means only earlier filers may act.
-- Expect India EB-2/EB-3 waits measured in **years to decades** under the ~9,800/year per-country ceiling.
+- Expect India EB-2/EB-3 waits measured in **years to decades** under the 7% per-country limit (a proration cap, not a fixed India quota).
 - Compare your date against this month's charts in 30 seconds with the [Priority Date Checker](/tools/priority-date-checker).
 :::
 
-If you're asking "what is a priority date," you're really asking where you stand in the US green card line. This guide is for Indian applicants in EB-2, EB-3, or EB-1, for whom the priority date — more than any USCIS processing time — decides how many years the green card takes. The single most important fact: your priority date for a PERM-based case is set the day the Form ETA-9089 is filed, and India's 7% per-country cap (~9,800 employment visas a year) means that date can wait a decade or more before it is "current." Below: exactly how the priority date green card system works, how to check your priority date, what "priority date current" means on the two visa-bulletin charts, the difference between the Final Action Date and Dates for Filing, whether a date can be transferred, and how it connects to your I-140 and I-485.
+If you're asking "what is a priority date," you're really asking where you stand in the US green card line. This guide is for Indian applicants in EB-2, EB-3, or EB-1, for whom the priority date — more than any USCIS processing time — decides how many years the green card takes. The single most important fact: your priority date for a PERM-based case is set the day the Form ETA-9089 is filed, and India's 7% per-country limit (calculated across the combined family and employment preference totals, applied by category and prorating — not a fixed India quota) means that date can wait a decade or more before it is "current." Below: exactly how the priority date green card system works, how to check your priority date, what "priority date current" means on the two visa-bulletin charts, the difference between the Final Action Date and Dates for Filing, whether a date can be transferred, and how it connects to your I-140 and I-485.
 
 ## What Is a Priority Date?
 
@@ -174,7 +174,7 @@ A denied PERM does not establish a priority date. If the PERM was refiled, the n
 Check the current visa bulletin Final Action Date for India EB-2. Based on historical patterns, a 2020 priority date for India EB-2 is likely not current yet — but verify with the official bulletin since dates change monthly.
 
 ### Does premium processing move my priority date forward?
-No. Premium processing ($2,805) speeds only the I-140 decision to 15 business days. Your priority date — and the visa-bulletin wait behind it — is completely unaffected.
+No. Premium processing ($2,805) speeds only the I-140 decision — generally 15 business days for most classifications, but 45 business days for E13 multinational executives/managers and E21 national-interest-waiver cases. Your priority date — and the visa-bulletin wait behind it — is completely unaffected.
 `,
   },
 
@@ -279,7 +279,7 @@ No. Table B dates in the visa bulletin are not self-executing. They require an e
     title: "EB-1 India 2026: Priority Date, Wait Time & Requirements",
     seoTitle: "EB-1 India Priority Date 2026: Wait Time & Requirements",
     metaDescription:
-      "EB-1 India: ~40,040 EB-1 visas a year worldwide, India's 7% floor ~2,803. Current priority date, wait time, and EB-1A/B/C rules — no PERM.",
+      "EB-1 India: ~40,040 EB-1 visas a year worldwide, with India subject to the 7% per-country limit (boosted by spillover). Current priority date, wait time, and EB-1A/B/C rules — no PERM.",
     navLabel: "EB-1 India",
     category: "eb1",
     excerpt:
@@ -288,18 +288,18 @@ No. Table B dates in the visa bulletin are not self-executing. They require an e
     updated: "2026-07-19",
     content: `
 :::quickanswer
-EB-1 is the fastest employment-based green card for India-born applicants: it needs **no PERM labor certification**, and its India backlog is measured in **a few years, not decades**. Worldwide, roughly **40,040 EB-1 visas** are available each year (28.6% of ~140,000 employment green cards); India's 7% per-country floor is about **2,803**, typically boosted by spillover. The exact current EB-1 India priority date is in the status panel above — always confirm against the official DOS bulletin.
+EB-1 is the fastest employment-based green card for India-born applicants: it needs **no PERM labor certification**, and in recent bulletins its India backlog has been measured in **a few years, not decades**. Worldwide, roughly **40,040 EB-1 visas** are available each year (28.6% of the ≥140,000 employment preference level). India is subject to the **7% per-country limit** (INA §202), but India-born EB-1 applicants routinely receive **more** than a strict per-country share because unused numbers from other countries spill into EB-1. The exact current EB-1 India priority date is in the status panel above — always confirm against the official DOS bulletin.
 :::
 
 :::key
 - Expect an EB-1 India queue of **a few years** (the cutoff above shows exactly where it stands) versus **decades** in EB-2/EB-3 India.
 - Budget **$715** for the I-140 filing fee and **$2,805** more if you want premium processing (15 business days), per the USCIS fee schedule.
-- Plan around **~40,040 EB-1 visas per year worldwide**; India's guaranteed share is **~2,803 (7%)** before spillover.
+- Plan around **~40,040 EB-1 visas per year worldwide**; India is subject to the 7% per-country limit but routinely uses **more than that share** thanks to spillover of unused numbers.
 - Qualify under one of three doors: **EB-1A** (3 of 10 criteria, self-petition), **EB-1B** (2 of 6 criteria + 3 years' experience), or **EB-1C** (1 year as a multinational manager/executive).
 - File I-485 only when your priority date clears the applicable chart — track it with the [Priority Date Checker](/tools/priority-date-checker).
 :::
 
-EB-1 India is the first-preference employment green card route for India-born professionals — and the only major category where the India wait is still measured in years rather than decades. This guide is for researchers, executives, and standout individual contributors weighing EB-1A extraordinary ability, EB-1B outstanding researcher, or EB-1C multinational manager against a long EB-2/EB-3 India queue. The headline numbers: about 40,040 EB-1 visas are available worldwide each year, India's 7% floor is roughly 2,803 (with spillover often adding more), and the current EB-1 India priority date — shown in the status panel above — has recently sat a few years back, versus 10+ years for EB-2 India. Below: what the EB-1 visa for India actually is, where the eb1 priority date india stands and how to read it, how many EB-1 visas India gets per year, the realistic wait time for an EB-1 green card from India, and the full requirements for each sub-category.
+EB-1 India is the first-preference employment green card route for India-born professionals — and, in recent bulletins, the only major category where the India wait has been measured in years rather than decades. This guide is for researchers, executives, and standout individual contributors weighing EB-1A extraordinary ability, EB-1B outstanding researcher, or EB-1C multinational manager against a long EB-2/EB-3 India queue. The headline numbers: about 40,040 EB-1 visas are available worldwide each year, India is subject to the 7% per-country limit but routinely receives more through spillover, and the current EB-1 India priority date — shown in the status panel above — has recently sat a few years back, versus 10+ years for EB-2 India. Below: what the EB-1 visa for India actually is, where the eb1 priority date india stands and how to read it, how many EB-1 visas India gets per year, the realistic wait time for an EB-1 green card from India, and the full requirements for each sub-category.
 
 ## What Is the EB-1 Visa for India?
 
@@ -366,14 +366,14 @@ EB-1 India is no longer "instant" — it has developed its own cutoff for India-
 
 ## How Many EB-1 Visas Per Year for India?
 
-About **40,040 worldwide** — the EB-1 category receives 28.6% of the ~140,000 employment-based immigrant visas available each fiscal year, and no single country may take more than 7% of the total. India's guaranteed floor is therefore roughly **2,803** EB-1 visas, but in practice India-born applicants routinely receive more through spillover of unused numbers, per the Department of State's annual visa statistics.
+About **40,040 worldwide** — the EB-1 category receives 28.6% of the ≥140,000 employment-based preference level each fiscal year. India is subject to the INA §202 **7% per-country limit** (calculated across the combined family and employment preference totals, not a per-category India quota), but there is **no fixed India EB-1 allotment**: India-born applicants routinely receive **more** than a strict per-country share because unused numbers from other countries spill into EB-1, per the Department of State's annual visa statistics.
 
-| Annual limit (typical year) | Number |
+| Annual limit | Figure |
 |---|---|
-| All employment-based green cards | ~140,000 |
+| Worldwide employment-based preference level (FY2026) | at least 140,000 |
 | EB-1 worldwide share (28.6%) | ~40,040 |
-| India 7% per-country floor | ~2,803 |
-| India actual usage | Higher — spillover from unused numbers |
+| India per-country limit | 7% of combined FB + EB (a proration cap, not a fixed EB-1 number) |
+| India actual EB-1 usage | often higher than a strict 7% share — spillover from unused numbers |
 
 ## What Is the Wait Time for an EB-1 Green Card from India?
 
@@ -381,7 +381,7 @@ Typically **3–5 years end to end** for a new India-born filing as of mid-2026 
 
 | Stage | Typical time | Can you speed it up? |
 |---|---|---|
-| I-140 petition | ~6–10 months regular | Yes — premium processing: 15 business days for $2,805 |
+| I-140 petition | ~6–10 months regular | Yes — premium: 15 business days (EB-1A/EB-1B) or 45 (EB-1C), $2,805 |
 | Priority-date wait (India) | A few years (see status panel above) | No — set by the monthly visa bulletin |
 | I-485 adjustment of status | ~8–14 months typically | Interview waivers sometimes shorten it |
 
@@ -407,7 +407,7 @@ It changes monthly — the status panel at the top of this page shows the curren
 Typically 3–5 years end to end as of mid-2026: about 6–10 months for the I-140 (or 15 business days with premium processing), the priority-date wait shown in the status panel, then 8–14 months of I-485 processing. That compares to a decade-plus in EB-2 India.
 
 ### How many EB-1 visas does India get per year?
-India's 7% per-country floor is about 2,803 of the ~40,040 worldwide EB-1 visas, but spillover of unused numbers regularly pushes India's actual EB-1 usage above that floor, per DOS annual reports.
+India is subject to the 7% per-country limit rather than a fixed EB-1 allotment, and spillover of unused numbers regularly pushes India's actual EB-1 usage above a strict 7% share of the ~40,040 worldwide EB-1 visas, per DOS annual reports.
 
 ### Can I file EB-1A while on H1B?
 Yes. H1B status is compatible with filing an EB-1A self-petition. Your H1B employer does not need to be involved — but your immigration attorney must be.
@@ -416,7 +416,7 @@ Yes. H1B status is compatible with filing an EB-1A self-petition. Your H1B emplo
 Possibly, if you have exceptional achievements — patents, major open-source contributions, invited conference presentations, peer-reviewed publications, or very high compensation relative to your peers. Most standard software engineers do not qualify. An immigration attorney can evaluate your specific profile.
 
 ### Does premium processing help EB-1?
-Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C, for $2,805. USCIS will act within 15 business days. It speeds the petition decision only; it does not advance your priority date.
+Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C, for $2,805. USCIS acts within **15 business days** for EB-1A and EB-1B, but **45 business days** for EB-1C (E13 multinational executives/managers). It speeds the petition decision only; it does not advance your priority date.
 
 ### Is EB-1 faster than EB-2 for India?
 Yes, dramatically. EB-1 India's cutoff has recently sat a few years back, while EB-2 India's sits over a decade back — and EB-2 India was marked Unavailable in the July 2026 bulletin. If you can credibly qualify for any EB-1 sub-category, it is usually worth pursuing.
@@ -430,30 +430,30 @@ No one can promise that. Cutoff movement depends on demand and spillover, and th
   {
     slug: "eb2-india",
     kind: "guide",
-    title: "EB-2 India Priority Date 2026: Backlog, Movement & Predictions",
-    seoTitle: "EB-2 India Priority Date 2026: Backlog & Predictions",
+    title: "EB-2 India Priority Date: Current Cutoff and Movement",
+    seoTitle: "EB-2 India Priority Date 2026: Current Cutoff & Movement",
     metaDescription:
-      "EB-2 India: the 7% cap gives India ~9,800 EB visas a year. Live final action date, movement history, predictions, NIW and EB-3 strategy.",
+      "EB-2 India priority date: the current Final Action Date and Dates for Filing, recent monthly movement, retrogression/unavailability, and how to read the EB-2 India row.",
     navLabel: "EB-2 India",
     category: "eb2",
     excerpt:
-      "EB-2 India has one of the longest green card backlogs in the US system — but knowing the current cutoff, NIW option, and EB-3 strategy can help you plan.",
+      "EB-2 India tracks the current Final Action Date, Dates for Filing, and monthly movement — with the live cutoffs in the panel above and how to read them below.",
     date: "2026-06-16",
-    updated: "2026-07-19",
+    updated: "2026-07-21",
     content: `
 :::quickanswer
-The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in July 2026 the category went fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: India is limited to about **9,800** employment-based visas per year (7% of ~140,000) across all EB categories, against hundreds of thousands of India-born applicants — so the EB-2 India wait for new filings is measured in **decades**, not years.
+The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in July 2026 the category went fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
 :::
 
 :::key
-- Plan around a per-country limit of **~9,800** employment-based visas per year for India across all categories — the root of the EB-2 backlog.
-- Expect the EB-2 India Final Action Date, when posted at all, to sit in the **early-to-mid 2010s** and move **1–3 months per calendar year** in good years.
+- Read the **current EB-2 India Final Action Date and Dates for Filing** in the live panel above — this page owns the current cutoff and its movement.
+- The EB-2 India Final Action Date, when posted at all, has sat in the **early-to-mid 2010s** and moved **1–3 months per calendar year** in recent years.
 - Watch **October 1** — the new fiscal year restores visa numbers after an "Unavailable" month like July 2026.
-- Get the I-140 approved even while backlogged — an approved I-140 supports **3-year H-1B extensions** beyond the 6-year cap.
-- Compare charts monthly with the [Priority Date Checker](/tools/priority-date-checker) — EB-3 India sometimes moves ahead of EB-2, making a downgrade worth discussing.
+- Get the I-140 approved even while backlogged — an approved I-140 can support **H-1B extensions past six years** (AC21 §104(c), when a visa number is unavailable).
+- Compare charts monthly with the [Priority Date Checker](/tools/priority-date-checker) — EB-3 India sometimes moves ahead of EB-2; weigh the choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 :::
 
-The EB-2 India priority date is the number that rules green-card planning for most India-born professionals with a master's degree or a bachelor's plus five years' experience. This page is for anyone tracking the visa bulletin EB-2 India charts — the current final action date (status panel above), the recent EB-2 India movement (history table above), and what can honestly be said about predictions. The one number to internalize: India's 7% per-country ceiling works out to roughly 9,800 employment-based visas per year across EB-1, EB-2, and EB-3 combined, while India-born EB-2 demand alone dwarfs that — which is why cutoffs sit a decade back and even went Unavailable in July 2026. Below: EB-2 requirements, the backlog math, movement history and what drives it, the EB-2 NIW option, EB-2 vs EB-3 India, and how to plan while you wait.
+The EB-2 India priority date is the number that rules green-card planning for most India-born professionals with a master's degree or a bachelor's plus five years' experience. This page owns the **current cutoff and its movement** — the current Final Action Date (status panel above) and the recent EB-2 India month-over-month movement (history table above). The structural cause of the backlog: the 7% per-country limit under INA §202 caps India's usage *share* far below its demand — it is a proration rule across all countries and categories, not a fixed India allotment. For how long a given priority date might take, see the [wait-time scenarios](/eb2-eb3-priority-date-india); to choose a category, see [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india). Below: EB-2 requirements, why the backlog exists, what drives the monthly movement, the EB-2 NIW option, and how to read the row.
 
 ## What Are the EB-2 India Requirements?
 
@@ -481,20 +481,21 @@ It changes monthly — the status panel at the top of this page shows the curren
 
 ## Visa Bulletin EB-2 India: Why the Backlog Exists
 
-The per-country 7% cap limits India to approximately 9,800 employment-based visas per year across all EB categories. India accounts for a disproportionate share of EB-2 applicants — far more than 7% of the total pool.
+The INA §202 per-country limit (7% of the combined family and employment preference totals — 25,620 for FY2026, a proration cap and not a fixed India allotment) holds India's usage share far below its demand. India accounts for a disproportionate share of EB-2 applicants — far more than that prorated share.
 
-| Supply vs demand (typical year) | Number |
+| Supply vs demand | Figure |
 |---|---|
-| Employment-based green cards worldwide | ~140,000 |
+| Worldwide employment-based preference level (FY2026) | at least 140,000 |
 | EB-2 worldwide share (28.6%) | ~40,040 |
-| India per-country ceiling, all EB categories | ~9,800 (7%) |
-| Pending India-born EB-2/EB-3 applicants (with dependents) | Hundreds of thousands, per USCIS/DOS inventory data |
+| Per-country limit: 7% of combined FB + EB (FY2026) | 25,620 (proration cap, **not** India's EB quota) |
+| Actual India EB-2 visas used per year | varies by demand, derivatives & spillover |
+| Pending India-born EB-2/EB-3 applicants (with dependents) | estimated in the hundreds of thousands, per published analyses of USCIS/DOS inventory data |
 
-The result: when a cutoff date is posted at all, the EB-2 India Final Action Date has sat in the early-to-mid 2010s for years, moving slowly at 1–3 months per calendar year in good years and retrogressing in bad years. In July 2026 the category went fully **Unavailable** (no numbers) for the remainder of FY 2026 — a more severe form of the same supply problem.
+The result: when a cutoff date is posted at all, the EB-2 India Final Action Date has sat in the early-to-mid 2010s for years, moving slowly at 1–3 months per calendar year in recent good years and retrogressing in bad years. In July 2026 the category went fully **Unavailable** (no numbers) for the remainder of FY 2026 — a more severe form of the same supply problem.
 
-## EB-2 India Movement and Predictions: What Can Honestly Be Said
+## What Drives EB-2 India Movement
 
-Nobody — including paid prediction services — can promise where the EB-2 India cutoff will be next quarter. What the recent pattern (see the movement table above) does support:
+Nobody — including paid prediction services — can promise where the EB-2 India cutoff will be next quarter, and nothing here is a forecast. What the recent pattern (see the movement table above) does illustrate:
 
 - **New fiscal years help.** Visa numbers reset every **October 1**; an Unavailable category regains numbers, and early-FY bulletins often show the year's best movement.
 - **Movement is asymmetric.** Advances come in small steps (weeks to a few months); retrogressions can erase years overnight when demand spikes.
@@ -557,13 +558,13 @@ It changes monthly — the status panel at the top of this page shows the curren
 The category's annual visa numbers ran out before the fiscal year ended, so the Department of State stopped issuing them. Numbers reset on October 1 with the new fiscal year, and the category then reappears with posted cutoff dates.
 
 ### When will EB-2 India become current?
-For new filings, honest math says decades at current supply — India's ~9,800-per-year all-category ceiling cannot clear hundreds of thousands of pending applicants quickly. No service can credibly predict monthly cutoffs; watch the bulletin itself or the [monthly update tracker](/visa-bulletin/monthly-update).
+For new filings, honest math says decades at current supply — India's prorated 7% share cannot clear hundreds of thousands of pending applicants quickly. No service can credibly predict monthly cutoffs; watch the bulletin itself or the [monthly update tracker](/visa-bulletin/monthly-update), and see the [wait-time scenarios](/eb2-eb3-priority-date-india) for illustrative estimates.
 
 ### Is EB-2 or EB-3 faster for India right now?
 It alternates. The two charts leapfrog each other; in some periods EB-3 India is ahead, which is why the [EB-2→EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) exists. Compare both charts in the current bulletin before deciding anything.
 
 ### Can I get 3-year H1B extensions while waiting for my EB-2 priority date?
-Yes — once your I-140 is approved, you qualify for 3-year H1B extensions beyond the 6-year cap. This is one of the most important benefits of getting the I-140 approved even if your priority date is years away from being current.
+Once your I-140 is approved, you may qualify for H-1B extensions beyond the 6-year cap under AC21 §104(c) — in three-year increments when your priority date is not current (a visa number is unavailable) and you otherwise qualify. It is not automatic, but it is one of the most important benefits of getting the I-140 approved even while your priority date is years away.
 
 ### I have both an EB-2 and EB-3 I-140 approved. Can I use both?
 Yes — you can file I-485 under whichever has the more favorable current priority date. Having both gives flexibility. Discuss the interfiling and porting options with your attorney.
@@ -580,16 +581,16 @@ Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and
   {
     slug: "eb3-india",
     kind: "guide",
-    title: "EB-3 India Priority Date 2026: Backlog, Movement & Downgrade",
-    seoTitle: "EB-3 India Priority Date 2026: Backlog & Movement",
+    title: "EB-3 India Priority Date: Current Cutoff and Movement",
+    seoTitle: "EB-3 India Priority Date 2026: Current Cutoff & Movement",
     metaDescription:
-      "EB-3 India: final action date sat at Jan 1, 2014 in July 2026. Live cutoffs, movement history, downgrade-from-EB-2 rules, and interfiling explained.",
+      "EB-3 India priority date: the current Final Action Date and Dates for Filing, recent monthly movement, and how to read the EB-3 India row. Downgrade strategy lives on the comparison page.",
     navLabel: "EB-3 India",
     category: "eb3",
     excerpt:
-      "EB-3 India covers bachelor's-degree holders and skilled workers — and while the backlog is similar to EB-2, the relative cutoff movement can make EB-3 strategically useful.",
+      "EB-3 India tracks the current Final Action Date, Dates for Filing, and monthly movement — with the live cutoffs in the panel above and how to read them below.",
     date: "2026-06-16",
-    updated: "2026-07-20",
+    updated: "2026-07-21",
     content: `
 :::quickanswer
 The EB-3 India priority date is shown in the status panel above — in the **July 2026** bulletin the Final Action Date was **January 1, 2014** with Dates for Filing at **January 15, 2015**, meaning only India-born applicants who filed PERM before those dates could act. EB-3 covers professionals with a **bachelor's degree** and skilled workers with **2+ years** of experience, and it moves **independently of EB-2 India** — in July 2026 EB-3 posted a date while EB-2 India was **Unavailable**, which is exactly when a downgrade becomes worth discussing.
@@ -598,12 +599,12 @@ The EB-3 India priority date is shown in the status panel above — in the **Jul
 :::key
 - Check both charts every month — EB-3 India posted **January 1, 2014** (Final Action) while EB-2 India was Unavailable in July 2026.
 - Qualify under EB-3 with a **bachelor's degree** (professionals) or **2+ years** of training/experience (skilled workers).
-- Plan around India's **7% per-country cap** — roughly **9,800** employment green cards a year across EB-1, EB-2 and EB-3 combined.
+- Plan around the statutory **7% per-country limit** (INA §202) — a proration cap across the combined family and employment preference totals, **not** a fixed India EB number.
 - Keep your **original priority date** when downgrading: an approved EB-2 I-140 generally lets the new EB-3 petition retain the earlier date.
-- Expect movement of only **1–3 months per calendar year** in typical years, so model decades — not years — for a new EB-3 India filing.
+- Movement has run only **1–3 months per calendar year** in recent years; for how long a given date might take, see the [wait-time scenarios](/eb2-eb3-priority-date-india).
 :::
 
-EB-3 India is the third-preference employment green card queue for India-born professionals holding a bachelor's degree and skilled workers with at least two years of experience — and it matters most as the category that sometimes runs *ahead* of EB-2 India. This guide is for anyone tracking the visa bulletin EB-3 India charts, weighing an EB-2 to EB-3 downgrade, or considering interfiling back to EB-2. The number that frames everything: India's 7% per-country cap allows roughly 9,800 employment-based green cards a year across all categories, against India-born demand many times larger, which is why the EB-3 India final action date has sat around 2014 for years. Below: EB-3 requirements, where the eb3 priority date india stands right now, recent EB-3 India movement and what can honestly be said about predictions, the downgrade and interfiling strategies, and how to read the EB-3 row yourself.
+EB-3 India is the third-preference employment green card queue for India-born professionals holding a bachelor's degree and skilled workers with at least two years of experience — and it matters most as the category that sometimes runs *ahead* of EB-2 India. This page owns the **current EB-3 India cutoff and its movement**: the current Final Action Date and Dates for Filing (status panel above) and the recent month-over-month movement. The structural cause of the backlog is the 7% per-country limit under INA §202, which holds India's usage share far below its demand — a proration rule across all countries and categories, not a fixed India allotment. For the **downgrade and interfiling strategy**, see [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india); for **how long a given date might take**, see the [wait-time scenarios](/eb2-eb3-priority-date-india). Below: EB-3 requirements, where the EB-3 India cutoff stands now, what drives its movement, and how to read the EB-3 row.
 
 ## What Are the EB-3 India Requirements?
 
@@ -628,14 +629,14 @@ The status panel at the top of this page shows the current EB-3 India Final Acti
 
 ## Why Is the EB-3 India Backlog So Long?
 
-Like EB-2, EB-3 India suffers from the per-country 7% cap. The Final Action Date for EB-3 India has sat around 2014 in recent bulletins and moves at a broadly similar pace to EB-2 India — though not always identically. The two can diverge sharply: there are months when EB-3 India posts a cutoff date while EB-2 India is Unavailable (see the current status above).
+Like EB-2, EB-3 India is constrained by the INA §202 per-country limit. The Final Action Date for EB-3 India has sat around 2014 in recent bulletins and moves at a broadly similar pace to EB-2 India — though not always identically. The two can diverge sharply: there are months when EB-3 India posts a cutoff date while EB-2 India is Unavailable (see the current status above).
 
-| Supply vs demand (typical year) | Number |
+| Supply vs demand | Figure |
 |---|---|
-| Employment-based green cards worldwide | ~140,000 |
+| Worldwide employment-based preference level (FY2026) | at least 140,000 |
 | EB-3 worldwide share (28.6%) | ~40,040 |
-| India ceiling, all EB categories combined | ~9,800 (7%) |
-| Typical EB-3 India cutoff movement | 1–3 months per calendar year |
+| Per-country limit: 7% of combined FB + EB (FY2026) | 25,620 (proration cap, **not** India's EB quota) |
+| Recent EB-3 India cutoff movement | ~1–3 months per calendar year |
 
 The key insight: EB-2 and EB-3 India move independently every month. In some months EB-3 India is more current than EB-2 India; in others, EB-2 is ahead. This creates the strategic opportunity of filing I-140 in both categories.
 
@@ -682,7 +683,7 @@ It changes monthly. In the July 2026 bulletin, the EB-3 India Final Action Date 
 Sometimes. The two move independently and leapfrog each other: in July 2026 EB-3 India posted a January 1, 2014 Final Action Date while EB-2 India was Unavailable, making EB-3 the only one of the two where cases could be approved that month. Compare both rows in the current bulletin before deciding anything.
 
 ### How long is the EB-3 India wait for a new filing?
-At the historical pace of roughly 1–3 months of cutoff movement per calendar year against a ~9,800-per-year all-category ceiling for India, a new EB-3 India filing should be planned in decades rather than years. No service can credibly predict monthly movement.
+At the recent historical pace of roughly 1–3 months of cutoff movement per calendar year, against India's prorated 7% share of the combined preference limits, a new EB-3 India filing should be planned in decades rather than years. This is an illustrative estimate, not a forecast — no service can credibly predict monthly movement. See the [wait-time scenarios](/eb2-eb3-priority-date-india) for the methodology.
 
 ### Can I file PERM in both EB-2 and EB-3 simultaneously?
 Some employers allow concurrent PERM filings in both categories for the same employee. This gives the employee two I-140 petitions with potentially different priority dates. Discuss with your employer's immigration attorney.
@@ -969,7 +970,7 @@ Whether the existing labor certification can support the EB-3 I-140 depends on t
 
 ### Step 2: I-140 filing for EB-3
 File the new I-140 in the EB-3 category (based on the existing or a new PERM):
-- Premium processing available — 15 business days
+- Premium processing available — 15 business days (EB-1A/EB-1B); 45 business days for EB-1C
 - If a new PERM is used, file promptly after certification — a certified PERM is valid for 180 days
 - Claim the earlier EB-2 priority date on the EB-3 I-140 (see Step 3)
 

@@ -127,7 +127,7 @@ const faqs = [
   {
     question: "What should I do if USCIS sends an RFE?",
     answer:
-      "An RFE (Request for Evidence) is not a denial — it means USCIS needs additional documentation or clarification. You must respond by the deadline stated in the notice (usually 87 days). Work with your immigration attorney immediately to prepare a complete response. Submitting a strong, timely response is critical; a missed deadline typically results in denial.",
+      "An RFE (Request for Evidence) is not a denial — it means USCIS needs additional documentation or clarification. Respond by the exact deadline printed on the notice (the standard maximum is generally up to about 84 days, ≈87 with US mailing time; some forms use 30 days). Work with your immigration attorney immediately to prepare a complete response. If you miss the deadline, USCIS may deny the case as abandoned or decide it on the existing record.",
   },
   {
     question: "How long is the EB-2 India green card wait time?",

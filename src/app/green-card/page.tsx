@@ -44,7 +44,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is a priority date and when is mine set?",
     answer:
-      "Your priority date is the date your PERM labor certification was filed with the Department of Labor (for EB-2/EB-3). For EB-1 (no PERM), it is set at the I-140 filing date. This date determines your place in the visa queue. For Indian-born applicants, the per-country 7% cap means only about 9,800 employment-based visas can go to India-born applicants each year — creating a multi-year backlog.",
+      "Your priority date is the date your PERM labor certification was filed with the Department of Labor (for EB-2/EB-3). For EB-1 (no PERM), it is set at the I-140 filing date. This date determines your place in the visa queue. For Indian-born applicants, the statutory 7% per-country limit (INA §202) holds India's usage share far below its demand — a proration cap across the combined family and employment preference totals, not a fixed India quota — which is what creates the multi-year backlog.",
   },
   {
     question: "Can I change employers while my green card is in process?",
@@ -54,7 +54,7 @@ const faqs: FaqItem[] = [
   {
     question: "What does I-140 approval mean for my H1B?",
     answer:
-      "An approved I-140 unlocks 3-year H1B extensions beyond the standard 6-year cap — allowing you to maintain legal status while waiting for your priority date. The I-140 does not grant permanent residence or work authorization by itself. You still need your priority date to become current and I-485 to be approved.",
+      "An approved I-140 can support H-1B extensions beyond the standard 6-year cap under AC21 §104(c) — in three-year increments when your priority date is not current (a visa number is unavailable) and you otherwise qualify. It is not automatic or guaranteed. The I-140 does not grant permanent residence or work authorization by itself; you still need your priority date to become current and I-485 to be approved.",
   },
   {
     question: "What is the difference between Final Action Date and Dates for Filing?",
@@ -196,7 +196,7 @@ export default function GreenCardPage() {
           <div className="space-y-3">
             {[
               { n: "01", label: "PERM Labor Certification", time: "6–18 months", desc: "Your employer files with the Department of Labor to prove no qualified US worker is available for your position. Your PERM filing date becomes your priority date." },
-              { n: "02", label: "I-140 Immigrant Petition", time: "3–12 months (or 15 business days with premium)", desc: "Your employer files Form I-140 with USCIS. Approval locks in your priority date and unlocks 3-year H1B extensions beyond the 6-year cap." },
+              { n: "02", label: "I-140 Immigrant Petition", time: "3–12 months (or 15 business days with premium)", desc: "Your employer files Form I-140 with USCIS. Approval retains your priority date and can support H-1B extensions beyond the 6-year cap (AC21 §104(c), when a visa number is unavailable)." },
               { n: "03", label: "Priority Date Wait", time: "Varies — years to decades for India", desc: "Your priority date must become current in the State Department visa bulletin before you can file I-485. For Indian EB-2/EB-3, this is the longest stage." },
               { n: "04", label: "I-485 Filing", time: "1–4 weeks to prepare and file", desc: "When your priority date is current (or USCIS authorizes Dates for Filing chart), you file I-485 (plus I-131 for Advance Parole, I-765 for EAD, I-864, I-693) as a package." },
               { n: "05", label: "I-485 Adjudication", time: "1–3+ years after filing", desc: "USCIS schedules biometrics, then an interview at your local field office. Once approved, you receive permanent resident status and a green card." },
@@ -259,7 +259,7 @@ export default function GreenCardPage() {
           <p className="text-sm text-ink-600 mb-4">I-140 is filed by your employer (or by you for EB-1A/EB-2 NIW self-petition). PERM certification must precede I-140 filing for EB-2/EB-3.</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { icon: "✅", title: "What I-140 approval means", items: ["Priority date is formally locked in", "3-year H1B extensions unlocked beyond 6-year cap", "180-day AC21 clock for I-485 portability begins once I-485 is filed", "Approved I-140 survives employer withdrawal in most cases after 180 days"] },
+              { icon: "✅", title: "What I-140 approval means", items: ["Priority date retained for a later qualifying petition (8 CFR 204.5(e))", "May support 3-year H-1B extensions (AC21 §104(c)) when a visa number is unavailable", "180-day §204(j) portability clock begins once I-485 is filed and stays pending", "Petition survives employer withdrawal once approved 180+ days (8 CFR 205.1)"] },
               { icon: "❌", title: "What I-140 approval does NOT mean", items: ["Does not grant work authorization", "Does not grant permanent residence", "Does not mean your priority date is current", "Does not start the I-485 clock — priority date must be current first"] },
             ].map((c) => (
               <div key={c.title} className="rounded-2xl border border-ink-900/5 bg-white p-5">
@@ -318,7 +318,7 @@ export default function GreenCardPage() {
               <li>• US immigration law limits each country to 7% of employment-based green cards per fiscal year</li>
               <li>• India accounts for a huge proportion of all EB-2 and EB-3 applicants — far more than 7% of the total</li>
               <li>• This creates a queue that is currently measured in years for EB-1, and decades for EB-2 and EB-3</li>
-              <li>• Approximately 9,800 employment-based visas are available for India per year across all EB categories</li>
+              <li>• India is subject to the 7% per-country limit (INA §202) across the combined family and employment preference totals — a proration cap, not a fixed India EB quota</li>
               <li>• USCIS I-485 inventory (pending applicants) for India runs into hundreds of thousands</li>
             </ul>
           </div>

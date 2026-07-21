@@ -835,7 +835,7 @@ export default function ImmigrationTrackerDashboard({
           />
           <ExplainerCard
             question="Why does EB-2 India have such a large backlog?"
-            answer="US law limits employment-based green cards to roughly 140,000 per year globally, and no single country of birth may use more than 7% (~9,800) of that annual supply. India's demand far exceeds 9,800 slots every year, so unused demand from the current year carries forward into future years, creating a compounding backlog that now stretches over a decade for EB-2 and EB-3 India applicants."
+            answer="US law sets a worldwide employment-based preference level of at least 140,000 per year, and under INA §202 no single country of birth may use more than 7% of the combined family-sponsored and employment-based preference limits — a proration cap applied by category, not a fixed India quota. India's demand far exceeds its prorated share every year, so unused demand carries forward into future years, creating a compounding backlog that now stretches over a decade for EB-2 and EB-3 India applicants."
           />
           <ExplainerCard
             question="What does the I-485 backlog number mean?"

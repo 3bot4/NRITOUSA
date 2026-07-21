@@ -507,11 +507,11 @@ USCIS notices, RFEs, and interview letters are mailed to the address on file. If
 Missing the AR-11 deadline can result in:
 - A civil fine of up to $200
 - In serious cases, cited as evidence of immigration violation
-- Most importantly: **critical USCIS notices going to your old address** — including RFEs with 87-day deadlines, biometrics notices, and green card/EAD delivery
+- Most importantly: **critical USCIS notices going to your old address** — including RFEs with short response deadlines, biometrics notices, and green card/EAD delivery
 
 :::warn
 title: Address for pending I-485 is especially critical
-If you have a pending I-485 (adjustment of status), USCIS sends the interview notice, any RFE, and the approval/denial to the address on file. A missed RFE because notices went to an old address can result in an automatic denial. Update your address immediately when you move.
+If you have a pending I-485 (adjustment of status), USCIS sends the interview notice, any RFE, and the approval/denial to the address on file. If notices go to an old address and you miss an RFE deadline, USCIS may decide the case on the existing record or treat it as abandoned — so keep your address current. Update it immediately when you move.
 :::
 
 ## Special cases for pending cases
@@ -641,7 +641,7 @@ href: /tools/uscis-notice-decoder
     date: "2026-06-16",
     updated: "2026-07-21",
     content: `:::summary
-This guide is for when you are **holding the actual RFE notice** and need to read it correctly. A **Request for Evidence (RFE)** is an official USCIS notice (on Form I-797) asking for more documentation or clarification — it is **not a denial**, and many cases with RFEs are approved. The critical field is the **response deadline**, usually **87 days** from the notice date; a late or incomplete response results in automatic denial. For the bigger picture — what an RFE is and why USCIS issues them — see the [RFE meaning & process guide](/uscis/request-for-evidence-rfe).
+This guide is for when you are **holding the actual RFE notice** and need to read it correctly. A **Request for Evidence** is issued on **Form I-797E, Notice of Action**, asking for more documentation or clarification — it is **not a denial**, and many cases with RFEs are approved. The critical field is the **response deadline** printed on the notice; the standard maximum is generally **84 days** (about **87** with US mailing time), though some forms such as I-539 and I-601A use **30 days**. Missing it is serious — USCIS may deny the case as abandoned, decide it on the existing record, or both — but it is not a mechanical "automatic" denial. For the bigger picture — what an RFE is and why USCIS issues them — see the [RFE meaning & process guide](/uscis/request-for-evidence-rfe).
 :::
 
 ## What an RFE notice contains
@@ -650,11 +650,11 @@ When you receive an RFE, the notice will include:
 
 :::info
 title: Key elements in every RFE notice
-1. **Response deadline date:** The specific date by which USCIS must receive your complete response — not the postmark date, but the receipt date
+1. **Response deadline date:** The specific date by which USCIS must **receive** your complete response — the receipt date, not the postmark date. This controls; do not rely on the generic "84/87-day" figure over the printed date.
 2. **The legal basis:** The specific statute, regulation, or policy USCIS is citing
 3. **The specific issues:** What evidence is lacking or insufficient
 4. **Instructions for submission:** Where to mail or upload your response
-5. **Whether premium processing is suspended:** For I-129 H1B, premium processing may be paused during the RFE response period
+5. **Whether premium processing is paused:** For a case on premium processing, the premium clock is generally paused while the RFE is outstanding and restarts on receipt of the response
 :::
 
 ## What to check immediately on your RFE
@@ -682,13 +682,13 @@ title: How the RFE response process works
 1. Attorney receives the RFE notice (mailed to the attorney of record)
 2. Attorney shares the notice with you and requests any needed documents from you
 3. Attorney prepares a legal brief and assembles evidence
-4. Response is submitted by the deadline — either by mail to the specified address or online (if your case has that option)
-5. USCIS resumes adjudication — may approve, deny, or issue a second RFE (NOID)
+4. Response is submitted so USCIS receives it by the deadline — either by mail to the specified address or online (if your case has that option)
+5. USCIS resumes adjudication — it may approve, deny, or (depending on the case) issue a follow-up RFE or a separate Notice of Intent to Deny (NOID)
 :::
 
 :::tip
 title: Do not cut corners on RFE responses
-A complete, well-organized RFE response with a strong legal brief is significantly more likely to succeed than a partial response submitted in a hurry. Trust your attorney's timeline — rushing is rarely the right move if the deadline allows preparation time.
+A complete, well-organized response that addresses every point USCIS raised gives your case its best chance; a rushed or partial response is treated as a request to decide on the existing record. Trust your attorney's timeline — rushing is rarely the right move if the deadline allows preparation time.
 :::
 
 ## RFE vs NOID

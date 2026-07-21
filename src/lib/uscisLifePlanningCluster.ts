@@ -224,16 +224,16 @@ If your PERM labor certification is still pending (or approved but you haven't f
 
 ## Stage 2 — I-140 pending
 
-Your priority date exists but is not yet locked in by an approval. If you change employers while the I-140 is pending and the old employer withdraws it, you can lose that date. Some workers wait for the I-140 approval (premium processing can shorten the wait to 15 business days) before making a move.
+Your priority date exists but there is **no approved petition yet** to anchor retention. If you change employers while the I-140 is pending and the old employer withdraws it, the petition is gone and there is nothing approved to carry the date forward — so at this stage the date can effectively be lost. Some workers wait for the I-140 approval (premium processing shortens the decision to about 15 business days for most classifications, 45 for E13/E21) before making a move.
 
 ## Stage 3 — I-140 approved
 
-This is the turning point. Once the I-140 has been **approved for 180 days**, it is generally protected from automatic revocation if the old employer withdraws it — so your priority date survives the change, and a new employer can file a fresh I-140 that **retains the earlier date**.
+This is the turning point — and where three rules diverge. Once you have an **approved I-140**, your **priority date is retained** for a later qualifying petition (8 CFR 204.5(e)) unless the approval is revoked for fraud, labor-certification revocation/invalidation, or material error; **employer withdrawal is not one of those grounds.** Separately, once the I-140 has been **approved 180 days**, a withdrawal no longer auto-revokes the *petition* itself (8 CFR 205.1).
 
 :::info
-title: Before vs after the 180-day approval mark
-- **Approved less than 180 days:** a withdrawal by the old employer can revoke the I-140 and cost the priority date — cross the 180-day mark first if you can.
-- **Approved 180+ days:** the priority date is safe even if withdrawn; you have not yet filed I-485, so you are relying on **retention**, not §204(j) portability.
+title: Before vs after the 180-day approval mark (petition survival)
+- **Approved less than 180 days:** a withdrawal generally **auto-revokes the petition**, so you'd usually need a new qualifying petition to continue — but your **priority date is still retained** for it. Crossing the 180-day mark first avoids refiling.
+- **Approved 180+ days:** a withdrawal no longer auto-revokes the petition. You have not filed I-485 yet, so you are relying on **retention** and petition survival — not §204(j) portability.
 :::
 
 The full post-approval decision — retention, withdrawal, and I-485 timing — is covered in [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).

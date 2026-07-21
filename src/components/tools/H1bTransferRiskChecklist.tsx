@@ -60,7 +60,7 @@ function assess(
       tier: "urgent",
       headline: "RFE received — attorney action required immediately",
       summary:
-        "A Request for Evidence has a hard deadline on the notice — typically 87 days from the notice date. Missing it results in automatic denial. Contact your employer's immigration attorney the same day.",
+        "A Request for Evidence has a hard deadline on the notice — for H-1B I-129, generally up to about 84 days (≈87 with US mailing time). Miss it and USCIS may deny the petition as abandoned or decide it on the existing record. Contact your employer's immigration attorney the same day.",
       documentsToCollect: [
         "The RFE notice (get a copy from HR or the attorney)",
         "All prior H1B I-797 approval notices",

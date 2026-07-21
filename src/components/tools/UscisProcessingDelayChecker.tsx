@@ -97,7 +97,7 @@ function assess(
       tier: "urgent",
       headline: "RFE deadline — act immediately",
       summary:
-        "A Request for Evidence has a hard deadline printed on the notice — typically 87 days from the notice date, not the date you received it. Missing the RFE deadline almost always results in automatic denial with no second chance.",
+        "A Request for Evidence has a hard deadline printed on the notice — the standard maximum is generally up to about 84 days (≈87 with US mailing time), and USCIS must receive your response by it, not just see it postmarked. Miss it and USCIS may deny the case as abandoned or decide it on the existing record.",
       actions: [
         "Contact your immigration attorney today — the same day if possible.",
         "Locate the RFE notice and find the exact response-due date.",

@@ -89,7 +89,7 @@ const DATA: FormStatusData = {
     "rfe-sent": {
       meaning:
         "USCIS reviewed your case and needs more documentation before it can make a decision. An RFE is not a denial — it is a request for additional evidence.",
-      next: "You must respond with all requested documents before the deadline (usually 87 days from the date on the notice).",
+      next: "You must respond with all requested documents by the exact deadline on the notice (standard max ~84 days, ≈87 with US mailing time; some forms 30 days).",
       actions: [
         "Contact your immigration attorney immediately — same day",
         "Read the RFE notice completely to understand what USCIS is asking for",
@@ -97,7 +97,7 @@ const DATA: FormStatusData = {
         "Submit your complete response before the deadline via trackable mail",
       ],
       worried:
-        "Worry immediately — the deadline is a hard cut-off. Missing it results in automatic denial.",
+        "Worry immediately — the deadline is a hard cut-off. Miss it and USCIS may decide the case on the existing record or as abandoned.",
       lawyerNote:
         "Contact your immigration attorney the same day you receive the RFE. Do not attempt to respond without legal guidance.",
       relatedSlug: "request-for-evidence-rfe",
@@ -669,7 +669,7 @@ export default function UscisStatusTool() {
                 {isDenied
                   ? "Denial — act immediately. Deadlines for appeal/motion are short (usually 33 days). Contact your attorney today."
                   : isRfe
-                    ? "RFE deadline is a hard cut-off (usually 87 days from the notice date). Contact your attorney immediately."
+                    ? "RFE deadline is a hard cut-off — follow the exact date on the notice (standard max ~84 days, ≈87 with US mail). Contact your attorney immediately."
                     : "Interview scheduled — prepare all original documents and review your application."}
               </span>
             </div>

@@ -170,9 +170,9 @@ describe("Batch 2B — the three job-change guides carry the cross-link block", 
     expect(c).toMatch(/§204\(j\)/);
   });
 
-  it("change-jobs-after-i140 owns the post-approval decision table", () => {
+  it("change-jobs-after-i140 owns the post-approval decision guide", () => {
     const c = gc("change-jobs-after-i140").content;
-    expect(c).toMatch(/Decision table/i);
+    expect(c).toMatch(/three rules, side by side/i);
     expect(c).toMatch(/withdraw/i);
   });
 

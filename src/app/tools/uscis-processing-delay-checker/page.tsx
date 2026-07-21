@@ -57,7 +57,7 @@ const faq: FaqItem[] = [
   {
     question: "I have an RFE — what now?",
     answer:
-      "Contact your immigration attorney immediately — the same day. The RFE deadline printed on the notice (typically 87 days from the notice date) is a hard deadline. Missing it results in automatic denial with very limited recourse. Your attorney will review the RFE, identify required evidence, and prepare a complete response.",
+      "Contact your immigration attorney immediately — the same day. The deadline printed on the RFE notice controls (standard max ~84 days, ≈87 with US mailing time; some forms 30 days), and USCIS must receive your response by it. Missing it is serious — USCIS may deny the case as abandoned or decide it on the existing record. Your attorney will review the RFE, identify required evidence, and prepare a complete response.",
   },
 ];
 

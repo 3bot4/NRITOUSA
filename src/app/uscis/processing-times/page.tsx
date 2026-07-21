@@ -544,7 +544,7 @@ export default function ProcessingTimesPage() {
             </p>
             <ul className="space-y-2">
               {[
-                "You received a Request for Evidence (RFE) — respond before the deadline, usually 87 days from the notice date.",
+                "You received a Request for Evidence (RFE) — respond by the exact deadline on the notice (standard max ~84 days, ≈87 with US mailing time; some forms 30 days).",
                 "Your current work authorization (H1B, EAD) expires within 60–90 days and a renewal petition is not yet filed or approved.",
                 "You were laid off while H1B, I-485, or EAD applications are pending.",
                 "You received a denial or Notice of Intent to Deny (NOID).",

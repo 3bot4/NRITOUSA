@@ -73,7 +73,7 @@ const faqs: FaqItem[] = [
   {
     question: "What should I do if I get a USCIS RFE notice?",
     answer:
-      "Contact your immigration attorney immediately. An RFE (Request for Evidence) is not a denial — USCIS needs more documentation. The response deadline is typically 87 days from the notice date, and missing it results in automatic denial. Do not wait even one week to alert your attorney, as preparing a strong RFE response takes significant time.",
+      "Contact your immigration attorney immediately. An RFE (Request for Evidence) is not a denial — USCIS needs more documentation. Follow the exact deadline printed on the notice (the standard maximum is generally up to about 84 days, ≈87 with US mailing time; some forms use 30 days); missing it lets USCIS decide the case on the existing record or as abandoned. Do not wait even one week to alert your attorney, as preparing a strong RFE response takes significant time.",
   },
   {
     question: "Can USCIS see what I do in my myUSCIS account?",
@@ -140,8 +140,8 @@ const commonNotices = [
     slug: "biometrics-notice",
   },
   {
-    notice: "I-797 — RFE Notice",
-    desc: "USCIS requesting additional evidence. Hard deadline — usually 87 days from notice date.",
+    notice: "I-797E — RFE Notice",
+    desc: "USCIS requesting additional evidence. Hard deadline on the notice — standard max ~84 days (≈87 with US mail).",
     urgency: "Contact attorney immediately",
     slug: "rfe-notice",
   },

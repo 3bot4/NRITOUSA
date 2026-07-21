@@ -409,7 +409,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       headers: ["Factor", "Figure", "Effect on your wait"],
       rows: [
         ["Employment green cards per year (worldwide)", "~140,000", "Fixed ceiling set by statute"],
-        ["Per-country cap", "7% (~9,800 for India, all EB categories)", "The single biggest cause of the India backlog"],
+        ["Per-country limit", "7% of combined FB+EB (proration cap, not a fixed India quota)", "The single biggest cause of the India backlog"],
         ["EB-1 worldwide share", "28.6% (~40,040)", "Shortest India queue of the three categories"],
         ["EB-2 / EB-3 worldwide share", "28.6% each", "Deepest India backlogs — often a decade or more"],
         ["Bulletin publication", "8th–10th monthly, effective next month", "When your cutoff can move"],
@@ -419,7 +419,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     updated: "2026-07-19",
     expertiseTags: ["Green card backlog analysis", "Visa bulletin data", "Employment-based immigration"],
     takeaways: [
-      "Expect the India queue to be governed by one number: the 7% per-country cap, about 9,800 employment green cards a year across EB-1, EB-2 and EB-3 combined.",
+      "Expect the India queue to be governed by one rule: the INA §202 7% per-country limit, calculated across the combined family and employment preference totals and applied by category and prorating — which holds India's usage share far below its demand (it is not a fixed India quota).",
       "Compare against both charts each month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
       "Treat any wait estimate as a scenario, not a promise: cutoffs can retrogress, and EB-2 India was marked Unavailable in the July 2026 bulletin.",
       "Check the new bulletin around the 8th–10th of each month; it takes effect the following month.",
@@ -476,7 +476,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "How long is the green card wait time for India?",
         answer:
-          "It depends entirely on your category and priority date. EB-1 India has recently sat a few years back, while EB-2 and EB-3 India cutoffs sit around a decade or more back — and EB-2 India was marked Unavailable in the July 2026 bulletin. The structural cause is the 7% per-country cap, roughly 9,800 employment green cards a year for India across all categories.",
+          "It depends entirely on your category and priority date. EB-1 India has recently sat a few years back, while EB-2 and EB-3 India cutoffs sit around a decade or more back — and EB-2 India was marked Unavailable in the July 2026 bulletin. The structural cause is the INA §202 7% per-country limit, which holds India's usage share far below its demand (a proration cap across the combined family and employment preference totals, not a fixed India quota).",
       },
       {
         question: "How is the green card wait time calculated?",
@@ -873,7 +873,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "What should I do if I get an RFE on my H-1B transfer?",
         answer:
-          "Contact your employer's immigration attorney immediately — RFEs have a hard response deadline (often around 87 days from the notice), and missing it usually means denial. Your attorney should lead the response with the right evidence, so don't wait.",
+          "Contact your employer's immigration attorney immediately — RFEs have a hard response deadline printed on the notice (standard max ~84 days, ≈87 with US mailing time), and missing it lets USCIS decide the case on the existing record or as abandoned. Your attorney should lead the response with the right evidence, so don't wait.",
       },
     ],
   },

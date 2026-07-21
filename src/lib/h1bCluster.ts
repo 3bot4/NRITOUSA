@@ -118,7 +118,7 @@ export const h1bSnapshots: Record<string, H1bSnapshot> = {
     badges: ["Clock restarts", "Response deadline"],
     rows: [
       { label: "Premium clock after RFE", value: "Restarts (15 business days)", note: "From the day USCIS receives your response.", highlight: true },
-      { label: "Response deadline", value: "Set by USCIS notice", note: "Often up to ~87 days; follow the exact date on your RFE." },
+      { label: "Response deadline", value: "Set by USCIS notice", note: "Standard max ~84 days (≈87 with US mail); follow the exact date on your RFE." },
       { label: "Regular processing", value: "Adds weeks–months", note: "On top of the original timeline." },
     ],
   },
@@ -424,7 +424,7 @@ Same as extension: 3–6 months regular processing, 15 business days with premiu
 
 :::warn
 title: RFE deadline is critical
-The RFE notice includes a response deadline — typically **87 days** from the **notice date** (not the date you receive it). Missing this deadline results in automatic denial with no recourse. Contact your attorney the same day you receive an RFE.
+Follow the exact date printed on your I-797E RFE notice. For H-1B I-129, the standard maximum response period is generally **84 days** (about **87** with US mailing time), and USCIS must **receive** your response by that date — a timely postmark alone is not enough. Missing it is serious: USCIS may deny the petition as abandoned or decide it on the existing record. Contact your attorney the same day you receive an RFE.
 :::
 
 ## Most common H1B RFE types
@@ -487,7 +487,7 @@ USCIS will review the response and may:
 
 ## Premium processing and RFEs
 
-If you are on premium processing, the 15-business-day clock **restarts** from the day USCIS receives your RFE response. So a premium processing case with an RFE will take longer than 15 business days total, but USCIS is still committed to acting within 15 business days of the response receipt.
+For an H-1B I-129 on premium processing, the **15-business-day** clock is paused while the RFE is outstanding and **restarts** from the day USCIS receives your response. So a premium H-1B case with an RFE takes longer than 15 business days total, but USCIS is still committed to acting within 15 business days of receiving the response. (Premium timeframes differ by form and classification — for example, some I-140 classifications run 45 business days — and premium processing guarantees timely action, not approval.)
 
 ## Which RFE guide do I need?
 

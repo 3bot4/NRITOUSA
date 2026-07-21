@@ -250,7 +250,7 @@ Q: What is the I-129 filing fee?
 A: Base fee is $730, plus a $600 Asylum Program Fee for employers with 26+ employees, and optional premium processing (verify current fee at uscis.gov/i-907). Some fees vary by employer size. Always verify current fees at uscis.gov before filing.
 
 Q: My I-129 got an RFE — is that a denial?
-A: No. An RFE (Request for Evidence) means USCIS needs more documentation. Your employer's attorney must respond within the deadline (usually 87 days). Many RFE cases are ultimately approved.
+A: No. An RFE (Request for Evidence) means USCIS needs more documentation. Your employer's attorney must respond by the exact deadline on the notice — for I-129, the standard maximum is generally up to about 84 days (≈87 with US mailing time). Many RFE cases are ultimately approved.
 :::
 
 :::cta

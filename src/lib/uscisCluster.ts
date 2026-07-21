@@ -248,14 +248,15 @@ href: /tools/uscis-case-status-meaning
     content: `A **Request for Evidence (RFE)** means USCIS reviewed your case and found that the current record is not sufficient to approve or deny it — the officer needs more documentation, clarification, or proof. It is **not a denial**. This page explains what an RFE is, why USCIS issues them, and how the response process works. If you are holding the notice and want to decode its fields line by line and work a checklist, use the [RFE notice guide](/uscis/rfe-notice); for H-1B-specific RFE types, see the [H-1B RFE guide](/h1b/rfe).
 
 :::warn
-title: RFE deadline is a hard deadline
-- USCIS gives you a response deadline — usually **87 days** from the date on the notice (not the date you receive it)
-- Missing the deadline typically results in an automatic **denial**
-- Work with your immigration attorney immediately
+title: The printed deadline is the one that controls
+- **Follow the exact date printed on your notice.** The standard maximum RFE response period is generally **84 days**; when USCIS mails the notice within the US, about **3 mailing days** are added (≈**87 days** total). Some forms — for example **I-539** and **I-601A** — use a **30-day** period, and more time may apply for recipients outside the US.
+- USCIS must **receive** your response by the deadline — a timely postmark alone is generally not enough.
+- Missing it is serious, though it is not automatic: USCIS may deny the case as **abandoned**, decide it on the **existing record**, or both.
+- Work with your immigration attorney immediately.
 :::
 
 :::summary
-An RFE means USCIS needs more evidence to make a decision. Respond completely and by the deadline. A strong, well-documented response can still result in an approval. A weak, incomplete, or late response typically leads to denial.
+An RFE means USCIS needs more evidence to make a decision. Respond completely and by the exact deadline on the notice. A strong, complete response can still result in an approval. If you send only part of what was asked, USCIS treats it as a request to decide on the existing record; if nothing is received in time, USCIS may deny the case as abandoned, on the record, or both.
 :::
 
 ## Why USCIS sends RFEs
@@ -291,9 +292,9 @@ Monitor your case status — next update should be "Response to RFE Was Received
 
 | Response quality | Typical outcome |
 | --- | --- |
-| Complete, well-documented response | Often approved; sometimes another RFE or NOID |
-| Partial response | Higher denial risk |
-| No response / missed deadline | Automatic denial |
+| Complete, well-documented response | Often approved; sometimes a follow-up RFE or a separate NOID, depending on the case |
+| Partial response | Treated as a request to decide on the existing record — higher denial risk |
+| No timely response | USCIS may deny as abandoned, decide on the existing record, or both |
 
 ## Types of RFE for Indians to know
 
@@ -329,10 +330,10 @@ No. Many cases with RFEs are ultimately approved. The key is a complete, timely,
 Yes — you can submit additional evidence as long as it responds to what USCIS asked. In some cases, petitioners also voluntarily withdraw and refile if the situation has changed significantly.
 
 ### Is there a premium processing option for RFE responses?
-If you filed with premium processing (I-129 or I-140), USCIS has 15 business days to act after receiving your RFE response. The clock restarts from when USCIS receives your response.
+If your case is on premium processing, the premium clock is paused while the RFE is outstanding and generally restarts when USCIS receives your response. The length of that clock depends on the form and classification — for example about **15 business days** for H-1B I-129 and most I-140 classifications, but **45 business days** for E13 multinational executive/manager and E21 national-interest-waiver I-140 cases. Premium processing guarantees timely USCIS action, not approval.
 
 ### What is a NOID vs an RFE?
-A **Notice of Intent to Deny (NOID)** is more serious — USCIS is telling you it plans to deny and giving you a chance to rebut. NOIDs are less common but require an even stronger response.
+A **Notice of Intent to Deny (NOID)** is more serious — USCIS is telling you it plans to deny and giving you a chance to rebut. A NOID is not a "second RFE"; it is a separate type of notice, and its response window is typically shorter (often 30 days). USCIS does not always issue an RFE or NOID before deciding a case.
 
 :::cta
 title: Understand your RFE next steps

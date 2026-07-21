@@ -430,11 +430,15 @@ function CompareBox({ lines, keyId }: { lines: string[]; keyId: string }) {
 
 /** Numbered circled steps. Each line: "Title — description" (one per line). */
 function StepsBox({ lines, keyId }: { lines: string[]; keyId: string }) {
-  const items = lines
+  // Support an optional leading `title:` directive (rendered as a heading),
+  // mirroring InfoBox/TipBox/WarnBox — otherwise the literal "title: …" line
+  // would render as a numbered step and shift the numbering.
+  const { directives, rest } = parseDirectives(lines);
+  const items = rest
     .map((l) => stripBullet(l.replace(/^\d+\.\s+/, "")))
     .filter(Boolean);
-  return (
-    <ol className="my-5 space-y-3">
+  const list = (
+    <ol className="space-y-3">
       {items.map((item, i) => {
         const split = item.split(/\s+[—–-]\s+/);
         const title = split[0];
@@ -462,6 +466,15 @@ function StepsBox({ lines, keyId }: { lines: string[]; keyId: string }) {
         );
       })}
     </ol>
+  );
+  if (!directives.title) return <div className="my-5">{list}</div>;
+  return (
+    <div className="my-5">
+      <p className="mb-2.5 font-semibold text-ink-900">
+        {renderInline(directives.title, `${keyId}-steps-title`)}
+      </p>
+      {list}
+    </div>
   );
 }
 

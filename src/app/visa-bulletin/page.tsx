@@ -175,7 +175,7 @@ export default function VisaBulletinPage() {
             <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
               <li>• Check the new bulletin around the <strong>8th–10th</strong> of each month — it takes effect the <strong>following</strong> month.</li>
               <li>• Compare against <strong>two</strong> charts every time: Final Action Dates for approval, Dates for Filing for submitting the I-485.</li>
-              <li>• Remember why India is slower: the <strong>7% per-country cap</strong> gives India roughly <strong>9,800</strong> employment green cards a year across all categories.</li>
+              <li>• Remember why India is slower: the <strong>7% per-country limit</strong> (INA §202) holds India&rsquo;s usage share far below its demand — a proration cap across the combined family and employment preference totals, not a fixed India quota.</li>
               <li>• Read your date as a threshold — your priority date must be <strong>strictly earlier</strong> than the posted cutoff, and &quot;U&quot; means nobody is approved that month.</li>
               <li>• Confirm which chart USCIS accepts for adjustment of status each month at uscis.gov/visabulletininfo — it changes.</li>
             </ul>
@@ -186,9 +186,10 @@ export default function VisaBulletinPage() {
             The visa bulletin explained in plain terms: it is the monthly Department of State publication
             that decides when an Indian applicant&apos;s green card can move forward. This guide is for
             H-1B workers, PERM and I-140 filers, and families trying to learn how to read the visa bulletin
-            without wading through State Department formatting. The number that explains everything is the
-            7% per-country cap — roughly 9,800 employment-based green cards a year for India across EB-1,
-            EB-2, and EB-3 combined, against demand many times larger, which is why the India column moves
+            without wading through State Department formatting. The rule that explains everything is the
+            INA §202 7% per-country limit — a proration cap across the combined family and employment
+            preference totals (not a fixed India quota) that holds India&rsquo;s usage share far below its
+            demand, which is why the India column moves
             in weeks while Rest of World shows &quot;C&quot;. Below: what the visa bulletin is and who
             publishes it, how to read the India charts step by step, the difference between dates for filing
             vs final action date, what &quot;current&quot; and &quot;unavailable&quot; mean, the live EB-1,

@@ -56,7 +56,7 @@ const faqs: FaqItem[] = [
   {
     question: "Is an RFE bad? Does it mean my case will be denied?",
     answer:
-      "An RFE is not a denial. It means USCIS needs more documentation. Many cases with RFEs are approved after a complete, timely response. The key risk is missing the deadline (usually 87 days from the notice date) or submitting an incomplete response.",
+      "An RFE is not a denial. It means USCIS needs more documentation. Many cases with RFEs are approved after a complete, timely response. The key risk is missing the deadline printed on the notice (the standard maximum is generally up to about 84 days, ≈87 with US mailing time; some forms use 30 days) or submitting an incomplete response — USCIS may then decide the case on the existing record or as abandoned.",
   },
   {
     question: "What does USCIS case approval mean for I-140?",
@@ -100,7 +100,7 @@ const statusRows = [
   {
     status: "Request for Evidence Was Sent",
     meaning: "USCIS needs more documentation",
-    next: "Respond before the deadline (usually 87 days)",
+    next: "Respond by the exact deadline on the notice (often up to ~84 days)",
     worry: "Immediately — hard deadline",
     forms: "All",
     slug: "request-for-evidence-rfe",
@@ -347,7 +347,7 @@ export default function UscisStatusHubPage() {
                   <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
                     <li>• Check status with the <strong>13-character receipt number</strong> from your I-797 (for example LIN2412345678 or IOE0123456789) at egov.uscis.gov — no login required.</li>
                     <li>• Treat <strong>&quot;Case Was Received&quot;</strong> and <strong>&quot;Actively Reviewed&quot;</strong> as normal — many cases sit in Actively Reviewed for months with no update.</li>
-                    <li>• Act immediately on <strong>&quot;Request for Evidence Was Sent&quot;</strong> — RFE deadlines are typically <strong>87 days</strong>, and missing one usually means denial.</li>
+                    <li>• Act immediately on <strong>&quot;Request for Evidence Was Sent&quot;</strong> — the deadline on the notice controls (standard max ~84 days, ≈87 with US mail), and missing it lets USCIS decide on the existing record or as abandoned.</li>
                     <li>• Only file a service request after your case passes the <strong>posted outside-normal-processing-time date</strong> on the USCIS processing times page.</li>
                     <li>• Create a <strong>myUSCIS account</strong> and add your receipt number for email/text alerts instead of refreshing the status page daily.</li>
                   </ul>
@@ -462,7 +462,7 @@ export default function UscisStatusHubPage() {
                     </thead>
                     <tbody>
                       {[
-                        ["Request for Evidence Was Sent", "Up to 87 days", "Case decided on the existing record — usually denied"],
+                        ["Request for Evidence Was Sent", "Per notice (std max ~84 days)", "Case may be decided on the existing record or as abandoned"],
                         ["Notice of Intent to Deny (NOID)", "Typically 30 days", "Denial is issued as proposed"],
                         ["Notice of Intent to Revoke (NOIR)", "Typically 30 days", "Prior approval is revoked"],
                         ["Biometrics appointment notice", "Attend on the scheduled date", "Case may be denied for abandonment"],

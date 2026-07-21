@@ -146,23 +146,23 @@ function buildResult(
       return {
         summary: "Request for Evidence (RFE) — USCIS needs more documentation from you",
         whatItMeans:
-          "An RFE is USCIS formally requesting additional evidence or clarification before they can adjudicate your case. It is NOT a denial. Many cases with RFEs are ultimately approved. However, the response has a hard deadline — missing it typically results in automatic denial. The RFE will specify exactly what USCIS needs and cite the specific legal basis for the request.",
+          "An RFE (issued on Form I-797E) is USCIS formally requesting additional evidence or clarification before they can adjudicate your case. It is NOT a denial. Many cases with RFEs are ultimately approved. The response has a hard deadline — miss it and USCIS may deny the case as abandoned or decide it on the existing record. The RFE will specify exactly what USCIS needs and cite the specific legal basis for the request.",
         checkOnNotice: [
-          "RESPONSE DUE DATE — mark this immediately (typically 87 days from the notice date)",
+          "RESPONSE DUE DATE — mark this immediately (the printed date controls; standard max ~84 days, ≈87 with US mail; some forms 30 days)",
           "The specific evidence or documentation requested",
           "The legal basis USCIS cited (regulation or policy memo)",
           "The exact mailing address or online submission instructions for your response",
-          "Whether premium processing is suspended (common for I-129 H1B RFEs)",
+          "Whether premium processing is paused (common for I-129 H1B RFEs)",
         ],
         commonMistakes: [
           "Waiting to contact your attorney — start immediately",
-          "Missing the deadline — results in denial with no further review",
-          "Responding with incomplete evidence — a partial response is almost as bad as no response",
+          "Missing the deadline — USCIS may then decide on the existing record or treat the case as abandoned",
+          "Responding with incomplete evidence — a partial response is treated as a request to decide on the record",
           "Mailing to the wrong address — read the specific return instructions on the RFE",
-          ...(isH1b ? ["Underestimating specialty occupation RFEs — these require strong legal briefs and expert letters"] : []),
+          ...(isH1b ? ["Underestimating specialty occupation RFEs — these require strong evidence and, often, expert letters"] : []),
         ],
         deadline:
-          "HARD DEADLINE: USCIS must RECEIVE (not postmark) your response by the date shown on the notice — typically 87 days from the notice date. Missing this deadline results in automatic denial.",
+          "HARD DEADLINE: USCIS must RECEIVE (not postmark) your response by the date shown on the notice — the standard maximum is generally ~84 days (≈87 with US mailing time), though some forms use 30 days. Missing it lets USCIS decide on the existing record or as abandoned.",
         contactAttorney: true,
         attorneyNote:
           "Contact your attorney TODAY. Do not wait even one day. Preparing a strong RFE response requires time for legal research, evidence gathering, and brief writing. Share the full RFE notice with your attorney immediately.",

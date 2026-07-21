@@ -134,7 +134,7 @@ export default function UscisNoticeDecoderPage() {
                 {
                   href: "/uscis/rfe-notice",
                   label: "RFE Notice Guide",
-                  desc: "What to do when USCIS sends a Request for Evidence — 87-day deadline",
+                  desc: "What to do when USCIS sends a Request for Evidence — decode the notice & its deadline",
                 },
                 {
                   href: "/uscis/biometrics-notice",
