@@ -134,25 +134,25 @@ Yes. Employers are not legally required to continue sponsoring after PERM certif
     title: "I-140 Approved: What Next? Timeline to Green Card (2026)",
     seoTitle: "I-140 Approved: What Next? Timeline to Green Card",
     metaDescription:
-      "I-140 approved: unlocks 3-year H-1B extensions and, after 180 days, AC21 portability. Next steps, the I-485 wait, and the full timeline to your green card.",
+      "I-140 approved: it retains your priority date and may support H-1B extensions under AC21 §104(c) when a visa number is unavailable. Next steps, the I-485 wait, and the full timeline to your green card.",
     navLabel: "I-140 Approved — What Next",
     excerpt:
-      "I-140 approval is a milestone, not the finish line. For Indian EB applicants, the approved I-140 establishes your priority date and unlocks H1B extensions — but the wait for visa availability can be decades.",
+      "I-140 approval is a milestone, not the finish line. For Indian EB applicants, the approved I-140 retains your priority date and may support H-1B extensions under AC21 §104(c) — but the wait for visa availability can be decades.",
     date: "2026-06-16",
-    updated: "2026-07-20",
+    updated: "2026-07-21",
     content: `:::quickanswer
-An approved I-140 means USCIS agrees you qualify for your EB category — it is **Stage 2 of 3**, not the finish line. It immediately unlocks **3-year H-1B extensions** beyond the six-year cap, locks in your **priority date**, and after **180 days** gives you AC21 job portability. What it does *not* do is let you file I-485: for India-born EB-2 and EB-3 applicants that wait typically runs **years to decades** until your priority date is current in the visa bulletin.
+An approved I-140 means USCIS agrees you qualify for your EB category — it is **Stage 2 of 3**, not the finish line. It **retains your priority date** (8 CFR 204.5(e)) and can support **H-1B extensions beyond the six-year cap** under AC21 §104(c) when an immigrant visa number is unavailable and you otherwise qualify. What it does *not* do is start §204(j) job portability (that needs a **pending I-485**) or let you file I-485: for India-born EB-2 and EB-3 applicants that wait typically runs **years to decades** until your priority date is current in the visa bulletin.
 :::
 
 :::key
-- File H-1B extensions in **3-year** increments from now on — available the moment the I-140 is approved, even with a badly backlogged priority date.
-- Wait **180 days** after approval before relying on AC21 portability to change employers in a same or similar occupation.
+- Ask about **three-year H-1B extensions** under AC21 §104(c) — available when a visa number is unavailable because of the backlog and you otherwise qualify (not automatic).
+- **§204(j) job portability starts from I-485, not I-140:** it needs a properly filed I-485 that has been **pending at least 180 days** plus a same-or-similar job — see [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
 - Budget **$1,440** per adult for the I-485 when your date finally becomes current, plus **$715** if a new I-140 is ever needed.
 - Track two charts monthly — Final Action Dates and Dates for Filing — because only one of them opens your I-485 window.
-- Keep the approval notice permanently: an I-140 approved **365+ days** still supports H-1B extensions even if the employer later withdraws it.
+- Keep the approval notice permanently: an I-140 approved **180+ days** is not auto-revoked by an employer's withdrawal (8 CFR 205.1), so it can keep supporting your case.
 :::
 
-If your I-140 was just approved, the honest answer to "what next" is: one important door opens, and one long wait begins. This guide is for India-born EB-2 and EB-3 applicants who have the approval notice in hand and want to know exactly what it unlocks, what it does not, and what the remaining timeline to a green card looks like. The single most useful fact: I-140 approval is what lets your H-1B run past six years in three-year blocks, so your status is secure while the priority-date queue moves. Below: what the approval actually means, the full I-140-to-green-card timeline with realistic stage estimates, the steps to take this month, when you can file I-485, how AC21 portability and job changes work after approval, and what happens if your employer withdraws the petition.
+If your I-140 was just approved, the honest answer to "what next" is: one important door opens, and one long wait begins. This guide is for India-born EB-2 and EB-3 applicants who have the approval notice in hand and want to know exactly what it means, what it does not, and what the remaining timeline to a green card looks like. The single most useful fact: an approved I-140 can let your H-1B run past six years in three-year blocks under AC21 §104(c) while a visa number is unavailable, so your status can stay secure while the priority-date queue moves. Below: what the approval actually means, the full I-140-to-green-card timeline with realistic stage estimates, the steps to take this month, when you can file I-485, how AC21 job portability and priority-date retention actually work, and what happens if your employer withdraws the petition.
 
 **I-140 (Immigrant Petition for Alien Workers)** approval is Stage 2 of the employment-based green card process. It means USCIS has determined that you qualify for the specific EB category your employer petitioned. But for Indian EB applicants, this is far from the end of the road.
 
@@ -160,8 +160,8 @@ If your I-140 was just approved, the honest answer to "what next" is: one import
 title: What I-140 approval means
 - Your **priority date** is officially established (set at PERM filing date, or I-140 filing if no PERM required)
 - You qualify for your EB category based on your credentials, job duties, and employer's petition
-- Your H1B can be extended in 3-year increments beyond the 6-year cap once I-140 is approved
-- After 180 days, you gain limited AC21 job portability protection
+- Your H-1B may be extended in 3-year increments beyond the 6-year cap under AC21 §104(c) when a visa number is unavailable and you otherwise qualify
+- §204(j) job portability is **not** unlocked by I-140 approval — it requires a properly filed I-485 that has been pending at least 180 days plus a same-or-similar job
 - You must still wait for your priority date to become current in the visa bulletin before filing I-485
 :::
 
@@ -169,9 +169,9 @@ title: What I-140 approval means
 
 :::bad
 title: I-140 approval does not mean
-- You can file I-485 immediately (unless your priority date is also current)
+- You can file I-485 now — you can only file once your priority date is current
 - You have a green card or an approved green card application
-- You can freely change employers without consequence to your green card process
+- §204(j) job portability is available — that needs a separate I-485 pending 180+ days
 - The wait is almost over — for Indian EB-2/EB-3, the wait typically continues for many years
 :::
 
@@ -181,8 +181,8 @@ Only when your priority date is current on the chart USCIS is accepting that mon
 
 | Stage after I-140 approval | Typical timing | What it depends on |
 |---|---|---|
-| H-1B extension eligibility | Immediate | I-140 approval alone |
-| AC21 job portability | 180 days after approval | Same or similar occupation |
+| H-1B extension (AC21 §104(c)) | While a visa number is unavailable | Approved I-140 + visa unavailable + you qualify |
+| §204(j) job portability | I-485 pending 180+ days | Properly filed I-485 + same or similar occupation |
 | Priority date becomes current | Years to decades (India EB-2/EB-3) | Monthly visa bulletin |
 | I-485 filing window opens | The month your date is current | Which chart USCIS accepts |
 | I-485 processing | ~8–14 months typically | USCIS service center |
@@ -207,19 +207,25 @@ title: H-1B extension after I-140 approval
 ## What Should You Do Immediately After I-140 Approval?
 
 :::steps
-Note your I-140 approval notice receipt date — this may affect AC21 portability timing (180 days).
+Note your I-140 approval date — it starts the 8 CFR 205.1 180-day clock for whether the *petition* survives an employer withdrawal (this is separate from §204(j) job portability).
 Confirm your priority date with your employer's attorney — it should appear on both the PERM and the I-140 approval notice.
 Begin monitoring the monthly visa bulletin at [travel.state.gov](https://travel.state.gov) — both the Final Action Date and Date for Filing charts.
-Discuss H1B extension strategy with your attorney — given your priority date, plan extensions accordingly.
-Ask your employer about any plans to withdraw the I-140 — understand what their policy is and what protections you have.
-If you are approaching the 180-day mark post-approval, understand your AC21 portability rights before making any job changes.
+Discuss H-1B extension strategy with your attorney — given your priority date, plan AC21 §104(c) extensions accordingly.
+Ask your employer about any plans to withdraw the I-140 — understand their policy and what protections you have.
+Before any job change, read how retention, petition survival, and §204(j) portability differ — see [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
 :::
 
 ## Can You Change Jobs After I-140 Approval? (AC21)
 
-Once your I-140 has been approved for **180 days**, you gain green card portability under AC21 — meaning if you later change employers, the approved I-140 continues to support your green card application as long as the new job is in a same or similar occupational classification. This significantly reduces the risk of changing jobs while the green card process is pending.
+Three separate rules get confused here, and I-140 approval does **not**, by itself, unlock job portability:
 
-See: [AC21 portability explained](/green-card/ac21)
+- **Priority-date retention (8 CFR 204.5(e)):** an approved EB-1/EB-2/EB-3 I-140 lets you keep your priority date for a later qualifying petition — even with a new employer — unless the approval is revoked for fraud, labor-certification revocation/invalidation, or material error.
+- **Petition survival (8 CFR 205.1):** once the I-140 has been approved **180 days**, an employer's withdrawal no longer auto-revokes the petition itself.
+- **§204(j) job portability (INA §204(j) / 8 CFR 245.25):** to change to a same-or-similar job on your green card, you need a properly filed **I-485 that has been pending at least 180 days** — this clock runs from I-485 filing, not from I-140 approval.
+
+So before you have a pending I-485, a job change relies on **retention** (a new employer files a new I-140 that keeps your earlier date), not on "porting the I-140." Full decision guide: [changing jobs after I-140 approval](/green-card/change-jobs-after-i140).
+
+See also: [AC21 portability explained](/green-card/ac21)
 
 ## What Will the Rest of the Green Card Cost?
 
@@ -254,10 +260,10 @@ No. The I-140 approves the *petition* — that you qualify for the category. The
 Generally yes — as long as your priority date becomes current, the approved petition remains usable. An I-140 approved for 180+ days is not auto-revoked by an employer's withdrawal (8 CFR 205.1), so it can keep supporting your case; separately, its priority date is retained for a later qualifying petition regardless of the "same or similar" test. The "same or similar" requirement specifically governs §204(j) portability on a *pending I-485*. Consult your attorney.
 
 ### Can my employer withdraw my I-140 after approval?
-Yes, unless the I-140 has been approved for 180+ days, in which case a withdrawal by the employer generally does not affect your ability to use it for H1B extensions and eventual I-485 filing (subject to AC21 conditions). After 180 days, the I-140 retains its value for your use even if the employer withdraws it.
+An employer can request withdrawal, but timing matters. If the I-140 has been approved **180+ days**, an employer's withdrawal generally does **not** auto-revoke the petition (8 CFR 205.1), so it can keep supporting your H-1B §104(c) extensions and, when your date is current, your I-485. If it is withdrawn before the 180-day approval mark (and no I-485 has been pending 180+ days), USCIS generally auto-revokes that petition — but your **priority date is still retained** for a later qualifying petition, because withdrawal is not one of the 8 CFR 204.5(e)(2) loss grounds.
 
 ### Do I need a new I-140 if I change employers?
-Not necessarily. Under AC21, if your I-140 was approved for 180+ days and you move to a same or similar occupation, you can port the I-140 to a new employer's sponsorship. Your new employer does NOT need to restart the PERM and I-140 process for the ported petition. However, some employers choose to file a new PERM and I-140 anyway for additional protection. Consult your attorney.
+Usually yes, if you have not yet filed I-485. There is no "porting the I-140" itself: before a pending I-485 you rely on **priority-date retention** — a new employer files a new I-140 that keeps your earlier priority date (8 CFR 204.5(e)), and the new job does not have to be "same or similar." Only once your **I-485 has been pending 180+ days** can you use **§204(j) portability** to move to a same-or-similar job on the pending case (via Supplement J) without a new I-140. Consult your attorney about which applies to your stage.
 
 ### Can I keep my priority date if a new I-140 is filed?
 Yes — priority date retention lets you carry your earlier priority date onto a new EB-2 or EB-3 I-140, for example in an EB-3 downgrade or EB-2 upgrade. You keep your original place in the queue instead of starting over, and your attorney handles the interfiling or new filing.`,

@@ -17,6 +17,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { getVisaBulletinChildPage } from "./visaBulletinCluster";
 import { getGreenCardChildPage } from "./greenCardCluster";
+import { pageMetadata, extractFaq } from "./seo";
 
 const ROOT = join(__dirname, "..", "..");
 const SRC = join(ROOT, "src");
@@ -187,6 +188,88 @@ describe("Corrective — EB-2/EB-3 India bulletin pages emphasize current cutoff
   it("the scenarios page stays labeled as estimates, not forecasts", () => {
     const src = readFileSync(join(SRC, "app/eb2-eb3-priority-date-india/page.tsx"), "utf8");
     expect(src).toMatch(/estimates, not predictions/i);
+  });
+});
+
+describe("Corrective — /green-card/i-140-approved-what-next: no false unlock/portability claims", () => {
+  const PATH = "/green-card/i-140-approved-what-next";
+  const page = getGreenCardChildPage("i-140-approved-what-next")!;
+
+  // Every source field feeding the page: metadata title/desc, excerpt, and the
+  // body markdown (which becomes hero, bullets, tables, FAQs, and — via
+  // pageMetadata — OG/Twitter, and via the Article JSON-LD — its description).
+  const FIELDS = {
+    title: page.title,
+    seoTitle: page.seoTitle ?? "",
+    metaDescription: page.metaDescription ?? "",
+    excerpt: page.excerpt,
+    content: page.content,
+  };
+  const BLOB = Object.values(FIELDS).join("\n");
+
+  // The three prohibited claims, as patterns that catch their phrasings.
+  const BAD: [RegExp, string][] = [
+    [/immediately\s+unlocks?\s+.{0,20}(3-year|three-year)/i, "I-140 immediately unlocks 3-year extensions"],
+    [/unlocks?\s+(\*\*)?3-year(\*\*)? h-?1b extensions?/i, "I-140 unlocks 3-year H-1B extensions"],
+    [/(available|extensions?)\s+the moment the i-140 is approved/i, "extensions available the moment I-140 is approved"],
+    [/(3-year|three-year|h-?1b) extensions?[^.]{0,20}once i-140 is approved/i, "extensions once I-140 approved (unconditional)"],
+    [/after\s+180\s+days[^.]{0,30}(ac21|portability)/i, "AC21 portability begins 180 days after I-140 approval"],
+    [/180\s+days after approval[^|]*\|[^|]*(same or similar|portability)/i, "AC21 portability = 180 days after approval (table)"],
+    [/portabilit[a-z]+\s+(begins|starts)[^.]{0,25}(180 days after|approval)/i, "portability begins at I-140 approval"],
+    [/port the i-140/i, "the I-140 itself can be 'ported'"],
+    [/ported petition/i, "'ported petition' after 180 days"],
+    [/gain (green card |limited )?(ac21 )?(job )?portability[^.]{0,25}approved for \*\*?180/i, "180-day-approval gives portability"],
+  ];
+
+  it.each(BAD)("no field contains: %s", (re) => {
+    expect(BLOB).not.toMatch(re);
+  });
+
+  it("OG/Twitter + <title> metadata carry no false unlock/portability claim", () => {
+    // Mirrors app/green-card/[slug]/page.tsx generateMetadata().
+    const meta = pageMetadata({
+      title: page.seoTitle ?? page.title,
+      description: page.metaDescription ?? page.excerpt,
+      path: PATH,
+      type: "article",
+    });
+    const og = meta.openGraph as { title?: unknown; description?: unknown };
+    const tw = meta.twitter as { title?: unknown; description?: unknown };
+    const metaText = [
+      meta.title,
+      meta.description,
+      og?.title,
+      og?.description,
+      tw?.title,
+      tw?.description,
+    ].join(" | ");
+    expect(meta.alternates?.canonical).toBe(PATH);
+    for (const [re] of BAD) expect(metaText).not.toMatch(re);
+    // The description is affirmatively corrected.
+    expect(String(meta.description)).toMatch(/104\(c\)|retains your priority date/i);
+  });
+
+  it("the Article JSON-LD description (page.excerpt) is corrected", () => {
+    expect(page.excerpt).toMatch(/104\(c\)|retains your priority date/i);
+    for (const [re] of BAD) expect(page.excerpt).not.toMatch(re);
+  });
+
+  it("visible FAQ (source of FAQPage schema) carries no prohibited claim", () => {
+    const faqs = extractFaq(page.content);
+    expect(faqs.length).toBeGreaterThan(0);
+    const faqText = faqs.map((f) => `${f.question} ${f.answer}`).join("\n");
+    for (const [re] of BAD) expect(faqText).not.toMatch(re);
+    // FAQ schema stays derived from the visible questions.
+    for (const f of faqs) expect(page.content).toContain(f.question);
+  });
+
+  it("the corrected legal distinctions are all present on the page", () => {
+    expect(FIELDS.content).toMatch(/204\.5\(e\)/); // retention
+    expect(FIELDS.content).toMatch(/205\.1/); // petition survival
+    expect(FIELDS.content).toMatch(/204\(j\)/); // job portability
+    expect(FIELDS.content).toMatch(/245\.25/); // portability reg
+    expect(FIELDS.content).toMatch(/104\(c\)/); // 3-year extensions
+    expect(FIELDS.content).toMatch(/pending (for )?at least 180 days|pending 180\+ days/i);
   });
 });
 
