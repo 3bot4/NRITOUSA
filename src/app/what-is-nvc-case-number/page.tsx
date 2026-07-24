@@ -160,6 +160,14 @@ export default function Page() {
                 <p className="mt-2">
                   Because the format looks similar to other government identifiers, families often mix it up with the USCIS receipt number or the DS-260 confirmation number. They are all different. The safest habit is to label each number clearly when you write it down (privately) and only ever enter it on the official CEAC site.
                 </p>
+                <div className="mt-3 rounded-xl border border-blue-200 bg-blue-50/60 p-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Example (fictional — for format illustration only)</p>
+                  <p className="mt-2 font-mono text-sm text-ink-800">NVC Case Number: <strong>BEO2026123456</strong></p>
+                  <p className="mt-1 font-mono text-sm text-ink-800">Invoice ID: <strong>AON2026098765</strong></p>
+                  <p className="mt-2 text-xs leading-relaxed text-ink-600">
+                    These are made-up values, not a real case. The pattern is illustrative: a three-letter post code, then a string of digits. Your real case number and invoice ID are on your own NVC welcome notice — never on a third-party site.
+                  </p>
+                </div>
               </div>
 
               <div>

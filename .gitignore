@@ -54,3 +54,4 @@ data/h1b/*.xlsx
 # Generated SEO reports (route inventory, audit findings, opportunity scoring).
 # Regenerate with `npm run seo:inventory` / `seo:audit` / `seo:opportunities`.
 /reports/
+.env*

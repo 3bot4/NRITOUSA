@@ -179,6 +179,18 @@ export default function Page() {
               </div>
 
               <div>
+                <h2 className="text-xl font-bold text-ink-900">Step-by-step: how to submit an inquiry</h2>
+                <ol className="mt-2 space-y-2">
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">1.</span> Open the official NVC Public Inquiry Form on the Department of State website (link above) — never a third-party site.</li>
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">2.</span> Select the inquiry category that matches your issue (for example, case status, document submission, or fee payment) so it routes to the right queue.</li>
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">3.</span> Enter the petitioner&apos;s full name, the applicant&apos;s date of birth, and the email address associated with your case — these confirm your identity to NVC.</li>
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">4.</span> Write a short, specific description of the issue, with your case number, invoice ID, and relevant dates.</li>
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">5.</span> Submit the form and save any confirmation you receive.</li>
+                  <li className="flex gap-2"><span className="font-bold text-rose-600">6.</span> Wait for a reply by email — NVC states that inquiries are reviewed and answered in the order received, so a second inquiry does not move you up the queue.</li>
+                </ol>
+              </div>
+
+              <div>
                 <h2 className="text-xl font-bold text-ink-900">Why duplicate inquiries backfire</h2>
                 <p className="mt-2">
                   It is tempting to send several inquiries hoping for a faster answer. It has the opposite effect: duplicates add to the same queue an officer must work through, slowing responses for everyone — including you. Submit <strong>one</strong> clear inquiry, wait the stated response window, and only follow up by referencing your earlier inquiry rather than starting fresh.
@@ -198,6 +210,32 @@ export default function Page() {
                   Most "delays" turn out to be normal processing. Use the{" "}
                   <Link href="/nvc-case-status" className="text-brand-600 underline">NVC case status checker</Link> to confirm your stage, compare against{" "}
                   <Link href="/nvc-processing-time" className="text-brand-600 underline">NVC processing time</Link> ranges and the official timeframes, and check CEAC for any item NVC is waiting on from you. If you are truly past the timeframe with nothing pending on your side, that is when an inquiry makes sense.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-bold text-ink-900">Common mistakes to avoid</h2>
+                <ul className="mt-2 space-y-1.5">
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> Inquiring before you're actually outside the published timeframe.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> Sending several inquiries hoping one gets a faster reply — it doesn't, and it adds to the queue.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> Writing a vague "any update?" instead of naming the specific issue, case number, and invoice ID.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> Repeating a stuck CEAC payment instead of waiting a day or two and confirming with your bank first.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> Using a third-party or paid "expediting" site instead of the free, official NVC form.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-bold text-ink-900">If you're still stuck: escalation options</h2>
+                <p className="mt-2">
+                  If you've submitted one clear inquiry, waited the stated response window, and your case is still genuinely outside the official timeframe with no explanation, a few further options exist:
+                </p>
+                <ul className="mt-2 space-y-1.5">
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> <strong>Follow up on your existing inquiry</strong> by referencing it directly rather than filing a new one from scratch.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> <strong>Contact your U.S. Senator or Representative's office</strong> for constituent/congressional casework assistance. Most congressional offices have a caseworker who can request a status update from the Department of State on your behalf, once you sign a privacy waiver. This does not guarantee a faster outcome, and it generally cannot move up an interview date once your case is scheduled at the embassy — interview slots are set by embassy capacity, not by NVC.</li>
+                  <li className="flex gap-2"><span className="text-rose-500">→</span> <strong>Ask your immigration attorney</strong> to inquire on your behalf if you are represented — they may have a more direct channel for case-specific issues.</li>
+                </ul>
+                <p className="mt-2 text-xs text-ink-500">
+                  This is general information, not a guarantee any of these options will speed up your case — NRItoUSA is not affiliated with NVC, the Department of State, or any member of Congress.
                 </p>
               </div>
             </div>

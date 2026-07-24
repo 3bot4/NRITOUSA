@@ -114,6 +114,12 @@ No. The USCIS online account number is assigned by the system when you create yo
 ### My attorney asked for my "USCIS account number" — is that the same as online account number?
 Yes. "USCIS account number," "USCIS online account number," and "online account number" all refer to the same identifier from your myUSCIS profile.
 
+## Official sources
+
+- [myUSCIS](https://my.uscis.gov/) — create or log in to your account
+- [How to Create a USCIS Online Account](https://www.uscis.gov/file-online/how-to-create-a-uscis-online-account)
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+
 :::cta
 title: Learn how to add a paper-filed case to your account
 body: Once you have your online account number, adding your paper petition to myUSCIS takes a few steps.
@@ -148,7 +154,7 @@ A **USCIS online access code** is a one-time alphanumeric code that USCIS **mail
 - Skip the code entirely if your attorney entered your **online account number** on the petition before filing.
 :::
 
-If USCIS mailed you a notice with an access code and you are not sure what to do with it, this page is the short version: it is the key that links a paper-filed petition to your online myUSCIS dashboard. This guide is for anyone whose employer or attorney filed on paper — H-1B I-129 petitions, family I-130s, I-485s — who wants online status visibility instead of waiting for mailed notices. The single most important thing to know: the code arrives **only by postal mail**, cannot be retrieved from any website, and expires, so if the notice went to an old address you need to call USCIS rather than hunt for it online. Below: exactly what the code is and where to find it on the notice, how to enter it step by step, how it differs from the receipt number and online account number, what to do when it expires or never arrives, and the common errors that stop a case from linking.
+If [USCIS](https://my.uscis.gov/) mailed you a notice with an access code and you are not sure what to do with it, this page is the short version: it is the key that links a paper-filed petition to your online myUSCIS dashboard. This guide is for anyone whose employer or attorney filed on paper — H-1B I-129 petitions, family I-130s, I-485s — who wants online status visibility instead of waiting for mailed notices. The single most important thing to know: the code arrives **only by postal mail**, cannot be retrieved from any website, and expires, so if the notice went to an old address you need to call USCIS rather than hunt for it online. Below: exactly what the code is and where to find it on the notice, how to enter it step by step, how it differs from the receipt number and online account number, what to do when it expires or never arrives, and the common errors that stop a case from linking.
 
 ## What Is a USCIS Online Access Code?
 
@@ -235,6 +241,12 @@ Allow 24–48 hours for the system to sync. If the case still does not appear, c
 
 ### Is the access code the same as the receipt number?
 No. The receipt number (13 characters, starts with 3 letters like EAC or LIN) is your permanent case tracking number. The access code is a temporary one-time code for linking the case to your myUSCIS dashboard.
+
+## Official sources
+
+- [myUSCIS](https://my.uscis.gov/) — link a paper case with your access code
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+- USCIS Contact Center: **1-800-375-5283**
 
 :::cta
 title: See the step-by-step guide for adding a paper case
@@ -329,6 +341,12 @@ Yes. Each paper case must be linked individually using its own receipt number an
 
 ### Can my attorney see my myUSCIS account after I link the case?
 Linking a case to your account does not automatically give your attorney access to your account. Your attorney has their own representative account with USCIS. Your myUSCIS account is personal.
+
+## Official sources
+
+- [myUSCIS](https://my.uscis.gov/) — link your paper-filed case
+- [How to Create a USCIS Online Account](https://www.uscis.gov/file-online/how-to-create-a-uscis-online-account)
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
 
 :::cta
 title: Check your USCIS case status meaning
@@ -448,6 +466,12 @@ Both pull from the same USCIS system. If there is a discrepancy, it is likely a 
 ### Can USCIS see my login activity or what I look at in myUSCIS?
 USCIS operates the platform, so yes — they can see account activity at the platform level, but routine case status checks do not trigger any immigration review. See the [account privacy guide](/uscis/account-privacy) for more detail.
 
+## Official sources
+
+- [myUSCIS](https://my.uscis.gov/) — the account dashboard
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do) — the public lookup portal
+- USCIS Contact Center: **1-800-375-5283**
+
 :::cta
 title: Decode your current case status
 body: Once you know the status in myUSCIS or the portal, use our USCIS Status Decoder to understand what it means for your specific form.
@@ -469,21 +493,21 @@ href: /tools/uscis-case-status-meaning
       "All non-citizens must notify USCIS of an address change within 10 days of moving using Form AR-11 or the online change-of-address portal.",
     date: "2026-06-16",
     content: `:::summary
-If you are a non-citizen in the US (on H1B, H4, F1, green card, or any other status), you are **legally required** to notify USCIS of any address change within **10 days** of moving. The form is **AR-11 (Alien's Change of Address Card)**. You can do it online for free at uscis.gov/ar-11 — no fee, no attorney needed. Failure to report an address change can result in fines.
+If you are a non-citizen in the US (on H1B, H4, F1, green card, or any other status), you are **legally required** to notify USCIS of any address change within **10 days** of moving. The form is **AR-11 (Alien's Change of Address Card)**. You can do it online for free at [uscis.gov/addresschange](https://www.uscis.gov/addresschange) — no fee, no attorney needed. Failure to report an address change can result in fines.
 :::
 
 ## Who must file AR-11?
 
 :::warn
 title: Required for nearly all non-citizens
-Almost all non-citizens in the US — including H1B workers, H4 dependents, F1 students, I-485 applicants, green card holders, and others — are required by law (8 U.S.C. § 1305) to file AR-11 within 10 days of any address change. US citizens are exempt.
+Almost all non-citizens in the US — including H1B workers, H4 dependents, F1 students, I-485 applicants, green card holders, and others — are required by law ([8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305)) to file AR-11 within 10 days of any address change. US citizens are exempt.
 :::
 
 ## How to change your address online (fastest)
 
 :::steps
 title: Filing AR-11 online
-1. Go to **uscis.gov/ar-11** (USCIS Change of Address portal)
+1. Go to **[uscis.gov/addresschange](https://www.uscis.gov/addresschange)** (USCIS Change of Address portal)
 2. Have your A-Number (if you have one), current address, and new address ready
 3. Fill in the form — no fee required
 4. Submit — you will receive a confirmation on screen and by email
@@ -530,6 +554,12 @@ Online filings are typically processed within a few days. For pending cases, all
 
 ### Does filing AR-11 update my address on a pending I-130 or I-485?
 It should. The online AR-11 updates USCIS's central records, which links to pending cases. However, for extra protection on pending I-485 or I-130, ask your attorney to file a written change of address notice directly with the service center handling your case.
+
+## Official sources
+
+- [How to Change Your Address](https://www.uscis.gov/addresschange) — official USCIS AR-11 portal
+- [8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305) — the change-of-address reporting requirement
+- [myUSCIS](https://my.uscis.gov/) — update your address if you have an account
 
 :::cta
 title: Back to myUSCIS account guide
@@ -611,13 +641,19 @@ title: Always verify these fields on receipt
 ## Frequently asked questions
 
 ### My I-797A was lost. Can I get a replacement?
-Contact USCIS at 1-800-375-5283 or submit a case inquiry. For approved petitions, your attorney may be able to obtain a duplicate approval notice. The I-94 portion can also be verified or reprinted at cbp.dhs.gov/I94.
+Contact USCIS at 1-800-375-5283 or submit a case inquiry. For approved petitions, your attorney may be able to obtain a duplicate approval notice. The I-94 portion can also be verified or reprinted at the [official CBP I-94 website](https://i94.cbp.dhs.gov/).
 
 ### My I-797C says my case was transferred. Does my receipt number change?
 No. Your receipt number stays the same after a transfer. Only the service center handling your case changes. Update your wait-time expectations based on the new center's published processing times.
 
 ### My priority date on the I-140 approval looks wrong. What should I do?
 Contact your immigration attorney immediately. Priority date errors on the I-797 can often be corrected by filing a written request with USCIS. Do not wait — the priority date controls your entire green card wait time.
+
+## Official sources
+
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+- [Official CBP I-94 website](https://i94.cbp.dhs.gov/) — verify or reprint your I-94
+- USCIS Contact Center: **1-800-375-5283**
 
 :::cta
 title: Understand what your USCIS notice means
@@ -717,6 +753,11 @@ Technically yes, though it is uncommon. If a first response was incomplete, USCI
 ### My H1B RFE is about specialty occupation. Is that serious?
 Specialty occupation RFEs have become more common, especially for IT staffing and consulting roles. A strong response with clear evidence of the position's specific requirements and your credentials is essential. Some cases are approved; others are denied even with a strong response. Discuss the realistic outcome with your attorney honestly.
 
+## Official sources
+
+- [USCIS Policy Manual — Requests for Evidence and Notices of Intent to Deny](https://www.uscis.gov/policy-manual/volume-1-part-e-chapter-6)
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+
 :::cta
 title: Check if your USCIS case is delayed
 body: Has your case been pending longer than expected after an RFE response? Use the Processing Delay Checker.
@@ -767,7 +808,7 @@ title: Check these fields on your H1B I-797A
 - Priority date if applicable (generally not on H1B but check)
 :::
 
-The I-94 at the bottom replaces your prior I-94 and is valid proof of your H1B status until the "To" date shown. If you travel internationally after H1B approval, CBP at the border creates a new I-94 at entry — your I-797A I-94 is superseded by the CBP I-94 (verifiable at cbp.dhs.gov/I94).
+The I-94 at the bottom replaces your prior I-94 and is valid proof of your H1B status until the "To" date shown. If you travel internationally after H1B approval, CBP at the border creates a new I-94 at entry — your I-797A I-94 is superseded by the CBP I-94 (verifiable at the [official CBP I-94 website](https://i94.cbp.dhs.gov/)).
 
 ## I-140 approval (I-797B)
 
@@ -811,6 +852,12 @@ Yes. H1B status and the visa stamp are separate. The visa stamp is for entry at 
 
 ### How long do I have before I must use my approved H1B?
 An H1B approval is effective on the start date listed. If you need to start earlier, a corrected petition may be needed. If the start date passes without you beginning work for that employer, the approval may technically be abandoned — consult your attorney.
+
+## Official sources
+
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+- [USCIS Processing Times](https://egov.uscis.gov/processing-times)
+- [Official CBP I-94 website](https://i94.cbp.dhs.gov/)
 
 :::cta
 title: Check your USCIS case status
@@ -875,7 +922,7 @@ title: Account security best practices
 3. **Use your personal email address** — not your work email which your employer may control
 4. **Do not share your login credentials** with your employer, attorney, or anyone else
 5. **Log out** when using shared or public computers
-6. **Use the official URL** — my.uscis.gov (not any look-alike site)
+6. **Use the official URL** — [my.uscis.gov](https://my.uscis.gov/) (not any look-alike site)
 :::
 
 ## Is myUSCIS safe to use on a work device?
@@ -896,6 +943,11 @@ No. Your myUSCIS account is personal. Your employer's attorney has their own rep
 
 ### What happens to my myUSCIS account if I leave the US permanently?
 Your account remains accessible as long as you have your login credentials. There is no immigration consequence to retaining a myUSCIS account if you depart the US. You can close the account if you wish through account settings.
+
+## Official sources
+
+- [myUSCIS](https://my.uscis.gov/) — the official account platform
+- [Online Account and Technical Support](https://www.uscis.gov/tools/uscis-tools-and-resources/online-account-and-technical-support)
 
 :::cta
 title: Back to myUSCIS account guide

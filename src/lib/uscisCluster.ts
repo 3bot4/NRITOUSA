@@ -198,7 +198,7 @@ title: What the officer is doing with your case
 ## When to worry
 
 :::warn
-- **Outside the published processing time range** — you are eligible to submit a case inquiry or e-request at uscis.gov. Don't do it earlier.
+- **Outside the published processing time range** — you are eligible to submit a [case inquiry via e-Request](https://egov.uscis.gov/e-request) at uscis.gov. Don't do it earlier.
 - **Prior RFE was submitted** and you haven't heard back within 2 months — contact your attorney
 - **Status flips back to "Received"** — this can happen with transfers; not automatically a problem but confirm with your attorney
 :::
@@ -206,8 +206,8 @@ title: What the officer is doing with your case
 ## What you should do
 
 :::steps
-Continue monitoring case status with your receipt number — changes can happen fast.
-Make sure USCIS has your current address on file (change of address via AR-11 form).
+Continue monitoring case status at [egov.uscis.gov/casestatus](https://egov.uscis.gov/casestatus/landing.do) with your receipt number — changes can happen fast.
+Make sure USCIS has your current address on file — [change of address via AR-11](https://www.uscis.gov/addresschange).
 If you're waiting on I-485, keep your biometrics appointment ready and don't travel without Advance Parole.
 Do not contact USCIS unless you are outside the published processing window.
 If status stays here for several months past the published window, your attorney can submit a case inquiry or service request.
@@ -335,6 +335,12 @@ If your case is on premium processing, the premium clock is paused while the RFE
 ### What is a NOID vs an RFE?
 A **Notice of Intent to Deny (NOID)** is more serious — USCIS is telling you it plans to deny and giving you a chance to rebut. A NOID is not a "second RFE"; it is a separate type of notice, and its response window is typically shorter (often 30 days). USCIS does not always issue an RFE or NOID before deciding a case.
 
+## Official sources
+
+- [USCIS Policy Manual — Requests for Evidence and Notices of Intent to Deny](https://www.uscis.gov/policy-manual/volume-1-part-e-chapter-6)
+- [USCIS — Expedite Requests](https://www.uscis.gov/forms/filing-guidance/expedite-requests) (for genuinely urgent cases while an RFE is pending)
+- [USCIS Processing Times](https://egov.uscis.gov/processing-times) — check current times before assuming your case is delayed
+
 :::cta
 title: Understand your RFE next steps
 body: Use the USCIS Case Status Meaning Tool for form-specific RFE guidance.
@@ -418,6 +424,12 @@ Yes, but carry the I-797 approval notice. To re-enter on H1B, you need a valid H
 ### My I-485 is approved — when do I get the green card?
 Typically 2–4 weeks after the approval, the card enters production. You'll see "Card Is Being Produced" and then "Card Was Mailed." Allow 7–10 business days for delivery after mailing.
 
+## Official sources
+
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do) — egov.uscis.gov
+- [USCIS Processing Times](https://egov.uscis.gov/processing-times)
+- [How to Apply for a Green Card](https://www.uscis.gov/green-card/how-to-apply-for-a-green-card)
+
 :::cta
 title: Track what happens after your approval
 body: Use the USCIS Case Status Meaning Tool for step-by-step post-approval guidance.
@@ -469,8 +481,8 @@ title: Typical timeline
 USCIS sends physical cards to the address on file. This is not the time to discover an old address is on file.
 
 :::warn
-- File Form AR-11 (Change of Address) immediately if your address has changed since filing
-- If the address on your I-485/I-765 approval notice is wrong, call USCIS (1-800-375-5283) or submit an online inquiry
+- File [Form AR-11 (Change of Address)](https://www.uscis.gov/addresschange) immediately if your address has changed since filing
+- If the address on your I-485/I-765 approval notice is wrong, call USCIS at **1-800-375-5283** or submit an [online inquiry via e-Request](https://egov.uscis.gov/e-request)
 - Cards mailed to wrong addresses may require a replacement request
 :::
 
@@ -747,8 +759,8 @@ The N-400 interview covers:
 3. **Application review** — officer reviews your N-400 form with you, line by line
 
 :::warn
-- For the 2025 civics test: if you applied on or after **April 19, 2025**, you will take the **2020 civics test** version (128 questions, must pass 12 of 20). Confirm which test applies at the time of your interview.
-- Study the civics questions in advance — many are straightforward but some require memorization
+- For the 2025 civics test: if you applied on or after **April 19, 2025**, you will take the [2020 civics test](https://www.uscis.gov/citizenship/2020test) version (128 questions, must pass 12 of 20). Confirm which test applies at the time of your interview.
+- Study the civics questions in advance using the official [study materials](https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test) — many are straightforward but some require memorization
 :::
 
 ## After the interview
@@ -769,6 +781,12 @@ USCIS interview policies change. Some cases initially waived now get scheduled a
 
 ### How should I dress for the interview?
 Business casual is appropriate. You are going to a government office — dress professionally and respectfully.
+
+## Official sources
+
+- [USCIS Policy Manual — Interview Guidelines](https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-5)
+- [The Naturalization Interview and Test](https://www.uscis.gov/citizenship/learn-about-citizenship/the-naturalization-interview-and-test)
+- [Civics Test (2020 version)](https://www.uscis.gov/citizenship/2020test)
 
 :::cta
 title: Prepare for your USCIS interview
@@ -823,8 +841,10 @@ Filed when **new facts or evidence** emerge that were unavailable before the dec
 ### Motion to Reconsider (MTC)
 Filed when you believe USCIS **made a legal error** in applying the law or regulations. No new evidence — just a legal argument. Same 33-day window.
 
+Both motions are filed on [Form I-290B, Notice of Appeal or Motion](https://www.uscis.gov/i-290b).
+
 ### AAO (Administrative Appeals Office) Appeal
-For certain forms (I-140, I-129, some I-485 denials), you can appeal to the USCIS Administrative Appeals Office. The AAO may remand (send back) or overturn the denial. Timeline: **30 days** from denial.
+For certain forms (I-140, I-129, some I-485 denials), you can appeal to the [USCIS Administrative Appeals Office](https://www.uscis.gov/administrative-appeals/administrative-appeals). The AAO may remand (send back) or overturn the denial. Timeline: **30 days** from denial.
 
 ### Refile
 In some cases, particularly for I-765 EAD or I-131, refiling a fresh application is simpler than appealing — especially if circumstances have changed.
@@ -868,6 +888,12 @@ An approved, standalone I-140 generally survives an I-485 denial (unlike an I-14
 
 ### Can I refile an I-485 after denial?
 Yes — in many cases. Refiling requires either a new visa number to be available (priority date must be current again) and addressing whatever caused the denial. Your attorney will advise on timing and feasibility.
+
+## Official sources
+
+- [Form I-290B, Notice of Appeal or Motion](https://www.uscis.gov/i-290b)
+- [USCIS Policy Manual — Appeals, Motions to Reopen, and Motions to Reconsider](https://www.uscis.gov/policy-manual/volume-6-part-j-chapter-5)
+- [Administrative Appeals Office (AAO)](https://www.uscis.gov/administrative-appeals/administrative-appeals)
 
 :::cta
 title: Understand your denial options

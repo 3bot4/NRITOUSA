@@ -55,19 +55,24 @@ const rawPages: LifePlanningPageData[] = [
     title: "Buying a House on H-1B in 2026: Mortgage Rules & Risks",
     seoTitle: "Buying a House on H-1B: Mortgage Rules & Risks 2026",
     metaDescription:
-      "Yes, you can buy a house on H-1B or with I-485 pending. Loan types by visa status, down payment (3.5%–20%), FHA rules, and what happens if you must leave.",
+      "Yes, you can buy a house on H-1B or with I-485 pending — via conventional, ITIN, or foreign-national loans. FHA ended for non-permanent residents May 25, 2025. Down payments, timing, and what happens if you must leave.",
     navLabel: "Buy a House (Green Card Pending)",
     excerpt:
       "You can buy a house on H-1B or with I-485 pending. The real question is whether it makes sense given your timeline, down payment, and what happens if your case is delayed or you have to leave.",
     date: "2026-06-16",
-    updated: "2026-07-20",
+    updated: "2026-07-21",
     content: `:::quickanswer
-**Yes — you can legally buy a house on H-1B or with an I-485 pending.** US law places no citizenship or immigration-status restriction on owning property, and H-1B holders qualify for ordinary conventional and **FHA** mortgages on the same terms as citizens, including **3.5% down** on FHA. What lenders actually want is a valid **I-94**, an **SSN** (or ITIN with some lenders), a documented **2-year work history**, and typically at least **1 year of visa validity** remaining. The real question is not legality but risk: what happens to the mortgage if you have to leave.
+**Yes — you can legally buy a house on H-1B or with an I-485 pending, through a conventional, ITIN, or foreign-national loan.** US law places no citizenship or immigration-status restriction on owning property. **Important 2025 change: FHA-insured loans are no longer available to non-permanent residents** (H-1B, L-1, F-1, and other work-visa holders) as of HUD Mortgagee Letter 2025-09, effective for FHA case numbers assigned on or after **May 25, 2025** — FHA is now restricted to US citizens and lawful permanent residents. What conventional lenders actually want is a valid **I-94**, an **SSN** (or ITIN with some lenders), a documented **2-year work history**, and typically at least **1 year of visa validity** remaining. The real question is not legality but risk: what happens to the mortgage if you have to leave.
+:::
+
+:::warn
+title: FHA eligibility changed in 2025 — verify before you plan around it
+If you are relying on old advice that says "H-1B holders can get an FHA loan with 3.5% down," that is now outdated. [HUD Mortgagee Letter 2025-09](https://www.hud.gov/sites/dfiles/OCHCO/documents/2025-09hsgml.pdf) ended FHA eligibility for non-permanent residents effective May 25, 2025. If your FHA case number was assigned before that date, you proceed under the prior rules; existing FHA loans are unaffected. New applicants on H-1B, L-1, F-1, or a pending I-485 (without a green card) should plan around conventional, ITIN, or foreign-national loan programs instead.
 :::
 
 :::key
-- Qualify like any borrower: valid I-94, SSN, and a documented 2-year work history — **no citizenship requirement** exists for a US mortgage.
-- Put down as little as **3.5% with FHA** or **5%–20% conventional**; foreign-national loans without US credit need **20–40%**.
+- **FHA is gone for non-permanent residents** as of May 25, 2025 (HUD ML 2025-09) — only US citizens and green card holders remain FHA-eligible.
+- Work-visa holders now generally use **conventional (5%–20% down)**, **ITIN loans (15%–25%)**, or **foreign-national loans (20%–40%)** — no citizenship requirement exists for any of these.
 - Expect lenders to want at least **~1 year** of remaining visa validity, and many prefer to see an approved I-140 for stability.
 - Keep **6 months** of mortgage reserves — the H-1B **60-day** grace period after a layoff is your entire runway.
 - Remember the mortgage does not require US residence: if you leave, you can **rent it out** and file a US return on the rental income.
@@ -83,28 +88,29 @@ title: H-1B mortgage basics
 - You need a valid H-1B I-94, SSN, and documented income (W-2s, employment letter)
 - Foreign national loans (no SSN, no credit history) are available but require larger down payments (20–40%) and higher rates
 - **ITIN loans**: Some lenders accept ITIN instead of SSN — useful if you are in a status transition
+- **FHA is no longer an option** for non-permanent residents since May 25, 2025 — see the warning above
 :::
 
 | Loan type | Available on a work visa? | Typical minimum down payment | Notes |
 |---|---|---|---|
 | Conventional (Fannie/Freddie) | Yes | 5% (3% some programs) | Needs SSN, 2-year work history; PMI under 20% |
-| **FHA** | Yes, with valid EAD or work-authorized status | **3.5%** | Requires SSN; lender verifies work authorization |
+| **FHA** | **No** (non-permanent residents), unless your case number was assigned before May 25, 2025 | — | [HUD Mortgagee Letter 2025-09](https://www.hud.gov/sites/dfiles/OCHCO/documents/2025-09hsgml.pdf) restricts FHA to US citizens and lawful permanent residents |
 | VA | Only if you are a qualifying service member/veteran | 0% | Rare for visa holders |
 | ITIN loan | Yes | 15%–25% | For borrowers without an SSN; higher rates |
 | Foreign national loan | Yes | 20%–40% | No US credit history required; highest rates |
 | Jumbo | Yes | 10%–20% | Stricter reserves; visa validity scrutinised |
 
-> Down payments and overlays vary by lender. Confirm current requirements with the lender and, where FHA rules matter, with HUD guidance.
+> Down payments and overlays vary by lender. Confirm current requirements with the lender and, for FHA history, see [HUD's Mortgagee Letter 2025-09](https://www.hud.gov/sites/dfiles/OCHCO/documents/2025-09hsgml.pdf).
 
 ### Which visa statuses can borrow?
 
 | Your status | Conventional | FHA | What lenders look at |
 |---|---|---|---|
-| H-1B | Yes | Yes | I-797/I-94 validity, ideally 1+ year remaining |
-| H-4 with EAD | Yes | Yes | EAD validity and documented income |
-| L-1 | Yes | Yes | Same as H-1B |
-| F-1 / OPT | Case by case | Case by case | Short status horizon is the obstacle |
-| I-485 pending with EAD | Yes | Yes | Often viewed favourably — approved I-140 helps |
+| H-1B | Yes | No (since May 25, 2025) | I-797/I-94 validity, ideally 1+ year remaining |
+| H-4 with EAD | Yes | No (since May 25, 2025) | EAD validity and documented income |
+| L-1 | Yes | No (since May 25, 2025) | Same as H-1B |
+| F-1 / OPT | Case by case | No | Short status horizon is the obstacle |
+| I-485 pending with EAD | Yes | No (since May 25, 2025) | Often viewed favourably — approved I-140 helps |
 | Green card holder | Yes | Yes | Treated as a permanent resident borrower |
 
 ## When Should You Buy Relative to Your Immigration Stage?
@@ -150,13 +156,19 @@ title: Questions to answer before signing
 
 A home purchase sits on top of two timelines you do not fully control. The immigration one runs through your [priority date](/visa-bulletin/priority-date) and the [India backlog](/green-card/green-card-backlog-india) — the longer that wait, the longer you will hold the property in nonimmigrant status, and the more the [60-day layoff grace period](/h1b-layoff) matters as a risk. The money one runs through your India-side assets: a down payment funded from Indian savings can trigger [FBAR and FATCA reporting](/tools/fbar-fatca-checker), and if you ever move back, rental income and the eventual sale interact with [RNOR rules](/return-to-india). If your spouse's income is on the loan, their [H-4 EAD renewal timing](/tools/h4-ead-navigator) becomes a mortgage risk too.
 
+## Official sources
+
+- [HUD Mortgagee Letter 2025-09 — Revisions to Residency Requirements](https://www.hud.gov/sites/dfiles/OCHCO/documents/2025-09hsgml.pdf) (FHA eligibility change, effective May 25, 2025)
+- [USCIS — Working in the United States](https://www.uscis.gov/working-in-the-united-states) (visa status overview)
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
+
 ## Frequently asked questions
 
 ### Can I buy a house on an H-1B visa?
-Yes. US law places no immigration-status restriction on buying property, and H-1B holders qualify for conventional and FHA mortgages on standard terms with a valid I-94, an SSN, and a documented two-year work history. Most lenders also want to see roughly a year or more of remaining visa validity.
+Yes. US law places no immigration-status restriction on buying property, and H-1B holders qualify for conventional mortgages on standard terms with a valid I-94, an SSN, and a documented two-year work history. Most lenders also want to see roughly a year or more of remaining visa validity. FHA is no longer an option for non-permanent residents (see below).
 
 ### Can I get an FHA loan on a work visa?
-Yes. FHA loans are available to non-permanent residents who are authorized to work in the US, with the same 3.5% minimum down payment. The lender verifies work authorization through your EAD or visa documentation; individual lenders may add their own overlays.
+Generally no, since May 25, 2025. [HUD Mortgagee Letter 2025-09](https://www.hud.gov/sites/dfiles/OCHCO/documents/2025-09hsgml.pdf) restricts new FHA-insured loans to US citizens and lawful permanent residents — H-1B, L-1, F-1, and other non-permanent residents no longer qualify, even with a valid EAD. If your FHA case number was assigned before that date, the prior rules still apply to your loan. Otherwise, look at conventional, ITIN, or foreign-national loan programs instead.
 
 ### Does buying a house affect my green card case?
 No. Property ownership does not affect USCIS adjudication of any petition or application. It does not demonstrate immigrant intent in a way that creates a problem for your nonimmigrant status.
@@ -171,7 +183,7 @@ Yes. Large down payments sourced from foreign accounts must be documented with b
 You have a 60-day H-1B grace period to find new sponsorship. If you cannot and must leave, you can rent the property out or sell it — a mortgage does not require you to live in the US. Plan that scenario with a property manager or real estate attorney before you buy, not after.
 
 ### How much down payment do I need as a visa holder?
-It depends on the loan: 3.5% on FHA, typically 5%–20% conventional, 15%–25% on an ITIN loan, and 20%–40% on a foreign-national loan with no US credit history. Anything under 20% on a conventional loan adds private mortgage insurance.
+It depends on the loan: typically 5%–20% conventional, 15%–25% on an ITIN loan, and 20%–40% on a foreign-national loan with no US credit history. Anything under 20% on a conventional loan adds private mortgage insurance. FHA's 3.5% down payment is no longer available to non-permanent residents since May 25, 2025.
 
 :::cta
 href: /tools/uscis-life-decision-checklist
@@ -228,7 +240,7 @@ Your priority date exists but there is **no approved petition yet** to anchor re
 
 ## Stage 3 — I-140 approved
 
-This is the turning point — and where three rules diverge. Once you have an **approved I-140**, your **priority date is retained** for a later qualifying petition (8 CFR 204.5(e)) unless the approval is revoked for fraud, labor-certification revocation/invalidation, or material error; **employer withdrawal is not one of those grounds.** Separately, once the I-140 has been **approved 180 days**, a withdrawal no longer auto-revokes the *petition* itself (8 CFR 205.1).
+This is the turning point — and where three rules diverge. Once you have an **approved I-140**, your **priority date is retained** for a later qualifying petition ([8 CFR 204.5(e)](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5)) unless the approval is revoked for fraud, labor-certification revocation/invalidation, or material error; **employer withdrawal is not one of those grounds.** Separately, once the I-140 has been **approved 180 days**, a withdrawal no longer auto-revokes the *petition* itself ([8 CFR 205.1](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-205/section-205.1)).
 
 :::info
 title: Before vs after the 180-day approval mark (petition survival)
@@ -240,7 +252,7 @@ The full post-approval decision — retention, withdrawal, and I-485 timing — 
 
 ## Stage 4 — I-485 pending
 
-Once your I-485 has been **pending for at least 180 days**, INA §204(j) lets you change to a **same or similar** job and keep the case. You notify USCIS with **Form I-485 Supplement J** confirming the new job offer — no USCIS pre-approval needed. If your I-485 has been pending less than 180 days, wait for the 180-day mark before relying on §204(j).
+Once your I-485 has been **pending for at least 180 days**, [INA §204(j)](https://www.uscis.gov/policy-manual/volume-7-part-e-chapter-5) lets you change to a **same or similar** job and keep the case. You notify USCIS with **[Form I-485 Supplement J](https://www.uscis.gov/i-485supj)** confirming the new job offer — no USCIS pre-approval needed. If your I-485 has been pending less than 180 days, wait for the 180-day mark before relying on §204(j).
 
 :::info
 title: Working on an EAD vs. keeping the green card
@@ -272,6 +284,13 @@ You are entitled to a copy of your own I-797 I-140 approval notice — request i
 
 ### I changed jobs and USCIS sent an RFE about AC21 — what now?
 Respond through your attorney with a same-or-similar analysis: SOC codes for the old and new jobs, a job-description comparison, and evidence of your qualifications for the new role. AC21 RFEs are common and many are resolved with a well-documented response. See the general [RFE response guide](/uscis/request-for-evidence-rfe).
+
+## Official sources
+
+- [USCIS Policy Manual — Job Portability after Adjustment Filing (AC21, INA 204(j))](https://www.uscis.gov/policy-manual/volume-7-part-e-chapter-5)
+- [Form I-485 Supplement J](https://www.uscis.gov/i-485supj)
+- [8 CFR 204.5(e) — Priority date retention](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5)
+- [8 CFR 205.1 — Automatic revocation](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-205/section-205.1)
 
 :::cta
 title: Not sure how risky your move is?
@@ -311,7 +330,7 @@ title: The rule: I-131 Advance Parole MUST be in hand before departure
 
 :::warn
 title: The H-1B travel exception — understand before relying on it
-Under INA § 212(d)(5), H-1B and L-1 holders technically can reenter on their valid H-1B or L-1 visa stamp while I-485 is pending — without Advance Parole. BUT:
+Under [INA § 212(d)(5)](https://www.uscis.gov/humanitarian/humanitarian_parole), H-1B and L-1 holders technically can reenter on their valid H-1B or L-1 visa stamp while I-485 is pending — without Advance Parole. BUT:
 - This requires a valid, unexpired H-1B visa stamp (not I-797, not I-94 — the actual visa stamp in your passport)
 - Your H-1B must remain valid for your return date
 - Re-entering on H-1B during I-485 pendency changes your parole status and may complicate your case
@@ -340,6 +359,12 @@ title: Trip planning checklist with I-485 pending
 - Inform your attorney of your travel dates before departure
 - Have the I-797 I-485 receipt number accessible in case CBP has questions
 :::
+
+## Official sources
+
+- [Form I-131, Application for Travel Documents, Parole Documents, and Arrival/Departure Records](https://www.uscis.gov/i-131)
+- [USCIS — Travel Documents](https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents)
+- [Official CBP I-94 website](https://i94.cbp.dhs.gov/)
 
 ## FAQ
 
@@ -415,8 +440,13 @@ This is the primary reason immigration attorneys recommend maintaining H-1B even
 
 :::info
 title: H-1B extensions under AC21 with approved I-140
-Under AC21 § 104(c), if your I-140 is approved and your priority date is not current (India EB-2/EB-3 typically), you qualify for H-1B extensions in one-year increments beyond the 6-year limit. These extensions are available as long as your I-140 remains approved. This is a critical benefit — it keeps you legal while waiting for decades in the India EB queue.
+Under [AC21 § 104(c)](https://www.uscis.gov/policy-manual/volume-2-part-a-chapter-4), if your I-140 is approved and your priority date is not current (India EB-2/EB-3 typically), you qualify for H-1B extensions in one-year increments beyond the 6-year limit. These extensions are available as long as your I-140 remains approved. This is a critical benefit — it keeps you legal while waiting for decades in the India EB queue.
 :::
+
+## Official sources
+
+- [USCIS Policy Manual — Extension of Stay, Change of Status, and Extension of Petition Validity (AC21 §104(c)/§106)](https://www.uscis.gov/policy-manual/volume-2-part-a-chapter-4)
+- [myUSCIS](https://my.uscis.gov/) — track your H-1B or I-485 case
 
 ## FAQ
 
@@ -462,8 +492,8 @@ title: H-4 EAD renewal filing timeline
 - File I-765 renewal **6 months before expiration** — current processing is 4–9+ months
 - File alongside I-539 if your H-4 status is also expiring
 - Use premium processing if available (check current USCIS eligibility — availability has varied)
-- Track your case at my.uscis.gov
-- If past normal processing time, submit a service request through myUSCIS after the published processing window
+- Track your case at [my.uscis.gov](https://my.uscis.gov/)
+- If past normal processing time, submit a [service request through e-Request](https://egov.uscis.gov/e-request) after the published processing window
 :::
 
 ## Income gap planning
@@ -502,6 +532,12 @@ A: Discuss with your HR. Unpaid leave of absence (FMLA or personal leave) preser
 Q: My I-140 was just approved — when can I file for H-4 EAD?
 A: You can file I-765 for H-4 EAD immediately after the I-140 approval. The priority date does not need to be current — only the approved I-140 is required. File now rather than waiting.
 :::
+
+## Official sources
+
+- [USCIS Processing Times](https://egov.uscis.gov/processing-times)
+- [myUSCIS](https://my.uscis.gov/) — track your I-765 renewal
+- [e-Request — case inquiry](https://egov.uscis.gov/e-request)
 
 :::cta
 href: /tools/h4-ead-navigator
@@ -581,7 +617,12 @@ A: Yes. An EAD (I-765) authorizes you to work for any employer, including self-e
 
 Q: Can an H-1B worker receive a salary from their own corporation?
 A: Generally no — taking a salary as an employee of your own company requires that company to petition for your H-1B, making you the employer-petitioner. USCIS scrutinizes this heavily. Some structures work (H-1B filed by majority-owned corporation through an attorney) but they are complex and expensive. EAD is the practical path.
-:::`,
+:::
+
+## Official sources
+
+- [I-765, Application for Employment Authorization](https://www.uscis.gov/i-765)
+- [USCIS — Working in the United States](https://www.uscis.gov/working-in-the-united-states)`,
   },
 
   /* ── 7. Moving states ────────────────────────────────────────────── */
@@ -626,7 +667,7 @@ The DOL conducted enforcement actions on remote-work LCA violations — this is 
 
 :::info
 title: Moving checklist for H-1B or I-485 applicants
-1. **AR-11** — File online at my.uscis.gov within 10 days of move
+1. **AR-11** — File online at [uscis.gov/addresschange](https://www.uscis.gov/addresschange) within 10 days of move
 2. **Notify your employer's immigration attorney** — they update service center records and file any LCA/amendment
 3. **I-485 field office transfer** (if I-485 pending) — your case may need to move to the local USCIS field office for your new state for interview purposes
 4. **SSA/DMV** — Update Social Security Administration and state DMV records
@@ -658,7 +699,13 @@ A: Contact USCIS immediately. Depending on timing: (a) the notice may be redirec
 
 Q: I work fully remote and moved from Texas to California — do I need an H-1B amendment?
 A: Almost certainly yes. Texas and California are different MSAs. Your employer needs a new California LCA and likely an H-1B amendment. The risk of not doing this is a DOL violation for the employer and a status issue for you. Raise this with your employer's immigration team before or immediately after the move.
-:::`,
+:::
+
+## Official sources
+
+- [How to Change Your Address (AR-11)](https://www.uscis.gov/addresschange)
+- [myUSCIS](https://my.uscis.gov/)
+- [DOL — Labor Condition Application (LCA) / Form ETA-9035](https://www.dol.gov/agencies/eta/foreign-labor/programs/h-1b)`,
   },
 
   /* ── 8. Parents visiting while case pending ────────────────────────── */
@@ -734,7 +781,13 @@ A: She should bring original prescription bottles, a letter from her Indian doct
 
 Q: My parents are US citizens (naturalized) — do they need a visa to visit India?
 A: This question is reversed — for Indian parents visiting the US, the B-2 rules above apply. If your parents have become US citizens (through their own path), they would use their US passport to travel.
-:::`,
+:::
+
+## Official sources
+
+- [Visitor Visa — Tourism & Visit (B-1/B-2)](https://travel.state.gov/content/travel/en/us-visas/tourism-visit.html) — Department of State
+- [I-539, Application to Extend/Change Nonimmigrant Status](https://www.uscis.gov/i-539)
+- [I-130, Petition for Alien Relative](https://www.uscis.gov/i-130)`,
   },
 
   /* ── 9. Layoff during green card ─────────────────────────────────── */
@@ -767,7 +820,7 @@ A: This question is reversed — for Indian parents visiting the US, the B-2 rul
 
 :::info
 title: H-1B 60-day grace period basics
-- Introduced by USCIS regulation in 2017: laid-off H-1B workers have a **one-time 60-day grace period** per authorized validity period
+- Introduced by [USCIS regulation in 2017 (8 CFR 214.1)](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1): laid-off H-1B workers have a **one-time 60-day grace period** per authorized validity period
 - During this period, you remain in a period of authorized stay (not status) — you are not in violation
 - You cannot work during the grace period without a new H-1B or other work authorization
 - After 60 days without action, you accrue unlawful presence
@@ -824,6 +877,12 @@ A: You can try, but consular officers and USCIS scrutinize B-2 applications from
 Q: The company offered severance — does that extend my grace period?
 A: No. The 60-day grace period is from the date of employment termination, not the end of severance pay. Check your actual last day of employment with HR.
 :::
+
+## Official sources
+
+- [8 CFR 214.1 — the 60-day grace period](https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1)
+- [USCIS Policy Manual — Job Portability after Adjustment Filing (AC21)](https://www.uscis.gov/policy-manual/volume-7-part-e-chapter-5)
+- [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
 
 :::cta
 href: /tools/h1b-transfer-risk-checklist

@@ -18,9 +18,40 @@
  *    kept to sourced, hedged phrasing.
  */
 
-export const INDIAN_POP_UPDATED = "2026-07-05";
-export const INDIAN_POP_UPDATED_HUMAN = "July 5, 2026";
+export const INDIAN_POP_UPDATED = "2026-07-21";
+export const INDIAN_POP_UPDATED_HUMAN = "July 21, 2026";
 export const INDIAN_POP_PUBLISHED = "2026-07-05";
+
+/* ------------------------------------------------------------------ *
+ * State-level Census snapshot (2020 vs 2010, "Asian Indian alone")
+ * ------------------------------------------------------------------ *
+ * Source: U.S. Census Bureau, 2020 Census Detailed Demographic and
+ * Housing Characteristics File A (Detailed DHC-A) — the "Asian Indian
+ * alone" detailed-race count, cross-referenced against the 2010 Census
+ * figure under the SAME definition so the growth rate is not mixing
+ * measures. State totals are compiled from the Census Bureau's own
+ * published detailed-race release; verify an exact figure at
+ * data.census.gov before citing it as precise. Do not blend these
+ * "alone" counts with Pew's broader "alone or in combination"
+ * ~4.9M figure used elsewhere on this page — different measure.
+ */
+export const CENSUS_STATE_SOURCE = {
+  label: "U.S. Census Bureau — 2020 Census Detailed DHC-A (Asian Indian alone)",
+  href: "https://www.census.gov/library/stories/2023/09/2020-census-dhc-a-asian-population.html",
+};
+export const CENSUS_STATE_DEFINITION = "Asian Indian alone (2020 and 2010 decennial Census, same definition both years)";
+export const CENSUS_STATE_LAST_VERIFIED = "2026-07-21";
+export const CENSUS_STATE_METHODOLOGY =
+  "State figures use the Census Bureau's 'Asian Indian alone' detailed-race count from the 2020 Census, compared against the identical 'Asian Indian alone' count from the 2010 Census — one consistent definition, so the growth percentage is meaningful. National rank is approximate: it reflects a comparison across the ~20 largest states by this measure and is not a certified 1-to-50 ranking. These numbers intentionally are NOT combined with the broader Pew 'Indian-origin' (~4.9M) figure used elsewhere on this page — that is a different, broader definition. Verify an exact figure at data.census.gov before citing it as precise.";
+
+export interface CensusStateSnapshot {
+  count2020: number;
+  count2010: number;
+  pctOfState2020: string;
+  growthLabel: string;
+  rankLabel: string;
+  rankNote: string;
+}
 
 /* ------------------------------------------------------------------ *
  * Headline numbers
@@ -817,6 +848,8 @@ export interface StateChild {
   communityGroups: { group: string; note: string }[];
   /** Economic-contribution sentence (hedged). */
   economy: string;
+  /** Verified 2020-vs-2010 Census snapshot for this state. See {@link CENSUS_STATE_METHODOLOGY}. */
+  census: CensusStateSnapshot;
 }
 
 /** Ordered list of cluster states (drives the pillar cluster grid + sitemap). */
@@ -853,6 +886,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Gujarati", note: "Business and hospitality across the state." },
     ],
     economy: "Indian Americans in California are heavily represented in senior tech, startups, medicine, and business, so their local economic contribution is significant — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 830259, count2010: 528176, pctOfState2020: "2.1%", growthLabel: "+57%", rankLabel: "#1", rankNote: "Largest total Asian-Indian-alone population of any U.S. state." },
   },
   TX: {
     slug: "texas",
@@ -872,6 +906,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families, especially Houston/DFW." },
     ],
     economy: "With heavy representation in IT, energy, healthcare, and small business, Indian Americans contribute significantly to the Texas economy, but exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 480566, count2010: 245981, pctOfState2020: "1.65%", growthLabel: "+95%", rankLabel: "#2", rankNote: "Second-largest total count nationally; among the fastest-growing of the large states." },
   },
   NJ: {
     slug: "new-jersey",
@@ -892,6 +927,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families statewide." },
     ],
     economy: "New Jersey's Indian community is dense in pharma, finance, IT, medicine, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 415342, count2010: 292256, pctOfState2020: "4.47%", growthLabel: "+42%", rankLabel: "#3 (highest share)", rankNote: "Third-largest total count, but the highest Indian share of any state's population (4.47%)." },
   },
   NY: {
     slug: "new-york",
@@ -911,6 +947,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "South Indian", note: "Tamil, Telugu, and Malayali communities across Queens and Long Island." },
     ],
     economy: "New York's Indian community spans finance, medicine, hospitality, and dense small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 387376, count2010: 313620, pctOfState2020: "1.92%", growthLabel: "+23%", rankLabel: "#4", rankNote: "Fourth-largest total count; slower growth than the newer tech-hub states." },
   },
   IL: {
     slug: "illinois",
@@ -930,6 +967,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Punjabi", note: "Historic presence around Devon Avenue." },
     ],
     economy: "Indian Americans in Illinois are active in IT, healthcare, finance, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 260055, count2010: 188328, pctOfState2020: "2.03%", growthLabel: "+38%", rankLabel: "#5", rankNote: "Fifth-largest total count nationally." },
   },
   WA: {
     slug: "washington",
@@ -948,6 +986,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Sizable professional community on the Eastside." },
     ],
     economy: "Washington's Indian community is concentrated in senior tech roles, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 140817, count2010: 61124, pctOfState2020: "1.83%", growthLabel: "+130%", rankLabel: "≈10th", rankNote: "Smaller total count than the top states, but the fastest 2010→2020 growth rate of this cluster — tech hiring drove more than a doubling in a decade." },
   },
   GA: {
     slug: "georgia",
@@ -966,6 +1005,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Tamil", note: "Engineering and IT families across north Atlanta." },
     ],
     economy: "Indian Americans in Georgia are active in IT, hospitality, healthcare, and business, contributing significantly to the Atlanta-metro economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 165895, count2010: 96116, pctOfState2020: "1.55%", growthLabel: "+73%", rankLabel: "#7", rankNote: "Seventh-largest total count, with growth well above the ~57% California/national-scale pace." },
   },
   FL: {
     slug: "florida",
@@ -984,6 +1024,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families." },
     ],
     economy: "Florida's Indian community is active in healthcare, hospitality, business, and IT, contributing meaningfully to local economies — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 187236, count2010: 128735, pctOfState2020: "0.87%", growthLabel: "+45%", rankLabel: "#6", rankNote: "Sixth-largest total count, but the lowest share of state population among this cluster — Florida's overall population is simply much larger." },
   },
   VA: {
     slug: "virginia",
@@ -1002,6 +1043,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Sizable community across Fairfax and Loudoun." },
     ],
     economy: "Northern Virginia's Indian community is concentrated in tech, cybersecurity, and contracting, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 157635, count2010: 103916, pctOfState2020: "1.83%", growthLabel: "+52%", rankLabel: "≈8th", rankNote: "Essentially tied with Pennsylvania for 8th–9th nationally by total count (within a few hundred residents)." },
   },
   MD: {
     slug: "maryland",
@@ -1020,6 +1062,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Punjabi", note: "Established community in the Baltimore-DC corridor." },
     ],
     economy: "Maryland's Indian community is strong in medicine, research, and IT, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 104617, count2010: 79051, pctOfState2020: "1.69%", growthLabel: "+32%", rankLabel: "≈14th", rankNote: "Maryland's own total count is more modest nationally than its 'high concentration' reputation suggests — it ranks behind Pennsylvania, Washington, Massachusetts, Michigan, and North Carolina by raw count. Its outsized profile comes from being one half of the combined Washington-DC metro (with Northern Virginia next door) and from a dense, high-income cluster around Montgomery County, not from Maryland alone having one of the largest state totals." },
   },
   MA: {
     slug: "massachusetts",
@@ -1038,6 +1081,7 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Growing professional community in the suburbs." },
     ],
     economy: "Massachusetts' Indian community is concentrated in biotech, academia, medicine, and software, contributing significantly to the innovation economy — though exact tax contribution by state is not published as a simple official number.",
+    census: { count2020: 125534, count2010: 77177, pctOfState2020: "1.79%", growthLabel: "+63%", rankLabel: "≈11th", rankNote: "Just outside the top 10 by total count nationally, but a high per-capita concentration in the Boston research corridor." },
   },
 };
 

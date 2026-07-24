@@ -11,6 +11,7 @@ import {
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { author } from "@/lib/author";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
   states,
   stateChild,
@@ -22,6 +23,10 @@ import {
   INDIAN_POP_UPDATED,
   INDIAN_POP_UPDATED_HUMAN,
   INDIAN_POP_PUBLISHED,
+  CENSUS_STATE_SOURCE,
+  CENSUS_STATE_DEFINITION,
+  CENSUS_STATE_LAST_VERIFIED,
+  CENSUS_STATE_METHODOLOGY,
   type StateInfo,
   type StateChild,
 } from "@/data/indianPopulationData";
@@ -51,7 +56,7 @@ function buildFaqs(name: string, info: StateInfo, child: StateChild): FaqItem[] 
   return [
     {
       question: `How many Indians live in ${name}?`,
-      answer: `Exact numbers vary depending on ACS/Census definitions, so there is no single official count. ${child.rankLine} — driven by jobs, universities, family networks, and business communities. Check the latest ACS tables for a specific figure.`,
+      answer: `The 2020 Census counted about ${child.census.count2020.toLocaleString()} people as "Asian Indian alone" in ${name} (${child.census.pctOfState2020} of the state's population), ${child.census.rankNote.charAt(0).toLowerCase()}${child.census.rankNote.slice(1)} Broader definitions that include U.S.-born and mixed-heritage residents would show a higher number. Check the latest ACS tables at data.census.gov for the most current figure.`,
     },
     {
       question: `Which city in ${name} has the most Indians?`,
@@ -121,6 +126,8 @@ const RELATED_LINKS = [
   { href: "/visa-bulletin", label: "Visa Bulletin Explained for Indians" },
   { href: "/green-card", label: "Green Card basics" },
   { href: "/articles/moving-to-usa-from-india-checklist", label: "Moving to USA from India Checklist" },
+  { href: "/india-tax-compliance", label: "India Tax Compliance" },
+  { href: "/trump-account-h1b-immigrant-families", label: "Trump Accounts for H-1B Families" },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -134,7 +141,12 @@ export default function StatePopulationPage({ slug }: { slug: string }) {
   const faqs = buildFaqs(name, info, child);
 
   const factSheet: { label: string; value: string }[] = [
-    { label: "State rank / concentration", value: info.rank },
+    {
+      label: "2020 Census (Asian Indian alone)",
+      value: `≈${child.census.count2020.toLocaleString()} (${child.census.pctOfState2020} of ${name}'s population)`,
+    },
+    { label: "National rank by total count", value: `${child.census.rankLabel} — ${child.census.rankNote}` },
+    { label: "Growth, 2010→2020 Census", value: `${child.census.growthLabel} (Asian Indian alone, same definition both years)` },
     { label: "Major Indian metro areas", value: info.metros },
     { label: "Common occupations", value: "IT, medicine, engineering, finance, business, academia" },
     { label: "Student / university hubs", value: child.cities.slice(0, 3).join(", ") + " area universities" },
@@ -231,10 +243,30 @@ export default function StatePopulationPage({ slug }: { slug: string }) {
       <Section id="answer" title={`How many Indians live in ${name}?`}>
         <div className="rounded-2xl border border-brand-200 bg-brand-50 p-5">
           <p className="text-sm leading-relaxed text-ink-800">
-            Exact numbers vary depending on ACS/Census definitions. {name} is one
-            of the major states for Indian-origin residents because of jobs,
-            universities, family networks, and business communities. {child.rankLine}
+            The 2020 Census counted <strong>≈{child.census.count2020.toLocaleString()} people</strong> as
+            &ldquo;Asian Indian alone&rdquo; in {name} — {child.census.pctOfState2020} of the
+            state&apos;s population, and {child.census.rankLabel} nationally by that measure,
+            up {child.census.growthLabel} from the 2010 Census. Broader definitions (Indian-origin,
+            including U.S.-born and mixed-heritage residents) would count higher. {child.rankLine}
           </p>
+        </div>
+        <div className="mt-6">
+          <FastAnswerSnapshot
+            title={`${name} Census snapshot — Asian Indian alone`}
+            accent="brand"
+            rows={[
+              { label: "2020 Census", value: `≈${child.census.count2020.toLocaleString()}`, note: `${child.census.pctOfState2020} of ${name}'s population` },
+              { label: "2010 Census", value: `≈${child.census.count2010.toLocaleString()}`, note: "Same definition, for comparison" },
+              { label: "Growth, 2010→2020", value: child.census.growthLabel, highlight: true, note: "One consistent Census definition — not mixed with other measures" },
+              { label: "Approx. national rank", value: child.census.rankLabel, note: child.census.rankNote },
+            ]}
+            lastVerified={CENSUS_STATE_LAST_VERIFIED}
+            sources={[
+              CENSUS_STATE_SOURCE,
+              { label: "U.S. Census Bureau — ACS", href: "https://www.census.gov/programs-surveys/acs" },
+            ]}
+            disclaimer={`Measure: ${CENSUS_STATE_DEFINITION}. ${CENSUS_STATE_METHODOLOGY}`}
+          />
         </div>
       </Section>
 
@@ -371,6 +403,10 @@ export default function StatePopulationPage({ slug }: { slug: string }) {
               Indian-origin, Indian-born, Indian immigrant, and Indian American are
               not the same category. State and metro estimates should be checked
               against the latest ACS tables before citing as exact numbers. {methodology}
+            </p>
+            <p className="mt-3 text-xs leading-relaxed text-ink-600">
+              <strong className="font-semibold text-ink-800">State Census snapshot methodology: </strong>
+              {CENSUS_STATE_METHODOLOGY}
             </p>
           </div>
         </div>
