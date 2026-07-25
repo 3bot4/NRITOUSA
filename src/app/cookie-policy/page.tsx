@@ -80,32 +80,49 @@ export default function CookiePolicyPage() {
     },
     {
       id: "google-analytics",
-      heading: "Google Analytics and similar tools",
+      heading: "Google Analytics, Microsoft Clarity, and similar tools",
       body: (
-        <p>
-          We use Google Analytics, and may use similar tools, to collect
-          aggregated, largely non-identifying usage data such as pages viewed,
-          session duration, and approximate location. This data is processed
-          according to{" "}
-          <a
-            href="https://policies.google.com/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-600 underline"
-          >
-            Google&apos;s Privacy Policy
-          </a>
-          . You can opt out using the{" "}
-          <a
-            href="https://tools.google.com/dlpage/gaoptout"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-600 underline"
-          >
-            Google Analytics Opt-out Browser Add-on
-          </a>
-          .
-        </p>
+        <>
+          <p>
+            We use Google Analytics, and may use similar tools, to collect
+            aggregated, largely non-identifying usage data such as pages viewed,
+            session duration, and approximate location. This data is processed
+            according to{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Google&apos;s Privacy Policy
+            </a>
+            . You can opt out using the{" "}
+            <a
+              href="https://tools.google.com/dlpage/gaoptout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Google Analytics Opt-out Browser Add-on
+            </a>
+            .
+          </p>
+          <p>
+            We also use Microsoft Clarity, a behavioral analytics tool that
+            uses cookies to collect data on how visitors use the Site,
+            including heatmaps and session replay, so we can improve the user
+            experience. Clarity data is processed according to the{" "}
+            <a
+              href="https://www.microsoft.com/privacy/privacystatement"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Microsoft Privacy Statement
+            </a>
+            .
+          </p>
+        </>
       ),
     },
     {
@@ -159,15 +176,19 @@ export default function CookiePolicyPage() {
       body: (
         <>
           <p>
-            By continuing to use the Site, you consent to our use of cookies as
-            described in this policy. You can manage, withdraw, or change your
-            choices at any time through your browser settings and the opt-out
-            tools described above.
+            Necessary cookies operate automatically because they are required
+            for the Site to function and stay secure — they do not depend on a
+            choice you make. Optional categories, such as analytics and
+            advertising cookies, are used according to applicable law and the
+            choices available to you.
           </p>
           <p>
-            Where the law in your location requires prior consent for
-            non-essential cookies, we will obtain that consent before such
-            cookies are set.
+            Where a consent interface is available, you can accept, reject, or
+            manage optional cookie categories through it. You can reopen that
+            interface at any time using the &quot;Privacy choices&quot; link in
+            the site footer, once it is enabled, or by using the browser
+            controls described above. Blocking or clearing cookies through your
+            browser may affect some Site features.
           </p>
         </>
       ),

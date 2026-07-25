@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "./Container";
 import { site } from "@/lib/site";
+import PrivacyChoicesLink from "./PrivacyChoicesLink";
 
 const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -152,6 +153,7 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                {col.title === "Company" ? <PrivacyChoicesLink /> : null}
               </ul>
             </div>
           ))}

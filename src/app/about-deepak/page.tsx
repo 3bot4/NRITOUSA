@@ -126,7 +126,7 @@ const personJsonLd = {
   "@type": "Person",
   "@id": `${site.url}${author.url}#person`,
   name: author.name,
-  jobTitle: "Founder and Author",
+  jobTitle: author.jobTitle,
   url: profileUrl,
   description,
   worksFor: { "@id": `${site.url}/#organization` },

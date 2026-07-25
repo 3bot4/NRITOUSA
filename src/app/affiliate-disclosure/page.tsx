@@ -41,7 +41,10 @@ export default function AffiliateDisclosurePage() {
           {site.name} may earn compensation from affiliate links, sponsored
           placements, or partner recommendations that appear on this Site. This
           means that some of the products, services, and providers we mention or
-          link to have commercial relationships with us.
+          link to have commercial relationships with us. Where content is
+          sponsored rather than linked through a standard affiliate
+          relationship, we label it &quot;Sponsored&quot; separately from our
+          regular editorial content.
         </p>
       ),
     },
@@ -67,7 +70,10 @@ export default function AffiliateDisclosurePage() {
           content. Our guides, tools, and recommendations are written to inform
           and educate readers. Compensation does not dictate our editorial
           opinions, and the presence or absence of an affiliate relationship
-          does not guarantee that a product is right for you.
+          does not guarantee that a product is right for you. We do not include
+          every provider, product, or service available in a category — our
+          coverage reflects editorial judgment and which partnerships exist, not
+          a complete survey of the market.
         </p>
       ),
     },
@@ -175,6 +181,8 @@ export default function AffiliateDisclosurePage() {
                 "We may earn compensation from affiliate links, sponsored placements, or partner recommendations.",
                 "We may receive a commission if you click or sign up through partner links.",
                 "Affiliate relationships do not change the educational purpose of our content.",
+                "Not every provider, product, or service in a category is included on this Site.",
+                "Sponsored content is labeled \"Sponsored\" separately from affiliate links and regular editorial content.",
                 "Content is not personalized legal, tax, immigration, investment, or financial advice.",
                 "Review provider terms, fees, risks, and eligibility before using any product or service.",
               ]}

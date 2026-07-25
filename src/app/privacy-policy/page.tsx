@@ -155,6 +155,25 @@ export default function PrivacyPolicyPage() {
             for details.
           </p>
           <p>
+            We also partner with Microsoft Clarity to capture how you use and
+            interact with the Site through behavioral metrics, heatmaps, and
+            session replay, so we can understand and improve the user
+            experience. Clarity uses first- and third-party cookies and other
+            tracking technologies to collect this data. By using the Site, you
+            agree that we and Microsoft can collect and use this data as
+            described. For more information about how Microsoft collects and
+            uses data, see the{" "}
+            <a
+              href="https://www.microsoft.com/privacy/privacystatement"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Microsoft Privacy Statement
+            </a>
+            .
+          </p>
+          <p>
             You can control cookies through your browser settings, and you can opt
             out of Google Analytics using the{" "}
             <a
@@ -175,6 +194,72 @@ export default function PrivacyPolicyPage() {
               Google&apos;s Privacy Policy
             </a>
             .
+          </p>
+        </>
+      ),
+    },
+    {
+      id: "advertising-adsense",
+      heading: "Advertising and Google AdSense",
+      body: (
+        <>
+          <p>
+            {site.name} may display advertisements through Google AdSense and
+            other advertising partners. Third-party vendors, including Google,
+            may use cookies or similar technologies to serve ads based on your
+            prior visits to this website or other websites.
+          </p>
+          <p>
+            Google&apos;s advertising cookies allow Google and its partners to
+            serve personalized ads, non-personalized ads, or both, based on
+            your visit to this Site and other sites on the Internet. You can
+            learn more about how Google uses information from sites that use
+            its services at{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              How Google uses information from sites or apps that use our
+              services
+            </a>
+            , and manage or opt out of personalized advertising at{" "}
+            <a
+              href="https://adssettings.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Google Ads Settings
+            </a>
+            .
+          </p>
+          <p>
+            Other advertising vendors or networks we work with may use their
+            own cookies and technologies, governed by their own privacy
+            policies, not this one. You can also manage participating vendors&apos;
+            use of cookies for interest-based advertising through the{" "}
+            <a
+              href="https://optout.networkadvertising.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-600 underline"
+            >
+              Network Advertising Initiative opt-out page
+            </a>
+            .
+          </p>
+          <p>
+            Where required by applicable law, advertising and other optional
+            cookies are handled according to the consent choices you make.
+            Once a consent management interface is enabled on the Site, you
+            will be able to review and change those choices at any time using
+            the &quot;Privacy choices&quot; link in the site footer. See our{" "}
+            <Link href="/cookie-policy" className="text-brand-600 underline">
+              Cookie Policy
+            </Link>{" "}
+            for more on the cookie categories we use.
           </p>
         </>
       ),

@@ -202,6 +202,8 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       { label: "FBAR / FATCA checker", href: "/tools/fbar-fatca-checker" },
       { label: "Moving to the USA from India checklist", href: "/articles/moving-to-usa-from-india-checklist" },
     ],
+    updated: "2026-07-25",
+    expertiseTags: ["401(k) & retirement accounts", "Return-to-India tax planning", "US-India cross-border finance"],
     faqs: [
       {
         question: "Can I keep my 401(k) after moving to India?",
@@ -1179,6 +1181,8 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
       { label: "Green card tracker", href: "/tools/green-card-tracker" },
     ],
+    updated: "2026-07-25",
+    expertiseTags: ["Immigrant homebuying", "Visa & relocation risk", "US real estate finance"],
     faqs: [
       {
         question: "Should I buy a house on an H-1B or other visa?",

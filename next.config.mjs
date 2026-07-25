@@ -3,12 +3,22 @@
 /**
  * Content-Security-Policy.
  *
- * The only external resource the site loads is Google Analytics (gtag.js from
- * googletagmanager.com, beacons to google-analytics.com). Everything else is
- * same-origin. 'unsafe-inline' is required for now because Next.js injects
- * inline hydration scripts and inline styles without a nonce, and the GA
- * config snippet is inline too — a nonce-based policy (via middleware) would
- * let us drop 'unsafe-inline' from script-src later.
+ * The external resources the site loads are Google Analytics (gtag.js from
+ * googletagmanager.com, beacons to google-analytics.com), Microsoft Clarity
+ * (tag script from clarity.ms, beacons load-balanced across *.clarity.ms per
+ * Microsoft's own CSP guidance: https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-csp
+ * — c.bing.com is included alongside it per that same guidance, for Clarity's
+ * Microsoft Advertising correlation calls), and the Impact.com/Trackonomics
+ * affiliate tracking tag (utt.impactcdn.com, see ImpactTag.tsx). Everything
+ * else is same-origin. 'unsafe-inline' is required for now because Next.js
+ * injects inline hydration scripts and inline styles without a nonce, and the
+ * GA/Clarity inline config snippets are inline too — a nonce-based policy
+ * (via middleware) would let us drop 'unsafe-inline' from script-src later.
+ *
+ * Google AdSense domains are only added when NEXT_PUBLIC_ADSENSE_CLIENT is
+ * set at build time (see src/lib/ads.ts) — keeps the CSP minimal until
+ * AdSense is actually configured, rather than allowlisting an ad network the
+ * site doesn't use yet.
  *
  * Next.js's dev-mode React Fast Refresh evaluates code with eval(), so in
  * development we must add 'unsafe-eval' to script-src or the client bundle
@@ -16,13 +26,37 @@
  * Production builds don't use eval, so 'unsafe-eval' is never shipped to users.
  */
 const isDev = process.env.NODE_ENV !== "production";
+const adsenseConfigured = Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT);
+const adsenseDomains = [
+  "https://pagead2.googlesyndication.com",
+  "https://*.googlesyndication.com",
+  "https://googleads.g.doubleclick.net",
+  "https://*.doubleclick.net",
+];
+
 const scriptSrc = [
   "script-src 'self' 'unsafe-inline'",
   isDev ? "'unsafe-eval'" : "",
   "https://www.googletagmanager.com",
+  "https://*.clarity.ms",
+  "https://c.bing.com",
+  "https://utt.impactcdn.com",
+  ...(adsenseConfigured ? adsenseDomains : []),
 ]
   .filter(Boolean)
   .join(" ");
+
+const connectSrc = [
+  "connect-src 'self'",
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+  "https://*.google-analytics.com",
+  "https://*.analytics.google.com",
+  "https://*.clarity.ms",
+  "https://c.bing.com",
+  "https://utt.impactcdn.com",
+  ...(adsenseConfigured ? adsenseDomains : []),
+].join(" ");
 
 const csp = [
   "default-src 'self'",
@@ -34,7 +68,7 @@ const csp = [
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   scriptSrc,
-  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  connectSrc,
   "upgrade-insecure-requests",
 ].join("; ");
 

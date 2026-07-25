@@ -116,8 +116,10 @@ export default function AboutPage() {
             <p className="mt-4 leading-8 text-ink-700">
               We started {site.name} to put those decisions in one trustworthy
               place, written by people who&apos;ve navigated the same questions.
-              No jargon, no fear-mongering, no affiliate-driven nonsense — just
-              the clearest possible answer to &quot;what should I actually do?&quot;
+              No jargon or fear-based marketing — our editorial conclusions stay
+              independent, and any compensated relationship is clearly
+              disclosed. Just the clearest possible answer to &quot;what should
+              I actually do?&quot;
             </p>
 
             <h2 className="mt-12 text-2xl font-bold tracking-tight text-ink-900">

@@ -3,7 +3,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ClarityAnalytics from "@/components/ClarityAnalytics";
 import ImpactTag from "@/components/ImpactTag";
+import AdSenseScript from "@/components/ads/AdSenseScript";
 import { site } from "@/lib/site";
 import { organizationJsonLd, websiteJsonLd, jsonLdGraph } from "@/lib/seo";
 
@@ -96,8 +98,11 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <GoogleAnalytics />
+        <ClarityAnalytics />
         {/* Impact / Trackonomics affiliate tracking tag */}
         <ImpactTag />
+        {/* No-op until NEXT_PUBLIC_ADSENSE_CLIENT is configured — see MONETIZATION_SETUP.md */}
+        <AdSenseScript />
       </body>
     </html>
   );

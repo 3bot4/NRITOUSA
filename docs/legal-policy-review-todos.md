@@ -66,6 +66,34 @@ Shared values (owner, state, email, mailing address, "last updated" date):
       arbitration / class-action waiver to the Terms (intentionally omitted; the
       draft only requires informal resolution first).
 
+## Monetization-readiness pass (2026-07-25)
+
+A compliance/infrastructure pass for AdSense, Impact, and CJ Affiliate
+readiness touched these pages. It did **not** resolve any attorney-review or
+jurisdiction-applicability item above — those are still open owner/counsel
+calls. What it did change:
+
+- Added an "Advertising and Google AdSense" section to the Privacy Policy
+  (dormant-compatible language — accurate whether or not AdSense is ever
+  activated).
+- Removed the blanket "by continuing to use the Site, you consent to all
+  cookies" implied-consent language from the Cookie Policy's
+  "Cookie consent / privacy choices" section and replaced it with accurate
+  necessary-vs-optional wording. **This does not itself add a cookie consent
+  banner** — see the open item above. It only stops the copy from overstating
+  what the Site currently does.
+- Added `src/lib/consent.ts` (`cmpProvider`/`cmpActive`, currently `null`/
+  `false`) and a footer "Privacy choices" link that stays hidden until a real
+  CMP is wired in — see `MONETIZATION_SETUP.md` for the exact AdSense →
+  Privacy & messaging steps to activate one.
+- Added dormant AdSense code infrastructure (`src/lib/ads.ts`,
+  `src/components/ads/*`) that only activates once `NEXT_PUBLIC_ADSENSE_CLIENT`
+  is set — no ads are live from this pass.
+- Added default Google Consent Mode v2 signals (`ad_storage`,
+  `ad_user_data`, `ad_personalization` default to `denied`;
+  `analytics_storage` stays `granted`, preserving current GA/Clarity
+  behavior) in `src/lib/gtag.ts` / `src/components/GoogleAnalytics.tsx`.
+
 ## Analytics privacy note (verified at draft time)
 
 GA4 events only send broad, non-identifying labels — `tool_name`,
