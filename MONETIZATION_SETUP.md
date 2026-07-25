@@ -9,6 +9,22 @@ See also `MONETIZATION_AUDIT_REPORT.md` for the full list of issues found and
 fixed, and `docs/legal-policy-review-todos.md` for the pre-existing legal
 attorney-review checklist (unchanged in scope by this pass).
 
+## Remaining manual items (owner action required)
+
+Everything else in this document is context for these five steps. Nothing
+below is optional if you want live, compliant AdSense revenue:
+
+1. **Obtain the real AdSense publisher ID** from your AdSense dashboard.
+2. **Configure Google Privacy & Messaging**, or another Google-certified CMP,
+   before serving personalized ads where Google requires consent (see §1).
+3. **Add the exact account-provided `ads.txt` entry** — never a placeholder
+   (see §2).
+4. **Configure the real AdSense client ID and ad-slot IDs** — no fake/example
+   values exist anywhere in this repo, and none should be added.
+5. **Keep ads disabled until all of the above are complete.** The current
+   default (`NEXT_PUBLIC_ADSENSE_CLIENT` unset) already does this — there is
+   nothing to "turn off" today.
+
 ---
 
 ## 1. Google AdSense
@@ -284,3 +300,17 @@ To roll back:
 - Nothing in this pass touches production data, redirects existing traffic,
   or removes existing content — rollback is a pure code revert with no data
   migration.
+
+## 9. Changelog
+
+- **2026-07-25 (follow-up pass):** fixed the `/terms-of-use` and `/privacy`
+  legacy redirects (they returned a 308 with no `Location` header — moved to
+  `next.config.mjs` `redirects()`, the working pattern used everywhere else).
+  Refined the Cookie Policy's "Cookie consent and privacy choices" section and
+  the Privacy Policy's "Advertising and Google AdSense" section wording;
+  removed remaining passive "by using/continuing you agree" consent language
+  from the Privacy Policy; softened the International Visitors section so it
+  no longer conditions consent mechanisms on "targeting" EU/UK users. Bumped
+  `site.legalUpdated` (shared by Terms & Conditions, Privacy Policy,
+  Disclaimer, and Affiliate Disclosure) to reflect this pass.
+- **2026-07-25 (initial pass):** everything else in this document.

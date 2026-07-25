@@ -32,7 +32,7 @@ export const site = {
    * page (Terms, Privacy, Disclaimer, Cookie Policy). Bump this whenever any
    * policy changes so all four stay consistent.
    */
-  legalUpdated: "June 23, 2026",
+  legalUpdated: "July 25, 2026",
   /** First year of publication — used in copyright and Organization schema. */
   foundingYear: 2026,
   /**

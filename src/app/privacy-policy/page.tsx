@@ -155,14 +155,19 @@ export default function PrivacyPolicyPage() {
             for details.
           </p>
           <p>
-            We also partner with Microsoft Clarity to capture how you use and
-            interact with the Site through behavioral metrics, heatmaps, and
-            session replay, so we can understand and improve the user
-            experience. Clarity uses first- and third-party cookies and other
-            tracking technologies to collect this data. By using the Site, you
-            agree that we and Microsoft can collect and use this data as
-            described. For more information about how Microsoft collects and
-            uses data, see the{" "}
+            We also partner with Microsoft Clarity for analytics and to
+            understand and improve the user experience, including behavioral
+            metrics, heatmaps, and session replay. Clarity uses first- and
+            third-party cookies and other tracking technologies to collect
+            this data. This optional analytics technology is handled
+            according to applicable requirements and the cookie controls,
+            browser controls, and opt-out mechanisms described in this Policy
+            and our{" "}
+            <Link href="/cookie-policy" className="text-brand-600 underline">
+              Cookie Policy
+            </Link>
+            ; we will request consent where required. For more information
+            about how Microsoft collects and uses data, see the{" "}
             <a
               href="https://www.microsoft.com/privacy/privacystatement"
               target="_blank"
@@ -210,11 +215,11 @@ export default function PrivacyPolicyPage() {
             prior visits to this website or other websites.
           </p>
           <p>
-            Google&apos;s advertising cookies allow Google and its partners to
-            serve personalized ads, non-personalized ads, or both, based on
-            your visit to this Site and other sites on the Internet. You can
-            learn more about how Google uses information from sites that use
-            its services at{" "}
+            Google and its advertising partners may serve personalized,
+            non-personalized, or limited advertisements depending on your
+            consent, your settings, your location, and applicable
+            requirements. You can learn more about how Google uses
+            information from sites that use its services at{" "}
             <a
               href="https://policies.google.com/technologies/partner-sites"
               target="_blank"
@@ -260,6 +265,12 @@ export default function PrivacyPolicyPage() {
               Cookie Policy
             </Link>{" "}
             for more on the cookie categories we use.
+          </p>
+          <p>
+            {site.name} does not currently enable AdSense merely because this
+            section exists. This language describes how advertising would work
+            if and when it is enabled; advertisements remain disabled until
+            valid AdSense account configuration is supplied.
           </p>
         </>
       ),
@@ -453,12 +464,16 @@ export default function PrivacyPolicyPage() {
             from those in your country.
           </p>
           <p>
-            {/* TODO (attorney review): if the Site begins targeting EU/UK users,
-                add GDPR/UK GDPR lawful-basis and rights language and review cookie
-                consent requirements. */}
-            If we begin targeting users in the EU or UK, we will add the
-            applicable GDPR / UK GDPR rights and a cookie-consent mechanism after
-            review.
+            {/* TODO (attorney review): confirm GDPR/UK GDPR lawful-basis and
+                rights language against actual visitor geography and review
+                cookie consent requirements with counsel. */}
+            Privacy and consent mechanisms, including any applicable GDPR, UK
+            GDPR, or other regional rights, will be applied where required
+            based on applicable law and advertising-platform requirements
+            (such as Google&apos;s requirements for AdSense in the EEA, UK,
+            and Switzerland). This Policy does not itself represent complete
+            compliance with GDPR, CCPA, or any other law in every
+            jurisdiction.
           </p>
         </>
       ),
@@ -565,7 +580,11 @@ export default function PrivacyPolicyPage() {
               >
                 {site.domain}
               </a>
-              . By using the Site, you agree to the practices described here.
+              . This Privacy Policy describes those practices: necessary
+              processing takes place to operate and secure the Site, optional
+              technologies are handled according to applicable requirements and
+              the privacy choices available to you, and we will request your
+              consent where required.
             </p>
             <LegalCallout>
               We aim to collect as little personal information as possible and we

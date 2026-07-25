@@ -172,23 +172,31 @@ export default function CookiePolicyPage() {
     },
     {
       id: "cookie-consent",
-      heading: "Cookie consent / privacy choices",
+      heading: "Cookie consent and privacy choices",
       body: (
         <>
           <p>
-            Necessary cookies operate automatically because they are required
-            for the Site to function and stay secure — they do not depend on a
-            choice you make. Optional categories, such as analytics and
-            advertising cookies, are used according to applicable law and the
-            choices available to you.
+            Necessary cookies may operate because they support website
+            functionality, security, and essential services — they do not
+            depend on a choice you make. Optional technologies, including
+            analytics, preference, affiliate, and advertising cookies, may be
+            controlled according to applicable law and the privacy choices
+            available to you.
           </p>
           <p>
-            Where a consent interface is available, you can accept, reject, or
-            manage optional cookie categories through it. You can reopen that
-            interface at any time using the &quot;Privacy choices&quot; link in
-            the site footer, once it is enabled, or by using the browser
-            controls described above. Blocking or clearing cookies through your
-            browser may affect some Site features.
+            Where a consent interface is required and active, you will be able
+            to accept, reject, or manage optional cookie categories through it.
+            You will be able to reopen your settings at any time using the
+            &quot;Privacy choices&quot; link in the site footer once a
+            certified consent management platform (CMP) is configured, or by
+            using the browser controls described above. Blocking cookies may
+            affect some Site functionality.
+          </p>
+          <p>
+            {site.name} will use a Google-certified consent-management
+            solution before serving personalized Google AdSense advertisements
+            where Google requires one. No consent-management platform is
+            active on the Site today.
           </p>
         </>
       ),

@@ -109,11 +109,13 @@ layout (new conditional `AdSenseScript`, currently a no-op).
 
 ## Redirects created
 
-None. `/privacy` → `/privacy-policy` and `/terms-of-use` →
-`/terms-and-conditions` were already correctly consolidated via page-level
-`permanentRedirect()` calls before this pass; the footer already links only to
-canonical routes; no stray "Terms of Use" label exists outside the legacy
-redirect stub. No new duplicate/legacy legal routes were found.
+None in the initial pass — `/privacy` → `/privacy-policy` and `/terms-of-use`
+→ `/terms-and-conditions` were already consolidated via page-level
+`permanentRedirect()` calls, and the footer already links only to canonical
+routes. **Update (follow-up pass, commit `09ed5ad`):** live production
+testing found that pattern actually returns a 308 with no `Location` header
+(it never worked for non-JS requests). Both were moved to `next.config.mjs`
+`redirects()` — see "Follow-up passes" below.
 
 ## ads.txt status
 
@@ -187,24 +189,74 @@ browser.
 
 ## Unresolved manual items (yours to complete)
 
-1. **AdSense publisher id** — set `NEXT_PUBLIC_ADSENSE_CLIENT` in Vercel once
-   you have a real `ca-pub-...` id from the AdSense dashboard.
-2. **ads.txt** — create `public/ads.txt` with the exact line AdSense gives
-   you, per `MONETIZATION_SETUP.md` §2.
-3. **CMP selection** — AdSense dashboard → Privacy & messaging → European
-   regulations → choose a Google-certified CMP, then set `cmpProvider` in
-   `src/lib/consent.ts` and wire its preference-center trigger into
-   `openPrivacyChoices()`.
-4. **First ad placement** — once you have real ad-unit slot ids, add
-   `<AdSlot>` to specific pages following the placement rules in
-   `MONETIZATION_SETUP.md` §1. None are placed yet.
-5. **Attorney review** — unchanged from before this pass; see
-   `docs/legal-policy-review-todos.md` (CCPA/CPRA applicability, GDPR/UK
-   targeting, mailing address, arbitration clause, etc.). This pass did not
-   and could not resolve those — they're legal/business decisions, not code.
-6. **`NO_AD_ROUTES` review** — the seeded sensitive-route list in
-   `src/lib/ads.ts` reflects the current route inventory; review and extend
-   it as new high-sensitivity pages are added.
+1. **Obtain the real AdSense publisher ID** from your AdSense dashboard.
+2. **Configure Google Privacy & Messaging**, or another Google-certified CMP
+   — AdSense dashboard → Privacy & messaging → European regulations — then
+   set `cmpProvider` in `src/lib/consent.ts` and wire its preference-center
+   trigger into `openPrivacyChoices()`.
+3. **Add the exact account-provided `ads.txt` entry** to `public/ads.txt` —
+   per `MONETIZATION_SETUP.md` §2, never a placeholder.
+4. **Configure the real AdSense client ID and ad-slot IDs** — set
+   `NEXT_PUBLIC_ADSENSE_CLIENT` in Vercel, then add real `<AdSlot slot="...">`
+   placements per the rules in `MONETIZATION_SETUP.md` §1. None are placed
+   yet, and no fake IDs exist anywhere in this repo.
+5. **Keep ads disabled until steps 1–4 are complete** — already the default;
+   nothing to do today.
+
+Additionally, unchanged from before this pass and not something code can
+resolve: **attorney review** of all four legal pages (CCPA/CPRA applicability,
+GDPR/UK-relevant obligations, mailing address, arbitration clause — see
+`docs/legal-policy-review-todos.md`), and periodic review of the
+`NO_AD_ROUTES` sensitive-route seed list in `src/lib/ads.ts` as new
+high-sensitivity pages are added.
+
+## Follow-up passes (2026-07-25)
+
+Two follow-up passes shipped after the initial deployment, both verified
+against live production HTML, not just local output.
+
+**Pass 1 — redirect fix (commit `09ed5ad`).** Live testing (not just source
+reading) found `/terms-of-use` and `/privacy` returned a 308 status with no
+`Location` header — a real, pre-existing bug (reproduced on a local build of
+the unmodified stub files, so it predates any change in this project). Fixed
+by moving both to `next.config.mjs` `redirects()`, the pattern already proven
+working for every other redirect on the site; the now-unreachable stub pages
+were deleted.
+
+**Pass 2 — this commit.** A follow-up request described two "issues" —
+"Cookie Policy section 7 missing" and "Privacy Policy has no AdSense
+section" — that turned out to **already be fixed and live** from the initial
+pass (re-verified directly against `https://www.nritousa.com` before making
+any change; see the "Issue the brief assumed but that does not exist"
+section above, which flagged the section-7 claim specifically). What that
+follow-up request also surfaced, correctly, were real remaining gaps:
+
+- Cookie Policy's `cookie-consent` section heading changed from "Cookie
+  consent / privacy choices" to the exact requested "Cookie consent and
+  privacy choices", and its body now explicitly covers all six required
+  points, including a new sentence committing to a Google-certified CMP
+  before personalized AdSense ads.
+- Privacy Policy's `advertising-adsense` section gained the "personalized,
+  non-personalized, or limited ads depending on consent/settings/location"
+  language and an explicit "AdSense is not enabled merely because this
+  language exists" disclaimer.
+- Two passive-consent sentences were removed from the Privacy Policy: "By
+  using the Site, you agree to the practices described here" (intro) and "By
+  using the Site, you agree that we and Microsoft can collect and use this
+  data as described" (Clarity paragraph) — both replaced with accurate
+  necessary-vs-optional / consent-where-required language.
+- The International Visitors section no longer conditions privacy/consent
+  mechanisms on the Site "targeting" EU/UK users — it now says mechanisms
+  apply "where required based on applicable law and advertising-platform
+  requirements," without claiming full GDPR/CCPA compliance.
+- `site.legalUpdated` (shared by Terms & Conditions, Privacy Policy,
+  Disclaimer, and Affiliate Disclosure — a single source of truth by design)
+  bumped to July 25, 2026.
+- New tests: `src/app/privacy-policy/anchors.test.ts` (AdSense section
+  present, Google Ads Settings link present, no passive-consent language, 19
+  sections in sequence) and strengthened assertions in
+  `src/app/cookie-policy/anchors.test.ts` (exact heading text, new CMP
+  sentence, no passive-consent language).
 
 ## Final verdict
 
