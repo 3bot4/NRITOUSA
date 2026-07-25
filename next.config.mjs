@@ -199,6 +199,26 @@ const nextConfig = {
         destination: "/green-card/cspa-kids-aging-out",
         statusCode: 301,
       },
+      // /terms-of-use and /privacy were legacy routes implemented as
+      // page-level `permanentRedirect()` stubs (next/navigation). That
+      // pattern sets a 308 status but never emits an HTTP `Location` header
+      // on a direct (non-JS) request — confirmed live in production and
+      // reproduced on a local build of the unmodified stub files, so it
+      // predates this fix. A `redirects()` entry here is the same pattern
+      // already used by every other redirect in this file and is confirmed
+      // (via `/topics/money-transfer`) to emit a real `Location` header. The
+      // stub page files have been deleted; every internal link already points
+      // at the canonical destination.
+      {
+        source: "/terms-of-use",
+        destination: "/terms-and-conditions",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
     ];
   },
 };
