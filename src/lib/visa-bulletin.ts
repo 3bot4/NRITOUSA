@@ -755,6 +755,41 @@ export function getExtendedVelocity(
   return velocity(points, trailingMonths);
 }
 
+/**
+ * The most recent month with a real dated cutoff (not "C"/"U", never null)
+ * for a category/country/chart — lets pace/gap stats fall back to "as of the
+ * last available month" instead of going blank when the current month is
+ * frozen ("U"), which does happen for real (e.g. EB-2 India, July 2026).
+ */
+export function findLastDatedPoint(
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind = "fad"
+): SeriesPoint | null {
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  if (!points || !points.length) return null;
+  for (let i = points.length - 1; i >= 0; i--) {
+    const [, value] = points[i];
+    if (isValidVisaDate(value)) return points[i];
+  }
+  return null;
+}
+
+/** Pace as of an explicit month (not necessarily the current bulletin) — powers the "as of the last dated month" fallback. */
+export function getExtendedVelocityAsOf(
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind,
+  asOf: string,
+  trailingMonths = 12
+): number | null {
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  if (!points || !points.length) return null;
+  return velocity(points, trailingMonths, asOf);
+}
+
 export interface ExtendedMovement {
   status: MovementStatus;
   currentCutoff: MaybeCutoff;

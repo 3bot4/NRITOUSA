@@ -21,10 +21,13 @@ import {
   countRetrogressionMonths,
   extendedEstimateWait,
   extendedGetMovement,
+  findLastDatedPoint,
+  formatBulletinMonth,
   formatCutoff,
   formatMonths,
   getExtendedCutoffs,
   getExtendedVelocity,
+  getExtendedVelocityAsOf,
   getExtendedSeries,
   monthIndex,
   projectWithPace,
@@ -115,11 +118,25 @@ export default function GreenCardQueueTracker() {
   const pace60 = useMemo(() => getExtendedVelocity(category, country, chart, 60), [category, country, chart]);
   const retro60 = useMemo(() => countRetrogressionMonths(category, country, chart, 60), [category, country, chart]);
 
+  // When the current month is frozen ("U"), fall back to the last dated
+  // month for pace/gap context instead of going blank — the historical trend
+  // is still real and useful even though there's no live projection target
+  // this month. Clearly labeled "as of <month>" wherever shown.
+  const lastDatedPoint = useMemo(
+    () => (cutoff === "U" ? findLastDatedPoint(category, country, chart) : null),
+    [cutoff, category, country, chart]
+  );
+  const usingFallback = lastDatedPoint !== null;
+  const effectivePace12 =
+    pace12 ?? (lastDatedPoint ? getExtendedVelocityAsOf(category, country, chart, lastDatedPoint[0], 12) : null);
+  const effectivePace60 =
+    pace60 ?? (lastDatedPoint ? getExtendedVelocityAsOf(category, country, chart, lastDatedPoint[0], 60) : null);
+
   const paceValues: Record<PaceScenario, number | null> = {
-    recent12: pace12,
-    longrun60: pace60,
-    fast: pace60 !== null ? pace60 * 1.5 : null,
-    slow: pace60 !== null ? pace60 * 0.4 : null,
+    recent12: effectivePace12,
+    longrun60: effectivePace60,
+    fast: effectivePace60 !== null ? effectivePace60 * 1.5 : null,
+    slow: effectivePace60 !== null ? effectivePace60 * 0.4 : null,
   };
   const selectedPaceValue = paceValues[pace];
 
@@ -127,7 +144,11 @@ export default function GreenCardQueueTracker() {
     cutoff && cutoff !== "C" && cutoff !== "U" && validDate ? monthIndex(priorityDate) - monthIndex(cutoff) : 0;
 
   const daysBehindExact =
-    cutoff && cutoff !== "C" && cutoff !== "U" && validDate ? exactDaysBetween(cutoff, priorityDate) : 0;
+    cutoff && cutoff !== "C" && cutoff !== "U" && validDate
+      ? exactDaysBetween(cutoff, priorityDate)
+      : lastDatedPoint && validDate
+        ? exactDaysBetween(lastDatedPoint[1], priorityDate)
+        : 0;
 
   const projection =
     estimate && estimate.status === "estimate" && selectedPaceValue !== null
@@ -140,17 +161,19 @@ export default function GreenCardQueueTracker() {
       : null;
 
   const paceLabel = (v: number | null) => (v === null ? "n/a" : `${Math.round(v * 30)} days/month`);
+  const lastDatedMonthLabel = lastDatedPoint ? formatBulletinMonth(lastDatedPoint[0]) : null;
+  const asOfSuffix = usingFallback && lastDatedMonthLabel ? ` as of ${lastDatedMonthLabel}, before this freeze` : "";
 
   const paceAssumptionLabel = (() => {
     switch (pace) {
       case "recent12":
-        return `the trailing 12-month pace (${paceLabel(pace12)})`;
+        return `the trailing 12-month pace (${paceLabel(effectivePace12)})${asOfSuffix}`;
       case "longrun60":
-        return `the trailing 60-month pace (${paceLabel(pace60)})`;
+        return `the trailing 60-month pace (${paceLabel(effectivePace60)})${asOfSuffix}`;
       case "fast":
-        return `1.5x the trailing 60-month pace (${paceLabel(paceValues.fast)})`;
+        return `1.5x the trailing 60-month pace (${paceLabel(paceValues.fast)})${asOfSuffix}`;
       case "slow":
-        return `0.4x the trailing 60-month pace (${paceLabel(paceValues.slow)})`;
+        return `0.4x the trailing 60-month pace (${paceLabel(paceValues.slow)})${asOfSuffix}`;
     }
   })();
 
@@ -248,6 +271,11 @@ export default function GreenCardQueueTracker() {
             projectedMonthsCapped={projection.capped}
             paceAssumptionLabel={paceAssumptionLabel}
             projectedMonthLabel={projectedMonthLabel}
+            historicalPaceNote={
+              usingFallback && effectivePace12 !== null && lastDatedPoint
+                ? `${paceLabel(effectivePace12)} (as of ${lastDatedMonthLabel})`
+                : null
+            }
           />
         ) : (
           <p className="text-sm text-ink-500">Enter a valid priority date to see your queue position.</p>
@@ -263,8 +291,13 @@ export default function GreenCardQueueTracker() {
               ? "None — current"
               : cutoff && cutoff !== "C" && cutoff !== "U" && daysBehindExact > 0
                 ? daysToYearsDays(daysBehindExact)
-                : "—"}
+                : usingFallback && lastDatedPoint && daysBehindExact > 0
+                  ? daysToYearsDays(daysBehindExact)
+                  : "—"}
           </p>
+          {usingFallback && lastDatedPoint && daysBehindExact > 0 && (
+            <p className="mt-1 text-[10px] text-ink-400">as of {lastDatedMonthLabel}, before this freeze</p>
+          )}
         </div>
         <div className="rounded-xl border border-ink-900/5 bg-[#fafafa] p-4">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-400">Latest bulletin movement</p>
@@ -280,7 +313,10 @@ export default function GreenCardQueueTracker() {
         </div>
         <div className="rounded-xl border border-ink-900/5 bg-[#fafafa] p-4">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-400">12-month avg pace</p>
-          <p className="mt-1 text-lg font-bold text-ink-900">{paceLabel(pace12)}</p>
+          <p className="mt-1 text-lg font-bold text-ink-900">{paceLabel(effectivePace12)}</p>
+          {usingFallback && effectivePace12 !== null && lastDatedPoint && (
+            <p className="mt-1 text-[10px] text-ink-400">as of {lastDatedMonthLabel}, before this freeze</p>
+          )}
         </div>
         <div className="rounded-xl border border-ink-900/5 bg-[#fafafa] p-4">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-400">Retrogressions (60 mo)</p>

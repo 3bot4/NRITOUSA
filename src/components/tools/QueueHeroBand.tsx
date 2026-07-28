@@ -27,6 +27,8 @@ export interface QueueHeroBandProps {
   /** Human label of the pace assumption driving projectedMonths, e.g. "recent 12-month pace (2.1 mo/mo)". */
   paceAssumptionLabel: string;
   projectedMonthLabel: string | null;
+  /** Shown only in the "unavailable" state — historical pace context from before a freeze, e.g. "21 days/month as of Jun 2026". */
+  historicalPaceNote?: string | null;
 }
 
 function monthsToLabel(m: number, capped?: boolean): string {
@@ -50,6 +52,7 @@ export default function QueueHeroBand({
   projectedMonthsCapped,
   paceAssumptionLabel,
   projectedMonthLabel,
+  historicalPaceNote,
 }: QueueHeroBandProps) {
   const chartLabel = chart === "fad" ? "Final Action Date" : "Dates for Filing";
   const priorityLabel = formatCutoff(priorityDate);
@@ -80,6 +83,13 @@ export default function QueueHeroBand({
             ? `${chartLabel} is Unavailable ("U") for this category and country this month, regardless of priority date — this is an official Department of State status, not a data gap.`
             : "This category/country/chart cell could not be verified against the official Visa Bulletin archive, so we show nothing rather than a guess."}
         </p>
+        {status === "unavailable" && historicalPaceNote && (
+          <p className="mx-auto mt-3 max-w-xl text-xs text-ink-400">
+            Before this freeze, this category was moving at{" "}
+            <strong className="font-semibold text-ink-600">{historicalPaceNote}</strong> — see the stat strip and
+            history chart below for the trend.
+          </p>
+        )}
       </div>
     );
   }
