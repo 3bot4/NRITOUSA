@@ -27,24 +27,50 @@ it renders on the page as the "Last updated · Source" stamp.
 
 ## 1. Visa bulletin (monthly)
 
-When the new monthly Visa Bulletin is published on travel.state.gov:
+**Architecture (as of the 2026-07-28 re-verification):** `data/visa-bulletin/snapshots/YYYY-MM.json`
+is now the source of truth — one fully-populated file per month, covering
+employment categories (EB1, EB2, EB3, EB3_OTHER "Other Workers", EB4,
+EB5_UNRESERVED) and family categories (F1, F2A, F2B, F3, F4) × 5 countries
+(India, China, Mexico, Philippines, Rest of World) × both charts (`fad`/`dff`).
+`current.json`, `history.json` (sparse change-points), and `index.json` are all
+**machine-derived from the snapshots** by `scripts/build-visa-bulletin-data.mjs`
+— never hand-edited directly, which is exactly how the pre-2026-07-28 history
+went stale (it was hand-maintained sparse data that was never actually
+verified against the source; see `data/visa-bulletin/_verified-backfill/` for
+the re-verification research and `ingest-log.json` for the run record). A cell
+that can't be confirmed is `null` in its snapshot — render it as "unavailable"
+in the UI, never guess a value.
 
-1. Open the bulletin's **Employment-Based** tables: "Final Action Dates" and
-   "Dates for Filing".
-2. Edit `data/visa-bulletin/current.json`:
-   - Set `bulletinMonth` (e.g. `"2026-07"`) and `lastUpdated` (today).
-   - Update `fad`/`dff` for every category × country. Use `"C"` for Current.
-   - Remove `fadTodo`/`dffTodo` flags once a value is verified.
-3. Edit `data/visa-bulletin/history.json`: **append** a `[month, cutoff]`
-   point to each series **only where the cutoff changed** (it's a sparse
-   change-point series — unchanged months carry forward automatically).
-4. Regenerate the monthly snapshots and index:
+**IMPORTANT:** `travel.state.gov` returns HTTP 403 to any automated/datacenter
+fetch — confirmed repeatedly. Verification has to go through `WebSearch` and
+secondary sources (reputable immigration-law-firm blogs and forums that
+reproduce the DOS tables verbatim, cross-checked against each other), **or**
+`adoption.state.gov`, which was discovered during the 2026-07-28 backfill to
+mirror `travel.state.gov`'s Visa Bulletin pages (including the PDFs) verbatim
+and, unlike the primary domain, is not blocked — e.g.
+`https://adoption.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html`.
+Treat that mirror as convenient but undocumented/unofficial — it could change
+or get blocked without notice, so always keep a non-mirror fallback (search +
+cross-referenced secondary sources) in mind rather than depending on it alone.
+
+When the new monthly Visa Bulletin is published:
+
+1. Fetch the new month's bulletin via the `adoption.state.gov` mirror if it's
+   still working, or reconstruct it via WebSearch + at least two independently
+   corroborating secondary sources per cell (per the method in
+   `data/visa-bulletin/_verified-backfill/`).
+2. Add `data/visa-bulletin/snapshots/YYYY-MM.json` for the new month in the
+   same shape as the existing files — `categories.{eb1,eb2,eb3,eb3Other,eb4,eb5}`
+   and `family.{f1,f2a,f2b,f3,f4}`, each `{country: {fad, dff}}` for the 5
+   countries. Use `"C"` for Current, `"U"` for DOS's own Unavailable, `null`
+   for "couldn't verify."
+3. Regenerate the derived files:
    ```bash
-   node scripts/build-visa-snapshots.mjs
+   node scripts/build-visa-bulletin-data.mjs
    ```
-   This rewrites `data/visa-bulletin/snapshots/YYYY-MM.json` and
-   `data/visa-bulletin/index.json`.
-5. Commit all of `data/visa-bulletin/` and deploy.
+   This rewrites `current.json`, `history.json`, and `index.json` from
+   whatever's in `snapshots/`, and appends a run to `ingest-log.json`.
+4. Commit all of `data/visa-bulletin/` and deploy.
 
 The estimator's velocity math and charts pick the new month up automatically.
 

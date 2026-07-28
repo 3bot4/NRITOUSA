@@ -1,0 +1,15 @@
+[
+  {
+    "runAt": "2026-07-28T17:55:58.523Z",
+    "trigger": "manual-backfill-2021-08_2026-07",
+    "monthsProcessed": 60,
+    "rowsWritten": 6567,
+    "rowsSkippedUnavailable": 33,
+    "confidenceCounts": {
+      "high": 6261,
+      "medium": 306,
+      "unverified": 33
+    },
+    "errors": []
+  }
+]

@@ -9,18 +9,23 @@ import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import { getToolHubContent } from "@/lib/toolHubContent";
 import DataStamp from "@/components/tools/DataStamp";
 import GreenCardEstimator from "@/components/tools/GreenCardEstimator";
-import TrackerCharts from "@/components/tools/TrackerCharts";
+import GreenCardQueueTracker from "@/components/tools/GreenCardQueueTracker";
+import CostOfWaitingSimulator from "@/components/tools/CostOfWaitingSimulator";
+import NextBulletinCountdown from "@/components/tools/NextBulletinCountdown";
+import ImmigrationEmailSignup from "@/components/tools/ImmigrationEmailSignup";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 import Eb5SetAsidePanel from "@/components/Eb5SetAsidePanel";
 import { getTool } from "@/lib/tools";
 import {
   bulletin,
-  CATEGORY_SHORT,
-  COUNTRY_LABELS,
+  EXTENDED_CATEGORIES,
+  EXTENDED_CATEGORY_SHORT,
+  EXTENDED_COUNTRIES,
+  EXTENDED_COUNTRY_LABELS,
+  extendedGetMovement,
   formatCutoff,
   getCutoffs,
-  type BulletinCountry,
-  type EbCategory,
+  getExtendedCutoffs,
 } from "@/lib/visa-bulletin";
 import { inventoryMeta } from "@/lib/i485-inventory";
 import {
@@ -75,10 +80,27 @@ const faq: FaqItem[] = [
     answer:
       "It projects the average movement of your category's cutoff over roughly the last 30 visa bulletins forward, and shows an optimistic-to-pessimistic range rather than a single date. Real waits depend on future demand, retrogression, country-cap spillover, and possible law changes — treat the output as a planning range, not legal advice.",
   },
+  {
+    question: "Does this tracker cover family-sponsored green card categories too?",
+    answer:
+      "Yes. Alongside EB-1 through EB-5 (including EB-3 Other Workers and EB-4), the tracker covers F1, F2A, F2B, F3, and F4 family-sponsored categories for India, China, Mexico, the Philippines, and all other countries, using the same re-verified Final Action Date and Dates for Filing data.",
+  },
+  {
+    question: "Why do Mexico and the Philippines have their own green card backlogs?",
+    answer:
+      "Mexico and the Philippines are large source countries for family-sponsored immigration specifically, so the State Department tracks them as separate chargeability areas alongside India, China, and all other countries — a category can be current for 'all other countries' but still backlogged for Mexico or the Philippines (or vice versa) depending on historical demand.",
+  },
+  {
+    question: "What does '1.5x long-run pace' or '0.4x long-run pace' mean in the pace scenarios?",
+    answer:
+      "The long-run pace is the average monthly cutoff advancement over the trailing 60 bulletins. The 1.5x and 0.4x scenarios scale that same pace up or down to show how sensitive your projected wait is to faster or slower future movement — they are not separate forecasts, just stress tests on the same baseline.",
+  },
+  {
+    question: "Why does the tracker sometimes show '—' instead of a date?",
+    answer:
+      "A '—' means that specific category, country, and chart-type cell could not be independently verified against the official Department of State Visa Bulletin archive for that month. We show it as unavailable rather than guess, estimate, or carry forward a neighboring value — a missing figure is safer than a wrong one.",
+  },
 ];
-
-const CATEGORIES: EbCategory[] = ["eb1", "eb2", "eb3", "eb5"];
-const COUNTRIES: BulletinCountry[] = ["india", "china", "row"];
 
 export default function GreenCardTrackerPage() {
   const url = absoluteUrl("/tools/green-card-tracker");
@@ -109,7 +131,34 @@ export default function GreenCardTrackerPage() {
       { name: "Home", url: "/" },
       { name: "Tools", url: "/tools" },
       { name: tool.label, url: "/tools/green-card-tracker" },
-    ])
+    ]),
+    {
+      "@type": "Dataset",
+      "@id": `${url}#dataset`,
+      name: "US Visa Bulletin Final Action Dates & Dates for Filing, 2021–2026",
+      description:
+        "Monthly Final Action Date and Dates for Filing cutoffs for every employment-based (EB-1 through EB-5) and family-sponsored (F1, F2A, F2B, F3, F4) immigrant visa category, by country of chargeability (India, China, Mexico, Philippines, all other countries), re-verified cell-by-cell against the official U.S. Department of State Visa Bulletin archive.",
+      url,
+      license: "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+      isAccessibleForFree: true,
+      creator: { "@id": `${site.url}/#organization` },
+      distribution: [
+        {
+          "@type": "DataDownload",
+          encodingFormat: "text/html",
+          contentUrl: url,
+        },
+      ],
+      temporalCoverage: "2021-08/2026-07",
+      spatialCoverage: "United States",
+      variableMeasured: [
+        "Final Action Date",
+        "Dates for Filing",
+        "Employment-based preference category",
+        "Family-sponsored preference category",
+        "Country of chargeability",
+      ],
+    }
   );
 
   return (
@@ -139,59 +188,96 @@ export default function GreenCardTrackerPage() {
           </>
         }
       >
-      {/* Estimator */}
-      <section className="pb-12 pt-6 sm:pb-16">
+      {/* Quick answer + key takeaways */}
+      <section className="pb-8 pt-6 sm:pt-8">
         <Container>
-          <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
-          <div className="mb-8">
-            <ToolIntro content={content} />
+          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/5 bg-[#fafafa] p-5 sm:p-6">
+            <p className="text-xs font-bold uppercase tracking-wider text-ink-400">Quick answer</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-700">
+              Pick your category and country of birth below, enter your priority
+              date, and the tracker shows the current queue gap, a projected
+              wait range under four different pace scenarios, and how the
+              cutoff has actually moved over the last five years — all built
+              from a re-verified, cell-by-cell dataset covering employment and
+              family-sponsored categories across India, China, Mexico, the
+              Philippines, and all other countries.
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm text-ink-700 sm:grid-cols-2">
+              <li>• Every projection is a range, never a single date</li>
+              <li>• Retrogression is tracked, not hidden</li>
+              <li>• Covers Final Action Dates and Dates for Filing</li>
+              <li>• No account, no data leaves your browser</li>
+            </ul>
           </div>
-          <GreenCardEstimator variant="full" />
         </Container>
       </section>
 
-      {/* Current bulletin table */}
+      {/* Signature dashboard */}
+      <section className="pb-12 sm:pb-16">
+        <Container>
+          <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
+          <GreenCardQueueTracker />
+        </Container>
+      </section>
+
+      {/* Current bulletin table — full matrix */}
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <SectionHeading
             eyebrow={`Visa bulletin · ${bulletin.month}`}
             title="Current cutoff dates at a glance"
-            description="Final Action Dates (approval cutoff) for each employment-based category. 'Current' means no backlog."
+            description="Final Action Dates for every employment-based and family-sponsored category, all five countries. 'Current' = no backlog; '—' = not yet verified for this cell."
           />
           <div className="overflow-x-auto rounded-2xl border border-ink-900/5 bg-white shadow-card">
-            <table className="w-full min-w-[480px] text-sm">
+            <table className="w-full min-w-[720px] text-sm">
               <thead>
                 <tr className="border-b border-ink-900/5 bg-[#fafafa] text-left text-xs font-bold uppercase tracking-wider text-ink-400">
-                  <th className="px-5 py-3.5">Category</th>
-                  {COUNTRIES.map((c) => (
-                    <th key={c} className="px-5 py-3.5">
-                      {COUNTRY_LABELS[c]}
+                  <th className="px-4 py-3.5">Category</th>
+                  {EXTENDED_COUNTRIES.map((c) => (
+                    <th key={c} className="px-4 py-3.5">
+                      {EXTENDED_COUNTRY_LABELS[c]}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {CATEGORIES.map((cat) => (
-                  <tr
-                    key={cat}
-                    className="border-b border-ink-900/5 last:border-0"
-                  >
-                    <td className="px-5 py-3.5 font-semibold text-ink-900">
-                      {CATEGORY_SHORT[cat]}
+                {EXTENDED_CATEGORIES.map((cat) => (
+                  <tr key={cat} className="border-b border-ink-900/5 last:border-0">
+                    <td className="px-4 py-3.5 font-semibold text-ink-900">
+                      {EXTENDED_CATEGORY_SHORT[cat]}
                     </td>
-                    {COUNTRIES.map((c) => {
-                      const cut = getCutoffs(cat, c);
+                    {EXTENDED_COUNTRIES.map((c) => {
+                      const cut = getExtendedCutoffs(cat, c);
+                      const movement = extendedGetMovement(cat, c, "fad");
                       const current = cut.fad === "C";
+                      const unverified = cut.fad === null;
+                      const changeLabel =
+                        movement.status === "advanced" && movement.monthsMoved
+                          ? `+${Math.round(movement.monthsMoved * 30)}d`
+                          : movement.status === "retrogressed" && movement.monthsMoved
+                            ? `${Math.round(movement.monthsMoved * 30)}d`
+                            : null;
                       return (
                         <td
                           key={c}
-                          className={`px-5 py-3.5 ${
-                            current
-                              ? "font-semibold text-emerald-600"
-                              : "text-ink-700"
+                          className={`px-4 py-3.5 ${
+                            unverified
+                              ? "text-ink-300"
+                              : current
+                                ? "font-semibold text-emerald-600"
+                                : "text-ink-700"
                           }`}
                         >
-                          {formatCutoff(cut.fad)}
+                          {unverified ? "—" : formatCutoff(cut.fad ?? "C")}
+                          {changeLabel && (
+                            <span
+                              className={`ml-1.5 text-[10px] font-semibold ${
+                                movement.status === "advanced" ? "text-emerald-600" : "text-rose-600"
+                              }`}
+                            >
+                              {changeLabel}
+                            </span>
+                          )}
                         </td>
                       );
                     })}
@@ -210,15 +296,39 @@ export default function GreenCardTrackerPage() {
         </Container>
       </section>
 
-      {/* Historical chart */}
+      {/* People ahead of you (I-485 inventory) + range estimate */}
       <section className="py-12 sm:py-16">
         <Container>
           <SectionHeading
-            eyebrow="History"
-            title="How the cutoffs have moved"
-            description="Three years of Final Action Date and Dates for Filing movement, from monthly visa bulletin snapshots."
+            eyebrow="I-485 inventory"
+            title="How many people are ahead of you"
+            description="A concrete place in line from USCIS's pending Form I-485 inventory, plus a simplified EB-1/EB-2/EB-3/EB-5 India/China/ROW estimate."
           />
-          <TrackerCharts />
+          <div className="mb-8">
+            <ToolIntro content={content} />
+          </div>
+          <GreenCardEstimator variant="full" />
+        </Container>
+      </section>
+
+      {/* Cost of waiting */}
+      <section className="bg-white py-12 sm:py-16">
+        <Container>
+          <SectionHeading
+            eyebrow="Plan ahead"
+            title="What the wait might cost you"
+          />
+          <CostOfWaitingSimulator projectedYears={null} />
+        </Container>
+      </section>
+
+      {/* Email capture */}
+      <section className="py-12 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-2xl">
+            <NextBulletinCountdown />
+            <ImmigrationEmailSignup source="green-card-tracker" />
+          </div>
         </Container>
       </section>
 
@@ -265,6 +375,55 @@ export default function GreenCardTrackerPage() {
                 typically uses 2–3 numbers from the pool.
               </p>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Methodology */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <SectionHeading
+            eyebrow="Methodology"
+            title="Exactly how the projection is calculated"
+          />
+          <div className="mx-auto max-w-3xl space-y-4 text-sm leading-relaxed text-ink-700">
+            <p>
+              <strong className="text-ink-900">1. Gap.</strong> We take the
+              months between your priority date and the current cutoff for
+              your chosen category, country, and chart (Final Action or Dates
+              for Filing) — this is your queue position, not a wait time on
+              its own.
+            </p>
+            <p>
+              <strong className="text-ink-900">2. Pace.</strong> We measure how
+              many cutoff-months the bulletin advanced per calendar month over
+              a trailing window (12 months for &ldquo;recent pace&rdquo;, 60
+              months for &ldquo;long-run pace&rdquo;), using only re-verified
+              bulletin data — never estimated figures.
+            </p>
+            <p>
+              <strong className="text-ink-900">3. Projection.</strong> Wait =
+              gap ÷ pace. We show four scenarios (recent pace, long-run pace,
+              1.5× long-run, 0.4× long-run) side by side rather than one
+              number, because pace varies substantially month to month.
+            </p>
+            <p>
+              <strong className="text-ink-900">4. Honesty checks.</strong> If a
+              category is currently retrogressing, or has barely moved in the
+              trailing window, we say so instead of projecting — a forward
+              projection from a moving-backwards or frozen baseline would be
+              misleading. If a cell&apos;s data couldn&apos;t be verified
+              against the official archive, we show &ldquo;—&rdquo;, never a
+              guess.
+            </p>
+            <p className="rounded-xl bg-[#fafafa] px-4 py-3 text-xs text-ink-500">
+              Cutoff movement is driven by demand, per-country annual limits,
+              and unused-visa spillover between categories and countries — it
+              is <strong>not a trend</strong> and can move backwards
+              (retrogress) at any time. This tool is informational only and is
+              not legal advice; verify your specific situation with an
+              immigration attorney.
+            </p>
           </div>
         </Container>
       </section>

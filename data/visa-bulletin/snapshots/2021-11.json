@@ -1,0 +1,251 @@
+{
+  "bulletinMonth": "2021-11",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin archive",
+  "categories": {
+    "eb1": {
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    },
+    "eb2": {
+      "india": {
+        "fad": "2011-12-01",
+        "dff": "2013-01-08"
+      },
+      "china": {
+        "fad": "2018-11-15",
+        "dff": "2019-02-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    },
+    "eb3": {
+      "india": {
+        "fad": "2012-01-15",
+        "dff": "2012-01-22"
+      },
+      "china": {
+        "fad": "2018-03-22",
+        "dff": "2018-04-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    },
+    "eb3Other": {
+      "india": {
+        "fad": "2012-01-15",
+        "dff": "2012-01-22"
+      },
+      "china": {
+        "fad": "2010-03-01",
+        "dff": "2010-05-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    },
+    "eb4": {
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "mexico": {
+        "fad": "2020-04-01",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    },
+    "eb5": {
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2015-11-22",
+        "dff": "2015-12-15"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
+    }
+  },
+  "family": {
+    "f1": {
+      "india": {
+        "fad": "2014-12-01",
+        "dff": "2016-05-15"
+      },
+      "china": {
+        "fad": "2014-12-01",
+        "dff": "2016-05-15"
+      },
+      "mexico": {
+        "fad": "1999-01-15",
+        "dff": "2000-08-01"
+      },
+      "philippines": {
+        "fad": "2012-03-01",
+        "dff": "2015-04-22"
+      },
+      "row": {
+        "fad": "2014-12-01",
+        "dff": "2016-05-15"
+      }
+    },
+    "f2a": {
+      "india": {
+        "fad": "C",
+        "dff": "2021-06-01"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "2021-06-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "2021-06-01"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "2021-06-01"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "2021-06-01"
+      }
+    },
+    "f2b": {
+      "india": {
+        "fad": "2015-09-22",
+        "dff": "2016-09-22"
+      },
+      "china": {
+        "fad": "2015-09-22",
+        "dff": "2016-09-22"
+      },
+      "mexico": {
+        "fad": "2000-03-15",
+        "dff": "2000-10-01"
+      },
+      "philippines": {
+        "fad": "2011-10-22",
+        "dff": "2013-10-01"
+      },
+      "row": {
+        "fad": "2015-09-22",
+        "dff": "2016-09-22"
+      }
+    },
+    "f3": {
+      "india": {
+        "fad": "2008-11-22",
+        "dff": "2009-08-22"
+      },
+      "china": {
+        "fad": "2008-11-22",
+        "dff": "2009-08-22"
+      },
+      "mexico": {
+        "fad": "1997-05-15",
+        "dff": "2000-09-08"
+      },
+      "philippines": {
+        "fad": "2002-06-08",
+        "dff": "2003-10-01"
+      },
+      "row": {
+        "fad": "2008-11-22",
+        "dff": "2009-08-22"
+      }
+    },
+    "f4": {
+      "india": {
+        "fad": "2005-09-15",
+        "dff": "2006-01-01"
+      },
+      "china": {
+        "fad": "2007-03-22",
+        "dff": "2007-10-01"
+      },
+      "mexico": {
+        "fad": "1999-02-08",
+        "dff": "1999-06-01"
+      },
+      "philippines": {
+        "fad": "2002-08-22",
+        "dff": "2004-02-01"
+      },
+      "row": {
+        "fad": "2007-03-22",
+        "dff": "2007-10-01"
+      }
+    }
+  }
+}

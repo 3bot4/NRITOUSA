@@ -17,18 +17,26 @@ import {
   CATEGORY_LABELS,
   COUNTRY_LABELS,
   EB5_SETASIDE_ORDER,
+  EXTENDED_CATEGORIES,
+  EXTENDED_COUNTRIES,
+  countRetrogressionMonths,
   estimateWait,
   expandSeries,
+  extendedEstimateWait,
+  extendedGetMovement,
   formatCutoff,
   getApplicableChart,
   getBulletinLabel,
   getCutoffs,
   getEb5SetAside,
+  getExtendedCutoffs,
+  getExtendedSeries,
   getMovement,
   getSeries,
   isCurrent,
   isUnavailableVisaValue,
   isValidVisaDate,
+  projectWithPace,
   velocity,
   type BulletinCountry,
   type EbCategory,
@@ -225,5 +233,108 @@ describe("getMovement is C/U-safe and consistent across every category", () => {
     expect(m.priorFad).toBe("2022-12-15");
     expect(m.monthsMoved).not.toBeNull();
     expect(m.monthsMoved!).toBeLessThan(0);
+  });
+});
+
+/* ==========================================================================
+ * Extended matrix (family categories, EB-3 Other/EB-4, Mexico/Philippines)
+ * — added for the Green Card Queue Tracker rebuild.
+ * ========================================================================== */
+
+describe("extended category/country matrix — never throws, never NaN", () => {
+  it("getExtendedCutoffs covers every combo without throwing, null means honestly unverified", () => {
+    for (const cat of EXTENDED_CATEGORIES) {
+      for (const co of EXTENDED_COUNTRIES) {
+        const { fad, dff } = getExtendedCutoffs(cat, co);
+        for (const v of [fad, dff]) {
+          if (v === null) continue; // unverified — acceptable, never a guess
+          expect(typeof v).toBe("string");
+          expect(v).not.toMatch(/NaN|Invalid|undefined/);
+        }
+      }
+    }
+  });
+
+  it("extendedEstimateWait never throws or produces NaN across the full matrix", () => {
+    for (const cat of EXTENDED_CATEGORIES) {
+      for (const co of EXTENDED_COUNTRIES) {
+        const est = extendedEstimateWait("2015-01-01", cat, co);
+        expect(est.status).toBeTruthy();
+        if (est.optimisticMonths !== null) expect(Number.isFinite(est.optimisticMonths)).toBe(true);
+        if (est.pessimisticMonths !== null) expect(Number.isFinite(est.pessimisticMonths)).toBe(true);
+        if (est.monthsBehind !== null) expect(Number.isFinite(est.monthsBehind)).toBe(true);
+      }
+    }
+  });
+
+  it("extendedEstimateWait returns no-data (not a guess) when a cell is unverified", () => {
+    // EB-3 Other Workers / Philippines has genuine unverified months in the backfill.
+    const est = extendedEstimateWait("2015-01-01", "eb3Other", "philippines");
+    if (est.fad === null) {
+      expect(est.status).toBe("no-data");
+      expect(est.optimisticMonths).toBeNull();
+      expect(est.pessimisticMonths).toBeNull();
+    }
+  });
+
+  it("extendedGetMovement covers every combo without throwing", () => {
+    for (const cat of EXTENDED_CATEGORIES) {
+      for (const co of EXTENDED_COUNTRIES) {
+        const m = extendedGetMovement(cat, co);
+        expect(m.status).toBeTruthy();
+        if (m.monthsMoved !== null) expect(Number.isFinite(m.monthsMoved)).toBe(true);
+      }
+    }
+  });
+
+  it("getExtendedSeries returns a well-formed series or null, never throws", () => {
+    for (const cat of EXTENDED_CATEGORIES) {
+      for (const co of EXTENDED_COUNTRIES) {
+        const series = getExtendedSeries(cat, co);
+        if (series) {
+          expect(Array.isArray(series.fad)).toBe(true);
+          expect(Array.isArray(series.dff)).toBe(true);
+        }
+      }
+    }
+  });
+});
+
+describe("projectWithPace", () => {
+  it("projects a wait proportional to months-behind / pace", () => {
+    const { months, capped } = projectWithPace(120, 2);
+    expect(months).toBe(60);
+    expect(capped).toBe(false);
+  });
+
+  it("returns null for zero/negative pace or non-positive gap (no honest projection)", () => {
+    expect(projectWithPace(120, 0).months).toBeNull();
+    expect(projectWithPace(120, -1).months).toBeNull();
+    expect(projectWithPace(0, 2).months).toBeNull();
+    expect(projectWithPace(-5, 2).months).toBeNull();
+  });
+
+  it("caps the projection and flags it at the estimate ceiling", () => {
+    const { months, capped } = projectWithPace(10000, 0.01);
+    expect(capped).toBe(true);
+    expect(months).toBeLessThanOrEqual(300);
+  });
+});
+
+describe("countRetrogressionMonths", () => {
+  it("returns a non-negative integer within [0, trailingMonths] for every combo", () => {
+    for (const cat of EXTENDED_CATEGORIES) {
+      for (const co of EXTENDED_COUNTRIES) {
+        const n = countRetrogressionMonths(cat, co, "fad", 60);
+        expect(Number.isInteger(n)).toBe(true);
+        expect(n).toBeGreaterThanOrEqual(0);
+        expect(n).toBeLessThanOrEqual(60);
+      }
+    }
+  });
+
+  it("finds at least the known EB-1 India August-2023 retrogression within the trailing 60 months", () => {
+    const n = countRetrogressionMonths("eb1", "india", "fad", 60);
+    expect(n).toBeGreaterThanOrEqual(1);
   });
 });

@@ -490,6 +490,315 @@ export function getMovement(
   return { ...base, status: "no-movement" };
 }
 
+/* ==========================================================================
+ * EXTENDED CATEGORIES — full matrix (employment "Other Workers"/EB-4, all
+ * five family-sponsored categories, Mexico/Philippines) added for the Green
+ * Card Queue Tracker rebuild, backed by the 2021-08–2026-07 re-verified
+ * dataset (see data/visa-bulletin/_verified-backfill/). Kept as new,
+ * separate types/functions rather than widening EbCategory/BulletinCountry
+ * above — those are relied on by ~12 existing pages/components with
+ * non-nullable Cutoff assumptions that don't hold for the newer, sparser
+ * data (some cells are genuinely unverified, not just "C"/"U").
+ * ========================================================================== */
+
+export type ExtendedCategory =
+  | EbCategory
+  | "eb3Other"
+  | "eb4"
+  | "f1"
+  | "f2a"
+  | "f2b"
+  | "f3"
+  | "f4";
+
+export type ExtendedCountry = BulletinCountry | "mexico" | "philippines";
+
+/** A cutoff that may be genuinely unverified — render as "—", never guess. */
+export type MaybeCutoff = Cutoff | null;
+
+export interface ExtendedCutoffs {
+  fad: MaybeCutoff;
+  dff: MaybeCutoff;
+}
+
+const EMPLOYMENT_EXTENDED = new Set<ExtendedCategory>([
+  "eb1",
+  "eb2",
+  "eb3",
+  "eb3Other",
+  "eb4",
+  "eb5",
+]);
+
+export const isEmploymentCategory = (category: ExtendedCategory): boolean =>
+  EMPLOYMENT_EXTENDED.has(category);
+
+export const EXTENDED_CATEGORY_SHORT: Record<ExtendedCategory, string> = {
+  eb1: "EB-1",
+  eb2: "EB-2",
+  eb3: "EB-3",
+  eb3Other: "EB-3 (Other Workers)",
+  eb4: "EB-4",
+  eb5: "EB-5",
+  f1: "F-1",
+  f2a: "F-2A",
+  f2b: "F-2B",
+  f3: "F-3",
+  f4: "F-4",
+};
+
+export const EXTENDED_CATEGORY_LABELS: Record<ExtendedCategory, string> = {
+  eb1: "EB-1 (extraordinary ability / multinational managers)",
+  eb2: "EB-2 (advanced degree / exceptional ability)",
+  eb3: "EB-3 (skilled workers / professionals)",
+  eb3Other: "EB-3 Other Workers (unskilled, less than 2 yrs training)",
+  eb4: "EB-4 (special immigrants, incl. certain religious workers)",
+  eb5: "EB-5 (investors, unreserved)",
+  f1: "F-1 (unmarried sons/daughters, 21+, of U.S. citizens)",
+  f2a: "F-2A (spouses & minor children of green card holders)",
+  f2b: "F-2B (unmarried adult sons/daughters of green card holders)",
+  f3: "F-3 (married sons/daughters of U.S. citizens)",
+  f4: "F-4 (siblings of adult U.S. citizens)",
+};
+
+export const EXTENDED_COUNTRY_LABELS: Record<ExtendedCountry, string> = {
+  india: "India",
+  china: "China (mainland)",
+  mexico: "Mexico",
+  philippines: "Philippines",
+  row: "All other countries",
+};
+
+export const EXTENDED_CATEGORIES: ExtendedCategory[] = [
+  "eb1",
+  "eb2",
+  "eb3",
+  "eb3Other",
+  "eb4",
+  "eb5",
+  "f1",
+  "f2a",
+  "f2b",
+  "f3",
+  "f4",
+];
+
+export const EXTENDED_COUNTRIES: ExtendedCountry[] = [
+  "india",
+  "china",
+  "mexico",
+  "philippines",
+  "row",
+];
+
+interface ExtendedCurrentData {
+  categories: Record<string, Record<string, ExtendedCutoffs>>;
+  family: Record<string, Record<string, ExtendedCutoffs>>;
+}
+
+/** Current-month cutoffs for the full category x country matrix. `null` = not verified — render "—", never guess. */
+export function getExtendedCutoffs(
+  category: ExtendedCategory,
+  country: ExtendedCountry
+): ExtendedCutoffs {
+  const data = currentData as unknown as ExtendedCurrentData;
+  const bucket = isEmploymentCategory(category) ? data.categories : data.family;
+  return bucket?.[category]?.[country] ?? { fad: null, dff: null };
+}
+
+/** Historical change-point series for the full category x country matrix. Same sparse-point shape/semantics as getSeries(). */
+export function getExtendedSeries(
+  category: ExtendedCategory,
+  country: ExtendedCountry
+): { fad: SeriesPoint[]; dff: SeriesPoint[] } | null {
+  const series = historyData.series as unknown as Record<
+    string,
+    { fad: SeriesPoint[]; dff: SeriesPoint[] }
+  >;
+  return series[`${category}-${country}`] ?? null;
+}
+
+/** Which chart (Final Action Dates or Dates for Filing) a computation should use as its basis. */
+export type ChartKind = "fad" | "dff";
+
+export interface ExtendedWaitEstimate {
+  status: EstimateStatus;
+  category: ExtendedCategory;
+  country: ExtendedCountry;
+  chart: ChartKind;
+  cutoff: MaybeCutoff;
+  fad: MaybeCutoff;
+  dff: MaybeCutoff;
+  monthsBehind: number;
+  canFileI485: boolean;
+  velocityPerMonth: number | null;
+  optimisticMonths: number | null;
+  pessimisticMonths: number | null;
+  capped: boolean;
+}
+
+/** Same methodology as estimateWait(), generalized to the full category/country matrix, either chart, and honest about unverified data. */
+export function extendedEstimateWait(
+  priorityDate: string,
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind = "fad",
+  trailingMonths = 30
+): ExtendedWaitEstimate {
+  const { fad, dff } = getExtendedCutoffs(category, country);
+  const cutoff = chart === "fad" ? fad : dff;
+  const base: ExtendedWaitEstimate = {
+    status: "no-data",
+    category,
+    country,
+    chart,
+    cutoff,
+    fad,
+    dff,
+    monthsBehind: 0,
+    canFileI485: false,
+    velocityPerMonth: null,
+    optimisticMonths: null,
+    pessimisticMonths: null,
+    capped: false,
+  };
+
+  if (cutoff === null) return base; // unverified for this cell — "no-data", never guessed
+  if (cutoff === "U") return { ...base, status: "unavailable" };
+
+  base.canFileI485 =
+    dff !== null &&
+    dff !== "U" &&
+    (isCurrent(dff) || monthIndex(priorityDate) < monthIndex(dff));
+
+  if (isCurrent(cutoff) || monthIndex(priorityDate) < monthIndex(cutoff)) {
+    return { ...base, status: "current" };
+  }
+
+  base.monthsBehind = monthIndex(priorityDate) - monthIndex(cutoff);
+
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  if (!points || !points.length) return base;
+
+  if (isRetrogressing(points)) {
+    return {
+      ...base,
+      status: "retrogressing",
+      velocityPerMonth: velocity(points, 12),
+    };
+  }
+
+  const v = velocity(points, trailingMonths);
+  base.velocityPerMonth = v;
+  if (v === null) return base;
+  if (v < STALLED_VELOCITY) return { ...base, status: "stalled" };
+
+  const optimistic = base.monthsBehind / (v * 1.5);
+  const pessimistic = base.monthsBehind / (v * 0.75);
+  return {
+    ...base,
+    status: "estimate",
+    optimisticMonths: optimistic,
+    pessimisticMonths: Math.min(pessimistic, ESTIMATE_CAP_MONTHS),
+    capped: pessimistic > ESTIMATE_CAP_MONTHS,
+  };
+}
+
+/**
+ * Project a wait using an explicit pace (cutoff-months advanced per calendar
+ * month) rather than the auto-selected trailing window — powers the pace
+ * scenario buttons (recent / long-run / 1.5x / 0.4x). Returns null months
+ * when the pace is zero or negative (no honest forward projection).
+ */
+export function projectWithPace(
+  monthsBehind: number,
+  paceMonthsPerMonth: number
+): { months: number | null; capped: boolean } {
+  if (monthsBehind <= 0 || paceMonthsPerMonth <= 0) return { months: null, capped: false };
+  const months = monthsBehind / paceMonthsPerMonth;
+  return { months: Math.min(months, ESTIMATE_CAP_MONTHS), capped: months > ESTIMATE_CAP_MONTHS };
+}
+
+/** Count how many of the trailing N bulletin months were a retrogression for this category/country/chart. */
+export function countRetrogressionMonths(
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind = "fad",
+  trailingMonths = 60
+): number {
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  if (!points || !points.length) return 0;
+  const end = monthIndex(bulletin.month);
+  let count = 0;
+  for (let i = 1; i <= trailingMonths; i++) {
+    const mi = end - i + 1;
+    const prev = seriesValueAt(points, mi - 1);
+    const cur = seriesValueAt(points, mi);
+    if (!prev || !cur || !isValidVisaDate(prev) || !isValidVisaDate(cur)) continue;
+    if (monthIndex(cur) - monthIndex(prev) < -0.03) count++;
+  }
+  return count;
+}
+
+/** Trailing-window pace (cutoff-months advanced per calendar month) for a category/country/chart — feeds the pace scenario buttons. */
+export function getExtendedVelocity(
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind = "fad",
+  trailingMonths = 12
+): number | null {
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  if (!points || !points.length) return null;
+  return velocity(points, trailingMonths);
+}
+
+export interface ExtendedMovement {
+  status: MovementStatus;
+  currentCutoff: MaybeCutoff;
+  priorCutoff: MaybeCutoff;
+  monthsMoved: number | null;
+}
+
+/** Same methodology as getMovement(), generalized to the full matrix and either chart. */
+export function extendedGetMovement(
+  category: ExtendedCategory,
+  country: ExtendedCountry,
+  chart: ChartKind = "fad"
+): ExtendedMovement {
+  const { fad, dff } = getExtendedCutoffs(category, country);
+  const cutoff = chart === "fad" ? fad : dff;
+  const priorMi = monthIndex(bulletin.month) - 1;
+  const base: ExtendedMovement = {
+    status: "unknown",
+    currentCutoff: cutoff,
+    priorCutoff: null,
+    monthsMoved: null,
+  };
+  if (cutoff === null) return base;
+  if (isCurrent(cutoff)) return { ...base, status: "current" };
+  if (isUnavailableVisaValue(cutoff)) return { ...base, status: "unavailable" };
+
+  const series = getExtendedSeries(category, country);
+  const points = series ? series[chart] : null;
+  const prior = points ? seriesValueAt(points, priorMi) : null;
+  base.priorCutoff = prior;
+
+  if (!prior || !isValidVisaDate(prior)) {
+    if (prior === "U") return { ...base, status: "advanced" };
+    if (prior === "C") return { ...base, status: "retrogressed" };
+    return { ...base, status: "unknown" };
+  }
+
+  const moved = monthIndex(cutoff) - monthIndex(prior);
+  base.monthsMoved = moved;
+  if (moved > 0.03) return { ...base, status: "advanced" };
+  if (moved < -0.03) return { ...base, status: "retrogressed" };
+  return { ...base, status: "no-movement" };
+}
+
 /**
  * True when the stored bulletin month is older than the current calendar month.
  *

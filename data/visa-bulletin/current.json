@@ -1,47 +1,298 @@
 {
   "bulletinMonth": "2026-07",
-  "lastUpdated": "2026-06-18",
+  "lastUpdated": "2026-07-28",
   "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
   "sourceLabel": "U.S. Department of State Visa Bulletin (July 2026)",
   "adjustmentOfStatusChart": "final-action",
   "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official July 2026 bulletin. USCIS has directed applicants to use Final Action Dates for employment-based adjustment of status filings in July 2026.",
   "categories": {
     "eb1": {
-      "india": { "fad": "2022-10-15", "dff": "2023-12-01" },
-      "china": { "fad": "2023-06-01", "dff": "2023-12-01" },
-      "row": { "fad": "C", "dff": "C" }
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2023-06-01",
+        "dff": "2023-12-01"
+      },
+      "india": {
+        "fad": "2022-10-15",
+        "dff": "2023-12-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      }
     },
     "eb2": {
-      "india": { "fad": "U", "dff": "2015-01-15" },
-      "china": { "fad": "2021-09-01", "dff": "2022-01-01" },
-      "row": { "fad": "C", "dff": "C" }
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2021-09-01",
+        "dff": "2022-01-01"
+      },
+      "india": {
+        "fad": "U",
+        "dff": "2015-01-15"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      }
     },
     "eb3": {
-      "india": { "fad": "2014-01-01", "dff": "2015-01-15" },
-      "china": { "fad": "2021-12-22", "dff": "2022-01-01" },
-      "row": { "fad": "2024-08-01", "dff": "C" }
+      "row": {
+        "fad": "2024-08-01",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2021-12-22",
+        "dff": "2022-01-01"
+      },
+      "india": {
+        "fad": "2014-01-01",
+        "dff": "2015-01-15"
+      },
+      "mexico": {
+        "fad": "2024-08-01",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "2023-08-01",
+        "dff": "2024-01-01"
+      }
+    },
+    "eb3Other": {
+      "row": {
+        "fad": "2022-03-01",
+        "dff": "2022-08-01"
+      },
+      "china": {
+        "fad": "2019-04-01",
+        "dff": "2019-10-01"
+      },
+      "india": {
+        "fad": "2014-01-01",
+        "dff": "2015-01-15"
+      },
+      "mexico": {
+        "fad": "2022-03-01",
+        "dff": "2022-08-01"
+      },
+      "philippines": {
+        "fad": "2021-12-01",
+        "dff": "2022-08-01"
+      }
+    },
+    "eb4": {
+      "row": {
+        "fad": "2022-09-15",
+        "dff": "2023-01-01"
+      },
+      "china": {
+        "fad": "2022-09-15",
+        "dff": "2023-01-01"
+      },
+      "india": {
+        "fad": "2022-09-15",
+        "dff": "2023-01-01"
+      },
+      "mexico": {
+        "fad": "2022-09-15",
+        "dff": "2023-01-01"
+      },
+      "philippines": {
+        "fad": "2022-09-15",
+        "dff": "2023-01-01"
+      }
     },
     "eb5": {
-      "india": { "fad": "U", "dff": "2024-05-01" },
-      "china": { "fad": "2016-12-01", "dff": "2017-03-01" },
-      "row": { "fad": "C", "dff": "C" }
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2016-12-01",
+        "dff": "2017-03-01"
+      },
+      "india": {
+        "fad": "U",
+        "dff": "2024-05-01"
+      },
+      "mexico": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "C",
+        "dff": "C"
+      }
+    }
+  },
+  "family": {
+    "f1": {
+      "row": {
+        "fad": "2018-02-01",
+        "dff": "2019-01-01"
+      },
+      "china": {
+        "fad": "2018-02-01",
+        "dff": "2019-01-01"
+      },
+      "india": {
+        "fad": "2018-02-01",
+        "dff": "2019-01-01"
+      },
+      "mexico": {
+        "fad": "2007-11-08",
+        "dff": "2008-10-01"
+      },
+      "philippines": {
+        "fad": "2013-05-01",
+        "dff": "2015-04-22"
+      }
+    },
+    "f2a": {
+      "row": {
+        "fad": "2025-01-01",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "2025-01-01",
+        "dff": "C"
+      },
+      "india": {
+        "fad": "2025-01-01",
+        "dff": "C"
+      },
+      "mexico": {
+        "fad": "2024-01-01",
+        "dff": "C"
+      },
+      "philippines": {
+        "fad": "2025-01-01",
+        "dff": "C"
+      }
+    },
+    "f2b": {
+      "row": {
+        "fad": "2017-11-22",
+        "dff": "2018-06-08"
+      },
+      "china": {
+        "fad": "2017-11-22",
+        "dff": "2018-06-08"
+      },
+      "india": {
+        "fad": "2017-11-22",
+        "dff": "2018-06-08"
+      },
+      "mexico": {
+        "fad": "2009-02-15",
+        "dff": "2010-05-15"
+      },
+      "philippines": {
+        "fad": "2013-05-15",
+        "dff": "2013-10-01"
+      }
+    },
+    "f3": {
+      "row": {
+        "fad": "2012-04-15",
+        "dff": "2012-12-08"
+      },
+      "china": {
+        "fad": "2012-04-15",
+        "dff": "2012-12-08"
+      },
+      "india": {
+        "fad": "2012-04-15",
+        "dff": "2012-12-08"
+      },
+      "mexico": {
+        "fad": "2001-06-01",
+        "dff": "2001-07-15"
+      },
+      "philippines": {
+        "fad": "2006-02-22",
+        "dff": "2006-08-08"
+      }
+    },
+    "f4": {
+      "row": {
+        "fad": "2009-01-01",
+        "dff": "2010-03-01"
+      },
+      "china": {
+        "fad": "2009-01-01",
+        "dff": "2010-03-01"
+      },
+      "india": {
+        "fad": "2006-11-01",
+        "dff": "2006-12-15"
+      },
+      "mexico": {
+        "fad": "2001-04-08",
+        "dff": "2001-04-30"
+      },
+      "philippines": {
+        "fad": "2007-08-01",
+        "dff": "2008-03-22"
+      }
     }
   },
   "eb5SetAsides": {
     "rural": {
-      "india": { "fad": "C", "dff": "C" },
-      "china": { "fad": "C", "dff": "C" },
-      "row": { "fad": "C", "dff": "C" }
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
     },
     "highUnemployment": {
-      "india": { "fad": "C", "dff": "C" },
-      "china": { "fad": "C", "dff": "C" },
-      "row": { "fad": "C", "dff": "C" }
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
     },
     "infrastructure": {
-      "india": { "fad": "C", "dff": "C" },
-      "china": { "fad": "C", "dff": "C" },
-      "row": { "fad": "C", "dff": "C" }
+      "india": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "china": {
+        "fad": "C",
+        "dff": "C"
+      },
+      "row": {
+        "fad": "C",
+        "dff": "C"
+      }
     }
   }
 }
