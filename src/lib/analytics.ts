@@ -91,6 +91,46 @@ export function trackRecommendedToolClick(
   trackEvent("recommended_tool_click", { ...params });
 }
 
+/**
+ * Visitor-insurance cluster events.
+ *
+ * PRIVACY (stricter than the general tool-event rule above, per the
+ * cluster's non-negotiable rules): never send a medical-condition selection,
+ * diagnosis, dollar amount, deductible/coinsurance value, or any other
+ * entered calculator value. Only broad, non-identifying labels — a tool
+ * slug, a plan count, a scenario key, or a coarse result status.
+ */
+export type VisitorInsuranceEvent =
+  | "visitor_insurance_hub_view"
+  | "calculator_start"
+  | "calculator_mode_selected"
+  | "plan_added"
+  | "scenario_selected"
+  | "calculation_complete"
+  | "comparison_complete"
+  | "print_result"
+  | "copy_summary"
+  | "share_result"
+  | "related_page_click"
+  | "methodology_click"
+  | "source_click"
+  | "affiliate_click"
+  | "calculator_validation_error";
+
+export interface VisitorInsuranceEventParams {
+  tool_slug?: string;
+  mode?: string;
+  plan_count?: number;
+  scenario_key?: string;
+  result_status?: string;
+  destination_path?: string;
+  [key: string]: unknown;
+}
+
+export function trackVisitorInsuranceEvent(event: VisitorInsuranceEvent, params?: VisitorInsuranceEventParams): void {
+  trackEvent(event, params);
+}
+
 /** Generic GA4 event. Same SSR/dev/blocked-analytics safety as above. */
 export function trackEvent(
   event: string,

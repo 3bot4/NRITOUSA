@@ -43,6 +43,11 @@ import { lifePlanningChildPages } from "@/lib/uscisLifePlanningCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
+import {
+  visitorInsuranceChildPages,
+  VISITOR_INSURANCE_BASE,
+  VISITOR_INSURANCE_UPDATED,
+} from "@/lib/visitorInsuranceCluster";
 import { getPublishedStories, storyPath } from "@/lib/successStories";
 import { site } from "@/lib/site";
 
@@ -346,6 +351,12 @@ export const immigrationEntries: SitemapEntry[] = [
   ),
   ...visaBulletinChildPages.map((p) =>
     e(`/visa-bulletin/${p.slug}`, 0.8, "monthly", clusterDate(p)),
+  ),
+  // Visitor insurance cost & liability cluster (hub + content children;
+  // /tools/visitor-insurance-* calculators are populated via toolsEntries below).
+  e(VISITOR_INSURANCE_BASE, 0.9, "monthly", new Date(VISITOR_INSURANCE_UPDATED)),
+  ...visitorInsuranceChildPages.map((p) =>
+    e(p.path, 0.8, "monthly", new Date(VISITOR_INSURANCE_UPDATED)),
   ),
 ];
 

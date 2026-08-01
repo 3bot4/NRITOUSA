@@ -38,6 +38,12 @@ const hubs = [
     blurb: "401(k), RNOR status, currency timing & moving-back checklist.",
   },
   {
+    href: "/visitor-insurance",
+    icon: "🩺",
+    title: "Visitor Insurance",
+    blurb: "Cost & liability calculators for visitor medical insurance — plus parents-visiting-USA coverage.",
+  },
+  {
     href: "/tools",
     icon: "🧰",
     title: "All Tools",

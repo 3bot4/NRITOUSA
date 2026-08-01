@@ -29,6 +29,7 @@ const groupToCat: Record<ToolGroup, CategoryKey> = {
   "Visa & Green Card": "visa",
   "Money & Finance": "money",
   "Travel & Documents": "travel",
+  "Visitor Insurance": "travel",
 };
 
 export const homeTools: HomeTool[] = [

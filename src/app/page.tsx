@@ -5,6 +5,7 @@ import HomeHero from "@/components/home/HomeHero";
 import GlobalSearch from "@/components/home/GlobalSearch";
 import MostUsedTools from "@/components/home/MostUsedTools";
 import HubCards from "@/components/home/HubCards";
+import VisitorInsuranceSpotlight from "@/components/home/VisitorInsuranceSpotlight";
 import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
 import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
 import LatestUpdates from "@/components/home/LatestUpdates";
@@ -47,6 +48,7 @@ export default function HomePage() {
         <GlobalSearch />
         <MostUsedTools />
         <HubCards />
+        <VisitorInsuranceSpotlight />
         <LeadMagnetSpotlight />
         <PopularGuidesForIndians />
         <LatestUpdates />

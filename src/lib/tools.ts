@@ -11,7 +11,8 @@
 export type ToolGroup =
   | "Visa & Green Card"
   | "Money & Finance"
-  | "Travel & Documents";
+  | "Travel & Documents"
+  | "Visitor Insurance";
 
 export interface ToolMeta {
   slug: string;
@@ -432,12 +433,103 @@ export const tools: ToolMeta[] = [
     status: "live",
     tags: [],
   },
+  {
+    slug: "visitor-insurance-cost-calculator",
+    title: "Visitor Insurance Cost & Liability Calculator",
+    label: "Visitor Insurance Calculator",
+    group: "Visitor Insurance",
+    description:
+      "Enter the premium, deductible, coinsurance, and policy maximum from your visitor insurance quote or certificate to see a line-by-line estimate of what the insurer may pay and what your family could still owe — not a quote engine, an educational liability estimator.",
+    icon: "🩺",
+    accent: "from-sky-600 to-blue-700",
+    seoTitle: "Visitor Insurance Cost Calculator: Estimate Your Liability (2026)",
+    seoDescription:
+      "Enter your visitor insurance quote's premium, deductible, coinsurance, and policy maximum to estimate what the insurer may pay and what you could still owe for a medical bill.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
+  {
+    slug: "visitor-insurance-plan-comparison",
+    title: "Visitor Insurance Plan Comparison Calculator",
+    label: "Plan Comparison",
+    group: "Visitor Insurance",
+    description:
+      "Compare two visitor insurance plans side by side — premium, deductible, coinsurance, policy maximum, and network terms — against the same medical scenario, with an entered-terms completeness check instead of a fake best-plan badge.",
+    icon: "⚖️",
+    accent: "from-indigo-600 to-violet-700",
+    seoTitle: "Compare Visitor Insurance Plans Side by Side (2026)",
+    seoDescription:
+      "Compare two visitor insurance plans against the same medical scenario: premium, deductible, coinsurance, policy maximum, and what's still missing from each certificate.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
+  {
+    slug: "visitor-insurance-deductible-coinsurance-calculator",
+    title: "Visitor Insurance Deductible & Coinsurance Calculator",
+    label: "Deductible & Coinsurance",
+    group: "Visitor Insurance",
+    description:
+      "See exactly how a visitor insurance deductible and coinsurance apply to a medical bill — per-incident vs per-policy deductibles, copay before or after the deductible, and 80/20 vs 90/10 coinsurance splits, with numbered examples.",
+    icon: "🧮",
+    accent: "from-teal-600 to-emerald-700",
+    seoTitle: "Visitor Insurance Deductible & Coinsurance Calculator",
+    seoDescription:
+      "How does a visitor insurance deductible and coinsurance work? Calculate your share for any bill with per-incident vs per-policy deductibles and any coinsurance split.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
+  {
+    slug: "visitor-insurance-hospital-bill-calculator",
+    title: "Visitor Insurance Hospital & ER Bill Calculator",
+    label: "Hospital & ER Bill",
+    group: "Visitor Insurance",
+    description:
+      "Model a full episode of care — ambulance, ER facility, ER physician, imaging, lab, hospital room, surgeon — as the separate bills they usually are, and see the estimated insurer payment and your liability for each line.",
+    icon: "🏥",
+    accent: "from-rose-600 to-red-700",
+    seoTitle: "Visitor Insurance Hospital & ER Bill Calculator",
+    seoDescription:
+      "Estimate what visitor insurance may pay for a hospital stay or ER visit — ambulance, facility, physician, imaging, and lab as the separate bills they usually are.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
+  {
+    slug: "visitor-insurance-network-cost-calculator",
+    title: "Visitor Insurance In-Network vs Out-of-Network Calculator",
+    label: "Network Cost Calculator",
+    group: "Visitor Insurance",
+    description:
+      "See how in-network vs out-of-network treatment changes your liability — billed charge vs allowed amount, potential balance billing, and network-specific coinsurance.",
+    icon: "🌐",
+    accent: "from-cyan-600 to-sky-700",
+    seoTitle: "Visitor Insurance In-Network vs Out-of-Network Calculator",
+    seoDescription:
+      "Compare in-network and out-of-network visitor insurance liability: allowed amount, potential balance billing, and network-specific coinsurance, side by side.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
+  {
+    slug: "visitor-insurance-policy-maximum-calculator",
+    title: "Visitor Insurance Policy Maximum & Liability Calculator",
+    label: "Policy Maximum Calculator",
+    group: "Visitor Insurance",
+    description:
+      "See the difference between a policy maximum and a true out-of-pocket maximum, and whether your entered terms give this plan a contractual cost-sharing ceiling at all.",
+    icon: "🛡️",
+    accent: "from-amber-600 to-orange-700",
+    seoTitle: "Visitor Insurance Policy Maximum vs Out-of-Pocket Maximum",
+    seoDescription:
+      "Policy maximum vs out-of-pocket maximum for visitor insurance — they are not the same thing. Calculate remaining benefit and whether your plan caps your liability.",
+    status: "live",
+    tags: ["visitor-insurance"],
+  },
 ];
 
 export const toolGroups: ToolGroup[] = [
   "Visa & Green Card",
   "Money & Finance",
   "Travel & Documents",
+  "Visitor Insurance",
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
