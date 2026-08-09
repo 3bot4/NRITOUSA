@@ -226,13 +226,15 @@ describe("getMovement is C/U-safe and consistent across every category", () => {
     }
   });
 
-  it("detects the EB-1 India July-2026 retrogression from history", () => {
-    // History: EB-1 India FAD 2026-06 = 2022-12-15, 2026-07 = 2022-10-15.
+  it("EB-1 India held steady August-2026 (no-movement) after the June→July retrogression", () => {
+    // History: EB-1 India FAD 2026-06 = 2022-12-15, 2026-07 = 2022-10-15 (retrogressed),
+    // 2026-08 = 2022-10-15 (unchanged from July — no category retrogressed July→August;
+    // verified by diffing all 110 tracked cells between the two months).
     const m = getMovement("eb1", "india");
-    expect(m.status).toBe("retrogressed");
-    expect(m.priorFad).toBe("2022-12-15");
+    expect(m.status).toBe("no-movement");
+    expect(m.priorFad).toBe("2022-10-15");
     expect(m.monthsMoved).not.toBeNull();
-    expect(m.monthsMoved!).toBeLessThan(0);
+    expect(m.monthsMoved!).toBeCloseTo(0, 5);
   });
 });
 

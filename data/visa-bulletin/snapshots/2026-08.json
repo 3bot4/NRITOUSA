@@ -1,10 +1,7 @@
 {
   "bulletinMonth": "2026-08",
-  "lastUpdated": "2026-08-09",
-  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-august-2026.html",
-  "sourceLabel": "U.S. Department of State Visa Bulletin (August 2026)",
-  "adjustmentOfStatusChart": "final-action",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official August 2026 bulletin. USCIS has directed applicants to use Final Action Dates for employment-based adjustment of status filings in August 2026; family-sponsored filings continue to use Dates for Filing.",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin archive",
   "categories": {
     "eb1": {
       "india": {
@@ -248,50 +245,6 @@
       "row": {
         "fad": "2009-09-01",
         "dff": "2010-06-22"
-      }
-    }
-  },
-  "eb5SetAsides": {
-    "rural": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "highUnemployment": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "infrastructure": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
       }
     }
   }

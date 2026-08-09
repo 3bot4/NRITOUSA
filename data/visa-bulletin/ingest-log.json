@@ -11,5 +11,18 @@
       "unverified": 33
     },
     "errors": []
+  },
+  {
+    "runAt": "2026-08-09T17:26:57.824Z",
+    "trigger": "monthly-update-2026-08",
+    "monthsProcessed": 61,
+    "rowsWritten": 6677,
+    "rowsSkippedUnavailable": 33,
+    "confidenceCounts": {
+      "high": 6371,
+      "medium": 306,
+      "unverified": 33
+    },
+    "errors": []
   }
 ]

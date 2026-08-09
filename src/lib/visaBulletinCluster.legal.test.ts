@@ -81,6 +81,6 @@ describe("visa bulletin cluster — immigration-accuracy guards", () => {
     expect(pd.date).toBe("2026-06-16"); // datePublished unchanged
     expect(pd.updated).toBe("2026-07-19"); // dateModified bumped (2026-07 rebuild)
     const eb1 = visaBulletinChildPages.find((p) => p.slug === "eb1-india")!;
-    expect(eb1.updated).toBe("2026-07-19"); // rebuilt in the 2026-07 answer-first pass
+    expect(eb1.updated).toBe("2026-08-09"); // rebuilt again in the 2026-08 monthly bulletin update
   });
 });

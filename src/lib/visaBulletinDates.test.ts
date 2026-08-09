@@ -1,12 +1,12 @@
 /**
- * Cutoff comparison + July 2026 data-integrity tests.
+ * Cutoff comparison + August 2026 data-integrity tests.
  *
  * The Department of State rule: a priority date qualifies only when it is
  * STRICTLY EARLIER THAN the listed Final Action Date. A date equal to the
  * cutoff is NOT current. "C" = all dates current; "U" = no dates current.
  *
  * These tests lock in the strict-earlier-than boundary and verify the canonical
- * July 2026 values flow through CURRENT_VISA_BULLETIN (sourced from current.json).
+ * August 2026 values flow through CURRENT_VISA_BULLETIN (sourced from current.json).
  */
 
 import { describe, it, expect } from "vitest";
@@ -58,27 +58,27 @@ describe("parseCutoff sentinels", () => {
   });
 });
 
-describe("July 2026 canonical data (from current.json)", () => {
-  it("bulletin is July 2026", () => {
-    expect(CURRENT_VISA_BULLETIN.month).toBe("July");
+describe("August 2026 canonical data (from current.json)", () => {
+  it("bulletin is August 2026", () => {
+    expect(CURRENT_VISA_BULLETIN.month).toBe("August");
     expect(CURRENT_VISA_BULLETIN.year).toBe(2026);
   });
 
-  it("India Final Action Dates match the July 2026 source of truth", () => {
+  it("India Final Action Dates match the August 2026 source of truth", () => {
     const fa = CURRENT_VISA_BULLETIN.finalActionDates;
-    expect(fa.EB1.india).toBe("2022-10-15"); // 15OCT22
+    expect(fa.EB1.india).toBe("2022-10-15"); // 15OCT22, unchanged from July
     expect(fa.EB2.india).toBe("U"); // Unavailable
-    expect(fa.EB3.india).toBe("2014-01-01"); // 01JAN14
+    expect(fa.EB3.india).toBe("2014-01-01"); // 01JAN14, unchanged from July
   });
 
-  it("ROW ('Other') Final Action Dates match the July 2026 source of truth", () => {
+  it("ROW ('Other') Final Action Dates match the August 2026 source of truth", () => {
     const fa = CURRENT_VISA_BULLETIN.finalActionDates;
     expect(fa.EB1.other).toBe("C");
     expect(fa.EB2.other).toBe("C");
-    expect(fa.EB3.other).toBe("2024-08-01"); // 01AUG24
+    expect(fa.EB3.other).toBe("2024-09-01"); // 01SEP24, advanced one month from July's 01AUG24
   });
 
-  it("USCIS is using Final Action Dates (Table B not authorized) for July 2026", () => {
+  it("USCIS is using Final Action Dates (Table B not authorized) for August 2026", () => {
     expect(CURRENT_VISA_BULLETIN.usingDatesForFiling).toBe(false);
   });
 
