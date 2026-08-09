@@ -29,6 +29,18 @@ import { i140ProcessingData } from "./i140ProcessingData";
 /** Sentinel: a monthly FLAG value that has not been confirmed yet. */
 export const NEEDS_UPDATE = "Update from DOL FLAG" as const;
 
+/**
+ * Sentinel: DOL itself publishes no figure for this field. Distinct from
+ * NEEDS_UPDATE — "we haven't copied it yet" is our backlog and deserves a
+ * warning badge; "the source doesn't publish it" is a fact about DOL and must
+ * not be shown as if the page were stale. Bumping lastUpdated will never
+ * clear one of these.
+ */
+export const NOT_PUBLISHED = "Not published by DOL" as const;
+
+/** A FLAG "average days" figure: a number, not-yet-copied, or not published. */
+export type FlagDays = number | null | typeof NOT_PUBLISHED;
+
 export interface PermProcessingData {
   /** Date these numbers were last pulled from DOL FLAG (human-readable). */
   lastUpdated: string;
@@ -48,8 +60,8 @@ export interface PermProcessingData {
   permReconsiderationDate: string;
 
   /* --- Published "average number of days" (null → show NEEDS_UPDATE) --- */
-  averagePermAnalystReviewDays: number | null;
-  averagePermAuditReviewDays: number | null;
+  averagePermAnalystReviewDays: FlagDays;
+  averagePermAuditReviewDays: FlagDays;
 
   /* --- Rule-based / stable planning inputs (safe defaults, still editable) --- */
   /** Minimum days recruitment must span, incl. the 30-day quiet period after ads. */
@@ -95,10 +107,11 @@ export const permProcessingData: PermProcessingData = {
   permAuditReviewPriorityDate: "December 2025",
   permReconsiderationDate: "March 2026",
 
-  // Published averages — null when FLAG does not publish one. DOL showed no
-  // average for audit review in the August 2026 dashboard, so it stays null.
+  // Published averages. DOL shows no average for audit review on the FLAG
+  // dashboard at all, so that field is NOT_PUBLISHED, not null — it is not a
+  // gap in our data and no monthly update will ever fill it.
   averagePermAnalystReviewDays: 372,
-  averagePermAuditReviewDays: null,
+  averagePermAuditReviewDays: NOT_PUBLISHED,
 
   // Rule-based / stable inputs.
   recruitmentMinimumDays: 60,
@@ -131,8 +144,17 @@ export function displayValue(value: string): string {
 }
 
 /** Display helper for the numeric average-days fields. */
-export function displayDays(value: number | null): string {
+export function displayDays(value: FlagDays): string {
+  if (value === NOT_PUBLISHED) return NOT_PUBLISHED;
   return value == null ? NEEDS_UPDATE : `${value} days`;
+}
+
+/**
+ * True only when a figure is genuinely missing from our data — i.e. it should
+ * carry an "update me" warning. NOT_PUBLISHED is deliberately excluded.
+ */
+export function isPendingDays(value: FlagDays): boolean {
+  return value == null;
 }
 
 /** Standard educational data-source note shown on every page using this data. */

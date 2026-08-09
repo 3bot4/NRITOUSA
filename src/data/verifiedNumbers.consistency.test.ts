@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { allVerifiedNumbers, permNumbers, i485Numbers } from "./siteWideVerifiedNumbers";
-import { permDerivedRanges, permProcessingData } from "./permProcessingData";
+import {
+  permDerivedRanges,
+  permProcessingData,
+  displayDays,
+  isPendingDays,
+  NEEDS_UPDATE,
+  NOT_PUBLISHED,
+} from "./permProcessingData";
 import { i140ProcessingData } from "./i140ProcessingData";
 import { i485StageEstimateRows } from "./i485ProcessingData";
 
@@ -55,14 +62,41 @@ describe("PERM figures agree across files", () => {
 
   it("the analyst planning range brackets DOL's published average", () => {
     const avgDays = permProcessingData.averagePermAnalystReviewDays;
-    // Only meaningful once the monthly FLAG figure has actually been copied in.
-    if (avgDays == null) return;
+    // Only meaningful once the monthly FLAG figure has actually been copied in
+    // (it may also hold the NOT_PUBLISHED sentinel rather than a number).
+    if (typeof avgDays !== "number") return;
     const avgMonths = avgDays / 30;
     expect(avgMonths).toBeGreaterThanOrEqual(
       permProcessingData.permAnalystPlanningMonthsLow - 1,
     );
     expect(avgMonths).toBeLessThanOrEqual(
       permProcessingData.permAnalystPlanningMonthsHigh + 1,
+    );
+  });
+});
+
+describe('"not published" is not the same as "not updated yet"', () => {
+  it("shows a number as days, not as a sentinel", () => {
+    expect(displayDays(372)).toBe("372 days");
+    expect(isPendingDays(372)).toBe(false);
+  });
+
+  it("warns only for a value we have not copied yet", () => {
+    expect(displayDays(null)).toBe(NEEDS_UPDATE);
+    expect(isPendingDays(null)).toBe(true);
+  });
+
+  it("states a DOL-unpublished figure plainly without an update warning", () => {
+    expect(displayDays(NOT_PUBLISHED)).toBe(NOT_PUBLISHED);
+    // The bug this guards: NOT_PUBLISHED rendering as "Update from DOL FLAG"
+    // told readers the page was stale about something no update can ever fix.
+    expect(displayDays(NOT_PUBLISHED)).not.toBe(NEEDS_UPDATE);
+    expect(isPendingDays(NOT_PUBLISHED)).toBe(false);
+  });
+
+  it("never leaves a live page rendering the raw update prompt for audit review", () => {
+    expect(displayDays(permProcessingData.averagePermAuditReviewDays)).not.toBe(
+      NEEDS_UPDATE,
     );
   });
 });

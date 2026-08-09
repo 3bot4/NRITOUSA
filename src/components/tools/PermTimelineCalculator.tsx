@@ -148,12 +148,15 @@ function compute(inp: Inputs): Result {
   let permDecisionLow: Date | null = permApproval;
   let permDecisionHigh: Date | null = permApproval;
   if (!permApproval && permFileEst) {
+    // Must be `typeof === "number"`, not `!= null`: these fields can also hold
+    // the NOT_PUBLISHED sentinel, and arithmetic on that yields NaN dates.
     const analystDays = D.averagePermAnalystReviewDays;
-    if (analystDays != null) {
+    const auditDays = D.averagePermAuditReviewDays;
+    if (typeof analystDays === "number") {
       const base = addDays(permFileEst, analystDays);
       permDecisionLow = base;
       permDecisionHigh = auditYes
-        ? addMonths(base, D.averagePermAuditReviewDays != null ? Math.round(D.averagePermAuditReviewDays / 30) : D.permAuditPlanningMonthsHigh)
+        ? addMonths(base, typeof auditDays === "number" ? Math.round(auditDays / 30) : D.permAuditPlanningMonthsHigh)
         : base;
     } else {
       permDecisionLow = addMonths(permFileEst, D.permAnalystPlanningMonthsLow + (auditYes ? D.permAuditPlanningMonthsLow : 0));
@@ -271,7 +274,7 @@ function compute(inp: Inputs): Result {
     detail: permApproval
       ? "PERM labor certification is approved."
       : permEstimated
-        ? `${auditYes ? "Includes audit review time. " : ""}${D.averagePermAnalystReviewDays != null ? "Uses the current DOL average review days." : `Uses a general ${D.permAnalystPlanningMonthsLow}–${D.permAnalystPlanningMonthsHigh} month analyst-review planning range${auditYes ? ` plus ${D.permAuditPlanningMonthsLow}–${D.permAuditPlanningMonthsHigh} months for audit` : ""}.`} PERM cannot be premium processed.`
+        ? `${auditYes ? "Includes audit review time. " : ""}${typeof D.averagePermAnalystReviewDays === "number" ? "Uses the current DOL average review days." : `Uses a general ${D.permAnalystPlanningMonthsLow}–${D.permAnalystPlanningMonthsHigh} month analyst-review planning range${auditYes ? ` plus ${D.permAuditPlanningMonthsLow}–${D.permAuditPlanningMonthsHigh} months for audit` : ""}.`} PERM cannot be premium processed.`
         : "Enter your PERM filed date (or earlier dates) to estimate the DOL decision window.",
     tone: permApproval ? "done" : "estimate",
   });

@@ -3,13 +3,18 @@ import {
   displayValue,
   displayDays,
   isPending,
+  isPendingDays,
+  NOT_PUBLISHED,
   DOL_DATA_NOTE,
 } from "@/data/permProcessingData";
 
 interface Row {
   label: string;
   value: string;
+  /** Missing from OUR data — warn, it is our backlog. */
   pending: boolean;
+  /** DOL publishes no such figure — state it plainly, do not warn. */
+  unavailable?: boolean;
 }
 
 /**
@@ -17,6 +22,11 @@ interface Row {
  * and renders each queue value, falling back to "Update from DOL FLAG" for any
  * value not yet confirmed. Shared by the calculator, /dol-processing-times and
  * /pwd-processing-time.
+ *
+ * Two kinds of "no number" are shown differently on purpose: a value we have
+ * not copied yet gets an amber warning, while a value DOL does not publish is
+ * shown as neutral muted text. Rendering the second as a warning told readers
+ * the page was out of date when nothing about it could ever be updated.
  */
 export default function PermDolTimesPanel({
   variant = "full",
@@ -28,8 +38,8 @@ export default function PermDolTimesPanel({
     { label: "PERM analyst review queue", value: displayValue(D.permAnalystReviewPriorityDate), pending: isPending(D.permAnalystReviewPriorityDate) },
     { label: "PERM audit review queue", value: displayValue(D.permAuditReviewPriorityDate), pending: isPending(D.permAuditReviewPriorityDate) },
     { label: "PERM reconsideration queue", value: displayValue(D.permReconsiderationDate), pending: isPending(D.permReconsiderationDate) },
-    { label: "Average PERM analyst review", value: displayDays(D.averagePermAnalystReviewDays), pending: D.averagePermAnalystReviewDays == null },
-    { label: "Average PERM audit review", value: displayDays(D.averagePermAuditReviewDays), pending: D.averagePermAuditReviewDays == null },
+    { label: "Average PERM analyst review", value: displayDays(D.averagePermAnalystReviewDays), pending: isPendingDays(D.averagePermAnalystReviewDays), unavailable: D.averagePermAnalystReviewDays === NOT_PUBLISHED },
+    { label: "Average PERM audit review", value: displayDays(D.averagePermAuditReviewDays), pending: isPendingDays(D.averagePermAuditReviewDays), unavailable: D.averagePermAuditReviewDays === NOT_PUBLISHED },
   ];
   const pwdRows: Row[] = [
     { label: "PWD for PERM — OEWS wage source", value: displayValue(D.pwdPermOewsReceiptMonth), pending: isPending(D.pwdPermOewsReceiptMonth) },
@@ -56,6 +66,8 @@ export default function PermDolTimesPanel({
                 <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
                   {r.value}
                 </span>
+              ) : r.unavailable ? (
+                <span className="text-xs font-medium italic text-ink-400">{r.value}</span>
               ) : (
                 r.value
               )}
