@@ -1627,7 +1627,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       { label: "USCIS case status meaning", href: "/tools/uscis-case-status-meaning" },
       { label: "USCIS receipt number decoder", href: "/tools/uscis-receipt-number-decoder" },
     ],
-    updated: "2026-07-20",
+    updated: "2026-08-09",
     expertiseTags: ["Visa bulletin & priority dates", "Employment green cards", "India backlog analysis"],
     takeaways: [
       "Compare your date against two charts every month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",

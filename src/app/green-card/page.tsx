@@ -17,7 +17,8 @@ import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { currentBulletinNote } from "@/lib/visa-bulletin";
 
 const PAGE_PATH = "/green-card";
-const UPDATED = "2026-06-16";
+const PUBLISHED = "2026-06-16";
+const UPDATED = "2026-08-09";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
@@ -26,7 +27,7 @@ export function generateMetadata(): Metadata {
       "Complete green-card guide for Indian H-1B workers: PERM, I-140, priority dates, I-485, EAD/AP, the India backlog, EB-2 vs EB-3, and AC21 portability.",
     path: PAGE_PATH,
     type: "article",
-    openGraph: { publishedTime: UPDATED, modifiedTime: UPDATED },
+    openGraph: { publishedTime: PUBLISHED, modifiedTime: UPDATED },
   });
 }
 
@@ -97,7 +98,7 @@ export default function GreenCardPage() {
     headline: "Green Card Process for Indians: PERM, I-140, Priority Date, I-485",
     description:
       "Complete green card guide for Indian H1B workers — PERM, I-140, priority date, visa bulletin, I-485, EAD, Advance Parole, India backlog, EB-2/EB-3, AC21 portability, CSPA.",
-    datePublished: UPDATED,
+    datePublished: PUBLISHED,
     dateModified: UPDATED,
     author: { "@type": "Organization", name: site.publisher },
     publisher: { "@id": `${site.url}/#organization` },

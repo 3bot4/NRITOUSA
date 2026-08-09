@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
 
 const PAGE_PATH = "/uscis";
-const UPDATED = "2026-06-16";
+const UPDATED = "2026-08-09";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
@@ -317,7 +317,7 @@ export default function UscisHubPage() {
                 { label: "Check your case", value: "Case status + Processing Times", note: "Compare your receipt date to posted times." },
               ]}
               badges={["Premium 15 business days", "Fees per USCIS"]}
-              lastVerified="2026-07-04"
+              lastVerified="2026-08-09"
               sources={[
                 { label: "USCIS Processing Times", href: "https://egov.uscis.gov/processing-times/" },
                 { label: "USCIS Fee Calculator", href: "https://www.uscis.gov/feecalculator" },

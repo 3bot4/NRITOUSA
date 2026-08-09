@@ -190,6 +190,7 @@ No. Premium processing ($2,805) speeds only the I-140 decision — generally 15 
     excerpt:
       "The visa bulletin has two charts — Final Action Date and Dates for Filing — and which one matters depends on what USCIS announces each month.",
     date: "2026-06-16",
+    updated: "2026-08-09",
     content: `
 :::summary
 The visa bulletin has two charts. Table A (Final Action Dates) is the strict cutoff for green card approval. Table B (Dates for Filing) is an earlier window that sometimes allows you to file I-485 before your Final Action Date is current — but only if USCIS authorizes its use each month. Always check both the visa bulletin AND the monthly USCIS Visa Bulletin Acceptance memo.
@@ -1100,6 +1101,7 @@ Your I-485 remains pending under EB-2. USCIS cannot approve until EB-2 India is 
     excerpt:
       "The visa bulletin is updated every month — here is exactly how to track it, what changes to watch for, and how to set up alerts for your EB category.",
     date: "2026-06-16",
+    updated: "2026-08-09",
     content: `
 :::summary
 The State Department publishes a new visa bulletin around the 8th–10th of each month for the following month (e.g., the July bulletin is published in early June). For Indian H1B workers, monitoring this monthly update is essential — a single month can bring meaningful date movement, retrogression, or a new Dates for Filing authorization.
@@ -1136,15 +1138,15 @@ This step is critical and often missed. Even if Table B shows a favorable date f
 
 ## How to track changes month over month
 
-Keep a simple log of the India EB-2 and EB-3 dates each month:
+Keep a simple log of the India EB-1, EB-2, and EB-3 dates each month:
 
-| Month | EB-2 India (Table A) | EB-3 India (Table A) | EB-2 India (Table B) | Using Table B? |
-|---|---|---|---|---|
-| June 2026 | Sep 1, 2013 | Dec 15, 2013 | Jan 15, 2015 | No (Final Action Dates) |
-| July 2026 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
-| August 2026 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
+| Month | EB-1 India (Table A) | EB-2 India (Table A) | EB-3 India (Table A) | EB-2 India (Table B) | Using Table B? |
+|---|---|---|---|---|---|
+| June 2026 | Dec 15, 2022 | Sep 1, 2013 | Dec 15, 2013 | Jan 15, 2015 | No (Final Action Dates) |
+| July 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
+| August 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
 
-This makes retrogression and forward movement immediately visible.
+This makes retrogression and forward movement immediately visible — note EB-1 India's June→July retrogression (Dec 15 → Oct 15, 2022) followed by no movement into August.
 
 ## Setting up alerts
 
