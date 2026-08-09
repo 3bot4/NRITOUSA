@@ -59,20 +59,92 @@ When the new monthly Visa Bulletin is published:
    still working, or reconstruct it via WebSearch + at least two independently
    corroborating secondary sources per cell (per the method in
    `data/visa-bulletin/_verified-backfill/`).
-2. Add `data/visa-bulletin/snapshots/YYYY-MM.json` for the new month in the
-   same shape as the existing files — `categories.{eb1,eb2,eb3,eb3Other,eb4,eb5}`
-   and `family.{f1,f2a,f2b,f3,f4}`, each `{country: {fad, dff}}` for the 5
-   countries. Use `"C"` for Current, `"U"` for DOS's own Unavailable, `null`
-   for "couldn't verify."
+2. **Add a new row-level file** at
+   `data/visa-bulletin/_verified-backfill/visa-bulletin-backfill-YYYY-MM.json`
+   — correction to the step below: `scripts/build-visa-bulletin-data.mjs`
+   reads its input from `_verified-backfill/*.json` (row-level cells), **not**
+   from `snapshots/` directly — it *writes* `snapshots/YYYY-MM.json` as an
+   output. One row per `{bulletin_month, category, country, chart_type,
+   value, confidence, source_url, note}` — 11 categories × 5 countries × 2
+   charts = 110 rows for one month. Categories:
+   `EB1, EB2, EB3, EB3_OTHER, EB4, EB5_UNRESERVED, F1, F2A, F2B, F3, F4`.
+   Countries: `IN, CN, MX, PH, ROW`. Chart types: `final_action` |
+   `dates_for_filing`. Use `"C"` for Current, `"U"` for DOS's own Unavailable,
+   `null` for "couldn't verify" (never guess).
 3. Regenerate the derived files:
    ```bash
    node scripts/build-visa-bulletin-data.mjs
    ```
-   This rewrites `current.json`, `history.json`, and `index.json` from
-   whatever's in `snapshots/`, and appends a run to `ingest-log.json`.
-4. Commit all of `data/visa-bulletin/` and deploy.
+   This rewrites `snapshots/YYYY-MM.json`, `current.json`, `history.json`,
+   and `index.json` from every backfill file combined, and appends a run to
+   `ingest-log.json`. It does **not** touch three fields on `current.json` —
+   `source`, `sourceLabel`, `notes` — it just carries them forward from the
+   previous run, so patch those three by hand afterward (they hardcode the
+   bulletin month in prose, e.g. "...verified against the official July 2026
+   bulletin..."). Also confirm by hand whether `adjustmentOfStatusChart` or
+   `eb5SetAsides` actually changed — the script preserves whatever was there
+   before, it doesn't re-derive them.
+4. **Sweep hard-coded "current bulletin" copy outside the data files** — this
+   is the step most likely to get missed, because none of it is caught by
+   `npm run audit:monthly-numbers` (that script only checks staleness of a
+   `lastVerified` date stamp, never whether prose still matches the live
+   month). Known locations, current as of the 2026-08 update:
+   - `src/lib/visa-bulletin.ts` — `currentBulletinNote` and `bulletinAlert`
+     constants are explicitly "MANUALLY MAINTAINED", by design.
+   - `src/lib/visaBulletinCluster.ts` — FAQ/guide prose on the `eb1-india`,
+     `eb2-india`, `eb3-india`, `final-action-date-vs-date-of-filing`, and
+     `monthly-update` child pages names the bulletin month directly. **This
+     prose is not evergreen** (a prior note in memory claimed otherwise —
+     that was wrong). Bump each edited page's `updated` frontmatter field too
+     (it feeds `dateModified` in JSON-LD). Add a new row to the
+     `monthly-update` page's illustrative tracking table.
+   - `src/lib/greenCardCluster.ts` (`green-card-backlog-india` slug) and
+     `src/lib/toolHubContent.ts` (`green-card-tracker` hub FAQ) — both quote
+     the bulletin month in prose.
+   - `src/data/immigration-tracker-data.ts` — **the easiest correctness bug
+     to introduce.** `currentFinalActionDate`/`currentDatesForFiling` import
+     live from `current.json` so they're always right, but
+     `previousFinalActionDate`, `movementDirection`, and
+     `finalActionMovementLabel` per category are hand-set and must be
+     recomputed against the *new* prior month, not carried over — e.g. if
+     nothing moved between the new current and new prior month, the label
+     must say "No change vs. last bulletin" with `movementDirection:
+     "unchanged"`, not whatever direction applied to the previous cycle's
+     comparison. Also bump `lastVerified` and the `sourceNote`/
+     `retrogressionNote` strings. (Leave `i485BacklogIndia`'s own
+     `lastVerified` alone — that's a separate USCIS inventory dataset on its
+     own irregular cadence, not the monthly bulletin.)
+   - `src/components/tools/ImmigrationTrackerDashboard.tsx` — has a hardcoded
+     prior-month name (e.g. `"in July 2026"`) in the label built from
+     `previousFinalActionDate`; keep it in sync with whatever month that
+     field now represents.
+   - Visible **"Updated [Month] 2026" badges** on `/green-card` and
+     `/tools/visa-green-card` (and check others — grep the pattern, don't
+     just search for last month's name). One of these was found stale by a
+     *full month* (still said "June" while everything else had already been
+     updated to "July") because it was missed by a search that only looked
+     for the previous month's name. Grep for the pattern
+     `Updated [A-Za-z]+ 2026`, not a specific month string.
+   - Do **not** touch the "Retrogression Explained" article's June→July 2026
+     worked example, or the "June 2026" row in the monthly-update tracking
+     table — those are deliberately historical and become false if renamed.
+5. **Verify the computed movement, at runtime, before shipping** — don't
+   trust that the data files alone make this correct:
+   ```bash
+   npx vite-node -c vitest.config.ts -e '
+   import { getMovement, bulletin } from "./src/lib/visa-bulletin.ts";
+   console.log(bulletin.month);
+   for (const c of ["eb1","eb2","eb3"]) console.log(c, getMovement(c, "india"));
+   '
+   ```
+   Confirm `status`/`monthsMoved` match what the bulletin actually shows —
+   this is what caught the immigration-tracker labels being wrong even
+   though `tsc`/tests were green.
+6. Commit all of `data/visa-bulletin/` plus whatever copy/data files from
+   step 4 changed, and deploy.
 
-The estimator's velocity math and charts pick the new month up automatically.
+The estimator's velocity math and charts pick the new month up automatically
+once `history.json` is regenerated.
 
 ## 2. H-1B salaries (quarterly)
 
