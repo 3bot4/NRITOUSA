@@ -192,10 +192,13 @@ title: Why Form 26AS, AIS and TIS come first
 Three dates matter: the **due date**, the **belated / revised** window, and when your **refund** actually lands.
 
 ### Return due date
-There is an annual due date for filing an individual's ITR for a given assessment year. The exact date moves year to year and is sometimes extended.
+There is an annual due date for filing an individual's ITR for a given assessment year. The exact date moves year to year and is sometimes extended — and, importantly, **it is not the same date for every form**.
 
 :::warn
-title: Verify the current assessment-year deadline
+title: ITR-2 and ITR-3 do not share a deadline
+- **ITR-1 / ITR-2, no audit:** the earlier deadline — **31 July** for AY 2026-27.
+- **ITR-3 / ITR-4, no audit:** a month later — **31 August** for AY 2026-27. This is the one NRIs with business, professional, or partnership income need.
+- **Audit cases:** **31 October**; transfer-pricing cases later still.
 - Do not rely on last year's date — **confirm the current-AY due date** on the [Income Tax portal](https://www.incometax.gov.in).
 - Filing after the due date can mean **late fees, interest, and loss of some carry-forward benefits**.
 :::

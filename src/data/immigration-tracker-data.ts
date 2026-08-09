@@ -230,9 +230,12 @@ export const processingTimes = {
       form: "I-485",
       category: "Adjustment of Status (employment-based)",
       valueDisplay: _i485?.typical ?? "Check official source",
-      // MANUALLY MAINTAINED
-      previousValueDisplay: "9–19 months",
-      changeDisplay: "+1 month",
+      // MANUALLY MAINTAINED. Aug 2026: the upper bound was corrected from 20 to
+      // 35 months after reconciling against USCIS's published EB I-485 times —
+      // that is a data correction, not the queue moving, so say so rather than
+      // printing a "+15 months" movement that never happened.
+      previousValueDisplay: "9–20 months",
+      changeDisplay: "Upper bound corrected",
       lastUpdated: _i485?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i485?.source ?? processingTimesRaw.source,
       officialSourceName: _i485?.sourceLabel ?? processingTimesRaw.sourceLabel,
@@ -243,8 +246,10 @@ export const processingTimes = {
       form: "I-140",
       category: "Immigrant Petition (EB-1/EB-2/EB-3)",
       valueDisplay: _i140?.typical ?? "Check official source",
-      previousValueDisplay: "4–8 months",
-      changeDisplay: "+1 month",
+      // Aug 2026: same correction as I-485 — the old 4–9 month band described
+      // only the fast half of the docket, not EB-2 NIW's tail.
+      previousValueDisplay: "4–9 months",
+      changeDisplay: "Upper bound corrected",
       lastUpdated: _i140?.lastUpdated ?? processingTimesRaw.lastUpdated,
       officialSourceUrl: _i140?.source ?? processingTimesRaw.source,
       officialSourceName: _i140?.sourceLabel ?? processingTimesRaw.sourceLabel,

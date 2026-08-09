@@ -13,6 +13,18 @@
  * figure against its official source, bump `lastVerified` to today. The audit
  * scripts flag anything older than 45 days.
  *
+ * ⚠️  A DATE IS NOT EVIDENCE. Bumping `lastVerified` without actually reopening
+ * the source is how the India TCS education/medical rate sat at 5% for months
+ * after it became 2% — behind a stamp that looked fresh. The monthly workflow:
+ *
+ *   npm run audit:monthly-numbers          # staleness + drift vs. baseline
+ *   npm run audit:monthly-numbers:live     # + fetch each source and diff values
+ *   npm run audit:monthly-numbers:baseline # record the reconciliation (commit it)
+ *
+ * `value` must stay a plain string literal — the audit script regex-parses this
+ * file, so a template literal or computed expression silently drops the number
+ * out of the audit entirely. verifiedNumbers.consistency.test.ts enforces this.
+ *
  * This is general planning information only — NOT legal or tax advice. Fees,
  * timelines, forms, thresholds, and agency rules change. Always verify with the
  * official government source before filing or making decisions.
@@ -78,7 +90,9 @@ export const officialSources = {
   incomeTaxIndia: "https://www.incometax.gov.in/",
   rbiRemittance: "https://www.rbi.org.in/",
   irsForm3520: "https://www.irs.gov/businesses/gifts-from-foreign-person",
-  collegeBoardSat: "https://satsuite.collegeboard.org/sat/registration/fees",
+  // /registration/fees now 404s — the fee table lives one level deeper.
+  collegeBoardSat:
+    "https://satsuite.collegeboard.org/sat/registration/fees-refunds/test-fees",
   fafsa: "https://studentaid.gov/",
 } as const;
 
@@ -121,40 +135,48 @@ export const greenCardRenewalNumbers: NumberGroup = {
 
 /* ─────────────────────────────── PERM / PWD ─────────────────────────────── */
 
+/**
+ * NOTE: every `value` here must equal the matching entry in
+ * `permDerivedRanges` (src/data/permProcessingData.ts), which computes it from
+ * the PERM planning constants. They are written out as literals so the audit
+ * script can still parse them, and kept honest by
+ * verifiedNumbers.consistency.test.ts — do not edit one without the other.
+ */
 export const permNumbers: NumberGroup = {
   pwd: {
     label: "Prevailing Wage Determination (PWD)",
-    value: "5–7 months",
-    lastVerified: "2026-07-04",
+    value: "4–8 months",
+    lastVerified: "2026-08-09",
     sourceName: "DOL FLAG Processing Times",
     sourceUrl: officialSources.dolFlagProcessing,
+    note: "FLAG is processing OEWS PWD requests received April 2026 and non-OEWS March 2026.",
   },
   recruitment: {
     label: "Recruitment + quiet period",
     value: "2–3 months",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-08-09",
     sourceName: "DOL PERM regulations",
     sourceUrl: officialSources.dolFlagProcessing,
   },
   analystReview: {
     label: "PERM analyst review",
     value: "12–16 months",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-08-09",
     sourceName: "DOL FLAG Processing Times",
     sourceUrl: officialSources.dolFlagProcessing,
-    note: "Depends on the DOL queue; audits add 6–12+ months.",
+    note: "DOL's published average is 372 days; audits add 6–12+ months on top.",
   },
   totalNoAudit: {
     label: "Total to PERM approval (no audit)",
-    value: "20–26 months",
-    lastVerified: "2026-07-04",
+    value: "18–27 months",
+    lastVerified: "2026-08-09",
     sourceName: "DOL FLAG Processing Times",
     sourceUrl: officialSources.dolFlagProcessing,
   },
   totalWithAudit: {
     label: "Total to PERM approval (with audit)",
-    value: "26–36+ months",
-    lastVerified: "2026-07-04",
+    value: "24–39+ months",
+    lastVerified: "2026-08-09",
     sourceName: "DOL FLAG Processing Times",
     sourceUrl: officialSources.dolFlagProcessing,
   },
@@ -166,17 +188,18 @@ export const i485Numbers: NumberGroup = {
   biometrics: {
     label: "Biometrics appointment",
     value: "1–3 months",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-08-09",
     sourceName: "USCIS Processing Times",
     sourceUrl: officialSources.uscisProcessingTimes,
+    note: "Planning band from secondary sources — USCIS does not publish a biometrics-scheduling time and blocks automated checks of its processing-times tool.",
   },
   employmentBased: {
     label: "Employment-based I-485 (planning range)",
-    value: "Months to 2+ years",
-    lastVerified: "2026-07-04",
+    value: "9–35 months",
+    lastVerified: "2026-08-09",
     sourceName: "USCIS Processing Times",
     sourceUrl: officialSources.uscisProcessingTimes,
-    note: "Varies by office, category, and visa availability. For Indian EB-2/EB-3 the Visa Bulletin is often the main delay.",
+    note: "Varies by office, category, and visa availability; cases needing extra review sit at the top of the band. For Indian EB-2/EB-3 the Visa Bulletin is often the main delay.",
   },
 } as const;
 
@@ -347,9 +370,10 @@ export const tdsSnapshotRows: { label: string; value: string; note?: string; hig
 ];
 
 export const itrSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
-  { label: "ITR due date (non-audit)", value: "Jul 31", note: "Individuals without audit; extensions happen — verify each year.", highlight: true },
+  { label: "ITR-1 / ITR-2 due date (non-audit)", value: "Jul 31", note: "Salaried, pension, capital gains — no business income. AY 2026-27: Jul 31, 2026. Extensions happen — verify each year.", highlight: true },
+  { label: "ITR-3 / ITR-4 due date (non-audit)", value: "Aug 31", note: "Business or professional income not requiring an audit. AY 2026-27: Aug 31, 2026 — a month later than ITR-2.", highlight: true },
   { label: "ITR due date (audit)", value: "Oct 31", note: "Cases requiring a tax audit." },
-  { label: "Which form", value: "ITR-2 / ITR-3", note: "ITR-2: no business income; ITR-3: business/profession income." },
+  { label: "Which form", value: "ITR-2 / ITR-3", note: "ITR-2: no business income; ITR-3: business/profession income — note the different due dates above." },
   { label: "Reconcile first", value: "26AS / AIS / TIS", note: "Match TDS & income before filing to avoid notices." },
 ];
 
@@ -423,10 +447,10 @@ export const educationNumbers: NumberGroup = {
   satFee: {
     label: "SAT registration fee",
     value: "$68",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-08-09",
     sourceName: "College Board",
     sourceUrl: officialSources.collegeBoardSat,
-    note: "Fee waivers available for eligible students; verify current amount.",
+    note: "Fee waivers available for eligible students. Testing outside the US adds a $43 international registration fee on top.",
   },
   fafsaOpens: {
     label: "FAFSA opening date",

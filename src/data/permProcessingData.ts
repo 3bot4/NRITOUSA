@@ -24,6 +24,8 @@
  * the official current queue.
  */
 
+import { i140ProcessingData } from "./i140ProcessingData";
+
 /** Sentinel: a monthly FLAG value that has not been confirmed yet. */
 export const NEEDS_UPDATE = "Update from DOL FLAG" as const;
 
@@ -76,24 +78,26 @@ export interface PermProcessingData {
 }
 
 /**
- * Current working data. Monthly queue months start as NEEDS_UPDATE on purpose:
- * they must be copied from FLAG before they can be shown as confirmed. The
- * numeric planning inputs are stable rule-of-thumb defaults you rarely change.
+ * Current working data. Monthly queue months are copied by hand from the DOL
+ * FLAG dashboard; any field not yet confirmed there stays NEEDS_UPDATE / null
+ * rather than being guessed. The numeric planning inputs below are stable
+ * rule-of-thumb defaults you rarely change.
  */
 export const permProcessingData: PermProcessingData = {
-  lastUpdated: "Pending first monthly update — pull from DOL FLAG",
+  lastUpdated: "August 2026 (FLAG dashboard data as of Aug 7, 2026)",
   dolSourceUrl: "https://flag.dol.gov/processingtimes",
 
-  // Monthly FLAG queue snapshots — replace each NEEDS_UPDATE with the current
+  // Monthly FLAG queue snapshots — replace each with the current
   // "processing cases filed in <MONTH YEAR>" value from the FLAG dashboard.
-  pwdPermOewsReceiptMonth: NEEDS_UPDATE,
-  pwdPermNonOewsReceiptMonth: NEEDS_UPDATE,
-  permAnalystReviewPriorityDate: NEEDS_UPDATE,
-  permAuditReviewPriorityDate: NEEDS_UPDATE,
-  permReconsiderationDate: NEEDS_UPDATE,
+  pwdPermOewsReceiptMonth: "April 2026",
+  pwdPermNonOewsReceiptMonth: "March 2026",
+  permAnalystReviewPriorityDate: "September 2025",
+  permAuditReviewPriorityDate: "December 2025",
+  permReconsiderationDate: "March 2026",
 
-  // Published averages — null until copied from FLAG.
-  averagePermAnalystReviewDays: null,
+  // Published averages — null when FLAG does not publish one. DOL showed no
+  // average for audit review in the August 2026 dashboard, so it stays null.
+  averagePermAnalystReviewDays: 372,
   averagePermAuditReviewDays: null,
 
   // Rule-based / stable inputs.
@@ -101,14 +105,17 @@ export const permProcessingData: PermProcessingData = {
   recruitmentTypicalDays: 90,
   i140PremiumProcessingBusinessDays: 15,
   i140Niweb1cPremiumProcessingBusinessDays: 45,
-  standardI140EstimateMonthsLow: 4,
-  standardI140EstimateMonthsHigh: 8,
+  // Mirrored from i140ProcessingData so the PERM pages and the I-140 cluster
+  // can never quote different I-140 ranges (they used to: 4–8 here vs. the
+  // I-140 cluster's own figures).
+  standardI140EstimateMonthsLow: i140ProcessingData.standardMonthsLow,
+  standardI140EstimateMonthsHigh: i140ProcessingData.standardMonthsHigh,
 
   // General planning ranges (labelled as estimates on-page).
   pwdPlanningMonthsLow: 4,
   pwdPlanningMonthsHigh: 8,
   permAnalystPlanningMonthsLow: 12,
-  permAnalystPlanningMonthsHigh: 18,
+  permAnalystPlanningMonthsHigh: 16,
   permAuditPlanningMonthsLow: 6,
   permAuditPlanningMonthsHigh: 12,
 };
@@ -137,11 +144,13 @@ export const DOL_DATA_NOTE =
 /**
  * General, rule-of-thumb planning ranges for the whole PERM → I-140 path, shown
  * as the top "Fast Answer" on the PERM cluster pages. These are planning
- * estimates (clearly labelled), NOT the official current FLAG queue — that lives
- * in the NEEDS_UPDATE fields above. Verify against DOL FLAG before relying on
- * any figure. lastVerified: 2026-07-04.
+ * estimates (clearly labelled), NOT the official current FLAG queue — that
+ * lives in the monthly snapshot fields above. Verify against DOL FLAG before
+ * relying on any figure. lastVerified: 2026-08-09, reconciled against the FLAG
+ * dashboard as of Aug 7, 2026 (analyst review averaging 372 days ≈ 12.2 months,
+ * which sits at the low end of the 12–16 month planning band).
  */
-export const PERM_ESTIMATE_VERIFIED = "2026-07-04";
+export const PERM_ESTIMATE_VERIFIED = "2026-08-09";
 
 export interface PermEstimateRow {
   stage: string;
@@ -151,14 +160,44 @@ export interface PermEstimateRow {
   highlight?: boolean;
 }
 
+const D = permProcessingData;
+
+/** Months the recruitment + mandatory 30-day quiet period realistically takes. */
+const RECRUITMENT_MONTHS_LOW = Math.round(D.recruitmentMinimumDays / 30);
+const RECRUITMENT_MONTHS_HIGH = Math.round(D.recruitmentTypicalDays / 30);
+
+const noAuditTotalLow =
+  D.pwdPlanningMonthsLow + RECRUITMENT_MONTHS_LOW + D.permAnalystPlanningMonthsLow;
+const noAuditTotalHigh =
+  D.pwdPlanningMonthsHigh + RECRUITMENT_MONTHS_HIGH + D.permAnalystPlanningMonthsHigh;
+
+/**
+ * The canonical rendered PERM ranges, derived from the planning constants
+ * above — never hand-typed. A previous version hard-coded "12–16 months" in
+ * the stage table while the constant said 12–18, and the two silently
+ * disagreed on the same page. Change the constant, not the string.
+ *
+ * `siteWideVerifiedNumbers.permNumbers` must quote these verbatim; that is
+ * enforced by verifiedNumbers.consistency.test.ts.
+ */
+export const permDerivedRanges = {
+  pwd: `${D.pwdPlanningMonthsLow}–${D.pwdPlanningMonthsHigh} months`,
+  recruitment: `${RECRUITMENT_MONTHS_LOW}–${RECRUITMENT_MONTHS_HIGH} months`,
+  analystReview: `${D.permAnalystPlanningMonthsLow}–${D.permAnalystPlanningMonthsHigh} months`,
+  audit: `${D.permAuditPlanningMonthsLow}–${D.permAuditPlanningMonthsHigh}+ months`,
+  totalNoAudit: `${noAuditTotalLow}–${noAuditTotalHigh} months`,
+  totalWithAudit: `${noAuditTotalLow + D.permAuditPlanningMonthsLow}–${noAuditTotalHigh + D.permAuditPlanningMonthsHigh}+ months`,
+  i140AfterPerm: `${D.standardI140EstimateMonthsLow}–${D.standardI140EstimateMonthsHigh} months`,
+} as const;
+
 export const permStageEstimateRows: PermEstimateRow[] = [
-  { stage: "Prevailing Wage (PWD)", estimatedTime: "5–7 months", whatToCheck: "DOL FLAG PWD queue", notes: "Filed with DOL before recruitment; timing varies by wage source." },
-  { stage: "Recruitment + quiet period", estimatedTime: "2–3 months", whatToCheck: "Ad run dates + 30-day quiet period", notes: "Employer-run; includes the mandatory 30-day wait after ads." },
-  { stage: "PERM analyst review", estimatedTime: "12–16 months", whatToCheck: "DOL FLAG analyst-review queue", notes: "Depends on the DOL queue; no premium processing for PERM." },
-  { stage: "PERM audit (if selected)", estimatedTime: "+6–12+ months", whatToCheck: "Audit notice + response deadline", notes: "Only if audited; adds substantial time on top of analyst review." },
-  { stage: "Total to PERM approval — no audit", estimatedTime: "~20–26 months", notes: "PWD + recruitment + analyst review, planning range.", highlight: true },
-  { stage: "Total to PERM approval — with audit", estimatedTime: "~26–36+ months", notes: "When the case is audited." },
-  { stage: "I-140 after PERM", estimatedTime: "Premium 15 business days; regular ~4–8 months", whatToCheck: "USCIS Processing Times / I-907", notes: "Premium processing may be available depending on category." },
+  { stage: "Prevailing Wage (PWD)", estimatedTime: permDerivedRanges.pwd, whatToCheck: "DOL FLAG PWD queue", notes: "Filed with DOL before recruitment; timing varies by wage source." },
+  { stage: "Recruitment + quiet period", estimatedTime: permDerivedRanges.recruitment, whatToCheck: "Ad run dates + 30-day quiet period", notes: "Employer-run; includes the mandatory 30-day wait after ads." },
+  { stage: "PERM analyst review", estimatedTime: permDerivedRanges.analystReview, whatToCheck: "DOL FLAG analyst-review queue", notes: "Depends on the DOL queue; no premium processing for PERM." },
+  { stage: "PERM audit (if selected)", estimatedTime: `+${permDerivedRanges.audit}`, whatToCheck: "Audit notice + response deadline", notes: "Only if audited; adds substantial time on top of analyst review." },
+  { stage: "Total to PERM approval — no audit", estimatedTime: `~${permDerivedRanges.totalNoAudit}`, notes: "PWD + recruitment + analyst review, planning range.", highlight: true },
+  { stage: "Total to PERM approval — with audit", estimatedTime: `~${permDerivedRanges.totalWithAudit}`, notes: "When the case is audited." },
+  { stage: "I-140 after PERM", estimatedTime: `Premium ${D.i140PremiumProcessingBusinessDays} business days; regular ~${permDerivedRanges.i140AfterPerm}`, whatToCheck: "USCIS Processing Times / I-907", notes: "Premium processing may be available depending on category." },
 ];
 
 /** Convenience source links for the PERM Fast Answer. */

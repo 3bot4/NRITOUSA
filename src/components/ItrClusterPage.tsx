@@ -139,7 +139,7 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
               title="NRI ITR filing — key dates & forms"
               accent="brand"
               rows={itrSnapshotRows}
-              badges={["Due Jul 31 (non-audit)", "ITR-2 / ITR-3"]}
+              badges={["ITR-2 due Jul 31", "ITR-3 due Aug 31", "Non-audit cases"]}
               lastVerified={INDIA_TAX_VERIFIED}
               sources={indiaIncomeTaxSources}
               disclaimer={INDIA_TAX_DISCLAIMER}

@@ -86,9 +86,9 @@ When the new monthly Visa Bulletin is published:
    before, it doesn't re-derive them.
 4. **Sweep hard-coded "current bulletin" copy outside the data files** — this
    is the step most likely to get missed, because none of it is caught by
-   `npm run audit:monthly-numbers` (that script only checks staleness of a
-   `lastVerified` date stamp, never whether prose still matches the live
-   month). Known locations, current as of the 2026-08 update:
+   `npm run audit:monthly-numbers` — that script reconciles the tracked figures
+   in `siteWideVerifiedNumbers.ts`, not free prose naming a bulletin month.
+   Known locations, current as of the 2026-08 update:
    - `src/lib/visa-bulletin.ts` — `currentBulletinNote` and `bulletinAlert`
      constants are explicitly "MANUALLY MAINTAINED", by design.
    - `src/lib/visaBulletinCluster.ts` — FAQ/guide prose on the `eb1-india`,
@@ -202,11 +202,51 @@ Arabia, and Central America rows each pass; they're the most-used.
 
 1. USCIS rows: <https://egov.uscis.gov/processing-times/> — use the form +
    "All offices" median-to-93rd-percentile spread for the `typical` range.
+   Do **not** quote only the fast half: the Aug-2026 audit found I-140 carried
+   "4–9 months" and employment-based I-485 "9–20 months" when the real spreads
+   ran to 24 and 35 months. EB-2 NIW in particular sits far above the median.
 2. Stamping rows: <https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html>
    — record each Indian post's H-category interview wait.
 3. OCI/passport rows: VFS Global USA published timelines.
 4. Update each row's `typical`, its per-row `lastUpdated`, and the top-level
    `lastUpdated`; clear `todo` flags as you verify.
+5. If a row's range changes, update the matching entry in
+   `src/data/immigration-tracker-data.ts` **together with** its
+   `previousValueDisplay` and `changeDisplay`. When the change is a data
+   correction rather than the queue actually moving, say so in
+   `changeDisplay` ("Upper bound corrected") instead of printing a movement
+   like "+15 months" that never happened.
+
+## 4a. Verified numbers reconciliation (monthly)
+
+`src/data/siteWideVerifiedNumbers.ts` is the central ledger of tracked figures.
+The rule that matters: **a `lastVerified` date is not evidence.** The India TCS
+education/medical rate sat at 5% for months after it became 2%, behind a stamp
+that read "verified 2026-07-04".
+
+```bash
+npm run audit:monthly-numbers           # staleness + drift vs. committed baseline
+npm run audit:monthly-numbers:live      # + fetch each source and diff the value
+npm run audit:monthly-numbers:baseline  # record the reconciliation, then commit
+```
+
+What each check catches:
+
+- **Staleness** — a stamp older than 45 days.
+- **Drift** — a value edited without its stamp moving (hard failure, exit 1), or
+  a stamp advanced while the value stayed byte-identical. The second is normal
+  when a figure genuinely did not change, but it is also exactly what a
+  rubber-stamped date looks like — `--fetch` is how you tell them apart.
+- **Live** — retrieves the official source and looks for the value in it.
+  Only scalar values ($415, 10%, $68) can be matched verbatim; ranges and prose
+  are listed for manual comparison rather than passed silently. `uscis.gov`,
+  `travel.state.gov` and VFS answer 403 to automated requests and are always
+  reported as manual — see `UNFETCHABLE_HOSTS` in the script.
+
+Run `--update-baseline` **only after actually re-opening the sources**, and
+commit `data/verified-numbers-baseline.json` — it is what the next run diffs
+against. Cross-file agreement (PERM ↔ I-140 ↔ I-485 figures) is separately
+enforced by `src/data/verifiedNumbers.consistency.test.ts` in `npm test`.
 
 ## 5. Stub tools (when going live)
 

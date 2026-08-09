@@ -62,8 +62,52 @@ export const IRA_LIMITS_BY_YEAR: Record<number, IraLimits> = {
   2026: IRA_LIMITS_2026,
 };
 
+/* ───────────────── Employer-plan (401k/403b/457/TSP) deferrals ──────────── */
+
+export interface ElectiveDeferralLimits {
+  taxYear: number;
+  /** Employee elective deferral limit, before any catch-up. */
+  electiveDeferral: number;
+  /** Age-50+ catch-up, on top of the elective deferral limit. */
+  catchUp50: number;
+  /**
+   * SECURE 2.0 "super catch-up" for employees who turn 60, 61, 62 or 63 during
+   * the year. It REPLACES catchUp50 for those ages — it is not additive.
+   */
+  catchUp60to63: number;
+  /** Elective deferral + the age-50 catch-up. */
+  total50Plus: number;
+  /** Elective deferral + the age 60–63 super catch-up. */
+  total60to63: number;
+  source: string;
+}
+
+/**
+ * 2026 employer-plan deferral limits.
+ * Source: IRS Notice 2025-67 / IRS newsroom release. Previously these figures
+ * existed only inside a source-URL string and article prose, so nothing could
+ * read them — hence the drift risk. Quote them from here.
+ */
+export const ELECTIVE_DEFERRAL_LIMITS_2026: ElectiveDeferralLimits = {
+  taxYear: 2026,
+  electiveDeferral: 24_500,
+  catchUp50: 8_000,
+  catchUp60to63: 11_250,
+  total50Plus: 32_500,
+  total60to63: 35_750,
+  source:
+    "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500",
+};
+
+export const ELECTIVE_DEFERRAL_LIMITS_BY_YEAR: Record<number, ElectiveDeferralLimits> = {
+  2026: ELECTIVE_DEFERRAL_LIMITS_2026,
+};
+
 /** The tax year the calculators currently present. */
 export const CURRENT_IRA_TAX_YEAR = 2026;
 
 export const currentIraLimits = (): IraLimits =>
   IRA_LIMITS_BY_YEAR[CURRENT_IRA_TAX_YEAR];
+
+export const currentElectiveDeferralLimits = (): ElectiveDeferralLimits =>
+  ELECTIVE_DEFERRAL_LIMITS_BY_YEAR[CURRENT_IRA_TAX_YEAR];

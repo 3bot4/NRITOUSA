@@ -60,8 +60,15 @@ export interface FormsPage extends FormsPageData {
 export const USCIS_FEE_CALCULATOR = "https://www.uscis.gov/feecalculator";
 
 /**
- * Per-form snapshots. Fees are best-known current USCIS figures (2024 fee rule)
- * shown with a "verify" caveat — NOT a guarantee. lastVerified: 2026-07-04.
+ * Per-form snapshots. Fees are best-known current USCIS figures shown with a
+ * "verify" caveat — NOT a guarantee.
+ *
+ * Baseline is the 2024 USCIS fee rule, but later rules have layered on top of
+ * it — most recently the premium-processing fee adjustment effective 1 Mar 2026
+ * (Federal Register 2026-00321), which is why "2024 fee rule" alone no longer
+ * describes what is in this table. Always reconcile against the current G-1055
+ * fee schedule / fee calculator rather than assuming a single rule year.
+ * lastVerified: 2026-08-09.
  */
 export const formSnapshots: Record<string, FormSnapshot> = {
   "i-129": {

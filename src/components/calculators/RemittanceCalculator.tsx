@@ -251,8 +251,11 @@ export default function RemittanceCalculator() {
                   income tax — a cash-flow cost, not a permanent loss.
                 </Callout>
               )}
-              {!tcs.rateVerified && (
-                <Callout tone="bad">
+              {/* Always shown: even a verified rate carries an effective date
+                  the sender needs (education/medical moved 5% → 2% on
+                  1 Apr 2026). Tone escalates only when it is unverified. */}
+              {tcs.rateNote && (
+                <Callout tone={tcs.rateVerified ? "note" : "bad"}>
                   {tcs.rateNote} Rates last checked {TCS_RATES_CHECKED}. Confirm
                   the current-year rate at the{" "}
                   <a

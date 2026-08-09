@@ -25,13 +25,21 @@ export interface I140ProcessingData {
   /** Premium processing SLA for I-140 NIW (EB-2) and EB-1C. */
   niwEb1cPremiumBusinessDays: number;
 
-  /** Standard (non-premium) adjudication planning range, months. */
+  /**
+   * Standard (non-premium) adjudication planning range, months. This is the
+   * full spread across categories and service centers, NOT the median — see
+   * standardMedianMonths for the typical case.
+   */
   standardMonthsLow: number;
   standardMonthsHigh: number;
+  /** Roughly where half of regular I-140s are decided, months. */
+  standardMedianMonths: number;
+  /** Why the range is so wide — shown wherever the range is. */
+  standardSpreadNote: string;
 }
 
 export const i140ProcessingData: I140ProcessingData = {
-  lastUpdated: "Sanity-check against current USCIS I-140 times",
+  lastUpdated: "August 2026",
   uscisProcessingTimesUrl: "https://egov.uscis.gov/processing-times/",
   premiumInfoUrl:
     "https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing",
@@ -39,8 +47,15 @@ export const i140ProcessingData: I140ProcessingData = {
   premiumBusinessDays: 15,
   niwEb1cPremiumBusinessDays: 45,
 
+  // Previously 4–8 months, which described only the fast half of the docket.
+  // USCIS's own 80%-completion figures run far wider once EB-2 NIW and the
+  // slower service center are included, so the range now covers the real spread
+  // and the median is carried separately.
   standardMonthsLow: 4,
-  standardMonthsHigh: 8,
+  standardMonthsHigh: 24,
+  standardMedianMonths: 4,
+  standardSpreadNote:
+    "Half of regular I-140s are decided in about 4 months, but the range across categories and service centers is much wider — EB-1A/EB-1B are usually quickest and EB-2 NIW is consistently the slowest, running past a year.",
 };
 
 /** Standard educational data-source note for the I-140 cluster. */
@@ -49,12 +64,12 @@ export const I140_DATA_NOTE =
 
 /* ─────────────────── I-140 Fast Answer snapshot ─────────────────────────── */
 
-export const I140_ESTIMATE_VERIFIED = "2026-07-04";
+export const I140_ESTIMATE_VERIFIED = "2026-08-09";
 
 export const i140SnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
   { label: "Filing fee", value: "$715", note: "Employers also pay the $600 Asylum Program Fee ($300 small employer, $0 nonprofit)." },
   { label: "Premium processing", value: "15 business days", note: "Fee $2,965. NIW / EB-1C: 45 business days.", highlight: true },
-  { label: "Regular processing", value: "~4–8 months", note: "Varies by service center." },
+  { label: "Regular processing", value: `~${i140ProcessingData.standardMedianMonths} months median, up to ~${i140ProcessingData.standardMonthsHigh}`, note: i140ProcessingData.standardSpreadNote },
   { label: "After approval (India EB)", value: "Years — Visa Bulletin", note: "Approval sets your priority date; the green-card wait is the Visa Bulletin backlog." },
 ];
 

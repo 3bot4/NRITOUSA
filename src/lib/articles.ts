@@ -1,5 +1,13 @@
 import type { Article } from "@/types";
 import { computeReadingTime } from "@/lib/format";
+import { ELECTIVE_DEFERRAL_LIMITS_2026 } from "@/lib/calc/irsLimits";
+
+/** 401(k) figures quoted in article prose — read from the IRS limits table. */
+const k401 = {
+  deferral: `$${ELECTIVE_DEFERRAL_LIMITS_2026.electiveDeferral.toLocaleString("en-US")}`,
+  catchUp50: `$${ELECTIVE_DEFERRAL_LIMITS_2026.catchUp50.toLocaleString("en-US")}`,
+  year: ELECTIVE_DEFERRAL_LIMITS_2026.taxYear,
+};
 
 /**
  * Article content is authored as light markdown:
@@ -1526,7 +1534,7 @@ Bringing Indian property money to the US is a process, not a gamble: pay the TDS
 :::key
 - TCS applies to **residents remitting abroad under the LRS**, not to most NRI NRO repatriation.
 - Rate: **20% on remittances above ₹10 lakh** in a financial year (most purposes); the threshold was raised to ₹10 lakh from **FY 2025-26**.
-- **Education funded by a loan** and other education/medical remittances follow lower, separate treatment — verify the current rate for your purpose before sending.
+- **Education funded by a qualifying loan is exempt**; self-funded education and medical treatment are **2%** above ₹10 lakh (cut from 5% on 1 April 2026).
 - TCS is **collected upfront by the bank** but is **creditable/refundable** via the sender's Indian ITR.
 - It affects cash flow, not final tax — plan timing around the **₹10 lakh** threshold.
 - Relevant when **parents send you gifts** from India — see [gift tax rules](/india-tax-compliance/gift-from-parents-india-to-usa).
@@ -1540,11 +1548,11 @@ TCS on foreign remittances flows from the **Liberalised Remittance Scheme (LRS)*
 
 | Purpose of remittance | TCS rate |
 |---|---|
-| Education financed by an education loan | **Lower / concessional** (verify current rate) |
-| Education/medical (self-funded) | **5%** (above ₹10 lakh) |
+| Education financed by a qualifying education loan | **0% — exempt** |
+| Education/medical (self-funded) | **2%** (above ₹10 lakh) |
 | Gifts, investments, travel, maintenance, etc. | **20%** (above ₹10 lakh) |
 
-The **₹10 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹10 lakh, generally no TCS applies (with some exceptions for tour packages). Education- and medical-purpose rates are concessional and change periodically — confirm the current figure for your purpose, and [estimate the TCS and total cost of a transfer with the remittance & TCS cost calculator](/calculators/remittance-tcs-cost).
+The **₹10 lakh threshold is per individual per financial year**, aggregated across remittances. Below ₹10 lakh, generally no TCS applies (with some exceptions for tour packages). The self-funded education and medical rate **dropped from 5% to 2% on 1 April 2026**, so a remittance made in FY 2025-26 or earlier was charged at 5% — confirm the rate for the year you actually sent, and [estimate the TCS and total cost of a transfer with the remittance & TCS cost calculator](/calculators/remittance-tcs-cost).
 
 ## Who this really affects
 This is the part that trips people up:
@@ -3574,20 +3582,21 @@ FCNR deposits are an underused tool for NRIs who want a solid fixed yield on the
     title: "Sending Money From India for US College Tuition: TCS Tax Guide",
     seoTitle: "TCS on Money Sent for US College Tuition",
     excerpt:
-      "Funding US tuition from India? Education remittances get favorable TCS — as low as 0.5% with a loan. Here's how to keep your transfer costs minimal.",
+      "Funding US tuition from India? Education remittances get favorable TCS — zero with an education loan, 2% self-funded. Here's how to keep transfer costs minimal.",
     topic: "money-transfer",
     date: "2026-05-27",
+    updated: "2026-08-09",
     featured: false,
-    content: `Funding a US degree from India is a huge undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** — as low as **0.5%** versus the **20%** on general remittances — but only if you classify and document correctly. Here's how to fund US tuition from India while keeping transfer taxes minimal.
+    content: `Funding a US degree from India is a huge undertaking, and the last thing families need is to lose money to taxes on the transfer itself. The good news: India's **TCS rules treat education remittances far more favorably** — **nothing at all** on loan-funded tuition, versus **20%** on general remittances — but only if you classify and document correctly. Here's how to fund US tuition from India while keeping transfer taxes minimal.
 
 :::summary
-Under India's LRS, **education remittances get preferential TCS treatment**: **0.5%** above ₹10 lakh if funded by an **education loan**, and **5%** above ₹10 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
+Under India's LRS, **education remittances get preferential TCS treatment**: **fully exempt** if funded by a qualifying **education loan**, and **2%** above ₹10 lakh if self-funded — far below the **20%** on general remittances. TCS is **recoverable** on the sender's Indian return. Pay **tuition directly** where possible, keep admission/fee documentation, and fund electronically to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
 :::
 
 :::key
 - Education remittances enjoy **lower TCS** than the 20% general rate.
-- **Loan-funded education: just 0.5% TCS** above ₹10 lakh.
-- **Self-funded education: 5% TCS** above ₹10 lakh.
+- **Loan-funded education: no TCS at all** — exempt, at any amount.
+- **Self-funded education: 2% TCS** above ₹10 lakh (down from 5% on 1 Apr 2026).
 - TCS is a **prepayment** — fully creditable/refundable on the sender's [Indian return](/articles/tcs-india-remittance-tax).
 - **Document the education purpose** (admission letter, fee invoice) to claim the lower rate.
 - Fund **electronically** to also dodge the [US 1% remittance fee](/articles/us-1-percent-remittance-fee).
@@ -3599,18 +3608,22 @@ India's policy deliberately makes it cheaper to send money abroad for **educatio
 ## The education TCS rates
 | Remittance type | TCS rate (above ₹10 lakh) |
 |---|---|
-| Education funded by an **education loan** | **0.5%** |
-| Education **self-funded** (own money) | **5%** |
+| Education funded by an **education loan** | **0% — exempt** |
+| Education **self-funded** (own money) | **2%** |
 | General (gifts, investment, travel) | **20%** |
 
-The **₹10 lakh threshold** is per individual per financial year; below it, generally no TCS applies. The **loan-funded 0.5%** rate is dramatically lower — a strong incentive to route tuition through an education loan where it makes sense.
+The **₹10 lakh threshold** is per individual per financial year; below it, generally no TCS applies. Loan-funded tuition is **exempt outright** — not merely discounted — which is a strong incentive to route tuition through an education loan where it makes sense.
+
+:::note
+**Two rate changes worth knowing.** Remittances funded by a loan under **Section 80E(3)(b)** became fully exempt under the Finance Act 2025 — that replaced an older **0.5%** concessional rate you'll still see quoted on many sites. Separately, the self-funded education and medical rate was cut from **5% to 2%** with effect from **1 April 2026**. If you are looking at a remittance made in **FY 2025-26 or earlier**, the 5% rate is the one that applied.
+:::
 
 ## TCS is recoverable — it's not a real cost
-As with all TCS, this is a **prepayment of income tax**, not an extra charge. The resident sender (often the parent) sees it in their **Form 26AS** and **credits it against their Indian income tax** or claims a **refund** when filing their ITR. So even the 5% self-funded rate is recovered later — it's a cash-flow timing issue, fully explained in our [TCS guide](/articles/tcs-india-remittance-tax).
+As with all TCS, this is a **prepayment of income tax**, not an extra charge. The resident sender (often the parent) sees it in their **Form 26AS** and **credits it against their Indian income tax** or claims a **refund** when filing their ITR. So even the 2% self-funded rate is recovered later — it's a cash-flow timing issue, fully explained in our [TCS guide](/articles/tcs-india-remittance-tax).
 
 ## How to keep tuition transfers cheap
 1. **Classify correctly**: ensure the remittance is coded as **education** (not general) with your bank.
-2. **Use an education loan** if appropriate to access the **0.5%** rate.
+2. **Use an education loan** if appropriate — a qualifying loan makes the remittance **fully exempt**.
 3. **Pay the university directly** where possible — many institutions accept international payments, and a direct tuition payment is cleanly an education remittance.
 4. **Keep documentation**: admission letter, fee invoice, I-20/enrollment proof.
 5. **Fund electronically** from a bank account to also avoid the [US 1% remittance fee](/articles/us-1-percent-remittance-fee) on the US side.
@@ -3623,19 +3636,19 @@ As with all TCS, this is a **prepayment of income tax**, not an extra charge. Th
 ## Frequently asked questions
 
 ### What is the TCS rate on education remittances from India?
-0.5% above ₹10 lakh if funded by an education loan, or 5% above ₹10 lakh if self-funded — much lower than the 20% on general remittances.
+Nothing at all if the remittance is funded by a qualifying education loan, or 2% above ₹10 lakh if self-funded — much lower than the 20% on general remittances. The self-funded rate was 5% until 1 April 2026.
 
 ### Is the education TCS refundable?
 Yes. Like all TCS, it's a prepayment of income tax that the sender credits against their tax liability or recovers as a refund when filing their Indian return.
 
-### How do I qualify for the lower 0.5% rate?
-The remittance must be for education funded through an education loan. Keep loan and admission documentation to support the classification.
+### How do I qualify for the education-loan exemption?
+The remittance must be for education funded through a loan taken from a financial institution qualifying under Section 80E(3)(b). Keep loan sanction and admission documentation to support the classification.
 
 ### Should I pay the university directly or send money to the student?
 Paying tuition directly to the university keeps the remittance cleanly classified as education and simplifies documentation on both the Indian and US sides.
 
 ## The bottom line
-Funding US tuition from India is far cheaper, tax-wise, than most families fear — education remittances get 0.5%–5% TCS instead of 20%, and even that is recoverable on the Indian return. Classify the transfer as education, use a loan for the lowest rate, pay the university directly, keep your paperwork, and fund electronically to dodge the US remittance fee. Handle it right and almost none of the transfer cost is permanent.`,
+Funding US tuition from India is far cheaper, tax-wise, than most families fear — education remittances get 0%–2% TCS instead of 20%, and even that is recoverable on the Indian return. Classify the transfer as education, use a loan to drop the rate to zero, pay the university directly, keep your paperwork, and fund electronically to dodge the US remittance fee. Handle it right and almost none of the transfer cost is permanent.`,
   },
   {
     slug: "selling-indian-shares-us-resident-tax",
@@ -6329,7 +6342,7 @@ An honest comparison has to start by acknowledging that IULs have real, structur
 - **An income-tax-free death benefit.** Life insurance proceeds are generally received income-tax-free by beneficiaries under US law. For wealth transfer — leaving a defined sum to children, or creating liquidity to pay estate costs — this is the product's genuine superpower, and neither a 401(k) nor a brokerage account replicates it.
 - **A downside floor.** In a 2008-style year, an IUL credits 0% while a market portfolio may fall 30–40%. For someone psychologically or financially unable to ride out a crash, that has real value (the calculator's bad-sequence toggle shows exactly this).
 - **Tax-deferred growth with potentially tax-free access.** Cash value grows untaxed; you can withdraw up to your basis tax-free and borrow against the rest via policy loans without triggering income tax — **if** the policy stays in force for life.
-- **No IRS contribution limits.** A 401(k) caps employee deferrals (around $24,500 in 2026); an IUL's premiums are limited only by insurance rules, which matters to high earners who have already maxed everything tax-advantaged.
+- **No IRS contribution limits.** A 401(k) caps employee deferrals (${k401.deferral} in ${k401.year}); an IUL's premiums are limited only by insurance rules, which matters to high earners who have already maxed everything tax-advantaged.
 - **Other features.** Depending on the state and policy: creditor protection, riders for chronic/terminal illness, and premium flexibility.
 
 ## The case against — what the brochures underplay
@@ -6348,7 +6361,7 @@ The 401(k)'s advantages are mechanical and hard to beat for accumulation:
 
 - **The employer match is an instant, guaranteed return** — typically 25–100% on matched dollars — before any market growth. No insurance product can manufacture that.
 - Your money earns the **full total return** of whatever you invest in, dividends included, with plan fees often under 0.5%.
-- Contributions reduce taxable income now (traditional) or grow tax-free (Roth); the 2026 employee limit is about $24,500 plus catch-up amounts at 50+.
+- Contributions reduce taxable income now (traditional) or grow tax-free (Roth); the ${k401.year} employee limit is ${k401.deferral}, plus a ${k401.catchUp50} catch-up at 50+.
 - The trade-offs: ordinary income tax at withdrawal, early-withdrawal penalties before 59½, required minimum distributions later, and — for wealth transfer — heirs generally must drain an inherited 401(k) within 10 years and pay income tax on it.
 
 ## How a taxable brokerage compares

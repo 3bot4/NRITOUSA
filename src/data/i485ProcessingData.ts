@@ -95,9 +95,13 @@ export const I485_DATA_NOTE =
  * the top "Fast Answer" on I-485 cluster pages. Planning estimates only — they
  * vary widely by field office, category, and visa availability. For Indian
  * EB-2/EB-3 the dominant wait is the Visa Bulletin BEFORE you can file.
- * lastVerified: 2026-07-04.
+ * lastVerified: 2026-08-09.
+ *
+ * The biometrics window below could not be confirmed against a primary USCIS
+ * page (egov.uscis.gov blocks automated fetches); it is a conservative planning
+ * band corroborated by secondary sources, not a published USCIS figure.
  */
-export const I485_ESTIMATE_VERIFIED = "2026-07-04";
+export const I485_ESTIMATE_VERIFIED = "2026-08-09";
 
 export interface I485EstimateRow {
   stage: string;
@@ -112,7 +116,7 @@ export const i485StageEstimateRows: I485EstimateRow[] = [
   { stage: "Biometrics appointment", estimatedTime: "1–3 months", whatToCheck: "Appointment notice", notes: "Varies by ASC; can be reused in some cases." },
   { stage: "EAD / Advance Parole (if filed together)", estimatedTime: "Several months", whatToCheck: "I-765 / I-131 status", notes: "Lets you work/travel while I-485 is pending." },
   { stage: "Interview (if required)", estimatedTime: "Field-office dependent", whatToCheck: "Local office processing times", notes: "Many employment cases are waived; some offices require it." },
-  { stage: "Employment-based I-485 decision", estimatedTime: "Months to 2+ years", whatToCheck: "USCIS Processing Times", notes: "Broad range by office, category, and visa availability.", highlight: true },
+  { stage: "Employment-based I-485 decision", estimatedTime: "~9–35 months", whatToCheck: "USCIS Processing Times", notes: "Broad range by office, category, and visa availability — cases needing extra review sit at the top of that band.", highlight: true },
   { stage: "Indian EB-2 / EB-3 (before filing)", estimatedTime: "Visa Bulletin-gated", whatToCheck: "Monthly Visa Bulletin", notes: "The priority-date backlog is usually the main delay." },
 ];
 

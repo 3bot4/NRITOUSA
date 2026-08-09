@@ -33,6 +33,14 @@
  *    below as an ILLUSTRATIVE assumption (commonly cited around 36%) and the
  *    page says so. Never present it as a verified rate.
  *
+ * Re-checked 2026-08-09 — no change to the figures below.
+ *  - The May-2026 "gold import duty raised 6% → 15%" headlines concern the
+ *    COMMERCIAL import tariff, not the passenger-baggage concession under
+ *    Notification No. 45/2025-Customs. The eligible-passenger rate is still
+ *    5% BCD + 1% AIDC ≈ 6%, capped at 1 kg. Do not "correct" the 6% here to
+ *    15% on the strength of a commercial-tariff headline — check that the
+ *    notification being cited is the passenger-gold entry before editing.
+ *
  * Educational information only — not tax, legal, or customs advice. Actual
  * assessment is always at the customs officer's discretion.
  */
@@ -59,8 +67,8 @@ export const goldCustomsSourceLinks: { label: string; href: string }[] = [
 
 export const goldDutyConfig = {
   /** ISO date the figures below were last verified against official sources. */
-  lastVerified: "2026-07-18",
-  lastVerifiedHuman: "July 18, 2026",
+  lastVerified: "2026-08-09",
+  lastVerifiedHuman: "August 9, 2026",
 
   /* Duty-free jewellery allowance — Rule 6, Baggage Rules 2026 (weight-only).
      Applies ONLY to jewellery (precious-metal articles of adornment), and
@@ -94,7 +102,7 @@ export const goldDutyConfig = {
 } as const;
 
 export const GOLD_DISCLAIMER =
-  "Estimates are based on official customs sources as last verified on July 18, 2026 (Baggage Rules 2026; Notification No. 45/2025-Customs). Customs limits, duty rates, tariff values, and notifications change, and the actual assessment is always at the customs officer's discretion using CBIC-notified tariff values — not your purchase receipt. Verify current rules at cbic.gov.in before you travel. Educational information only — not tax, legal, or customs advice.";
+  `Estimates are based on official customs sources as last verified on ${goldDutyConfig.lastVerifiedHuman} (Baggage Rules 2026; Notification No. 45/2025-Customs). Customs limits, duty rates, tariff values, and notifications change, and the actual assessment is always at the customs officer's discretion using CBIC-notified tariff values — not your purchase receipt. Verify current rules at cbic.gov.in before you travel. Educational information only — not tax, legal, or customs advice.`;
 
 /* ───────────────────── Quick-answer table (limits) ─────────────────────── */
 
@@ -204,7 +212,7 @@ export const goldFaqs: FaqItem[] = [
   {
     question: "How much gold can I carry from USA to India?",
     answer:
-      "As of July 2026, a resident or tourist of Indian origin who has lived abroad for more than one year can carry duty-free jewellery by weight on return to India — up to 40 grams for a female passenger and up to 20 grams for any other passenger, under Rule 6 of the Baggage Rules 2026. Beyond that, eligible passengers may bring up to 1 kg of gold in total by paying duty. Verify current limits with CBIC before you fly.",
+      "As of August 2026, a resident or tourist of Indian origin who has lived abroad for more than one year can carry duty-free jewellery by weight on return to India — up to 40 grams for a female passenger and up to 20 grams for any other passenger, under Rule 6 of the Baggage Rules 2026. Beyond that, eligible passengers may bring up to 1 kg of gold in total by paying duty. Verify current limits with CBIC before you fly.",
   },
   {
     question: "How much gold can I carry to India without duty?",
@@ -234,7 +242,7 @@ export const goldFaqs: FaqItem[] = [
   {
     question: "What is the customs duty rate on gold brought to India above the free allowance?",
     answer:
-      "As of July 2026, an eligible passenger (at least six months abroad, up to 1 kg, duty paid in convertible foreign currency) pays about 6% — 5% duty under the passenger-gold entries of Notification No. 45/2025-Customs plus 1% AIDC. A passenger who does not meet those conditions faces the general baggage assessment, which is substantially higher — commonly cited around 36%, but confirm the current figure with Customs. Duty is computed on CBIC-notified tariff values, not your receipt.",
+      "As of August 2026, an eligible passenger (at least six months abroad, up to 1 kg, duty paid in convertible foreign currency) pays about 6% — 5% duty under the passenger-gold entries of Notification No. 45/2025-Customs plus 1% AIDC. A passenger who does not meet those conditions faces the general baggage assessment, which is substantially higher — commonly cited around 36%, but confirm the current figure with Customs. Duty is computed on CBIC-notified tariff values, not your receipt.",
   },
   {
     question: "Can I carry old or personally owned jewellery to India?",

@@ -77,20 +77,34 @@ describe("education-loan remittances are exempt", () => {
   });
 });
 
-describe("education not via loan / medical carry unverified rates", () => {
-  it("applies 5% above threshold but flags it unverified", () => {
+describe("self-funded education / medical use the 2% rate (w.e.f. 1 Apr 2026)", () => {
+  it("applies 2% above the threshold", () => {
     const r = run({ purpose: "education_self", currentRemittanceInr: 1_500_000 });
-    expect(r.rate).toBe(0.05);
+    expect(r.rate).toBe(0.02);
     expect(r.taxableBase).toBe(500_000);
-    expect(r.tcs).toBe(25_000);
-    expect(r.rateVerified).toBe(false);
+    expect(r.tcs).toBe(10_000);
+    expect(r.rateVerified).toBe(true);
     expect(r.rateNote).toBeTruthy();
   });
 
   it("medical is the same shape", () => {
     const r = run({ purpose: "medical", currentRemittanceInr: 1_500_000 });
-    expect(r.rate).toBe(0.05);
-    expect(r.rateVerified).toBe(false);
+    expect(r.rate).toBe(0.02);
+    expect(r.rateVerified).toBe(true);
+  });
+
+  it("is not the pre-FY2026-27 5% rate", () => {
+    const r = run({ purpose: "education_self", currentRemittanceInr: 1_500_000 });
+    // 5% of the 500,000 above the threshold would be 25,000 — must NOT happen.
+    expect(r.tcs).not.toBe(25_000);
+  });
+
+  it("leaves family/investment at 20% — the cut did not touch them", () => {
+    for (const purpose of ["family", "investment"] as const) {
+      const r = run({ purpose, currentRemittanceInr: 1_500_000 });
+      expect(r.rate).toBe(0.2);
+      expect(r.tcs).toBe(100_000);
+    }
   });
 });
 

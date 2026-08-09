@@ -18,21 +18,21 @@
         },
         {
           "item": "I-140 — Immigrant petition (EB-1/EB-2/EB-3)",
-          "typical": "4–9 months",
+          "typical": "4–24 months (median ~4)",
           "premium": "15 business days with premium processing",
           "source": "https://egov.uscis.gov/processing-times/",
           "sourceLabel": "USCIS processing times",
-          "lastUpdated": "2026-06-09",
-          "todo": true
+          "lastUpdated": "2026-08-09",
+          "todo": false
         },
         {
           "item": "I-485 — Adjustment of status (employment-based)",
-          "typical": "9–20 months",
+          "typical": "9–35 months",
           "premium": null,
           "source": "https://egov.uscis.gov/processing-times/",
           "sourceLabel": "USCIS processing times",
-          "lastUpdated": "2026-06-09",
-          "todo": true
+          "lastUpdated": "2026-08-09",
+          "todo": false
         },
         {
           "item": "I-765 — EAD work permit (initial / renewal)",

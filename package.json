@@ -13,6 +13,8 @@
     "test:visa-bulletin": "vitest run src/lib/visa-bulletin.test.ts",
     "audit:intent-numbers": "node scripts/audit-user-intent-numbers.ts",
     "audit:monthly-numbers": "node scripts/audit-monthly-numbers.ts",
+    "audit:monthly-numbers:live": "node scripts/audit-monthly-numbers.ts --fetch",
+    "audit:monthly-numbers:baseline": "node scripts/audit-monthly-numbers.ts --fetch --update-baseline",
     "seo:inventory": "vite-node -c vitest.config.ts scripts/seo/route-inventory.ts",
     "seo:audit": "vite-node -c vitest.config.ts scripts/seo/audit.ts --",
     "seo:gsc-import": "vite-node -c vitest.config.ts scripts/seo/gsc-import.ts --",
