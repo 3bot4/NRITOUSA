@@ -59,6 +59,7 @@ const INTERNAL_LINKS = [
   { label: "RNOR tax residency calculator", href: "/calculators/rnor-tax-residency" },
   { label: "FBAR / FATCA risk checker", href: "/tools/fbar-fatca-checker" },
   { label: "Remittance & TCS cost calculator", href: "/calculators/remittance-tcs-cost" },
+  { label: "Shipping cost & customs duty calculator", href: "/shipping-household-goods-to-india" },
   { label: "India property sale & capital gains", href: "/india-property" },
   { label: "NRI Wealth Checkup", href: "/nri-wealth-checkup" },
 ];

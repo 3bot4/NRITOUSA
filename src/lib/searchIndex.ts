@@ -186,6 +186,16 @@ const CURATED: SearchItem[] = [
       "gold limit usa to india customs duty calculator carry jewellery coins bars baggage rules",
   },
   {
+    title: "Shipping Household Goods to India: Cost & Duty Calculator",
+    description:
+      "Compare courier, air, and sea freight cost ranges for shipping household goods to India, plus estimated customs duty — total landed cost in one place.",
+    href: "/shipping-household-goods-to-india",
+    type: "Calculator",
+    priority: 62,
+    keywords:
+      "shipping household goods to india cost calculator customs duty transfer of residence sea freight air freight courier moving",
+  },
+  {
     title: "Invitation Letter for Parents to Visit USA",
     description:
       "Free B-2 invitation letter generator with PDF download, sample letter, and documents checklist.",

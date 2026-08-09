@@ -38,6 +38,7 @@ const config: MoneyHubConfig = {
     { label: "RNOR tax residency calculator", href: "/calculators/rnor-tax-residency", kind: "Calculator" },
     { label: "DTAA foreign tax credit", href: "/calculators/dtaa-foreign-tax-credit", kind: "Calculator" },
     { label: "FBAR/FATCA risk checker", href: "/tools/fbar-fatca-checker", kind: "Tool" },
+    { label: "Shipping cost & customs duty calculator", href: "/shipping-household-goods-to-india", kind: "Calculator" },
   ],
   primaryCta: { label: "Model your 401(k) move", href: "/calculators/401k-return-to-india" },
   relatedGuides: [

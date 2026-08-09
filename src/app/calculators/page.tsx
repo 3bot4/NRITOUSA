@@ -95,6 +95,33 @@ export default function CalculatorsPage() {
               </span>
             </Link>
 
+            <Link
+              href="/shipping-household-goods-to-india"
+              className="group flex flex-col gap-2 rounded-2xl border border-sky-200 bg-gradient-to-br from-sky-50 to-indigo-50 p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-sky-600">
+                  Free Calculator
+                </p>
+                <h2 className="mt-1 text-lg font-bold tracking-tight text-ink-900">
+                  Shipping Cost &amp; Customs Duty Calculator
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-ink-500">
+                  Compare courier, air, and sea freight cost ranges for shipping household goods
+                  USA→India, plus estimated customs duty by category — one total landed cost.
+                </p>
+              </div>
+              <span className="flex-none text-sm font-semibold text-sky-600 group-hover:text-sky-700">
+                Estimate my cost{" "}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+
             {calculatorCategories.map((category) => {
               const items = calculators.filter((c) => c.category === category);
               if (!items.length) return null;
