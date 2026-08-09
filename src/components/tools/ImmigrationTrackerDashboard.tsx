@@ -770,7 +770,7 @@ export default function ImmigrationTrackerDashboard({
             category,
             accent,
             dot,
-            fad: `Final Action Date: ${formatCutoff(cat.currentFinalActionDate)} — ${cat.finalActionMovementLabel}${cat.previousFinalActionDate ? ` (from ${formatCutoff(cat.previousFinalActionDate)} in June 2026)` : ""}`,
+            fad: `Final Action Date: ${formatCutoff(cat.currentFinalActionDate)} — ${cat.finalActionMovementLabel}${cat.previousFinalActionDate ? ` (from ${formatCutoff(cat.previousFinalActionDate)} in July 2026)` : ""}`,
             dff: `Dates for Filing: ${formatCutoff(cat.currentDatesForFiling)} — ${cat.datesForFilingMovementLabel}`,
           })).map((item) => (
             <div

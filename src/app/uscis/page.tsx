@@ -112,7 +112,7 @@ const faqs = [
   {
     question: "What happens when priority date becomes current?",
     answer:
-      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. For July 2026 employment-based adjustment of status, USCIS is using Final Action Dates.",
+      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. For August 2026 employment-based adjustment of status, USCIS is using Final Action Dates.",
   },
   {
     question: "Do H1B workers need a myUSCIS account?",
@@ -132,7 +132,7 @@ const faqs = [
   {
     question: "How long is the EB-2 India green card wait time?",
     answer:
-      "As of the July 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in July 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
+      "As of the August 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in August 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
   },
   {
     question: "Can I file I-485 while my priority date is not yet current?",

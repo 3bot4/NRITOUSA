@@ -7,9 +7,10 @@
  * processing-times.json, i485-inventory/current.json). The fields marked
  * MANUALLY MAINTAINED must be updated each month alongside those files.
  *
- * July 2026 changes: EB-1 India retrogressed to Oct 15, 2022; EB-2 India is
- * Unavailable for the rest of FY 2026; EB-3 India advanced to Jan 1, 2014;
- * EB-5 India Unreserved is Unavailable. USCIS is using Final Action Dates.
+ * August 2026 status: EB-1 India holds at Oct 15, 2022 (unchanged since July);
+ * EB-2 India is Unavailable for the rest of FY 2026; EB-3 India holds at
+ * Jan 1, 2014 (unchanged since July); EB-5 India Unreserved is Unavailable.
+ * USCIS is using Final Action Dates.
  */
 
 import currentBulletin from "../../data/visa-bulletin/current.json";
@@ -38,9 +39,9 @@ const _eb3 = currentBulletin.categories.eb3.india;
  * Movement labels are MANUALLY MAINTAINED and must reflect the verified
  * difference vs. the previous official bulletin. We never compute or invent a
  * movement amount unless previousFinalActionDate / previousDatesForFiling are
- * present AND verified. July 2026: EB-1 retrogressed ~2 mo vs. June 2026
- * (Dec 15, 2022 → Oct 15, 2022); EB-2 India is Unavailable (was Sep 1, 2013);
- * EB-3 advanced ~0.5 mo (Dec 15, 2013 → Jan 1, 2014).
+ * present AND verified. August 2026 vs. July 2026: EB-1 unchanged (Oct 15,
+ * 2022 both months); EB-2 India remains Unavailable; EB-3 unchanged (Jan 1,
+ * 2014 both months) — no category moved this bulletin.
  */
 export type MovementDirection = "forward" | "retrogressed" | "unchanged" | "unavailable";
 
@@ -48,30 +49,30 @@ export const visaBulletinIndia = {
   month: currentBulletin.bulletinMonth,
   year: currentBulletin.bulletinMonth.split("-")[0],
   lastUpdated: currentBulletin.lastUpdated,
-  lastVerified: "July 2026",
+  lastVerified: "August 2026",
   officialSourceName: "U.S. Department of State Visa Bulletin",
   officialSourceUrl: currentBulletin.source,
   sourceNote:
-    "July 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
+    "August 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
   retrogressionNote:
-    "July 2026 update: USCIS is using Final Action Dates for employment-based adjustment filings. EB-1 India retrogressed to Oct 15, 2022. EB-2 India is Unavailable for the rest of FY 2026. EB-3 India advanced to Jan 1, 2014. EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. Always verify with the official Department of State Visa Bulletin.",
+    "August 2026 update: USCIS is using Final Action Dates for employment-based adjustment filings. EB-1 India holds at Oct 15, 2022 (unchanged from July). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from July). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. Always verify with the official Department of State Visa Bulletin.",
 
   categories: {
     EB1: {
       currentFinalActionDate: _eb1.fad,
       currentDatesForFiling: _eb1.dff,
-      // Verified June 2026 Final Action Date (official DOS bulletin).
-      previousFinalActionDate: "2022-12-15",
+      // Verified July 2026 Final Action Date (official DOS bulletin) — unchanged in August.
+      previousFinalActionDate: "2022-10-15",
       previousDatesForFiling: null,
-      movementDirection: "retrogressed" as MovementDirection,
-      finalActionMovementLabel: "Retrogressed ~2 mo",
+      movementDirection: "unchanged" as MovementDirection,
+      finalActionMovementLabel: "No change vs. last bulletin",
       datesForFilingMovementLabel: "Verify vs. last bulletin",
     },
     EB2: {
       currentFinalActionDate: _eb2.fad,
       currentDatesForFiling: _eb2.dff,
-      // Verified June 2026 Final Action Date — July 2026 is Unavailable ("U").
-      previousFinalActionDate: "2013-09-01",
+      // July and August 2026 are both Unavailable ("U") — no dated "previous" value.
+      previousFinalActionDate: null,
       previousDatesForFiling: null,
       movementDirection: "unavailable" as MovementDirection,
       finalActionMovementLabel: "Unavailable this month",
@@ -80,11 +81,11 @@ export const visaBulletinIndia = {
     EB3: {
       currentFinalActionDate: _eb3.fad,
       currentDatesForFiling: _eb3.dff,
-      // Verified June 2026 Final Action Date (official DOS bulletin).
-      previousFinalActionDate: "2013-12-15",
+      // Verified July 2026 Final Action Date (official DOS bulletin) — unchanged in August.
+      previousFinalActionDate: "2014-01-01",
       previousDatesForFiling: null,
-      movementDirection: "forward" as MovementDirection,
-      finalActionMovementLabel: "Advanced ~0.5 mo",
+      movementDirection: "unchanged" as MovementDirection,
+      finalActionMovementLabel: "No change vs. last bulletin",
       datesForFilingMovementLabel: "Verify vs. last bulletin",
     },
   },

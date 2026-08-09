@@ -291,7 +291,7 @@ export default function VisaBulletinPage() {
             <ul className="space-y-1.5 text-sm text-amber-800">
               <li>• US immigration law limits each country to 7% of annual employment-based green cards</li>
               <li>• India accounts for far more than 7% of EB-2 and EB-3 applicants — creating a severe backlog</li>
-              <li>• India EB-2 is Unavailable in the July 2026 bulletin (no numbers for the rest of FY 2026); new applicants face multi-decade waits when numbers return</li>
+              <li>• India EB-2 is Unavailable in the August 2026 bulletin (no numbers for the rest of FY 2026); new applicants face multi-decade waits when numbers return</li>
               <li>• The visa bulletin determines whether you can file I-485 this month — or must wait years longer</li>
               <li>• Retrogression (dates moving backward) can delay green card approval even after I-485 is filed</li>
             </ul>
@@ -472,7 +472,7 @@ export default function VisaBulletinPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">EB-2 India: advanced degree workers and NIW</h2>
           <p className="text-sm text-ink-600 mb-3">
-            EB-2 requires a master's degree (or bachelor's + 5 years progressive experience). EB-2 NIW allows self-petition if work benefits the US national interest — no PERM needed. For July 2026, EB-2 India is <strong>Unavailable</strong> — no immigrant visa numbers are authorized for the remainder of FY 2026, so no EB-2 India case can receive final approval this month regardless of priority date.
+            EB-2 requires a master's degree (or bachelor's + 5 years progressive experience). EB-2 NIW allows self-petition if work benefits the US national interest — no PERM needed. For August 2026, EB-2 India is <strong>Unavailable</strong> — no immigrant visa numbers are authorized for the remainder of FY 2026, so no EB-2 India case can receive final approval this month regardless of priority date.
           </p>
           <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs text-amber-900">
             <strong className="font-semibold">India EB-2 current Final Action Date ({bulletin.month} {bulletin.year}):</strong>{" "}
@@ -508,7 +508,7 @@ export default function VisaBulletinPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">EB-5 investor categories: Unreserved vs. set-asides</h2>
           <p className="text-sm text-ink-600 mb-4">
-            EB-5 splits into the <strong>Unreserved</strong> category and three reserved <strong>set-asides</strong> (Rural, High Unemployment, Infrastructure). For July 2026, EB-5 India Unreserved is <strong>Unavailable</strong>, but the set-aside categories remain <strong>Current</strong> — one reason set-aside investments draw India-born investors.
+            EB-5 splits into the <strong>Unreserved</strong> category and three reserved <strong>set-asides</strong> (Rural, High Unemployment, Infrastructure). For August 2026, EB-5 India Unreserved is <strong>Unavailable</strong>, but the set-aside categories remain <strong>Current</strong> — one reason set-aside investments draw India-born investors.
           </p>
           <Eb5SetAsidePanel />
         </section>
