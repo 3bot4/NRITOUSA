@@ -858,9 +858,10 @@ Indian mutual funds feel familiar and safe, but as a US resident they're a tax t
     title: "What Happens to Your 401(k) When You Move Back to India?",
     seoTitle: "Your 401(k) When You Move Back to India",
     excerpt:
-      "Your 401(k) doesn't vanish when you leave the US. Here are your options, the 30% withholding trap, the 10% penalty, and how RNOR status protects you.",
+      "Your 401(k) doesn't vanish when you leave the US. Your options, the 30% withholding trap, Form W-8BEN, DTAA Article 20, and how RNOR status protects you.",
     topic: "retirement",
     date: "2026-06-05",
+    updated: "2026-08-12",
     featured: true,
     content: `*"If I move back to India, does my 401(k) get stuck or taxed to death?"* The reassuring reality: it's **your money**, legally portable, and it doesn't vanish when your visa ends. What changes is the *tax treatment* of how and when you withdraw — and getting that timing right can save tens of thousands.
 
@@ -872,6 +873,8 @@ Your 401(k) stays yours after you leave the US. You can **leave it invested, rol
 - A 401(k) is **fully portable** — leaving the US does not forfeit it.
 - **Early withdrawal (before 59½) costs a 10% penalty + income tax** on top.
 - Nonresident-alien withdrawals face **up to 30% US withholding** (the India-US treaty offers limited relief).
+- **Form W-8BEN** is what sets that rate — it goes to your plan administrator, never to the IRS, and it expires.
+- **DTAA Article 20** protects *periodic* pension payments, not one-off lump sums — and not at all while you still hold a green card.
 - **Rolling into an IRA** usually means lower fees and far more investment choice.
 - India's **RNOR status** (typically 2–3 years after return) can shield your US retirement income from Indian tax — a golden withdrawal window.
 - **Never skip the [employer match](/articles/401k-match-explained-nri)** out of "I might leave" fear — it's a 100% instant return.
@@ -895,10 +898,79 @@ For the majority of returning NRIs, **rolling into a Traditional IRA** is the wi
 If you withdraw before age **59½**, the IRS adds a **10% penalty** on top of ordinary income tax. On a $100,000 balance, cashing out early can easily cost $30,000–$40,000 between tax and penalty — [estimate your own number with the 401(k) return-to-India calculator](/calculators/401k-return-to-india). This is why "just take the money to India" is usually the worst choice.
 
 ### The 30% nonresident withholding
-Once you're a **nonresident alien**, US payers generally must withhold **30%** on retirement distributions. The India-US tax treaty provides only limited relief on lump-sum 401(k) distributions, so plan for the 30% and reconcile via a **Form 1040-NR** to recover any excess.
+Once you're a **nonresident alien**, the mechanics at the source change completely. Your plan no longer withholds under the familiar 20% rule that applies to US persons — it withholds **30% under IRC §1441(a)** and reports the payment on a **Form 1042-S** rather than a 1099-R. And if the plan holds no valid documentation for you, it is *required* to presume you're a foreign person and take the full 30%.
+
+That 30% is a default, not your final tax bill. Only two things change it: the **Form W-8BEN** you give your administrator, and whether **Article 20** of the India-US treaty covers the way you take the money. Both are below — and both have to be sorted out *before* the money leaves the plan, because recovering over-withheld tax otherwise means waiting to file a **Form 1040-NR** the following year.
 
 ### India will tax it too — eventually
 Once you become **ordinarily resident** in India again, India taxes your worldwide income, including US retirement withdrawals. The [DTAA](/articles/double-taxation-dtaa-india-usa) prevents true double taxation through foreign tax credits, but you do have to account for both systems.
+
+:::cta
+title: Cash out now, or keep it invested?
+body: Run your own balance through the calculator — it nets the 10% penalty and 30% withholding against what the same money could compound to in USD over 10–20 years.
+button: Open the 401(k) cash out vs keep calculator
+href: /calculators/401k-return-to-india
+:::
+
+## Form W-8BEN: the one page that sets your withholding rate
+Most people meet this form the hard way — after 30% of a distribution has already disappeared. **Form W-8BEN** ("Certificate of Foreign Status of Beneficial Owner for United States Tax Withholding and Reporting") is how you tell your plan administrator or IRA custodian that you're now a foreign person, and — if you qualify — that a treaty rate should apply instead of the default.
+
+:::info
+title: Where the form actually goes
+**W-8BEN is never sent to the IRS.** It goes to the *payer* — your 401(k) plan administrator, IRA custodian, or brokerage — and they keep it on file. No filing deadline, no fee. If the payer has nothing on file, they must treat you as a foreign person and withhold the full 30%.
+:::
+
+### What actually goes on the form
+| Line | What it asks for | What a returning NRI puts |
+|---|---|---|
+| **Line 3** | Permanent residence address | Your **India** address — not a US address, not a relative's US address |
+| **Line 5** | US taxpayer ID (SSN or ITIN) | Your **SSN** — it doesn't expire when you leave the country |
+| **Line 6a** | Foreign tax ID | Your Indian **PAN** |
+| **Line 9** | Treaty country of residence | **India** |
+| **Line 10** | Article, rate, and type of income | Where an **Article 20** pension/annuity claim is written in, if you're making one |
+| **Part III** | Signature and date | Starts the clock on how long the form stays valid |
+
+### The three things that catch people out
+:::warn
+title: W-8BEN mistakes that cost real money
+**No tax ID, no treaty rate.** A reduced treaty rate is only honoured if the payer holds a US or foreign TIN for you. The narrow "actively traded securities" exception that lets some people skip an ITIN covers dividends and interest — **not** retirement distributions. Losing your grip on your SSN before you leave is one of the most expensive administrative mistakes a returning NRI can make.
+**It expires.** A signed W-8BEN is generally valid from the date of signature through **the last day of the third succeeding calendar year** — one signed in March 2026 runs to 31 December 2029. After that, the payer reverts to 30% until you re-certify.
+**A change of circumstances kills it.** If the information on it stops being correct — most commonly a **US mailing address** reappearing on the account — the form is invalid and you must tell the payer **within 30 days**. Keeping a US address "just for the post" is the quietest way NRIs invalidate their own form.
+:::
+
+### Do this before you board the plane
+Update your address, confirm your SSN is on file, and ask your administrator two questions **in writing**: *does your firm accept W-8BEN treaty claims on retirement distributions, and what rate will you actually apply?* The answers vary enormously. Some custodians will apply a treaty rate; many withhold 30% on every distribution to a foreign address as a matter of policy and leave you to reclaim the difference on a 1040-NR. Knowing which kind you're dealing with beforehand is worth far more than discovering it afterwards. W-8BEN also sits alongside the other cross-border paperwork in our [NRI tax forms & limits centre](/india-tax-compliance/nri-tax-forms-limits).
+
+## What DTAA Article 20 actually says — and where it stops
+**Article 20** of the India-US tax treaty ("Private Pensions, Annuities, Alimony and Child Support") is the provision people mean when they say "the treaty protects my 401(k)". It is real — and it is narrower than the shorthand suggests.
+
+### The rule
+Article 20(1) says a pension or annuity derived by a resident of one country from sources in the other **"may be taxed only in the first-mentioned Contracting State"** — the country where the recipient lives. Read plainly: once you're an Indian resident, a US private pension is taxable in **India only**, and the US claim falls away.
+
+### The catch: "pension" means *periodic*
+Article 20(3) defines the term tightly — a pension is **"a periodic payment made in consideration of past services"**. Article 20(4) defines an annuity as stated sums **payable periodically at stated times**. A single lump-sum cash-out of your 401(k) balance is not a periodic payment, which is why the prevailing view among cross-border practitioners is that lump sums fall outside Article 20 and stay fully taxable in the US.
+
+That turns the treaty into a question about *how you structure withdrawals*, not which box you tick:
+
+| How you take the money | Article 20 position | What to expect |
+|---|---|---|
+| **One lump-sum cash-out** | Weak — not a "periodic payment" | US taxes it; expect 30% withheld; 10% penalty if under 59½ |
+| **Substantially equal periodic payments** | Much stronger — behaves like a pension | Better treaty argument — see [72(t) SEPP withdrawals](/articles/72t-sepp-401k-early-withdrawal) |
+| **Annuitised IRA payments** | Strongest — squarely an "annuity" | Best treaty position, least flexibility |
+
+### The catch nobody mentions: the saving clause
+Article 1(3) of the same treaty lets each country tax **its own residents and citizens "as if the Convention had not come into effect."** Article 1(4) then lists the provisions that survive that override — and for Article 20 it names only **paragraphs 2 and 6**. Paragraph 1, the private-pension rule, is not on the list.
+
+In plain terms: **Article 20(1) does nothing for you while you are still a US tax resident.** Keep your green card after moving to India and you remain a US tax resident, so the US can tax the distribution as though the treaty didn't exist. The relief only becomes live once you're genuinely a **nonresident alien** — green card formally surrendered or expired, and not meeting the [substantial presence test](/articles/substantial-presence-test-explained).
+
+:::warn
+title: The green-card contradiction
+This is where returning NRIs most often go wrong: holding a green card "just in case" while assuming the treaty is quietly protecting their retirement withdrawals. Those two positions cancel each other out.
+Surrendering a green card carries its own consequences, including a possible exit tax for long-term permanent residents — a decision for a cross-border CPA, not a hunch.
+:::
+
+### One provision that runs the other way
+Article 20(2) treats **social security and other public pensions** in the opposite direction: they are taxable **only in the country paying them**. So US Social Security stays US-taxable even after you're an Indian resident — the mirror image of the private-pension rule, and one of the two paragraphs the saving clause leaves intact. See [what happens to your US Social Security when you leave](/articles/social-security-benefits-leaving-us).
 
 ## The RNOR golden window
 Here's the planning nugget most people miss. When you return to India after years abroad, you typically qualify as **RNOR — Resident but Not Ordinarily Resident** — for about **2 to 3 years**. During RNOR status, your **foreign income is generally not taxed in India.** That makes the RNOR window a uniquely efficient time to take 401(k)/IRA distributions: you may owe US tax (and the 30% withholding), but India won't pile on. Many advisors structure withdrawals to fall inside this window — check roughly how long yours might last with the [RNOR tax-residency calculator](/calculators/rnor-tax-residency).
@@ -910,10 +982,12 @@ Here's the planning nugget most people miss. When you return to India after year
 ## What you should actually do
 1. **Keep contributing while in the US** — at minimum capture the full [employer match](/articles/401k-match-explained-nri).
 2. **Before you leave**, roll your 401(k) into an IRA at a brokerage that supports nonresident account holders.
-3. **Don't cash out** to avoid the penalty and withholding hit.
-4. **Map your withdrawal timing** to low-income years and your India **RNOR window**.
-5. **File a 1040-NR** after leaving to reconcile the 30% withholding and claim refunds.
-6. **Consult a cross-border CPA** before the first big withdrawal — the savings dwarf the fee.
+3. **Don't cash out** to avoid the penalty and withholding hit — [check the gap for your own balance first](/calculators/401k-return-to-india).
+4. **File a W-8BEN** with your administrator once you're a nonresident, with your India address, your SSN, and India as the treaty country — then diarise its expiry.
+5. **Structure withdrawals as periodic payments** if you want any realistic shot at Article 20 treaty relief.
+6. **Map your withdrawal timing** to low-income years and your India **RNOR window**.
+7. **File a 1040-NR** after leaving to reconcile the 30% withholding and claim refunds.
+8. **Consult a cross-border CPA** before the first big withdrawal — the savings dwarf the fee.
 
 ## Frequently asked questions
 
@@ -929,8 +1003,28 @@ Both can tax withdrawals once you're ordinarily resident in India, but the [DTAA
 ### Should I still contribute if I'm unsure about staying?
 Yes — especially up to the employer match, which is free money. Your 401(k) follows you regardless of where you end up living.
 
+### Do I file Form W-8BEN with the IRS?
+No. W-8BEN goes to the payer — your plan administrator, IRA custodian, or brokerage — and they keep it on file. There's no IRS filing and no fee. Without it, the payer must presume you're a foreign person and withhold 30%.
+
+### How long does a W-8BEN stay valid?
+Generally from the date you sign it through the last day of the third succeeding calendar year, unless something on it stops being correct. A US address appearing on the account is the usual trigger — you then have 30 days to notify the payer and file a fresh form.
+
+### Does DTAA Article 20 stop the US taxing my 401(k)?
+Only in part. Article 20(1) gives the country of residence exclusive taxing rights over private pensions, but Article 20(3) defines a pension as a *periodic payment*, so a one-off lump-sum cash-out generally falls outside it. Structuring withdrawals as periodic payments gives you a far stronger position.
+
+### I still have my green card — can I claim Article 20?
+Realistically no. The treaty's saving clause in Article 1(3) lets the US tax its own residents as if the treaty didn't exist, and Article 1(4) preserves only paragraphs 2 and 6 of Article 20 — not the private-pension rule in paragraph 1. Green card holders remain US tax residents, so the relief doesn't bite until you're genuinely a nonresident alien.
+
+### Can I claim a treaty rate without an SSN or ITIN?
+No. A reduced treaty rate is only honoured when the payer holds a US or foreign tax ID for you. The exception that lets some investors skip an ITIN applies to actively traded securities income, not retirement distributions — so keep your SSN accessible after you leave.
+
 ## The bottom line
-Moving back to India is a reason to *plan* your 401(k), not to fear or skip it. Keep contributing, roll it into an IRA before you leave, avoid the penalty-and-withholding hit of cashing out, and time your withdrawals to your RNOR window. Treated well, your US retirement savings become a portable nest egg that funds your life on either side of the world.`,
+Moving back to India is a reason to *plan* your 401(k), not to fear or skip it. Keep contributing, roll it into an IRA before you leave, get a valid W-8BEN on file so the 30% default isn't applied by accident, structure withdrawals as periodic payments if you want Article 20 to do any work, and time them to your RNOR window. Treated well, your US retirement savings become a portable nest egg that funds your life on either side of the world. [Compare cashing out against keeping it invested](/calculators/401k-return-to-india) before you decide.
+
+## Official sources
+- [IRS — Instructions for Form W-8BEN](https://www.irs.gov/instructions/iw8ben)
+- [IRS — Plan distributions to foreign persons require withholding](https://www.irs.gov/retirement-plans/plan-distributions-to-foreign-persons-require-withholding)
+- [India–United States income tax convention (Articles 1 and 20)](https://www.irs.gov/pub/irs-trty/india.pdf)`,
   },
   {
     slug: "transfer-401k-to-india-nps-ppf",
