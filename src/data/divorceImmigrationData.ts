@@ -15,17 +15,27 @@
  *    applicable YEAR, the JURISDICTION, an official SOURCE URL and a
  *    `lastVerified` ISO date.
  *
- * 2. NEVER say a status "ends immediately" or "you must leave" as though it
- *    were settled. Where the agency has not published a bright-line rule,
- *    say so and describe what practitioners actually do. See
- *    `H4_TIMING_AMBIGUITY` — that nuance is the single most important honest
- *    statement on the page and must not be flattened into a slogan.
+ * 2. NEVER make a categorical legal claim where the underlying law is
+ *    fact-specific. Immigration consequences of a divorce turn on the facts,
+ *    the filing history and the adjudicator. Say what CAN happen, name the
+ *    planning risk, and route the reader to counsel. In particular:
+ *      - Do NOT assert an exact moment at which a derivative status ends.
+ *        No current primary source establishes a universal timestamp.
+ *      - Do NOT say a person "begins accruing unlawful presence" the instant
+ *        a decree is entered. Unlawful presence, status violation and
+ *        unauthorized employment are three distinct concepts with distinct
+ *        triggers, and the re-entry bars turn on DEPARTURE.
+ *      - Do NOT assert that an EAD ceases to be effective at a named instant.
+ *        Say the printed date should not be relied on once the underlying
+ *        status is in question, and route to counsel.
+ *    See `H4_TIMING_AMBIGUITY`, which carries this framing and must not be
+ *    flattened back into a slogan.
  *
  * 3. NEVER conflate the three separate money obligations:
  *      (a) SPOUSAL SUPPORT / ALIMONY — a state family-court order
- *      (b) FORM I-864 SUPPORT        — a federal contract enforceable by the
- *                                      sponsored immigrant, unaffected by
- *                                      divorce
+ *      (b) FORM I-864 SUPPORT        — a federal undertaking enforceable by
+ *                                      the sponsored immigrant, which a
+ *                                      divorce does not itself terminate
  *      (c) CHILD SUPPORT             — separate again, and not modelled here
  *    They run alongside each other. Settling one does not settle the others.
  *
@@ -33,29 +43,46 @@
  *    LAWFUL PERMANENT RESIDENT. An abused H-4 spouse of an H-1B holder is NOT
  *    eligible for a VAWA self-petition, because the H-1B principal is neither.
  *    This is the most commonly repeated error in NRI-facing divorce content
- *    and it sends the most vulnerable readers down a dead end. Any edit that
- *    offers VAWA to an H-4 spouse without naming that prerequisite is a bug.
- *    The U visa / T visa route is the correct pointer for that reader.
+ *    and it sends the most vulnerable readers down a path that cannot work.
+ *    Any edit that offers VAWA to an H-4 spouse without naming that
+ *    prerequisite is a bug. U and T nonimmigrant status are the classifications
+ *    that do not depend on the abuser's immigration status — but they have
+ *    their OWN eligibility requirements, and a divorce alone does not create
+ *    eligibility for either. Never imply that it does.
  *
- * 5. NEVER present a guideline alimony figure as an award. Every US
- *    jurisdiction decides on statutory factors; the estimator reproduces the
- *    starting point of a negotiation. India has no formula at all.
+ * 5. NEVER present a guideline alimony figure as an award or a prediction.
+ *    Every US jurisdiction decides on statutory factors; the estimator
+ *    reproduces an illustrative benchmark that negotiations often start from.
+ *    India has no statutory formula at all.
  *
  * 6. American spelling in all visible copy — site-wide convention, asserted by
  *    a regex in the page test, so British -isation/-ise forms fail the build.
  *
- * 7. Immigration and family law are practice areas this site does not hold
+ * 7. NO ATTORNEY REVIEW is claimed anywhere on this page, because none has
+ *    taken place. `RULES_LAST_VERIFIED` means the cited SOURCES were checked
+ *    on that date — it is source verification, not legal review. Do not add a
+ *    reviewer credential that does not exist.
+ *
+ * 8. Immigration and family law are practice areas this site does not hold
  *    itself out as licensed in. Every route ends at "consult an attorney",
  *    and the financial/tax framing is the only place the site speaks with its
  *    own authority.
  */
 import type { FaqItem } from "@/lib/seo";
 
-/** ISO date the legal rules on this page were last checked against source. */
+/**
+ * ISO date the cited SOURCES were last checked. This is source verification,
+ * not legal review — see editing rule 7. Nothing on this page has been
+ * reviewed by an attorney.
+ */
 export const RULES_LAST_VERIFIED = "2026-08-16";
 export const RULES_LAST_VERIFIED_HUMAN = "August 16, 2026";
 /** Count of primary sources reviewed for this page (statutes, USCIS, courts). */
-export const OFFICIAL_SOURCES_REVIEWED = 14;
+export const OFFICIAL_SOURCES_REVIEWED = 18;
+
+/** Shown wherever the page might otherwise be mistaken for legal advice. */
+export const SHORT_DISCLAIMER =
+  "Educational information only — not legal advice. Immigration and family-law outcomes depend on your specific facts.";
 
 /* ------------------------------------------------------------------ *
  * Verified figures. Nothing numeric goes on the page except from here.
@@ -63,12 +90,12 @@ export const OFFICIAL_SOURCES_REVIEWED = 14;
 export interface VerifiedFact {
   label: string;
   value: string;
-  /** Year or effective date the value applies to. NEVER omit. */
+  /** Year, effective date, or statutory cite the value applies to. NEVER omit. */
   year: string;
   jurisdiction: string;
   sourceName: string;
   sourceUrl: string;
-  /** ISO date verified against the source. */
+  /** ISO date the source was checked. */
   lastVerified: string;
   note?: string;
 }
@@ -76,43 +103,64 @@ export interface VerifiedFact {
 export const divorceFacts: Record<string, VerifiedFact> = {
   unlawfulPresence3Year: {
     label: "Unlawful presence — three-year re-entry bar",
-    value: "More than 180 days but less than 1 year",
+    value: "More than 180 days but less than 1 year, followed by departure",
     year: "INA § 212(a)(9)(B)(i)(I)",
     jurisdiction: "Federal",
     sourceName: "USCIS Policy Manual, Vol. 8, Part O",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-8-part-o",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The bar attaches on DEPARTURE from the United States, not on the day the 180th day passes. Someone who accrues unlawful presence and then leaves triggers it; the accrual alone is not the trigger. That distinction changes what an attorney will advise you to do next.",
+    note: "Four different things are often confused here. Unlawful presence is a period counted under the statute; a status violation is a separate concept; unauthorized employment is a third; and the re-entry bar itself is triggered by DEPARTURE from the United States after the relevant period has accrued. How the period is counted in a particular case depends on the facts and on any application that is pending, which is why this is a question for counsel rather than a countdown you can run yourself.",
   },
   unlawfulPresence10Year: {
     label: "Unlawful presence — ten-year re-entry bar",
-    value: "1 year or more",
+    value: "1 year or more, followed by departure",
     year: "INA § 212(a)(9)(B)(i)(II)",
     jurisdiction: "Federal",
     sourceName: "USCIS Policy Manual, Vol. 8, Part O",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-8-part-o",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Also triggered on departure. Waivers exist (Form I-601 / I-601A) but require a qualifying relative and a hardship showing.",
+    note: "Also turns on departure. Waivers exist (Form I-601 / I-601A) but require a qualifying relative and a hardship showing, and they are discretionary.",
   },
   i864Threshold: {
-    label: "Form I-864 support obligation",
+    label: "Form I-864 support undertaking",
     value: "125% of the federal poverty guidelines",
-    year: "INA § 213A",
+    year: "INA § 213A; 8 CFR § 213a.2",
     jurisdiction: "Federal",
     sourceName: "USCIS — Affidavit of Support",
     sourceUrl: "https://www.uscis.gov/i-864",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Measured against the sponsored immigrant's own household, not the sponsor's. Using the 2026 federal poverty guidelines for the 48 contiguous states, 125% for a one-person household is about $19,950 a year, and about $27,050 for a household of two.",
+    note: "Measured against the sponsored immigrant's own household. The dollar figure depends on household size and on which poverty-guideline set applies — see the poverty-guideline fact below.",
+  },
+  povertyGuidelines2026: {
+    label: "2026 HHS Poverty Guidelines — 48 contiguous states and D.C.",
+    value: "$15,960 for a 1-person household, plus $5,680 per additional person",
+    year: "2026",
+    jurisdiction: "Federal — 48 contiguous states and D.C. only",
+    sourceName: "HHS ASPE — Poverty Guidelines",
+    sourceUrl: "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+    lastVerified: RULES_LAST_VERIFIED,
+    note: "Alaska and Hawaii use different poverty guidelines, and USCIS publishes its own I-864P table applying these figures at 125%. On the 48-state figures, 125% works out to about $19,950 a year for a household of one and about $27,050 for a household of two. Check the current I-864P before relying on any number.",
   },
   i864Quarters: {
-    label: "Form I-864 — work-quarters exit",
-    value: "40 qualifying quarters (about 10 years of work)",
-    year: "INA § 213A(a)(3)(B)",
+    label: "Form I-864 — work-quarters termination condition",
+    value: "40 qualifying quarters of coverage (roughly 10 years of work)",
+    year: "INA § 213A(a)(3)(B); 8 CFR § 213a.2(e)(2)(i)",
     jurisdiction: "Federal",
-    sourceName: "USCIS — Affidavit of Support",
-    sourceUrl: "https://www.uscis.gov/i-864",
+    sourceName: "USCIS Policy Manual, Vol. 8, Part G, Ch. 6",
+    sourceUrl: "https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-6",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Quarters worked by a spouse during the marriage can count toward the immigrant's total — which is one reason the obligation sometimes ends sooner than a sponsor expects.",
+    note: "Quarters worked by a spouse during the marriage can in some circumstances be credited to the immigrant, which is one reason the undertaking sometimes ends sooner than a sponsor expects.",
+  },
+  i864Termination: {
+    label: "Form I-864 — the statutory termination conditions",
+    value: "Five conditions, and divorce is not among them",
+    year: "8 CFR § 213a.2(e)(2)",
+    jurisdiction: "Federal",
+    sourceName: "eCFR — 8 CFR § 213a.2",
+    sourceUrl:
+      "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-213a/section-213a.2",
+    lastVerified: RULES_LAST_VERIFIED,
+    note: "Termination of the undertaking does not relieve a sponsor of a reimbursement obligation that accrued before it terminated. Whether and how a sponsored immigrant can enforce the undertaking after a divorce is litigated in state and federal courts and outcomes have varied, so this is a question for a lawyer rather than a rule you can apply from a page.",
   },
   naturalizationFiveYear: {
     label: "Naturalization — standard residence requirement",
@@ -122,21 +170,21 @@ export const divorceFacts: Record<string, VerifiedFact> = {
     sourceName: "USCIS Policy Manual, Vol. 12, Part D",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-12-part-d",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Applications may be filed up to 90 days before the residence requirement is met.",
+    note: "An application may generally be filed up to 90 days before the residence requirement is met. Other requirements — continuous residence, physical presence, good moral character — apply separately.",
   },
   naturalizationThreeYear: {
     label: "Naturalization — spouse-of-citizen route",
-    value: "3 years, in marital union throughout",
+    value: "3 years, living in marital union throughout",
     year: "INA § 319(a)",
     jurisdiction: "Federal",
     sourceName: "USCIS Policy Manual, Vol. 12, Part G",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-12-part-g",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Requires living in marital union with the same US-citizen spouse for the whole three years and continuing to be married through the oath. Divorce, and in most cases legal separation, ends access to this route.",
+    note: "Requires living in marital union with the same US-citizen spouse for the three years before filing, and USCIS guidance requires the marital union to continue through the time of naturalization. A divorce generally ends access to this route; legal separation raises the same question and should be discussed with counsel.",
   },
   conditionalResidence: {
     label: "Conditional permanent residence",
-    value: "2 years, when the marriage was under 2 years old at approval",
+    value: "2 years, where the marriage was under 2 years old when status was granted",
     year: "INA § 216",
     jurisdiction: "Federal",
     sourceName: "USCIS — Removing Conditions on Permanent Residence",
@@ -146,23 +194,23 @@ export const divorceFacts: Record<string, VerifiedFact> = {
   },
   i751JointWindow: {
     label: "Form I-751 — joint filing window",
-    value: "The 90 days before the card expires",
+    value: "The 90 days before the conditional card expires",
     year: "8 CFR § 216.4",
     jurisdiction: "Federal",
     sourceName: "USCIS Policy Manual, Vol. 6, Part I, Ch. 4",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-6-part-i-chapter-4",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "This 90-day window applies to JOINT petitions only. A waiver request filed alone has no such window — see the waiver fact below.",
+    note: "This 90-day window governs JOINT petitions. A request to waive the joint-filing requirement is not confined to it — see the waiver fact below.",
   },
   i751WaiverWindow: {
     label: "Form I-751 — waiver request filing window",
-    value: "Any time before, during or after the 90-day period",
+    value: "Before, during or after the 90-day period",
     year: "USCIS Policy Manual, Vol. 6, Part I, Ch. 5",
     jurisdiction: "Federal",
     sourceName: "USCIS Policy Manual — Waiver of Joint Filing Requirement",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-6-part-i-chapter-5",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "A conditional resident may file a waiver request as soon as they are eligible for it and does not have to wait for the 90-day period to open. Where the divorce is still pending, USCIS issues a Request for Evidence for the final decree — and the marriage may legally terminate during the response period, which is enough to establish eligibility.",
+    note: "USCIS guidance states that a conditional resident may file a waiver request once a waiver ground applies and need not wait for the 90-day period to open. Where a divorce is still pending, USCIS may issue a Request for Evidence for the final decree, and the marriage may terminate during the response period.",
   },
   vawaPrerequisite: {
     label: "VAWA self-petition — status of the abusive spouse",
@@ -172,37 +220,38 @@ export const divorceFacts: Record<string, VerifiedFact> = {
     sourceName: "USCIS Policy Manual, Vol. 3, Part D, Ch. 2",
     sourceUrl: "https://www.uscis.gov/policy-manual/volume-3-part-d-chapter-2",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "This is the eligibility fact most often reported wrongly in NRI-facing content. An abused H-4 spouse of an H-1B holder cannot self-petition under VAWA, because the H-1B principal is neither a citizen nor a permanent resident. The U visa and T visa are the routes that do not depend on the abuser's immigration status.",
+    note: "This is the eligibility requirement most often reported wrongly in NRI-facing content. An abused H-4 spouse of an H-1B holder cannot self-petition under VAWA, because the H-1B principal is neither a citizen nor a permanent resident. U and T nonimmigrant status do not depend on the abuser's immigration status, but they carry their own separate eligibility requirements.",
   },
   vawaAfterDivorce: {
     label: "VAWA self-petition after the marriage has ended",
-    value: "Within 2 years of the termination of the marriage",
+    value: "Generally within 2 years of the termination of the marriage",
     year: "INA § 204(a)(1)(A)(iii)(II)(aa)(CC)",
     jurisdiction: "Federal",
     sourceName: "USCIS — Abused Spouses, Children and Parents",
     sourceUrl: "https://www.uscis.gov/humanitarian/abused-spouses-children-and-parents",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The self-petitioner must also show a connection between the battery or extreme cruelty and the end of the marriage.",
+    note: "The self-petitioner must also show a connection between the battery or extreme cruelty and the termination of the marriage, alongside the other eligibility requirements.",
   },
   gracePeriod60: {
-    label: "60-day grace period — what it actually covers",
-    value: "Cessation of employment of a nonimmigrant worker",
+    label: "The 60-day provision — what the regulation addresses",
+    value: "Cessation of employment of certain nonimmigrant workers",
     year: "8 CFR § 214.1(l)(2)",
     jurisdiction: "Federal",
     sourceName: "eCFR — 8 CFR § 214.1",
     sourceUrl: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The regulation is written for E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 and TN workers whose employment ends. There is no equivalent provision for a dependent whose qualifying relationship ends, which is why the widely repeated '60 days after divorce' advice has no regulatory basis.",
+    note: "The provision addresses E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 and TN workers whose employment ends. It does not expressly create a 60-day period for a dependent whose qualifying marriage has ended, so it should not be assumed to apply after a divorce.",
   },
   nyIncomeCap: {
     label: "New York maintenance income cap",
     value: "$241,000",
-    year: "Effective March 1, 2026 (from $228,000)",
+    year: "Effective March 1, 2026 (raised from $228,000)",
     jurisdiction: "New York State",
     sourceName: "NY Courts — Matrimonial Legislation & Court Rules",
-    sourceUrl: "https://www.nycourts.gov/divorce/whats-new-matrimonial-legislation-court-rules-and-forms",
+    sourceUrl:
+      "https://www.nycourts.gov/divorce/whats-new-matrimonial-legislation-court-rules-and-forms",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "Adjusted every two years for CPI-U. The guideline formula reaches the payor's income only up to the cap; a court may award more on the excess after weighing the statutory factors.",
+    note: "Adjusted every two years for CPI-U. The guideline formula reaches the payor's income up to the cap; a court may award additional maintenance on income above it after weighing the statutory factors.",
   },
   txCap: {
     label: "Texas spousal maintenance cap",
@@ -214,14 +263,14 @@ export const divorceFacts: Record<string, VerifiedFact> = {
     lastVerified: RULES_LAST_VERIFIED,
   },
   txEligibility: {
-    label: "Texas spousal maintenance — eligibility gate",
-    value: "Married 10 years or longer (or a § 8.051 exception)",
+    label: "Texas spousal maintenance — eligibility requirements",
+    value: "Married 10 years or longer, or a § 8.051 exception",
     year: "Tex. Fam. Code § 8.051",
     jurisdiction: "Texas",
     sourceName: "Texas Family Code, Chapter 8",
     sourceUrl: "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.8.htm",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The spouse seeking maintenance must also lack sufficient property to meet minimum reasonable needs. The exceptions to the 10-year rule are family violence within two years of filing, and a disability of the spouse or of a child in their care. Below 10 years without an exception, the usual Texas outcome is no maintenance at all — not a smaller number.",
+    note: "The spouse seeking maintenance must also lack sufficient property, including separate property, to provide for their minimum reasonable needs. The statutory alternatives to the 10-year requirement include family violence within two years of filing and a disability of the spouse or of a child in their care. Where neither the duration requirement nor an exception is met, a Texas court's authority to order maintenance is limited.",
   },
   alimonyTaxTreatment: {
     label: "Federal tax treatment of alimony",
@@ -231,17 +280,17 @@ export const divorceFacts: Record<string, VerifiedFact> = {
     sourceName: "IRS Topic No. 452 — Alimony and Separate Maintenance",
     sourceUrl: "https://www.irs.gov/taxtopics/tc452",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The Tax Cuts and Jobs Act reversed the old treatment. Agreements executed on or before December 31, 2018 keep the old rules unless later modified to adopt the new ones. This is why post-2018 settlement numbers are not comparable to older ones.",
+    note: "The Tax Cuts and Jobs Act changed the prior treatment. Agreements executed on or before December 31, 2018 generally keep the old rules unless later modified to adopt the new ones — which is why settlement figures from older cases are not directly comparable to current ones.",
   },
   usdInr: {
     label: "USD → INR reference rate",
     value: "₹96.27",
     year: "Snapshot of July 19, 2026",
-    jurisdiction: "Market data",
-    sourceName: "NRItoUSA market snapshot (Yahoo Finance EOD)",
-    sourceUrl: "https://finance.yahoo.com/quote/USDINR=X/",
+    jurisdiction: "Market data — illustrative only",
+    sourceName: "Federal Reserve H.10 — Foreign Exchange Rates",
+    sourceUrl: "https://www.federalreserve.gov/releases/h10/current/",
     lastVerified: "2026-07-19",
-    note: "The estimator's India column scales directly with this rate, so it is an editable input rather than a buried constant. A cross-border maintenance discussion that runs for two years can move 10% on currency alone.",
+    note: "The estimator's India column scales directly with this rate, so it is an editable input rather than a buried constant. Check a current rate before relying on any cross-currency comparison; the Federal Reserve publishes India rupee rates in its H.10 release.",
   },
 };
 
@@ -249,12 +298,11 @@ export const divorceFacts: Record<string, VerifiedFact> = {
 export const DEFAULT_USD_INR = 96.27;
 
 /* ------------------------------------------------------------------ *
- * The honest statement of what is, and is not, settled about H-4 timing.
- * Referenced by name in the editing rules above — do not inline-edit into
- * a slogan.
+ * The careful statement of H-4 timing. Referenced by name in editing rule 2 —
+ * do not flatten this back into a slogan.
  * ------------------------------------------------------------------ */
 export const H4_TIMING_AMBIGUITY =
-  "USCIS has never published a bright-line rule stating the exact hour H-4 status ends on divorce. What is settled is that H-4 exists only because of the marriage, that the 60-day grace period in the regulations is written for workers who lose a job rather than dependents who lose a qualifying relationship, and that an I-94 end-date printed before the decree does not extend a status whose basis has gone. What follows from that is a planning rule, not a countdown: file the change of status while you are still married, and do not build a plan around days you may not have.";
+  "A final divorce can end the qualifying relationship underlying H-4 status. What no current primary source establishes is a universal moment at which that happens, so treat this as a planning question rather than a countdown. Do not assume that the expiration date printed on your I-94 or EAD, or the 60-day provision written for workers who lose a job, protects you after the divorce. Because the exact consequences depend on the facts of the case, speak with an immigration attorney and consider any alternative status or filing options while you are still eligible to pursue them.";
 
 /* ------------------------------------------------------------------ *
  * Table primitives (shared shape with the Trump Account / benefits tables)
@@ -266,210 +314,234 @@ export interface DataCol {
 }
 export type DataRow = Record<string, string>;
 
-/* --- The quick-answer matrix: what divorce does to each status --- */
+/* --- The quick-answer matrix: what divorce generally changes --- */
 export const statusImpactCols: DataCol[] = [
   { key: "status", label: "Your status" },
-  { key: "effect", label: "What divorce does", highlight: true },
-  { key: "urgency", label: "How urgent" },
+  { key: "effect", label: "General effect of divorce", highlight: true },
+  { key: "urgency", label: "Urgency" },
+  { key: "next", label: "Next step to consider" },
 ];
 
 export const statusImpactRows: DataRow[] = [
   {
     status: "H-4 dependent",
     effect:
-      "Status is derivative and falls away with the marriage. Any H-4 EAD goes with it, whatever expiry date is printed on the card.",
-    urgency: "Highest — act before the decree, not after",
+      "H-4 is derivative of the marriage, so a final divorce can end the relationship it rests on. Do not rely on the date printed on an I-94 or EAD.",
+    urgency: "High",
+    next: "Speak to an immigration attorney and explore a change of status or another filing option while still eligible.",
   },
   {
     status: "H-1B principal",
     effect:
-      "No effect on you. Your spouse's H-4 ends; your children's H-4 continues, because it comes from being your child.",
-    urgency: "Low for you, highest for your spouse",
+      "Your own H-1B rests on your employer and petition rather than the marriage, so it is generally unaffected. Your spouse's H-4 is affected; a child's H-4 rests on the parent-child relationship.",
+    urgency: "Low for you",
+    next: "If you signed a Form I-864 for your spouse, review that undertaking — it is not resolved by the divorce itself.",
   },
   {
     status: "Conditional (2-year) green card",
     effect:
-      "You keep the card and file Form I-751 alone, requesting a waiver of the joint-filing requirement. The test is whether the marriage was genuine when you entered it.",
-    urgency: "High — an evidence-heavy filing that takes months to assemble",
+      "You generally keep the status and file Form I-751 requesting a waiver of the joint-filing requirement. The central question is whether the marriage was entered into in good faith.",
+    urgency: "High",
+    next: "Begin assembling good-faith evidence early; it takes months to gather and access to joint records can be lost.",
   },
   {
     status: "10-year green card",
     effect:
-      "Your residence is unaffected. Divorce is not a ground of removability and does not affect renewal.",
-    urgency: "Low — only the naturalization timeline changes",
+      "Permanent residence is held in your own right. A divorce is not itself a ground of removability and does not change card renewal.",
+    urgency: "Low",
+    next: "Note that the shortened spouse-of-citizen naturalization route generally becomes unavailable.",
   },
   {
-    status: "I-130 / I-485 still pending",
+    status: "Pending marriage-based I-130 / I-485",
     effect:
-      "The spousal petition rests on a qualifying relationship. When the marriage ends the petition is no longer approvable and the adjustment application is denied.",
-    urgency: "Critical — take advice before anyone files for divorce",
+      "Ending the qualifying marriage can eliminate the basis for the petition and the adjustment application. Exceptions and alternative pathways may apply depending on the circumstances.",
+    urgency: "High",
+    next: "Take immigration advice before anyone files for divorce — the sequence of events can change the options available.",
   },
   {
     status: "F-2, L-2, O-3 and other dependents",
     effect:
-      "Same structure as H-4: the status is derivative and ends with the marriage. L-2 and E-2 spouses lose work authorization with it.",
-    urgency: "Highest — same planning as H-4",
+      "These are derivative in the same way as H-4, and dependent work authorization is tied to the underlying status where it exists.",
+    urgency: "High",
+    next: "Treat the planning the same way as H-4, and confirm the specific rules for your classification with counsel.",
   },
   {
     status: "Naturalized US citizen",
-    effect: "None. Citizenship, once granted, does not depend on the marriage continuing.",
+    effect:
+      "Citizenship is held in your own right and does not depend on the marriage continuing.",
     urgency: "None",
+    next: "No immigration filing is prompted by the divorce itself.",
   },
 ];
 
-/* --- What an H-4 spouse can actually file --- */
+/* --- What an H-4 spouse can consider filing --- */
 export const h4OptionsCols: DataCol[] = [
   { key: "option", label: "Option" },
-  { key: "works", label: "Can you work?", highlight: true },
-  { key: "lead", label: "Lead time you need" },
-  { key: "reality", label: "The honest read" },
+  { key: "works", label: "Work authorization?", highlight: true },
+  { key: "lead", label: "Lead time to plan for" },
+  { key: "reality", label: "What it involves" },
 ];
 
 export const h4OptionsRows: DataRow[] = [
   {
     option: "Change of status to B-2 (visitor)",
     works: "No",
-    lead: "Days — it is the fastest package to assemble",
+    lead: "Days to weeks — the fastest package to assemble",
     reality:
-      "The standard stopgap. Buys time to wind up a household, sell a car, finish a school term. It leads nowhere by design; treat it as a bridge, not a plan.",
+      "A common stopgap. It can buy time to wind up a household, sell a car or finish a school term. It is not a work status and does not lead to one, so it functions as a bridge rather than a plan.",
   },
   {
     option: "Change of status to F-1 (student)",
-    works: "Limited (on-campus, then CPT/OPT)",
-    lead: "Months — you need an admission and an I-20 before you file",
+    works: "Limited (on-campus, then CPT/OPT if eligible)",
+    lead: "Months — an admission and an I-20 are needed before filing",
     reality:
-      "A real option if retraining was already on the table. It cannot be arranged in a week, which is why it has to be started while the marriage is still legally intact.",
+      "A realistic option where retraining was already under consideration. It cannot usually be arranged in a week, which is why it is worth starting while the marriage is still legally intact.",
   },
   {
     option: "Change of status to H-1B",
-    works: "Yes",
-    lead: "Depends entirely on an employer and cap position",
+    works: "Yes, if approved",
+    lead: "Depends on an employer and cap position",
     reality:
-      "The strongest outcome when it is available, and rarely available on this timeline. Needs a selected registration or a cap-exempt employer.",
+      "Often the strongest outcome where it is available, though it is rarely available on a divorce timeline. It generally requires a selected registration or a cap-exempt employer.",
   },
   {
     option: "Employment-based petition in another category",
-    works: "Varies",
+    works: "Varies by classification",
     lead: "Months",
     reality:
-      "O-1, L-1 on a transfer back through an employer, or an EB-2 NIW self-petition where the profile genuinely supports it. Worth a conversation if your résumé is strong.",
+      "O-1, an L-1 transfer through an employer, or an EB-2 national-interest waiver where the profile genuinely supports one. Worth a conversation with counsel if your professional record is strong.",
   },
   {
-    option: "U visa or T visa (crime or trafficking victims)",
-    works: "Yes, once the work authorization issues",
-    lead: "Years, with a long wait for the visa cap — but it does not depend on your spouse at all",
+    option: "U or T nonimmigrant status (crime and trafficking victims)",
+    works: "Yes, if status and work authorization are granted",
+    lead: "Years, including a wait against the annual U visa cap",
     reality:
-      "This, not VAWA, is the route for an abused H-4 spouse whose husband or wife holds H-1B. It needs a qualifying crime, cooperation with law enforcement, and usually a certification from them.",
+      "These classifications do not require the abuser to be a US citizen or permanent resident, which is why they can be relevant where VAWA is not. They have their own requirements — a qualifying crime, and for U status, helpfulness to law enforcement and usually a certification. A divorce alone does not create eligibility.",
   },
   {
     option: "VAWA self-petition",
-    works: "Yes, once the self-petition is approved",
-    lead: "Months to years, and it runs without your spouse's knowledge",
+    works: "Yes, if the self-petition is approved and work authorization is granted",
+    lead: "Months to years, and it can proceed without the spouse's participation",
     reality:
-      "Only if the abusive spouse is a US citizen or permanent resident. It is not available against an H-1B holder — that is a statutory limit, not a paperwork problem.",
+      "Available only where the abusive spouse is a US citizen or lawful permanent resident. That requirement is statutory, so it is not available against an H-1B holder.",
   },
 ];
 
-/* --- The three I-751 waiver grounds --- */
+/* --- The three I-751 waiver grounds, side by side --- */
 export const i751WaiverCols: DataCol[] = [
-  { key: "ground", label: "Waiver ground" },
-  { key: "shows", label: "What you have to show", highlight: true },
-  { key: "when", label: "When it fits" },
+  { key: "ground", label: "I-751 waiver" },
+  { key: "divorce", label: "Divorce required?", highlight: true },
+  { key: "issue", label: "Main issue" },
+  { key: "notes", label: "Notes" },
 ];
 
 export const i751WaiverRows: DataRow[] = [
   {
     ground: "Good-faith marriage terminated by divorce or annulment",
-    shows:
-      "That the marriage was entered into in good faith — not that it lasted, and not whose fault the divorce was.",
-    when: "The ordinary route after a genuine marriage ends. Generally needs a final decree, though the petition can be filed first.",
+    divorce: "Generally yes",
+    issue: "That the marriage was entered into in good faith",
+    notes:
+      "The question is the intent at the outset, not how long the marriage lasted or who was at fault. A waiver request may generally be filed before a decree is final, with USCIS requesting the decree later.",
   },
   {
     ground: "Battery or extreme cruelty",
-    shows:
-      "That you were subjected to battery or extreme cruelty by the petitioning spouse during a good-faith marriage.",
-    when: "Available whether or not you are divorced, and whether or not you are still living together. Non-physical abuse counts.",
+    divorce: "No",
+    issue: "Abuse during a good-faith marriage",
+    notes:
+      "Available whether or not the marriage has ended. The standard covers battery or extreme cruelty, and extreme cruelty is not limited to physical violence.",
   },
   {
     ground: "Extreme hardship",
-    shows:
-      "That removal would cause extreme hardship, based on circumstances arising during the conditional residence period.",
-    when: "The narrowest of the three, and the one most often paired with another ground rather than used alone.",
+    divorce: "No",
+    issue: "Extreme hardship resulting from removal",
+    notes:
+      "Assessed on circumstances arising during the conditional residence period. It is the narrowest of the three and is often requested alongside another ground.",
   },
 ];
 
-/* --- Evidence that a marriage was genuine --- */
+/* --- Evidence relevant to a good-faith marriage --- */
 export const goodFaithEvidence: string[] = [
   "Joint financial records — bank statements, jointly filed tax returns, joint credit cards, insurance policies naming each other",
   "A joint lease or mortgage, utility bills, and mail addressed to both of you at a shared address",
-  "Photographs across the whole span of the relationship, including with both families",
+  "Photographs across the span of the relationship, including with both families",
   "Wedding documentation, including the Indian ceremony and the marriage registration if you married in India",
   "Communication history, travel taken together, and joint memberships",
   "Birth certificates of any children of the marriage",
-  "Sworn statements from people who knew you as a couple, with enough specific detail to be worth reading",
-  "The divorce decree itself, and where it helps, a short personal statement explaining what went wrong",
+  "Sworn statements from people who knew you as a couple, with enough specific detail to be useful",
+  "The divorce decree, and where it helps, a personal statement explaining the circumstances",
 ];
 
-/* --- I-864: what actually ends it --- */
+/* --- I-864 termination, tracking 8 CFR 213a.2(e)(2) --- */
 export const i864Terminators: string[] = [
   "The sponsored immigrant becomes a US citizen",
-  "The sponsored immigrant is credited with 40 qualifying quarters of work — roughly ten years, and quarters worked by a spouse during the marriage can count",
-  "The sponsored immigrant permanently leaves the US and abandons permanent residence",
-  "The sponsored immigrant obtains a new grant of status through a different sponsor after leaving and returning, or after being placed in removal proceedings",
-  "Either the sponsor or the sponsored immigrant dies",
+  "The sponsored immigrant has worked, or can be credited with, 40 qualifying quarters of coverage",
+  "The sponsored immigrant is no longer a lawful permanent resident and has departed the United States",
+  "The sponsored immigrant, having become subject to removal, applies for and obtains in removal proceedings a new grant of adjustment of status, based on a new affidavit of support where one is required",
+  "The sponsored immigrant dies, or the sponsor dies",
 ];
 
 /* --- Recognition of a US divorce in India --- */
 export const indiaRecognitionCols: DataCol[] = [
-  { key: "test", label: "Narasimha Rao condition" },
-  { key: "meets", label: "Does a typical US decree meet it?", highlight: true },
-  { key: "why", label: "Why" },
+  { key: "test", label: "Section 13 CPC condition" },
+  { key: "turns", label: "What it turns on", highlight: true },
+  { key: "why", label: "Why it matters for a US decree" },
 ];
 
 export const indiaRecognitionRows: DataRow[] = [
   {
-    test: "The foreign court had jurisdiction Indian matrimonial law recognizes",
-    meets: "Often yes",
-    why: "Usually satisfied where the marriage was solemnized or the couple last resided together in that forum, or where the respondent voluntarily and effectively submitted to it.",
+    test: "The judgment was pronounced by a court of competent jurisdiction",
+    turns: "Whether Indian law regards that forum as competent in the matrimonial context",
+    why: "Narasimha Rao reads this narrowly in matrimonial matters — broadly, the forum under the law under which the parties married, or one to which the respondent voluntarily and effectively submitted.",
   },
   {
-    test: "The decision was on the merits",
-    meets: "Frequently not",
-    why: "An ex parte decree, or one granted by default when the other spouse never appeared, is treated as not decided on the merits.",
+    test: "The judgment was given on the merits of the case",
+    turns: "Whether the case was actually contested and decided",
+    why: "An ex parte decree, or one entered by default where the other spouse did not appear, raises a real question under this condition.",
   },
   {
-    test: "The ground is one Indian personal law recognizes",
-    meets: "Frequently not",
-    why: "This is where most American divorces fail. Irretrievable breakdown — the standard US no-fault ground — is not a ground for divorce under the Hindu Marriage Act.",
+    test: "The judgment is not founded on an incorrect view of international law or a refusal to recognize Indian law where applicable",
+    turns: "Whether the ground of divorce is one the governing Indian personal law recognizes",
+    why: "This is the condition US decrees most often have to address, because irretrievable breakdown is not among the grounds listed in the Hindu Marriage Act.",
   },
   {
-    test: "Natural justice was observed",
-    meets: "Usually yes",
-    why: "Requires that the respondent had proper notice and a real opportunity to contest.",
+    test: "The proceedings were not opposed to natural justice",
+    turns: "Whether the respondent had proper notice and a real opportunity to be heard",
+    why: "Service, representation and a genuine chance to contest all matter here.",
   },
   {
-    test: "The decree was not obtained by fraud",
-    meets: "Usually yes",
-    why: "Includes fraud as to the jurisdictional facts, not just fraud on the merits.",
+    test: "The judgment was not obtained by fraud",
+    turns: "Whether the jurisdictional facts as well as the merits were presented honestly",
+    why: "Misstating residence or domicile to establish jurisdiction can be treated as fraud for this purpose.",
   },
 ];
 
 /* --- Document checklist --- */
 export const documentChecklist: string[] = [
-  "Certified copies of the divorce decree — get several, and have them apostilled if India is involved at all",
+  "Certified copies of the divorce decree — obtain several, as different agencies and courts may each require one",
   "The marriage certificate, including the Indian registration if you married in India",
+  "Certified English translations of any document not in English",
   "Every approval and receipt notice: I-797s, I-140, I-130, I-485, I-751, EADs, advance parole",
+  "Copies of prior immigration filings, and notices held in your USCIS online account",
+  "Copies of prior family-court filings, orders and settlement agreements",
   "Copies of every passport, visa stamp and I-94 for you and your children",
-  "Joint financial records covering the whole marriage — pull these BEFORE accounts are separated, because access disappears quickly",
-  "Jointly filed tax returns and W-2s for every married year",
+  "Proof of shared residence — leases, mortgage statements, utility accounts, mail at a joint address",
+  "Insurance records — health, auto, life and renters or homeowners policies naming both spouses",
+  "Employment and pay records — offer letters, pay statements, W-2s and 1099s",
+  "Joint financial records covering the marriage — gather these before accounts are separated, as access can be lost quickly",
+  "Jointly filed tax returns for every married year",
   "Your Form I-864 if you signed one, or your spouse's if they signed one for you",
   "Any documentation of abuse, if it is part of the history — messages, photographs, police reports, medical records",
-  "Your children's US birth certificates, OCI cards and Indian passports if they hold them",
+  "Your children's US birth certificates, and OCI cards or Indian passports if they hold them",
 ];
+
+/** Rendered directly under the checklist. */
+export const DOCUMENT_HANDLING_NOTE =
+  "Keep originals secure; provide copies unless an agency, court, or other authority specifically requires an original. Ask the Indian authority, court, consulate, or attorney whether an apostille, authentication, certified copy, or other form of document legalization is required for the specific document and purpose — the answer differs by document and by the office receiving it.";
 
 /* ------------------------------------------------------------------ *
  * Official sources. Every href must be a government, court or statute URL —
- * asserted by the page test.
+ * asserted by the page test, and each was checked for status on
+ * RULES_LAST_VERIFIED.
  * ------------------------------------------------------------------ */
 export const officialSourceLinks: { label: string; href: string }[] = [
   {
@@ -480,6 +552,10 @@ export const officialSourceLinks: { label: string; href: string }[] = [
     label: "USCIS Policy Manual — Waiver of Joint Filing (Vol. 6, Pt. I, Ch. 5)",
     href: "https://www.uscis.gov/policy-manual/volume-6-part-i-chapter-5",
   },
+  {
+    label: "USCIS Policy Manual — Petition to Remove Conditions (Vol. 6, Pt. I, Ch. 3)",
+    href: "https://www.uscis.gov/policy-manual/volume-6-part-i-chapter-3",
+  },
   { label: "USCIS — Form I-751", href: "https://www.uscis.gov/i-751" },
   {
     label: "USCIS — Abused Spouses, Children and Parents (VAWA)",
@@ -489,8 +565,27 @@ export const officialSourceLinks: { label: string; href: string }[] = [
     label: "USCIS Policy Manual — VAWA Eligibility (Vol. 3, Pt. D, Ch. 2)",
     href: "https://www.uscis.gov/policy-manual/volume-3-part-d-chapter-2",
   },
-  { label: "USCIS — Victims of Criminal Activity: U Visa", href: "https://www.uscis.gov/humanitarian/victims-of-human-trafficking-and-other-crimes/victims-of-criminal-activity-u-nonimmigrant-status" },
+  {
+    label: "USCIS — U Nonimmigrant Status (victims of criminal activity)",
+    href: "https://www.uscis.gov/humanitarian/victims-of-criminal-activity-u-nonimmigrant-status",
+  },
+  {
+    label: "USCIS — T Nonimmigrant Status (victims of human trafficking)",
+    href: "https://www.uscis.gov/humanitarian/victims-of-human-trafficking-t-nonimmigrant-status",
+  },
   { label: "USCIS — Form I-864, Affidavit of Support", href: "https://www.uscis.gov/i-864" },
+  {
+    label: "USCIS Policy Manual — Affidavit of Support (Vol. 8, Pt. G, Ch. 6)",
+    href: "https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-6",
+  },
+  {
+    label: "eCFR — 8 CFR § 213a.2 (use of affidavit of support)",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-213a/section-213a.2",
+  },
+  {
+    label: "HHS ASPE — Poverty Guidelines",
+    href: "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+  },
   {
     label: "USCIS Policy Manual — Unlawful Presence (Vol. 8, Pt. O)",
     href: "https://www.uscis.gov/policy-manual/volume-8-part-o",
@@ -501,7 +596,7 @@ export const officialSourceLinks: { label: string; href: string }[] = [
   },
   { label: "USCIS — Form I-539, Change of Nonimmigrant Status", href: "https://www.uscis.gov/i-539" },
   {
-    label: "eCFR — 8 CFR § 214.1 (grace periods)",
+    label: "eCFR — 8 CFR § 214.1 (nonimmigrant general requirements)",
     href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
   },
   { label: "IRS Topic No. 452 — Alimony and Separate Maintenance", href: "https://www.irs.gov/taxtopics/tc452" },
@@ -509,6 +604,9 @@ export const officialSourceLinks: { label: string; href: string }[] = [
     label: "Texas Family Code, Chapter 8 — Maintenance",
     href: "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.8.htm",
   },
+  // nycourts.gov returns 403 to automated requests (as uscis.gov and
+  // travel.state.gov do). The page resolves normally in a browser — a link
+  // check that reports 403 here is bot-blocking, not a dead link.
   {
     label: "NY Courts — Maintenance & Child Support Income Caps",
     href: "https://www.nycourts.gov/divorce/whats-new-matrimonial-legislation-court-rules-and-forms",
@@ -520,45 +618,52 @@ export const indianAuthorities: { cite: string; point: string }[] = [
   {
     cite: "Y. Narasimha Rao v. Y. Venkata Lakshmi, (1991) 3 SCC 451",
     point:
-      "Sets the conditions under which an Indian court will recognize a foreign matrimonial decree under Section 13 of the Code of Civil Procedure.",
+      "Sets out how Section 13 of the Code of Civil Procedure applies to foreign matrimonial decrees, reading the jurisdiction and merits conditions narrowly in the matrimonial context.",
   },
   {
     cite: "Section 13, Code of Civil Procedure, 1908",
-    point: "The statutory rule that a foreign judgment is conclusive only if it clears five specific tests.",
+    point:
+      "Provides that a foreign judgment is conclusive except in the enumerated situations — which is the statutory basis for the recognition analysis.",
+  },
+  {
+    cite: "Section 13, Hindu Marriage Act, 1955",
+    point:
+      "Lists the grounds on which a divorce may be granted. Irretrievable breakdown of marriage is not among them.",
   },
   {
     cite: "Section 13B, Hindu Marriage Act, 1955",
     point:
-      "Divorce by mutual consent — two motions with a statutory six-month interval, which the court may waive.",
+      "Divorce by mutual consent — two motions with a statutory interval between them, subject to the statutory conditions.",
   },
   {
     cite: "Amardeep Singh v. Harveen Kaur, (2017) 8 SCC 746",
     point:
-      "Held that the six-month cooling-off period under Section 13B(2) is directory rather than mandatory, and may be waived where reconciliation is clearly impossible.",
+      "Held that the waiting period under Section 13B(2) is directory rather than mandatory, and may be waived in appropriate cases.",
   },
   {
     cite: "Shilpa Sailesh v. Varun Sreenivasan, (2023) 14 SCC 231",
     point:
-      "Confirmed that only the Supreme Court, exercising its Article 142 powers, may dissolve a marriage on the ground of irretrievable breakdown. No other Indian court can — which is precisely why a US no-fault decree struggles for recognition.",
+      "Addressed the Supreme Court's power under Article 142 of the Constitution to dissolve a marriage on the ground of irretrievable breakdown, a power other courts do not exercise.",
   },
   {
     cite: "Rajnesh v. Neha, (2021) 2 SCC 324",
     point:
-      "Requires both spouses to file a sworn affidavit of assets and income in every maintenance proceeding, and directs courts to assess real earning capacity.",
+      "Directed that both parties file an affidavit of disclosure of assets and income in maintenance proceedings, and set out the factors courts weigh.",
   },
   {
     cite: "Kalyan Dey Chowdhury v. Rita Dey Chowdhury, (2017) 14 SCC 200",
     point:
-      "Referred to 25% of the husband's net salary as a just and proper benchmark for maintenance on those facts. A reference point, never a formula.",
+      "Referred to 25% of the husband's net salary as a just and proper figure on the facts before the Court. It is a reference point from a decided case, not a statutory formula.",
   },
   {
     cite: "Pratibha Rani v. Suraj Kumar, (1985) 2 SCC 370",
     point:
-      "Stridhan is the wife's absolute property. It sits entirely outside maintenance and outside any division of matrimonial assets.",
+      "Held that stridhan is the wife's property, a question that sits separately from maintenance and from the division of matrimonial assets.",
   },
   {
     cite: "Section 82, Bharatiya Nyaya Sanhita, 2023 (formerly Section 494 IPC)",
-    point: "Marrying again during the lifetime of a spouse is a criminal offence where the first marriage subsists.",
+    point:
+      "Addresses marrying again during the lifetime of a spouse where the first marriage subsists.",
   },
 ];
 
@@ -568,149 +673,154 @@ export const indianAuthorities: { cite: string; point: string }[] = [
  * ------------------------------------------------------------------ */
 export const faqs: FaqItem[] = [
   {
-    question: "Do I have to leave the US immediately after divorce on H-4?",
+    question: "Can an H-4 spouse stay in the US after divorce?",
     answer:
-      "H-4 status exists only because of the marriage, so it does not survive a final decree, and there is no grace period written for dependents who lose a qualifying relationship. USCIS has not published an exact cut-off hour, which is why practitioners plan around the decree date rather than around a countdown: file a change of status while you are still married, and a timely-filed application generally lets you remain while it is pending. Accruing unlawful presence and then departing is what triggers the three- and ten-year re-entry bars.",
+      "Not on H-4 alone, once the marriage that supports it has ended. A final divorce can end the qualifying relationship the status rests on, and the regulation containing a 60-day provision addresses workers who lose employment rather than dependents whose marriage ends. The practical approach most attorneys take is to file a change of status, or another available application, while the person is still eligible to do so — a timely-filed application can affect what happens next. Because the consequences depend on the facts, this is a question to take to an immigration attorney rather than a deadline to calculate yourself.",
   },
   {
-    question: "Can I keep working on my H-4 EAD after divorce?",
+    question: "What happens to an H-4 EAD after divorce?",
     answer:
-      "No. An H-4 EAD is granted against valid H-4 status. When the underlying status ends, the work authorization ends with it, even though the physical card still shows a future expiry date. Continuing to work on it is unauthorized employment, which creates a separate problem on top of the status problem. Tell your employer before, not after.",
+      "If the H-4 status supporting the EAD ends, you should not assume the expiration date printed on the card continues to authorize employment. The card is issued against the underlying status rather than independently of it. Because working without authorization creates a separate and serious problem on top of any status question, get individualized immigration advice before continuing employment, and factor the conversation with your employer into your timing.",
   },
   {
-    question: "Is there a 60-day grace period after divorce on H-4?",
+    question: "Is there a 60-day grace period for H-4 after divorce?",
     answer:
-      "No. The 60-day grace period at 8 CFR 214.1(l)(2) is written for nonimmigrant workers whose employment ends — E, H, L, O and TN principals. There is no equivalent provision for a dependent whose marriage ends. The advice circulates widely on forums and is one of the most damaging pieces of misinformation in this area, because it persuades people to wait.",
+      "Do not assume so. The 60-day provision at 8 CFR 214.1(l)(2) addresses cessation of employment for certain nonimmigrant workers — E, H, L, O and TN principals. It does not expressly create a 60-day period for a dependent whose qualifying marriage has ended. The belief that it does circulates widely and can lead people to wait when they have options worth pursuing sooner.",
+  },
+  {
+    question: "Can I change from H-4 to H-1B after divorce?",
+    answer:
+      "It is possible where an employer is willing to petition for you and your cap position allows it — typically a selected registration or a cap-exempt employer such as a university or affiliated nonprofit. It is often the strongest outcome when available, and it is rarely available on a divorce timeline, because it depends on the annual registration cycle. If your professional profile supports it, raise it with an immigration attorney early rather than after the decree.",
+  },
+  {
+    question: "Can I change from H-4 to F-1 after divorce?",
+    answer:
+      "Often yes, and it is a realistic route where retraining was already under consideration. It requires admission to a SEVP-certified school and an I-20 before the change-of-status application is filed, so the lead time runs to months rather than days. F-1 work authorization is limited — generally on-campus employment, then CPT or OPT if you become eligible. Starting the school application while the marriage is still intact is what makes the timing workable.",
   },
   {
     question: "Does divorce affect my H-1B?",
     answer:
-      "No. H-1B is tied to your employer and your petition, not your marriage. Your extensions, transfers, I-140 and priority date are all unaffected, and you do not need to notify USCIS of the divorce for H-1B purposes. What changes is that your spouse's H-4 ends, and if you sponsored them for a green card your Form I-864 obligation continues.",
+      "Your own H-1B rests on your employer and your petition rather than on your marriage, so it is generally unaffected, and extensions, transfers and an approved I-140 are not disturbed by the divorce itself. What changes sits elsewhere: your spouse's H-4 is affected, and if you signed a Form I-864 sponsoring your spouse for a green card, that undertaking is not resolved by the divorce.",
   },
   {
     question: "Will I lose my green card if I get divorced?",
     answer:
-      "If you hold a 10-year green card, no. Divorce is not a ground of removability and does not affect renewal. If you hold a conditional two-year card, you keep it but must file Form I-751 on your own with a waiver of the joint-filing requirement, showing the marriage was entered into in good faith.",
+      "If you hold a 10-year green card, permanent residence is held in your own right, and a divorce is not itself a ground of removability. If you hold a conditional two-year card, you generally keep the status but need to file Form I-751 requesting a waiver of the joint-filing requirement, with evidence that the marriage was entered into in good faith. Either way, the divorce itself does not cancel the status.",
+  },
+  {
+    question: "Can I get a green card after divorce?",
+    answer:
+      "It depends entirely on the basis. A marriage-based petition filed by the former spouse generally cannot continue once the qualifying marriage ends. Other routes are unaffected by the divorce and may remain open — an employment-based petition through an employer, a self-petition such as an EB-2 national-interest waiver where the profile supports one, or, where there was abuse by a US-citizen or permanent-resident spouse, a VAWA self-petition. Which of these is realistic is a question for an immigration attorney who can see the full history.",
   },
   {
     question: "Can my green card be revoked after divorce?",
     answer:
-      "Not because of the divorce. Revocation risk arises only where USCIS believes the marriage was fraudulent from the outset, which is a marriage-fraud question with its own evidence and its own consequences. A marriage that was genuine and later failed is not fraud, and the I-751 waiver exists precisely for that situation.",
+      "The divorce itself is not the issue. Where questions arise, they generally concern whether the marriage was entered into in good faith at the outset, which is a distinct inquiry with its own evidence. A marriage that was genuine and later broke down is the situation the I-751 waiver exists to address.",
   },
   {
     question: "What happens if I divorce before the green card interview?",
     answer:
-      "A Form I-130 filed by a citizen or permanent-resident spouse rests on a qualifying relationship. When the marriage ends, the petition is no longer approvable and a pending I-485 based on it is denied. If you have no other status at that point, you fall out of status on denial. Speak to an immigration attorney before anyone files for divorce, because the sequencing genuinely changes the options.",
+      "For a typical marriage-based I-130 and I-485, ending the qualifying marriage can eliminate the basis for both the petition and the adjustment application. Exceptions and alternative pathways may apply depending on the circumstances, including abuse-related protections and independent immigration classifications. Because the order of events can change what remains available, speak to an immigration attorney before anyone files for divorce.",
   },
   {
     question: "How long after getting a green card can I get divorced?",
     answer:
-      "There is no waiting period and no minimum. You can divorce at any time. The only distinction that matters for immigration is whether you hold a conditional two-year card, which means an evidence-heavy I-751 waiver filing, or a 10-year card, which carries no immigration consequence at all.",
+      "There is no waiting period in immigration law. The distinction that matters is whether you hold a conditional two-year card, which means a Form I-751 filing with evidence of a good-faith marriage, or a 10-year card, where the divorce generally carries no immigration filing of its own.",
+  },
+  {
+    question: "What happens to I-751 after divorce?",
+    answer:
+      "The petition is filed on your own rather than jointly, with a request to waive the joint-filing requirement. There are three separate waiver grounds — a good-faith marriage terminated by divorce or annulment, battery or extreme cruelty, and extreme hardship — and they do not all require a divorce. The good-faith-plus-divorce ground turns on whether the marriage was entered into in good faith, not on how long it lasted or who was at fault.",
   },
   {
     question: "Can I file Form I-751 if the divorce is not final yet?",
     answer:
-      "Yes. A waiver request can be filed as soon as a waiver ground applies, and it is not confined to the 90-day window that governs joint petitions. If you are still legally married but separated or in pending divorce proceedings, USCIS issues a Request for Evidence asking for the final decree — and the marriage may legally terminate during the response period, which is enough to establish eligibility.",
+      "USCIS guidance indicates a waiver request may be filed once a waiver ground applies, and it is not confined to the 90-day window that governs joint petitions. Where the parties are still married but separated or in pending divorce proceedings, USCIS may issue a Request for Evidence asking for the final decree, and the marriage may terminate during the response period. Coordinate the timing with both your immigration and family lawyers, since divorce proceedings in some states run longer than the conditional card's validity.",
   },
   {
-    question: "What if my I-751 deadline arrives before my divorce is final?",
+    question: "What does USCIS look at on an I-751 good-faith waiver?",
     answer:
-      "File anyway rather than letting the conditional status lapse. Divorces in several states routinely run longer than the I-751 window, and USCIS has a defined path for it: the petition is filed, an RFE issues for the decree, and the decree can be supplied during the response period. Raise the collision with both your immigration and family lawyer early, because a family lawyer will not usually think to ask.",
-  },
-  {
-    question: "What does USCIS actually test on an I-751 divorce waiver?",
-    answer:
-      "One thing: whether the marriage was entered into in good faith. Not whether it lasted, not whose fault the divorce was, and not whether you behaved well during it. Build the file around the beginning and the middle of the relationship — joint finances, a shared home, photographs across the whole span, and statements from people who knew you as a couple.",
+      "Whether the marriage was entered into in good faith — the intent at the outset, rather than how long it lasted or who was responsible for the breakdown. The evidence that speaks to that tends to come from the beginning and middle of the relationship: joint finances, a shared home, photographs across the span of the relationship, and statements from people who knew you as a couple.",
   },
   {
     question: "Can I apply for citizenship after divorce?",
     answer:
-      "Yes, under the standard five-year rule. What you lose is the shortened three-year route, which requires living in marital union with the same US-citizen spouse for the full three years and remaining married through the oath. The years you have already accrued as a permanent resident are not lost — the clock does not reset, the finish line moves.",
+      "Generally yes, under the standard five-year residence requirement. What is affected is the shortened three-year route for spouses of US citizens, which requires living in marital union with the same citizen spouse for the three years before filing and, under USCIS guidance, continuing through naturalization. Time already accrued as a permanent resident is not lost — the applicable period changes rather than restarting.",
   },
   {
     question: "Does the affidavit of support end when we divorce?",
     answer:
-      "No, and this surprises almost everyone. Form I-864 is a contract with the federal government, enforceable by the person you sponsored. It ends only on their naturalization, 40 qualifying quarters of work, permanent departure with abandonment of residence, a new grant of status through a different sponsor, or the death of either party. Divorce is not on that list.",
+      "Divorce is not among the conditions that terminate a Form I-864 undertaking. The regulation lists the sponsored immigrant becoming a US citizen; being credited with 40 qualifying quarters of coverage; no longer being a permanent resident and having departed the United States; obtaining, in removal proceedings, a new grant of adjustment of status based on a new affidavit of support where one is required; and the death of the sponsored immigrant or the sponsor. Termination also does not erase a reimbursement obligation that accrued beforehand.",
   },
   {
-    question: "Can my ex-spouse sue me on the I-864 after we divorce?",
+    question: "Can my ex-spouse collect under the I-864 after divorce?",
     answer:
-      "Yes. A sponsored immigrant with income below 125% of the federal poverty guidelines can sue the sponsor to enforce it. They do not have to prove hardship and do not have to have claimed public benefits — only that the sponsor failed to maintain the promised level of support. Courts have awarded back-support plus attorney's fees. It runs alongside alimony, not instead of it.",
-  },
-  {
-    question: "Can a divorce settlement waive the I-864 obligation?",
-    answer:
-      "Not automatically, and courts have split on whether it can be waived at all. Because the undertaking runs to the government as well as to the immigrant, a settlement that simply waives spousal support does not dispose of it. If you are the sponsoring spouse, this belongs in the negotiation explicitly and in writing. If you are the sponsored spouse, it is a right you may not know you have.",
+      "The undertaking is enforceable by the sponsored immigrant, and divorce is not one of the conditions that ends it. How and to what extent it can be enforced after a divorce has been litigated in state and federal courts, and results have varied — including on whether it can be waived by agreement and how a court treats a settlement that addresses spousal support. Because it runs alongside alimony rather than in place of it, both sponsoring and sponsored spouses should raise it explicitly with their family lawyer.",
   },
   {
     question: "Can a man file a VAWA self-petition?",
     answer:
-      "Yes. Despite the name, VAWA self-petitions are available to any abused spouse of a US citizen or lawful permanent resident regardless of gender, and the same is true of the U visa. Under-reporting by men is a practical problem, not a legal one.",
+      "Yes. Despite the name, a self-petition under these provisions is available to an abused spouse of a US citizen or lawful permanent resident regardless of gender, and the same is true of U and T nonimmigrant status. The eligibility requirements are the same either way.",
   },
   {
     question: "Can I file VAWA if my spouse is on H-1B and I am on H-4?",
     answer:
-      "No. A VAWA self-petition requires the abusive spouse to be a US citizen or lawful permanent resident, and an H-1B holder is neither. This is the single most commonly repeated error in NRI-facing divorce content. If you are an abused H-4 spouse, the routes that do not depend on your spouse's status are the U visa, for victims of qualifying crimes who cooperate with law enforcement, and the T visa for trafficking. Speak to an immigration attorney or a DOJ-accredited representative, not a forum.",
+      "No. A VAWA self-petition requires the abusive spouse to be a US citizen or lawful permanent resident, and an H-1B holder is neither. This is among the most commonly repeated errors in NRI-facing content. Depending on the facts, U or T nonimmigrant classification may provide an alternative, because those do not require the abuser to be a citizen or permanent resident — but they carry their own eligibility requirements, including a qualifying crime and, for U status, helpfulness to law enforcement. A divorce alone does not create eligibility. Speak with an immigration attorney or a DOJ-accredited representative.",
   },
   {
     question: "Can I file VAWA if my spouse never hit me?",
     answer:
-      "Possibly. The statutory standard is battery or extreme cruelty, and extreme cruelty covers coercive control, threats to withdraw an immigration petition, financial isolation and confiscation of a passport or immigration documents. Two patterns recur specifically in immigrant households and are often not recognized as abuse by the person living through them: using a pending petition as leverage, and holding a spouse's documents.",
+      "Possibly, depending on the facts. The statutory standard is battery or extreme cruelty, and extreme cruelty is not limited to physical violence. Patterns that recur in immigrant households — using a pending immigration petition as leverage, or withholding a spouse's passport or immigration documents — can be relevant to the analysis. Whether a particular history meets the standard is a question for counsel.",
   },
   {
     question: "What happens to my children's H-4 status after divorce?",
     answer:
-      "It continues. A child's H-4 derives from the parent-child relationship with the H-1B holder, and divorce does not end that relationship. Their status is unaffected even if they live with the other parent. Custody, travel consent and passport custody are separate issues, and they need to be addressed explicitly in the settlement.",
+      "A child's H-4 derives from the parent-child relationship with the H-1B holder, and a divorce between the parents does not end that relationship. Custody, travel consent and who holds the children's passports are separate questions that the immigration status does not resolve, and they are worth addressing explicitly in the settlement.",
   },
   {
     question: "Can my ex-spouse take our child to India after divorce?",
     answer:
-      "Not without complying with the custody order. The practical difficulty is that India is not a signatory to the Hague Convention on the Civil Aspects of International Child Abduction, so a US custody order is not directly enforceable there and recovery becomes an Indian court proceeding. Address travel consent, who holds the passports, and OCI documents explicitly in the settlement rather than assuming the order is enough.",
+      "Any international travel needs to comply with the custody order. The practical complication is that India is not a party to the Hague Convention on the Civil Aspects of International Child Abduction, so a US custody order does not automatically resolve enforcement questions there and a cross-border dispute can require separate proceedings and legal advice in India. Outcomes are highly fact-specific. Addressing travel consent, passport custody and OCI documents in the settlement is more effective than relying on the order alone.",
   },
   {
-    question: "Is my US divorce automatically valid in India?",
+    question: "Is a US divorce valid in India?",
     answer:
-      "No. It has to satisfy the conditions in Y. Narasimha Rao under Section 13 of the Code of Civil Procedure. Most US no-fault decrees fail one of them, because irretrievable breakdown is not a ground for divorce under the Hindu Marriage Act — only the Supreme Court of India can dissolve a marriage on that basis, under Article 142. A joint divorce where both spouses appeared voluntarily is far stronger than an ex parte one.",
+      "Not automatically. Recognition depends on whether the foreign decree satisfies Section 13 of the Code of Civil Procedure and the applicable personal-law requirements, as discussed in Y. Narasimha Rao v. Y. Venkata Lakshmi. Some US no-fault divorces may face recognition problems depending on the divorce ground, the jurisdiction, whether both parties participated, and the circumstances of the case. A decree obtained where both spouses appeared voluntarily generally stands on stronger ground than one entered by default.",
   },
   {
     question: "Do I need to file for divorce again in India?",
     answer:
-      "Not automatically, but often in practice. Where you need certainty — to remarry, to transfer property, or to do anything official in India — the two routes are a declaratory suit in an Indian court confirming your marital status, or a fresh Section 13B mutual-consent petition if your ex-spouse will cooperate. Section 13B is usually faster and cleaner.",
+      "Not necessarily, though it is often worth establishing your status there where you need certainty — to remarry, to deal with property, or for anything official. Two routes are commonly used: a declaratory suit in an Indian court confirming marital status, or, where both spouses cooperate and it is available, a fresh mutual-consent petition under Section 13B of the Hindu Marriage Act. Which is appropriate depends on the facts and on whether your former spouse will participate.",
   },
   {
     question: "Can I file for divorce in India from the USA without travelling?",
     answer:
-      "Largely, for mutual consent. A notarized and apostilled special power of attorney lets your advocate act for you, and Indian courts permit appearance by video conference. Expect two motions with a six-month interval that a court may waive where reconciliation is clearly impossible, and six to eighteen months in total. Contested cases are far harder to run remotely.",
+      "For mutual-consent proceedings this is often practicable. A notarized power of attorney, legalized as the receiving court requires, can allow an advocate to act for you, and Indian courts have permitted appearance by video conference. Section 13B involves two motions with a statutory interval that a court may waive in appropriate cases. Contested proceedings are considerably harder to run remotely. Confirm the specific requirements with an advocate practising before the relevant court.",
   },
   {
-    question: "What happens if I remarry on a US decree India does not recognize?",
+    question: "What if I remarry on a US decree India does not recognize?",
     answer:
-      "If the first marriage still subsists under Indian law, remarrying exposes you to prosecution for bigamy under Section 82 of the Bharatiya Nyaya Sanhita, the successor to Section 494 of the Indian Penal Code. This has happened to real NRIs who assumed a US decree ended the matter everywhere. Resolve the Indian position before you remarry, not after.",
+      "Before remarrying, confirm that the divorce is recognized under the law applicable to the first marriage. Where a first marriage subsists under Indian law, remarriage raises exposure under Section 82 of the Bharatiya Nyaya Sanhita, the successor provision to Section 494 of the Indian Penal Code. Resolving the Indian position first is considerably simpler than addressing it afterwards.",
   },
   {
     question: "Should I file for divorce in the US or in India?",
     answer:
-      "It turns on where you live, where the assets are, and which forum produces a better outcome for you — the estimator on this page shows how far apart the two systems can land on maintenance alone. Speed, cost, custody and enforceability all differ, and the first filing often controls. Get advice in both jurisdictions before either spouse files.",
+      "It turns on where you live, where the assets are, and which forum is likely to produce a better outcome on the issues that matter to you — the estimator on this page illustrates how far apart the two systems can be on maintenance alone. Speed, cost, custody and enforceability all differ, and the first filing can influence what follows. Get advice in both jurisdictions before either spouse files.",
   },
   {
     question: "How much alimony will I pay or receive?",
     answer:
-      "There is no formula that produces the answer. Most US states decide on statutory factors, and the guideline figures the estimator shows are what temporary orders and negotiations typically start from. Texas has an eligibility gate before any figure applies, New York caps the formula at a statutory income ceiling, and India has no formula at all — courts there work from disclosed assets, real earning capacity and a benchmark of roughly a quarter of net income.",
-  },
-  {
-    question: "Is alimony still tax-deductible?",
-    answer:
-      "Not for agreements executed after December 31, 2018. The Tax Cuts and Jobs Act reversed the old treatment, so alimony is no longer deductible by the payer and is no longer taxable income to the recipient. Agreements executed on or before that date keep the old rules unless they are later modified to adopt the new ones — which matters if you are comparing your settlement against numbers from an older case.",
+      "No formula produces that answer. Most US states decide spousal support on statutory factors, and guideline figures of the kind this page illustrates are benchmarks that temporary orders and negotiations often start from rather than predictions of an award. Texas requires specified eligibility conditions before maintenance can be ordered, New York applies its formula up to a statutory income cap, and India has no statutory formula at all — Indian courts work from disclosed assets, needs and earning capacity.",
   },
   {
     question: "Does divorce affect my I-140 or my priority date?",
     answer:
-      "No. An approved I-140 and the priority date attached to it belong to the principal beneficiary, and a divorce does not touch either. What ends is a spouse's derivative claim: if your I-485 is pending and your spouse was a derivative applicant, their side of the case ends with the marriage while yours continues.",
+      "An approved I-140 and the priority date attached to it belong to the principal beneficiary, and a divorce does not disturb either. What is affected is a spouse's derivative claim: where an I-485 is pending and the spouse was a derivative applicant, that derivative side of the case is affected by the end of the marriage while the principal's own case continues.",
   },
   {
     question: "What happens to a joint bank account, 401(k) or Indian property in a divorce?",
     answer:
-      "Retirement accounts are divided by a qualified domestic relations order, which is a separate document from the divorce decree and is easy to overlook. Indian assets — NRE and NRO balances, property, and stridhan — sit outside a US decree's practical reach and usually need Indian proceedings of their own. Pull statements for every joint account before they are separated, because access disappears quickly.",
+      "Retirement accounts are typically divided by a qualified domestic relations order, a separate document from the divorce decree that is easy to overlook. Indian assets — NRE and NRO balances, property, and stridhan — generally require attention under Indian law and may need proceedings there. Gathering statements for joint accounts before they are separated is worth doing early, as access can be lost quickly.",
   },
 ];
 
@@ -718,13 +828,14 @@ export const faqs: FaqItem[] = [
  * Disclaimer
  * ------------------------------------------------------------------ */
 export const DIVORCE_DISCLAIMER =
-  "This guide is general educational information about how US immigration rules and Indian matrimonial law interact when a marriage ends. It is not legal advice, it does not create an attorney-client relationship, and it cannot account for the facts of your case.";
+  "This guide is general educational information about how US immigration rules and Indian matrimonial law interact when a marriage ends. It is not legal advice, it does not create an attorney-client relationship, NRItoUSA does not provide legal representation, and nothing here can account for the facts of your case.";
 
 export const DISCLAIMER_POINTS: string[] = [
   "Nothing here is immigration advice. Deepak Middha is a CA and Series 65 holder who reviews the financial and tax explanations on this site. He is not an immigration attorney and not a family lawyer.",
-  "Immigration rules change, and different USCIS offices apply them differently. Verify every rule against the official source before you act on it.",
-  "The alimony estimator produces a guideline starting point, not an award. Spousal support is discretionary in every jurisdiction shown, Texas has an eligibility gate before any figure applies, and India has no statutory formula at all.",
-  "The estimator excludes child support, division of property, retirement accounts and QDROs, Indian real estate, NRE and NRO balances, and stridhan claims — several of which are larger than the maintenance number.",
+  "This page has not been reviewed by an attorney. The verification date shown means the cited sources were checked on that date — it is source verification, not legal review.",
+  "Immigration rules change, and adjudicators apply them to the facts of individual cases. Verify every rule against the official source before you act on it.",
+  "The alimony estimator is illustrative. It is not a prediction of what a court will award. Spousal support is discretionary in every jurisdiction shown, Texas requires specified eligibility conditions before maintenance can be ordered, and India has no statutory formula.",
+  "The estimator excludes child support, division of property, retirement accounts and QDROs, Indian real estate, NRE and NRO balances, and stridhan claims — several of which can be larger than the maintenance figure.",
   "If there is abuse in your situation, speak to an immigration attorney or a DOJ-accredited representative before doing anything else. The safest route often depends on facts this page cannot see.",
-  "For your own case you need three professionals: a licensed immigration attorney, a family lawyer in your US state, and — where India is involved — an advocate practising before the relevant Indian family court.",
+  "For your own case you are likely to need three professionals: a licensed immigration attorney, a family lawyer in your US state, and — where India is involved — an advocate practising before the relevant Indian court.",
 ];

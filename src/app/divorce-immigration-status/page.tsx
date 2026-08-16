@@ -45,6 +45,8 @@ import {
   officialSourceLinks,
   indianAuthorities,
   H4_TIMING_AMBIGUITY,
+  DOCUMENT_HANDLING_NOTE,
+  SHORT_DISCLAIMER,
   RULES_LAST_VERIFIED_HUMAN,
   OFFICIAL_SOURCES_REVIEWED,
   DIVORCE_DISCLAIMER,
@@ -61,7 +63,7 @@ export const metadata: Metadata = pageMetadata({
   description: DESC,
   path: DIV_PATH,
   type: "article",
-  socialTitle: "Divorce and Your US Immigration Status: The Deadlines Nobody Tells You About",
+  socialTitle: "Divorce and Your US Immigration Status: What Changes, by Status",
   openGraph: {
     publishedTime: DIV_PUBLISHED,
     modifiedTime: DIV_UPDATED,
@@ -76,22 +78,22 @@ export const metadata: Metadata = pageMetadata({
  * enforced by anchors.test.ts.
  * ------------------------------------------------------------------ */
 const JUMP = [
-  { id: "quick-answer", label: "The quick answer" },
-  { id: "status-table", label: "Effect on each status" },
+  { id: "quick-answer", label: "Quick answer" },
+  { id: "status-table", label: "Effect by status" },
   { id: "h4", label: "If you are on H-4" },
   { id: "h1b", label: "If you are the H-1B holder" },
   { id: "conditional-gc", label: "Conditional (2-year) green card" },
   { id: "ten-year-gc", label: "10-year green card" },
-  { id: "pending", label: "With a case still pending" },
-  { id: "abuse", label: "If there was abuse" },
-  { id: "i864", label: "The I-864 obligation" },
+  { id: "pending", label: "Pending I-130 / I-485" },
+  { id: "abuse", label: "Abuse: VAWA, U and T" },
+  { id: "i864", label: "The I-864 undertaking" },
   { id: "citizenship", label: "Citizenship afterwards" },
-  { id: "estimator", label: "Alimony estimator" },
-  { id: "india", label: "Is your US divorce valid in India?" },
+  { id: "india", label: "Is a US divorce valid in India?" },
   { id: "children", label: "Children, custody and India" },
   { id: "checklist", label: "Document checklist" },
-  { id: "sources", label: "Official sources" },
+  { id: "estimator", label: "Alimony comparison" },
   { id: "faq", label: "FAQs" },
+  { id: "sources", label: "Official sources" },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -158,6 +160,31 @@ function FactChip({ f }: { f: (typeof divorceFacts)[string] }) {
   );
 }
 
+/**
+ * Compact "Primary source: …" label placed next to a high-risk legal claim, so
+ * a reader can check the assertion without scrolling to the sources box.
+ * Links are real URLs pulled from the data file — never hand-typed here.
+ */
+function SrcNote({
+  label = "Primary source",
+  items,
+}: {
+  label?: string;
+  items: { name: string; href: string }[];
+}) {
+  return (
+    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg border border-ink-900/10 bg-slate-50/70 px-3 py-2 text-xs text-ink-600">
+      <span className="font-bold uppercase tracking-wide text-ink-500">{label}:</span>
+      {items.map((s, i) => (
+        <span key={s.href}>
+          <Ext href={s.href}>{s.name} ↗</Ext>
+          {i < items.length - 1 && <span className="text-ink-400"> ·</span>}
+        </span>
+      ))}
+    </p>
+  );
+}
+
 function Bullets({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2">
@@ -203,17 +230,20 @@ export default function Page() {
         icon="⚖️"
         category="Immigration · Family"
         title={H1}
-        hook="If your right to be here came through the marriage, the decree date is an immigration deadline — and almost everything worth filing has to be filed before it."
-        badges={["Free & private", "No signup", "Every rule sourced", "US + India"]}
+        hook="If your immigration status depends on your marriage, the timing of the divorce can matter enormously. Learn what changes for H-4, H-1B, green-card holders, pending cases and citizenship — and what to consider before the divorce becomes final."
+        badges={["Free & private", "No signup", "Primary sources cited", "US + India"]}
         accent="from-brand-600 to-rose-600"
         sourceNote={
           <>
-            Rules last verified <strong>{RULES_LAST_VERIFIED_HUMAN}</strong> against{" "}
+            <strong>{SHORT_DISCLAIMER}</strong>
+            <br />
+            Sources last checked <strong>{RULES_LAST_VERIFIED_HUMAN}</strong> against{" "}
             {OFFICIAL_SOURCES_REVIEWED} primary sources — USCIS policy, the CFR, state statutes
-            and reported Indian judgments.
+            and reported Indian judgments. That is source verification, not attorney review; this
+            page has not been reviewed by a lawyer.
           </>
         }
-        topDisclaimer="Educational information only — not legal advice. Immigration and family law decisions need a licensed attorney."
+        topDisclaimer={SHORT_DISCLAIMER}
         disclaimerIntro={DIVORCE_DISCLAIMER}
         disclaimerPoints={DISCLAIMER_POINTS}
       >
@@ -240,59 +270,70 @@ export default function Page() {
               {/* ---------------- Answer first ---------------- */}
               <section id="quick-answer" className="scroll-mt-24">
                 <QuickAnswer
-                  question="Does divorce cost me my immigration status?"
+                  question="Does divorce affect my immigration status?"
                   answer={
                     <>
                       <p>
-                        It comes down to one question: <strong>is your status derivative?</strong>{" "}
-                        If your right to be in the United States flows through your spouse, ending
-                        the marriage cuts the cord. If you hold status in your own right, divorce
-                        is mostly a paperwork event.
+                        It depends first on one question:{" "}
+                        <strong>is your status derivative?</strong> If your permission to be in
+                        the United States comes through your spouse, ending the marriage can end
+                        the relationship that status rests on. If you hold status in your own
+                        right, a divorce generally changes much less.
                       </p>
                       <p>
-                        The timing rule matters more than any of the detail below.{" "}
-                        <strong>
-                          For a derivative status, the date the divorce becomes final is the date
-                          your status ends
-                        </strong>{" "}
-                        — not the date you separate, and not the date you file. Everything you
-                        might want to file instead should be on file <em>before</em> that date,
-                        while you are still in valid status. The same application filed a day late
-                        is a materially harder application.
+                        Timing matters more than most of the detail below. For a derivative
+                        status, options that are straightforward while you are still married can
+                        become considerably harder afterwards, so the practical rule is to
+                        identify and file what you can{" "}
+                        <em>before</em> the divorce becomes final. What the consequences actually
+                        are in your case depends on your facts, which is why this is a
+                        conversation to have with an immigration attorney rather than a deadline
+                        to calculate on your own.
                       </p>
                     </>
                   }
                   bullets={[
                     <>
-                      <strong>On H-4, F-2 or L-2:</strong> highest urgency. File a change of status
-                      before the decree.
+                      <strong>On H-4, F-2 or L-2:</strong> high urgency — explore a change of
+                      status or another filing while still eligible.
                     </>,
                     <>
-                      <strong>On H-1B, or holding a 10-year green card:</strong> your own status is
-                      unaffected.
+                      <strong>On H-1B, or holding a 10-year green card:</strong> your own status
+                      generally continues.
                     </>,
                     <>
-                      <strong>On a conditional 2-year card:</strong> you keep it, and file{" "}
-                      <A href="/i90-vs-i751">Form I-751</A> alone with a waiver.
+                      <strong>On a conditional 2-year card:</strong> you generally keep it, and
+                      file <A href="/i90-vs-i751">Form I-751</A> with a joint-filing waiver.
                     </>,
                     <>
-                      <strong>With an I-130 or I-485 pending:</strong> the most damaging case —
+                      <strong>With an I-130 or I-485 pending:</strong> a high-risk situation —
                       take advice before anyone files for divorce.
                     </>,
                   ]}
-                  ctaText="Estimate the alimony exposure"
-                  ctaHref="#estimator"
                 />
               </section>
 
               {/* ---------------- Status matrix ---------------- */}
               <section id="status-table" className="scroll-mt-24 space-y-4">
-                <H2>What divorce does to each status</H2>
+                <H2>General effect of divorce, by status</H2>
+                <P>
+                  Find your own row first. Urgency here means how quickly the options worth
+                  considering tend to narrow — not a legal deadline, which depends on your facts.
+                </P>
                 <DataTable
                   columns={statusImpactCols}
                   rows={statusImpactRows}
-                  caption="Read your own row first. The urgency column is about how much of your remaining planning time is already spent."
-                  keyRows={["H-4 dependent", "I-130 / I-485 still pending"]}
+                  keyRows={["H-4 dependent", "Pending marriage-based I-130 / I-485"]}
+                />
+                <SrcNote
+                  label="Primary sources"
+                  items={[
+                    { name: "USCIS Policy Manual", href: "https://www.uscis.gov/policy-manual" },
+                    {
+                      name: "8 CFR § 214.1",
+                      href: divorceFacts.gracePeriod60.sourceUrl,
+                    },
+                  ]}
                 />
               </section>
 
@@ -300,29 +341,53 @@ export default function Page() {
               <section id="h4" className="scroll-mt-24 space-y-4">
                 <H2>If you are on H-4</H2>
                 <P>
-                  This is the hardest situation on the list, and it lands hardest on Indian
-                  families, because the H-4 spouse is very often the one who gave up a career in
-                  India to make the move.
+                  This is often the most difficult situation on the list, and it weighs heavily on
+                  Indian families, because the H-4 spouse is frequently the one who gave up a
+                  career in India to make the move.
                 </P>
                 <P>
-                  H-4 is a dependent status. It exists only because of the marriage to the H-1B
-                  principal. When the marriage legally ends, the qualifying relationship ends, and
-                  the status goes with it. Any H-4 EAD you hold stops being valid at the same
-                  moment — an employment authorization document cannot outlive the status it was
-                  issued against, whatever expiry date is printed on the card.
+                  H-4 is a dependent status: it exists because of the marriage to the H-1B
+                  principal. A final divorce can end the qualifying relationship that status rests
+                  on. As for the EAD, if the H-4 status supporting it ends, you should not assume
+                  the expiration date printed on the card continues to authorize employment — get
+                  individualized immigration advice before continuing to work.
                 </P>
 
-                <WarnBox title="There is no 60-day grace period for H-4 after divorce">
+                <Callout kind="note" title="What the law does and does not settle here">
+                  <p>{H4_TIMING_AMBIGUITY}</p>
+                </Callout>
+
+                <WarnBox title="Do not assume the 60-day provision applies after a divorce">
                   <p>
-                    The widely repeated 60-day figure comes from the rules on{" "}
-                    <em>cessation of employment</em> for nonimmigrant workers. It does not extend
-                    to a dependent who loses status because a marriage ended. Planning around 60
-                    days you do not have is the most expensive mistake in this section.
+                    The 60-day provision people cite comes from a regulation about{" "}
+                    <em>cessation of employment</em> for certain nonimmigrant workers. It does not
+                    expressly create a 60-day period for a dependent whose qualifying marriage has
+                    ended, so it should not be assumed to apply here. Waiting on the strength of
+                    it is a common mistake, and it can consume the time in which other options are
+                    still realistic.
                   </p>
                 </WarnBox>
 
-                <Callout kind="note" title="What is settled, and what is not">
-                  <p>{H4_TIMING_AMBIGUITY}</p>
+                <Callout kind="tip" title="Three different things, often confused">
+                  <ul className="ml-4 list-disc space-y-1.5">
+                    <li>
+                      <strong>Status violation</strong> — whether the terms of your nonimmigrant
+                      status are still being met.
+                    </li>
+                    <li>
+                      <strong>Unlawful presence</strong> — a period counted under the statute,
+                      determined by rules that depend on the facts and on any pending application.
+                    </li>
+                    <li>
+                      <strong>Unauthorized employment</strong> — working without valid
+                      authorization, which is a separate problem with separate consequences.
+                    </li>
+                  </ul>
+                  <p>
+                    The three-year and ten-year re-entry bars turn on{" "}
+                    <strong>departure from the United States</strong> after the relevant period has
+                    accrued, rather than on the accrual by itself.
+                  </p>
                 </Callout>
 
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -330,41 +395,62 @@ export default function Page() {
                   <FactChip f={divorceFacts.unlawfulPresence3Year} />
                 </div>
 
-                <H3>What you can file instead</H3>
+                <H3>Options worth exploring</H3>
                 <DataTable
                   columns={h4OptionsCols}
                   rows={h4OptionsRows}
-                  caption="Lead time is the column that decides this. Two of these cannot be assembled in the weeks between deciding to divorce and the decree, which is why the conversation has to happen early."
-                  keyRows={["Change of status to B-2 (visitor)", "U visa or T visa (crime or trafficking victims)"]}
+                  caption="Lead time is usually the deciding column. Several of these cannot be assembled in the weeks between deciding to divorce and the decree, which is why the conversation is worth having early."
+                  keyRows={[
+                    "Change of status to B-2 (visitor)",
+                    "U or T nonimmigrant status (crime and trafficking victims)",
+                  ]}
                 />
-
-                <P>
-                  File the change of status <strong>while you are still in valid H-4 status</strong>
-                  . A timely-filed application generally lets you remain in the United States while
-                  it is pending. Once the decree is entered and you have nothing on file, you begin
-                  accruing unlawful presence — and it is <em>departing</em> after accruing it that
-                  triggers the re-entry bars, which is why leaving quietly to sort things out later
-                  is often the worst available move.
-                </P>
-
-                <DecisionFlow
-                  title="The order that protects you"
-                  nodes={[
-                    { text: "Divorce is coming and you are on H-4", kind: "start" },
-                    { text: "Talk to an immigration attorney BEFORE the family lawyer files", kind: "action", branch: "first" },
-                    { text: "Which option do you actually qualify for?", kind: "decision" },
-                    { text: "Assemble the package — I-20 for F-1, or the I-539 for B-2", kind: "action", branch: "takes weeks" },
-                    { text: "File the change of status while still married", kind: "action" },
-                    { text: "Only then let the final decree be entered", kind: "end" },
+                <SrcNote
+                  items={[
+                    { name: "USCIS — Form I-539", href: "https://www.uscis.gov/i-539" },
+                    {
+                      name: "USCIS — U nonimmigrant status",
+                      href: "https://www.uscis.gov/humanitarian/victims-of-criminal-activity-u-nonimmigrant-status",
+                    },
                   ]}
                 />
 
-                <Callout kind="tip" title="Coordinating the decree date is normal">
+                <P>
+                  Where a change of status is the route, filing{" "}
+                  <strong>while you are still eligible to file it</strong> is what keeps the option
+                  open, and a timely-filed application can affect what happens while it is pending.
+                  Once your lawful status ends, you may begin accruing unlawful presence depending
+                  on the facts of your case and how the period is determined. Because
+                  unlawful-presence consequences can be serious, it is worth establishing what
+                  status or filing options may be available before the divorce rather than after.
+                </P>
+
+                <DecisionFlow
+                  title="A sequence worth discussing with counsel"
+                  nodes={[
+                    { text: "Divorce is in prospect and you are on H-4", kind: "start" },
+                    {
+                      text: "Speak to an immigration attorney before the family case is filed",
+                      kind: "action",
+                      branch: "first",
+                    },
+                    { text: "Which options are realistically open to you?", kind: "decision" },
+                    {
+                      text: "Assemble the package — an I-20 for F-1, or the I-539 for B-2",
+                      kind: "action",
+                      branch: "takes weeks",
+                    },
+                    { text: "File while you are still eligible to file", kind: "action" },
+                    { text: "Then the family case proceeds to a final decree", kind: "end" },
+                  ]}
+                />
+
+                <Callout kind="tip" title="Coordinating the timing is a normal request">
                   <p>
-                    Asking your family lawyer to time the final decree around an immigration filing
-                    is legitimate and routine. Most divorce attorneys will not think to raise it,
-                    because immigration is not their practice area — so you have to. It costs
-                    nothing to ask and it is the single highest-leverage thing on this page.
+                    Asking your family lawyer to consider immigration timing when scheduling a final
+                    decree is a legitimate and routine request. Many divorce attorneys will not raise
+                    it, because immigration is not their practice area, so it is worth raising
+                    yourself. It is an important step and it costs nothing to ask.
                   </p>
                 </Callout>
               </section>
@@ -373,17 +459,18 @@ export default function Page() {
               <section id="h1b" className="scroll-mt-24 space-y-4">
                 <H2>If you are the H-1B holder</H2>
                 <P>
-                  Your own status is unaffected. H-1B is tied to your employer and your petition,
-                  not to your marriage. You do not need to notify USCIS of a divorce for H-1B
-                  purposes, and your extensions, transfers and{" "}
-                  <A href="/i140-processing-time">I-140</A> continue normally. An approved I-140
-                  and its priority date belong to you and stay with you.
+                  Your own status rests on your employer and your petition rather than on your
+                  marriage, so it is generally unaffected. There is no H-1B filing prompted by the
+                  divorce itself, and extensions, transfers and an approved{" "}
+                  <A href="/i140-processing-time">I-140</A> are not disturbed by it. An approved
+                  I-140 and the priority date attached to it belong to you as the principal
+                  beneficiary.
                 </P>
-                <P>Two things do change.</P>
+                <P>Two things sit elsewhere and are worth attention.</P>
                 <Bullets
                   items={[
-                    "Your spouse's H-4 ends with the marriage. Your children's H-4 continues, because it comes from being your children — that relationship does not end, even if they live with the other parent. Custody and travel consent are separate questions, and they need separate answers.",
-                    "Any derivative claim in your green card case ends. If your I-485 is pending and your spouse was a derivative applicant, their side of the case ends with the marriage while yours continues unaffected.",
+                    "Your spouse's H-4 is affected by the end of the marriage. Your children's H-4 derives from the parent-child relationship, which the divorce does not end — including where they live with the other parent. Custody, travel consent and passport custody are separate questions that immigration status does not resolve.",
+                    "A derivative claim in your green card case is affected. Where your I-485 is pending and your spouse was a derivative applicant, that derivative side of the case is affected by the end of the marriage while your own case continues.",
                   ]}
                 />
                 <P>
@@ -394,8 +481,8 @@ export default function Page() {
                   >
                     Form I-864
                   </a>{" "}
-                  is the one that matters to you. That is where the real exposure sits, and it is
-                  financial rather than immigration — which is precisely why it gets missed.
+                  is the one likely to matter to you. It is a financial undertaking rather than an
+                  immigration filing, which is a common reason it gets overlooked.
                 </P>
               </section>
 
@@ -408,26 +495,37 @@ export default function Page() {
                   together in the 90 days before the card expires, to remove them.
                 </P>
                 <P>
-                  Divorce does not end that path. It changes how you walk it:{" "}
+                  A divorce does not close that path — it changes how you take it:{" "}
                   <strong>
                     you file I-751 on your own, requesting a waiver of the joint-filing requirement
                   </strong>
-                  . There are three grounds for that waiver, and people routinely assume there is
-                  only one.
+                  . There are three separate waiver grounds, they do not all require a divorce, and
+                  they do not work identically. A common misconception is that only the first
+                  exists.
                 </P>
 
                 <DataTable
                   columns={i751WaiverCols}
                   rows={i751WaiverRows}
-                  caption="More than one ground can be requested on the same petition."
+                  caption="More than one ground may be requested on the same petition. Confirm current terminology and requirements against USCIS guidance before filing."
                   keyRows={["Battery or extreme cruelty"]}
                 />
+                <SrcNote
+                  items={[
+                    {
+                      name: "USCIS Policy Manual Vol. 6, Pt. I, Ch. 5",
+                      href: divorceFacts.i751WaiverWindow.sourceUrl,
+                    },
+                    { name: "USCIS — Form I-751", href: "https://www.uscis.gov/i-751" },
+                  ]}
+                />
 
-                <Callout kind="mistake" title="The 90-day window does not apply to a waiver">
+                <Callout kind="mistake" title="The 90-day window governs joint petitions">
                   <p>
-                    That window is a rule about <em>joint</em> petitions. A waiver request may be
-                    filed as soon as a waiver ground applies — before, during or after the 90 days.
-                    People miss filings waiting for a window that was never theirs.
+                    That window is a rule about <em>joint</em> petitions. USCIS guidance indicates a
+                    waiver request may be filed once a waiver ground applies — before, during or
+                    after the 90 days. Waiting for a window that does not govern a waiver request is
+                    a common misconception and can cost time.
                   </p>
                 </Callout>
 
@@ -436,24 +534,24 @@ export default function Page() {
                   <FactChip f={divorceFacts.i751WaiverWindow} />
                 </div>
 
-                <H3>What USCIS is actually testing</H3>
+                <H3>What the good-faith ground turns on</H3>
                 <P>
-                  One thing: <strong>was the marriage genuine when you entered it?</strong> Not
-                  whether it lasted. Not whose fault the divorce was. Not whether you behaved well
-                  during it. A marriage that was real and then failed qualifies — that is the whole
-                  purpose of the waiver. Build the file around the beginning and the middle of the
-                  relationship, not the end.
+                  Whether the marriage was <strong>entered into in good faith</strong> — the intent
+                  at the outset, rather than how long it lasted or who was responsible for the
+                  breakdown. A marriage that was genuine and later broke down is the situation this
+                  waiver exists to address. The evidence that speaks to it generally comes from the
+                  beginning and middle of the relationship rather than the end.
                 </P>
-                <ChecklistBox title="Evidence that carries weight" items={goodFaithEvidence} />
+                <ChecklistBox title="Evidence that tends to carry weight" items={goodFaithEvidence} />
 
-                <WarnBox title="If the I-751 deadline lands before the decree does">
+                <WarnBox title="If the I-751 deadline arrives before the decree does">
                   <p>
-                    File anyway rather than letting conditional status lapse. Divorces in several
-                    states routinely run longer than the I-751 window, and USCIS has a defined path
-                    for exactly this: the petition goes in, a Request for Evidence issues asking for
-                    the final decree, and the marriage may legally terminate during the response
-                    period — which is enough to establish eligibility. Raise the collision with both
-                    lawyers early rather than discovering it later.
+                    Filing is generally preferable to letting conditional status lapse. Divorce
+                    proceedings in several states run longer than the conditional card's validity,
+                    and USCIS guidance describes a path for this: the petition is filed, a Request
+                    for Evidence may issue asking for the final decree, and the marriage may
+                    terminate during the response period. Raise the timing with both your
+                    immigration and family lawyers early rather than discovering the conflict later.
                   </p>
                 </WarnBox>
               </section>
@@ -462,21 +560,21 @@ export default function Page() {
               <section id="ten-year-gc" className="scroll-mt-24 space-y-4">
                 <H2>If you have a 10-year green card</H2>
                 <P>
-                  You are fine. Once the conditions are removed you are a lawful permanent resident
-                  in your own right. Divorce does not revoke a green card, does not affect{" "}
-                  <A href="/green-card-renewal">renewal</A>, and is not a ground of removability.
+                  Once conditions have been removed, permanent residence is held in your own right.
+                  A divorce is not itself a ground of removability and does not change{" "}
+                  <A href="/green-card-renewal">card renewal</A>.
                 </P>
                 <P>
-                  The only real consequence is on the naturalization clock, which is{" "}
+                  The consequence that does follow concerns the naturalization timeline, covered{" "}
                   <a
                     href="#citizenship"
                     className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800"
                   >
                     further down this page
                   </a>
-                  . The one narrow exception is a case where USCIS has evidence the marriage was
-                  fraudulent from the outset — but that is a marriage-fraud question with its own
-                  evidence, not a consequence of the marriage ending.
+                  . Separately, where a question arises about whether the marriage was entered into
+                  in good faith at the outset, that is a distinct inquiry with its own evidence
+                  rather than a consequence of the marriage ending.
                 </P>
               </section>
 
@@ -484,73 +582,92 @@ export default function Page() {
               <section id="pending" className="scroll-mt-24 space-y-4">
                 <H2>If your green card case is still pending</H2>
                 <P>
-                  This is the most damaging scenario on the page. A Form I-130 filed by a
-                  US-citizen or permanent-resident spouse is a petition based on a qualifying
-                  relationship. When the marriage ends, the relationship ends, the petition is no
-                  longer approvable, and a pending{" "}
-                  <A href="/i485-processing-time">I-485</A> resting on it will be denied.
+                  This is a high-risk situation. A Form I-130 filed by a US-citizen or
+                  permanent-resident spouse rests on a qualifying relationship. For a typical
+                  marriage-based I-130 and{" "}
+                  <A href="/i485-processing-time">I-485</A>, ending the qualifying marriage can
+                  eliminate the basis for the petition and the adjustment application. Exceptions
+                  and alternative immigration pathways may apply depending on the circumstances.
                 </P>
+                <P>Alternatives that do not depend on the former spouse can include:</P>
+                <Bullets
+                  items={[
+                    "Abuse-related protections, where they apply — a VAWA self-petition where the spouse is a US citizen or permanent resident, or U or T nonimmigrant status, each with its own eligibility requirements.",
+                    "An employment-based petition through an employer, where one is available.",
+                    "An independent self-petition such as an EB-2 national-interest waiver, where the professional profile genuinely supports it.",
+                    "A change to a nonimmigrant classification you independently qualify for.",
+                  ]}
+                />
                 <P>
-                  If the I-485 is denied and you have no other status, you fall out of status on
-                  denial. The options at that point are narrow: a self-petition if abuse is part of
-                  the history, an employment-based petition if an employer is available, or a return
-                  to a nonimmigrant status you independently qualify for. None of them is quick.
+                  None of these is quick, and which are realistic depends on facts a page cannot
+                  see. See the{" "}
+                  <a
+                    href="#abuse"
+                    className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800"
+                  >
+                    abuse-related protections
+                  </a>{" "}
+                  section for how VAWA, U and T differ.
                 </P>
-                <Callout kind="insight" title="Sequencing is the whole game here">
+                <Callout kind="insight" title="Sequencing matters here">
                   <p>
-                    If a marriage-based case is pending and the marriage is failing, speak to an
-                    immigration attorney <em>before</em> anyone files for divorce — not after. The
-                    order of events changes which doors are still open, and it is one of the few
-                    parts of this process you still control.
+                    Where a marriage-based case is pending and the marriage is failing, speaking to
+                    an immigration attorney <em>before</em> anyone files for divorce is an important
+                    step. The order of events can change which options remain available, and it is
+                    one of the few parts of the process still within your control.
                   </p>
                 </Callout>
               </section>
 
               {/* ---------------- Abuse ---------------- */}
               <section id="abuse" className="scroll-mt-24 space-y-4">
-                <H2>If there was abuse</H2>
+                <H2>Abuse-related protections: VAWA, U and T</H2>
                 <P>
-                  There are two separate routes here, and which one is open to you depends entirely
-                  on <strong>your spouse&rsquo;s immigration status</strong> — not on the severity
-                  of what happened. Getting this wrong wastes months for the people who can least
-                  afford to lose them.
+                  Two different routes exist here, and which may be open depends on{" "}
+                  <strong>the abusive spouse&rsquo;s immigration status</strong> as well as on the
+                  facts. Each has its own eligibility requirements, and a divorce by itself does not
+                  create eligibility for any of them.
                 </P>
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5">
                     <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">
-                      Spouse is a US citizen or green card holder
+                      If the abusive spouse is a US citizen or permanent resident
                     </p>
                     <p className="mt-2 text-[15px] font-bold text-ink-900">VAWA self-petition</p>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
-                      Lets an abused spouse petition for themselves, without the abuser&rsquo;s
-                      knowledge, participation or signature. It breaks the dependency entirely: a
-                      conditional resident who would otherwise have no path can pursue permanent
-                      residence independently. Available to men and women alike.
+                      Allows an abused spouse to petition on their own behalf, without the
+                      abuser&rsquo;s knowledge, participation or signature. Because it does not
+                      depend on the other spouse filing anything, it can open a path for someone
+                      whose case otherwise rested entirely on them. Available regardless of gender.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-5">
                     <p className="text-xs font-bold uppercase tracking-wide text-sky-700">
-                      Spouse is on H-1B, L-1 or another temporary visa
+                      If the abusive spouse holds H-1B, L-1 or another temporary status
                     </p>
-                    <p className="mt-2 text-[15px] font-bold text-ink-900">U visa or T visa</p>
+                    <p className="mt-2 text-[15px] font-bold text-ink-900">
+                      U or T nonimmigrant status
+                    </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
-                      VAWA is <strong>not</strong> available to you — the statute requires the
-                      abuser to be a citizen or permanent resident. The U visa, for victims of
-                      qualifying crimes who cooperate with law enforcement, does not depend on your
-                      spouse&rsquo;s status at all. It is slower, and it is a real path.
+                      A VAWA self-petition is not available in this situation, because the statute
+                      requires the abuser to be a citizen or permanent resident. Depending on the
+                      facts, U or T classification may provide an alternative, since neither depends
+                      on the abuser&rsquo;s immigration status. Both carry their own requirements —
+                      for U status, a qualifying crime and helpfulness to law enforcement, usually
+                      evidenced by a certification.
                     </p>
                   </div>
                 </div>
 
-                <WarnBox title="The error that sends H-4 spouses down a dead end">
+                <WarnBox title="A common misconception worth correcting">
                   <p>
-                    A great deal of NRI-facing content tells abused H-4 spouses to file under VAWA.
-                    They cannot. An H-1B holder is neither a US citizen nor a lawful permanent
-                    resident, and that prerequisite is statutory — it is not a paperwork problem
-                    that a good attorney can argue around. If someone has told you otherwise, get a
-                    second opinion from an immigration attorney or a DOJ-accredited representative
-                    before you spend anything on it.
+                    A great deal of NRI-facing content directs abused H-4 spouses to file under
+                    VAWA. That route requires the abusive spouse to be a US citizen or lawful
+                    permanent resident, and an H-1B holder is neither — a statutory requirement
+                    rather than a documentation problem. If you have been told otherwise, it is
+                    worth a second opinion from an immigration attorney or a DOJ-accredited
+                    representative before committing time or money to it.
                   </p>
                 </WarnBox>
 
@@ -559,72 +676,104 @@ export default function Page() {
                   <FactChip f={divorceFacts.vawaAfterDivorce} />
                 </div>
 
-                <H3>What a VAWA self-petition requires, broadly</H3>
+                <H3>What a VAWA self-petition broadly requires</H3>
                 <Bullets
                   items={[
                     "A qualifying marriage to a US citizen or lawful permanent resident, entered into in good faith",
-                    "Battery or extreme cruelty during the marriage — which includes non-physical abuse: coercive control, threats of deportation, financial isolation, confiscation of documents",
-                    "That you lived with the abusive spouse",
+                    "Battery or extreme cruelty during the marriage — extreme cruelty is not limited to physical violence and can include coercive control, threats relating to immigration status, financial isolation and withholding of documents",
+                    "That you resided with the abusive spouse",
                     "Good moral character",
                   ]}
                 />
+                <SrcNote
+                  items={[
+                    {
+                      name: "USCIS Policy Manual Vol. 3, Pt. D, Ch. 2",
+                      href: divorceFacts.vawaPrerequisite.sourceUrl,
+                    },
+                    {
+                      name: "USCIS — Abused Spouses, Children and Parents",
+                      href: divorceFacts.vawaAfterDivorce.sourceUrl,
+                    },
+                  ]}
+                />
                 <P>
-                  Two forms of abuse recur specifically in immigrant households and are frequently
-                  not recognized as abuse by the person living through them: threatening to
-                  withdraw an immigration petition as leverage, and holding a spouse&rsquo;s
-                  passport or immigration documents. Both are directly relevant to a claim.
+                  Two patterns recur in immigrant households and are often not recognized as abuse
+                  by the person experiencing them: using a pending immigration petition as leverage,
+                  and withholding a spouse&rsquo;s passport or immigration documents. Both can be
+                  relevant to the analysis, though whether a particular history meets the statutory
+                  standard is a question for counsel.
                 </P>
                 <Callout kind="note" title="Already divorced?">
                   <p>
-                    A VAWA self-petition is still possible, but generally only within two years of
-                    the divorce, and you must show a connection between the abuse and the end of the
-                    marriage. Do not assume the door has closed — and do not sit on it either.
+                    A VAWA self-petition may still be possible, generally within two years of the
+                    termination of the marriage, and it requires showing a connection between the
+                    abuse and the end of the marriage alongside the other requirements. It is worth
+                    asking rather than assuming either way.
                   </p>
                 </Callout>
               </section>
 
               {/* ---------------- I-864 ---------------- */}
               <section id="i864" className="scroll-mt-24 space-y-4">
-                <H2>The obligation that survives the divorce: Form I-864</H2>
+                <H2>The undertaking a divorce does not resolve: Form I-864</H2>
                 <P>
                   If you sponsored your spouse for a green card, you signed Form I-864, the
-                  Affidavit of Support. Almost everyone signs it as a formality. It is a{" "}
-                  <strong>
-                    contract with the federal government, enforceable in court by the person you
-                    sponsored.
-                  </strong>{" "}
-                  Under it you promised to maintain their income at 125% of the federal poverty
-                  guidelines. Divorce is not on the list of things that ends it.
+                  Affidavit of Support — frequently treated as a formality at the time. It is an
+                  undertaking given to the federal government under INA § 213A, and the sponsored
+                  immigrant is among those who may seek to enforce it. Under it the sponsor
+                  undertakes to maintain the sponsored immigrant&rsquo;s income at 125% of the
+                  federal poverty guidelines. <strong>Divorce is not among the conditions the
+                  regulation lists as terminating it.</strong>
                 </P>
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <FactChip f={divorceFacts.i864Threshold} />
-                  <FactChip f={divorceFacts.i864Quarters} />
+                  <FactChip f={divorceFacts.povertyGuidelines2026} />
                 </div>
 
-                <WarnBox title="The obligation ends only when one of these happens">
+                <WarnBox title="Termination conditions under 8 CFR § 213a.2(e)(2)">
                   <ul className="ml-4 list-disc space-y-1.5">
                     {i864Terminators.map((t) => (
                       <li key={t}>{t}</li>
                     ))}
                   </ul>
-                  <p className="font-bold">Divorce is not on that list.</p>
+                  <p>
+                    <strong>Divorce does not appear on that list.</strong> Termination also does not
+                    relieve a sponsor of a reimbursement obligation that accrued before the
+                    undertaking ended.
+                  </p>
                 </WarnBox>
+                <SrcNote
+                  items={[
+                    { name: "8 CFR § 213a.2", href: divorceFacts.i864Termination.sourceUrl },
+                    {
+                      name: "USCIS Policy Manual Vol. 8, Pt. G, Ch. 6",
+                      href: divorceFacts.i864Quarters.sourceUrl,
+                    },
+                    { name: "USCIS — Form I-864", href: "https://www.uscis.gov/i-864" },
+                  ]}
+                />
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FactChip f={divorceFacts.i864Quarters} />
+                  <FactChip f={divorceFacts.i864Termination} />
+                </div>
 
                 <P>
-                  The practical consequence surprises almost everyone. A sponsored ex-spouse with
-                  little or no income can sue the sponsor to enforce it. They do not have to prove
-                  hardship, and they do not have to have claimed any public benefit — only that the
-                  sponsor failed to maintain the promised level of support. Courts have awarded
-                  back-support plus attorney&rsquo;s fees.
+                  The practical consequence is one many sponsors do not anticipate. A sponsored
+                  former spouse whose income falls below the threshold may bring a claim to enforce
+                  the undertaking. How such claims are treated after a divorce has been litigated in
+                  state and federal courts, and outcomes have varied — including on whether the
+                  undertaking can be waived by agreement, and on what a court does with a settlement
+                  that addresses spousal support without mentioning it.
                 </P>
                 <P>
-                  This runs <strong>alongside</strong> alimony, not instead of it. A settlement that
-                  waives spousal support does not automatically dispose of an I-864 claim, because
-                  the undertaking runs to the government as well as to the immigrant — and courts
-                  have split on whether it can be waived at all. If you are the sponsoring spouse,
-                  put it in the negotiation explicitly and in writing. If you are the sponsored
-                  spouse, it is a right you may not know you have.
+                  What follows practically is that it runs <strong>alongside</strong> alimony rather
+                  than in place of it, and a settlement that waives spousal support does not
+                  automatically dispose of it. If you are the sponsoring spouse, raise it explicitly
+                  in the negotiation and in writing. If you are the sponsored spouse, it is worth
+                  knowing the undertaking exists before you sign anything.
                 </P>
                 <Callout kind="crossborder" title="If a newly single household is the issue">
                   <p>
@@ -644,149 +793,112 @@ export default function Page() {
               <section id="citizenship" className="scroll-mt-24 space-y-4">
                 <H2>Citizenship after divorce</H2>
                 <P>
-                  Permanent residents normally naturalize after five years. There is a shortened
-                  three-year route for people married to a US citizen — but it requires living in
-                  marital union with that citizen spouse for the whole three years, and remaining
-                  married right through to the oath.
+                  Permanent residents generally apply to naturalize after five years of residence.
+                  A shortened three-year route exists for spouses of US citizens, but it requires
+                  living in marital union with the same citizen spouse for the three years before
+                  filing, and USCIS guidance requires that union to continue through naturalization.
                 </P>
                 <P>
-                  Divorce ends access to that route. You revert to the five-year rule.{" "}
+                  A divorce generally ends access to that shortened route, leaving the standard
+                  five-year requirement.{" "}
                   <strong>
-                    You do not lose the years already accrued as a permanent resident — the clock
-                    does not reset, only the finish line moves.
-                  </strong>
+                    Time already accrued as a permanent resident is not lost — the applicable period
+                    changes rather than restarting.
+                  </strong>{" "}
+                  Legal separation raises the same question about marital union and is worth
+                  discussing with counsel rather than assuming either way.
                 </P>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <FactChip f={divorceFacts.naturalizationFiveYear} />
                   <FactChip f={divorceFacts.naturalizationThreeYear} />
                 </div>
+                <SrcNote
+                  items={[
+                    {
+                      name: "USCIS Policy Manual Vol. 12, Pt. G",
+                      href: divorceFacts.naturalizationThreeYear.sourceUrl,
+                    },
+                    {
+                      name: "USCIS Policy Manual Vol. 12, Pt. D",
+                      href: divorceFacts.naturalizationFiveYear.sourceUrl,
+                    },
+                  ]}
+                />
                 <P>
-                  If you have already naturalized, divorce has no effect at all. Citizenship, once
-                  granted, is not contingent on the marriage continuing.
-                </P>
-              </section>
-
-              {/* ---------------- Estimator ---------------- */}
-              <section id="estimator" className="scroll-mt-24 space-y-4">
-                <H2>Estimate the alimony exposure</H2>
-                <P>
-                  Spousal support is the other number that shapes the decision. It is discretionary
-                  everywhere, but most negotiations start from a guideline figure. Because an Indian
-                  marriage often has a second forum genuinely in play, this shows the US guideline
-                  result and, beside it, what an Indian court might work from for the same couple.
-                </P>
-
-                <AlimonyEstimator />
-
-                <H3>How to read it</H3>
-                <P>
-                  The US column applies the guideline your state uses — California&rsquo;s Santa
-                  Clara formula for temporary support, New York&rsquo;s statutory formula under DRL
-                  § 236(B)(6), the Texas statutory cap, or the AAML benchmark elsewhere. Final
-                  awards are decided on statutory factors and routinely differ from the guideline.
-                </P>
-                <P>
-                  Two jurisdiction-specific traps are worth naming, because they are where a naive
-                  calculator misleads people. <strong>Texas has an eligibility gate before any
-                  figure exists</strong> — under a ten-year marriage, without a statutory exception,
-                  the usual outcome is no maintenance at all rather than a smaller number. And{" "}
-                  <strong>New York&rsquo;s formula stops at a statutory income cap</strong>; a high
-                  earner&rsquo;s real exposure can exceed the guideline, because the court may award
-                  more on the income above it.
-                </P>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <FactChip f={divorceFacts.txEligibility} />
-                  <FactChip f={divorceFacts.nyIncomeCap} />
-                </div>
-                <P>
-                  The India column benchmarks on roughly 25% of net income, the share referenced in{" "}
-                  <em>Kalyan Dey Chowdhury v. Rita Dey Chowdhury</em> (2017), adjusted for the lower
-                  earner&rsquo;s own income. India has no formula at all. Under{" "}
-                  <em>Rajnesh v. Neha</em> both spouses must file a sworn affidavit of assets and
-                  income, and courts assess real earning capacity — an NRI&rsquo;s US income is
-                  routinely imputed in full, which is why the Indian figure is often far higher than
-                  people expect.
-                </P>
-                <Callout kind="reminder" title="The tax treatment changed, and old numbers mislead">
-                  <p>
-                    For agreements executed after December 31, 2018, alimony is no longer deductible
-                    by the payer and no longer taxable to the recipient. If you are anchoring on
-                    what someone paid or received a decade ago, you are comparing pre-tax and
-                    post-tax dollars.
-                  </p>
-                </Callout>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <FactChip f={divorceFacts.alimonyTaxTreatment} />
-                  <FactChip f={divorceFacts.usdInr} />
-                </div>
-                <P>
-                  Neither column includes child support, division of property, retirement accounts
-                  and the QDRO that splits them, Indian real estate or NRE/NRO balances, or{" "}
-                  <em>stridhan</em> return claims — which are the wife&rsquo;s absolute property and
-                  sit outside maintenance entirely. Several of those are larger than the maintenance
-                  number.
+                  If you have already naturalized, citizenship is held in your own right and does
+                  not depend on the marriage continuing.
                 </P>
               </section>
 
               {/* ---------------- India ---------------- */}
               <section id="india" className="scroll-mt-24 space-y-4">
-                <H2>Is your US divorce even valid in India?</H2>
-                <P>Frequently not — and this catches people badly.</P>
+                <H2>Is a US divorce valid in India?</H2>
                 <P>
-                  Under Section 13 of the Code of Civil Procedure and the Supreme Court&rsquo;s
-                  decision in <em>Y. Narasimha Rao v. Y. Venkata Lakshmi</em> (1991), an Indian
-                  court recognizes a foreign divorce only if it clears five tests.
+                  Not automatically. Recognition depends on whether the foreign decree satisfies
+                  Section 13 of the Code of Civil Procedure and the applicable personal-law
+                  requirements. The Supreme Court of India addressed how those conditions apply to
+                  foreign matrimonial decrees in{" "}
+                  <em>Y. Narasimha Rao v. Y. Venkata Lakshmi</em> (1991), reading several of them
+                  narrowly in the matrimonial context.
                 </P>
 
                 <DataTable
                   columns={indiaRecognitionCols}
                   rows={indiaRecognitionRows}
-                  caption="A decree only has to fail one of these to be unenforceable in India."
-                  keyRows={["The ground is one Indian personal law recognizes"]}
+                  caption="Section 13 makes a foreign judgment conclusive except in the enumerated situations. A decree that falls into one of them may not be treated as conclusive in India."
+                  keyRows={[
+                    "The judgment is not founded on an incorrect view of international law or a refusal to recognize Indian law where applicable",
+                  ]}
                 />
 
                 <P>
-                  The third condition is where most American divorces fail.{" "}
+                  Some US no-fault divorces may face recognition problems in India depending on the
+                  divorce ground, the jurisdiction, the participation of the parties, and the
+                  circumstances of the case. The point that most often needs addressing is that{" "}
                   <strong>
-                    &ldquo;Irretrievable breakdown&rdquo; — the standard US no-fault ground — is not
-                    a ground for divorce under the Hindu Marriage Act.
-                  </strong>{" "}
-                  Only the Supreme Court of India, exercising its Article 142 powers, can dissolve a
-                  marriage on that basis. A decree resting on it is generally unenforceable in
-                  India, and an ex parte decree where your spouse never appeared is weaker still.
+                    irretrievable breakdown is not among the grounds for divorce listed in the Hindu
+                    Marriage Act
+                  </strong>
+                  , and the Supreme Court&rsquo;s power to dissolve a marriage on that basis rests on
+                  Article 142 of the Constitution rather than on the statute. A decree obtained
+                  where both spouses appeared voluntarily generally stands on stronger ground than
+                  one entered by default.
                 </P>
 
-                <WarnBox title="Do not remarry on an unrecognized decree">
+                <WarnBox title="Confirm recognition before remarrying">
                   <p>
-                    If your first marriage still subsists under Indian law, remarrying exposes you
-                    to prosecution for bigamy under Section 82 of the Bharatiya Nyaya Sanhita, the
-                    successor to Section 494 of the Indian Penal Code. This has happened to real
-                    NRIs who assumed a US decree was the end of the matter everywhere.
+                    Before remarrying, confirm that the divorce is recognized under the law
+                    applicable to the first marriage. Where a first marriage subsists under Indian
+                    law, remarriage raises exposure under Section 82 of the Bharatiya Nyaya Sanhita,
+                    the successor provision to Section 494 of the Indian Penal Code. Resolving the
+                    Indian position first can create serious problems if left until afterwards.
                   </p>
                 </WarnBox>
 
-                <H3>Getting certainty in India</H3>
+                <H3>Establishing your status in India</H3>
                 <P>
-                  Where you need it — to remarry, to transfer property, to do anything official —
-                  there are two routes. A <strong>declaratory suit</strong> in an Indian court
-                  confirming your marital status, or a fresh{" "}
-                  <strong>Section 13B mutual-consent petition</strong> if your ex-spouse will
-                  cooperate. Section 13B is usually the faster and cleaner of the two.
+                  Where you need certainty — to remarry, to deal with property, or for anything
+                  official — two routes are commonly used. A <strong>declaratory suit</strong> in an
+                  Indian court confirming your marital status, or a fresh{" "}
+                  <strong>Section 13B mutual-consent petition</strong> under the Hindu Marriage Act.
+                  Where both spouses cooperate and Section 13B is available, a mutual-consent
+                  proceeding may provide a clearer route to establishing marital status in India.
                 </P>
                 <P>
-                  You can run a mutual-consent petition from the United States. A notarized and{" "}
-                  <A href="/oci">apostilled</A> special power of attorney lets your advocate appear
-                  for you, and Indian courts permit participation by video conference. Expect two
-                  motions with a six-month interval between them — waivable where reconciliation is
-                  clearly impossible — and six to eighteen months in total. Contested cases are far
-                  harder to run remotely.
+                  A mutual-consent proceeding can often be pursued from the United States. A
+                  notarized power of attorney, legalized as the receiving court requires, can allow
+                  an advocate to act for you, and Indian courts have permitted appearance by video
+                  conference. Section 13B involves two motions with a statutory interval between
+                  them, which a court may waive in appropriate cases. Contested proceedings are
+                  considerably harder to run remotely. Confirm the requirements with an advocate
+                  practising before the relevant court.
                 </P>
                 <P>
-                  Separately: a US decree does not resolve custody, maintenance or property situated
-                  in India. Those need Indian proceedings on their own merits.
+                  Separately, a US decree does not resolve custody, maintenance or property situated
+                  in India. Those generally require attention under Indian law on their own merits.
                 </P>
 
-                <H3>The Indian authorities this section rests on</H3>
+                <H3>The Indian authorities this section refers to</H3>
                 <div className="space-y-2.5">
                   {indianAuthorities.map((a) => (
                     <div
@@ -804,22 +916,23 @@ export default function Page() {
               <section id="children" className="scroll-mt-24 space-y-4">
                 <H2>Children, custody and India</H2>
                 <P>
-                  A child&rsquo;s H-4 status continues after the divorce, because it derives from
-                  being the H-1B holder&rsquo;s child and that does not change. A US-citizen child
-                  is unaffected entirely.
+                  A child&rsquo;s H-4 status derives from the parent-child relationship with the
+                  H-1B holder, which a divorce between the parents does not end. A US-citizen
+                  child&rsquo;s status is not affected by the divorce at all.
                 </P>
                 <P>
-                  The cross-border problem is enforcement.{" "}
+                  The cross-border complication is enforcement.{" "}
                   <strong>
-                    India is not a signatory to the Hague Convention on the Civil Aspects of
+                    India is not a party to the Hague Convention on the Civil Aspects of
                     International Child Abduction
                   </strong>
-                  , so a US custody order is not directly enforceable there — recovering a child
-                  taken to India becomes a fresh proceeding in an Indian court, on Indian principles.
+                  , so a US custody order does not automatically resolve enforcement questions in
+                  India, and a cross-border custody dispute involving India can require separate
+                  proceedings and legal advice there. Outcomes in this area are highly fact-specific.
                 </P>
                 <ChecklistBox
                   tone="brand"
-                  title="Put these in the settlement, not in an assumption"
+                  title="Worth addressing in the settlement rather than assuming"
                   items={[
                     "Who physically holds each child's US passport, Indian passport and OCI card",
                     "Written consent requirements for international travel, and how far in advance",
@@ -834,26 +947,98 @@ export default function Page() {
               <section id="checklist" className="scroll-mt-24 space-y-4">
                 <H2>Document checklist</H2>
                 <P>
-                  Assemble this before the household separates, not after. Access to joint records
-                  disappears faster than people expect, and the I-751 and I-864 questions later on
-                  both turn on documents that were easy to get and became impossible.
+                  Assembling this before the household separates is considerably easier than
+                  afterwards. Access to joint records can be lost quickly, and both the I-751 and
+                  I-864 questions later on turn on documents that are straightforward to obtain
+                  while you still have access to them.
                 </P>
-                <ChecklistBox title="Get copies of all of these" items={documentChecklist} />
+                <ChecklistBox title="Gather copies of these" items={documentChecklist} />
+                <Callout kind="tip" title="Originals, translations and legalization">
+                  <p>{DOCUMENT_HANDLING_NOTE}</p>
+                </Callout>
               </section>
 
-              {/* ---------------- Sources ---------------- */}
-              <section id="sources" className="scroll-mt-24 space-y-4">
-                <H2>Official sources</H2>
-                <OfficialSourceBox
-                  title="Primary sources for every rule on this page"
-                  intro="Immigration rules change and are applied differently by different offices. Verify anything you are about to act on against the source:"
-                  links={officialSourceLinks}
-                />
+              {/* ---------------- Estimator ---------------- */}
+              <section id="estimator" className="scroll-mt-24 space-y-4">
+                <H2>Illustrative alimony &amp; maintenance comparison</H2>
+                <P>
+                  Spousal support is the other figure that shapes these decisions. It is
+                  discretionary everywhere, though negotiations and temporary orders often start
+                  from a guideline benchmark. Because an Indian marriage may have a second forum in
+                  play, this places a US state benchmark beside a reference point drawn from Indian
+                  case law for the same couple. Neither is a prediction of a court award.
+                </P>
+
+                <AlimonyEstimator />
+
+                <H3>How to read the two columns</H3>
+                <P>
+                  The US column applies the guideline associated with the state selected —
+                  California&rsquo;s Santa Clara formula for temporary support, New York&rsquo;s
+                  statutory formula under DRL § 236(B)(6), the Texas statutory cap, or the AAML
+                  benchmark elsewhere. Final awards are decided on statutory factors and commonly
+                  differ from any guideline figure.
+                </P>
+                <P>
+                  Two jurisdiction-specific points are worth naming, because a calculator that
+                  ignores them can mislead. <strong>Texas requires specified eligibility conditions
+                  before maintenance can be ordered</strong> — generally a marriage of ten years or
+                  longer, or a statutory exception, alongside a showing about minimum reasonable
+                  needs. And <strong>New York applies its formula up to a statutory income
+                  cap</strong>, with any award on income above the cap left to the court&rsquo;s
+                  assessment of the statutory factors.
+                </P>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FactChip f={divorceFacts.txEligibility} />
+                  <FactChip f={divorceFacts.nyIncomeCap} />
+                </div>
+                <P>
+                  The India column applies a reference point rather than a formula. India has no
+                  statutory maintenance formula; the Supreme Court of India referred to 25% of net
+                  salary as a just-and-proper figure in a particular case,{" "}
+                  <em>Kalyan Dey Chowdhury v. Rita Dey Chowdhury</em> (2017), and Indian courts
+                  decide on the facts and circumstances of each case. Under{" "}
+                  <em>Rajnesh v. Neha</em> both parties file an affidavit of disclosure of assets
+                  and income, and Indian courts may consider a spouse&rsquo;s actual US income and
+                  earning capacity when determining maintenance, depending on the facts and
+                  applicable law.
+                </P>
+                <Callout kind="reminder" title="The tax treatment changed, so older figures are not comparable">
+                  <p>
+                    For agreements executed after December 31, 2018, alimony is not deductible by
+                    the payer and not taxable to the recipient. Anchoring on what someone paid or
+                    received under an older agreement compares pre-tax and post-tax dollars.
+                  </p>
+                </Callout>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FactChip f={divorceFacts.alimonyTaxTreatment} />
+                  <FactChip f={divorceFacts.usdInr} />
+                </div>
+                <P>
+                  Neither column includes child support, division of property, retirement accounts
+                  and the QDRO that divides them, Indian real estate, NRE and NRO balances, or{" "}
+                  <em>stridhan</em> claims, which sit separately from maintenance. Several of those
+                  can be larger than the maintenance figure.
+                </P>
               </section>
 
               {/* ---------------- FAQ ---------------- */}
               <section id="faq" className="scroll-mt-24">
                 <ToolFaq items={faqs} />
+              </section>
+
+              {/* ---------------- Sources ---------------- */}
+              <section id="sources" className="scroll-mt-24 space-y-4">
+                <H2>Official sources</H2>
+                <P>
+                  Every legal claim on this page is drawn from the sources below. They were checked
+                  on {RULES_LAST_VERIFIED_HUMAN} — source verification, not attorney review.
+                </P>
+                <OfficialSourceBox
+                  title="Primary sources"
+                  intro="Immigration rules change, and adjudicators apply them to the facts of individual cases. Verify anything you are about to act on against the source:"
+                  links={officialSourceLinks}
+                />
               </section>
 
               {/* ---------------- Next steps ---------------- */}
@@ -889,6 +1074,19 @@ export default function Page() {
                 </div>
 
                 <AuthorReviewLine lastUpdated={DIV_UPDATED_HUMAN} />
+                {/*
+                  Point of honesty: AuthorReviewLine reads "Written / reviewed by".
+                  On a page about immigration and family law that could be read as
+                  legal review, which has not happened. This states what the
+                  byline does and does not mean.
+                */}
+                <p className="mx-auto max-w-3xl text-xs leading-relaxed text-ink-500">
+                  Deepak Middha is a CA and Series 65 holder who reviews the financial and tax
+                  explanations on this site. He is not an immigration attorney or a family lawyer,
+                  and <strong>this page has not been reviewed by an attorney</strong>. The
+                  verification date above refers to the checking of the cited sources, not to legal
+                  review, and nothing here is legal representation. {SHORT_DISCLAIMER}
+                </p>
                 <Newsletter />
               </section>
             </div>

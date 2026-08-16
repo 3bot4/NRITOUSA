@@ -109,13 +109,28 @@ export default function AlimonyEstimator() {
     <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card">
       <div className="border-b border-ink-900/10 bg-slate-50/80 px-5 py-4">
         <h3 className="text-base font-bold text-ink-900">
-          Alimony &amp; maintenance estimator
+          Illustrative alimony &amp; maintenance comparison
         </h3>
         <p className="mt-1 text-xs text-ink-500">
-          A US state&rsquo;s guideline figure alongside the benchmark an Indian court might work
-          from — for the same couple. Nothing you type leaves your browser.
+          A US state guideline benchmark alongside a reference point drawn from Indian case
+          law — for the same couple. Nothing you type leaves your browser.
         </p>
       </div>
+
+      {/*
+        The "this is not a prediction" notice sits ABOVE the inputs as well as
+        beside the result. A disclaimer that only appears after the number has
+        already been read is doing very little work.
+      */}
+      <p
+        role="note"
+        className="border-b border-amber-200 bg-amber-50 px-5 py-3 text-xs font-semibold leading-relaxed text-amber-900"
+      >
+        <span aria-hidden>⚠️ </span>
+        Illustrative only — NOT a prediction of what a court will award. Actual support depends
+        on jurisdiction, income, assets, needs, duration of marriage, applicable law, and the
+        facts of the case.
+      </p>
 
       <div className="grid gap-4 p-5 sm:grid-cols-2">
         <div>
@@ -263,11 +278,16 @@ export default function AlimonyEstimator() {
           </p>
         ) : (
           <>
+            <p className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-900">
+              Both figures below are mathematical benchmarks, not legal entitlements and not
+              predicted court awards.
+            </p>
+
             <div className="grid gap-4 sm:grid-cols-2">
               {/* US column */}
               <div className="rounded-xl border border-ink-900/10 bg-white p-4">
                 <p className="text-[0.625rem] font-bold uppercase tracking-wider text-ink-400">
-                  US spousal support
+                  Illustrative U.S. support benchmark
                 </p>
                 <p className="mt-1 text-3xl font-extrabold tracking-tight text-ink-900">
                   {usd(result.usMonthlyUsd)}
@@ -291,24 +311,33 @@ export default function AlimonyEstimator() {
               {/* India column */}
               <div className="rounded-xl border border-ink-900/10 bg-white p-4">
                 <p className="text-[0.625rem] font-bold uppercase tracking-wider text-ink-400">
-                  India maintenance benchmark
+                  Illustrative Indian maintenance reference point
                 </p>
-                <p className="mt-1 text-3xl font-extrabold tracking-tight text-ink-900">
+                {/*
+                  The "25% is not a statutory formula" qualification sits BEFORE
+                  the number, not after it. Placed below, it reads as a footnote
+                  to a figure the user has already taken as authoritative.
+                */}
+                <p className="mt-1.5 rounded-lg border border-amber-200 bg-amber-50/70 px-2.5 py-2 text-[0.6875rem] font-semibold leading-relaxed text-amber-900">
+                  India has no statutory maintenance formula. The Supreme Court of India referred
+                  to 25% of net salary as a just-and-proper figure in a particular case
+                  (<em>Kalyan Dey Chowdhury</em>, 2017); Indian courts decide on the facts and
+                  circumstances of each case.
+                </p>
+                <p className="mt-2 text-3xl font-extrabold tracking-tight text-ink-900">
                   {inr(result.indiaMonthlyInr)}
                   <span className="text-base font-bold text-ink-400">/mo</span>
                 </p>
                 <p className="mt-1 text-xs text-ink-500">
-                  ≈ {usd(result.indiaMonthlyUsd)}/mo · one-time settlement{" "}
+                  ≈ {usd(result.indiaMonthlyUsd)}/mo · illustrative one-time settlement range{" "}
                   {inr(result.indiaLumpSumLowInr)}–{inr(result.indiaLumpSumHighInr)}
                 </p>
-                <span className="mt-2.5 inline-block rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[0.6875rem] font-bold text-amber-900">
-                  No statutory formula
-                </span>
                 <p className="mt-2.5 text-xs leading-relaxed text-ink-600">
-                  Benchmarked on roughly a quarter of net income, the share the Supreme Court
-                  called just and proper in <em>Kalyan Dey Chowdhury</em> (2017), reduced for the
-                  lower earner&rsquo;s own income. Indian courts assess real earning capacity, and
-                  an NRI&rsquo;s US income is routinely imputed in full.
+                  This applies that 25% reference to net income, reduced for the lower
+                  earner&rsquo;s own income. Indian courts may consider a spouse&rsquo;s actual US
+                  income and earning capacity when determining maintenance, depending on the facts
+                  and applicable law (see <em>Rajnesh v. Neha</em>, 2020, on disclosure of assets
+                  and income).
                 </p>
               </div>
             </div>
@@ -318,13 +347,13 @@ export default function AlimonyEstimator() {
               {result.comparison === "neither" &&
                 "The incomes are too close for either system to order support on these inputs."}
               {result.comparison === "us-higher" &&
-                `On these numbers the US exposure is about ${
-                  result.ratio ? `${result.ratio}×` : "far above"
-                } the Indian one. The higher earner does better in an Indian forum and the lower earner does better in the US, so expect the choice of where to file to be contested.`}
+                `On these inputs the US benchmark is about ${
+                  result.ratio ? `${result.ratio}×` : "well above"
+                } the Indian reference point. Where that gap exists, the two spouses often have opposing interests in which forum hears the case, so the choice of where to file can be contested.`}
               {result.comparison === "india-higher" &&
-                `Here the Indian figure exceeds the US one — usually because a statutory cap or a restrictive state formula is binding while the Indian benchmark keeps scaling with income. The lower earner may prefer the Indian forum.`}
+                "On these inputs the Indian reference point sits above the US benchmark, which tends to happen where a statutory cap or eligibility limit constrains the US figure while the Indian reference keeps scaling with income."}
               {result.comparison === "similar" &&
-                "The two systems land within about 25% of each other, so the choice of forum will turn on speed, cost, custody and enforceability rather than on the amount."}{" "}
+                "The two sit within about 25% of each other on these inputs, so a choice of forum would likely turn on speed, cost, custody and enforceability rather than on the amount."}{" "}
               Assumes {Math.round(NET_OF_TAX_SHARE * 100)}% of gross income is net of tax and ₹
               {values.fx} to the dollar. Excludes child support, property division, retirement
               accounts and QDROs, Indian real estate, NRE/NRO balances and stridhan.

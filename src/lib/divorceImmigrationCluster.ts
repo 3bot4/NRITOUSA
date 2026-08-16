@@ -144,7 +144,7 @@ export function divArticleJsonLd() {
     headline:
       "Divorce and Your US Immigration Status: H-1B, H-4, Green Card and Citizenship",
     description:
-      "How divorce affects each US immigration status for Indian families — H-4 and its EAD, the H-1B principal, conditional and 10-year green cards, a pending I-130/I-485, naturalization timing, and the Form I-864 obligation that survives the decree. Includes whether a US divorce is recognized in India.",
+      "How divorce generally affects each US immigration status for Indian families — H-4 and its EAD, the H-1B principal, conditional and 10-year green cards, a pending I-130/I-485, naturalization timing, and the Form I-864 undertaking that a divorce does not itself terminate. Includes how a US decree is treated under Indian law. Educational information, not legal advice.",
     mainEntityOfPage: { "@id": `${DIV_URL}#webpage` },
     datePublished: DIV_PUBLISHED,
     dateModified: DIV_UPDATED,
@@ -173,13 +173,13 @@ export function divWebAppJsonLd() {
   return {
     "@type": "WebApplication",
     "@id": `${DIV_URL}#estimator`,
-    name: "Alimony & Maintenance Estimator (US vs India)",
+    name: "Illustrative Alimony & Maintenance Comparison (US vs India)",
     url: `${DIV_URL}#estimator`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Any (web browser)",
     browserRequirements: "Requires JavaScript",
     description:
-      "A free, private, client-side estimator that shows the guideline spousal-support figure a US state formula would produce alongside the maintenance benchmark an Indian court might work from, for the same couple. Educational only — not a legal determination, and no substitute for advice in either jurisdiction.",
+      "A free, private, client-side tool that places an illustrative US state spousal-support benchmark beside an illustrative reference point drawn from Indian case law, for the same couple. Illustrative only — not a prediction of what any court will award, not a legal determination, and no substitute for advice in either jurisdiction.",
     isAccessibleForFree: true,
     inLanguage: "en-US",
     offers: {

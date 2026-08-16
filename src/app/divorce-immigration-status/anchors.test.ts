@@ -7,9 +7,18 @@ import {
   officialSourceLinks,
   indianAuthorities,
   statusImpactRows,
+  statusImpactCols,
   h4OptionsRows,
+  i751WaiverCols,
   i751WaiverRows,
+  i864Terminators,
   indiaRecognitionRows,
+  documentChecklist,
+  DOCUMENT_HANDLING_NOTE,
+  H4_TIMING_AMBIGUITY,
+  SHORT_DISCLAIMER,
+  DIVORCE_DISCLAIMER,
+  DISCLAIMER_POINTS,
   DEFAULT_USD_INR,
   RULES_LAST_VERIFIED,
 } from "@/data/divorceImmigrationData";
@@ -33,7 +42,22 @@ const dataSrc = readFileSync(
   "utf8",
 );
 const calcSrc = readFileSync(resolve(__dirname, "../../lib/calc/alimonyEstimate.ts"), "utf8");
+const estimatorSrc = readFileSync(
+  resolve(__dirname, "../../components/tools/AlimonyEstimator.tsx"),
+  "utf8",
+);
 const faqBlob = faqs.map((f) => `${f.question} ${f.answer}`).join(" ");
+
+/**
+ * Prose assertions must survive JSX line wrapping. Prettier breaks a sentence
+ * across lines and inserts {" "} at the seam, so a naive regex against raw
+ * source fails on formatting rather than on meaning. These collapse both.
+ */
+const flatten = (s: string) => s.replace(/\{"\s*"\}/g, " ").replace(/\s+/g, " ");
+const pageText = flatten(pageSrc);
+const dataText = flatten(dataSrc);
+const estimatorText = flatten(estimatorSrc);
+const allText = `${pageText} ${dataText} ${estimatorText}`;
 
 /** All literal `id="..."` targets rendered on the page. */
 function sectionIds(): string[] {
@@ -127,22 +151,22 @@ describe("SEO + schema wiring", () => {
 describe("VAWA eligibility — the prerequisite that must never be dropped", () => {
   it("never offers VAWA to an H-4 spouse without naming the citizen/LPR requirement", () => {
     // Any mention of VAWA alongside H-4 must sit near the prerequisite.
-    const all = pageSrc + dataSrc;
+    const all = `${pageText} ${dataText}`;
     expect(all).toMatch(/VAWA/);
     expect(all).toMatch(/must be a US citizen or lawful permanent resident/i);
-    expect(all).toMatch(/not available to (an )?H-4|cannot self-petition|is not available to you/i);
+    expect(all).toMatch(/not available to (an )?H-4|cannot self-petition|is not available in this situation/i);
   });
 
   it("routes an abused H-4 spouse to the U visa / T visa instead", () => {
-    expect(pageSrc + dataSrc).toMatch(/U visa/);
-    expect(faqBlob).toMatch(/U visa/);
+    expect(allText).toMatch(/U (visa|or T )?nonimmigrant|U visa/);
+    expect(faqBlob).toMatch(/U or T nonimmigrant/);
   });
 
   it("answers the H-4 VAWA question explicitly in the FAQ", () => {
     const q = faqs.find((f) => /VAWA if my spouse is on H-1B/i.test(f.question));
     expect(q, "the H-4/VAWA FAQ must exist").toBeTruthy();
     expect(q!.answer).toMatch(/^No\./);
-    expect(q!.answer).toMatch(/U visa/);
+    expect(q!.answer).toMatch(/U or T nonimmigrant/);
   });
 
   it("keeps the two-year post-divorce VAWA window stated", () => {
@@ -150,42 +174,79 @@ describe("VAWA eligibility — the prerequisite that must never be dropped", () 
   });
 });
 
-describe("the 60-day grace period must never be attributed to divorce", () => {
-  it("states that it covers cessation of employment, not a lost marriage", () => {
+describe("the 60-day provision must never be attributed to divorce", () => {
+  it("describes it as addressing cessation of employment", () => {
     expect(divorceFacts.gracePeriod60.value).toMatch(/[Cc]essation of employment/);
-    expect(pageSrc).toMatch(/no 60-day grace period/i);
+    expect(divorceFacts.gracePeriod60.note).toMatch(/does not expressly create a 60-day period/i);
+    expect(pageText).toMatch(/Do not assume the 60-day provision applies/i);
   });
 
   it("never tells an H-4 spouse they HAVE 60 days", () => {
-    // The myth may be named in order to debunk it; it may never be asserted.
-    const all = pageSrc + dataSrc;
+    const all = `${pageText} ${dataText}`;
     expect(all).not.toMatch(/\b(have|get|are allowed|receive) 60 days\b/i);
     expect(all).not.toMatch(
       /60-day grace period (applies|is available|extends|covers) (to )?(a )?(dependent|H-4|spouse)/i,
     );
-    // …and the debunk itself must still be present.
-    expect(all).toMatch(/has no regulatory basis|does not extend to a dependent/i);
+  });
+
+  it("does not flatly assert 'there is no 60-day grace period'", () => {
+    // The regulation is silent rather than prohibitive; the honest framing is
+    // "do not assume it applies", not a categorical denial.
+    expect(`${pageText} ${dataText}`).not.toMatch(/There is no 60-day grace period/i);
   });
 });
 
-describe("unlawful presence bars attach on departure", () => {
-  it("says so, rather than implying the accrual alone is the trigger", () => {
-    expect(divorceFacts.unlawfulPresence3Year.note).toMatch(/on DEPARTURE/);
-    expect(pageSrc + faqBlob).toMatch(/departing after accruing it|then departing/i);
+describe("unlawful presence is stated carefully", () => {
+  it("keeps unlawful presence, status violation and unauthorized employment distinct", () => {
+    expect(pageText).toMatch(/Status violation/);
+    expect(pageText).toMatch(/Unlawful presence/);
+    expect(pageText).toMatch(/Unauthorized employment/);
+  });
+
+  it("ties the re-entry bars to departure rather than to accrual alone", () => {
+    expect(divorceFacts.unlawfulPresence3Year.value).toMatch(/followed by departure/i);
+    expect(pageText).toMatch(/re-entry bars turn on/i);
+    expect(pageText).toMatch(/departure from the United States/i);
+  });
+
+  it("never says accrual begins automatically at the decree", () => {
+    expect(`${pageText} ${dataText}`).not.toMatch(/you begin accruing unlawful presence/i);
+    expect(pageText).toMatch(/may begin accruing unlawful presence depending on the facts/i);
+  });
+});
+
+describe("H-4 status and EAD language is not categorical", () => {
+  it("says a divorce CAN end the qualifying relationship, not that it ends at an instant", () => {
+    expect(H4_TIMING_AMBIGUITY).toMatch(/can end the qualifying relationship/i);
+    expect(H4_TIMING_AMBIGUITY).toMatch(/speak with an immigration attorney/i);
+    expect(`${pageText} ${dataText}`).not.toMatch(/at the exact (moment|hour)/i);
+    expect(`${pageText} ${dataText}`).not.toMatch(/status ends the (moment|instant)/i);
+  });
+
+  it("keeps the practical warning about not relying on the printed date", () => {
+    expect(H4_TIMING_AMBIGUITY).toMatch(/Do not assume that the expiration date printed/i);
+    expect(pageText).toMatch(/should not assume the expiration date printed on the card/i);
+  });
+
+  it("does not assert the EAD 'stops being valid' at a named instant", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/stops being valid/i);
+    expect(all).not.toMatch(/EAD (goes|ends) with it/i);
   });
 });
 
 describe("I-751 waiver mechanics", () => {
   it("distinguishes the joint 90-day window from the waiver's absence of one", () => {
-    expect(divorceFacts.i751JointWindow.note).toMatch(/JOINT petitions only/);
+    expect(divorceFacts.i751JointWindow.note).toMatch(/governs JOINT petitions/);
     expect(divorceFacts.i751WaiverWindow.value).toMatch(/before, during or after/i);
-    expect(pageSrc).toMatch(/90-day window does not apply to a waiver/i);
+    expect(pageText).toMatch(/90-day window governs joint petitions/i);
   });
 
   it("says a waiver can be filed before the divorce is final, with an RFE for the decree", () => {
     expect(divorceFacts.i751WaiverWindow.note).toMatch(/Request for Evidence/);
     const q = faqs.find((f) => /I-751 if the divorce is not final/i.test(f.question));
-    expect(q?.answer).toMatch(/^Yes\./);
+    expect(q?.answer).toMatch(/waiver request may be filed once a waiver ground applies/i);
+    expect(q?.answer).toMatch(/Request for Evidence/);
   });
 
   it("publishes all three waiver grounds, not only divorce", () => {
@@ -197,41 +258,107 @@ describe("I-751 waiver mechanics", () => {
 });
 
 describe("the three money obligations stay separate", () => {
-  it("states that I-864 survives the divorce and runs alongside alimony", () => {
-    expect(pageSrc).toMatch(/Divorce is not on that list/);
-    expect(pageSrc).toMatch(/alongside<\/strong> alimony, not instead of it/);
+  it("states that divorce is not a listed I-864 termination condition", () => {
+    expect(pageText).toMatch(/Divorce does not appear on that list/);
+    expect(pageText).toMatch(/alongside<\/strong> alimony rather than in place of it/);
   });
 
-  it("does not claim a settlement can simply waive the I-864", () => {
-    const all = pageSrc + dataSrc;
-    expect(all).not.toMatch(/waiv\w+ the I-864 (ends|terminates|disposes)/i);
-    expect(all).toMatch(/not automatically/i);
+  it("tracks the five statutory termination conditions in 8 CFR 213a.2(e)(2)", () => {
+    const blob = i864Terminators.join(" ");
+    expect(i864Terminators).toHaveLength(5);
+    expect(blob).toMatch(/becomes a US citizen/);
+    expect(blob).toMatch(/40 qualifying quarters of coverage/);
+    expect(blob).toMatch(/no longer a lawful permanent resident and has departed/);
+    // The verified wording: a NEW GRANT OF ADJUSTMENT in removal proceedings —
+    // not the loose "new status through a different sponsor" of the first draft.
+    expect(blob).toMatch(
+      /obtains in removal proceedings a new grant of adjustment of status, based on a new affidavit of support/,
+    );
+    expect(blob).toMatch(/dies/);
+    expect(divorceFacts.i864Termination.sourceUrl).toMatch(/213a\.2/);
+  });
+
+  it("does not invent termination events or a 'different sponsor' rule", () => {
+    const blob = i864Terminators.join(" ");
+    expect(blob).not.toMatch(/different sponsor/i);
+    expect(blob).not.toMatch(/divorce/i);
+  });
+
+  it("does not use 'ends only when' or claim settled law on waiver", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/obligation ends only when/i);
+    expect(all).toMatch(/outcomes have varied|results have varied|courts have split/i);
+  });
+
+  it("labels the poverty guidelines by year and geography, and flags AK/HI", () => {
+    const f = divorceFacts.povertyGuidelines2026;
+    expect(f.label).toMatch(/2026 HHS Poverty Guidelines/);
+    expect(f.label).toMatch(/48 contiguous states and D\.C\./);
+    expect(f.note).toMatch(/Alaska and Hawaii use different poverty guidelines/i);
+    expect(f.sourceUrl).toMatch(/^https:\/\/aspe\.hhs\.gov\//);
   });
 });
 
 describe("alimony estimator honesty", () => {
-  it("models the Texas eligibility gate, not just the dollar cap", () => {
+  it("models the Texas eligibility requirements, not just the dollar cap", () => {
     expect(calcSrc).toMatch(/TX_MIN_YEARS_MARRIED\s*=\s*10/);
     expect(calcSrc).toMatch(/screened-out/);
-    expect(pageSrc).toMatch(/Texas has an eligibility gate/i);
+    expect(pageText).toMatch(/Texas requires specified eligibility conditions/i);
   });
 
   it("states the New York income cap and that income above it is discretionary", () => {
     expect(calcSrc).toMatch(/NY_INCOME_CAP_USD\s*=\s*241_000/);
     expect(divorceFacts.nyIncomeCap.value).toBe("$241,000");
-    expect(pageSrc).toMatch(/statutory income cap/i);
+    expect(pageText).toMatch(/statutory income cap/i);
+  });
+
+  it("labels both columns as illustrative, never as a court award", () => {
+    expect(estimatorSrc).toMatch(/Illustrative U\.S\. support benchmark/);
+    expect(estimatorSrc).toMatch(/Illustrative Indian maintenance reference point/);
+    expect(estimatorSrc).not.toMatch(/>\s*US spousal support\s*</);
+    expect(estimatorSrc).not.toMatch(/>\s*India maintenance benchmark\s*</);
+  });
+
+  it("carries the not-a-prediction notice before the result, not only after it", () => {
+    const noticeIdx = estimatorSrc.indexOf("NOT a prediction of what a court will award");
+    const resultIdx = estimatorSrc.indexOf("Illustrative U.S. support benchmark");
+    expect(noticeIdx).toBeGreaterThan(-1);
+    expect(noticeIdx).toBeLessThan(resultIdx);
+    expect(estimatorSrc).toMatch(
+      /depends\s*\n?\s*on jurisdiction, income, assets, needs, duration of marriage, applicable law/,
+    );
+  });
+
+  it("separates benchmark, entitlement and award", () => {
+    expect(estimatorSrc).toMatch(/mathematical benchmarks, not legal entitlements and not/);
+  });
+
+  it("qualifies the Indian 25% figure BEFORE the number is rendered", () => {
+    const qualIdx = estimatorSrc.indexOf("India has no statutory maintenance formula");
+    const numIdx = estimatorSrc.indexOf("{inr(result.indiaMonthlyInr)}");
+    expect(qualIdx).toBeGreaterThan(-1);
+    expect(numIdx).toBeGreaterThan(-1);
+    expect(qualIdx).toBeLessThan(numIdx);
+    expect(estimatorSrc).toMatch(/not a statutory formula|no statutory maintenance formula/i);
+  });
+
+  it("does not claim US income is 'routinely imputed in full'", () => {
+    expect(allText).not.toMatch(/routinely imputed/i);
+    expect(allText).not.toMatch(/imputed in full/i);
+    expect(allText).toMatch(/may consider a spouse(&rsquo;|\u2019|')s actual US income and earning capacity/i);
   });
 
   it("never presents a guideline figure as an award", () => {
-    const all = pageSrc + dataSrc;
-    expect(all).not.toMatch(/you will (receive|pay) \$/i);
-    expect(all).not.toMatch(/\bguaranteed (award|amount)\b/i);
-    expect(all).toMatch(/discretionary/i);
+    expect(allText).not.toMatch(/you will (receive|pay) \$/i);
+    expect(allText).not.toMatch(/\bguaranteed (award|amount)\b/i);
+    expect(allText).toMatch(/discretionary/i);
   });
 
-  it("uses a current exchange rate, not the stale ~₹87 of the draft", () => {
+  it("uses a current exchange rate from a live source", () => {
     expect(DEFAULT_USD_INR).toBeGreaterThan(90);
     expect(divorceFacts.usdInr.value).toBe(`₹${DEFAULT_USD_INR}`);
+    // The Yahoo Finance URL used in the first version 404s; the Fed H.10 does not.
+    expect(divorceFacts.usdInr.sourceUrl).toMatch(/federalreserve\.gov/);
   });
 
   it("carries the post-2018 alimony tax treatment", () => {
@@ -240,19 +367,95 @@ describe("alimony estimator honesty", () => {
   });
 });
 
+describe("no attorney review is claimed", () => {
+  it("states plainly that the page has not been reviewed by an attorney", () => {
+    expect(pageText).toMatch(/this page has not been reviewed by a lawyer|not been reviewed by an attorney/i);
+    expect(DISCLAIMER_POINTS.join(" ")).toMatch(/has not been reviewed by an attorney/i);
+  });
+
+  it("explains that the verification date means source verification", () => {
+    expect(`${pageText} ${dataText}`).toMatch(/source verification, not (attorney |legal )?review/i);
+  });
+
+  it("does not imply NRItoUSA provides legal representation", () => {
+    expect(DIVORCE_DISCLAIMER).toMatch(/does not provide legal representation/i);
+    // Only NEGATED mentions of attorney review may appear.
+    const blob = `${pageText} ${dataText}`;
+    for (const m of blob.matchAll(/reviewed by [^.]{0,40}(attorney|lawyer)/gi)) {
+      const window = blob.slice(Math.max(0, m.index! - 70), m.index! + 60);
+      expect(window, `unnegated attorney-review claim: ${window}`).toMatch(
+        /\bnot\b|\bno\b|Nothing|never/i,
+      );
+    }
+  });
+
+  it("shows the short disclaimer in the hero as well as the full one below", () => {
+    expect(SHORT_DISCLAIMER).toMatch(/not legal advice/i);
+    expect(pageText).toMatch(/topDisclaimer=\{SHORT_DISCLAIMER\}/);
+    expect(pageText).toMatch(/\{SHORT_DISCLAIMER\}<\/strong>/);
+  });
+});
+
+describe("tone", () => {
+  it("avoids fear-based framing", () => {
+    const all = allText;
+    for (const phrase of [
+      /most expensive mistake/i,
+      /most damaging/i,
+      /highest-leverage/i,
+      /dead end/i,
+      /catches people badly/i,
+      /nobody tells you/i,
+      /the whole game/i,
+    ]) {
+      expect(all, `sensational phrase ${phrase} found`).not.toMatch(phrase);
+    }
+  });
+});
+
 describe("India recognition section", () => {
-  it("names irretrievable breakdown as the condition most US decrees fail", () => {
+  it("answers 'not automatically' rather than 'frequently not'", () => {
+    expect(pageText).toMatch(/Not automatically\. Recognition depends on whether the foreign decree/);
+    expect(`${pageText} ${dataText}`).not.toMatch(/Frequently not/);
+  });
+
+  it("never claims that MOST US no-fault decrees fail recognition", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/most (American|US|U\.S\.) (divorces|decrees)/i);
+    expect(all).not.toMatch(/where most .{0,30}(divorces|decrees) fail/i);
+    // The sourced, non-quantified replacement must be present instead.
+    expect(all).toMatch(/[Ss]ome US no-fault divorces may face recognition problems/);
+  });
+
+  it("names irretrievable breakdown as the point most often needing to be addressed", () => {
     const blob = indiaRecognitionRows.map((r) => Object.values(r).join(" ")).join(" ");
     expect(blob).toMatch(/[Ii]rretrievable breakdown/);
-    expect(pageSrc).toMatch(/not\s*\n?\s*a ground for divorce under the Hindu Marriage Act/);
+    expect(pageText).toMatch(/not among the grounds for divorce listed in the Hindu Marriage Act/);
   });
 
-  it("credits Article 142 as the only route to an irretrievable-breakdown decree", () => {
-    expect(pageSrc + dataSrc).toMatch(/Article 142/);
+  it("attributes the irretrievable-breakdown power to Article 142", () => {
+    expect(`${pageText} ${dataText}`).toMatch(/Article 142/);
   });
 
-  it("cites the bigamy provision under its current name", () => {
-    expect(pageSrc + dataSrc).toMatch(/Bharatiya Nyaya Sanhita/);
+  it("cites the bigamy provision under its current name without an anecdote", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).toMatch(/Bharatiya Nyaya Sanhita/);
+    // The unsourced "this has happened to real NRIs" claim must stay removed.
+    expect(all).not.toMatch(/happened to real NRIs/i);
+    expect(all).toMatch(/confirm that the divorce is recognized under the law/i);
+  });
+
+  it("does not promise Section 13B is faster", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/13B is (usually|always) (the )?(faster|quicker)/i);
+    expect(all).toMatch(/may provide a clearer route to establishing marital status/i);
+  });
+
+  it("frames Hague/custody as not automatically resolved rather than unenforceable", () => {
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/not directly enforceable/i);
+    expect(all).toMatch(/does not automatically resolve enforcement questions/i);
+    expect(all).toMatch(/highly fact-specific/i);
   });
 
   it("lists the Indian authorities it relies on, each with a point of law", () => {
@@ -261,6 +464,9 @@ describe("India recognition section", () => {
       expect(a.cite.length).toBeGreaterThan(15);
       expect(a.point.length).toBeGreaterThan(60);
     }
+    // Kalyan Dey Chowdhury must be described as a case reference, not a formula.
+    const kalyan = indianAuthorities.find((a) => /Kalyan Dey Chowdhury/.test(a.cite));
+    expect(kalyan?.point).toMatch(/not a statutory formula/i);
   });
 });
 
@@ -285,7 +491,7 @@ describe("content safety", () => {
   it("never gives a legal determination", () => {
     // Rules are stated impersonally ("as soon as a waiver ground applies");
     // the page never tells a reader what their own outcome will be.
-    const all = faqBlob + pageSrc;
+    const all = `${faqBlob} ${pageText}`;
     expect(all).not.toMatch(/\byou will qualify\b/i);
     expect(all).not.toMatch(/\byou (do )?qualify for\b/i);
     expect(all).not.toMatch(/\byou are eligible\b/i);
@@ -294,9 +500,10 @@ describe("content safety", () => {
   });
 
   it("routes every path to a licensed professional", () => {
-    expect(pageSrc + dataSrc).toMatch(/immigration attorney/i);
-    expect(pageSrc + dataSrc).toMatch(/family lawyer/i);
-    expect(pageSrc + dataSrc).toMatch(/DOJ-accredited/i);
+    const all = `${pageText} ${dataText}`;
+    expect(all).toMatch(/immigration attorney/i);
+    expect(all).toMatch(/family lawyer/i);
+    expect(all).toMatch(/DOJ-accredited/i);
   });
 
   it("every official source is a government, court or statute URL", () => {
@@ -317,7 +524,7 @@ describe("content safety", () => {
   });
 
   it("uses American spelling in visible copy", () => {
-    const all = pageSrc + dataSrc + calcSrc;
+    const all = `${pageText} ${dataText} ${calcSrc} ${estimatorText}`;
     for (const b of [/naturalis/i, /recognis/i, /authoris/i, /\bprogramme\b/i, /\bdependants\b/i]) {
       expect(all, `British spelling ${b} found`).not.toMatch(b);
     }
@@ -374,11 +581,125 @@ describe("discoverability", () => {
   });
 });
 
+describe("document checklist", () => {
+  it("covers translations, prior filings, residence, insurance and pay records", () => {
+    const blob = documentChecklist.join(" ").toLowerCase();
+    for (const item of [
+      "certified english translations",
+      "uscis online account",
+      "prior family-court filings",
+      "proof of shared residence",
+      "insurance records",
+      "employment and pay records",
+    ]) {
+      expect(blob, `checklist should mention "${item}"`).toContain(item);
+    }
+  });
+
+  it("carries the originals-vs-copies guidance", () => {
+    expect(DOCUMENT_HANDLING_NOTE).toMatch(/Keep originals secure/);
+    expect(DOCUMENT_HANDLING_NOTE).toMatch(/unless an agency, court, or other authority/);
+  });
+
+  it("does not tell readers to apostille everything reflexively", () => {
+    const all = documentChecklist.join(" ") + DOCUMENT_HANDLING_NOTE;
+    expect(all).not.toMatch(/apostilled if India is involved at all/i);
+    expect(DOCUMENT_HANDLING_NOTE).toMatch(
+      /Ask the Indian authority, court, consulate, or attorney whether an apostille/i,
+    );
+  });
+});
+
+describe("I-751 waiver table makes the differences obvious", () => {
+  it("has a divorce-required column answered for each ground", () => {
+    expect(i751WaiverCols.map((c) => c.key)).toContain("divorce");
+    expect(i751WaiverRows).toHaveLength(3);
+    expect(i751WaiverRows.map((r) => r.divorce)).toEqual(["Generally yes", "No", "No"]);
+  });
+
+  it("gives each ground a distinct main issue", () => {
+    const issues = i751WaiverRows.map((r) => r.issue);
+    expect(new Set(issues).size).toBe(3);
+    expect(issues.join(" ")).toMatch(/good faith/i);
+    expect(issues.join(" ")).toMatch(/[Aa]buse/);
+    expect(issues.join(" ")).toMatch(/[Ee]xtreme hardship/);
+  });
+});
+
+describe("SEO — the questions people search for are answered as headings", () => {
+  const questions = faqs.map((f) => f.question.toLowerCase());
+  const has = (re: RegExp) => questions.some((q) => re.test(q));
+
+  it("covers the target long-tail question set", () => {
+    for (const [name, re] of [
+      ["H-4 spouse stay after divorce", /h-4 spouse stay in the us after divorce/],
+      ["H-4 EAD after divorce", /h-4 ead after divorce/],
+      ["H-4 to H-1B", /change from h-4 to h-1b/],
+      ["H-4 to F-1", /change from h-4 to f-1/],
+      ["green card after divorce", /can i get a green card after divorce/],
+      ["I-751 after divorce", /what happens to i-751 after divorce/],
+      ["I-140 / priority date", /i-140 or my priority date/],
+      ["ex-spouse collect under I-864", /ex-spouse collect under the i-864/],
+      ["US divorce valid in India", /is a us divorce valid in india/],
+    ] as const) {
+      expect(has(re), `missing FAQ for: ${name}`).toBe(true);
+    }
+  });
+
+  it("does not keyword-stuff the question text", () => {
+    for (const f of faqs) {
+      const words = f.question.toLowerCase().split(/\W+/).filter(Boolean);
+      const divorceCount = words.filter((w) => w === "divorce").length;
+      expect(divorceCount, `"${f.question}" repeats "divorce"`).toBeLessThanOrEqual(1);
+    }
+  });
+});
+
+describe("page structure follows the intended reading order", () => {
+  it("places documents before the calculator, and sources after the FAQs", () => {
+    const order = sectionIds();
+    const at = (id: string) => order.indexOf(id);
+    expect(at("quick-answer")).toBeLessThan(at("h4"));
+    expect(at("h4")).toBeLessThan(at("h1b"));
+    expect(at("h1b")).toBeLessThan(at("conditional-gc"));
+    expect(at("pending")).toBeLessThan(at("abuse"));
+    expect(at("abuse")).toBeLessThan(at("i864"));
+    expect(at("i864")).toBeLessThan(at("citizenship"));
+    expect(at("citizenship")).toBeLessThan(at("india"));
+    expect(at("india")).toBeLessThan(at("checklist"));
+    expect(at("checklist")).toBeLessThan(at("estimator"));
+    expect(at("estimator")).toBeLessThan(at("faq"));
+    expect(at("faq")).toBeLessThan(at("sources"));
+  });
+
+  it("keeps the ToC in the same order as the sections", () => {
+    const order = sectionIds();
+    const toc = jumpIds();
+    const positions = toc.map((id) => order.indexOf(id));
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+  });
+});
+
 describe("table data integrity", () => {
   it("covers every status a reader might hold", () => {
     const blob = statusImpactRows.map((r) => r.status).join(" ");
     for (const s of ["H-4", "H-1B", "Conditional", "10-year", "I-485", "citizen"]) {
       expect(blob).toContain(s);
+    }
+  });
+
+  it("gives each status an effect, an urgency and a next step", () => {
+    expect(statusImpactCols.map((c) => c.key)).toEqual(["status", "effect", "urgency", "next"]);
+    for (const r of statusImpactRows) {
+      expect(r.effect.length, `${r.status} needs an effect`).toBeGreaterThan(60);
+      expect(r.urgency.length, `${r.status} needs an urgency`).toBeGreaterThan(2);
+      expect(r.next.length, `${r.status} needs a next step`).toBeGreaterThan(20);
+    }
+  });
+
+  it("does not rely on colour alone to signal urgency — the level is spelled out", () => {
+    for (const r of statusImpactRows) {
+      expect(r.urgency).toMatch(/High|Low|None/);
     }
   });
 
