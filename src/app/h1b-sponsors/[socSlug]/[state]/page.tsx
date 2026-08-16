@@ -65,13 +65,43 @@ export async function generateMetadata({
 
   const place = stateName(data.stateCode);
   const top = data.sponsors[0];
-  return pageMetadata({
-    title: `Top H-1B Sponsors for ${data.soc_title} in ${place} (2026)`,
-    description: `The companies sponsoring the most H-1Bs for ${data.soc_title} roles in ${place}, ranked by certified LCA volume${
-      top ? ` — led by ${top.employer}` : ""
-    }. Median wages, wage levels, and filing trends from official DOL data.`,
-    path: `/h1b-sponsors/${params.socSlug}/${data.stateCode.toLowerCase()}`,
-  });
+  return {
+    ...pageMetadata({
+      title: `Top H-1B Sponsors for ${data.soc_title} in ${place} (2026)`,
+      description: `The companies sponsoring the most H-1Bs for ${data.soc_title} roles in ${place}, ranked by certified LCA volume${
+        top ? ` — led by ${top.employer}` : ""
+      }. Median wages, wage levels, and filing trends from official DOL data.`,
+      path: `/h1b-sponsors/${params.socSlug}/${data.stateCode.toLowerCase()}`,
+    }),
+    // noindex, follow — deliberate, not an oversight.
+    //
+    // These 500 role×state permutations are prerendered views of the same DOL
+    // dataset the /tools/h1b-sponsor-finder tool filters interactively. As
+    // search results they were a liability, not an asset:
+    //
+    //   * Orphaned. The only internal link into the whole route family is the
+    //     one the finder emits for the current search result, so 499 of them
+    //     had no path in from the site — the profile of a page Google finds,
+    //     evaluates as thin, and holds against the domain.
+    //   * Near-templated. Two states' pages share ~66% of their vocabulary;
+    //     the employer table is the only substantive difference. At 500 URLs
+    //     that reads as scaled content generation.
+    //
+    // /tools/h1b-sponsor-finder is the single canonical, indexable entry point
+    // for this data. These pages stay live and fully functional — anyone who
+    // follows the finder's deep link still gets a real page — they just stop
+    // competing for the index.
+    //
+    // `follow` is deliberate: the pages link back to the finder and the H-1B
+    // cluster, and that equity should keep flowing. The self-canonical from
+    // pageMetadata is kept as-is; pointing it at the tool while also sending
+    // noindex would be two conflicting instructions about the same URL.
+    //
+    // Reversing this means more than deleting these three lines: give the
+    // pages a browsable hub so they are not orphans, and enough per-page
+    // substance to stand alone. See src/lib/sitemap.index.test.ts.
+    robots: { index: false, follow: true },
+  };
 }
 
 /* ── page ───────────────────────────────────────────────────────────────── */
