@@ -241,6 +241,9 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
+  // Divorce & immigration status (pillar + alimony estimator). Legal rules
+  // rather than monthly data, so it moves only when a rule or figure changes.
+  e("/divorce-immigration-status", 0.9, "monthly", new Date("2026-08-16")),
   e("/invitation-letter-for-parents-to-visit-usa", 0.85, "monthly", new Date("2026-07-18")),
   // Government benefits pillar + household screener. Several underlying rules
   // change between Oct 2026 and Jan 2027, so this is reviewed monthly.

@@ -104,6 +104,12 @@ const situationCards = [
     icon: "📈",
   },
   {
+    title: "I'm getting divorced",
+    desc: "What a divorce does to H-4 and its EAD, H-1B, a conditional or 10-year green card, a pending I-485, citizenship and the I-864 — and whether a US decree is valid in India.",
+    href: "/divorce-immigration-status",
+    icon: "💔",
+  },
+  {
     title: "I'm deciding whether to hire a lawyer",
     desc: "Typical attorney fee ranges for H-1B, green card, and F-1/OPT cases — who usually pays, flat fee vs hourly, and how lawyer fees differ from USCIS filing fees.",
     href: "/immigration-attorney-lawyer-cost",
@@ -395,6 +401,10 @@ export default function ImmigrationHubPage() {
                       href: "/india-visa-from-usa",
                     },
                     { label: "OCI vs India Visa", href: "/oci-vs-india-visa" },
+                    {
+                      label: "Divorce and Your Immigration Status",
+                      href: "/divorce-immigration-status",
+                    },
                     {
                       label: "Moving to the USA Checklist",
                       href: "/articles/moving-to-usa-from-india-checklist",

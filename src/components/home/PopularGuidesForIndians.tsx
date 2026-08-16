@@ -54,6 +54,12 @@ const guides: { title: string; href: string; description: string }[] = [
       "Banking, housing, phone, credit, driving, insurance, and first-month setup.",
   },
   {
+    title: "Divorce and Your Immigration Status",
+    href: "/divorce-immigration-status",
+    description:
+      "What divorce does to H-4 and its EAD, H-1B, a conditional or 10-year green card, a pending I-485, citizenship and the I-864 — plus whether a US decree is valid in India.",
+  },
+  {
     title: "Indian Population in USA",
     href: "/indian-population-in-usa",
     description:

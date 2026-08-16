@@ -42,6 +42,11 @@ export const gcRenewalRelatedLinks: ClusterLink[] = [
     label: "Government Benefits for Immigrants",
     desc: "What your family may qualify for — and why renewal has no public-charge test",
   },
+  {
+    href: "/divorce-immigration-status",
+    label: "Divorce and Your Immigration Status",
+    desc: "Filing I-751 alone with a joint-filing waiver, and what divorce does to each status",
+  },
 ];
 
 export function otherRenewalLinks(currentHref: string): ClusterLink[] {

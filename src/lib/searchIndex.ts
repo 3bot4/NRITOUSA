@@ -109,6 +109,16 @@ const CURATED: SearchItem[] = [
     keywords:
       "government benefits immigrants green card holders h1b visa holders public charge medicaid snap chip wic marketplace aca subsidy unemployment social security medicare ssi tanf fafsa tax credits mixed status families five year rule i-864 sponsor repayment food stamps welfare",
   },
+  {
+    title: "Divorce and Your US Immigration Status",
+    description:
+      "What divorce does to H-4 status and its EAD, H-1B, a conditional or 10-year green card, a pending I-485, naturalization and the I-864 — with an alimony estimator for the US and India.",
+    href: "/divorce-immigration-status",
+    type: "Guide",
+    priority: 80,
+    keywords:
+      "divorce immigration status h4 visa divorce h1b divorce green card holder divorce conditional green card i-751 waiver removing conditions after divorce joint filing waiver divorce before green card interview i-130 denied affidavit of support i-864 after divorce citizenship naturalization three year rule vawa self petition u visa abused spouse alimony spousal support maintenance calculator estimator is us divorce valid in india narasimha rao section 13b mutual consent hindu marriage act stridhan separation ex spouse",
+  },
   // ---- Hubs -------------------------------------------------------------
   {
     title: "Immigration Hub",
