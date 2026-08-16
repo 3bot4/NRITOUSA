@@ -12,8 +12,13 @@ import {
   i751WaiverCols,
   i751WaiverRows,
   i864Terminators,
+  gracePeriodComparisonRows,
+  priorityEvidence,
+  dvResources,
+  DV_RESOURCE_INTRO,
   indiaRecognitionRows,
   documentChecklist,
+  goodFaithEvidence,
   DOCUMENT_HANDLING_NOTE,
   H4_TIMING_AMBIGUITY,
   SHORT_DISCLAIMER,
@@ -169,6 +174,24 @@ describe("VAWA eligibility — the prerequisite that must never be dropped", () 
     expect(q!.answer).toMatch(/U or T nonimmigrant/);
   });
 
+  it("never lists VAWA as an option for spouses of H-1B/L-1 visa holders", () => {
+    // A frequent suggestion is to present VAWA alongside U and T for spouses of
+    // temporary visa holders. VAWA requires a USC/LPR abuser, so grouping it
+    // there sends the most vulnerable readers down a path that cannot work.
+    const blob = `${pageText} ${dataText}`;
+    for (const m of blob.matchAll(/H-1B, L-1[^.]{0,120}/gi)) {
+      expect(m[0], `VAWA offered to nonimmigrant spouses: ${m[0]}`).not.toMatch(/VAWA/i);
+    }
+    expect(blob).not.toMatch(/U-?[Vv]isas?, T-?[Vv]isas?,? (or|and) .{0,20}VAWA/);
+    expect(blob).not.toMatch(/VAWA.{0,60}regardless of (your |the )?spouse.{0,3}s (immigration )?status/i);
+  });
+
+  it("prioritized I-751 evidence is a real subset of the full list", () => {
+    expect(priorityEvidence.length).toBeGreaterThanOrEqual(3);
+    expect(priorityEvidence.length).toBeLessThan(goodFaithEvidence.length);
+    for (const e of priorityEvidence) expect(e.length).toBeGreaterThan(30);
+  });
+
   it("keeps the two-year post-divorce VAWA window stated", () => {
     expect(divorceFacts.vawaAfterDivorce.value).toMatch(/2 years/);
   });
@@ -193,6 +216,74 @@ describe("the 60-day provision must never be attributed to divorce", () => {
     // The regulation is silent rather than prohibitive; the honest framing is
     // "do not assume it applies", not a categorical denial.
     expect(`${pageText} ${dataText}`).not.toMatch(/There is no 60-day grace period/i);
+  });
+});
+
+describe("divorce vs H-1B job loss — the distinction the 60-day rule turns on", () => {
+  it("acknowledges the regulation covers dependents when EMPLOYMENT ends", () => {
+    const jobLoss = gracePeriodComparisonRows.find((r) => /loses their job/i.test(r.event));
+    expect(jobLoss, "the job-loss row must exist").toBeTruthy();
+    expect(jobLoss!.sixty).toMatch(/Yes/);
+    expect(jobLoss!.what).toMatch(/his or her dependents/i);
+    expect(divorceFacts.gracePeriod60.value).toMatch(/dependents/i);
+  });
+
+  it("still declines to extend the 60 days to the end of a marriage", () => {
+    const divorce = gracePeriodComparisonRows.find((r) => /divorce/i.test(r.event));
+    expect(divorce, "the divorce row must exist").toBeTruthy();
+    expect(divorce!.sixty).toMatch(/Do not assume/i);
+    expect(divorce!.what).toMatch(/not the end of a marriage/i);
+  });
+
+  it("carries the discretionary and no-work-authorization caveats", () => {
+    const blob = gracePeriodComparisonRows.map((r) => r.what).join(" ");
+    expect(blob).toMatch(/discretion/i);
+    expect(blob).toMatch(/does not by itself authorize work/i);
+  });
+
+  it("never invents a post-divorce grace period to depart", () => {
+    // A "reasonable grace period after the decree" has no primary source and
+    // would tell a reader they have time they may not have.
+    const all = `${pageText} ${dataText}`;
+    expect(all).not.toMatch(/reasonable grace period/i);
+    expect(all).not.toMatch(/USCIS allows .{0,30}grace period/i);
+    expect(all).not.toMatch(/grace period to (depart|leave)/i);
+  });
+});
+
+describe("support resources are present, correct and reachable", () => {
+  it("puts the crisis resources before the legal comparison in the abuse section", () => {
+    const abuseIdx = pageText.indexOf('id="abuse"');
+    const hotlineIdx = pageText.indexOf("Need confidential help now?");
+    const vawaIdx = pageText.indexOf("VAWA self-petition</p>");
+    expect(hotlineIdx).toBeGreaterThan(abuseIdx);
+    expect(hotlineIdx, "resources must precede the VAWA/U/T comparison").toBeLessThan(vawaIdx);
+  });
+
+  it("lists the hotline numbers exactly as the organizations publish them", () => {
+    const blob = dvResources.map((r) => `${r.name} ${r.detail}`).join(" ");
+    expect(blob).toMatch(/800-799-7233/);
+    expect(blob).toMatch(/text START to 88788/i);
+    expect(blob).toMatch(/855-812-1001/); // Deaf Hotline video phone
+    expect(blob).toMatch(/1-888-373-7888/); // Human Trafficking Hotline
+  });
+
+  it("does not publish the retired TTY number for the DV hotline", () => {
+    // thehotline.org no longer lists 1-800-787-3224; it points to the Deaf
+    // Hotline video phone instead. Publishing a dead number here fails someone
+    // at the worst possible moment.
+    expect(`${pageText} ${dataText}`).not.toMatch(/787-3224/);
+  });
+
+  it("gives every resource a working destination", () => {
+    for (const r of dvResources) {
+      expect(r.href, `${r.name} needs a link`).toMatch(/^https:\/\//);
+      expect(r.detail.length).toBeGreaterThan(10);
+    }
+  });
+
+  it("does not gate the resources behind an immigration-status test", () => {
+    expect(DV_RESOURCE_INTRO).toMatch(/do not need to be a US citizen or permanent resident/i);
   });
 });
 

@@ -234,13 +234,13 @@ export const divorceFacts: Record<string, VerifiedFact> = {
   },
   gracePeriod60: {
     label: "The 60-day provision — what the regulation addresses",
-    value: "Cessation of employment of certain nonimmigrant workers",
+    value: "Cessation of employment of certain nonimmigrant workers and their dependents",
     year: "8 CFR § 214.1(l)(2)",
     jurisdiction: "Federal",
     sourceName: "eCFR — 8 CFR § 214.1",
     sourceUrl: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
     lastVerified: RULES_LAST_VERIFIED,
-    note: "The provision addresses E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 and TN workers whose employment ends. It does not expressly create a 60-day period for a dependent whose qualifying marriage has ended, so it should not be assumed to apply after a divorce.",
+    note: "The regulation covers an individual in E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 or TN classification 'and his or her dependents', for up to 60 consecutive days once during each authorized validity period — but the trigger it names is CESSATION OF THE EMPLOYMENT on which the classification was based. It does not expressly create a 60-day period for a dependent whose qualifying marriage has ended, so it should not be assumed to apply after a divorce. DHS may also shorten or eliminate the period as a matter of discretion, and it does not by itself authorize work.",
   },
   nyIncomeCap: {
     label: "New York maintenance income cap",
@@ -459,7 +459,44 @@ export const i751WaiverRows: DataRow[] = [
   },
 ];
 
+/* ------------------------------------------------------------------ *
+ * Divorce vs. the H-1B losing a job — two different events that readers
+ * routinely merge into one. The 60-day regulation covers dependents, but the
+ * trigger it names is the END OF EMPLOYMENT, not the end of a marriage.
+ * ------------------------------------------------------------------ */
+export const gracePeriodComparisonCols: DataCol[] = [
+  { key: "event", label: "What happened" },
+  { key: "sixty", label: "Does the 60-day provision apply?", highlight: true },
+  { key: "what", label: "What it means for the H-4 spouse" },
+];
+
+export const gracePeriodComparisonRows: DataRow[] = [
+  {
+    event: "The H-1B spouse loses their job (marriage intact)",
+    sixty: "Yes — the regulation names dependents",
+    what: "8 CFR § 214.1(l)(2) covers the worker 'and his or her dependents' for up to 60 consecutive days once per authorized validity period, so the H-4 spouse is generally within the same window while the marriage continues. DHS may shorten or eliminate it as a matter of discretion, and the period does not by itself authorize work.",
+  },
+  {
+    event: "You divorce the H-1B spouse",
+    sixty: "Do not assume it does",
+    what: "The trigger the regulation names is cessation of the employment the classification was based on — not the end of a marriage. A final divorce can end the qualifying relationship H-4 rests on, and no primary source establishes an equivalent 60-day window for that situation. Plan on the basis of what you can file while still eligible, not on a period that may not exist.",
+  },
+];
+
 /* --- Evidence relevant to a good-faith marriage --- */
+
+/**
+ * The subset worth pulling first. The full list below matters, but an
+ * unranked list of eight is hard to act on in the week someone finds this
+ * page — these four are the ones that are hardest to obtain later.
+ */
+export const priorityEvidence: string[] = [
+  "Joint lease or mortgage statements showing you lived at the same address",
+  "Joint bank account statements and any jointly filed tax returns",
+  "Utility bills and insurance policies in both names, spread across the marriage",
+  "Photographs across the whole span of the relationship, with dates where possible",
+];
+
 export const goodFaithEvidence: string[] = [
   "Joint financial records — bank statements, jointly filed tax returns, joint credit cards, insurance policies naming each other",
   "A joint lease or mortgage, utility bills, and mail addressed to both of you at a shared address",
@@ -532,6 +569,44 @@ export const documentChecklist: string[] = [
   "Your Form I-864 if you signed one, or your spouse's if they signed one for you",
   "Any documentation of abuse, if it is part of the history — messages, photographs, police reports, medical records",
   "Your children's US birth certificates, and OCI cards or Indian passports if they hold them",
+];
+
+/* ------------------------------------------------------------------ *
+ * Support resources. Contact details verified against the organizations'
+ * own sites on RULES_LAST_VERIFIED — do not carry forward a number from
+ * memory or from another page, and re-check these when the page is reviewed.
+ * A wrong number here fails someone at the worst possible moment.
+ * ------------------------------------------------------------------ */
+export interface SupportResource {
+  name: string;
+  detail: string;
+  href?: string;
+}
+
+export const DV_RESOURCE_INTRO =
+  "If a spouse threatens your immigration status, withholds your passport or immigration documents, controls your money, or subjects you to abuse, these lines are free, confidential and available around the clock. You do not need to have decided anything before calling, and you do not need to be a US citizen or permanent resident to use them.";
+
+export const dvResources: SupportResource[] = [
+  {
+    name: "National Domestic Violence Hotline",
+    detail: "Call 800-799-SAFE (800-799-7233), or text START to 88788",
+    href: "https://www.thehotline.org/",
+  },
+  {
+    name: "The Deaf Hotline (video phone)",
+    detail: "Video phone 855-812-1001",
+    href: "https://www.thedeafhotline.org/",
+  },
+  {
+    name: "National Human Trafficking Hotline",
+    detail: "Call 1-888-373-7888 (TTY 711), or text 233733",
+    href: "https://humantraffickinghotline.org/",
+  },
+  {
+    name: "Find a DOJ-accredited representative or recognized organization",
+    detail: "Free and low-cost immigration help, searchable by state",
+    href: "https://www.justice.gov/eoir/recognition-and-accreditation-program",
+  },
 ];
 
 /** Rendered directly under the checklist. */

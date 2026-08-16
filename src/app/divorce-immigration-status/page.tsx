@@ -38,6 +38,11 @@ import {
   i751WaiverCols,
   i751WaiverRows,
   goodFaithEvidence,
+  priorityEvidence,
+  gracePeriodComparisonCols,
+  gracePeriodComparisonRows,
+  dvResources,
+  DV_RESOURCE_INTRO,
   i864Terminators,
   indiaRecognitionCols,
   indiaRecognitionRows,
@@ -368,6 +373,24 @@ export default function Page() {
                   </p>
                 </WarnBox>
 
+                <H3>Divorce and an H-1B job loss are two different events</H3>
+                <P>
+                  These get merged constantly, and the difference matters. The regulation does
+                  cover dependents — so an H-4 spouse is generally within the same window when the
+                  H-1B worker&rsquo;s <em>employment</em> ends. What it does not name as a trigger
+                  is the end of a <em>marriage</em>.
+                </P>
+                <DataTable
+                  columns={gracePeriodComparisonCols}
+                  rows={gracePeriodComparisonRows}
+                  keyRows={["You divorce the H-1B spouse"]}
+                />
+                <SrcNote
+                  items={[
+                    { name: "8 CFR § 214.1(l)(2)", href: divorceFacts.gracePeriod60.sourceUrl },
+                  ]}
+                />
+
                 <Callout kind="tip" title="Three different things, often confused">
                   <ul className="ml-4 list-disc space-y-1.5">
                     <li>
@@ -542,6 +565,18 @@ export default function Page() {
                   waiver exists to address. The evidence that speaks to it generally comes from the
                   beginning and middle of the relationship rather than the end.
                 </P>
+                <Callout kind="tip" title="If you gather nothing else, start with these four">
+                  <ol className="ml-4 list-decimal space-y-1.5">
+                    {priorityEvidence.map((e) => (
+                      <li key={e}>{e}</li>
+                    ))}
+                  </ol>
+                  <p>
+                    These are the ones that become hardest to obtain once accounts are separated
+                    and you no longer live at the same address. The fuller list below is worth
+                    working through, but start here.
+                  </p>
+                </Callout>
                 <ChecklistBox title="Evidence that tends to carry weight" items={goodFaithEvidence} />
 
                 <WarnBox title="If the I-751 deadline arrives before the decree does">
@@ -622,11 +657,43 @@ export default function Page() {
               {/* ---------------- Abuse ---------------- */}
               <section id="abuse" className="scroll-mt-24 space-y-4">
                 <H2>Abuse-related protections: VAWA, U and T</H2>
+
+                {/*
+                  Support numbers go FIRST in this section, above the legal
+                  explanation. Someone who needs them should not have to read a
+                  comparison of immigration classifications to reach a phone
+                  number. Contact details are verified in the data file.
+                */}
+                <div className="rounded-2xl border-2 border-rose-300 bg-rose-50 p-5">
+                  <p className="text-sm font-bold uppercase tracking-wide text-rose-800">
+                    <span aria-hidden>☎ </span>Need confidential help now?
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-800">{DV_RESOURCE_INTRO}</p>
+                  <ul className="mt-3 space-y-2">
+                    {dvResources.map((r) => (
+                      <li
+                        key={r.name}
+                        className="rounded-xl border border-rose-200 bg-white px-4 py-3"
+                      >
+                        <p className="text-sm font-bold text-ink-900">
+                          {r.href ? <Ext href={r.href}>{r.name} ↗</Ext> : r.name}
+                        </p>
+                        <p className="mt-0.5 text-sm text-ink-700">{r.detail}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-xs leading-relaxed text-ink-600">
+                    If you are in immediate danger, call 911. If someone may be able to see your
+                    browsing, these organizations can be reached by phone or text without leaving a
+                    record in your browser history.
+                  </p>
+                </div>
+
                 <P>
-                  Two different routes exist here, and which may be open depends on{" "}
-                  <strong>the abusive spouse&rsquo;s immigration status</strong> as well as on the
-                  facts. Each has its own eligibility requirements, and a divorce by itself does not
-                  create eligibility for any of them.
+                  On the immigration side, two different routes exist, and which may be open depends
+                  on <strong>the abusive spouse&rsquo;s immigration status</strong> as well as on
+                  the facts. Each has its own eligibility requirements, and a divorce by itself does
+                  not create eligibility for any of them.
                 </P>
 
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -860,10 +927,23 @@ export default function Page() {
                     Marriage Act
                   </strong>
                   , and the Supreme Court&rsquo;s power to dissolve a marriage on that basis rests on
-                  Article 142 of the Constitution rather than on the statute. A decree obtained
-                  where both spouses appeared voluntarily generally stands on stronger ground than
-                  one entered by default.
+                  Article 142 of the Constitution rather than on the statute.
                 </P>
+                <Callout kind="crossborder" title="Participation changes the analysis">
+                  <p>
+                    An <em>ex parte</em> decree — one where the other spouse was not properly served,
+                    or did not appear and take part — is the weakest position under this framework,
+                    because it runs into both the jurisdiction condition and the requirement that the
+                    judgment be given on the merits.
+                  </p>
+                  <p>
+                    Where both spouses voluntarily submitted to the US court and took part in the
+                    proceedings, the decree stands on considerably stronger ground.{" "}
+                    <strong>That is not the same as guaranteed recognition</strong>: the question of
+                    whether the ground of divorce is one the governing personal law recognizes can
+                    still arise. Participation removes some of the obstacles, not all of them.
+                  </p>
+                </Callout>
 
                 <WarnBox title="Confirm recognition before remarrying">
                   <p>
