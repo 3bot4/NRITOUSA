@@ -314,6 +314,34 @@ describe("H-4 status and EAD language is not categorical", () => {
     expect(`${pageText} ${dataText}`).not.toMatch(/status ends the (moment|instant)/i);
   });
 
+  it("attributes the absence of a bright-line rule to USCIS, and says it once", () => {
+    expect(H4_TIMING_AMBIGUITY).toMatch(
+      /USCIS has not published a bright-line rule specifying the exact moment H-4 terminates/,
+    );
+  });
+
+  it("never contradicts the bright-line statement elsewhere on the page", () => {
+    // The page may not simultaneously say "no bright-line rule exists" and
+    // "the decree date is the date your status ends".
+    const blob = `${pageText} ${dataText}`;
+    for (const contradiction of [
+      /date your status ends/i,
+      /status ends (on|at|when) the (divorce|decree|date)/i,
+      /H-4 (status )?ends (when|on|at) the (divorce|decree)/i,
+      /falls away with the marriage/i,
+    ]) {
+      expect(blob, `contradicts the bright-line statement: ${contradiction}`).not.toMatch(
+        contradiction,
+      );
+    }
+  });
+
+  it("states the H-4 row as a dependency on the qualifying relationship", () => {
+    const h4 = statusImpactRows.find((r) => r.status === "H-4 dependent");
+    expect(h4!.effect).toMatch(/Derivative status depends on the qualifying H-1B relationship/);
+    expect(h4!.effect).toMatch(/can end the basis for H-4 status/);
+  });
+
   it("keeps the practical warning about not relying on the printed date", () => {
     expect(H4_TIMING_AMBIGUITY).toMatch(/Do not assume that the expiration date printed/i);
     expect(pageText).toMatch(/should not assume the expiration date printed on the card/i);
@@ -792,6 +820,17 @@ describe("table data integrity", () => {
     for (const r of statusImpactRows) {
       expect(r.urgency).toMatch(/High|Low|None/);
     }
+  });
+
+  it("does not present B-2 as an automatic bridge out of H-4", () => {
+    const b2 = h4OptionsRows.find((r) => /B-2/.test(r.option));
+    expect(b2, "the B-2 row must exist").toBeTruthy();
+    expect(b2!.reality).toMatch(/eligibility and timing are fact-specific/i);
+    expect(b2!.reality).toMatch(/should not be treated as an automatic bridge/i);
+    expect(b2!.reality).toMatch(/does not guarantee approval/i);
+    // The prior framing implied availability on demand.
+    expect(b2!.reality).not.toMatch(/standard stopgap|common stopgap/i);
+    expect(b2!.reality).not.toMatch(/functions as a bridge/i);
   });
 
   it("gives each H-4 alternative a work answer and a lead time", () => {

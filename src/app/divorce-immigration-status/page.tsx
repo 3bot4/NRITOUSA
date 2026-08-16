@@ -354,8 +354,10 @@ export default function Page() {
                   H-4 is a dependent status: it exists because of the marriage to the H-1B
                   principal. A final divorce can end the qualifying relationship that status rests
                   on. As for the EAD, if the H-4 status supporting it ends, you should not assume
-                  the expiration date printed on the card continues to authorize employment — get
-                  individualized immigration advice before continuing to work.
+                  the expiration date printed on the card continues to authorize employment.
+                  Because employment authorization depends on the underlying immigration
+                  circumstances, get individualized immigration advice before continuing employment
+                  after a divorce.
                 </P>
 
                 <Callout kind="note" title="What the law does and does not settle here">

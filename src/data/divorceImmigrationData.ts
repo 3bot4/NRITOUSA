@@ -302,7 +302,7 @@ export const DEFAULT_USD_INR = 96.27;
  * do not flatten this back into a slogan.
  * ------------------------------------------------------------------ */
 export const H4_TIMING_AMBIGUITY =
-  "A final divorce can end the qualifying relationship underlying H-4 status. What no current primary source establishes is a universal moment at which that happens, so treat this as a planning question rather than a countdown. Do not assume that the expiration date printed on your I-94 or EAD, or the 60-day provision written for workers who lose a job, protects you after the divorce. Because the exact consequences depend on the facts of the case, speak with an immigration attorney and consider any alternative status or filing options while you are still eligible to pursue them.";
+  "A final divorce can end the qualifying relationship underlying H-4 status. USCIS has not published a bright-line rule specifying the exact moment H-4 terminates after a divorce, so treat this as a planning question rather than a countdown. Do not assume that the expiration date printed on your I-94 or EAD, or the 60-day provision written for workers who lose a job, protects you after the marriage ends. Because the consequences depend on the facts of the case, speak with an immigration attorney and consider any alternative status or filing options while you are still eligible to pursue them.";
 
 /* ------------------------------------------------------------------ *
  * Table primitives (shared shape with the Trump Account / benefits tables)
@@ -326,7 +326,7 @@ export const statusImpactRows: DataRow[] = [
   {
     status: "H-4 dependent",
     effect:
-      "H-4 is derivative of the marriage, so a final divorce can end the relationship it rests on. Do not rely on the date printed on an I-94 or EAD.",
+      "Derivative status depends on the qualifying H-1B relationship; a final divorce can end the basis for H-4 status. Do not rely on the date printed on an I-94 or EAD.",
     urgency: "High",
     next: "Speak to an immigration attorney and explore a change of status or another filing option while still eligible.",
   },
@@ -388,7 +388,7 @@ export const h4OptionsRows: DataRow[] = [
     works: "No",
     lead: "Days to weeks — the fastest package to assemble",
     reality:
-      "A common stopgap. It can buy time to wind up a household, sell a car or finish a school term. It is not a work status and does not lead to one, so it functions as a bridge rather than a plan.",
+      "A possible temporary option in some circumstances, but eligibility and timing are fact-specific. B-2 should not be treated as an automatic bridge after divorce, and filing a change-of-status request does not guarantee approval. It is not a work status and does not lead to one, so where it is granted it buys time rather than providing a plan.",
   },
   {
     option: "Change of status to F-1 (student)",
