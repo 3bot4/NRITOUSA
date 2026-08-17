@@ -15,8 +15,12 @@ import {
 } from "@/data/siteWideVerifiedNumbers";
 import {
   taxCalendar,
+  fyAyMapping,
   yearOffsetExplainer,
   foreignTaxCreditTiming,
+  residencyTests,
+  nreVsNroRows,
+  NRE_NRO_TRAP,
   TAX_CALENDAR_DISCLAIMER,
   NRI_TAX_CALENDAR_VERIFIED_HUMAN,
 } from "@/data/nriTaxCalendarData";
@@ -404,6 +408,44 @@ export default function IndiaTaxCompliancePage() {
               </p>
             </div>
 
+            {/* FY → AY mapping. A bare "July 31 — ITR due" is ambiguous; this
+                table is what makes every date below readable. */}
+            <div className="mt-5 rounded-2xl border border-orange-200 bg-white p-5 shadow-card">
+              <h3 className="text-sm font-bold text-ink-900">
+                Financial year → Assessment year → due date
+              </h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                India labels a return by its <strong>assessment year</strong>, which is always the
+                year <em>after</em> the financial year it reports. So <strong>31 July 2026</strong> is
+                the due date for <strong>FY 2025-26 (AY 2026-27)</strong> — not for the year that
+                began that April.
+              </p>
+              <div className="mt-3 overflow-x-auto">
+                <table className="w-full min-w-[620px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                      <th className="p-2.5 font-semibold">Financial year</th>
+                      <th className="p-2.5 font-semibold">Period</th>
+                      <th className="p-2.5 font-semibold">Assessment year</th>
+                      <th className="p-2.5 font-semibold">ITR due (non-audit)</th>
+                      <th className="p-2.5 font-semibold">Belated / revised by</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink-900/5">
+                    {fyAyMapping.map((r) => (
+                      <tr key={r.financialYear}>
+                        <td className="p-2.5 font-semibold text-ink-900">{r.financialYear}</td>
+                        <td className="p-2.5 text-ink-600">{r.period}</td>
+                        <td className="p-2.5 font-medium text-orange-800">{r.assessmentYear}</td>
+                        <td className="p-2.5 text-ink-700">{r.itrDueNonAudit}</td>
+                        <td className="p-2.5 text-ink-700">{r.belatedRevisedBy}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             {/* Legend */}
             <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-ink-500">
               <span className="inline-flex items-center gap-1.5">
@@ -449,10 +491,61 @@ export default function IndiaTaxCompliancePage() {
                       )}
                     </p>
                     <p className="mt-1 text-xs leading-relaxed text-ink-600">{e.detail}</p>
+                    <p className="mt-1.5 text-[0.7rem] font-medium uppercase tracking-wide text-ink-400">
+                      Applies to: <span className="normal-case text-ink-500">{e.appliesTo}</span>
+                    </p>
                   </div>
                 </li>
               ))}
             </ol>
+
+            {/* Residential status incl. the 120-day / ₹15 lakh trigger */}
+            <h3 className="mt-8 text-lg font-bold tracking-tight text-ink-900">
+              Are you Resident, Non-Resident, or RNOR?
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-700">{residencyTests.intro}</p>
+            <div className="mt-4 space-y-3">
+              {residencyTests.tests.map((t) => (
+                <div key={t.label} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+                  <p className="text-sm font-bold text-ink-900">{t.label}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-700">{t.rule}</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-500">{t.note}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 text-sm leading-relaxed text-ink-700">
+              <strong className="text-ink-900">RNOR — the planning window. </strong>
+              {residencyTests.rnorNote}
+            </p>
+
+            {/* NRE vs NRO */}
+            <h3 className="mt-8 text-lg font-bold tracking-tight text-ink-900">
+              NRE vs NRO: taxability on both sides
+            </h3>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                    <th className="p-3 font-semibold">Aspect</th>
+                    <th className="p-3 font-semibold">NRE account</th>
+                    <th className="p-3 font-semibold">NRO account</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-ink-900/5 bg-white">
+                  {nreVsNroRows.map((r) => (
+                    <tr key={r.aspect} className="align-top">
+                      <td className="p-3 font-semibold text-ink-900">{r.aspect}</td>
+                      <td className="p-3 text-ink-600">{r.nre}</td>
+                      <td className="p-3 text-ink-600">{r.nro}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 rounded-xl border border-rose-200 bg-rose-50/50 p-4 text-sm leading-relaxed text-ink-700">
+              <strong className="text-rose-700">The expensive trap: </strong>
+              {NRE_NRO_TRAP}
+            </p>
 
             {/* Foreign tax credit timing */}
             <h3 className="mt-8 text-lg font-bold tracking-tight text-ink-900">

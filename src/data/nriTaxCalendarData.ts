@@ -35,9 +35,47 @@ export interface TaxCalendarEntry {
   system: TaxSystem;
   title: string;
   detail: string;
+  /**
+   * WHICH tax year this date belongs to, expressed relationally so it stays
+   * correct in any calendar year. A bare "July 31 — ITR due" is ambiguous and
+   * therefore untrustworthy: 31 July 2026 is the due date for FY 2025-26
+   * (AY 2026-27), not for the FY that started that April. Every India row
+   * must carry this.
+   */
+  appliesTo: string;
   /** True for the handful of dates most NRIs actually get wrong. */
   critical?: boolean;
 }
+
+/**
+ * Worked FY→AY→due-date mapping. India labels a return by its ASSESSMENT year,
+ * which is always the year AFTER the financial year it reports — the single
+ * most common labelling error in NRI tax content.
+ */
+export interface FyAyRow {
+  financialYear: string;
+  period: string;
+  assessmentYear: string;
+  itrDueNonAudit: string;
+  belatedRevisedBy: string;
+}
+
+export const fyAyMapping: FyAyRow[] = [
+  {
+    financialYear: "FY 2025-26",
+    period: "1 Apr 2025 – 31 Mar 2026",
+    assessmentYear: "AY 2026-27",
+    itrDueNonAudit: "31 July 2026",
+    belatedRevisedBy: "31 Dec 2026",
+  },
+  {
+    financialYear: "FY 2026-27",
+    period: "1 Apr 2026 – 31 Mar 2027",
+    assessmentYear: "AY 2027-28",
+    itrDueNonAudit: "31 July 2027",
+    belatedRevisedBy: "31 Dec 2027",
+  },
+];
 
 /* ───────────────────────── The offset, stated plainly ───────────────────── */
 
@@ -57,6 +95,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Q4 estimated tax payment",
     detail:
       "Final estimated-tax instalment (Form 1040-ES) for the tax year that just ended. Relevant if you have India rental income, capital gains, or other income without US withholding.",
+    appliesTo:
+      "US tax year that ended the previous 31 December",
   },
   {
     date: "March 15",
@@ -64,6 +104,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Final advance tax instalment",
     detail:
       "Fourth and final advance-tax instalment for the Indian financial year ending 31 March. Advance tax applies once your India tax liability crosses the statutory threshold after TDS.",
+    appliesTo:
+      "Indian FY ending 31 March of this same year",
   },
   {
     date: "March 31",
@@ -71,6 +113,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Indian financial year ends",
     detail:
       "The Indian tax year closes. Everything after this date is reported in the next financial year. This is also the cut-off for several year-end tax-saving actions on the India side.",
+    appliesTo:
+      "Closes the FY that began the previous 1 April",
     critical: true,
   },
   {
@@ -79,6 +123,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Form 1040 due · FBAR due · Q1 estimated tax",
     detail:
       "US individual return due, along with Form 8938 if you meet the FATCA threshold. FBAR (FinCEN Form 114) is technically due today but carries an automatic extension to 15 October with no request needed. Q1 estimated tax for the current year is also due.",
+    appliesTo:
+      "US tax year that ended the previous 31 December (Q1 estimate is for the current year)",
     critical: true,
   },
   {
@@ -87,6 +133,7 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Automatic extension for filers abroad · Q2 estimated tax",
     detail:
       "If you live outside the US, you get an automatic two-month extension to file — but interest still runs on unpaid tax from 15 April. Q2 estimated tax is also due.",
+    appliesTo: "US tax year that ended the previous 31 December",
   },
   {
     date: "June 15",
@@ -94,6 +141,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "First advance tax instalment",
     detail:
       "First advance-tax instalment for the Indian financial year that began on 1 April.",
+    appliesTo:
+      "Indian FY that began this 1 April",
   },
   {
     date: "July 31",
@@ -101,6 +150,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "ITR due date — non-audit cases",
     detail:
       "Statutory due date for individuals whose accounts do not require audit, which covers most NRIs with salary, interest, rental, or capital-gains income. Filing an ITR is how you reclaim excess TDS on NRO interest, rent, or a property sale — a refund you simply forfeit if you never file.",
+    appliesTo:
+      "Indian FY that ended the previous 31 March — i.e. AY = this calendar year",
     critical: true,
   },
   {
@@ -108,12 +159,16 @@ export const taxCalendar: TaxCalendarEntry[] = [
     system: "india",
     title: "Second advance tax instalment",
     detail: "Second advance-tax instalment for the current Indian financial year.",
+    appliesTo:
+      "Indian FY that began this 1 April",
   },
   {
     date: "September 15",
     system: "us",
     title: "Q3 estimated tax payment",
     detail: "Third estimated-tax instalment for the current US tax year.",
+    appliesTo:
+      "Current US tax year",
   },
   {
     date: "October 15",
@@ -121,6 +176,7 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Extended Form 1040 deadline · FBAR final deadline",
     detail:
       "Final date for a US return filed under a Form 4868 extension, and the end of the FBAR automatic extension. For NRIs this is often the practical filing date rather than April, because Indian tax figures for the overlapping period are usually settled by now.",
+    appliesTo: "US tax year that ended the previous 31 December",
     critical: true,
   },
   {
@@ -129,12 +185,16 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "ITR due date — audit cases",
     detail:
       "Due date where a tax audit applies, typically business or professional income above the audit thresholds. The audit report itself is due earlier. Most salaried and investment-income NRIs are not in this bucket.",
+    appliesTo:
+      "Indian FY that ended the previous 31 March — i.e. AY = this calendar year",
   },
   {
     date: "December 15",
     system: "india",
     title: "Third advance tax instalment",
     detail: "Third advance-tax instalment for the current Indian financial year.",
+    appliesTo:
+      "Indian FY that began this 1 April",
   },
   {
     date: "December 31",
@@ -142,6 +202,8 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "Belated and revised return deadline",
     detail:
       "Last date to file a belated return, or revise a return already filed, for the relevant assessment year. Missing 31 July is recoverable here — at the cost of a late fee and the loss of some carry-forward benefits.",
+    appliesTo:
+      "Indian FY that ended 15 months earlier — i.e. AY = this calendar year",
     critical: true,
   },
   {
@@ -150,8 +212,80 @@ export const taxCalendar: TaxCalendarEntry[] = [
     title: "US tax year ends",
     detail:
       "The US tax year closes. Actions that affect your US return — charitable gifts, loss harvesting, retirement contributions with a year-end deadline — must be completed by today.",
+    appliesTo:
+      "Closes the US tax year that began this 1 January",
   },
 ];
+
+/* ──────────────────── Residential status: the day-count tests ──────────── */
+
+/**
+ * Section 6 residency, including the 2020 amendment most NRI content omits:
+ * the 120-day trigger that applies only when India-sourced income exceeds
+ * ₹15 lakh. Getting this wrong changes what India can tax.
+ */
+export const residencyTests = {
+  intro:
+    "India decides your residential status by counting days in the April–March financial year. Three tests matter, and the third one — added in 2020 — is the one most often missed.",
+  tests: [
+    {
+      label: "182-day test",
+      rule: "Present in India for 182 days or more in the financial year → Resident.",
+      note: "The headline rule, and the only one many NRIs know about.",
+    },
+    {
+      label: "60 + 365 test",
+      rule: "Present 60 days or more in the year AND 365 days or more across the preceding four years → Resident.",
+      note: "For an Indian citizen leaving India for employment abroad, or visiting India, the 60 days is relaxed to 182 — which is why most NRIs on short visits stay non-resident.",
+    },
+    {
+      label: "120-day test (₹15 lakh trigger)",
+      rule: "An Indian citizen or person of Indian origin visiting India whose India-sourced income exceeds ₹15 lakh in the year becomes Resident at 120 days instead of 182.",
+      note: "Applies only above the ₹15 lakh India-income threshold. Someone crossing it is treated as Resident but Not Ordinarily Resident (RNOR), so foreign income generally stays outside India's net.",
+    },
+  ],
+  rnorNote:
+    "RNOR is the useful middle status: you are Resident for day-count purposes but your foreign income is generally not taxable in India. Returning NRIs often qualify for RNOR for two to three years after moving back, which is the window in which to plan repatriation and asset sales.",
+} as const;
+
+/* ────────────────────────── NRE vs NRO taxability ──────────────────────── */
+
+export interface NreNroRow {
+  aspect: string;
+  nre: string;
+  nro: string;
+}
+
+export const nreVsNroRows: NreNroRow[] = [
+  {
+    aspect: "Interest — India tax",
+    nre: "Exempt under Section 10(4)(ii) while you remain a non-resident",
+    nro: "Fully taxable; TDS deducted at source",
+  },
+  {
+    aspect: "Interest — US tax",
+    nre: "Fully taxable on your US return — India's exemption does not travel",
+    nro: "Fully taxable on your US return",
+  },
+  {
+    aspect: "Foreign tax credit",
+    nre: "None available — no Indian tax was paid, so there is nothing to credit",
+    nro: "Indian TDS can generally support a Form 1116 credit",
+  },
+  {
+    aspect: "Repatriation",
+    nre: "Freely repatriable, principal and interest",
+    nro: "Up to USD 1 million per financial year, subject to documentation",
+  },
+  {
+    aspect: "FBAR / FATCA",
+    nre: "Counts toward both thresholds",
+    nro: "Counts toward both thresholds",
+  },
+];
+
+export const NRE_NRO_TRAP =
+  "The trap that costs the most: NRE interest is tax-free in India, so nothing is withheld and no Indian tax document is generated — but it is still fully taxable on your US return, and there is no foreign tax credit to offset it because no Indian tax was paid. Many NRIs under-report exactly this income because nothing arrived in the post to remind them.";
 
 /* ───────────────── Foreign tax credit: the timing rule people miss ──────── */
 
