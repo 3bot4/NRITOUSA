@@ -152,6 +152,9 @@ const faq: FaqItem[] = [
   { question: "Is an I-485 interview always required?", answer: "No. Many employment-based I-485 cases are waived from interview, but USCIS can require a field-office interview for any case. If required, plan for additional processing time. Your attorney can gauge the likelihood for your office." },
   { question: "When can I submit a USCIS case inquiry?", answer: "You can usually submit a service request (case inquiry) only once your case is outside the normal processing time USCIS publishes for your office and form. The USCIS processing-times page shows the 'inquiry date' — submitting earlier rarely helps." },
   { question: "Can I travel while I-485 is pending?", answer: "Many applicants travel using Advance Parole (Form I-131), and H-1B/L-1 holders may travel on their visa instead. Travel while I-485 is pending has risks, so confirm your specific situation with an immigration attorney before leaving the U.S." },
+  { question: "Can I use premium processing to speed up Form I-485?", answer: "No. Premium processing under Form I-907 covers a specific list of forms, including the I-140 immigrant petition and certain I-765 employment-authorization applications, but the I-485 adjustment of status application is not one of them. Requesting premium processing on your I-140 speeds up that petition's decision only — it does not accelerate the I-485 and does not affect visa availability. There is currently no way to pay for faster I-485 adjudication." },
+  { question: "Why was my I-485 transferred to a field office?", answer: "Employment-based I-485s are routinely moved from a service center or the National Benefits Center to the field office covering your address, most often because USCIS determined an interview is needed or to balance workload. You should receive a transfer notice. The filing date and pending-since clock do not restart, but the queue you are in is now the field office's, so compare your case against that office's published processing time rather than the NBC's when judging whether it is delayed." },
+  { question: "Why does the USCIS processing time not match my experience?", answer: "The published figure is the time it took to complete 80% of adjudicated cases over the previous six months — not an average, and backward-looking by up to six months. One in five cases takes longer. Additionally, USCIS advises that if your office shows as the National Benefits Center and you filed an employment-based I-485, you should check your local field office's processing time instead, which is a common source of confusion." },
   { question: "What is transfer of underlying basis (interfiling)?", answer: "Transfer of underlying basis, commonly called interfiling, is a request that USCIS adjudicate your already-pending I-485 under a different approved I-140 — most often moving from EB-3 to EB-2 when the EB-2 India chart becomes more favorable. Your I-485 stays pending and keeps its original filing date; only the petition it rests on changes. It requires an approved I-140 in the new category and a visa number immediately available there, and USCIS grants it as a matter of discretion." },
   { question: "Does interfiling restart my I-485 processing time?", answer: "No. Interfiling is not a new filing, so your I-485 keeps its original receipt date and its place in the field-office queue. What changes is which visa bulletin row governs visa availability for your case. That can shorten the overall wait dramatically if the new category is current, but it does not make USCIS adjudicate any faster once a number is available." },
   { question: "What is the difference between interfiling and Supplement J?", answer: "They solve different problems. Interfiling (transfer of underlying basis) changes which I-140 and which category your pending I-485 rests on, needs a visa number available in the new category, and has no waiting period. Form I-485 Supplement J is used for INA §204(j) portability when you change employers or jobs — it keeps the same I-140 and category, requires the I-485 to have been pending at least 180 days, and requires the new job to be in the same or a similar occupation." },
@@ -354,6 +357,121 @@ export default function Page() {
                 </div>
               </div>
               <p className="mt-4 text-xs text-ink-500">{I485_DATA_NOTE}</p>
+            </div>
+          </Container>
+        </section>
+
+        {/* How to read a USCIS processing time + where EB cases actually sit */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                Reading the USCIS number — and why yours may not match it
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                Two facts about the published figure explain most of the gap between what people
+                read and what they experience.
+              </p>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                  <p className="text-sm font-bold text-ink-900">It is the 80th percentile</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                    USCIS publishes the time it took to complete <strong>80% of adjudicated cases
+                    over the previous six months</strong> — not an average and not a promise. One in
+                    five cases finished slower than the number shown, and the figure is backward-looking
+                    by up to six months.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                  <p className="text-sm font-bold text-ink-900">
+                    Employment cases: check your field office, not the NBC
+                  </p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                    USCIS states that if your office shows as the{" "}
+                    <strong>National Benefits Center</strong> and you filed an employment-based I-485,
+                    you should check the processing time for your{" "}
+                    <strong>local field office</strong> instead. Reading the NBC number is one of the
+                    most common reasons a case looks overdue when it is not.
+                  </p>
+                </div>
+              </div>
+
+              <h3 className="mt-6 text-base font-bold text-ink-900">
+                Transfer to a local field office
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                Employment-based I-485s are frequently moved from a service center or the NBC to the
+                field office covering your address before a decision — most often when USCIS decides
+                an interview is needed, or to balance workload. This is routine, and it is the single
+                most common reason a case that had been moving appears to go silent.
+              </p>
+              <ul className="mt-3 space-y-1.5 text-sm text-ink-700">
+                <li>
+                  • You will normally see a <strong>case transfer notice</strong>, and online status
+                  may change to indicate a new office.
+                </li>
+                <li>
+                  • The clock does <strong>not</strong> restart, but the queue you are now in is the
+                  field office&apos;s — which can be faster or slower than the office you left.
+                </li>
+                <li>
+                  • After a transfer, the processing time that applies to you is the{" "}
+                  <strong>receiving office&apos;s</strong>. Compare against that one when deciding
+                  whether the case is genuinely outside normal time.
+                </li>
+                <li>
+                  • Only submit a service request once you are past the inquiry date{" "}
+                  <em>for the office now holding the case</em>.
+                </li>
+              </ul>
+
+              <h3 className="mt-6 text-base font-bold text-ink-900">
+                Can I use premium processing to speed up Form I-485?
+              </h3>
+              <div className="mt-2 rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
+                <p className="text-sm font-bold text-ink-900">
+                  No — premium processing is not available for Form I-485.
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
+                  Form I-907 covers a defined list of forms — including the{" "}
+                  <strong>I-140</strong> immigrant petition and certain <strong>I-765</strong>{" "}
+                  employment-authorization filings — but the I-485 adjustment application itself is
+                  not among them. Paying for premium processing on your I-140 speeds the{" "}
+                  <em>petition</em> decision; it does nothing for the adjustment application and
+                  nothing for visa availability. There is no way to buy a faster I-485.
+                </p>
+                <p className="mt-2.5 text-xs leading-relaxed text-ink-600">
+                  Source:{" "}
+                  <a
+                    href="https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="font-semibold text-emerald-700 underline"
+                  >
+                    USCIS — How Do I Request Premium Processing?
+                  </a>
+                </p>
+              </div>
+
+              <p className="mt-4 rounded-xl border border-ink-900/10 bg-white p-4 text-xs leading-relaxed text-ink-600">
+                <strong className="text-ink-800">
+                  Processing ranges on this page are planning estimates, last reviewed{" "}
+                  {I485_UPDATED_HUMAN}.
+                </strong>{" "}
+                They are not USCIS-published figures for your specific office. The authoritative,
+                office-specific number is always the{" "}
+                <a
+                  href={D.uscisProcessingTimesUrl}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-semibold text-emerald-700 underline"
+                >
+                  USCIS processing-times tool
+                </a>{" "}
+                — check it for Form I-485 and your field office before drawing any conclusion about
+                whether your case is delayed.
+              </p>
             </div>
           </Container>
         </section>
