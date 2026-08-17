@@ -231,6 +231,96 @@ export const commonMistakes: { title: string; body: string }[] = [
   { title: "Photo or document format errors", body: "Photos and scans that don't meet spec are a frequent rejection reason. Budget ~$12 for a compliant photo and follow the size rules." },
 ];
 
+/* ────────── Surrender / Renunciation Certificate (former Indian citizens) ────────
+ *
+ * India does not permit dual citizenship. Under Section 9 of the Citizenship
+ * Act, 1955, Indian citizenship terminates BY OPERATION OF LAW the moment a
+ * citizen voluntarily acquires another nationality — there is no application
+ * and no discretion involved. Everything below flows from that one fact, which
+ * is why this trips up so many naturalised US citizens: the passport in the
+ * drawer stopped being valid on the day of the oath, not on its printed expiry.
+ *
+ * NOTE ON FEES: surrender/renunciation fees and any late-surrender penalty are
+ * set by the consulate and change; deliberately NOT hardcoded here. Point users
+ * at the official portal instead.
+ */
+
+export const surrenderCertificate = {
+  whoNeedsIt:
+    "Anyone who ever held an Indian passport and later became a citizen of another country — including US citizens who naturalised decades ago, and children who were on a parent's Indian passport.",
+
+  rule: "Indian citizenship ends automatically on the day you acquire another citizenship. It is not a choice you make and not something you apply for — Section 9 of the Citizenship Act, 1955 does it by operation of law.",
+
+  whyItBlocksYou:
+    "An Indian visa and OCI are both granted to foreign nationals. Before either can be issued, the consulate has to close out your former Indian citizenship on the record. Until the last held Indian passport is surrendered and a Surrender (Renunciation) Certificate is issued, applications are routinely put on hold or rejected.",
+
+  steps: [
+    "Locate your last held Indian passport — even if it expired years ago, even if it was a child's passport, even if it was never used after you naturalised.",
+    "Apply for the Surrender / Renunciation Certificate through the VFS Global portal for the consulate covering your US state.",
+    "Submit the Indian passport (or a documented explanation if it was genuinely lost or destroyed), your naturalisation certificate, and your current foreign passport.",
+    "Receive the Surrender Certificate — this is the document the visa and OCI applications ask for.",
+    "Only then file the visa or OCI application, attaching the certificate.",
+  ],
+
+  traps: [
+    {
+      title: "Travelling on the Indian passport after naturalising",
+      body: "Using an Indian passport after acquiring foreign citizenship is a misuse of a document that legally ceased to be yours. It can attract a late-surrender penalty and, in some cases, complicate the application well beyond the fee.",
+    },
+    {
+      title: "Assuming an expired passport does not count",
+      body: "Expiry is irrelevant. The requirement attaches to the last Indian passport you ever held, regardless of whether it is expired, cancelled, or unused.",
+    },
+    {
+      title: "Forgetting children who were endorsed on a parent's passport",
+      body: "A child included on a parent's Indian passport, or who held their own minor's passport, is treated as a former Indian citizen and generally needs their own certificate before OCI.",
+    },
+    {
+      title: "Leaving it until the trip is booked",
+      body: "The certificate is a prerequisite, not a parallel step. Starting it in the same week as an urgent visa application is the most common reason a family trip has to be rebooked.",
+    },
+    {
+      title: "A lost Indian passport",
+      body: "This is workable but slower — consulates have a documented process involving an affidavit and, in some cases, a police report. Start earlier than you think you need to.",
+    },
+  ],
+
+  sourceNote:
+    "Surrender/renunciation fees, penalty amounts for late surrender, and the exact document list are set by the consulate and change over time — confirm current requirements on the VFS Global portal for your jurisdiction before applying.",
+} as const;
+
+/* ────────────────── Emergency / urgent travel to India ────────────────── */
+
+export const emergencyVisa = {
+  intro:
+    "For a genuine emergency — the death or critical illness of a close family member in India — Indian consulates and VFS Global can expedite processing. This is a discretionary accommodation, not a paid tier you can buy for convenience, and it has to be documented.",
+
+  routes: [
+    {
+      label: "Eligible for an eVisa? Use it.",
+      body: "For most eligible US travellers the eVisa is already the fastest legitimate route, often approved in a few business days without an appointment. Chasing an emergency consular appointment when an eVisa would clear in time usually costs more time, not less.",
+    },
+    {
+      label: "Emergency / expedited consular request",
+      body: "Where an eVisa is unavailable or a longer stay is required, contact VFS Global and the consulate covering your state, explain the emergency, and ask about expedited handling. Turnaround is at consular discretion and can be very short in a documented bereavement.",
+    },
+    {
+      label: "Former Indian citizens — plan for the extra step",
+      body: "If you have never obtained a Surrender Certificate, that requirement does not disappear because the travel is urgent. This is the single most common reason an emergency India trip stalls. Sort it out before you need it.",
+    },
+  ],
+
+  documents: [
+    "Proof of the emergency — a death certificate, hospital letter, or treating doctor's statement",
+    "Evidence of the family relationship to the person concerned",
+    "Your current passport and the standard application documents",
+    "A written request explaining the urgency and your intended travel dates",
+  ],
+
+  caution:
+    "Do not buy non-refundable tickets before an approval is in hand. Expedited handling is granted case by case and never guaranteed, and an urgent request does not waive any eligibility requirement.",
+} as const;
+
 /* ─────────────────────────── FAQs ─────────────────────────── */
 
 export const hubFaqs: FaqItem[] = [
@@ -249,6 +339,11 @@ export const hubFaqs: FaqItem[] = [
   { question: "What is the difference between Entry Visa India and Tourist Visa India?", answer: "A tourist visa (~$54 eVisa / ~$216 regular) is for sightseeing and short visits. An Entry Visa (~$176, 2–3 weeks) is for Indian-origin people, non-Indian spouses, and minor children visiting or living with family." },
   { question: "What is India visa multiple entry?", answer: "A multiple-entry visa lets you enter India more than once while it's valid. The 1-year eVisa (~$54) and the 10-year regular visa (~$216) are both multiple entry." },
   { question: "How do I get a visa in India?", answer: "If you're outside India, apply through the official eVisa portal (~$54–$95) or VFS (~$216). If you're already in India and need an extension or status change, the process may involve the FRRO/FRO depending on your case." },
+  { question: "Do I need a Surrender Certificate to get an India visa or OCI?", answer: "If you ever held an Indian passport and later became a US citizen, yes. India does not allow dual citizenship — under Section 9 of the Citizenship Act, 1955 your Indian citizenship ended automatically the day you naturalised. Before a visa or OCI can be issued, you must surrender your last held Indian passport and obtain a Surrender (Renunciation) Certificate through VFS Global. This applies even if the passport expired years ago and was never used after naturalisation." },
+  { question: "What if I lost my old Indian passport?", answer: "You can still obtain a Surrender Certificate, but the process is longer. Consulates have a documented route involving an affidavit and, in some cases, a police report, in place of producing the physical passport. Because it adds weeks, start it well before you need to travel rather than alongside an urgent visa application." },
+  { question: "Do my US-born children need a Surrender Certificate?", answer: "A child born in the US who never held an Indian passport does not — they were never an Indian citizen. But a child who held their own minor's Indian passport, or who was endorsed on a parent's Indian passport, is treated as a former Indian citizen and generally needs their own certificate before OCI can be granted." },
+  { question: "Can I get an emergency India visa for a family death or illness?", answer: "Yes, in genuine emergencies Indian consulates and VFS Global can expedite processing, though it is discretionary rather than a paid service tier. You will need documentary proof such as a death certificate or hospital letter plus evidence of the family relationship. If you are eligible for an eVisa, that is often already the fastest route. Do not book non-refundable travel before approval." },
+  { question: "How fast can an emergency India visa be issued?", answer: "Turnaround is at consular discretion and can be very short in a documented bereavement — sometimes within a day or two. It is never guaranteed, and it does not waive eligibility requirements. In particular, a former Indian citizen who has not obtained a Surrender Certificate still needs one, which is the most common reason an urgent India trip stalls." },
 ];
 
 export const eVisaFaqs: FaqItem[] = [

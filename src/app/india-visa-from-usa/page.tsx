@@ -24,6 +24,8 @@ import {
   commonSearches,
   commonMistakes,
   eVisaDocuments,
+  surrenderCertificate,
+  emergencyVisa,
   hubFaqs,
   INDIA_VISA_PUBLISHED,
   INDIA_VISA_UPDATED,
@@ -260,6 +262,111 @@ export default function Page() {
               <div>
                 <h2 className="text-lg font-bold text-ink-900">India Visa vs OCI: Which Is Better for Indian-Origin U.S. Citizens?</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-600">If you're eligible and travel to India often, the <Link href="/oci" className="text-orange-700 underline">OCI card</Link> is usually more convenient long-term because it's a lifelong multiple-entry facility. A visa (often an eVisa) can be better for a single short trip or urgent travel, since OCI takes longer to obtain. See the full <Link href="/oci-vs-india-visa" className="text-orange-700 underline">OCI vs India visa comparison</Link>. Before any application, make sure your passport is current — see <Link href="/indian-passport-renewal-usa" className="text-orange-700 underline">Indian passport renewal in the USA</Link>.</p>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Surrender / Renunciation Certificate — the blocker for former Indian citizens */}
+        <section className="border-t border-ink-900/5 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                Former Indian citizen? Read this before you apply
+              </h2>
+              <div className="mt-3 rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
+                <p className="text-sm font-bold text-ink-900">
+                  India does not allow dual citizenship
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
+                  {surrenderCertificate.rule}
+                </p>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-700">
+                  {surrenderCertificate.whyItBlocksYou}
+                </p>
+              </div>
+
+              <p className="mt-4 text-sm leading-relaxed text-ink-600">
+                <strong className="text-ink-900">Who this applies to:</strong>{" "}
+                {surrenderCertificate.whoNeedsIt}
+              </p>
+
+              <h3 className="mt-6 text-base font-bold text-ink-900">
+                How to get the Surrender Certificate
+              </h3>
+              <ol className="mt-3 space-y-2">
+                {surrenderCertificate.steps.map((s, i) => (
+                  <li
+                    key={s}
+                    className="flex gap-3 rounded-xl border border-ink-900/10 bg-white p-3.5"
+                  >
+                    <span
+                      aria-hidden
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-orange-700"
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="text-sm leading-relaxed text-ink-700">{s}</span>
+                  </li>
+                ))}
+              </ol>
+
+              <h3 className="mt-6 text-base font-bold text-ink-900">
+                Where people get caught out
+              </h3>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {surrenderCertificate.traps.map((t) => (
+                  <div key={t.title} className="rounded-xl border border-amber-200 bg-amber-50/40 p-4">
+                    <p className="text-sm font-bold text-ink-900">{t.title}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink-600">{t.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-4 text-xs leading-relaxed text-ink-500">
+                {surrenderCertificate.sourceNote}
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Emergency / urgent travel */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                Emergency travel to India: what actually speeds things up
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">{emergencyVisa.intro}</p>
+
+              <div className="mt-4 space-y-3">
+                {emergencyVisa.routes.map((r) => (
+                  <div key={r.label} className="rounded-xl border border-ink-900/10 bg-white p-4">
+                    <p className="text-sm font-bold text-ink-900">{r.label}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink-600">{r.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-ink-900/10 bg-white p-5">
+                <h3 className="text-sm font-bold text-ink-900">
+                  What to have ready before you call
+                </h3>
+                <ul className="mt-2.5 space-y-1.5">
+                  {emergencyVisa.documents.map((d) => (
+                    <li key={d} className="flex items-start gap-2 text-sm text-ink-600">
+                      <span className="mt-0.5 text-orange-600">✓</span>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50/50 p-4">
+                <p className="text-xs leading-relaxed text-ink-700">
+                  <strong className="font-bold text-ink-900">Before you book: </strong>
+                  {emergencyVisa.caution}
+                </p>
               </div>
             </div>
           </Container>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
@@ -151,6 +152,10 @@ const faq: FaqItem[] = [
   { question: "Is an I-485 interview always required?", answer: "No. Many employment-based I-485 cases are waived from interview, but USCIS can require a field-office interview for any case. If required, plan for additional processing time. Your attorney can gauge the likelihood for your office." },
   { question: "When can I submit a USCIS case inquiry?", answer: "You can usually submit a service request (case inquiry) only once your case is outside the normal processing time USCIS publishes for your office and form. The USCIS processing-times page shows the 'inquiry date' — submitting earlier rarely helps." },
   { question: "Can I travel while I-485 is pending?", answer: "Many applicants travel using Advance Parole (Form I-131), and H-1B/L-1 holders may travel on their visa instead. Travel while I-485 is pending has risks, so confirm your specific situation with an immigration attorney before leaving the U.S." },
+  { question: "What is transfer of underlying basis (interfiling)?", answer: "Transfer of underlying basis, commonly called interfiling, is a request that USCIS adjudicate your already-pending I-485 under a different approved I-140 — most often moving from EB-3 to EB-2 when the EB-2 India chart becomes more favorable. Your I-485 stays pending and keeps its original filing date; only the petition it rests on changes. It requires an approved I-140 in the new category and a visa number immediately available there, and USCIS grants it as a matter of discretion." },
+  { question: "Does interfiling restart my I-485 processing time?", answer: "No. Interfiling is not a new filing, so your I-485 keeps its original receipt date and its place in the field-office queue. What changes is which visa bulletin row governs visa availability for your case. That can shorten the overall wait dramatically if the new category is current, but it does not make USCIS adjudicate any faster once a number is available." },
+  { question: "What is the difference between interfiling and Supplement J?", answer: "They solve different problems. Interfiling (transfer of underlying basis) changes which I-140 and which category your pending I-485 rests on, needs a visa number available in the new category, and has no waiting period. Form I-485 Supplement J is used for INA §204(j) portability when you change employers or jobs — it keeps the same I-140 and category, requires the I-485 to have been pending at least 180 days, and requires the new job to be in the same or a similar occupation." },
+  { question: "Can I interfile back if my new category retrogresses?", answer: "Not freely. Once USCIS transfers your I-485 to a new underlying petition, the case is adjudicated under that category, and if it retrogresses or goes Unavailable your case waits until numbers return there. Reversing the transfer is not a routine request. Because of this, timing the interfile against the charts with your attorney matters more than requesting it the first month a category looks better." },
   { question: "Is this I-485 calculator legal advice?", answer: "No. This tool is for educational planning only and is not legal advice. Filing eligibility and timelines are case-specific — confirm with your immigration attorney and the official USCIS and Visa Bulletin sources." },
 ];
 
@@ -349,6 +354,117 @@ export default function Page() {
                 </div>
               </div>
               <p className="mt-4 text-xs text-ink-500">{I485_DATA_NOTE}</p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Changing the basis of a pending I-485 */}
+        <section className="border-t border-ink-900/5 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                Changing a pending I-485: interfiling vs. changing jobs
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                A pending I-485 is not frozen. Two different mechanisms let you change something
+                underneath it while it stays pending — and they are constantly confused with each
+                other because both involve a pending I-485 and both are sometimes called
+                &ldquo;porting.&rdquo; They solve different problems and have different requirements.
+              </p>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-indigo-200 bg-indigo-50/40 p-5 shadow-card">
+                  <p className="text-xs font-bold uppercase tracking-wide text-indigo-700">
+                    Transfer of underlying basis
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-ink-900">
+                    Change which I-140 your I-485 rests on
+                  </p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                    Also called <strong>interfiling</strong>. You keep the same pending I-485 but ask
+                    USCIS to adjudicate it under a different approved I-140 — typically moving from
+                    EB-3 to EB-2 when the EB-2 India chart pulls ahead.
+                  </p>
+                  <ul className="mt-3 space-y-1 text-xs text-ink-700">
+                    <li>• Needs an <strong>approved I-140</strong> in the new category</li>
+                    <li>• Needs a visa number <strong>immediately available</strong> in that category</li>
+                    <li>• <strong>No 180-day waiting period</strong></li>
+                    <li>• Discretionary — USCIS is not obliged to grant it</li>
+                  </ul>
+                </div>
+
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50/40 p-5 shadow-card">
+                  <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">
+                    §204(j) portability
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-ink-900">
+                    Change employers or roles
+                  </p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                    Filed on <strong>Form I-485 Supplement J</strong>. The I-140 and category stay the
+                    same; you change the job the green card is based on.
+                  </p>
+                  <ul className="mt-3 space-y-1 text-xs text-ink-700">
+                    <li>• I-485 must have been <strong>pending at least 180 days</strong></li>
+                    <li>• New job must be in the <strong>same or similar</strong> occupation</li>
+                    <li>• The original I-140 must remain valid</li>
+                    <li>• Does <strong>not</strong> change your category or priority date</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                <p className="text-sm font-bold text-ink-900">
+                  What each does to your processing time
+                </p>
+                <p className="mt-1.5 text-xs leading-relaxed text-ink-700">
+                  Neither restarts your I-485 — the original filing date and the pending-since clock
+                  survive both. A transfer of underlying basis can <em>shorten</em> the total wait
+                  substantially, because it moves your case to a chart where a visa number is
+                  available now instead of years from now. What it does not do is speed up USCIS
+                  adjudication itself: once a number is available under the new category, your case
+                  re-enters the same field-office queue described above. Supplement J is
+                  timing-neutral — it protects a case through a job change rather than accelerating
+                  it, though an incomplete or late filing can stall adjudication.
+                </p>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
+                <p className="text-sm font-bold text-ink-900">The risk worth understanding first</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-ink-700">
+                  Interfiling is not freely reversible. If you transfer your I-485 to EB-2 and EB-2
+                  India then retrogresses or goes Unavailable — as it did for the back half of FY
+                  2026 — your case waits under EB-2 until numbers return. You cannot casually bounce
+                  back to the category you left. Time the request against the charts with your
+                  attorney rather than requesting it the first month EB-2 looks better.
+                </p>
+              </div>
+
+              <p className="mt-4 text-sm leading-relaxed text-ink-700">
+                Full mechanics, the cover-letter contents, and the priority-date rules are on the{" "}
+                <Link
+                  href="/visa-bulletin/eb3-to-eb2-interfiling"
+                  className="font-semibold text-emerald-700 underline"
+                >
+                  EB-3 to EB-2 interfiling guide
+                </Link>
+                . If you are weighing the move in the other direction, see the{" "}
+                <Link
+                  href="/visa-bulletin/eb2-to-eb3-downgrade"
+                  className="font-semibold text-emerald-700 underline"
+                >
+                  EB-2 to EB-3 downgrade guide
+                </Link>
+                . And before either, check whether{" "}
+                <Link
+                  href="/visa-bulletin/cross-chargeability"
+                  className="font-semibold text-emerald-700 underline"
+                >
+                  cross-chargeability
+                </Link>{" "}
+                applies — if your spouse was born outside India it can be worth more than any
+                category change.
+              </p>
             </div>
           </Container>
         </section>

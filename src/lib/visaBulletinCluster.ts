@@ -144,7 +144,7 @@ In some situations, yes. An applicant may often retain the priority date from an
 
 ## How Your Priority Date Connects to Everything Else
 
-The priority date is set by [PERM](/perm-timeline), carried by the [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) — so each stage interacts with it differently. Filing PERM earlier moves your date earlier; I-140 premium processing speeds the petition but never the date; and the month your date clears the applicable chart is the month the [I-485 filing window](/visa-bulletin/priority-date-current-what-next) opens. Category also matters: the same date waits very differently in [EB-1 India](/visa-bulletin/eb1-india) vs [EB-2 India](/visa-bulletin/eb2-india) vs [EB-3 India](/visa-bulletin/eb3-india). Track all of it monthly with the [Priority Date Checker](/tools/priority-date-checker).
+The priority date is set by [PERM](/perm-timeline), carried by the [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) — so each stage interacts with it differently. Filing PERM earlier moves your date earlier; I-140 premium processing speeds the petition but never the date; and the month your date clears the applicable chart is the month the [I-485 filing window](/visa-bulletin/priority-date-current-what-next) opens. Category also matters: the same date waits very differently in [EB-1 India](/visa-bulletin/eb1-india) vs [EB-2 India](/visa-bulletin/eb2-india) vs [EB-3 India](/visa-bulletin/eb3-india). So does the *column* your date is read against — if your spouse was born outside India, [cross-chargeability](/visa-bulletin/cross-chargeability) can move you off the India row without changing your date at all. Track all of it monthly with the [Priority Date Checker](/tools/priority-date-checker).
 
 This page explains how to *read* the priority date on the bulletin. For how the date is created, kept across job changes, and used at each stage of the employment green card, follow the full journey in [your green card priority date, from PERM to I-485](/green-card/priority-date).
 
@@ -397,7 +397,7 @@ If you are a researcher or academic who cannot qualify for EB-1B (e.g., you don'
 
 ## How EB-1 India Connects to the Rest of Your Case
 
-Your EB-1 priority date is set when the I-140 is filed (see [what a priority date is](/visa-bulletin/priority-date)), and you can [file I-485](/visa-bulletin/priority-date-current-what-next) only once that date clears the applicable chart — check yours against the stored bulletin data with the [Priority Date Checker](/tools/priority-date-checker) and model the full wait with the [Green Card Tracker](/tools/green-card-tracker). If you already hold an approved EB-2 I-140 from a PERM case, its earlier priority date can typically be retained for the EB-1 petition, instantly crediting years of queue time. New to the bulletin itself? Start with the [visa bulletin explained for Indians](/visa-bulletin).
+Your EB-1 priority date is set when the I-140 is filed (see [what a priority date is](/visa-bulletin/priority-date)), and you can [file I-485](/visa-bulletin/priority-date-current-what-next) only once that date clears the applicable chart — check yours against the stored bulletin data with the [Priority Date Checker](/tools/priority-date-checker) and model the full wait with the [Green Card Tracker](/tools/green-card-tracker). If you already hold an approved EB-2 I-140 from a PERM case, its earlier priority date can typically be retained for the EB-1 petition, instantly crediting years of queue time. Separately, if your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) may take you off the India row altogether — worth checking before you invest in an EB-1A evidence package. New to the bulletin itself? Start with the [visa bulletin explained for Indians](/visa-bulletin).
 
 ## Frequently asked questions
 
@@ -452,6 +452,7 @@ The EB-2 India priority date moves monthly and is shown in the status panel abov
 - Watch **October 1** — the new fiscal year restores visa numbers after an "Unavailable" stretch like the one running through August 2026.
 - Get the I-140 approved even while backlogged — an approved I-140 can support **H-1B extensions past six years** (AC21 §104(c), when a visa number is unavailable).
 - Compare charts monthly with the [Priority Date Checker](/tools/priority-date-checker) — EB-3 India sometimes moves ahead of EB-2; weigh the choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
+- If your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) may move you to the "All Other Countries" row — often worth a decade or more.
 :::
 
 The EB-2 India priority date is the number that rules green-card planning for most India-born professionals with a master's degree or a bachelor's plus five years' experience. This page owns the **current cutoff and its movement** — the current Final Action Date (status panel above) and the recent EB-2 India month-over-month movement (history table above). The structural cause of the backlog: the 7% per-country limit under INA §202 caps India's usage *share* far below its demand — it is a proration rule across all countries and categories, not a fixed India allotment. For how long a given priority date might take, see the [wait-time scenarios](/eb2-eb3-priority-date-india); to choose a category, see [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india). Below: EB-2 requirements, why the backlog exists, what drives the monthly movement, the EB-2 NIW option, and how to read the row.
@@ -548,7 +549,7 @@ Given the long backlog, the most important things Indian EB-2 workers can do:
 
 ## How EB-2 India Connects to the Rest of Your Case
 
-Your EB-2 priority date is set the day your employer files PERM (see [what a priority date is](/visa-bulletin/priority-date)) — so the [PERM processing timeline](/perm-timeline) directly delays it. Once the I-140 is approved, the date can be retained across employers and categories, including an [EB-2→EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) or a later [EB-1 petition](/visa-bulletin/eb1-india). Track where you stand each month with the [Priority Date Checker](/tools/priority-date-checker), model your total wait with the [Green Card Tracker](/tools/green-card-tracker), and know [what to do the month your date goes current](/visa-bulletin/priority-date-current-what-next). For a rough sense of how many years a given date implies, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and weigh the category choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
+Your EB-2 priority date is set the day your employer files PERM (see [what a priority date is](/visa-bulletin/priority-date)) — so the [PERM processing timeline](/perm-timeline) directly delays it. Once the I-140 is approved, the date can be retained across employers and categories, including an [EB-2→EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) or a later [EB-1 petition](/visa-bulletin/eb1-india). And if your **spouse was born outside India**, check [cross-chargeability](/visa-bulletin/cross-chargeability) before anything else — INA §202(b)(2) can move your case out of the India column entirely, which is worth more than any category strategy on this page. Track where you stand each month with the [Priority Date Checker](/tools/priority-date-checker), model your total wait with the [Green Card Tracker](/tools/green-card-tracker), and know [what to do the month your date goes current](/visa-bulletin/priority-date-current-what-next). For a rough sense of how many years a given date implies, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and weigh the category choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 
 ## Frequently asked questions
 
@@ -673,7 +674,7 @@ If you originally filed I-485 under EB-3 and your employer now has an approved E
 
 ## How EB-3 India Connects to the Rest of Your Case
 
-Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline), carried by the approved [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) once the date clears the applicable chart. Because EB-2 and EB-3 India leapfrog each other, the practical move is to watch both rows monthly with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If EB-3 pulls ahead, read the [EB-2 to EB-3 downgrade guide](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers after you filed under EB-3, [interfiling](/visa-bulletin/eb3-to-eb2-interfiling) is the route back. New to the charts? Start with [how to read the visa bulletin](/visa-bulletin). To gauge how long a given date might take, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and compare categories in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
+Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline), carried by the approved [I-140](/i140-processing-time), and cashed in at [I-485](/i485-timeline) once the date clears the applicable chart. Because EB-2 and EB-3 India leapfrog each other, the practical move is to watch both rows monthly with the [Priority Date Checker](/tools/priority-date-checker) and model the remaining wait with the [Green Card Tracker](/tools/green-card-tracker). If EB-3 pulls ahead, read the [EB-2 to EB-3 downgrade guide](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers after you filed under EB-3, [interfiling](/visa-bulletin/eb3-to-eb2-interfiling) is the route back. New to the charts? Start with [how to read the visa bulletin](/visa-bulletin). To gauge how long a given date might take, see the [EB-2/EB-3 India wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions), and compare categories in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india). Before settling in for a decade-long wait, check one thing that beats every category strategy: if your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) may let you read the "All Other Countries" row instead.
 
 ## Frequently asked questions
 
@@ -1089,7 +1090,179 @@ Your I-485 remains pending under EB-2. USCIS cannot approve until EB-2 India is 
 `,
   },
 
-  /* ── 10. Monthly update ───────────────────────────────────────────────────── */
+  /* ── 10. Cross-chargeability ──────────────────────────────────────────────── */
+  {
+    slug: "cross-chargeability",
+    kind: "guide",
+    title: "Cross-Chargeability: Use Your Spouse's Country of Birth to Skip the India Queue",
+    seoTitle: "Cross-Chargeability: Use Spouse's Country of Birth (INA 202(b))",
+    metaDescription:
+      "Cross-chargeability lets an India-born applicant be charged to a spouse's country of birth under INA §202(b)(2) — moving you from the India column to All Other Countries. Who qualifies, how to request it, and what breaks it.",
+    navLabel: "Cross-Chargeability",
+    excerpt:
+      "If your spouse was born outside India, INA §202(b) may let you read the 'All Other Countries' column instead of the India column — often a decade or more of difference.",
+    date: "2026-08-17",
+    updated: "2026-08-17",
+    content: `
+:::quickanswer
+**Cross-chargeability** lets an immigrant be counted against a country other than their own country of birth. Under **INA §202(b)(2)** (8 U.S.C. §1152(b)(2)), if you are India-born and your **spouse was born outside India**, you may be charged to your spouse's country of birth "if necessary to prevent the separation of husband and wife" — which moves you out of the India column and into **"All Chargeability Areas Except Those Listed"** (Rest of World) on the visa bulletin. For EB-2 and EB-3 that is frequently a difference of **a decade or more**. It does **not** change your priority date — it changes which column your priority date is read against.
+:::
+
+:::key
+- Chargeability defaults to your **country of birth** — not citizenship, not residence, not your parents' nationality.
+- The spouse rule (**INA §202(b)(2)**) requires your spouse to actually **immigrate with you** as a derivative — accompanying or following to join.
+- A spouse who is already a **U.S. citizen or green card holder cannot be a derivative**, so they cannot provide cross-chargeability on an employment case.
+- Gulf-born spouses matter: someone born in the **UAE, Saudi Arabia, Qatar, Oman, Kuwait, or Bahrain** to Indian parents is normally chargeable to that country — which sits in the Rest-of-World column.
+- Request it at **I-485** (adjustment) or **DS-260** (consular) with the marriage certificate and the spouse's birth evidence. It is not automatic — nobody applies it for you.
+- **Divorce, the spouse's death, or the spouse dropping out** of the case before approval removes the benefit and returns you to the India column.
+:::
+
+Cross-chargeability is the single most under-used provision in the employment green card process for India-born applicants. It is not a loophole, a workaround, or an aggressive filing position — it is an explicit statutory rule that has been in the Immigration and Nationality Act for decades. Yet a large number of eligible couples never raise it, because the default assumption in every conversation about the India backlog is that country of birth is destiny. For a meaningful minority of India-born applicants, it is not.
+
+This guide covers who actually qualifies, the exact mechanics of requesting it, the traps that quietly disqualify people, and the situations where it does nothing at all.
+
+## What "Chargeability" Actually Means
+
+Every immigrant visa issued is counted against — "charged to" — one country's annual allocation. The default rule is simple and often misunderstood:
+
+**Your chargeability is set by your country of birth.** Not your citizenship. Not where you live. Not where your parents are from. Not the passport you hold.
+
+This is why an India-born person who naturalized as a Canadian citizen twenty years ago still sits in the India column, and why a Canada-born child of Indian parents does not. Changing citizenship does nothing. Place of birth is a fact that cannot be amended.
+
+The visa bulletin lists separate columns for the four countries whose demand consistently exceeds the per-country limit — **India, China (mainland-born), Mexico, and Philippines** — plus one column for **"All Chargeability Areas Except Those Listed."** Every other country on earth shares that last column, and for EB-2 and EB-3 it is typically many years ahead of the India column.
+
+## The Four Statutory Exceptions
+
+INA §202(b) sets out the exceptions to the birth rule. Four subsections matter:
+
+| Provision | Who it helps | Effect |
+|---|---|---|
+| **§202(b)(1)** | A child accompanying or following to join a parent | Child may be charged to either parent's country |
+| **§202(b)(2)** | A spouse immigrating with their spouse | Either spouse may be charged to the other's country |
+| **§202(b)(3)** | A person born in the United States | Charged to country of present citizenship |
+| **§202(b)(4)** | A person born where **neither parent was born and neither parent resided** at the time | May be charged to either parent's country |
+
+For India-born employment-based applicants, **§202(b)(2) — the spouse rule — is the one that carries real value.** The others generally point back toward India rather than away from it.
+
+## Who Qualifies Under the Spouse Rule
+
+Four conditions have to hold at the same time:
+
+:::steps
+1. **You are legally married**, and the marriage is valid where it took place and recognized for immigration purposes.
+2. **Your spouse was born in a different chargeability area** than you — practically, born outside India.
+3. **Your spouse is immigrating as your derivative** — accompanying you or following to join on the same underlying petition.
+4. **Both of you are otherwise eligible** for the immigrant visa or adjustment of status.
+:::
+
+Condition 3 is where most people fail, and it is worth stating plainly: cross-chargeability exists to prevent a married couple from being separated by the numerical limits. If there is no risk of separation, the statute does not apply.
+
+:::bad
+**The most common disqualifier:** your spouse is already a U.S. citizen or a lawful permanent resident. If your spouse already has status, they are not immigrating with you — there is no separation for the statute to prevent, and they cannot be a derivative on your employment petition. Cross-chargeability is unavailable. (A spouse who is a U.S. citizen usually opens a different and often faster path — an immediate-relative petition — so this is rarely bad news overall. Discuss both routes with your attorney.)
+:::
+
+:::good
+**The case people miss most often:** a spouse born in the Gulf. Large numbers of Indian families lived and worked in the UAE, Saudi Arabia, Qatar, Oman, Kuwait, or Bahrain, and their children were born there. Those children are chargeable to their country of birth — which sits in the Rest-of-World column — even though both parents are Indian, the family later returned to India, and the person holds an Indian passport. §202(b)(4) would only push chargeability back to India if **neither parent had been born there *and* neither had residence there at the time of birth** — and parents working in the Gulf plainly had residence. So the Gulf birthplace stands.
+:::
+
+Other frequently overlooked birthplaces among NRI couples: **Nepal, Sri Lanka, Bangladesh, Pakistan, Singapore, Malaysia, Kenya, Tanzania, Uganda, Nigeria, Zambia, Mauritius, Fiji, Trinidad and Tobago, Guyana, and the United Kingdom.** Every one of these is in the "All Other Countries" column for employment categories.
+
+## What It Changes — and What It Does Not
+
+:::compare
+left: It does NOT change
+right: It DOES change
+✗ Your priority date — that stays exactly as it was
+✗ Your category — EB-2 stays EB-2, EB-3 stays EB-3
+✗ Your underlying PERM or I-140
+✗ USCIS processing times once a number is available
+✓ Which visa bulletin column governs your case
+✓ How soon a visa number becomes available to you
+✓ When you can file I-485 — and when it can be approved
+✓ Whether your children age out under CSPA before the queue reaches you
+:::
+
+A worked illustration of the size of the effect: an India-born EB-2 applicant with a 2015 priority date reads the India EB-2 row, which has spent recent years in the early-to-mid 2010s and was marked Unavailable for the back half of FY 2026. The same person, cross-charged to a spouse's non-India birthplace, reads the "All Other Countries" EB-2 row instead — a row that has frequently been Current or close to it. The priority date never moved. The column did.
+
+## How to Request It
+
+Cross-chargeability is **never applied automatically.** USCIS and the Department of State do not scan your file for a foreign-born spouse and volunteer the benefit. It has to be raised.
+
+**Adjustment of status (inside the U.S.):**
+
+:::steps
+1. Tell your attorney early — before the I-485 package is assembled, not after.
+2. File both I-485s **concurrently** (yours as principal, your spouse's as derivative). The derivative filing is what evidences the accompanying relationship.
+3. Include a cover letter that expressly requests cross-chargeability, cites **INA §202(b)(2)**, and identifies the spouse's country of birth.
+4. Attach the **marriage certificate** and the spouse's **birth certificate and passport biographic page** showing the foreign birthplace.
+5. If the priority date is current only under the cross-charged column, say so explicitly in the cover letter so the officer reviewing visa availability applies the right row.
+:::
+
+**Consular processing (outside the U.S.):** raise it with the National Visa Center. Both DS-260 applications capture place of birth; the NVC and consular officer apply chargeability when allocating the visa number. Your attorney should flag the request in correspondence rather than assuming it will be spotted.
+
+:::warn
+Timing matters. If your I-485 was already filed without the request, cross-chargeability can often still be raised while the case is pending — but the visa-availability determination may already have been made against the India column. Raise it as early as possible, and never let a filing window close on the assumption that it can be sorted out later.
+:::
+
+## What Breaks It
+
+The benefit is contingent on the marriage and on the spouse actually immigrating. It can be lost:
+
+- **Divorce before the green card is approved.** The derivative relationship ends, and with it the basis for cross-chargeability.
+- **Death of the spouse** before approval (INA §204(l) may preserve some benefits in limited circumstances — a question for counsel, not an assumption).
+- **The spouse withdraws or does not pursue adjustment.** No accompanying immigrant, no separation to prevent.
+- **The marriage is found not to be bona fide.** This carries consequences far beyond chargeability.
+
+Once **both** of you are approved for permanent residence, the benefit has done its work and there is nothing left to lose.
+
+## When Cross-Chargeability Does Nothing
+
+Being straightforward about this saves people from false hope:
+
+- **Both spouses born in India.** No alternative chargeability exists.
+- **You are unmarried.** The spouse rule requires a spouse.
+- **Your spouse is a U.S. citizen or LPR.** They cannot be your derivative.
+- **Your spouse was born in China, Mexico, or the Philippines.** These have their own columns; whether the switch helps depends on the month and category, and for EB-2 the China column has often been backlogged too. Compare both rows before assuming a gain.
+- **Your category is already Current for India.** Nothing to gain.
+
+## How This Fits the Rest of Your Case
+
+Cross-chargeability sits alongside — not instead of — the other levers available to backlogged India-born applicants. It does not replace getting the [I-140 approved early](/green-card/i-140-approved-what-next) for H-1B extensions and priority-date retention, and it does not interact with an [EB-2 to EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) or [EB-3 to EB-2 interfiling](/visa-bulletin/eb3-to-eb2-interfiling), both of which change your category rather than your column. Where it does interact powerfully is with children: a family that cross-charges out of the India queue may resolve a [CSPA aging-out risk](/green-card/cspa-kids-aging-out) that would otherwise have been unavoidable.
+
+Check where your date stands under both columns with the [Priority Date Checker](/tools/priority-date-checker), and read the live [EB-2 India](/visa-bulletin/eb2-india) and [EB-3 India](/visa-bulletin/eb3-india) pages for the current cutoffs. For what a priority date is and how it is set, start with the [priority date guide](/visa-bulletin/priority-date).
+
+## Frequently asked questions
+
+### What is cross-chargeability?
+Cross-chargeability is a rule in INA §202(b) that lets an immigrant be counted against a country other than their country of birth. The most useful version for India-born applicants is §202(b)(2), which allows a person to be charged to their spouse's country of birth when it is necessary to prevent the separation of husband and wife. In practice it moves an India-born applicant from the India column of the visa bulletin to the "All Chargeability Areas Except Those Listed" column.
+
+### Can I use my spouse's country of birth for my green card?
+Yes, if your spouse was born outside India, you are legally married, and your spouse is immigrating with you as a derivative on the same petition. All three conditions must hold. If your spouse is already a U.S. citizen or green card holder, they cannot be a derivative and cross-chargeability is not available on an employment-based case.
+
+### Does cross-chargeability change my priority date?
+No. Your priority date is fixed by the date your PERM was filed, or your I-140 for EB-1 and EB-2 NIW, and cross-chargeability does not alter it. What changes is the visa bulletin column your priority date is compared against. The same date can be years away in the India row and current in the All Other Countries row.
+
+### My spouse was born in Dubai to Indian parents. Does that count?
+Generally yes. Chargeability follows place of birth, so a person born in the UAE is normally chargeable to the UAE regardless of their parents' nationality or their own Indian passport. The exception in INA §202(b)(4) redirects chargeability to a parent's country only when neither parent was born in that country and neither had residence there at the time of birth — and Indian parents living and working in Dubai plainly had residence. Confirm the specific facts with your attorney, since residence at the time of birth is the operative question.
+
+### How do I request cross-chargeability?
+It is not automatic and must be affirmatively requested. For adjustment of status, file your I-485 and your spouse's I-485 concurrently and include a cover letter citing INA §202(b)(2), identifying your spouse's country of birth, and attaching the marriage certificate plus the spouse's birth certificate and passport biographic page. For consular processing, raise it with the National Visa Center and ensure both DS-260 applications are filed.
+
+### What happens to cross-chargeability if we divorce?
+If the divorce is final before permanent residence is approved, the derivative relationship ends and the basis for cross-chargeability disappears — you revert to the India column. Once both spouses have been approved for permanent residence, a later divorce does not undo the green cards already granted.
+
+### Does my spouse need to be in the United States to use cross-chargeability?
+No. What matters is that your spouse is accompanying you or following to join as a derivative immigrant. A spouse abroad can follow to join through consular processing. What defeats the claim is a spouse who is not immigrating at all — including a spouse who already holds U.S. citizenship or permanent residence.
+
+### Can my children use cross-chargeability?
+Derivative children are charged along with the principal, so if the principal is cross-charged to the spouse's country, the children follow. INA §202(b)(1) separately allows a child to be charged to either parent's country to prevent separation. For an India-born parent, that provision usually points back to India and adds nothing — the spouse rule is what creates the benefit.
+
+### Is cross-chargeability legal, or is it a loophole?
+It is written into the statute at INA §202(b) and has been part of U.S. immigration law for decades. It is applied routinely by USCIS and consular officers when properly requested and documented. It is not an aggressive position, and raising it does not put your case at risk. The only real risk is failing to raise it at all.
+`,
+  },
+
+  /* ── 11. Monthly update ───────────────────────────────────────────────────── */
   {
     slug: "monthly-update",
     kind: "update",

@@ -23,6 +23,8 @@ import {
   goldLimitRows,
   goldFormRows,
   goldDutyRateRows,
+  allowanceContrastRows,
+  customsDeclaration,
   goldCustomsSourceLinks,
   goldCustomsSources,
   GOLD_DISCLAIMER,
@@ -590,6 +592,117 @@ export default function Page() {
                   of this page. Two minutes of checking beats an airport dispute.
                 </p>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* ₹75,000 general allowance vs the gold allowance */}
+        <section className="py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                The ₹75,000 duty-free limit does not cover your gold
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                The Baggage Rules 2026 raised the <strong>general</strong> free allowance to{" "}
+                <strong>₹{cfg.generalFreeAllowanceInr.toLocaleString("en-IN")}</strong> for a resident,
+                a tourist of Indian origin, or a foreigner on a non-tourist visa arriving other than by
+                land — and to ₹{cfg.generalFreeAllowanceTouristInr.toLocaleString("en-IN")} for a
+                foreign tourist. That is the number behind the &ldquo;India raises duty-free
+                limit&rdquo; headlines, and it is the number most travellers assume covers the gold in
+                their bag. It does not. Annexure-I item 5 pulls gold and silver in any form other than
+                ornaments out of the free-allowance scheme entirely, so the general allowance and the
+                Rule 6 jewellery allowance are two separate schemes that cannot be stacked.
+              </p>
+
+              <div className="mt-5 space-y-3 sm:hidden">
+                {allowanceContrastRows.map((r) => (
+                  <div key={r.question} className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">{r.question}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                      <span className="font-semibold text-ink-800">General (₹75,000):</span> {r.general}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink-600">
+                      <span className="font-semibold text-amber-700">Gold (Rule 6):</span> {r.gold}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 hidden overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card sm:block">
+                <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                      <th className="p-3 font-semibold"> </th>
+                      <th className="p-3 font-semibold">General allowance (Rule 3)</th>
+                      <th className="p-3 font-semibold">Gold allowance (Rule 6)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink-900/5 bg-white">
+                    {allowanceContrastRows.map((r) => (
+                      <tr key={r.question} className="align-top">
+                        <td className="p-3 font-semibold text-ink-900">{r.question}</td>
+                        <td className="p-3 text-ink-600">{r.general}</td>
+                        <td className="p-3 text-ink-600">{r.gold}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {!cfg.generalAllowanceVerifiedVerbatim && (
+                <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                  The ₹{cfg.generalFreeAllowanceInr.toLocaleString("en-IN")} and ₹
+                  {cfg.generalFreeAllowanceTouristInr.toLocaleString("en-IN")} figures come from the
+                  Government of India press release for Notification No. 14/2026-Customs (N.T.) and
+                  reports quoting the rule text. They have not been read back from the gazette PDF
+                  directly — confirm on the official links at the end of this page before relying on
+                  them. The gold figures above this section were verified against the gazette text.
+                </p>
+              )}
+            </div>
+          </Container>
+        </section>
+
+        {/* Declaring at the airport — ATITHI + channels */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                How to declare: the {customsDeclaration.appName} app, Red and Green channels
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">{customsDeclaration.intro}</p>
+
+              <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                <h3 className="text-sm font-bold text-ink-900">What you must declare</h3>
+                <ul className="mt-2.5 space-y-1.5">
+                  {customsDeclaration.whenYouMustDeclare.map((d) => (
+                    <li key={d} className="flex items-start gap-2 text-sm leading-relaxed text-ink-600">
+                      <span className="mt-0.5 text-amber-600">•</span>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {customsDeclaration.channels.map((c) => (
+                  <div
+                    key={c.label}
+                    className={`rounded-2xl border p-5 ${
+                      c.label.startsWith("Red")
+                        ? "border-rose-200 bg-rose-50/50"
+                        : "border-emerald-200 bg-emerald-50/50"
+                    }`}
+                  >
+                    <p className="text-sm font-bold text-ink-900">{c.label}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-600">{c.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-4 text-sm leading-relaxed text-ink-600">
+                {customsDeclaration.practicalNote}
+              </p>
             </div>
           </Container>
         </section>

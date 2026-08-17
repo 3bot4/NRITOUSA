@@ -13,6 +13,13 @@ import {
   TAX_COMPLIANCE_VERIFIED,
   TAX_COMPLIANCE_DISCLAIMER,
 } from "@/data/siteWideVerifiedNumbers";
+import {
+  taxCalendar,
+  yearOffsetExplainer,
+  foreignTaxCreditTiming,
+  TAX_CALENDAR_DISCLAIMER,
+  NRI_TAX_CALENDAR_VERIFIED_HUMAN,
+} from "@/data/nriTaxCalendarData";
 import RelatedHubs from "@/components/RelatedHubs";
 import Newsletter from "@/components/Newsletter";
 import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
@@ -96,6 +103,26 @@ const hubFaqs = [
     question: "How does the DTAA prevent double taxation for NRIs?",
     answer:
       "The India-US treaty assigns taxing rights and allows a foreign tax credit, so tax paid in one country generally offsets liability on the same income in the other. In practice most US-resident NRIs claim a US foreign tax credit for Indian tax already deducted, which requires keeping TDS certificates and Indian return documentation.",
+  },
+  {
+    question: "What are the India and US tax deadlines for NRIs?",
+    answer:
+      "On the India side, the statutory ITR due date is July 31 for individuals not subject to audit, with belated and revised returns allowed until December 31, and advance tax instalments on June 15, September 15, December 15 and March 15. On the US side, Form 1040 and FBAR are due April 15, filers living abroad get an automatic extension to June 15, and the extended deadline for both the return and FBAR is October 15. CBDT extends Indian deadlines in most years, so confirm the operative date before you rely on it.",
+  },
+  {
+    question: "Why don't the Indian and US tax years line up?",
+    answer:
+      "India's financial year runs April 1 to March 31 while the US tax year runs January 1 to December 31, so the two are three months out of step. Indian income earned between January and March falls in one Indian financial year but a different US tax year. This offset is the most common source of foreign tax credit errors, because you are matching income and tax across two different calendars.",
+  },
+  {
+    question: "When must Form 67 be filed to claim a foreign tax credit in India?",
+    answer:
+      "Form 67 must be furnished on or before the end of the relevant assessment year. Rule 128 was relaxed in 2022 so it no longer has to be filed by the ITR due date, but it still has to be filed — the credit is not automatic and will not be inferred from your return. On the US side, the equivalent claim is made on Form 1116 filed with your Form 1040.",
+  },
+  {
+    question: "Should NRIs file a US tax extension to October 15?",
+    answer:
+      "It is common practice rather than a sign of trouble. Because the Indian financial year ends March 31, the Indian tax position on income falling in your US tax year is often not final by April 15. Extending to October 15 lets you claim the foreign tax credit on Form 1116 based on tax actually borne rather than on TDS that might later be refunded. Note that an extension to file is not an extension to pay — interest runs on unpaid tax from April 15.",
   },
 ];
 
@@ -355,6 +382,122 @@ export default function IndiaTaxCompliancePage() {
             ctaText="Browse all tax topics"
             ctaHref="#command-center"
           />
+        </Container>
+      </section>
+
+      {/* Dual tax calendar — India FY vs US tax year */}
+      <section id="tax-calendar" className="scroll-mt-24 bg-white pt-10 sm:pt-12">
+        <Container>
+          <div className="mx-auto max-w-[860px]">
+            <SectionHeading
+              eyebrow="Annual calendar"
+              title="Your NRI tax year, both sides"
+            />
+
+            {/* The offset — the actual insight */}
+            <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+              <p className="text-sm font-bold text-ink-900">{yearOffsetExplainer.headline}</p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">{yearOffsetExplainer.body}</p>
+              <p className="mt-2.5 rounded-xl bg-white/70 p-3.5 text-xs leading-relaxed text-ink-600">
+                <strong className="text-ink-900">Worked example: </strong>
+                {yearOffsetExplainer.example}
+              </p>
+            </div>
+
+            {/* Legend */}
+            <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-ink-500">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-orange-500" aria-hidden />
+                India — financial year 1 Apr to 31 Mar
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-blue-600" aria-hidden />
+                USA — tax year 1 Jan to 31 Dec
+              </span>
+            </div>
+
+            {/* Calendar */}
+            <ol className="mt-4 space-y-2.5">
+              {taxCalendar.map((e, i) => (
+                <li
+                  key={`${e.date}-${e.system}-${i}`}
+                  className={`flex flex-col gap-2 rounded-2xl border p-4 shadow-card sm:flex-row sm:gap-4 ${
+                    e.critical
+                      ? "border-ink-900/15 bg-white"
+                      : "border-ink-900/10 bg-white/60"
+                  }`}
+                >
+                  <div className="flex flex-none items-center gap-2 sm:w-40 sm:flex-col sm:items-start sm:gap-1">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ${
+                        e.system === "india"
+                          ? "bg-orange-100 text-orange-800"
+                          : "bg-blue-100 text-blue-800"
+                      }`}
+                    >
+                      {e.system === "india" ? "🇮🇳 India" : "🇺🇸 USA"}
+                    </span>
+                    <span className="text-sm font-extrabold text-ink-900">{e.date}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-ink-900">
+                      {e.title}
+                      {e.critical && (
+                        <span className="ml-2 rounded bg-rose-100 px-1.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-rose-700">
+                          Don&apos;t miss
+                        </span>
+                      )}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink-600">{e.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            {/* Foreign tax credit timing */}
+            <h3 className="mt-8 text-lg font-bold tracking-tight text-ink-900">
+              Claiming the DTAA credit: Form 67 and Form 1116
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-700">
+              {foreignTaxCreditTiming.intro}
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {foreignTaxCreditTiming.forms.map((f) => (
+                <div
+                  key={f.form}
+                  className={`rounded-2xl border p-5 shadow-card ${
+                    f.system === "India"
+                      ? "border-orange-200 bg-orange-50/40"
+                      : "border-blue-200 bg-blue-50/40"
+                  }`}
+                >
+                  <p className="text-xs font-bold uppercase tracking-wide text-ink-500">
+                    {f.system} side
+                  </p>
+                  <p className="mt-0.5 text-base font-extrabold text-ink-900">{f.form}</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-ink-600">{f.purpose}</p>
+                  <p className="mt-2.5 text-xs leading-relaxed text-ink-700">
+                    <strong className="text-ink-900">Filing rule: </strong>
+                    {f.rule}
+                  </p>
+                  <p className="mt-2 rounded-lg bg-white/70 p-2.5 text-xs leading-relaxed text-ink-700">
+                    <strong className="text-rose-700">Common trap: </strong>
+                    {f.trap}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-ink-700">
+              {foreignTaxCreditTiming.practicalNote}
+            </p>
+
+            <p className="mt-5 rounded-xl border border-ink-900/10 bg-ink-50/60 p-4 text-xs leading-relaxed text-ink-600">
+              <strong className="text-ink-800">
+                Compiled {NRI_TAX_CALENDAR_VERIFIED_HUMAN}.{" "}
+              </strong>
+              {TAX_CALENDAR_DISCLAIMER}
+            </p>
+          </div>
         </Container>
       </section>
 

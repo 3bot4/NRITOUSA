@@ -8,6 +8,14 @@ import {
   isBulletinFresh,
   type CutoffValue,
 } from "@/lib/visaBulletinDates";
+import {
+  estimateWait,
+  formatCutoff,
+  formatMonths,
+  type BulletinCountry,
+  type EbCategory as LibEbCategory,
+  type WaitEstimate,
+} from "@/lib/visa-bulletin";
 
 /* ─────────────────────── types ─────────────────────────────────────────── */
 
@@ -309,6 +317,170 @@ function assess(
   };
 }
 
+/* ─────────────────────── movement projection ───────────────────────────── */
+
+/** Tool category/country selections → the shape lib/visa-bulletin expects. */
+const LIB_CATEGORY: Record<Exclude<EbCategory, "">, LibEbCategory> = {
+  EB1: "eb1",
+  EB2: "eb2",
+  EB3: "eb3",
+};
+
+/** Trailing window used by estimateWait() for the pace figure, in months. */
+const TRAILING_WINDOW_MONTHS = 30;
+
+/**
+ * Distance + pace panel. Every number here comes from estimateWait() in
+ * lib/visa-bulletin, which reads the change-point series in
+ * data/visa-bulletin/history.json — so this updates itself with the monthly
+ * data drop and never carries a hand-written projection.
+ *
+ * Deliberately NOT a prediction: we show the measured trailing pace and the
+ * arithmetic that follows from it, labelled as such. DOS does not forecast
+ * cutoff movement and neither do we.
+ */
+function MovementProjection({
+  estimate,
+  priorityDateLabel,
+}: {
+  estimate: WaitEstimate;
+  priorityDateLabel: string;
+}) {
+  const {
+    status,
+    fad,
+    monthsBehind,
+    velocityPerMonth,
+    optimisticMonths,
+    pessimisticMonths,
+    capped,
+  } = estimate;
+
+  // Nothing meaningful to show when the date already cleared the cutoff — the
+  // main result card above already says so.
+  if (status === "current") return null;
+
+  const perYear = velocityPerMonth !== null ? velocityPerMonth * 12 : null;
+
+  return (
+    <div className="rounded-2xl border border-indigo-100 bg-indigo-50/40 p-5">
+      <p className="mb-3 text-xs font-bold uppercase tracking-wide text-indigo-700">
+        How far your date is — and how fast the cutoff has moved
+      </p>
+
+      {status === "unavailable" ? (
+        <p className="text-sm leading-relaxed text-ink-800">
+          This category is marked <strong>Unavailable (U)</strong> this month, so there is no cutoff
+          to measure a distance against. No case in this category can receive final approval until
+          visa numbers return — typically on <strong>October 1</strong>, when the new fiscal year
+          resets the annual limits.
+        </p>
+      ) : (
+        <>
+          {/* distance ruler: front of the queue → your date */}
+          <div className="rounded-xl border border-ink-900/5 bg-white p-4">
+            <div className="flex items-end justify-between gap-3 text-xs">
+              <div className="min-w-0">
+                <p className="font-semibold text-ink-400">Final Action Date</p>
+                <p className="mt-0.5 truncate font-bold text-ink-900">{formatCutoff(fad)}</p>
+              </div>
+              <div className="flex-none text-center">
+                <p className="font-bold text-indigo-700">{formatMonths(monthsBehind)}</p>
+                <p className="text-[0.7rem] text-ink-400">behind</p>
+              </div>
+              <div className="min-w-0 text-right">
+                <p className="font-semibold text-ink-400">Your date</p>
+                <p className="mt-0.5 truncate font-bold text-ink-900">{priorityDateLabel}</p>
+              </div>
+            </div>
+            <div className="mt-2.5 flex items-center gap-1.5" aria-hidden>
+              <span className="h-2.5 w-2.5 flex-none rounded-full bg-emerald-500" />
+              <span className="h-1 flex-1 rounded-full bg-gradient-to-r from-emerald-400 via-indigo-300 to-amber-400" />
+              <span className="h-2.5 w-2.5 flex-none rounded-full bg-amber-500" />
+            </div>
+            <p className="sr-only">
+              Your priority date is {formatMonths(monthsBehind)} behind the current Final Action Date.
+            </p>
+          </div>
+
+          {/* measured pace */}
+          {perYear !== null && (
+            <p className="mt-3 text-sm leading-relaxed text-ink-800">
+              Over the last <strong>{TRAILING_WINDOW_MONTHS} months</strong>, this cutoff moved{" "}
+              {perYear > 0 ? (
+                <>
+                  forward about <strong>{perYear.toFixed(1)} months per calendar year</strong>.
+                </>
+              ) : perYear < 0 ? (
+                <>
+                  <strong>backward</strong> — roughly {Math.abs(perYear).toFixed(1)} months per
+                  calendar year.
+                </>
+              ) : (
+                <>
+                  <strong>essentially not at all</strong>.
+                </>
+              )}
+            </p>
+          )}
+
+          {status === "estimate" && optimisticMonths !== null && pessimisticMonths !== null && (
+            <div className="mt-3 rounded-xl border border-indigo-200 bg-white p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-500">
+                Arithmetic at that pace
+              </p>
+              <p className="mt-1.5 text-lg font-extrabold text-indigo-800">
+                {capped
+                  ? `${Math.round(optimisticMonths / 12)}+ years`
+                  : `${formatMonths(optimisticMonths)} – ${formatMonths(pessimisticMonths)}`}
+              </p>
+              <p className="mt-1.5 text-xs leading-relaxed text-ink-500">
+                {capped
+                  ? "The slower end of the range runs past this tool's 25-year display cap. That is a signal about the size of the backlog, not a schedule."
+                  : "Range assumes future movement between 0.75× and 1.5× the trailing average."}
+              </p>
+            </div>
+          )}
+
+          {status === "retrogressing" && (
+            <div className="mt-3 rounded-xl border border-rose-200 bg-rose-50/60 p-4 text-sm leading-relaxed text-rose-900">
+              <strong className="font-bold">This cutoff has moved backwards recently.</strong> No
+              projection is shown, because dividing a distance by a negative pace produces a number
+              with no real-world meaning. Retrogression can reverse again — see{" "}
+              <Link href="/visa-bulletin/retrogression" className="underline font-semibold">
+                how retrogression works
+              </Link>
+              .
+            </div>
+          )}
+
+          {status === "stalled" && (
+            <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-sm leading-relaxed text-amber-900">
+              <strong className="font-bold">This cutoff is barely moving.</strong> At the measured
+              pace, any projection would be dominated by rounding error rather than by real
+              movement, so none is shown.
+            </div>
+          )}
+
+          {status === "no-data" && (
+            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+              There is not enough recorded movement history for this category and country to measure
+              a pace.
+            </p>
+          )}
+        </>
+      )}
+
+      <p className="mt-3 border-t border-indigo-200/60 pt-3 text-xs leading-relaxed text-ink-500">
+        <strong className="font-semibold text-ink-700">This is arithmetic, not a forecast.</strong>{" "}
+        It extrapolates the movement already recorded in past bulletins. The State Department does
+        not predict cutoff movement, and real dates are driven by demand, per-country limits, and
+        spillover that can change without warning — in either direction.
+      </p>
+    </div>
+  );
+}
+
 /* ─────────────────────── result color configs ───────────────────────────── */
 
 const RESULT_CONFIGS: Record<ComparisonResult, { bg: string; border: string; badge: string; label: string }> = {
@@ -351,6 +523,22 @@ export default function PriorityDateChecker() {
     : null;
 
   const cfg = result ? RESULT_CONFIGS[result.comparison] : null;
+
+  // Distance + trailing-pace projection, computed from the recorded bulletin
+  // history rather than the single current month the comparison above uses.
+  const hasPriorityDate = priorityMonth > 0 && priorityYear > 0;
+  const libCountry: BulletinCountry = country === "india" ? "india" : "row";
+  const estimate =
+    submitted && category && hasPriorityDate
+      ? estimateWait(
+          `${priorityYear}-${String(priorityMonth).padStart(2, "0")}-01`,
+          LIB_CATEGORY[category],
+          libCountry
+        )
+      : null;
+  const priorityDateLabel = hasPriorityDate
+    ? `${MONTHS[priorityMonth - 1].slice(0, 3)} ${priorityYear}`
+    : "";
 
   return (
     <div className="rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/50 to-white p-6 shadow-sm sm:p-8">
@@ -497,6 +685,11 @@ export default function PriorityDateChecker() {
               <p className="mt-3 text-xs text-ink-500 border-t border-ink-900/5 pt-3">{result.chartGuide}</p>
             )}
           </div>
+
+          {/* distance + measured pace, from the recorded bulletin history */}
+          {estimate && (
+            <MovementProjection estimate={estimate} priorityDateLabel={priorityDateLabel} />
+          )}
 
           {/* Dates for Filing note */}
           {bulletin.usingDatesForFiling && bulletin.datesForFiling && (

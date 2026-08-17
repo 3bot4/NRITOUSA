@@ -33,6 +33,16 @@
  *    below as an ILLUSTRATIVE assumption (commonly cited around 36%) and the
  *    page says so. Never present it as a verified rate.
  *
+ *  - General free allowance (Rule 3) added 2026-08-17: ₹75,000 for a resident,
+ *    tourist of Indian origin, or foreigner on a non-tourist visa arriving
+ *    other than by land; ₹25,000 for a foreign tourist. Sourced from the PIB
+ *    release for Notification No. 14/2026-Customs (N.T.) plus secondary
+ *    reports quoting the rule verbatim — NOT read from the gazette here (the
+ *    PDF 403s automated fetches). Flagged via
+ *    goldDutyConfig.generalAllowanceVerifiedVerbatim = false. This allowance
+ *    does NOT cover bullion — Annexure-I item 5 excludes gold/silver other
+ *    than ornaments — so never combine it with the Rule 6 gold figures.
+ *
  * Re-checked 2026-08-09 — no change to the figures below.
  *  - The May-2026 "gold import duty raised 6% → 15%" headlines concern the
  *    COMMERCIAL import tariff, not the passenger-baggage concession under
@@ -99,6 +109,23 @@ export const goldDutyConfig = {
      duty on CBIC-notified tariff values and notified exchange rates — this
      approximation is clearly labelled as such in the UI. */
   approxInrPerUsd: 88,
+
+  /* GENERAL free allowance — Rule 3, Baggage Rules 2026 (same notification as
+     the Rule 6 jewellery allowance above: No. 14/2026-Customs (N.T.)).
+     This is a SEPARATE allowance covering ordinary articles, and it is the
+     single biggest source of confusion on this page: it does NOT cover gold
+     bars or coins, because gold/silver other than ornaments is excluded by
+     Annexure-I item 5. Never let the UI imply ₹75,000 of bullion is free.
+
+     Provenance: the gazette PDF at indiabudget.gov.in returns 403 to
+     automated fetches from this environment, so the figures below are taken
+     from the PIB press release announcing the rules plus multiple secondary
+     reports quoting the rule text verbatim ("up to the value of seventy-five
+     thousand rupees"). Re-read the gazette by hand before treating these as
+     verbatim-verified to the same standard as the Rule 6 figures above. */
+  generalFreeAllowanceInr: 75_000,
+  generalFreeAllowanceTouristInr: 25_000,
+  generalAllowanceVerifiedVerbatim: false,
 } as const;
 
 export const GOLD_DISCLAIMER =
@@ -139,6 +166,74 @@ export const goldLimitRows: GoldLimitRow[] = [
     notes: "Rule 6 covers jewellery only. Gold or silver in any form other than ornaments is excluded (Annexure-I).",
   },
 ];
+
+/* ────────── General free allowance vs the gold allowance (Rule 3 vs Rule 6) ────────
+ *
+ * These are two different allowances under the SAME notification, and readers
+ * routinely collapse them into one. The ₹75,000 general allowance is what the
+ * "India raises duty-free limit" headlines refer to; it has nothing to do with
+ * bullion, because Annexure-I item 5 pulls gold/silver other than ornaments out
+ * of the free-allowance scheme entirely.
+ */
+
+export interface AllowanceContrastRow {
+  question: string;
+  general: string;
+  gold: string;
+}
+
+export const allowanceContrastRows: AllowanceContrastRow[] = [
+  {
+    question: "What does it cover?",
+    general: "Ordinary articles in bona fide baggage — gifts, electronics, clothing",
+    gold: "Qualifying jewellery only (Rule 6), and only for an eligible passenger",
+  },
+  {
+    question: "How is it measured?",
+    general: "By value — ₹75,000 (₹25,000 for a foreign tourist)",
+    gold: "By weight — 40 g / 20 g, with no rupee cap since Feb 2026",
+  },
+  {
+    question: "Does it cover gold bars or coins?",
+    general: "No — Annexure-I item 5 excludes gold/silver other than ornaments",
+    gold: "No — Rule 6 is a jewellery allowance, not a bullion allowance",
+  },
+  {
+    question: "Can the two be added together?",
+    general: "No. They are separate schemes with separate tests",
+    gold: "No. And neither can be pooled with another passenger (Rule 5)",
+  },
+];
+
+/* ───────────────────── Declaring at the airport (ATITHI) ───────────────────── */
+
+export const customsDeclaration = {
+  appName: "ATITHI",
+  appUrl: "https://atithi.cbic.gov.in/",
+  intro:
+    "ATITHI is CBIC's official declaration app for international passengers arriving in India. It lets you declare dutiable goods and currency before you board, instead of filling a paper form after landing — and CBIC has been moving the process toward fully paperless declaration.",
+
+  whenYouMustDeclare: [
+    "Any gold in a form other than jewellery — bars, coins, biscuits, bullion — regardless of quantity",
+    "Jewellery beyond your Rule 6 allowance, or any jewellery if you do not qualify for the allowance",
+    "Goods beyond the general free allowance",
+    "Currency above the declaration thresholds set by CBIC and the RBI",
+  ],
+
+  channels: [
+    {
+      label: "Green Channel",
+      body: "For passengers with nothing to declare. Walking through the Green Channel while carrying dutiable goods is treated as misdeclaration, not an oversight — the consequences are materially worse than paying the duty would have been.",
+    },
+    {
+      label: "Red Channel",
+      body: "For passengers carrying dutiable or restricted goods. This is where gold beyond your allowance gets assessed and duty is paid. Declaring here is the low-risk path.",
+    },
+  ],
+
+  practicalNote:
+    "Filing in the app ahead of time does not change what you owe — it changes how long you stand at the counter, and it makes clear that the declaration was voluntary. Carry purchase invoices where you have them, but remember that customs assesses duty on CBIC-notified tariff values rather than on what you paid.",
+} as const;
 
 /* ─────────────── Jewellery vs bullion comparison table ─────────────────── */
 
@@ -248,5 +343,25 @@ export const goldFaqs: FaqItem[] = [
     question: "Can I carry old or personally owned jewellery to India?",
     answer:
       "Yes — the jewellery allowance does not distinguish old from new, and genuinely personal jewellery within 40 g / 20 g clears duty-free for an eligible passenger. For jewellery you originally took out of India, a different route helps: articles declared at departure can re-enter free of duty under Rule 4 of the Baggage Rules 2026, so obtain an export certificate from customs before leaving India. Carry receipts or an appraisal for anything substantial either way.",
+  },
+  {
+    question: "Does the ₹75,000 duty-free allowance cover gold?",
+    answer:
+      "No. The ₹75,000 general free allowance under the Baggage Rules 2026 covers ordinary articles in your bona fide baggage — gifts, electronics, clothing. Annexure-I item 5 excludes gold and silver in any form other than ornaments from the free-allowance scheme, so bars, coins, and biscuits get no rupee-value exemption at all. Jewellery is handled separately under Rule 6 as a weight allowance of 40 g for a female passenger and 20 g for another eligible passenger. The two allowances are separate schemes and cannot be added together.",
+  },
+  {
+    question: "What is the general duty-free allowance for India in 2026?",
+    answer:
+      "Under the Baggage Rules 2026, the general free allowance is ₹75,000 for a resident, a tourist of Indian origin, or a foreigner holding a valid non-tourist visa, arriving in India other than by land — up from ₹50,000 under the 2016 rules. A foreign tourist gets ₹25,000. This applies to ordinary articles and not to anything listed in Annexure-I, which is why it does not help with gold bullion. Confirm current figures with CBIC before you travel.",
+  },
+  {
+    question: "What is the ATITHI app and do I have to use it?",
+    answer:
+      "ATITHI is the Central Board of Indirect Taxes and Customs (CBIC) app for international passengers arriving in India, letting you file your customs declaration for dutiable goods and currency before you board rather than on a paper form after landing. CBIC has been moving the declaration process toward fully paperless. Using it does not change how much duty you owe — it shortens the process at the counter and makes clear the declaration was voluntary.",
+  },
+  {
+    question: "What happens if I walk through the Green Channel with undeclared gold?",
+    answer:
+      "Choosing the Green Channel is itself a declaration that you have nothing dutiable to declare, so carrying undeclared gold through it is treated as misdeclaration rather than a simple oversight. The consequences are materially worse than the duty would have been. If you are carrying gold beyond your allowance, or gold in any form other than jewellery, use the Red Channel and declare it.",
   },
 ];
