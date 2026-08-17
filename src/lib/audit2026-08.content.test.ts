@@ -32,12 +32,17 @@ import {
 import {
   surrenderCertificate,
   emergencyVisa,
+  touristStayLimits,
   hubFaqs as indiaVisaFaqs,
 } from "@/data/indiaVisaData";
 import {
   taxCalendar,
+  fyAyMapping,
   foreignTaxCreditTiming,
   yearOffsetExplainer,
+  residencyTests,
+  nreVsNroRows,
+  NRE_NRO_TRAP,
 } from "@/data/nriTaxCalendarData";
 
 const read = (p: string) => fs.readFileSync(path.join(process.cwd(), p), "utf8");
@@ -61,7 +66,26 @@ describe("cross-chargeability page", () => {
     // The spouse rule is §202(b)(2). Getting this wrong sends readers to the
     // wrong provision in a conversation with their attorney.
     expect(page!.content).toMatch(/§202\(b\)\(2\)/);
-    expect(page!.content).toMatch(/8 U\.S\.C\. §1152\(b\)\(2\)/);
+    expect(page!.content).toMatch(/8 U\.S\.C\. §1152\(b\)/);
+    // YMYL: the statute must be a resolvable citation, not a bare mention.
+    expect(page!.content).toContain(
+      "https://www.law.cornell.edu/uscode/text/8/1152"
+    );
+  });
+
+  it("states the derivative direction of the rule, not just spouse-to-principal", () => {
+    expect(page!.content).toMatch(
+      /derivative spouse or child can be charged to the principal/i
+    );
+  });
+
+  it("answers the H-4 spouse question", () => {
+    const faqs = extractFaq(page!.content);
+    const h4 = faqs.find((f) => /H-4/.test(f.question));
+    expect(h4).toBeTruthy();
+    expect(h4!.answer).toMatch(/[Yy]es/);
+    // H-4 is a nonimmigrant status; chargeability is about birth.
+    expect(h4!.answer).toMatch(/country of birth/i);
   });
 
   it("states chargeability follows country of BIRTH, not citizenship", () => {
@@ -349,6 +373,208 @@ describe("india tax compliance — dual calendar", () => {
   it("renders the calendar on the page", () => {
     expect(taxPage).toMatch(/taxCalendar/);
     expect(taxPage).toMatch(/id="tax-calendar"/);
+  });
+});
+
+/* ══════════ 2026-08 Gemini-audit remediation pass ══════════════════════ */
+
+const hubPage = read("src/app/visa-bulletin/page.tsx");
+
+describe("priority-date page — not every category uses the PERM date", () => {
+  const pd = getVisaBulletinChildPage("priority-date")!;
+
+  it("meta description no longer asserts the PERM-only version", () => {
+    // The body always qualified this; the meta did not.
+    expect(pd.metaDescription).not.toMatch(/is the day your PERM/i);
+    expect(pd.metaDescription!.length).toBeLessThanOrEqual(155);
+  });
+
+  it("covers all four filings that can set a priority date", () => {
+    for (const form of ["ETA-9089", "I-140", "I-526", "I-130"]) {
+      expect(pd.content).toContain(form);
+    }
+  });
+
+  it("names the I-797 Notice of Action as the authoritative record", () => {
+    expect(pd.content).toMatch(/I-797 Notice of Action/);
+    // And explicitly rules out the ETA-9089 Section O misconception.
+    expect(pd.content).toMatch(/Section O of the ETA-9089 is not/i);
+  });
+
+  it("states the 8 CFR 204.5(e) 180-day withdrawal protection", () => {
+    expect(pd.content).toContain("https://www.law.cornell.edu/cfr/text/8/204.5");
+    expect(pd.content).toMatch(/approved for 180 days or more/i);
+    expect(pd.content).toMatch(/fraud or willful misrepresentation/i);
+  });
+
+  it("states a priority date is not transferable to another person", () => {
+    expect(pd.content).toMatch(/cannot be transferred to another person/i);
+  });
+});
+
+describe("bulletin release timing — the 8th–10th claim is gone sitewide", () => {
+  // The site's own release schedule (data/homepage-config.json) lists days
+  // 12–21, so "8th–10th" was contradicted by our own data.
+  const files = [
+    "src/lib/visaBulletinCluster.ts",
+    "src/app/visa-bulletin/page.tsx",
+    "src/app/tools/priority-date-checker/page.tsx",
+    "src/lib/toolHubContent.ts",
+    "src/lib/visa-bulletin.ts",
+    "src/lib/visaBulletinDates.ts",
+  ];
+  it.each(files)("%s no longer claims the 8th–10th", (f) => {
+    expect(read(f)).not.toMatch(/8th[–-]10th/);
+  });
+});
+
+describe("visa bulletin hub", () => {
+  it("emits CollectionPage + ItemList alongside the existing graph", () => {
+    expect(hubPage).toMatch(/"@type": "CollectionPage"/);
+    expect(hubPage).toMatch(/"@type": "ItemList"/);
+    // Must not have dropped what was already there.
+    expect(hubPage).toMatch(/articleJsonLd/);
+    expect(hubPage).toMatch(/breadcrumbJsonLd/);
+    expect(hubPage).toMatch(/faqJsonLd/);
+  });
+
+  it("renders the current-month snapshot from the shared module, not hardcoded", () => {
+    expect(hubPage).toMatch(/getCutoffs\(/);
+    expect(hubPage).toMatch(/getBulletinLabel\(\)/);
+    expect(hubPage).toMatch(/getApplicableChart\(\)/);
+  });
+
+  it("states USCIS designates the chart — filers do not choose", () => {
+    expect(hubPage).toMatch(/do not choose between the two charts/i);
+    expect(hubPage).toContain(
+      "adjustment-of-status-filing-charts-from-the-visa-bulletin"
+    );
+  });
+
+  it("explains the Unavailable case when EB-2 India is U", () => {
+    expect(hubPage).toMatch(/October 1/);
+    expect(hubPage).toMatch(/Unavailable/);
+  });
+});
+
+describe("i485 — premium processing and field-office transfer", () => {
+  it("states premium processing is NOT available for I-485", () => {
+    expect(i485Page).toMatch(/premium processing is not available for Form I-485/i);
+    expect(i485Page).toContain(
+      "https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing"
+    );
+  });
+
+  it("explains the 80th-percentile basis of the published figure", () => {
+    expect(i485Page).toMatch(/80% of adjudicated cases/i);
+  });
+
+  it("tells employment filers to read the field office, not the NBC", () => {
+    expect(i485Page).toMatch(/National Benefits Center/);
+    expect(i485Page).toMatch(/local field office/i);
+  });
+
+  it("carries a visible provenance stamp on the planning ranges", () => {
+    expect(i485Page).toMatch(/planning estimates, last reviewed/i);
+    expect(i485Page).toMatch(/not USCIS-published figures/i);
+  });
+});
+
+describe("eb3-india — Other Workers framed as current state, not a rule", () => {
+  const eb3 = getVisaBulletinChildPage("eb3-india")!;
+
+  it("defines all three EB-3 sub-categories", () => {
+    expect(eb3.content).toMatch(/Skilled Worker/);
+    expect(eb3.content).toMatch(/Professional/);
+    expect(eb3.content).toMatch(/Other Worker/);
+    expect(eb3.content).toMatch(/less than 2 years/i);
+  });
+
+  it("says EW India currently matches EB-3 India rather than always trailing it", () => {
+    expect(eb3.content).toMatch(/identical Final Action Date/i);
+    // Must be framed as current, reversible state.
+    expect(eb3.content).toMatch(/current fact, not a permanent rule/i);
+  });
+
+  it("notes all EB-3 sub-categories require PERM (no self-petition)", () => {
+    expect(eb3.content).toMatch(/no self-petition route anywhere in EB-3/i);
+  });
+});
+
+describe("tax calendar — FY/AY labelling is unambiguous", () => {
+  it("every entry declares which tax year it applies to", () => {
+    for (const e of taxCalendar) {
+      expect(e.appliesTo, `${e.date} ${e.title}`).toBeTruthy();
+      expect(e.appliesTo.length).toBeGreaterThan(10);
+    }
+  });
+
+  it("appliesTo stays relational — no hardcoded years", () => {
+    for (const e of taxCalendar) {
+      expect(e.appliesTo).not.toMatch(/\b(19|20)\d{2}\b/);
+    }
+  });
+
+  it("maps FY to AY correctly — AY is always FY+1", () => {
+    for (const r of fyAyMapping) {
+      const fyStart = Number(r.financialYear.match(/(\d{4})/)![1]);
+      const ayStart = Number(r.assessmentYear.match(/(\d{4})/)![1]);
+      expect(ayStart).toBe(fyStart + 1);
+    }
+  });
+
+  it("puts the non-audit ITR due date in July of the assessment year", () => {
+    for (const r of fyAyMapping) {
+      const ayStart = Number(r.assessmentYear.match(/(\d{4})/)![1]);
+      expect(r.itrDueNonAudit).toBe(`31 July ${ayStart}`);
+      expect(r.belatedRevisedBy).toBe(`31 Dec ${ayStart}`);
+    }
+  });
+
+  it("renders the FY→AY table on the page", () => {
+    expect(taxPage).toMatch(/fyAyMapping/);
+    expect(taxPage).toMatch(/Assessment year/);
+  });
+});
+
+describe("tax page — residency tests and NRE/NRO", () => {
+  it("covers the 120-day / ₹15 lakh trigger, not just 182 days", () => {
+    const blob = JSON.stringify(residencyTests);
+    expect(blob).toMatch(/182/);
+    expect(blob).toMatch(/120/);
+    expect(blob).toMatch(/15 lakh/);
+    expect(blob).toMatch(/RNOR/);
+  });
+
+  it("states NRE interest is India-exempt but US-taxable", () => {
+    const interest = nreVsNroRows.find((r) => /India tax/.test(r.aspect))!;
+    expect(interest.nre).toMatch(/10\(4\)\(ii\)/);
+    const us = nreVsNroRows.find((r) => /US tax/.test(r.aspect))!;
+    expect(us.nre).toMatch(/taxable/i);
+    // The trap: exempt in India does NOT mean exempt in the US.
+    expect(NRE_NRO_TRAP).toMatch(/no foreign tax credit/i);
+  });
+});
+
+describe("india visa — 180-day cumulative stay cap", () => {
+  it("states the verified 180-day per-calendar-year cap", () => {
+    expect(touristStayLimits.cumulativeDaysPerCalendarYear).toBe(180);
+    expect(touristStayLimits.rule).toMatch(/one calendar year/i);
+    expect(touristStayLimits.source).toContain("cgisf.gov.in");
+  });
+
+  it("frames long validity as not equalling long stay", () => {
+    expect(touristStayLimits.whyItMatters).toMatch(/not.*permitted residence|not per-trip/i);
+  });
+
+  it("keeps the 10-year visa — the audit's removal claim was wrong", () => {
+    const qs = indiaVisaFaqs.map((f) => `${f.question} ${f.answer}`).join(" ");
+    expect(qs).toMatch(/10-year regular paper tourist visa/i);
+    expect(qs).toMatch(/inaccurate|still/i);
+  });
+
+  it("renders on the page", () => {
+    expect(indiaVisaPage).toMatch(/touristStayLimits/);
   });
 });
 

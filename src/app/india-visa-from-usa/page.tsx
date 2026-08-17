@@ -24,6 +24,7 @@ import {
   commonSearches,
   commonMistakes,
   eVisaDocuments,
+  touristStayLimits,
   surrenderCertificate,
   emergencyVisa,
   hubFaqs,
@@ -263,6 +264,49 @@ export default function Page() {
                 <h2 className="text-lg font-bold text-ink-900">India Visa vs OCI: Which Is Better for Indian-Origin U.S. Citizens?</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-600">If you're eligible and travel to India often, the <Link href="/oci" className="text-orange-700 underline">OCI card</Link> is usually more convenient long-term because it's a lifelong multiple-entry facility. A visa (often an eVisa) can be better for a single short trip or urgent travel, since OCI takes longer to obtain. See the full <Link href="/oci-vs-india-visa" className="text-orange-700 underline">OCI vs India visa comparison</Link>. Before any application, make sure your passport is current — see <Link href="/indian-passport-renewal-usa" className="text-orange-700 underline">Indian passport renewal in the USA</Link>.</p>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* 180-day cumulative stay cap — long validity ≠ long stay */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900">
+                A 10-year visa is not 10 years of stay: the 180-day rule
+              </h2>
+              <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50/60 p-5">
+                <p className="text-sm font-bold text-ink-900">
+                  {touristStayLimits.cumulativeDaysPerCalendarYear} days maximum per calendar year
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
+                  {touristStayLimits.rule}
+                </p>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                {touristStayLimits.whyItMatters}
+              </p>
+              <p className="mt-3 rounded-xl border border-ink-900/10 bg-white p-4 text-sm leading-relaxed text-ink-600">
+                <strong className="text-ink-900">Also worth knowing: </strong>
+                {touristStayLimits.landRouteNote}
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                Verified {touristStayLimits.lastVerifiedHuman} against the{" "}
+                <a
+                  href={touristStayLimits.source}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-semibold text-orange-700 underline"
+                >
+                  {touristStayLimits.sourceLabel}
+                </a>
+                . If you need to stay longer than this, a tourist visa is the wrong instrument —
+                Indian-origin travellers should look at{" "}
+                <Link href="/oci" className="font-semibold text-orange-700 underline">
+                  OCI
+                </Link>
+                , which carries no stay limit.
+              </p>
             </div>
           </Container>
         </section>

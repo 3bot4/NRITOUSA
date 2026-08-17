@@ -231,6 +231,33 @@ export const commonMistakes: { title: string; body: string }[] = [
   { title: "Photo or document format errors", body: "Photos and scans that don't meet spec are a frequent rejection reason. Budget ~$12 for a compliant photo and follow the size rules." },
 ];
 
+/* ─────────────── Tourist visa stay limits (US nationals) ─────────────────
+ *
+ * Verified 2026-08-17 against the Consulate General of India, San Francisco
+ * tourist visa page (https://www.cgisf.gov.in/page/tourist-visa/), which states
+ * verbatim: "Maximum stay by a foreigner in India on an e-Tourist visa or
+ * regular paper Tourist visa or both in one calendar year shall be restricted
+ * to 180 days."
+ *
+ * The same page confirms BOTH the 10-year regular paper tourist visa and the
+ * 5-year e-Tourist visa remain available to US nationals — do not remove the
+ * 10-year option on the strength of a secondary report claiming it was
+ * withdrawn. It was not.
+ */
+
+export const touristStayLimits = {
+  cumulativeDaysPerCalendarYear: 180,
+  rule: "Maximum stay by a foreigner in India on an e-Tourist visa or regular paper Tourist visa — or both combined — in one calendar year is restricted to 180 days.",
+  whyItMatters:
+    "The cap is cumulative across the calendar year and across both visa types, so it is not reset by leaving and re-entering, and it is not per-trip. Long-validity visas are frequently misread as unlimited-stay visas: a 10-year visa is 10 years of validity, not 10 years of permitted residence.",
+  landRouteNote:
+    "Foreign nationals cannot enter India by land route on an e-Tourist Visa or a regular paper Tourist Visa.",
+  source: "https://www.cgisf.gov.in/page/tourist-visa/",
+  sourceLabel: "Consulate General of India, San Francisco — Tourist Visa",
+  lastVerified: "2026-08-17",
+  lastVerifiedHuman: "August 17, 2026",
+} as const;
+
 /* ────────── Surrender / Renunciation Certificate (former Indian citizens) ────────
  *
  * India does not permit dual citizenship. Under Section 9 of the Citizenship
@@ -339,6 +366,8 @@ export const hubFaqs: FaqItem[] = [
   { question: "What is the difference between Entry Visa India and Tourist Visa India?", answer: "A tourist visa (~$54 eVisa / ~$216 regular) is for sightseeing and short visits. An Entry Visa (~$176, 2–3 weeks) is for Indian-origin people, non-Indian spouses, and minor children visiting or living with family." },
   { question: "What is India visa multiple entry?", answer: "A multiple-entry visa lets you enter India more than once while it's valid. The 1-year eVisa (~$54) and the 10-year regular visa (~$216) are both multiple entry." },
   { question: "How do I get a visa in India?", answer: "If you're outside India, apply through the official eVisa portal (~$54–$95) or VFS (~$216). If you're already in India and need an extension or status change, the process may involve the FRRO/FRO depending on your case." },
+  { question: "How long can I stay in India on a tourist visa?", answer: "A maximum of 180 days cumulative per calendar year. The Consulate General of India states that stay on an e-Tourist visa, a regular paper Tourist visa, or both combined, in one calendar year is restricted to 180 days. The cap is cumulative rather than per-trip, so leaving and re-entering does not reset it. A 10-year tourist visa means 10 years of validity, not 10 years of permitted residence — if you need longer, OCI carries no stay limit." },
+  { question: "Can US citizens still get a 10-year India tourist visa?", answer: "Yes. The Consulate General of India lists both the 10-year regular paper tourist visa and the 5-year e-Tourist visa for US nationals. Reports that the 10-year option was withdrawn are inaccurate. Whichever you hold, the 180-day cumulative annual stay cap still applies, and neither visa permits entry to India by land route." },
   { question: "Do I need a Surrender Certificate to get an India visa or OCI?", answer: "If you ever held an Indian passport and later became a US citizen, yes. India does not allow dual citizenship — under Section 9 of the Citizenship Act, 1955 your Indian citizenship ended automatically the day you naturalised. Before a visa or OCI can be issued, you must surrender your last held Indian passport and obtain a Surrender (Renunciation) Certificate through VFS Global. This applies even if the passport expired years ago and was never used after naturalisation." },
   { question: "What if I lost my old Indian passport?", answer: "You can still obtain a Surrender Certificate, but the process is longer. Consulates have a documented route involving an affidavit and, in some cases, a police report, in place of producing the physical passport. Because it adds weeks, start it well before you need to travel rather than alongside an urgent visa application." },
   { question: "Do my US-born children need a Surrender Certificate?", answer: "A child born in the US who never held an Indian passport does not — they were never an Indian citizen. But a child who held their own minor's Indian passport, or who was endorsed on a parent's Indian passport, is treated as a former Indian citizen and generally needs their own certificate before OCI can be granted." },

@@ -76,6 +76,64 @@ describe("calcGoldDuty", () => {
   });
 });
 
+/**
+ * The four cases pinned by the 2026-08 audit brief. These exist specifically to
+ * catch a regression of the pre-2026 constants: if anyone reintroduces the old
+ * ₹50,000 / ₹1,00,000 rupee value caps, or drops the jewellery-allowance
+ * eligibility bar from >12 months back to 6 months, these fail.
+ */
+describe("calcGoldDuty — Baggage Rules 2026 constants (audit acceptance cases)", () => {
+  it("30 g female passenger, 1+ yr abroad: 30 g free (weight-only, no rupee cap)", () => {
+    const r = calcGoldDuty({ category: "woman", monthsAbroad: 18, form: "jewellery", grams: 30, valueUsd: 3500 });
+    // 30 g sits under the 40 g female allowance, so it clears entirely —
+    // regardless of the $3,500 value. A value cap would have taxed it.
+    expect(cfg.freeJewelleryGramsFemale).toBe(40);
+    expect(r.freeGrams).toBe(30);
+    expect(r.dutiableGrams).toBe(0);
+    expect(r.dutyUsd).toBe(0);
+  });
+
+  it("30 g male passenger, 1+ yr abroad: only 20 g free, 10 g dutiable at ~6%", () => {
+    const r = calcGoldDuty({ category: "man", monthsAbroad: 18, form: "jewellery", grams: 30, valueUsd: 3000 });
+    expect(cfg.freeJewelleryGramsOther).toBe(20);
+    expect(r.freeGrams).toBe(20);
+    expect(r.dutiableGrams).toBe(10);
+    expect(r.dutiableValueUsd).toBe(1000);
+    expect(r.ratePct).toBe(cfg.concessionalRatePct);
+    expect(r.dutyUsd).toBe(60);
+  });
+
+  it("gold bars, 1 yr abroad: zero free allowance, dutiable from the first gram", () => {
+    const r = calcGoldDuty({ category: "man", monthsAbroad: 12, form: "bars", grams: 100, valueUsd: 12000 });
+    // Annexure-I item 5 excludes non-ornament gold from any free allowance.
+    expect(r.freeGrams).toBe(0);
+    expect(r.dutiableGrams).toBe(100);
+    expect(r.dutiableValueUsd).toBe(12000);
+    expect(r.eligibleConcession).toBe(true);
+    expect(r.ratePct).toBe(cfg.concessionalRatePct);
+  });
+
+  it("under 6 months abroad: no jewellery allowance and no concessional rate", () => {
+    const r = calcGoldDuty({ category: "woman", monthsAbroad: 4, form: "jewellery", grams: 30, valueUsd: 3500 });
+    // Two separate thresholds: >12 months for the Rule 6 jewellery allowance,
+    // >=6 months for the Notification 45/2025 concessional rate. At 4 months
+    // the passenger fails both.
+    expect(r.freeGrams).toBe(0);
+    expect(r.dutiableGrams).toBe(30);
+    expect(r.eligibleConcession).toBe(false);
+    expect(r.ratePct).toBe(cfg.standardRatePctIllustrative);
+    expect(r.usedIllustrativeStandardRate).toBe(true);
+  });
+
+  it("between 6 and 12 months: concessional rate applies but jewellery allowance does not", () => {
+    // The threshold most often conflated — the brief calls this out explicitly.
+    const r = calcGoldDuty({ category: "woman", monthsAbroad: 8, form: "jewellery", grams: 30, valueUsd: 3500 });
+    expect(r.freeGrams).toBe(0);
+    expect(r.eligibleConcession).toBe(true);
+    expect(r.ratePct).toBe(cfg.concessionalRatePct);
+  });
+});
+
 describe("calcGoldDuty edge cases", () => {
   it("handles empty/invalid inputs without NaN", () => {
     const r = calcGoldDuty({ category: "man", monthsAbroad: 12, form: "jewellery", grams: NaN, valueUsd: NaN });
