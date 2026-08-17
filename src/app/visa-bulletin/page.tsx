@@ -20,6 +20,9 @@ import {
   currentBulletinNote,
   getApplicableChart,
   getBulletinLabel,
+  getCutoffs,
+  formatCutoff,
+  CATEGORY_SHORT,
 } from "@/lib/visa-bulletin";
 import { formatDate } from "@/lib/format";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
@@ -32,7 +35,7 @@ export function generateMetadata(): Metadata {
   return pageMetadata({
     title: "Visa Bulletin Explained for Indians: How to Read It",
     description:
-      "Visa bulletin explained: published the 8th–10th monthly. How to read the India EB-1/EB-2/EB-3 charts, dates for filing vs final action, and current dates.",
+      "Visa bulletin explained: how to read the India EB-1/EB-2/EB-3 charts, dates for filing vs final action, and this month's cutoff dates.",
     path: PAGE_PATH,
     type: "article",
     openGraph: {
@@ -70,7 +73,7 @@ const faqs: FaqItem[] = [
   {
     question: "How often does the visa bulletin change and where do I verify it?",
     answer:
-      "The State Department publishes a new bulletin around the 8th–10th of each month for the following month, and dates can move forward, hold, or retrogress. Always verify the current month at travel.state.gov and confirm the USCIS filing chart at uscis.gov/visabulletininfo before making any filing decision.",
+      "The State Department publishes a new bulletin in the second week of each month (sometimes later) for the following month, and dates can move forward, hold, or retrogress. Always verify the current month at travel.state.gov and confirm the USCIS filing chart at uscis.gov/visabulletininfo before making any filing decision.",
   },
   {
     question: "How do I read the visa bulletin?",
@@ -106,8 +109,34 @@ export default function VisaBulletinPage() {
       "visa bulletin India, EB2 India priority date, EB3 India priority date, EB1 India priority date, final action date vs date of filing, priority date checker India, green card priority date India, retrogression meaning",
   };
 
+  // CollectionPage + ItemList: this hub's job is to enumerate the category
+  // guides, so make that machine-readable. Added alongside — never replacing —
+  // the existing Article/Breadcrumb/FAQ graph.
+  const collectionJsonLd = {
+    "@type": "CollectionPage",
+    "@id": `${url}#collection`,
+    name: "Visa Bulletin Guides for India",
+    description:
+      "Category-by-category visa bulletin guides for India-born green card applicants.",
+    url,
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${url}#itemlist`,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      numberOfItems: visaBulletinChildPages.length,
+      itemListElement: visaBulletinChildPages.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.navLabel,
+        url: absoluteUrl(`/visa-bulletin/${p.slug}`),
+      })),
+    },
+  };
+
   const jsonLd = jsonLdGraph(
     articleJsonLd,
+    collectionJsonLd,
     breadcrumbJsonLd(crumbs),
     faqJsonLd(faqs)
   );
@@ -158,7 +187,7 @@ export default function VisaBulletinPage() {
             </p>
             <p className="text-[0.95rem] leading-relaxed text-ink-800">
               The visa bulletin is a monthly Department of State chart, published around the{" "}
-              <strong>8th–10th</strong> of each month, that lists cutoff dates by green card category and
+              <strong>second week</strong> of each month, that lists cutoff dates by green card category and
               country of birth. Read it in three steps: find your <strong>category row</strong>{" "}
               (EB-1/EB-2/EB-3), read down the <strong>India column</strong>, and compare that date to your
               own priority date — if yours is <strong>earlier</strong>, you may act. Two charts exist:{" "}
@@ -169,11 +198,81 @@ export default function VisaBulletinPage() {
             </p>
           </div>
 
+          {/* Current-month snapshot — every value reads from the shared
+              bulletin module (data/visa-bulletin/current.json), so this table
+              can never drift from the category pages or the checker. */}
+          <div className="mt-5 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p className="text-xs font-bold uppercase tracking-wider text-blue-700">
+                India at a glance
+              </p>
+              <p className="text-xs text-ink-400">Data: {getBulletinLabel()}</p>
+            </div>
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full min-w-[420px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                    <th className="p-2.5 font-semibold">Category</th>
+                    <th className="p-2.5 font-semibold">Final Action</th>
+                    <th className="p-2.5 font-semibold">Dates for Filing</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-ink-900/5">
+                  {(["eb1", "eb2", "eb3"] as const).map((cat) => {
+                    const c = getCutoffs(cat, "india");
+                    return (
+                      <tr key={cat}>
+                        <td className="p-2.5 font-semibold text-ink-900">
+                          <Link
+                            href={`/visa-bulletin/${cat}-india`}
+                            className="text-blue-700 hover:underline"
+                          >
+                            {CATEGORY_SHORT[cat]} India
+                          </Link>
+                        </td>
+                        <td
+                          className={`p-2.5 font-medium ${
+                            c.fad === "U" ? "text-rose-700" : "text-ink-700"
+                          }`}
+                        >
+                          {formatCutoff(c.fad)}
+                        </td>
+                        <td className="p-2.5 text-ink-700">{formatCutoff(c.dff)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3 text-xs leading-relaxed text-ink-700">
+              <strong className="text-ink-900">Chart USCIS designated for I-485 filing this month: </strong>
+              {getApplicableChart().label}. You do not choose between the two charts — USCIS
+              announces each month which one adjustment-of-status filers may use. Confirm on the{" "}
+              <a
+                href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="font-semibold text-blue-700 underline"
+              >
+                USCIS Adjustment of Status Filing Charts page
+              </a>
+              .
+            </p>
+            {getCutoffs("eb2", "india").fad === "U" && (
+              <p className="mt-2.5 rounded-xl border border-rose-200 bg-rose-50/60 p-3 text-xs leading-relaxed text-ink-700">
+                <strong className="text-rose-700">EB-2 India is Unavailable (&ldquo;U&rdquo;). </strong>
+                The category&apos;s visa numbers for this fiscal year are exhausted, so no EB-2 India
+                case can be approved regardless of priority date. Numbers reset with the new fiscal
+                year on <strong>October 1</strong>, when a cutoff date typically reappears.
+              </p>
+            )}
+          </div>
+
           {/* Key takeaways */}
           <div className="mt-5 rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm">
             <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
             <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
-              <li>• Check the new bulletin around the <strong>8th–10th</strong> of each month — it takes effect the <strong>following</strong> month.</li>
+              <li>• Check the new bulletin when it posts — usually the <strong>second week</strong>, sometimes later — and note it takes effect the <strong>following</strong> month.</li>
               <li>• Compare against <strong>two</strong> charts every time: Final Action Dates for approval, Dates for Filing for submitting the I-485.</li>
               <li>• Remember why India is slower: the <strong>7% per-country limit</strong> (INA §202) holds India&rsquo;s usage share far below its demand — a proration cap across the combined family and employment preference totals, not a fixed India quota.</li>
               <li>• Read your date as a threshold — your priority date must be <strong>strictly earlier</strong> than the posted cutoff, and &quot;U&quot; means nobody is approved that month.</li>
@@ -263,12 +362,12 @@ export default function VisaBulletinPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-ink-900 mb-3">What Is the Visa Bulletin?</h2>
           <p className="text-sm leading-relaxed text-ink-600 mb-4">
-            The US Department of State publishes the visa bulletin around the 8th–10th of each month. It sets the priority date cutoffs for employment-based and family-based immigration for each country.
+            The US Department of State publishes the visa bulletin in the second week of each month, though release has slipped into the third week. It sets the priority date cutoffs for employment-based and family-based immigration for each country.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               { icon: "📋", title: "Published by", desc: "US Department of State (travel.state.gov)" },
-              { icon: "📅", title: "Published when", desc: "Around the 8th–10th of each month, effective the following month" },
+              { icon: "📅", title: "Published when", desc: "Usually the second week of each month, effective the following month" },
               { icon: "🎯", title: "What it controls", desc: "Whether your priority date is current for I-485 filing or approval" },
               { icon: "🌍", title: "Country-specific", desc: "India has different (usually slower) dates than the Rest of World due to per-country caps" },
             ].map((c) => (

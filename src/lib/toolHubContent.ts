@@ -412,7 +412,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         ["Per-country limit", "7% of combined FB+EB (proration cap, not a fixed India quota)", "The single biggest cause of the India backlog"],
         ["EB-1 worldwide share", "28.6% (~40,040)", "Shortest India queue of the three categories"],
         ["EB-2 / EB-3 worldwide share", "28.6% each", "Deepest India backlogs — often a decade or more"],
-        ["Bulletin publication", "8th–10th monthly, effective next month", "When your cutoff can move"],
+        ["Bulletin publication", "2nd week monthly, effective next month", "When your cutoff can move"],
         ["Typical annual cutoff movement (EB-2 India)", "1–3 months per calendar year", "Why estimates run to decades for new filings"],
       ],
     },
@@ -422,7 +422,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       "Expect the India queue to be governed by one rule: the INA §202 7% per-country limit, calculated across the combined family and employment preference totals and applied by category and prorating — which holds India's usage share far below its demand (it is not a fixed India quota).",
       "Compare against both charts each month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
       "Treat any wait estimate as a scenario, not a promise: cutoffs can retrogress, and EB-2 India was marked Unavailable in the August 2026 bulletin.",
-      "Check the new bulletin around the 8th–10th of each month; it takes effect the following month.",
+      "Check the new bulletin when it posts, usually the second week; it takes effect the following month.",
       "Keep your I-140 approved — it lets you retain your priority date across employers and categories, including an EB-3 downgrade.",
     ],
     howItWorks: {
@@ -1632,7 +1632,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     takeaways: [
       "Compare your date against two charts every month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
       "Read the rule literally: your priority date must be strictly earlier than the posted cutoff for you to act.",
-      "Check the new bulletin around the 8th-10th of each month; it takes effect the following month.",
+      "Check the new bulletin when it posts, usually the second week; it takes effect the following month.",
       "Know the codes — 'C' means current with no backlog, and 'U' means no visa numbers at all that month.",
       "Remember country of birth, not citizenship, decides which column applies to you.",
     ],

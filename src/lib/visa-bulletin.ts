@@ -838,7 +838,7 @@ export function extendedGetMovement(
  * True when the stored bulletin month is older than the current calendar month.
  *
  * The cutoff data in data/visa-bulletin/current.json is MANUALLY MAINTAINED and
- * has to be updated when each new bulletin is published (around the 8th-10th).
+ * has to be updated when each new bulletin is published (usually the 2nd week).
  * If that update is missed, the site would otherwise keep presenting last
  * month's cutoffs as though they were current. Callers should surface a visible
  * warning when this returns true rather than showing the result as authoritative.

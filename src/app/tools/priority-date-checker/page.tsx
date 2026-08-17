@@ -64,7 +64,7 @@ const faq: FaqItem[] = [
   {
     question: "How often is the visa bulletin updated and when?",
     answer:
-      "The State Department publishes a new visa bulletin around the 8th–10th of each month for the following month. For example, the July bulletin is published in early June. The USCIS Adjustment of Status Filing Chart (which announces Table B authorization) is published shortly after the State Department bulletin.",
+      "The State Department publishes a new visa bulletin in the second week of each month (sometimes later) for the following month. For example, the July bulletin is published in early June. The USCIS Adjustment of Status Filing Chart (which announces Table B authorization) is published shortly after the State Department bulletin.",
   },
   {
     question: "I have both EB-2 and EB-3 I-140s approved. Which priority date should I use?",

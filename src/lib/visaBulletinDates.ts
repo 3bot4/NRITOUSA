@@ -1,6 +1,6 @@
 /**
  * Admin-managed visa bulletin data.
- * Update this file each month when the new bulletin is published (around the 8th–10th of the month).
+ * Update this file each month when the new bulletin is published (usually the second week; release has slipped into the third week).
  * Source: https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html
  *
  * Date format: "YYYY-MM-DD" — use the cutoff date exactly as printed in the bulletin.

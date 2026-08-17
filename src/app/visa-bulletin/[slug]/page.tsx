@@ -8,6 +8,7 @@ import ReviewedByline from "@/components/ReviewedByline";
 import AuthorBioBox from "@/components/AuthorBioBox";
 import VisaBulletinCategoryStatus from "@/components/VisaBulletinCategoryStatus";
 import VisaBulletinMovementHistory from "@/components/VisaBulletinMovementHistory";
+import VisaBulletinIndiaVsRow from "@/components/VisaBulletinIndiaVsRow";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -152,6 +153,12 @@ export default function VisaBulletinChildPage({
                     className="mb-8"
                   />
                 </>
+              )}
+
+              {/* Cross-chargeability is about which COLUMN you read, so the
+                  page leads with the live India-vs-Rest-of-World comparison. */}
+              {page.slug === "cross-chargeability" && (
+                <VisaBulletinIndiaVsRow className="mx-auto mb-8 max-w-[720px]" />
               )}
 
               <ArticleBody content={page.content} />

@@ -42,7 +42,7 @@ const rawPages: VisaBulletinPageData[] = [
     title: "What Is a Priority Date? Green Card Guide for Indians (2026)",
     seoTitle: "What Is a Priority Date? Green Card Guide for Indians",
     metaDescription:
-      "Your priority date is the day your PERM (ETA-9089) was filed — it sets your green card queue place. How to check it and what current means.",
+      "Your priority date sets your green card queue place — from PERM, I-140, I-526 or I-130 by category. Where to find it and what 'current' means.",
     navLabel: "Priority Date",
     excerpt:
       "Your priority date is the most important number in your green card process — it sets your place in the queue.",
@@ -50,12 +50,12 @@ const rawPages: VisaBulletinPageData[] = [
     updated: "2026-07-19",
     content: `
 :::quickanswer
-Your **priority date** is the date your PERM labor certification (Form ETA-9089) was filed with the Department of Labor — or, for EB-1 and EB-2 NIW, the date your I-140 was filed with USCIS. It is your place in the green card queue: you can only move forward in months when the visa bulletin cutoff for your category and country is **later** than your date. Because the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand, an India-born EB-2/EB-3 priority date typically waits **years to decades**.
+Your **priority date** is your place in the green card queue — but **which filing sets it depends on your category**. For a labor-certification case (most EB-2 and EB-3) it is the date the PERM (Form ETA-9089) was filed with the Department of Labor. For categories exempt from labor certification — **EB-1A, EB-1B, EB-1C and EB-2 NIW** — it is the **I-140 receipt date**. For **EB-5** it is the **I-526/I-526E receipt date**, and for **family-based** cases the **I-130 receipt date**. You can only move forward in months when the visa bulletin cutoff for your category and country is **later** than your date. Because the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand, an India-born EB-2/EB-3 priority date typically waits **years to decades**.
 :::
 
 :::key
-- Find your priority date on the **PERM filing receipt** or your **I-140 approval notice (Form I-797)** — it is the PERM *filing* date, not the approval date.
-- Check it monthly against **two charts** — Final Action Dates and Dates for Filing — in the DOS visa bulletin, published around the **8th–10th** of each month.
+- **The authoritative record is your Form I-797 Notice of Action** — the "Priority Date" box on the I-140, I-130 or I-526 approval/receipt notice. For PERM cases the underlying date is the ETA-9089 *filing* date, not the certification date.
+- Check it monthly against **two charts** — Final Action Dates and Dates for Filing — in the DOS visa bulletin, usually published in the **second week** of each month (release has slipped into the third week).
 - "Current" (C) means **no backlog** — you can file/approve regardless of your date; a posted date means only earlier filers may act.
 - Expect India EB-2/EB-3 waits measured in **years to decades** under the 7% per-country limit (a proration cap, not a fixed India quota).
 - Compare your date against this month's charts in 30 seconds with the [Priority Date Checker](/tools/priority-date-checker).
@@ -72,8 +72,22 @@ For most Indian H1B workers pursuing EB-2 or EB-3 green cards:
 - It appears on the ETA-9089 filing receipt DOL issues when the case is submitted — not on the earlier prevailing-wage request (Form ETA-9141), which does **not** establish the employment-based priority date
 - Even before your I-140 is filed or approved, this date already exists
 
+### Which filing sets your priority date
+
+"The priority date is the PERM filing date" is the version you will hear most often, and it is only true for labor-certification cases. Categories that skip PERM take their date from the petition itself:
+
+| Your category | What sets the priority date | Where it is printed |
+|---|---|---|
+| EB-2 / EB-3 with PERM | **ETA-9089 filing date** (DOL) | I-140 approval notice (Form I-797) |
+| EB-1A, EB-1B, EB-1C | **I-140 receipt date** (USCIS) | I-140 receipt/approval notice |
+| EB-2 NIW | **I-140 receipt date** (USCIS) | I-140 receipt/approval notice |
+| EB-5 investor | **I-526 / I-526E receipt date** | I-526 receipt/approval notice |
+| Family-based (F1–F4, IR) | **I-130 receipt date** | I-130 receipt/approval notice |
+
+Source: [USCIS — Visa Availability and Priority Dates](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates).
+
 :::info
-**EB-1 and EB-2 NIW exception:** If you are pursuing EB-1 (no PERM needed) or EB-2 National Interest Waiver (self-petition), your priority date is the date your I-140 was filed with USCIS — not a PERM date.
+**Where to look, in order.** The authoritative record is the **Priority Date box on your Form I-797 Notice of Action** for the I-140, I-130 or I-526 — that is what USCIS and the consulate work from. The ETA-9089 itself is *evidence* of the underlying PERM filing date for labor-certification cases, but it is not where the operative date is recorded, and Section O of the ETA-9089 is not the place to look.
 :::
 
 ## How Do You Check Your Priority Date?
@@ -86,7 +100,7 @@ Two steps: find your date on your case documents, then compare it against this m
 | I-140 approval notice (Form I-797) | "Priority Date" printed on the notice |
 | I-485 receipt notice (if filed) | Priority date carried onto the receipt |
 
-Then open the current [Department of State visa bulletin](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html) (published around the 8th–10th of each month), find your category row (EB-1/EB-2/EB-3) and the India column, and compare — or let the [Priority Date Checker](/tools/priority-date-checker) do the comparison against the stored bulletin data.
+Then open the current [Department of State visa bulletin](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html) (usually published in the second week of each month), find your category row (EB-1/EB-2/EB-3) and the India column, and compare — or let the [Priority Date Checker](/tools/priority-date-checker) do the comparison against the stored bulletin data.
 
 :::tip
 **Ask your employer's attorney for the exact PERM filing date** — this is your priority date. Do not confuse the PERM certification date (when DOL approved it) with the PERM filing date (when it was submitted). The filing date is your priority date.
@@ -130,17 +144,28 @@ These are different:
 | **Who controls it** | Set when the PERM is filed with DOL | Filed by employer after PERM certification |
 | **Why it matters** | Determines place in visa queue | Approved I-140 may support priority-date retention and, in qualifying cases, H-1B extensions beyond six years |
 
-For EB-2/EB-3: your priority date is the PERM filing date, not the I-140 filing date.
+For **PERM-based** EB-2/EB-3: your priority date is the PERM filing date, not the I-140 filing date. For EB-1 and EB-2 NIW there is no PERM, so the I-140 receipt date *is* the priority date — the two columns above collapse into one.
 
 An I-140 does not by itself start the I-485 portability clock. Job portability under INA §204(j) is a separate rule that generally depends on an eligible Form I-485 that has remained **pending for at least 180 days**, together with a new job in the same or a similar occupational classification.
 
 ## Can a priority date be transferred?
 
-In some situations, yes. An applicant may often retain the priority date from an earlier approved employment-based petition for a later employment-based petition, subject to applicable regulations and exceptions:
-- If your first employer's I-140 was approved and you change employers, the new employer's petition may be able to keep your earlier priority date
-- Priority-date retention is **separate** from the "same or similar occupational classification" analysis used for certain I-485 portability cases under INA §204(j) — retention does not turn on whether the new job is the same or similar
-- Retention may be unavailable when the earlier approval is revoked for reasons such as fraud, willful misrepresentation, material error, or invalidation of the underlying labor certification
-- This is not automatic; the attorney must claim the earlier date, and outcomes depend on case facts — consult your immigration attorney
+In some situations, yes. The governing rule is [8 CFR 204.5(e)](https://www.law.cornell.edu/cfr/text/8/204.5): an approved employment-based petition accords the beneficiary its priority date, and a **later petition filed for the same beneficiary may claim that earlier date**.
+
+- If your first employer's I-140 was approved and you change employers, the new employer's petition may be able to keep your earlier priority date — this is *retention*, and it can carry a date across categories too (EB-3 → EB-2, or EB-2 → EB-1).
+- Priority-date retention is **separate** from the "same or similar occupational classification" analysis used for certain I-485 portability cases under INA §204(j) — retention does not turn on whether the new job is the same or similar.
+- A priority date is **personal to you**. It cannot be transferred to another person, sold, or shared — a spouse or child uses it only as your derivative.
+- This is not automatic; the attorney must claim the earlier date, and outcomes depend on case facts — consult your immigration attorney.
+
+### Does withdrawing or losing the I-140 destroy the priority date?
+
+Usually not, and this is the single most common fear among job-changers. Under 8 CFR 204.5(e), an approved I-140 **remains valid for priority-date retention even if the employer later withdraws it, or the employer's business terminates**, provided the petition **has been approved for 180 days or more**.
+
+Retention is lost only in narrower circumstances — where USCIS revokes the approval for **fraud or willful misrepresentation**, for a **material error**, or where the **underlying labor certification is invalidated**.
+
+:::warn
+Two things this does *not* mean. First, a withdrawn I-140 that was approved for **fewer than 180 days** does not carry the same protection. Second, retaining the date is not the same as retaining the green card case — you still need a new, approvable petition to attach it to. The date survives; the petition does not.
+:::
 
 ## How Your Priority Date Connects to Everything Else
 
@@ -610,13 +635,23 @@ EB-3 India is the third-preference employment green card queue for India-born pr
 
 ## What Are the EB-3 India Requirements?
 
-**Skilled workers:** Positions requiring at least 2 years of training or experience that are not temporary or seasonal.
+EB-3 is not one category but three sub-categories, each with its own eligibility bar. All three require an approved **PERM labor certification** — there is no self-petition route anywhere in EB-3.
 
-**Professionals:** Positions requiring a baccalaureate (bachelor's) degree as a minimum in a specific field of science, arts, or business.
+| Sub-category | Minimum requirement | PERM required? | Own bulletin row? |
+|---|---|---|---|
+| **Skilled Worker** | Job requires at least **2 years** of training or experience; not temporary or seasonal | Yes | No — shares the EB-3 row |
+| **Professional** | Job requires a **US baccalaureate degree** (or foreign equivalent) in a specific field | Yes | No — shares the EB-3 row |
+| **Other Worker (EW)** | Unskilled labour requiring **less than 2 years** of training or experience; not temporary or seasonal | Yes | **Yes — separate "Other Workers" row** |
 
-**Other workers:** Unskilled positions — not applicable to most Indian H1B workers.
+Most Indian H1B workers qualify as **Professionals**. Skilled Worker and Professional are read off the same EB-3 row in the bulletin; Other Workers is listed separately.
 
-Most Indian H1B workers qualify under the "professionals" sub-category.
+### Other Workers (EW) India — currently the same date as EB-3 India
+
+A persistent myth holds that the Other Workers queue for India always runs years behind the main EB-3 row. That is not the current state. In the **August 2026** bulletin, **EW India and EB-3 India carry the identical Final Action Date of January 1, 2014**, with Dates for Filing also identical at January 15, 2015.
+
+:::warn
+Read this as a **current fact, not a permanent rule.** The two rows are set independently by the Department of State and have diverged in the past — EW carries its own annual allocation (a 10,000-visa worldwide sub-limit within EB-3), so it can move differently when demand shifts. Check both rows in the current bulletin rather than assuming either that they track each other or that EW is always worse.
+:::
 
 ## What Is the EB-3 India Priority Date Right Now?
 
@@ -724,7 +759,7 @@ Not necessarily. The relative movement of EB-2 and EB-3 India changes every mont
 - Keep renewing **EAD and Advance Parole** — both ride on the pending I-485, not on your date being current.
 - Watch **October 1**: the new fiscal year restores visa numbers, and dates often retrogress right after a summer surge.
 - Expect the extreme form too — a category can go to **"U" (Unavailable)**, meaning zero visa numbers, as EB-2 India did in July 2026.
-- Never commit to job changes, travel, or financial plans on the assumption a date will advance — check the bulletin each month around the **8th–10th**.
+- Never commit to job changes, travel, or financial plans on the assumption a date will advance — check the bulletin each month when the new one posts, usually in the second week.
 :::
 
 Visa bulletin retrogression is the single most alarming thing an Indian green card applicant can see in a monthly bulletin — and usually the least dangerous. This guide explains what retrogression means, why priority dates move backward, what actually happens to a pending I-485 when it hits, and how the India EB-2 and EB-3 categories have behaved historically. The reassuring headline: a pending I-485 is never denied because of retrogression; USCIS just holds the case, and your work and travel authorization continue. Below: the definition with a worked example, the visa-number math that causes it, the difference between a retrogressed date and an "Unavailable" category, what to do in each filing situation, India's retrogression history, and how to track it monthly.
@@ -804,7 +839,7 @@ Never book plans (job changes, international travel, financial decisions) based 
 
 ## How Do You Track Retrogression Each Month?
 
-- **Monthly:** Check the new visa bulletin around the 8th–10th of each month at travel.state.gov
+- **Monthly:** Check the new visa bulletin when it posts — usually the second week of the month — at travel.state.gov
 - **Sign up for email alerts** at the State Department website
 - **Ask your employer's attorney** to notify you of significant changes
 
@@ -896,7 +931,7 @@ The I-693 medical exam results are only valid for 2 years. If you prepare early,
 Priority date windows can close quickly. If retrogression occurs after you see your date is current but before you file, you miss the window. File as fast as your package is complete.
 
 :::tip
-**File in the first two weeks of the month** when possible. The new bulletin is typically published around the 8th–10th. USCIS processes filings in the month the bulletin is valid — if you wait until the last week and USCIS retrogresses dates for the next month, you may miss the window.
+**File in the first two weeks of the month** when possible. The new bulletin is typically published in the second week, though release has slipped into the third week. USCIS processes filings in the month the bulletin is valid — if you wait until the last week and USCIS retrogresses dates for the next month, you may miss the window.
 :::
 
 ## Step 5: Track receipt notices
@@ -1105,7 +1140,7 @@ Your I-485 remains pending under EB-2. USCIS cannot approve until EB-2 India is 
     updated: "2026-08-17",
     content: `
 :::quickanswer
-**Cross-chargeability** lets an immigrant be counted against a country other than their own country of birth. Under **INA §202(b)(2)** (8 U.S.C. §1152(b)(2)), if you are India-born and your **spouse was born outside India**, you may be charged to your spouse's country of birth "if necessary to prevent the separation of husband and wife" — which moves you out of the India column and into **"All Chargeability Areas Except Those Listed"** (Rest of World) on the visa bulletin. For EB-2 and EB-3 that is frequently a difference of **a decade or more**. It does **not** change your priority date — it changes which column your priority date is read against.
+**Cross-chargeability** lets an immigrant be counted against a country other than their own country of birth. Under **INA §202(b)(2)** ([8 U.S.C. §1152(b)](https://www.law.cornell.edu/uscode/text/8/1152)), if you are India-born and your **spouse was born outside India**, you may be charged to your spouse's country of birth "if necessary to prevent the separation of husband and wife" — which moves you out of the India column and into **"All Chargeability Areas Except Those Listed"** (Rest of World) on the visa bulletin. For EB-2 and EB-3 that is frequently a difference of **a decade or more**. The **cross chargeability rule** does **not** change your priority date — it changes which column your priority date is read against.
 :::
 
 :::key
@@ -1141,6 +1176,10 @@ INA §202(b) sets out the exceptions to the birth rule. Four subsections matter:
 | **§202(b)(2)** | A spouse immigrating with their spouse | Either spouse may be charged to the other's country |
 | **§202(b)(3)** | A person born in the United States | Charged to country of present citizenship |
 | **§202(b)(4)** | A person born where **neither parent was born and neither parent resided** at the time | May be charged to either parent's country |
+
+Full statutory text: [8 U.S.C. §1152(b) — Numerical limitations, rules for chargeability](https://www.law.cornell.edu/uscode/text/8/1152).
+
+The rule runs in both directions, and that matters for families. §202(b)(1) and §202(b)(2) exist to keep a family together across the numerical limits, so a **derivative spouse or child can be charged to the principal applicant's country of chargeability** where necessary to avoid separating them — just as a principal can be charged to a spouse's country. Whichever direction avoids splitting the family is the one that applies.
 
 For India-born employment-based applicants, **§202(b)(2) — the spouse rule — is the one that carries real value.** The others generally point back toward India rather than away from it.
 
@@ -1183,6 +1222,26 @@ right: It DOES change
 :::
 
 A worked illustration of the size of the effect: an India-born EB-2 applicant with a 2015 priority date reads the India EB-2 row, which has spent recent years in the early-to-mid 2010s and was marked Unavailable for the back half of FY 2026. The same person, cross-charged to a spouse's non-India birthplace, reads the "All Other Countries" EB-2 row instead — a row that has frequently been Current or close to it. The priority date never moved. The column did.
+
+## Cross-Chargeability Example: India EB-2 vs. Rest of World
+
+The live comparison table at the top of this page shows the current gap for EB-1, EB-2 and EB-3. Work an example through it.
+
+**Facts.** Priya was born in Chennai. Her husband Arun was born in Muscat, Oman, where his Indian parents were working at the time. Priya's employer filed PERM in **March 2015**, so that is her priority date. She holds an approved EB-2 I-140. Arun is in H-4 status and will adjust with her as her derivative.
+
+:::steps
+1. **Without cross-chargeability**, Priya reads the **EB-2 India** row. In the August 2026 bulletin that row is **Unavailable** — no visa numbers exist for EB-2 India for the remainder of the fiscal year, so her case cannot be approved at all, regardless of her 2015 date.
+2. **With cross-chargeability under §202(b)(2)**, Priya is charged to **Oman** — which is not separately listed and therefore falls in **"All Chargeability Areas Except Those Listed."** She now reads that row instead.
+3. **The result.** Her priority date is still March 2015. Her category is still EB-2. Her I-140 is unchanged. But the row she is measured against is a completely different queue — see the table above for the current figures on both sides.
+:::
+
+:::good
+The **cross chargeability green card** benefit here is not a faster adjudication. It is the difference between being in a queue that is moving and being in one that has stopped. For a family with children approaching 21, that difference is often decisive under CSPA.
+:::
+
+:::warn
+Two conditions carry the whole example. Arun must actually **immigrate as Priya's derivative** — if he were already a US citizen or green card holder, there would be no separation to prevent and no cross-chargeability. And the request must be **made**: nobody at USCIS will notice Arun's birthplace and apply the benefit unprompted.
+:::
 
 ## How to Request It
 
@@ -1240,7 +1299,10 @@ Cross-chargeability is a rule in INA §202(b) that lets an immigrant be counted 
 Yes, if your spouse was born outside India, you are legally married, and your spouse is immigrating with you as a derivative on the same petition. All three conditions must hold. If your spouse is already a U.S. citizen or green card holder, they cannot be a derivative and cross-chargeability is not available on an employment-based case.
 
 ### Does cross-chargeability change my priority date?
-No. Your priority date is fixed by the date your PERM was filed, or your I-140 for EB-1 and EB-2 NIW, and cross-chargeability does not alter it. What changes is the visa bulletin column your priority date is compared against. The same date can be years away in the India row and current in the All Other Countries row.
+No — and this is the most common misconception about it. Cross-chargeability changes your **chargeability column only**. It never resets, advances, or alters your priority date, which stays fixed at your PERM filing date, or your I-140 receipt date for EB-1 and EB-2 NIW. Nothing about your category, your I-140, or your place within the queue changes either. What changes is which queue you are measured against: the same **cross chargeability priority date** can be a decade away in the India row and current in the All Other Countries row.
+
+### Can I use cross-chargeability if my spouse is in H-4 status?
+Yes. H-4 is a nonimmigrant status and says nothing about chargeability, which is determined by country of birth. What matters is that your H-4 spouse was born outside India and will immigrate with you as your derivative — filing their own I-485 alongside yours, or following to join through consular processing. An H-4 spouse is in fact the typical case, since they are already your dependent and are expected to adjust with you. The disqualifying situation is the opposite one: a spouse who already holds US citizenship or a green card, and therefore is not immigrating with you at all.
 
 ### My spouse was born in Dubai to Indian parents. Does that count?
 Generally yes. Chargeability follows place of birth, so a person born in the UAE is normally chargeable to the UAE regardless of their parents' nationality or their own Indian passport. The exception in INA §202(b)(4) redirects chargeability to a parent's country only when neither parent was born in that country and neither had residence there at the time of birth — and Indian parents living and working in Dubai plainly had residence. Confirm the specific facts with your attorney, since residence at the time of birth is the operative question.
@@ -1277,12 +1339,12 @@ It is written into the statute at INA §202(b) and has been part of U.S. immigra
     updated: "2026-08-09",
     content: `
 :::summary
-The State Department publishes a new visa bulletin around the 8th–10th of each month for the following month (e.g., the July bulletin is published in early June). For Indian H1B workers, monitoring this monthly update is essential — a single month can bring meaningful date movement, retrogression, or a new Dates for Filing authorization.
+The State Department publishes a new visa bulletin in the second week of each month (sometimes later — recent releases have landed as late as the third week) for the following month (e.g., the July bulletin is published in early June). For Indian H1B workers, monitoring this monthly update is essential — a single month can bring meaningful date movement, retrogression, or a new Dates for Filing authorization.
 :::
 
 ## When is the visa bulletin published?
 
-- **Publication date:** Typically the 8th–10th of each month
+- **Publication date:** Usually the second week; recent releases have slipped to the third week
 - **Effective month:** The following month (bulletin published in June is for July)
 - **Where:** travel.state.gov → visa bulletin section
 
