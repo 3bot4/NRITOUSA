@@ -479,6 +479,22 @@ describe("i485 — premium processing and field-office transfer", () => {
     expect(i485Page).toMatch(/planning estimates, last reviewed/i);
     expect(i485Page).toMatch(/not USCIS-published figures/i);
   });
+
+  it("never states the typical band without also stating the longer tail", () => {
+    // The title/meta advertise a TYPICAL 8-14 month band. Independent sources
+    // put the employment-based ceiling higher (Google AI Overview 7-18;
+    // practitioner sources up to 36), so the band is only honest while the
+    // page also says the tail runs longer. If someone edits the range without
+    // the tail language, this fails rather than shipping an overpromise.
+    // Normalise JSX line-wrapping so multi-line prose matches.
+    const flat = i485Page.replace(/\s+/g, " ");
+    if (/8-14|8–14/.test(flat)) {
+      expect(flat).toMatch(/to about two years|up to .{0,12}two years|24 months/i);
+      // And the 80th-percentile explanation is what justifies a "typical" band.
+      expect(flat).toMatch(/80% of adjudicated cases/i);
+      expect(flat).toMatch(/One in five cases finished slower/i);
+    }
+  });
 });
 
 describe("eb3-india — Other Workers framed as current state, not a rule", () => {
