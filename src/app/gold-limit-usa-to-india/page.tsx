@@ -649,16 +649,13 @@ export default function Page() {
                 </table>
               </div>
 
-              {!cfg.generalAllowanceVerifiedVerbatim && (
-                <p className="mt-3 text-xs leading-relaxed text-ink-500">
-                  The ₹{cfg.generalFreeAllowanceInr.toLocaleString("en-IN")} and ₹
-                  {cfg.generalFreeAllowanceTouristInr.toLocaleString("en-IN")} figures come from the
-                  Government of India press release for Notification No. 14/2026-Customs (N.T.) and
-                  reports quoting the rule text. They have not been read back from the gazette PDF
-                  directly — confirm on the official links at the end of this page before relying on
-                  them. The gold figures above this section were verified against the gazette text.
-                </p>
-              )}
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                General free allowance under Rule 3 of the Baggage Rules 2026 (Notification No.
+                14/2026-Customs (N.T.), in force 2 February 2026) — the same notification that sets
+                the 40 g / 20 g jewellery allowance. Verified {GOLD_UPDATED_HUMAN}. Customs limits
+                change with budgets and mid-year amendments; the official CBIC links at the end of
+                this page are authoritative.
+              </p>
             </div>
           </Container>
         </section>

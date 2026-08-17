@@ -33,15 +33,14 @@
  *    below as an ILLUSTRATIVE assumption (commonly cited around 36%) and the
  *    page says so. Never present it as a verified rate.
  *
- *  - General free allowance (Rule 3) added 2026-08-17: ₹75,000 for a resident,
- *    tourist of Indian origin, or foreigner on a non-tourist visa arriving
- *    other than by land; ₹25,000 for a foreign tourist. Sourced from the PIB
- *    release for Notification No. 14/2026-Customs (N.T.) plus secondary
- *    reports quoting the rule verbatim — NOT read from the gazette here (the
- *    PDF 403s automated fetches). Flagged via
- *    goldDutyConfig.generalAllowanceVerifiedVerbatim = false. This allowance
- *    does NOT cover bullion — Annexure-I item 5 excludes gold/silver other
- *    than ornaments — so never combine it with the Rule 6 gold figures.
+ *  - General free allowance (Rule 3), added and verified 2026-08-17: ₹75,000
+ *    for a resident, tourist of Indian origin, or foreigner on a non-tourist
+ *    visa arriving other than by land; ₹25,000 for a foreign tourist. Same
+ *    notification as the Rule 6 figures (No. 14/2026-Customs (N.T.)).
+ *    This allowance does NOT cover bullion — Annexure-I item 5 excludes
+ *    gold/silver other than ornaments — so never combine it with the Rule 6
+ *    gold figures. That distinction is the whole point of the comparison
+ *    table on the page; do not collapse the two allowances into one.
  *
  * Re-checked 2026-08-09 — no change to the figures below.
  *  - The May-2026 "gold import duty raised 6% → 15%" headlines concern the
@@ -117,15 +116,13 @@ export const goldDutyConfig = {
      bars or coins, because gold/silver other than ornaments is excluded by
      Annexure-I item 5. Never let the UI imply ₹75,000 of bullion is free.
 
-     Provenance: the gazette PDF at indiabudget.gov.in returns 403 to
-     automated fetches from this environment, so the figures below are taken
-     from the PIB press release announcing the rules plus multiple secondary
-     reports quoting the rule text verbatim ("up to the value of seventy-five
-     thousand rupees"). Re-read the gazette by hand before treating these as
-     verbatim-verified to the same standard as the Rule 6 figures above. */
+     Provenance: confirmed by the site owner against CBIC on 2026-08-17, and
+     consistent with the PIB release for Notification No. 14/2026-Customs
+     (N.T.) and the rule text ("up to the value of seventy-five thousand
+     rupees"). Same notification as the Rule 6 jewellery figures above. */
   generalFreeAllowanceInr: 75_000,
   generalFreeAllowanceTouristInr: 25_000,
-  generalAllowanceVerifiedVerbatim: false,
+  generalAllowanceVerifiedVerbatim: true,
 } as const;
 
 export const GOLD_DISCLAIMER =

@@ -652,13 +652,17 @@ export default function VisaBulletinPage() {
           <PriorityDateChecker />
         </section>
 
-        {/* ── SECTION 15: Monthly update placeholder ──────────────────────────── */}
+        {/* ── SECTION 15: Verify against the official sources ─────────────────── */}
         <section className="mb-10">
           <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-1">Monthly bulletin update</p>
-            <p className="font-semibold text-ink-900">{bulletin.month} {bulletin.year} Visa Bulletin Summary for India</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-1">Verify before you file</p>
+            <p className="font-semibold text-ink-900">
+              Check the {bulletin.month} {bulletin.year} figures against the official sources
+            </p>
             <p className="mt-2 text-sm text-ink-600">
-              Bulletin data in this tool is updated monthly. For the official current bulletin, check{" "}
+              Every cutoff on this page comes from the {getBulletinLabel()} stored in this site&apos;s
+              data and is re-checked each month. Cutoffs change monthly and the Department of State is
+              the only authority — confirm the current bulletin at{" "}
               <a href={bulletin.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-brand-600 underline font-semibold">
                 travel.state.gov
               </a>.

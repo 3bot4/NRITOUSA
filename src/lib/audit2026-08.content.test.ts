@@ -275,11 +275,12 @@ describe("gold page — general free allowance vs gold allowance", () => {
     expect(goldDutyConfig.generalFreeAllowanceTouristInr).toBe(25_000);
   });
 
-  it("flags the general allowance as not verbatim-verified from the gazette", () => {
-    // Provenance discipline: the Rule 6 figures were read from the gazette,
-    // these were not. The UI must show the weaker-provenance caveat.
-    expect(goldDutyConfig.generalAllowanceVerifiedVerbatim).toBe(false);
-    expect(goldPage).toMatch(/generalAllowanceVerifiedVerbatim/);
+  it("cites the notification for the general allowance, with no hedge left on the page", () => {
+    // Verified against CBIC 2026-08-17, so the page states it plainly and
+    // cites the notification rather than carrying a provisional caveat.
+    expect(goldDutyConfig.generalAllowanceVerifiedVerbatim).toBe(true);
+    expect(goldPage).toMatch(/14\/2026-Customs/);
+    expect(goldPage).not.toMatch(/have not been read back/i);
   });
 
   it("states the general allowance does NOT cover bullion", () => {
