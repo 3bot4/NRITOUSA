@@ -111,10 +111,11 @@ const SECTIONS: Section[] = [
             convertible foreign currency, and declaration on arrival.
           </>,
           <>
-            A passenger who does not meet those conditions faces the general baggage/import assessment instead, which
-            is <strong>substantially higher</strong> — commonly cited around {cfg.standardRatePctIllustrative}%, though
-            we could not tie that figure to a single current official entry, so confirm the applicable rate with
-            Customs before you fly. One valuation detail applies either way: customs does not assess duty on what you
+            A passenger who does not meet those conditions faces the standard baggage assessment instead, which is
+            <strong> substantially higher at about {cfg.standardBaggageRatePct}%</strong> —{" "}
+            {cfg.standardBaggageBcdPct}% basic customs duty on baggage under tariff heading 9803 (capped at that rate
+            by Notification No. 26/2016-Customs), plus a Social Welfare Surcharge of{" "}
+            {cfg.standardBaggageSwsRateOnBcdPct}% charged on the duty rather than on the value. One valuation detail applies either way: customs does not assess duty on what you
             paid your US jeweller. Officers use <strong>CBIC-notified tariff values</strong> and notified exchange
             rates, updated periodically, so the assessed value can differ from your receipt in either direction.
           </>,
@@ -465,8 +466,10 @@ export default function Page() {
                   {cfg.freeJewelleryGramsOther} g other eligible passenger, jewellery only, &gt;1 year abroad).
                   Concessional duty: {cfg.concessionalBcdPct}% (Notification No. 45/2025-Customs passenger-gold
                   entries) + {cfg.concessionalAidcPct}% AIDC, requiring ≥{cfg.minMonthsAbroadForConcession} months
-                  abroad and ≤1 kg, duty paid in convertible foreign currency. Non-eligible scenarios use an
-                  illustrative {cfg.standardRatePctIllustrative}% standard assessment (confirm with Customs). Duty in ₹
+                  abroad and ≤1 kg, duty paid in convertible foreign currency. Non-eligible scenarios use the
+                  standard baggage assessment of {cfg.standardBaggageRatePct}% ({cfg.standardBaggageBcdPct}% BCD under
+                  heading 9803 per Notification No. 26/2016-Customs + {cfg.standardBaggageSwsRateOnBcdPct}% Social
+                  Welfare Surcharge on the duty). Duty in ₹
                   converts at an assumed ₹{cfg.approxInrPerUsd}/USD for display. The calculator uses your value
                   estimate — actual assessment uses CBIC-notified tariff values, which this tool does not fetch. Last
                   verified {GOLD_UPDATED_HUMAN}.

@@ -28,10 +28,12 @@
  *    numbers and coins ≥99.5% purity; and other forms including tola bars
  *    and ornaments, excluding stone-studded ornaments). AIDC of 1% applies
  *    to gold separately → ≈6% total.
- *  - The standard baggage assessment for passengers who do NOT qualify could
- *    not be tied to a single current official entry from here; it is treated
- *    below as an ILLUSTRATIVE assumption (commonly cited around 36%) and the
- *    page says so. Never present it as a verified rate.
+ *  - Standard baggage assessment for passengers who do NOT qualify: 38.5%
+ *    effective — 35% basic customs duty under tariff heading 9803 (capped at
+ *    that rate by Notification No. 26/2016-Customs) plus Social Welfare
+ *    Surcharge at 10% OF THE DUTY. See the maintenance note on the constant
+ *    itself for the one open question (whether non-ornament gold sits inside
+ *    or outside heading 9803).
  *
  *  - General free allowance (Rule 3), added and verified 2026-08-17: ₹75,000
  *    for a resident, tourist of Indian origin, or foreigner on a non-tourist
@@ -98,11 +100,34 @@ export const goldDutyConfig = {
   minMonthsAbroadForConcession: 6,
   maxGramsPerPassenger: 1000,
 
-  /* ILLUSTRATIVE ONLY: assessment when the passenger does not qualify for
-     the concessional route. Commonly cited around 36%, but we could not tie
-     this to a single current official entry — the page and calculator label
-     it as an assumption and tell readers to confirm with Customs. */
-  standardRatePctIllustrative: 36,
+  /* Standard baggage assessment — applies when the passenger does NOT qualify
+     for the concessional passenger-gold route above (e.g. abroad under 6
+     months, or not of Indian origin / without a valid Indian passport).
+
+     Tariff heading 9803 ("All dutiable articles imported by a passenger or a
+     member of the crew in his baggage") carries a tariff rate of 100%, but
+     Notification No. 26/2016-Customs (31-Mar-2016) caps the EFFECTIVE basic
+     customs duty at 35%. Social Welfare Surcharge is 10% OF THE BCD (not of
+     the value), so the effective total is 35 + 3.5 = 38.5%.
+
+     MAINTENANCE NOTE (not user-facing): Notification 26/2016 carries an
+     exclusion list which has historically included "gold or silver in any
+     form other than ornaments", with an April-2016 corrigendum amending it.
+     Whether non-ornament gold is assessed under the 9803 flat rate or at
+     gold's own tariff heading (7108) is the one point that could not be
+     settled from primary sources here — CBIC domains are unreachable from
+     this environment. Set to 38.5% on the site owner's decision (2026-08-17).
+     If a customs broker or the CBIC tariff confirms gold falls outside 9803,
+     this constant and the components below are what need changing. */
+  standardBaggageBcdPct: 35,
+  /** Social Welfare Surcharge, levied at 10% OF the basic customs duty. */
+  standardBaggageSwsRateOnBcdPct: 10,
+  get standardBaggageRatePct() {
+    return (
+      this.standardBaggageBcdPct *
+      (1 + this.standardBaggageSwsRateOnBcdPct / 100)
+    ); // 35 + 3.5 = 38.5
+  },
 
   /* Display-only conversion for the ₹ estimate. Customs actually assesses
      duty on CBIC-notified tariff values and notified exchange rates — this
@@ -285,9 +310,9 @@ export const goldDutyRateRows: GoldDutyRateRow[] = [
   },
   {
     scenario: "Not eligible for the concession (e.g., under 6 months abroad)",
-    rate: "Substantially higher — confirm with Customs",
+    rate: "≈38.5% (35% BCD + 10% SWS on the duty)",
     conditions:
-      "The general baggage/import assessment applies; commonly cited around 36%, but verify the current figure with Customs before travel — we could not tie it to a single current official entry.",
+      "The standard baggage assessment applies — about 38.5%: 35% basic customs duty under tariff heading 9803, capped at that rate by Notification No. 26/2016-Customs, plus Social Welfare Surcharge charged at 10% of that duty rather than of the value.",
   },
   {
     scenario: "Above 1 kg per passenger",
@@ -334,7 +359,7 @@ export const goldFaqs: FaqItem[] = [
   {
     question: "What is the customs duty rate on gold brought to India above the free allowance?",
     answer:
-      "As of August 2026, an eligible passenger (at least six months abroad, up to 1 kg, duty paid in convertible foreign currency) pays about 6% — 5% duty under the passenger-gold entries of Notification No. 45/2025-Customs plus 1% AIDC. A passenger who does not meet those conditions faces the general baggage assessment, which is substantially higher — commonly cited around 36%, but confirm the current figure with Customs. Duty is computed on CBIC-notified tariff values, not your receipt.",
+      "As of August 2026, an eligible passenger (at least six months abroad, up to 1 kg, duty paid in convertible foreign currency) pays about 6% — 5% duty under the passenger-gold entries of Notification No. 45/2025-Customs plus 1% AIDC. A passenger who does not meet those conditions faces the standard baggage assessment of about 38.5% — 35% basic customs duty under tariff heading 9803, capped at that rate by Notification No. 26/2016-Customs, plus Social Welfare Surcharge at 10% of that duty. Duty is computed on CBIC-notified tariff values, not your receipt.",
   },
   {
     question: "Can I carry old or personally owned jewellery to India?",

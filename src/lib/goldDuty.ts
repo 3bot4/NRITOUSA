@@ -37,8 +37,8 @@ export interface GoldDutyResult {
   rateComponents: { label: string; pct: number }[];
   /** True when the concessional 6% passenger-gold route applies. */
   eligibleConcession: boolean;
-  /** True when the standard (illustrative) assessment was used. */
-  usedIllustrativeStandardRate: boolean;
+  /** True when the standard heading-9803 baggage assessment was used. */
+  usedStandardBaggageRate: boolean;
   /** True when the total exceeds the per-passenger cap (1 kg). */
   overCap: boolean;
   dutyUsd: number;
@@ -88,19 +88,25 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
   const dutiableValueUsd = round2(dutiableGrams * valuePerGram);
 
   // Concessional passenger-gold route (Notification 45/2025-Customs) vs the
-  // illustrative standard assessment.
+  // standard baggage assessment under tariff heading 9803.
   const overCap = grams > cfg.maxGramsPerPassenger;
   const eligibleConcession =
     input.monthsAbroad >= cfg.minMonthsAbroadForConcession && !overCap;
   const ratePct = eligibleConcession
     ? cfg.concessionalRatePct
-    : cfg.standardRatePctIllustrative;
+    : cfg.standardBaggageRatePct;
   const rateComponents = eligibleConcession
     ? [
         { label: "Customs duty (Notification 45/2025-Customs)", pct: cfg.concessionalBcdPct },
         { label: "AIDC", pct: cfg.concessionalAidcPct },
       ]
-    : [{ label: "Illustrative standard baggage assessment — confirm with Customs", pct: cfg.standardRatePctIllustrative }];
+    : [
+        { label: "Basic customs duty — baggage (Notification 26/2016-Customs)", pct: cfg.standardBaggageBcdPct },
+        {
+          label: `Social Welfare Surcharge (${cfg.standardBaggageSwsRateOnBcdPct}% of the duty)`,
+          pct: round2(cfg.standardBaggageRatePct - cfg.standardBaggageBcdPct),
+        },
+      ];
 
   if (overCap) {
     warnings.push(
@@ -108,7 +114,7 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
     );
   } else if (!eligibleConcession) {
     warnings.push(
-      `The concessional ${cfg.concessionalRatePct}% route generally requires at least ${cfg.minMonthsAbroadForConcession} months abroad. The estimate uses an illustrative ${cfg.standardRatePctIllustrative}% standard assessment — the actual general baggage assessment may differ and can be substantially higher; confirm with Customs.`,
+      `The concessional ${cfg.concessionalRatePct}% route generally requires at least ${cfg.minMonthsAbroadForConcession} months abroad. This estimate uses the standard baggage assessment of ${cfg.standardBaggageRatePct}% — ${cfg.standardBaggageBcdPct}% basic customs duty under tariff heading 9803 plus ${cfg.standardBaggageSwsRateOnBcdPct}% Social Welfare Surcharge on that duty. Customs assesses on CBIC-notified tariff values; confirm your classification on arrival.`,
     );
   }
   if (eligibleConcession && dutiableGrams > 0) {
@@ -128,7 +134,7 @@ export function calcGoldDuty(input: GoldDutyInput): GoldDutyResult {
     ratePct,
     rateComponents,
     eligibleConcession,
-    usedIllustrativeStandardRate: !eligibleConcession,
+    usedStandardBaggageRate: !eligibleConcession,
     overCap,
     dutyUsd,
     dutyInr,

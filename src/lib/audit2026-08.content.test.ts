@@ -275,6 +275,17 @@ describe("gold page — general free allowance vs gold allowance", () => {
     expect(goldDutyConfig.generalFreeAllowanceTouristInr).toBe(25_000);
   });
 
+  it("states the standard baggage rate with its components, not as an unknown", () => {
+    // Resolved 2026-08-17: 35% BCD (Notification 26/2016-Customs, heading
+    // 9803) + 10% SWS on the duty = 38.5%. The old "commonly cited around
+    // 36%, confirm with Customs" hedge must not return.
+    expect(goldDutyConfig.standardBaggageRatePct).toBe(38.5);
+    expect(goldPage).toMatch(/26\/2016-Customs/);
+    expect(goldPage).toMatch(/9803/);
+    expect(goldPage).not.toMatch(/commonly cited around/i);
+    expect(goldPage).not.toMatch(/standardRatePctIllustrative/);
+  });
+
   it("cites the notification for the general allowance, with no hedge left on the page", () => {
     // Verified against CBIC 2026-08-17, so the page states it plainly and
     // cites the notification rather than carrying a provisional caveat.

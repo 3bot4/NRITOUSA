@@ -59,8 +59,8 @@ describe("calcGoldDuty", () => {
     expect(dad.dutyUsd).toBe(66); // 6% concessional
 
     expect(uncle.freeGrams).toBe(0); // <12 months → no allowance
-    expect(uncle.ratePct).toBe(cfg.standardRatePctIllustrative); // <6 months → 36%
-    expect(uncle.dutyUsd).toBe(792); // $2,200 × 36%
+    expect(uncle.ratePct).toBe(cfg.standardBaggageRatePct); // <6 months → standard baggage rate
+    expect(uncle.dutyUsd).toBe(847); // $2,200 × 38.5% standard baggage rate
 
     // No pooling: mom's spare allowance never offsets dad's excess.
     expect(mom.freeGrams + dad.freeGrams).toBe(60);
@@ -71,7 +71,7 @@ describe("calcGoldDuty", () => {
     const r = calcGoldDuty({ category: "man", monthsAbroad: 24, form: "bars", grams: 1200, valueUsd: 120000 });
     expect(r.overCap).toBe(true);
     expect(r.eligibleConcession).toBe(false);
-    expect(r.ratePct).toBe(cfg.standardRatePctIllustrative);
+    expect(r.ratePct).toBe(cfg.standardBaggageRatePct);
     expect(r.warnings.join(" ")).toMatch(/1 kg/i);
   });
 });
@@ -121,8 +121,28 @@ describe("calcGoldDuty — Baggage Rules 2026 constants (audit acceptance cases)
     expect(r.freeGrams).toBe(0);
     expect(r.dutiableGrams).toBe(30);
     expect(r.eligibleConcession).toBe(false);
-    expect(r.ratePct).toBe(cfg.standardRatePctIllustrative);
-    expect(r.usedIllustrativeStandardRate).toBe(true);
+    expect(r.ratePct).toBe(cfg.standardBaggageRatePct);
+    expect(r.usedStandardBaggageRate).toBe(true);
+  });
+
+  it("pins the standard baggage rate at 38.5% = 35% BCD + 10% SWS on the duty", () => {
+    // Heading 9803; BCD capped at 35% by Notification No. 26/2016-Customs.
+    // SWS is 10% OF THE DUTY, not of the value: 35 + 3.5 = 38.5.
+    expect(cfg.standardBaggageBcdPct).toBe(35);
+    expect(cfg.standardBaggageSwsRateOnBcdPct).toBe(10);
+    expect(cfg.standardBaggageRatePct).toBe(38.5);
+  });
+
+  it("breaks the standard rate into its two named components for display", () => {
+    const r = calcGoldDuty({ category: "man", monthsAbroad: 3, form: "bars", grams: 100, valueUsd: 10000 });
+    expect(r.usedStandardBaggageRate).toBe(true);
+    const labels = r.rateComponents.map((c) => c.label).join(" | ");
+    expect(labels).toMatch(/26\/2016-Customs/);
+    expect(labels).toMatch(/Social Welfare Surcharge/);
+    // Components must sum to the headline rate, or the UI contradicts itself.
+    const sum = r.rateComponents.reduce((a, c) => a + c.pct, 0);
+    expect(sum).toBeCloseTo(cfg.standardBaggageRatePct, 5);
+    expect(r.dutyUsd).toBe(3850); // $10,000 × 38.5%
   });
 
   it("between 6 and 12 months: concessional rate applies but jewellery allowance does not", () => {
