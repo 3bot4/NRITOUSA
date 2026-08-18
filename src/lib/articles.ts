@@ -1119,6 +1119,11 @@ Stop looking for a transfer button — it doesn't exist. The two retirement syst
 To collect US Social Security retirement benefits you need **40 credits — about 10 years of work**. If you earn them, you can generally **receive benefits even while living in India**. The catch: the US and India have **no totalization agreement**, so you can't combine credits across countries, and short stints may earn you nothing. A 2025 law **repealed the WEP**, so foreign pensions no longer reduce your US benefit.
 :::
 
+:::info
+title: India is on the SSA's payable-country list
+The Social Security Administration publishes country lists that decide whether it can keep sending benefits to you abroad — and **India is on [Country List 4](https://www.ssa.gov/international/countrylist4.htm)**. For an Indian citizen (not a US citizen) living in India, payments continue past six full calendar months outside the US as long as the worker whose record the benefit is based on **earned at least 40 US credits — or lived in the US for at least 10 years**. That's the same 40-credit line this whole article turns on. US citizens can be paid in India regardless; only a very short list of countries (Cuba, North Korea) is off-limits entirely. Verify your own case with the SSA's [Payments Abroad Screening Tool](https://www.ssa.gov/international/payments_outsideUS.html).
+:::
+
 :::key
 - You need **40 credits (~10 years of covered work)** to qualify for retirement benefits.
 - **No US-India totalization agreement** exists — credits can't be combined, and under ~10 years risks forfeiting benefits.
@@ -1144,7 +1149,7 @@ The consequences are real for NRIs:
 This is precisely why many NRIs feel Social Security is a "tax they lose" — and for those who don't reach 10 years, it often is.
 
 ## If you DO qualify: collecting from India
-The good news for the long-tenured: if you earn your **40 credits**, you generally **keep the benefit for life**, and the US **can pay it to you while you live in India**. India is a country where the Social Security Administration is permitted to send payments (unlike a short list of restricted countries).
+The good news for the long-tenured: if you earn your **40 credits**, you generally **keep the benefit for life**, and the US **can pay it to you while you live in India**. India sits on the SSA's **Country List 4** — payments keep flowing to a citizen of India abroad once that 40-credit (or 10-year US residence) test is met, unlike the short list of countries where the SSA is barred from sending money at all.
 
 :::note
 **Withholding for nonresidents.** When the SSA pays benefits to a nonresident alien living abroad, **85% of the benefit is subject to a 30% tax — an effective ~25.5% withholding** — unless a treaty reduces it. The US-India treaty does not fully exempt Social Security, so budget for this haircut on benefits received in India.
@@ -1174,7 +1179,12 @@ No longer. The WEP was repealed in January 2025, so foreign pensions no longer r
 No. Without a US-India totalization agreement, only US-covered work counts toward the 40-credit requirement.
 
 ## The bottom line
-Social Security rewards the long haul. Cross the 40-credit (10-year) line and you've secured a lifetime benefit you can collect even from India — now without the old WEP reduction. Fall short, and with no totalization agreement those contributions are largely a sunk cost, which is all the more reason to maximize your portable retirement accounts. Know your credit count, plan around it, and don't bank on Social Security unless the decade is genuinely in reach.`,
+Social Security rewards the long haul. Cross the 40-credit (10-year) line and you've secured a lifetime benefit you can collect even from India — now without the old WEP reduction. Fall short, and with no totalization agreement those contributions are largely a sunk cost, which is all the more reason to maximize your portable retirement accounts. Know your credit count, plan around it, and don't bank on Social Security unless the decade is genuinely in reach.
+
+## Official sources
+- [SSA — Country List 4 (includes India)](https://www.ssa.gov/international/countrylist4.htm)
+- [SSA — Payments Abroad Screening Tool](https://www.ssa.gov/international/payments_outsideUS.html)
+- [SSA Publication 05-10137 — Your Payments While You Are Outside the United States](https://www.ssa.gov/pubs/EN-05-10137.pdf)`,
   },
   {
     slug: "rent-vs-buy-house-immigrants",
