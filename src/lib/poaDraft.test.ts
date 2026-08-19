@@ -231,3 +231,163 @@ describe("PDF integration", () => {
     }
   });
 });
+
+/* Fixes from the POA generator review. Each block names the defect it locks
+   out, so a future edit that reintroduces it fails here rather than on a deed. */
+describe("revocation deed does not assert registration that did not happen", () => {
+  const unregistered = { ...filled, originalPoaRegNo: "", originalPoaRegOffice: "" };
+
+  it("omits the registration clause entirely when both fields are blank", () => {
+    const txt = poaDraftText("revocation", unregistered);
+    expect(txt).toMatch(
+      /executed by me and attested or apostilled in the United States \(the "said Power of Attorney"\)/,
+    );
+    expect(txt).not.toMatch(/registered as document No\./);
+  });
+
+  it("never prints a raw [PLACE] placeholder when the POA was not registered", () => {
+    expect(poaDraftText("revocation", unregistered)).not.toContain("[PLACE]");
+  });
+
+  it("declares the POA was NOT registered instead of claiming the revocation is", () => {
+    const txt = poaDraftText("revocation", unregistered);
+    expect(txt).toMatch(/the said Power of Attorney was not registered/);
+    expect(txt).not.toMatch(/this revocation is being registered/);
+  });
+
+  it("keeps the registered wording when both fields are supplied", () => {
+    const txt = poaDraftText("revocation", filled);
+    expect(txt).toMatch(/and registered as document No\. 1234\/2024 at the office of the Sub-Registrar at Adyar, Chennai/);
+    expect(txt).toMatch(/this revocation is being registered at the office of the Sub-Registrar/);
+  });
+
+  it("keeps the 'AND' conjunction when only the office is known", () => {
+    const txt = poaDraftText("revocation", { ...filled, originalPoaRegNo: "" });
+    expect(txt).toMatch(/United States, AND registered at the office of the Sub-Registrar at Adyar, Chennai/);
+    expect(txt).not.toMatch(/United States registered at/);
+    expect(txt).not.toContain("[PLACE]");
+  });
+
+  it("still falls back to a bracketed newspaper placeholder when blank", () => {
+    expect(poaDraftText("revocation", { ...unregistered, newspaper: "" })).toContain("[NEWSPAPER]");
+  });
+});
+
+describe("passport type 'Other' never reaches the deed literally", () => {
+  it("names the issuing country when one is given", () => {
+    const txt = poaDraftText("sale", { ...filled, passportType: "Other", passportCountry: "Canadian" });
+    expect(txt).toContain("holder of Canadian passport No. Z1234567");
+    expect(txt).not.toContain("holder of Other passport");
+  });
+
+  it("falls back to a bracketed country placeholder when it is blank", () => {
+    const txt = poaDraftText("sale", { ...filled, passportType: "Other", passportCountry: "" });
+    expect(txt).toContain("holder of passport No. Z1234567 issued by [COUNTRY OF ISSUE]");
+    expect(txt).not.toContain("holder of Other passport");
+  });
+
+  it("leaves the Indian and United States branches untouched", () => {
+    expect(poaDraftText("sale", { ...filled, passportType: "Indian" })).toContain(
+      "holder of Indian passport No.",
+    );
+    expect(poaDraftText("sale", { ...filled, passportType: "United States" })).toContain(
+      "holder of United States passport No.",
+    );
+  });
+});
+
+describe("ratification and attorney acceptance appear on every POA", () => {
+  it("is present on sale, purchase and management drafts", () => {
+    for (const t of ["sale", "purchase", "manage"] as const) {
+      const txt = poaDraftText(t, filled);
+      expect(txt).toMatch(/I HEREBY RATIFY and confirm all lawful acts/);
+      expect(txt).toMatch(/accept the above appointment and the limits placed on it/);
+      expect(txt).toMatch(/ATTORNEY: _+/);
+    }
+  });
+
+  it("is absent from the revocation deed, which has neither to give", () => {
+    const txt = poaDraftText("revocation", filled);
+    expect(txt).not.toMatch(/I HEREBY RATIFY/);
+    expect(txt).not.toMatch(/accept the above appointment/);
+  });
+
+  it("puts ratification before the schedule and acceptance at the very end", () => {
+    const txt = poaDraftText("purchase", filled);
+    expect(txt.indexOf("I HEREBY RATIFY")).toBeLessThan(txt.indexOf("THE SCHEDULE ABOVE REFERRED TO"));
+    expect(txt.indexOf("accept the above appointment")).toBeGreaterThan(txt.indexOf("APOSTILLE"));
+  });
+});
+
+describe("termination trigger matches the document", () => {
+  it("keeps 'completion of the acts' on sale and purchase", () => {
+    for (const t of ["sale", "purchase"] as const) {
+      expect(poaDraftText(t, filled)).toMatch(/or upon completion of the acts authorised above, whichever is earlier,/);
+    }
+  });
+
+  it("drops it on a management POA, which has no completion point", () => {
+    const txt = poaDraftText("manage", filled);
+    expect(txt).not.toMatch(/completion of the acts authorised above/);
+    expect(txt).toMatch(
+      /shall stand automatically revoked on August 31, 2027, unless expressly extended by me in writing/,
+    );
+  });
+});
+
+describe("sale draft carries a TDS clause", () => {
+  it("adds the Section 197 lower-deduction clause as clause 7", () => {
+    const txt = poaDraftText("sale", filled);
+    expect(txt).toMatch(/7\. To apply for, pursue and receive a certificate under Section 197 of the Income-tax Act, 1961/);
+    expect(txt).toMatch(/Form 16A and the TDS certificate from the purchaser/);
+  });
+
+  it("renumbers the residual clause to 8 and updates its cross-reference", () => {
+    const txt = poaDraftText("sale", filled);
+    expect(txt).toMatch(/8\. To sign, verify and file such applications/);
+    expect(txt).toMatch(/acts numbered 1 to 7 above/);
+    expect(txt).not.toMatch(/acts numbered 1 to 6 above/);
+  });
+});
+
+describe("regression guards from the review checklist", () => {
+  it("keeps the key-field denominators at Sell 12, Buy 10, Manage 12, Revoke 9", () => {
+    expect(draftProgress("sale", EMPTY_POA_DRAFT).total).toBe(12);
+    expect(draftProgress("purchase", EMPTY_POA_DRAFT).total).toBe(10);
+    expect(draftProgress("manage", EMPTY_POA_DRAFT).total).toBe(12);
+    expect(draftProgress("revocation", EMPTY_POA_DRAFT).total).toBe(9);
+  });
+
+  it("never leaves a dangling comma or an empty gap where a field was blank", () => {
+    // Signature and witness lines pad with runs of spaces on purpose, so the
+    // "collapsed gap" check skips them and applies to prose lines only.
+    const isPadded = (line: string) => /_{4,}/.test(line);
+    for (const t of ALL) {
+      const txt = poaDraftText(t, EMPTY_POA_DRAFT);
+      expect(txt).not.toMatch(/,\s*,/);
+      expect(txt).not.toMatch(/\s,/);
+      expect(txt).not.toMatch(/\(\s*\)/);
+      for (const line of txt.split("\n").filter((l) => !isPadded(l))) {
+        expect(line, `collapsed gap in ${t}: ${line}`).not.toMatch(/ {3,}\S/);
+      }
+    }
+  });
+
+  it("still opens with the not-a-deed banner on every tab after the changes", () => {
+    for (const t of ALL) {
+      expect(poaDraftText(t, filled).split("\n\n")[0]).toBe(DRAFT_BANNER);
+      expect(poaDraftText(t, EMPTY_POA_DRAFT).split("\n\n")[0]).toBe(DRAFT_BANNER);
+    }
+  });
+
+  it("carries the full draft through to the final block in the PDF", async () => {
+    const { buildLetterPdf } = await import("./letterPdf");
+    for (const t of ALL) {
+      const paras = buildPoaDraft(t, filled);
+      const last = paras[paras.length - 1].text;
+      expect(last.trim().length).toBeGreaterThan(0);
+      expect(() => buildLetterPdf(paras)).not.toThrow();
+      expect(buildLetterPdf(paras).byteLength).toBeGreaterThan(1000);
+    }
+  });
+});

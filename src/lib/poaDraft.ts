@@ -52,7 +52,9 @@ export interface PoaDraftFields {
   principalRelation: string; // son/daughter/wife of
   principalParent: string;
   principalAge: string;
-  passportType: string; // "Indian" | "United States"
+  passportType: string; // "Indian" | "United States" | "Other"
+  /** Only used when passportType is "Other". */
+  passportCountry: string;
   passportNo: string;
   ociNo: string;
   pan: string;
@@ -107,6 +109,7 @@ export const EMPTY_POA_DRAFT: PoaDraftFields = {
   principalParent: "",
   principalAge: "",
   passportType: "Indian",
+  passportCountry: "",
   passportNo: "",
   ociNo: "",
   pan: "",
@@ -210,6 +213,23 @@ export function draftProgress(type: PoaDocType, f: PoaDraftFields): DraftProgres
 
 /* ── Shared blocks ───────────────────────────────────────────────────────── */
 
+/**
+ * "holder of X passport No. Y" — the passport phrase.
+ *
+ * Selecting "Other" must never print the literal word "Other" onto a deed, so
+ * that branch either names the issuing country or falls back to a bracketed
+ * placeholder the advocate can see and fill.
+ */
+function passportPhrase(f: PoaDraftFields): string {
+  const no = v(f.passportNo, "PASSPORT NO.");
+  if (f.passportType.trim() === "Other") {
+    return has(f.passportCountry)
+      ? `holder of ${f.passportCountry.trim()} passport No. ${no}`
+      : `holder of passport No. ${no} issued by [COUNTRY OF ISSUE]`;
+  }
+  return `holder of ${v(f.passportType, "Indian/United States")} passport No. ${no}`;
+}
+
 function principalBlock(f: PoaDraftFields): string {
   const oci = has(f.ociNo) ? `OCI Card No. ${f.ociNo.trim()}, ` : "";
   const pan = has(f.pan) ? `Permanent Account Number ${f.pan.trim()}, ` : "";
@@ -219,10 +239,10 @@ function principalBlock(f: PoaDraftFields): string {
   )} of ${v(f.principalParent, "FATHER'S / HUSBAND'S NAME")}, aged about ${v(
     f.principalAge,
     "AGE",
-  )} years, holder of ${v(f.passportType, "Indian/United States")} passport No. ${v(
-    f.passportNo,
-    "PASSPORT NO.",
-  )}, ${oci}${pan}presently residing at ${v(f.usAddress, "FULL US ADDRESS, CITY, STATE, ZIP, USA")}`;
+  )} years, ${passportPhrase(f)}, ${oci}${pan}presently residing at ${v(
+    f.usAddress,
+    "FULL US ADDRESS, CITY, STATE, ZIP, USA",
+  )}`;
 }
 
 function attorneyBlock(f: PoaDraftFields): string {
@@ -242,15 +262,29 @@ function accountPhrase(f: PoaDraftFields): string {
   )}, ${v(f.bankBranch, "BRANCH")}`;
 }
 
-function termClause(f: PoaDraftFields): string {
-  return `THIS POWER OF ATTORNEY shall come into force on ${v(
-    f.startDate,
-    "START DATE",
-  )} and shall stand automatically revoked on ${v(
-    f.endDate,
-    "END DATE",
-  )} or upon completion of the acts authorised above, whichever is earlier, unless expressly extended by me in writing executed and attested in the same manner as this instrument.`;
+/**
+ * Termination clause. A sale or purchase POA has a natural completion point;
+ * a standing management POA does not, so "whichever is earlier" is dropped
+ * there rather than left as an incoherent trigger.
+ */
+function termClause(f: PoaDraftFields, hasCompletionPoint = true): string {
+  const start = v(f.startDate, "START DATE");
+  const end = v(f.endDate, "END DATE");
+  const trigger = hasCompletionPoint
+    ? ` or upon completion of the acts authorised above, whichever is earlier,`
+    : ",";
+  return `THIS POWER OF ATTORNEY shall come into force on ${start} and shall stand automatically revoked on ${end}${trigger} unless expressly extended by me in writing executed and attested in the same manner as this instrument.`;
 }
+
+/** Ratification clause — clause 09 of the page's "Ten Clauses" section. */
+const RATIFICATION =
+  "I HEREBY RATIFY and confirm all lawful acts done by the Attorney strictly within the powers expressly granted above, and nothing beyond them.";
+
+/** The attorney's own acceptance of the appointment and its limits. */
+const acceptanceBlock = (f: PoaDraftFields): string[] => [
+  `I, ${v(f.attorneyName, "ATTORNEY NAME")}, accept the above appointment and the limits placed on it.`,
+  "ATTORNEY: ________________________    [Affix photograph where the State requires it]",
+];
 
 function executionBlock(f: PoaDraftFields, label: string): string[] {
   return [
@@ -304,14 +338,14 @@ function saleDoc(f: PoaDraftFields): string[] {
     )}, and to issue receipts for the same.`,
     "5. To deliver vacant physical possession of the Schedule Property to the purchaser upon registration of the sale deed AND receipt of the entire consideration in the said account.",
     "6. To apply for and obtain mutation, khata transfer and change of name in the records of the municipal authority, the electricity and water utilities and the society or association.",
-    "7. To sign, verify and file such applications, indemnities, affidavits and undertakings before any authority as are strictly necessary to complete the acts numbered 1 to 6 above.",
+    "7. To apply for, pursue and receive a certificate under Section 197 of the Income-tax Act, 1961 for deduction of tax at a lower rate in respect of this sale, to collect Form 16A and the TDS certificate from the purchaser, and to sign the related applications and acknowledgements.",
+    "8. To sign, verify and file such applications, indemnities, affidavits and undertakings before any authority as are strictly necessary to complete the acts numbered 1 to 7 above.",
     "THE ATTORNEY SHALL NOT, and this instrument confers no power whatsoever to: (a) mortgage, charge, gift, exchange, settle or otherwise encumber the Schedule Property; (b) enter into any development agreement or joint-venture arrangement in respect of it; (c) sell the Schedule Property at a consideration below the minimum stated in clause 1; (d) receive any part of the consideration in cash, or into any account other than the account named in clause 4; (e) delegate or substitute any of these powers to any other person; or (f) act in respect of any property of mine other than the Schedule Property.",
     termClause(f),
-    "I HEREBY RATIFY and confirm all lawful acts done by the Attorney strictly within the powers expressly granted above, and nothing beyond them.",
+    RATIFICATION,
     ...scheduleBlock(f),
     ...executionBlock(f, "Special Power of Attorney"),
-    `I, ${v(f.attorneyName, "ATTORNEY NAME")}, accept the above appointment and the limits placed on it.`,
-    "ATTORNEY: ________________________    [Affix photograph where the State requires it]",
+    ...acceptanceBlock(f),
   ];
 }
 
@@ -337,8 +371,10 @@ function purchaseDoc(f: PoaDraftFields): string[] {
     "7. Sign such affidavits, indemnities and undertakings as are strictly necessary to complete the acts above.",
     "THE ATTORNEY SHALL NOT: agree a consideration above the cap in clause 1; pay any part of the consideration in cash; mortgage, charge or create any encumbrance on the Schedule Property; resell, gift or transfer it; delegate these powers; or act in respect of any other property.",
     termClause(f),
+    RATIFICATION,
     ...scheduleBlock(f),
     ...executionBlock(f, "Special Power of Attorney"),
+    ...acceptanceBlock(f),
   ];
 }
 
@@ -362,19 +398,47 @@ function manageDoc(f: PoaDraftFields): string[] {
     )} per instance, and beyond that only with my prior written approval.`,
     "6. Take steps to recover possession from a defaulting or holding-over tenant, including instructing counsel.",
     "THE ATTORNEY SHALL NOT, under any circumstances: sell, agree to sell, gift, exchange, mortgage, charge or otherwise encumber the Schedule Property; enter into any development or redevelopment agreement; grant any lease exceeding the term in clause 1; receive any amount in cash or into any other account; or delegate these powers.",
-    termClause(f),
+    termClause(f, false),
+    RATIFICATION,
     ...scheduleBlock(f),
     ...executionBlock(f, "Special Power of Attorney"),
+    ...acceptanceBlock(f),
   ];
 }
 
 function revocationDoc(f: PoaDraftFields): string[] {
-  const reg = has(f.originalPoaRegNo)
-    ? ` and registered as document No. ${f.originalPoaRegNo.trim()} at the office of the Sub-Registrar at ${v(
+  /* A POA is not always registered, and the form says so ("leave blank if it
+     was never registered"). Asserting registration anyway would put a false
+     statement on the face of a deed the user may sign — and print a raw
+     [PLACE] into it. So the registration language appears only when the user
+     actually supplied registration details. */
+  const regNo = f.originalPoaRegNo.trim();
+  const sro = f.originalPoaRegOffice.trim();
+  const wasRegistered = Boolean(regNo || sro);
+
+  let reg = "";
+  if (regNo) {
+    reg = ` and registered as document No. ${regNo} at the office of the Sub-Registrar at ${v(
+      f.originalPoaRegOffice,
+      "PLACE",
+    )}`;
+  } else if (sro) {
+    reg = `, AND registered at the office of the Sub-Registrar at ${sro}`;
+  }
+
+  const noticeDeclaration = wasRegistered
+    ? `I FURTHER DECLARE that this revocation is being registered at the office of the Sub-Registrar at ${v(
         f.originalPoaRegOffice,
         "PLACE",
-      )}`
-    : ` registered at the office of the Sub-Registrar at ${v(f.originalPoaRegOffice, "PLACE")}`;
+      )} where the said Power of Attorney was registered, that written notice of this revocation is being served on the said attorney, and that public notice is being published in ${v(
+        f.newspaper,
+        "NEWSPAPER",
+      )}.`
+    : `I FURTHER DECLARE that the said Power of Attorney was not registered, that written notice of this revocation is being served on the said attorney, and that public notice is being published in ${v(
+        f.newspaper,
+        "NEWSPAPER",
+      )}.`;
+
   return [
     "DEED OF REVOCATION OF POWER OF ATTORNEY",
     `KNOW ALL PERSONS BY THESE PRESENTS that ${principalBlock(f)} (the "Principal"),`,
@@ -394,13 +458,7 @@ function revocationDoc(f: PoaDraftFields): string[] {
       f.attorneyName,
       "ATTORNEY NAME",
     )} shall have no authority whatsoever, from the effective date, to act for me or in my name in any manner, and that I shall not be bound by any act, deed or thing done by him or her on or after that date.`,
-    `I FURTHER DECLARE that this revocation is being registered at the office of the Sub-Registrar at ${v(
-      f.originalPoaRegOffice,
-      "PLACE",
-    )} where the said Power of Attorney was registered, that written notice of this revocation is being served on the said attorney, and that public notice is being published in ${v(
-      f.newspaper,
-      "NEWSPAPER",
-    )}.`,
+    noticeDeclaration,
     "I confirm that the said Power of Attorney was not coupled with any interest in favour of the attorney within the meaning of Section 202 of the Indian Contract Act, 1872. [Delete this paragraph if it is not correct - an agency coupled with an interest cannot be revoked to the prejudice of that interest.]",
     ...executionBlock(f, "Deed of Revocation"),
   ];

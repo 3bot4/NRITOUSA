@@ -219,6 +219,11 @@ export default function PoaDraftGenerator() {
               ))}
             </select>
           </F>
+          {f.passportType === "Other" && (
+            <F label="Country that issued the passport" hint="Printed into the deed instead of the word &quot;Other&quot;.">
+              <input className={inputCls} value={f.passportCountry} onChange={(e) => set("passportCountry", e.target.value)} />
+            </F>
+          )}
           <F label="Passport number">
             <input className={inputCls} value={f.passportNo} onChange={(e) => set("passportNo", e.target.value)} />
           </F>
