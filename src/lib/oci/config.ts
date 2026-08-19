@@ -28,7 +28,7 @@ export const VERIFY_SOURCES = {
   },
   mha: {
     label: "Ministry of Home Affairs — OCI",
-    href: "https://www.mha.gov.in/en/foreigners/overseas-citizenship-of-india-oci-cardholder",
+    href: "https://www.mha.gov.in/en/divisionofmha/foreigners-division/overseas-citizen-of-india-cardholder",
   },
   passportSeva: {
     label: "Passport Seva (India)",

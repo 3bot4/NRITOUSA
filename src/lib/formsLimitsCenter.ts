@@ -125,7 +125,7 @@ export const US_FORMS: FormRow[] = [
       { label: "FBAR / FATCA guide", href: "/articles/fbar-fatca-nri-guide" },
       { label: "Catch up on missed FBARs", href: "/articles/catch-up-missed-fbar-streamlined" },
     ],
-    source: { label: "FinCEN FBAR", href: "https://bsaefiling.fincen.treas.gov/main.html" },
+    source: { label: "FinCEN FBAR", href: "https://bsaefiling.fincen.gov/" },
   },
   {
     form: "Form 8621 — PFIC",

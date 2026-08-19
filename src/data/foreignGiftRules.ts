@@ -80,7 +80,7 @@ export const form3520Rules = {
     largeGiftsOrBequests: officialSources.irsForm3520,
     form3520Instructions: "https://www.irs.gov/forms-pubs/about-form-3520",
     internationalPenalties:
-      "https://www.irs.gov/businesses/small-businesses-self-employed/international-information-reporting-penalties",
+      "https://www.irs.gov/payments/international-information-reporting-penalties",
   },
 } as const;
 

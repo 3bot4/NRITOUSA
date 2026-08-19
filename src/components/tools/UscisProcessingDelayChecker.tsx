@@ -193,7 +193,7 @@ function assess(
         "USCIS has moved your case to a different service center or the National Benefits Center. Your receipt number stays the same. Functionally, your case joins the new center's queue — compare your receipt date against the new center's published processing times.",
       actions: [
         "Note the new service center from the transfer notice.",
-        "Go to uscis.gov/check-processing-times and look up processing times for your form at the new center.",
+        "Go to egov.uscis.gov/processing-times and look up processing times for your form at the new center.",
         "Continue monitoring egov.uscis.gov — no action needed from you.",
         "For I-485 transfers to NBC/MSC — this typically means interview scheduling is being prepared. Normal.",
       ],
@@ -213,7 +213,7 @@ function assess(
         headline: "H1B petition — longer than typical",
         summary: `Your H1B ${category === "h1b-transfer" ? "transfer" : category === "h1b-amendment" ? "amendment" : "extension"} petition has been pending for about ${age} month${age !== 1 ? "s" : ""}. Regular processing for I-129 H1B petitions currently runs approximately ${typicalMonths}–6 months depending on the service center and USCIS workload. Verify this against the current published processing times at uscis.gov before drawing conclusions.`,
         actions: [
-          "Go to uscis.gov/check-processing-times and enter Form I-129, your service center, and H1B classification.",
+          "Go to egov.uscis.gov/processing-times and enter Form I-129, your service center, and H1B classification.",
           "If outside the published window, ask your employer's attorney about filing a case inquiry.",
           "Ask your employer's attorney about upgrading to premium processing if status is time-sensitive.",
           "For H1B transfers — confirm your employment authorization start date with your employer.",
@@ -231,7 +231,7 @@ function assess(
         summary: `Your H1B petition has been pending for about ${age > 0 ? `${age} month${age !== 1 ? "s" : ""}` : "less than a month"}. Typical regular processing for I-129 H1B petitions runs several months depending on the service center. Check current published times at uscis.gov — these change frequently.`,
         actions: [
           "Monitor egov.uscis.gov for status updates.",
-          "Check uscis.gov/check-processing-times periodically and compare to your receipt date.",
+          "Check egov.uscis.gov/processing-times periodically and compare to your receipt date.",
           "Keep your employer's HR and attorney informed if your current work authorization has an upcoming expiration.",
         ],
         premiumNote: `Premium processing is available for most I-129 H1B petitions if your timeline is urgent. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Always verify on the USCIS Form I-907 page before filing.`,
@@ -250,7 +250,7 @@ function assess(
         headline: "I-140 — longer than typical, check official times",
         summary: `Your I-140 petition has been pending for about ${age} month${age !== 1 ? "s" : ""}. Regular I-140 processing typically runs 6–12+ months depending on the service center and category. Compare against official times at uscis.gov — this varies significantly. Note: your priority date is established at receipt, not approval.`,
         actions: [
-          "Check uscis.gov/check-processing-times for your service center and I-140 category.",
+          "Check egov.uscis.gov/processing-times for your service center and I-140 category.",
           "If outside the published window, ask your employer's attorney about a case inquiry.",
           "Ask about premium processing if establishing the priority date urgently matters.",
           "Even with I-140 pending, your H1B can typically be extended beyond 6 years if an I-140 is approvable.",
@@ -266,7 +266,7 @@ function assess(
       summary: `Your I-140 petition has been pending for about ${age > 0 ? `${age} month${age !== 1 ? "s" : ""}` : "less than a month"}. I-140 processing is one of the longer waits in the employment green card process. Your priority date is established at receipt — that date is what matters for the visa bulletin, not the approval date.`,
       actions: [
         "Monitor egov.uscis.gov for status updates.",
-        "Compare to official processing times at uscis.gov/check-processing-times.",
+        "Compare to official processing times at egov.uscis.gov/processing-times.",
         "Begin monitoring the visa bulletin at travel.state.gov — your priority date is already set.",
         "Discuss H1B extension strategy with your employer's attorney now, regardless of I-140 status.",
       ],
@@ -284,7 +284,7 @@ function assess(
       summary:
         "I-485 adjustment of status processing for Indian applicants is often determined more by visa bulletin priority date availability than USCIS workload alone. Processing times for I-485 vary enormously — from under a year for some categories to many years for oversubscribed categories. The key factors are your priority date, your category (EB-2/EB-3/family), and the current visa bulletin.",
       actions: [
-        "Check current I-485 processing times at uscis.gov/check-processing-times.",
+        "Check current I-485 processing times at egov.uscis.gov/processing-times.",
         "Monitor the monthly visa bulletin at travel.state.gov — priority date must remain current.",
         "Do NOT travel internationally without a valid Advance Parole document while I-485 is pending.",
         "Keep all supporting documents current (medical exam, affidavit of support, employment letter).",
@@ -305,7 +305,7 @@ function assess(
         headline: "EAD — longer than typical, check official times",
         summary: `Your I-765 EAD application has been pending for about ${age} month${age !== 1 ? "s" : ""}. EAD processing times vary by service center and category. Compare to the current published times at uscis.gov. If you are outside the official processing window, you may be eligible to contact USCIS.`,
         actions: [
-          "Check current EAD processing times at uscis.gov/check-processing-times.",
+          "Check current EAD processing times at egov.uscis.gov/processing-times.",
           "If outside the published window, submit a case inquiry at egov.uscis.gov.",
           "For H4 EAD — your work authorization cannot begin until you physically hold the EAD card.",
           "For I-485-based EAD — verify your underlying I-485 is still pending and in good standing.",
@@ -321,7 +321,7 @@ function assess(
       summary: `Your I-765 EAD application has been pending for about ${age > 0 ? `${age} month${age !== 1 ? "s" : ""}` : "less than a month"}. EAD processing is currently running several months at most service centers. Compare to official times at uscis.gov.`,
       actions: [
         "Monitor egov.uscis.gov for status updates.",
-        "Compare to uscis.gov/check-processing-times for your service center.",
+        "Compare to egov.uscis.gov/processing-times for your service center.",
         "Do not start working based on a pending EAD — wait until you physically hold the card.",
         "File EAD renewals at least 6 months before expiration to avoid gaps.",
       ],
@@ -338,7 +338,7 @@ function assess(
         headline: "Advance Parole — longer than typical",
         summary: `Your I-131 AP application has been pending for about ${age} month${age !== 1 ? "s" : ""}. AP processing can run 3–8+ months depending on service center. If you have urgent travel, contact your attorney — there may be options for expedite requests in certain hardship situations.`,
         actions: [
-          "Check current I-131 processing times at uscis.gov/check-processing-times.",
+          "Check current I-131 processing times at egov.uscis.gov/processing-times.",
           "If outside the published window, consider a case inquiry via egov.uscis.gov.",
           "Do NOT travel internationally while I-485 is pending without the AP document physically in hand.",
           "Ask your attorney about an expedite request if you have a documented emergency.",
@@ -355,7 +355,7 @@ function assess(
       actions: [
         "Monitor egov.uscis.gov for updates.",
         "Plan no international travel until Advance Parole is physically approved and in hand.",
-        "Check uscis.gov/check-processing-times for current estimates.",
+        "Check egov.uscis.gov/processing-times for current estimates.",
         "Contact your attorney if travel becomes unavoidable before AP arrives.",
       ],
       showCaseStatusTool: true,
@@ -371,7 +371,7 @@ function assess(
       summary:
         "I-130 family-based petitions are often the start of a multi-year process. Processing times for I-130 itself can range from months to years depending on the relationship category and service center. After I-130 approval, priority date availability in the visa bulletin governs when the beneficiary can proceed — this can involve significant additional waits.",
       actions: [
-        "Check current I-130 processing times at uscis.gov/check-processing-times.",
+        "Check current I-130 processing times at egov.uscis.gov/processing-times.",
         "Monitor the visa bulletin at travel.state.gov after I-130 approval.",
         "For immediate relatives of US citizens — I-130 approval allows direct immigrant visa processing without a wait.",
         "Consult your attorney about the full process: I-130 → visa bulletin → NVC → consular processing or I-485.",
@@ -389,7 +389,7 @@ function assess(
         headline: "N-400 — longer than typical",
         summary: `Your N-400 naturalization application has been pending for about ${age} month${age !== 1 ? "s" : ""}. N-400 processing currently runs approximately 8–18 months at most field offices. Compare to the published time for your specific field office at uscis.gov.`,
         actions: [
-          "Check processing times for your local USCIS field office at uscis.gov/check-processing-times.",
+          "Check processing times for your local USCIS field office at egov.uscis.gov/processing-times.",
           "If outside the published window, you can submit a case inquiry or contact your local USCIS office.",
           "Confirm your biometrics appointment was completed.",
           "Ensure your continuous residence documentation is current.",
@@ -407,7 +407,7 @@ function assess(
         "Monitor egov.uscis.gov for updates, including biometrics scheduling.",
         "Prepare your supporting documents — tax returns, travel history, continuous residence evidence.",
         "Review USCIS's civics test materials at uscis.gov.",
-        "Check uscis.gov/check-processing-times for your specific field office.",
+        "Check egov.uscis.gov/processing-times for your specific field office.",
       ],
       showCaseStatusTool: true,
       showAttorneyBadge: false,
@@ -419,9 +419,9 @@ function assess(
     tier: hasDate && age > 9 ? "consider-inquiry" : "monitor",
     headline: "Check official USCIS processing times",
     summary:
-      "Processing times vary significantly by form type, service center, and USCIS workload. The most reliable way to assess your wait is to compare your receipt date against the current published processing times at uscis.gov/check-processing-times.",
+      "Processing times vary significantly by form type, service center, and USCIS workload. The most reliable way to assess your wait is to compare your receipt date against the current published processing times at egov.uscis.gov/processing-times.",
     actions: [
-      "Go to uscis.gov/check-processing-times and enter your form type and service center.",
+      "Go to egov.uscis.gov/processing-times and enter your form type and service center.",
       "Note the date on USCIS's processing time page — if your receipt date is before that date, your case may be outside the normal window.",
       "If outside the published window, consider submitting a case inquiry at egov.uscis.gov.",
       "Consult your attorney for employer-filed petitions.",
@@ -527,12 +527,12 @@ export default function UscisProcessingDelayChecker() {
       <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
         <strong className="font-bold">Not legal advice.</strong> This tool provides general educational guidance based on publicly available information. Processing times change constantly. Always verify at{" "}
         <a
-          href="https://www.uscis.gov/check-processing-times"
+          href="https://egov.uscis.gov/processing-times"
           target="_blank"
           rel="noopener noreferrer"
           className="underline font-semibold"
         >
-          uscis.gov/check-processing-times
+          egov.uscis.gov/processing-times
         </a>{" "}
         and consult your immigration attorney before taking any action.
       </div>
@@ -759,7 +759,7 @@ export default function UscisProcessingDelayChecker() {
           {/* links */}
           <div className="grid gap-3 sm:grid-cols-2">
             <a
-              href="https://www.uscis.gov/check-processing-times"
+              href="https://egov.uscis.gov/processing-times"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-blue-400 hover:shadow-sm"

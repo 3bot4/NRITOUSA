@@ -148,7 +148,7 @@ export default function VisitorInsuranceCostCalculatorPage() {
               <p className="mt-3 text-xs text-ink-400">
                 Sources:{" "}
                 <a href="https://www.healthcare.gov/glossary/deductible/" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">HealthCare.gov</a>,{" "}
-                <a href="https://www.cms.gov/marketplace/private-health-insurance/short-term-limited-duration" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">CMS.gov</a>
+                <a href="https://www.cms.gov/newsroom/fact-sheets/short-term-limited-duration-insurance-and-independent-noncoordinated-excepted-benefits-coverage-cms" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">CMS.gov</a>
                 {" "}and your own policy certificate. Last reviewed {VISITOR_INSURANCE_UPDATED_HUMAN}.
               </p>
             </div>

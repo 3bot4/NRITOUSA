@@ -23,8 +23,8 @@ export const SOURCES = {
   form8938Comparison:
     "https://www.irs.gov/businesses/comparison-of-form-8938-and-fbar-requirements",
   form8938Instructions: "https://www.irs.gov/instructions/i8938",
-  fbar: "https://www.irs.gov/fbar",
-  fincenBsa: "https://bsaefiling.fincen.treas.gov/main.html",
+  fbar: "https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar",
+  fincenBsa: "https://bsaefiling.fincen.gov/",
   form8621: "https://www.irs.gov/forms-pubs/about-form-8621",
   form1116: "https://www.irs.gov/forms-pubs/about-form-1116",
   form3520: "https://www.irs.gov/forms-pubs/about-form-3520",

@@ -228,7 +228,7 @@ function assess(
       headline: "I-140 petition is pending with USCIS",
       whatHappensNext: [
         "Monitor case status at egov.uscis.gov using your I-140 receipt number.",
-        "Compare your receipt date against published processing times at uscis.gov/check-processing-times.",
+        "Compare your receipt date against published processing times at egov.uscis.gov/processing-times.",
         "If your employer has not used premium processing, discuss whether to upgrade — approval locks in your priority date sooner.",
         "Once approved, your H1B can be extended beyond 6 years in 3-year increments.",
         "Your priority date is already set from your PERM filing date — the I-140 approval formalizes it.",

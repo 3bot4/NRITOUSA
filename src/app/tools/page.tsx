@@ -18,8 +18,8 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title:
-    "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA",
+  // No brand suffix here — the layout's title template appends "| NRI to USA".
+  title: "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA",
   description:
     "Free tools for Indians in the USA: NRI Wealth Checkup, FBAR/FATCA checker, green card tracker, H-1B salaries, USCIS tools, India tax calculators, and retirement planning.",
   path: "/tools",

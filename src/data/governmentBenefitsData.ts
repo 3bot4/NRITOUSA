@@ -94,7 +94,11 @@ export interface SourceLink {
 export const officialSourceLinks: SourceLink[] = [
   { label: "Benefits.gov — find benefits you may be eligible for", href: "https://www.benefits.gov/" },
   { label: "USA.gov — government benefits", href: "https://www.usa.gov/benefits" },
-  { label: "USCIS — Public Charge Resources", href: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge" },
+  // USCIS archived its Public Charge Resources page (it now 301s into /archive/),
+  // and Policy Manual Part G below already covers the standing guidance. This
+  // slot points at the rescission notice instead — it is the source for the
+  // Sept 18, 2026 effective date this cluster tracks.
+  { label: "USCIS — rescission of the 2022 public charge rule (effective Sept. 18, 2026)", href: "https://www.uscis.gov/newsroom/news-releases/us-citizenship-and-immigration-services-rescinds-2022-public-charge-regulation" },
   { label: "USCIS Policy Manual Vol. 8, Part G — Public Charge", href: "https://www.uscis.gov/policy-manual/volume-8-part-g" },
   { label: "DHS final rule 2026-14539 — Public Charge Ground of Inadmissibility (full text)", href: "https://public-inspection.federalregister.gov/2026-14539.pdf" },
   { label: "Federal Register document page for the final rule", href: "https://www.federalregister.gov/d/2026-14539" },

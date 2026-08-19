@@ -1,0 +1,120 @@
+{
+  "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
+  "updated": "2026-08-18",
+  "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
+  "items": [
+    {
+      "id": "fast-answer-coverage",
+      "title": "79 high-intent pages still lack the verified-numbers treatment",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "audit:intent-numbers scores every route that answers a number question against six affordances: a Fast Answer block, a numeric estimate, a last-verified stamp, an official-source link, FAQ schema, and an Article dateModified. 79 High-priority pages are missing at least one. The H-1B lottery cluster is the weakest — most of those pages have FAQ schema and nothing else, so they make numeric claims with no stamp and no citation.",
+      "nextStep": "Work the High tier in cluster order (h1b-lottery first, then education, then green-card/[slug]), adding FastAnswerSnapshot + OfficialSourceNote and moving any inline figures into the cluster data file.",
+      "evidence": "npm run audit:intent-numbers"
+    },
+    {
+      "id": "verified-stamps-july-batch",
+      "title": "21 verified-number stamps are now past the 45-day threshold",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "21 of 29 tracked values carry lastVerified 2026-07-04, which crossed STALE_DAYS (45) on 2026-08-19 — audit:monthly-numbers now flags all 21. The values themselves were confirmed correct on 2026-08-18 against USCIS Form G-1055 (Ed. 05/29/26) and DOL FLAG, so this is a stamp-refresh task, not a data-correction task. Do NOT bump the dates without re-checking: a date is not evidence, which is the whole reason the drift check exists.",
+      "nextStep": "Re-verify the travel.state.gov NVC fees and the passport/VFS ranges by hand (both hosts block automated fetches), then run `npm run audit:monthly-numbers:baseline` to move the stamps and the baseline together.",
+      "evidence": "npm run audit:monthly-numbers"
+    },
+    {
+      "id": "pwd-planning-band",
+      "title": "PWD planning band (4–8 months) now runs ahead of DOL's own queue",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "permProcessingData.ts plans prevailing-wage determinations at 4–8 months. DOL FLAG's receipt months imply faster: OEWS PERM cases filed April 2026 were being processed as of 30 June (~2–3 months), non-OEWS March 2026 (~3–4). The stored receipt months match DOL exactly, so the underlying data is right — it is the derived band whose floor sits above observed reality. Defensible as a buffer while DOL's PWD table is itself seven weeks stale, but it is the one figure where we tell readers to expect worse than they will likely get.",
+      "nextStep": "Re-check flag.dol.gov/processingtimes when DOL refreshes the PWD table; if the receipt months hold, drop pwdPlanningMonthsLow to 3.",
+      "evidence": "src/data/permProcessingData.ts"
+    },
+    {
+      "id": "meta-title-length",
+      "title": "223 titles exceed the SERP display limit",
+      "area": "meta",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "Median indexable title is 64 characters; 223 exceed 60 and 63 exceed 80, topping out at 95. Google rewrites rather than penalises, so this is not an error — but the tail is where the keyword differentiators sit, and on a 95-character title the tail is always cut. Worst offenders are the long descriptive titles on /articles/real-estate-first-investment-immigrants, /can-h1b-parents-open-trump-account-for-child and /india-business-visa-from-usa.",
+      "nextStep": "Trim to ~57 chars before the ' | NRI to USA' template, front-loading the keyword. Batch by cluster so sibling titles stay parallel.",
+      "evidence": "npm run ledger"
+    },
+    {
+      "id": "meta-description-length",
+      "title": "152 meta descriptions exceed 160 characters",
+      "area": "meta",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "Median is 154 characters, but 152 pages exceed 160 and 34 exceed 200, with a 310-character outlier on /india-investments/should-nris-keep-investments-in-india. Long descriptions are simply truncated in the SERP; the risk is that the sentence carrying the click argument is the one cut.",
+      "nextStep": "Rewrite the 34 pages over 200 characters first — below that the loss is marginal.",
+      "evidence": "npm run ledger"
+    },
+    {
+      "id": "blocked-host-manual-check",
+      "title": "30 outbound citations can only ever be verified by hand",
+      "area": "links",
+      "severity": "low",
+      "status": "ongoing",
+      "opened": "2026-08-18",
+      "detail": "uscis.gov, travel.state.gov, vfsglobal.com, finra.org, congress.gov, migrationpolicy.org and a few others answer 403 to any automated request. link-health.js classifies these as 'unverifiable' rather than dead so they do not generate false alarms — but it also means link rot on exactly the hosts we cite most would go undetected. USCIS silently retired five paths before the 2026-08-18 audit caught them, and those were only visible because www.uscis.gov happens to answer 404 rather than 403.",
+      "nextStep": "Spot-check the travel.state.gov and vfsglobal citations by hand each time the monthly numbers are reconciled.",
+      "evidence": "scripts/audit/link-health.json"
+    },
+    {
+      "id": "citations-resolving-via-redirect",
+      "title": "29 citations still resolve, but only through a redirect",
+      "area": "links",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-18",
+      "detail": "Nothing here is broken today — each one 301s to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. The substantive ones: USDA renamed FNS to FNA (fns.usda.gov → fna.usda.gov, 2 citations); benefits.gov now hands off to usa.gov's benefit finder; acf.hhs.gov moved to acf.gov; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now 'exceptions-to-tax-on-early-distributions'; California's notary authentication page became request-apostille. The high-traffic ones are cosmetic (uscis.gov/forms → /forms/all-forms on 12 pages, incometax.gov.in → its portal path on 24).",
+      "nextStep": "Update the agency-rename cases (USDA, ACF, benefits.gov) on the next government-benefits pass; leave the cosmetic ones. Re-check with `npm run ledger:links`.",
+      "evidence": "scripts/audit/link-health.json → redirects[]"
+    },
+    {
+      "id": "public-charge-archived-source",
+      "title": "Public charge citation pointed into USCIS's archive",
+      "area": "links",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-08-18",
+      "resolved": "2026-08-18",
+      "detail": "governmentBenefitsData.ts cited the USCIS Public Charge Resources page, which now 301s into /archive/. That matters more than a normal redirect because this cluster tracks a public charge rule taking effect 2026-09-18 — a reader following an archived link for a rule about to change is being pointed at superseded guidance. Policy Manual Part G was already cited alongside it, so the slot now points at the USCIS rescission notice, which independently confirms the Sept 18, 2026 date the cluster carries.",
+      "nextStep": "Done.",
+      "evidence": "src/data/governmentBenefitsData.ts"
+    },
+    {
+      "id": "dead-citations-2026-08",
+      "title": "10 dead outbound citations across 46 pages",
+      "area": "links",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-08-18",
+      "resolved": "2026-08-18",
+      "detail": "First-ever check of outbound links (check-links.js skips them) found 10 confirmed 404s: the USCIS H-1B base path after 'temporary-workers/' was dropped, three more retired USCIS paths, both cited IRS pages, the Census DHC-A story after it moved from a /05/ to a /09/ folder, the CMS STLDI page, and India's MHA OCI page. Fixed with verified replacements; the FinCEN BSA e-filing domain was also moved off the retiring treas.gov host. Deep USCIS pages under temporary-workers/ are still live, so the H-1B fix was an exact-match replacement, not a prefix sweep.",
+      "nextStep": "Covered going forward by `npm run ledger:links`.",
+      "evidence": "scripts/audit/link-health.json"
+    },
+    {
+      "id": "tools-title-double-suffix",
+      "title": "/tools rendered the brand suffix twice",
+      "area": "meta",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-08-18",
+      "resolved": "2026-08-18",
+      "detail": "src/app/tools/page.tsx hardcoded '| NRI to USA' into its title while the layout template appended it again, producing a doubled suffix. It was the only page doing this, which is why the duplicate-title rule never caught it.",
+      "nextStep": "Done.",
+      "evidence": "src/app/tools/page.tsx"
+    }
+  ]
+}

@@ -18,7 +18,10 @@
     "seo:inventory": "vite-node -c vitest.config.ts scripts/seo/route-inventory.ts",
     "seo:audit": "vite-node -c vitest.config.ts scripts/seo/audit.ts --",
     "seo:gsc-import": "vite-node -c vitest.config.ts scripts/seo/gsc-import.ts --",
-    "seo:opportunities": "vite-node -c vitest.config.ts scripts/seo/opportunities.ts --"
+    "seo:opportunities": "vite-node -c vitest.config.ts scripts/seo/opportunities.ts --",
+    "ledger": "node scripts/audit/ledger.js",
+    "ledger:links": "node scripts/audit/link-health.js",
+    "ledger:add": "node scripts/audit/ledger-add.js"
   },
   "dependencies": {
     "next": "^14.2.35",

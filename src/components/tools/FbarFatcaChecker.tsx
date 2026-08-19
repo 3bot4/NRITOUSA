@@ -570,7 +570,7 @@ export default function FbarFatcaChecker() {
         <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Official sources</p>
         <ul className="space-y-1 text-xs text-ink-400">
           <li>
-            <a href="https://www.irs.gov/fbar" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
+            <a href="https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-600">
               IRS — FBAR (FinCEN Form 114)
             </a>
           </li>

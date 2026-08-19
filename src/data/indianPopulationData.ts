@@ -791,7 +791,7 @@ export interface SourceLink {
 
 export const sources: SourceLink[] = [
   { label: "Pew Research Center — Indian Americans fact sheet", href: "https://www.pewresearch.org/race-and-ethnicity/fact-sheet/asian-americans-indians-in-the-u-s/", note: "≈4.9M Indian-origin, a broader definition than the Census “Asian Indian alone” count (2021–2023 ACS/IPUMS)." },
-  { label: "U.S. Census Bureau — 2020 Census Asian population", href: "https://www.census.gov/library/stories/2023/05/2020-census-dhc-a-asian-population.html", note: "Asian Indian alone: 4,397,737; up 50%+ since 2010." },
+  { label: "U.S. Census Bureau — 2020 Census Asian population", href: "https://www.census.gov/library/stories/2023/09/2020-census-dhc-a-asian-population.html", note: "Asian Indian alone: 4,397,737; up 50%+ since 2010." },
   { label: "U.S. Census Bureau — American Community Survey (ACS)", href: "https://www.census.gov/programs-surveys/acs", note: "Detailed race, ancestry, income, and geography tables." },
   { label: "Migration Policy Institute — Indian Immigrants in the U.S.", href: "https://www.migrationpolicy.org/article/indian-immigrants-united-states", note: "≈3.2M Indian immigrants; one of the largest origin groups." },
   { label: "USCIS — H-1B data & characteristics reports", href: "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub", note: "Country-of-birth breakdown of H-1B approvals." },

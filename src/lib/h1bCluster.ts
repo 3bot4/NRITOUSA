@@ -255,7 +255,7 @@ Your I-94 record continues under your current employer's petition until the tran
 Yes, if you are within the 60-day grace period and certain conditions apply. [Read: H1B transfer after layoff](/h1b/transfer-after-layoff)
 
 ### How long does an H1B transfer take?
-Regular processing: typically 3–6 months depending on service center. Premium processing (Form I-907): USCIS action within 15 business days. Check current times at [uscis.gov/check-processing-times](https://www.uscis.gov/check-processing-times). See also: [USCIS processing times guide](/uscis/processing-times)`,
+Regular processing: typically 3–6 months depending on service center. Premium processing (Form I-907): USCIS action within 15 business days. Check current times at [egov.uscis.gov/processing-times](https://egov.uscis.gov/processing-times). See also: [USCIS processing times guide](/uscis/processing-times)`,
   },
 
   /* ────────────────────────── EXTENSION ─────────────────────────────────── */
@@ -404,7 +404,7 @@ Almost certainly yes, if the new city is outside the area covered by the current
 Generally yes, once the new LCA is filed and in place for the new location — but you need the attorney's confirmation that the specific situation allows this. Do not assume.
 
 ### How long does an H1B amendment take?
-Same as extension: 3–6 months regular processing, 15 business days with premium processing. Check current official times at [uscis.gov/check-processing-times](https://www.uscis.gov/check-processing-times).`,
+Same as extension: 3–6 months regular processing, 15 business days with premium processing. Check current official times at [egov.uscis.gov/processing-times](https://egov.uscis.gov/processing-times).`,
   },
 
   /* ──────────────────────────── RFE ──────────────────────────────────────── */

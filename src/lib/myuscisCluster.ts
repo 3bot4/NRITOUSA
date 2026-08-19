@@ -500,7 +500,7 @@ If you are a non-citizen in the US (on H1B, H4, F1, green card, or any other sta
 
 :::warn
 title: Required for nearly all non-citizens
-Almost all non-citizens in the US — including H1B workers, H4 dependents, F1 students, I-485 applicants, green card holders, and others — are required by law ([8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305)) to file AR-11 within 10 days of any address change. US citizens are exempt.
+Almost all non-citizens in the US — including H1B workers, H4 dependents, F1 students, I-485 applicants, green card holders, and others — are required by law ([8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305&num=0&edition=prelim)) to file AR-11 within 10 days of any address change. US citizens are exempt.
 :::
 
 ## How to change your address online (fastest)
@@ -558,7 +558,7 @@ It should. The online AR-11 updates USCIS's central records, which links to pend
 ## Official sources
 
 - [How to Change Your Address](https://www.uscis.gov/addresschange) — official USCIS AR-11 portal
-- [8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305) — the change-of-address reporting requirement
+- [8 U.S.C. § 1305](https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1305&num=0&edition=prelim) — the change-of-address reporting requirement
 - [myUSCIS](https://my.uscis.gov/) — update your address if you have an account
 
 :::cta

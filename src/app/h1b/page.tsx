@@ -51,7 +51,7 @@ const faqs: FaqItem[] = [
   {
     question: "How long does H1B transfer take?",
     answer:
-      "Regular processing: typically 3–6 months depending on service center and workload. Premium processing: USCIS action within 15 business days of accepting the upgrade. Check current times at uscis.gov/check-processing-times.",
+      "Regular processing: typically 3–6 months depending on service center and workload. Premium processing: USCIS action within 15 business days of accepting the upgrade. Check current times at egov.uscis.gov/processing-times.",
   },
   {
     question: "What is the H1B 60-day grace period?",

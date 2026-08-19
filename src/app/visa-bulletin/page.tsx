@@ -669,7 +669,7 @@ export default function VisaBulletinPage() {
             </p>
             <p className="mt-2 text-sm text-ink-600">
               For USCIS filing authorization (Table B), check{" "}
-              <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline font-semibold">
+              <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline font-semibold">
                 uscis.gov/visabulletininfo
               </a>.
             </p>

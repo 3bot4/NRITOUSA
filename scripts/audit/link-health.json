@@ -1,0 +1,301 @@
+{
+  "generatedAt": "2026-08-18",
+  "note": "Outbound citation health. 'unverifiable' = host blocks automated requests (see BOT_BLOCKED_HOSTS); those must be checked by hand and are NOT failures.",
+  "counts": {
+    "checked": 426,
+    "ok": 394,
+    "dead": 0,
+    "unreachable": 0,
+    "forbidden": 0,
+    "unverifiable": 31,
+    "redirected": 28
+  },
+  "dead": [],
+  "unreachable": [],
+  "forbidden": [],
+  "redirects": [
+    {
+      "url": "https://adssettings.google.com/",
+      "finalUrl": "https://www.google.com/ads/preferences/html/blocked-cookies.html",
+      "pages": [
+        "/privacy-policy"
+      ]
+    },
+    {
+      "url": "https://content.naic.org/consumer.htm",
+      "finalUrl": "https://content.naic.org/consumer",
+      "pages": [
+        "/visitor-insurance"
+      ]
+    },
+    {
+      "url": "https://humantraffickinghotline.org/",
+      "finalUrl": "https://humantraffickinghotline.org/en",
+      "pages": [
+        "/divorce-immigration-status"
+      ]
+    },
+    {
+      "url": "https://optout.networkadvertising.org/",
+      "finalUrl": "https://thenai.org/how-to-opt-out/",
+      "pages": [
+        "/privacy-policy"
+      ]
+    },
+    {
+      "url": "https://passportindia.gov.in",
+      "finalUrl": "https://www.passportindia.gov.in/psp",
+      "pages": [
+        "/indian-passport-renewal-usa",
+        "/indian-passport-renewal-usa/chicago",
+        "/indian-passport-renewal-usa/documents",
+        "/indian-passport-renewal-usa/houston-texas",
+        "/indian-passport-renewal-usa/new-york",
+        "/indian-passport-renewal-usa/processing-time",
+        "/indian-passport-renewal-usa/san-francisco"
+      ]
+    },
+    {
+      "url": "https://www.acf.hhs.gov/ocs/programs/liheap",
+      "finalUrl": "https://acf.gov/ocs/programs/liheap",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.benefits.gov/",
+      "finalUrl": "https://www.usa.gov/benefit-finder?utm_source=usa_benefits-gov&utm_medium=redirect&utm_campaign=redirect_benefits-gov&modal=b-welcome-1899",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
+      "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
+      "pages": [
+        "/divorce-immigration-status"
+      ]
+    },
+    {
+      "url": "https://www.federalregister.gov/d/2026-14539",
+      "finalUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility",
+      "finalUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.fns.usda.gov/snap/eligibility/citizen/non-citizen-policy",
+      "finalUrl": "https://www.fna.usda.gov/snap/recipient/eligibility/non-citizen",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.fns.usda.gov/wic/impact-participation-alien-status",
+      "finalUrl": "https://www.fna.usda.gov/wic/impact-participation-alien-status",
+      "pages": [
+        "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.incometax.gov.in",
+      "finalUrl": "https://www.incometax.gov.in/iec/foportal/",
+      "pages": [
+        "/india-tax-compliance/foreign-gifts-inheritance-form-3520-india",
+        "/india-tax-compliance/form-13-lower-tds-certificate-nri",
+        "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
+        "/india-tax-compliance/form-15ca-for-nri",
+        "/india-tax-compliance/form-15cb-ca-certificate-nri",
+        "/india-tax-compliance/form-26as-ais-tis-nri",
+        "/india-tax-compliance/form-3520-indian-gift-inheritance-checklist",
+        "/india-tax-compliance/gift-from-parents-india-to-usa",
+        "/india-tax-compliance/inherited-indian-mutual-funds-pfic",
+        "/india-tax-compliance/inherited-indian-property-us-tax",
+        "/india-tax-compliance/itr-2-for-nri",
+        "/india-tax-compliance/itr-3-for-nri",
+        "/india-tax-compliance/nri-india-tax-documents-checklist",
+        "/india-tax-compliance/nri-itr-filing-usa",
+        "/india-tax-compliance/nri-property-sale-tds-refund",
+        "/india-tax-compliance/nri-tax-forms-limits",
+        "/india-tax-compliance/nri-tds-refund-usa",
+        "/india-tax-compliance/nro-interest-tds-refund",
+        "/india-tax-compliance/nro-to-usa-transfer-documents",
+        "/india-tax-compliance/repatriating-property-sale-proceeds-india-usa",
+        "/tools/form-15ca-15cb-checklist",
+        "/tools/form-3520-india-gift-checker",
+        "/tools/nri-tax-filing-roadmap",
+        "/tools/nri-tds-refund-checklist"
+      ]
+    },
+    {
+      "url": "https://www.incometax.gov.in/",
+      "finalUrl": "https://www.incometax.gov.in/iec/foportal/",
+      "pages": [
+        "/india-tax-compliance/foreign-gifts-inheritance-form-3520-india",
+        "/india-tax-compliance/form-13-lower-tds-certificate-nri",
+        "/india-tax-compliance/form-15ca-15cb-nri-repatriation",
+        "/india-tax-compliance/form-15ca-for-nri",
+        "/india-tax-compliance/form-15cb-ca-certificate-nri",
+        "/india-tax-compliance/form-26as-ais-tis-nri",
+        "/india-tax-compliance/form-3520-indian-gift-inheritance-checklist",
+        "/india-tax-compliance/gift-from-parents-india-to-usa",
+        "/india-tax-compliance/inherited-indian-mutual-funds-pfic",
+        "/india-tax-compliance/inherited-indian-property-us-tax",
+        "/india-tax-compliance/itr-2-for-nri",
+        "/india-tax-compliance/itr-3-for-nri",
+        "/india-tax-compliance/nri-india-tax-documents-checklist",
+        "/india-tax-compliance/nri-itr-filing-usa",
+        "/india-tax-compliance/nri-property-sale-tds-refund",
+        "/india-tax-compliance/nri-tds-refund-usa",
+        "/india-tax-compliance/nro-interest-tds-refund",
+        "/india-tax-compliance/nro-to-usa-transfer-documents",
+        "/india-tax-compliance/repatriating-property-sale-proceeds-india-usa",
+        "/long-term-nri-wealth",
+        "/nri-wealth-checkup",
+        "/return-to-india"
+      ]
+    },
+    {
+      "url": "https://www.indianembassyusa.gov.in",
+      "finalUrl": "https://indianembassyusa.gov.in/index",
+      "pages": [
+        "/entry-visa-india-from-usa",
+        "/india-business-visa-from-usa",
+        "/india-evisa-for-us-citizens",
+        "/india-tourist-visa-from-usa",
+        "/india-visa-fees-usa",
+        "/india-visa-from-usa",
+        "/india-visa-processing-time-usa",
+        "/oci-vs-india-visa"
+      ]
+    },
+    {
+      "url": "https://www.irs.gov/individuals/individual-taxpayer-identification-number",
+      "finalUrl": "https://www.irs.gov/tin/itin/individual-taxpayer-identification-number-itin",
+      "pages": [
+        "/articles/moving-to-usa-from-india-checklist"
+      ]
+    },
+    {
+      "url": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
+      "finalUrl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-exceptions-to-tax-on-early-distributions",
+      "pages": [
+        "/long-term-nri-wealth",
+        "/nri-wealth-checkup",
+        "/return-to-india"
+      ]
+    },
+    {
+      "url": "https://www.microsoft.com/privacy/privacystatement",
+      "finalUrl": "https://www.microsoft.com/en-us/privacy/privacystatement",
+      "pages": [
+        "/cookie-policy",
+        "/privacy-policy"
+      ]
+    },
+    {
+      "url": "https://www.naic.org",
+      "finalUrl": "https://content.naic.org/",
+      "pages": [
+        "/tools/visitor-insurance-plan-comparison"
+      ]
+    },
+    {
+      "url": "https://www.passportindia.gov.in",
+      "finalUrl": "https://www.passportindia.gov.in/psp",
+      "pages": [
+        "/oci"
+      ]
+    },
+    {
+      "url": "https://www.passportindia.gov.in/",
+      "finalUrl": "https://www.passportindia.gov.in/psp",
+      "pages": [
+        "/indian-passport-renewal-usa",
+        "/indian-passport-renewal-usa/chicago",
+        "/indian-passport-renewal-usa/documents",
+        "/indian-passport-renewal-usa/houston-texas",
+        "/indian-passport-renewal-usa/new-york",
+        "/indian-passport-renewal-usa/processing-time",
+        "/indian-passport-renewal-usa/san-francisco"
+      ]
+    },
+    {
+      "url": "https://www.sos.ca.gov/notary/authentication",
+      "finalUrl": "https://www.sos.ca.gov/notary/request-apostille",
+      "pages": [
+        "/oci/apostille"
+      ]
+    },
+    {
+      "url": "https://www.ssa.gov/ssnumber/",
+      "finalUrl": "https://www.ssa.gov/number-card",
+      "pages": [
+        "/articles/moving-to-usa-from-india-checklist"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/forms",
+      "finalUrl": "https://www.uscis.gov/forms/all-forms",
+      "pages": [
+        "/tools/uscis-form-finder",
+        "/uscis/forms",
+        "/uscis/forms/ar-11-change-address",
+        "/uscis/forms/i-129",
+        "/uscis/forms/i-130",
+        "/uscis/forms/i-131",
+        "/uscis/forms/i-140",
+        "/uscis/forms/i-485",
+        "/uscis/forms/i-539",
+        "/uscis/forms/i-765",
+        "/uscis/forms/i-907-premium-processing",
+        "/uscis/forms/n-400"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates",
+      "finalUrl": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-and-priority-dates",
+      "pages": [
+        "/visa-bulletin/priority-date"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/visabulletininfo",
+      "finalUrl": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin",
+      "pages": [
+        "/visa-bulletin/cross-chargeability",
+        "/visa-bulletin/eb1-india",
+        "/visa-bulletin/eb2-india",
+        "/visa-bulletin/eb2-to-eb3-downgrade",
+        "/visa-bulletin/eb3-india",
+        "/visa-bulletin/eb3-to-eb2-interfiling",
+        "/visa-bulletin/final-action-date-vs-date-of-filing",
+        "/visa-bulletin/monthly-update",
+        "/visa-bulletin/priority-date",
+        "/visa-bulletin/priority-date-current-what-next",
+        "/visa-bulletin/retrogression"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/employer-information/employment-authorization",
+      "finalUrl": "https://www.uscis.gov/employment-authorization",
+      "pages": [
+        "/tools/h4-ead-navigator"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-cap-season",
+      "finalUrl": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-cap-season",
+      "pages": [
+        "/tools/h1b-lottery-timeline"
+      ]
+    }
+  ]
+}

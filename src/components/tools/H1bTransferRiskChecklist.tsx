@@ -257,7 +257,7 @@ function assess(
       ],
       whatToCheck: [
         "Monitor case status at egov.uscis.gov",
-        "Check uscis.gov/check-processing-times for your service center",
+        "Check egov.uscis.gov/processing-times for your service center",
         "Ensure your I-94 and current H1B do not expire before the transfer is approved",
         "Confirm whether premium processing was selected — if not, compare timeline to I-94 expiry",
       ],
@@ -288,7 +288,7 @@ function assess(
       "Whether a new H1B petition is filed or in progress",
       "Whether premium processing is advisable given your timeline",
       "Whether your visa stamp is valid for any planned travel",
-      "Official processing times at uscis.gov/check-processing-times",
+      "Official processing times at egov.uscis.gov/processing-times",
     ],
     premiumNote: `If your current H1B status or I-94 expiry is within 6 months, ask your employer about premium processing for the pending or planned petition. Current fee for many H1B/I-129 categories: ${premiumProcessing.items.find(i => i.form === "I-129" && i.eligible)?.feeDisplay ?? "$2,965"} (last verified: ${premiumProcessing.lastVerified}). Verify on the USCIS Form I-907 page before filing.`,
     showAttorneyBadge: true,

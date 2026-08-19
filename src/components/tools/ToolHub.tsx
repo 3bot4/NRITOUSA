@@ -140,7 +140,7 @@ export function ToolIntro({
               <strong className="font-bold">Important:</strong> tax rules,
               thresholds, and filing deadlines change. Use this as an estimate and
               verify with official sources (irs.gov, fincen.gov, treasury.gov, and
-              the BSA E-Filing System at bsaefiling.fincen.treas.gov) before filing
+              the BSA E-Filing System at bsaefiling.fincen.gov) before filing
               or making decisions. This is not tax or legal advice.
             </>
           ) : (

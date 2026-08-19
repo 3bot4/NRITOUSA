@@ -105,7 +105,7 @@ export const visitorInsuranceSources: VisitorInsuranceSource[] = [
     publisher: "CMS.gov",
     title: "Short-Term, Limited-Duration Insurance",
     sourceType: "tier1-government",
-    url: "https://www.cms.gov/marketplace/private-health-insurance/short-term-limited-duration",
+    url: "https://www.cms.gov/newsroom/fact-sheets/short-term-limited-duration-insurance-and-independent-noncoordinated-excepted-benefits-coverage-cms",
     retrievedDate: "2026-07-29",
     notes:
       "Background on the product category many visitor/travel-medical plans fall under and how it differs from ACA-compliant coverage (e.g., medical underwriting, pre-existing exclusions, no guaranteed renewability, no ACA essential-health-benefits mandate).",

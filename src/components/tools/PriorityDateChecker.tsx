@@ -564,7 +564,7 @@ export default function PriorityDateChecker() {
         <strong className="font-bold">Educational only — not legal advice.</strong> This tool uses manually updated visa bulletin data. Always verify with the{" "}
         <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener noreferrer" className="underline font-semibold">official State Department visa bulletin</a>{" "}
         and the{" "}
-        <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart" target="_blank" rel="noopener noreferrer" className="underline font-semibold">USCIS Adjustment of Status Filing Chart</a>.
+        <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" target="_blank" rel="noopener noreferrer" className="underline font-semibold">USCIS Adjustment of Status Filing Chart</a>.
         Confirm with your immigration attorney.
       </div>
 
@@ -695,7 +695,7 @@ export default function PriorityDateChecker() {
           {bulletin.usingDatesForFiling && bulletin.datesForFiling && (
             <div className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3 text-xs leading-relaxed text-blue-900">
               <strong className="font-semibold">Dates for Filing (Table B) is authorized this month</strong> per the USCIS Adjustment of Status Filing Chart. Verify at{" "}
-              <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart" target="_blank" rel="noopener noreferrer" className="underline font-semibold">uscis.gov</a>.
+              <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" target="_blank" rel="noopener noreferrer" className="underline font-semibold">uscis.gov</a>.
             </div>
           )}
           {!bulletin.usingDatesForFiling && (

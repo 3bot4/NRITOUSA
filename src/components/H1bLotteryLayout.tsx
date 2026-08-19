@@ -266,7 +266,7 @@ export function H1bLotteryShell({
             <strong className="font-semibold">Educational only.</strong> Not legal, immigration, tax, or
             financial advice. Verify with{" "}
             <a
-              href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations"
+              href="https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"

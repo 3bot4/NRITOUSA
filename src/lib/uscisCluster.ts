@@ -113,7 +113,7 @@ Typical time in "Case Was Received":
 | I-765 EAD | 3–12 months at current times |
 | I-131 Advance Parole | 2–6 months |
 
-> Always check current times at [uscis.gov/processing-times](https://www.uscis.gov/tools/check-case-processing-times).
+> Always check current times at [uscis.gov/processing-times](https://egov.uscis.gov/processing-times).
 
 ## When to worry
 

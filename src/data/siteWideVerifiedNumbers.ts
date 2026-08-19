@@ -84,7 +84,7 @@ export const officialSources = {
   passportSeva: "https://www.passportindia.gov.in/",
   vfsIndiaUsa: "https://visa.vfsglobal.com/usa/en/ind/",
   irsFbar: "https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar",
-  fincenBsa: "https://bsaefiling.fincen.treas.gov/",
+  fincenBsa: "https://bsaefiling.fincen.gov/",
   irsForm8938:
     "https://www.irs.gov/businesses/corporations/basic-questions-and-answers-on-form-8938",
   incomeTaxIndia: "https://www.incometax.gov.in/",

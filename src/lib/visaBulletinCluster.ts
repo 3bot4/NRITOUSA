@@ -270,7 +270,7 @@ If USCIS authorizes Table B use that month:
 2. Go to [travel.state.gov](https://travel.state.gov) and open the current month's visa bulletin
 3. Check Table A for your EB category (EB-1/EB-2/EB-3) and India row
 4. If your priority date is earlier than Table A (and the category is not "U"): you may be able to file I-485 and, if all other requirements are met, have it approved
-5. If not: go to [uscis.gov/visabulletininfo](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/visa-bulletin-information-for-adjustment-of-status-filing-chart) to check if Table B is authorized this month
+5. If not: go to [uscis.gov/visabulletininfo](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin) to check if Table B is authorized this month
 6. If Table B is authorized and your priority date is earlier than Table B: you can file I-485
 
 ## What this means for Indian applicants

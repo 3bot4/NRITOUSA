@@ -478,7 +478,7 @@ export default function ParentsVisitingUsaPage() {
                 <a href="https://www.healthcare.gov/glossary/" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">HealthCare.gov — Glossary</a>
               </li>
               <li>
-                <a href="https://www.cms.gov/marketplace/private-health-insurance/short-term-limited-duration" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">CMS.gov — Short-term, limited-duration insurance</a>
+                <a href="https://www.cms.gov/newsroom/fact-sheets/short-term-limited-duration-insurance-and-independent-noncoordinated-excepted-benefits-coverage-cms" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-600 underline">CMS.gov — Short-term, limited-duration insurance</a>
               </li>
               <li>Your own policy certificate, summary of benefits, or underwriter documents</li>
             </ul>

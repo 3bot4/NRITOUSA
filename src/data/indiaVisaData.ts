@@ -57,7 +57,7 @@ export const indiaVisaSources = {
   ociVfs: "https://visa.vfsglobal.com/usa/en/ind/apply-oci-services",
   ociServices: "https://ociservices.gov.in",
   mhaOci:
-    "https://www.mha.gov.in/en/foreigners/overseas-citizenship-of-india-oci-cardholder",
+    "https://www.mha.gov.in/en/divisionofmha/foreigners-division/overseas-citizen-of-india-cardholder",
   embassyUsa: "https://www.indianembassyusa.gov.in",
   passportIndia: "https://www.passportindia.gov.in",
 } as const;

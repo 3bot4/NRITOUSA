@@ -31,12 +31,12 @@ const faq: FaqItem[] = [
   {
     question: "What does USCIS processing time mean?",
     answer:
-      "USCIS processing time is the range of days it currently takes USCIS to complete a specific form type at a specific service center. The dates shown on uscis.gov/check-processing-times represent the receipt dates of cases USCIS is currently completing — not how long your case will take from today.",
+      "USCIS processing time is the range of days it currently takes USCIS to complete a specific form type at a specific service center. The dates shown on egov.uscis.gov/processing-times represent the receipt dates of cases USCIS is currently completing — not how long your case will take from today.",
   },
   {
     question: "Where do I check official USCIS processing times?",
     answer:
-      "At uscis.gov/check-processing-times. Select your form type and the service center shown on your I-797 receipt notice. If your receipt date is earlier than the date shown, your case may be outside the normal processing window for that center.",
+      "At egov.uscis.gov/processing-times. Select your form type and the service center shown on your I-797 receipt notice. If your receipt date is earlier than the date shown, your case may be outside the normal processing window for that center.",
   },
   {
     question: "Are USCIS processing times guarantees?",
@@ -51,7 +51,7 @@ const faq: FaqItem[] = [
   {
     question: "My H1B transfer has been pending for 4 months — is that normal?",
     answer:
-      "It depends on the service center and current workload. Regular processing for I-129 H1B petitions has historically ranged from 3–8 months. Compare your receipt date against the current published time at uscis.gov/check-processing-times for your specific service center and H1B classification. If you are outside the published window, ask your employer's attorney about a case inquiry or premium processing upgrade.",
+      "It depends on the service center and current workload. Regular processing for I-129 H1B petitions has historically ranged from 3–8 months. Compare your receipt date against the current published time at egov.uscis.gov/processing-times for your specific service center and H1B classification. If you are outside the published window, ask your employer's attorney about a case inquiry or premium processing upgrade.",
   },
   {
     question: "What is the processing time for I-140 for Indian applicants?",
@@ -66,7 +66,7 @@ const faq: FaqItem[] = [
   {
     question: "When should I contact USCIS about a delayed case?",
     answer:
-      "First check uscis.gov/check-processing-times. If your receipt date is earlier than the date USCIS is currently processing, you may be outside the normal window. You can then submit a case inquiry online at egov.uscis.gov or contact the USCIS Contact Center. For employer-filed cases (H1B, I-140), your employer's attorney should make the inquiry.",
+      "First check egov.uscis.gov/processing-times. If your receipt date is earlier than the date USCIS is currently processing, you may be outside the normal window. You can then submit a case inquiry online at egov.uscis.gov or contact the USCIS Contact Center. For employer-filed cases (H1B, I-140), your employer's attorney should make the inquiry.",
   },
   {
     question: "Does a case transfer reset my processing time?",
@@ -187,7 +187,7 @@ export default function ProcessingTimesPage() {
             <ul className="space-y-2 text-sm leading-relaxed text-ink-700">
               {[
                 "USCIS processing times are estimates — not deadlines or guarantees.",
-                "Check official times at uscis.gov/check-processing-times by form type and service center.",
+                "Check official times at egov.uscis.gov/processing-times by form type and service center.",
                 "If your receipt date is earlier than the date USCIS is currently processing, you may be outside the normal window.",
                 "Premium processing (I-129, I-140) guarantees USCIS action in 15 business days — not approval.",
                 "For employer-filed cases (H1B, I-140), talk to your employer's immigration attorney about delays — not USCIS directly.",
@@ -229,8 +229,8 @@ export default function ProcessingTimesPage() {
             </h2>
             <p className="text-sm leading-relaxed text-ink-700">
               The processing times shown on{" "}
-              <a href="https://www.uscis.gov/check-processing-times" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">
-                uscis.gov/check-processing-times
+              <a href="https://egov.uscis.gov/processing-times" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">
+                egov.uscis.gov/processing-times
               </a>{" "}
               represent the receipt dates of cases USCIS is currently completing at each service center. If the published time for I-129 at the Nebraska Service Center shows a receipt date of November 2024, it means USCIS is right now finishing cases received in November 2024.
             </p>
@@ -241,7 +241,7 @@ export default function ProcessingTimesPage() {
               <p className="text-xs font-bold uppercase tracking-wide text-ink-500 mb-3">How to read the USCIS processing times page</p>
               <ol className="space-y-2 text-sm text-ink-700">
                 {[
-                  "Go to uscis.gov/check-processing-times.",
+                  "Go to egov.uscis.gov/processing-times.",
                   'Select your form type (e.g., "I-129").',
                   "Select the service center shown on your I-797 receipt notice.",
                   "Select your petition/application subtype if prompted.",
@@ -300,7 +300,7 @@ export default function ProcessingTimesPage() {
             </h2>
             <p className="text-xs leading-relaxed text-ink-500">
               The ranges below are general guidance based on historical USCIS data. Always check the current official estimate at{" "}
-              <a href="https://www.uscis.gov/check-processing-times" target="_blank" rel="noopener noreferrer" className="underline">uscis.gov/check-processing-times</a>{" "}
+              <a href="https://egov.uscis.gov/processing-times" target="_blank" rel="noopener noreferrer" className="underline">egov.uscis.gov/processing-times</a>{" "}
               for your specific form, center, and subtype — these change monthly.
             </p>
 
@@ -487,7 +487,7 @@ export default function ProcessingTimesPage() {
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                { label: "Step 1", text: 'Go to uscis.gov/check-processing-times and find the date USCIS is currently completing for your form and center.' },
+                { label: "Step 1", text: 'Go to egov.uscis.gov/processing-times and find the date USCIS is currently completing for your form and center.' },
                 { label: "Step 2", text: "Compare that date to your receipt date (on your I-797 notice). If your receipt date is earlier, you may be outside the window." },
                 { label: "Step 3", text: "If outside the window, you can submit a case inquiry through your myUSCIS account or at egov.uscis.gov." },
                 { label: "Step 4", text: "For employer-sponsored cases, have your attorney contact USCIS — direct petitioner contact may be more effective than an individual inquiry." },
@@ -616,8 +616,8 @@ export default function ProcessingTimesPage() {
             <p>
               <strong className="font-semibold text-ink-700">Official USCIS reminder:</strong>{" "}
               Always use{" "}
-              <a href="https://www.uscis.gov/check-processing-times" target="_blank" rel="noopener noreferrer" className="font-medium underline">
-                uscis.gov/check-processing-times
+              <a href="https://egov.uscis.gov/processing-times" target="_blank" rel="noopener noreferrer" className="font-medium underline">
+                egov.uscis.gov/processing-times
               </a>{" "}
               as the authoritative source for processing time estimates. USCIS updates these times monthly. NRItoUSA does not publish, predict, or guarantee processing times — this page is educational only.{" "}
               <strong className="font-semibold text-ink-700">NRItoUSA is not USCIS, not a law firm, and not your attorney.</strong>{" "}

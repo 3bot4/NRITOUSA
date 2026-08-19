@@ -32,12 +32,12 @@ const faq: FaqItem[] = [
   {
     question: "How do I know if my case is actually delayed?",
     answer:
-      "The official benchmark is uscis.gov/check-processing-times. If your receipt date is earlier than the date USCIS is currently processing for your form and service center, your case may be outside the normal window. This tool gives an educational assessment — verify against the official USCIS tool.",
+      "The official benchmark is egov.uscis.gov/processing-times. If your receipt date is earlier than the date USCIS is currently processing for your form and service center, your case may be outside the normal window. This tool gives an educational assessment — verify against the official USCIS tool.",
   },
   {
     question: "What should I do if my case is outside the normal processing window?",
     answer:
-      "First verify against uscis.gov/check-processing-times. If confirmed, you can submit a case inquiry through your myUSCIS account or at egov.uscis.gov. For employer-filed petitions (H1B, I-140), contact your employer's immigration attorney rather than USCIS directly.",
+      "First verify against egov.uscis.gov/processing-times. If confirmed, you can submit a case inquiry through your myUSCIS account or at egov.uscis.gov. For employer-filed petitions (H1B, I-140), contact your employer's immigration attorney rather than USCIS directly.",
   },
   {
     question: "Does premium processing guarantee my H1B will be approved quickly?",
@@ -124,12 +124,12 @@ export default function UscisProcessingDelayCheckerPage() {
           <p>
             Always verify at{" "}
             <a
-              href="https://www.uscis.gov/check-processing-times"
+              href="https://egov.uscis.gov/processing-times"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold underline"
             >
-              uscis.gov/check-processing-times
+              egov.uscis.gov/processing-times
             </a>{" "}
             and consult a licensed immigration attorney for your situation.
           </p>

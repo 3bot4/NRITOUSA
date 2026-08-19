@@ -33,6 +33,20 @@ npm run seo:audit           # scripts/seo/audit.ts -- (reads *rendered build HTM
 
 Raw Google Search Console exports are gitignored. `seo-audit.test.ts` reads `.next/server/app` and skips itself when that's absent, so `npm test` stays fast on a clean checkout.
 
+### Content ledger
+
+```bash
+npm run ledger:add -- "one line describing the work"   # capture an item (flags: --area --sev --next --ev --done=<id>)
+npm run ledger:links   # scripts/audit/link-health.js — probes every outbound citation (slow, needs a build)
+npm run ledger         # scripts/audit/ledger.js — assembles reports/ledger.html
+```
+
+**The owner drops in one-line notes as they come across things; every one of them belongs in the ledger.** Capture first, flesh out later — `ledger:add` needs only a title, and the renderer omits missing fields rather than printing placeholders. Guess `--area`/`--sev` rather than interrogating; a mis-filed item is fixable, an uncaptured one is lost. Then regenerate and republish so the live page reflects it.
+
+The ledger is the standing record of pending content work, link rot and verified-number status. Refresh order: `next build` → `seo:audit` → `ledger:links` → `ledger`. It has two halves and the split is deliberate — `data/content-ledger.json` is the **hand-maintained** backlog (add items, mark them `done` with a `resolved` date, never delete), and everything else is **regenerated** each run so the ledger can't drift from the site. Republish the output to the artifact URL recorded in `data/content-ledger.json` rather than minting a new one.
+
+`check:links` validates internal routes only — it skips `http(s)` URLs entirely, which is why `ledger:links` exists. Three traps it encodes: a 403 means the host blocks bots (uscis.gov, travel.state.gov, vfsglobal, incometaxindia.gov.in and friends), *not* a dead link; a 200 does not mean alive (CMS.gov serves a shell, `uscode.house.gov` redirects into `docnotfound.xhtml`); and network failures are usually transient, so re-probe before editing. When a government path is retired, replace the **exact** URL — USCIS retired the `temporary-workers/h-1b-specialty-occupations` base path while keeping the deep pages beneath it, so a prefix `sed` breaks working links. Fix bare URLs in visible copy too, not just `href`s.
+
 ### Other scripts
 
 - `npm run indexnow` — pings IndexNow after publishing new/changed URLs.
