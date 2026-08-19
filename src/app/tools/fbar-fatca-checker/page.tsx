@@ -178,10 +178,13 @@ export default function FbarFatcaCheckerPage() {
         {/* Checker */}
         <section id="fbar-fatca-tool" className="scroll-mt-24 pb-12 pt-10 sm:pb-16">
         <Container>
-          <div className="mb-8">
+          <FbarFatcaChecker />
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mt-10 sm:mt-12">
             <ToolIntro content={content} />
           </div>
-          <FbarFatcaChecker />
           <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 text-sm">
             <strong className="font-semibold text-ink-900">
               FBAR/FATCA is only one part of your filing year.

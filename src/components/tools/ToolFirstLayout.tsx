@@ -46,7 +46,8 @@ export default function ToolFirstLayout({
   disclaimerPoints,
   disclaimerExtra,
   disclaimerDefaultOpen,
-  density = "default",
+  density = "compact",
+  hideSourceNoteOnMobile = false,
   children,
 }: {
   toolSlug: string;
@@ -73,16 +74,29 @@ export default function ToolFirstLayout({
   disclaimerExtra?: React.ReactNode;
   disclaimerDefaultOpen?: boolean;
   /**
-   * "compact" trims the mobile header so the tool's first input clears the
-   * fold on a 375x667 phone: the promise badges and the source note are
-   * hidden below `sm` (both are still rendered further down the page by the
-   * calculator route, so no trust signal is lost), the hook clamps to two
-   * lines, and the vertical padding tightens. Desktop is unchanged.
+   * "compact" (the default since the 2026-08 fold rebuild) trims the mobile
+   * header so a tool's first input clears the fold on a 375x667 phone: the
+   * hook clamps to two lines, the vertical padding tightens, and the promise
+   * badges are hidden below `sm` — but ONLY the generic marketing set. 85
+   * pages override `badges` with verified facts ("FBAR $10,000", "Fee
+   * $2,965", "Govt fee $275"); those are content, not chrome, and are always
+   * shown. Desktop is unchanged either way.
+   *
+   * Pass "default" to restore the taller header on a page that needs it.
    */
   density?: "default" | "compact";
+  /**
+   * Hide the source note below `sm`. Only safe where the same provenance line
+   * is repeated beneath the tool — /calculators/[slug] does this, most pages
+   * do not, so it is opt-in rather than part of `compact`.
+   */
+  hideSourceNoteOnMobile?: boolean;
   children: React.ReactNode;
 }) {
   const compact = density === "compact";
+  // Identity check against the module constant: true only when the caller did
+  // not supply its own badges, i.e. they are the generic marketing set.
+  const badgesAreGeneric = badges === DEFAULT_BADGES;
   return (
     <>
       <ToolAnalytics toolSlug={toolSlug} />
@@ -140,7 +154,7 @@ export default function ToolFirstLayout({
           {badges.length > 0 && (
             <ul
               className={`mt-3 flex-wrap gap-1.5 sm:flex ${
-                compact ? "hidden" : "flex"
+                compact && badgesAreGeneric ? "hidden" : "flex"
               }`}
             >
               {badges.map((b) => (
@@ -176,7 +190,7 @@ export default function ToolFirstLayout({
           {sourceNote && (
             <p
               className={`mt-2 text-xs text-ink-400 sm:block ${
-                compact ? "hidden" : ""
+                hideSourceNoteOnMobile ? "hidden" : ""
               }`}
             >
               {sourceNote}

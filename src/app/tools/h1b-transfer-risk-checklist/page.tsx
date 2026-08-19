@@ -96,12 +96,14 @@ export default function H1bTransferRiskChecklistPage() {
       {/* tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mx-auto mb-8 max-w-3xl">
-            <ToolIntro content={content} />
-          </div>
-
           <div className="mx-auto max-w-3xl">
             <H1bTransferRiskChecklist />
+          </div>
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mx-auto mt-10 max-w-3xl sm:mt-12">
+            <ToolIntro content={content} />
           </div>
         </Container>
       </section>

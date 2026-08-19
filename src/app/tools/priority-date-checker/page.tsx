@@ -160,11 +160,14 @@ export default function PriorityDateCheckerPage() {
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <div className="mb-8">
-              <ToolIntro content={content} />
-            </div>
             <VisaBulletinAlert className="mb-6" />
             <PriorityDateChecker />
+
+            {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+            <div className="mt-10 sm:mt-12">
+              <ToolIntro content={content} />
+            </div>
             <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm text-amber-900">
               {currentBulletinNote}
             </div>

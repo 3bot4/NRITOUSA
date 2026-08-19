@@ -122,11 +122,13 @@ export default function CitizenshipChecklistPage() {
       {/* Interactive tool */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mb-8">
+          <CitizenshipChecklist />
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mt-10 sm:mt-12">
             <ToolIntro content={content} />
           </div>
-
-          <CitizenshipChecklist />
 
           <div className="mx-auto mt-6 max-w-3xl">
             <DataStamp

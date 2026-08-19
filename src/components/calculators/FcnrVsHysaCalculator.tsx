@@ -14,6 +14,7 @@ import {
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import { validateAll, USD_AMOUNT, PERCENT } from "@/lib/calc/validation";
 import { runFcnrModel, canRecommendFcnr, type Compounding, type IndiaStatus } from "@/lib/calc/fcnrHysa";
 import { marginalRateOptions } from "@/lib/calc/usTaxConfig";
@@ -359,6 +360,9 @@ function ResultCard({
 // (Single + MFJ thresholds, the ranges the IRS release publishes).
 const TAX_BRACKETS = marginalRateOptions();
 
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "fcnr-results";
+
 export default function FcnrVsHysaCalculator() {
   const [s, set] = useUrlState({
     amount: "25000",
@@ -659,6 +663,7 @@ export default function FcnrVsHysaCalculator() {
             <InvalidInputPanel errors={fieldErrors} />
           ) : (
           <>
+          <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
             {!bothRatesEntered && (
               <Callout tone="note">
                 <strong>Enter both rates to compare.</strong> Fill in the FCNR
@@ -795,9 +800,20 @@ export default function FcnrVsHysaCalculator() {
                 { label: "Winner advantage", value: usd(calc.advantage, 0) },
               ]}
             />
+          </div>
           </>
           )
         }
+      />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={val.ok && showWinner}
+        targetId={RESULTS_ID}
+        tone="good"
+        label={`${winnerName} is ahead by`}
+        value={usd(calc.advantage, 0)}
+        sub={`over ${tenure} yrs, after tax`}
       />
 
       {/* chart */}

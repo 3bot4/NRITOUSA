@@ -12,6 +12,7 @@ import {
   usd,
   pct,
 } from "./ui";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import { calculateDtaa } from "@/lib/calc/dtaaFtc";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -81,6 +82,9 @@ const US_BRACKETS = [
   { value: "37", label: "37% bracket (top)" },
 ];
 
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "dtaa-results";
+
 export default function DtaaReliefCalculator() {
   const [s, set] = useUrlState({
     type: "interest",
@@ -136,6 +140,7 @@ export default function DtaaReliefCalculator() {
   }, [resultStatus]);
 
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -180,6 +185,7 @@ export default function DtaaReliefCalculator() {
           <InvalidInputPanel errors={errorList} />
         ) : (
         <>
+          <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
           <Callout tone="note">
             <strong>Read this before the number below.</strong> This is a
             screening estimate, not a Form 1116 computation. Your actual
@@ -323,9 +329,21 @@ export default function DtaaReliefCalculator() {
             (not creditable) all change the result. Confirm with a qualified
             cross-border tax professional before filing.
           </p>
+          </div>
         </>
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={r.ok}
+        targetId={RESULTS_ID}
+        tone={"good"}
+        label={"Indian tax likely absorbed by US tax"}
+        value={usd(credit)}
+        sub={"Screening estimate"}
+      />
+    </>
   );
 }

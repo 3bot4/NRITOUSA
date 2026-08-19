@@ -16,6 +16,7 @@ import {
   usd,
   pct,
 } from "./ui";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { calculateProperty } from "@/lib/calc/indiaPropertyGains";
@@ -23,6 +24,9 @@ import {
   REPATRIATION_LIMIT_USD,
   SEC_54EC_CAP,
 } from "@/lib/calc/indiaPropertyRates";
+
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "property-results";
 
 export default function PropertyGainsCalculator() {
   const [s, set] = useUrlState({
@@ -70,6 +74,7 @@ export default function PropertyGainsCalculator() {
   const shortTermNeedsRate = !r.isLongTerm && !r.taxCalculable;
 
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -242,6 +247,7 @@ export default function PropertyGainsCalculator() {
           <InvalidInputPanel errors={errorList} />
         ) : (
           <>
+            <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
             {r.needsMoreInfo.map((m, i) => (
               <Callout key={i} tone="note">
                 {m}
@@ -432,9 +438,21 @@ export default function PropertyGainsCalculator() {
               review — it is not automatic. You must also report the gain on your
               US return, where a foreign tax credit may apply.
             </p>
+            </div>
           </>
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={r.ok}
+        targetId={RESULTS_ID}
+        tone={"warn"}
+        label={"Estimated India tax on the gain"}
+        value={inr(r.finalTaxLiability)}
+        sub={r.isLongTerm ? "Long-term" : "Short-term"}
+      />
+    </>
   );
 }

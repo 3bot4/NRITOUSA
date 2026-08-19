@@ -126,10 +126,13 @@ export default function Form10FGeneratorPage() {
       {/* Generator */}
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mb-8">
+          <Form10FGenerator />
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mt-10 sm:mt-12">
             <ToolIntro content={content} />
           </div>
-          <Form10FGenerator />
           <p className="mx-auto mt-6 max-w-3xl text-xs text-ink-400">
             Last updated: <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time> ·
             Field structure summarized from Form 10F under Rule 21AB of the

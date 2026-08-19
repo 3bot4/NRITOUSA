@@ -304,10 +304,13 @@ export default function GreenCardTrackerPage() {
             title="How many people are ahead of you"
             description="A concrete place in line from USCIS's pending Form I-485 inventory, plus a simplified EB-1/EB-2/EB-3/EB-5 India/China/ROW estimate."
           />
-          <div className="mb-8">
+          <GreenCardEstimator variant="full" />
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mt-10 sm:mt-12">
             <ToolIntro content={content} />
           </div>
-          <GreenCardEstimator variant="full" />
         </Container>
       </section>
 

@@ -14,12 +14,16 @@ import {
   usd,
   pct,
 } from "./ui";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { calculateRoth, type FilingStatus } from "@/lib/calc/backdoorRoth";
 import { currentIraLimits } from "@/lib/calc/irsLimits";
 
 const LIMITS = currentIraLimits();
+
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "backdoor-results";
 
 export default function BackdoorRothCalculator() {
   const [s, set] = useUrlState({
@@ -53,6 +57,7 @@ export default function BackdoorRothCalculator() {
   const errorList = Object.values(errors).filter(Boolean) as string[];
 
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -115,6 +120,7 @@ export default function BackdoorRothCalculator() {
           <InvalidInputPanel errors={errorList} />
         ) : (
           <>
+            <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
             <ResultPanel
               title={`Roth IRA eligibility (${LIMITS.taxYear})`}
               accent={
@@ -240,9 +246,20 @@ export default function BackdoorRothCalculator() {
                 IRS {LIMITS.taxYear} contribution limits
               </a>
             </p>
+            </div>
           </>
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={ok}
+        targetId={RESULTS_ID}
+        tone={verdict === "full" ? "good" : "warn"}
+        label={"Direct Roth contribution allowed"}
+        value={usd(directAllowed)}
+      />
+    </>
   );
 }

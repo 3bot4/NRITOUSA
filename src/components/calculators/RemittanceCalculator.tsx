@@ -13,6 +13,7 @@ import {
   num,
   InvalidInputPanel,
 } from "./ui";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import { validateAll, FX_USD_INR } from "@/lib/calc/validation";
@@ -24,6 +25,9 @@ import {
   type LrsPurpose,
   type RemitterStatus,
 } from "@/lib/calc/remittanceTcs";
+
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "remittance-results";
 
 export default function RemittanceCalculator() {
   const [s, set] = useUrlState({
@@ -105,6 +109,7 @@ export default function RemittanceCalculator() {
   const dstFmt = usIndia ? inr : usd;
 
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -215,6 +220,7 @@ export default function RemittanceCalculator() {
           <InvalidInputPanel errors={fieldErrors} />
         ) : (
         <>
+          <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
           <ResultPanel title="What actually arrives" accent="from-cyan-500 to-teal-600">
             <Stat label="Net amount received" value={dstFmt(recv)} big tone="good" />
             <Row label="Effective exchange rate" value={effRateLabel} />
@@ -297,9 +303,20 @@ export default function RemittanceCalculator() {
             fee change. Verify current rates with your provider and a tax
             professional.
           </p>
+          </div>
         </>
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={v.ok}
+        targetId={RESULTS_ID}
+        tone={"good"}
+        label={"Net amount received"}
+        value={dstFmt(recv)}
+      />
+    </>
   );
 }

@@ -14,6 +14,7 @@ import {
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import { validateAll, PERCENT, GROWTH_RATE } from "@/lib/calc/validation";
 import { homeTaxBenefit } from "@/lib/calc/homeTaxBenefit";
 import {
@@ -613,6 +614,9 @@ function RiskMeter({ pct }: { pct: number }) {
 
 /* ------------------------------- main ---------------------------------- */
 
+/** Anchor for the results column — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "rentbuy-results";
+
 export default function RentVsBuyImmigrantCalculator() {
   const [s, set] = useUrlState({
     // A — purchase
@@ -937,7 +941,10 @@ export default function RentVsBuyImmigrantCalculator() {
         </div>
 
         {/* ---------------- Results ---------------- */}
-        <div className="min-w-0 space-y-4 lg:sticky lg:top-6 lg:self-start">
+        <div
+          id={RESULTS_ID}
+          className="min-w-0 scroll-mt-24 space-y-4 lg:sticky lg:top-6 lg:self-start"
+        >
           {!val.ok && <InvalidInputPanel errors={fieldErrors} />}
           {val.ok && (
           <>
@@ -1127,6 +1134,16 @@ export default function RentVsBuyImmigrantCalculator() {
           .
         </p>
       </div>
+
+      {/* Mobile: keep the verdict on screen while inputs are edited. */}
+      <StickyResultBar
+        show={val.ok}
+        targetId={RESULTS_ID}
+        tone={verdict === "buy" ? "good" : verdict === "rent" ? "warn" : "default"}
+        label="Verdict"
+        value={verdictMeta.title}
+        sub={activeBE === null ? "No break-even in range" : `Break-even ~${activeBE} yrs`}
+      />
     </div>
   );
 }

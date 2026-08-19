@@ -11,6 +11,7 @@ import {
   Callout,
   InvalidInputPanel,
 } from "./ui";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import ResultActions from "@/components/ResultActions";
 import { useUrlState } from "@/lib/useUrlState";
 import {
@@ -48,6 +49,9 @@ const STATUS_META = {
   },
 } as const;
 
+/** Anchor for the results block — the sticky bar hides once this is on screen. */
+const RESULTS_ID = "rnor-results";
+
 export default function RnorCalculator() {
   const [s, set] = useUrlState({
     curr: "90",
@@ -77,6 +81,7 @@ export default function RnorCalculator() {
   const errorList = Object.values(r.errors).filter(Boolean) as string[];
 
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -189,6 +194,7 @@ export default function RnorCalculator() {
           <InvalidInputPanel errors={errorList} />
         ) : (
           <>
+            <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
             <ResultPanel title="Your India tax status" accent={meta.accent}>
               <Stat
                 label={meta.full}
@@ -303,9 +309,20 @@ export default function RnorCalculator() {
               &ldquo;liable to tax&rdquo; in another country. Confirm with a
               qualified cross-border tax professional before acting.
             </p>
+            </div>
           </>
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={r.ok}
+        targetId={RESULTS_ID}
+        tone={meta.tone === "good" ? "good" : "warn"}
+        label={"Your India tax status"}
+        value={r.status === "REVIEW" ? "Review needed" : r.status}
+      />
+    </>
   );
 }

@@ -77,11 +77,13 @@ export default function H1bSalariesPage() {
       >
       <section className="pb-12 pt-6 sm:pb-16">
         <Container>
-          <div className="mb-8">
+          <H1bSalaryExplorer />
+
+          {/* Static SEO context — renders BELOW the tool so the
+              first interactive element clears the fold on a phone. */}
+          <div className="mt-10 sm:mt-12">
             <ToolIntro content={content} />
           </div>
-
-          <H1bSalaryExplorer />
         </Container>
       </section>
 
