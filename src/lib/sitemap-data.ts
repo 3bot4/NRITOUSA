@@ -196,6 +196,8 @@ export const taxEntries: SitemapEntry[] = [
   e("/long-term-nri-wealth", 0.9, "weekly"),
   // NRI cross-border essentials (see lib/nriEssentialsCluster.ts)
   e("/nri-selling-property-in-india-tds", 0.85, "monthly", new Date("2026-07-18")),
+  // India Property cluster — POA is the instrument that makes a remote sale possible
+  e("/power-of-attorney-for-india-from-usa", 0.85, "monthly", new Date("2026-08-19")),
   e("/gold-limit-usa-to-india", 0.85, "monthly", new Date("2026-07-18")),
   e("/shipping-household-goods-to-india", 0.8, "monthly", new Date("2026-08-01")),
   e("/india-investments/should-nris-keep-investments-in-india", 0.9, "monthly"),

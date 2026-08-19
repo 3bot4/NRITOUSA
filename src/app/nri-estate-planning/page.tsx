@@ -28,11 +28,20 @@ const config: MoneyHubConfig = {
   ],
   tools: [
     { label: "India property capital gains", href: "/calculators/india-property-capital-gains", kind: "Calculator" },
+    { label: "NRI power of attorney route builder", href: "/power-of-attorney-for-india-from-usa#poa-builder", kind: "Tool" },
     { label: "FBAR/FATCA risk checker", href: "/tools/fbar-fatca-checker", kind: "Tool" },
     { label: "Long-term NRI wealth hub", href: "/long-term-nri-wealth", kind: "Hub" },
     { label: "NRI Wealth Checkup", href: "/nri-wealth-checkup", kind: "Hub" },
   ],
   primaryCta: { label: "Start the estate planning guide", href: "/articles/estate-planning-usa-india-assets" },
+  relatedGuides: [
+    {
+      label: "Power of attorney for India from USA",
+      href: "/power-of-attorney-for-india-from-usa",
+      blurb:
+        "The document families reach for when a parent in India needs to act on their behalf — and the one most often confused with a will. A POA terminates on the principal's death; it handles matters while you are alive, not after. Covers execution from the USA, registration, and revocation.",
+    },
+  ],
 };
 
 export const metadata: Metadata = pageMetadata({

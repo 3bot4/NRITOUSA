@@ -176,6 +176,16 @@ const CURATED: SearchItem[] = [
     keywords: "oci card resource center eligibility fees timeline",
   },
   {
+    title: "Power of Attorney for India From USA (NRI Property)",
+    description:
+      "How to make a power of attorney for India from the USA: notary vs apostille vs consulate attestation, stamping, registration, stamp duty, revocation and specimen formats.",
+    href: "/power-of-attorney-for-india-from-usa",
+    type: "Guide",
+    priority: 62,
+    keywords:
+      "power of attorney nri india from usa poa property sell notary apostille consulate attestation stamp duty registration revoke format sample",
+  },
+  {
     title: "NRI Selling Property in India: TDS Guide",
     description:
       "TDS rates on NRI property sales, Form 13 lower-TDS certificate, US tax reporting and repatriation.",

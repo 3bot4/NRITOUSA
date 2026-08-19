@@ -650,6 +650,11 @@ export default function Page() {
                   desc: "Already over-withheld? How to reclaim it via your Indian return",
                 },
                 {
+                  href: "/power-of-attorney-for-india-from-usa",
+                  label: "Power of Attorney for India From USA",
+                  desc: "Can't fly back to sign? Notary vs apostille vs consulate, and the 3-month stamping rule",
+                },
+                {
                   href: "/india-property",
                   label: "India Property Planning Hub",
                   desc: "Sell vs hold, inheritance, and NRI buying property in India",

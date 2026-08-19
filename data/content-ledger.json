@@ -115,6 +115,26 @@
       "opened": "2026-08-19"
     },
     {
+      "id": "poa-page-consular-fees-state-stamp",
+      "title": "POA page: consular fees + state stamp-duty figures are DIRECTIONAL, need per-jurisdiction verification",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-19",
+      "nextStep": "Verify GOI consular fee, ICWF levy and VFS service charge against 2-3 US Missions; confirm the nominal-vs-conveyance stamp article for MH/KA/TN/DL",
+      "evidence": "src/data/nriPowerOfAttorneyData.ts poaCostRows + stampDutyRule"
+    },
+    {
+      "id": "poa-page-confirm-whether-us-indian",
+      "title": "POA page: confirm whether US Indian Missions now require apostille BEFORE consular attestation for ALL passport types",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-19",
+      "nextStep": "VFS USA-India checklist says PoA attested only after apostille; Seattle CGI page says notarised is enough for Indian passport holders. Resolve the conflict and tighten consularRoute step 4.",
+      "evidence": "src/data/nriPowerOfAttorneyData.ts consularRoute"
+    },
+    {
       "id": "mobile-audit-education-gpa-calculator-overflows",
       "title": "Mobile audit: /education/gpa-calculator overflows 5px at 320px",
       "area": "other",

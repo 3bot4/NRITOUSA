@@ -5691,7 +5691,7 @@ To transact on Indian property, a US-raised heir typically needs an active **PAN
 A rented India property generates rent (taxable in India and the US) but also generates problems: non-paying tenants, tenancy laws that favor occupants, maintenance, and society dues. Managing tenants from the US, without local help, is genuinely hard and a frequent reason heirs let property decay or sell at a discount.
 
 ## Selling property from abroad
-Selling India property as a US resident or OCI holder involves capital-gains tax in India, TDS, documentation, and often a power of attorney so someone can sign locally. The process is doable but paperwork-heavy.
+Selling India property as a US resident or OCI holder involves capital-gains tax in India, TDS, documentation, and often a [power of attorney](/power-of-attorney-for-india-from-usa) so someone can sign locally. The process is doable but paperwork-heavy.
 
 ## Currency repatriation
 After selling, bringing proceeds to the US has its own rules and limits, typically routed through an NRO account with documentation and CA certification. See [repatriating India property sale proceeds](/articles/repatriate-india-property-sale-usa) and the US tax angle in [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax).
@@ -5776,7 +5776,7 @@ India rent and eventual sale proceeds are in rupees; your life and most goals ar
 US property: report rental income and depreciation on your US return — relatively clean. India property: rental income is taxable in India (with TDS quirks for NRI landlords) and again reportable in the US, with treaty relief via the [DTAA](/articles/double-taxation-dtaa-india-usa). Add [FBAR/FATCA](/articles/fbar-fatca-nri-guide) for the India bank accounts involved. The compliance load is heavier for India.
 
 ## Liquidity and selling
-Selling a US property is a familiar, weeks-to-months process. Selling India property remotely involves capital-gains tax, TDS, possibly a power of attorney, and [repatriating the proceeds](/articles/repatriate-india-property-sale-usa). For the US side, also understand [FIRPTA when selling a US home as an NRI](/articles/selling-us-home-nri-firpta).
+Selling a US property is a familiar, weeks-to-months process. Selling India property remotely involves capital-gains tax, TDS, possibly a [power of attorney executed from the USA](/power-of-attorney-for-india-from-usa), and [repatriating the proceeds](/articles/repatriate-india-property-sale-usa). For the US side, also understand [FIRPTA when selling a US home as an NRI](/articles/selling-us-home-nri-firpta).
 
 ## Emotional reasons to buy in India
 - A home base for visits and aging parents.
@@ -5980,7 +5980,7 @@ A perfect plan that no one knows about fails. Tell your executor and key family 
 - Bank/FD **nominee** details (US and India)
 - **Guardianship** designation for minor children
 - A **master list** of all accounts, advisors, and document locations
-- Powers of attorney where appropriate
+- [Powers of attorney](/power-of-attorney-for-india-from-usa) where appropriate — but note a POA dies with the principal, so it complements a will rather than replacing one
 
 ## Professional help to consider
 - A **US estate-planning attorney** for US wills, trusts, and designations.
@@ -6246,7 +6246,7 @@ If the property is rented while the children are young, someone manages tenants,
 Property "looked after" by relatives can become a source of conflict — over use, rent, upkeep, or eventual ownership. A US-raised child has little ability to navigate these dynamics from abroad. Clear documentation and honest family agreements reduce the risk, but they don't eliminate the human complexity.
 
 ## Selling later from abroad
-If the child eventually doesn't want it, they face selling India property as a US resident — capital-gains tax, TDS, possibly a power of attorney, and [repatriating proceeds](/articles/repatriate-india-property-sale-usa). Buying an asset your child will likely have to sell remotely is a different decision than buying one they'll use.
+If the child eventually doesn't want it, they face selling India property as a US resident — capital-gains tax, TDS, possibly a [power of attorney](/power-of-attorney-for-india-from-usa), and [repatriating proceeds](/articles/repatriate-india-property-sale-usa). Buying an asset your child will likely have to sell remotely is a different decision than buying one they'll use.
 
 ## Currency and repatriation
 Money you put into India property is in rupees; if the child later sells and brings the proceeds to the US, currency depreciation and repatriation rules apply. A dollar gift that stays in dollars avoids this friction entirely — see [the hidden cost of keeping too much money in India](/articles/keeping-too-much-money-in-india).

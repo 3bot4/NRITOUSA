@@ -10,13 +10,14 @@ const config: MoneyHubConfig = {
   accent: "from-amber-600 to-orange-700",
   title: "India Property Planning",
   intro:
-    "Own property in India while living in the USA? This hub walks through the decisions that actually move the needle: whether to sell or hold, how capital gains and TDS work, how to repatriate the proceeds, and what happens to inherited property — all from a cross-border US/India tax angle.",
+    "Own property in India while living in the USA? This hub walks through the decisions that actually move the needle: whether to sell or hold, how capital gains and TDS work, how to repatriate the proceeds, how to grant a power of attorney so someone can sign for you in India, and what happens to inherited property — all from a cross-border US/India tax angle.",
   covers: [
     "Sell vs hold",
     "Capital gains on India property",
     "TDS on property sale",
     "Repatriation of sale proceeds",
     "Inheritance of India property",
+    "Power of attorney from the USA",
     "US tax reporting on India real estate",
   ],
   articleSlugs: [
@@ -29,6 +30,7 @@ const config: MoneyHubConfig = {
   ],
   tools: [
     { label: "India property capital gains calculator", href: "/calculators/india-property-capital-gains", kind: "Calculator" },
+    { label: "NRI power of attorney route builder", href: "/power-of-attorney-for-india-from-usa#poa-builder", kind: "Tool" },
     { label: "DTAA foreign tax credit", href: "/calculators/dtaa-foreign-tax-credit", kind: "Calculator" },
     { label: "FBAR/FATCA risk checker", href: "/tools/fbar-fatca-checker", kind: "Tool" },
     { label: "India Tax & Compliance hub", href: "/india-tax-compliance", kind: "Hub" },
@@ -42,6 +44,12 @@ const config: MoneyHubConfig = {
         "The full sale playbook: TDS rates on the sale value, the Form 13 lower-TDS certificate, US tax reporting, and bringing the proceeds to the USA.",
     },
     {
+      label: "Power of attorney for India from USA: sell property without flying back",
+      href: "/power-of-attorney-for-india-from-usa",
+      blurb:
+        "You cannot sign at the Sub-Registrar's counter from New Jersey. This is the instrument that lets someone sign for you — notary vs apostille vs consular attestation, the three-month stamping rule, registration, stamp duty, revocation and specimen formats.",
+    },
+    {
       label: "Should NRIs keep their investments in India?",
       href: "/india-investments/should-nris-keep-investments-in-india",
       blurb:
@@ -53,7 +61,7 @@ const config: MoneyHubConfig = {
 export const metadata: Metadata = pageMetadata({
   title: "India Property Planning for NRIs — Sell vs Hold, Capital Gains, TDS & Repatriation",
   description:
-    "For Indians in the USA with property in India: sell vs hold, capital gains and TDS, repatriating sale proceeds, and inheritance — with US/India tax in mind.",
+    "For Indians in the USA with property in India: sell vs hold, capital gains and TDS, repatriating sale proceeds, power of attorney, and inheritance — with US/India tax in mind.",
   path: config.path,
 });
 
