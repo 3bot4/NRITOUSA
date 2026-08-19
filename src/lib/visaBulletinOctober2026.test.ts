@@ -110,7 +110,7 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
 
   it("EB-2 India is Unavailable in the current bulletin, as the page states", () => {
     expect(cutoffAt(series.fad, "2026-07")).toBe("U");
-    expect(FLAT).toMatch(/Unavailable in the July 2026 bulletin/);
+    expect(FLAT).toMatch(/Unavailable from the July 2026 bulletin/);
   });
 
   it("the stated month movements match the data", () => {
@@ -119,9 +119,10 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
     expect(months("2012-07-15", "2013-04-01")).toBeCloseTo(8.5, 1);
     expect(months("2012-01-01", "2012-07-15")).toBeCloseTo(6.5, 1);
     expect(months("2013-09-01", "2014-07-15")).toBeCloseTo(10.5, 1);
-    for (const m of ["+15.5 months", "+8.5 months", "+6.5 months", "−3 months"]) {
-      expect(FLAT).toContain(m);
-    }
+    // The table renders these from history.json, so the page source no longer
+    // contains the literal strings — assert the generator is wired instead.
+    expect(PAGE).toContain("octoberRows()");
+    expect(PAGE).toMatch(/movement\(/);
   });
 
   it("reports FY2026 supply as 186,000 — not a monotonic 'shrinking supply' story", () => {
@@ -140,5 +141,57 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
     expect(FLAT).toContain("1.8 million");
     expect(FLAT).toContain("1.1 million");
     expect(FLAT).toContain("134 years");
+  });
+});
+
+describe("October 2026 predictions — numbers come from the bulletin data", () => {
+  it("reads the current cutoffs rather than hand-typing them", () => {
+    // The 'Where things stand now' table went stale-by-design when the page
+    // left the cluster template; it now resolves from data/visa-bulletin.
+    expect(PAGE).toContain("getCutoffs");
+    expect(PAGE).toContain('indiaNow("eb1")');
+    expect(PAGE).toContain('indiaNow("eb2")');
+    expect(PAGE).toContain('indiaNow("eb3")');
+    expect(PAGE).toContain('indiaNow("eb5")');
+    // ...and the heading follows the live bulletin month.
+    expect(PAGE).toContain("formatBulletinMonth");
+    expect(FLAT).toMatch(/Where things stand now \(\{bulletinLabel\}\)/);
+  });
+
+  it("generates the October history from history.json", () => {
+    expect(PAGE).toContain('getSeries("eb2", "india")');
+    expect(PAGE).toMatch(/\["2023-10", "2024-10", "2025-10"\]/);
+  });
+
+  it("opens with a quick answer, not a TL;DR", () => {
+    expect(FLAT).toMatch(/<strong>Quick answer:<\/strong>/);
+    expect(FLAT).not.toMatch(/TL;DR/);
+  });
+});
+
+describe("October 2026 predictions — added sections", () => {
+  it("explains who can actually file an I-485 in October", () => {
+    expect(FLAT).toMatch(/Who could actually file an I-485 in October/);
+    // The three-way split is the point of the section.
+    expect(FLAT).toMatch(/Can you file I-485\?/);
+    expect(FLAT).toMatch(/Can you be approved\?/);
+    // ...and it must not present a stacked prediction as settled.
+    expect(FLAT).toMatch(/Any of the three can move/);
+  });
+
+  it("pre-commits the forecast for post-bulletin scoring", () => {
+    expect(FLAT).toMatch(/Our record on this call/);
+    expect(FLAT).toMatch(/Pending — October bulletin/);
+    expect(FLAT).toMatch(/What DOS published/);
+  });
+
+  it("separates the May 22 issuance halt from the July bulletin 'U'", () => {
+    expect(FLAT).toMatch(/May 22, 2026/);
+    expect(FLAT).toMatch(/the June bulletin still posted a Final Action Date/);
+  });
+
+  it("covers EB-5 unreserved India alongside the EB categories", () => {
+    expect(FLAT).toMatch(/EB-5 \(unreserved\)/);
+    expect(FLAT).toMatch(/reserved<\/em> set-asides/);
   });
 });

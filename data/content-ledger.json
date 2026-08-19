@@ -107,6 +107,14 @@
       "opened": "2026-08-19"
     },
     {
+      "id": "fill-in-the-our-record-on",
+      "title": "Fill in the 'Our record on this call' scoreboard on /visa-bulletin/october-2026-predictions once the October 2026 bulletin publishes - the page publicly commits to scoring its own forecast rather than editing it",
+      "area": "other",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-19"
+    },
+    {
       "id": "mobile-audit-education-gpa-calculator-overflows",
       "title": "Mobile audit: /education/gpa-calculator overflows 5px at 320px",
       "area": "other",
