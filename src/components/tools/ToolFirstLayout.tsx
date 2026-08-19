@@ -46,6 +46,7 @@ export default function ToolFirstLayout({
   disclaimerPoints,
   disclaimerExtra,
   disclaimerDefaultOpen,
+  density = "default",
   children,
 }: {
   toolSlug: string;
@@ -71,15 +72,26 @@ export default function ToolFirstLayout({
   disclaimerPoints?: string[];
   disclaimerExtra?: React.ReactNode;
   disclaimerDefaultOpen?: boolean;
+  /**
+   * "compact" trims the mobile header so the tool's first input clears the
+   * fold on a 375x667 phone: the promise badges and the source note are
+   * hidden below `sm` (both are still rendered further down the page by the
+   * calculator route, so no trust signal is lost), the hook clamps to two
+   * lines, and the vertical padding tightens. Desktop is unchanged.
+   */
+  density?: "default" | "compact";
   children: React.ReactNode;
 }) {
+  const compact = density === "compact";
   return (
     <>
       <ToolAnalytics toolSlug={toolSlug} />
 
       {/* Compact mobile-first header */}
       <header className="border-b border-ink-900/5 bg-white">
-        <Container className="pt-4 pb-5 sm:pt-6 sm:pb-6">
+        <Container
+          className={`sm:pt-6 sm:pb-6 ${compact ? "pt-3 pb-3" : "pt-4 pb-5"}`}
+        >
           <nav
             aria-label="Breadcrumb"
             className="flex flex-nowrap items-center gap-1.5 overflow-x-auto whitespace-nowrap text-xs text-ink-400 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -116,13 +128,21 @@ export default function ToolFirstLayout({
           </div>
 
           {hook && (
-            <p className="mt-3 max-w-2xl text-base font-medium leading-snug text-ink-700">
+            <p
+              className={`mt-3 max-w-2xl text-base font-medium leading-snug text-ink-700 ${
+                compact ? "line-clamp-2 sm:line-clamp-none" : ""
+              }`}
+            >
               {hook}
             </p>
           )}
 
           {badges.length > 0 && (
-            <ul className="mt-3 flex flex-wrap gap-1.5">
+            <ul
+              className={`mt-3 flex-wrap gap-1.5 sm:flex ${
+                compact ? "hidden" : "flex"
+              }`}
+            >
               {badges.map((b) => (
                 <li
                   key={b}
@@ -136,7 +156,11 @@ export default function ToolFirstLayout({
 
           {headerExtra && <div className="mt-3">{headerExtra}</div>}
 
-          <p className="mt-4 text-xs leading-relaxed text-ink-400">
+          <p
+            className={`text-xs leading-relaxed text-ink-400 ${
+              compact ? "mt-3" : "mt-4"
+            }`}
+          >
             {topDisclaimer ?? (
               <>Educational estimate only. Not legal, tax, immigration, or financial advice.</>
             )}{" "}
@@ -150,7 +174,13 @@ export default function ToolFirstLayout({
           </p>
 
           {sourceNote && (
-            <p className="mt-2 text-xs text-ink-400">{sourceNote}</p>
+            <p
+              className={`mt-2 text-xs text-ink-400 sm:block ${
+                compact ? "hidden" : ""
+              }`}
+            >
+              {sourceNote}
+            </p>
           )}
         </Container>
       </header>

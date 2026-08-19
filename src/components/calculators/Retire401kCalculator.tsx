@@ -9,14 +9,19 @@ import {
   Row,
   Callout,
   InvalidInputPanel,
+  Disclosure,
   usd,
 } from "./ui";
 import ResultActions from "@/components/ResultActions";
+import StickyResultBar from "@/components/calculators/StickyResultBar";
 import { useUrlState } from "@/lib/useUrlState";
 import {
   calculateRetire401k,
   IRS_FOREIGN_WITHHOLDING_SOURCE,
 } from "@/lib/calc/retire401k";
+
+/** Anchor for the full results block — also the sticky bar's hide/scroll target. */
+const RESULTS_ID = "r401k-results";
 
 export default function Retire401kCalculator() {
   const [s, set] = useUrlState({
@@ -45,7 +50,10 @@ export default function Retire401kCalculator() {
 
   const errorList = Object.values(r.errors).filter(Boolean) as string[];
 
+  const keepingWins = r.advantageOfKeeping > 0;
+
   return (
+    <>
     <CalcGrid
       inputs={
         <>
@@ -136,16 +144,16 @@ export default function Retire401kCalculator() {
           <InvalidInputPanel errors={errorList} />
         ) : (
           <>
-            <Callout tone="note">
-              <strong>These are five different actions, not one.</strong> Leaving
-              the balance in the employer plan, a direct trustee-to-trustee
-              rollover to a Traditional IRA, a taxable cash distribution,
-              periodic future distributions, and a Roth conversion each have
-              different tax consequences. This calculator compares only a{" "}
-              <strong>taxable cash distribution now</strong> against{" "}
-              <strong>leaving the balance invested</strong>. A rollover is not a
-              withdrawal and is not modelled here.
-            </Callout>
+            <div id={RESULTS_ID} className="scroll-mt-24 space-y-4">
+              <p className="text-xs leading-relaxed text-ink-500">
+                Compares a <strong>taxable cash distribution now</strong> against{" "}
+                <strong>leaving the balance invested</strong>. A rollover is a
+                different action and is not modelled here —{" "}
+                <a href="#r401k-scope" className="font-semibold text-brand-600 underline underline-offset-2">
+                  see all five options
+                </a>
+                .
+              </p>
 
             <ResultPanel
               title="Option A — taxable cash distribution now"
@@ -218,7 +226,25 @@ export default function Retire401kCalculator() {
               />
             </ResultPanel>
 
-            <ResultPanel title="Assumptions behind this result" accent="from-slate-500 to-slate-700">
+            </div>
+
+            <div id="r401k-scope" className="scroll-mt-24">
+              <Disclosure summary="What this compares — and the five options in full">
+                <Callout tone="note">
+                  <strong>These are five different actions, not one.</strong>{" "}
+                  Leaving the balance in the employer plan, a direct
+                  trustee-to-trustee rollover to a Traditional IRA, a taxable
+                  cash distribution, periodic future distributions, and a Roth
+                  conversion each have different tax consequences. This
+                  calculator compares only a{" "}
+                  <strong>taxable cash distribution now</strong> against{" "}
+                  <strong>leaving the balance invested</strong>. A rollover is
+                  not a withdrawal and is not modelled here.
+                </Callout>
+              </Disclosure>
+            </div>
+
+            <Disclosure summary="Assumptions behind this result">
               <ul className="space-y-2">
                 {r.assumptions.map((a, i) => (
                   <li key={i} className="text-sm leading-relaxed text-ink-600">
@@ -226,7 +252,7 @@ export default function Retire401kCalculator() {
                   </li>
                 ))}
               </ul>
-            </ResultPanel>
+            </Disclosure>
 
             <ResultActions
               title="401(k): cash distribution vs keeping it invested"
@@ -264,5 +290,16 @@ export default function Retire401kCalculator() {
         )
       }
     />
+
+      {/* Mobile: keep the headline answer on screen while inputs are edited. */}
+      <StickyResultBar
+        show={r.ok}
+        targetId={RESULTS_ID}
+        tone={keepingWins ? "good" : "warn"}
+        label={keepingWins ? "Keeping it invested is worth" : "Cashing out is ahead by"}
+        value={usd(Math.abs(r.advantageOfKeeping))}
+        sub={`over ${s.years} yrs, after tax`}
+      />
+    </>
   );
 }

@@ -416,6 +416,45 @@ export function Callout({
   );
 }
 
+/**
+ * Collapsible block for the explanation / assumptions / methodology that used
+ * to sit between a visitor and their answer.
+ *
+ * Built on native <details>, deliberately: it needs no JavaScript, so it works
+ * in the Facebook in-app webview and with scripting disabled, the content stays
+ * in the DOM and server-rendered (so it is still indexed), and there is no
+ * layout shift on hydration.
+ */
+export function Disclosure({
+  summary,
+  children,
+  defaultOpen = false,
+}: {
+  summary: string;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details
+      open={defaultOpen}
+      className="group overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card [&_summary::-webkit-details-marker]:hidden"
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-3.5 text-sm font-semibold text-ink-800 hover:bg-slate-50">
+        <span>{summary}</span>
+        <span
+          aria-hidden
+          className="shrink-0 text-xs font-bold text-brand-600 transition-transform group-open:rotate-180"
+        >
+          ▼
+        </span>
+      </summary>
+      <div className="space-y-3 border-t border-ink-900/5 px-5 py-4">
+        {children}
+      </div>
+    </details>
+  );
+}
+
 export function CheckList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2">

@@ -56,6 +56,24 @@ const RETURN_TO_INDIA_CALCS = new Set([
   "fcnr-vs-hysa",
 ]);
 
+/**
+ * Calculators rebuilt so the first input clears the fold on a 375x667 phone.
+ *
+ * Clarity showed 92.5% of visitors reaching 10% scroll depth on
+ * /calculators/401k-return-to-india but only 32.3% reaching 15% — they were
+ * falling off in the ~1,300px of static SEO copy that sat between the H1 and
+ * the first input. For these slugs the header renders compact and the
+ * CalculatorIntro block moves *below* the tool.
+ *
+ * Nothing about the page's SEO changes: the same copy is still
+ * server-rendered on the same URL with the same canonical, title, meta
+ * description, JSON-LD and heading levels — only its DOM position moves, and
+ * its H2s keep their existing order relative to the deep-dive H2s below.
+ *
+ * Rolled out one slug at a time so each can be compared against the live page.
+ */
+const FOLD_OPTIMIZED = new Set(["401k-return-to-india"]);
+
 export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
 }
@@ -86,6 +104,7 @@ export default function CalculatorPage({
   if (!Calculator) notFound();
 
   const content = getCalculatorContent(calc.slug);
+  const foldFirst = FOLD_OPTIMIZED.has(calc.slug);
 
   const related = calc.related
     .map((slug) => getArticle(slug))
@@ -147,6 +166,7 @@ export default function CalculatorPage({
       />
 
       <ToolFirstLayout
+        density={foldFirst ? "compact" : "default"}
         toolSlug={calc.slug}
         breadcrumb={[
           { label: "Home", href: "/" },
@@ -175,11 +195,12 @@ export default function CalculatorPage({
         }
       >
       {/* Calculator */}
-      <section className="pb-12 pt-6 sm:pb-16">
+      <section className={`pb-12 sm:pb-16 ${foldFirst ? "pt-4 sm:pt-6" : "pt-6"}`}>
         <Container>
-          {/* Static SEO context above the tool (quick answer, who it's for,
-              key inputs, decision window) — only on expanded hub pages. */}
-          {content && (
+          {/* Static SEO context (quick answer, who it's for, key inputs,
+              decision window) — only on expanded hub pages. On fold-optimised
+              slugs this renders below the tool instead, see FOLD_OPTIMIZED. */}
+          {content && !foldFirst && (
             <div className="mb-8">
               <CalculatorIntro
                 content={content}
@@ -190,6 +211,16 @@ export default function CalculatorPage({
           )}
 
           <Calculator />
+
+          {content && foldFirst && (
+            <div className="mt-10 sm:mt-12">
+              <CalculatorIntro
+                content={content}
+                quickSummary={calc.quickSummary}
+                audience={calc.audience}
+              />
+            </div>
+          )}
 
           {RETURN_TO_INDIA_CALCS.has(calc.slug) && (
             <div className="mt-8">
