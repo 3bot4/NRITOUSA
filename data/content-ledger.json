@@ -91,6 +91,22 @@
       "evidence": "scratchpad audit-results.json, 390 pages x 6 viewports"
     },
     {
+      "id": "refresh-visa-bulletin-october-2026-predictions",
+      "title": "Refresh /visa-bulletin/october-2026-predictions the day the October 2026 bulletin drops (~Sept 8-15): replace the predicted FAD with the published one and mark whether the DOS 'at least May 2026 date' guidance held",
+      "area": "other",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-19"
+    },
+    {
+      "id": "formatdate-in-src-lib-format-ts",
+      "title": "formatDate in src/lib/format.ts renders ISO dates one day early in US timezones (new Date('2026-08-19') parses as UTC midnight then formats local) - affects every 'Updated' stamp site-wide",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-19"
+    },
+    {
       "id": "mobile-audit-education-gpa-calculator-overflows",
       "title": "Mobile audit: /education/gpa-calculator overflows 5px at 320px",
       "area": "other",

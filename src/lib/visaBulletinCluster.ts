@@ -474,7 +474,7 @@ The EB-2 India priority date moves monthly and is shown in the status panel abov
 :::key
 - Read the **current EB-2 India Final Action Date and Dates for Filing** in the live panel above — this page owns the current cutoff and its movement.
 - The EB-2 India Final Action Date, when posted at all, has sat in the **early-to-mid 2010s** and moved **1–3 months per calendar year** in recent years.
-- Watch **October 1** — the new fiscal year restores visa numbers after an "Unavailable" stretch like the one running through August 2026.
+- Watch **October 1** — the new fiscal year restores visa numbers after an "Unavailable" stretch like the one running through August 2026. See [what the October 2026 bulletin should bring](/visa-bulletin/october-2026-predictions).
 - Get the I-140 approved even while backlogged — an approved I-140 can support **H-1B extensions past six years** (AC21 §104(c), when a visa number is unavailable).
 - Compare charts monthly with the [Priority Date Checker](/tools/priority-date-checker) — EB-3 India sometimes moves ahead of EB-2; weigh the choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 - If your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) may move you to the "All Other Countries" row — often worth a decade or more.
@@ -524,7 +524,7 @@ The result: when a cutoff date is posted at all, the EB-2 India Final Action Dat
 
 Nobody — including paid prediction services — can promise where the EB-2 India cutoff will be next quarter, and nothing here is a forecast. What the recent pattern (see the movement table above) does illustrate:
 
-- **New fiscal years help.** Visa numbers reset every **October 1**; an Unavailable category regains numbers, and early-FY bulletins often show the year's best movement.
+- **New fiscal years help.** Visa numbers reset every **October 1**; an Unavailable category regains numbers, and early-FY bulletins often show the year's best movement — see the [October 2026 (FY2027) reset analysis](/visa-bulletin/october-2026-predictions).
 - **Movement is asymmetric.** Advances come in small steps (weeks to a few months); retrogressions can erase years overnight when demand spikes.
 - **Spillover is the wildcard.** Unused family-based or ROW employment numbers can accelerate India dates in some years — and vanish the next.
 - **For new filings, the honest math is decades** at the current supply level unless Congress changes per-country caps. Plan careers, H-1B extensions, and children's CSPA timelines around that reality, not around prediction posts.
@@ -582,7 +582,7 @@ Your EB-2 priority date is set the day your employer files PERM (see [what a pri
 It changes monthly — the status panel at the top of this page shows the current value straight from the DOS bulletin. In the August 2026 bulletin, EB-2 India was marked Unavailable (no numbers), with Dates for Filing at January 15, 2015.
 
 ### Why is EB-2 India "Unavailable"?
-The category's annual visa numbers ran out before the fiscal year ended, so the Department of State stopped issuing them. Numbers reset on October 1 with the new fiscal year, and the category then reappears with posted cutoff dates.
+The category's annual visa numbers ran out before the fiscal year ended, so the Department of State stopped issuing them. Numbers reset on October 1 with the new fiscal year, and the category then reappears with posted cutoff dates. For what DOS has said about the FY2027 reset specifically, see the [October 2026 bulletin analysis](/visa-bulletin/october-2026-predictions).
 
 ### When will EB-2 India become current?
 For new filings, honest math says decades at current supply — India's prorated 7% share cannot clear hundreds of thousands of pending applicants quickly. No service can credibly predict monthly cutoffs; watch the bulletin itself or the [monthly update tracker](/visa-bulletin/monthly-update), and see the [wait-time scenarios](/eb2-eb3-priority-date-india) for illustrative estimates.
@@ -758,7 +758,7 @@ Not necessarily. The relative movement of EB-2 and EB-3 India changes every mont
 - Understand the core rule: retrogression **pauses** approvals, it never denies or abandons a pending I-485.
 - Keep renewing **EAD and Advance Parole** — both ride on the pending I-485, not on your date being current.
 - Watch **October 1**: the new fiscal year restores visa numbers, and dates often retrogress right after a summer surge.
-- Expect the extreme form too — a category can go to **"U" (Unavailable)**, meaning zero visa numbers, as EB-2 India did in July 2026.
+- Expect the extreme form too — a category can go to **"U" (Unavailable)**, meaning zero visa numbers, as EB-2 India did in July 2026 — and recover on October 1, as the [FY2027 reset analysis](/visa-bulletin/october-2026-predictions) explains.
 - Never commit to job changes, travel, or financial plans on the assumption a date will advance — check the bulletin each month when the new one posts, usually in the second week.
 :::
 
@@ -856,7 +856,7 @@ Retrogression means the Department of State moved a category's cutoff date backw
 No. A pending I-485 is simply held — never denied, abandoned, or required to be refiled. USCIS resumes adjudication when your priority date is current again, and your EAD and Advance Parole remain renewable throughout.
 
 ### What is the difference between retrogression and "Unavailable"?
-Retrogression moves the cutoff to an earlier date, so a smaller group can still be approved. "U" (Unavailable) means no visa numbers exist for that category and country that month, so nobody can be approved regardless of priority date. EB-2 India was Unavailable in July 2026.
+Retrogression moves the cutoff to an earlier date, so a smaller group can still be approved. "U" (Unavailable) means no visa numbers exist for that category and country that month, so nobody can be approved regardless of priority date. EB-2 India was Unavailable in July 2026 — for what happens when the fiscal year turns over, see the [October 2026 predictions](/visa-bulletin/october-2026-predictions).
 
 ### My priority date was current last month, but this month's bulletin shows retrogression. Will USCIS still approve my I-485 this month?
 If USCIS already adjudicated your case in the prior month (when your date was current), approval may still happen. If not, USCIS will hold the case until your date is current again. Ask your attorney to check your specific case status.
@@ -1344,7 +1344,7 @@ The State Department publishes a new visa bulletin in the second week of each mo
 
 ## When is the visa bulletin published?
 
-- **Publication date:** Usually the second week; recent releases have slipped to the third week
+- **Publication date:** Usually the second week; recent releases have slipped to the third week (the October 2026 bulletin is expected in early-to-mid September — see the [FY2027 reset analysis](/visa-bulletin/october-2026-predictions))
 - **Effective month:** The following month (bulletin published in June is for July)
 - **Where:** travel.state.gov → visa bulletin section
 
@@ -1416,6 +1416,156 @@ Wait for your date to become current again. You cannot file I-485 while your pri
 
 #### How far in advance should I prepare the I-485 package?
 Begin preparing 2–3 months before you expect your date to become current. Civil surgeon appointments fill up, and USCIS forms require gathering documents from your employer, birth country, and civil records. Do not wait until your date is current to start preparing.
+`,
+  },
+  /* ── 12. October 2026 (FY2027) outlook ───────────────────────────────────── */
+  {
+    slug: "october-2026-predictions",
+    kind: "update",
+    category: "eb2",
+    title:
+      "October 2026 Visa Bulletin Predictions: EB-2 India and the FY2027 Reset",
+    seoTitle: "October 2026 Visa Bulletin Predictions: EB-2 India FY2027 Reset",
+    metaDescription:
+      "EB-2 India is Unavailable until Sept 30, 2026. What the October 2026 visa bulletin should bring: DOS says a return to at least July 15, 2014 is likely — the statutory math, four Octobers of verified data, and what it changes for your priority date.",
+    navLabel: "October 2026 Predictions",
+    excerpt:
+      "EB-2 India ran out of visa numbers in July. On October 1 the FY2027 quota refills — here is what the October bulletin should say, and the arithmetic behind it.",
+    date: "2026-08-19",
+    updated: "2026-08-19",
+    content: `
+:::quickanswer
+EB-2 India is **Unavailable through September 30, 2026** — India's pro-rated FY2026 EB-2 limit was reached, so no EB-2 India green card can be *issued* until the new fiscal year. On **October 1, 2026** the FY2027 numbers open. The State Department has said it is **likely** the October Final Action Date will advance **to at least the date published in the May 2026 bulletin — July 15, 2014** — while explicitly warning the outcome "is dependent on the demand for EB-2 numbers by Indian applicants and the FY 2027 annual limit." If that holds, it is a **+15.5-month jump over last October's cutoff**, the largest October advancement for EB-2 India in four years. It restores *availability*; it does not shrink the queue.
+:::
+
+:::warn
+**This page is analysis, not a published date.** The only official figures are the ones in the live status card above, which come straight from the current bulletin. Everything labelled "predicted" below is our reading of DOS guidance plus historical movement — DOS guaranteed no specific date. The October 2026 bulletin is expected in the **second week of September 2026**; we update this page the day it lands.
+:::
+
+## Why EB-2 India went Unavailable
+
+This was arithmetic, not a policy change. Each fiscal year every country is limited to a **pro-rated share** of each employment category. India's EB-2 demand vastly exceeds that share, so India's allotment is consumed and the category closes for the rest of the year. In the Department of State's own words, "India's pro-rated EB-2 limit was reached and the category is unavailable for the remainder of FY 2026."
+
+We call the recurring version of this the **Summer Cap Cliff** — India's allotment runs dry 60–90 days before the fiscal year ends, forcing retrogression or unavailability in the July–September bulletins. It has happened in some form in each of the last four fiscal years. For the mechanics of a cutoff moving backwards, see [retrogression explained](/visa-bulletin/retrogression).
+
+:::info
+**"Unavailable" is not "nothing is happening."** It stops *final action* — visa issuance and I-485 approval. It does not cancel your priority date, invalidate an approved I-140, stop I-485 processing steps like biometrics, or affect a pending EAD/Advance Parole renewal. If your I-485 is already pending, it sits and waits. See [what Unavailable means for a pending case](/visa-bulletin/priority-date-current-what-next).
+:::
+
+## Our October 2026 (FY2027) predictions
+
+| Category (India) | Prediction — Final Action | Confidence | Basis |
+|---|---|---|---|
+| **EB-2** | Returns to **at least July 15, 2014** | High | DOS said this advancement is "likely," conditioned on India EB-2 demand and the FY2027 limit |
+| EB-1 | Recovers toward its April 2026 level (April 1, 2023) | Medium | EB-1 India lost ~5.5 months across June–July 2026 to the same cap exhaustion; October resets have historically restored pre-summer dates |
+| EB-3 | Modest advancement from its current cutoff | Medium | Fresh-year numbers historically buy weeks to months, but EB-3 India demand is inflated by downgrades |
+| Dates for Filing (EB-2/EB-3) | Little to no movement | Medium-high | DFF barely moved after April 2026; it is the demand-management lever, not the supply one |
+
+:::note
+**Why EB-2's confidence is "High" and the others are not.** EB-2 has an on-the-record DOS statement pointing at a specific prior bulletin. EB-1 and EB-3 have no equivalent guidance — those rows are inference from past October behaviour, which is a much weaker basis. Treat them accordingly.
+:::
+
+## Four Octobers of verified data
+
+Every published figure below is the EB-2 India cell from the October bulletin of that fiscal year — October is the first bulletin of each fiscal year, so it shows the reset at full strength:
+
+| October bulletin (FY) | Final Action | Dates for Filing | Movement vs. prior October |
+|---|---|---|---|
+| Oct 2023 (FY2024) | January 1, 2012 | May 15, 2012 | −3 months (retrogressed) |
+| Oct 2024 (FY2025) | July 15, 2012 | January 1, 2013 | +6.5 months |
+| Oct 2025 (FY2026) | April 1, 2013 | December 1, 2013 | +8.5 months |
+| **Oct 2026 (FY2027) — predicted** | **≥ July 15, 2014** | Little movement expected | **+15.5 months** |
+
+Why the outsized jump? Because the reset restores a date the category had **already reached** rather than resuming from last October. During FY2026, EB-2 India advanced all the way to July 15, 2014 in the **April 2026** bulletin and held it through May, before retrogressing 10.5 months in June and going Unavailable in July. October rewinds to the high-water mark — the **Fiscal Year Reset Snapback**.
+
+:::tip
+The chart above plots this as a step function on purpose. A cutoff holds flat for a whole month and then jumps; drawing it as a smooth diagonal would suggest daily progress that does not exist. Your date does not creep forward — it waits, then leaps.
+:::
+
+## The statutory math: why this keeps happening
+
+The worldwide employment-based limit has a statutory floor of **140,000** per fiscal year (INA §201(d)), and EB-1, EB-2 and EB-3 each receive **28.6%** of it. The per-country ceiling in INA §202 is **7%** — and this is the part that is most often misstated.
+
+:::info
+**The 7% limit is not a fixed India quota.** INA §202(a)(2) caps any one country at 7% of the *combined* family and employment preference totals — it is a ceiling applied through pro-rating, not an allocation India is guaranteed. Critically, per-country limits **yield to the "otherwise unused" rule**: when other countries do not use their numbers, those numbers fall to the oversubscribed countries. India therefore routinely receives *far more* than a flat 7% — which is why "India only gets 2,800 EB-2 visas" is a floor, not a description of reality.
+:::
+
+| Scenario | Worldwide EB total | EB-2 category (28.6%) | India EB-2 at the 7% floor | India EB-2 actual |
+|---|---|---|---|---|
+| Statutory floor | 140,000 | 40,040 | ~2,800 | — |
+| FY2026 (actual) | 186,000 | ~53,200 | ~3,700 | **~9,300 (est.)** |
+
+That last cell is the number that actually matters, and it cuts both ways. India received roughly **three times** its statutory floor in FY2026 thanks to spillover — and still exhausted the category with two months left in the year. Demand is not close to supply at any plausible limit.
+
+### The supply is volatile, not steadily shrinking
+
+Total EB supply is the 140,000 floor **plus** the prior year's unused family-based numbers. That spillover swings hard year to year, and the popular "supply keeps shrinking" narrative is not what the record shows:
+
+| Fiscal year | Total employment-based limit |
+|---|---|
+| FY2021 | 262,288 |
+| FY2022 | 281,507 (all-time high) |
+| FY2023 | 197,091 |
+| FY2024 | 160,791 |
+| FY2025 | 150,000 |
+| **FY2026** | **186,000** (140,000 + ~46,000 family fall-up) — *up 24%* |
+| FY2027 | Announced with the October bulletin |
+
+:::warn
+**FY2027 supply is the real unknown in this forecast.** FY2026's 186,000 was buoyed by ~46,000 unused family numbers. If FY2027 spillover comes in materially lower, India's pro-rated EB-2 share shrinks with it — and DOS's "at least July 15, 2014" language was conditioned on exactly this. A weak FY2027 limit is the single most likely reason our High-confidence row disappoints.
+:::
+
+### The backlog-to-quota ratio
+
+The Cato Institute's analysis of USCIS and State Department inventory data (David J. Bier) puts the total employment-based green card backlog at roughly **1.8 million people**, of whom about **1.1 million are Indian nationals** — principal applicants plus dependents, concentrated in EB-2 and EB-3. Against an India allotment measured in single-digit thousands per year, Cato estimates a **new** EB-2/EB-3 India applicant today faces a wait of roughly **134 years** at current rates, and projects that about **424,000** employment-based applicants will die waiting, more than 90% of them Indian.
+
+Those figures are estimates built on the assumption that today's caps and demand persist — but the order of magnitude is the point, and it is why an October snapback changes *when you can act*, not *how long the line is*. To model your own position rather than the aggregate, use the [Green Card Tracker](/tools/green-card-tracker) and the [wait-time scenarios](/eb2-eb3-priority-date-india) (illustrative estimates, not predictions).
+
+## Three terms worth knowing
+
+| Term | What it means |
+|---|---|
+| **Fiscal Year Reset Snapback** | A category goes from "Unavailable" on September 30 to a real date on October 1 with zero policy change. The annual quota simply refills and the cutoff returns toward the year's high-water mark. |
+| **Summer Cap Cliff** | The recurring arithmetic event where India's pro-rated allotment runs out 60–90 days before the fiscal year ends, forcing retrogression or unavailability in the July–September bulletins. |
+| **Filing vs. Issuance Gap** | When USCIS accepts the Dates for Filing chart you may file the I-485 and obtain interim benefits (EAD, Advance Parole), but **no green card is issued** until the Final Action Date passes your priority date. |
+
+
+The distinction in that third term is the one that causes the most disappointment every October. If the difference between the two charts is new to you, read [Final Action Dates vs. Dates for Filing](/visa-bulletin/final-action-date-vs-date-of-filing) before you act on anything below.
+
+## What the reset means for you
+
+:::steps
+1. **Priority date before July 15, 2014, I-485 already pending** — you are the group this reset actually helps. Your case can resume final action in October. Make sure your address and medical (I-693) are current so a sudden approval is not delayed by paperwork.
+2. **Priority date before the Dates for Filing cutoff, not yet filed** — whether you can file in October depends on which chart USCIS adopts. USCIS announces this within a few days of the bulletin; in the first months of a fiscal year it has usually adopted Dates for Filing. Have the I-485 package assembled *before* the announcement.
+3. **Priority date years away** — the honest math does not change. Use this window to confirm your date is correct on your [I-140 notice](/i140-processing-time), and check whether [cross-chargeability](/visa-bulletin/cross-chargeability) applies to you.
+4. **Weighing a category change** — if EB-3 India would be current sooner, read the [EB-2 to EB-3 downgrade analysis](/visa-bulletin/eb2-to-eb3-downgrade); if EB-2 recovers strongly in October after you downgraded, [interfiling back to EB-2](/visa-bulletin/eb3-to-eb2-interfiling) is the route.
+:::
+
+:::info
+**The single highest-value check on this page.** If your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) under INA §202(b) may let your family read the "All Other Countries" column instead of India's — which is worth more than every category strategy combined, and more than any October reset. Most couples who qualify never check.
+:::
+
+Track where you actually stand with the [Priority Date Checker](/tools/priority-date-checker), follow the category month to month on the [EB-2 India tracker](/visa-bulletin/eb2-india), and see [how to read each new bulletin](/visa-bulletin/monthly-update) as it is published. New to the charts entirely? Start with [the visa bulletin explained](/visa-bulletin).
+
+## Frequently asked questions
+
+### Will EB-2 India jump back to July 2014 in October 2026?
+Most likely, but it is not guaranteed. The State Department said it is "likely" that in October the final action date will advance to at least the final action date announced in the May 2026 Visa Bulletin, which was July 15, 2014. DOS attached an explicit condition: the date depends on demand for EB-2 numbers by Indian applicants and on the FY2027 annual limit for employment-based visas. No specific date has been promised.
+
+### Why did EB-2 India become Unavailable in July 2026?
+Arithmetic, not policy. India's pro-rated EB-2 limit for FY2026 was reached, so the category became unavailable for the remainder of the fiscal year. India received an estimated 9,300 EB-2 numbers in FY2026 — roughly three times its statutory 7% floor, thanks to unused numbers falling over from other countries — and demand still exhausted it two months before year end. Visa numbers reset on October 1.
+
+### When will the October 2026 Visa Bulletin be released?
+The Department of State typically publishes each month's bulletin in the second week of the preceding month, so expect the October 2026 bulletin around the second week of September 2026. Release has occasionally slipped into the third week. USCIS then announces within a few days whether it will accept Dates for Filing or Final Action Dates for adjustment of status filings.
+
+### Does the October reset mean I get my green card sooner?
+It restores visa availability; it does not shorten the queue. If USCIS adopts the Dates for Filing chart, applicants with earlier priority dates can file the I-485 and receive interim benefits such as an EAD and Advance Parole — but the green card itself is only issued once the Final Action Date passes your priority date. That is the Filing vs. Issuance Gap.
+
+### Can EB-2 India retrogress again after October 2026?
+Yes, and it historically does. The pattern over recent years has been a strong October reset, gradual advancement through winter and spring, then retrogression or unavailability the following summer once India's annual share is consumed. An October date is a starting position for the fiscal year, not a floor that holds all year.
+
+### Does "Unavailable" affect my pending I-485, EAD or Advance Parole?
+No. Unavailability stops final action — issuance and approval — not the rest of the process. A pending I-485 stays pending, biometrics and interviews continue to be scheduled, and EAD and Advance Parole applications and renewals are adjudicated on their own timelines regardless of visa number availability.
 `,
   },
 ];

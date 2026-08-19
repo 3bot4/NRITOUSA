@@ -9,6 +9,7 @@ import AuthorBioBox from "@/components/AuthorBioBox";
 import VisaBulletinCategoryStatus from "@/components/VisaBulletinCategoryStatus";
 import VisaBulletinMovementHistory from "@/components/VisaBulletinMovementHistory";
 import VisaBulletinIndiaVsRow from "@/components/VisaBulletinIndiaVsRow";
+import Eb2OctoberOutlook from "@/components/Eb2OctoberOutlook";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -153,6 +154,14 @@ export default function VisaBulletinChildPage({
                     className="mb-8"
                   />
                 </>
+              )}
+
+              {/* The FY2027-reset analysis leads with the three-year arc of the
+                  EB-2 India cutoff — published values from the same centralized
+                  data as the card above, plus the one clearly-labelled
+                  prediction the page is about. */}
+              {page.slug === "october-2026-predictions" && (
+                <Eb2OctoberOutlook className="mb-8" />
               )}
 
               {/* Cross-chargeability is about which COLUMN you read, so the
