@@ -146,6 +146,18 @@ function movement(from: Cutoff | null, to: Cutoff | null): string {
   return `${sign}${Math.abs(rounded)}`;
 }
 
+/**
+ * A cutoff cell. "Unavailable" and "Current" are statuses, not dates, so they
+ * get a coloured pill (with its own text label — never colour alone); real
+ * dates stay plain so the pills keep their signal.
+ */
+function CutoffCell({ value }: { value: string }) {
+  if (value === "Unavailable")
+    return <span className="pill pill-bad">Unavailable</span>;
+  if (value === "Current") return <span className="pill pill-good">Current</span>;
+  return <>{value}</>;
+}
+
 /** Live India cutoffs for the categories this analysis covers. */
 function indiaNow(category: EbCategory) {
   const c = getCutoffs(category, "india");
@@ -171,10 +183,14 @@ function octoberRows() {
 
 const CSS = `
 .vboct{--vb-bg:#fff;--vb-surface:#f6f8fa;--vb-ink:#1f2328;--vb-ink2:#57606a;--vb-line:#d0d7de;--vb-accent:#0a5adb;--vb-accent-bg:#eef4ff;
+  --vb-good:#15803d;--vb-good-bg:#f0fdf4;--vb-good-line:#86efac;
+  --vb-warn:#b45309;--vb-warn-bg:#fffbeb;--vb-warn-line:#fcd34d;
+  --vb-bad:#b91c1c;--vb-bad-bg:#fef2f2;--vb-bad-line:#fca5a5;
   max-width:820px;margin:0 auto;padding:40px 16px 60px;color:var(--vb-ink);
   font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
 .vboct h1{font-size:32px;line-height:1.25;margin:0 0 8px;font-weight:800;letter-spacing:-.01em}
 .vboct h2{font-size:23px;margin:44px 0 12px;font-weight:750;letter-spacing:-.01em}
+.vboct h2::before{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--vb-accent);margin-bottom:11px}
 .vboct h3{font-size:18px;margin:28px 0 8px;font-weight:700}
 .vboct p{margin:0 0 14px}
 .vboct .kicker{color:var(--vb-accent);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.05em}
@@ -184,9 +200,32 @@ const CSS = `
 .vboct .tile{background:var(--vb-surface);border:1px solid var(--vb-line);border-radius:10px;padding:16px 18px}
 .vboct .tile .n{font-size:30px;font-weight:750;line-height:1.1;letter-spacing:-.01em}
 .vboct .tile .l{color:var(--vb-ink2);font-size:13.5px;margin-top:4px;line-height:1.4}
+.vboct .tile{border-top:3px solid var(--vb-line)}
+.vboct .tile-warn{background:var(--vb-warn-bg);border-color:var(--vb-warn-line);border-top-color:var(--vb-warn)}
+.vboct .tile-warn .n{color:var(--vb-warn)}
+.vboct .tile-info{background:var(--vb-accent-bg);border-color:#bcd3ff;border-top-color:var(--vb-accent)}
+.vboct .tile-info .n{color:var(--vb-accent)}
+.vboct .tile-bad{background:var(--vb-bad-bg);border-color:var(--vb-bad-line);border-top-color:var(--vb-bad)}
+.vboct .tile-bad .n{color:var(--vb-bad)}
+/* Status pills — colour always ships with its own label, never colour alone. */
+.vboct .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:700;line-height:1.55;white-space:nowrap;border:1px solid}
+.vboct .pill-bad{background:var(--vb-bad-bg);color:var(--vb-bad);border-color:var(--vb-bad-line)}
+.vboct .pill-good{background:var(--vb-good-bg);color:var(--vb-good);border-color:var(--vb-good-line)}
+.vboct .pill-warn{background:var(--vb-warn-bg);color:var(--vb-warn);border-color:var(--vb-warn-line)}
+.vboct .pill-info{background:var(--vb-accent-bg);color:var(--vb-accent);border-color:#bcd3ff}
+.vboct .pill-mute{background:var(--vb-surface);color:var(--vb-ink2);border-color:var(--vb-line)}
+/* Marker-pen highlight for the handful of figures that carry the argument. */
+.vboct .fig{font-weight:700;padding:0 2px;white-space:nowrap;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background:linear-gradient(180deg,transparent 58%,#ffe082 58%,#ffe082 94%,transparent 94%)}
+.vboct .up{color:var(--vb-good);font-weight:700}
+.vboct .down{color:var(--vb-bad);font-weight:700}
+.vboct .quote{border-left:4px solid var(--vb-accent);background:var(--vb-accent-bg);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0;font-size:16.5px}
+.vboct .quote cite{display:block;margin-top:6px;font-size:14px;font-style:normal;color:var(--vb-ink2)}
 .vboct .tw{margin:14px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .vboct table{width:100%;min-width:640px;border-collapse:collapse;font-size:15.5px;background:var(--vb-surface);border:1px solid var(--vb-line);border-radius:8px;overflow:hidden}
-.vboct th{text-align:left;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--vb-ink2);font-weight:600}
+.vboct th{text-align:left;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;font-weight:700}
+.vboct thead th{background:var(--vb-accent-bg);color:#0a3fa8;border-bottom:2px solid #bcd3ff}
 .vboct th,.vboct td{padding:10px 12px;border-bottom:1px solid var(--vb-line);vertical-align:top;
   /* The site sets a global overflow-wrap:anywhere for mobile overflow safety,
      which breaks words mid-word in narrow cells ("CONFI/DENC/E"). Tables here
@@ -275,37 +314,47 @@ export default function October2026PredictionsPage() {
         <p className="tldr">
           <strong>Quick answer:</strong> EB-2 India retrogressed 10.5 months in
           June 2026. The State Department then stopped issuing EB-2 India visas
-          on <strong>May 22, 2026</strong>, and the category showed{" "}
-          <strong>Unavailable from the July 2026 bulletin</strong> — India&rsquo;s
-          annual visa numbers had run out. On October 1, FY2027 numbers reset,
-          and DOS has said it is <strong>likely</strong> EB-2 India will advance{" "}
-          <strong>to at least {longDate(PREDICTED_FAD)}</strong>, while warning
-          the outcome &ldquo;is dependent on the demand for EB-2 numbers by
-          Indian applicants and the FY 2027 annual limit.&rdquo; Measured against
-          last October&rsquo;s date ({lastOctFad}), that would be a{" "}
-          <strong>
-            {predictedMove}-month advancement — the largest October jump for EB-2
-            India in four years
-          </strong>
-          . The reset restores availability; it does not shrink the queue.
+          on <span className="fig">May 22, 2026</span>, and the category showed{" "}
+          <span className="pill pill-bad">Unavailable</span> from the July 2026
+          bulletin — India&rsquo;s annual visa numbers had run out. On October 1,
+          FY2027 numbers reset, and DOS has said it is <strong>likely</strong>{" "}
+          EB-2 India will advance to at least{" "}
+          <span className="fig">{longDate(PREDICTED_FAD)}</span> — while warning
+          the outcome is conditional. Measured against last October&rsquo;s date
+          ({lastOctFad}), that would be a{" "}
+          <span className="fig">{predictedMove} months</span>, the largest October
+          jump for EB-2 India in four years. The reset restores availability; it
+          does not shrink the queue.
         </p>
 
+        <div className="quote">
+          &ldquo;It is likely that in October the final action date will advance
+          to at least the final action date announced in the May 2026 Visa
+          Bulletin; however, the date is dependent on the demand for EB-2 numbers
+          by Indian applicants and the FY 2027 annual limit on employment-based
+          preference visas.&rdquo;
+          <cite>
+            — U.S. Department of State, &ldquo;India Per-Country Limit Reached in
+            the EB-2 Category&rdquo;
+          </cite>
+        </div>
+
         <div className="tiles">
-          <div className="tile">
+          <div className="tile tile-warn">
             <div className="n">~2,802</div>
             <div className="l">
               EB-2 green cards India can receive per year at the statutory floor
               (7% of 40,040) — a floor, not what it actually receives
             </div>
           </div>
-          <div className="tile">
+          <div className="tile tile-info">
             <div className="n">+15.5 mo</div>
             <div className="l">
               Predicted October snapback for EB-2 India Final Action — largest
               since FY2024
             </div>
           </div>
-          <div className="tile">
+          <div className="tile tile-bad">
             <div className="n">1.1M</div>
             <div className="l">
               Indian nationals (incl. dependents) waiting in the employment-based
@@ -330,23 +379,23 @@ export default function October2026PredictionsPage() {
             <tbody>
               <tr>
                 <td>EB-1</td>
-                <td>{eb1.fad}</td>
-                <td>{eb1.dff}</td>
+                <td><CutoffCell value={eb1.fad} /></td>
+                <td><CutoffCell value={eb1.dff} /></td>
               </tr>
               <tr className="hl">
                 <td>EB-2</td>
-                <td>{eb2.fad}</td>
-                <td>{eb2.dff}</td>
+                <td><CutoffCell value={eb2.fad} /></td>
+                <td><CutoffCell value={eb2.dff} /></td>
               </tr>
               <tr>
                 <td>EB-3</td>
-                <td>{eb3.fad}</td>
-                <td>{eb3.dff}</td>
+                <td><CutoffCell value={eb3.fad} /></td>
+                <td><CutoffCell value={eb3.dff} /></td>
               </tr>
               <tr>
                 <td>EB-5 (unreserved)</td>
-                <td>{eb5.fad}</td>
-                <td>{eb5.dff}</td>
+                <td><CutoffCell value={eb5.fad} /></td>
+                <td><CutoffCell value={eb5.dff} /></td>
               </tr>
             </tbody>
           </table>
@@ -390,7 +439,7 @@ export default function October2026PredictionsPage() {
               <tr className="hl">
                 <td>EB-2</td>
                 <td>Returns to ≥ July 15, 2014</td>
-                <td>High</td>
+                <td><span className="pill pill-good">High</span></td>
                 <td>
                   DOS said an advance to &ldquo;at least&rdquo; the May 2026 date
                   is likely once FY2027 numbers open Oct 1 — conditioned on India
@@ -400,7 +449,7 @@ export default function October2026PredictionsPage() {
               <tr>
                 <td>EB-1</td>
                 <td>Recovers toward April 1, 2023 (April 2026 level)</td>
-                <td>Medium</td>
+                <td><span className="pill pill-mute">Medium</span></td>
                 <td>
                   EB-1 India lost ~5.5 months over the summer to the same cap
                   exhaustion; October resets typically restore pre-summer dates
@@ -409,7 +458,7 @@ export default function October2026PredictionsPage() {
               <tr>
                 <td>EB-3</td>
                 <td>Modest advancement past January 1, 2014</td>
-                <td>Medium</td>
+                <td><span className="pill pill-mute">Medium</span></td>
                 <td>
                   Fresh-year numbers historically buy weeks-to-months of movement
                 </td>
@@ -417,7 +466,7 @@ export default function October2026PredictionsPage() {
               <tr>
                 <td>Dates for Filing (EB-2/EB-3)</td>
                 <td>Little to no movement from January 15, 2015</td>
-                <td>Medium-high</td>
+                <td><span className="pill pill-info">Medium-high</span></td>
                 <td>
                   DFF barely moved all year; it is the demand-management lever
                 </td>
@@ -455,7 +504,9 @@ export default function October2026PredictionsPage() {
                   <td>{r.fad}</td>
                   <td>{r.dff}</td>
                   <td>
-                    {r.move} months
+                    <span className={r.move.startsWith("−") ? "down" : "up"}>
+                      {r.move} months
+                    </span>
                     {r.move.startsWith("−") ? " (retrogressed)" : ""}
                   </td>
                 </tr>
@@ -464,7 +515,10 @@ export default function October2026PredictionsPage() {
                 <td>Oct 2026 (FY2027) — predicted</td>
                 <td>≥ {longDate(PREDICTED_FAD)}</td>
                 <td>≈ {eb2.dff}</td>
-                <td>{predictedMove} months (largest of the series)</td>
+                <td>
+                  <span className="up">{predictedMove} months</span> (largest of
+                  the series)
+                </td>
               </tr>
             </tbody>
           </table>
@@ -484,7 +538,7 @@ export default function October2026PredictionsPage() {
         </h2>
         <p>
           The worldwide employment-based limit has a statutory floor of{" "}
-          <strong>140,000</strong> per fiscal year (INA §201(d)). EB-1, EB-2, and
+          <span className="fig">140,000</span> per fiscal year (INA §201(d)). EB-1, EB-2, and
           EB-3 each receive 28.6% of it — <strong>40,040 visas per category</strong>
           . The per-country ceiling (INA §202) is 7%, so at the floor:
         </p>
@@ -532,7 +586,7 @@ export default function October2026PredictionsPage() {
           &ldquo;otherwise unused&rdquo; rule. India routinely receives well above
           the base: in FY2026 the EB pool was 186,000, putting India&rsquo;s EB-2
           floor near 3,700, and India in fact received an estimated{" "}
-          <strong>~9,300 EB-2 numbers</strong> — roughly three times the floor —
+          <span className="fig">~9,300</span> EB-2 numbers — roughly three times the floor —
           and still exhausted the category two months early. The base math is why
           the queue moves in months per year, not years per year.
         </p>
@@ -591,12 +645,12 @@ export default function October2026PredictionsPage() {
         <p>
           The Cato Institute&rsquo;s analysis of USCIS and State Department
           inventory data (David J. Bier) puts the total employment-based green
-          card backlog at roughly <strong>1.8 million people</strong>, of whom
-          about <strong>1.1 million are Indian nationals</strong> — principal
+          card backlog at roughly <span className="fig">1.8 million</span> people, of whom
+          about <span className="fig">1.1 million</span> are Indian nationals — principal
           applicants plus dependents, most of them in EB-2 and EB-3. Against an
           India allotment measured in single-digit thousands per year, Cato
           estimates a new EB-2 India applicant today faces a wait measured in
-          decades, with a widely cited figure of <strong>134 years</strong> at
+          decades, with a widely cited figure of <span className="fig">134 years</span> at
           then-current rates, and projects that about <strong>424,000</strong>{" "}
           employment-based applicants will die waiting — more than 90% of them
           Indian.
@@ -627,22 +681,29 @@ export default function October2026PredictionsPage() {
             <tbody>
               <tr className="hl">
                 <td>Before {longDate(PREDICTED_FAD)}</td>
-                <td>Yes</td>
-                <td>Yes — your date is past the Final Action Date</td>
+                <td><span className="pill pill-good">Yes</span></td>
+                <td>
+                  <span className="pill pill-good">Yes</span> — your date is past
+                  the Final Action Date
+                </td>
               </tr>
               <tr>
                 <td>
                   Between {longDate(PREDICTED_FAD)} and {eb2.dff}
                 </td>
-                <td>Yes, if USCIS honours Dates for Filing</td>
                 <td>
-                  No — you get EAD and Advance Parole, and then you wait
+                  <span className="pill pill-warn">Maybe</span> — only if USCIS
+                  honours Dates for Filing
+                </td>
+                <td>
+                  <span className="pill pill-bad">No</span> — you get EAD and
+                  Advance Parole, and then you wait
                 </td>
               </tr>
               <tr>
                 <td>After {eb2.dff}</td>
-                <td>No</td>
-                <td>No</td>
+                <td><span className="pill pill-bad">No</span></td>
+                <td><span className="pill pill-bad">No</span></td>
               </tr>
             </tbody>
           </table>
@@ -681,19 +742,19 @@ export default function October2026PredictionsPage() {
                 <td>
                   EB-2 India Final Action ≥ {longDate(PREDICTED_FAD)}
                 </td>
-                <td className="muted">Pending — October bulletin</td>
+                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
               </tr>
               <tr>
                 <td>EB-2 India Dates for Filing unchanged at {eb2.dff}</td>
-                <td className="muted">Pending — October bulletin</td>
+                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
               </tr>
               <tr>
                 <td>EB-1 India recovers toward April 1, 2023</td>
-                <td className="muted">Pending — October bulletin</td>
+                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
               </tr>
               <tr>
                 <td>USCIS honours the Dates for Filing chart in October</td>
-                <td className="muted">Pending — USCIS announcement</td>
+                <td><span className="pill pill-mute">Pending</span> — USCIS announcement</td>
               </tr>
             </tbody>
           </table>

@@ -110,7 +110,8 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
 
   it("EB-2 India is Unavailable in the current bulletin, as the page states", () => {
     expect(cutoffAt(series.fad, "2026-07")).toBe("U");
-    expect(FLAT).toMatch(/Unavailable from the July 2026 bulletin/);
+    // "Unavailable" is now a status pill, so the phrase spans markup.
+    expect(FLAT).toMatch(/pill-bad">Unavailable<\/span> from the July 2026\s*bulletin/);
   });
 
   it("the stated month movements match the data", () => {
@@ -133,7 +134,7 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
   it("frames ~2,802 as a floor and gives India's actual FY2026 EB-2 number", () => {
     expect(FLAT).toContain("~2,802");
     expect(FLAT).toMatch(/a floor, not what it actually receives/);
-    expect(FLAT).toMatch(/~9,300 EB-2 numbers/);
+    expect(FLAT).toMatch(/~9,300<\/span> EB-2 numbers/);
     expect(FLAT).toMatch(/otherwise unused/);
   });
 
@@ -181,7 +182,7 @@ describe("October 2026 predictions — added sections", () => {
 
   it("pre-commits the forecast for post-bulletin scoring", () => {
     expect(FLAT).toMatch(/Our record on this call/);
-    expect(FLAT).toMatch(/Pending — October bulletin/);
+    expect(FLAT).toMatch(/Pending<\/span> — October bulletin/);
     expect(FLAT).toMatch(/What DOS published/);
   });
 
