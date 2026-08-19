@@ -42,14 +42,11 @@ export default function VisaBulletinMovementHistory({
   country = "india",
   months = 6,
   className = "",
-  maxWidthClass = "max-w-[720px]",
 }: {
   category: EbCategory;
   country?: BulletinCountry;
   months?: number;
   className?: string;
-  /** Lets a page widen the table to match a wider data band around it. */
-  maxWidthClass?: string;
 }) {
   const series = getSeries(category, country);
   if (!series) return null;
@@ -67,7 +64,7 @@ export default function VisaBulletinMovementHistory({
   rows.reverse(); // newest first
 
   return (
-    <div className={`mx-auto ${maxWidthClass} ${className}`}>
+    <div className={`mx-auto max-w-[720px] ${className}`}>
       <div className="overflow-x-auto rounded-2xl border border-ink-900/10 shadow-sm">
         <table className="w-full min-w-[440px] border-collapse text-left text-sm">
           <caption className="bg-ink-50/70 p-3 text-left text-sm font-bold text-ink-900">

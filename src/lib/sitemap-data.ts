@@ -313,6 +313,9 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/nvc-public-inquiry", 0.8, "monthly"),
   e("/green-card", 0.9, "weekly", immDate),
   e("/visa-bulletin", 0.9, "monthly", immDate),
+  // Standalone FY2027-reset analysis — its own route, not a /visa-bulletin/[slug]
+  // cluster child, so it is listed explicitly here.
+  e("/visa-bulletin/october-2026-predictions", 0.85, "monthly", immDate),
   e("/immigration-tracker", 0.8, "weekly"),
   e("/oci", 0.9, "weekly"),
   ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),
