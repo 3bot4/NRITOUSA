@@ -141,6 +141,7 @@ export const pagesEntries: SitemapEntry[] = [
     e(storyPath(s.slug), 0.7, "monthly", new Date(s.modifiedDate)),
   ),
   e("/partnerships", 0.5, "monthly"),
+  e("/press", 0.5, "monthly"),
   // Email-capture landing page for the Return to India PDF. It is a live,
   // indexable conversion page and was missing from every sitemap.
   e("/return-to-india-checklist", 0.8, "monthly"),
