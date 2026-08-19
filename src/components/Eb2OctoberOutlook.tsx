@@ -192,7 +192,7 @@ export default function Eb2OctoberOutlook({
     `The same values are listed in the table below this chart.`;
 
   return (
-    <figure className={`mx-auto max-w-[720px] ${className}`}>
+    <figure className={`mx-auto max-w-[860px] ${className}`}>
       <div className="relative overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-sm">
         <div className="border-b border-ink-900/5 px-4 py-3">
           <h3 className="text-sm font-bold text-ink-900">

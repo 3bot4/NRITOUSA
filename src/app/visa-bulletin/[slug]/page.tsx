@@ -10,6 +10,7 @@ import VisaBulletinCategoryStatus from "@/components/VisaBulletinCategoryStatus"
 import VisaBulletinMovementHistory from "@/components/VisaBulletinMovementHistory";
 import VisaBulletinIndiaVsRow from "@/components/VisaBulletinIndiaVsRow";
 import Eb2OctoberOutlook from "@/components/Eb2OctoberOutlook";
+import Eb2OctoberBriefing from "@/components/Eb2OctoberBriefing";
 import {
   pageMetadata,
   breadcrumbJsonLd,
@@ -144,24 +145,38 @@ export default function VisaBulletinChildPage({
                   comes from the centralized bulletin data, so the evergreen
                   article body below can stay date-free. */}
               {page.category && (
+                <VisaBulletinCategoryStatus
+                  category={page.category}
+                  className={`mx-auto mb-8 ${
+                    page.slug === "october-2026-predictions"
+                      ? "max-w-[860px]"
+                      : "max-w-[720px]"
+                  }`}
+                />
+              )}
+
+              {/* The FY2027-reset analysis leads with its headline numbers and
+                  the three-year arc of the EB-2 India cutoff — published values
+                  from the same centralized data as the card above, plus the one
+                  clearly-labelled prediction the page is about. The month-by-
+                  month table follows the chart as its table-view twin. */}
+              {page.slug === "october-2026-predictions" && (
                 <>
-                  <VisaBulletinCategoryStatus
-                    category={page.category}
-                    className="mx-auto mb-8 max-w-[720px]"
-                  />
-                  <VisaBulletinMovementHistory
-                    category={page.category}
-                    className="mb-8"
-                  />
+                  <Eb2OctoberBriefing className="mb-8" />
+                  <Eb2OctoberOutlook className="mb-8" />
                 </>
               )}
 
-              {/* The FY2027-reset analysis leads with the three-year arc of the
-                  EB-2 India cutoff — published values from the same centralized
-                  data as the card above, plus the one clearly-labelled
-                  prediction the page is about. */}
-              {page.slug === "october-2026-predictions" && (
-                <Eb2OctoberOutlook className="mb-8" />
+              {page.category && (
+                <VisaBulletinMovementHistory
+                  category={page.category}
+                  className="mb-8"
+                  maxWidthClass={
+                    page.slug === "october-2026-predictions"
+                      ? "max-w-[860px]"
+                      : "max-w-[720px]"
+                  }
+                />
               )}
 
               {/* Cross-chargeability is about which COLUMN you read, so the

@@ -1,10 +1,13 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   getVisaBulletinChildPage,
   visaBulletinChildPages,
 } from "@/lib/visaBulletinCluster";
 import { getSeries, monthIndex, type SeriesPoint, type Cutoff } from "@/lib/visa-bulletin";
 
+const SRC = join(__dirname, "..");
 const SLUG = "october-2026-predictions";
 const page = getVisaBulletinChildPage(SLUG)!;
 
@@ -58,7 +61,31 @@ describe("October 2026 predictions page — the forecast is never overstated", (
   it("labels the page as analysis and every forward-looking row as predicted", () => {
     expect(page.content).toMatch(/analysis, not a published date/i);
     expect(page.content).toMatch(/predicted/i);
-    expect(page.content).toMatch(/Confidence/);
+  });
+
+  it("the briefing component carries the per-category confidence framing", () => {
+    // The prediction table moved out of the markdown into cards, because a
+    // 4-column table wrapped "Confidence" to "Confi/denc/e" at 720px.
+    const src = readFileSync(
+      join(SRC, "components/Eb2OctoberBriefing.tsx"),
+      "utf8"
+    );
+    for (const c of ["High", "Medium-high", "Medium"]) {
+      expect(src).toContain(c);
+    }
+    // The predicted value must never render as a published one.
+    expect(src).toMatch(/Predicted — not published/);
+    expect(src).toMatch(/not our enthusiasm/);
+  });
+
+  it("the supply bars keep FY2026's rise visible", () => {
+    const src = readFileSync(
+      join(SRC, "components/Eb2OctoberBriefing.tsx"),
+      "utf8"
+    );
+    expect(src).toContain("186000");
+    expect(src).toContain("150000");
+    expect(src).toMatch(/highlight: true/);
   });
 });
 
@@ -95,7 +122,9 @@ describe("October 2026 predictions page — factual claims match the bulletin da
     expect(months("2012-07-15", "2013-04-01")).toBeCloseTo(8.5, 1);
     expect(months("2012-01-01", "2012-07-15")).toBeCloseTo(6.5, 1);
     expect(months("2013-09-01", "2014-07-15")).toBeCloseTo(10.5, 1);
-    for (const m of ["+15.5 months", "+8.5 months", "+6.5 months"]) {
+    // Rendered abbreviated in the table ("+8.5 mo") to stop the 4-column
+    // layout wrapping inside the 720px article column.
+    for (const m of ["+15.5", "+8.5", "+6.5"]) {
       expect(page.content).toContain(m);
     }
   });
