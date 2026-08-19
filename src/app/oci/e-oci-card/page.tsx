@@ -594,7 +594,7 @@ export default function EOciCardPage() {
           </aside>
 
           {/* Article */}
-          <article className="max-w-[720px] text-[1.0625rem] leading-[1.7] text-ink-700">
+          <article className="min-w-0 max-w-[720px] text-[1.0625rem] leading-[1.7] text-ink-700">
             {/* Quick answer */}
             <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-amber-700">

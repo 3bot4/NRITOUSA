@@ -111,7 +111,7 @@ export default function ArticleToc({ items }: { items: TocItem[] }) {
       </div>
 
       {/* ---------- Mobile / tablet collapsible (< 1440px) ---------- */}
-      <div className="sticky top-16 z-20 -mx-4 border-y border-ink-900/5 bg-white/90 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/70 min-[1440px]:hidden print:hidden">
+      <div className="sticky top-16 z-20 border-y border-ink-900/5 bg-white/90 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/70 min-[1440px]:hidden print:hidden">
         <div className="mx-auto max-w-4xl">
           <button
             type="button"
@@ -128,10 +128,21 @@ export default function ArticleToc({ items }: { items: TocItem[] }) {
               ▾
             </span>
           </button>
+          {/*
+            CAREFUL: the `hidden` attribute ALONE does not hide this. Tailwind's
+            preflight ships [hidden]:where(:not([hidden="until-found"])){display:none}
+            whose :where() contributes zero specificity, so it ties with
+            .grid{display:grid} — and .grid is emitted later, so .grid wins and the
+            panel stays open forever. (Measured: a 546px permanently-expanded sticky
+            panel covering 68% of a 360x800 phone screen.) Toggle the class
+            explicitly; keep the attribute for semantics. Same fix as PillarToc.
+          */}
           <ul
             id="toc-mobile-panel"
             hidden={!open}
-            className="mt-1 grid max-h-[60vh] grid-cols-1 gap-0.5 overflow-y-auto pb-2 sm:grid-cols-2"
+            className={`${
+              open ? "grid" : "hidden"
+            } mt-1 max-h-[60vh] grid-cols-1 gap-0.5 overflow-y-auto pb-2 sm:grid-cols-2`}
           >
             {items.map((it) => {
               const active = it.id === activeId;

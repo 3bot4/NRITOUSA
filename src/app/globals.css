@@ -30,6 +30,43 @@
   ::selection {
     @apply bg-brand-500/20 text-brand-900;
   }
+
+  /* iOS Safari — and the Facebook / Instagram in-app browsers that embed it —
+     auto-zoom the page whenever a focused form control renders below 16px, and
+     they do not zoom back out afterwards. The site's shared field styling is
+     `text-sm` (14px), so every calculator input used to trap phone users at 1.3x
+     zoom the moment they tapped a field. Floor every text-entry control at 16px
+     below the `sm` breakpoint; above it there is no touch keyboard, so the
+     component-level `sm:text-sm` sizing takes over again.
+     Checkbox/radio/button controls never trigger the zoom, so leave them alone.
+
+     The `:not([hidden])` on select/textarea is NOT cosmetic: a bare element
+     selector is specificity (0,0,1) and loses to Tailwind's `.text-sm` (0,1,0),
+     so those two controls kept their 14px. The `:not()` lifts them to (0,1,1),
+     which outranks the utility. The `input` chain already clears it via its
+     type exclusions. */
+  /* Long unbreakable tokens — USCIS receipt numbers (LIN2412345678), bare URLs,
+     emails, uppercase tracking-wide badge labels — set the min-content width of
+     their flex/grid ancestor, and a flex/grid item defaults to min-width:auto.
+     The item therefore refuses to shrink and paints past the screen edge: that
+     is what pushed 5 pages 7-65px wide on 320-375px phones.
+
+     `anywhere` rather than `break-word` is deliberate. Both break a word only
+     when it cannot fit on a line of its own, so prose looks identical — but only
+     `anywhere` also feeds the intrinsic min-content calculation, which is the
+     half that actually stops the overflow. */
+  p, li, td, th, dd, dt, figcaption, blockquote,
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 639.98px) {
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="submit"]):not([type="button"]):not([type="reset"]),
+    select:not([hidden]),
+    textarea:not([hidden]) {
+      font-size: 16px;
+    }
+  }
 }
 
 @layer utilities {

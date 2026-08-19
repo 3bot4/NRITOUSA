@@ -289,7 +289,7 @@ export default function IulComparisonCalculator() {
 
   return (
     <div id="calculator" className="scroll-mt-24">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
+      <div className="grid gap-6 [&>*]:min-w-0 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
         {/* ---------------- Inputs ---------------- */}
         <div className="rounded-2xl border border-ink-900/5 bg-white p-6 shadow-card sm:p-7">
           <p className={GROUP_LABEL}>Your plan</p>

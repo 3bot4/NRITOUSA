@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -79,6 +79,35 @@
       "detail": "Nothing here is broken today — each one 301s to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. The substantive ones: USDA renamed FNS to FNA (fns.usda.gov → fna.usda.gov, 2 citations); benefits.gov now hands off to usa.gov's benefit finder; acf.hhs.gov moved to acf.gov; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now 'exceptions-to-tax-on-early-distributions'; California's notary authentication page became request-apostille. The high-traffic ones are cosmetic (uscis.gov/forms → /forms/all-forms on 12 pages, incometax.gov.in → its portal path on 24).",
       "nextStep": "Update the agency-rename cases (USDA, ACF, benefits.gov) on the next government-benefits pass; leave the cosmetic ones. Re-check with `npm run ledger:links`.",
       "evidence": "scripts/audit/link-health.json → redirects[]"
+    },
+    {
+      "id": "mobile-audit-faq-accordion-breadcrumb-tap",
+      "title": "Mobile audit: FAQ accordion + breadcrumb tap targets under 44px",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-19",
+      "nextStep": "bump breadcrumb links and <summary> rows to min-h-11; 171 summary rows and ~1.6k text links sit at 16-24px",
+      "evidence": "scratchpad audit-results.json, 390 pages x 6 viewports"
+    },
+    {
+      "id": "mobile-audit-education-gpa-calculator-overflows",
+      "title": "Mobile audit: /education/gpa-calculator overflows 5px at 320px",
+      "area": "other",
+      "severity": "low",
+      "status": "done",
+      "opened": "2026-08-19",
+      "nextStep": "only iPhone SE 1st-gen (320px) is affected; grid card min-content, not covered by the global overflow-wrap rule",
+      "resolved": "2026-08-19"
+    },
+    {
+      "id": "mobile-audit-tool-hub-pages-run",
+      "title": "Mobile audit: tool + hub pages run 12-14px body copy vs 16px on articles",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-19",
+      "nextStep": "tool/calculator pages and card-grid hubs use text-sm/text-xs for descriptions; articles are correctly 16px. Decide a floor for tool prose"
     },
     {
       "id": "public-charge-archived-source",

@@ -74,10 +74,12 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
         );
       }
     } else if (match[3] !== undefined) {
-      // Bold
+      // Bold. Recurse so a link nested inside bold — **see [label](href)** — still
+      // renders as a link; otherwise the raw markdown leaks into the page as text
+      // and the unbreakable URL forces horizontal overflow on phones.
       nodes.push(
         <strong key={`${keyPrefix}-b-${i}`} className="font-semibold text-ink-900">
-          {match[3]}
+          {renderInline(match[3], `${keyPrefix}-b-${i}`)}
         </strong>
       );
     }

@@ -61,7 +61,7 @@ export default function GpaCalc() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-6">
-      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-6 [&>*]:min-w-0 lg:grid-cols-[1.4fr_1fr]">
         {/* Course table */}
         <div className="rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card sm:p-6">
           <div className="mb-4 flex items-center justify-between">
@@ -81,7 +81,7 @@ export default function GpaCalc() {
             {courses.map((c) => (
               <div
                 key={c.id}
-                className="grid grid-cols-[1fr_auto] gap-2 rounded-xl border border-ink-900/5 bg-slate-50/60 p-3 sm:grid-cols-[1fr_5rem_5rem_auto] sm:items-center"
+                className="grid grid-cols-[minmax(0,1fr)_auto] gap-2 rounded-xl border border-ink-900/5 bg-slate-50/60 p-3 sm:grid-cols-[minmax(0,1fr)_5rem_5rem_auto] sm:items-center"
               >
                 <input
                   value={c.name}

@@ -29,8 +29,12 @@ export default function InputCard({
 }
 
 /** Shared input/select styling so tool forms match the existing estimators. */
+// text-base (16px) on phones is deliberate: iOS Safari — and the Facebook /
+// Instagram in-app browsers that wrap it — auto-zoom the page when a focused
+// form control renders below 16px, and never zoom back out. Drop to text-sm
+// only from `sm:` up, where no touch keyboard is involved.
 export const fieldClass =
-  "w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-sm text-ink-900 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20";
+  "w-full rounded-xl border border-ink-900/10 bg-white px-3 py-2.5 text-base text-ink-900 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 sm:text-sm";
 
 /** Label + optional help text wrapper for a single field. */
 export function Field({
