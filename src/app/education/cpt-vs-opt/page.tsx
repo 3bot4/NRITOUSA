@@ -55,7 +55,7 @@ const faq: FaqItem[] = [
   },
   {
     question: "Does CPT affect my OPT eligibility?",
-    answer: `Full-time CPT does. ${optRules.cptFullTimeMonthsThatKillOpt} months or more of full-time CPT eliminates post-completion OPT entirely — a bright-line rule with no discretion and no way back. Part-time CPT (20 hours a week or fewer) does not count toward that threshold at all, however much of it you use. This is the single most consequential rule on this page, and it is why part-time CPT is almost always the safer choice when the role allows it.`,
+    answer: `Full-time CPT does. ${optRules.cptFullTimeMonthsThatKillOpt} months or more of full-time CPT eliminates post-completion OPT at that level of study — a bright-line rule with no discretion and no way back at that level, though a later, higher degree carries its own OPT entitlement. Part-time CPT (20 hours a week or fewer) does not count toward that threshold at all, however much of it you use. This is the single most consequential rule on this page, and it is why part-time CPT is almost always the safer choice when the role allows it.`,
   },
   {
     question: "Is Day-1 CPT legal?",
@@ -74,7 +74,7 @@ const faq: FaqItem[] = [
   },
   {
     question: "Can I use CPT and OPT at the same school?",
-    answer: `Yes, and most students do — part-time CPT during the program for an internship, then post-completion OPT after graduating. The only thing to track is your cumulative full-time CPT, which must stay under ${optRules.cptFullTimeMonthsThatKillOpt} months for OPT to remain available. Count authorised months, not months you actually worked; students routinely underestimate their total by counting the latter.`,
+    answer: `Yes, and most students do — part-time CPT during the program for an internship, then post-completion OPT after graduating. The thing to track is your cumulative full-time CPT at that level of study, which must stay under ${optRules.cptFullTimeMonthsThatKillOpt} months for OPT to remain available. Count authorised months, not months you actually worked; students routinely underestimate their total by counting the latter.`,
   },
   {
     question: "When am I eligible for CPT?",
@@ -297,8 +297,8 @@ export default function CptVsOptPage() {
                   ],
                   [
                     "12 months or more",
-                    "No — eliminated",
-                    "Post-completion OPT is gone permanently. There is no appeal and no partial credit.",
+                    "No — eliminated at that level",
+                    "Post-completion OPT is gone for that level of study. There is no appeal and no partial credit. Moving up a level later — master's after a bachelor's, PhD after a master's — carries its own OPT entitlement.",
                   ],
                   [
                     "Any amount of part-time CPT",

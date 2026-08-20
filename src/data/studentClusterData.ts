@@ -74,6 +74,38 @@ export const studentSources = {
     label: "DHS Study in the States — Reinstatement",
     href: "https://studyinthestates.dhs.gov/students/reinstatement",
   },
+  dsFinalRule: {
+    label:
+      "Federal Register — Establishing a Fixed Time Period of Admission (final rule, July 17, 2026)",
+    href:
+      "https://www.federalregister.gov/documents/2026/07/17/2026-14439/establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-for-nonimmigrant",
+  },
+  dsQuickFacts: {
+    label: "DHS Study in the States — Fixed period of admission: quick facts",
+    href:
+      "https://studyinthestates.dhs.gov/final-rule-establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-quick",
+  },
+  dsLitigation: {
+    label:
+      "Presidents' Alliance — Duration of Status litigation tracker",
+    href: "https://www.presidentsalliance.org/duration-of-status-litigation/",
+  },
+  unlawfulPresenceInjunction: {
+    label:
+      "Guilford College v. Nielsen — order vacating the 2018 unlawful-presence memo (USCIS)",
+    href:
+      "https://www.uscis.gov/sites/default/files/document/injunctions/Guilford-College-v.-Nielsen-summary-judgment-permanent-injunction.pdf",
+  },
+  uscisPolicyManualOpt: {
+    label:
+      "USCIS Policy Manual, Vol. 2, Part F, Ch. 5 — Practical Training",
+    href: "https://www.uscis.gov/policy-manual/volume-2-part-f-chapter-5",
+  },
+  capGap: {
+    label: "DHS Study in the States — F-1 cap-gap extension",
+    href:
+      "https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-status/f-1-cap-gap-extension",
+  },
   nafsa: {
     label: "NAFSA — Association of International Educators",
     href: "https://www.nafsa.org/",
@@ -107,8 +139,15 @@ export type StudentSourceKey = keyof typeof studentSources;
  *  - "blocked"         — exists on paper but a court has stopped collection
  *  - "proposed"        — reported/floated, never published as a rule
  *  - "uneven"          — in force but inconsistently collected in practice
+ *  - "scheduled"       — a final rule with a future effective date. Real, but
+ *                        not yet operative, and may be enjoined before it is.
  */
-export type PolicyStatus = "in-force" | "blocked" | "proposed" | "uneven";
+export type PolicyStatus =
+  | "in-force"
+  | "blocked"
+  | "proposed"
+  | "uneven"
+  | "scheduled";
 
 export interface PolicyItem {
   id: string;
@@ -134,6 +173,7 @@ export const STATUS_BADGE: Record<
   blocked: { label: "Blocked by court", tone: "info" },
   proposed: { label: "Proposed only", tone: "warn" },
   uneven: { label: "In force — uneven rollout", tone: "warn" },
+  scheduled: { label: "Final rule — not yet in effect", tone: "warn" },
 };
 
 /**
@@ -178,6 +218,30 @@ export const optProposedFee: PolicyItem = {
     label: "DHS Unified Regulatory Agenda",
     href: "https://www.reginfo.gov/public/do/eAgendaMain",
   },
+};
+
+/**
+ * The end of duration of status. This is the single most consequential change
+ * scheduled for F-1 students, and unlike the two $100,000 numbers above it is
+ * a real, published, final rule — it simply has not taken effect yet.
+ *
+ * It matters to this cluster because it halves the grace period every page
+ * here quotes. The 60-day figure remains correct for students already
+ * admitted for D/S, so the calculators keep using it; every page that prints
+ * it must also print this item.
+ */
+export const dsFixedAdmissionRule: PolicyItem = {
+  id: "ds-fixed-admission-rule",
+  label: "End of duration of status — fixed admission periods",
+  value: "Effective September 15, 2026",
+  amountUsd: null,
+  status: "scheduled",
+  statusLine:
+    "FINAL RULE, not yet in effect — takes effect September 15, 2026 and is being challenged in federal court, with a hearing set for September 9, 2026.",
+  detail:
+    "DHS published a final rule on July 17, 2026 replacing \"duration of status\" admission for F, J and I nonimmigrants with a fixed period of admission. From September 15, 2026, an F-1 student is admitted for the length of the program shown on the I-20, capped at four years, plus a 30-day grace period rather than 60 days. Staying past the I-94 date without a timely extension of stay would start unlawful presence accruing — the consequence the current duration-of-status framework does not carry. Students already admitted for duration of status before September 15, 2026 generally keep the 60-day grace period until they travel abroad and re-enter, or file an extension of stay; international travel after the effective date is what triggers conversion to a date-certain admission. There is transition relief specifically for practical training: a student who was admitted for duration of status, is in the US and maintaining status on September 15, 2026, and who timely files Form I-765 for post-completion OPT or STEM OPT on or before March 18, 2027, generally does not have to file a separate Form I-539 extension of stay for that training period. File after that window and the I-539 is generally required alongside the I-765, which is where delayed start dates and gaps in employment come from. A coalition led by NAFSA and the Presidents' Alliance sued to block the rule on August 18, 2026 (D. Mass., Presidents' Alliance v. DHS, No. 1:26-cv-13799, before Judge F. Dennis Saylor IV), the government's response is due August 31, 2026, and a hearing on the preliminary injunction is set for September 9, 2026. Nothing here is settled: confirm your own admission period with your DSO and check your most recent I-94 before relying on any grace-period figure.",
+  lastVerified: STUDENT_DATA_VERIFIED,
+  source: studentSources.dsFinalRule,
 };
 
 /* ────────────────────────── F-1 visa cost stack ────────────────────────── */
@@ -265,6 +329,26 @@ export const optRules = {
   filingWindowDaysAfter: 60,
   /** STEM extension must be filed before the current EAD expires. */
   stemFilingWindowDaysBefore: 90,
+  /**
+   * Hard rule most OPT content omits: 8 CFR 214.2(f)(11)(i)(B)(2) requires the
+   * I-765 to reach USCIS within 30 days of the DSO entering the OPT
+   * recommendation in SEVIS. File outside that window and it is denied —
+   * separately from, and in addition to, the 90/60-day window above.
+   */
+  dsoRecommendationFilingDays: 30,
+  /** The equivalent window for a STEM extension recommendation. */
+  stemDsoRecommendationFilingDays: 60,
+  /**
+   * A timely-filed STEM extension carries automatic work authorisation for up
+   * to 180 days past EAD expiry while it is pending —
+   * 8 CFR 274a.12(b)(6)(iv). This does NOT exist for initial OPT.
+   */
+  stemPendingAutoExtensionDays: 180,
+  /**
+   * Grace period an F-1 student admitted under the September 15, 2026 fixed
+   * admission rule receives instead of 60 days. See dsFixedAdmissionRule.
+   */
+  gracePeriodDaysUnderFixedAdmission: 30,
   /** Minimum weekly hours for STEM OPT employment to count. */
   stemMinWeeklyHours: 20,
   /** Minimum weekly hours generally treated as employed on initial OPT. */
@@ -275,6 +359,66 @@ export const optRules = {
   cptFullTimeMonthsThatKillOpt: 12,
   /** Reinstatement must generally be filed within this window. */
   reinstatementFilingMonths: 5,
+} as const;
+
+/* ───────────────────────── OPT denial consequences ─────────────────────── */
+
+/**
+ * What happens to F-1 status when an OPT application is denied.
+ *
+ * This page previously asserted "60 days from the date of the denial notice",
+ * then — during review — retreated to "confirm with your DSO" because no
+ * primary source had been found. Both were wrong to publish: the USCIS Policy
+ * Manual states the rule, and it is neither of those. The 60 days runs from
+ * the LATER of the program end date and the denial date, and there is a
+ * carve-out that reverses the answer entirely.
+ *
+ * The STEM branch is genuinely different — 60 days from the denial date — so
+ * the two cases must not be collapsed into one line.
+ */
+export const optDenialRules = {
+  postCompletion:
+    "If an initial post-completion OPT application is denied, USCIS states that F-1 status expires 60 days from the date the degree program ends or the date of the denial, whichever is later.",
+  postCompletionException:
+    "The exception matters more than the rule: if the application was denied because the student failed to maintain F-1 status, there is no 60-day period — the student is expected to depart the United States immediately.",
+  stemExtension:
+    "If a STEM OPT extension is denied after the post-completion OPT EAD has already expired, employment authorisation ends on the date of the decision and F-1 status ends 60 days after the denial date.",
+  caveat:
+    "Which branch you are on turns on the stated reason for the denial, so read the notice itself and take it to your DSO before counting any days.",
+  source: studentSources.uscisPolicyManualOpt,
+} as const;
+
+/* ─────────────────────── Unlawful presence position ────────────────────── */
+
+/**
+ * Widely mis-stated, including by pages that are otherwise careful.
+ *
+ * A 2018 USCIS policy memo would have started unlawful presence running from
+ * the day an F-1 student violated status. It was vacated and permanently
+ * enjoined nationwide in Guilford College v. Nielsen (M.D.N.C., 2020), and
+ * was never reinstated. Under the rule that therefore still applies, a
+ * student admitted for duration of status generally begins accruing unlawful
+ * presence only once USCIS formally finds a status violation while
+ * adjudicating a benefit request, or an immigration judge so finds.
+ *
+ * Status violation and unlawful presence are different things, and the
+ * distinction is what decides whether the 3- and 10-year re-entry bars are in
+ * play. Never write "unlawful presence starts immediately" — it is both wrong
+ * and, on a page read by someone in a panic, actively harmful.
+ *
+ * IMPORTANT: the fixed-admission final rule (dsFixedAdmissionRule) is
+ * designed to change exactly this for students admitted on or after
+ * September 15, 2026, who would accrue unlawful presence from the day their
+ * I-94 expires.
+ */
+export const unlawfulPresence = {
+  currentRule:
+    "For a student admitted for duration of status, unlawful presence generally begins only after USCIS formally finds a status violation while deciding a benefit request, or an immigration judge orders removal — not automatically on the day the violation or SEVIS termination occurs.",
+  whyItMatters:
+    "Losing status and accruing unlawful presence are separate problems. Losing status is serious and needs immediate advice; accruing more than 180 days of unlawful presence is what triggers the 3-year and 10-year bars on returning to the US.",
+  caveat:
+    "This is the position after Guilford College v. Nielsen vacated the 2018 policy memo nationwide. It does not make a terminated record safe, it does not authorise you to stay or work, and the fixed-admission rule taking effect September 15, 2026 is expressly intended to change it for students admitted from that date.",
+  source: studentSources.unlawfulPresenceInjunction,
 } as const;
 
 /* ───────────────────────────── Tax constants ───────────────────────────── */
@@ -444,6 +588,8 @@ export const careerCapitalPoints = [
  * is written to survive being pasted into a WhatsApp thread with no context.
  */
 export interface ShareFact {
+  /** Stable key — pages select facts by id, never by array index. */
+  id: string;
   claim: string;
   reality: string;
   why: string;
@@ -451,51 +597,73 @@ export interface ShareFact {
 
 export const mythVsRealityFacts: ShareFact[] = [
   {
+    id: "h1b-fee",
     claim: "The $100,000 H-1B fee makes hiring you impossible.",
     reality: "It is not being collected.",
     why: "A federal court vacated it on June 8, 2026 and the First Circuit refused to reinstate it on July 24, 2026. It also never applied to students already in the US changing status from F-1 to H-1B.",
   },
   {
+    id: "opt-fee",
     claim: "There is a $100,000 fee on OPT.",
     reality: "There is no such fee.",
     why: "It was press reporting about an internal discussion, published July 30, 2026. No rule has been proposed, no amount set in regulation, and nobody has been charged.",
   },
   {
+    id: "stem-resets",
     claim: "STEM OPT resets your unemployment clock to 150 days.",
     reality: "150 is a lifetime cap, not a reset.",
     why: "The 150 days is aggregate across post-completion OPT plus the STEM extension. Use 40 days on initial OPT and you have 110 left, not 150.",
   },
   {
+    id: "remittance-tax",
     claim: "The new 1% US remittance tax hits money you send home.",
     reality: "Almost certainly not.",
     why: "IRC §4475 only taxes transfers funded with cash, money orders or cashier's checks. Bank-account, debit, credit and digital-wallet transfers are exempt.",
   },
   {
+    id: "std-deduction",
     claim: "Nonresident students cannot claim the standard deduction.",
     reality: "Indian students can.",
     why: "Article 21(2) of the US-India tax treaty lets students from India claim the standard deduction on Form 1040-NR. Almost no other nationality has this.",
   },
   {
+    id: "five-year-rule",
     claim: "You are a nonresident for tax as long as you hold an F-1 visa.",
     reality: "Five calendar years, not the length of the visa.",
     why: "F-1 students are exempt individuals for five calendar years. After that, days count toward the substantial presence test and you may become a resident for tax purposes while still on F-1.",
   },
   {
+    id: "fica-refund",
     claim: "Social Security tax was withheld, so it is gone.",
     reality: "It is refundable.",
     why: "F-1 students who are nonresidents are exempt from FICA. If 7.65% was withheld in error, you ask the employer first, then file Form 843 with Form 8316.",
   },
   {
+    id: "cpt-12-month",
     claim: "A year of full-time CPT is harmless.",
-    reality: "12 months of full-time CPT eliminates OPT.",
-    why: "Hit 12 months of full-time CPT and you lose post-completion OPT entirely. Part-time CPT does not carry this consequence.",
+    reality: "12 months of full-time CPT eliminates OPT at that degree level.",
+    why: "Reach 12 months of full-time CPT and post-completion OPT is gone for that level of study — a later, higher degree can carry its own OPT. Part-time CPT does not count toward the threshold at all.",
   },
   {
+    id: "termination-vs-revocation",
     claim: "A terminated SEVIS record and a revoked visa are the same thing.",
     reality: "They are separate actions by separate agencies.",
     why: "SEVIS termination is a DHS status action; visa revocation is a State Department action on the stamp. You can have one without the other, and the responses differ.",
   },
   {
+    id: "unlawful-presence",
+    claim: "A SEVIS termination starts unlawful presence immediately.",
+    reality: "Generally not — those are two different things.",
+    why: "The 2018 memo that would have done this was vacated nationwide in Guilford College v. Nielsen. For a student admitted for duration of status, unlawful presence generally starts only after USCIS or an immigration judge formally finds a violation. Losing status is still urgent.",
+  },
+  {
+    id: "grace-period-change",
+    claim: "The F-1 grace period is 60 days and always has been.",
+    reality: "It becomes 30 days under a rule effective September 15, 2026.",
+    why: "DHS's fixed-admission final rule replaces duration of status with a dated I-94 plus 30 days. Students already admitted for D/S generally keep 60 days until they travel and re-enter. The rule is being challenged in court.",
+  },
+  {
+    id: "counter-abroad",
     claim: "Leaving the US pauses your OPT unemployment counter.",
     reality: "It usually keeps running.",
     why: "Time spent outside the US while unemployed during an approved OPT period generally still counts against the limit, unless you are on employer-authorised leave.",
@@ -508,4 +676,17 @@ export const mythVsRealityFacts: ShareFact[] = [
  * Any policy item whose status is not "in-force" must have a null amount so
  * it can never be silently summed into a cost total. Enforced by test.
  */
-export const policyItems: PolicyItem[] = [h1bProclamationFee, optProposedFee];
+/** Select facts by id so page-level edits cannot silently reshuffle them. */
+export function factsById(...ids: string[]): ShareFact[] {
+  return ids.map((id) => {
+    const found = mythVsRealityFacts.find((f) => f.id === id);
+    if (!found) throw new Error(`Unknown share fact id: ${id}`);
+    return found;
+  });
+}
+
+export const policyItems: PolicyItem[] = [
+  h1bProclamationFee,
+  optProposedFee,
+  dsFixedAdmissionRule,
+];

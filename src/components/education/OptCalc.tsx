@@ -7,7 +7,11 @@ import {
   buildOptTimeline,
   type OptPhase,
 } from "@/lib/calc/optTimeline";
-import { optRules } from "@/data/studentClusterData";
+import {
+  optDenialRules,
+  optRules,
+  unlawfulPresence,
+} from "@/data/studentClusterData";
 
 /**
  * OPT timeline + unemployment counter.
@@ -69,7 +73,9 @@ export default function OptCalc() {
   const [programEndDate, setProgramEndDate] = useState("2026-05-15");
   const [phase, setPhase] = useState<OptPhase>("not-applied");
   const [optStartDate, setOptStartDate] = useState("");
-  const [stemEligible, setStemEligible] = useState(true);
+  // Defaults to false deliberately. Defaulting to true showed every visitor a
+  // STEM timeline and a 150-day cap they may have no claim to.
+  const [stemEligible, setStemEligible] = useState(false);
   const [stemApproved, setStemApproved] = useState(false);
   const [unemploymentDaysUsed, setUnemploymentDaysUsed] = useState(0);
 
@@ -150,7 +156,11 @@ export default function OptCalc() {
 
           <Field
             label={`Unemployment days used so far: ${unemploymentDaysUsed}`}
-            help="Days since your OPT start date with no qualifying employment."
+            help={
+              stemApproved
+                ? "Total days with no qualifying employment across post-completion OPT AND the STEM extension combined — not just the days since STEM began."
+                : "Days since your OPT start date with no qualifying employment. Weekends and holidays count; the counter runs on calendar days."
+            }
           >
             <input
               type="range"
@@ -172,7 +182,7 @@ export default function OptCalc() {
               onChange={(e) => setStemEligible(e.target.checked)}
               className="h-4 w-4 accent-brand-600"
             />
-            My degree is on the STEM list
+            My degree&apos;s CIP code is on the DHS STEM list
           </label>
           {stemEligible && (
             <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-700">
@@ -186,6 +196,34 @@ export default function OptCalc() {
             </label>
           )}
         </div>
+
+        {stemEligible && (
+          <p className="rounded-xl border border-amber-200 bg-amber-50/60 p-3 text-xs leading-relaxed text-amber-900">
+            <strong>A STEM-listed degree is necessary but not sufficient.</strong>{" "}
+            The extension also requires an employer enrolled in E-Verify, a
+            completed Form I-983 training plan signed by you and your employer,
+            a paid role of at least {optRules.stemMinWeeklyHours} hours a week,
+            and a degree from an accredited, SEVP-certified school. Check your
+            CIP code against the current DHS STEM list with your DSO — the list
+            changes, and eligibility turns on the code on your I-20 rather than
+            on what the program is called.
+          </p>
+        )}
+
+        <button
+          type="button"
+          onClick={() => {
+            setProgramEndDate("2026-05-15");
+            setPhase("not-applied");
+            setOptStartDate("");
+            setStemEligible(false);
+            setStemApproved(false);
+            setUnemploymentDaysUsed(0);
+          }}
+          className="text-xs font-semibold text-ink-400 underline transition-colors hover:text-ink-700"
+        >
+          Reset all fields
+        </button>
       </InputCard>
 
       {/* ─────────────────── Unemployment meter ─────────────────── */}
@@ -355,9 +393,19 @@ export default function OptCalc() {
                   "STEM EAD end date",
                 ],
                 [
-                  "OPT application denied",
+                  "Post-completion OPT denied",
                   `${optRules.gracePeriodDays} days`,
-                  "Date of the denial notice",
+                  "Program end date OR the denial date — whichever is LATER",
+                ],
+                [
+                  "…but denied for failing to maintain status",
+                  "None",
+                  "USCIS expects immediate departure",
+                ],
+                [
+                  "STEM extension denied after the OPT EAD expired",
+                  `${optRules.gracePeriodDays} days`,
+                  "The denial date",
                 ],
                 [
                   "You withdrew or dropped below full-time without authorisation",
@@ -367,7 +415,7 @@ export default function OptCalc() {
                 [
                   "SEVIS record terminated for a status violation",
                   "None",
-                  "Unlawful presence may begin accruing",
+                  "Status ends at once; unlawful presence usually needs a formal finding first",
                 ],
               ].map((r) => (
                 <tr key={r[0]} className="border-b border-ink-900/5 last:border-0">
@@ -386,6 +434,24 @@ export default function OptCalc() {
           </table>
         </div>
         <p className="mt-3 text-xs leading-relaxed text-ink-400">
+          <strong className="text-ink-600">On a denial:</strong>{" "}
+          {optDenialRules.postCompletion} {optDenialRules.postCompletionException}{" "}
+          {optDenialRules.stemExtension} {optDenialRules.caveat}
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-ink-400">
+          These {optRules.gracePeriodDays}-day figures are for a student
+          admitted for duration of status. A DHS final rule effective September
+          15, 2026 replaces that with a dated admission plus{" "}
+          {optRules.gracePeriodDaysUnderFixedAdmission} days; students already
+          admitted for D/S generally keep{" "}
+          {optRules.gracePeriodDays} days until they travel abroad and re-enter.
+          The rule is being challenged in court. Check your latest I-94.
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-ink-400">
+          {unlawfulPresence.whyItMatters}{" "}
+          {unlawfulPresence.currentRule}
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-ink-400">
           If your record was terminated, the grace period generally does not
           apply — see the{" "}
           <a

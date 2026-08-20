@@ -29,6 +29,15 @@ export interface StudentPage {
   owns: string[];
   /** Short hook used above the tool. */
   hook: string;
+  /**
+   * The one question this page exists to answer, in the reader's words. Shown
+   * on the hub so five tools read as a toolkit rather than five SEO pages,
+   * and doubles as the cannibalisation guard: if two pages could carry the
+   * same line here, they are competing for the same query.
+   */
+  answers: string;
+  /** Who this page is for, in one clause. */
+  audience: string;
 }
 
 export const studentPages: Record<string, StudentPage> = {
@@ -53,6 +62,10 @@ export const studentPages: Record<string, StudentPage> = {
       "f1 student tax treaty india",
     ],
     hook: "Filing your first US tax return? Find out which form you file, whether your employer took FICA it should not have, and roughly what you get back.",
+    answers:
+      "What taxes might I owe as an F-1 student, and what am I owed back?",
+    audience:
+      "International students with a W-2, filing a US return for the first time",
   },
   "us-degree-roi-calculator": {
     slug: "us-degree-roi-calculator",
@@ -74,6 +87,10 @@ export const studentPages: Record<string, StudentPage> = {
       "us degree return on investment",
     ],
     hook: "Worth it, or not? Model the money over 10 years — then see the part the money model cannot show you.",
+    answers:
+      "Is a US degree financially worth the cost for me?",
+    audience:
+      "Admits and applicants deciding whether to commit the money",
   },
   "opt-calculator": {
     slug: "opt-calculator",
@@ -95,6 +112,10 @@ export const studentPages: Record<string, StudentPage> = {
       "opt timeline",
     ],
     hook: "Every OPT date in one place — and an honest unemployment counter, because STEM does not reset your clock.",
+    answers:
+      "How much OPT and STEM time do I have, and when is every deadline?",
+    audience:
+      "Final-year students and anyone already on OPT",
   },
   "cpt-vs-opt": {
     slug: "cpt-vs-opt",
@@ -111,6 +132,10 @@ export const studentPages: Record<string, StudentPage> = {
     kind: "guide",
     owns: ["day 1 cpt", "cpt vs opt", "curricular practical training"],
     hook: "Which one applies to you, what each costs you later, and what nobody selling Day-1 CPT programmes will tell you.",
+    answers:
+      "Which work authorisation applies to me, and what does it cost me later?",
+    audience:
+      "Students choosing between an internship now and OPT later",
   },
   "sevis-termination-guide": {
     slug: "sevis-termination-guide",
@@ -127,6 +152,10 @@ export const studentPages: Record<string, StudentPage> = {
     kind: "guide",
     owns: ["f1 visa revoked", "sevis terminated", "sevis termination reinstatement"],
     hook: "First, work out which of the two things happened to you — the answers are completely different.",
+    answers:
+      "My SEVIS record was terminated — what does that mean and what do I do?",
+    audience:
+      "Students facing a termination or a revoked visa right now",
   },
 };
 

@@ -29,6 +29,16 @@ const num = (v: string, fallback = 0) => {
   return Number.isFinite(n) ? n : fallback;
 };
 
+/** Money fields are never negative and never absurd. */
+const money = (v: string) => Math.min(Math.max(num(v), 0), 10_000_000);
+
+/** A calendar year cannot hold more than 366 days of presence. */
+const days = (v: string) => Math.min(Math.max(Math.round(num(v)), 0), 366);
+
+/** Keeps an arrival year inside a range where the exempt-year maths means something. */
+const arrival = (v: string, taxYear: number) =>
+  Math.min(Math.max(Math.round(num(v, taxYear)), 1980), taxYear);
+
 export default function F1TaxCalc() {
   const [step, setStep] = useState<Step>(1);
 
@@ -55,11 +65,11 @@ export default function F1TaxCalc() {
     () =>
       runSubstantialPresenceTest({
         visa,
-        firstArrivalYear: num(arrivalYear, 2022),
+        firstArrivalYear: arrival(arrivalYear, year),
         taxYear: year,
-        daysCurrentYear: num(days0),
-        daysPriorYear: num(days1),
-        daysSecondPriorYear: num(days2),
+        daysCurrentYear: days(days0),
+        daysPriorYear: days(days1),
+        daysSecondPriorYear: days(days2),
       }),
     [visa, arrivalYear, year, days0, days1, days2]
   );
@@ -67,10 +77,10 @@ export default function F1TaxCalc() {
   const fica = useMemo(
     () =>
       estimateFicaRefund({
-        wages: num(wages),
+        wages: money(wages),
         wasNonresident: !spt.isResident,
         employerWithheld,
-        actualWithheldAmount: exactWithheld ? num(exactWithheld) : undefined,
+        actualWithheldAmount: exactWithheld ? money(exactWithheld) : undefined,
       }),
     [wages, spt.isResident, employerWithheld, exactWithheld]
   );
@@ -79,43 +89,28 @@ export default function F1TaxCalc() {
     () =>
       estimateNonresidentRefund({
         taxYear: year,
-        wages: num(wages),
-        federalWithheld: num(federalWithheld),
+        wages: money(wages),
+        federalWithheld: money(federalWithheld),
         claimIndiaTreaty: isIndian && !spt.isResident,
+        // Residents get the ordinary standard deduction. Omitting this
+        // deducted nothing for them and overstated the tax by thousands.
+        isResident: spt.isResident,
       }),
     [year, wages, federalWithheld, isIndian, spt.isResident]
   );
 
-  // Keep the URL shareable.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const p = new URLSearchParams({
-      v: visa,
-      a: arrivalYear,
-      ty: taxYear,
-      d0: days0,
-      w: wages,
-      fw: federalWithheld,
-      in: isIndian ? "1" : "0",
-      fica: employerWithheld ? "1" : "0",
-    });
-    window.history.replaceState(null, "", `?${p.toString()}`);
-  }, [
-    visa,
-    arrivalYear,
-    taxYear,
-    days0,
-    wages,
-    federalWithheld,
-    isIndian,
-    employerWithheld,
-  ]);
+  /**
+   * Restore-then-sync, and the order is load-bearing. Both effects run on
+   * mount in declaration order, so syncing first overwrote a shared link's
+   * query string with this component's defaults before the restore could read
+   * it — every shared scenario opened as a blank calculator. `restored` gates
+   * the writer until the reader has run.
+   */
+  const [restored, setRestored] = useState(false);
 
-  // Restore from a shared link once, on mount.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const p = new URLSearchParams(window.location.search);
-    if (!window.location.search) return;
     const set = (k: string, fn: (v: string) => void) => {
       const v = p.get(k);
       if (v !== null) fn(v);
@@ -124,18 +119,51 @@ export default function F1TaxCalc() {
     set("a", setArrivalYear);
     set("ty", setTaxYear);
     set("d0", setDays0);
+    set("d1", setDays1);
+    set("d2", setDays2);
     set("w", setWages);
     set("fw", setFederalWithheld);
     set("in", (v) => setIsIndian(v === "1"));
     set("fica", (v) => setEmployerWithheld(v === "1"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setRestored(true);
   }, []);
+
+  // Keep the URL shareable.
+  useEffect(() => {
+    if (typeof window === "undefined" || !restored) return;
+    const p = new URLSearchParams({
+      v: visa,
+      a: arrivalYear,
+      ty: taxYear,
+      d0: days0,
+      d1: days1,
+      d2: days2,
+      w: wages,
+      fw: federalWithheld,
+      in: isIndian ? "1" : "0",
+      fica: employerWithheld ? "1" : "0",
+    });
+    window.history.replaceState(null, "", `?${p.toString()}`);
+  }, [
+    restored,
+    visa,
+    arrivalYear,
+    taxYear,
+    days0,
+    days1,
+    days2,
+    wages,
+    federalWithheld,
+    isIndian,
+    employerWithheld,
+  ]);
 
   const StepTab = ({ n, label }: { n: Step; label: string }) => (
     <button
       type="button"
       onClick={() => setStep(n)}
-      aria-current={step === n ? "step" : undefined}
+      role="tab"
+      aria-selected={step === n}
       className={`flex-1 rounded-xl px-3 py-2.5 text-xs font-bold transition-colors sm:text-sm ${
         step === n
           ? "bg-brand-600 text-white shadow-sm"
@@ -277,15 +305,39 @@ export default function F1TaxCalc() {
               </p>
             )}
 
+            <details className="rounded-xl border border-ink-900/10 p-3">
+              <summary className="cursor-pointer text-xs font-bold uppercase tracking-wide text-ink-500">
+                What this result assumes
+              </summary>
+              <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-ink-500">
+                {spt.assumptions.map((a) => (
+                  <li key={a}>• {a}</li>
+                ))}
+              </ul>
+            </details>
+
             {spt.isFlipYear && (
               <p className="rounded-xl border border-sky-200 bg-sky-50/60 p-3 text-xs text-sky-900">
-                <strong>This is your flip year.</strong> {year} is the first year
-                you meet the test. From here you report worldwide income —
+                <strong>This looks like your flip year.</strong> {year} is the
+                first year your days could count and you meet the test. From
+                here you report worldwide income —
                 including Indian bank interest, mutual funds and property income
                 — and you pick up FBAR and FATCA obligations if your foreign
                 accounts cross the thresholds. You also lose the treaty standard
                 deduction as a nonresident benefit, though as a resident you get
-                the ordinary standard deduction instead.
+                the ordinary standard deduction instead. A year you arrive in or
+                leave partway through can instead be a dual-status year, which
+                is filed differently — worth a professional.
+              </p>
+            )}
+
+            {spt.isResident && !spt.isFlipYear && (
+              <p className="rounded-xl border border-sky-200 bg-sky-50/60 p-3 text-xs text-sky-900">
+                <strong>You are filing as a resident.</strong> That means Form
+                1040, worldwide income including Indian interest, mutual funds
+                and rental income, FICA on your wages, and FBAR/FATCA reporting
+                if your foreign accounts cross the thresholds. You get the
+                ordinary standard deduction rather than the treaty one.
               </p>
             )}
           </ResultCard>
@@ -367,9 +419,11 @@ export default function F1TaxCalc() {
             {fica.refundable ? (
               <>
                 <p className="text-ink-700">
-                  As a nonresident on F-1, your wages are exempt from Social
-                  Security and Medicare tax. If it was withheld anyway, it is
-                  recoverable — but the order matters.
+                  Your answers indicate you were a nonresident for{" "}
+                  {year}. Wages earned under employment authorised by your
+                  student status — on-campus work, CPT, OPT — are generally
+                  exempt from Social Security and Medicare tax in that case, so
+                  anything withheld may be recoverable. The order matters.
                 </p>
                 <div className="grid gap-2 sm:grid-cols-2">
                   <div className="rounded-xl bg-ink-50/70 p-3">
@@ -442,10 +496,25 @@ export default function F1TaxCalc() {
               </Field>
             </div>
 
-            <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50/40 p-3">
+            {spt.isResident && (
+              <p className="rounded-xl border border-sky-200 bg-sky-50/60 p-3 text-xs leading-relaxed text-sky-900">
+                Step 1 put you in the resident bracket for {year}, so this
+                estimate uses the ordinary standard deduction on Form 1040. The
+                treaty option below applies only while you are a nonresident.
+              </p>
+            )}
+
+            <label
+              className={`flex items-start gap-3 rounded-xl border p-3 ${
+                spt.isResident
+                  ? "cursor-not-allowed border-ink-900/10 bg-ink-50/50 opacity-60"
+                  : "cursor-pointer border-emerald-200 bg-emerald-50/40"
+              }`}
+            >
               <input
                 type="checkbox"
                 checked={isIndian}
+                disabled={spt.isResident}
                 onChange={(e) => setIsIndian(e.target.checked)}
                 className="mt-0.5 h-4 w-4 flex-none accent-emerald-600"
               />
@@ -467,8 +536,8 @@ export default function F1TaxCalc() {
             eyebrow="Estimate"
             title={
               refund.isRefund
-                ? `Estimated refund: ${formatUsd(refund.net)}`
-                : `Estimated balance due: ${formatUsd(Math.abs(refund.net))}`
+                ? `Your answers suggest a refund of about ${formatUsd(refund.net)}`
+                : `Your answers suggest about ${formatUsd(Math.abs(refund.net))} owed`
             }
             badge={refund.treatyApplied ? "Treaty applied" : undefined}
           >
@@ -484,7 +553,11 @@ export default function F1TaxCalc() {
                   <tr>
                     <td className="py-2 text-ink-500">
                       Standard deduction
-                      {refund.treatyApplied ? " (treaty)" : ""}
+                      {refund.treatyApplied
+                        ? " (US-India treaty)"
+                        : spt.isResident
+                          ? " (resident, Form 1040)"
+                          : ""}
                     </td>
                     <td className="py-2 text-right font-semibold text-ink-900">
                       −{formatUsd(refund.standardDeduction)}

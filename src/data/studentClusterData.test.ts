@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  dsFixedAdmissionRule,
+  factsById,
+  optDenialRules,
+  unlawfulPresence,
   f1VisaFees,
   f1VisaTotalUsd,
   f2DependentAddOnUsd,
@@ -52,6 +56,109 @@ describe("policy items can never be silently totalled", () => {
       expect(item.source.href).toMatch(/^https:\/\//);
       expect(item.lastVerified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
+  });
+});
+
+describe("the end of duration of status", () => {
+  it("is carried as a scheduled rule that can never be treated as in force", () => {
+    expect(dsFixedAdmissionRule.status).toBe("scheduled");
+    expect(dsFixedAdmissionRule.amountUsd).toBeNull();
+    expect(dsFixedAdmissionRule.statusLine).toMatch(/not yet in effect/i);
+  });
+
+  it("names the effective date and the legal challenge", () => {
+    expect(dsFixedAdmissionRule.statusLine).toContain("September 15, 2026");
+    expect(dsFixedAdmissionRule.detail).toMatch(/September 9, 2026/);
+    expect(dsFixedAdmissionRule.detail).toMatch(/30-day grace period/);
+  });
+
+  it("keeps the 60-day grace period as the modelled default", () => {
+    // Students already admitted for D/S keep 60 days until they travel, so the
+    // calculators must not switch to 30 before the rule reaches them.
+    expect(optRules.gracePeriodDays).toBe(60);
+    expect(optRules.gracePeriodDaysUnderFixedAdmission).toBe(30);
+  });
+});
+
+describe("OPT denial consequences follow the USCIS Policy Manual", () => {
+  it("uses the later of program end and denial date, not just the denial date", () => {
+    expect(optDenialRules.postCompletion).toMatch(/whichever is later/i);
+    expect(optDenialRules.postCompletion).toContain("60 days");
+  });
+
+  it("keeps the failure-to-maintain-status carve-out attached to the rule", () => {
+    // Publishing the 60-day rule without this exception would tell a student
+    // who must leave immediately that they have two months.
+    expect(optDenialRules.postCompletionException).toMatch(/immediately/i);
+  });
+
+  it("keeps the STEM branch separate, running from the denial date", () => {
+    expect(optDenialRules.stemExtension).toMatch(/denial date/i);
+  });
+
+  it("cites the Policy Manual", () => {
+    expect(optDenialRules.source.href).toContain("policy-manual");
+  });
+});
+
+describe("the fixed-admission rule's practical-training transition relief", () => {
+  it("records the March 18, 2027 I-765 window that avoids a separate I-539", () => {
+    expect(dsFixedAdmissionRule.detail).toContain("March 18, 2027");
+    expect(dsFixedAdmissionRule.detail).toMatch(/I-539/);
+  });
+
+  it("names the court, judge and docket behind the challenge", () => {
+    expect(dsFixedAdmissionRule.detail).toContain("1:26-cv-13799");
+    expect(dsFixedAdmissionRule.detail).toMatch(/Saylor/);
+  });
+});
+
+describe("unlawful presence is not conflated with status violation", () => {
+  it("states the post-Guilford rule rather than 'starts immediately'", () => {
+    expect(unlawfulPresence.currentRule).toMatch(/formally finds|immigration judge/i);
+    expect(unlawfulPresence.currentRule).not.toMatch(/starts? immediately/i);
+  });
+
+  it("keeps a correcting share fact and a source", () => {
+    const [fact] = factsById("unlawful-presence");
+    expect(fact.reality).toMatch(/not/i);
+    expect(unlawfulPresence.source.href).toMatch(/^https:\/\//);
+  });
+});
+
+describe("the extra OPT filing deadlines most content omits", () => {
+  it("carries the 30-day DSO recommendation rule", () => {
+    expect(optRules.dsoRecommendationFilingDays).toBe(30);
+    expect(optRules.stemDsoRecommendationFilingDays).toBe(60);
+  });
+
+  it("carries the 180-day authorisation while a STEM extension is pending", () => {
+    expect(optRules.stemPendingAutoExtensionDays).toBe(180);
+  });
+});
+
+describe("share facts are addressed by id, not position", () => {
+  it("resolves every id used across the cluster", () => {
+    expect(() =>
+      factsById(
+        "std-deduction",
+        "five-year-rule",
+        "fica-refund",
+        "stem-resets",
+        "counter-abroad",
+        "cpt-12-month",
+        "unlawful-presence"
+      )
+    ).not.toThrow();
+  });
+
+  it("throws loudly on an unknown id rather than rendering the wrong fact", () => {
+    expect(() => factsById("no-such-fact")).toThrow(/Unknown share fact/);
+  });
+
+  it("gives every fact a unique id", () => {
+    const ids = mythVsRealityFacts.map((f) => f.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });
 
@@ -213,6 +320,15 @@ describe("cluster wiring", () => {
     expect(new Set(slugs).size).toBe(5);
     expect(new Set(titles).size).toBe(5);
     expect(new Set(seoTitles).size).toBe(5);
+  });
+
+  it("gives every page a distinct question, so pages do not cannibalise", () => {
+    const answers = studentPageList.map((p) => p.answers.toLowerCase());
+    expect(new Set(answers).size).toBe(5);
+    for (const p of studentPageList) {
+      expect(p.answers.length, `${p.slug} needs a real question`).toBeGreaterThan(20);
+      expect(p.audience.length, `${p.slug} needs an audience`).toBeGreaterThan(15);
+    }
   });
 
   it("keeps SEO titles within a sane length", () => {

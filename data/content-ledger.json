@@ -183,6 +183,37 @@
       "nextStep": "A8 refresh 2025->2026 data; A10 add F-1 vs H-1B 60-day grace paragraph; A11 add student hub link to /press once B1 has traction"
     },
     {
+      "id": "duration-of-status-rule-re-verify",
+      "title": "Duration-of-status rule: re-verify after the Sept 9 hearing and the Sept 15 effective date",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-20",
+      "detail": "DHS final rule (pub. 2026-07-17) ends D/S and cuts the F-1 grace period from 60 to 30 days from 2026-09-15. Challenged 2026-08-18 in D. Mass. (Presidents Alliance v. DHS, 1:26-cv-13799); govt response due 08-31, injunction hearing 09-09. The student cluster currently models 60 days because students already admitted for D/S keep it until they travel. If the rule survives, optRules.gracePeriodDays handling and the OPT calculator grace milestones need revisiting.",
+      "nextStep": "Check the docket on/after 2026-09-09; if not enjoined, decide whether the OPT calculator asks for I-94 admission type",
+      "evidence": "npm run ledger"
+    },
+    {
+      "id": "opt-denial-grace-period-no-primary",
+      "title": "OPT-denial grace period — RESOLVED against the USCIS Policy Manual",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-08-20",
+      "detail": "Resolved 2026-08-20. USCIS Policy Manual Vol.2 Pt.F Ch.5: an initial post-completion OPT denial leaves F-1 status expiring 60 days from the program end date or the denial date, WHICHEVER IS LATER — except where the denial was for failure to maintain status, in which case immediate departure is expected. A STEM extension denied after the OPT EAD expired ends status 60 days from the denial date. All three branches are now encoded in optDenialRules and rendered on the OPT calculator, with tests.",
+      "resolved": "2026-08-20"
+    },
+    {
+      "id": "proclamation-10973-lapses-2026-09-20",
+      "title": "Proclamation 10973 lapses 2026-09-20 unless extended — recheck the $100K H-1B fee framing",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-20",
+      "detail": "Proclamation 10973 was written as a 12-month measure scheduled to expire 2026-09-20 unless extended, renewed or superseded. Separately, the implementing policy was vacated 2026-06-08 and the First Circuit declined to reinstate it 2026-07-24, so it is not being collected. Do NOT simplify this to 'the fee expires on Sept 20' — expiry and vacatur are independent, and either could change first.",
+      "nextStep": "Recheck on/after 2026-09-21; update h1bProclamationFee.statusLine to reflect whichever ended it — expiry and vacatur are independent tracks, do not collapse them into 'the fee expired'"
+    },
+    {
       "id": "mobile-audit-education-gpa-calculator-overflows",
       "title": "Mobile audit: /education/gpa-calculator overflows 5px at 320px",
       "area": "other",

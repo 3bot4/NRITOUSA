@@ -233,11 +233,14 @@ export function buildOptTimeline(input: OptInput): OptResult {
     });
 
     if (stemEligible) {
-      const stemDeadline = addDays(optEnd, -optRules.stemFilingWindowDaysBefore);
+      const stemWindowOpens = addDays(
+        optEnd,
+        -optRules.stemFilingWindowDaysBefore
+      );
       milestones.push({
         id: "stem-window-opens",
         label: "STEM extension filing window opens",
-        date: stemDeadline,
+        date: stemWindowOpens,
         meaning: `You may file the STEM I-765 up to ${optRules.stemFilingWindowDaysBefore} days before your current EAD expires. It must be received before the EAD expires — a STEM application filed even one day late is rejected.`,
         kind: "window",
         critical: true,
@@ -246,8 +249,7 @@ export function buildOptTimeline(input: OptInput): OptResult {
         id: "stem-deadline",
         label: "STEM extension deadline",
         date: optEnd,
-        meaning:
-          "The last day USCIS can receive your STEM application. File early — mail transit time counts against you, and a rejection for lateness cannot be cured.",
+        meaning: `The last day USCIS can receive your STEM application. File early — transit time counts against you and a rejection for lateness cannot be cured. File on time and you keep working for up to ${optRules.stemPendingAutoExtensionDays} days past your EAD expiry while it is pending; file late and you do not.`,
         kind: "deadline",
         critical: true,
       });
@@ -271,7 +273,7 @@ export function buildOptTimeline(input: OptInput): OptResult {
       id: "grace-end",
       label: "Grace period ends",
       date: addDays(finalEnd, optRules.gracePeriodDays),
-      meaning: `${optRules.gracePeriodDays} days after your work authorisation ends. By this date you must have departed the US, started a new program, or have a pending change of status. The grace period is for departure and transition — you cannot work during it.`,
+      meaning: `${optRules.gracePeriodDays} days after your work authorisation ends, for a student admitted for duration of status. By this date you must have departed the US, started a new program, or have a pending change of status — you cannot work during it. A DHS final rule effective September 15, 2026 reduces this to ${optRules.gracePeriodDaysUnderFixedAdmission} days for students admitted under it, so check your I-94 rather than assuming ${optRules.gracePeriodDays}.`,
       kind: "grace",
       critical: true,
     });
@@ -280,7 +282,7 @@ export function buildOptTimeline(input: OptInput): OptResult {
       id: "grace-end-no-opt",
       label: "Grace period ends (if you never activate OPT)",
       date: addDays(programEndDate, optRules.gracePeriodDays),
-      meaning: `Without OPT, your ${optRules.gracePeriodDays}-day grace period runs from your program end date. You cannot work during it.`,
+      meaning: `Without OPT, your ${optRules.gracePeriodDays}-day grace period runs from your program end date, on a duration-of-status admission. You cannot work during it, and the September 15, 2026 fixed-admission rule cuts it to ${optRules.gracePeriodDaysUnderFixedAdmission} days for students admitted under it.`,
       kind: "grace",
       critical: true,
     });
@@ -306,6 +308,12 @@ export function buildOptTimeline(input: OptInput): OptResult {
   if (stemEligible && !stemApproved && unemployment.used > 0) {
     warnings.push(
       `A STEM extension would raise your lifetime cap to ${unemployment.capWithStem} days, leaving you ${unemployment.capWithStem - unemployment.used} in total — the ${unemployment.used} days already used are not returned. Any tool or adviser telling you STEM resets the counter to ${unemployment.capWithStem} is wrong.`
+    );
+  }
+
+  if (phase === "not-applied" || phase === "pending") {
+    warnings.push(
+      `Second deadline most OPT pages omit: once your DSO enters the OPT recommendation in SEVIS, USCIS must receive your I-765 within ${optRules.dsoRecommendationFilingDays} days. Filing inside the ${optRules.filingWindowDaysBefore}/${optRules.filingWindowDaysAfter}-day window but outside that ${optRules.dsoRecommendationFilingDays}-day window still gets you denied. Ask your DSO for the exact date they entered it.`
     );
   }
 

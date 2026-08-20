@@ -97,8 +97,16 @@ export const DEFAULT_ROI_INPUT: RoiInput = {
 export interface YearPoint {
   /** Year index from the start of the program: 0 = first year of study. */
   year: number;
-  /** Cumulative net worth in USD at the end of that year. */
+  /**
+   * Cumulative net worth in USD at the end of that year — savings and
+   * investments MINUS any outstanding education loan. Subtracting the loan is
+   * the whole point: reporting accumulated savings while a student still owes
+   * $60,000 shows a positive "net worth" for someone who is underwater, which
+   * is exactly the flattery this page exists to avoid.
+   */
   netWorthUsd: number;
+  /** Savings and investments only, before the loan is deducted. */
+  savingsUsd: number;
   /** Outstanding loan balance in USD. */
   loanBalanceUsd: number;
   /** Where the person is in this year. */
@@ -117,8 +125,15 @@ export interface ScenarioResult {
   finalNetWorthUsd: number;
   /** First year index where net worth turns non-negative, or null. */
   breakEvenYear: number | null;
-  /** Total cost of the degree including loan interest actually paid, USD. */
+  /**
+   * Total cost of the degree: money spent plus loan interest, both the
+   * interest capitalised during study and the interest paid in repayment.
+   * Interest that would still be paid after the projection horizon is not
+   * included — see loanOutstandingAtHorizonUsd.
+   */
   totalDegreeCostUsd: number;
+  /** Loan still owed at the end of the horizon, USD. 0 when fully repaid. */
+  loanOutstandingAtHorizonUsd: number;
   /** True when this scenario models something that is not current law. */
   speculative: boolean;
   /** Note shown alongside the scenario. */
@@ -168,6 +183,7 @@ interface SimOptions {
 function simulate(input: RoiInput, opts: SimOptions): {
   series: YearPoint[];
   totalDegreeCostUsd: number;
+  loanOutstandingAtHorizonUsd: number;
 } {
   const {
     tuitionTotalUsd,
@@ -194,6 +210,20 @@ function simulate(input: RoiInput, opts: SimOptions): {
   let netWorth = 0;
   let loanBalance = 0;
   let interestPaid = 0;
+  let interestDuringStudy = 0;
+
+  const point = (
+    year: number,
+    stage: YearPoint["stage"],
+    weighted: boolean
+  ): YearPoint => ({
+    year,
+    netWorthUsd: round0(netWorth - loanBalance),
+    savingsUsd: round0(netWorth),
+    loanBalanceUsd: round0(loanBalance),
+    stage,
+    weighted,
+  });
 
   const costPerStudyYear =
     programYears > 0
@@ -215,16 +245,14 @@ function simulate(input: RoiInput, opts: SimOptions): {
     if (isStudying) {
       const loanPortion = costPerStudyYear * loanShare;
       const familyPortion = costPerStudyYear * (1 - loanShare);
-      // Interest accrues during study on most Indian education loans.
-      loanBalance = loanBalance * (1 + loanRatePct / 100) + loanPortion;
+      // Interest accrues during study on most Indian education loans, and is
+      // capitalised into the balance. Tracked separately so it is not lost
+      // from the cost total when it is later repaid as "principal".
+      const studyInterest = loanBalance * (loanRatePct / 100);
+      interestDuringStudy += studyInterest;
+      loanBalance = loanBalance + studyInterest + loanPortion;
       netWorth -= familyPortion;
-      series.push({
-        year,
-        netWorthUsd: round0(netWorth),
-        loanBalanceUsd: round0(loanBalance),
-        stage: "studying",
-        weighted: false,
-      });
+      series.push(point(year, "studying", false));
       continue;
     }
 
@@ -293,13 +321,13 @@ function simulate(input: RoiInput, opts: SimOptions): {
     const savings = netIncome - livingCost - payment;
     netWorth = netWorth * (1 + invReturn) + savings;
 
-    series.push({
-      year,
-      netWorthUsd: round0(netWorth),
-      loanBalanceUsd: round0(loanBalance),
-      stage,
-      weighted: !opts.skipDegree && !inIndia && opts.employmentProbability < 1,
-    });
+    series.push(
+      point(
+        year,
+        stage,
+        !opts.skipDegree && !inIndia && opts.employmentProbability < 1
+      )
+    );
   }
 
   const principal = opts.skipDegree
@@ -311,7 +339,10 @@ function simulate(input: RoiInput, opts: SimOptions): {
 
   return {
     series,
-    totalDegreeCostUsd: round0(principal + family + interestPaid),
+    totalDegreeCostUsd: round0(
+      principal + family + interestDuringStudy + interestPaid
+    ),
+    loanOutstandingAtHorizonUsd: round0(loanBalance),
   };
 }
 
@@ -438,7 +469,11 @@ export function computeDegreeRoi(input: RoiInput): RoiResult {
     id: ScenarioId,
     label: string,
     summary: string,
-    sim: { series: YearPoint[]; totalDegreeCostUsd: number },
+    sim: {
+      series: YearPoint[];
+      totalDegreeCostUsd: number;
+      loanOutstandingAtHorizonUsd: number;
+    },
     speculative = false,
     note?: string
   ): ScenarioResult => ({
@@ -449,6 +484,7 @@ export function computeDegreeRoi(input: RoiInput): RoiResult {
     finalNetWorthUsd: sim.series.at(-1)?.netWorthUsd ?? 0,
     breakEvenYear: breakEven(sim.series),
     totalDegreeCostUsd: sim.totalDegreeCostUsd,
+    loanOutstandingAtHorizonUsd: sim.loanOutstandingAtHorizonUsd,
     speculative,
     note,
   });

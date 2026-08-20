@@ -15,11 +15,12 @@ import {
 } from "@/lib/studentCluster";
 import {
   indiaTreaty,
-  mythVsRealityFacts,
+  factsById,
   studentSources,
   taxConstants,
   STUDENT_DATA_VERIFIED,
 } from "@/data/studentClusterData";
+import { progressiveTax } from "@/lib/calc/f1Tax";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -90,6 +91,30 @@ const faq: FaqItem[] = [
       "No. It estimates a single, common situation: a student with wage income filing as a single nonresident. It does not handle scholarship or fellowship income, 1099 or self-employment income, capital gains, dual-status years, dependants, or state returns. Use it to understand what you are looking at and roughly what to expect, then file through proper nonresident software or a professional.",
   },
 ];
+
+/**
+ * The treaty comparison is computed from the same bracket table the
+ * calculator uses rather than typed in. Two of the three hand-written
+ * differences here were wrong, and a table that disagrees with the tool
+ * sitting above it is worse than no table.
+ */
+const TREATY_TABLE_YEAR = 2026;
+const TREATY_DEDUCTION = taxConstants.standardDeductionSingle[TREATY_TABLE_YEAR];
+const usd0 = (n: number) =>
+  `$${Math.round(n).toLocaleString("en-US")}`;
+
+const treatyRows = [20000, 35000, 50000].map((wages) => {
+  const treatyTaxable = Math.max(0, wages - TREATY_DEDUCTION);
+  const saved =
+    progressiveTax(wages, TREATY_TABLE_YEAR) -
+    progressiveTax(treatyTaxable, TREATY_TABLE_YEAR);
+  return [
+    usd0(wages),
+    `${usd0(treatyTaxable)} taxable`,
+    `${usd0(wages)} taxable`,
+    `≈${usd0(saved)} less tax`,
+  ];
+});
 
 export default function F1TaxCalculatorPage() {
   const url = absoluteUrl(page.path);
@@ -230,7 +255,9 @@ export default function F1TaxCalculatorPage() {
                 below. They come up constantly in student groups, and the wrong
                 version costs real money.
               </p>
-              <MythRealityTable facts={mythVsRealityFacts.slice(4, 7)} />
+              <MythRealityTable
+                facts={factsById("std-deduction", "five-year-rule", "fica-refund")}
+              />
 
               <h2 className="mt-10 text-2xl font-bold tracking-tight text-ink-900">
                 The exempt-year rule, in one table
@@ -268,7 +295,7 @@ export default function F1TaxCalculatorPage() {
                 {indiaTreaty.benefit} {indiaTreaty.eligibility}
               </p>
               <FactTable
-                caption="Same W-2, different nationality — tax year 2026"
+                caption={`Same W-2, different nationality — tax year ${TREATY_TABLE_YEAR}`}
                 headers={[
                   "Wages",
                   "Indian student (treaty)",
@@ -276,11 +303,7 @@ export default function F1TaxCalculatorPage() {
                   "Difference",
                 ]}
                 nowrapCol={0}
-                rows={[
-                  ["$20,000", "$3,900 taxable", "$20,000 taxable", "≈$1,610 less tax"],
-                  ["$35,000", "$18,900 taxable", "$35,000 taxable", "≈$1,932 less tax"],
-                  ["$50,000", "$33,900 taxable", "$50,000 taxable", "≈$2,246 less tax"],
-                ]}
+                rows={treatyRows}
                 note={`Illustrative, using the tax year 2026 single standard deduction of $${taxConstants.standardDeductionSingle[2026].toLocaleString("en-US")} and ordinary single rates. ${indiaTreaty.caution}`}
               />
 

@@ -55,6 +55,8 @@ export interface SptResult {
   verdict: string;
   /** Whether Form 8843 is required (all exempt individuals must file it). */
   form8843Required: boolean;
+  /** Assumptions the result depends on, surfaced so the user can check them. */
+  assumptions: string[];
 }
 
 /** Calendar years of exempt-individual status for a given status type. */
@@ -129,6 +131,12 @@ export function runSubstantialPresenceTest(input: SptInput): SptResult {
     isFlipYear,
     verdict,
     form8843Required: taxYearIsExempt,
+    assumptions: [
+      `Assumes ${firstArrivalYear} was your first calendar year in F or J status. The ${count}-year exemption is a lifetime count across all your F and J presence, not a fresh five years per visa — an earlier exchange semester or a previous US degree uses years up, and entering a later arrival year here would give the wrong answer.`,
+      "Assumes you were present in the US on the days entered and held the selected status throughout. Days as a different status, or days you were outside the US, are counted differently.",
+      "Beyond the exempt years, a student who can show they do not intend to reside permanently in the US and have substantially complied with their status may still be treated as an exempt individual. That is a facts-and-circumstances claim made on Form 8843 Part III, and it is not modelled here.",
+      "A year in which you arrive or depart mid-year can be a dual-status year, which is filed differently from either form named above.",
+    ],
   };
 }
 
@@ -218,6 +226,12 @@ export interface RefundInput {
   federalWithheld: number;
   /** True for students who are residents of India for treaty purposes. */
   claimIndiaTreaty: boolean;
+  /**
+   * True when the filer is a resident alien for tax purposes. Residents get
+   * the ordinary standard deduction on Form 1040; leaving this false for a
+   * resident understates the deduction to zero and overstates the tax badly.
+   */
+  isResident?: boolean;
   /** Any treaty-exempt scholarship/fellowship amount already excluded. */
   otherDeductions?: number;
 }
@@ -247,14 +261,18 @@ const SINGLE_BRACKETS: Record<number, { upTo: number; rate: number }[]> = {
     { upTo: 48475, rate: 0.12 },
     { upTo: 103350, rate: 0.22 },
     { upTo: 197300, rate: 0.24 },
-    { upTo: Infinity, rate: 0.32 },
+    { upTo: 250525, rate: 0.32 },
+    { upTo: 626350, rate: 0.35 },
+    { upTo: Infinity, rate: 0.37 },
   ],
   2026: [
     { upTo: 12400, rate: 0.1 },
     { upTo: 50400, rate: 0.12 },
     { upTo: 105700, rate: 0.22 },
     { upTo: 201775, rate: 0.24 },
-    { upTo: Infinity, rate: 0.32 },
+    { upTo: 256225, rate: 0.32 },
+    { upTo: 640600, rate: 0.35 },
+    { upTo: Infinity, rate: 0.37 },
   ],
 };
 
@@ -288,11 +306,16 @@ export function progressiveTax(taxable: number, taxYear: number): number {
 export function estimateNonresidentRefund(input: RefundInput): RefundResult {
   const { taxYear, wages, federalWithheld, claimIndiaTreaty } = input;
   const otherDeductions = input.otherDeductions ?? 0;
+  const isResident = input.isResident ?? false;
 
-  const standardDeduction = claimIndiaTreaty
-    ? taxConstants.standardDeductionSingle[taxYear] ??
-      taxConstants.standardDeductionSingle[taxConstants.latestPublishedTaxYear]
-    : 0;
+  const publishedDeduction =
+    taxConstants.standardDeductionSingle[taxYear] ??
+    taxConstants.standardDeductionSingle[taxConstants.latestPublishedTaxYear];
+
+  // Residents get the ordinary standard deduction on Form 1040. Nonresidents
+  // get nothing unless the US-India treaty applies.
+  const standardDeduction =
+    isResident || claimIndiaTreaty ? publishedDeduction : 0;
 
   const taxableIncome = Math.max(0, wages - standardDeduction - otherDeductions);
   const estimatedTax = progressiveTax(taxableIncome, taxYear);
@@ -300,15 +323,24 @@ export function estimateNonresidentRefund(input: RefundInput): RefundResult {
   const effectiveRatePct = wages > 0 ? round2((estimatedTax / wages) * 100) : 0;
 
   const caveats = [
-    "Federal only. Most states tax this income too, and state rules do not follow the treaty — a federal refund can sit alongside a state balance due.",
-    "Assumes wage income taxed at single-filer rates with no dependents. Nonresidents generally cannot file jointly.",
-    "Scholarship or fellowship income, capital gains, and 1099 income are not modelled here.",
-    "Form 8843 is filed regardless of whether you owe anything, for every year you are an exempt individual.",
+    "Federal only. Most states tax this income too, and state rules do not follow federal treaties — a federal refund can sit alongside a state balance due.",
+    "Assumes wage income taxed at single-filer rates with no dependants. Nonresidents generally cannot file jointly.",
+    "Scholarship or fellowship income, capital gains, self-employment and 1099 income, and any tax already credited from a treaty article other than the standard deduction are not modelled here.",
+    "Withholding on a paycheck rarely matches the year's liability exactly. Treat the figure as a range, not a number to budget against.",
   ];
-  if (!claimIndiaTreaty) {
+  if (isResident) {
     caveats.unshift(
-      "No standard deduction was applied. Nonresident aliens generally cannot claim one — the US-India treaty is the notable exception."
+      "Applied as a resident filing Form 1040, using the ordinary standard deduction. As a resident you also report worldwide income and owe FICA — neither is modelled above, so your real position may differ substantially."
     );
+  } else {
+    caveats.push(
+      "Form 8843 is filed regardless of whether you owe anything, for every year you are an exempt individual."
+    );
+    if (!claimIndiaTreaty) {
+      caveats.unshift(
+        "No standard deduction was applied. Nonresident aliens generally cannot claim one — the US-India treaty is the notable exception."
+      );
+    }
   }
 
   return {

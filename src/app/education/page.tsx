@@ -212,9 +212,29 @@ export default function EducationHubPage() {
         <Container>
           <SectionHeading
             eyebrow="On an F-1 visa"
-            title="For international students"
-            description="Tax, OPT deadlines, CPT decisions and status emergencies — with the numbers checked and the policy status stated, because most of this topic is documented wrong."
+            title="International Student Toolkit"
+            description="Five tools that follow one student through one arc: decide whether to come, choose how to work during the degree, work out the tax, track the OPT clock, and know what to do if status goes wrong. Each answers a different question — start with the one you are actually asking."
           />
+          <ol className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-500">
+            {[
+              "Decide",
+              "Choose how to work",
+              "File the tax",
+              "Track the clock",
+              "If it goes wrong",
+            ].map((stepLabel, i) => (
+              <li key={stepLabel} className="flex items-center gap-2">
+                {i > 0 && (
+                  <span aria-hidden className="text-ink-300">
+                    →
+                  </span>
+                )}
+                <span className="rounded-full bg-ink-50 px-2.5 py-1 font-semibold">
+                  {stepLabel}
+                </span>
+              </li>
+            ))}
+          </ol>
           <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {studentPageList.map((p) => (
               <Link
@@ -236,8 +256,14 @@ export default function EducationHubPage() {
                 <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
                   {p.label}
                 </h3>
-                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+                <p className="mt-1.5 text-xs font-semibold leading-snug text-ink-700">
+                  &ldquo;{p.answers}&rdquo;
+                </p>
+                <p className="mt-1.5 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
                   {p.description}
+                </p>
+                <p className="mt-2 text-[0.6875rem] leading-snug text-ink-400">
+                  For: {p.audience}
                 </p>
                 <span className="mt-2.5 text-xs font-semibold text-brand-600">
                   Open{" "}

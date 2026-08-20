@@ -11,7 +11,7 @@
 
 import type { ReactNode } from "react";
 import type { PolicyStatus } from "@/data/studentClusterData";
-import { STATUS_BADGE } from "@/data/studentClusterData";
+import { STATUS_BADGE, type PolicyItem } from "@/data/studentClusterData";
 
 /* ─────────────────────────────── status badge ──────────────────────────── */
 
@@ -227,7 +227,7 @@ export function PolicyCallout({
   const accent =
     status === "in-force"
       ? "border-emerald-200 bg-emerald-50/50"
-      : status === "proposed"
+      : status === "proposed" || status === "scheduled" || status === "uneven"
         ? "border-amber-200 bg-amber-50/50"
         : "border-sky-200 bg-sky-50/50";
 
@@ -264,5 +264,30 @@ export function PolicyCallout({
         </p>
       ) : null}
     </div>
+  );
+}
+
+/**
+ * Renders a PolicyItem straight from the data file, so a page can never print
+ * a policy number without the status attached to it.
+ */
+export function PolicyItemCallout({
+  item,
+  showDetail = true,
+}: {
+  item: PolicyItem;
+  showDetail?: boolean;
+}) {
+  return (
+    <PolicyCallout
+      label={item.label}
+      value={item.value}
+      status={item.status}
+      statusLine={item.statusLine}
+      detail={showDetail ? item.detail : undefined}
+      sourceLabel={item.source.label}
+      sourceHref={item.source.href}
+      lastVerified={item.lastVerified}
+    />
   );
 }

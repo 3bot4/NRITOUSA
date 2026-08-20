@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   estimateFicaRefund,
   estimateNonresidentRefund,
+  progressiveTax,
   exemptYearCount,
   progressiveTax,
   runSubstantialPresenceTest,
@@ -246,5 +247,69 @@ describe("progressive tax", () => {
       progressiveTax(20000, taxConstants.latestPublishedTaxYear),
       2
     );
+  });
+});
+
+describe("resident filers get the ordinary standard deduction", () => {
+  // Regression: the calculator passed claimIndiaTreaty=false for residents and
+  // never passed isResident, so a resident's deduction fell to zero and the
+  // estimate overstated their tax by thousands of dollars.
+  it("deducts the published standard deduction for a resident", () => {
+    const r = estimateNonresidentRefund({
+      taxYear: 2026,
+      wages: 60000,
+      federalWithheld: 8000,
+      claimIndiaTreaty: false,
+      isResident: true,
+    });
+    expect(r.standardDeduction).toBe(taxConstants.standardDeductionSingle[2026]);
+    expect(r.taxableIncome).toBe(60000 - taxConstants.standardDeductionSingle[2026]);
+    expect(r.treatyApplied).toBe(false);
+  });
+
+  it("still gives a nonresident with no treaty nothing", () => {
+    const r = estimateNonresidentRefund({
+      taxYear: 2026,
+      wages: 60000,
+      federalWithheld: 8000,
+      claimIndiaTreaty: false,
+      isResident: false,
+    });
+    expect(r.standardDeduction).toBe(0);
+  });
+
+  it("taxes a resident less than an unrelieved nonresident on the same wage", () => {
+    const base = { taxYear: 2026, wages: 60000, federalWithheld: 8000 };
+    const resident = estimateNonresidentRefund({
+      ...base,
+      claimIndiaTreaty: false,
+      isResident: true,
+    });
+    const nonresident = estimateNonresidentRefund({
+      ...base,
+      claimIndiaTreaty: false,
+      isResident: false,
+    });
+    expect(resident.estimatedTax).toBeLessThan(nonresident.estimatedTax);
+  });
+});
+
+describe("the bracket ladder is complete", () => {
+  // Truncating at 32% understated tax for high earners and, more importantly,
+  // made the on-page treaty comparison disagree with the calculator.
+  it("applies 35% and 37% at the top", () => {
+    const justUnder = progressiveTax(256_225, 2026);
+    const wayOver = progressiveTax(700_000, 2026);
+    const marginal = (wayOver - progressiveTax(699_000, 2026)) / 1000;
+    expect(marginal).toBeCloseTo(0.37, 2);
+    expect(wayOver).toBeGreaterThan(justUnder);
+  });
+
+  it("matches hand-computed 2026 tax at the treaty comparison points", () => {
+    // 10% to 12,400 then 12% — the figures printed on the calculator page.
+    expect(progressiveTax(20_000, 2026)).toBeCloseTo(2152, 2);
+    expect(progressiveTax(3_900, 2026)).toBeCloseTo(390, 2);
+    expect(progressiveTax(35_000, 2026)).toBeCloseTo(3952, 2);
+    expect(progressiveTax(50_000, 2026)).toBeCloseTo(5752, 2);
   });
 });

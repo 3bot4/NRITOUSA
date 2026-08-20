@@ -5,7 +5,7 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import SevisSituationSelector from "@/components/education/SevisSituationSelector";
 import ShareWithTagline from "@/components/education/ShareWithTagline";
-import { FactTable } from "@/components/education/FactTable";
+import { FactTable, PolicyItemCallout } from "@/components/education/FactTable";
 import {
   getStudentPage,
   getShareCopy,
@@ -13,8 +13,10 @@ import {
   STUDENT_LAST_REVIEWED,
 } from "@/lib/studentCluster";
 import {
+  dsFixedAdmissionRule,
   optRules,
   studentSources,
+  unlawfulPresence,
   STUDENT_DATA_VERIFIED,
 } from "@/data/studentClusterData";
 import { site } from "@/lib/site";
@@ -59,7 +61,7 @@ const faq: FaqItem[] = [
   },
   {
     question: "How long do I have to apply for reinstatement?",
-    answer: `Generally within ${optRules.reinstatementFilingMonths} months of the SEVIS termination date, though the specifics depend on your circumstances. You need to show the violation resulted from circumstances beyond your control, or that not being reinstated would cause extreme hardship, and that you are not deportable on other grounds. You may remain in the US while the application is pending, but you cannot work. Because the window is short and the standard is demanding, get advice quickly rather than researching your way through it.`,
+    answer: `Generally within ${optRules.reinstatementFilingMonths} months — and note that the regulation measures that window from the status violation itself, not from the date the SEVIS record was terminated, which can be considerably earlier than students assume. Filing later is possible only where the delay resulted from exceptional circumstances. Beyond timing, you generally need to show that you are pursuing a full course of study, that the violation resulted from circumstances beyond your control or that refusing reinstatement would cause extreme hardship, that you have not worked without authorisation, and that you are not deportable on other grounds. That unauthorised-employment condition disqualifies more applicants than the deadline does. Students are generally able to remain in the US while a reinstatement application is pending, but cannot work. Because the window is short and the standard is demanding, get advice quickly rather than researching your way through it.`,
   },
   {
     question: "Can I travel after my SEVIS record is terminated?",
@@ -82,7 +84,11 @@ const faq: FaqItem[] = [
   },
   {
     question: "Do I still have a 60-day grace period after termination?",
-    answer: `Generally no, and this is a critical difference. The ${optRules.gracePeriodDays}-day grace period applies when you complete your program or your OPT ends normally. When a SEVIS record is terminated for a status violation, there is typically no grace period and unlawful presence may begin accruing straight away. That is why the timeline after a termination is measured in days, not months.`,
+    answer: `Generally no, and this is a critical difference. The ${optRules.gracePeriodDays}-day grace period applies when you complete your program or your OPT ends normally. When a SEVIS record is terminated for a status violation, there is typically no grace period at all. That is why the timeline after a termination is measured in days rather than months.`,
+  },
+  {
+    question: "Does unlawful presence start the day my SEVIS record is terminated?",
+    answer: `Generally not, and the distinction matters enormously — it decides whether the 3-year and 10-year re-entry bars are in play. ${unlawfulPresence.currentRule} A 2018 policy memo would have started the clock automatically on the day of the violation, but it was vacated and permanently enjoined nationwide in Guilford College v. Nielsen and was never reinstated. ${unlawfulPresence.whyItMatters} None of this makes a terminated record safe: you have lost status, you cannot work, and you need advice now. It does mean that panic-driven decisions made on the belief that a bar is already running are usually the wrong ones. ${unlawfulPresence.caveat}`,
   },
 ];
 
@@ -148,6 +154,71 @@ export default function SevisTerminationGuidePage() {
           </p>
         }
       >
+        {/* Plain definition first — a reader in a panic needs to know what
+            has actually happened before they are handed a checklist. */}
+        <section className="pt-6">
+          <Container>
+            <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card sm:p-6">
+              <h2 className="text-lg font-extrabold tracking-tight text-ink-900">
+                What SEVIS termination actually means
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                SEVIS is the government database that holds your student record.
+                A termination is an entry in that record — made by your school
+                or by DHS — stating that you are no longer maintaining F-1
+                status. In practical terms it ends your student status and any
+                work authorisation attached to it, such as CPT or OPT, and the{" "}
+                {optRules.gracePeriodDays}-day grace period you would get after
+                finishing a program generally does not apply.
+              </p>
+              <dl className="mt-4 space-y-3 text-sm leading-relaxed">
+                <div>
+                  <dt className="font-bold text-ink-900">Why it happens</dt>
+                  <dd className="text-ink-600">
+                    Most often something administrative: dropping below a full
+                    course load without authorisation, exceeding the OPT
+                    unemployment limit, an unreported address or employer, an
+                    expired I-20. Sometimes unauthorised employment or a
+                    criminal matter. Occasionally it is simply an error.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-ink-900">
+                    What it does not automatically mean
+                  </dt>
+                  <dd className="text-ink-600">
+                    It is not the same as a revoked visa, and it does not by
+                    itself start unlawful presence running. {unlawfulPresence.currentRule}{" "}
+                    Those are different clocks with different consequences, and
+                    conflating them is what drives people into rushed decisions.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-ink-900">What to do next</dt>
+                  <dd className="text-ink-600">
+                    Get the termination reason code and date from your DSO,
+                    stop any work immediately, preserve records, and speak to an
+                    immigration attorney before contacting any government
+                    agency. Depending on the facts, reinstatement, a correction
+                    by your school, departure and re-entry on a new I-20, or a
+                    legal challenge may each be on the table — which one fits is
+                    exactly what you need advice on.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-ink-900">Where to get help</dt>
+                  <dd className="text-ink-600">
+                    Your DSO for the facts on your record; a licensed
+                    immigration attorney for what to do about them. This page is
+                    educational information and cannot tell you which applies to
+                    your situation.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </Container>
+        </section>
+
         {/* Emergency banner — this page's readers are in a crisis */}
         <section className="pt-6">
           <Container>
@@ -224,7 +295,7 @@ export default function SevisTerminationGuidePage() {
                   ["What it affects", "Your status inside the US", "The stamp in your passport"],
                   [
                     "Can you stay in the US?",
-                    "No — status has ended",
+                    "Status has ended — but reinstatement, an appeal or a legal challenge may allow you to remain while it is pending",
                     "Usually yes, if SEVIS is still active",
                   ],
                   [
@@ -236,6 +307,11 @@ export default function SevisTerminationGuidePage() {
                     "Can you re-enter the US?",
                     "Not on that record",
                     "No — you need a new visa",
+                  ],
+                  [
+                    "Unlawful presence",
+                    "Generally not automatic — usually needs a formal finding by USCIS or an immigration judge",
+                    "Not triggered by revocation itself",
                   ],
                   [
                     "Grace period",
@@ -307,6 +383,8 @@ export default function SevisTerminationGuidePage() {
                 highlightRows={[1, 3]}
               />
 
+              <PolicyItemCallout item={dsFixedAdmissionRule} />
+
               <div className="mt-8 rounded-2xl border border-sky-200 bg-sky-50/50 p-5 sm:p-6">
                 <h3 className="text-base font-bold text-ink-900">
                   A note on the current environment
@@ -375,6 +453,9 @@ export default function SevisTerminationGuidePage() {
                 {[
                   studentSources.reinstatement,
                   studentSources.optUnemployment,
+                  studentSources.unlawfulPresenceInjunction,
+                  studentSources.dsFinalRule,
+                  studentSources.dsLitigation,
                   studentSources.nafsa,
                   studentSources.ailaLawyerSearch,
                 ].map((s) => (

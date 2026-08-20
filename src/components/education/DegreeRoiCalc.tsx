@@ -461,6 +461,10 @@ function RoiChart({
     <figure className="rounded-2xl border border-ink-900/5 bg-white p-4 shadow-card sm:p-5">
       <figcaption className="mb-3 text-sm font-bold text-ink-900">
         Net worth over {horizon} years
+        <span className="mt-0.5 block text-xs font-normal text-ink-500">
+          Savings and investments minus any loan still outstanding. An
+          illustrative projection built on your assumptions, not a forecast.
+        </span>
       </figcaption>
       <div className="overflow-x-auto">
         <svg
@@ -592,6 +596,14 @@ function ScenarioCard({
             {s.totalDegreeCostUsd === 0 ? "—" : money(s.totalDegreeCostUsd)}
           </dd>
         </div>
+        {s.loanOutstandingAtHorizonUsd > 0 && (
+          <div className="flex justify-between gap-2">
+            <dt>Loan still owed at horizon</dt>
+            <dd className="font-semibold text-rose-700">
+              {money(s.loanOutstandingAtHorizonUsd)}
+            </dd>
+          </div>
+        )}
         <div className="flex justify-between gap-2">
           <dt>Study years</dt>
           <dd className="font-semibold text-ink-700">

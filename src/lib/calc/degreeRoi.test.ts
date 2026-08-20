@@ -46,7 +46,37 @@ describe("degree ROI simulation", () => {
     const r = computeDegreeRoi(input({ loanShare: 1 }));
     const us = r.scenarios.find((s) => s.id === "us-career")!;
     expect(us.series[0].loanBalanceUsd).toBeGreaterThan(0);
-    expect(us.series[0].netWorthUsd).toBe(0);
+    // No family cash has been spent, so savings are untouched...
+    expect(us.series[0].savingsUsd).toBe(0);
+    // ...but net worth carries the debt. A borrower is underwater from day
+    // one, and a model that reported 0 here would be flattering the degree.
+    expect(us.series[0].netWorthUsd).toBe(-us.series[0].loanBalanceUsd);
+  });
+
+  it("counts interest capitalised during study into the degree cost", () => {
+    // Interest accruing while enrolled is capitalised and then repaid as
+    // principal. Counting only repayment-phase interest understated the cost.
+    const noStudyInterest = computeDegreeRoi(
+      input({ loanShare: 1, loanRatePct: 0 })
+    ).scenarios.find((s) => s.id === "us-career")!;
+    const withStudyInterest = computeDegreeRoi(
+      input({ loanShare: 1, loanRatePct: 10 })
+    ).scenarios.find((s) => s.id === "us-career")!;
+    expect(withStudyInterest.totalDegreeCostUsd).toBeGreaterThan(
+      noStudyInterest.totalDegreeCostUsd
+    );
+  });
+
+  it("reports any loan still outstanding at the horizon", () => {
+    const shortHorizon = computeDegreeRoi(
+      input({ loanShare: 1, loanTermYears: 15, horizonYears: 5 })
+    ).scenarios.find((s) => s.id === "us-career")!;
+    expect(shortHorizon.loanOutstandingAtHorizonUsd).toBeGreaterThan(0);
+
+    const fullyRepaid = computeDegreeRoi(
+      input({ loanShare: 1, loanTermYears: 5, horizonYears: 12 })
+    ).scenarios.find((s) => s.id === "us-career")!;
+    expect(fullyRepaid.loanOutstandingAtHorizonUsd).toBe(0);
   });
 
   it("pays the loan down to zero over the term", () => {
