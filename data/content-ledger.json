@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-19",
+  "updated": "2026-08-20",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -133,6 +133,54 @@
       "opened": "2026-08-19",
       "nextStep": "VFS USA-India checklist says PoA attested only after apostille; Seattle CGI page says notarised is enough for Indian passport holders. Resolve the conflict and tighten consularRoute step 4.",
       "evidence": "src/data/nriPowerOfAttorneyData.ts consularRoute"
+    },
+    {
+      "id": "student-f-1-cluster-shipped-5",
+      "title": "Student/F-1 cluster shipped: 5 new /education pages + Part A upgrades",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-20",
+      "nextStep": "Request GSC indexing for all 5 new URLs and the 6 upgraded ones",
+      "evidence": "npm run indexnow"
+    },
+    {
+      "id": "100k-h-1b-fee-status-is",
+      "title": "$100K H-1B fee status is litigation-dependent — re-verify monthly",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-20",
+      "nextStep": "Check if First Circuit ruled on appeal, and whether Proclamation 10973 lapsed on 2026-09-20 or was extended; update h1bProclamationFee.statusLine",
+      "evidence": "src/data/studentClusterData.ts"
+    },
+    {
+      "id": "proposed-100k-opt-fee-watch-for",
+      "title": "Proposed $100K OPT fee — watch for an actual published rule",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-20",
+      "nextStep": "DHS agenda lists Feb 2027; if a rule publishes, flip optProposedFee.status from 'proposed' and update every page that renders it",
+      "evidence": "src/data/studentClusterData.ts"
+    },
+    {
+      "id": "semrush-mcp-out-of-api-units",
+      "title": "Semrush MCP out of API units — competitor gap analysis done via live SERP recon instead",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-20",
+      "nextStep": "Top up Semrush API units at semrush.com/mcp-access to restore keyword/organic reports"
+    },
+    {
+      "id": "part-a-leftovers-a8-college-tuition",
+      "title": "Part A leftovers: A8 college-tuition-2025 retitle, A10 H-1B vs F-1 grace crosslink, A11 press-kit link",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-20",
+      "nextStep": "A8 refresh 2025->2026 data; A10 add F-1 vs H-1B 60-day grace paragraph; A11 add student hub link to /press once B1 has traction"
     },
     {
       "id": "mobile-audit-education-gpa-calculator-overflows",

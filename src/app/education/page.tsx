@@ -12,6 +12,7 @@ import {
   EDUCATION_DISCLAIMER,
 } from "@/data/siteWideVerifiedNumbers";
 import { eduCalcs, eduArticleSlugs } from "@/lib/education";
+import { studentPageList } from "@/lib/studentCluster";
 import { getArticle } from "@/lib/articles";
 import { site } from "@/lib/site";
 import {
@@ -196,6 +197,50 @@ export default function EducationHubPage() {
                 </p>
                 <span className="mt-2.5 text-xs font-semibold text-brand-600">
                   Open tool{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* International students (F-1 cluster) */}
+      <section className="bg-white py-10 sm:py-12">
+        <Container>
+          <SectionHeading
+            eyebrow="On an F-1 visa"
+            title="For international students"
+            description="Tax, OPT deadlines, CPT decisions and status emergencies — with the numbers checked and the policy status stated, because most of this topic is documented wrong."
+          />
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {studentPageList.map((p) => (
+              <Link
+                key={p.slug}
+                href={p.path}
+                className="group flex flex-col rounded-xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className={`flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br ${p.accent} text-lg shadow-sm`}
+                  >
+                    {p.icon}
+                  </span>
+                  <span className="text-[0.625rem] font-semibold uppercase tracking-wider text-ink-400">
+                    {p.kind === "tool" ? "Calculator" : "Guide"}
+                  </span>
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold leading-snug tracking-tight text-ink-900 transition-colors group-hover:text-brand-600">
+                  {p.label}
+                </h3>
+                <p className="mt-1 line-clamp-3 flex-1 text-xs leading-relaxed text-ink-500">
+                  {p.description}
+                </p>
+                <span className="mt-2.5 text-xs font-semibold text-brand-600">
+                  Open{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-0.5">
                     →
                   </span>

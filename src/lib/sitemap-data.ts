@@ -30,6 +30,7 @@ import { calculators } from "@/lib/calculators";
 import { tools } from "@/lib/tools";
 import { getToolHubContent } from "@/lib/toolHubContent";
 import { eduCalcs } from "@/lib/education";
+import { studentPageList } from "@/lib/studentCluster";
 import { clusterPages, clusterPath } from "@/lib/passportCluster";
 import { ociGuides, ociGuidePath } from "@/lib/ociGuides";
 import { itrPages, itrPath } from "@/lib/itrCluster";
@@ -176,6 +177,10 @@ export const toolsEntries: SitemapEntry[] = [
     e(`/calculators/${c.slug}`, 0.8, "monthly", pageDate(c.dataChecked)),
   ),
   ...eduCalcs.map((c) => e(`/education/${c.slug}`, 0.8, "monthly")),
+  // International-student cluster (F-1 / OPT / CPT / SEVIS). These live under
+  // /education but are not lib/education calculators, so they need their own
+  // entries here.
+  ...studentPageList.map((p) => e(p.path, 0.8, "monthly")),
   // Category hub that groups the visa/green-card tools. It lives under /tools/
   // but is a hand-built page rather than a lib/tools entry, so the map above
   // never picked it up and it was absent from every sitemap.

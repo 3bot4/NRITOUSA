@@ -24,6 +24,9 @@ import {
 } from "@/lib/eadCluster";
 import { eadProcessingData as D, EAD_DATA_NOTE, eadSnapshotRows, eadSnapshotSources, EAD_ESTIMATE_VERIFIED, EAD_ESTIMATE_DISCLAIMER } from "@/data/eadProcessingData";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import Link from "next/link";
+import { FactTable } from "@/components/education/FactTable";
+import { optRules, STUDENT_DATA_VERIFIED } from "@/data/studentClusterData";
 
 const PATH = "/ead-processing-time";
 const TITLE = "EAD Processing Time 2026: Work Permit Timeline & Auto-Extension";
@@ -109,6 +112,80 @@ export default function Page() {
         </section>
 
         {/* category reference */}
+        {/* F-1 OPT EADs — (c)(3) categories */}
+        <section id="opt-ead" className="scroll-mt-24 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-3xl space-y-5">
+              <h2 className="text-xl font-bold tracking-tight text-ink-900">
+                F-1 OPT and STEM OPT EADs — the (c)(3) categories
+              </h2>
+              <p className="text-sm leading-relaxed text-ink-700">
+                OPT EADs behave differently from most other I-765 categories in
+                three ways that matter, and each one costs students time or
+                money when it is missed.
+              </p>
+
+              <FactTable
+                caption="What is different about an OPT EAD"
+                headers={["", "F-1 OPT / STEM OPT (c)(3)", "Most other EAD categories"]}
+                rows={[
+                  [
+                    "Automatic extension on renewal",
+                    "No — OPT categories are excluded",
+                    "Often yes, for eligible renewal categories",
+                  ],
+                  [
+                    "Premium processing",
+                    "Available for many OPT and STEM OPT requests",
+                    "Not available for most categories",
+                  ],
+                  [
+                    "Filing window",
+                    `Opens ${optRules.filingWindowDaysBefore} days before your program end date, closes ${optRules.filingWindowDaysAfter} days after`,
+                    "Generally tied to the underlying application",
+                  ],
+                  [
+                    "Can you work while pending?",
+                    "No — you must wait for the card and its start date",
+                    "Sometimes, under an automatic extension",
+                  ],
+                  [
+                    "Missing the deadline",
+                    "Post-completion OPT is lost permanently",
+                    "Usually refileable",
+                  ],
+                ]}
+                highlightRows={[0, 4]}
+                note={`Category rules verified ${STUDENT_DATA_VERIFIED}. Confirm your specific category on USCIS before relying on any of this.`}
+              />
+
+              <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                <h3 className="text-sm font-bold text-ink-900">
+                  The danger window
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                  Between your program end date and the start date printed on
+                  your EAD, you have no work authorisation. Your program has
+                  ended, your status has transitioned, and you cannot legally
+                  work — however long USCIS takes. There is no automatic
+                  extension to fall back on for OPT, which is why filing on the
+                  first day of your window is the single highest-value thing you
+                  can do: every week of processing time comes directly out of
+                  your job-search runway, and your{" "}
+                  {optRules.initialUnemploymentDays}-day unemployment clock
+                  starts on your EAD start date regardless.
+                </p>
+                <Link
+                  href="/education/opt-calculator"
+                  className="mt-3 inline-block text-sm font-semibold text-brand-600 underline"
+                >
+                  Map your OPT dates and unemployment allowance →
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto max-w-3xl">

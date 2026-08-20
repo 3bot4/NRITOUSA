@@ -9,6 +9,15 @@ import { getEduCalc } from "@/lib/education";
 import { getEducationContent } from "@/lib/educationContent";
 import { collegeTypes } from "@/lib/education-data";
 import { formatUsd as usd } from "@/lib/format";
+import Link from "next/link";
+import { FactTable } from "@/components/education/FactTable";
+import {
+  f1VisaFees,
+  f1VisaTotalUsd,
+  f2DependentAddOnUsd,
+  indiaTcs,
+  STUDENT_DATA_VERIFIED,
+} from "@/data/studentClusterData";
 import { site } from "@/lib/site";
 import {
   absoluteUrl,
@@ -155,6 +164,59 @@ export default function TuitionCalculatorPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </Container>
+      </section>
+
+      {/* Visa fee stack — targets "sevis fee" */}
+      <section id="visa-fees" className="scroll-mt-24 py-12 sm:py-16">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading
+              eyebrow="Before you even enrol"
+              title={`The F-1 visa fee stack: ${usd(f1VisaTotalUsd)}`}
+              description="Three separate fees to three separate places, none of which appear on any university's cost sheet. Budget them on top of tuition."
+            />
+            <FactTable
+              caption="What an F-1 applicant pays to get the visa"
+              headers={["Fee", "Amount", "Per dependent?", "Refundable?"]}
+              nowrapCol={1}
+              rows={f1VisaFees.map((f) => [
+                <span key={f.id}>
+                  {f.label}
+                  <span className="mt-0.5 block text-xs font-normal text-ink-500">
+                    {f.note}
+                  </span>
+                </span>,
+                usd(f.amountUsd),
+                f.perDependent ? "Yes" : "No",
+                f.refundable,
+              ])}
+              note={`Total for a single F-1 applicant: ${usd(f1VisaTotalUsd)}. Each F-2 dependent adds a further ${usd(f2DependentAddOnUsd)} — the SEVIS fee is charged once, but the application and integrity fees repeat per person. Verified ${STUDENT_DATA_VERIFIED}.`}
+            />
+
+            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+              <h3 className="text-sm font-bold text-ink-900">
+                Sending the money from India: what TCS costs you
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                {indiaTcs.headline} Above the{" "}
+                {indiaTcs.thresholdLabel} annual threshold, self-funded education
+                remittances now attract{" "}
+                {indiaTcs.educationSelfFunded.fromApr2026Pct}% rather than{" "}
+                {indiaTcs.educationSelfFunded.beforeApr2026Pct}%.{" "}
+                {indiaTcs.loanCondition}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                <strong>And it is not a cost.</strong> {indiaTcs.creditNote}
+              </p>
+              <Link
+                href="/calculators/remittance-tcs-cost"
+                className="mt-3 inline-block text-sm font-semibold text-brand-600 underline"
+              >
+                Estimate the TCS and total transfer cost →
+              </Link>
+            </div>
           </div>
         </Container>
       </section>

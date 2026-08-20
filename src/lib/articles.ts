@@ -1841,6 +1841,19 @@ button: Read the DTAA guide
 href: /articles/double-taxation-dtaa-india-usa
 :::
 
+## Coming from F-1 or OPT? Your rules just changed
+If this is your first return after moving from student status, three things are different from every return you have filed before — and each one catches people out.
+
+**FICA now applies.** As an F-1 student who was a nonresident, your wages were exempt from Social Security and Medicare. On H-1B that exemption is gone: 7.65% comes out of every paycheck. If you are still owed a FICA refund from an OPT year where an employer withheld it in error, that is a separate claim you can still pursue — see the [F-1 tax calculator](/education/f1-tax-calculator) for the process.
+
+**Your residency may have flipped.** F-1 students are exempt individuals for five calendar years, and the change of status to H-1B does not by itself make you a resident — but once your days start counting, the Substantial Presence Test can tip you over mid-year. That produces a **dual-status year**: nonresident for part of it, resident for the rest, taxed under different rules for each period, and not eligible for joint filing. Work out which side of the line you are on with the [substantial presence test guide](/articles/substantial-presence-test-explained) before you pick a form.
+
+**The India treaty deduction stops.** If you were claiming the standard deduction on Form 1040-NR under Article 21(2) as a student, that specific benefit is a student provision. As a resident filing Form 1040 you get the ordinary standard deduction instead — which is usually better — but the mechanism is different and your software will handle it differently.
+
+:::warn
+The year you become a resident is the year your Indian income becomes reportable — savings interest, mutual funds, rental income, all of it. It was invisible to the IRS while you were a nonresident. This is the single most common omission on a first H-1B return.
+:::
+
 ## The bottom line
 File on time, disclose everything, and keep your documents for seven years. The one caveat: the moment India income, dual-status, or RSUs enter the picture, hire an NRI-focused CPA. Do that and the IRS becomes a non-event.`,
   },
@@ -2921,8 +2934,39 @@ A year in which you're a nonresident for part of it and a resident for the rest 
 ### Does meeting the test mean I report my Indian income?
 Yes. Once you're a resident for tax purposes, you report worldwide income, including Indian income, with foreign tax credits to prevent double taxation.
 
+## Run your own numbers
+The formula is simple to state and easy to get wrong, because the exempt-year rule interacts with it in a way most calculators ignore. The [F-1 student tax calculator](/education/f1-tax-calculator) applies the exempt-individual logic correctly, shows the weighted day arithmetic, and tells you which form you file — then continues into the FICA refund and the treaty deduction.
+
+## "Resident alien for tax purposes" — what actually changes
+This phrase causes real confusion, because it has nothing to do with a green card or with being a resident in any immigration sense. It is a tax classification produced by the day-counting formula above, and it can apply to someone on an F-1 or H-1B visa who has never held permanent residence.
+
+Once you flip, five things change at once:
+
+:::compare
+left: As a nonresident (Form 1040-NR)
+right: As a resident (Form 1040)
+✗ US-source income only — Indian income is invisible to the IRS
+✗ No standard deduction, unless you are an Indian student claiming the treaty
+✗ Cannot file jointly with a spouse
+✗ No FBAR or FATCA obligation arising from this status alone
+✓ Worldwide income — Indian salary, FD interest, mutual funds and rent all reportable
+✓ Full standard deduction
+✓ Can file jointly, often a large saving
+✓ FBAR and FATCA apply once the thresholds are crossed
+:::
+
+:::warn
+The flip year is the expensive one. People report their US wages correctly and forget the Indian side entirely — the savings account still earning interest, the mutual funds still growing, the flat still being rented out. That income was invisible to the IRS while you were a nonresident. From your flip year it is reportable, and the [foreign tax credit](/articles/double-taxation-dtaa-india-usa) exists to stop you being taxed twice on it.
+:::
+
+If your first counting year is also the year you changed status, you may have a **dual-status year** — nonresident for part of it, resident for the rest. Dual-status returns are genuinely complicated, cannot be filed jointly, and are worth paying a professional to handle.
+
 ## The bottom line
-The Substantial Presence Test, not your visa, decides whether the US taxes your worldwide income. Count this year's days fully, last year's at a third, and the year before at a sixth — clear 183 (and 31 this year) and you're a resident. Remember the 5-year F-1 and 2-year J-1 exemptions, watch for a dual-status first year, and once you're a resident, get your [worldwide income](/articles/indian-income-us-tax-return) and [FBAR](/articles/fbar-fatca-nri-guide) reporting right.`,
+The Substantial Presence Test, not your visa, decides whether the US taxes your worldwide income. Count this year's days fully, last year's at a third, and the year before at a sixth — clear 183 (and 31 this year) and you're a resident. Remember the 5-year F-1 and 2-year J-1 exemptions, watch for a dual-status first year, and once you're a resident, get your [worldwide income](/articles/indian-income-us-tax-return) and [FBAR](/articles/fbar-fatca-nri-guide) reporting right.
+
+:::cta
+Not sure which side of the line you're on? The [F-1 student tax calculator](/education/f1-tax-calculator) runs the test with exempt-year logic, then estimates your FICA refund and your treaty deduction.
+:::`,
   },
   {
     slug: "indian-ppf-taxable-usa",
@@ -4692,6 +4736,18 @@ F-1 students can work **on-campus up to 20 hours/week** during the semester. Off
 ## Insurance and taxes
 Most universities require health insurance — compare the school plan vs alternatives in [health insurance basics](/articles/health-insurance-basics-immigrants). Even with little income, students usually must file a tax form (often Form 8843, plus a return if you earned money).
 
+Two things worth knowing before your first filing season. **Form 8843 is required every year you are an exempt individual**, including years you earned nothing at all — skipping it is one of the most common student mistakes. And if you are a student from India, **Article 21(2) of the US-India tax treaty lets you claim the standard deduction on Form 1040-NR**, which almost no other nationality can do. On a $35,000 W-2 that is worth roughly $1,900 in tax.
+
+## Tools for international students
+Free, no signup, nothing stored — all four run entirely in your browser.
+
+:::steps
+[F-1 student tax calculator](/education/f1-tax-calculator) — whether you file 1040-NR or 1040, the FICA refund your employer may owe you, and the US-India treaty standard deduction most students never claim.
+[OPT calculator](/education/opt-calculator) — every deadline from filing window to grace period, plus an unemployment counter that uses the real 150-day aggregate cap.
+[CPT vs OPT](/education/cpt-vs-opt) — which applies to you, and the 12-month full-time CPT rule that quietly eliminates OPT eligibility.
+[US degree ROI calculator](/education/us-degree-roi-calculator) — ten years across four paths, plus what US work experience does for your options outside the US.
+:::
+
 :::key
 - Open a fee-free student checking + high-yield savings account
 - Build a budget around tuition, rent, food, and insurance
@@ -4751,6 +4807,16 @@ Not always. Some issuers accept an ITIN or passport; others require an SSN you c
 
 ## Why this matters after graduation
 A year of clean credit history makes the jump to OPT/H-1B life smoother — renting an apartment, financing a car, and qualifying for better cards. It connects directly to [OPT and H-1B financial planning](/articles/opt-h1b-financial-planning-students).
+
+## Tools for international students
+Free, no signup, nothing stored — all four run entirely in your browser.
+
+:::steps
+[F-1 student tax calculator](/education/f1-tax-calculator) — whether you file 1040-NR or 1040, the FICA refund your employer may owe you, and the US-India treaty standard deduction most students never claim.
+[OPT calculator](/education/opt-calculator) — every deadline from filing window to grace period, plus an unemployment counter that uses the real 150-day aggregate cap.
+[CPT vs OPT](/education/cpt-vs-opt) — which applies to you, and the 12-month full-time CPT rule that quietly eliminates OPT eligibility.
+[US degree ROI calculator](/education/us-degree-roi-calculator) — ten years across four paths, plus what US work experience does for your options outside the US.
+:::
 
 :::key
 - Secured cards, newcomer student cards, or authorized-user status all work
@@ -4837,8 +4903,39 @@ It depends on the Substantial Presence Test and your years on F-1. Students are 
 ### How big should my emergency fund be on a visa?
 Aim for 3–6 months of expenses. The H-1B 60-day grace period between jobs makes this cushion especially important.
 
+## The OPT to H-1B timeline, and where cap-gap fits
+The handover between OPT and H-1B is the part students plan for least and worry about most. The mechanics:
+
+:::steps
+Your employer registers you in the H-1B lottery in March. Registration is a small fee and a form — being registered is not being selected.
+If selected, the petition is filed with an October 1 start date. That gap between selection and start is where cap-gap matters.
+**Cap-gap** automatically extends your F-1 status and, if your OPT was still valid when the petition was filed, your work authorisation — through September 30. It is what stops you falling out of status between an OPT end date in May and an H-1B start date in October.
+If you are not selected, you are back to your remaining OPT time. This is where a STEM extension is worth having, because it buys two more lottery attempts.
+:::
+
+:::warn
+Cap-gap only helps if your OPT is still valid when the petition is filed. If your OPT expired in February and the petition goes in April, there is nothing to extend. Map your dates with the [OPT calculator](/education/opt-calculator) before you assume you are covered.
+:::
+
+## What the fee headlines actually mean for you
+Two $100,000 figures have dominated student conversation. Both are widely misreported, and the money you plan around should reflect what is actually true as of the date on this page.
+
+:::good
+**The $100,000 H-1B proclamation payment is not being collected.** A federal court vacated the policy in June 2026, and the First Circuit declined to reinstate it in July 2026 while the government's appeal proceeds. It also never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it was an employer obligation, not a worker's cost.
+:::
+
+:::bad
+**The $100,000 OPT fee is not a rule.** It was press reporting in July 2026 describing an internal discussion. No proposed rule has been published, no amount exists in regulation, and nobody has been charged. Treat any page presenting it as a cost you will pay as out of date.
+:::
+
+Neither figure belongs in your personal budget. What both could affect — if the first is reinstated on appeal or the second ever materialises — is employer willingness to sponsor, which reaches you through the job market rather than through your bank account. The [US degree ROI calculator](/education/us-degree-roi-calculator) models them that way, as sponsorship shocks rather than bills.
+
 ## The bottom line
-Your first real paycheck is a fork in the road. Capture the match, keep credit strong, build a cushion for visa gaps, and start investing early — the habits you set during OPT and early H-1B shape your wealth for decades.`,
+Your first real paycheck is a fork in the road. Capture the match, keep credit strong, build a cushion for visa gaps, and start investing early — the habits you set during OPT and early H-1B shape your wealth for decades.
+
+:::cta
+Two tools for this transition: the [OPT calculator](/education/opt-calculator) for every deadline and your unemployment allowance, and the [F-1 tax calculator](/education/f1-tax-calculator) for the residency and FICA questions that change as you move from F-1 to H-1B.
+:::`,
   },
 
   /* ============================================================ *

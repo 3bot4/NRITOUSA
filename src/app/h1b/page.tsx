@@ -22,6 +22,13 @@ import {
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { h1bChildPages } from "@/lib/h1bCluster";
+import { PolicyCallout, FactTable } from "@/components/education/FactTable";
+import {
+  h1bProclamationFee,
+  optProposedFee,
+  STUDENT_DATA_VERIFIED,
+} from "@/data/studentClusterData";
+import { getH1bPremiumFee } from "@/lib/premiumProcessing";
 
 const PAGE_PATH = "/h1b";
 const UPDATED = "2026-06-16";
@@ -281,6 +288,143 @@ export default function H1bHubPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* H-1B fees, including the $100,000 proclamation payment */}
+      <section id="fees" className="py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-3xl space-y-5">
+            <h2 className="text-xl font-bold tracking-tight text-ink-900">
+              H-1B fees in 2026: the complete stack
+            </h2>
+            <p className="text-sm leading-relaxed text-ink-700">
+              Almost every H-1B cost falls on the employer, not on you. That is
+              not a courtesy — the regulations prohibit an employer passing most
+              of these on to the worker, and an arrangement where you
+              &ldquo;repay&rdquo; the filing fees is generally unlawful. The one
+              number that has dominated the conversation, the $100,000
+              proclamation payment, is also the one that is not currently being
+              collected at all.
+            </p>
+
+            <PolicyCallout
+              label={h1bProclamationFee.label}
+              value={h1bProclamationFee.value}
+              status={h1bProclamationFee.status}
+              statusLine={h1bProclamationFee.statusLine}
+              detail={h1bProclamationFee.detail}
+              sourceLabel={h1bProclamationFee.source.label}
+              sourceHref={h1bProclamationFee.source.href}
+              lastVerified={h1bProclamationFee.lastVerified}
+            />
+
+            <FactTable
+              caption="Who pays what on a cap-subject H-1B petition"
+              headers={["Item", "Who pays", "Notes"]}
+              rows={[
+                [
+                  "Lottery registration",
+                  "Employer",
+                  "Paid per registration during the March window. Being registered is not being selected.",
+                ],
+                [
+                  "Form I-129 base filing fee",
+                  "Employer",
+                  "Set by the USCIS fee schedule and varies by employer size and type.",
+                ],
+                [
+                  "ACWIA training fee",
+                  "Employer",
+                  "Scales with headcount. Certain institutions, including universities and non-profit research organisations, are exempt.",
+                ],
+                [
+                  "Fraud prevention and detection fee",
+                  "Employer",
+                  "Charged on initial petitions and on change-of-employer petitions.",
+                ],
+                [
+                  "Premium processing (I-907)",
+                  "Employer or worker",
+                  `${getH1bPremiumFee().feeDisplay} for 15 business days of USCIS action. This is the one fee a worker may lawfully pay, and it buys speed, not approval.`,
+                ],
+                [
+                  "Attorney fees",
+                  "Employer",
+                  "Generally the employer's obligation for the petition itself.",
+                ],
+                [
+                  "$100,000 proclamation payment",
+                  "Employer — and not currently collected",
+                  "Vacated in June 2026 and not reinstated on appeal. It never applied to a change of status from F-1 to H-1B inside the US.",
+                ],
+              ]}
+              highlightRows={[6]}
+              note={`Fee amounts change. Verify the current schedule on the USCIS fee calculator before filing. Status verified ${STUDENT_DATA_VERIFIED}.`}
+            />
+
+            <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+              <h3 className="text-sm font-bold text-ink-900">
+                What this means if you are a student right now
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                Two $100,000 figures are circulating in student groups and
+                neither is a cost you would pay. The H-1B payment above is
+                vacated and was always an employer obligation that did not reach
+                change-of-status cases. The other — a reported OPT fee — is not
+                a rule at all.
+              </p>
+              <div className="mt-3">
+                <PolicyCallout
+                  label={optProposedFee.label}
+                  value={optProposedFee.value}
+                  status={optProposedFee.status}
+                  statusLine={optProposedFee.statusLine}
+                  sourceLabel={optProposedFee.source.label}
+                  sourceHref={optProposedFee.source.href}
+                  lastVerified={optProposedFee.lastVerified}
+                />
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                If you are weighing whether a US degree still makes sense, model
+                it rather than react to headlines — the{" "}
+                <Link
+                  href="/education/us-degree-roi-calculator"
+                  className="font-semibold text-brand-600 underline"
+                >
+                  US degree ROI calculator
+                </Link>{" "}
+                treats both figures as sponsorship effects, which is the only
+                channel through which they could actually reach you.
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                {
+                  href: "/education/opt-calculator",
+                  label: "OPT calculator",
+                  desc: "Filing window, STEM deadline, grace period and the real 150-day aggregate unemployment cap",
+                },
+                {
+                  href: "/education/f1-tax-calculator",
+                  label: "F-1 tax calculator",
+                  desc: "Residency, the FICA refund you may be owed, and the US-India treaty deduction",
+                },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-2xl border border-ink-900/5 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                >
+                  <p className="text-sm font-bold text-ink-900">{l.label}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink-500">
+                    {l.desc}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         </Container>
