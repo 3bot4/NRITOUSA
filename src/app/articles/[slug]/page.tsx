@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
+// Shared long-page navigation. Lives under india-investments/ because that
+// pillar was the first caller; it takes plain { id, label } items and is not
+// specific to that page.
+import ArticleToc from "@/components/india-investments/ArticleToc";
 import ArticleCard from "@/components/ArticleCard";
 import ArticleByline from "@/components/ArticleByline";
 import AuthorBioBox from "@/components/AuthorBioBox";
@@ -21,6 +25,7 @@ import {
   articlePath,
   breadcrumbJsonLd,
   extractFaq,
+  extractHeadings,
   faqJsonLd,
   jsonLdGraph,
   pageMetadata,
@@ -94,6 +99,7 @@ export default function ArticlePage({
   const topic = getTopic(article.topic);
   const related = getRelatedArticles(article);
   const faqs = extractFaq(article.content);
+  const headings = article.toc ? extractHeadings(article.content) : [];
 
   const jsonLd = jsonLdGraph(
     articleJsonLd(article),
@@ -170,6 +176,11 @@ export default function ArticlePage({
             </div>
           </Container>
         </header>
+
+        {/* Long-page navigation, opt-in per article (see Article.toc). The H2
+            anchors it links to are stamped by ArticleBody from the same
+            headingId() helper, so the two cannot drift. */}
+        {article.toc && headings.length > 2 && <ArticleToc items={headings} />}
 
         {/* Body */}
         <div className="py-8 sm:py-10">

@@ -97,6 +97,67 @@ export function stripInlineMarkdown(text: string): string {
     .trim();
 }
 
+/**
+ * Slugify a heading into a stable anchor id. Shared by ArticleBody (which
+ * stamps the id onto the rendered <h2>) and the article route (which builds the
+ * table of contents), so the two can never disagree about what an anchor is
+ * called — a mismatch would render a ToC of links that scroll nowhere.
+ */
+export function headingId(text: string): string {
+  return stripInlineMarkdown(text)
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+export interface HeadingItem {
+  id: string;
+  label: string;
+}
+
+/**
+ * Shorten a heading for a table-of-contents rail, which is ~224px wide.
+ *
+ * Section headings on this site are written as search questions ("How Social
+ * Security credits work — and why 40 credits is the whole game"), which reads
+ * well as an <h2> and wraps to four lines in a ToC. The clause before the dash
+ * is almost always the navigable part, so long headings are cut there. The id
+ * is unaffected — only the visible label shortens.
+ */
+function tocLabel(heading: string): string {
+  if (heading.length <= 44) return heading;
+  const [head] = heading.split(/\s+[—–]\s+/);
+  return head && head.length >= 12 && head.length < heading.length
+    ? head
+    : heading;
+}
+
+/**
+ * The article's H2s, in order, as { id, label } for a table of contents.
+ * Duplicate slugs get a numeric suffix so every anchor stays unique — the same
+ * de-duplication ArticleBody applies when rendering. Ids come from the FULL
+ * heading text; only the label is shortened for display.
+ */
+export function extractHeadings(content: string): HeadingItem[] {
+  const seen = new Map<string, number>();
+  return content
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.startsWith("## "))
+    .map((l) => {
+      const heading = stripInlineMarkdown(l.replace(/^##\s+/, ""));
+      const base = headingId(heading);
+      const n = seen.get(base) ?? 0;
+      seen.set(base, n + 1);
+      return {
+        id: n === 0 ? base : `${base}-${n + 1}`,
+        label: tocLabel(heading),
+      };
+    });
+}
+
 export interface FaqItem {
   question: string;
   answer: string;

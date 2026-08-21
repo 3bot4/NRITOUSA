@@ -1193,6 +1193,7 @@ Social Security rewards the long haul. Cross the 40-credit (10-year) line and yo
       "Cross-border benefits",
       "NRI tax",
     ],
+    toc: true,
     slug: "social-security-40-credits-h1b-nri",
     title:
       "40 Credits of Social Security: What Your Statement Actually Means If You Leave the U.S.",
@@ -1247,12 +1248,17 @@ Four a year, forty needed — which leads to the sentence worth reading twice. *
 
 And the hard edge: **at 38 or 39 credits, nothing happens.** Not a reduced benefit, not a partial one, not a refund. Eligibility is binary at 40, so someone who worked nine and a half years and someone who worked six weeks sit in the same position on their own record. If your exit date lands near the line: **finishing the year that gets you to 40 is worth more than anything else on your leaving checklist.**
 
+| Credits earned | Your eligibility | Payable while you live in India | What to do |
+|---|---|---|---|
+| **0–39** | No retirement benefit on your own record | Nothing to pay | Credits stay on file for life — count precisely and weigh staying long enough to cross 40 |
+| **40 or more** | Qualified for life; amount still set by the 35-year average | Yes, via Country List 4 | Confirm the final year posts, then set up SSA banking and address before you go |
+
 :::warn
 title: There is no U.S.–India totalization agreement
 - The U.S. has agreements with roughly 30 countries that let you **combine credits across both systems** — someone with 6 U.S. and 20 German years can use the German years to reach U.S. insured status. **India has none, and none is in force as of this review.**
 - Indian **EPF/EPS** service cannot top up a short U.S. record, and U.S. credits cannot top up an Indian entitlement.
 - You pay U.S. Social Security tax on H-1B/L-1 wages with **no exemption** and no offset.
-- Leave at 30 credits and there is no second system to borrow the other 10 from.
+- Leave at 30 credits and there is no second system to borrow the other 10 from — which is why your portable [401(k) and IRA](/articles/what-happens-to-401k-leaving-usa) carry more of the load than they would for a colleague who stays.
 :::
 
 So: yes, **H-1B holders pay Social Security tax** — 6.2% from you, 6.2% from your employer — and yes, **H-1B holders are eligible for Social Security** on the same terms as anyone else at 40 credits. Visa status affects nothing about insured status. F-1 and J-1 students treated as nonresident aliens are generally exempt, so those years usually earn no credits.
@@ -1301,18 +1307,17 @@ The first twist follows from everything above: **all of these are percentages of
 
 The second twist is harder:
 
-:::info
-title: The 5-year residency requirement for non-citizen dependants
-A **non-citizen spouse, child or parent living abroad** must satisfy a test entirely separate from your 40 credits: **5 years of U.S. residence — during which the family relationship already existed.**
-
-For a spouse that means five years of residence *while married to you*; for a child, five years *as your child*. The years need not be continuous and separate periods add up. But **years in the U.S. before the marriage do not count**, and visits are not residence — the standard is a genuine, enduring attachment to the U.S.
-
-Children who cannot meet it personally are generally **deemed** to meet it if both parents each do, which rescues most families whose children were born late in the U.S. stay or after the return.
-
-It applies to dependants first eligible after December 1984, is waived where the worker died in U.S. military service, and does not apply to residents of totalization-agreement countries — **which does not help an Indian family.**
+:::warn
+title: The 5-year residency test that can block your spouse entirely
+- A **non-citizen spouse, child or parent living abroad** must pass a test entirely separate from your 40 credits: **five years of U.S. residence, during which the family relationship already existed.**
+- For a spouse that means five years *while married to you*; for a child, five years *as your child*. Separate periods add up — but **years in the U.S. before the marriage do not count**, and visits are not residence.
+- **Leave before your spouse completes those five years and the spousal benefit can be blocked outright** — entitled on paper, unpayable in practice.
+- It applies to dependants first eligible after December 1984, is waived where the worker died in U.S. military service, and does not apply in totalization-agreement countries — **which does not help an Indian family.**
 :::
 
-The failure case is not unusual. An engineer works here twelve years, clears 40 credits, returns to India, and marries there. His wife has never lived in the U.S. as his wife. On paper she is entitled to a spousal benefit at her full retirement age; in practice she cannot be paid it in India, with zero qualifying years of residence inside the marriage. Entitled, and unpayable.
+One reprieve: children who cannot meet the test personally are generally **deemed** to meet it if both parents each do — which rescues most families whose children were born late in the U.S. stay, or after the return.
+
+The failure case is not unusual. An engineer works here twelve years, clears 40 credits, returns to India, and marries there. His wife has never lived in the U.S. as his wife, so although she is entitled to a spousal benefit at her full retirement age, she cannot be paid it in India — zero qualifying years of residence inside the marriage.
 
 If your spouse's benefit is load-bearing, **the 5-year clock is a separate thing to track from your credit count** — and one of the few variables you can still influence by choosing when to leave. More on the dependant rules in our guide on [do you keep Social Security if you return to India](/articles/social-security-benefits-leaving-us).
 
@@ -1340,7 +1345,7 @@ Three rules stack here, and mixing them up is the usual source of confusion.
 
 **2. What the treaty does and does not do.** Residents of some treaty countries — Canada, Egypt, Germany, Ireland, Israel, Italy, Japan, Romania and the United Kingdom — are fully exempt from U.S. tax on these benefits. **India is not one of them for ordinary workers.** Its carve-out is far narrower: benefits paid to someone both a **resident and a national of India** are exempt only to the extent they are **based on service performed for the U.S. federal, state or local government.** A private-sector H-1B or L-1 career produces none of that, so the 25.5% applies in full. Even where part of a benefit qualifies, SSA withholds on the whole amount anyway — its systems cannot withhold at a variable rate — and the refund is claimed from the IRS.
 
-**3. Which country gets to tax it.** **Article 20(2) of the U.S.–India tax treaty** provides that social security benefits and other public pensions paid by one country to a resident of the other are **taxable only in the paying state — here, the United States.** In principle India should not tax the benefit again; in practice the Indian reporting mechanics are a question for an Indian CA who handles returning-NRI returns, not something to infer from treaty text.
+**3. Which country gets to tax it.** **Article 20(2) of the U.S.–India tax treaty** provides that social security benefits and other public pensions paid by one country to a resident of the other are **taxable only in the paying state — here, the United States.** It is the mirror image of the private-pension rule covered in our [US–India DTAA guide](/articles/double-taxation-dtaa-india-usa). In principle India should not tax the benefit again; in practice the Indian reporting mechanics are a question for an Indian CA who handles returning-NRI returns, not something to infer from treaty text.
 
 **U.S. citizens and green card holders escape the flat withholding entirely**, and are taxed under ordinary Form 1040 rules wherever they live — up to 85% of benefits included in income at their marginal rate. Often, though not always, better than 25.5% off the top.
 
@@ -1381,7 +1386,7 @@ Fix banking and address first — before you give up your U.S. phone number. Cho
 
 Behind all four is one point: **every additional U.S. year replaces a zero in your 35-year average, so it raises your benefit directly** — while protecting the 40-credit threshold and extending your spouse's residency clock. Nothing else here has that much leverage, and it stays in your control until the day you leave.
 
-For the wider version of this decision — 401(k), property, RNOR timing, health cover — the [return-to-India planning hub](/return-to-india) covers the sequence, and the [NRI wealth checkup](/nri-wealth-checkup) shows which parts of your situation need attention first.
+For the wider version of this decision, the [return-to-India planning hub](/return-to-india) covers the sequence, [what happens to your 401(k) when you leave](/articles/what-happens-to-401k-leaving-usa) handles the retirement account that *is* portable, and the [NRI wealth checkup](/nri-wealth-checkup) shows which parts of your situation need attention first.
 
 ## Frequently asked questions
 

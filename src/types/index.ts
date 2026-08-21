@@ -35,6 +35,12 @@ export interface Article {
   answerFirst?: boolean;
   /** Expertise tags for the author bio box (renders when `answerFirst`). */
   expertiseTags?: string[];
+  /**
+   * Render the long-page table of contents (sticky desktop rail + collapsible
+   * mobile bar). Opt-in per article: most pieces are short enough that a ToC is
+   * chrome rather than navigation, so only genuinely long ones set this.
+   */
+  toc?: boolean;
   slug: string;
   title: string;
   /** SEO <title> override (falls back to `title`). Keep under ~60 chars. */

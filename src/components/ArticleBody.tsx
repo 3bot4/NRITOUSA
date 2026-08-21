@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { headingId } from "@/lib/seo";
 
 /**
  * Light-markdown renderer for article bodies in lib/articles.
@@ -519,6 +520,9 @@ function CtaCard({ lines, keyId }: { lines: string[]; keyId: string }) {
 export default function ArticleBody({ content }: { content: string }) {
   const lines = content.trim().split("\n");
   const elements: React.ReactNode[] = [];
+  // Anchor ids for every H2, de-duplicated the same way extractHeadings() does
+  // so the table of contents and the rendered headings always agree.
+  const seenIds = new Map<string, number>();
 
   let i = 0;
   let para: string[] = [];
@@ -636,12 +640,17 @@ export default function ArticleBody({ content }: { content: string }) {
     }
     if (trimmed.startsWith("## ")) {
       flushPara(`p-${i}`);
+      const heading = trimmed.replace(/^## /, "");
+      const base = headingId(heading);
+      const n = seenIds.get(base) ?? 0;
+      seenIds.set(base, n + 1);
       elements.push(
         <h2
           key={`h2-${i}`}
-          className="mt-8 mb-2.5 text-xl font-bold tracking-tight text-ink-900"
+          id={n === 0 ? base : `${base}-${n + 1}`}
+          className="mt-8 mb-2.5 scroll-mt-24 text-xl font-bold tracking-tight text-ink-900"
         >
-          {renderInline(trimmed.replace(/^## /, ""), `h2-${i}`)}
+          {renderInline(heading, `h2-${i}`)}
         </h2>
       );
       i += 1;
