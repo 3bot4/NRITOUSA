@@ -1199,29 +1199,29 @@ Social Security rewards the long haul. Cross the 40-credit (10-year) line and yo
       "40 Credits of Social Security: What Your Statement Actually Means If You Leave the U.S.",
     seoTitle: "40 Credits of Social Security If You Leave the U.S.",
     seoDescription:
-      "Your Social Security statement assumes you work until 67. What 40 credits, the 35-year formula, spousal benefits and payments to India really mean for NRIs.",
+      "Your Social Security statement assumes you work until 67. What 40 credits really establish, the 35-year formula, spousal benefits and payments to India for NRIs.",
     excerpt:
-      "You have 40 credits and a monthly estimate on ssa.gov. Most people misread both. Here's the 35-year formula, the payments-abroad rules, and the residency test that quietly cancels your spouse's benefit.",
+      "You have 40 credits and a monthly estimate on ssa.gov. Most people misread both. Here's what 40 credits actually establish, the 35-year formula, and the separate rules that decide whether you and your family can be paid in India.",
     topic: "retirement",
     date: "2026-08-20",
-    updated: "2026-08-20",
+    updated: "2026-08-21",
     featured: false,
     content: `You logged into ssa.gov and the page told you two things. It said you have **40 credits**. And it showed an estimated monthly retirement benefit — a specific dollar figure, printed like a fact.
 
-Most people misread both. The 40 is genuinely good news, and more permanent than you think. The dollar figure is a projection resting on an assumption that probably does not describe your life: that you keep earning what you earn today, in the United States, until full retirement age.
+Most people misread both. The 40 is genuinely good news, and more durable than you think. The dollar figure is a projection resting on an assumption that probably does not describe your life: that you keep earning what you earn today, in the United States, until full retirement age.
 
-If you are weighing a move back to India, that one assumption separates a number you can plan around from a number that will quietly mislead you. This page explains what each means for someone who will not spend a whole career here — and what happens to your spouse, where the real damage hides.
+If you are weighing a move back to India, that one assumption separates a number you can plan around from a number that will quietly mislead you. This page explains what each means for someone who will not spend a whole career here — and what happens to your spouse and children, where most of the confusion sits.
 
 :::quickanswer
-**40 credits — about 10 years of U.S. work — is the qualifying line, and once you cross it the benefit is yours for life.** Credits never expire, and India's place on SSA's Country List 4 means a 40-credit worker can generally keep being paid there. But the figure beside it assumes you keep working here until full retirement age; the real formula averages your **highest 35 years**, filling missing years with **zeros**. And your spouse faces a **separate 5-year U.S. residency test** many families fail without knowing it.
+**For workers born in 1929 or later, 40 credits — roughly 10 years of covered work — generally make you "fully insured" for Social Security retirement benefits.** That is an insured-status test, not a switch that starts payments: you still have to reach claiming age, file an application, and satisfy the other requirements that apply to your situation. Credits generally do not expire. The benefit **amount** comes from your earnings record and your claiming circumstances — the formula averages your **highest 35 years** and fills missing years with **zeros**. And whether SSA can keep paying you, your spouse or your children while you live in India is a **separate set of rules** — the alien nonpayment provisions — that turn on citizenship, residence, benefit type, the worker's insured status and applicable exceptions.
 :::
 
 ## The number on your statement is not your benefit
 Start with the sentence SSA prints near its own estimate and almost nobody reads: the projection generally **assumes you keep working and earning about what you earn now until full retirement age.**
 
-For a career American that is harmless. For an H-1B or L-1 engineer who may be in Bengaluru in eighteen months, it is the whole ballgame. The portal is not estimating *your* likely benefit — it is estimating the benefit of a version of you who never leaves.
+For a career American that is harmless. For an H-1B or L-1 engineer who may be in Bengaluru in eighteen months, it is the whole ballgame. The portal is not estimating **your** likely benefit — it is estimating the benefit of a version of you who never leaves.
 
-The actual formula: SSA takes your **highest 35 years of earnings**, indexes each for wage growth, and averages them into your AIME, from which your PIA — the benefit itself — is computed. Thirty-five is a fixed divisor, not a target. **If you have 10 years of U.S. earnings, the formula does not average 10 years. It averages 35, and fills the other 25 with zeros.** That is what the statement never spells out, and why the *social security 35 year rule* matters far more to you than to your American colleagues.
+The actual formula: SSA generally takes your **highest 35 years of earnings**, indexes them for wage growth, and averages them into your AIME, from which your PIA — the benefit before any adjustment for claiming age — is computed. Thirty-five is a fixed divisor, not a target. **If you have 10 years of U.S. earnings, the formula does not average 10 years. It averages 35, and fills the other 25 with zeros.** That is what the statement never spells out, and why the 35-year rule matters far more to you than to your American colleagues.
 
 :::info
 title: Worked example — portal estimate vs. the 35-year average
@@ -1229,223 +1229,317 @@ Take an engineer with **10 years of U.S. work** averaging about **$150,000 a yea
 - Total indexed earnings inside the 35-year window: roughly **$1.5 million**.
 - Divided by 35: about **$43,000 a year**. That — not $150,000 — is the earnings level the formula works on.
 - The same person with **35 full years** would be averaging near $150,000, up to the annual taxable maximum.
+This is an illustration of how the divisor works, not an estimate of anyone's benefit.
 :::
 
-One caveat in your favour: the formula is **progressive**, replacing a high share of the first slice of average earnings and a much smaller share above it, so the benefit does not fall by the same ~70% the average does. It still lands well below the screen. And your own figure depends on which years you worked, how each indexes, and when you claim — this is arithmetic, not a quote.
+One caveat in your favour: the formula is **progressive**, replacing a high share of the first slice of average earnings and a much smaller share above it, so the benefit does not fall by the same proportion the average does. It still lands well below the screen. And your own figure depends on which years you worked, how each indexes, and when you claim — this is arithmetic, not a quote.
 
-So is the *social security estimate accurate*? It is accurate about the past and speculative about the future. For a defensible answer to *how much social security will I get*, model it with **zeros in every year you will not be working here** — SSA's detailed calculator accepts future earnings of zero, and that one change usually cuts the estimate hard.
+So is the estimate on your statement accurate? It is accurate about the past and speculative about the future. For a defensible answer to how much Social Security you may get, model it with **zeros in every year you will not be working here** — SSA's detailed calculator accepts future earnings of zero, and that one change usually cuts the estimate hard.
 
-This is not cause for panic. A benefit built on 10 U.S. years is real, inflation-indexed and paid for life. It is simply not the number to size a relocation against: plan off the *zero years social security calculation* and treat anything above it as upside.
+This is not cause for panic. A benefit built on 10 U.S. years is real, inflation-indexed and paid for as long as you remain entitled and payable. It is simply not the number to size a relocation against: plan off the zero-years version and treat anything above it as upside.
 
-## How Social Security credits work — and why 40 credits is the whole game
-**You can earn a maximum of 4 credits per calendar year, and they are earned on annual covered earnings — not on months worked.** SSA divides your total wages for the year by a threshold it sets annually. Because that threshold is low relative to a professional salary, a partial first year usually still produces all 4: someone starting on 1 October at a normal H-1B salary generally ends the year with four credits, not one. The official term is still *quarter of coverage*, but which quarter you worked stopped mattering long ago.
+**Sources:** [SSA Publication 05-10070 — Your retirement benefit: how it's determined](https://www.ssa.gov/pubs/EN-05-10070.pdf), [SSA — Social Security benefit amounts (AIME and PIA)](https://www.ssa.gov/oact/cola/Benefits.html) and [SSA — Retirement age and benefit reduction](https://www.ssa.gov/benefits/retirement/planner/agereduction.html).
 
-Four a year, forty needed — which leads to the sentence worth reading twice. **The "40 credits rule" and the "10-year rule" are the same rule.** Not two tests: there is no separate residency requirement and no minimum years lived in the U.S. to qualify on your own record.
+## How Social Security credits work — and why the 40th credit matters
+**Credits are earned on annual covered earnings, not on months worked, and no more than 4 credits can generally be earned in a calendar year.** SSA sets the amount required for one credit each year and divides your covered earnings for the year by it.
 
-**Credits never expire.** Leave at 34 with 40 credits, never work here again, and you can still claim at 62 — no use-it-or-lose-it clock, no forfeiture for years abroad. (Disability is the exception, below.)
+For 2026 the figures are fixed and worth memorising:
 
-And the hard edge: **at 38 or 39 credits, nothing happens.** Not a reduced benefit, not a partial one, not a refund. Eligibility is binary at 40, so someone who worked nine and a half years and someone who worked six weeks sit in the same position on their own record. If your exit date lands near the line: **finishing the year that gets you to 40 is worth more than anything else on your leaving checklist.**
+| 2026 credit rules | Amount |
+|---|---|
+| Covered earnings that generally earn **1 credit** | **$1,890** |
+| Covered earnings that can earn the **maximum 4 credits** for the year | **$7,560** |
+| Maximum credits generally creditable in one calendar year | **4** |
 
-| Credits earned | Your eligibility | Payable while you live in India | What to do |
-|---|---|---|---|
-| **0–39** | No retirement benefit on your own record | Nothing to pay | Credits stay on file for life — count precisely and weigh staying long enough to cross 40 |
-| **40 or more** | Qualified for life; amount still set by the 35-year average | Yes, via Country List 4 | Confirm the final year posts, then set up SSA banking and address before you go |
+Because that threshold is low relative to a professional salary, **a person can earn all 4 credits for a year without working the entire year.** Someone who starts on 1 October 2026 at a normal H-1B salary will generally pass $7,560 in covered earnings before 31 December and end the year with four credits, not one. The official term is still "quarter of coverage," but which quarter you actually worked stopped mattering for years after 1977.
+
+That annual maximum is what connects credits to years. **Since no more than 4 credits are generally creditable per calendar year, reaching 40 credits takes at least 10 calendar years of covered work if credits are earned at the maximum annual rate** — and longer if some years produce fewer than 4. "40 credits" and "10 years" are not two names for one rule: 40 credits is the requirement, and roughly 10 years is what it takes to get there at full speed.
+
+**Credits generally do not expire.** Leave at 34 with 40 credits, never work in covered U.S. employment again, and the credits stay on your record — insured status for retirement does not lapse for years spent abroad. (Disability is different, and is covered below.)
+
+**Source:** [SSA POMS RS 00301.250 — amount required for a quarter of coverage by year](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301250) and [SSA — Social Security credits and benefit eligibility](https://www.ssa.gov/benefits/retirement/planner/credits.html).
+
+### What 40 credits does and does not establish
+For workers born in 1929 or later, 40 credits generally satisfy the **fully insured** test — the duration-of-work requirement for retirement benefits on your own earnings record. That is a real and valuable thing to have. It is also a narrow one:
+
+- **Insured status is not a payment.** Being fully insured means you have met the work requirement. You still have to reach claiming age, **file an application**, and satisfy every other requirement that applies to you before anything is paid.
+- **Insured status is not the amount.** What you actually receive is driven by your earnings record and your claiming circumstances, not by how far past 40 your credit count goes. Credit 41 and credit 60 add nothing to insured status; extra **earnings** can still raise the benefit by replacing a zero in the 35-year average.
+- **Insured status is not the same as being payable abroad.** That is a separate test, in its own section below.
+- **One extra requirement applies to some non-citizen workers.** Under section 211 of the Social Security Protection Act of 2004, a worker who is not a U.S. citizen or national **and whose SSN was first assigned on or after 1 January 2004** must additionally have been issued an SSN for work purposes at some point on or after that date (or have been admitted under a B-1 or D-1/D-2 status) to be fully or currently insured. H-1B and L-1 workers are issued work-authorised SSNs, so this is normally satisfied — but an SSN originally issued for non-work purposes does not count on its own.
+
+**Source:** [SSA POMS RS 00301.105 — Fully Insured Status](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301105) and [RS 00301.102 — additional requirements for alien workers](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301102).
+
+### If you are short of 40
+**For retirement benefits, 39 credits are not enough to meet the usual 40-credit requirement on your own record.** There is no partial retirement benefit at 39, and contributions are not refunded — which is why, if your exit date lands near the line, finishing the year that gets you to 40 is usually the highest-leverage item on your leaving checklist.
+
+But credits below 40 are **not literally worthless**, and it is wrong to say 39 credits are the same as none. Credits already earned can matter in several other places:
+
+- **Survivor protection through "currently insured" status.** A worker with at least 6 credits in the 13-quarter period ending with the quarter of death is currently insured, which can support certain survivor benefits and the lump-sum death payment even without 40 credits.
+- **Disability.** Insured status for disability benefits uses different, generally smaller credit requirements for workers who become disabled before age 31.
+- **Medicare Part A at a reduced premium.** Someone aged 65 with **30 to 39** credits can generally buy Part A at the reduced premium rate rather than the full one (2026 rates below).
+- **They keep counting.** If you ever work in covered U.S. employment again, new credits add to the old ones — there is no reset.
+
+| Credits on your record | What that generally establishes | What it does not decide |
+|---|---|---|
+| **0–39** | Not enough for fully insured status for retirement on your own record. May still support currently-insured survivor protection, disability insured status for younger workers, or reduced-premium Medicare Part A at 30–39 credits | Nothing here is refundable; credits stay on file and keep counting if you work in the U.S. again |
+| **40 or more** | Generally fully insured for retirement benefits if you were born in 1929 or later | Does not fix the amount (that comes from your earnings record and claiming circumstances), does not start payments, and does not by itself settle whether benefits can be paid to you or your family outside the U.S. |
 
 :::warn
-title: There is no U.S.–India totalization agreement
-- The U.S. has agreements with roughly 30 countries that let you **combine credits across both systems** — someone with 6 U.S. and 20 German years can use the German years to reach U.S. insured status. **India has none, and none is in force as of this review.**
-- Indian **EPF/EPS** service cannot top up a short U.S. record, and U.S. credits cannot top up an Indian entitlement.
-- You pay U.S. Social Security tax on H-1B/L-1 wages with **no exemption** and no offset.
-- Leave at 30 credits and there is no second system to borrow the other 10 from — which is why your portable [401(k) and IRA](/articles/what-happens-to-401k-leaving-usa) carry more of the load than they would for a colleague who stays.
+title: There is no U.S.–India totalization agreement in force
+- The U.S. has totalization agreements with roughly 30 countries that allow credits from both systems to be **counted together** for insured status. **India is not one of them, and no U.S.–India agreement is in force as of this review (August 2026).**
+- That means Indian **EPF/EPS** service cannot be combined with U.S. credits to satisfy U.S. eligibility requirements, and U.S. credits cannot be used toward an Indian entitlement.
+- It also means the FICA exemption that agreement-country workers can claim on a temporary assignment is not available on the India route.
+- Leave with 30 credits and there is no second system to borrow the other 10 from — which is why your portable [401(k) and IRA](/articles/what-happens-to-401k-leaving-usa) carry more of the load than they would for a colleague from an agreement country.
 :::
 
-So: yes, **H-1B holders pay Social Security tax** — 6.2% from you, 6.2% from your employer — and yes, **H-1B holders are eligible for Social Security** on the same terms as anyone else at 40 credits. Visa status affects nothing about insured status. F-1 and J-1 students treated as nonresident aliens are generally exempt, so those years usually earn no credits.
+So: **wages paid to H-1B and L-1 employees are generally subject to Social Security and Medicare tax** — 6.2% and 1.45% from the employee, matched by the employer — and **an H-1B worker who reaches 40 credits is generally fully insured on the same terms as anyone else.** The visa label itself does not create a special benefit rule, and it does not create identical tax treatment in every case either: FICA treatment depends on the type of employment, the individual's tax residency status and the exceptions in the Internal Revenue Code. The best-known of those is the student exception — F-1 and J-1 students treated as nonresident aliens and performing services allowed by their status are generally exempt from FICA, so those years usually earn no credits.
+
+**Source:** [IRS — Aliens employed in the U.S.: Social Security taxes](https://www.irs.gov/individuals/international-taxpayers/aliens-employed-in-the-us-social-security-taxes) and [SSA — International (totalization) agreements](https://www.ssa.gov/international/agreement_descriptions.html).
 
 ## How to read your Social Security statement, line by line
 Open the statement itself, not the summary tile. Four things matter, and the last sits where most people never scroll.
 
 1. **The estimate box** — monthly figures by claiming age, 62 through 70, with your full retirement age marked. Every one carries the continued-earnings assumption.
 2. **The earnings record** — the year-by-year table of wages posted for you. Everything else derives from it.
-3. **The credits count** — usually "you have earned XX credits." This decides eligibility.
-4. **Disability and survivor estimates** — what you would get if disabled now, what your family would get if you died now. Separate systems, separate rules.
+3. **The credits count** — usually "you have earned XX credits." This is the insured-status line.
+4. **Disability and survivor estimates** — what you would get if disabled now, what your family would get if you died now. Separate rules, separate insured-status tests.
 
 :::tip
 title: Check the earnings record while your employer still exists
 Missing or wrong years are commoner than you would expect — a name change, a mismatched SSN on a W-2, a year on payroll through a vendor.
-**Every missing year becomes a zero in your 35-year average, and may cost credits you never received.**
-Fixing it is easy while you hold the W-2s and the employer answers the phone; far harder five years later from Pune with a defunct staffing company.
+**Every missing year becomes a zero in your 35-year average, and may cost credits you should have received.**
+Fixing it is easier while you hold the W-2s and the employer answers the phone; far harder five years later from Pune with a defunct staffing company.
 Check each year against your own tax returns — especially your first U.S. year, your last, and any year you switched employers.
 :::
 
 ## Will SSA actually pay you in India?
-Qualifying and getting paid are different questions, and here citizenship — not visa history — starts to matter.
+Qualifying for a benefit and being able to receive it outside the United States are different questions, decided by different rules.
 
-**U.S. citizens:** benefits can generally be paid in India indefinitely — no six-month rule, no residency test. A very short list of countries is off-limits; India is not on it.
+**Payment of Social Security benefits outside the United States can depend on the beneficiary's citizenship, their residence, the type of benefit, the worker's work and insured status, any applicable exceptions, and the rules that apply to the country where the beneficiary lives.** Visa history as such is not the test; several of these factors are.
 
-**Non-citizens, including green card holders:** the default is the **alien non-payment provision**. Once you have been outside the United States for **six full consecutive calendar months**, SSA generally cannot pay you beginning with the **seventh month**, unless an exception applies. (SSA does not begin counting months of absence until you have been outside the U.S. for 30 days in a row.) A green card does not exempt you — permanent residence does not carry permanent payment rights abroad.
+**U.S. citizens.** Benefits can generally continue to be paid to a U.S. citizen living in India for as long as they remain entitled. The alien nonpayment provisions do not apply to U.S. citizens. A short list of countries is subject to Treasury restrictions — currently Cuba and North Korea — and India is not among them.
 
-**The exception that matters: India is on SSA's Country List 4.** For citizens of List 4 countries, payments continue past six months provided the worker whose record the benefit is based on **earned at least 40 credits, or lived in the U.S. for at least 10 years.** Note the wording — it is the *worker's* record that satisfies it, at the threshold you already cleared. **A 40-credit worker clears the payments-abroad test on their own account**, which is why the 40th credit is worth so much more than the 39th: it does two jobs at once.
+**Non-citizens, including lawful permanent residents.** The starting rule is section 202(t) of the Social Security Act, the **alien nonpayment provision (ANP)**: an alien who is outside the United States for **six full consecutive calendar months** generally cannot be paid benefits beginning with the **seventh month** of absence, unless an exception applies. A green card does not exempt you — for this rule, an alien is anyone who is not a U.S. citizen or national.
 
-If payments are suspended, reinstatement requires being physically in the United States for **one full calendar month** — the entire month, 1st to last day. Thirty days spanning two months does not count.
+Two mechanics of that count are frequently mangled, so here they are as SSA states them:
 
-Then two pieces of admin decide whether the money arrives. **Direct deposit:** SSA pays Indian banks via **Form SSA-1199-IN**, which collects your account details and IFSC code and credits payments in rupees; keeping a U.S. account and moving funds yourself preserves a dollar balance instead. **Form SSA-7162, the proof-of-life questionnaire:** mailed periodically to beneficiaries abroad, it must be **returned within 60 days or payments stop** — the most common way an entitled beneficiary in India stops being paid, and nearly always an out-of-date address.
+- **How the clock starts.** Once a beneficiary has been outside the U.S. for **30 consecutive days**, the six-month period is counted from the **first full calendar month of absence**. So the 30-consecutive-day point is what triggers counting; the six months themselves are measured in full calendar months.
+- **How it stops and restarts.** Presence in the U.S. can interrupt the count — entering the U.S. for any part of a day during the first 30 days of absence, or spending 30 consecutive days in the U.S. during the six-month period. Once payments have been suspended under the provision, they generally cannot resume **until the person has been back in the United States for one full calendar month** — a whole calendar month, not any 30 days spanning two months.
+
+**The exceptions, and where India sits.** SSA lists nine exceptions to the ANP. Two of them run off the worker's record: the worker **has at least 40 quarters of coverage**, or the worker **resided in the United States for at least 10 years**. Whether a given beneficiary can use those two exceptions depends on their **country of citizenship**, and SSA publishes that country-by-country status. **India is listed as a country whose citizens may meet the 10-year-residence and 40-credit exceptions** — the group SSA's public materials publish as **Country List 4**. India is not listed for the social-insurance or treaty exceptions, so those two routes are not available on an Indian passport.
+
+Read the wording carefully, because it is the source of the most common misunderstanding on this page: the 40 credits that satisfy the exception are the **worker's**, on the **worker's record**. That is why the 40th credit does double duty — it is the usual insured-status requirement for retirement benefits, and it is also the fact that supports the payments-abroad exception for an Indian-citizen beneficiary. **It does not, however, settle the question for a dependent or survivor.** Those beneficiaries generally have to clear a second requirement as well, covered in the next section.
+
+Then two pieces of admin decide whether the money actually arrives. **Direct deposit:** SSA can pay Indian bank accounts via **Form SSA-1199-IN**, which collects your account details and IFSC code and credits payments in rupees; keeping a U.S. account and moving funds yourself preserves a dollar balance instead. **Form SSA-7162, the proof-of-life questionnaire:** sent periodically to beneficiaries outside the U.S., it must be completed and returned or payments can be suspended — one of the most common reasons an otherwise entitled beneficiary in India stops being paid, and nearly always traceable to an out-of-date address.
+
+**Sources:** [SSA POMS RS 02610.001 — Alien Nonpayment Provisions](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610001), [RS 02610.020 — Establishing absence and presence in the U.S.](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610020), [RS 02610.010 — Exceptions to the ANP](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610010), [RS 02610.015 — Status of countries for ANP exceptions](https://secure.ssa.gov/poms.nsf/lnx/0302610015) and [SSA — Payments outside the United States](https://www.ssa.gov/international/payments.html).
 
 Our companion guide on [how Social Security payments work once you leave the U.S.](/articles/social-security-benefits-leaving-us) covers the country-list logic and SSA's screening tool in more detail.
 
-## What your spouse and children get — and the rule that quietly cancels it
-Almost everything written about 40 credits stops at the worker. The second half is where the money and the traps are. On paper, the entitlements are generous:
+## What your spouse and children get — and the rules that decide it
+Almost everything written about 40 credits stops at the worker. The second half is where the confusion is, and it clears up as soon as you separate two questions that are genuinely separate:
 
-- **Spouse:** up to **50% of your PIA** at their own full retirement age, permanently reduced if claimed earlier — even if they never worked a day in the U.S.
-- **Surviving spouse:** up to **100%** of what you were receiving or entitled to receive.
-- **Divorced spouse:** qualifies if the **marriage lasted 10 years or more** and they have not remarried — and it costs you nothing, reducing neither your benefit nor your current spouse's.
-- **Children:** unmarried children under 18, or 19 and still in high school, can claim on a living or deceased parent's record — typically up to 50% of your PIA, up to 75% as survivors.
-- **Family maximum:** the household total is capped, generally **150% to 188% of your PIA**. When claims exceed it, dependants' benefits scale down; yours does not.
+**A. Does the family member qualify for a benefit at all?** That depends on your insured status plus their own relationship, age and other entitlement requirements.
 
-The first twist follows from everything above: **all of these are percentages of your PIA.** Half of a benefit built on 10 U.S. years with 25 zeros is half of a small number. The spousal benefit is not a second pot of money, but a fraction of the same diluted figure.
+**B. Can SSA pay that benefit while the person is living outside the United States?** That is decided by the alien nonpayment provisions, and for many dependants and survivors it includes an additional U.S.-residency requirement.
 
-The second twist is harder:
+Neither question answers the other. A spouse can be fully entitled under (A) and still run into (B), and a spouse who lives in the U.S. never reaches (B) at all.
+
+### A. Qualifying on your record
+On paper the entitlements are generous, and they are percentages of your PIA:
+
+- **Spouse:** generally up to **50% of your PIA** at their own full retirement age, permanently reduced if claimed earlier, and subject to the other spousal requirements — even if they never worked in the U.S.
+- **Surviving spouse:** generally up to **100%** of what you were receiving or entitled to receive, depending on age at claiming and other conditions.
+- **Divorced spouse:** generally qualifies if the **marriage lasted 10 years or more**, they are unmarried, and they meet the age and other requirements — and it does not reduce your benefit or your current spouse's.
+- **Children:** generally unmarried children under 18, or 18–19 and still in secondary school full time, or disabled before age 22, can claim on a living or deceased parent's record — typically up to 50% of your PIA, and up to 75% as survivors.
+- **Family maximum:** the household total is capped — SSA puts the total for you and your family at roughly **150% to 180% of your full retirement benefit**. When claims exceed it, dependants' benefits are scaled down; the worker's own benefit is not.
+
+The first twist follows from everything above: **all of these are percentages of your PIA.** Half of a benefit built on 10 U.S. years with 25 zeros is half of a smaller number. A spousal benefit is not a second pot of money; it is a fraction of the same figure.
+
+### B. Being paid outside the United States — the 5-year residency requirement
+This is the part most often reported as "your spouse must live in America for five years." That is not the rule. The accurate version:
 
 :::warn
-title: The 5-year residency test that can block your spouse entirely
-- A **non-citizen spouse, child or parent living abroad** must pass a test entirely separate from your 40 credits: **five years of U.S. residence, during which the family relationship already existed.**
-- For a spouse that means five years *while married to you*; for a child, five years *as your child*. Separate periods add up — but **years in the U.S. before the marriage do not count**, and visits are not residence.
-- **Leave before your spouse completes those five years and the spousal benefit can be blocked outright** — entitled on paper, unpayable in practice.
-- It applies to dependants first eligible after December 1984, is waived where the worker died in U.S. military service, and does not apply in totalization-agreement countries — **which does not help an Indian family.**
+title: What the 5-year residency requirement actually says
+- It sits inside the **alien nonpayment provisions**, so it is a question about **payment while outside the U.S.**, not about whether a benefit was earned. It does not apply to a dependant or survivor who is a **U.S. citizen**, and it is not in play at all while the person is living in the United States.
+- Under section 202(t)(11) of the Social Security Act, certain **non-citizen dependent and survivor beneficiaries first eligible after December 1984** must have **resided in the United States for at least 5 years during which the qualifying relationship** — spouse, surviving spouse, child or parent of the worker — **existed**, in order to be paid while residing outside the U.S.
+- SSA describes this as a **two-tier** test: the beneficiary must first meet an ANP exception (for an Indian citizen, that is generally the worker's 40 quarters of coverage or 10 years of U.S. residence), and then, separately, meet the 5-year residency requirement.
+- The five years **need not be continuous** — separate periods in the U.S. can be added together — but they must fall within the qualifying relationship. Time in the U.S. **before** the marriage does not count toward a spousal five years.
+- **Exceptions apply.** SSA lists several: beneficiaries who were or could have been initially eligible before January 1985; a dependant or survivor of a worker who died in U.S. military service or from a service-connected cause; citizens of certain treaty countries; and citizens or residents of totalization-agreement countries, to the extent the agreement provides. India is not a totalization country, so that particular exception is not available on the India route.
+- **Children** who cannot meet the requirement in their own right are generally **deemed** to meet it if both parents meet it.
 :::
 
-One reprieve: children who cannot meet the test personally are generally **deemed** to meet it if both parents each do — which rescues most families whose children were born late in the U.S. stay, or after the return.
+The practical consequence for a family that moves back to India is narrower and more specific than "the spouse loses everything": it is that **a non-citizen spouse or child who is entitled on your record and living in India may face a payment restriction under the ANP if the 5-year requirement is not met and no exception applies.** Whether it applies to a given family depends on citizenship, when eligibility first arose, how long the family lived in the U.S. while the relationship existed, and which exceptions are available — which is exactly the kind of question SSA's [Payments Abroad Screening Tool](https://www.ssa.gov/international/payments_outsideUS.html) and the Federal Benefits Unit exist to answer.
 
-The failure case is not unusual. An engineer works here twelve years, clears 40 credits, returns to India, and marries there. His wife has never lived in the U.S. as his wife, so although she is entitled to a spousal benefit at her full retirement age, she cannot be paid it in India — zero qualifying years of residence inside the marriage.
+A worked example of the pattern SSA's own manual uses: an engineer works in the U.S. for twelve years, reaches 40 credits, returns to India and marries there. The spouse has never resided in the United States while married to the worker, so although the spouse may be entitled to a spousal benefit at full retirement age, the 5-year residency requirement is not met on those facts, and payment while residing outside the U.S. would generally be restricted unless an exception applies. Reverse the facts — the couple married in the U.S. and lived here together for six years — and the requirement is generally satisfied.
 
-If your spouse's benefit is load-bearing, **the 5-year clock is a separate thing to track from your credit count** — and one of the few variables you can still influence by choosing when to leave. More on the dependant rules in our guide on [do you keep Social Security if you return to India](/articles/social-security-benefits-leaving-us).
+If your family's benefit is load-bearing in your plan, **the residency history is worth tracking separately from your credit count**, and it is one of the few variables a change in your departure date can still affect. More on the dependant rules in our guide on [do you keep Social Security if you return to India](/articles/social-security-benefits-leaving-us).
 
-| Who is claiming | What they can generally get | What must be satisfied to be paid in India |
+| Who is claiming | What they can generally get | What decides payment while living outside the U.S. |
 |---|---|---|
-| **You (the worker)** | 100% of your PIA at full retirement age | 40 credits, **or** 10 years of U.S. residence |
-| **Spouse** | Up to 50% of your PIA at their FRA | Your 40 credits **plus** 5 years of U.S. residence as your spouse |
-| **Surviving spouse** | Up to 100% of your benefit | Your 40 credits **plus** 5 years of U.S. residence as your spouse |
-| **Divorced spouse** | Up to 50%, or 100% as survivor; marriage 10+ years, unmarried now | Your 40 credits **plus** 5 U.S. years during the marriage |
-| **Child under 18/19** | Up to 50% living parent, 75% survivor | 5 years as your child, **or deemed met if both parents qualify** |
+| **You (the worker)** | Generally 100% of your PIA at full retirement age, adjusted for claiming age | ANP does not apply to U.S. citizens. For a non-citizen, an exception is needed — for an Indian citizen, generally the 40-credit or 10-year-U.S.-residence exception on your own record |
+| **Spouse** | Generally up to 50% of your PIA at their FRA | Two separate questions: entitlement on your record, and — if they are not a U.S. citizen — an ANP exception **plus** the 5-year residency requirement of section 202(t)(11), subject to the listed exceptions |
+| **Surviving spouse** | Generally up to 100% of your benefit, depending on age and conditions | Same two-part analysis as a spouse; residence as the surviving spouse can count toward the five years |
+| **Divorced spouse** | Generally up to 50%, or up to 100% as a survivor, where the marriage lasted 10+ years and the other conditions are met | Same two-part analysis; the U.S. residence must fall within the spousal relationship |
+| **Child under 18/19 (or disabled before 22)** | Generally up to 50% on a living parent, up to 75% as a survivor | Same two-part analysis; a child who cannot meet the residency requirement personally is generally deemed to meet it if both parents do |
+
+**Sources:** [SSA POMS RS 02610.025 — 5-year residency requirement for alien dependents and survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025), [RS 02610.030 — 5-year residency for spouses, children and parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030) and [SSA — Benefits for family members](https://www.ssa.gov/benefits/retirement/planner/applying7.html).
 
 ## Social Security disability is a different system — and you may already be uninsured
-**SSDI adds a recent-work test on top of lifetime credits.** Being fully insured with 40 credits is necessary but not sufficient. For workers disabled at 31 or older you generally also need about **20 credits earned in the 40 calendar quarters — 10 years — immediately before the disability begins.** Younger workers face proportionally smaller requirements.
+**Disability benefits add a recent-work test on top of lifetime credits.** Being fully insured with 40 credits is generally necessary but not sufficient. For workers who become disabled at 31 or older, insured status for disability generally also requires about **20 credits earned in the 40-calendar-quarter (10-year) period ending with the quarter the disability begins.** Younger workers face proportionally smaller requirements.
 
-Work that through. You left the U.S. six years ago with 44 credits. For retirement you are permanently insured. For disability you have earned zero credits in the last 24 quarters, so you almost certainly fail the 20-of-40 test. **You are fully insured for retirement and uninsured for disability at the same time** — and nobody tells you when that crossover happens, roughly five years after your last covered work.
+Work that through. You left the U.S. six years ago with 44 credits. For retirement you remain fully insured. For disability you have earned no credits in the last 24 quarters, so on those facts you would generally not meet the 20-of-40 recent-work test. **You can be fully insured for retirement and not insured for disability at the same time** — and nobody tells you when that crossover happens, roughly five years after your last covered work.
 
-**SSI is a different programme entirely**, and the two are conflated constantly. Supplemental Security Income is means-tested support for aged, blind or disabled people with very low income and assets — **not** based on work credits, not funded by your payroll tax, and **never payable outside the United States**, with eligibility ending once you are outside the U.S. for a full calendar month. When a forum post claims you can collect "Social Security disability" in India after a short U.S. stint, it is describing SSI, and it is wrong.
+**SSI is a different programme entirely**, and the two are conflated constantly. Supplemental Security Income is means-tested support for aged, blind or disabled people with very limited income and resources — **not** based on work credits and **not payable outside the United States**. An individual is not eligible for SSI for any calendar month spent entirely outside the U.S., and someone outside the U.S. for 30 consecutive days is generally not eligible again until they have returned and been present for 30 consecutive days. When a forum post claims you can collect "Social Security disability" in India after a short U.S. stint, it is usually describing SSI, and it is wrong.
 
-SSDI that *is* being paid follows the same payments-abroad rules as retirement — the six-month provision, Country List 4, and the same 40-credit escape hatch.
+Disability benefits that **are** being paid follow the same payments-abroad framework as retirement — the six-month provision, the citizenship-based exceptions, and the same 40-credit route.
 
-## What you'll be taxed on U.S. Social Security in India
-Three rules stack here, and mixing them up is the usual source of confusion.
+**Sources:** [SSA — How you qualify for disability benefits](https://www.ssa.gov/benefits/disability/qualify.html) and [SSA POMS SI 00501.410 — SSI ineligibility due to absence from the U.S.](https://secure.ssa.gov/apps10/poms.nsf/lnx/0500501410).
 
-**1. U.S. withholding for non-citizens abroad.** SSA generally withholds a flat **30% on 85% of the benefit — an effective 25.5% of the gross** — and sends **Form SSA-1042S** each January rather than the SSA-1099. For a nonresident with no other U.S. filing obligation this is normally a **final tax**, not a refundable prepayment. Budget the net.
+## What you may be taxed on U.S. Social Security in India
+Three different things get mixed together here — what SSA **withholds**, what you actually **owe** in the U.S., and what **India** does — so take them one at a time.
 
-**2. What the treaty does and does not do.** Residents of some treaty countries — Canada, Egypt, Germany, Ireland, Israel, Italy, Japan, Romania and the United Kingdom — are fully exempt from U.S. tax on these benefits. **India is not one of them for ordinary workers.** Its carve-out is far narrower: benefits paid to someone both a **resident and a national of India** are exempt only to the extent they are **based on service performed for the U.S. federal, state or local government.** A private-sector H-1B or L-1 career produces none of that, so the 25.5% applies in full. Even where part of a benefit qualifies, SSA withholds on the whole amount anyway — its systems cannot withhold at a variable rate — and the refund is claimed from the IRS.
+**1. U.S. withholding for nonresident aliens.** Under U.S. law, **85% of the benefit paid to a nonresident alien is generally subject to a 30% withholding rate**, which works out to an effective **25.5% of the gross** benefit, unless a treaty exempts it or applies a lower rate. Beneficiaries in this position receive **Form SSA-1042S** each January rather than the SSA-1099. SSA's own guidance is that the withholding does not apply to U.S. citizens, or to aliens who are U.S. residents — including aliens who are outside the U.S. but have kept their resident status.
 
-**3. Which country gets to tax it.** **Article 20(2) of the U.S.–India tax treaty** provides that social security benefits and other public pensions paid by one country to a resident of the other are **taxable only in the paying state — here, the United States.** It is the mirror image of the private-pension rule covered in our [US–India DTAA guide](/articles/double-taxation-dtaa-india-usa). In principle India should not tax the benefit again; in practice the Indian reporting mechanics are a question for an Indian CA who handles returning-NRI returns, not something to infer from treaty text.
+**2. Withholding is not the same as your final tax.** The 25.5% is a **withholding** figure. Whether it also represents your final U.S. liability, whether a Form 1040-NR is required, and whether any of it is refundable depend on your residency status for U.S. tax purposes, your other U.S.-source income and the treaty position you are entitled to claim. It is not automatically your worldwide effective tax rate, and it should not be treated as one.
 
-**U.S. citizens and green card holders escape the flat withholding entirely**, and are taxed under ordinary Form 1040 rules wherever they live — up to 85% of benefits included in income at their marginal rate. Often, though not always, better than 25.5% off the top.
+**3. What the U.S.–India treaty does and does not do.** Residents of a handful of treaty countries — Canada, Egypt, Germany, Ireland, Israel, Italy, Japan, Romania and the United Kingdom — are exempt from U.S. tax on these benefits, and residents of Switzerland are taxed at a lower 15% rate. **India is not on the exemption list for ordinary workers.** Its carve-out is narrower: benefits paid to someone who is **both a resident and a national of India** are exempt from U.S. tax **to the extent the benefits are based on services performed for the U.S. federal, state or local government.** A private-sector H-1B or L-1 career generally produces none of that. SSA also notes that its systems cannot withhold at a variable rate — where only part of a benefit qualifies, withholding generally continues on the whole amount and the beneficiary is told the exempt percentage and directed to claim a refund from the IRS.
+
+**4. Which country has the taxing right.** **Article 20 of the U.S.–India income tax treaty** provides that social security payments and other public pensions paid by one contracting state to a resident of the other are **taxable only in the paying state — here, the United States.** It is the mirror image of the private-pension rule covered in our [US–India DTAA guide](/articles/double-taxation-dtaa-india-usa). How that interacts with an Indian return in practice — treaty relief has to be claimed, and Indian reporting of foreign income and assets can still apply — is a question for a chartered accountant who handles returning-NRI returns, not something to infer from treaty text.
+
+**U.S. citizens and green card holders who retain U.S. tax residency** are not subject to the flat nonresident withholding at all. They are taxed under ordinary Form 1040 rules wherever they live, with up to 85% of benefits includible in income depending on their combined income — which may or may not work out better than 25.5% off the top, depending on the taxpayer's circumstances.
+
+**Sources:** [IRS Publication 915 — Social Security and equivalent railroad retirement benefits (nonresident aliens)](https://www.irs.gov/publications/p915), [SSA POMS GN 05010.010 — beneficiaries subject to the withholding tax](https://secure.ssa.gov/apps10/poms.nsf/lnx/0205010010), [GN 05010.165 — tax treaty with India](https://secure.ssa.gov/apps10/poms.nsf/lnx/0205010165) and [IRS — India tax treaty documents](https://www.irs.gov/businesses/international-businesses/india-tax-treaty-documents).
 
 :::good
 title: WEP is gone — and this is recent
 The **Social Security Fairness Act**, signed **5 January 2025**, repealed the Windfall Elimination Provision and the related Government Pension Offset for benefits payable from **January 2024** onward.
-Your Indian **EPS or EPF pension no longer reduces your U.S. benefit at all.** WEP used to cut the benefit of anyone drawing a pension from work not covered by U.S. Social Security — foreign social-security pensions included — so Indian professionals with a partial U.S. career were hit twice: a small benefit from few credits, then reduced again.
+WEP used to reduce the benefit of someone who also drew a pension from work not covered by U.S. Social Security — foreign social-security pensions included — so Indian professionals with a partial U.S. career could be affected twice: a smaller benefit from fewer credited years, then reduced again. That reduction no longer applies.
 :::
 
-What repeal did **not** change: the payments-abroad rules, the 5-year dependant residency requirement, and the 25.5% withholding. That machinery all still runs.
+What the repeal did **not** change: the payments-abroad rules, the 5-year residency requirement for certain dependants and survivors, and the nonresident withholding. That machinery all still runs.
+
+**Source:** [SSA — Social Security Fairness Act](https://www.ssa.gov/benefits/retirement/social-security-fairness-act.html).
 
 ## Does 40 credits get you Medicare too?
-Yes — with a caveat big enough to change the decision. Forty credits generally earns **premium-free Medicare Part A** (hospital insurance) at 65; it is the same credit count. **Part B** (outpatient and physician services) always carries a monthly premium regardless of credits.
+Not automatically, and not on its own — but it is a large part of the answer. **Forty credits can generally help someone qualify for premium-free Medicare Part A** (hospital insurance), because premium-free Part A at 65 generally requires being **age 65 or older and eligible for monthly Social Security or Railroad Retirement benefits**, and the credit count is what supports that eligibility. There are additional requirements: an application is generally needed unless you are already receiving monthly benefits at least four months before turning 65, in which case Part A entitlement is generally automatic. Medicare eligibility can also arise on other bases entirely — disability after a waiting period, or end-stage renal disease — with their own rules.
 
-The caveat: **Medicare does not cover care received in India.** Outside a few narrow exceptions it does not pay for treatment outside the U.S. and its territories at all. Premium-free Part A is worth nothing to someone who never seeks care here; it is not an India health plan.
+If you do not qualify for premium-free Part A, Part A can generally be bought: for 2026 the premium is **$311 a month with 30–39 credits** and **$565 a month with fewer than 30**, and buying Part A generally requires enrolling in Part B as well. **Part B** (outpatient and physician services) always carries a monthly premium — **$202.90 standard in 2026**, higher for higher incomes — regardless of your credit count.
 
-Part B is the live decision, and genuinely a bet:
+The caveat that changes the decision: **Medicare generally does not cover health care received in India.** Outside a few narrow exceptions, Medicare does not pay for care outside the U.S. and its territories. Premium-free Part A is of little practical use to someone who never seeks care in the U.S.; it is not an India health plan.
+
+Part B is the live decision, and it is genuinely a trade-off:
 
 :::compare
 title: Part B from India — the trade-off
-✗ Paying the premium from India buys coverage you cannot use unless you fly back — real money every month for a contingency.
-✗ Dropping it and later returning triggers a **late-enrolment penalty of roughly 10% of the premium for each full 12 months** eligible but not enrolled, added to your premium **for life**.
-✓ If you are gone for good, dropping Part B stops a permanent leak of dollars for a benefit that cannot reach you.
-✓ If a return is realistic — children settling here, citizenship in progress — the premium buys an option that is expensive to re-buy later.
+left: Points against keeping Part B
+right: Points in favour of keeping Part B
+✗ Paying the premium from India means paying every month for coverage that generally cannot be used unless you are in the U.S.
+✗ Medicare generally does not pay for care in India, so the coverage does not substitute for an Indian health policy.
+✓ Dropping Part B and enrolling later can trigger a **late enrolment penalty of 10% of the standard premium for each full 12-month period** you were eligible but not enrolled, added to the premium **for as long as you have Part B**.
+✓ If a return to the U.S. is realistic — children settling here, citizenship in progress — keeping Part B preserves an option that can be expensive to re-acquire later.
 :::
 
-Ten years away means a penalty of roughly 100% on top of the standard premium, permanently — the price of changing your mind late.
+Special enrolment periods exist for some situations — coverage through current employment is the common one — and no late-enrolment penalty applies where an SEP is available. Living abroad without U.S. coverage does not by itself create one.
+
+**If you move abroad permanently, evaluate whether continuing Medicare Part B makes sense for your circumstances.** Dropping Part B can have consequences if you later return to the United States, including potential late-enrolment penalties: ten years without Part B, with no special enrolment period available, would generally mean a penalty of roughly 100% on top of the standard premium for as long as you hold the coverage. This is educational information, not a recommendation about your own coverage — the right answer depends on your health, your finances and how likely a return is.
+
+**Sources:** [CMS — Original Medicare (Part A and B) eligibility and enrolment](https://www.cms.gov/medicare/enrollment-renewal/original-part-a-b), [Medicare — 2026 costs at a glance](https://www.medicare.gov/basics/costs/medicare-costs), [Medicare — avoid late enrolment penalties](https://www.medicare.gov/basics/costs/medicare-costs/avoid-penalties) and [Medicare — travel outside the U.S.](https://www.medicare.gov/coverage/travel-outside-the-u.s.).
 
 ## If you're deciding your exit date
 Four things to do before you fix a date, in order:
 
 :::steps
-Count your credits precisely — from the statement, not from memory. Within a year of 40, staying almost certainly beats anything else on your leaving checklist: it is all-or-nothing, and the last credit is worth more than the previous 39 combined.
+Count your credits precisely — from the statement, not from memory. Within a year of 40, staying is usually worth more than anything else on your leaving checklist: **the 40th credit can be particularly important because it may satisfy the usual insured-status requirement for retirement benefits** — and, for an Indian-citizen beneficiary, it is also the fact that supports the payments-abroad exception on your record.
 Confirm the final year posts — employers report earnings after the year ends, so your last U.S. year appears on the record months after you have gone, and correcting it from India is materially harder.
-Check your spouse's 5-year clock — separately from your own credit count. Count the years you both lived here *after* the wedding, not before. If the answer is four and a half, that is worth knowing before you book flights.
+Map your family's U.S. residence history — separately from your own credit count, and specifically the years you and your spouse (or your children) lived here **while the relationship existed**. If a non-citizen family member may end up claiming on your record from India, that history is what the 5-year requirement is measured against.
 Fix banking and address first — before you give up your U.S. phone number. Choose between a U.S. account and Form SSA-1199-IN direct deposit, and make sure two-factor codes reach a number you will still control from India.
 :::
 
-Behind all four is one point: **every additional U.S. year replaces a zero in your 35-year average, so it raises your benefit directly** — while protecting the 40-credit threshold and extending your spouse's residency clock. Nothing else here has that much leverage, and it stays in your control until the day you leave.
+Behind all four is one point: **every additional U.S. year can replace a zero in your 35-year average, so it can raise the benefit directly** — while protecting the 40-credit threshold and adding to your family's U.S. residence history. Nothing else here has that much leverage, and it stays in your control until the day you leave.
 
-For the wider version of this decision, the [return-to-India planning hub](/return-to-india) covers the sequence, [what happens to your 401(k) when you leave](/articles/what-happens-to-401k-leaving-usa) handles the retirement account that *is* portable, and the [NRI wealth checkup](/nri-wealth-checkup) shows which parts of your situation need attention first.
+For the wider version of this decision, the [return-to-India planning hub](/return-to-india) covers the sequence, [what happens to your 401(k) when you leave](/articles/what-happens-to-401k-leaving-usa) handles the retirement account that **is** portable, and the [NRI wealth checkup](/nri-wealth-checkup) shows which parts of your situation need attention first.
 
 ## Frequently asked questions
 
 ### Do H-1B holders pay Social Security tax?
-Yes. H-1B, L-1 and green card employees pay the full 6.2% Social Security tax plus 1.45% Medicare on covered wages, with an employer match, and no exemption absent a totalization agreement. F-1 and J-1 students treated as nonresident aliens are generally exempt in student status.
+Generally yes. Wages paid to H-1B, L-1 and green card employees are normally subject to the full 6.2% Social Security tax plus 1.45% Medicare on covered wages, with an employer match, and no totalization-agreement exemption is available on the India route. Treatment is not identical in every case — it depends on the employment, the individual's tax residency status and the exceptions in the Code. F-1 and J-1 students treated as nonresident aliens and working within their status are generally exempt.
 
 ### Can I get a refund of Social Security tax when I leave the U.S.?
-No. Social Security contributions are not a personal account and are not refundable when you leave, however many credits you accumulated. The only way the money comes back is as a benefit, which requires 40 credits — unlike your 401(k), which is portable.
+No. Social Security contributions are not a personal account and are not refunded when you leave, however many credits you accumulated. The money comes back only as a benefit, which for retirement generally requires meeting insured status — unlike your 401(k), which is portable.
 
 ### What happens if I leave with fewer than 40 credits?
-Your credits stay on your record permanently but produce no retirement benefit on their own. Eligibility is all-or-nothing at 40 — 39 credits pays the same as none. If you ever work in the U.S. again, even years later, new credits add to the old ones toward 40.
+Your credits stay on your record. **For retirement benefits, 39 credits are not enough to meet the usual 40-credit requirement on your own record**, and there is no partial retirement benefit at 39. That does not make them worthless: credits can support currently-insured survivor protection, count toward disability insured status for younger workers, and at 30–39 credits allow Medicare Part A to be bought at a reduced premium. If you ever work in covered U.S. employment again, new credits add to the old ones.
 
 ### Can I collect U.S. Social Security while living in India?
-Generally yes, with 40 credits. India is on SSA's Country List 4, so Indian citizens keep receiving payments beyond six months abroad when the worker earned at least 40 credits or lived in the U.S. for 10 years. U.S. citizens can be paid in India regardless.
+Often yes, but it is a separate question from eligibility. Payment outside the U.S. depends on citizenship, residence, benefit type, the worker's insured status and applicable exceptions. For a non-citizen beneficiary the six-month alien nonpayment rule applies unless an exception is met; India is listed as a country whose citizens may meet the exception based on the worker having at least 40 quarters of coverage or 10 years of U.S. residence. U.S. citizens are not subject to the alien nonpayment provisions at all. Dependants and survivors generally face an additional 5-year residency requirement.
 
 ### Is there a U.S.–India totalization agreement?
-No, and none is in force as of this review. Indian EPF and EPS service cannot be combined with U.S. credits to reach 40, and U.S. credits cannot support an Indian entitlement. You also pay U.S. Social Security tax on H-1B wages with no exemption, unlike agreement-country workers.
+No — none is in force as of this review. Indian EPF and EPS contributions cannot be combined with U.S. credits to satisfy U.S. eligibility requirements, and U.S. credits cannot support an Indian entitlement. Wages on H-1B status are also generally subject to U.S. Social Security tax with no agreement-based exemption.
 
 ### Can my wife claim on my record if she never worked in the U.S.?
-On paper yes — up to 50% of your PIA at her full retirement age. But if she is not a U.S. citizen and lives in India, she must separately have resided in the U.S. for five years while married to you. Without that she is entitled but unpayable abroad.
+Qualifying and being paid abroad are two questions. She may be entitled to a spousal benefit on your record — generally up to 50% of your PIA at her full retirement age, subject to the spousal requirements — without ever having worked in the U.S. Separately, if she is not a U.S. citizen and lives outside the U.S., payment is governed by the alien nonpayment provisions, which for a dependant first eligible after December 1984 generally include a requirement of five years of U.S. residence while the marriage existed, subject to the listed exceptions. Check the specific facts with SSA rather than assuming either outcome.
 
 ### Do my Social Security credits expire?
-No. Credits are permanent once earned: you can leave at 35 with 40 credits, never return to work, and still claim at 62 or later. The exception is disability, which requires recent work — roughly 20 credits in the last 40 quarters for workers over 31.
+Generally no. Credits are permanent once earned, so you can leave at 35 with 40 credits, never return to covered work, and still be fully insured for retirement later. Disability is the exception: it uses a recent-work test — roughly 20 credits in the last 40 quarters for workers disabled at 31 or older — which can be failed years after leaving.
 
 ### Does an Indian EPS pension reduce my U.S. Social Security?
-Not any more. The Windfall Elimination Provision, which reduced U.S. benefits for people drawing a pension from non-covered work including foreign social security, was repealed by the Social Security Fairness Act signed 5 January 2025 — for benefits payable from January 2024 onward.
+Not any more. The Windfall Elimination Provision, which reduced U.S. benefits for people also drawing a pension from non-covered work including foreign social security, was repealed by the Social Security Fairness Act signed 5 January 2025, for benefits payable from January 2024 onward.
 
 ### How much U.S. tax is withheld on Social Security paid to India?
-Generally 30% on 85% of the benefit — an effective 25.5% of the gross — reported on Form SSA-1042S. India's treaty carve-out covers only benefits based on U.S. government service for someone both resident and national of India, so private-sector careers see no reduction.
+For a nonresident alien, 85% of the benefit is generally subject to a 30% withholding rate — an effective 25.5% of the gross — reported on Form SSA-1042S. India's treaty carve-out covers only benefits based on U.S. federal, state or local government employment for someone who is both a resident and a national of India, so a private-sector career generally sees no reduction. Withholding is not the same as final liability: whether a return is required or any refund is available depends on the taxpayer's circumstances.
 
 ## The bottom line
-Two numbers, two truths. **The 40 credits are solid** — earned, permanent, enough on their own to keep you payable in India. **The dollar estimate is a story about a career you may not have**, and the honest version, with a zero for every year you are not here, is a materially smaller number.
+Two numbers, two truths. **The 40 credits are solid** — earned, durable, and generally enough to make you fully insured for retirement on your own record. **The dollar estimate is a story about a career you may not have**, and the honest version, with a zero for every year you are not here, is a materially smaller number.
 
-What deserves attention this week is not your own record. It is your spouse's five-year clock — the only variable on this page that a change in your exit date can still fix.
+And the third thing, which is neither of those numbers: whether benefits can actually be **paid** to you and your family in India is decided by its own rules — citizenship, residence, benefit type, insured status and exceptions. That is the part worth checking against your own facts before you fix a departure date, because your family's U.S. residence history is one of the few inputs a change of date can still affect.
 
 :::cta
 title: Leaving the U.S. and want the full picture?
-body: How the six-month rule, Country List 4 and the payments-abroad process actually work once you have gone.
+body: How the six-month rule, the country lists and the payments-abroad process actually work once you have gone.
 button: Do you keep Social Security if you return to India?
 href: /articles/social-security-benefits-leaving-us
 :::
 
 :::note
-**Educational information only — no figure here is a promise.** Outcomes depend on your earnings history, citizenship, claiming age and family facts. If your situation involves a **non-citizen spouse, a disability claim, a divorce, or a balance large enough to change your relocation decision**, have it reviewed by a cross-border CPA and confirm the mechanics with SSA's **Federal Benefits Unit** at the U.S. Embassy in New Delhi.
+**Educational information only — no figure here is a promise, and none of it is tax, legal or financial advice.** Outcomes depend on your earnings history, citizenship, residence, claiming age and family facts, and the rules change. If your situation involves a **non-citizen spouse, a disability claim, a divorce, or a balance large enough to change your relocation decision**, have it reviewed by a cross-border CPA and confirm the mechanics with SSA's **Federal Benefits Unit** at the U.S. Embassy in New Delhi. Figures on this page were checked against the sources cited in August 2026.
 :::
 
-## Official sources
-- [SSA — Country List 4 (includes India)](https://www.ssa.gov/international/countrylist4.htm)
-- [SSA — Payments Outside the United States](https://www.ssa.gov/international/payments.html) and the [Payments Abroad Screening Tool](https://www.ssa.gov/international/payments_outsideUS.html)
-- [SSA Publication 05-10137 — Your Payments While You Are Outside the United States](https://www.ssa.gov/pubs/EN-05-10137.pdf)
-- [SSA POMS RS 02610.001 — Alien Nonpayment Provisions](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610001) and [RS 02610.010 — Exceptions](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610010)
-- [SSA POMS RS 02610.025 — 5-Year Residency Requirement for Alien Dependents/Survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025) and [RS 02610.030 — Spouses, Children and Parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030)
-- [SSA — Social Security Credits and Benefit Eligibility](https://www.ssa.gov/benefits/retirement/planner/credits.html)
-- [SSA — How You Qualify for Disability Benefits](https://www.ssa.gov/benefits/disability/qualify.html)
-- [SSA — Nonresident Alien Tax Withholding](https://www.ssa.gov/international/AlienTax.html)
-- [SSA POMS GN 05010.165 — Tax Treaty With India](https://secure.ssa.gov/apps10/poms.nsf/lnx/0205010165)
-- [IRS Publication 915 — Social Security and Equivalent Railroad Retirement Benefits](https://www.irs.gov/publications/p915)
-- [IRS — India tax treaty documents (Article 20)](https://www.irs.gov/businesses/international-businesses/india-tax-treaty-documents)
+## Full source list
+Credits and insured status
+- [SSA — Social Security credits and benefit eligibility](https://www.ssa.gov/benefits/retirement/planner/credits.html)
+- [SSA POMS RS 00301.250 — amount required for a quarter of coverage, by year](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301250)
+- [SSA POMS RS 00301.105 — Fully insured status](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301105) and [RS 00301.110 — Currently insured status](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301110)
+- [SSA POMS RS 00301.102 — additional requirements for alien workers (SSPA 2004)](https://secure.ssa.gov/apps10/poms.nsf/lnx/0300301102)
+
+Payments outside the United States
+- [SSA — Payments outside the United States](https://www.ssa.gov/international/payments.html) and the [Payments Abroad Screening Tool](https://www.ssa.gov/international/payments_outsideUS.html)
+- [SSA Publication 05-10137 — Your payments while you are outside the United States](https://www.ssa.gov/pubs/EN-05-10137.pdf)
+- [SSA POMS RS 02610.001 — Alien nonpayment provisions](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610001), [RS 02610.010 — Exceptions](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610010), [RS 02610.015 — Country status for exceptions](https://secure.ssa.gov/poms.nsf/lnx/0302610015) and [RS 02610.020 — Absence and presence in the U.S.](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610020)
+- [SSA — Country List 4](https://www.ssa.gov/international/countrylist4.htm)
+
+Family members
+- [SSA — Benefits for family members](https://www.ssa.gov/benefits/retirement/planner/applying7.html)
+- [SSA POMS RS 02610.025 — 5-year residency requirement for alien dependents and survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025) and [RS 02610.030 — Spouses, children and parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030)
+
+Disability and SSI
+- [SSA — How you qualify for disability benefits](https://www.ssa.gov/benefits/disability/qualify.html)
+- [SSA POMS SI 00501.410 — SSI ineligibility due to absence from the U.S.](https://secure.ssa.gov/apps10/poms.nsf/lnx/0500501410)
+
+Tax
+- [IRS Publication 915 — Social Security and equivalent railroad retirement benefits](https://www.irs.gov/publications/p915)
+- [IRS — India tax treaty documents](https://www.irs.gov/businesses/international-businesses/india-tax-treaty-documents)
+- [IRS — Aliens employed in the U.S.: Social Security taxes](https://www.irs.gov/individuals/international-taxpayers/aliens-employed-in-the-us-social-security-taxes)
+- [SSA — Nonresident alien tax withholding](https://www.ssa.gov/international/AlienTax.html), [SSA POMS GN 05010.010](https://secure.ssa.gov/apps10/poms.nsf/lnx/0205010010) and [GN 05010.165 — Tax treaty with India](https://secure.ssa.gov/apps10/poms.nsf/lnx/0205010165)
 - [SSA — Social Security Fairness Act (WEP and GPO repeal)](https://www.ssa.gov/benefits/retirement/social-security-fairness-act.html)
-- [Medicare — Coverage outside the United States](https://www.medicare.gov/coverage/travel-outside-the-u.s.) and [late enrolment penalties](https://www.medicare.gov/basics/costs/medicare-costs/avoid-penalties)
-- [Form SSA-1199-IN — International Direct Deposit (India)](https://www.ssa.gov/forms/ssa-1199-in.pdf) and [Form SSA-7162 instructions](https://www.ssa.gov/foreign/ssa7162inst.pdf)`,
+
+Medicare
+- [CMS — Original Medicare (Part A and B) eligibility and enrolment](https://www.cms.gov/medicare/enrollment-renewal/original-part-a-b)
+- [Medicare — Costs at a glance](https://www.medicare.gov/basics/costs/medicare-costs) and [avoiding late enrolment penalties](https://www.medicare.gov/basics/costs/medicare-costs/avoid-penalties)
+- [Medicare — Travel outside the U.S.](https://www.medicare.gov/coverage/travel-outside-the-u.s.)
+
+Forms
+- [Form SSA-1199-IN — International direct deposit (India)](https://www.ssa.gov/forms/ssa-1199-in.pdf) and [Form SSA-7162 instructions](https://www.ssa.gov/foreign/ssa7162inst.pdf)`,
   },
   {
     slug: "rent-vs-buy-house-immigrants",
