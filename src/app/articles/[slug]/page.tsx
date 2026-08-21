@@ -203,23 +203,27 @@ export default function ArticlePage({
                 return <ArticleBody content={article.content} />;
               })()}
 
-              {article.answerFirst && article.expertiseTags && (
+              {/* The foot author card and the standalone disclaimer say the
+                  same thing about educational content, so only one renders:
+                  the bio card when the article opts into it, the plain note
+                  otherwise. Both link out to the full disclaimer. */}
+              {article.answerFirst && article.expertiseTags ? (
                 <AuthorBioBox className="mt-10" tags={article.expertiseTags} />
+              ) : (
+                <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
+                  <strong className="font-semibold text-ink-700">
+                    A quick note:
+                  </strong>{" "}
+                  This article is educational and reflects general information,
+                  not personalized financial, tax, legal, or immigration advice.
+                  Rules change and individual situations differ — consult a
+                  qualified professional before acting. See our{" "}
+                  <Link href="/disclaimer" className="text-brand-600 underline">
+                    full disclaimer
+                  </Link>
+                  .
+                </div>
               )}
-
-              <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
-                <strong className="font-semibold text-ink-700">
-                  A quick note:
-                </strong>{" "}
-                This article is educational and reflects general information,
-                not personalized financial, tax, legal, or immigration advice.
-                Rules change and individual situations differ — consult a
-                qualified professional before acting. See our{" "}
-                <Link href="/disclaimer" className="text-brand-600 underline">
-                  full disclaimer
-                </Link>
-                .
-              </div>
 
               {topic && (
                 <div className="mx-auto mt-6 max-w-[720px] text-sm">

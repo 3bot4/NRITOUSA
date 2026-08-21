@@ -53,7 +53,11 @@ export default function AuthorBioBox({
           <p className="mt-3 text-xs leading-relaxed text-ink-400">
             Educational content, not personalized tax, legal, immigration, or
             financial advice. Rules, fees, and processing times change —
-            always verify with the official source before acting.
+            always verify with the official source before acting. See our{" "}
+            <Link href="/disclaimer" className="underline hover:text-ink-600">
+              full disclaimer
+            </Link>
+            .
           </p>
         </div>
       </div>

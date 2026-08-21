@@ -5,15 +5,23 @@ import { resolveByline } from "@/lib/byline";
 import { formatDate } from "@/lib/format";
 
 /**
- * Author byline + reviewer box rendered at the top of every article.
+ * Author byline rendered under the title of every article.
  *
- * - In-house articles are attributed to and reviewed by Deepak Middha.
- * - Guest contributor articles show "By <Contributor>" (linked to their author
- *   profile) plus their role, with Deepak shown as the editorial reviewer.
+ * ONE block, deliberately. This used to render an attribution line *and* a
+ * separate reviewer card beneath it. On an in-house article — which is nearly
+ * all of them — both opened with the identical string "Reviewed by Deepak
+ * Middha, CA, Series 65", so every article led with the same sentence twice,
+ * and repeated the date ("Updated …" then "Last reviewed …") while the meta
+ * row above the H1 was already showing the date and reading time a third time.
  *
- * Every article — in-house or guest — surfaces the same strengthened reviewer
- * card (full name + credentials, one-line bio, last-reviewed date, a
- * "Sources verified" badge, and a "View full profile" link) for E-E-A-T.
+ * The E-E-A-T signals that card carried are all kept, just inline: full name
+ * with credentials, the review date, the sources-verified badge, and a link to
+ * the full profile. Articles that want the long-form bio and expertise tags
+ * render AuthorBioBox at the foot instead, where a full card belongs.
+ *
+ * Guest contributor articles are the one case with two names, because there
+ * genuinely are two people: "By <Contributor>" plus Deepak as reviewer. That is
+ * attribution, not repetition.
  *
  * Bylines resolve from lib/byline, so this stays consistent everywhere.
  */
@@ -22,55 +30,54 @@ export default function ArticleByline({ article }: { article: Article }) {
   const date = article.updated ?? article.date;
 
   return (
-    <div className="mt-6">
-      {/* Primary attribution line */}
-      <div className="flex items-center gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-50 text-sm font-bold text-brand-700">
-          {by.initials}
-        </span>
-        <div className="text-sm">
-          <p className="font-semibold text-ink-800">
-            {by.isContributor ? "By " : "Reviewed by "}
-            <Link href={by.url} className="text-brand-600 hover:text-brand-700">
-              {by.isContributor ? by.name : owner.byline}
-            </Link>
-          </p>
-          <p className="text-ink-400">
-            {by.isContributor ? `${by.role} · ` : ""}
-            Updated {formatDate(date)} · {article.readingTime} min read
-          </p>
-        </div>
-      </div>
+    <div className="mt-5 flex items-center gap-3">
+      <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-brand-50 text-sm font-bold text-brand-700">
+        {by.isContributor ? by.initials : ownerInitials}
+      </span>
 
-      {/* Strengthened reviewer box — shown on every article */}
-      <div className="mt-4 rounded-2xl border border-ink-900/10 bg-white p-4 shadow-sm">
-        <div className="flex items-start gap-3">
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-700">
-            {ownerInitials}
+      <div className="min-w-0 text-sm">
+        <p className="font-semibold text-ink-800">
+          {by.isContributor ? "By " : "Reviewed by "}
+          <Link href={by.url} className="text-brand-600 hover:text-brand-700">
+            {by.isContributor ? by.name : owner.byline}
+          </Link>
+          {by.isContributor && (
+            <span className="font-normal text-ink-400"> · {by.role}</span>
+          )}
+        </p>
+
+        <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-400">
+          {by.isContributor && (
+            <>
+              <span>
+                Reviewed by{" "}
+                <Link
+                  href={owner.url}
+                  className="font-semibold text-brand-600 hover:text-brand-700"
+                >
+                  {owner.byline}
+                </Link>
+              </span>
+              <span aria-hidden>·</span>
+            </>
+          )}
+          <span>Last reviewed {formatDate(date)}</span>
+          <span aria-hidden>·</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
+            <span aria-hidden>✓</span> Sources verified
           </span>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-ink-900">
-              Reviewed by {owner.byline}
-            </p>
-            <p className="mt-0.5 text-sm leading-[1.5] text-ink-500">
-              {owner.reviewerBio}
-            </p>
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
-              <span className="text-ink-400">
-                Last reviewed: {formatDate(date)}
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-700">
-                <span aria-hidden>✓</span> Sources verified
-              </span>
+          {!by.isContributor && (
+            <>
+              <span aria-hidden>·</span>
               <Link
                 href={owner.url}
                 className="font-semibold text-brand-600 hover:text-brand-700"
               >
-                View full profile <span aria-hidden>→</span>
+                Full profile <span aria-hidden>→</span>
               </Link>
-            </div>
-          </div>
-        </div>
+            </>
+          )}
+        </p>
       </div>
     </div>
   );

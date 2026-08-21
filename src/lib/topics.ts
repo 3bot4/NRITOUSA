@@ -36,6 +36,15 @@ export const topics: Topic[] = [
     seoTitle: "Visa & Green Card Guides for Indians in the USA",
     seoDescription:
       "Green card wait times, visa bulletin tracker, priority dates, EB-2 and EB-3 India backlogs, H-1B extensions, and the path to permanent residence in America.",
+    // Retired: every immigration guide now lives in a dedicated top-level
+    // cluster (/h1b/*, /green-card/*, /uscis/*, /visa-bulletin/*, PERM, I-140,
+    // EAD, I-485), so this taxonomy page held ZERO articles and rendered a
+    // "Guides coming soon" empty state on a site with the deepest immigration
+    // library it has — while sitting in the sitemap and the homepage search.
+    // /immigration is the real hub for the intent. The topic stays as a
+    // taxonomy so any future article can still use the slug for its chip and
+    // breadcrumb; topicHubPath() sends every link to the hub.
+    retiredTo: "/immigration",
   },
   {
     slug: "taxes",

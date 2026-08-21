@@ -1430,7 +1430,7 @@ href: /articles/social-security-benefits-leaving-us
 :::
 
 :::note
-**Educational information only.** This page explains how the rules work in general; it is not tax, legal or benefits advice, and no figure here is a promise of any particular benefit amount. Outcomes depend on your earnings history, citizenship, claiming age and family facts. If yours involves a **non-citizen spouse, a disability claim, a divorce, or a balance large enough to change your relocation decision**, have it reviewed by a cross-border CPA and confirm the mechanics with SSA's **Federal Benefits Unit** at the U.S. Embassy in New Delhi.
+**Educational information only — no figure here is a promise.** Outcomes depend on your earnings history, citizenship, claiming age and family facts. If your situation involves a **non-citizen spouse, a disability claim, a divorce, or a balance large enough to change your relocation decision**, have it reviewed by a cross-border CPA and confirm the mechanics with SSA's **Federal Benefits Unit** at the U.S. Embassy in New Delhi.
 :::
 
 ## Official sources

@@ -111,6 +111,15 @@ const nextConfig = {
         destination: "/send-money-to-india",
         permanent: true,
       },
+      // The immigration topic page listed zero guides — every immigration
+      // article had already moved into a dedicated top-level cluster — so it
+      // served a "Guides coming soon" empty state. /immigration is the hub
+      // that actually answers the intent.
+      {
+        source: "/topics/immigration",
+        destination: "/immigration",
+        permanent: true,
+      },
       // The passport article was expanded into a top-level topic cluster
       // (hub at /indian-passport-renewal-usa). Preserve the old /articles URL.
       {
