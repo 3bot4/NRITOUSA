@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import Ticker from "@/components/home/Ticker";
-import HomeHero from "@/components/home/HomeHero";
-import GlobalSearch from "@/components/home/GlobalSearch";
-import MostUsedTools from "@/components/home/MostUsedTools";
-import HubCards from "@/components/home/HubCards";
+import HomeHeroPanel from "@/components/home/HomeHeroPanel";
+import TrustBar from "@/components/home/TrustBar";
+import MostSearched from "@/components/home/MostSearched";
+import JourneyHubs from "@/components/home/JourneyHubs";
 import VisitorInsuranceSpotlight from "@/components/home/VisitorInsuranceSpotlight";
-import PopularGuidesForIndians from "@/components/home/PopularGuidesForIndians";
-import LeadMagnetSpotlight from "@/components/home/LeadMagnetSpotlight";
-import LatestUpdates from "@/components/home/LatestUpdates";
+import GuidesAndUpdates from "@/components/home/GuidesAndUpdates";
+import GuideDirectory from "@/components/home/GuideDirectory";
+import WealthCtaBand from "@/components/home/WealthCtaBand";
 import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import { jsonLdGraph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-const HOME_TITLE =
-  "NRI to USA — Free Immigration, Tax & Wealth Tools";
+const HOME_TITLE = "NRI to USA — Free Immigration, Tax & Wealth Tools";
 const HOME_DESCRIPTION =
-  "Free calculators, checklists and guides for Indians in the USA: U.S. income, India assets, taxes, retirement, FBAR/FATCA and return-to-India planning.";
+  "Free calculators, checklists and guides for Indians in the USA: H-1B and green card timelines, the visa bulletin for India, USCIS case status, FBAR/FATCA, India tax, 401(k) and return-to-India planning.";
 
 export const metadata: Metadata = {
   title: {
@@ -40,19 +38,20 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Ticker />
-      <HomeHero />
+      {/* Hero carries the site search and the Green Card Line rate card, which
+          replaced the scrolling ticker strip that used to sit above it. */}
+      <HomeHeroPanel />
+      <TrustBar />
+      <MostSearched />
+      <JourneyHubs />
 
-      <Container className="pb-8 pt-6 sm:pb-10">
-        {/* Clean gateway: search → most-used tools → hubs → guide → guides. */}
-        <GlobalSearch />
-        <MostUsedTools />
-        <HubCards />
+      <Container>
         <VisitorInsuranceSpotlight />
-        <LeadMagnetSpotlight />
-        <PopularGuidesForIndians />
-        <LatestUpdates />
       </Container>
+
+      <GuidesAndUpdates />
+      <GuideDirectory />
+      <WealthCtaBand />
 
       <RecommendedToolsAd
         category="home"
