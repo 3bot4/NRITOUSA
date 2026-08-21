@@ -59,6 +59,11 @@ const faqs: FaqItem[] = [
       "No. You cannot work for the laid-off employer after termination, and you cannot begin work for a new employer until a new H-1B petition is properly filed (and, under AC21 portability, generally receipted) while you remain in valid status. The grace period lets you stay in the US to arrange next steps — it is not work authorization. Verify your specific situation with an attorney before starting any work.",
   },
   {
+    question: "How do I find companies that sponsor H-1B visas after a layoff?",
+    answer:
+      "Work from evidence, not job-board guesswork. The US Department of Labor publishes every certified H-1B Labor Condition Application (LCA), which shows which employers have actually sponsored your occupation, in your state, recently. Our free H-1B Sponsor Finder tool ranks those employers by certified LCA volume for your job title and worksite state, with median wages and the DOL wage-level mix, so you can build a targeted outreach list inside your 60-day window. Note that an LCA is a sponsorship signal only — it is not a petition approval, a visa, or a job offer, so confirm sponsorship with each employer directly.",
+  },
+  {
     question: "What happens to my I-140 and priority date if I am laid off?",
     answer:
       "An approved I-140 that has been approved for 180+ days generally retains your priority date and can support future H-1B extensions beyond the 6-year cap, even if the sponsoring employer withdraws it after that point — but the rules are fact-specific. Whether your green card process survives a layoff depends on the I-140 status, how long it was approved, and your new employer's willingness to sponsor. This is a critical question for your immigration attorney.",
@@ -115,6 +120,7 @@ export default function H1bLayoffPage() {
     { id: "grace-window", label: "60-day window" },
     { id: "documents", label: "Documents" },
     { id: "transfer", label: "H-1B transfer" },
+    { id: "sponsors", label: "Find sponsors" },
     { id: "i140", label: "I-140 / green card" },
     { id: "dependents", label: "H-4 family" },
     { id: "travel", label: "Travel" },
@@ -327,7 +333,9 @@ export default function H1bLayoffPage() {
           <div className="mx-auto max-w-3xl space-y-5">
             <SectionHeading id="transfer" kicker="Step 4">H-1B transfer questions to ask</SectionHeading>
             <p className="text-sm leading-relaxed text-ink-700">
-              A change-of-employer H-1B petition is cap-exempt — you do not re-enter the lottery. The goal during a layoff is to get a clean petition filed before your grace period ends. These are the questions to put to a prospective employer and their attorney.
+              A change-of-employer H-1B petition is cap-exempt — you do not re-enter the lottery. The goal during a layoff is to get a clean petition filed before your grace period ends. Target employers that already sponsor your role — the{" "}
+              <Link href="/tools/h1b-sponsor-finder" className="font-semibold text-orange-600 underline">H-1B Sponsor Finder</Link>{" "}
+              ranks companies by certified LCA volume for your job title and state. These are the questions to put to a prospective employer and their attorney.
             </p>
             <div className="space-y-2.5">
               {[
@@ -359,6 +367,44 @@ export default function H1bLayoffPage() {
                   H-1B transfer after layoff guide →
                 </Link>
               </div>
+            </div>
+
+            {/* Sponsor finder */}
+            <div id="sponsors" className="scroll-mt-24 rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50 p-6 sm:p-7">
+              <p className="text-xs font-bold uppercase tracking-wide text-indigo-700 mb-1">Step 4b · Build your target list</p>
+              <h3 className="text-lg font-bold tracking-tight text-ink-900">
+                Find employers that already sponsor H-1Bs for your role
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                With a 60-day window, cold-applying everywhere wastes the clock. Start with employers that have a recent, proven record of sponsoring your exact occupation in the state you want to work in. The{" "}
+                <Link href="/tools/h1b-sponsor-finder" className="font-semibold text-indigo-700 underline">H-1B Sponsor Finder</Link>{" "}
+                is built from official US Department of Labor OFLC disclosure files and ranks companies by certified H-1B LCA volume for your job title and worksite state, with median wages and the DOL wage-level mix.
+              </p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                {[
+                  { t: "Search by role + state", d: "Your job title is mapped to its DOL occupation code(s) automatically." },
+                  { t: "Ranked by real filings", d: "Sorted by certified LCA volume over the last 12 months, not guesswork." },
+                  { t: "Median pay & wage levels", d: "See whether a sponsor files mostly junior (Level I–II) or senior (III–IV) roles." },
+                ].map((c) => (
+                  <div key={c.t} className="rounded-xl border border-indigo-100 bg-white/70 p-3">
+                    <p className="text-xs font-semibold text-ink-900">{c.t}</p>
+                    <p className="mt-0.5 text-[11px] leading-relaxed text-ink-600">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Link href="/tools/h1b-sponsor-finder"
+                  className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
+                  Open the H-1B Sponsor Finder →
+                </Link>
+                <Link href="/h1b/transfer-after-layoff"
+                  className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-white px-4 py-2.5 text-sm font-semibold text-indigo-800 hover:border-indigo-400">
+                  How a transfer works after a layoff →
+                </Link>
+              </div>
+              <p className="mt-3 text-[11px] leading-relaxed text-ink-500">
+                An LCA is an attestation an employer files with the DOL before an H-1B petition — it is a sponsorship signal, not a petition approval, a visa, or a job offer. Always confirm sponsorship with the employer directly.
+              </p>
             </div>
           </div>
         </Container>
@@ -595,6 +641,7 @@ export default function H1bLayoffPage() {
                 { href: "/tools", label: "All Tools", desc: "Every free calculator and checklist in one place" },
                 { href: "/uscis", label: "USCIS Hub", desc: "Case status, receipt numbers, forms, and processing times" },
                 { href: "/h1b", label: "H-1B Guide for Indians", desc: "Transfer, extension, RFE, premium processing, and travel" },
+                { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Which companies sponsor H-1Bs for your role and state, ranked by certified DOL LCA volume" },
                 { href: "/tools/h1b-transfer-risk-checklist", label: "H-1B Transfer Risk Checklist", desc: "Assess your transfer situation and documents" },
                 { href: "/tools/h4-ead-navigator", label: "H-4 EAD Navigator", desc: "Understand H-4 and H-4 EAD impact for your spouse" },
                 { href: "/green-card", label: "Green Card Process for Indians", desc: "EB-2/EB-3, I-140, priority date, and I-485" },
