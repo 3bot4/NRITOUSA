@@ -1212,8 +1212,6 @@ Most people misread both. The 40 is genuinely good news, and more permanent than
 
 If you are weighing a move back to India, that one assumption separates a number you can plan around from a number that will quietly mislead you. This page explains what each means for someone who will not spend a whole career here — and what happens to your spouse, where the real damage hides.
 
-**Last reviewed: August 2026.**
-
 :::quickanswer
 **40 credits — about 10 years of U.S. work — is the qualifying line, and once you cross it the benefit is yours for life.** Credits never expire, and India's place on SSA's Country List 4 means a 40-credit worker can generally keep being paid there. But the figure beside it assumes you keep working here until full retirement age; the real formula averages your **highest 35 years**, filling missing years with **zeros**. And your spouse faces a **separate 5-year U.S. residency test** many families fail without knowing it.
 :::
