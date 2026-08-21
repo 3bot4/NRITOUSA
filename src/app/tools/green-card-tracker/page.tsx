@@ -188,13 +188,23 @@ export default function GreenCardTrackerPage() {
           </>
         }
       >
-      {/* Quick answer + key takeaways */}
-      <section className="pb-8 pt-6 sm:pt-8">
+      {/* Signature dashboard */}
+      <section className="pb-12 pt-6 sm:pb-16 sm:pt-8">
         <Container>
-          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/5 bg-[#fafafa] p-5 sm:p-6">
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-400">Quick answer</p>
+          <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
+          <GreenCardQueueTracker />
+
+          {/* What the tracker does + its guarantees. This used to sit ABOVE the
+              dashboard as a second "Quick answer" — on a phone that pushed the
+              actual tool below the fold, and the page already answers the
+              question in <ToolIntro /> further down. It reads better here, next
+              to the output it describes. */}
+          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-ink-900/5 bg-[#fafafa] p-5 sm:p-6">
+            <p className="text-xs font-bold uppercase tracking-wider text-ink-400">
+              How this tracker works
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-ink-700">
-              Pick your category and country of birth below, enter your priority
+              Pick your category and country of birth above, enter your priority
               date, and the tracker shows the current queue gap, a projected
               wait range under four different pace scenarios, and how the
               cutoff has actually moved over the last five years — all built
@@ -209,14 +219,6 @@ export default function GreenCardTrackerPage() {
               <li>• No account, no data leaves your browser</li>
             </ul>
           </div>
-        </Container>
-      </section>
-
-      {/* Signature dashboard */}
-      <section className="pb-12 sm:pb-16">
-        <Container>
-          <VisaBulletinAlert className="mx-auto mb-6 max-w-3xl" />
-          <GreenCardQueueTracker />
         </Container>
       </section>
 
