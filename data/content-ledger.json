@@ -203,6 +203,15 @@
       "nextStep": "If USCIS opens Dates for Filing for September, flip adjustmentOfStatusChart in data/visa-bulletin/current.json and update the caveat copy in visa-bulletin.ts, visaBulletinCluster.ts (final-action-date-vs-date-of-filing) and /uscis"
     },
     {
+      "id": "ingest-the-october-2026-visa-bulletin",
+      "title": "Ingest the October 2026 Visa Bulletin (FY2027 reset — expected release ~2026-09-12)",
+      "area": "other",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-22",
+      "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions — EB-2 and EB-5 India should return from Unavailable on Oct 1"
+    },
+    {
       "id": "ingest-september-2026-visa-bulletin-released",
       "title": "Ingest September 2026 Visa Bulletin (released ~2026-08-22) — snapshot 2026-09.json + rebuild current/history/index",
       "area": "other",
