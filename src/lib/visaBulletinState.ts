@@ -30,7 +30,7 @@ export interface BulletinState {
  * bulletin effective month — do not conflate them. Shared by the homepage
  * ticker and the immigration tracker so both show the same "last verified".
  */
-export const IMMIGRATION_LAST_VERIFIED = "2026-07-20";
+export const IMMIGRATION_LAST_VERIFIED = "2026-08-22";
 
 /** Human label, e.g. "Jul 20, 2026". */
 export const immigrationLastVerifiedLabel = (() => {
@@ -52,7 +52,7 @@ export function addMonths(key: string, n: number): string {
   return `${Math.floor(total / 12)}-${pad((total % 12) + 1)}`;
 }
 
-/** "2026-08" → "August 2026". */
+/** "2026-09" → "September 2026". */
 export function monthLabel(key: string): string {
   const [y, m] = key.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString("en-US", {

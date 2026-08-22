@@ -84,6 +84,9 @@ export interface SitemapEntry {
  */
 export const CONTENT_BASELINE = new Date("2026-07-20");
 
+/** Routes re-stamped by the September 2026 Visa Bulletin refresh (2026-08-22). */
+const bulletinRefresh = new Date("2026-08-22");
+
 const e = (
   path: string,
   priority: number,
@@ -184,7 +187,7 @@ export const toolsEntries: SitemapEntry[] = [
   // Category hub that groups the visa/green-card tools. It lives under /tools/
   // but is a hand-built page rather than a lib/tools entry, so the map above
   // never picked it up and it was absent from every sitemap.
-  e("/tools/visa-green-card", 0.7, "monthly"),
+  e("/tools/visa-green-card", 0.7, "monthly", bulletinRefresh),
 ];
 
 /* ------------------------------------------------------------------ *
@@ -238,8 +241,8 @@ export const taxEntries: SitemapEntry[] = [
  * ------------------------------------------------------------------ */
 const immDate = new Date("2026-06-16");
 export const immigrationEntries: SitemapEntry[] = [
-  e("/immigration", 0.9, "weekly"),
-  e("/uscis", 0.9, "weekly", immDate),
+  e("/immigration", 0.9, "weekly", bulletinRefresh),
+  e("/uscis", 0.9, "weekly", bulletinRefresh),
   e("/uscis/case-status", 0.9, "weekly", immDate),
   e("/uscis/myuscis-account", 0.85, "monthly", immDate),
   e("/uscis/forms", 0.9, "monthly", immDate),
@@ -319,11 +322,11 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/nvc-processing-time", 0.85, "monthly"),
   e("/nvc-document-checklist-india", 0.8, "monthly"),
   e("/nvc-public-inquiry", 0.8, "monthly"),
-  e("/green-card", 0.9, "weekly", immDate),
-  e("/visa-bulletin", 0.9, "monthly", immDate),
+  e("/green-card", 0.9, "weekly", bulletinRefresh),
+  e("/visa-bulletin", 0.9, "monthly", bulletinRefresh),
   // Standalone FY2027-reset analysis — its own route, not a /visa-bulletin/[slug]
   // cluster child, so it is listed explicitly here.
-  e("/visa-bulletin/october-2026-predictions", 0.85, "monthly", immDate),
+  e("/visa-bulletin/october-2026-predictions", 0.85, "monthly", bulletinRefresh),
   e("/immigration-tracker", 0.8, "weekly"),
   e("/oci", 0.9, "weekly"),
   ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),

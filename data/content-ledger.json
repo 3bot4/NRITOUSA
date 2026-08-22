@@ -194,6 +194,25 @@
       "evidence": "npm run ledger"
     },
     {
+      "id": "re-check-uscis-september-2026-adjustment",
+      "title": "Re-check USCIS September 2026 adjustment-of-status chart determination (uscis.gov/visabulletininfo showed August + 'coming soon' on 2026-08-22)",
+      "area": "other",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-22",
+      "nextStep": "If USCIS opens Dates for Filing for September, flip adjustmentOfStatusChart in data/visa-bulletin/current.json and update the caveat copy in visa-bulletin.ts, visaBulletinCluster.ts (final-action-date-vs-date-of-filing) and /uscis"
+    },
+    {
+      "id": "ingest-september-2026-visa-bulletin-released",
+      "title": "Ingest September 2026 Visa Bulletin (released ~2026-08-22) — snapshot 2026-09.json + rebuild current/history/index",
+      "area": "other",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-08-22",
+      "nextStep": "Fetch via adoption.state.gov mirror, write snapshots/2026-09.json, run build-visa-bulletin-data.mjs, confirm USCIS AOS chart at uscis.gov/visabulletininfo",
+      "resolved": "2026-08-22"
+    },
+    {
       "id": "broken-internal-links-2026-08",
       "title": "3 internal links return 404 on the live site",
       "area": "links",

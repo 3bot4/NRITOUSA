@@ -57,7 +57,7 @@ const faq: FaqItem[] = [
   {
     question: "What is the EB-2 India green card wait time in 2026?",
     answer:
-      `The August 2026 Final Action Date for EB-2 India is ${formatCutoff(getCutoffs("eb2", "india").fad)} — EB-2 India has no visa numbers available for August 2026. At the cutoff's recent pace of movement, a new EB-2 India applicant realistically faces a wait measured in decades, not years — which is why many applicants also file EB-1 or EB-3 where eligible.`,
+      `The September 2026 Final Action Date for EB-2 India is ${formatCutoff(getCutoffs("eb2", "india").fad)} — EB-2 India has no visa numbers available for September 2026. At the cutoff's recent pace of movement, a new EB-2 India applicant realistically faces a wait measured in decades, not years — which is why many applicants also file EB-1 or EB-3 where eligible.`,
   },
   {
     question:

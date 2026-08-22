@@ -81,6 +81,11 @@ describe("visa bulletin cluster — immigration-accuracy guards", () => {
     expect(pd.date).toBe("2026-06-16"); // datePublished unchanged
     expect(pd.updated).toBe("2026-07-19"); // dateModified bumped (2026-07 rebuild)
     const eb1 = visaBulletinChildPages.find((p) => p.slug === "eb1-india")!;
-    expect(eb1.updated).toBe("2026-08-09"); // rebuilt again in the 2026-08 monthly bulletin update
+    // Rebuilt in the 2026-08 monthly bulletin update and re-stamped on every
+    // later bulletin ingest — assert the invariant, not a pinned date, so the
+    // monthly refresh doesn't have to edit this test.
+    expect(eb1.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(eb1.updated! >= "2026-08-09").toBe(true);
+    expect(eb1.updated! >= eb1.date).toBe(true);
   });
 });

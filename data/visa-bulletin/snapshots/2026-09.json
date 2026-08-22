@@ -1,10 +1,7 @@
 {
   "bulletinMonth": "2026-09",
-  "lastUpdated": "2026-08-22",
-  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-september-2026.html",
-  "sourceLabel": "U.S. Department of State Visa Bulletin (September 2026)",
-  "adjustmentOfStatusChart": "final-action",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official September 2026 bulletin (Number 18, Volume XI). USCIS had not yet posted its September 2026 adjustment-of-status chart determination when this file was updated on 2026-08-22 \u2014 the August 2026 determination (employment-based: Final Action Dates; family-sponsored: Dates for Filing) is carried forward as the conservative default; re-check uscis.gov/visabulletininfo and correct adjustmentOfStatusChart if USCIS opens Dates for Filing for September.",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin archive",
   "categories": {
     "eb1": {
       "row": {
@@ -248,50 +245,6 @@
       "philippines": {
         "fad": "2007-08-22",
         "dff": "2008-03-22"
-      }
-    }
-  },
-  "eb5SetAsides": {
-    "rural": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "highUnemployment": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "infrastructure": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
       }
     }
   }

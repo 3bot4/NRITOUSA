@@ -15,7 +15,7 @@ import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
 
 const PAGE_PATH = "/immigration";
-const UPDATED = "2026-08-09";
+const UPDATED = "2026-08-22";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({

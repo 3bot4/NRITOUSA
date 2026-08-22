@@ -62,7 +62,7 @@ export const bulletin = {
  * Update (or clear) this whenever a new bulletin is configured.
  */
 export const currentBulletinNote =
-  "August 2026 Visa Bulletin: EB-1 India holds at Oct 15, 2022 (unchanged from July). EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India holds at Jan 1, 2014. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. USCIS is using Final Action Dates for employment-based adjustment filings this month. Always verify with the official Department of State Visa Bulletin.";
+  "September 2026 Visa Bulletin: EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India holds at Jan 1, 2014. EB-4 advanced two months to Dec 15, 2022 for every country — the only employment-based Final Action movement this month. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. USCIS's most recent chart determination (August 2026) directs employment-based adjustment filers to Final Action Dates; confirm the September determination at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.";
 
 /**
  * Short, consistent alert headline used by the reusable <VisaBulletinAlert />
@@ -71,7 +71,7 @@ export const currentBulletinNote =
  * files. Single source of truth for the standing alert wording.
  */
 export const bulletinAlert =
-  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India holds at October 15, 2022. EB-3 India holds at January 1, 2014. For August 2026 employment-based adjustment of status, use Final Action Dates.";
+  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India holds at October 15, 2022. EB-3 India holds at January 1, 2014. EB-4 advanced to December 15, 2022 worldwide. For employment-based adjustment of status, USCIS's latest determination directs Final Action Dates.";
 
 export function getCutoffs(
   category: EbCategory,

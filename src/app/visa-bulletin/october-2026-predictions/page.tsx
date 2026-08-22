@@ -46,6 +46,7 @@ import {
 
 const PATH = "/visa-bulletin/october-2026-predictions";
 const PUBLISHED = "2026-08-19";
+const UPDATED = "2026-08-22"; // September 2026 bulletin ingested — live tables now read September data
 const TITLE =
   "October 2026 Visa Bulletin Predictions: EB-2 India Set for Its Largest October Jump in Four Years";
 const SEO_TITLE =
@@ -279,7 +280,7 @@ export default function October2026PredictionsPage() {
     headline: SEO_TITLE,
     description: DESCRIPTION,
     datePublished: PUBLISHED,
-    dateModified: PUBLISHED,
+    dateModified: UPDATED,
     author: { "@type": "Organization", name: site.publisher },
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(PATH) },
@@ -853,7 +854,7 @@ export default function October2026PredictionsPage() {
             October 2026 bulletin is expected to deliver the category&rsquo;s
             largest October advancement in four years, to July 15, 2014.&rdquo; —
             NRItoUSA.com analysis of U.S. Department of State Visa Bulletin data
-            (Oct 2023–Aug 2026)
+            (Oct 2023–Sep 2026)
           </code>
         </div>
 
@@ -861,7 +862,7 @@ export default function October2026PredictionsPage() {
           <strong>Methodology &amp; sources:</strong> Final Action and Dates for
           Filing figures verified against the official U.S. Department of State
           Visa Bulletins for October 2023, October 2024, October 2025, April/May
-          2026, and August 2026 (travel.state.gov). The October outlook follows
+          2026, and August/September 2026 (travel.state.gov). The October outlook follows
           the DOS notice &ldquo;India Per-Country Limit Reached in the EB-2
           Category,&rdquo; which states an advance to at least the May 2026 final
           action date is likely, dependent on India EB-2 demand and the FY2027
@@ -872,7 +873,8 @@ export default function October2026PredictionsPage() {
           and DOS data (D. Bier). Predictions are analytical estimates, not
           guarantees. Educational content, not legal advice — consult an
           immigration attorney for case-specific decisions. Last updated August
-          19, 2026. ·{" "}
+          22, 2026 (September 2026 bulletin: no India employment category moved;
+          EB-2 India still Unavailable through September 30). ·{" "}
           <Link href="/visa-bulletin">All visa bulletin coverage</Link>
         </footer>
       </article>

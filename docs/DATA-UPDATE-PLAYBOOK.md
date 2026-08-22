@@ -53,6 +53,17 @@ Treat that mirror as convenient but undocumented/unofficial — it could change
 or get blocked without notice, so always keep a non-mirror fallback (search +
 cross-referenced secondary sources) in mind rather than depending on it alone.
 
+**Release timing drifts.** The playbook's "second week" rule held for years,
+but FY2026 releases ran late: the August 2026 bulletin landed 2026-07-20 and
+the September 2026 bulletin 2026-08-21/22 — third week, not second. Check
+`data/homepage-config.json`'s `bulletinReleases` against reality each cycle.
+Separately, **USCIS posts its adjustment-of-status chart determination after
+DOS publishes**, sometimes by several days: on 2026-08-22 the September
+bulletin was live while uscis.gov/visabulletininfo still showed August and
+"Next Month's Adjustment of Status Filing Charts: Coming soon". Carry the
+previous determination forward as the conservative default, say so in the copy,
+and re-check within a few days — never assert a chart USCIS has not posted.
+
 When the new monthly Visa Bulletin is published:
 
 1. Fetch the new month's bulletin via the `adoption.state.gov` mirror if it's
@@ -114,10 +125,13 @@ When the new monthly Visa Bulletin is published:
      `retrogressionNote` strings. (Leave `i485BacklogIndia`'s own
      `lastVerified` alone — that's a separate USCIS inventory dataset on its
      own irregular cadence, not the monthly bulletin.)
-   - `src/components/tools/ImmigrationTrackerDashboard.tsx` — has a hardcoded
-     prior-month name (e.g. `"in July 2026"`) in the label built from
-     `previousFinalActionDate`; keep it in sync with whatever month that
-     field now represents.
+   - `src/components/tools/ImmigrationTrackerDashboard.tsx` — **fixed in the
+     2026-09 update**: the prior-month name in the label built from
+     `previousFinalActionDate` used to be hardcoded (e.g. `"in July 2026"`) and
+     went stale every cycle. It now reads `previousBulletinMonthLabel` from
+     `immigration-tracker-data.ts`, derived as
+     `monthLabel(addMonths(currentBulletin.bulletinMonth, -1))`. Nothing to
+     edit here unless the `previous*` fields stop meaning "last month".
    - Visible **"Updated [Month] 2026" badges** on `/green-card` and
      `/tools/visa-green-card` (and check others — grep the pattern, don't
      just search for last month's name). One of these was found stale by a
@@ -125,6 +139,16 @@ When the new monthly Visa Bulletin is published:
      updated to "July") because it was missed by a search that only looked
      for the previous month's name. Grep for the pattern
      `Updated [A-Za-z]+ 2026`, not a specific month string.
+   - `src/lib/sitemap-data.ts` — the hub routes that carry bulletin prose
+     (`/visa-bulletin`, `/visa-bulletin/october-2026-predictions`,
+     `/green-card`, `/uscis`, `/immigration`, `/tools/visa-green-card`) take
+     an explicit `lastModified`; the 2026-09 update points them at a
+     `bulletinRefresh` constant. Bump that constant's date each cycle — and
+     declare it next to `CONTENT_BASELINE`, not down beside `immDate`, or the
+     `/tools/visa-green-card` entry hits it in the temporal dead zone and every
+     sitemap test fails at import (`tsc` will not catch this).
+     `/visa-bulletin/[slug]` children need nothing — they derive from each
+     page's own `updated` stamp.
    - Do **not** touch the "Retrogression Explained" article's June→July 2026
      worked example, or the "June 2026" row in the monthly-update tracking
      table — those are deliberately historical and become false if renamed.
