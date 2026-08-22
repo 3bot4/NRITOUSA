@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-21",
+  "updated": "2026-08-22",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -198,11 +198,12 @@
       "title": "3 internal links return 404 on the live site",
       "area": "links",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-21",
       "detail": "Found by building the internal link graph from 904 rendered pages in .next/server/app, counting only links inside <main> (header, footer and breadcrumbs excluded). All three confirmed 404 on production, not build artifacts: (1) /press links to /h1b-sponsors with anchor 'See the sponsor finder' — /h1b-sponsors is only a dynamic [socSlug]/[state] parent and has no page of its own; the real tool is /tools/h1b-sponsor-finder. (2) /uscis has TWO prominent cards linking to /uscis/notices ('USCIS Notice Decoder' and 'I received a USCIS notice') — that route does not exist; the live decoder is /tools/uscis-notice-decoder. (3) /tools/oci-eligibility-checker links to /tools/oci-document-checklist ('Document Checklist Generator'), which 404s; the uncommitted OCI work in the tree appears to be removing that tool, so this needs to be fixed or deleted alongside it. Note check-links.js cannot catch these — hrefs are built dynamically from data files, so a literal grep on href misses them.",
       "nextStep": "Point /press at /tools/h1b-sponsor-finder, repoint the two /uscis notice cards at /tools/uscis-notice-decoder, and resolve the OCI checklist link (fix or remove with the tool removal)",
-      "evidence": "curl -s -o /dev/null -w '%{http_code}' on each target"
+      "evidence": "curl -s -o /dev/null -w '%{http_code}' on each target",
+      "resolved": "2026-08-22"
     },
     {
       "id": "resources-orphan",
