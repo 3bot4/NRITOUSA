@@ -68,7 +68,7 @@ export const visaBulletinIndia = {
   sourceNote:
     "September 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
   retrogressionNote:
-    "September 2026 update: no India employment category moved. EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from August). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. EB-4 advanced two months to Dec 15, 2022 for every country. For employment-based adjustment filings, USCIS's latest posted determination directs Final Action Dates — confirm the September chart at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.",
+    "September 2026 update: no India employment category moved. EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from August). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. EB-4 advanced two months to Dec 15, 2022 for every country. September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates. Confirm at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.",
 
   categories: {
     EB1: {

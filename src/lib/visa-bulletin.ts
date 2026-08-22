@@ -55,24 +55,6 @@ export const bulletin = {
   sourceLabel: currentData.sourceLabel,
 };
 
-/**
- * MANUALLY MAINTAINED point-in-time note about the current bulletin's movement
- * direction. Single source of truth — surfaced on /visa-bulletin,
- * /tools/priority-date-checker, /green-card, and the immigration tracker.
- * Update (or clear) this whenever a new bulletin is configured.
- */
-export const currentBulletinNote =
-  "September 2026 Visa Bulletin: EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India holds at Jan 1, 2014. EB-4 advanced two months to Dec 15, 2022 for every country — the only employment-based Final Action movement this month. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. USCIS's most recent chart determination (August 2026) directs employment-based adjustment filers to Final Action Dates; confirm the September determination at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.";
-
-/**
- * Short, consistent alert headline used by the reusable <VisaBulletinAlert />
- * component across visa-bulletin pages, the priority date checker, the green
- * card tracker, and the USCIS hub. Update this each bulletin alongside the data
- * files. Single source of truth for the standing alert wording.
- */
-export const bulletinAlert =
-  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India holds at October 15, 2022. EB-3 India holds at January 1, 2014. EB-4 advanced to December 15, 2022 worldwide. For employment-based adjustment of status, USCIS's latest determination directs Final Action Dates.";
-
 export function getCutoffs(
   category: EbCategory,
   country: BulletinCountry
@@ -367,32 +349,99 @@ export function getBulletinLabel(): string {
 }
 
 export type AdjustmentChart = "final-action" | "dates-for-filing";
+export type AdjustmentChartStatus = "posted" | "pending";
 
 export interface ApplicableChart {
   chart: AdjustmentChart;
   /** Short label, e.g. "Final Action Dates". */
   label: string;
-  /** True when USCIS is accepting Dates for Filing (Table B) for AOS this month. */
+  /**
+   * True only when USCIS has POSTED a determination for this bulletin month and
+   * that determination accepts Dates for Filing (Table B). While a month is
+   * pending this is false — which must be read as "not confirmed", never as
+   * "USCIS has ruled Table B out". Branch on `pending` before using it.
+   */
   usingDatesForFiling: boolean;
+  /** True when USCIS has not yet posted a determination for the bulletin month. */
+  pending: boolean;
+  /** "2026-08" — the bulletin month the posted determination actually covers. */
+  determinationMonth: string;
+  /** "August 2026" — human form of `determinationMonth`. */
+  determinationMonthLabel: string;
+  /** Short copy for badges/table cells, e.g. "Pending USCIS determination". */
+  badgeLabel: string;
+  /** Bold lead-in, e.g. "September 2026 USCIS filing chart:". */
+  statusHeadline: string;
+  /** The value that follows the headline — "Pending. The latest posted…" or "Final Action Dates." */
+  statusValue: string;
+  /** `statusHeadline` + `statusValue` — the single wording used site-wide. */
+  statusNote: string;
 }
 
 /**
- * Which USCIS Adjustment of Status filing chart applies this month. Single
- * source of truth: `adjustmentOfStatusChart` in current.json. USCIS announces
- * this each month at uscis.gov/visabulletininfo; update the JSON alongside the
- * cutoff data. Defaults to Final Action Dates when the field is absent.
+ * Which USCIS Adjustment of Status filing chart applies this month.
+ *
+ * Single source of truth: `adjustmentOfStatusChart`,
+ * `adjustmentOfStatusChartStatus` and `adjustmentOfStatusChartMonth` in
+ * current.json. USCIS posts its determination at uscis.gov/visabulletininfo
+ * AFTER the State Department publishes the bulletin — sometimes days after — so
+ * there is a window every month where the bulletin is out and the chart
+ * determination is not. In that window `adjustmentOfStatusChart` still holds
+ * the LAST POSTED determination (kept as the conservative default for tools)
+ * and the status is `pending`: nothing in the UI may assert a chart for the
+ * current bulletin month. Defaults to a posted Final Action Dates when the
+ * fields are absent.
  */
 export function getApplicableChart(): ApplicableChart {
-  const chart =
-    (currentData as { adjustmentOfStatusChart?: AdjustmentChart })
-      .adjustmentOfStatusChart ?? "final-action";
+  const data = currentData as {
+    adjustmentOfStatusChart?: AdjustmentChart;
+    adjustmentOfStatusChartStatus?: AdjustmentChartStatus;
+    adjustmentOfStatusChartMonth?: string;
+  };
+  const chart = data.adjustmentOfStatusChart ?? "final-action";
+  const pending = data.adjustmentOfStatusChartStatus === "pending";
+  const determinationMonth = data.adjustmentOfStatusChartMonth ?? bulletin.month;
+  const determinationMonthLabel = formatBulletinMonth(determinationMonth);
+  const label =
+    chart === "dates-for-filing" ? "Dates for Filing" : "Final Action Dates";
+  const statusHeadline = `${formatBulletinMonth(bulletin.month)} USCIS filing chart:`;
+  const statusValue = pending
+    ? `Pending. The latest posted USCIS determination is for ${determinationMonthLabel}, which required ${label}.`
+    : `${label}.`;
   return {
     chart,
-    label:
-      chart === "dates-for-filing" ? "Dates for Filing" : "Final Action Dates",
-    usingDatesForFiling: chart === "dates-for-filing",
+    label,
+    usingDatesForFiling: !pending && chart === "dates-for-filing",
+    pending,
+    determinationMonth,
+    determinationMonthLabel,
+    badgeLabel: pending ? "Pending USCIS determination" : label,
+    statusHeadline,
+    statusValue,
+    statusNote: `${statusHeadline} ${statusValue}`,
   };
 }
+
+/**
+ * MANUALLY MAINTAINED point-in-time note about the current bulletin's movement
+ * direction. Single source of truth — surfaced on /visa-bulletin,
+ * /tools/priority-date-checker, /green-card, and the immigration tracker.
+ * Update (or clear) this whenever a new bulletin is configured.
+ */
+export const currentBulletinNote =
+  "September 2026 Visa Bulletin: EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India holds at Jan 1, 2014. EB-4 advanced two months to Dec 15, 2022 for every country — the only employment-based Final Action movement this month. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. " +
+  `${getApplicableChart().statusNote} ` +
+  "Always verify with the official Department of State Visa Bulletin.";
+
+/**
+ * Short, consistent alert headline used by the reusable <VisaBulletinAlert />
+ * component across visa-bulletin pages, the priority date checker, the green
+ * card tracker, and the USCIS hub. Update this each bulletin alongside the data
+ * files. Single source of truth for the standing alert wording.
+ */
+export const bulletinAlert =
+  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India holds at October 15, 2022. EB-3 India holds at January 1, 2014. EB-4 advanced to December 15, 2022 worldwide. " +
+  getApplicableChart().statusNote;
 
 /** Official U.S. Department of State Visa Bulletin landing page. */
 export const DOS_VISA_BULLETIN_URL =

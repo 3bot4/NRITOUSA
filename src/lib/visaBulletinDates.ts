@@ -32,13 +32,25 @@ export interface VisaBulletinData {
   /** Table A — Final Action Dates (always present) */
   finalActionDates: BulletinChartData;
   /**
-   * Table B — Dates for Filing.
-   * Set to null if USCIS has NOT authorized use of Part B this month
-   * (check the USCIS monthly Visa Bulletin Acceptance memo at uscis.gov).
+   * Table B — Dates for Filing, as published by DOS. This is the bulletin's
+   * own chart and is populated whether or not USCIS has authorized filing
+   * against it — read `usingDatesForFiling` / `filingChartPending` for that.
    */
   datesForFiling: BulletinChartData | null;
-  /** Whether USCIS has authorized use of Part B (Dates for Filing) this month */
+  /**
+   * Whether USCIS has POSTED a determination authorizing Part B (Dates for
+   * Filing) for this bulletin month. False also covers "not yet posted" — read
+   * `filingChartPending` before telling a user Table B is ruled out.
+   */
   usingDatesForFiling: boolean;
+  /** True when USCIS has not yet posted a determination for this bulletin month. */
+  filingChartPending: boolean;
+  /** "August 2026" — the month the latest posted determination covers. */
+  filingChartDeterminationMonthLabel: string;
+  /** Short copy for badges, e.g. "Pending USCIS determination". */
+  filingChartBadgeLabel: string;
+  /** Full sentence for body copy — same wording site-wide. */
+  filingChartStatusNote: string;
   /** ISO date when admin last updated this file */
   lastUpdated: string;
 }
@@ -47,9 +59,10 @@ export interface VisaBulletinData {
  * The actual cutoff dates come from the single source of truth in
  * data/visa-bulletin/current.json (also used by the tools, charts, and tracker
  * via src/lib/visa-bulletin.ts). This file adapts that data into the
- * India/"Other" shape the Priority Date Checker uses, and adds the one field
- * current.json does not carry: whether USCIS authorized Dates for Filing this
- * month. Update current.json each month; only usingDatesForFiling is manual.
+ * India/"Other" shape the Priority Date Checker uses, and re-exports the USCIS
+ * filing-chart status (including the "not yet posted" case) from
+ * getApplicableChart() so this file and src/lib/visa-bulletin.ts can never
+ * disagree. Update current.json each month; the chart fields there are manual.
  *
  * Note on Table A vs Table B values: a listed date is a strict cutoff — a
  * priority date qualifies only when it is EARLIER THAN the listed date.
@@ -57,6 +70,10 @@ export interface VisaBulletinData {
  * ───────────────────────────────────────────────────────────────────────────── */
 
 import currentData from "../../data/visa-bulletin/current.json";
+import { getApplicableChart } from "./visa-bulletin";
+
+/** Resolved once — the USCIS filing-chart status, including the pending case. */
+const _chart = getApplicableChart();
 
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
@@ -100,14 +117,17 @@ export const CURRENT_VISA_BULLETIN: VisaBulletinData = {
     EB3: dff("eb3"),
   },
 
-  // Which USCIS Adjustment of Status filing chart applies this month — read
-  // from the single source of truth (`adjustmentOfStatusChart` in current.json)
-  // so the checker, hub, tracker, and category pages never disagree. USCIS is
-  // using Final Action Dates for July 2026, so Table B cannot be used to file
-  // I-485 this month. Verify at uscis.gov/visabulletininfo.
-  usingDatesForFiling:
-    (currentData as { adjustmentOfStatusChart?: string })
-      .adjustmentOfStatusChart === "dates-for-filing",
+  // Which USCIS Adjustment of Status filing chart applies this month — taken
+  // from getApplicableChart(), the single source of truth, so the checker, hub,
+  // tracker and category pages never disagree. When USCIS has not yet posted a
+  // determination for the bulletin month, `filingChartPending` is true and
+  // `usingDatesForFiling` is false: that means "not confirmed", NOT "USCIS has
+  // ruled Table B out". Verify at uscis.gov/visabulletininfo.
+  usingDatesForFiling: _chart.usingDatesForFiling,
+  filingChartPending: _chart.pending,
+  filingChartDeterminationMonthLabel: _chart.determinationMonthLabel,
+  filingChartBadgeLabel: _chart.badgeLabel,
+  filingChartStatusNote: _chart.statusNote,
 
   lastUpdated: currentData.lastUpdated,
 };

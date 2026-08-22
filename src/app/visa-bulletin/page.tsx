@@ -245,8 +245,8 @@ export default function VisaBulletinPage() {
               </table>
             </div>
             <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3 text-xs leading-relaxed text-ink-700">
-              <strong className="text-ink-900">Chart USCIS designated for I-485 filing this month: </strong>
-              {getApplicableChart().label}. You do not choose between the two charts — USCIS
+              <strong className="text-ink-900">{getApplicableChart().statusHeadline} </strong>
+              {getApplicableChart().statusValue} You do not choose between the two charts — USCIS
               announces each month which one adjustment-of-status filers may use. Confirm on the{" "}
               <a
                 href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin"
@@ -315,8 +315,10 @@ export default function VisaBulletinPage() {
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-600">
             <span>
-              <strong className="font-semibold text-ink-800">USCIS filing chart this month:</strong>{" "}
-              {getApplicableChart().label}
+              <strong className="font-semibold text-ink-800">{getApplicableChart().statusHeadline}</strong>{" "}
+              {getApplicableChart().pending
+                ? `Pending (latest posted: ${getApplicableChart().determinationMonthLabel} — ${getApplicableChart().label})`
+                : getApplicableChart().label}
             </span>
             <span aria-hidden>·</span>
             <span>{getBulletinLabel()} bulletin, data verified {formatDate(CURRENT_VISA_BULLETIN.lastUpdated)}</span>
@@ -481,8 +483,12 @@ export default function VisaBulletinPage() {
             <div className="rounded-2xl border border-ink-900/5 bg-white p-5 mb-3">
               <div className="flex items-center gap-2 mb-2">
                 <p className="text-sm font-semibold text-ink-900">Dates for Filing ({bulletin.month} {bulletin.year})</p>
-                <span className={`rounded-full px-2 py-0.5 text-xs font-bold ${bulletin.usingDatesForFiling ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"}`}>
-                  {bulletin.usingDatesForFiling ? "USCIS authorized this month" : "USCIS not authorized this month"}
+                <span className={`rounded-full px-2 py-0.5 text-xs font-bold ${bulletin.filingChartPending ? "bg-amber-100 text-amber-900" : bulletin.usingDatesForFiling ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"}`}>
+                  {bulletin.filingChartPending
+                    ? bulletin.filingChartBadgeLabel
+                    : bulletin.usingDatesForFiling
+                      ? "USCIS authorized this month"
+                      : "USCIS not authorized this month"}
                 </span>
               </div>
               <div className="overflow-x-auto">

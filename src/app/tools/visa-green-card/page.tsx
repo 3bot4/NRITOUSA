@@ -329,7 +329,7 @@ export default function VisaGreenCardToolsPage() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-700 to-indigo-600 px-3 py-1 text-xs font-semibold text-white">
               🛂 Visa &amp; Green Card
             </span>
-            <span>Updated August 2026</span>
+            <span>Updated September 2026</span>
           </div>
 
           <h1 className="text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">

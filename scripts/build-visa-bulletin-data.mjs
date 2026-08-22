@@ -137,7 +137,11 @@ function main() {
   console.log(`Wrote ${months.length} snapshot files to ${snapshotsDir}`);
 
   // current.json preserves fields our backfill doesn't touch (eb5SetAsides,
-  // adjustmentOfStatusChart, notes) from whatever was there before this run.
+  // the three adjustmentOfStatusChart* fields, notes) from whatever was there
+  // before this run. NOTE: the chart fields describe the LATEST POSTED USCIS
+  // determination, which lags the bulletin — carrying them forward blindly is
+  // correct, but you must then re-check uscis.gov/visabulletininfo and set
+  // adjustmentOfStatusChartStatus / adjustmentOfStatusChartMonth by hand.
   let prevCurrent = {};
   try {
     prevCurrent = JSON.parse(readFileSync(join(dataDir, "current.json"), "utf8"));
@@ -153,6 +157,8 @@ function main() {
     source: prevCurrent.source ?? DOS_ARCHIVE_URL,
     sourceLabel: prevCurrent.sourceLabel ?? "U.S. Department of State Visa Bulletin archive",
     adjustmentOfStatusChart: prevCurrent.adjustmentOfStatusChart ?? null,
+    adjustmentOfStatusChartStatus: prevCurrent.adjustmentOfStatusChartStatus ?? "pending",
+    adjustmentOfStatusChartMonth: prevCurrent.adjustmentOfStatusChartMonth ?? null,
     notes: prevCurrent.notes ?? "",
     categories: latestSnap.categories,
     family: latestSnap.family,

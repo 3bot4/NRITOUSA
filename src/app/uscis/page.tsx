@@ -112,7 +112,7 @@ const faqs = [
   {
     question: "What happens when priority date becomes current?",
     answer:
-      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. USCIS's latest posted determination (August 2026) directs employment-based adjustment filers to Final Action Dates; the September 2026 determination had not been posted as of August 22, 2026.",
+      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates.",
   },
   {
     question: "Do H1B workers need a myUSCIS account?",

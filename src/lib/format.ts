@@ -1,8 +1,18 @@
+/**
+ * Format a date-only ISO stamp ("2026-08-22") for display.
+ *
+ * `new Date("2026-08-22")` is parsed as UTC midnight, so formatting it in the
+ * server's local zone renders the PREVIOUS day anywhere west of Greenwich —
+ * every "Updated"/"Data verified" label on the site was showing one day early.
+ * Pin the zone to UTC so the label always matches the stamp it came from.
+ * (src/lib/visaBulletinState.ts already does this deliberately.)
+ */
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   });
 }
 

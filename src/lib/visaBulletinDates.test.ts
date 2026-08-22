@@ -78,8 +78,17 @@ describe("September 2026 canonical data (from current.json)", () => {
     expect(fa.EB3.other).toBe("2024-09-01"); // 01SEP24, unchanged from August
   });
 
-  it("USCIS is using Final Action Dates (Table B not authorized) as of the latest posted determination", () => {
+  it("does not claim a September 2026 USCIS chart determination that has not been posted", () => {
+    // USCIS posts its determination after DOS publishes the bulletin. While
+    // that is outstanding, usingDatesForFiling must be false (not confirmed)
+    // AND filingChartPending must be true, so no UI says Table B was ruled out.
     expect(CURRENT_VISA_BULLETIN.usingDatesForFiling).toBe(false);
+    expect(CURRENT_VISA_BULLETIN.filingChartPending).toBe(true);
+    expect(CURRENT_VISA_BULLETIN.filingChartDeterminationMonthLabel).toBe("August 2026");
+    expect(CURRENT_VISA_BULLETIN.filingChartBadgeLabel).toBe("Pending USCIS determination");
+    expect(CURRENT_VISA_BULLETIN.filingChartStatusNote).toBe(
+      "September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates."
+    );
   });
 
   it("EB-2 India is unavailable for every priority date this month", () => {

@@ -233,7 +233,7 @@ Every month, the State Department publishes two priority date charts:
 Table B is often later (more favorable) than Table A, but not always — and it can only be used for adjustment of status if USCIS allows it that month. It exists to let applicants file I-485 and get work/travel authorization while waiting for their final approval.
 
 :::warn
-**For employment-based adjustment of status, USCIS's latest posted determination directs Final Action Dates.** USCIS told employment-based I-485 filers to use Table A (Final Action Dates) in August 2026, and had not yet posted its September 2026 determination when this page was last updated — check uscis.gov/visabulletininfo before assuming Table B (Dates for Filing) can be used to file I-485 this month.
+**September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates.** Until USCIS posts the September determination at uscis.gov/visabulletininfo, treat Table A (Final Action Dates) as the governing chart and do not assume Table B (Dates for Filing) is either open or ruled out for September.
 :::
 
 :::warn
@@ -1380,7 +1380,7 @@ Keep a simple log of the India EB-1, EB-2, and EB-3 dates each month:
 | June 2026 | Dec 15, 2022 | Sep 1, 2013 | Dec 15, 2013 | Jan 15, 2015 | No (Final Action Dates) |
 | July 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
 | August 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
-| September 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | Pending USCIS notice |
+| September 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | Pending USCIS determination |
 
 This makes retrogression and forward movement immediately visible — note EB-1 India's June→July retrogression (Dec 15 → Oct 15, 2022) followed by no movement into August or September. The only employment-based Final Action movement in the September bulletin was EB-4, which advanced two months to December 15, 2022 for every country.
 

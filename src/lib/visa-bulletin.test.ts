@@ -14,6 +14,7 @@
 
 import { describe, it, expect } from "vitest";
 import {
+  bulletin,
   CATEGORY_LABELS,
   COUNTRY_LABELS,
   EB5_SETASIDE_ORDER,
@@ -198,10 +199,30 @@ describe("month label + applicable chart", () => {
   it("getApplicableChart returns a coherent chart + label", () => {
     const c = getApplicableChart();
     expect(["final-action", "dates-for-filing"]).toContain(c.chart);
-    expect(c.usingDatesForFiling).toBe(c.chart === "dates-for-filing");
     expect(c.label).toBe(
       c.chart === "dates-for-filing" ? "Dates for Filing" : "Final Action Dates"
     );
+    // usingDatesForFiling is an assertion that USCIS POSTED a Table B
+    // determination — it must never be true while the month is pending.
+    expect(c.usingDatesForFiling).toBe(!c.pending && c.chart === "dates-for-filing");
+  });
+
+  it("never asserts a chart for a bulletin month USCIS has not ruled on", () => {
+    const c = getApplicableChart();
+    if (c.pending) {
+      // The headline names the CURRENT bulletin month; the value must say
+      // Pending and attribute the posted determination to a PRIOR month.
+      expect(c.statusValue).toMatch(/^Pending\./);
+      expect(c.statusValue).toContain(c.determinationMonthLabel);
+      expect(c.determinationMonth).not.toBe(bulletin.month);
+      expect(c.badgeLabel).toBe("Pending USCIS determination");
+      expect(c.usingDatesForFiling).toBe(false);
+    } else {
+      expect(c.statusValue).toBe(`${c.label}.`);
+      expect(c.determinationMonth).toBe(bulletin.month);
+      expect(c.badgeLabel).toBe(c.label);
+    }
+    expect(c.statusNote).toBe(`${c.statusHeadline} ${c.statusValue}`);
   });
 });
 

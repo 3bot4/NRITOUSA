@@ -187,9 +187,11 @@ export default function VisaBulletinCategoryStatus({
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-ink-500">
         <span>
           <strong className="font-semibold text-ink-700">
-            USCIS filing chart this month:
+            {chart.statusHeadline}
           </strong>{" "}
-          {chart.label}
+          {chart.pending
+            ? `Pending (latest posted: ${chart.determinationMonthLabel} — ${chart.label})`
+            : chart.label}
         </span>
         <span aria-hidden>·</span>
         <span>Data verified {formatDate(bulletin.lastUpdated)}</span>

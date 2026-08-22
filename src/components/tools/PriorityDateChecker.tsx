@@ -111,7 +111,7 @@ function assess(
 
   if (!hasPriorityDate) {
     const faLabel = cutoffFA === "C" ? "Current (C)" : cutoffFA === "U" ? "Unavailable (U)" : cutoffFA ?? "—";
-    const dffLabel = cutoffDFF === "C" ? "Current (C)" : cutoffDFF === "U" ? "Unavailable (U)" : cutoffDFF ?? (bulletin.datesForFiling === null ? "Not authorized this month" : "—");
+    const dffLabel = cutoffDFF === "C" ? "Current (C)" : cutoffDFF === "U" ? "Unavailable (U)" : cutoffDFF ?? (bulletin.datesForFiling === null ? "Not published" : "—");
     return {
       comparison: "no-date",
       relevantChart,
@@ -151,7 +151,7 @@ function assess(
 
   const pdLabel = `${MONTHS[priorityMonth - 1]} ${priorityYear}`;
   const faLabel = cutoffFA === "C" ? "Current (all dates qualify)" : cutoffFA === "U" ? "Unavailable" : cutoffFA ?? "—";
-  const dffLabel = cutoffDFF === "C" ? "Current" : cutoffDFF === "U" ? "Unavailable" : cutoffDFF ?? (bulletin.datesForFiling === null ? "Not authorized this month" : "—");
+  const dffLabel = cutoffDFF === "C" ? "Current" : cutoffDFF === "U" ? "Unavailable" : cutoffDFF ?? (bulletin.datesForFiling === null ? "Not published" : "—");
 
   const staleNote = !fresh
     ? [`⚠ The visa bulletin data in this tool may not reflect the latest month. Always verify at travel.state.gov.`]
@@ -692,13 +692,19 @@ export default function PriorityDateChecker() {
           )}
 
           {/* Dates for Filing note */}
-          {bulletin.usingDatesForFiling && bulletin.datesForFiling && (
+          {bulletin.filingChartPending && (
+            <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs leading-relaxed text-amber-900">
+              <strong className="font-semibold">{bulletin.filingChartStatusNote}</strong> Until USCIS posts the determination for this bulletin month, treat Final Action Dates (Table A) as the governing chart and do not assume Dates for Filing (Table B) is either open or ruled out. Check{" "}
+              <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" target="_blank" rel="noopener noreferrer" className="underline font-semibold">uscis.gov</a>.
+            </div>
+          )}
+          {!bulletin.filingChartPending && bulletin.usingDatesForFiling && bulletin.datesForFiling && (
             <div className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3 text-xs leading-relaxed text-blue-900">
               <strong className="font-semibold">Dates for Filing (Table B) is authorized this month</strong> per the USCIS Adjustment of Status Filing Chart. Verify at{" "}
               <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" target="_blank" rel="noopener noreferrer" className="underline font-semibold">uscis.gov</a>.
             </div>
           )}
-          {!bulletin.usingDatesForFiling && (
+          {!bulletin.filingChartPending && !bulletin.usingDatesForFiling && (
             <div className="rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3 text-xs leading-relaxed text-amber-900">
               <strong className="font-semibold">Dates for Filing (Table B) is NOT authorized this month</strong> per this tool's data. Only Final Action Dates (Table A) governs I-485 filing this month. Verify at uscis.gov.
             </div>
