@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-20",
+  "updated": "2026-08-21",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -192,6 +192,67 @@
       "detail": "DHS final rule (pub. 2026-07-17) ends D/S and cuts the F-1 grace period from 60 to 30 days from 2026-09-15. Challenged 2026-08-18 in D. Mass. (Presidents Alliance v. DHS, 1:26-cv-13799); govt response due 08-31, injunction hearing 09-09. The student cluster currently models 60 days because students already admitted for D/S keep it until they travel. If the rule survives, optRules.gracePeriodDays handling and the OPT calculator grace milestones need revisiting.",
       "nextStep": "Check the docket on/after 2026-09-09; if not enjoined, decide whether the OPT calculator asks for I-94 admission type",
       "evidence": "npm run ledger"
+    },
+    {
+      "id": "broken-internal-links-2026-08",
+      "title": "3 internal links return 404 on the live site",
+      "area": "links",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "Found by building the internal link graph from 904 rendered pages in .next/server/app, counting only links inside <main> (header, footer and breadcrumbs excluded). All three confirmed 404 on production, not build artifacts: (1) /press links to /h1b-sponsors with anchor 'See the sponsor finder' — /h1b-sponsors is only a dynamic [socSlug]/[state] parent and has no page of its own; the real tool is /tools/h1b-sponsor-finder. (2) /uscis has TWO prominent cards linking to /uscis/notices ('USCIS Notice Decoder' and 'I received a USCIS notice') — that route does not exist; the live decoder is /tools/uscis-notice-decoder. (3) /tools/oci-eligibility-checker links to /tools/oci-document-checklist ('Document Checklist Generator'), which 404s; the uncommitted OCI work in the tree appears to be removing that tool, so this needs to be fixed or deleted alongside it. Note check-links.js cannot catch these — hrefs are built dynamically from data files, so a literal grep on href misses them.",
+      "nextStep": "Point /press at /tools/h1b-sponsor-finder, repoint the two /uscis notice cards at /tools/uscis-notice-decoder, and resolve the OCI checklist link (fix or remove with the tool removal)",
+      "evidence": "curl -s -o /dev/null -w '%{http_code}' on each target"
+    },
+    {
+      "id": "resources-orphan",
+      "title": "/resources is an in-content orphan but links out to 36 articles",
+      "area": "links",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "The only indexable URL on the site with zero in-content inbound links (measured inside <main>, excluding header/footer/breadcrumb chrome, across 904 rendered pages). It is reachable only from the footer. That matters more than a normal orphan because /resources is one of the site's largest equity distributors — it links out to 36 /articles/* pages, the single biggest source of inbound links for the article tree. A page that hands out 36 links while receiving none passes along almost nothing.",
+      "nextStep": "Link /resources contextually from the article template, /topics and the relevant hub pages so it receives equity, not just distributes it"
+    },
+    {
+      "id": "state-pages-no-sibling-mesh",
+      "title": "11 indian-population-in-<state> pages have no state-to-state linking",
+      "area": "links",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "Each of the 11 /indian-population-in-<state> pages has exactly ONE in-content inbound link and ONE outbound internal link, and in both cases it is the /indian-population-in-usa hub. Sibling links per page: 11 pages have 1, the hub has 11 — meaning zero lateral state-to-state links. StatePopulationPage.tsx has no related/nearby module; it only links back to the hub (lines 123, 201, 214). This is pure spoke-and-hub with no mesh, and it is the best effort-to-return item on the list because all 11 pages render from that one shared template.",
+      "nextStep": "Add a 'Indian population in nearby states' module to src/components/StatePopulationPage.tsx — one template edit creates roughly 50 contextual links across all 11 pages"
+    },
+    {
+      "id": "uscis-leaves-no-chaining",
+      "title": "18 /uscis/* leaf pages are linked down from the hub but never across to each other",
+      "area": "links",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "18 of the 33 /uscis/* spokes sit at 2 or fewer in-content inbound links. The cluster averages 5.7 sibling links out, but that average hides heavy asymmetry: /uscis/case-status links to 31 siblings and /uscis/myuscis-account to 25, while five leaves link to just one sibling. Thinnest at 1 inbound each: /uscis/case-denied, /uscis/h1b-renewal-while-i485-pending, /uscis/interview-scheduled, /uscis/online-account-number, /uscis/parents-visiting-usa-while-case-pending. At 2 inbound: account-privacy, approval-notice, buy-house-while-waiting-for-green-card, change-address, forms/ar-11-change-address, forms/i-907-premium-processing, forms/n-400, h4-ead-renewal-delay, i-797-notice, layoff-green-card-process, moving-states-address-change, start-side-business-on-h1b, travel-to-india-while-i485-pending. These are sequential states of one case, so they should chain.",
+      "nextStep": "Chain the leaves along the real case journey (interview-scheduled to approval-notice to case-denied; change-address to moving-states-address-change to forms/ar-11-change-address) instead of bouncing every leaf back to the hub"
+    },
+    {
+      "id": "thin-inbound-articles-tools",
+      "title": "14 articles, tools and calculators sit at 2 or fewer inbound in-content links",
+      "area": "links",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "Thinnest /articles/*: choosing-city-state-usa, fha-loan-non-citizen-visa, open-us-bank-account-before-arriving, tcs-education-remittance-tuition (1 inbound each); 72t-sepp-401k-early-withdrawal, building-community-as-new-immigrant, cosign-mortgage-visa-holder, cultural-adjustment-money-decisions, real-estate-first-investment-immigrants, things-i-wish-i-knew-before-moving-usa (2 each). Tools and calculators at 3 or fewer: /calculators/backdoor-roth-eligibility (2), /tools/flight-price-guide (2), /tools/visa-free-countries (3), /tools/visitor-insurance-deductible-coinsurance-calculator (3). Also thin: /h1b/stamping-india-after-approval, /oci/e-oci-card, /i140-premium-processing, /h1b-lottery-results-for-h4-families, /visitor-insurance/how-much-coverage. Legal and utility pages (/affiliate-disclosure, /terms-and-conditions, /partnerships, /press, /contributors) are also thin but that is expected and fine.",
+      "nextStep": "Work the list into topically adjacent pages; check against GSC first so anything already earning impressions gets linked first"
+    },
+    {
+      "id": "generic-anchor-text",
+      "title": "18 internal links use non-descriptive anchor text",
+      "area": "links",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-08-21",
+      "detail": "Mostly the literal string 'Learn more'. Four point at the homepage (no anchor-text value at all). The rest waste the signal on real targets: /h1b, /green-card, /visa-bulletin, /uscis, /uscis/processing-times, /tools/h4-ead-navigator (x2), /tools/priority-date-checker, /tools/uscis-notice-decoder, /tools/h1b-transfer-risk-checklist, /tools/green-card-stage-finder, /tools/citizenship-checklist. Low priority — no page is harmed, the descriptive-anchor signal is simply left on the table.",
+      "nextStep": "Replace 'Learn more' with the destination's topic; drop the four that point at the homepage"
     },
     {
       "id": "opt-denial-grace-period-no-primary",

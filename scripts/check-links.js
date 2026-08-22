@@ -144,6 +144,14 @@ for (const [base, files] of Object.entries(dynamicClusters)) {
 const linkPatterns = [
   /href=["'`](\/[^"'`]*)["'`]/g, // JSX href="/..."
   /\]\((\/[^)]+)\)/g, // markdown ](/...)
+  // Link targets declared as object properties in data/config files rather
+  // than written inline as JSX — e.g. `{ href: "/uscis/notices", label: ... }`
+  // in a card array, or `path: "/tools/..."` in a cluster config. These render
+  // as real <a> tags but use a colon, not `=`, so the JSX pattern above never
+  // saw them. That blind spot hid four live 404s (/h1b-sponsors,
+  // /uscis/notices, /uscis/ar-11-change-address, /tools/oci-document-checklist)
+  // while this script reported a clean run.
+  /\b(?:href|path|url|to|link)\s*:\s*["'`](\/[^"'`]*)["'`]/g,
 ];
 
 const broken = [];

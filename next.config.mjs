@@ -104,6 +104,21 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /uscis/notices never existed as a page — the /uscis hub shipped with
+      // two cards linking to it before it was ever authored, so it has been
+      // returning 404 to users and crawlers since the cluster landed. Those
+      // cards now point straight at the decoder, so this rule is purely for
+      // stale traffic: crawls that already recorded the 404 and any external
+      // link that copied the bad URL. The decoder is the right destination —
+      // it covers receipt, approval, biometrics, RFE, NOID, transfer,
+      // interview and oath notices, which is the full intent the dead URL
+      // promised. Internal links must keep pointing at the tool directly
+      // rather than hopping through this rule.
+      {
+        source: "/uscis/notices",
+        destination: "/tools/uscis-notice-decoder",
+        permanent: true,
+      },
       // The money-transfer topic page was consolidated into the
       // /send-money-to-india landing page. Keep old links/bookmarks working.
       {
@@ -226,6 +241,19 @@ const nextConfig = {
       {
         source: "/privacy",
         destination: "/privacy-policy",
+        permanent: true,
+      },
+      // Same missing-`Location` bug as the two above, on the last remaining
+      // `permanentRedirect()` stub — it was missed by that sweep and stayed
+      // live: /tools/nri-global-wealth-tax-organizer was prerendered to a
+      // static .html + .meta carrying `"status": 308` and no `location`, so
+      // production served a terminal 308 (a redirect with nowhere to go)
+      // rather than forwarding to the canonical /nri-wealth-checkup. Moved
+      // here for the same reason, and the stub page file deleted, so no
+      // in-app redirect stubs remain.
+      {
+        source: "/tools/nri-global-wealth-tax-organizer",
+        destination: "/nri-wealth-checkup",
         permanent: true,
       },
     ];

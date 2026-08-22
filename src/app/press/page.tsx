@@ -65,7 +65,7 @@ const DATASETS = [
     definition:
       "LCA filings are requests to employ, not visas granted — they measure sponsorship demand, not approvals.",
     cuts: "Top sponsors by metro or occupation, wage distribution by SOC code, year-over-year sponsorship trend.",
-    href: "/h1b-sponsors",
+    href: "/tools/h1b-sponsor-finder",
     hrefLabel: "See the sponsor finder",
   },
   {

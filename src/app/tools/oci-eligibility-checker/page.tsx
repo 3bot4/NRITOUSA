@@ -155,14 +155,7 @@ export default function OciEligibilityCheckerPage() {
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-sm">
               <strong className="font-semibold text-ink-900">Eligible?</strong>{" "}
               <span className="text-ink-600">
-                Build your exact paperwork with the{" "}
-                <Link
-                  href={OCI_TOOLS.checklist.path}
-                  className="font-semibold text-brand-700 underline"
-                >
-                  Document Checklist Generator
-                </Link>
-                , then estimate your{" "}
+                Estimate your{" "}
                 <Link
                   href={OCI_TOOLS.cost.path}
                   className="font-semibold text-brand-700 underline"

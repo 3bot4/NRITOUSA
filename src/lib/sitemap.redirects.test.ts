@@ -49,12 +49,21 @@ const allRedirectSources = [...configRedirectSources(), ...appRedirectSources()]
 const sitemapPaths = sitemapSegments.flatMap(({ entries }) => entries.map((e) => e.path));
 
 describe("sitemap never contains a redirecting URL", () => {
-  it("finds redirect sources in both next.config.mjs and app routes", () => {
-    // Guards the parsers themselves: if a refactor moves redirects somewhere
-    // this test can't see, the assertions below would silently pass on an
-    // empty list.
+  it("finds redirect sources in next.config.mjs", () => {
+    // Guards the parser itself: if a refactor moves redirects somewhere this
+    // test can't see, the assertions below would silently pass on an empty
+    // list.
     expect(configRedirectSources().length).toBeGreaterThan(0);
-    expect(appRedirectSources().length).toBeGreaterThan(0);
+  });
+
+  it("has no in-app permanentRedirect() stubs left", () => {
+    // Every redirect now lives in next.config.mjs `redirects()`. The in-app
+    // `permanentRedirect()` page stub sets a 308 status but never emits an
+    // HTTP `Location` header on a direct request, so the redirect dead-ends
+    // — see the comment on the /terms-of-use and /privacy entries in
+    // next.config.mjs. This asserts the pattern does not come back; if you
+    // need a redirect, add it there instead.
+    expect(appRedirectSources()).toEqual([]);
   });
 
   it.each(allRedirectSources)("%s is not in any sitemap", (source) => {

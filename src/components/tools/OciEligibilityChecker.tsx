@@ -223,14 +223,7 @@ export default function OciEligibilityChecker() {
                 Ready to apply?
               </strong>{" "}
               <span className="text-ink-600">
-                Build your exact paperwork with the{" "}
-                <Link
-                  href={OCI_TOOLS.checklist.path}
-                  className="font-semibold text-brand-700 underline"
-                >
-                  Document Checklist Generator
-                </Link>
-                , then estimate the{" "}
+                Estimate the{" "}
                 <Link
                   href={OCI_TOOLS.cost.path}
                   className="font-semibold text-brand-700 underline"

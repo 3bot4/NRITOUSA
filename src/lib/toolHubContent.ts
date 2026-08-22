@@ -1429,6 +1429,41 @@ export const toolHubContent: Record<string, ToolHubContent> = {
           "An RFE (Request for Evidence) notice means USCIS needs more documents or information before deciding. It lists exactly what's required and sets a firm deadline; you generally must respond completely and on time to avoid a denial.",
       },
       {
+        question: "How long do I have to respond to an RFE?",
+        answer:
+          "Federal regulation caps it: 8 CFR 103.2(b)(8)(iv) says that in no case shall the maximum response period provided in a request for evidence exceed twelve weeks — that is 84 days, and roughly 87 once the 3 days added for service by mail are counted. That is a ceiling, not an entitlement: USCIS routinely gives less, and some forms such as I-539 and I-601A run on a 30-day period instead. The date printed on your own notice is the one that controls.",
+      },
+      {
+        question: "Can I get more time to respond to an RFE or a NOID?",
+        answer:
+          "No. The same regulation states plainly that additional time to respond to a request for evidence or notice of intent to deny may not be granted. This is the single most expensive misunderstanding about USCIS notices — people assume an extension is available for the asking, and it is not. Treat the printed date as immovable and work backwards from it.",
+      },
+      {
+        question: "How long do I have to respond to a NOID?",
+        answer:
+          "A NOID is capped at thirty days under 8 CFR 103.2(b)(8)(iv) — about 33 days once the 3 mailing days are added. So a NOID is both more serious than an RFE and gives you well under half the time. If you receive one, contact a licensed immigration attorney immediately rather than trying to assemble the response yourself.",
+      },
+      {
+        question: "When does the clock on my notice actually start?",
+        answer:
+          "Earlier than most people expect. Under 8 CFR 103.8(b), service by mail is complete upon mailing, and 3 days are added to the response period to account for delivery. The clock therefore runs from the date USCIS put the notice in the mail — the date printed on the notice — not from the day it landed in your mailbox. If a notice reaches you late, you have already lost those days.",
+      },
+      {
+        question: "How common is an RFE — should I panic?",
+        answer:
+          "For H-1B specifically, less common than the anxiety suggests. USCIS issued 33,393 RFEs in H-1B adjudications in FY2024, which was 8% of the 407,625 petitions completed that year. Petitions for initial employment drew one more often, at about 13%, than petitions continuing existing employment. An RFE is a request for more evidence, not a denial and not a sign the officer has decided against you. Note these figures cover H-1B adjudications only and are not an all-forms RFE rate.",
+      },
+      {
+        question: "What is the difference between an I-797A and an I-797B?",
+        answer:
+          "The suffix carries the meaning. An I-797A is issued to someone already in the US and includes a replacement Form I-94 as a tear-off at the bottom, which is the part that evidences status — do not detach and lose it. An I-797B approves a worker petition where the beneficiary will be processed abroad instead, and deliberately carries no I-94, because it does not grant status inside the US. Seeing an I-797B generally means the next step is consular processing.",
+      },
+      {
+        question: "My notice says I-797C — was my case approved?",
+        answer:
+          "Almost certainly not, and this is the most common misreading of USCIS mail. The I-797C is the workhorse notice used for receipts, rejections, file transfers, reopenings, and appointments including biometrics and interviews. An approval is normally communicated on an I-797 approval notice or, for cases granting status inside the US, an I-797A carrying an I-94. Read the heading rather than the form number.",
+      },
+      {
         question: "What is a NOID?",
         answer:
           "A NOID (Notice of Intent to Deny) warns that USCIS is leaning toward denying your case and gives you a chance to respond with evidence and argument before it decides. It's more serious than an RFE, so respond carefully by the deadline.",

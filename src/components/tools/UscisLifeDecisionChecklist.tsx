@@ -267,7 +267,7 @@ function buildResult(
         ],
         relatedArticles: [
           { href: "/uscis/moving-states-address-change", label: "Moving States: H-1B, I-485, and What to File" },
-          { href: "/uscis/ar-11-change-address", label: "AR-11 Change of Address" },
+          { href: "/uscis/forms/ar-11-change-address", label: "AR-11 Change of Address" },
         ],
         relatedTools: [
           { href: "/tools/uscis-processing-delay-checker", label: "USCIS Processing Delay Checker" },

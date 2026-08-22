@@ -275,9 +275,15 @@ export const OCI_TOOLS = {
     path: "/tools/oci-eligibility-checker",
     label: "OCI Eligibility Checker",
   },
+  /**
+   * Roadmap tools — NOT yet built. They deliberately carry no `path`: the
+   * routes do not exist, so exposing one would let a caller render a 404
+   * (which is exactly what /tools/oci-document-checklist did). Omitting
+   * `path` makes any `OCI_TOOLS.checklist.path` link a compile error until
+   * the route ships. Add `path` back in the same commit as the route.
+   */
   checklist: {
     slug: "oci-document-checklist",
-    path: "/tools/oci-document-checklist",
     label: "OCI Document Checklist Generator",
   },
   timeline: {
@@ -292,7 +298,6 @@ export const OCI_TOOLS = {
   },
   photo: {
     slug: "oci-photo-checker",
-    path: "/tools/oci-photo-checker",
     label: "OCI Photo Checker",
   },
 } as const;

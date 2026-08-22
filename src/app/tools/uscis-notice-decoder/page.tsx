@@ -4,6 +4,17 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import { ToolIntro, ToolDeepDive } from "@/components/tools/ToolHub";
 import UscisNoticeDecoder from "@/components/tools/UscisNoticeDecoder";
+import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
+import {
+  noticeDeadlineRules,
+  noExtensionRule,
+  mailingRule,
+  rfeReality,
+  i797Variants,
+  uscisNoticeSources,
+  USCIS_NOTICE_VERIFIED,
+  USCIS_NOTICE_DISCLAIMER,
+} from "@/data/uscisNoticeData";
 import { getTool } from "@/lib/tools";
 import { getToolHubContent } from "@/lib/toolHubContent";
 import {
@@ -104,6 +115,143 @@ export default function UscisNoticeDecoderPage() {
         <Container>
           <div className="mx-auto max-w-3xl">
             <UscisNoticeDecoder />
+          </div>
+
+          {/* Verified facts — render BELOW the tool for the same
+              reason ToolIntro does: the decoder itself must clear the
+              fold on a phone. Every number here comes from
+              src/data/uscisNoticeData.ts, never inline. */}
+          <div className="mx-auto mt-10 max-w-3xl space-y-6 sm:mt-12">
+            <FastAnswerSnapshot
+              title="The deadlines USCIS cannot exceed"
+              accent="amber"
+              rows={noticeDeadlineRules.map((r) => ({
+                label: r.label,
+                value: r.cap,
+                note: `${r.capDays} days · ≈${r.withMailingDays} with mailing · ${r.cite}`,
+              }))}
+              badges={["Set by federal regulation", "Your printed date controls"]}
+              lastVerified={USCIS_NOTICE_VERIFIED}
+              sources={uscisNoticeSources}
+              disclaimer={USCIS_NOTICE_DISCLAIMER}
+            />
+
+            {/* The two rules people get wrong most often. */}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-rose-200 bg-rose-50/60 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-rose-700">
+                  No extensions — ever
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-rose-900">
+                  &ldquo;{noExtensionRule.text}&rdquo;
+                </p>
+                <p className="mt-2 text-[11px] font-medium text-rose-700/80">
+                  {noExtensionRule.cite}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-amber-700">
+                  The clock starts before you read it
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-amber-900">
+                  {mailingRule.text}
+                </p>
+                <p className="mt-2 text-[11px] font-medium text-amber-700/80">
+                  {mailingRule.cite}
+                </p>
+              </div>
+            </div>
+
+            {/* Context for the most anxiety-producing notice. */}
+            <div className="rounded-2xl border border-ink-900/10 bg-ink-50/50 p-5 sm:p-6">
+              <h2 className="text-base font-bold tracking-tight text-ink-900">
+                How common is an RFE, really?
+              </h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {[
+                  { v: rfeReality.overallRatePct, l: `of completed H-1B petitions drew an RFE in ${rfeReality.fiscalYear}` },
+                  { v: rfeReality.rfesIssued, l: `RFEs issued, out of ${rfeReality.petitionsCompleted} petitions completed` },
+                  { v: rfeReality.initialEmploymentRatePct, l: "for petitions for initial employment — higher than continuing employment" },
+                ].map((c) => (
+                  <div key={c.l} className="rounded-xl border border-ink-900/10 bg-white p-4">
+                    <p className="text-2xl font-extrabold tracking-tight text-ink-900">{c.v}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink-600">{c.l}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-ink-600">
+                An RFE is a request for more evidence — not a denial, and not a
+                sign the officer has decided against you. {rfeReality.note}
+              </p>
+              <p className="mt-2 text-[11px] leading-relaxed text-ink-500">
+                H-1B adjudications only — this is not an all-forms RFE rate.
+                Source:{" "}
+                <a
+                  href={rfeReality.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {rfeReality.sourceName}
+                </a>
+                .
+              </p>
+            </div>
+
+            {/* The decode key: one form number, many meanings. */}
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-5 sm:p-6">
+              <h2 className="text-base font-bold tracking-tight text-ink-900">
+                The I-797 decode key
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                USCIS sends many unrelated messages under one form number. The
+                letter after &ldquo;I-797&rdquo; is what carries the meaning —
+                which is exactly why these notices are hard to read.
+              </p>
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-ink-900/10">
+                      <th scope="col" className="py-2 pr-3 text-xs font-bold uppercase tracking-wide text-ink-500">Code</th>
+                      <th scope="col" className="py-2 pr-3 text-xs font-bold uppercase tracking-wide text-ink-500">What it is</th>
+                      <th scope="col" className="py-2 text-xs font-bold uppercase tracking-wide text-ink-500">What it means</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {i797Variants.map((v) => (
+                      <tr key={v.code} className="border-b border-ink-900/5 align-top">
+                        <td className="py-3 pr-3 font-mono text-xs font-bold text-brand-700">{v.code}</td>
+                        <td className="py-3 pr-3 text-xs font-semibold text-ink-900">{v.name}</td>
+                        <td className="py-3 text-xs leading-relaxed text-ink-600">
+                          {v.meaning}
+                          {v.gotcha ? (
+                            <span className="mt-1 block font-medium text-amber-700">
+                              ⚠ {v.gotcha}
+                            </span>
+                          ) : null}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-[11px] text-ink-500">
+                Source:{" "}
+                <a
+                  href="https://www.uscis.gov/forms/filing-guidance/form-i-797-types-and-functions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  USCIS — Form I-797: Types and Functions
+                </a>
+                . For the full walkthrough see{" "}
+                <Link href="/uscis/i-797-notice" className="font-semibold text-brand-700 underline">
+                  I-797 notice types explained
+                </Link>
+                .
+              </p>
+            </div>
           </div>
 
           {/* Static SEO context — renders BELOW the tool so the

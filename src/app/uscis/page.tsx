@@ -72,8 +72,8 @@ const quickCards = [
   },
   {
     title: "USCIS Notice Decoder",
-    desc: "RFE, NOID, NOA1, NOA2, NTA — understand every USCIS notice and what to do next.",
-    href: "/uscis/notices",
+    desc: "Receipt, approval, biometrics, RFE, NOID, transfer, interview — decode any USCIS notice, with the response deadlines USCIS cannot exceed.",
+    href: "/tools/uscis-notice-decoder",
     icon: "📬",
   },
 ];
@@ -191,8 +191,8 @@ const situationCards = [
   },
   {
     title: "I received a USCIS notice",
-    desc: "Decode your NOA1, NOA2, RFE, NOID, or transfer notice and know what to do next.",
-    href: "/uscis/notices",
+    desc: "Decode your NOA1, NOA2, RFE, NOID, or transfer notice — and check the deadline before it runs.",
+    href: "/tools/uscis-notice-decoder",
     icon: "📬",
   },
 ];
