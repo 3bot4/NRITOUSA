@@ -7,6 +7,7 @@ import {
   f1VisaFees,
   f1VisaTotalUsd,
   f2DependentAddOnUsd,
+  h1bCapSubjectFeeProposal,
   h1bProclamationFee,
   indiaTcs,
   mythVsRealityFacts,
@@ -37,7 +38,10 @@ describe("policy items can never be silently totalled", () => {
 
   it("keeps the proposed OPT fee out of any total", () => {
     expect(optProposedFee.amountUsd).toBeNull();
-    expect(optProposedFee.status).toBe("proposed");
+    // "reported", not "proposed": no Federal Register proposal exists for it,
+    // so the badge must not read "Proposed only" beside a line saying it was
+    // never formally proposed.
+    expect(optProposedFee.status).toBe("reported");
   });
 
   it("states the vacatur on the H-1B fee status line", () => {
@@ -46,9 +50,23 @@ describe("policy items can never be silently totalled", () => {
     expect(h1bProclamationFee.detail).toContain("employer");
   });
 
-  it("says PROPOSED ONLY on the OPT fee status line", () => {
-    expect(optProposedFee.statusLine).toContain("PROPOSED ONLY");
-    expect(optProposedFee.statusLine).toMatch(/never published as a rule/i);
+  it("says DISCUSSED/REPORTED ONLY on the OPT fee status line", () => {
+    expect(optProposedFee.statusLine).toContain("DISCUSSED/REPORTED ONLY");
+    expect(optProposedFee.statusLine).toMatch(/not formally proposed/i);
+    expect(optProposedFee.statusLine).toMatch(/nobody is currently being charged/i);
+    // The old label contradicted the sentence that followed it.
+    expect(optProposedFee.statusLine).not.toContain("PROPOSED ONLY —");
+  });
+
+  it("keeps the $103,265 NPRM scope tied to the operative regulatory text", () => {
+    expect(h1bCapSubjectFeeProposal.status).toBe("proposed");
+    expect(h1bCapSubjectFeeProposal.amountUsd).toBeNull();
+    expect(h1bCapSubjectFeeProposal.detail).toMatch(
+      /cap-subject F-1-to-H-1B change-of-status petition filed inside the United States/i
+    );
+    expect(h1bCapSubjectFeeProposal.detail).toContain("214(g)(5)(C)");
+    expect(h1bCapSubjectFeeProposal.detail).toMatch(/advanced-degree allocation is included/i);
+    expect(h1bCapSubjectFeeProposal.detail).toMatch(/paid by H-1B petitioners and not H-1B beneficiaries/i);
   });
 
   it("gives every policy item a source and a verification date", () => {

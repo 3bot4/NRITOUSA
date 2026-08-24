@@ -181,7 +181,13 @@ export type StudentSourceKey = keyof typeof studentSources;
  * allowed to be added into any total:
  *  - "in-force"        — law today, safe to total
  *  - "blocked"         — exists on paper but a court has stopped collection
- *  - "proposed"        — reported/floated, never published as a rule
+ *  - "proposed"        — formally proposed: a notice of proposed rulemaking
+ *                        exists and is in notice-and-comment
+ *  - "reported"        — discussed or reported only, NOT formally proposed:
+ *                        no Federal Register proposal exists at all. Kept
+ *                        distinct from "proposed" because a badge reading
+ *                        "Proposed only" beside a line saying "not formally
+ *                        proposed" is a contradiction readers notice.
  *  - "uneven"          — in force but inconsistently collected in practice
  *  - "scheduled"       — a final rule with a future effective date. Real, but
  *                        not yet operative, and may be enjoined before it is.
@@ -190,6 +196,7 @@ export type PolicyStatus =
   | "in-force"
   | "blocked"
   | "proposed"
+  | "reported"
   | "uneven"
   | "scheduled";
 
@@ -216,6 +223,7 @@ export const STATUS_BADGE: Record<
   "in-force": { label: "In force", tone: "good" },
   blocked: { label: "Blocked by court", tone: "info" },
   proposed: { label: "Proposed only", tone: "warn" },
+  reported: { label: "Reported only — not proposed", tone: "warn" },
   uneven: { label: "In force — uneven rollout", tone: "warn" },
   scheduled: { label: "Final rule — not yet in effect", tone: "warn" },
 };
@@ -252,9 +260,9 @@ export const optProposedFee: PolicyItem = {
   label: "OPT $100,000 fee",
   value: "$100,000",
   amountUsd: null,
-  status: "proposed",
+  status: "reported",
   statusLine:
-    "PROPOSED ONLY — reported July 30, 2026, never published as a rule. Nobody is paying this, and it is not scheduled to take effect.",
+    "DISCUSSED/REPORTED ONLY — not formally proposed. No Federal Register proposal establishing a $100,000 OPT fee has been published, no such amount appears in regulation, and nobody is currently being charged.",
   detail:
     "Press reporting on July 30, 2026 described an internal discussion at DHS about charging $100,000 in connection with Optional Practical Training. As of the verification date there is no published proposed rule, no Federal Register notice, no stated amount in regulation, and no answer to the basic questions of who would pay it or who would be exempt. The DHS regulatory agenda lists a separate OPT rulemaking with an expected publication date in February 2027. Immigration practitioners have widely questioned whether such a fee would survive the same legal challenge that defeated the H-1B version. Treat any page that quotes this as a real cost as out of date.",
   lastVerified: STUDENT_DATA_VERIFIED,
@@ -275,11 +283,19 @@ export const optProposedFee: PolicyItem = {
  *     different legal authority, different instrument. The NPRM says a
  *     petitioner subject to both would pay both.
  *  2. It is NOT payable today. There is no final rule and no effective date.
- *  3. It contains NO carve-out for a beneficiary already in the United States.
- *     The proclamation did not reach an F-1 → H-1B change of status; this
- *     proposal is drafted by PETITION TYPE (cap-subject, including the
- *     advanced-degree exemption), so a cap-subject change of status is on its
- *     face within scope. Never write that students in the US are exempt.
+ *  3. Its scope is not an open question. The proposed regulatory text at
+ *     8 CFR 106.2(a)(3)(xii) reads: "The following additional fee is required
+ *     for all H-1B cap-subject petitions, including those eligible for the
+ *     advanced degree exemption under section 214(g)(5)(C) of the Act:
+ *     $103,265." It is drafted by PETITION TYPE, with no exception for a
+ *     beneficiary already in the United States, so a cap-subject F-1 → H-1B
+ *     change of status filed inside the US is covered as proposed.
+ *     Do NOT cite INA secs. 214(g)(5) and (7) as wholesale exclusions: the
+ *     advanced-degree allocation under 214(g)(5)(C) is expressly INCLUDED.
+ *     What is excluded is genuinely cap-exempt filing — higher education and
+ *     affiliated nonprofits, nonprofit and government research organisations —
+ *     and petitions not subject to the annual cap at all, such as extensions
+ *     and employer changes for beneficiaries already counted (214(g)(7)).
  * The proposed fee falls on the petitioner: the NPRM states it "would be paid
  * by H-1B petitioners and not H-1B beneficiaries."
  */
@@ -292,7 +308,7 @@ export const h1bCapSubjectFeeProposal: PolicyItem = {
   statusLine:
     "PROPOSED ONLY — a notice of proposed rulemaking filed for public inspection on August 24, 2026 and scheduled for publication on August 25, 2026, with a 30-day comment period. It is not being collected, and it has no effective date.",
   detail:
-    "DHS proposes a new fee at 8 CFR 106.2(a)(3)(xii) of $103,265, payable at the time of filing, on all H-1B cap-subject petitions including those eligible for the advanced degree exemption. Cap-exempt petitions under INA secs. 214(g)(5) and (7) — largely universities and nonprofit or governmental research organisations — would not pay it. The fee would be in addition to every other applicable fee or payment, and the NPRM states expressly that a petitioner subject both to a proclamation-required payment and to this fee would pay both, so it is separate from and additive to the vacated $100,000 payment under Proclamation 10973 rather than a replacement for it. DHS states the fee would be paid by H-1B petitioners and not by beneficiaries. Critically, the proposal is drawn by petition type rather than by where the beneficiary is: it contains no exemption for a change of status filed for someone already in the United States, so an F-1 student's cap-subject change-of-status petition is on its face within scope — the opposite of the proclamation, which did not reach in-country change of status. Nothing is settled: this is a proposal at the start of notice-and-comment, its final coverage, exemptions and effective date all depend on a final rule that does not yet exist, and it may be changed or never finalised.",
+    "DHS proposes a new fee at 8 CFR 106.2(a)(3)(xii) of $103,265, payable at the time of filing, on all cap-subject Form I-129 H-1B petitions. As currently proposed the fee applies to a cap-subject F-1-to-H-1B change-of-status petition filed inside the United States: the proposed text is drawn by petition type and contains no exception for a beneficiary already in the US, unlike the 2025 proclamation. The US advanced-degree allocation is included — the proposed regulation names petitions eligible for the advanced degree exemption under INA sec. 214(g)(5)(C) explicitly — so it is wrong to cite INA secs. 214(g)(5) and (7) as blanket exclusions. What falls outside the proposal is genuinely cap-exempt filing: employment at an institution of higher education or a related affiliated nonprofit, at a nonprofit research organisation or a government research organisation, and petitions not subject to the annual cap at all, such as extensions and employer changes for beneficiaries already counted against the cap. The employer-petitioner would pay, not the beneficiary: the NPRM states the fee would be paid by H-1B petitioners and not H-1B beneficiaries. The fee would be in addition to every other applicable fee or payment, and the NPRM states expressly that a petitioner subject both to a proclamation-required payment and to this fee would pay both, so it is separate from and additive to the vacated $100,000 payment under Proclamation 10973 rather than a replacement for it. This remains only a proposed rule: no fee is being collected, there is no effective date, and a final rule could change the scope.",
   lastVerified: STUDENT_DATA_VERIFIED,
   source: studentSources.h1bCapSubjectFeeNprm,
 };

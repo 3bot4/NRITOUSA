@@ -69,7 +69,7 @@ describe("the $100,000 figures", () => {
     expect(blocks.length).toBeGreaterThan(0);
     for (const b of blocks) {
       expect(
-        /not being collected|vacated|PROPOSED ONLY|not a rule|nobody is paying|misreported|belongs in your budget|fell on the employer/i.test(
+        /not being collected|vacated|PROPOSED ONLY|DISCUSSED\/REPORTED ONLY|not formally proposed|not a rule|nobody is paying|not currently being charged|misreported|belongs in your budget|fell on the employer/i.test(
           b
         ),
         `"$100,000" appears without its status in: ${b.slice(0, 120)}`
@@ -153,11 +153,30 @@ describe("the August 24, 2026 proposed $103,265 cap-subject fee", () => {
     expect(article.content).not.toMatch(/you (will|must) pay (the )?\$103,265/i);
   });
 
-  it("does not assert that in-country F-1 change of status is exempt from it", () => {
-    // The proposal is drawn by petition type and has no such carve-out; the
-    // page must say so rather than inferring an exemption.
-    expect(article.content).toContain(
-      "Do not assume that an F-1-to-H-1B change of status is covered or exempt"
+  it("states the actual proposed scope rather than calling it an open question", () => {
+    // The operative text (8 CFR 106.2(a)(3)(xii)) covers all cap-subject
+    // petitions, so an in-country F-1 change of status is in scope as drafted.
+    expect(article.content).toMatch(
+      /would apply to \*\*all cap-subject H-1B petitions, including a cap-subject F-1-to-H-1B change-of-status petition filed inside the United States/
+    );
+    expect(article.content).not.toMatch(/Do not assume (that )?an F-1-to-H-1B change of status/i);
+    expect(article.content).not.toMatch(/open question that could go either way/i);
+  });
+
+  it("keeps the advanced-degree allocation expressly in scope", () => {
+    expect(article.content).toMatch(/advanced-degree allocation is included/i);
+    expect(article.content).toContain("214(g)(5)(C)");
+    // Never cite 214(g)(5) and (7) as blanket exclusions.
+    expect(article.content).not.toMatch(
+      /not to cap-exempt petitions under INA secs\. 214\(g\)\(5\) and \(7\)/i
+    );
+  });
+
+  it("names who pays and what is outside the proposal", () => {
+    expect(article.content).toMatch(/employer-petitioner, not the student beneficiary/i);
+    expect(article.content).toMatch(/genuinely cap-exempt petitions/i);
+    expect(article.content).toMatch(
+      /extensions and employer changes for a beneficiary already counted/i
     );
   });
 
@@ -240,5 +259,21 @@ describe("small factual clarifications", () => {
     expect(article.content).toMatch(/work authorisation and permission to stay end at different times/i);
     expect(article.content).toContain(capGapRules.afterItEndsException);
     expect(article.content).not.toMatch(/you must stop working immediately\./i);
+  });
+});
+
+describe("the $100,000 OPT figure is labelled without contradicting itself", () => {
+  it("no longer calls it PROPOSED ONLY", () => {
+    expect(article.content).not.toMatch(/PROPOSED ONLY — reported July 30/i);
+  });
+
+  it("labels it discussed/reported only and not formally proposed", () => {
+    expect(article.content).toContain("DISCUSSED/REPORTED ONLY");
+    expect(article.content).toMatch(/not formally proposed/i);
+    expect(article.content).toMatch(/nobody is currently being charged/i);
+  });
+
+  it("keeps it distinct from the formally proposed $103,265 fee", () => {
+    expect(article.content).toMatch(/one was never formally proposed, and one is a live proposal/i);
   });
 });

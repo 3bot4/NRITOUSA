@@ -5336,7 +5336,7 @@ This page walks the decisions in the order you meet them. Every number is tied t
 
 :::info
 title: August 24, 2026 update — a new proposed H-1B fee
-The administration has proposed a separate regulation establishing a **${h1bCapSubjectFeeProposal.value} fee** for certain new H-1B applications. This is a proposed rule, not a fee currently being collected. Its final coverage, exemptions and effective date depend on completion of the federal rulemaking process. Do not assume that an F-1-to-H-1B change of status is covered or exempt until the published regulatory text confirms it. Decision 7 below has the detail: what it covers, what it does not, and who would pay it.
+The administration has proposed a separate regulation establishing a **${h1bCapSubjectFeeProposal.value} fee** for certain new H-1B applications. As currently proposed, the fee would apply to **all cap-subject H-1B petitions, including a cap-subject F-1-to-H-1B change-of-status petition filed inside the United States**. It would not apply to genuinely cap-exempt petitions. The **employer-petitioner, not the student beneficiary**, would pay it. This remains only a proposed rule and no fee is currently being collected. Decision 7 below has the full scope.
 :::
 
 **Last reviewed ${f1.verified}.** Policy items on this page were verified against the primary sources listed at the end on that date. One is in active litigation, one is at the very start of notice-and-comment rulemaking, and one is a final rule facing a pending challenge — so check the date before you rely on anything here.
@@ -5504,16 +5504,17 @@ Those are two different clocks and they are worth writing down separately, becau
 Map your own dates with the [OPT calculator](/education/opt-calculator) before you assume you are covered, and read [what lottery results mean for F-1 OPT students](/h1b-lottery-results-for-f1-opt-students) for the document trail.
 
 ## Decision 7 — What the six-figure H-1B fee headlines should do to your plan
-Three separate six-figure numbers are now circulating, and they are not the same thing. One was struck down, one was never a rule, and one is brand new. None of them is a bill anyone owes today, and none belongs in your personal budget — but the newest one is the first drawn in a way that does not, on its face, exclude a student changing status inside the US. That makes it worth reading carefully rather than dismissing.
+Three separate six-figure numbers are now circulating, and they are not the same thing. One was struck down, one was never formally proposed, and one is a live proposal. None of them is a bill anyone owes today, and none belongs in your personal budget — but the newest one, as drafted, would cover a student changing status inside the US. That makes it worth reading carefully rather than dismissing.
 
 :::info
 title: August 24, 2026 update — a proposed $103,265 cap-subject H-1B fee
-The administration has proposed a separate regulation establishing a **${h1bCapSubjectFeeProposal.value} fee** for certain new H-1B applications. This is a **proposed rule, not a fee currently being collected**. Its final coverage, exemptions and effective date depend on completion of the federal rulemaking process.
-DHS filed the notice of proposed rulemaking for public inspection on August 24, 2026, scheduled for Federal Register publication on August 25, 2026, with a **30-day comment period**. It would add a new fee at 8 CFR 106.2(a)(3)(xii).
-As drafted it would apply to **all H-1B cap-subject petitions, including those eligible for the advanced degree exemption** — but not to cap-exempt petitions under INA secs. 214(g)(5) and (7), which covers much of the university and nonprofit-research world.
+As currently proposed, the **${h1bCapSubjectFeeProposal.value} fee would apply to all cap-subject H-1B petitions, including a cap-subject F-1-to-H-1B change-of-status petition filed inside the United States.** It would not apply to genuinely cap-exempt petitions. The **employer-petitioner, not the student beneficiary**, would pay it. **This remains only a proposed rule and no fee is currently being collected.**
+DHS filed the notice of proposed rulemaking for public inspection on August 24, 2026, scheduled for Federal Register publication on August 25, 2026, with a **30-day comment period**. The proposed text at 8 CFR 106.2(a)(3)(xii) reads: "The following additional fee is required for all H-1B cap-subject petitions, including those eligible for the advanced degree exemption under section 214(g)(5)(C) of the Act: $103,265."
+**The US advanced-degree allocation is included.** The master's-cap petitions that are exempt from the 65,000 limit are named in the proposed text as covered by the fee, so it is wrong to read INA secs. 214(g)(5) and (7) as blanket exclusions — 214(g)(5)(C) is expressly in scope.
+**Genuinely cap-exempt petitions are generally excluded** — employment at an institution of higher education or a related affiliated nonprofit, and at nonprofit research or government research organisations.
+**Petitions not subject to the annual cap at all are not covered**, including extensions and employer changes for a beneficiary already counted against the cap.
 It is **separate from, and additive to**, the vacated $100,000 proclamation payment. The proposal says a petitioner subject to both would pay both.
-DHS states the fee **would be paid by H-1B petitioners and not by H-1B beneficiaries**.
-**Do not assume that an F-1-to-H-1B change of status is covered or exempt until the published regulatory text confirms it.** The proposal is drawn by petition type rather than by where the beneficiary is, and it contains no carve-out for someone already in the United States — which is the opposite of how the 2025 proclamation was written. Read that as an open question that could go either way in a final rule, not as a settled exemption and not as a settled cost.
+The scope above is what the proposal says today; a final rule could still change it. What is not in doubt is that nothing is payable now.
 :::
 
 The two older figures are widely misreported, and neither belongs in your budget either.
@@ -5528,11 +5529,11 @@ Where it did apply, it was an employer obligation — not a cost billed to the w
 :::bad
 title: The $100,000 OPT fee is not a rule
 ${optProposedFee.statusLine}
-No proposed rule has been published, no Federal Register notice exists, no amount appears in regulation, and nobody has been charged.
+It surfaced as press reporting on July 30, 2026 describing an internal discussion at DHS — not a rulemaking document.
 Treat any page presenting it as a cost you will pay as out of date.
 :::
 
-What all three **could** affect — if the proclamation payment is reinstated on appeal, if the OPT figure ever becomes a real proposal, or if the ${h1bCapSubjectFeeProposal.value} fee is finalised in something like its proposed form — is employer willingness to sponsor. That reaches you through the job market, not through your bank account, and it is a reason to keep a cushion rather than to pre-pay a fee that does not exist. The [US degree ROI calculator](/education/us-degree-roi-calculator) models them exactly that way: as sponsorship shocks, not bills.
+What all three **could** affect — if the proclamation payment is reinstated on appeal, if the OPT figure ever becomes an actual proposed rule, or if the ${h1bCapSubjectFeeProposal.value} fee is finalised in something like its proposed form — is employer willingness to sponsor. That reaches you through the job market, not through your bank account, and it is a reason to keep a cushion rather than to pre-pay a fee that does not exist. The [US degree ROI calculator](/education/us-degree-roi-calculator) models them exactly that way: as sponsorship shocks, not bills.
 
 If you want to influence the newest one rather than just absorb it, the comment period is the mechanism — comments go to regulations.gov under DHS Docket No. USCIS-2026-0298 and close 30 days after publication.
 
@@ -5608,7 +5609,7 @@ No. Since the H-1B modernization final rule took effect on January 17, 2025, the
 The cap-gap extension ends, so cap-gap work authorisation stops. Permission to remain usually does not end on the same day: USCIS states that a student in that position generally has the standard ${f1.grace}-day grace period to depart, measured from notification of the denial, rejection, revocation or withdrawal, or from the date the extension of status terminated or the program end date, whichever is later. The exception matters — that grace period does not apply where the change-of-status request was denied, or the petition revoked, because of a status violation, misrepresentation or fraud, and in those cases USCIS expects immediate departure.
 
 ### Is there a new $103,265 H-1B fee I have to pay?
-No. On August 24, 2026 DHS filed a notice of proposed rulemaking proposing a ${h1bCapSubjectFeeProposal.value} fee on certain new H-1B applications, scheduled for Federal Register publication on August 25, 2026 with a 30-day comment period. It is a proposed rule, not a fee currently being collected, and its final coverage, exemptions and effective date depend on completion of the rulemaking. As proposed it would apply to cap-subject petitions including advanced-degree-exemption filings but not to cap-exempt petitions, and DHS states it would be paid by petitioners rather than beneficiaries. Do not assume an F-1-to-H-1B change of status is covered or exempt until the published regulatory text confirms it.
+No — nothing is payable now, and it would not be billed to you in any case. On August 24, 2026 DHS filed a notice of proposed rulemaking proposing a ${h1bCapSubjectFeeProposal.value} fee, scheduled for Federal Register publication on August 25, 2026 with a 30-day comment period. As currently proposed, the fee would apply to all cap-subject H-1B petitions, including a cap-subject F-1-to-H-1B change-of-status petition filed inside the United States, and including petitions under the US advanced-degree allocation. It would not apply to genuinely cap-exempt petitions such as those from institutions of higher education, affiliated nonprofits, and nonprofit or government research organisations, nor to petitions outside the annual cap such as extensions and employer changes for a beneficiary already counted. The employer-petitioner, not the student beneficiary, would pay it. This remains only a proposed rule and no fee is currently being collected, though a final rule could change the scope. It is separate from the vacated $100,000 proclamation payment.
 
 ### Will the $100,000 H-1B proclamation fee come out of my salary?
 No, and as of ${f1.verified} nobody is paying it. ${h1bProclamationFee.statusLine} That 2025 proclamation payment also never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it fell on the employer rather than the worker. Note that it is a different instrument from the ${h1bCapSubjectFeeProposal.value} fee proposed on August 24, 2026, and the proposal says a petitioner subject to both would pay both.
