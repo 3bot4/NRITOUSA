@@ -1,6 +1,19 @@
 import type { Article } from "@/types";
 import { computeReadingTime } from "@/lib/format";
-import { ELECTIVE_DEFERRAL_LIMITS_2026 } from "@/lib/calc/irsLimits";
+import {
+  ELECTIVE_DEFERRAL_LIMITS_2026,
+  IRA_LIMITS_2026,
+} from "@/lib/calc/irsLimits";
+import {
+  STUDENT_DATA_VERIFIED_LABEL,
+  capGapRules,
+  dsFixedAdmissionRule,
+  h1bProclamationFee,
+  optProposedFee,
+  optRules,
+  studentSources,
+  taxConstants,
+} from "@/data/studentClusterData";
 
 /** 401(k) figures quoted in article prose — read from the IRS limits table. */
 const k401 = {
@@ -8,6 +21,85 @@ const k401 = {
   catchUp50: `$${ELECTIVE_DEFERRAL_LIMITS_2026.catchUp50.toLocaleString("en-US")}`,
   year: ELECTIVE_DEFERRAL_LIMITS_2026.taxYear,
 };
+
+/* ───────────── F-1 / OPT / H-1B figures quoted in article prose ──────────
+ * Read from the student-cluster data file and the IRS limits table so the
+ * OPT→H-1B article can never drift from the calculators that use the same
+ * numbers. Nothing below may be typed as a literal into the body copy.
+ * ────────────────────────────────────────────────────────────────────── */
+const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
+
+const f1 = {
+  fica: `${taxConstants.ficaPct}%`,
+  socialSecurity: `${taxConstants.socialSecurityPct}%`,
+  medicare: `${taxConstants.medicarePct}%`,
+  exemptYears: taxConstants.f1ExemptCalendarYears,
+  taxYear: taxConstants.latestPublishedTaxYear,
+  standardDeduction: usd(
+    taxConstants.standardDeductionSingle[taxConstants.latestPublishedTaxYear]
+  ),
+  optMonths: optRules.postCompletionMonths,
+  stemMonths: optRules.stemMonths,
+  unemploymentInitial: optRules.initialUnemploymentDays,
+  unemploymentAggregate: optRules.aggregateUnemploymentDaysWithStem,
+  unemploymentRemainingExample:
+    optRules.aggregateUnemploymentDaysWithStem - 40,
+  grace: optRules.gracePeriodDays,
+  graceFixedAdmission: optRules.gracePeriodDaysUnderFixedAdmission,
+  dsoFilingDays: optRules.dsoRecommendationFilingDays,
+  stemPendingDays: optRules.stemPendingAutoExtensionDays,
+  cptMonthsThatKillOpt: optRules.cptFullTimeMonthsThatKillOpt,
+  iraLimit: usd(IRA_LIMITS_2026.under50),
+  rothPhaseStart: usd(IRA_LIMITS_2026.phaseOut.single.start),
+  rothPhaseEnd: usd(IRA_LIMITS_2026.phaseOut.single.end),
+  capGapEnds: capGapRules.endsOn,
+  capGapEndsShort: capGapRules.endsOnShort,
+  capGapFormer: capGapRules.formerEndDate,
+  verified: STUDENT_DATA_VERIFIED_LABEL,
+};
+
+/** What the FICA switch costs per year and per month, at four salary points. */
+const ficaCostRows = [75_000, 95_000, 120_000, 150_000]
+  .map((salary) => {
+    const yearly = (salary * taxConstants.ficaPct) / 100;
+    return `| ${usd(salary)} | ${usd(yearly)} | ${usd(yearly / 12)} |`;
+  })
+  .join("\n");
+
+/** Cash needed to cover the two OPT unemployment clocks, by monthly burn. */
+const runwayRows = [2_500, 3_500, 4_500, 6_000]
+  .map((burn) => {
+    const days = (n: number) => usd((burn * n) / 30);
+    return `| ${usd(burn)} | ${days(optRules.initialUnemploymentDays)} | ${days(
+      optRules.aggregateUnemploymentDaysWithStem
+    )} |`;
+  })
+  .join("\n");
+
+/** Official-source list for the OPT→H-1B article, read from the cluster data. */
+const optH1bSources = (
+  [
+    "irsFica",
+    "irsSsMedicareAliens",
+    "irsExempt",
+    "irsAliens",
+    "irsDualStatus",
+    "irsTreaty",
+    "irsForm843",
+    "irsPub590a",
+    "irsPub519",
+    "capGap",
+    "capGapRuleChange",
+    "h1bModernizationRule",
+    "cfrNonimmigrantGracePeriod",
+    "optUnemployment",
+    "stemOpt",
+    "uscisPolicyManualOpt",
+    "dsFinalRule",
+  ] as const
+)
+  .map((k) => `- [${studentSources[k].label}](${studentSources[k].href})`)
+  .join("\n");
 
 /**
  * Article content is authored as light markdown:
@@ -5209,94 +5301,292 @@ A score typically appears within about six months of activity and climbs with co
 Don't wait until graduation to start credit. Pick a secured or student card, run one small bill through it, pay in full, and you'll build the history that makes your post-study life in America far easier.`,
   },
   {
+    answerFirst: true,
+    expertiseTags: [
+      "F-1 / OPT tax residency",
+      "OPT-to-H-1B transition planning",
+      "Cross-border retirement accounts",
+    ],
+    toc: true,
     slug: "opt-h1b-financial-planning-students",
-    title: "OPT, H-1B, and Financial Planning Basics for Students",
-    seoTitle: "OPT & H-1B Financial Planning for Students",
+    title: "OPT to H-1B: Every Money Decision, in the Order You Face Them",
+    seoTitle: "OPT to H-1B Financial Planning for Students",
+    seoDescription:
+      "FICA on OPT, the switch-year tax bill, how much cash the OPT unemployment clocks demand, the 401(k) match under visa risk, and cap-gap's new April 1 end date.",
     excerpt:
-      "From student to professional — the money moves to make during OPT and the jump to H-1B as an Indian graduate.",
+      "Not general advice with a visa disclaimer bolted on. The eight decisions between your OPT start date and your H-1B approval — each with the rule, the number and the date behind it.",
     topic: "students",
     date: "2026-05-29",
-    updated: "2026-06-06",
-    content: `The transition from F-1 student to OPT worker to H-1B professional is also a financial transition — your income jumps, new accounts open up, and a few early decisions compound for decades. Here's how to handle the money side.
+    updated: "2026-08-24",
+    content: `Between the day your OPT starts and the day your H-1B is approved you will make about eight money decisions. Most people make several of them badly, and almost always for the same reason: the advice they find was written for someone with a permanent right to work, and you do not have one yet.
 
-:::summary
-During OPT and the move to H-1B: start **retirement contributions (capture any 401(k) match)**, keep **building credit**, build an **emergency fund**, understand your **changing tax status**, and avoid the classic trap of skipping benefits because your future feels uncertain. Your first professional paycheck is when long-term wealth begins.
+That changes the answers, not just the tone. Your paycheck is taxed differently from your American colleague's. Your emergency fund is sized by a legal clock, not a rule of thumb. Your 401(k) has an exit cost nobody in the next cubicle has ever thought about. And one of the rules that governs your cash flow changed in 2025, so a lot of what you will read elsewhere is quietly out of date.
+
+This page walks the decisions in the order you meet them. Every number is tied to the rule it comes from, and every rule is listed at the end.
+
+:::quickanswer
+**One month of cash, then the full employer match, then cash out to ${f1.unemploymentInitial} days.** On OPT your wages are usually exempt from the ${f1.fica} FICA tax — that gap is your funding source, not spending money. Size the cushion to the clocks that actually apply to you: **${f1.unemploymentInitial} days** of unemployment on post-completion OPT, **${f1.unemploymentAggregate} days in total** across OPT plus the STEM extension (an aggregate cap, not a reset), and a **${f1.grace}-day** grace period after F-1 ends — ${f1.graceFixedAdmission} days for students admitted under the fixed-admission rule taking effect September 15, 2026. Cap-gap now runs to **${f1.capGapEndsShort}** of the relevant fiscal year, not ${f1.capGapFormer}. Your tax bill then jumps twice: once when FICA starts on your first H-1B paycheck, again in the year your US tax residency flips and the India-treaty standard deduction stops covering you.
 :::
 
-## Understand your status and taxes
-On OPT you're still on F-1. Your US tax residency may shift over time (the [Substantial Presence Test](/articles/substantial-presence-test-explained) determines when you become a resident for tax purposes), which changes how you file and what's taxed. Many students are exempt from FICA taxes for a period — verify your situation.
+Policy items on this page were verified against the official sources listed at the end on ${f1.verified}. Two of them are actively in litigation, so check the date before you rely on anything here.
 
-## Capture the 401(k) match immediately
-When you start a job with benefits, contribute at least enough to get the full employer match — it's free money and the account is portable even if you leave the US. See [401(k) match explained](/articles/401k-match-explained-nri) and [what happens if you leave](/articles/what-happens-to-401k-leaving-usa).
+## Where you are on the timeline decides everything else
+The same person needs different advice four times in three years. Find your row first.
 
-## Keep building credit
-Your student credit history now powers apartment approvals and car financing. Keep utilization low, consider upgrading from a secured to an unsecured card, and don't close your oldest account.
+| Phase | What changes about your money | The clock that governs it |
+|---|---|---|
+| Final year of study, on CPT | Wages usually exempt from FICA; income small and irregular | ${f1.cptMonthsThatKillOpt} months of **full-time** CPT eliminates post-completion OPT at that degree level |
+| Post-completion OPT (${f1.optMonths} months) | First real salary; FICA usually still exempt; benefits enrolment begins | ${f1.unemploymentInitial} days of unemployment, and only ${f1.dsoFilingDays} days from your DSO's SEVIS recommendation to get the I-765 to USCIS |
+| STEM OPT extension (${f1.stemMonths} months) | Salary rises; two more lottery attempts | ${f1.unemploymentAggregate} days of unemployment **in total** across both periods; a timely-filed extension carries work authorisation up to ${f1.stemPendingDays} days past EAD expiry |
+| Selected, waiting for the start date | Cash flow unchanged; certainty transformed | Cap-gap runs to ${f1.capGapEndsShort} of the relevant fiscal year, not ${f1.capGapFormer} |
+| H-1B approved and started | ${f1.fica} leaves every paycheck; tax residency usually flips | ${f1.grace} unpaid days if the job ends, capped by your petition's validity |
 
-## Build an emergency fund
-Visa life has uncertainty — the 60-day grace period between H-1B jobs makes a cash cushion essential. Aim for 3–6 months of expenses; see [building an emergency fund](/articles/emergency-fund-first-year-usa).
+## Decision 1 — Size your cash by the clock, not by a rule of thumb
+"Three to six months of expenses" is advice for someone who can take any job tomorrow. You cannot. Your cushion has to cover a period in which working is either illegal or capped — and those periods have exact lengths written into regulation.
 
-## Start investing early
-Once the match and emergency fund are handled, begin investing for the long term in low-cost [index funds](/articles/index-funds-for-beginners-nri) and consider a [Roth vs Traditional IRA](/articles/roth-ira-vs-traditional-nri). Time in the market is your biggest advantage at this age.
-
-:::key
-- Track your tax residency as it shifts from nonresident to resident
-- Grab the full 401(k) match from your first benefited paycheck
-- Keep building credit; upgrade and keep old accounts open
-- Build a 3–6 month emergency fund for visa gaps
-- Start long-term investing once the basics are covered
+:::info
+title: The four clocks that will spend your savings
+- **${f1.unemploymentInitial} days** — unemployment allowed during post-completion OPT. Past that without qualifying employment and your SEVIS record is at risk.
+- **${f1.unemploymentAggregate} days** — the total allowed across post-completion OPT **and** the STEM extension. Burn 40 days on initial OPT and you have ${f1.unemploymentRemainingExample} left, not ${f1.unemploymentAggregate}.
+- **${f1.grace} days** — the F-1 grace period once OPT ends. No work is permitted during it. It becomes ${f1.graceFixedAdmission} days for students admitted under the fixed-admission rule.
+- **${f1.grace} days** — the H-1B grace period after a job ends. Also unpaid, also capped: the regulation gives you up to ${f1.grace} consecutive days **or the end of your petition's validity, whichever is shorter**, once per validity period.
 :::
 
-## Common mistakes
+So the honest question is not "how many months of expenses" but "how many unpaid days could I face, and what is a day worth to me?"
+
+| Your monthly burn | ${f1.unemploymentInitial} unpaid days costs | ${f1.unemploymentAggregate} unpaid days costs |
+|---|---|---|
+${runwayRows}
+
+Add a one-way flight and a broken lease if you want the number that survives the worst case. The point of the table is that a figure like ${f1.unemploymentAggregate} days is not abstract — it has a dollar value you can bank towards.
+
+:::tip
+title: Where to hold it
+- In cash you can reach in one business day. A high-yield savings account, not a brokerage, not a CD with a maturity date past your EAD.
+- In **dollars**. Holding your emergency fund in rupees means a currency move can shrink your runway in the exact month you need it.
+- Not in your 401(k). Reaching that money early costs a 10% penalty plus tax, which is precisely the outcome the cushion exists to prevent.
+- Not in India at all until the US cushion is full. See [why keeping too much money in India backfires](/articles/keeping-too-much-money-in-india).
+:::
+
+## Decision 2 — Know the exact date the ${f1.fica} starts
+This is the largest single change to your take-home pay in the whole transition, and it does not arrive gradually.
+
+While you are a **nonresident alien in F-1 status** doing work USCIS authorised as part of that status — which includes CPT, post-completion OPT and the STEM extension — your wages are generally exempt from Social Security and Medicare tax. That is ${f1.socialSecurity} plus ${f1.medicare}, ${f1.fica} of gross, that never leaves your paycheck. H-1B is not on the IRS's exempt list.
+
+There are two ways the exemption ends, and most people only plan for one of them.
+
+:::steps
+title: The two ways the exemption ends
+You change to H-1B — the exemption stops with your first H-1B paycheck. No proration, no transition, no notice from payroll beyond a smaller net number.
+Your exempt years run out first — you are an exempt individual for only ${f1.exemptYears} calendar years, and the IRS counts "any part of" a calendar year as a whole one, so an August arrival burns an entire year on five months of presence. After that your days count toward the substantial presence test, and becoming a resident alien means FICA on OPT wages while you are still on F-1.
+:::
+
+| Annual salary | ${f1.fica} FICA, once it starts | Per month |
+|---|---|---|
+${ficaCostRows}
+
+Social Security's ${f1.socialSecurity} stops at the annual wage base; Medicare's ${f1.medicare} never does. Below the base — which covers most first and second jobs — the flat ${f1.fica} above is the right planning number.
+
+The practical move: while you are exempt, treat the ${f1.fica} as though it were already being withheld and route it to savings. It funds most of your ${f1.unemploymentInitial}-day cushion inside a year, and when the deduction does start your lifestyle has already absorbed it.
+
 :::warn
-- **Skipping the 401(k) match** during OPT/early H-1B "just in case"
-- **No emergency fund** to cover the 60-day H-1B grace period
-- **Lifestyle inflation** swallowing the entire income jump from student to professional
+title: If FICA was withheld while you were exempt
+- It is refundable, and on a full year of OPT wages it is usually a four-figure amount.
+- Ask your employer first — a payroll correction is far faster than the IRS.
+- If they will not or cannot refund it, file **Form 843** with **Form 8316**, attaching your W-2, the visa page of your passport, your I-20 with the OPT endorsement and your EAD.
+- Refund claims have a limitations period. Chase old years before they close rather than "getting to it later".
+:::
+
+## Decision 3 — The year you switch is the expensive tax year
+Nothing about your spending changes, and yet the return you file that April can produce a bill that surprises you. Three separate things move at once.
+
+**Your filing status.** For your first ${f1.exemptYears} calendar years on F-1 you are an exempt individual: your days do not count toward the substantial presence test, you are a nonresident alien, and you file Form 1040-NR plus Form 8843. Once those years are used up, days start counting — 31 days in the current year and 183 across a weighted three-year window (all of this year, a third of last year, a sixth of the year before). Days on H-1B always count.
+
+**The treaty benefit you were relying on.** Article 21(2) of the US–India treaty lets students and business apprentices from India claim the standard deduction on a Form 1040-NR — ${f1.standardDeduction} for a single filer in ${f1.taxYear}. Almost no other nationality gets this. It belongs to your **student** years. It does not follow you onto an H-1B salary.
+
+**Whether the switch year is dual-status at all.** An October 1 H-1B start is 92 days — not enough on its own to meet the 183-day test — so many people are nonresident for that entire year and become resident on January 1 of the next one. Others meet the test because prior-year days now count a third and a sixth. The date your residency actually starts is the whole question, and it is worth answering before you file rather than after.
+
+:::warn
+title: The dual-status trap
+- A dual-status filer **cannot take the standard deduction**. Itemised deductions only.
+- A dual-status filer **cannot file a joint return** — unless you are married to a US citizen or resident and make the election to be treated as a resident for the full year.
+- Losing both the treaty standard deduction and the ordinary one in the same year is what turns a routine return into a bill.
+- Set money aside for it in the month your H-1B starts, not in April when you find out.
+:::
+
+Run your own year count in the [F-1 tax calculator](/education/f1-tax-calculator), read the mechanics in the [substantial presence test guide](/articles/substantial-presence-test-explained), and see what the first fully-resident return looks like in the [H-1B first tax return guide](/articles/h1b-first-tax-return-guide).
+
+## Decision 4 — Take the 401(k) match even if you might leave
+The objection is always the same: **why lock money into a US retirement account when I might be in Bengaluru in eighteen months?** It is a fair question with an unfair answer — the arithmetic is not close.
+
+:::compare
+left: The objection
+right: The arithmetic
+✗ "I might have to leave, so I will skip the 401(k)."
+✗ "I will start once I have a green card."
+✗ "I would rather invest that money in India, where I understand the market."
+✓ A 50% match on 6% of salary is a 50% return before the market does anything at all.
+✓ Even the worst exit — cashing out early as a nonresident — costs a 10% penalty plus tax. That is a smaller number than the match you refused.
+✓ You never have to cash out. The account stays yours and rolls into an IRA you can hold from anywhere in the world.
+:::
+
+:::info
+title: Three things to check in your first week of benefits
+- **The match formula.** "50% up to 6%" and "100% up to 4%" are different amounts of free money. Contribute at least to whatever the cap is.
+- **The vesting schedule.** Your own contributions are always 100% yours. The employer's share may vest over two to four years, sometimes on a cliff — leave a month early and you forfeit it. Ask for the exact date.
+- **The ${k401.year} elective deferral limit: ${k401.deferral}.** You do not have to reach it. You do have to reach the match.
+:::
+
+What happens to the account afterwards is a solved problem, not an open risk — see [what happens to your 401(k) when you leave the USA](/articles/what-happens-to-401k-leaving-usa), [why there is no direct pipe into NPS or PPF](/articles/transfer-401k-to-india-nps-ppf), and run the numbers in the [401(k) return-to-India calculator](/calculators/401k-return-to-india).
+
+## Decision 5 — The Roth IRA question, answered properly
+Most pages either tell students they cannot have an IRA, or tell them to open one without mentioning the condition that actually decides it. Both are wrong.
+
+There is **no citizenship or residency test** for contributing to a traditional or Roth IRA. What there is, is a compensation test — and IRS Publication 590-A is specific about it: compensation does not include **"any amounts (other than combat pay) you exclude from income."**
+
+:::good
+title: What that means in practice
+Your W-2 wages from OPT employment are compensation, so they support an IRA contribution.
+Article 21(2) gives you a **deduction**, not an exclusion, so claiming it leaves your wages intact as compensation.
+If you claim a treaty article that **excludes** wages from income, the excluded amount cannot support a contribution. Check what is left before you contribute.
+:::
+
+The limits for ${f1.taxYear}: **${f1.iraLimit}** if you are under 50, with the direct-Roth phase-out for a single filer running from ${f1.rothPhaseStart} of modified AGI to ${f1.rothPhaseEnd}. Below that range, contribute directly. Above it, the [backdoor Roth route](/articles/backdoor-roth-ira-nri) is the answer — check first with the [backdoor Roth eligibility calculator](/calculators/backdoor-roth-eligibility).
+
+There is also a reason to prefer Roth specifically if you may not stay. A traditional pre-tax withdrawal taken later as a nonresident faces a default 30% withholding unless a treaty rate applies; a qualified Roth withdrawal is money you have already paid tax on at a rate you knew. [Roth vs traditional for NRIs](/articles/roth-ira-vs-traditional-nri) works through the trade-off. If your employer offers an HDHP, the [HSA](/articles/hsa-vs-fsa-explained) is worth a look too — with one caveat, which is that [an HSA does not travel well](/articles/hsa-after-leaving-usa).
+
+## Decision 6 — Cap-gap now runs to ${f1.capGapEndsShort}, not ${f1.capGapFormer}
+This is the correction that matters most to your cash flow, and it is the one most pages have not made.
+
+Cap-gap is the bridge between the day your F-1 status or OPT ends and the day H-1B employment can begin. It used to run only to ${f1.capGapFormer}. The H-1B modernization final rule, effective January 17, 2025 and first applied from the FY${capGapRules.firstFiscalYearApplied} registration season, moved that to **${f1.capGapEnds}**, or ${capGapRules.orEarlier}.
+
+For a spring graduate whose OPT ends in May, that is up to six additional months of authorised, paid work — easily the largest single line item on this page.
+
+:::steps
+title: How it actually works
+Your employer registers you in March — registration is a form and a small fee. Being registered is not being selected.
+The petition is filed as a change of status — with a requested start date between October 1 and April 1 of the following year.
+The extension is automatic — ${capGapRules.automatic}
+Status and work authorisation are separate benefits — ${capGapRules.workAuthCondition}
+:::
+
+:::warn
+title: What breaks cap-gap
+- **OPT that had already expired when the petition was filed.** If your EAD ended in February and the petition goes in April, there is nothing to extend for work purposes — you may still get the status extension, but not the right to work.
+- **Consular processing instead of change of status.** Cap-gap requires a change-of-status request on the Form I-129.
+- **A denied, rejected, revoked or withdrawn petition.** In each of those cases the extension stops on the spot — you do not get to run to ${f1.capGapEndsShort}, and if your original OPT end date has already passed you must stop working immediately.
+- **Not being selected.** No selection, no cap-gap. You are back on whatever OPT time remains.
+:::
+
+Map your own dates with the [OPT calculator](/education/opt-calculator) before you assume you are covered, and read [what lottery results mean for F-1 OPT students](/h1b-lottery-results-for-f1-opt-students) for the document trail.
+
+## Decision 7 — What the two $100,000 headlines should do to your plan
+Two figures have dominated student group chats for a year. Both are widely misreported, and neither belongs in your budget.
+
+:::good
+title: The H-1B $100,000 payment is not being collected
+${h1bProclamationFee.statusLine}
+It never applied to students already in the US changing status from F-1 to H-1B.
+Where it did apply, it was an employer obligation — not a cost billed to the worker.
+:::
+
+:::bad
+title: The $100,000 OPT fee is not a rule
+${optProposedFee.statusLine}
+No proposed rule has been published, no Federal Register notice exists, no amount appears in regulation, and nobody has been charged.
+Treat any page presenting it as a cost you will pay as out of date.
+:::
+
+What both **could** affect — if the first is reinstated on appeal, or the second ever materialises — is employer willingness to sponsor. That reaches you through the job market, not through your bank account, and it is a reason to keep a cushion rather than to pre-pay a fee that does not exist. The [US degree ROI calculator](/education/us-degree-roi-calculator) models them exactly that way: as sponsorship shocks, not bills.
+
+## Decision 8 — The date on your I-94 is about to matter more than it ever has
+The rule that has governed F-1 admission for decades is scheduled to be replaced, and it halves the grace period every page on this subject quotes — including this one.
+
+:::info
+title: Status of the fixed-admission rule
+${dsFixedAdmissionRule.statusLine}
+:::
+
+The change: instead of being admitted for "duration of status", an F-1 student would be admitted for the length of the programme on the I-20, capped at four years, followed by a **${f1.graceFixedAdmission}-day** grace period rather than ${f1.grace} days. Overstaying a dated I-94 without a timely extension carries a consequence duration of status does not.
+
+Students already admitted for duration of status generally keep the ${f1.grace}-day grace period until they travel abroad and re-enter, or file an extension of stay. There is transition relief specifically for practical training: a student in the US and maintaining status on the effective date who timely files Form I-765 for OPT or STEM OPT **on or before March 18, 2027** generally avoids a separate Form I-539.
+
+:::warn
+title: Three things to do about it
+- **Do not treat any grace-period figure — on any site, including this one — as yours.** Read your most recent I-94 and confirm with your DSO.
+- **Plan international travel deliberately.** Re-entry after the effective date is what converts a duration-of-status admission into a date-certain one.
+- **If you are filing OPT or STEM OPT, the March 18, 2027 window is the date to organise around.** Filing after it generally pulls an I-539 into the process, which is where delayed start dates and unpaid gaps come from.
+:::
+
+## The decision table
+Find your row. Do the first column before the second.
+
+| If this is you | Do this first | Then this |
+|---|---|---|
+| Starting OPT with nothing saved | Bank one month of expenses, fast — the ${f1.fica} you are not paying in FICA gets you most of the way | Take the full employer match, then keep saving to ${f1.unemploymentInitial} days of burn |
+| On OPT with a match available | Contribute to the full match from your first eligible paycheck | Build the cushion to ${f1.unemploymentInitial} days, then open a Roth IRA |
+| Selected in the lottery, waiting for October | Confirm with your DSO that cap-gap covers you to ${f1.capGapEndsShort} | Set aside the coming ${f1.fica} FICA increase before it hits your paycheck |
+| Not selected, STEM extension available | File the extension — it buys ${f1.stemMonths} months and two more lottery attempts | Check your remaining unemployment days: the ${f1.unemploymentAggregate} is aggregate, not a reset |
+| Not selected, no STEM extension | Count grace-period days from your OPT end date, not from today | Make every money decision portable: IRA rollover, no new US lock-ups, no lease past your dates |
+| Just started H-1B | Re-run your take-home with ${f1.fica} removed and set the budget to that | Raise the 401(k) to at least the match, then decide Roth vs traditional |
+| Laid off on H-1B | Remember the ${f1.grace} days are unpaid and capped by your petition's validity | Do not cash out the 401(k) to bridge it — that is exactly what the cushion was for. See [H-1B layoff options](/h1b-layoff) |
+
+## What not to do
+:::warn
+title: The five most expensive mistakes on this transition
+- **Buying permanent life insurance or an indexed universal life policy** because it was pitched as a tax-free retirement plan. It is not a substitute for an employer match or an emergency fund, and the surrender charges bite hardest in exactly the early years when a visa holder's plans are most likely to change. Read [term vs IUL](/term-vs-iul-for-indian-families-usa) before signing anything.
+- **Buying a house during OPT.** Transaction costs need years to amortise. Your authorisation to be here is measured in months.
+- **Cashing out the 401(k) to fund a move.** The 10% penalty and the withholding together take a bite you will spend years replacing.
+- **Letting lifestyle absorb the entire student-to-professional jump.** The raise is the only chance you get to set a savings rate before your spending catches up to it.
+- **Sending most of it to India before the US cushion is full.** The money is much harder to bring back than to send, and the cushion is what keeps you off the 401(k) in a bad month.
 :::
 
 ## Frequently asked questions
 
-### Should I contribute to a 401(k) on OPT or H-1B?
-Yes — at least enough for the full match. It's free money and the account stays yours even if you eventually leave the US.
+### Do I pay Social Security and Medicare tax on OPT?
+Usually not. A nonresident alien in F-1 status doing USCIS-authorised work incident to that status — including CPT, post-completion OPT and the STEM extension — is generally exempt from FICA. The exemption depends on being a nonresident alien, which normally lasts your first ${f1.exemptYears} calendar years in F, J, M or Q status.
 
-### When do I become a US resident for tax purposes?
-It depends on the Substantial Presence Test and your years on F-1. Students are often nonresident aliens for a period, then become residents — see our [SPT guide](/articles/substantial-presence-test-explained).
+### When exactly does FICA start?
+With your first H-1B paycheck, or earlier if your ${f1.exemptYears} exempt calendar years run out while you are still on OPT and you become a resident alien under the substantial presence test. It is ${f1.fica} of gross once it starts, and there is no phase-in.
+
+### FICA was withheld from my OPT paycheck by mistake. Can I get it back?
+Yes. Ask your employer for a payroll refund first, because that is much faster. If they cannot help, file Form 843 with Form 8316, attaching your W-2, the visa page of your passport, your I-20 with the OPT endorsement and your EAD. Refund claims have a limitations period, so do not leave old years sitting.
+
+### Should I contribute to a 401(k) on OPT if I might leave the US?
+Yes, at least to the full employer match. The match is an immediate 50–100% return that is larger than the worst-case cost of an early withdrawal, and you are not obliged to withdraw early — the account stays yours and can roll into an IRA you hold from anywhere.
+
+### Can I open a Roth IRA as a nonresident alien on OPT?
+Yes, if you have taxable compensation. There is no citizenship or residency requirement, but IRS Publication 590-A excludes from "compensation" any amounts you exclude from income — so wages excluded under a treaty article cannot support a contribution. India's Article 21(2) is a deduction rather than an exclusion, so it does not create that problem.
 
 ### How big should my emergency fund be on a visa?
-Aim for 3–6 months of expenses. The H-1B 60-day grace period between jobs makes this cushion especially important.
+Size it to the clocks rather than to a generic number of months: ${f1.unemploymentInitial} days of unemployment on post-completion OPT, ${f1.unemploymentAggregate} days in total with the STEM extension, and a ${f1.grace}-day unpaid grace period at either end of the transition. At a $3,500 monthly burn that is roughly $10,500 and $17,500 respectively.
 
-## The OPT to H-1B timeline, and where cap-gap fits
-The handover between OPT and H-1B is the part students plan for least and worry about most. The mechanics:
+### Does the STEM extension reset my unemployment days to 150?
+No — and this is the single most common error in OPT content. The ${f1.unemploymentAggregate} days are an aggregate across post-completion OPT and the STEM extension. Use 40 days on initial OPT and you have ${f1.unemploymentRemainingExample} left, not ${f1.unemploymentAggregate}.
 
-:::steps
-Your employer registers you in the H-1B lottery in March. Registration is a small fee and a form — being registered is not being selected.
-If selected, the petition is filed with an October 1 start date. That gap between selection and start is where cap-gap matters.
-**Cap-gap** automatically extends your F-1 status and, if your OPT was still valid when the petition was filed, your work authorisation — through September 30. It is what stops you falling out of status between an OPT end date in May and an H-1B start date in October.
-If you are not selected, you are back to your remaining OPT time. This is where a STEM extension is worth having, because it buys two more lottery attempts.
-:::
+### Does cap-gap still end on ${f1.capGapFormer}?
+No. Since the H-1B modernization final rule took effect on January 17, 2025, the cap-gap extension runs to ${f1.capGapEnds}, or the validity start date of the approved petition if that comes first. Plenty of pages still quote the old date, so check the publication date on anything you read about this.
 
-:::warn
-Cap-gap only helps if your OPT is still valid when the petition is filed. If your OPT expired in February and the petition goes in April, there is nothing to extend. Map your dates with the [OPT calculator](/education/opt-calculator) before you assume you are covered.
-:::
+### Will the $100,000 H-1B fee come out of my salary?
+No, and as of ${f1.verified} nobody is paying it. ${h1bProclamationFee.statusLine} It also never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it fell on the employer rather than the worker.
 
-## What the fee headlines actually mean for you
-Two $100,000 figures have dominated student conversation. Both are widely misreported, and the money you plan around should reflect what is actually true as of the date on this page.
-
-:::good
-**The $100,000 H-1B proclamation payment is not being collected.** A federal court vacated the policy in June 2026, and the First Circuit declined to reinstate it in July 2026 while the government's appeal proceeds. It also never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it was an employer obligation, not a worker's cost.
-:::
-
-:::bad
-**The $100,000 OPT fee is not a rule.** It was press reporting in July 2026 describing an internal discussion. No proposed rule has been published, no amount exists in regulation, and nobody has been charged. Treat any page presenting it as a cost you will pay as out of date.
-:::
-
-Neither figure belongs in your personal budget. What both could affect — if the first is reinstated on appeal or the second ever materialises — is employer willingness to sponsor, which reaches you through the job market rather than through your bank account. The [US degree ROI calculator](/education/us-degree-roi-calculator) models them that way, as sponsorship shocks rather than bills.
+### What happens to my taxes in the year I move from F-1 to H-1B?
+It depends on the day the substantial presence test says your residency begins. If it begins mid-year you file a dual-status return, which cannot use the standard deduction and generally cannot be filed jointly. If you do not meet the test that year you remain a nonresident for the whole year. Either way, the India-treaty standard deduction belongs to your student years and does not extend to H-1B wages.
 
 ## The bottom line
-Your first real paycheck is a fork in the road. Capture the match, keep credit strong, build a cushion for visa gaps, and start investing early — the habits you set during OPT and early H-1B shape your wealth for decades.
+Your first professional paycheck is the fork in the road, but the fork is narrower than the generic advice suggests. One month of cash so a bad week cannot reach your retirement account. The full employer match, because no other decision on this page returns 50% on day one. Cash out to ${f1.unemploymentInitial} days of burn, because that is the number the regulation actually gives you. Then long-term investing, in that order.
+
+And get the two dates right that most people get wrong: the day ${f1.fica} starts leaving your paycheck, and ${f1.capGapEndsShort} of the relevant fiscal year — the day cap-gap now runs to, six months later than most of the internet still says.
 
 :::cta
-Two tools for this transition: the [OPT calculator](/education/opt-calculator) for every deadline and your unemployment allowance, and the [F-1 tax calculator](/education/f1-tax-calculator) for the residency and FICA questions that change as you move from F-1 to H-1B.
-:::`,
+title: Run your own dates before you budget
+body: The OPT calculator maps every deadline and your remaining unemployment days. The F-1 tax calculator answers the residency and FICA questions for your specific year count.
+button: Open the OPT calculator
+href: /education/opt-calculator
+:::
+
+## Official sources
+${optH1bSources}`,
   },
 
   /* ============================================================ *

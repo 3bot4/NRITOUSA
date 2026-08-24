@@ -126,6 +126,34 @@ export const studentSources = {
     label: "IRCC — Educational credential assessment",
     href: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessment.html",
   },
+  irsDualStatus: {
+    label: "IRS — Taxation of dual-status individuals",
+    href: "https://www.irs.gov/individuals/international-taxpayers/taxation-of-dual-status-individuals",
+  },
+  irsPub590a: {
+    label:
+      "IRS Publication 590-A — Contributions to Individual Retirement Arrangements",
+    href: "https://www.irs.gov/publications/p590a",
+  },
+  irsSsMedicareAliens: {
+    label: "IRS — Aliens employed in the US: Social Security taxes",
+    href: "https://www.irs.gov/individuals/international-taxpayers/aliens-employed-in-the-us-social-security-taxes",
+  },
+  h1bModernizationRule: {
+    label:
+      "Federal Register — Modernizing H-1B Requirements and Providing Flexibility in the F-1 Program (final rule, effective January 17, 2025)",
+    href:
+      "https://www.federalregister.gov/documents/2024/12/18/2024-29354/modernizing-h-1b-requirements-providing-flexibility-in-the-f-1-program-and-program-improvements",
+  },
+  capGapRuleChange: {
+    label: "DHS Study in the States — Recent H-1B rule extends the F-1 cap-gap extension",
+    href: "https://studyinthestates.dhs.gov/2025/04/recent-h-1b-rule-extends-f-1-cap-gap-extension",
+  },
+  cfrNonimmigrantGracePeriod: {
+    label: "8 CFR 214.1(l)(2) — 60-day grace period on cessation of employment",
+    href:
+      "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
+  },
 } as const;
 
 export type StudentSourceKey = keyof typeof studentSources;
@@ -359,6 +387,46 @@ export const optRules = {
   cptFullTimeMonthsThatKillOpt: 12,
   /** Reinstatement must generally be filed within this window. */
   reinstatementFilingMonths: 5,
+} as const;
+
+/* ──────────────────────────── Cap-gap mechanics ────────────────────────── */
+
+/**
+ * The cap-gap bridge between an OPT end date and an H-1B start date.
+ *
+ * The end date changed and a great deal of published advice has not caught
+ * up. The H-1B modernization final rule (89 FR 103186, effective January 17,
+ * 2025) moved the end of the cap-gap extension from October 1 to April 1 of
+ * the fiscal year the H-1B is requested for — first applied from the FY2026
+ * registration season. Never write "through September 30" on this site.
+ *
+ * The status extension and the work-authorisation extension are separate
+ * benefits with different conditions, and collapsing them is the second most
+ * common cap-gap error after the date.
+ */
+export const capGapRules = {
+  /** The extension now runs to April 1 of the relevant fiscal year. */
+  endsOn: "April 1 of the fiscal year the H-1B is requested for",
+  /** Headline/table form of the same date, for headings and tight cells. */
+  endsOnShort: "April 1",
+  /** …or the approved petition's validity start date, if that comes first. */
+  orEarlier: "the validity start date of the approved petition, whichever is earlier",
+  /** The pre-2025 end date, kept only so stale copy can be recognised. */
+  formerEndDate: "October 1",
+  effectiveDate: "2025-01-17",
+  firstFiscalYearApplied: 2026,
+  /** Extends F-1 STATUS when the petition is timely filed in a valid F-1 period. */
+  statusCondition:
+    "A timely cap-subject Form I-129 requesting a change of status, filed while the student's F-1 status was still valid — including during the 60-day grace period.",
+  /** Extends WORK AUTHORISATION only on the narrower condition. */
+  workAuthCondition:
+    "employment authorisation is extended only if the student was in an authorized period of post-completion OPT when the petition was filed. A student already in the grace period gets the status extension without the right to work.",
+  automatic:
+    "there is no application and no new EAD; the DSO issues an updated Form I-20 as evidence, but the extension exists whether or not the document is in hand.",
+  endsEarlyIf:
+    "The extension ends if the petition is denied, rejected, revoked or withdrawn.",
+  source: studentSources.capGapRuleChange,
+  ruleSource: studentSources.h1bModernizationRule,
 } as const;
 
 /* ───────────────────────── OPT denial consequences ─────────────────────── */
