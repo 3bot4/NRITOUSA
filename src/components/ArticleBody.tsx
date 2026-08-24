@@ -128,8 +128,13 @@ function Table({ rows, keyId }: { rows: string[]; keyId: string }) {
   const body = rows.slice(2).map(cells);
 
   return (
+    // The wrapper already scrolls horizontally; without a floor on the table
+    // width the layout algorithm instead crushes the narrow first column and
+    // breaks its labels mid-word on phones ("Phas e"). The floor is below the
+    // ~720px article measure, so desktop rendering is unchanged and only
+    // narrow viewports switch from crushing to scrolling.
     <div className="my-5 overflow-x-auto rounded-xl border border-ink-900/10">
-      <table className="w-full border-collapse text-left text-sm">
+      <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
         <thead className="bg-slate-100">
           <tr>
             {header.map((h, i) => (

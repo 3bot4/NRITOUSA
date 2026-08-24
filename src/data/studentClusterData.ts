@@ -18,10 +18,10 @@
  */
 
 /** ISO date the values in this file were last checked against source. */
-export const STUDENT_DATA_VERIFIED = "2026-08-20";
+export const STUDENT_DATA_VERIFIED = "2026-08-24";
 
 /** Human-readable version of the same date, for prose. */
-export const STUDENT_DATA_VERIFIED_LABEL = "August 20, 2026";
+export const STUDENT_DATA_VERIFIED_LABEL = "August 24, 2026";
 
 /* ───────────────────────────── Official sources ────────────────────────── */
 
@@ -154,6 +154,22 @@ export const studentSources = {
     href:
       "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
   },
+  h1bCapSubjectFeeNprm: {
+    label:
+      "Federal Register — Fee for Certain H-1B Petitions (DHS notice of proposed rulemaking, RIN 1615-AD20, DHS Docket No. USCIS-2026-0298)",
+    href: "https://www.federalregister.gov/d/2026-17324",
+  },
+  uscisCapGap: {
+    label:
+      "USCIS — Extension of Post-Completion OPT and F-1 Status for Eligible Students under the H-1B Cap-Gap Regulations",
+    href:
+      "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/extension-of-post-completion-optional-practical-training-opt-and-f-1-status-for-eligible-students",
+  },
+  uscisH1bRegistration: {
+    label: "USCIS — H-1B electronic registration process (registration fee)",
+    href:
+      "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-electronic-registration-process",
+  },
 } as const;
 
 export type StudentSourceKey = keyof typeof studentSources;
@@ -246,6 +262,39 @@ export const optProposedFee: PolicyItem = {
     label: "DHS Unified Regulatory Agenda",
     href: "https://www.reginfo.gov/public/do/eAgendaMain",
   },
+};
+
+/**
+ * The $103,265 cap-subject H-1B fee. Filed for public inspection August 24,
+ * 2026 and scheduled for Federal Register publication August 25, 2026 as a
+ * NOTICE OF PROPOSED RULEMAKING — comments close 30 days after publication.
+ *
+ * Three things about it are routinely got wrong and must never be got wrong
+ * here:
+ *  1. It is NOT the vacated $100,000 proclamation payment. Different amount,
+ *     different legal authority, different instrument. The NPRM says a
+ *     petitioner subject to both would pay both.
+ *  2. It is NOT payable today. There is no final rule and no effective date.
+ *  3. It contains NO carve-out for a beneficiary already in the United States.
+ *     The proclamation did not reach an F-1 → H-1B change of status; this
+ *     proposal is drafted by PETITION TYPE (cap-subject, including the
+ *     advanced-degree exemption), so a cap-subject change of status is on its
+ *     face within scope. Never write that students in the US are exempt.
+ * The proposed fee falls on the petitioner: the NPRM states it "would be paid
+ * by H-1B petitioners and not H-1B beneficiaries."
+ */
+export const h1bCapSubjectFeeProposal: PolicyItem = {
+  id: "h1b-cap-subject-fee-proposal",
+  label: "H-1B $103,265 cap-subject petition fee",
+  value: "$103,265",
+  amountUsd: null,
+  status: "proposed",
+  statusLine:
+    "PROPOSED ONLY — a notice of proposed rulemaking filed for public inspection on August 24, 2026 and scheduled for publication on August 25, 2026, with a 30-day comment period. It is not being collected, and it has no effective date.",
+  detail:
+    "DHS proposes a new fee at 8 CFR 106.2(a)(3)(xii) of $103,265, payable at the time of filing, on all H-1B cap-subject petitions including those eligible for the advanced degree exemption. Cap-exempt petitions under INA secs. 214(g)(5) and (7) — largely universities and nonprofit or governmental research organisations — would not pay it. The fee would be in addition to every other applicable fee or payment, and the NPRM states expressly that a petitioner subject both to a proclamation-required payment and to this fee would pay both, so it is separate from and additive to the vacated $100,000 payment under Proclamation 10973 rather than a replacement for it. DHS states the fee would be paid by H-1B petitioners and not by beneficiaries. Critically, the proposal is drawn by petition type rather than by where the beneficiary is: it contains no exemption for a change of status filed for someone already in the United States, so an F-1 student's cap-subject change-of-status petition is on its face within scope — the opposite of the proclamation, which did not reach in-country change of status. Nothing is settled: this is a proposal at the start of notice-and-comment, its final coverage, exemptions and effective date all depend on a final rule that does not yet exist, and it may be changed or never finalised.",
+  lastVerified: STUDENT_DATA_VERIFIED,
+  source: studentSources.h1bCapSubjectFeeNprm,
 };
 
 /**
@@ -424,10 +473,34 @@ export const capGapRules = {
   automatic:
     "there is no application and no new EAD; the DSO issues an updated Form I-20 as evidence, but the extension exists whether or not the document is in hand.",
   endsEarlyIf:
-    "The extension ends if the petition is denied, rejected, revoked or withdrawn.",
+    "The extension ends if the petition is denied, rejected, revoked or withdrawn, or if the change-of-status request is denied or withdrawn even where the petition itself is approved for consular processing.",
+  /**
+   * What survives the end of cap-gap. Work authorisation and permission to
+   * remain are different things, and writing "you lose everything" is both
+   * wrong and, on a page read by someone who has just had a petition pulled,
+   * harmful. Per USCIS: the student generally gets the standard 60-day grace
+   * period to depart, running from the notification of the denial, rejection,
+   * revocation or withdrawal — or from the date the extension of status
+   * terminated or the program end date, whichever is later.
+   */
+  afterItEnds:
+    "a student whose cap-gap petition is denied, rejected, revoked or withdrawn generally has the standard 60-day grace period to depart, measured from the notification of that outcome, or from the date the extension of status terminated or the program end date, whichever is later.",
+  /**
+   * The exception, which reverses the answer entirely — do not publish the
+   * 60-day line without it.
+   */
+  afterItEndsException:
+    "The 60-day grace period does not apply where the change-of-status request was denied, or the petition revoked, because of a status violation, misrepresentation or fraud. In those cases USCIS expects the student to leave the United States immediately.",
   source: studentSources.capGapRuleChange,
   ruleSource: studentSources.h1bModernizationRule,
+  denialSource: studentSources.uscisCapGap,
 } as const;
+
+/**
+ * The FY2027 H-1B electronic registration fee, per USCIS. Quoted rather than
+ * described as "small": it is a real, non-refundable, per-beneficiary cost.
+ */
+export const h1bRegistrationFeeUsd = 215;
 
 /* ───────────────────────── OPT denial consequences ─────────────────────── */
 
@@ -755,6 +828,7 @@ export function factsById(...ids: string[]): ShareFact[] {
 
 export const policyItems: PolicyItem[] = [
   h1bProclamationFee,
+  h1bCapSubjectFeeProposal,
   optProposedFee,
   dsFixedAdmissionRule,
 ];

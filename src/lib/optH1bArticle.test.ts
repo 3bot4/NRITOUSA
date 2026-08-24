@@ -3,6 +3,8 @@ import { getArticle } from "@/lib/articles";
 import { extractFaq, extractHeadings } from "@/lib/seo";
 import {
   capGapRules,
+  h1bCapSubjectFeeProposal,
+  h1bRegistrationFeeUsd,
   optRules,
   taxConstants,
 } from "@/data/studentClusterData";
@@ -123,5 +125,120 @@ describe("citability", () => {
     for (const f of faqs) {
       expect(f.answer.length).toBeGreaterThan(60);
     }
+  });
+});
+
+describe("the August 24, 2026 proposed $103,265 cap-subject fee", () => {
+  const paragraphs = article.content.split(/\n\n+/);
+
+  it("is present and dated", () => {
+    expect(article.content).toContain(h1bCapSubjectFeeProposal.value);
+    expect(article.content).toContain("August 24, 2026");
+  });
+
+  it("never presents it as a fee that is currently payable", () => {
+    const blocks = paragraphs.filter((b) =>
+      b.includes(h1bCapSubjectFeeProposal.value)
+    );
+    expect(blocks.length).toBeGreaterThan(0);
+    for (const b of blocks) {
+      expect(
+        /proposed|not a fee currently being collected|not being collected|rulemaking|comment period|notice of proposed/i.test(
+          b
+        ),
+        `$103,265 appears without "proposed" framing in: ${b.slice(0, 140)}`
+      ).toBe(true);
+    }
+    // The one phrasing that would be flatly wrong.
+    expect(article.content).not.toMatch(/you (will|must) pay (the )?\$103,265/i);
+  });
+
+  it("does not assert that in-country F-1 change of status is exempt from it", () => {
+    // The proposal is drawn by petition type and has no such carve-out; the
+    // page must say so rather than inferring an exemption.
+    expect(article.content).toContain(
+      "Do not assume that an F-1-to-H-1B change of status is covered or exempt"
+    );
+  });
+
+  it("keeps it separate from the vacated proclamation payment", () => {
+    expect(article.content).toMatch(/separate from,? and additive to/i);
+    expect(article.content).toMatch(/would pay both/i);
+  });
+});
+
+describe("tax-residency claims are conditional, not absolute", () => {
+  it("does not assert a flat five-year nonresident rule", () => {
+    expect(article.content).not.toMatch(
+      /For your first \d+ calendar years on F-1 you are an exempt individual/i
+    );
+    expect(article.content).not.toMatch(/you are a nonresident alien, and you file Form 1040-NR/i);
+  });
+
+  it("states the substantial-presence framing and the prior-years caveat", () => {
+    expect(article.content).toMatch(
+      /days of US presence generally do not count toward the Substantial Presence Test/i
+    );
+    expect(article.content).toMatch(/prior calendar years/i);
+    expect(article.content).toMatch(/part of a calendar year generally counts as one calendar year/i);
+  });
+
+  it("does not claim the switch year necessarily raises the bill", () => {
+    expect(article.content).not.toMatch(/tax bill (then )?jumps twice/i);
+    expect(article.content).not.toMatch(/tax residency usually flips/i);
+    expect(article.content).toMatch(
+      /full-year US resident may instead qualify for the ordinary resident standard deduction/i
+    );
+  });
+
+  it("keeps the 92-day October example", () => {
+    expect(article.content).toContain("92 days");
+  });
+});
+
+describe("401(k) claims are qualified", () => {
+  it("drops the universal 'penalty is smaller than the match' claim", () => {
+    expect(article.content).not.toMatch(
+      /That is a smaller number than the match you refused/i
+    );
+    expect(article.content).toMatch(/If the employer match is vested/i);
+  });
+
+  it("qualifies the rollover claim", () => {
+    expect(article.content).not.toMatch(
+      /rolls into an IRA you can hold from anywhere in the world/i
+    );
+    expect(article.content).toMatch(/receiving custodian's policy for non-US residents/i);
+  });
+
+  it("states vesting, withholding and penalty-exception caveats", () => {
+    expect(article.content).toMatch(/own contributions are always 100% vested/i);
+    expect(article.content).toMatch(/Withholding is not the final tax bill/i);
+    expect(article.content).toMatch(/10% additional tax has statutory exceptions/i);
+  });
+});
+
+describe("small factual clarifications", () => {
+  it("says 12 months or more of full-time CPT, at that educational level", () => {
+    expect(article.content).toMatch(
+      /months \*\*or more\*\* of full-time CPT eliminates post-completion OPT at that educational level/i
+    );
+  });
+
+  it("labels the 90-day figure as the initial post-completion OPT limit", () => {
+    expect(article.content).toMatch(
+      /initial post-completion OPT unemployment limit\*\*, not the F-1 departure period/i
+    );
+  });
+
+  it("quotes the verified H-1B registration fee rather than calling it small", () => {
+    expect(article.content).toContain(`$${h1bRegistrationFeeUsd}`);
+    expect(article.content).not.toMatch(/a form and a small fee/i);
+  });
+
+  it("separates cap-gap work authorisation from the remaining departure period", () => {
+    expect(article.content).toMatch(/work authorisation and permission to stay end at different times/i);
+    expect(article.content).toContain(capGapRules.afterItEndsException);
+    expect(article.content).not.toMatch(/you must stop working immediately\./i);
   });
 });
