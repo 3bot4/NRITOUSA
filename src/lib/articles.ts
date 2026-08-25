@@ -5,6 +5,15 @@ import {
   IRA_LIMITS_2026,
 } from "@/lib/calc/irsLimits";
 import {
+  ESTATE_DATA_VERIFIED_LABEL,
+  ESTATE_US_TAX_YEAR,
+  estateSources,
+  indiaEstateNumbers,
+  nominationRegimes,
+  recentIndianChanges,
+  usEstateNumbers,
+} from "@/data/estatePlanningData";
+import {
   STUDENT_DATA_VERIFIED_LABEL,
   capGapRules,
   dsFixedAdmissionRule,
@@ -77,6 +86,86 @@ const runwayRows = [2_500, 3_500, 4_500, 6_000]
       optRules.aggregateUnemploymentDaysWithStem
     )} |`;
   })
+  .join("\n");
+
+/* ────── Cross-border estate-planning figures quoted in article prose ──────
+ * Read from the estate-planning data file so the guide at
+ * /articles/estate-planning-usa-india-assets can never drift from the verified
+ * numbers or the official sources behind them. Nothing below may be typed as a
+ * literal into the body copy — every US amount is inflation-indexed or
+ * statutory and is labelled by year wherever it appears.
+ * ────────────────────────────────────────────────────────────────────────── */
+const estate = {
+  verified: ESTATE_DATA_VERIFIED_LABEL,
+  usYear: String(ESTATE_US_TAX_YEAR),
+  exclusion: usEstateNumbers.basicExclusion2026.value,
+  exclusionPrior: usEstateNumbers.basicExclusion2025.value,
+  nrnc: usEstateNumbers.nrncFilingThreshold.value,
+  annualGift: usEstateNumbers.annualGiftExclusion.value,
+  spouseGift: usEstateNumbers.noncitizenSpouseGiftExclusion.value,
+  fbar: usEstateNumbers.fbarThreshold.value,
+  f8938DomSingle: usEstateNumbers.form8938DomesticSingle.value,
+  f8938DomJoint: usEstateNumbers.form8938DomesticJoint.value,
+  f8938AbrSingle: usEstateNumbers.form8938AbroadSingle.value,
+  f8938AbrJoint: usEstateNumbers.form8938AbroadJoint.value,
+  f8938DomSingleAny: usEstateNumbers.form8938DomesticSingle.anyTimeValue,
+  f8938DomJointAny: usEstateNumbers.form8938DomesticJoint.anyTimeValue,
+  f8938AbrSingleAny: usEstateNumbers.form8938AbroadSingle.anyTimeValue,
+  f8938AbrJointAny: usEstateNumbers.form8938AbroadJoint.anyTimeValue,
+  f3520: usEstateNumbers.form3520ForeignGift.value,
+  f3520Penalty: usEstateNumbers.form3520Penalty.value,
+  f3520PenaltyCap: usEstateNumbers.form3520PenaltyCap.value,
+  remittance: indiaEstateNumbers.remittanceOfAssetsLimit.value,
+  witnesses: indiaEstateNumbers.willWitnessesMinimum.value,
+  form15cb: indiaEstateNumbers.form15cbThreshold.value,
+  bankNominees: indiaEstateNumbers.bankNomineesMax.value,
+  s213Date: recentIndianChanges[0].effectiveLabel,
+  bankNomineeDate: recentIndianChanges[1].effectiveLabel,
+};
+
+/**
+ * "What a nomination actually does", one row per asset class. Built from the
+ * data file rather than written into the prose, because the whole point of the
+ * table is that the answer DIFFERS by statute — a hand-typed version would
+ * drift back toward the single wrong rule ("a nominee is only a trustee").
+ */
+const nominationRows = nominationRegimes
+  .map((r) => `| ${r.asset} | ${r.governedBy} | ${r.effect} |`)
+  .join("\n");
+
+/** Official-source list for the cross-border estate-planning article. */
+const estatePlanningSources = (
+  [
+    "irsEstateTax",
+    "irsEstateNonresident",
+    "irsEstateNonresidentFaq",
+    "irsInflation2026",
+    "irsGiftTaxFaq",
+    "irsEstateGiftTreaties",
+    "irsQdot",
+    "irsIrmInternational",
+    "irsBasis",
+    "irsFbar",
+    "fincenFbar",
+    "irsForm8938",
+    "irsFatcaThresholds",
+    "irsForeignGifts",
+    "irsPfic",
+    "rbiRemittanceFaq",
+    "rbiRemittanceMasterDirection",
+    "rbiImmovableProperty",
+    "indianSuccessionAct",
+    "repealingAmendingAct2025",
+    "registrationAct",
+    "hinduSuccessionAct",
+    "insuranceAct",
+    "bankingLawsAmendment2025",
+    "shaktiYezdani",
+    "form15caFaq",
+    "rule37bb",
+  ] as const
+)
+  .map((k) => `- [${estateSources[k].label}](${estateSources[k].href})`)
   .join("\n");
 
 /** Official-source list for the OPT→H-1B article, read from the cluster data. */
@@ -6714,102 +6803,612 @@ Identify your large dollar liabilities — retirement, college, healthcare, emer
 Yes. US tax residents must report foreign financial accounts via FBAR (FinCEN 114) and possibly FATCA (Form 8938) once balances cross the thresholds, and report income earned. See the [FBAR & FATCA guide](/articles/fbar-fatca-nri-guide) and consult a CPA.`,
   },
   {
+    answerFirst: true,
+    expertiseTags: [
+      "Cross-border estate planning",
+      "US-India tax reporting",
+      "NRI succession & FEMA",
+    ],
+    toc: true,
     slug: "estate-planning-usa-india-assets",
-    title: "Estate Planning for NRIs in the USA With Assets in India",
-    seoTitle: "Estate Planning for NRIs With India Assets",
+    title: "Estate Planning for NRIs With Assets in the USA and India",
+    seoTitle: "Estate Planning for NRIs: USA & India Assets",
+    seoDescription:
+      "Build a coordinated estate plan for U.S. and Indian assets. Compare wills, trusts, beneficiaries, nominees, minor-child planning, taxes and FEMA rules.",
     excerpt:
-      "A practical estate planning guide for NRIs with assets in the USA and India, covering wills, beneficiaries, property documents, and family planning.",
+      "A practical guide to coordinating wills, trusts, beneficiaries, nominees, guardians, taxes and FEMA rules across two legal systems.",
     topic: "long-term-nri-wealth",
     date: "2026-06-06",
-    updated: "2026-06-06",
+    updated: "2026-08-25",
     featured: true,
-    content: `Most NRIs spend years building wealth and almost no time planning how it passes on — especially when it's split across two countries with different laws. A US will may not cleanly govern Indian property, an Indian nominee isn't a legal heir, and beneficiary designations can override your will entirely. For cross-border families, estate planning isn't one document — it's coordinating two legal systems so your wishes actually hold.
+    content: `You can do everything right in one country and still hand your family a mess in the other. A US will that never mentions the Bengaluru flat. A nominee on an Indian fixed deposit who was never meant to keep the money. A 401(k) still pointing at a parent who died a decade ago. These are not exotic mistakes — they are the ordinary result of planning one country at a time, and they surface at the one moment nobody has the patience for paperwork.
+
+Cross-border estate planning is not a document. It is the work of making eight things agree with each other: **ownership, beneficiary designations, nominations, wills, trusts, guardians, tax reporting, and access instructions** — across two legal systems that were never designed to talk to one another.
 
 :::note
-**Important legal disclaimer:** This article is educational only and is **not legal, tax, or estate-planning advice**. Estate, succession, and inheritance laws differ between the US (and between US states) and India (and by religion within India), and they change over time. Always work with a qualified estate-planning attorney in the US and a property/succession lawyer in India, plus a cross-border tax professional, before acting.
+**This guide is educational. It is not legal advice, and it has not been reviewed by an attorney.** Estate, succession, and inheritance rules differ between the US and India, between US states, and by personal law within India — and they change. Several statements below depend entirely on facts this page cannot know: your citizenship, your domicile, where an asset sits, how it was originally funded, and who else has a claim. Work with a US estate-planning attorney, an Indian succession lawyer, and a cross-border tax professional before you act on anything here.
 :::
 
-:::summary
-NRIs with cross-border assets often need **coordinated planning in both countries**: appropriate wills (sometimes a separate India will for India assets), correct **beneficiary and nominee designations**, clean property titles, guardianship for minor children, and clear family communication. The recurring traps are confusing **nominees with heirs**, assuming a US will covers Indian property, and leaving documents disorganized. Get qualified legal help in both countries.
+:::quickanswer
+A US will does not automatically solve the administration of Indian assets, and an Indian nomination is generally not a substitute for a succession plan. Meanwhile, the accounts most NRI families hold the most money in — retirement plans and life insurance — usually pass by **beneficiary designation**, outside the will entirely.
+
+The practical goal is not "get a will." It is to make ownership, beneficiaries, nominees, wills, trusts, guardians, executors, tax exposure, FEMA constraints, and access instructions point in the same direction — and to write down where everything is.
 :::
 
 :::key
-- A US will may not efficiently govern **Indian immovable property** — many families use a **separate India will** for India assets.
-- **Beneficiary designations** (401k, IRA, life insurance) generally **override** your will — keep them current.
-- In India, a **nominee holds in trust** for legal heirs; nomination is not inheritance.
-- Name **guardians** for minor children and plan for who manages assets until they're adults.
-- **Communicate and document** — the best plan fails if no one can find or understand it.
+- A **US will does not automatically govern Indian assets.** Indian institutions apply Indian requirements and ask for their own documents.
+- An **Indian nomination is generally not a substitute for succession planning** — and what it does varies by asset and by statute.
+- **Beneficiary-designated US accounts normally pass outside the will.** Retirement plans, life insurance, annuities, and TOD/POD accounts follow the form on file.
+- **Minor children should not receive substantial assets outright.** Someone has to be legally empowered to manage them, and that person is not automatically the guardian.
+- Some families use **coordinated US and Indian wills** — but they must be professionally drafted so one does not unintentionally revoke the other.
+- Estate planning is **coordination**, not paperwork volume: documents, ownership, beneficiaries, executors, trustees, guardians, tax, FEMA, and access instructions all have to agree.
 :::
 
-## Why cross-border estate planning matters
-When assets sit in two legal systems, gaps appear at the seams: probate in one country doesn't automatically apply in the other, succession rules differ, and tax treatment varies. Without deliberate planning, heirs can face years of paperwork, frozen assets, family disputes, and avoidable tax. Coordination is the whole game. For the tools, checklists, and guides that fit together, start from the [NRI estate-planning hub](/nri-estate-planning).
+## At a glance: the same five questions, answered twice
 
-## US assets vs India assets
-US assets — brokerage, 401k/IRA, bank accounts, US real estate — are governed by US and state law, with tools like beneficiary designations, transfer-on-death registrations, and trusts. India assets — property, NRO/NRE accounts, India investments — are governed by Indian succession law and require Indian instruments. Treating them as one pool is the core error.
+Every asset you own raises the same five questions. The answers differ by country, and the gap between the two answers is where families actually get hurt.
 
-## Beneficiary designations
-Retirement accounts and life insurance pass by **beneficiary designation**, not by your will. An outdated beneficiary (an ex-spouse, a deceased parent) can override everything else you've planned. Review designations on your [401k](/articles/401k-match-explained-nri), IRAs, [HSA](/articles/hsa-after-leaving-usa), and life insurance regularly, especially after marriage, divorce, or a birth.
+| Planning question | USA | India | Main risk if ignored |
+|---|---|---|---|
+| Who owns the asset? | Individual, joint, trust or entity | Individual, joint, HUF or entity | Wrong assumption about what even enters the estate |
+| Who receives it? | Beneficiary, TOD/POD, trust or will | Nominee, joint holder, will or succession law | The nominee and the intended heir turn out to be different people |
+| Who manages it for children? | Trustee or custodian | Guardian, trustee or other permitted arrangement | A minor cannot practically control or sell the asset |
+| Who administers the estate? | Executor, personal representative or trustee | Executor, administrator or legal heirs | Two separate proceedings, two timelines, long delays |
+| What reporting applies? | Estate, income and foreign-asset reporting | Tax, succession and FEMA documentation | Penalties, blocked transfers, or money stuck in India |
 
-## Wills in the USA and India
-Many cross-border families maintain a **US will** for US assets and a **separate India will** for Indian assets, carefully drafted so the two don't revoke or conflict with each other. A single will spanning both countries can create probate and recognition headaches. An attorney in each country should coordinate the language.
+## Six words this guide refuses to blur
 
-## Property title issues
-Indian property with unclear titles, un-updated mutation records, or ancestral/joint ownership can be nearly impossible for heirs to transfer or sell. Cleaning titles while you're alive is one of the most valuable estate-planning steps — see [why US-born kids struggle with India property](/articles/us-kids-india-property-problems).
+Most bad cross-border advice comes from treating these as synonyms. They are not, and the difference changes the answer.
 
-## Bank accounts and nominees
-For Indian bank accounts and FDs, add **nominees** — but understand a nominee receives the funds as a trustee for the legal heirs, not necessarily as the final owner. Align nominations with your will to avoid disputes. On the US side, use beneficiary or payable-on-death designations.
+| Term | What it actually decides |
+|---|---|
+| NRI | An Indian-law/FEMA residential status concept. It drives which Indian accounts and property rules apply to you — not your US tax position. |
+| OCI cardholder | An immigration status granted by India, often held by US citizens of Indian origin. For most FEMA property purposes OCI holders are treated on par with NRIs, but OCI is not citizenship and does not decide your US tax. |
+| Green-card holder | US lawful permanent resident. Generally a US tax resident on worldwide income — but a green card alone is not conclusive proof of US **domicile** for estate tax. |
+| US citizen | Taxed on worldwide income regardless of where they live, and generally within the worldwide US estate tax net. |
+| US tax resident | An income-tax test (citizen, green-card holder, or substantial presence). This is not the same test as estate tax domicile. |
+| Nonresident who is not a US citizen | For transfer-tax purposes, someone neither **domiciled** in nor a citizen of the US. Faces US estate tax only on US-situated assets — but from a far lower threshold. |
 
-## Minor children and guardianship
-If your children are minors, name **guardians** and decide who will manage their inheritance until adulthood (often via a trust or custodial arrangement in the US). Cross-border families should also consider how India assets would be managed for a minor US-based heir.
-
-## Communicating with family
-A perfect plan that no one knows about fails. Tell your executor and key family members what exists, where documents are, and your intentions. Silence breeds disputes; clarity prevents them. This is especially important for India assets that local relatives may currently "look after."
-
-## Document checklist
-- US and India **wills** (coordinated, not conflicting)
-- **Beneficiary designations** on 401k, IRAs, HSA, life insurance
-- India property **deeds, mutation, tax, and encumbrance** records
-- Bank/FD **nominee** details (US and India)
-- **Guardianship** designation for minor children
-- A **master list** of all accounts, advisors, and document locations
-- [Powers of attorney](/power-of-attorney-for-india-from-usa) where appropriate — but note a POA dies with the principal, so it complements a will rather than replacing one
-
-## Professional help to consider
-- A **US estate-planning attorney** for US wills, trusts, and designations.
-- An **India property/succession lawyer** for India wills and titles.
-- A **cross-border CPA** for the tax interaction — see [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax).
-
-## Common mistakes
 :::warn
-- **One will for everything** — cross-border assets often need coordinated, separate wills
-- **Stale beneficiary designations** — they override your will, and people forget them
-- **Nominee = heir confusion** — a frequent, costly misunderstanding in India
-- **Messy India titles** — the biggest barrier to heirs actually receiving property
-- **No communication** — hidden plans cause exactly the disputes they meant to prevent
+title: The distinction that surprises people most
+US **income tax residency** and US **estate tax domicile** are different tests. The IRS describes domicile as living in a place with no definite present intention of moving away — a facts-and-circumstances question about intent, not a day-count. A person can be a US resident for income tax and still be treated as a nonresident for estate tax, and holding a green card is not conclusive evidence of domicile. If your intentions about returning to India are genuinely unsettled, this is a question for a professional, not a checkbox.
 :::
 
-## The bottom line
-Cross-border estate planning is less about a single document and more about coordination — two wills that don't fight, current beneficiary designations, clean titles, named guardians, and a family that knows the plan. Done early, it spares your heirs years of difficulty. Because the laws are complex and country- and state-specific, build this with a US estate attorney, an India succession lawyer, and a cross-border tax professional.
+## Step 1: List every U.S. and Indian asset
+
+Nothing in this guide works until this list exists. Most families discover during this exercise that they have two or three accounts nobody would have found, and at least one beneficiary designation that is badly out of date.
+
+### U.S. assets to capture
+
+- Primary residence, rental property, land, and timeshares
+- Checking, savings, CDs, and safe-deposit boxes
+- Taxable brokerage accounts
+- 401(k), 403(b), 457, Traditional IRA, Roth IRA, and pension benefits
+- HSA and FSA balances — worth listing separately, because what happens to an HSA at death depends on who inherits it, and a non-spouse beneficiary is generally treated very differently from a spouse
+- Life insurance and annuities
+- RSUs, stock options, ESPP shares, and deferred compensation
+- Business interests, LLCs, partnerships, and sole proprietorships
+- 529 plans, custodial UTMA/UGMA accounts, and other education savings
+- Digital assets, cryptocurrency, online businesses, domains, and monetized websites
+- Vehicles, jewelry, collectibles, and other personal property
+- Loans receivable and private investments
+- Employer death benefits and unpaid compensation
+
+### India assets to capture
+
+- Residential flats, houses, plots, and commercial property
+- Agricultural land, plantation property, and farmhouses — flag these separately, they follow their own rules
+- Self-acquired, jointly owned, and ancestral or coparcenary property — note which is which
+- NRE, NRO, and FCNR accounts, plus any resident account that still needs redesignation
+- Fixed and recurring deposits
+- PPF, EPF, EPS, gratuity, superannuation, and NPS
+- Mutual funds, shares, and Demat accounts
+- PMS, AIF, bonds, debentures, and Sovereign Gold Bonds
+- Insurance policies
+- Private-company, partnership, LLP, and family-business interests
+- HUF interests, where applicable
+- Physical gold, jewelry, and bank lockers
+- Loans to relatives or businesses
+- Intellectual property, royalties, and digital assets
+- Assets you expect to inherit but that have not yet been legally transferred to you
+
+:::tip
+title: Still holding a resident Indian account?
+Accounts opened while you lived in India generally have to be redesignated once your residential status changes. Leaving them as-is creates a compliance problem for you now and an evidence problem for your heirs later — see [NRE vs NRO accounts explained](/articles/nre-nro-accounts-explained) and [converting a resident account to NRE/NRO](/articles/convert-resident-account-to-nre-nro).
+:::
+
+### What to record for every single asset
+
+| Field | Why it matters |
+|---|---|
+| Exact legal owner | Decides whether the asset enters your estate at all |
+| Country and state | Decides which law and which court or authority applies |
+| Institution and a masked account reference | Lets an executor find it without exposing the account |
+| Approximate value and currency | Drives tax exposure, liquidity, and fairness between heirs |
+| Cost-basis records | Determines the tax bill when someone eventually sells |
+| Source of acquisition | Inherited, gifted, purchased, or funded from abroad — this changes FEMA and tax treatment |
+| Joint holder | Joint holding may control the outcome regardless of the will |
+| Nominee or beneficiary | The name on the form usually beats your intentions |
+| Primary governing document | Deed, account designation, will, trust, or partnership agreement |
+| Location of original records | The single most common reason heirs stall for months |
+| Relevant adviser or contact | The person who can actually explain the asset |
+| Likely transfer path | Probate, succession documents, transmission forms, or FEMA review |
+
+:::warn
+title: Do not write account numbers or passwords into this file
+Record enough to identify an asset — institution, last four digits, where the paperwork lives — and nothing more. A complete list of account numbers and credentials in one document is a security problem, and it is not what an executor needs. Store credentials in a password manager with a documented emergency-access process instead, and tell your fiduciaries that the process exists.
+:::
+
+## Step 2: Learn how each asset actually passes
+
+A will governs less than most people assume. In the US, several categories bypass it entirely.
+
+| How it passes | Typical assets | What controls the outcome |
+|---|---|---|
+| Beneficiary designation | 401(k), IRA, life insurance, annuities | The designation form on file with the custodian |
+| TOD/POD registration | Bank and brokerage accounts | The registration on the account |
+| Joint ownership with survivorship | Homes, joint accounts | The form of title and whether survivorship rights exist |
+| Funded revocable trust | Whatever was actually retitled into the trust | The trust document — but only for assets it actually holds or that are directed to it |
+| Will | Assets with no designation, no survivorship, and no trust | The will, through the applicable probate process |
+| State intestacy law | Anything left over with no valid will | State statute, not your intentions |
+| Business agreement | LLC interests, closely held shares | The operating, shareholder, or buy-sell agreement |
+
+:::warn
+title: The single most expensive misunderstanding in US estate planning
+**A will generally does not override a valid retirement-account, insurance, annuity, TOD, or POD beneficiary designation.** You can write a beautifully drafted will leaving everything to your spouse and children, and the 401(k) will still pay the person named on the form — even if that person is an ex-spouse or someone who died years ago. Beneficiary forms are not a formality. They are the operative document for the largest accounts most families own.
+:::
+
+Deed terminology and survivorship rights vary considerably by state, and so does what a deed can do at death. Some states offer transfer-on-death deeds for real property and some do not, and the rules for spouses differ sharply between community-property and common-law states. Do not assume the arrangement that worked for a friend in another state is available or advisable in yours.
+
+On the Indian side, the question is less "which one rule applies" and more "what will this particular institution require."
+
+| Route | What it covers | Practical note |
+|---|---|---|
+| Registered ownership | Title to immovable property | Mutation and municipal records must actually match the title |
+| Joint operating authority | Bank accounts, lockers | Operating rights during life are not the same as ownership at death |
+| Nomination | Deposits, securities, insurance, funds | Governs release or transmission — see the nomination section below |
+| Will | Assets the will validly covers | Must be proved; requirements depend on the asset and the institution |
+| Intestate succession | Anything not covered by a valid will | Depends on personal law, property type, and family composition |
+| Entity documents | Partnership, company, HUF, or trust interests | The constitutional document usually governs before general succession law does |
+| Court or authority documents | Probate, letters of administration, succession certificate, legal-heir certificate | Which one is needed depends on the asset and the facts |
+
+Which of these an heir actually needs is not a single national rule. It depends on the asset, the institution's own transmission policy, the governing statute, the personal law that applies, the location of immovable property, whether the estate is disputed, and the facts of the particular family. A bank, a depository, a registrar, and a housing society can each ask for something different for the same estate.
+
+## How should assets be organized for a spouse and children?
+
+There is no correct percentage. Anyone who gives you one without knowing your family is guessing.
+
+What the answer actually turns on:
+
+- The spouse's citizenship, immigration status, and financial independence
+- The ages and needs of the children
+- Whether children are minors, adults, or have special needs
+- Separate versus marital or community property
+- Liquidity — whether there is cash to pay bills without a forced sale
+- Outstanding mortgages and debts
+- Estate-tax exposure, including any noncitizen-spouse issue
+- Where assets sit and how transferable they actually are
+- Family-business considerations
+- Previous marriages, or children from earlier relationships
+- Whether a beneficiary is financially inexperienced or otherwise vulnerable
+
+Three structures families commonly discuss with counsel. These are **educational illustrations of shape, not recommendations, and deliberately carry no percentages.**
+
+### Model A — Spouse-first
+
+Income and accessible assets support the surviving spouse for life; what remains is preserved for the children.
+
+- **May suit:** a long marriage, dependent spouse, children who are already provided for or still young.
+- **Advantages:** simple, protects the surviving spouse's standard of living, defers hard decisions.
+- **Risks:** the surviving spouse can later redirect assets, including away from children of an earlier marriage; concentrates everything in one person's hands.
+- **Must be coordinated:** deed or title, retirement and insurance beneficiary designations, the will, and any trust.
+
+### Model B — Separate spouse and children's shares
+
+A defined portion supports the spouse; the children's shares are held in trust until stated ages or milestones.
+
+- **May suit:** blended families, adult children, or a wish to lock in what children eventually receive.
+- **Advantages:** certainty for the children, protection from a beneficiary's inexperience, creditors, or divorce.
+- **Risks:** can leave the surviving spouse short if liquidity was misjudged; trusts cost money and require an actual trustee to do real work.
+- **Must be coordinated:** trust terms, beneficiary designations naming the trust where appropriate, the will, and trustee succession.
+
+### Model C — Asset-by-asset allocation
+
+US retirement and insurance benefits support the spouse; selected Indian property or investments are directed to the children.
+
+- **May suit:** families whose Indian assets are genuinely intended for particular children, or who want to avoid splitting an Indian property among many heirs.
+- **Advantages:** matches assets to the people most able to hold and manage them; can reduce fragmented ownership of Indian property.
+- **Risks:** the two sides drift in value; a child inherits an illiquid Indian asset they cannot manage from abroad; retirement-account rules may not permit the split you had in mind.
+- **Must be coordinated:** the Indian will and title records, US beneficiary designations, and a realistic look at whether the child can actually administer an Indian asset.
+
+A worked matrix of the kind an attorney will ask you to fill in — note that the last two columns, not the first, are where families discover their plan does not hold:
+
+| Asset | Current owner | Intended recipient | Immediate or held in trust? | Backup recipient | Controlling document |
+|---|---|---|---|---|---|
+| U.S. home | Couple | Surviving spouse, then children | Depends on deed and trust | Children's trust | Deed / trust |
+| 401(k) | Individual | Spouse or selected beneficiary | Beneficiary and plan rules apply | Contingent beneficiary | Account designation |
+| Life insurance | Individual | Spouse or children's trust | Direct or trust-managed | Contingent beneficiary | Policy designation |
+| Indian flat | Individual or joint | Spouse or children | Will and succession process | Alternate beneficiary | Indian will / title |
+| NRE / NRO accounts | Individual or joint | Intended heirs | Institution and succession rules | Alternate heir | Nomination plus will |
+| Demat holdings | Individual | Intended heirs | Transmission process | Alternate heir | Nomination plus will |
+
+:::warn
+title: "Putting it in my wife's name" is not estate planning
+Transferring ownership during your lifetime is a real, permanent legal act, not a shortcut around planning. It can mean genuine loss of control, exposure to the new owner's creditors, consequences on divorce or remarriage, gift-tax and reporting questions — including the separate rules that apply when the recipient spouse is not a US citizen — and a fresh succession problem when that person dies. Sometimes a lifetime transfer is exactly right. It should be a decision made with advice, not a substitute for making one.
+:::
+
+## Do you need separate wills for the USA and India?
+
+Sometimes. Not always. And the wrong version of "separate wills" is worse than one careful will.
+
+A single worldwide will may be legally possible, but it can create real administration problems: one original document needed in two places at once, terminology that means different things in each system, and an executor in one country waiting on a process in the other. Many cross-border families therefore use one US-focused will and one India-focused will.
+
+:::compare
+left: Where dual wills go wrong
+right: What careful dual wills do
+✗ Each will contains a standard "I revoke all previous wills" clause, so the second one silently kills the first
+✗ Both wills claim the same assets, and the two executors work at cross purposes
+✗ Signed in the wrong order, or nobody records which was signed when
+✗ Originals stored so that neither executor can produce the one they need
+✓ Each will is expressly limited in scope to the assets of one country
+✓ Non-revocation language is drafted so neither document disturbs the other
+✓ Executors, governing law, and signing chronology are deliberately sequenced
+✓ Both lawyers see both drafts before either is signed
+:::
+
+Conceptually, the coordination problem is that each document has to say two things at once: **this will covers only my assets in this country**, and **nothing in it revokes my will covering the other country**. That is the idea. **It is not a clause you can copy from a web page.** The exact wording depends on both jurisdictions, and a generic non-revocation sentence dropped into the wrong document is one of the ways families end up in litigation. Have lawyers in both countries approve the actual language.
+
+While you are there, settle three things people routinely skip: **simultaneous-death provisions** (what happens if spouses die in the same event), **backup executors** for each will, and **who physically holds each original** and how the other side gets a copy.
+
+One more structural point: **a US revocable trust controls only what is actually in it.** A trust document that was signed but never funded — assets never retitled, no beneficiary designation directing anything to it — governs nothing. "Funding the trust" is the step that gets forgotten, and it is the step that does the work.
+
+### The witness rule, stated correctly
+
+Indian requirements for an ordinary ("unprivileged") will are set out in section 63 of the Indian Succession Act, 1925. The section requires attestation by **${estate.witnesses} or more witnesses**. Each witness must have seen the testator sign or affix a mark, or have received the testator's personal acknowledgement of the signature, and each must sign in the testator's presence.
+
+What the section expressly does **not** require: that more than one witness be present at the same time. The statute says so directly, and no particular form of attestation is prescribed.
+
+:::tip
+title: Two practical points that are not legal requirements
+Choosing witnesses who are likely to outlive you, and who can be located later, is sensible — proving a will is easier when a witness can be produced. That is practical advice, **not** a rule that witnesses must be younger than the testator. Separately, using a beneficiary as a witness is a genuinely risky choice with jurisdiction-specific consequences, and it should not be done without local legal advice.
+:::
+
+### Registration and probate
+
+**Registration of a will in India is generally optional**, not mandatory. Registering can help with evidence and safe custody. It does not make an otherwise invalid will valid, and it does not immunise a will against challenge.
+
+Probate is where a lot of published NRI advice is now simply out of date. The older position was narrow to begin with: mandatory probate applied only where sections 57 and 213 of the Indian Succession Act combined to require it — broadly, certain wills connected to the former presidency towns of Bombay, Madras, and Calcutta, by the type of will and community concerned. It was never a blanket national rule.
+
+:::info
+title: Section 213 was omitted with effect from ${estate.s213Date}
+The Repealing and Amending Act, 2025 (Act 37 of 2025) omitted section 213 of the Indian Succession Act and made consequential changes to sections 3(1) and 370. The practical effect is that probate or letters of administration is no longer a mandatory precondition to establishing a right under the wills that section 213 used to catch.
+
+Three caveats matter more than the headline. A will still has to be **proved** — removing a procedural bar is not the same as removing the burden of proof. Probate remains **available** where it is useful, and it often still is. And the Act's savings clause preserves anything already done and any proceeding already pending. Because the change is recent, how registrars, banks, depositories, and housing societies actually apply it is still settling — confirm current practice for your specific assets with Indian counsel rather than relying on any general statement, including this one.
+:::
+
+## What Indian succession law actually turns on
+
+If there is no valid will, the outcome is determined by law rather than by intention — and "Indian succession law" is not one statute.
+
+The result can depend on:
+
+- Religion or the personal law that applies to you
+- Whether property is self-acquired, jointly held, ancestral, or coparcenary
+- Gender and the precise family relationship
+- Whether a valid will exists and covers the asset
+- The state, and the location of immovable property
+- Marriage and divorce status
+- HUF or business arrangements sitting over the top of the asset
+
+The statutes most often in play are the **Indian Succession Act, 1925**, the **Hindu Succession Act, 1956** (which applies to Hindus, Buddhists, Sikhs, and Jains), and, for Muslims, the applicable personal law — with other communities governed by their own regimes.
+
+:::warn
+title: Why there is no shares table on this page
+It is tempting to publish one tidy table of "who gets what percentage." Doing so would be misleading. Statutory shares differ by personal law, by whether the deceased is male or female, by whether property is self-acquired or coparcenary, by which relatives survive, and by state-level variation — and the same family can get materially different outcomes on facts that look nearly identical. This is exactly the question to take to an Indian succession lawyer with your actual family tree and your actual title documents.
+:::
+
+## Nominee vs. legal heir: what a nomination really does
+
+The popular version — "in India a nominee is only a trustee" — is a decent instinct and an unreliable rule. It is right for some assets and wrong for others, and the difference is statutory.
+
+What is broadly true across asset classes: **nomination is primarily a mechanism that lets an institution release or transmit an asset without first adjudicating every competing succession claim.** It tells a bank or a depository whom to pay so the institution can close its file. Whether the person who receives it also gets to **keep** it, as against the legal heirs, is a separate question — and that answer depends on the asset, the governing statute, the account terms, and current case law.
+
+| Asset | Governed by | What nomination does and does not decide |
+|---|---|---|
+${nominationRows}
+
+Two consequences follow. First, a nomination should be **coordinated with your will**, not left to fight it — mismatches are how families end up litigating. Second, a nomination **does not repair an inconsistent or defective estate plan**; at best it speeds up a transfer to someone who may then have to account to others.
+
+### Run a nomination audit
+
+:::steps
+title: A weekend's work that prevents years of argument
+List every account, policy, folio, and Demat relationship you hold in India
+Record the current nominee and percentage for each one, exactly as the institution has it
+Compare each against the intended beneficiary under your will or trust
+Update nominees who are outdated, deceased, or now inappropriate
+Name contingent beneficiaries wherever the product permits it
+Decide and record who would actually manage an asset that a minor inherits
+Retain the acknowledgement receipt for every change you make
+Recheck everything after marriage, divorce, birth, death, or relocation
+:::
+
+Since ${estate.bankNomineeDate}, Indian bank deposit accounts can carry up to **${estate.bankNominees} nominees** — either simultaneously with defined shares, or successively in priority order — under the Banking Laws (Amendment) Act, 2025. Lockers and safe-custody articles allow successive nomination only. Existing nominations do not update themselves; if the extra flexibility is useful to you, you have to go and ask for it.
+
+## Minor children, guardians and trustees
+
+These four roles are routinely conflated, and they are genuinely different jobs.
+
+| Role | What they actually do |
+|---|---|
+| Guardian of the child | Raises the child and makes personal, medical, and educational decisions |
+| Trustee | Holds and manages inherited assets under the terms of a trust |
+| Executor / personal representative | Administers the estate itself: collects assets, pays debts, distributes |
+| Custodian | Manages assets for a minor under a US custodial arrangement, usually until a set age |
+| Resident manager, attorney, or representative in India | Helps deal with an Indian asset on the ground — a power of attorney terminates on death, so this is a lifetime tool, not a succession one |
+
+:::warn
+title: A living trust does not remove the court from guardianship
+A properly funded US revocable living trust can help avoid probate for the assets it holds and can manage money for children for years. It does **not**, by itself, eliminate a court's role in appointing or confirming a **guardian of the child**. Guardianship of a minor is a matter for the court, informed by the nomination in your will. Money management and child custody are separate questions, decided by separate instruments.
+:::
+
+What to actually decide:
+
+- Primary **and** backup guardians, nominated in the appropriate will
+- Distribution ages, or staggered distributions across several ages rather than one cliff
+- The standard the trustee applies — health, education, maintenance, and support is the common formulation
+- Trustee succession: who takes over, and who can replace a trustee who is not performing
+- Special-needs planning, where receiving assets outright could jeopardise benefits
+- Whether the same person should be both guardian and trustee, or whether splitting the roles provides a useful check
+- Cross-border practicalities if the proposed guardian lives in India: visas, relocation, schooling, and how funds would actually reach them
+- Passport, citizenship, travel-consent, and school-records questions for US-citizen children with Indian family
+
+:::warn
+title: Never name a minor directly as a beneficiary or nominee
+A minor generally cannot take legal control of a meaningful asset. Naming one directly on an account or policy usually forces a court-supervised process or a custodial arrangement you did not choose, at exactly the moment the family is least able to deal with it. Name a trust, or a properly structured custodial arrangement, and say who manages it.
+:::
+
+## Indian property, agricultural land, and US trusts
+
+Two questions come up constantly, and both have a nuance that generic advice flattens.
+
+### Inheriting agricultural land is not the same as buying it
+
+Under India's foreign-exchange framework, an NRI or OCI cardholder generally **cannot purchase** agricultural land, plantation property, or a farmhouse. That restriction is about **acquisition by purchase**. It is not a bar on inheritance: an eligible NRI or OCI can generally **inherit** Indian immovable property, and the inheritance route is not written with the same carve-out.
+
+What is genuinely restricted is what happens next. A subsequent **sale, gift, or transfer** of agricultural land, plantation property, or a farmhouse by a person resident outside India is materially constrained — the general permission has historically extended only to transfers to a person resident in India who is an Indian citizen — and **repatriating** the proceeds is its own process. So the honest summary is: inheriting it is usually fine; selling it, gifting it, and getting the money out are the parts that need advice, and they need to be checked against the current rules for your specific facts.
+
+### Do not casually put Indian assets into a US trust
+
+It sounds tidy and it frequently is not. Moving Indian property or Indian financial assets into a US trust can raise foreign-ownership questions under Indian law, trust-taxation questions on both sides, FEMA implications, additional US reporting for foreign trusts, and practical administration problems when an Indian institution is asked to deal with a US trustee. Sometimes there is a good structure. It is never a default, and it is not a decision to make from a blog post — including this one. Get coordinated US and Indian advice before retitling anything Indian into a trust.
+
+## Cross-border tax and reporting
+
+This is the section most likely to change after publication. Every figure below is labelled by year and read from a dated source file; verify before relying on it.
+
+### A. U.S. estate-tax exposure
+
+US citizens and individuals **domiciled** in the United States may be subject to federal estate tax on their **worldwide** assets — including Indian property, Indian accounts, and Indian investments. For decedents dying in ${estate.usYear}, the federal basic exclusion amount is **${estate.exclusion}** per person, up from ${estate.exclusionPrior} for deaths in 2025. That amount is inflation-indexed and set by legislation that has changed repeatedly; treat it as this year's number, not a permanent one.
+
+A **nonresident who is not a US citizen** faces a very different regime: US estate tax applies only to **US-situated** assets, but the threshold before Form 706-NA is required is just **${estate.nrnc}** of US-situs assets, and that figure is not indexed for inflation. For an Indian family holding a US rental property or a US brokerage account, this is not a theoretical concern.
+
+:::info
+title: There is no US–India estate or gift tax treaty
+The US has estate and/or gift tax treaties with a set of countries that does **not** include India. Families who assume a treaty will smooth out double taxation on the transfer-tax side are assuming something that does not exist here. Income-tax relief under the [India–US DTAA](/articles/double-taxation-dtaa-india-usa) is a separate matter and does not fill this gap.
+:::
+
+Some US states levy their own estate or inheritance tax, often with thresholds well below the federal one, and a few tax inheritances received rather than estates left. Most states do neither. Which category your state falls into is worth checking specifically, because it is one of the few estate-planning variables you can change by moving.
+
+### B. If your spouse is not a U.S. citizen
+
+The unlimited estate-tax marital deduction — the rule that normally lets everything pass to a surviving spouse free of federal estate tax — is **limited when the surviving spouse is not a US citizen**. This catches a lot of mixed-status Indian families who assume spousal transfers are automatically safe.
+
+The main structural answer is a **Qualified Domestic Trust (QDOT)**, which allows a marital deduction where property passes to such a trust. A QDOT has real requirements: at least one trustee must be a US citizen or a domestic corporation, that trustee must be able to withhold the QDOT tax on distributions of principal, and the executor must make the election on the estate tax return. Distributions of income, and distributions on account of hardship, are treated differently from distributions of principal.
+
+**Not every mixed-status couple needs a QDOT.** Whether it is relevant depends on the size of the estate, domicile, whether the surviving spouse may naturalise, and what else the plan does. It is a tool, not a diagnosis.
+
+Keep two rules apart, because they are constantly confused:
+
+| Rule | What it is | ${estate.usYear} figure |
+|---|---|---|
+| Estate-tax marital deduction | Applies at death; unlimited for a US-citizen spouse, restricted for a noncitizen spouse (hence QDOT) | Not expressed as a dollar cap |
+| Annual gift exclusion to a noncitizen spouse | Applies to lifetime gifts; a larger annual exclusion than the general one, but not unlimited | ${estate.spouseGift} |
+| General annual gift exclusion | Lifetime gifts to anyone else, per recipient, per year | ${estate.annualGift} |
+
+### C. Income tax and inherited basis
+
+Whether an heir later owes US tax on a sale depends on **basis**, and basis is where cross-border records matter enormously.
+
+US rules generally give property acquired from a decedent a basis tied to its value at the date of death, which can substantially reduce the taxable gain on a later sale. But **do not assume a step-up applies to every asset or every cross-border structure.** Assets treated as income in respect of a decedent — retirement accounts and annuities are the classic examples — do not get that treatment, and the position for foreign property held through certain structures, or received from a decedent who was never within the US estate tax net, is fact-specific enough that it needs professional analysis rather than an assumption.
+
+What you can do now is make the analysis possible later. Retain:
+
+- A **date-of-death valuation** for each significant asset — for Indian property, a contemporaneous registered valuer's report is far better than a reconstruction attempted five years later
+- Original Indian purchase records, the sale or title deed, and mutation records
+- Documented improvement costs
+- Exchange-rate evidence for the relevant dates
+- Indian tax-payment records, including TDS certificates
+
+When inherited Indian property is eventually sold, expect **Indian capital-gains tax and TDS** on the Indian side as well, with the US return picking up the same gain and treaty relief claimed separately. The mechanics are covered in [selling India property and repatriating the proceeds](/articles/repatriate-india-property-sale-usa) and the [India property capital gains calculator](/calculators/india-property-capital-gains).
+
+### D. FBAR, Form 8938 and the rest of the alphabet
+
+Here is the correction that matters most, because the opposite is repeated everywhere: **inheriting something does not automatically trigger an FBAR or a Form 8938.** Both are threshold tests, and they test different things.
+
+**FBAR (FinCEN Form 114)** turns on whether a **US person** has a financial interest in, or signature or other authority over, foreign **financial accounts**, and whether the aggregate maximum value of all such accounts exceeded **${estate.fbar}** at any point during the calendar year. It is an aggregate test across all accounts, not a per-account one, and signature authority alone can be enough. It is filed with FinCEN, not with your return.
+
+**Form 8938** is a separate regime with its own asset definitions and its own thresholds, which vary by filing status and by whether you live in the US or abroad:
+
+| Filing situation | Value on the last day of the year | Or, at any time during the year |
+|---|---|---|
+| Living in the US, unmarried or married filing separately | ${estate.f8938DomSingle} | ${estate.f8938DomSingleAny} |
+| Living in the US, married filing jointly | ${estate.f8938DomJoint} | ${estate.f8938DomJointAny} |
+| Living abroad, not married filing jointly | ${estate.f8938AbrSingle} | ${estate.f8938AbrSingleAny} |
+| Living abroad, married filing jointly | ${estate.f8938AbrJoint} | ${estate.f8938AbrJointAny} |
+
+Some specifics that resolve most NRI confusion:
+
+- **Indian real estate held directly is generally not itself an FBAR account, and is not a specified foreign financial asset for Form 8938.** The IRS says so explicitly. But the NRO account that receives the rent or the sale proceeds is a foreign financial account, and property held **through** a foreign entity changes the analysis.
+- **Indian mutual funds may raise PFIC issues**, with their own reporting and a punitive default tax regime — see [the PFIC trap for Indian mutual funds](/articles/pfic-indian-mutual-funds-trap).
+- **Foreign trusts, foreign estates, and large foreign gifts may trigger Form 3520 or Form 3520-A.** Receiving more than **${estate.f3520}** in a year in gifts or bequests from a nonresident alien individual or a foreign estate is a reporting event, even though the bequest itself is generally not US taxable income. The penalty for missing it can reach **${estate.f3520Penalty} of the value per month**, capped at ${estate.f3520PenaltyCap}, absent reasonable cause.
+- Inherited interests and the income they produce can create reporting obligations even when **no US inheritance tax is due at all.** Reporting and taxation are different questions.
+
+:::cta
+title: Check your own exposure before your heirs have to
+body: Two free tools cover the questions in this section — a threshold check for FBAR and FATCA, and a checklist for the Form 3520 reporting that catches families receiving money from India.
+button: Run the FBAR / FATCA check
+href: /tools/fbar-fatca-checker
+:::
+
+The receiving side of this — what to do the year an inheritance actually arrives — is covered in depth in [inheriting Indian assets and US tax](/articles/inheriting-indian-assets-us-tax), and the account-level reporting in the [FBAR and FATCA guide](/articles/fbar-fatca-nri-guide).
+
+### E. Getting money out of India: FEMA and the RBI route
+
+Under the RBI's remittance-of-assets framework, an eligible NRI or PIO may generally remit up to **${estate.remittance} per Indian financial year** out of balances held in NRO accounts, or out of the sale proceeds of assets — **including assets acquired by way of inheritance or legacy** — for bona fide purposes.
+
+That is a permission with conditions, not an entitlement. In practice it means:
+
+- **Documentary evidence** of how the asset was acquired, and of the inheritance or legacy itself
+- **Applicable Indian taxes paid** — the remittance route does not clear a tax liability
+- **Bank review**: the authorised dealer has to be satisfied, and will apply its own documentation standards
+- **Amounts beyond the permitted route require RBI approval**, which is a separate application, not a formality
+- Rules that **differ depending on how the property was acquired** and how the original purchase was funded — inherited, gifted, purchased from NRE funds, or purchased while resident in India are not the same case
+
+:::warn
+title: Form 15CB is not mandatory for every remittance
+Forms 15CA and 15CB are frequently described as universally required. They are not. Applicability depends on the nature of the payment and the rules in Rule 37BB, which exempts a specified list of transactions entirely; Form 15CB is an event-based accountant's certificate rather than a blanket requirement, and the ${estate.form15cb} threshold that commonly triggers it is only one part of the test. Ask your bank and your CA what your specific remittance actually needs instead of assuming the maximum.
+:::
+
+The practical walkthrough lives in [repatriating India property sale proceeds](/articles/repatriate-india-property-sale-usa), with a form-level checklist in the [Form 15CA/15CB checklist](/tools/form-15ca-15cb-checklist).
+
+## Two families, two very different plans
+
+Both are **educational illustrations, not personalized recommendations.** Names and facts are invented to show how the pieces interact.
+
+### Example 1 — Green-card couple, two young U.S.-citizen children
+
+A married couple, both green-card holders, with a US home, two 401(k)s, term life insurance, NRE and NRO accounts, Indian mutual funds, a flat in Bengaluru, and two children aged 6 and 9.
+
+| Piece of the plan | Where it actually lands |
+|---|---|
+| 401(k)s and life insurance | Pass by **beneficiary designation**, outside any will. Contingent beneficiary is usually a children's trust, never the minors directly |
+| US home | Depends entirely on how the deed is titled, and whether a trust was funded |
+| US trust, if used | Controls only what was actually retitled into it, plus anything a designation directs to it |
+| Bengaluru flat, NRE/NRO, Indian mutual funds | Addressed in a scope-limited **Indian will**, coordinated with the US will so neither revokes the other |
+| Guardians | Nominated in the will. A trust does not decide who raises the children |
+| Trustee | A separate decision from guardian — the person who manages the money need not be the person raising the children |
+| Records to keep | Date-of-death valuation procedure for the flat, purchase and mutation records, cost basis for the mutual funds, exchange-rate evidence |
+| Questions for advisers | Whether either spouse's domicile is genuinely US; PFIC exposure on the Indian mutual funds; whether the Indian assets should stay out of the US trust |
+
+The two things this family most often gets wrong: naming the **children directly** as contingent beneficiaries on the 401(k), and signing an Indian will containing a boilerplate revocation clause that quietly voids the US one.
+
+### Example 2 — U.S. citizen, noncitizen spouse, adult children, inherited agricultural land
+
+A US citizen married to a spouse who is not a US citizen, with adult children and agricultural land in India inherited from a parent.
+
+| Issue | What it means here |
+|---|---|
+| Noncitizen spouse | The unlimited estate-tax marital deduction is restricted. A QDOT may be relevant — or may not, depending on estate size, domicile, and whether the spouse may naturalise |
+| Lifetime gifting to that spouse | A separate rule with its own annual figure (**${estate.spouseGift}** for ${estate.usYear}) — not a substitute for the marital deduction |
+| The agricultural land | Inheriting it is generally permitted. **Selling, gifting, or transferring it later is restricted**, and repatriation is a further step |
+| Allocation and liquidity | Adult children inheriting illiquid Indian land, while US taxes and expenses need cash, is a liquidity problem to solve in advance |
+| Valuation | A date-of-death valuation obtained **now**, contemporaneously, rather than reconstructed years later |
+| India administration | Which document each institution and the local registrar will actually require, checked asset by asset |
+| Remittance | The RBI remittance-of-assets route, the tax position, and what the bank will want to see |
+
+## Your 30/60/90-day plan
+
+Estate planning stalls because it is presented as one enormous task. It is not — it is three ordinary months.
+
+:::steps
+title: Within 30 days: gather
+Build the asset inventory using the fields listed above, without recording account numbers or credentials
+Download current beneficiary and nomination confirmations from every institution rather than relying on memory
+Identify missing deeds, mutation records, and property documents on the Indian side
+List family members with citizenship, residence, and ages, because those facts drive the tax analysis
+Draw up a shortlist of guardians, trustees, executors, and backups for each role
+:::
+
+:::steps
+title: Within 60 days: advise and draft
+Meet a US estate-planning attorney in your own state
+Get India-specific succession advice on your actual title documents and family tree
+Coordinate the two wills, or the will-and-trust structure, with both lawyers seeing both drafts
+Work through the noncitizen-spouse and minor-child questions specifically
+Document how cost basis and date-of-death valuations will be established
+:::
+
+:::steps
+title: Within 90 days: execute and store
+Fund the US trust where one is used, because an unfunded trust governs nothing
+Update every beneficiary designation and every Indian nomination to match the plan
+Secure original documents and record where each one physically lives
+Prepare emergency-access instructions, including a documented process for digital accounts
+Tell your fiduciaries where the documents are stored and what their role is
+Test it: can a trusted family member locate the records without being handed any passwords?
+:::
+
+Then revisit the plan whenever any of these happens — not on a calendar, but on a trigger:
+
+- Marriage, divorce, birth, or death in the family
+- A new property, a new business, or a significant new account
+- A change in US citizenship or green-card status
+- A move back to India, or a serious plan to make one
+- A large change in the value of any major asset
+- A change in tax law or FEMA rules affecting your assets
+- A change of executor, trustee, or guardian, or any of them becoming unsuitable
+- Any beneficiary or nominee that is now out of date
+
+:::cta
+title: Start from the hub if you are earlier in the process
+body: The family and legacy planning hub collects the wills, trusts, beneficiary, and cross-border inheritance guides in the order most families need them.
+button: Open the estate planning hub
+href: /nri-estate-planning
+:::
 
 ## Frequently asked questions
 
-### Do NRIs need a will in both the USA and India?
-Often, yes. Many cross-border families maintain a US will for US assets and a separate, coordinated India will for Indian assets, because a single will can create probate and recognition problems across two legal systems. An attorney in each country should ensure the wills don't conflict. Confirm what's right for your situation.
+### Do NRIs need separate wills in India and the USA?
+Not always, but many cross-border families do use one US-focused will and one India-focused will. A single worldwide will can be legally valid and still create practical problems: one original needed in two places, terminology that means different things in each system, and executors waiting on each other. The critical requirement with two wills is that each is expressly limited in scope and neither revokes the other — a standard revocation clause in the second will can silently void the first. Have lawyers in both countries approve both drafts before either is signed.
 
-### Can US children inherit India property?
-Generally yes, through a will or succession, though there are restrictions on certain agricultural land and the process can be paperwork-heavy from abroad. Clean titles and clear documentation make a large difference. See [why US-born kids struggle with India property](/articles/us-kids-india-property-problems) and consult an India lawyer.
+### Can a U.S. will cover property in India?
+A US will can refer to Indian assets, but referring to them and efficiently administering them are different things. Indian institutions, registrars, and housing societies apply their own transmission requirements and will ask for documents in a form they recognise. A foreign will can often be used, but doing so may add translation, authentication, and court steps that a locally drafted, scope-limited Indian will avoids. Which approach is better depends on the assets involved — take it to an Indian succession lawyer.
 
-### What documents should NRI families organize?
-Coordinated US and India wills, current beneficiary designations, India property deeds and tax/mutation records, bank and FD nominee details, guardianship designations for minors, and a master list of accounts and document locations. Keeping these organized and accessible is as important as creating them.
+### Does an Indian nominee become the legal owner?
+It depends on the asset, and this is where most published advice oversimplifies. Nomination generally lets an institution release or transmit an asset without adjudicating every competing claim. For company shares and dematerialised securities, the Supreme Court held in 2023 that nomination does not override succession law. For life insurance, the position differs: since the 2015 amendment, a nominee who is a parent, spouse, or child can be a beneficial nominee entitled to the proceeds. Bank deposits, provident funds, and cooperative society shares each follow their own rules. Coordinate nominations with your will rather than relying on a single general rule.
 
-### Are nominees the same as legal heirs?
-No. In India a nominee typically holds the asset in trust and must pass it to the legal heirs determined by the will or succession law. Treating a nominee as the final owner is a common mistake. Align nominations with your will and confirm the distinction with a lawyer.
+### Can U.S.-citizen children inherit property in India?
+Generally yes. US citizenship does not by itself prevent inheriting Indian immovable property, and OCI cardholders are treated broadly on par with NRIs for most property purposes. The harder parts are practical rather than prohibitive: establishing title, satisfying each institution's documentation requirements from abroad, managing or selling the asset remotely, and complying with FEMA on any later transfer or repatriation. Clean title and organised records now make an enormous difference later — see [why US-born kids struggle with India property](/articles/us-kids-india-property-problems).
 
-### Who should NRIs consult for estate planning?
-A US estate-planning attorney, an India property/succession lawyer, and a cross-border CPA for the tax interaction. Because rules vary by US state and by religion within India and change over time, qualified professionals in both countries are essential — this article is educational only.
+### Can an OCI cardholder inherit agricultural land in India?
+Inheritance and purchase are governed differently. An NRI or OCI cardholder generally cannot **purchase** agricultural land, plantation property, or a farmhouse, but an eligible NRI or OCI can generally **inherit** Indian immovable property. What is meaningfully restricted is the later step: selling, gifting, or transferring such land as a person resident outside India is constrained, and repatriating proceeds is a separate process with its own conditions. Check the current rules for your specific facts before planning around either the restriction or the exception.
 
-### Do beneficiary designations override a will?
-Yes, generally. Accounts like 401k, IRAs, and life insurance pass by beneficiary designation regardless of what your will says. Outdated designations can defeat your intentions entirely, so review them after major life events and keep them aligned with your overall plan.`,
+### Does a living trust control Indian property?
+Only if the property was validly transferred into it, and doing that with Indian assets is not straightforward. A US revocable trust controls what it actually holds. Moving Indian immovable property or Indian financial assets into a US trust raises foreign-ownership questions under Indian law, trust-taxation questions on both sides, FEMA implications, additional US foreign-trust reporting, and practical difficulties when an Indian institution has to deal with a US trustee. Do not do it as a default — get coordinated advice in both countries first.
+
+### Does inheritance trigger FBAR or Form 8938?
+Not automatically. Both are threshold tests, and they measure different things. FBAR depends on whether you are a US person with a financial interest in or signature authority over foreign financial accounts whose aggregate maximum value exceeded **${estate.fbar}** at any time in the calendar year. Form 8938 has separate asset definitions and thresholds that vary by filing status and by whether you live in the US or abroad. Indian real estate held directly is generally neither an FBAR account nor a Form 8938 specified asset — but the NRO account receiving rent or sale proceeds can be reportable. Separately, receiving more than **${estate.f3520}** in gifts or bequests from a nonresident alien or foreign estate in a year is a Form 3520 reporting event even though the bequest is generally not taxable income.
+
+### What happens if minor children inherit assets directly?
+Usually something nobody planned. A minor generally cannot take legal control of a substantial asset, so naming a minor directly on an account, a policy, or a nomination tends to force a court-supervised process or a default custodial arrangement — at the worst possible time and often with an outcome the parents would not have chosen. The fix is to name a trust or an appropriate custodial structure and to say explicitly who manages the assets, on what standard, and until what age. Note also that the person managing the money and the person raising the child are separate appointments.
+
+### Is registration of an Indian will mandatory?
+Generally no. Registration of a will in India is optional. It can offer real evidentiary and safe-custody benefits, and some families choose it for that reason. But registering a will does not make an invalid will valid, does not guarantee it will not be challenged, and is not a substitute for correct execution and attestation under section 63 of the Indian Succession Act — which requires **${estate.witnesses} or more** attesting witnesses, each signing in the testator's presence, though they need not all be present at the same time.
+
+### How can inherited Indian money be remitted to the USA?
+Usually through the RBI's remittance-of-assets route, under which an eligible NRI or PIO may generally remit up to **${estate.remittance} per Indian financial year** from NRO balances or the sale proceeds of assets, including inherited assets. It is conditional, not automatic: expect to provide documentary evidence of the inheritance and of how the asset was acquired, to have applicable Indian taxes paid, and to satisfy your bank's review. Amounts beyond the permitted route need RBI approval. Forms 15CA and 15CB are not universally required — applicability depends on the payment and the tax rules.
+
+## How we verified this, and what it cannot tell you
+
+Every figure on this page is read from a dated source file rather than typed into the prose, so a number and its citation cannot drift apart. US amounts come from IRS pages and the ${estate.usYear} inflation-adjustment release; foreign-asset reporting thresholds from IRS and FinCEN guidance; Indian statutory points from the India Code text of the relevant Acts, including the Gazette text of the Repealing and Amending Act, 2025; and FEMA and remittance points from RBI FAQs and Master Directions. Case law is cited to the judgment, not to a summary of it. **Last reviewed ${estate.verified}.**
+
+Three honest limits. First, this page states general rules, and cross-border estate planning is unusually sensitive to facts it cannot see — your domicile, your title documents, who else has a claim. Second, the Indian probate change described above is recent enough that institutional practice is still catching up, so current practice may differ from the current statute. Third, tax figures are annual and legislative changes are frequent; if you are reading this well after the review date, verify before relying on any number.
+
+This guide is reviewed by Deepak Middha, CA, Series 65. It has **not** been reviewed by an attorney in either country, and nothing here is legal advice. For your own plan you need a US estate-planning attorney licensed in your state, an Indian succession lawyer, and a cross-border tax professional — the three of them talking to each other is the entire point.
+
+## Official sources
+
+${estatePlanningSources}`,
   },
   {
     slug: "sell-india-property-before-retirement-usa",

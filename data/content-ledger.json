@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-22",
+  "updated": "2026-08-25",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -210,6 +210,27 @@
       "status": "open",
       "opened": "2026-08-22",
       "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions — EB-2 and EB-5 India should return from Unavailable on Oct 1"
+    },
+    {
+      "id": "estate-planning-data-file-needs-its",
+      "title": "Estate-planning data file needs its January re-verification (US transfer-tax figures reset each year)",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-25",
+      "detail": "src/data/estatePlanningData.ts holds the 2026 federal estate exclusion, the $60k nonresident-noncitizen threshold, the annual and noncitizen-spouse gift exclusions, FBAR/8938/3520 thresholds and the RBI USD 1m remittance limit for /articles/estate-planning-usa-india-assets. The US amounts are inflation-indexed and move each January; the Indian items move when Parliament or the RBI acts.",
+      "nextStep": "Re-open each sourceUrl in Jan 2027, bump ESTATE_DATA_VERIFIED only after actually reading the source",
+      "evidence": "npm run audit:monthly-numbers"
+    },
+    {
+      "id": "indian-probate-change-s-213-omitted",
+      "title": "Indian probate change (s.213 omitted, Act 37 of 2025) — recheck how banks/registrars/societies actually apply it",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-08-25",
+      "detail": "The Repealing and Amending Act 2025 omitted s.213 Indian Succession Act with effect from 20 Dec 2025. /articles/estate-planning-usa-india-assets says institutional practice is still settling, which is accurate now but is a claim with a shelf life.",
+      "nextStep": "Recheck in ~6 months; if practice has bedded in, tighten the hedge in the 'Registration and probate' section"
     },
     {
       "id": "ingest-september-2026-visa-bulletin-released",
