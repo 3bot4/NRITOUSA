@@ -227,7 +227,7 @@ export default function LongTermNriWealthPage() {
                 title: "Property & legacy",
                 links: [
                   { label: "India Property Sale Calculator", href: "/calculators/india-property-capital-gains" },
-                  { label: "NRI Estate Planning Hub", href: "/nri-estate-planning" },
+                  { label: "NRI Estate Planning Hub", href: "/articles/estate-planning-usa-india-assets" },
                   { label: "Inheriting Indian assets (US tax)", href: "/articles/inheriting-indian-assets-us-tax" },
                   { label: "Estate planning checklist", href: "/articles/estate-planning-usa-india-assets" },
                   { label: "US-born kids & India property", href: "/articles/us-kids-india-property-problems" },

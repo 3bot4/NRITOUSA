@@ -84,11 +84,11 @@ const GROUPS: Group[] = [
     bullets: [
       { label: "Wills", href: "/articles/estate-planning-usa-india-assets" },
       { label: "Trusts", href: "/articles/estate-planning-usa-india-assets" },
-      { label: "Beneficiaries", href: "/nri-estate-planning" },
+      { label: "Beneficiaries", href: "/articles/estate-planning-usa-india-assets" },
       { label: "Children as U.S. citizens", href: "/articles/us-kids-india-property-problems" },
       { label: "Parents in India", href: "/articles/inheriting-indian-assets-us-tax" },
     ],
-    cta: { label: "Review Legacy Checklist", href: "/nri-estate-planning" },
+    cta: { label: "Review Legacy Checklist", href: "/articles/estate-planning-usa-india-assets" },
   },
   {
     title: "Immigration Tools",

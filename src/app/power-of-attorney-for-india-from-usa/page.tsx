@@ -877,7 +877,7 @@ export default function PowerOfAttorneyForNriIndiaPage() {
                   document</strong>. It dies with you. It cannot pass property to your heirs, it does
                   not survive to help your family settle your affairs, and it is no substitute for a
                   will or for coordinated{" "}
-                  <Link href="/nri-estate-planning" className={inline}>
+                  <Link href="/articles/estate-planning-usa-india-assets" className={inline}>
                     cross-border estate planning
                   </Link>
                   . Families who grant a parent a broad POA &quot;so everything is taken care of&quot;
@@ -1003,7 +1003,7 @@ export default function PowerOfAttorneyForNriIndiaPage() {
                   desc: "Inherited property, succession formalities and what the IRS wants to see",
                 },
                 {
-                  href: "/nri-estate-planning",
+                  href: "/articles/estate-planning-usa-india-assets",
                   label: "NRI Estate Planning",
                   desc: "A POA dies with you — wills, nominations and cross-border coordination do not",
                 },

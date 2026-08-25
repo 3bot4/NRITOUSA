@@ -119,6 +119,20 @@ const nextConfig = {
         destination: "/tools/uscis-notice-decoder",
         permanent: true,
       },
+      // /nri-estate-planning was a 42-word MoneyHub link list whose <title>
+      // ("NRI Estate Planning — Wills, Trusts, Beneficiaries & Cross-Border
+      // Inheritance") competed for the same head term as the guide it linked
+      // to. Once that guide was rebuilt into a ~9.5k-word sourced resource, the
+      // hub was pure cannibalisation: it ranked for the query and then served a
+      // list of links instead of the answer. Its five tools are all linked from
+      // 20+ other places, so retiring it costs no discovery. Redirect rather
+      // than delete — the hub had accumulated internal links and external
+      // equity that belong on the guide.
+      {
+        source: "/nri-estate-planning",
+        destination: "/articles/estate-planning-usa-india-assets",
+        permanent: true,
+      },
       // The money-transfer topic page was consolidated into the
       // /send-money-to-india landing page. Keep old links/bookmarks working.
       {

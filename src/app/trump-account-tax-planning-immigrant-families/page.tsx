@@ -1018,7 +1018,7 @@ export default function Page() {
               { label: "Moving back to India", href: "/trump-account-moving-back-to-india" },
               { label: "SSN vs ITIN for the child", href: "/trump-account-ssn-itin-child" },
               { label: "$1,000 seed eligibility", href: "/trump-account-1000-eligibility" },
-              { label: "Gift tax & NRI estate planning", href: "/nri-estate-planning" },
+              { label: "Gift tax & NRI estate planning", href: "/articles/estate-planning-usa-india-assets" },
               { label: "FBAR / FATCA & cross-border tax", href: "/india-tax-compliance" },
               { label: "Long-term NRI wealth", href: "/long-term-nri-wealth" },
               { label: "Return to India", href: "/return-to-india" },

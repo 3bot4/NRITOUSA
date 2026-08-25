@@ -4485,7 +4485,7 @@ Here's the provision that matters when you eventually **sell** an inherited asse
 4. **Report any inherited Indian accounts** on [FBAR/FATCA](/articles/fbar-fatca-nri-guide).
 5. **Plan the sale** (if selling) for both Indian capital-gains tax and US reporting, with a [DTAA credit](/articles/double-taxation-dtaa-india-usa).
 
-If you're planning your own legacy rather than receiving one, the same cross-border traps apply in reverse — see the guide to [estate planning for cross-border NRI families](/nri-estate-planning).
+If you're planning your own legacy rather than receiving one, the same cross-border traps apply in reverse — see the guide to [estate planning for cross-border NRI families](/articles/estate-planning-usa-india-assets).
 
 ## Frequently asked questions
 
@@ -7145,7 +7145,7 @@ These four roles are routinely conflated, and they are genuinely different jobs.
 | Trustee | Holds and manages inherited assets under the terms of a trust |
 | Executor / personal representative | Administers the estate itself: collects assets, pays debts, distributes |
 | Custodian | Manages assets for a minor under a US custodial arrangement, usually until a set age |
-| Resident manager, attorney, or representative in India | Helps deal with an Indian asset on the ground — a power of attorney terminates on death, so this is a lifetime tool, not a succession one |
+| Resident manager, attorney, or representative in India | Helps deal with an Indian asset on the ground — a [power of attorney](/power-of-attorney-for-india-from-usa) terminates on death, so this is a lifetime tool, not a succession one |
 
 :::warn
 title: A living trust does not remove the court from guardianship
@@ -7360,10 +7360,10 @@ Then revisit the plan whenever any of these happens — not on a calendar, but o
 - Any beneficiary or nominee that is now out of date
 
 :::cta
-title: Start from the hub if you are earlier in the process
-body: The family and legacy planning hub collects the wills, trusts, beneficiary, and cross-border inheritance guides in the order most families need them.
-button: Open the estate planning hub
-href: /nri-estate-planning
+title: The document families confuse with a will
+body: A power of attorney handles Indian property while you are alive and terminates on death, so it complements this plan rather than replacing any part of it. The guide covers the notary, apostille and consulate routes from the USA.
+button: Power of attorney for India
+href: /power-of-attorney-for-india-from-usa
 :::
 
 ## Frequently asked questions

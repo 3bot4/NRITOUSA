@@ -134,7 +134,9 @@ function calcLinks(slug: string): string[] {
 
 const FLAGSHIP = "/india-investments/should-nris-keep-investments-in-india";
 const ATTORNEY = "/immigration-attorney-lawyer-cost";
-const ESTATE = "/nri-estate-planning";
+// /nri-estate-planning was a 42-word hub competing with the guide it linked
+// to; it now 301s here, so the guide is the canonical estate-planning target.
+const ESTATE = "/articles/estate-planning-usa-india-assets";
 const GOLD = "/gold-limit-usa-to-india";
 const LIFE = "/life-insurance-for-indian-families-usa";
 
@@ -224,14 +226,22 @@ describe("Batch 3 D — India tax & wealth hub links", () => {
     expect(t).toContain(LIFE);
   });
 
-  it.each(["estate-planning-usa-india-assets", "inheriting-indian-assets-us-tax"])(
-    "article %s links to the estate-planning hub",
+  // The estate guide is ESTATE now, so it is excluded here: a page cannot be
+  // asserted to link to itself.
+  it.each(["inheriting-indian-assets-us-tax"])(
+    "article %s links to the estate-planning guide",
     (slug) => {
       expect(articleBody(slug)).toContain(ESTATE);
     },
   );
 
-  it("the long-term-nri-wealth hub links to the estate-planning hub", () => {
+  it("the estate guide never links to itself or to the retired hub", () => {
+    const body = articleBody("estate-planning-usa-india-assets");
+    expect(body).not.toContain("(/articles/estate-planning-usa-india-assets)");
+    expect(body).not.toContain("/nri-estate-planning");
+  });
+
+  it("the long-term-nri-wealth hub links to the estate-planning guide", () => {
     expect(pageText("long-term-nri-wealth/page.tsx")).toContain(ESTATE);
   });
 

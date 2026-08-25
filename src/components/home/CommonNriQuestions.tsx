@@ -82,7 +82,7 @@ const CARDS: QuestionCard[] = [
       "Organize inheritance, nominees, property documents, tax basis, and repatriation questions early.",
     cta: "Review Checklist",
     type: "Guide",
-    href: "/nri-estate-planning",
+    href: "/articles/estate-planning-usa-india-assets",
   },
   {
     hook: "Retiring in India? Your 401(k), IRA, Social Security, RNOR status, and currency plan must work together.",

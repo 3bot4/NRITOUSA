@@ -158,7 +158,7 @@ const groups: Group[] = [
       { label: "Send Money to India", href: "/send-money-to-india" },
       { label: "Selling India Property: TDS & Repatriation", href: "/nri-selling-property-in-india-tds" },
       { label: "Inheriting Indian Assets", href: "/articles/inheriting-indian-assets-us-tax" },
-      { label: "NRI Estate Planning", href: "/nri-estate-planning" },
+      { label: "NRI Estate Planning", href: "/articles/estate-planning-usa-india-assets" },
       { label: "Return to India Checklist", href: "/return-to-india-checklist" },
       { label: "Gold Limit: USA to India", href: "/gold-limit-usa-to-india" },
     ],

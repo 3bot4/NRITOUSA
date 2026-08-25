@@ -248,15 +248,6 @@ const SUPPORTING: SearchItem[] = [
     keywords: "immigration attorney lawyer cost fees price consultation flat fee hourly h1b green card",
   },
   {
-    title: "NRI Estate Planning",
-    description:
-      "Family and legacy planning for Indians in the USA: wills and trusts across US and India assets, beneficiaries and guardianship for children.",
-    href: "/nri-estate-planning",
-    type: "Guide",
-    priority: 0,
-    keywords: "nri estate planning will trust inheritance legacy beneficiary guardianship india us assets probate",
-  },
-  {
     title: "Send Money to India: Costs, TCS & Fees",
     description:
       "Compare India–USA transfer costs, understand TCS on outward remittances, and avoid hidden exchange-rate fees.",

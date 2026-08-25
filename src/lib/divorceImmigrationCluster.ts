@@ -99,7 +99,7 @@ export const relatedGuideLinks: ClusterLink[] = [
     desc: "OCI held through a spouse, and what apostilled documents India expects",
   },
   {
-    href: "/nri-estate-planning",
+    href: "/articles/estate-planning-usa-india-assets",
     label: "NRI Estate Planning",
     desc: "Beneficiaries, wills and nominations that a divorce decree does not update for you",
   },

@@ -214,7 +214,6 @@ export const taxEntries: SitemapEntry[] = [
   e("/nri-wealth-checkup", 0.9, "weekly"),
   e("/india-property", 0.8, "weekly"),
   e("/return-to-india", 0.8, "weekly"),
-  e("/nri-estate-planning", 0.8, "weekly"),
   e("/send-money-to-india", 0.8, "weekly"),
   // Life insurance cluster (Indian-family, educational)
   e("/life-insurance-for-indian-families-usa", 0.9, "monthly"),
