@@ -424,7 +424,7 @@ export const tools: ToolMeta[] = [
     label: "H-1B Sponsor Finder",
     group: "Visa & Green Card",
     description:
-      "Which employers actually sponsor H-1Bs for your job, in your state? Search by role and state to see a ranked list of companies by certified H-1B LCA volume, with median wages, the DOL wage-level mix, and a 12-month trend. Built from DOL OFLC disclosure data — an LCA is a sponsorship signal, not a petition approval or a job offer.",
+      "Browse every US company that sponsors H-1Bs, ranked by certified LCA volume, with median wages and the DOL wage-level mix. Filter by company name, job title, work state, wage band or filing volume — or just read the national leaderboard. Built from DOL OFLC disclosure data — an LCA is a sponsorship signal, not a petition approval or a job offer.",
     icon: "🧭",
     accent: "from-indigo-600 to-blue-600",
     seoTitle: "H-1B Sponsor Finder | Companies That Sponsor H-1B by Role & State",

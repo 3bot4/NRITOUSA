@@ -212,6 +212,31 @@ async function loadCsv(): Promise<SponsorRow[]> {
   return csvCache;
 }
 
+/**
+ * Every rollup row, cached per process. Powers the employer explorer's
+ * cross-cutting aggregations (national leaderboard, occupation/state facets),
+ * which can't be expressed as a single (role, state) lookup. ~75k rows.
+ */
+let allRowsCache: Promise<SponsorRow[]> | null = null;
+
+export async function loadAllRows(): Promise<SponsorRow[]> {
+  if (usingDatabase()) {
+    if (!allRowsCache) {
+      allRowsCache = (async () => {
+        const pool = await getPool();
+        const { rows } = await pool.query(
+          `select employer, soc_code, soc_title, state, lca_count, worker_positions,
+                  median_wage, wage_levels, prev_year_count, trend, last_filed
+             from sponsors`
+        );
+        return rows.map(mapDbRow);
+      })();
+    }
+    return allRowsCache;
+  }
+  return loadCsv();
+}
+
 /* ------------------------------ public API ------------------------------- */
 
 /**

@@ -8,6 +8,7 @@ const articleBody = read("ArticleBody.tsx");
 const articleToc = read("india-investments/ArticleToc.tsx");
 const globalsCss = read("../app/globals.css");
 const inputCard = read("tools/InputCard.tsx");
+const employerExplorer = read("tools/h1b/H1bEmployerExplorer.tsx");
 
 /**
  * Regressions found by a site-wide phone audit (320-430px, iOS + Android).
@@ -61,5 +62,24 @@ describe("ArticleToc mobile bar", () => {
     // -mx-4 had nothing to bleed into and pushed the document 16px wide.
     const stickyBar = articleToc.match(/className="sticky top-16[^"]*"/)?.[0] ?? "";
     expect(stickyBar).not.toContain("-mx-4");
+  });
+});
+
+describe("H-1B employer explorer table", () => {
+  it("keeps the 860px-wide table off phones and ships cards instead", () => {
+    // The leaderboard needs 8 columns to be useful on a laptop, which is ~2.3x
+    // a 375px screen. It is display:none below `sm` and a card list takes over;
+    // dropping either half puts the table (or a duplicate) on the phone.
+    expect(employerExplorer).toMatch(/hidden[^"]*sm:block/);
+    expect(employerExplorer).toContain("min-w-[860px]");
+    expect(employerExplorer).toMatch(/space-y-2\.5 sm:hidden/);
+  });
+
+  it("scrolls the table inside its own container rather than the page", () => {
+    // Same element as the `hidden ... sm:block` wrapper: the wide table scrolls
+    // within its own box instead of dragging the whole page sideways.
+    expect(employerExplorer).toMatch(
+      /className="hidden overflow-x-auto[^"]*sm:block"/
+    );
   });
 });

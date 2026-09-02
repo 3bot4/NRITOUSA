@@ -92,6 +92,7 @@ const nextConfig = {
     // the no-database fallback works on deployments without a database.
     outputFileTracingIncludes: {
       "/api/sponsors": ["./data/h1b/sponsors.csv"],
+      "/api/h1b-employers": ["./data/h1b/sponsors.csv"],
       "/api/roles": ["./data/h1b/sponsors.csv"],
       "/h1b-sponsors/[socSlug]/[state]": ["./data/h1b/sponsors.csv"],
     },
