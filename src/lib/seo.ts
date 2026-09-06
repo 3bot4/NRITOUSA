@@ -32,14 +32,20 @@ interface PageMetaOptions {
   path: string;
   /** og:type — "website" (default), "article", or "profile". */
   type?: "website" | "article" | "profile";
-  /** Per-page OG image path; defaults to the site-wide image. */
-  image?: string;
+  /**
+   * Per-page OG image path; defaults to the site-wide image. Pass `null` to
+   * emit no image at all, which lets Next's file-based opengraph-image
+   * convention supply one — an explicit `images` array here would win over it.
+   */
+  image?: string | null;
   /** og:title / twitter:title override (defaults to `title`). */
   socialTitle?: string;
   /** og:description / twitter:description override (defaults to `description`). */
   socialDescription?: string;
   /** Extra Open Graph fields (e.g. article publishedTime/authors). */
   openGraph?: Record<string, unknown>;
+  /** Overrides the site-wide `author`/`creator` meta tags for this page. */
+  metaAuthor?: string;
 }
 
 /**
@@ -58,13 +64,18 @@ export function pageMetadata({
   socialTitle,
   socialDescription,
   openGraph,
+  metaAuthor,
 }: PageMetaOptions): Metadata {
+  const useFileImage = image === null;
   const img = image ?? site.ogImage;
   const ogTitle = socialTitle ?? title;
   const ogDescription = socialDescription ?? description;
   return {
     title,
     description,
+    ...(metaAuthor
+      ? { authors: [{ name: metaAuthor }], creator: metaAuthor }
+      : {}),
     alternates: { canonical: path },
     openGraph: {
       type,
@@ -72,14 +83,16 @@ export function pageMetadata({
       title: ogTitle,
       description: ogDescription,
       siteName: site.name,
-      images: [{ url: img, width: 1200, height: 630, alt: ogTitle }],
+      ...(useFileImage
+        ? {}
+        : { images: [{ url: img, width: 1200, height: 630, alt: ogTitle }] }),
       ...openGraph,
     } as Metadata["openGraph"],
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description: ogDescription,
-      images: [img],
+      ...(useFileImage ? {} : { images: [img] }),
     },
   };
 }

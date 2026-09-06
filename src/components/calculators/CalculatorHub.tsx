@@ -146,10 +146,13 @@ export function CalculatorDeepDive({ content }: { content: CalculatorContent }) 
         </SectionCard>
       )}
 
-      {/* What the result means */}
-      <SectionCard eyebrow="After the calculator" title="What your result means">
-        <p>{content.resultMeaning}</p>
-      </SectionCard>
+      {/* What the result means — omitted where the tool already explains its
+          own output inline, so the page doesn't say the same thing twice. */}
+      {content.resultMeaning && (
+        <SectionCard eyebrow="After the calculator" title="What your result means">
+          <p>{content.resultMeaning}</p>
+        </SectionCard>
+      )}
 
       {/* Options / explainer */}
       {content.options && (

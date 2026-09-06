@@ -1084,6 +1084,12 @@ export default function UsdInrProjectionCalculator() {
               getting the worst one. Under the &ldquo;{scenario.label}&rdquo;
               path, here is the blended rate each plan lands:
             </p>
+            {/* Without this, the send-today figure here reads as contradicting
+                the verdict above — that one compounds an Indian deposit rate,
+                this one is the raw conversion. */}
+            <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-400">
+              Blended rate at conversion, before any interest
+            </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
               {(
                 [
@@ -1236,7 +1242,7 @@ export default function UsdInrProjectionCalculator() {
 
         <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/60 p-5 text-sm leading-relaxed text-ink-700">
           <strong className="font-bold text-ink-900">
-            Two caveats before you quote us.
+            Two things before you quote us.
           </strong>{" "}
           The spot rate on this page is entered by hand on the date shown, not
           pulled from a live feed, so confirm the current rate before printing

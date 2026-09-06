@@ -13,6 +13,7 @@
  */
 
 import { CITATION_BADGES } from "@/data/usdInrForecastData";
+import { author } from "@/lib/author";
 
 export interface CalcLink {
   label: string;
@@ -51,8 +52,11 @@ export interface CalculatorContent {
   decisionWindow?: string;
   /** "Your options" / explainer breakdown shown after the calculator. */
   options?: { heading: string; items: CalcBullet[] };
-  /** Plain-English explanation of what the calculator's result means. */
-  resultMeaning: string;
+  /**
+   * Plain-English explanation of what the calculator's result means. Optional:
+   * omit on tools that already explain their own output inline.
+   */
+  resultMeaning?: string;
   /** Tax consequences, grouped by jurisdiction / topic. */
   taxConsequences: CalcBullet[];
   /** Ordered step-by-step process. */
@@ -86,6 +90,11 @@ export interface CalculatorContent {
    * "No signup"). Use for pages whose header should carry verified facts.
    */
   badges?: string[];
+  /**
+   * Overrides the site-wide `author`/`creator` meta tags for this page. Set it
+   * where the page carries a named byline rather than the editorial team.
+   */
+  metaAuthor?: string;
   /** Expertise tags for the author bio box at the foot of the page. */
   expertiseTags?: string[];
   /** Answer-first summary shown directly under the H1, with specific numbers. */
@@ -1244,6 +1253,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     published: "2026-09-06",
     updated: "2026-09-06",
     badges: CITATION_BADGES,
+    metaAuthor: author.byline,
     expertiseTags: [
       "NRI cross-border money",
       "US–India tax",
@@ -1271,29 +1281,6 @@ export const calculatorContent: Record<string, CalculatorContent> = {
       heading: "The formula behind the verdict",
       body: "Sending today buys rupees that then earn an Indian deposit rate: USD × spot × (1 + India rate)^years. Waiting keeps the dollars earning a US rate and converts later at an unknown rate: USD × (1 + US rate)^years × future rate. Set those equal and the horizon cancels, leaving a break-even rate of change of (1 + India rate) ÷ (1 + US rate) − 1. That is covered interest parity. If you owe a fixed rupee bill instead, no Indian yield is forgone, so the break-even becomes 1 ÷ (1 + US rate) − 1 — a negative number, meaning waiting wins unless the rupee actively strengthens. Everything runs in your browser; no input is stored or transmitted.",
     },
-    options: {
-      heading: "Your four realistic choices",
-      items: [
-        {
-          label: "Send the whole amount now",
-          body: "Removes the decision entirely. Right whenever you owe a fixed rupee sum on a near deadline, or when the money is already earmarked and you'd rather not think about it. You give up the chance of a better rate and buy certainty with it.",
-        },
-        {
-          label: "Split it 50-50",
-          body: "Half today, half in about 90 days. The sensible default when your dollars are sitting idle in checking: you stop losing the interest you aren't earning, without betting the whole amount on one day's rate.",
-        },
-        {
-          label: "Average in across three tranches",
-          body: "Roughly a third now, a third in two months, a third in four. Best when today's rate sits inside the range banks are forecasting, so there is no directional edge available in either direction.",
-        },
-        {
-          label: "Wait, with a limit order and a backstop date",
-          body: "Only defensible when your dollars earn a real return and forecasts point your way. Set a target rate with your provider and a hard date on which you convert regardless. A wait with no deadline attached isn't a plan, it's a habit.",
-        },
-      ],
-    },
-    resultMeaning:
-      "The verdict compares two paths in the same currency and tells you the gap in rupees (or, for a fixed bill, in dollars). The number that matters more is the break-even beneath it: the annual rate of rupee depreciation at which the two choices tie. Compare that against the 3.9% a year the rupee has actually averaged since 2006 and against the bank forecasts on the page. When the gap between them is under about half a percent, the calculator says so plainly — it's a coin flip, and the right move is whichever one lets you stop checking the rate.",
     taxConsequences: [
       {
         label: "NRE FD interest is taxable to you in the US",

@@ -86,10 +86,14 @@ export function generateMetadata({
 }): Metadata {
   const calc = getCalculator(params.slug);
   if (!calc) return { title: "Calculator not found" };
+  const content = getCalculatorContent(calc.slug);
   return pageMetadata({
     title: calc.seoTitle,
     description: calc.seoDescription,
     path: `/calculators/${calc.slug}`,
+    // null → let the route's opengraph-image.tsx supply the card image.
+    image: null,
+    metaAuthor: content?.metaAuthor,
   });
 }
 
