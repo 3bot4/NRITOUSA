@@ -213,18 +213,22 @@ export const BANK_FORECASTS: BankForecast[] = [
       "https://www.exchangerates.org.uk/news/46256/2026-06-21-us-dollar-to-rupee-forecast-2026-2028-latest-survey-signals-stable-near-term-outlook.html",
     reportedOn: "2026-06-21",
   },
-  {
-    bank: "Westpac",
-    end2026: null,
-    mid2027: null,
-    end2027: 90,
-    note: "The most rupee-positive view in the survey, seeing the pair below 90 by 2028 on aggressive Fed easing.",
-    source: "Exchange Rates UK forecast survey",
-    sourceUrl:
-      "https://www.exchangerates.org.uk/news/46012/2026-05-26-us-dollar-to-indian-rupee-forecast-survey-2026-2028-usd-inr-to-fall-despite-record-highs.html",
-    reportedOn: "2026-05-26",
-  },
 ];
+
+/**
+ * The most rupee-positive view in the same survey is Westpac's, which sees
+ * USD/INR below 90 by 2028 — beyond this table's furthest column, so it is
+ * quoted in the section prose rather than given a misattributed 2027 row.
+ * Source: https://www.exchangerates.org.uk/news/46012/2026-05-26-us-dollar-to-indian-rupee-forecast-survey-2026-2028-usd-inr-to-fall-despite-record-highs.html
+ */
+export const WESTPAC_2028 = {
+  bank: "Westpac",
+  level: 90,
+  horizon: "2028",
+  sourceUrl:
+    "https://www.exchangerates.org.uk/news/46012/2026-05-26-us-dollar-to-indian-rupee-forecast-survey-2026-2028-usd-inr-to-fall-despite-record-highs.html",
+  reportedOn: "2026-05-26",
+};
 
 /** Shown as the "updated" stamp above the bank forecast table. */
 export const FORECAST_UPDATED = "2026-09-06";
@@ -290,4 +294,38 @@ export const RUPEE_DRIVERS: RupeeDriver[] = [
     detail:
       "The Reserve Bank sells dollars from its reserves to slow the fall — over $15bn in 2026, almost daily, across spot and forward markets. Traders read it as managing the pace, not defending a fixed line.",
   },
+];
+
+/* ─────────────────────── citation badges ─────────────────────── */
+
+const END_2026_VALUES = BANK_FORECASTS.map((f) => f.end2026).filter(
+  (v): v is number => v !== null
+);
+
+const HISTORICAL_DRIFT = FX_SCENARIOS.filter((s) => s.key === "historical")[0];
+
+/**
+ * Header badges for the page. The tool template's default set is generic
+ * marketing copy ("60-second check", "No signup"); this page is written to be
+ * cited, so the badges carry dated facts instead. Built from the constants
+ * above so they can never drift from the page body.
+ */
+const MONTHS_SHORT = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+/** "2026-09-06" → "6 Sep 2026". Badges are too narrow for an ISO date. */
+function shortDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return `${Number(d)} ${MONTHS_SHORT[Number(m) - 1]} ${y}`;
+}
+
+export const CITATION_BADGES: string[] = [
+  `₹${FX_USDINR.toFixed(2)} · ${shortDate(FX_USDINR_AS_OF)}`,
+  `${HISTORICAL_DRIFT ? HISTORICAL_DRIFT.driftPct.toFixed(1) : "—"}%/yr since ${USD_INR_YEAR_END[0].year}`,
+  `Banks: ₹${Math.min.apply(null, END_2026_VALUES).toFixed(2)}–₹${Math.max
+    .apply(null, END_2026_VALUES)
+    .toFixed(2)} end-2026`,
+  "Every figure dated & sourced",
 ];

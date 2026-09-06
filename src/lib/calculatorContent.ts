@@ -12,6 +12,8 @@
  * fees, and tax rates change, so wording stays "may / typically / as of 2026".
  */
 
+import { CITATION_BADGES } from "@/data/usdInrForecastData";
+
 export interface CalcLink {
   label: string;
   href: string;
@@ -79,6 +81,11 @@ export interface CalculatorContent {
    * so untouched calculators render exactly as before.
    */
   updated?: string;
+  /**
+   * Overrides the tool template's generic promise badges ("60-second check",
+   * "No signup"). Use for pages whose header should carry verified facts.
+   */
+  badges?: string[];
   /** Expertise tags for the author bio box at the foot of the page. */
   expertiseTags?: string[];
   /** Answer-first summary shown directly under the H1, with specific numbers. */
@@ -1236,6 +1243,7 @@ export const calculatorContent: Record<string, CalculatorContent> = {
     appCategory: "FinanceApplication",
     published: "2026-09-06",
     updated: "2026-09-06",
+    badges: CITATION_BADGES,
     expertiseTags: [
       "NRI cross-border money",
       "US–India tax",

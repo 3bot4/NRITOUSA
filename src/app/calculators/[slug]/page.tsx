@@ -175,6 +175,7 @@ export default function CalculatorPage({
         ]}
         icon={calc.icon}
         category={calc.category}
+        {...(content?.badges ? { badges: content.badges } : {})}
         title={calc.title}
         hook={calc.description}
         accent={calc.accent}
