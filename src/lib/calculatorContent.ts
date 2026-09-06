@@ -68,6 +68,12 @@ export interface CalculatorContent {
   /** Page-specific FAQs — also emitted as FAQPage JSON-LD. */
   faqs: CalcFaq[];
   /**
+   * ISO date this page first went live. Defaults to the date the calculator
+   * hubs shipped; set it on anything published later so the Article schema
+   * doesn't backdate a new page.
+   */
+  published?: string;
+  /**
    * ISO date this hub's content and figures were last verified. Presence also
    * opts the page into the answer-first chrome (byline row + author bio box),
    * so untouched calculators render exactly as before.
@@ -1218,6 +1224,187 @@ export const calculatorContent: Record<string, CalculatorContent> = {
         question: "How accurate are these estimates?",
         answer:
           "Treat the output as a planning estimate, not a guarantee. It depends on assumptions you enter — appreciation, rates, and especially how long you actually stay — plus the visa-risk scoring, which is a simplified model of a genuinely uncertain situation. Use conservative inputs, stress-test a shorter horizon, and confirm specifics with a mortgage professional and immigration attorney before deciding.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ *
+   * 9. USD/INR forecast — send now or wait
+   * ------------------------------------------------------------------ */
+  "usd-inr-projection-send-now-or-wait": {
+    slug: "usd-inr-projection-send-now-or-wait",
+    appCategory: "FinanceApplication",
+    published: "2026-09-06",
+    updated: "2026-09-06",
+    expertiseTags: [
+      "NRI cross-border money",
+      "US–India tax",
+      "Remittances & FX",
+    ],
+    quickAnswer:
+      "Waiting beats sending today only if the rupee falls faster than the gap between what your rupees would earn in India and what your dollars earn in the US. At a 7.25% NRE FD against 4% US cash that break-even is about 3.1% a year — and the rupee has averaged roughly 3.9% a year since 2006. The two are close enough that timing is rarely your biggest lever; your provider's exchange-rate spread, typically 0.4–1.5% taken with certainty today, usually is.",
+    takeaways: [
+      "The break-even is (1 + India rate) ÷ (1 + US rate) − 1 — about 3.1% a year at 7.25% versus 4%. The horizon cancels out, so it's the same number for a 3-month wait or a 3-year one.",
+      "USD/INR has moved from ₹44.11 at the end of 2006 to about ₹94.66 in September 2026 — an average of 3.9% a year, but almost none of it in a straight line.",
+      "Published bank forecasts for end-2026 sit between roughly ₹95.50 and ₹96.80, and several banks expect the rupee to strengthen toward ₹92 through 2027.",
+      "In February 2026 a Reuters poll of 27 strategists forecast ₹90.63 by end-July 2026; the rate actually traded near ₹95.40 — a 5.3% miss in under six months.",
+      "NRE FD interest is tax-free in India but fully taxable to US tax residents, which can cut an effective 7.25% to nearer 5% and move the break-even by about two percentage points.",
+    ],
+    keyInputs: [
+      "How much you're sending in dollars — or the fixed rupee amount you owe",
+      "Today's USD/INR rate, ideally the one your provider actually offers",
+      "How long you'd realistically wait (3, 6, 12 or 24 months)",
+      "What your dollars earn in the US — HYSA, T-bill or money-market yield",
+      "What the rupees would earn in India, after US tax if you're a US resident",
+    ],
+    decisionWindow:
+      "There is no deadline on this decision unless you've given yourself one. If you owe a fixed rupee amount on a fixed date, the deadline governs and the exchange-rate question becomes secondary — convert when you have the money and the invoice.",
+    howItWorks: {
+      heading: "The formula behind the verdict",
+      body: "Sending today buys rupees that then earn an Indian deposit rate: USD × spot × (1 + India rate)^years. Waiting keeps the dollars earning a US rate and converts later at an unknown rate: USD × (1 + US rate)^years × future rate. Set those equal and the horizon cancels, leaving a break-even rate of change of (1 + India rate) ÷ (1 + US rate) − 1. That is covered interest parity. If you owe a fixed rupee bill instead, no Indian yield is forgone, so the break-even becomes 1 ÷ (1 + US rate) − 1 — a negative number, meaning waiting wins unless the rupee actively strengthens. Everything runs in your browser; no input is stored or transmitted.",
+    },
+    options: {
+      heading: "Your four realistic choices",
+      items: [
+        {
+          label: "Send the whole amount now",
+          body: "Removes the decision entirely. Right whenever you owe a fixed rupee sum on a near deadline, or when the money is already earmarked and you'd rather not think about it. You give up the chance of a better rate and buy certainty with it.",
+        },
+        {
+          label: "Split it 50-50",
+          body: "Half today, half in about 90 days. The sensible default when your dollars are sitting idle in checking: you stop losing the interest you aren't earning, without betting the whole amount on one day's rate.",
+        },
+        {
+          label: "Average in across three tranches",
+          body: "Roughly a third now, a third in two months, a third in four. Best when today's rate sits inside the range banks are forecasting, so there is no directional edge available in either direction.",
+        },
+        {
+          label: "Wait, with a limit order and a backstop date",
+          body: "Only defensible when your dollars earn a real return and forecasts point your way. Set a target rate with your provider and a hard date on which you convert regardless. A wait with no deadline attached isn't a plan, it's a habit.",
+        },
+      ],
+    },
+    resultMeaning:
+      "The verdict compares two paths in the same currency and tells you the gap in rupees (or, for a fixed bill, in dollars). The number that matters more is the break-even beneath it: the annual rate of rupee depreciation at which the two choices tie. Compare that against the 3.9% a year the rupee has actually averaged since 2006 and against the bank forecasts on the page. When the gap between them is under about half a percent, the calculator says so plainly — it's a coin flip, and the right move is whichever one lets you stop checking the rate.",
+    taxConsequences: [
+      {
+        label: "NRE FD interest is taxable to you in the US",
+        body: "India exempts NRE deposit interest from Indian tax, which is why the headline rate looks so attractive. The US taxes its residents on worldwide income, so that same interest is ordinary income on your US return. Enter the after-US-tax rate in the calculator or the verdict will be biased toward sending early.",
+      },
+      {
+        label: "TCS on money going the other way",
+        body: "This calculator covers US-to-India transfers. If you are remitting out of India under the Liberalised Remittance Scheme, India's TCS applies above the annual threshold — it is a prepaid tax you reclaim when you file, not a permanent cost, but it affects your cash flow.",
+      },
+      {
+        label: "FBAR and FATCA reporting",
+        body: "Moving a large balance into Indian accounts can push you over the FBAR threshold for aggregate foreign account balances, and potentially FATCA's Form 8938 thresholds. The transfer itself isn't taxable; failing to report the resulting account can be expensive.",
+      },
+      {
+        label: "Currency gains are generally not the issue here",
+        body: "For personal transfers, the exchange rate you get is simply the price of the transaction, not a separate taxable gain. Where it does matter is investments held in rupees and later repatriated — there, the rate on both ends affects your US-dollar cost basis and gain.",
+      },
+    ],
+    steps: [
+      "Enter the amount, or switch to bill mode if you owe a set rupee figure.",
+      "Replace the default rate with the rate your provider actually quotes, not the mid-market headline.",
+      "Enter what your dollars genuinely earn today — zero if the money sits in checking.",
+      "Enter the Indian deposit rate after US tax, if you're a US tax resident.",
+      "Read the break-even, then compare it to the 3.9%-a-year historical drift and the bank forecasts further down the page.",
+      "Run the four-question decision tree, which factors in the deadline risk the calculator ignores.",
+      "Check the ±₹2 sensitivity table. If a two-rupee miss flips your answer, stop optimising the timing and go optimise the spread instead.",
+    ],
+    mistakes: [
+      "Comparing the rupee's fall against zero instead of against the interest you forgo by not being in rupees. The rupee falling 3% a year is not a reason to wait if rupees would have earned you 7%.",
+      "Using the headline NRE FD rate while being a US tax resident. That interest is taxable to you in the US, and the gap between 7.25% and its after-tax equivalent is bigger than most of the rate moves being argued about.",
+      "Waiting on a dated obligation. Tuition and property deadlines are not negotiable; a better rate is worth a fraction of a percent and a missed deadline can cost a semester.",
+      "Optimising the exchange rate while ignoring the provider's spread, which is typically 0.4–1.5% and is taken today with certainty.",
+      "Treating a bank forecast as a plan. A Reuters poll of 27 strategists missed the July 2026 rate by more than 5% from six months out.",
+      "Waiting without a stopping rule. 'I'll send when it hits 98' with no backstop date is how people spend three years not transferring money.",
+    ],
+    example: {
+      title: "Worked example: $25,000, no deadline",
+      body: "Priya has $25,000 in a high-yield savings account paying 4%, and no fixed rupee obligation. NRE FDs are quoting 7.25%, but she's in the 32% US bracket, so after US tax that's about 4.9%. Her break-even is (1.049 ÷ 1.04) − 1, or roughly 0.87% a year — the rupee only has to slip slightly for waiting to lose. Sending today at ₹94.66 gives her ₹23.66 lakh, compounding at an after-tax 4.9%. Waiting 12 months for the historical 3.9% drift would put the rate near ₹98.35 — but she'd have given up almost a full year of the Indian rate premium to get there, and the extra rupees roughly cancel out. Her honest answer: it's a coin flip, so she splits it 50-50 and stops watching. Had she left the money in a checking account paying nothing, the break-even would jump to 7.25% and waiting would look clearly wrong.",
+    },
+    table: {
+      caption:
+        "Break-even rupee depreciation at different interest-rate combinations (per year)",
+      headers: [
+        "Your dollars earn",
+        "Rupees earn 5%",
+        "Rupees earn 6.5%",
+        "Rupees earn 7.25%",
+      ],
+      rows: [
+        ["0% (checking)", "5.00%", "6.50%", "7.25%"],
+        ["4% (HYSA / T-bill)", "0.96%", "2.40%", "3.13%"],
+        ["5% (money market)", "0.00%", "1.43%", "2.14%"],
+      ],
+    },
+    relatedLinks: [
+      {
+        label: "True-cost remittance & TCS calculator",
+        href: "/calculators/remittance-tcs-cost",
+      },
+      { label: "FCNR vs US high-yield savings", href: "/calculators/fcnr-vs-hysa" },
+      {
+        label: "Cheapest way to send money from the USA to India",
+        href: "/articles/cheapest-way-send-money-usa-india",
+      },
+      { label: "NRE vs NRO accounts explained", href: "/articles/nre-nro-accounts-explained" },
+      {
+        label: "India FDs vs US investments",
+        href: "/articles/india-fd-vs-us-investments",
+      },
+      {
+        label: "Return-to-India checklist",
+        href: "/return-to-india-checklist",
+      },
+    ],
+    connects: {
+      heading: "Where this sits in the bigger picture",
+      body: "Timing is the last question to answer, not the first. Before it come the cost of the transfer itself, the account you're sending into, and whether the money should be in rupees at all. If you're moving a large balance because you're planning a return to India, the timing question is a footnote next to the tax-residency planning around it.",
+      links: [
+        {
+          label: "What a transfer actually costs you",
+          href: "/calculators/remittance-tcs-cost",
+        },
+        {
+          label: "Are you keeping too much money in India?",
+          href: "/articles/keeping-too-much-money-in-india",
+        },
+        { label: "RNOR window & tax residency", href: "/calculators/rnor-tax-residency" },
+      ],
+    },
+    faqs: [
+      {
+        question: "What is the USD to INR forecast for 2026?",
+        answer:
+          "Published bank targets for end-2026 cluster between about ₹95.50 and ₹96.80 — MUFG near ₹95.50, Crédit Agricole and Goldman Sachs around ₹96, and Barclays highest at ₹96.80, citing the rupee's exposure to oil shocks. Against a spot rate of about ₹94.66 in early September 2026, that implies mild further weakness over the remainder of the year rather than a sharp fall. Treat the range, not any single figure, as the forecast — and note that these targets are revised constantly.",
+      },
+      {
+        question: "Will the rupee fall further against the dollar?",
+        answer:
+          "Over a long horizon, most likely yes: India runs structurally higher inflation than the US, and over decades that gap shows up in the exchange rate. That's the roughly 3.9% a year the rupee has averaged since 2006, and it's closer to arithmetic than prediction. Over the next year or two it is genuinely uncertain — several banks in our forecast table expect the rupee to recover toward ₹92 through 2027 on Fed easing and returning capital flows. The question that actually matters for your money isn't whether it falls, but whether it falls faster than your personal break-even of roughly 3% a year.",
+      },
+      {
+        question: "Can anyone predict the USD to INR rate next week?",
+        answer:
+          "No, and you shouldn't try. Over a single week the rate behaves essentially like a random walk around wherever it currently sits, and the long-run drift this page is built on works out to under 0.1% across seven days — far smaller than the exchange-rate spread your remittance provider charges. If your transfer is happening next week, the rate is not the variable worth your attention; the provider's margin is, and that one you can actually shop around.",
+      },
+      {
+        question: "Is it better to send money to India now or wait?",
+        answer:
+          "It depends on one comparison: whether the rupee will fall faster than the gap between Indian and US interest rates. At a 7.25% NRE FD against 4% US cash, that break-even is about 3.1% a year. The rupee's historical average is about 3.9%, so waiting has a slight historical edge — but not enough of one to bet a deadline on, and it disappears once you account for US tax on NRE interest. If the money is idle in a checking account, the break-even jumps to 7.25% and sending sooner looks clearly better. If you owe a fixed rupee amount within three months, send now regardless of what the maths says.",
+      },
+      {
+        question: "Do NRE FD rates make it worth sending money to India sooner?",
+        answer:
+          "Often, yes — and this is the input that moves the answer most. NRE fixed deposits have recently paid meaningfully more than US savings accounts, and that difference is exactly what the break-even formula prices. The catch is tax: NRE interest is tax-free in India but fully taxable to US tax residents, so a 7.25% headline rate is nearer 5% in the hand for someone in the 32% bracket. Enter the after-tax figure, not the advertised one — using the headline rate can shift your break-even by about two percentage points and flip the verdict.",
+      },
+      {
+        question: "What does 20 years of USD to INR history tell you about the next two?",
+        answer:
+          "Less than people assume. The rupee went from ₹44.11 at end-2006 to about ₹94.66 in September 2026 — an average of 3.9% a year — but almost none of it in a straight line. It gained ground in 2007 and again in 2017, then lost more in 2013 alone than in the four preceding years combined. Someone who decided in 2017 to 'wait for a better rate' waited five years and about ₹19 for it. The useful lesson from the history isn't a direction, it's a warning about variance: build a plan that survives being wrong rather than one that needs to be right.",
       },
     ],
   },

@@ -272,6 +272,39 @@ export const calculators: CalculatorMeta[] = [
     dataChecked: "2026-07-20",
     officialSource: "India–USA DTAA (1989, as amended); IRS Form 1116 instructions; IRS Publication 514",
   },
+  {
+    slug: "usd-inr-projection-send-now-or-wait",
+    title:
+      "USD to INR Forecast 2026–2028: Dollar to Rupee Forecast & Send-Now-or-Wait Calculator",
+    label: "USD/INR Forecast",
+    category: "Housing, Cars & Remittances",
+    description:
+      "Four scenario paths to 2028, twenty years of history, and the one number that decides it: how fast the rupee must fall before waiting beats sending today.",
+    icon: "📈",
+    accent: "from-indigo-500 to-blue-600",
+    seoTitle: "USD to INR Forecast 2026–2028: Dollar to Rupee Forecast",
+    seoDescription:
+      "USD to INR forecast 2026–2028: bank projections, 20 years of history, and a free calculator that tells you whether to send money to India now or wait.",
+    related: [
+      "cheapest-way-send-money-usa-india",
+      "nre-nro-accounts-explained",
+      "india-fd-vs-us-investments",
+      "keeping-too-much-money-in-india",
+    ],
+    tags: ["tax-compliance"],
+    leadMagnet: {
+      heading: "Timing a large transfer to India?",
+      body: "Get our free India–USA transfer playbook — how to cut the spread, beat provider fees, and stay TCS-compliant.",
+      cta: "Send me the transfer playbook",
+    },
+    quickSummary:
+      "Waiting only beats sending today if the rupee falls faster than the gap between Indian and US interest rates — roughly 3.1% a year at a 7.25% NRE FD against 4% US cash. The rupee has averaged about 3.9% a year since 2006, so the two are close enough that timing is rarely the biggest lever; the provider's exchange-rate spread usually is. Enter your amount, wait window and interest rates to see your own break-even.",
+    audience:
+      "NRIs, H-1B and green-card holders sending savings to India, and parents or students paying rupee-denominated tuition, who are trying to decide whether to convert dollars now or wait for a better exchange rate",
+    dataChecked: "2026-09-06",
+    officialSource:
+      "Federal Reserve H.10 / FRED series DEXINUS for historical rates; published bank forecasts as reported by Exchange Rates UK. No live rate feed — the spot rate on this page is set by hand.",
+  },
 ];
 
 export const calculatorCategories = [

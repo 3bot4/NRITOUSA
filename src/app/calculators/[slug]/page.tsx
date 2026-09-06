@@ -33,6 +33,7 @@ import RentVsBuyImmigrantCalculator from "@/components/calculators/RentVsBuyImmi
 import RemittanceCalculator from "@/components/calculators/RemittanceCalculator";
 import DtaaReliefCalculator from "@/components/calculators/DtaaReliefCalculator";
 import FcnrVsHysaCalculator from "@/components/calculators/FcnrVsHysaCalculator";
+import UsdInrProjectionCalculator from "@/components/calculators/UsdInrProjectionCalculator";
 
 const REGISTRY: Record<string, React.ComponentType> = {
   "rnor-tax-residency": RnorCalculator,
@@ -43,6 +44,7 @@ const REGISTRY: Record<string, React.ComponentType> = {
   "remittance-tcs-cost": RemittanceCalculator,
   "dtaa-foreign-tax-credit": DtaaReliefCalculator,
   "fcnr-vs-hysa": FcnrVsHysaCalculator,
+  "usd-inr-projection-send-now-or-wait": UsdInrProjectionCalculator,
 };
 
 /** Calculators whose intent is U.S.→India relocation — these surface the
@@ -54,6 +56,7 @@ const RETURN_TO_INDIA_CALCS = new Set([
   "remittance-tcs-cost",
   "dtaa-foreign-tax-credit",
   "fcnr-vs-hysa",
+  "usd-inr-projection-send-now-or-wait",
 ]);
 
 /**
@@ -115,7 +118,7 @@ export default function CalculatorPage({
             path: `/calculators/${calc.slug}`,
             headline: calc.seoTitle,
             description: calc.seoDescription,
-            datePublished: "2026-06-16",
+            datePublished: content.published ?? "2026-06-16",
             dateModified: content.updated,
           }),
         ]
