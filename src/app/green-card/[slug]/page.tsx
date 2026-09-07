@@ -135,9 +135,7 @@ export default function GreenCardChildPage({
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
-              {page.answerFirst && (
-                <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
-              )}
+              <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
             </div>
           </Container>
         </header>
@@ -148,12 +146,10 @@ export default function GreenCardChildPage({
             <div className="mx-auto">
               <ArticleBody content={page.content} />
 
-              {page.answerFirst && (
-                <AuthorBioBox
-                  className="mt-8"
-                  tags={["Employment green cards", "I-140 & I-485 stages", "India backlog analysis"]}
-                />
-              )}
+              <AuthorBioBox
+                className="mt-8"
+                tags={["Employment green cards", "I-140 & I-485 stages", "India backlog analysis"]}
+              />
 
               {/* tool CTA */}
               <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-green-100 bg-green-50/50 p-5 text-sm">

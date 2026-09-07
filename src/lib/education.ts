@@ -33,7 +33,7 @@ export const eduCalcs: EduCalc[] = [
       "Enter your child's date of birth to see which US grade they belong in, the school stage (elementary, middle, or high), and your state's kindergarten cutoff date — plus exactly what documents you need to enroll.",
     icon: "🎒",
     accent: "from-sky-500 to-blue-600",
-    seoTitle: "What Grade Is My Child In? US Finder (2025)",
+    seoTitle: "What Grade Is My Child In? US Grade Finder",
     seoDescription:
       "Find your child's US grade level by date of birth, with every state's kindergarten cutoff, the K-12 age chart, and an enrollment checklist.",
     relatedArticles: [
@@ -49,7 +49,7 @@ export const eduCalcs: EduCalc[] = [
       "Add your courses, letter grades, and credit hours to get your unweighted 4.0 GPA and your weighted GPA with AP/IB and Honors bonuses — plus how your number compares to what top colleges expect.",
     icon: "📊",
     accent: "from-violet-500 to-purple-600",
-    seoTitle: "GPA Calculator: Weighted & Unweighted (2025)",
+    seoTitle: "GPA Calculator: Weighted & Unweighted 4.0 Scale",
     seoDescription:
       "Free US GPA calculator for weighted and unweighted GPA on the 4.0 scale, with a letter-grade table, AP/IB/Honors weighting, and college targets.",
     relatedArticles: [

@@ -140,9 +140,7 @@ export default function H1bChildPage({
               <p className="mt-2.5 text-base italic leading-[1.6] text-ink-500">
                 {page.excerpt}
               </p>
-              {page.answerFirst && (
-                <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
-              )}
+              <ReviewedByline date={page.updated ?? page.date} className="mt-4" />
             </div>
           </Container>
         </header>
@@ -170,12 +168,10 @@ export default function H1bChildPage({
             <div className="mx-auto">
               <ArticleBody content={page.content} />
 
-              {page.answerFirst && (
-                <AuthorBioBox
-                  className="mt-8"
-                  tags={["H-1B status & transfers", "US work visas", "Immigrant career planning"]}
-                />
-              )}
+              <AuthorBioBox
+                className="mt-8"
+                tags={["H-1B status & transfers", "US work visas", "Immigrant career planning"]}
+              />
 
               {/* fee table for premium-processing slug */}
               {page.slug === "premium-processing" && (

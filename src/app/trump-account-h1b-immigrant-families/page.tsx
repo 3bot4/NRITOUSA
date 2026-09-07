@@ -44,9 +44,9 @@ import {
 } from "@/data/trumpAccountData";
 
 const PATH = "/trump-account-h1b-immigrant-families";
-const TITLE = "Trump Accounts for H1B Visa Holders: Complete Guide for Immigrant Families (2026)";
+const TITLE = "Trump Accounts for H1B Visa Holders: 2026 Rules";
 const DESC =
-  "Can H-1B parents open a Trump Account for a U.S.-born child? Learn eligibility, $1,000 pilot contribution rules, SSN vs ITIN, Form 4547, taxes, and what happens if your family moves back to India.";
+  "Can H-1B parents open a Trump Account for a U.S.-born child? Eligibility, the $1,000 federal pilot contribution, SSN vs ITIN, and Form 4547.";
 
 export const metadata: Metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH, type: "article" });
 

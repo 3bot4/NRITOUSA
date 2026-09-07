@@ -25,7 +25,7 @@ export const revalidate = 21600;
 
 const HOME_TITLE = "NRI to USA — Free Immigration, Tax & Wealth Tools";
 const HOME_DESCRIPTION =
-  "Free calculators, checklists and guides for Indians in the USA: H-1B and green card timelines, the visa bulletin for India, USCIS case status, FBAR/FATCA, India tax, 401(k) and return-to-India planning.";
+  "Free calculators and guides for Indians in the USA: H-1B and green card timelines, the India visa bulletin, USCIS case status, FBAR/FATCA and India tax.";
 
 export const metadata: Metadata = {
   title: {

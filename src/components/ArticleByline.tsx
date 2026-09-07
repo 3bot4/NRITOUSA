@@ -3,6 +3,7 @@ import type { Article } from "@/types";
 import { author as owner, authorInitials as ownerInitials } from "@/lib/author";
 import { resolveByline } from "@/lib/byline";
 import { formatDate } from "@/lib/format";
+import { hasPrimarySource } from "@/lib/sourceVerification";
 
 /**
  * Author byline rendered under the title of every article.
@@ -24,10 +25,16 @@ import { formatDate } from "@/lib/format";
  * attribution, not repetition.
  *
  * Bylines resolve from lib/byline, so this stays consistent everywhere.
+ *
+ * The "Sources verified" badge is derived from the article body, not asserted:
+ * it renders only when the piece actually links a primary source (see
+ * lib/sourceVerification). It previously rendered on every article, including
+ * the ~85 whose only outbound link was a house ad.
  */
 export default function ArticleByline({ article }: { article: Article }) {
   const by = resolveByline(article);
   const date = article.updated ?? article.date;
+  const sourcesVerified = hasPrimarySource(article.content);
 
   return (
     <div className="mt-5 flex items-center gap-3">
@@ -62,10 +69,14 @@ export default function ArticleByline({ article }: { article: Article }) {
             </>
           )}
           <span>Last reviewed {formatDate(date)}</span>
-          <span aria-hidden>·</span>
-          <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
-            <span aria-hidden>✓</span> Sources verified
-          </span>
+          {sourcesVerified && (
+            <>
+              <span aria-hidden>·</span>
+              <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
+                <span aria-hidden>✓</span> Sources verified
+              </span>
+            </>
+          )}
           {!by.isContributor && (
             <>
               <span aria-hidden>·</span>
