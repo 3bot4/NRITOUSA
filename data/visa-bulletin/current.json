@@ -1,12 +1,12 @@
 {
   "bulletinMonth": "2026-09",
-  "lastUpdated": "2026-08-22",
+  "lastUpdated": "2026-09-02",
   "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-september-2026.html",
   "sourceLabel": "U.S. Department of State Visa Bulletin (September 2026)",
   "adjustmentOfStatusChart": "final-action",
-  "adjustmentOfStatusChartStatus": "pending",
-  "adjustmentOfStatusChartMonth": "2026-08",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official September 2026 bulletin (Number 18, Volume XI). adjustmentOfStatusChart is the chart required by the LATEST POSTED USCIS determination, and adjustmentOfStatusChartMonth is the bulletin month that determination covers \u2014 when adjustmentOfStatusChartStatus is 'pending' those two describe a PRIOR month, not this one, and the UI must say so rather than asserting a chart for the current bulletin. As of 2026-08-22 USCIS had not posted a September 2026 determination (uscis.gov/visabulletininfo still showed August 2026 and 'Next Month's charts: Coming soon'). Flip the status to 'posted' and set adjustmentOfStatusChartMonth to 2026-09 once it appears.",
+  "adjustmentOfStatusChartStatus": "posted",
+  "adjustmentOfStatusChartMonth": "2026-09",
+  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure). All values verified against the official September 2026 bulletin (Number 18, Volume XI). adjustmentOfStatusChart is the chart required by the LATEST POSTED USCIS determination, and adjustmentOfStatusChartMonth is the bulletin month that determination covers — when adjustmentOfStatusChartStatus is pending those two describe a PRIOR month, not this one, and the UI must say so rather than asserting a chart for the current bulletin. USCIS posted its September 2026 determination: employment-based filings must use the Final Action Dates chart (family-sponsored uses Dates for Filing, which this field does not track). Verified 2026-09-02.",
   "categories": {
     "eb1": {
       "row": {

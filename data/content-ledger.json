@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-08-25",
+  "updated": "2026-09-07",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -16,14 +16,15 @@
     },
     {
       "id": "verified-stamps-july-batch",
-      "title": "21 verified-number stamps are now past the 45-day threshold",
+      "title": "14 verified-number stamps are past the 45-day threshold",
       "area": "numbers",
       "severity": "high",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "21 of 29 tracked values carry lastVerified 2026-07-04, which crossed STALE_DAYS (45) on 2026-08-19 — audit:monthly-numbers now flags all 21. The values themselves were confirmed correct on 2026-08-18 against USCIS Form G-1055 (Ed. 05/29/26) and DOL FLAG, so this is a stamp-refresh task, not a data-correction task. Do NOT bump the dates without re-checking: a date is not evidence, which is the whole reason the drift check exists.",
+      "detail": "Was 21 on 2026-09-02. Seven were re-confirmed against their official sources that day and bumped: I-90 online ($415) and paper ($465) fees, the no-separate-biometrics-fee line, the $120 Affidavit of Support review fee, the $325 family-based IV fee, the $10,000 FBAR threshold and the 10% early-withdrawal penalty. No value was found to have actually drifted — the stamps lag, the numbers were right. The remaining 14 are prose/range values (processing times, passport windows, FBAR deadline, FATCA, SS credits, FAFSA) plus the employment-based ($345) and other ($205) IV fees, none of which a script can check.",
       "nextStep": "Re-verify the travel.state.gov NVC fees and the passport/VFS ranges by hand (both hosts block automated fetches), then run `npm run audit:monthly-numbers:baseline` to move the stamps and the baseline together.",
-      "evidence": "npm run audit:monthly-numbers"
+      "evidence": "npm run audit:monthly-numbers",
+      "next": "Work the remaining 14 by hand; uscis.gov and travel.state.gov both 403 automated fetches, so use WebSearch with allowed_domains."
     },
     {
       "id": "pwd-planning-band",
@@ -194,13 +195,96 @@
       "evidence": "npm run ledger"
     },
     {
+      "id": "homepage-market-ticker-ran-44-days",
+      "title": "Homepage USD/INR card ran 44 days stale with no staleness flag",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-02",
+      "detail": "data/market.json sat at asOf 2026-07-19 until 2026-09-02 because the daily GitHub Action was retired and nothing replaced it. Per-item stale flags were all false, so the figure presented as current. Reader-visible impact is narrower than it first looked: only the usdinr row renders (usdInrCard in HomeDataSidebar) — it read 96.27 against an actual 94.95, about 1.4% off. The snapshot's gold row was 8.4% off but renders nowhere; see the sibling item on the three unused values. Fixed by re-running the pipeline and by adding a whole-file staleness gate.",
+      "nextStep": "Either restore a scheduled refresh or add a hard staleness gate — see the sibling item on whole-file age.",
+      "evidence": "node scripts/pipeline/fetch-market.mjs",
+      "next": "Done for now — the gate in src/lib/market.ts plus revalidate on the homepage means an unrefreshed snapshot degrades visibly. Still worth deciding whether anything should refresh it on a schedule."
+    },
+    {
+      "id": "85-of-93-articles-cite-zero",
+      "title": "85 of 93 articles cite zero primary sources",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-07",
+      "next": "Add a source box with 1–3 primary-source links to the highest-traffic /articles/* pages. The '✓ Sources verified' badge relights on its own via lib/sourceVerification — no flag to set."
+    },
+    {
+      "id": "109-content-pages-still-render-no",
+      "title": "109 content pages still render no author byline",
+      "area": "seo",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-07",
+      "next": "Add ReviewedByline + AuthorBioBox to ToolHub, CalculatorHub, GiftsClusterPage and the hub index routes — same unwrap already done for the uscis/h1b/green-card cluster routes."
+    },
+    {
+      "id": "market-json-has-no-whole-file",
+      "title": "market.json has no whole-file staleness guard — only per-item flags",
+      "area": "numbers",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-02",
+      "detail": "src/lib/market.ts surfaces item.stale, which the pipeline sets only when THAT source fails to fetch. A file that simply stops being refreshed keeps stale=false on every item and renders as live data with an old 'as of' label. The Nifty row proves the per-item affordance works; the gap is that nothing checks how old asOf itself is.",
+      "nextStep": "Derive a stale flag from asOf age (e.g. >3 days) in src/lib/market.ts so an unrefreshed file degrades visibly instead of asserting old numbers.",
+      "resolved": "2026-09-02"
+    },
+    {
+      "id": "homepage-nre-fd-rate-stamped-2026",
+      "title": "Homepage NRE FD rate stamped 2026-06-01 — three months old",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-02",
+      "detail": "data/homepage-config.json nreFd (7.25%, IndusInd, 1–2 yr) is manually maintained and shows an 'as of' date in HomeDataSidebar, so it ages visibly but never prompts anyone. Bank rate cards move more often than quarterly.",
+      "nextStep": "Re-check the top NRE FD rate and bump nreFd.updated."
+    },
+    {
+      "id": "audit-monthly-numbers-covers-1-of",
+      "title": "audit:monthly-numbers covers 1 of 23 verification-stamped data files",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-02",
+      "detail": "29 values in src/data/siteWideVerifiedNumbers.ts are staleness-checked. But 22 other files carry their own lastVerified/feeVerified stamps that no audit reads — including src/lib/premiumProcessing.ts (lastVerified 'June 2026'), estatePlanningData.ts, nvcData.ts, indiaVisaData.ts, goldCustomsData.ts, greenCardRenewalData.ts and governmentBenefitsData.ts. Their numbers can age indefinitely without any script noticing.",
+      "nextStep": "Teach scripts/audit-monthly-numbers.ts to scan every src/data + src/lib file for a lastVerified stamp and report age, even where it cannot check the value.",
+      "evidence": "grep -rln 'lastVerified\\|feeVerified' src/data/ src/lib/"
+    },
+    {
+      "id": "hr-1-immigration-fees-inflation-adjust",
+      "title": "HR-1 immigration fees inflation-adjust every January 1 — next hit is 2027-01-01",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-02",
+      "detail": "Under HR-1 DHS must adjust certain immigration fees annually for inflation; the FY2026 round took effect 2026-01-01 and premium processing separately moved 2026-03-01 (I-129 and I-140 to $2,965, I-765/H-2B/R-1 to $1,780, I-539 to $2,075 — all currently correct on-site). This is a standing annual event, not a one-off, and it lands in the same January window as the estate-planning transfer-tax reset.",
+      "nextStep": "Add a January sweep: re-verify premiumProcessing.ts, the USCIS fee figures in siteWideVerifiedNumbers.ts and estatePlanningData.ts together."
+    },
+    {
+      "id": "market-json-carries-three-values-that",
+      "title": "market.json carries three values that render nowhere — gold, nifty50, sp500",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-02",
+      "detail": "marketTickerItem() in src/lib/market.ts is defined but never called, and tickerItems() is entirely immigration data (EB dates, processing times, bulletin countdown). Only the usdinr row reaches a reader, via usdInrCard() in HomeDataSidebar. marketSources and marketAsOfLabel are also unconsumed. This mattered on 2026-09-02: the 44-day-stale snapshot looked worse than it was because gold was 8.4% off — but no reader ever saw a gold price. Pinned by a test in src/lib/marketStaleness.test.ts so the day a ticker gains a market key, the staleness guard gets extended too.",
+      "nextStep": "Decide: either surface gold/Nifty/S&P (the pipeline already fetches them) or drop them from the pipeline and delete marketTickerItem + marketSources."
+    },
+    {
       "id": "re-check-uscis-september-2026-adjustment",
       "title": "Re-check USCIS September 2026 adjustment-of-status chart determination (uscis.gov/visabulletininfo showed August + 'coming soon' on 2026-08-22)",
       "area": "other",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-22",
-      "nextStep": "If USCIS opens Dates for Filing for September, flip adjustmentOfStatusChart in data/visa-bulletin/current.json and update the caveat copy in visa-bulletin.ts, visaBulletinCluster.ts (final-action-date-vs-date-of-filing) and /uscis"
+      "nextStep": "If USCIS opens Dates for Filing for September, flip adjustmentOfStatusChart in data/visa-bulletin/current.json and update the caveat copy in visa-bulletin.ts, visaBulletinCluster.ts (final-action-date-vs-date-of-filing) and /uscis",
+      "resolved": "2026-09-02"
     },
     {
       "id": "ingest-the-october-2026-visa-bulletin",

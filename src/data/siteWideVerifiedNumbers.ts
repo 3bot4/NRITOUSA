@@ -102,7 +102,7 @@ export const greenCardRenewalNumbers: NumberGroup = {
   onlineFee: {
     label: "Form I-90 online filing fee",
     value: "$415",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "USCIS Fee Schedule (G-1055)",
     sourceUrl: officialSources.uscisFeeSchedule,
     note: "Online filing is $50 cheaper than paper.",
@@ -110,7 +110,7 @@ export const greenCardRenewalNumbers: NumberGroup = {
   paperFee: {
     label: "Form I-90 paper filing fee",
     value: "$465",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "USCIS Fee Schedule (G-1055)",
     sourceUrl: officialSources.uscisFeeSchedule,
     note: "Paper filing costs $50 more than online.",
@@ -118,7 +118,7 @@ export const greenCardRenewalNumbers: NumberGroup = {
   biometricsFee: {
     label: "Biometrics fee",
     value: "No separate fee",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "USCIS Fee Schedule (G-1055)",
     sourceUrl: officialSources.uscisFeeSchedule,
     note: "Biometrics, if required, is included — confirm on the current schedule.",
@@ -209,14 +209,14 @@ export const nvcNumbers: NumberGroup = {
   affidavitFee: {
     label: "Affidavit of Support review fee",
     value: "$120",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "Department of State — Visa Fees",
     sourceUrl: officialSources.stateVisaFees,
   },
   familyIvFee: {
     label: "Family-based IV application fee (per applicant)",
     value: "$325",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "Department of State — Visa Fees",
     sourceUrl: officialSources.stateVisaFees,
   },
@@ -311,7 +311,7 @@ export const taxNumbers: NumberGroup = {
   fbarThreshold: {
     label: "FBAR filing threshold (aggregate foreign accounts)",
     value: "$10,000",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "IRS / FinCEN — FBAR",
     sourceUrl: officialSources.irsFbar,
     note: "Aggregate high balance across all foreign accounts at any time in the year.",
@@ -409,7 +409,7 @@ export const wealthNumbers: NumberGroup = {
   earlyWithdrawalPenalty: {
     label: "401(k)/IRA early withdrawal penalty",
     value: "10%",
-    lastVerified: "2026-07-04",
+    lastVerified: "2026-09-02",
     sourceName: "IRS",
     sourceUrl: "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
     note: "Plus ordinary income tax and possible US withholding; exceptions apply.",

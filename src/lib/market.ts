@@ -45,6 +45,36 @@ export interface MarketItem {
 
 const marketItems = marketData.items as MarketItem[];
 
+/**
+ * How long the market snapshot may go unrefreshed before the homepage stops
+ * presenting it as current.
+ *
+ * Per-item `stale` only trips when THAT source failed to fetch, which says
+ * nothing about a snapshot nobody refreshed at all — and nothing schedules
+ * scripts/pipeline/fetch-market.mjs any more, so "nobody refreshed it" is the
+ * expected failure, not the exception. On 2026-09-02 the ticker had been
+ * serving 44-day-old figures with stale=false on every row and gold 8.4% off.
+ * This is the whole-file guard the per-item flag cannot be.
+ *
+ * Evaluated when called, never at import: the homepage is statically rendered,
+ * so an age computed at module scope would freeze at build time and report the
+ * data fresh forever — precisely the bug. src/app/page.tsx carries a
+ * `revalidate` so the check is re-run periodically.
+ */
+const MARKET_STALE_AFTER_DAYS = 3;
+
+/** Age of the market snapshot in days. Infinity if `asOf` is missing/unparseable. */
+export function marketDataAgeDays(now: Date = new Date()): number {
+  const asOf = new Date(marketData.asOf).getTime();
+  if (!Number.isFinite(asOf)) return Number.POSITIVE_INFINITY;
+  return (now.getTime() - asOf) / 86_400_000;
+}
+
+/** True when the snapshot as a whole is too old to present as current. */
+export function marketDataStale(now: Date = new Date()): boolean {
+  return marketDataAgeDays(now) > MARKET_STALE_AFTER_DAYS;
+}
+
 export const marketAsOfLabel: string = marketData.asOfLabel;
 
 /**
@@ -176,7 +206,7 @@ function marketTickerItem(item: MarketItem): TickerItem {
     direction,
     kind: "market",
     href: tickerHref[item.key] ?? "/tools",
-    stale: item.stale,
+    stale: item.stale || marketDataStale(),
   };
 }
 
@@ -390,7 +420,7 @@ export function usdInrCard(): UsdInrCard {
     high,
     low,
     rangeLabel,
-    stale: item.stale,
+    stale: item.stale || marketDataStale(),
   };
 }
 
