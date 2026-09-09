@@ -199,6 +199,21 @@ export const tools: ToolMeta[] = [
     status: "live",
   },
   {
+    slug: "iv-scheduling-status",
+    title: "IV Scheduling Status Tool Interpreter",
+    label: "IV Scheduling Status",
+    group: "Visa & Green Card",
+    description:
+      "The State Department's IV Scheduling Status Tool publishes a documentarily complete date, not a priority date. Work out which of the two gates — visa availability or your consulate's queue — is actually holding your immigrant visa interview.",
+    icon: "\ud83d\udcc6",
+    accent: "from-indigo-600 to-violet-600",
+    seoTitle: "IV Scheduling Status Tool 2026: What the Date Really Means",
+    seoDescription:
+      "Read the IV Scheduling Status Tool correctly. It shows a documentarily complete date, not your priority date \u2014 find out whether the Visa Bulletin or your post's queue is holding your interview.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "green-card-tracker",
     title: "Green Card Wait Time Tracker & Estimator",
     label: "Green Card Tracker",

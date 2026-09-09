@@ -236,6 +236,42 @@
       "evidence": "GSC + Bing Webmaster Tools, trailing 3 months as of Sep 2026."
     },
     {
+      "id": "verify-250-visa-integrity-fee-collection",
+      "title": "Verify $250 Visa Integrity Fee collection status per post before treating it as a payable line item",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-09",
+      "nextStep": "Check DOS fee page + a recent India post reading; update IW_INTEGRITY_FEE in src/data/interviewWaiverData.ts"
+    },
+    {
+      "id": "interview-waiver-rules-changed-4x-in",
+      "title": "Interview waiver rules changed 4x in 2 years — re-check DOS visas-news monthly and bump IW_VERIFIED",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-09",
+      "nextStep": "Read travel.state.gov visas-news; update iwChronology + iwCategoryVerdicts if changed"
+    },
+    {
+      "id": "forms-i-275-and-i-877",
+      "title": "Forms I-275 and I-877 could not be verified in 8 CFR 235 — deliberately omitted from the denied-entry page",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-09",
+      "nextStep": "If a primary source is found, add to poeOutcomes/swornStatement in src/data/portOfEntryData.ts"
+    },
+    {
+      "id": "avr-nationality-exclusion-depends-on-the",
+      "title": "AVR nationality exclusion depends on the live State Sponsors of Terrorism list — confirm before each review",
+      "area": "numbers",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-09",
+      "nextStep": "Check state.gov/state-sponsors-of-terrorism; referenced by AVR_NATIONALITY_EXCLUSION"
+    },
+    {
       "id": "market-json-has-no-whole-file",
       "title": "market.json has no whole-file staleness guard — only per-item flags",
       "area": "numbers",

@@ -118,6 +118,37 @@ const STATE_PAGES = [
  * excluded from the sitemap for the same reason.
  */
 const SUPPORTING: SearchItem[] = [
+  // ---- Port of entry / interview waiver cluster ------------------------
+  {
+    title: "Denied Entry at the Airport on H-1B",
+    description:
+      "Secondary inspection, the sworn statement, and the difference between withdrawing your application for admission and an expedited removal that carries a five-year bar.",
+    href: "/h1b-denied-entry-airport",
+    type: "Guide",
+    priority: 0,
+    keywords:
+      "h1b denied entry airport approved extension denied at airport cbp secondary inspection deferred inspection expedited removal withdrawal of application for admission i-867 i-860 i-546 port of entry refused admission",
+  },
+  {
+    title: "Automatic Visa Revalidation",
+    description:
+      "Re-entering the US on an expired visa after a trip of 30 days or less to Canada or Mexico — the seven conditions in 22 CFR 41.112(d) and the one step that destroys it.",
+    href: "/automatic-visa-revalidation",
+    type: "Guide",
+    priority: 0,
+    keywords:
+      "automatic visa revalidation avr expired visa canada mexico 30 days contiguous territory 22 cfr 41.112 i-94 h1b h4 re-entry",
+  },
+  {
+    title: "Visa Interview Waiver (Dropbox)",
+    description:
+      "H-1B, H-4, L and F are no longer dropbox-eligible. The complete eligible list under the rules effective 1 October 2025, the conditions, and an eligibility checker.",
+    href: "/visa-interview-waiver",
+    type: "Guide",
+    priority: 0,
+    keywords:
+      "visa interview waiver dropbox h1b interview waiver program drop box india b1 b2 renewal h-2a 12 month window 221g fees 185 205 visa integrity fee",
+  },
   // ---- H-1B lottery cluster --------------------------------------------
   {
     title: "H-1B Lottery Chance Calculator",

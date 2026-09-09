@@ -46,7 +46,7 @@ const faq: FaqItem[] = [
   {
     question: "What is the H-1B visa stamping wait at Indian consulates?",
     answer:
-      "Interview appointment waits at Mumbai, Delhi, Hyderabad, Chennai, and Kolkata have ranged from a few weeks to a few months, while dropbox (interview waiver) cases usually move in days to weeks. Waits move constantly — always check the State Department's global visa wait times page for this week's numbers before booking travel.",
+      "Interview appointment waits at Mumbai, Delhi, Hyderabad, Chennai, and Kolkata have ranged from a few weeks to a few months. Note that H-1B and H-4 lost dropbox (interview waiver) eligibility under the Department of State rule effective 1 October 2025, so plan for an in-person interview for every applicant. Waits move constantly — always check the State Department's global visa wait times page for this week's numbers before booking travel.",
   },
   {
     question: "Are these processing times guaranteed?",

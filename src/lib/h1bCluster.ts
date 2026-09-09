@@ -785,6 +785,35 @@ title: 221(g) administrative processing: what this means
 - USCIS rules and employer relationships are scrutinized more heavily at the consulate than domestically
 :::
 
+### A 221(g) is legally a refusal, not a pause
+
+This is the part that surprises people, and it has consequences long after the visa is issued. Section 221(g) of the Immigration and Nationality Act is a **refusal** ground: the officer refuses the visa because the application is incomplete or further processing is required, and the case goes into administrative processing. The everyday description — "my case is on hold" — is accurate about what is happening but wrong about what it is called.
+
+Two practical consequences follow:
+
+- **The DS-160 asks whether you have ever been refused a visa.** A 221(g) is a refusal and should be disclosed. Answering no because the visa was eventually issued creates a misrepresentation problem under INA 212(a)(6)(C)(i), which is permanent and far worse than the 221(g) ever was.
+- **A resolved 221(g) has been *overcome*.** The Department of State's interview-waiver rules disqualify an applicant who has been refused a visa *unless the refusal was overcome or waived*. A 221(g) that ended in the visa being issued has been overcome. That distinction matters for the family members who are still interview-waiver eligible — see [visa interview waiver](/visa-interview-waiver).
+
+### Two different kinds of 221(g)
+
+The letter you are handed generally does one of two things, and they have very different timelines:
+
+- **A request for documents.** The consulate names what it wants — pay stubs, client letters, an itinerary, a fresh employment letter. You supply it and the case moves. This is the fast version, often resolved in weeks.
+- **Pure administrative processing.** No document is requested; the case is undergoing additional review. There is nothing to submit and nothing to chase. This is the slow version, and it is the one with no guaranteed timeline.
+
+Read the letter carefully to work out which one you have, because the correct response to the first is to act immediately and the correct response to the second is to wait.
+
+### Tracking and planning
+
+Check the case status on the Consular Electronic Application Center (ceac.state.gov) rather than relying on the courier's tracking. Status can sit unchanged for a long time in administrative processing, and repeated inquiries do not accelerate review.
+
+Plan on the assumption that you may not return on schedule. Tell your employer before you travel that a 221(g) is possible and agree what happens to your work and pay if it happens. Do not book non-refundable onward travel, and do not let your I-94 or petition validity become a problem while you are outside the country.
+
+:::warn
+title: If you are on an expired stamp, do not treat a third-country visa application as a safe option
+Applying for a visa in Canada or Mexico ends [automatic visa revalidation](/automatic-visa-revalidation) for that trip under 22 CFR 41.112(d)(2)(vii) — **applying** is what ends it, not being refused. A 221(g) issued on that application leaves you outside the United States with no fallback.
+:::
+
 ## When to be especially cautious about travel
 
 Do NOT travel to India for stamping without consulting your immigration attorney if any of these apply:
@@ -808,9 +837,17 @@ Do NOT travel to India for stamping without consulting your immigration attorney
 - Copy of current LCA
 - Academic credentials
 
-## Dropbox renewal (third-country nationals)
+## Dropbox (interview waiver) is no longer available for H-1B
 
-If you are an Indian national who has previously been stamped at a US post in India, you may be eligible for the **dropbox** (interview waiver) option for renewal — a simpler process where your passport is sent to the consulate without a personal interview. Verify current eligibility at ustraveldocs.com, as policies change.
+:::bad
+title: H-1B dropbox ended in 2025 — verified 9 September 2026
+- The Department of State cut the interview-waiver renewal window from 48 months to 12 on **18 February 2025**, and eliminated waivers for nearly all categories effective **2 September 2025**.
+- The update effective **1 October 2025** is the rule in force today. Its eligible list is limited to certain diplomatic and official categories, B-1/B-2 and Border Crossing Card renewals, and H-2A renewals. **H-1B, H-4, L and F are not on it.**
+- Every H-1B and H-4 applicant now attends an in-person interview, including children — the automatic waivers for applicants under 14 and over 79 were removed in September 2025.
+- From **15 December 2025**, H-1B and H-4 applicants are instructed to set all social media profiles to public for online presence review.
+:::
+
+Full eligible list, the four conditions, the policy chronology and an eligibility checker: [visa interview waiver](/visa-interview-waiver).
 
 ## Frequently asked questions
 
@@ -1087,9 +1124,16 @@ Higher 221(g) risk situations include:
 - Certain technology roles that may require additional security review
 - Any discrepancy in documentation
 
-## Dropbox (interview waiver) option
+## Dropbox (interview waiver) no longer applies to H-1B
 
-If you have been previously stamped in India, you may be eligible for the **dropbox** process — sending your passport via courier without attending an in-person interview. Eligibility conditions apply and change periodically. Check ustraveldocs.com for current rules.
+:::bad
+title: Do not plan around dropbox — verified 9 September 2026
+- Under the Department of State rule effective **1 October 2025**, interview waivers are limited to certain diplomatic and official categories, B-1/B-2 and Border Crossing Card renewals, and H-2A renewals.
+- **H-1B and H-4 are not eligible.** Plan for an in-person interview for every family member, including young children.
+- Applying in a third country such as Canada or Mexico does not restore eligibility — applying in your country of nationality or usual residence is itself a condition, and since **6 September 2025** the Department has directed applicants to interview in their country of nationality or residence.
+:::
+
+The complete eligible list, the conditions and an eligibility checker are on [visa interview waiver](/visa-interview-waiver).
 
 ## Tips to reduce 221(g) risk
 

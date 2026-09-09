@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return pageMetadata({
     title: "H1B Visa Stamping After Selection: India Guide (2026/27)",
     description:
-      "H1B visa stamping in India: $205 MRV fee, DS-160 to interview, dropbox eligibility, documents checklist, and when you don't need a stamp.",
+      "H1B visa stamping in India: $205 MRV fee, DS-160 to interview, why dropbox no longer applies to H-1B, documents checklist, and when you don't need a stamp.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -45,7 +45,7 @@ const faqs: FaqItem[] = [
   {
     question: "How does H1B visa stamping work in India?",
     answer:
-      "You complete the online DS-160, pay the visa fee, book an appointment at a U.S. consulate or embassy in India (such as Mumbai, Delhi, Hyderabad, Chennai, or Kolkata), and attend the interview with your approval notice, passport, and supporting documents. If approved, your passport is returned with the H-1B visa stamp. Availability, wait times, and any dropbox (interview waiver) eligibility vary by location and year.",
+      "You complete the online DS-160, pay the visa fee, book an appointment at a U.S. consulate or embassy in India (such as Mumbai, Delhi, Hyderabad, Chennai, or Kolkata), and attend the interview with your approval notice, passport, and supporting documents. If approved, your passport is returned with the H-1B visa stamp. Availability and wait times vary by location and season. H-1B and H-4 are not eligible for a dropbox (interview waiver) under the rules effective 1 October 2025, so plan for an in-person interview.",
   },
   {
     question: "What is 221(g) administrative processing?",
@@ -60,7 +60,7 @@ const faqs: FaqItem[] = [
   {
     question: "Am I eligible for dropbox for H1B stamping?",
     answer:
-      "Generally only if you're renewing a visa in the same class with no prior refusals — under 2025 Department of State guidance the window tightened to roughly 12 months after the prior visa's expiry, and first-time H-1B applicants need an interview. Rules change and consulates apply them individually, so confirm on the official visa appointment portal before booking.",
+      "No. H-1B is not on the Department of State's interview-waiver eligible list under the rule effective 1 October 2025, and neither is H-4. H-1B dropbox effectively ended on 18 February 2025 when the renewal window was cut from 48 months to 12, and waivers were eliminated for nearly all categories in September 2025. Every H-1B and H-4 applicant attends an in-person interview, including children. The categories that remain eligible are certain diplomatic and official classes, B-1/B-2 and Border Crossing Card renewals, and H-2A renewals.",
   },
   {
     question: "What documents are needed for H1B visa stamping in India?",
@@ -124,7 +124,7 @@ export default function Page() {
               <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
                 <li>• Skip the trip if you were approved as a <strong>change of status</strong> — you can work without a stamp and only need one to re-enter after travel.</li>
                 <li>• Budget the <strong>$205 DS-160 (MRV) fee</strong> per applicant and complete the DS-160 before booking any appointment, per the Department of State.</li>
-                <li>• Check <strong>dropbox (interview waiver)</strong> eligibility before assuming an interview — a prior visa in the same class within the qualifying window can save weeks.</li>
+                <li>• <strong>Do not plan around dropbox</strong> — H-1B and H-4 lost interview-waiver eligibility in 2025 and every applicant now interviews in person, including children.</li>
                 <li>• Carry the full document set — passport (6+ months validity), I-797, DS-160 confirmation, LCA, pay records — missing paperwork is the top 221(g) trigger.</li>
                 <li>• Expect consulate wait times to vary widely by city and season; confirm current slots at Mumbai, Delhi, Hyderabad, Chennai, or Kolkata before booking travel.</li>
               </ul>
@@ -168,38 +168,47 @@ export default function Page() {
               items={[
                 "Complete the online DS-160 nonimmigrant visa application.",
                 "Pay the visa application fee and create your applicant profile.",
-                "Book an interview appointment at a U.S. consulate/embassy in India (or check dropbox/interview-waiver eligibility).",
+                "Book an in-person interview appointment at a U.S. consulate/embassy in India — H-1B and H-4 are no longer dropbox-eligible.",
                 "Attend the interview with your I-797 approval, passport, DS-160 confirmation, photo, and supporting documents.",
                 "If approved, your passport is returned with the H-1B visa stamp; then you can travel and enter.",
               ]}
             />
             <p className="text-xs text-ink-500">
               Consulate locations for Indians commonly include Mumbai, New Delhi, Hyderabad, Chennai, and Kolkata.
-              Appointment availability, wait times, and interview-waiver (dropbox) rules vary by location and year —
-              always check current requirements before booking.
+              Appointment availability and wait times vary by location and season — always check current requirements
+              before booking. Interview-waiver rules are set nationally by the Department of State, not per consulate.
             </p>
 
             <SectionHeading kicker="Interview waiver" id="dropbox">
-              Who is eligible for the H1B dropbox (interview waiver)?
+              H1B dropbox (interview waiver) ended in 2025
             </SectionHeading>
             <p className="text-sm leading-relaxed text-ink-700">
-              The interview waiver — universally called <strong>dropbox</strong> — lets qualifying applicants submit
-              documents without an in-person interview. Eligibility rules are set by the Department of State and
-              applied per consulate, and they have changed repeatedly — as of 2025 guidance the window generally
-              tightened to renewals in the <strong>same visa class within 12 months</strong> of the prior visa&rsquo;s
-              expiry. Treat the table below as the checklist of what officers look at, and confirm the current rules
-              on the official appointment portal before assuming dropbox.
+              This is the section most pages on this topic still get wrong. The interview waiver — universally called{" "}
+              <strong>dropbox</strong> — is <strong>no longer available for H-1B or H-4</strong>. The Department of
+              State cut the renewal window from 48 months to 12 on 18 February 2025, eliminated waivers for nearly all
+              categories effective 2 September 2025, and the update effective{" "}
+              <strong>1 October 2025</strong> — the rule in force today — does not include H-1B or H-4 on its eligible
+              list. Verified 9 September 2026.
             </p>
             <CompareTable
-              columns={["Factor", "Typically helps dropbox", "Typically forces an interview"]}
+              columns={["Category", "Interview waiver status", "What it means for you"]}
               rows={[
-                ["Prior US visa", "Prior visa in the same class (H-1B renewing H-1B)", "First-ever H-1B stamp"],
-                ["Time since prior visa expired", "Within the current qualifying window (recently 12 months)", "Expired outside the window"],
-                ["Prior refusals / 221(g)", "None", "Any prior refusal usually requires an interview"],
-                ["Biometrics on file", "Ten-prints previously captured", "No prior fingerprints"],
-                ["Age", "Under 14 or over 79 (separate waiver track)", "—"],
+                ["H-1B", "Not eligible", "In-person interview for every applicant, including renewals."],
+                ["H-4 (spouse and children)", "Not eligible", "Dependants interview too — the under-14 and over-79 automatic waivers were removed in September 2025."],
+                ["B-1 / B-2 (e.g. parents)", "Eligible on renewal", "Within 12 months of the prior visa's expiry, issued for full validity, applicant 18+ at issuance."],
+                ["H-2A", "Eligible on renewal", "Restored on 1 October 2025 under the same 12-month conditions."],
+                ["A, G, NATO, C-3, TECRO E-1, diplomatic", "Eligible", "C-3 excludes attendants, servants and personal employees of accredited officials."],
               ]}
             />
+            <p className="text-sm leading-relaxed text-ink-700">
+              The complete eligible list, the four conditions, the dated policy chronology and an eligibility checker
+              are on{" "}
+              <Link href="/visa-interview-waiver" className="text-brand-600 underline">
+                visa interview waiver
+              </Link>
+              . Note also that from 15 December 2025 H-1B and H-4 applicants are instructed to set their social media
+              profiles to public for online presence review.
+            </p>
 
             <SectionHeading kicker="Checklist" id="documents">
               H1B stamping documents checklist

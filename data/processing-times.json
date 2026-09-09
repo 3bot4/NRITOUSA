@@ -78,11 +78,11 @@
       ]
     },
     {
-      "title": "US visa stamping in India — appointment wait (H-1B/H-4 interview)",
+      "title": "US visa stamping in India — appointment wait (H-1B/H-4 in-person interview; dropbox ended for these classes on 1 Oct 2025)",
       "items": [
         {
           "item": "Mumbai consulate",
-          "typical": "1–3 months (interview); days–weeks for dropbox (interview waiver)",
+          "typical": "1–3 months (in-person interview)",
           "premium": null,
           "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
           "sourceLabel": "US Dept of State global visa wait times",
@@ -91,7 +91,7 @@
         },
         {
           "item": "New Delhi embassy",
-          "typical": "1–3 months (interview); days–weeks for dropbox",
+          "typical": "1–3 months (in-person interview)",
           "premium": null,
           "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
           "sourceLabel": "US Dept of State global visa wait times",
@@ -100,7 +100,7 @@
         },
         {
           "item": "Hyderabad consulate",
-          "typical": "1–4 months (interview); days–weeks for dropbox",
+          "typical": "1–4 months (in-person interview)",
           "premium": null,
           "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
           "sourceLabel": "US Dept of State global visa wait times",
@@ -109,7 +109,7 @@
         },
         {
           "item": "Chennai consulate",
-          "typical": "1–4 months (interview); days–weeks for dropbox",
+          "typical": "1–4 months (in-person interview)",
           "premium": null,
           "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
           "sourceLabel": "US Dept of State global visa wait times",
@@ -118,7 +118,7 @@
         },
         {
           "item": "Kolkata consulate",
-          "typical": "1–3 months (interview); days–weeks for dropbox",
+          "typical": "1–3 months (in-person interview)",
           "premium": null,
           "source": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html",
           "sourceLabel": "US Dept of State global visa wait times",
