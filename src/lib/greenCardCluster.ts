@@ -535,7 +535,7 @@ If your spouse is a dependent beneficiary on the same I-485 filing (i.e., they f
 Traveling on Advance Parole can be treated as abandonment of your H1B status in some cases — you re-enter on the I-485 parole rather than on H1B admission. This can affect your H1B protections. Discuss the implications with your attorney before traveling on AP if you want to maintain H1B status.
 
 ### How long does the combo card take to arrive?
-Processing times for EAD/AP vary — check egov.uscis.gov/processing-times. Filing together with I-485 is the most efficient approach. See also: [USCIS processing times guide](/uscis/processing-times)`,
+Processing times for EAD/AP vary — check egov.uscis.gov/processing-times. Filing together with I-485 is the most efficient approach. See also: [USCIS processing times guide](/tools/processing-times)`,
   },
 
   /* ─────────────────────── EB-2 vs EB-3 INDIA ───────────────────────────── */

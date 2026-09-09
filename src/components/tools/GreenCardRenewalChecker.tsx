@@ -339,7 +339,7 @@ export default function GreenCardRenewalChecker() {
           </div>
 
           <div className="grid gap-2 sm:grid-cols-2">
-            <Link href="/renew-green-card-online" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-emerald-400 hover:shadow-sm">→ Renew green card online</Link>
+            <Link href="/green-card-renewal#renew-online" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-emerald-400 hover:shadow-sm">→ Renew green card online</Link>
             <Link href="/i90-vs-i751" className="rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-emerald-400 hover:shadow-sm">→ I-90 vs I-751: which form?</Link>
           </div>
 

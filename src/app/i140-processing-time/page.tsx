@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
@@ -22,7 +23,7 @@ import {
   I140_UPDATED,
   I140_UPDATED_HUMAN,
 } from "@/lib/i140Cluster";
-import { I140_DATA_NOTE, i140SnapshotRows, i140SnapshotSources, I140_ESTIMATE_VERIFIED, I140_ESTIMATE_DISCLAIMER } from "@/data/i140ProcessingData";
+import { I140_DATA_NOTE, i140ProcessingData, i140SnapshotRows, i140SnapshotSources, I140_ESTIMATE_VERIFIED, I140_ESTIMATE_DISCLAIMER } from "@/data/i140ProcessingData";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/i140-processing-time";
@@ -31,15 +32,25 @@ const DESC =
   "Estimate your I-140 decision window — standard vs premium processing (15 business days), the fee, and what happens after approval.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "I-140 Processing Time 2026",
+  title: `I-140 Processing Time 2026: ~${i140ProcessingData.standardMedianMonths} Months Regular, ${i140ProcessingData.premiumBusinessDays} Days Premium`,
   description: DESC,
   path: PATH,
 });
 
+/**
+ * Fee coverage is owned by /uscis/forms/i-140 (the $715 filing fee + $600
+ * Asylum Program Fee block). This page owns TIMING — including premium
+ * processing timing — so the filing-fee row is dropped from the shared
+ * snapshot here and replaced by a one-line pointer below the table.
+ */
+const timingSnapshotRows = i140SnapshotRows.filter(
+  (r) => r.label !== "Filing fee",
+);
+
 const faq: FaqItem[] = [
   { question: "How long does I-140 take?", answer: "With premium processing, USCIS acts on most I-140 petitions within about 15 business days (about 45 business days for EB-1C and EB-2 NIW). Without premium processing, standard times commonly run several months and vary by service center — check the current USCIS I-140 processing times." },
   { question: "What is I-140 premium processing?", answer: "Premium processing (Form I-907) is a paid service that guarantees USCIS will act on your petition within a set number of business days. 'Act' means approve, deny, or issue an RFE — not necessarily approve. It speeds USCIS action, not Visa Bulletin movement." },
-  { question: "How much does I-140 premium processing cost?", answer: "The current USCIS premium processing fee for I-140 is shown on this page from our maintained fee data; always verify the exact amount on the official USCIS Form I-907 page before filing, as fees change." },
+  { question: "How much does I-140 premium processing cost?", answer: "Fees are covered on our Form I-140 page (/uscis/forms/i-140) — always verify the current amount on the official USCIS Form I-907 page before filing, as fees change." },
   { question: "Can every I-140 use premium processing?", answer: "Premium processing is available for most EB-1A, EB-1C, EB-2, EB-2 NIW, and EB-3 I-140 petitions. Eligibility and timelines can change, so confirm current availability on the USCIS I-907 page." },
   { question: "Does premium processing improve my chances of approval?", answer: "No. Premium processing only speeds up how fast USCIS acts. It does not increase approval odds or move your priority date. A weak case will be decided faster, not more favorably." },
   { question: "What happens if I get an RFE?", answer: "If USCIS issues a Request for Evidence, the premium processing clock pauses until you respond. Work with your attorney to respond fully and on time; the clock restarts when USCIS receives your response." },
@@ -90,14 +101,22 @@ export default function Page() {
             <FastAnswerSnapshot
               title="I-140 processing time & fees"
               accent="brand"
-              rows={i140SnapshotRows}
-              badges={["Premium 15 business days", "Fee $715 + $2,965 premium"]}
+              rows={timingSnapshotRows}
+              badges={[`Premium ${i140ProcessingData.premiumBusinessDays} business days`, `Regular ~${i140ProcessingData.standardMedianMonths} months median`]}
               lastVerified={I140_ESTIMATE_VERIFIED}
               sources={i140SnapshotSources}
               disclaimer={I140_ESTIMATE_DISCLAIMER}
               ctaText="Estimate my I-140 timeline"
               ctaHref="#i140-tool"
             />
+            <p className="mx-auto mt-4 max-w-3xl text-xs leading-relaxed text-ink-500">
+              <strong className="font-semibold text-ink-700">Fees:</strong> the I-140 filing fee, the
+              Asylum Program Fee and the Form I-907 premium fee are covered in full on{" "}
+              <Link href="/uscis/forms/i-140" className="font-medium text-indigo-600 underline">
+                Form I-140 explained
+              </Link>
+              .
+            </p>
           </Container>
         </section>
 

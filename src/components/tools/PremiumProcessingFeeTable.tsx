@@ -5,8 +5,8 @@ import { premiumProcessing } from "@/lib/premiumProcessing";
  * Full premium processing fee table. Server component — reads from the central
  * premiumProcessing data object in lib/premiumProcessing.ts.
  *
- * Use on: /uscis/processing-times, /tools/processing-times, /h1b,
- *          /h1b/premium-processing, /uscis/forms/i-907-premium-processing
+ * Use on: /tools/processing-times, /h1b, /h1b/premium-processing,
+ *          /uscis/forms/i-907-premium-processing
  */
 export default function PremiumProcessingFeeTable() {
   const { items, lastVerified, officialSourceName, officialSourceUrl, warning, effectiveDate } =

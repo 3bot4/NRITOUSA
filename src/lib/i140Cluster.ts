@@ -24,6 +24,7 @@ export const i140ClusterLinks: ClusterLink[] = [
 ];
 
 export const i140RelatedLinks: ClusterLink[] = [
+  { href: "/uscis/forms/i-140", label: "Form I-140 Explained", desc: "What the petition is, and the filing + Asylum Program fees" },
   { href: "/perm-processing-time-calculator", label: "PERM Processing Time Calculator", desc: "The step before I-140" },
   { href: "/perm-timeline", label: "PERM Timeline", desc: "Full green card process after H-1B" },
   { href: "/eb2-eb3-priority-date-india", label: "EB2/EB3 India Priority Date", desc: "When you can file I-485" },

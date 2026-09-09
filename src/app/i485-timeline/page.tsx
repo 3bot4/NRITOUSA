@@ -5,13 +5,6 @@ import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
-import EstimatedTimelineTable from "@/components/EstimatedTimelineTable";
-import {
-  i485StageEstimateRows,
-  i485EstimateSourceLinks,
-  I485_ESTIMATE_VERIFIED,
-  I485_ESTIMATE_DISCLAIMER,
-} from "@/data/i485ProcessingData";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -50,9 +43,9 @@ const STEPS = [
 ];
 
 const faq: FaqItem[] = [
-  { question: "What is the full I-485 timeline?", answer: "File (when your priority date is current) → receipt notices → biometrics → EAD/AP issued → possible RFE → possible interview → approval and green card. Timing varies by field office and whether an interview is required." },
-  { question: "How long after filing do I get EAD and Advance Parole?", answer: "When filed concurrently with I-485, EAD (I-765) and Advance Parole (I-131) commonly arrive within several months — usually well before the green card itself, so you can work and travel while I-485 is pending." },
-  { question: "When do I get biometrics?", answer: "USCIS usually schedules biometrics within a few weeks to a couple of months after filing. You attend an Application Support Center for fingerprints and a photo." },
+  { question: "What is the full I-485 timeline?", answer: "In order: file (when your priority date is current) → receipt notices → biometrics → EAD/AP issued → possible RFE → possible interview → approval and green card. For how long each stage takes, see our I-485 processing time page." },
+  { question: "Where do EAD and Advance Parole fall in the sequence?", answer: "When filed concurrently with I-485, EAD (I-765) and Advance Parole (I-131) are decided well before the I-485 itself, so you can work and travel while the green card application is still pending. Current estimates are on our I-485 processing time page." },
+  { question: "When does biometrics happen in the sequence?", answer: "Biometrics comes after your receipt notices and before case review — you attend an Application Support Center for fingerprints and a photo. See our I-485 processing time page for current scheduling estimates." },
   { question: "Will I have an interview for I-485?", answer: "Many employment-based I-485 cases are waived from interview, but USCIS retains discretion to require one. If scheduled, plan for extra time and prepare with your attorney." },
   { question: "What can delay my I-485?", answer: "Common causes: an RFE, a required interview, visa number retrogression, background-check holds, or field-office backlogs. Filing a complete, well-documented package reduces avoidable delays." },
   { question: "Can I travel while I-485 is pending?", answer: "Use Advance Parole, or travel on a valid H-1B/L-1 visa (dual intent). Traveling without either, while relying on a pending I-485, can be treated as abandoning the application. Confirm with your attorney." },
@@ -94,27 +87,18 @@ export default function Page() {
           </Link>
         }
       >
-        {/* Fast Answer: I-485 stage estimate first */}
-        <section className="pt-6">
-          <Container>
-            <EstimatedTimelineTable
-              title="I-485 Processing Time Estimate by Stage"
-              intro="Planning ranges for adjustment of status after you can file. Times vary widely by field office, category, and visa availability — verify with USCIS. There is no premium processing for I-485."
-              rows={i485StageEstimateRows}
-              lastUpdated={I485_ESTIMATE_VERIFIED}
-              sourceLinks={i485EstimateSourceLinks}
-              disclaimer={I485_ESTIMATE_DISCLAIMER}
-              ctaText="Estimate my I-485 timeline"
-              ctaHref="/i485-processing-time"
-            />
-          </Container>
-        </section>
-
-        <section className="pb-10 pt-10 sm:pb-12">
+        <section className="pb-10 pt-8 sm:pb-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <p className="text-sm leading-relaxed text-ink-600">
-                Once your priority date is current, I-485 is the final stage — adjusting to permanent resident status from inside the U.S. Here is every step, in order.
+              <h2 className="text-xl font-bold text-ink-900">The Seven Stages of an I-485, In Order</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                Once your priority date is current, I-485 is the final stage — adjusting to permanent
+                resident status from inside the U.S. Here is every step, in order. This page is about
+                the <strong>sequence</strong>; for how long each stage takes, see{" "}
+                <Link href="/i485-processing-time" className="font-semibold text-emerald-700 underline">
+                  I-485 processing time
+                </Link>
+                .
               </p>
               <ol className="mt-6 space-y-3">
                 {STEPS.map((s, i) => (
@@ -128,7 +112,19 @@ export default function Page() {
                 ))}
               </ol>
 
-              <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
+              <div className="mt-6 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-5">
+                <h2 className="text-base font-bold text-ink-900">Before stage 1: gather your documents</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  Everything in the sequence above assumes a complete filing package. Work through the{" "}
+                  <Link href="/i485-documents-checklist" className="font-semibold text-emerald-700 underline">
+                    I-485 documents checklist
+                  </Link>{" "}
+                  first — a missing medical exam (I-693) or affidavit of support is the most common
+                  avoidable cause of an RFE at stage 5.
+                </p>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
                 <h2 className="text-base font-bold text-ink-900">Before you can even start</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-600">
                   This timeline begins only when your priority date is current. For India EB-2/EB-3, that is the longest wait — track it with the{" "}

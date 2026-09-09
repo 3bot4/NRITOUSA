@@ -237,7 +237,7 @@ function assess(
       readNext: [
         { href: "/green-card/i-140-approved-what-next", label: "I-140 approved — what to expect" },
         { href: "/green-card/priority-date", label: "Priority date explained" },
-        { href: "/uscis/processing-times", label: "USCIS processing times" },
+        { href: "/tools/processing-times", label: "USCIS processing times" },
       ],
       visaBulletinMatters: false,
       priorityDateCheckerHelps: false,
@@ -744,7 +744,7 @@ export default function GreenCardStageFinder() {
               <span className="text-base">🔗</span>
               Official visa bulletin
             </a>
-            <Link href="/uscis/processing-times"
+            <Link href="/tools/processing-times"
               className="flex items-center gap-2 rounded-xl border border-ink-900/10 bg-white p-3.5 text-sm font-semibold text-ink-900 transition hover:border-green-500 hover:shadow-sm">
               <span className="text-base">⏱️</span>
               USCIS processing times

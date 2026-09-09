@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-07",
+  "updated": "2026-09-09",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -223,6 +223,17 @@
       "status": "open",
       "opened": "2026-09-07",
       "next": "Add ReviewedByline + AuthorBioBox to ToolHub, CalculatorHub, GiftsClusterPage and the hub index routes — same unwrap already done for the uscis/h1b/green-card cluster routes."
+    },
+    {
+      "id": "revisit-i485-timeline-vs-i485-processing",
+      "title": "Revisit /i485-timeline vs /i485-processing-time 90 days after the Sep 2026 cannibalisation split (target: Dec 9, 2026)",
+      "area": "seo",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-09",
+      "nextStep": "Pull GSC impressions for both URLs. Redirect /i485-timeline into /i485-processing-time ONLY if it is still under 50 Google impressions AND its Bing impressions (192 at the split, vs 61 for the processing page) have not grown — Bing currently favours the timeline 3:1 and holds the pair's only click.",
+      "detail": "The Sep 2026 consolidation pass deliberately did NOT redirect this pair: Google favours /i485-processing-time 852 impressions to 15, but Bing favours /i485-timeline 192 to 61 and holds the only click between them. They were de-duplicated instead — the timeline page now owns the ordered sequence (durations stripped) and the processing page owns durations (step list stripped).",
+      "evidence": "GSC + Bing Webmaster Tools, trailing 3 months as of Sep 2026."
     },
     {
       "id": "market-json-has-no-whole-file",

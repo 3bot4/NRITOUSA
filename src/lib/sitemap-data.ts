@@ -247,7 +247,6 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/forms", 0.9, "monthly", immDate),
   e("/uscis/life-planning", 0.9, "monthly", immDate),
   e("/uscis/receipt-number", 0.9, "weekly", immDate),
-  e("/uscis/processing-times", 0.9, "weekly", immDate),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
@@ -298,11 +297,9 @@ export const immigrationEntries: SitemapEntry[] = [
   // Green Card Renewal / Form I-90 cluster.
   e("/green-card-renewal", 0.9, "monthly"),
   e("/green-card-renewal-processing-time", 0.85, "monthly"),
-  e("/renew-green-card-online", 0.85, "monthly"),
   e("/green-card-renewal-fee", 0.85, "monthly"),
   e("/replace-green-card", 0.85, "monthly"),
   e("/i90-vs-i751", 0.8, "monthly"),
-  e("/expired-green-card", 0.8, "monthly"),
   // Trump Account (immigrant-family) cluster.
   e("/trump-account-h1b-immigrant-families", 0.9, "monthly"),
   e("/can-h1b-parents-open-trump-account-for-child", 0.85, "monthly"),

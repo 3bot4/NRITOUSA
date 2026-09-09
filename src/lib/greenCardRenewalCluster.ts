@@ -2,11 +2,13 @@
  * Shared helpers for the Green Card Renewal cluster:
  *   /green-card-renewal                (main hub + checklist tool)
  *   /green-card-renewal-processing-time
- *   /renew-green-card-online
  *   /green-card-renewal-fee
  *   /replace-green-card
  *   /i90-vs-i751
- *   /expired-green-card
+ *
+ * /renew-green-card-online and /expired-green-card were merged into the hub in
+ * Sep 2026 (both 301 there) — their content now lives in the hub's
+ * #renew-online and #expired-green-card sections.
  *
  * Mirrors permCluster.ts / i485Cluster.ts / eadCluster.ts.
  */
@@ -24,11 +26,9 @@ export interface ClusterLink {
 export const gcRenewalClusterLinks: ClusterLink[] = [
   { href: "/green-card-renewal", label: "Green Card Renewal Guide", desc: "Form I-90 timeline, fee, documents, and checklist" },
   { href: "/green-card-renewal-processing-time", label: "Green Card Renewal Processing Time", desc: "How long Form I-90 takes, stage by stage" },
-  { href: "/renew-green-card-online", label: "Renew Green Card Online", desc: "Form I-90 online filing, step by step" },
   { href: "/green-card-renewal-fee", label: "Green Card Renewal Fee", desc: "Form I-90 cost and fee-waiver basics" },
   { href: "/replace-green-card", label: "Replace Green Card", desc: "Lost, stolen, damaged, or incorrect card" },
   { href: "/i90-vs-i751", label: "I-90 vs I-751", desc: "Which green card form you actually need" },
-  { href: "/expired-green-card", label: "Expired Green Card Renewal", desc: "Work, travel, and DMV before you renew" },
 ];
 
 /** Related tools elsewhere on the site. */

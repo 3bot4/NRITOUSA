@@ -608,7 +608,7 @@ export default function UscisStatusHubPage() {
                   </Link>
                   , which encodes the service center handling your case — and service centers move at very
                   different speeds, so compare against the posted{" "}
-                  <Link href="/uscis/processing-times" className="font-semibold text-brand-600 underline">
+                  <Link href="/tools/processing-times" className="font-semibold text-brand-600 underline">
                     USCIS processing times
                   </Link>{" "}
                   before assuming anything is stuck. The second is your{" "}

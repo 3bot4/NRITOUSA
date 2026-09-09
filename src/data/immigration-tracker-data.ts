@@ -253,7 +253,7 @@ export const processingTimes = {
       officialSourceUrl: _i485?.source ?? processingTimesRaw.source,
       officialSourceName: _i485?.sourceLabel ?? processingTimesRaw.sourceLabel,
       note: "Varies by service center and case type. Premium processing is not available for I-485.",
-      learnMoreHref: "/uscis/processing-times",
+      learnMoreHref: "/tools/processing-times",
     },
     {
       form: "I-140",

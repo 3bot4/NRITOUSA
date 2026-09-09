@@ -107,7 +107,7 @@ export default function UscisProcessingDelayCheckerPage() {
         headerExtra={
           <div className="flex flex-wrap gap-2">
             <Link
-              href="/uscis/processing-times"
+              href="/tools/processing-times"
               className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100"
             >
               Full processing times guide →
@@ -151,7 +151,7 @@ export default function UscisProcessingDelayCheckerPage() {
             <h2 className="text-base font-bold text-ink-900 mb-4">Related USCIS guides</h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                { href: "/uscis/processing-times", label: "Processing Times Explained", desc: "Full guide: H1B, I-140, I-485, EAD, premium processing" },
+                { href: "/tools/processing-times", label: "Processing Times Explained", desc: "Full guide: H1B, I-140, I-485, EAD, premium processing" },
                 { href: "/tools/uscis-case-status-meaning", label: "Case Status Meaning Tool", desc: "What does your current USCIS status mean?" },
                 { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "Every status message explained for Indian applicants" },
                 { href: "/uscis/request-for-evidence-rfe", label: "RFE Guide", desc: "RFE received? What to do and how long you have" },

@@ -37,7 +37,7 @@ const quickCards = [
   {
     title: "USCIS Processing Times Explained",
     desc: "How to read the USCIS processing times tool and what your form's timeline really means.",
-    href: "/uscis/processing-times",
+    href: "/tools/processing-times",
     icon: "⏱",
   },
   {
@@ -534,7 +534,7 @@ export default function UscisHubPage() {
                 <div className="grid gap-2 sm:grid-cols-2 text-sm">
                   {[
                     { label: "USCIS Case Status Explained", href: "/uscis/case-status" },
-                    { label: "USCIS Processing Times Guide", href: "/uscis/processing-times" },
+                    { label: "USCIS Processing Times Guide", href: "/tools/processing-times" },
                     { label: "H-1B Guide for Indians", href: "/h1b" },
                     { label: "Green Card Process for Indians", href: "/green-card" },
                     { label: "Visa Bulletin Explained", href: "/visa-bulletin" },

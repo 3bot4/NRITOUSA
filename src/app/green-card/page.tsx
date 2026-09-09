@@ -500,7 +500,7 @@ export default function GreenCardPage() {
               { href: "/h1b", label: "H1B Guide", desc: "H1B transfer, extension, RFE, layoff grace period" },
               { href: "/tools/green-card-stage-finder", label: "Green Card Stage Finder", desc: "Find your stage and what to do next" },
               { href: "/nvc-case-status", label: "What happens after USCIS approval", desc: "NVC case status, timeline & next steps" },
-              { href: "/uscis/processing-times", label: "USCIS Processing Times", desc: "Current I-140, I-485, EAD processing ranges" },
+              { href: "/tools/processing-times", label: "USCIS Processing Times", desc: "Current I-140, I-485, EAD processing ranges" },
               { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What your USCIS case status message means" },
               { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "What a lawyer typically charges for employment green card cases, and when to hire one" },
             ].map((l) => (

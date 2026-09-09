@@ -663,7 +663,7 @@ export default function ReceiptNumberPage() {
               </Link>
               . The prefix also hints at which service center took the case in, which is worth comparing
               against the posted{" "}
-              <Link href="/uscis/processing-times" className="font-semibold text-brand-600 underline">
+              <Link href="/tools/processing-times" className="font-semibold text-brand-600 underline">
                 USCIS processing times
               </Link>{" "}
               before concluding that your case is delayed.

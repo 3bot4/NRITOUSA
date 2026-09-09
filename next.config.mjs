@@ -271,6 +271,49 @@ const nextConfig = {
         destination: "/nri-wealth-checkup",
         permanent: true,
       },
+      // ── Sep 2026 cannibalisation pass (GSC + Bing). Three merges, all of
+      // them between pages that had ZERO Google clicks in the trailing 90
+      // days, so no ranking traffic was at risk on either side of the move.
+      //
+      // /uscis/processing-times and /tools/processing-times were the same
+      // query set. Google had already picked the tool page — the tool page
+      // carried 190 impressions and 2 Bing clicks while the guide did not
+      // appear in the Google export at all (1 Bing impression). So the guide
+      // is the page that goes, not the tool, and its unique material — the
+      // Processing Delay Checker, the receipt-date/80th-percentile mechanic,
+      // the "outside normal processing time" inquiry procedure, the
+      // per-form/service-centre guidance and 8 non-duplicate FAQs — moved to
+      // the tool page first (see UscisProcessingTimesGuide.tsx).
+      {
+        source: "/uscis/processing-times",
+        destination: "/tools/processing-times",
+        permanent: true,
+      },
+      // /renew-green-card-online had 20 Google impressions and 4 on Bing with
+      // zero clicks anywhere, against a hub with 4,786 Bing impressions and 34
+      // Bing clicks. Same head intent ("renew green card"), so it was pure
+      // cannibalisation. Its online-filing steps, the counter-case for paper
+      // filing, the readiness-check tool (kept as its own module — merging it
+      // into the hub's checker would have lost the account, payment and
+      // fee-waiver branches), the upload list, the online-specific mistakes,
+      // the post-filing sequence and 5 unique FAQs all moved to the hub.
+      {
+        source: "/renew-green-card-online",
+        destination: "/green-card-renewal",
+        permanent: true,
+      },
+      // /expired-green-card was the weakest page in the cluster: 6 Google
+      // impressions, 20 Bing, zero clicks on either engine, and it ran the
+      // hub's own renewal checker verbatim. Its genuinely unique blocks — I-9
+      // work proof, DMV/ID renewal, the 36-month receipt extension applied to
+      // an ALREADY-expired card, the I-551/ADIT temporary-proof procedure, the
+      // concerns table, the next-steps timeline and 3 unique FAQs — moved to
+      // the hub, which had no equivalent coverage of the expired-card case.
+      {
+        source: "/expired-green-card",
+        destination: "/green-card-renewal",
+        permanent: true,
+      },
     ];
   },
 };

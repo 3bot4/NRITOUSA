@@ -258,9 +258,8 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         "Citizenship eligibility runs on the clock that started the day you became a permanent resident, so anything that disturbs that status disturbs the timeline — long trips abroad can break continuous residence, and an expired card complicates I-9 and travel even though your status continues. Renewing the green card and applying for citizenship are separate filings with separate fees, and many people do both when a card expires mid-process.",
       links: [
         { href: "/green-card-renewal", label: "Green card renewal (Form I-90)" },
-        { href: "/expired-green-card", label: "Travelling with an expired green card" },
         { href: "/uscis/case-status", label: "USCIS case status meaning" },
-        { href: "/uscis/processing-times", label: "USCIS processing times" },
+        { href: "/tools/processing-times", label: "USCIS processing times" },
       ],
     },
     faqs: [

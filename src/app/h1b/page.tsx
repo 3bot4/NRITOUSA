@@ -746,7 +746,7 @@ export default function H1bHubPage() {
               {[
                 { href: "/uscis", label: "USCIS Hub", desc: "Full USCIS overview for Indian applicants" },
                 { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What every status message means" },
-                { href: "/uscis/processing-times", label: "Processing Times Guide", desc: "H1B and other USCIS processing time estimates" },
+                { href: "/tools/processing-times", label: "Processing Times Guide", desc: "H1B and other USCIS processing time estimates" },
                 { href: "/tools/uscis-processing-delay-checker", label: "Processing Delay Checker", desc: "Is your H1B case delayed? Educational assessment" },
                 { href: "/tools/uscis-case-status-meaning", label: "Case Status Meaning Tool", desc: "What does your current USCIS status mean?" },
                 { href: "/tools/h1b-transfer-risk-checklist", label: "H1B Transfer Risk Checklist", desc: "Assess your transfer situation and documents" },

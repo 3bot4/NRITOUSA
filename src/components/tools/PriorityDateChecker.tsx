@@ -179,7 +179,7 @@ function assess(
       readNext: [
         { href: "/visa-bulletin/priority-date-current-what-next", label: "Priority date current — what to do next" },
         { href: "/green-card/i-485", label: "I-485 filing guide" },
-        { href: "/uscis/processing-times", label: "USCIS processing times" },
+        { href: "/tools/processing-times", label: "USCIS processing times" },
       ],
     };
   }

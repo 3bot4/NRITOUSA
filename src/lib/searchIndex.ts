@@ -394,15 +394,6 @@ const SUPPORTING: SearchItem[] = [
     keywords: "uscis forms i-129 i-140 i-485 i-765 i-131 i-130 i-539 i-907 ar-11 guide list",
   },
   {
-    title: "USCIS Processing Times",
-    description:
-      "How processing times work: receipt dates, service centers, premium processing, delays and case inquiries.",
-    href: "/uscis/processing-times",
-    type: "Guide",
-    priority: 0,
-    keywords: "uscis processing times receipt date service center premium processing outside normal case inquiry",
-  },
-  {
     title: "myUSCIS Account",
     description:
       "How myUSCIS works for Indian applicants: the online account number, access code, linking paper-filed cases and notices.",

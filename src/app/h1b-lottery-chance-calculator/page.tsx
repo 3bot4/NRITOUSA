@@ -108,7 +108,7 @@ const internalLinks: { href: string; label: string; desc: string }[] = [
   { href: "/prevailing-wage-calculator", label: "Prevailing Wage Calculator", desc: "Explore DOL wage levels by SOC & area" },
   { href: "/visa-bulletin", label: "Visa Bulletin Tracker", desc: "Where country of birth actually matters" },
   { href: "/green-card", label: "Green Card Process", desc: "The EB-2/EB-3 path after H-1B" },
-  { href: "/uscis/processing-times", label: "USCIS Processing Times", desc: "Current case processing estimates" },
+  { href: "/tools/processing-times", label: "USCIS Processing Times", desc: "Current case processing estimates" },
   { href: "/h1b-layoff", label: "H-1B Layoff Checklist", desc: "Grace period and options after a layoff" },
   { href: "/tools", label: "All Tools & Calculators", desc: "The full NRItoUSA tool hub" },
 ];

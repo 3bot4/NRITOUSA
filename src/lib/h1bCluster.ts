@@ -255,7 +255,7 @@ Your I-94 record continues under your current employer's petition until the tran
 Yes, if you are within the 60-day grace period and certain conditions apply. [Read: H1B transfer after layoff](/h1b/transfer-after-layoff)
 
 ### How long does an H1B transfer take?
-Regular processing: typically 3–6 months depending on service center. Premium processing (Form I-907): USCIS action within 15 business days. Check current times at [egov.uscis.gov/processing-times](https://egov.uscis.gov/processing-times). See also: [USCIS processing times guide](/uscis/processing-times)`,
+Regular processing: typically 3–6 months depending on service center. Premium processing (Form I-907): USCIS action within 15 business days. Check current times at [egov.uscis.gov/processing-times](https://egov.uscis.gov/processing-times). See also: [USCIS processing times guide](/tools/processing-times)`,
   },
 
   /* ────────────────────────── EXTENSION ─────────────────────────────────── */

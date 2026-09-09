@@ -147,7 +147,6 @@ const toolSections = [
     guides: [
       { href: "/uscis", label: "USCIS Hub" },
       { href: "/uscis/case-status", label: "USCIS Case Status Explained" },
-      { href: "/uscis/processing-times", label: "USCIS Processing Times Guide" },
     ],
   },
   {
@@ -431,7 +430,7 @@ export default function VisaGreenCardToolsPage() {
               { href: "/green-card", label: "Green Card Process" },
               { href: "/visa-bulletin", label: "Visa Bulletin Guide" },
               { href: "/uscis/case-status", label: "Case Status Explained" },
-              { href: "/uscis/processing-times", label: "Processing Times Guide" },
+              { href: "/tools/processing-times", label: "Processing Times Guide" },
               { href: "/visa-bulletin/eb2-india", label: "EB-2 India" },
               { href: "/visa-bulletin/eb3-india", label: "EB-3 India" },
               { href: "/visa-bulletin/retrogression", label: "Retrogression" },

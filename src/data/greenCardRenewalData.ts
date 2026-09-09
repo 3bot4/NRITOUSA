@@ -2,11 +2,15 @@
  * Shared, EDITABLE config + content for the Green Card Renewal cluster:
  *   /green-card-renewal              (main hub + checklist tool)
  *   /green-card-renewal-processing-time
- *   /renew-green-card-online
  *   /green-card-renewal-fee
  *   /replace-green-card
  *   /i90-vs-i751
- *   /expired-green-card
+ *
+ * /renew-green-card-online and /expired-green-card were merged into the hub in
+ * Sep 2026 (both 301 there). `renewOnlineSteps` and `expiredGreenCardConcerns`
+ * are now rendered by the hub; `renewOnlineFaqs` and `expiredCardFaqs` are kept
+ * as the record of what those pages asked — the entries with no hub equivalent
+ * were copied into `greenCardRenewalFaqs` below.
  *
  * IMPORTANT: Do NOT hardcode current USCIS fees or processing times as if they
  * were permanent. They change. Where a real, verified number is not stored in
@@ -431,10 +435,24 @@ export const greenCardRenewalFaqs: FaqEntry[] = [
   { question: "What if my green card is lost or stolen?", answer: "You can generally file Form I-90 to replace a lost or stolen permanent resident card. If you need urgent proof for travel, work, or ID, check whether a temporary I-551/ADIT stamp is available." },
   { question: "What if my green card has incorrect information?", answer: "You can use Form I-90 to correct certain card errors. Whether a fee applies may depend on whether USCIS or the applicant caused the error — check the Form I-90 instructions." },
   { question: "Do I need biometrics for green card renewal?", answer: "USCIS may schedule a biometrics appointment for fingerprints, photo, and signature, or it may reuse previous biometrics. Watch for a biometrics appointment notice or a reuse notice in your USCIS account." },
-  { question: "What is the difference between Form I-90 and Form I-751?", answer: "Form I-90 renews or replaces a 10-year green card. Form I-751 removes conditions on a 2-year marriage-based green card. Filing the wrong form can cause serious delays — confirm which card you have." },
-  { question: "Can a conditional green card be renewed with Form I-90?", answer: "Usually not. Conditional permanent residents with a 2-year card generally remove conditions using Form I-751 or I-829, not Form I-90. This is a common and high-risk mistake." },
+  { question: "What is the difference between Form I-90 and Form I-751?", answer: "Form I-90 renews or replaces a 10-year card; Form I-751 removes conditions on a 2-year marriage-based card — see our I-90 vs I-751 guide at /i90-vs-i751 for the full comparison." },
+  { question: "Can a conditional green card be renewed with Form I-90?", answer: "Usually not — 2-year conditional residents file Form I-751 or I-829 instead, and our I-90 vs I-751 guide at /i90-vs-i751 walks through which one applies." },
   { question: "Does filing Form I-90 extend my green card?", answer: "For eligible renewal applicants, the USCIS receipt notice may extend the validity of an expiring or expired green card (USCIS has announced up to a 36-month extension). Keep the receipt notice with your card as instructed." },
   { question: "Is this green card renewal tool legal advice?", answer: "No. This tool is for educational planning only and is not legal advice. USCIS rules, fees, processing times, and eligibility can change. Always verify with official USCIS sources or consult a qualified immigration attorney." },
+  /* ── Moved verbatim from /renew-green-card-online (301 → /green-card-renewal).
+        The other two FAQs on that page ("Can I renew my green card online?" and
+        "What happens after online filing?") already had hub equivalents. ───── */
+  { question: "Do I need a USCIS online account?", answer: "To file Form I-90 online you create a free myUSCIS account, which also lets you upload evidence and track your case. You can file by mail without one." },
+  { question: "What documents do I upload?", answer: "It depends on your reason for filing. A simple renewal may need little, while a name change or USCIS error correction requires supporting evidence. Check the Form I-90 instructions." },
+  { question: "Can I pay the green card renewal fee online?", answer: "Yes, online filing lets you pay the USCIS fee electronically. Confirm the current fee on the USCIS Fee Schedule before paying." },
+  { question: "Can I request a fee waiver online?", answer: "Some applicants who cannot pay may request a fee waiver (Form I-912). Eligibility is limited — review the official criteria and never assume you qualify." },
+  { question: "Can I file I-90 by mail instead?", answer: "Yes. If you prefer paper filing, or your situation calls for it, you can mail Form I-90 to the address in the official instructions. Fees may differ from online filing." },
+  /* ── Moved verbatim from /expired-green-card (301 → /green-card-renewal).
+        Its other three FAQs duplicated hub entries on working, travelling and
+        conditional cards. ─────────────────────────────────────────────────── */
+  { question: "Does an expired green card mean I lost my status?", answer: "No. An expired card does not by itself end lawful permanent resident status, but it can cause problems for work, travel, and ID until you renew it with Form I-90." },
+  { question: "Does the receipt notice extend my expired card?", answer: "For eligible I-90 renewals, USCIS may extend green card validity (up to 36 months). Keep the receipt notice with your expired card as instructed." },
+  { question: "What should I do first if my green card expired?", answer: "Confirm you have a 10-year card, then file Form I-90 to renew it. If you have a 2-year conditional card, review I-751 or I-829 instead." },
 ];
 
 export const processingTimeFaqs: FaqEntry[] = [

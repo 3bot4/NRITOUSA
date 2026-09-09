@@ -322,6 +322,10 @@ right_items:
 5. I-485 adjudication → green card
 :::
 
+## Processing time
+
+Regular I-140 processing runs several months and varies widely by service center and category, while Form I-907 premium processing buys USCIS action in 15 business days (about 45 for EB-1C and EB-2 NIW). Full standard-vs-premium estimates, an interactive calculator and the RFE-clock rules live on [I-140 processing time](/i140-processing-time), with the premium service covered on [I-140 premium processing](/i140-premium-processing).
+
 ## Common mistakes
 
 :::warn
@@ -412,7 +416,7 @@ Leaving the US while I-485 is pending — without an approved Advance Parole (Fo
 
 ## Processing time
 
-I-485 for employment-based cases (EB-2/EB-3 India) has historically taken 12–36+ months after filing. Family-based cases vary. Use the USCIS online processing times tool for current estimates by field office or service center. USCIS publishes I-485 inventory data that gives a rough sense of the queue size.
+I-485 for employment-based cases (EB-2/EB-3 India) has historically taken 12–36+ months after filing, and family-based cases vary widely by field office and category. Stage-by-stage estimates and a personal calculator are on [I-485 processing time](/i485-processing-time), and the filing-to-green-card sequence is on the [I-485 timeline](/i485-timeline).
 
 ## FAQ
 

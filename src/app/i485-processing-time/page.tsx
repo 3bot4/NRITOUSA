@@ -128,17 +128,6 @@ const WANT: { q: string; a: string }[] = [
   },
 ];
 
-const STAGES: { title: string; body: string }[] = [
-  { title: "I-485 filed", body: "You (or your employer) submit the adjustment-of-status application to USCIS." },
-  { title: "Receipt notice issued", body: "USCIS mails a receipt (I-797C) confirming the case and your receipt number." },
-  { title: "Biometrics appointment", body: "USCIS collects your fingerprints and photo for background checks." },
-  { title: "Case review", body: "An officer reviews eligibility, evidence, and the results of security checks." },
-  { title: "RFE, if needed", body: "If evidence is missing, USCIS issues a Request for Evidence with a deadline." },
-  { title: "Interview, if required", body: "Some field offices require an in-person interview to verify your case." },
-  { title: "Final review", body: "USCIS completes background checks and confirms a visa number is available." },
-  { title: "Approval / green card production", body: "Once approved, your card is produced and mailed to you." },
-];
-
 const faq: FaqItem[] = [
   { question: "What is I-485 processing time?", answer: "I-485 processing time is how long USCIS takes to adjudicate your Application to Register Permanent Residence or Adjust Status after it is filed. It varies widely by field office, whether an interview is required, and visa-number availability. Check the current USCIS I-485 processing times for your office." },
   { question: "How long does I-485 take in 2026?", answer: "After filing, I-485 commonly takes several months to about two years, and longer if a field-office interview is required. These are general planning ranges — exact times vary by office and change, so verify on the USCIS processing-times page for Form I-485." },
@@ -306,22 +295,24 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* Typical timeline stages */}
+        {/* Sequence lives on /i485-timeline; this page owns durations. */}
         <section className="py-10 sm:py-12">
           <Container>
-            <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Typical I-485 timeline stages</h2>
-              <ol className="mt-5 space-y-3">
-                {STAGES.map((s, i) => (
-                  <li key={s.title} className="flex gap-3 rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card">
-                    <span aria-hidden className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">{i + 1}</span>
-                    <div>
-                      <p className="text-sm font-bold text-ink-900">{s.title}</p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-ink-600">{s.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+            <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-100 bg-emerald-50/40 p-5 shadow-card">
+              <h2 className="text-base font-bold text-ink-900">Looking for the order of the stages?</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                This page covers <strong>how long</strong> each part of adjustment of status takes. For
+                the ordered walk-through of what actually happens — filing, receipt notices, biometrics,
+                concurrent EAD/AP, RFEs, the interview and approval — see the{" "}
+                <Link href="/i485-timeline" className="font-semibold text-emerald-700 underline">
+                  I-485 timeline, step by step
+                </Link>
+                . Before you file, work through the{" "}
+                <Link href="/i485-documents-checklist" className="font-semibold text-emerald-700 underline">
+                  I-485 documents checklist
+                </Link>
+                .
+              </p>
             </div>
           </Container>
         </section>

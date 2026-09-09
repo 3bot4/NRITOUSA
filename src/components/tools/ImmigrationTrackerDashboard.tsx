@@ -868,7 +868,7 @@ export default function ImmigrationTrackerDashboard({
             { href: "/green-card", icon: "🟢", title: "Green Card Guide", desc: "Full guide to PERM, I-140, I-485, and the employment-based green card process." },
             { href: "/tools/green-card-stage-finder", icon: "🗺️", title: "Green Card Stage Finder", desc: "Find out exactly where you are in the green card process." },
             { href: "/uscis", icon: "🛂", title: "USCIS Hub", desc: "Case status decoder, receipt decoder, form finder, and more USCIS tools." },
-            { href: "/uscis/processing-times", icon: "⏱️", title: "Processing Times Guide", desc: "Understand USCIS processing times and what to do if your case is delayed." },
+            { href: "/tools/processing-times", icon: "⏱️", title: "Processing Times Guide", desc: "Understand USCIS processing times and what to do if your case is delayed." },
             { href: "/tools/uscis-processing-delay-checker", icon: "🔔", title: "Delay Checker", desc: "Is your USCIS case outside normal processing time? Check here." },
             { href: "/h1b", icon: "💼", title: "H1B Guide", desc: "H-1B transfer, extension, layoff, and lottery — complete guide for Indians." },
             { href: "/tools/h1b-transfer-risk-checklist", icon: "📋", title: "H1B Transfer Checklist", desc: "Planning an H-1B transfer or between jobs? Review your risks first." },
