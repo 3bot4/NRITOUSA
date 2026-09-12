@@ -114,7 +114,11 @@ const nextConfig = {
       {
         source: "/h1b/visa-stamping-after-selection",
         destination: "/h1b-visa-stamping-after-selection",
-        permanent: true,
+        // Explicit statusCode rather than the `permanent` flag: Next maps that
+        // flag to 308, which is a permanent redirect but not the 301 that SEO
+        // tooling and crawl reports expect on a retired URL. Both pass link
+        // equity; 301 is the one that reads unambiguously.
+        statusCode: 301,
       },
       // /uscis/notices never existed as a page — the /uscis hub shipped with
       // two cards linking to it before it was ever authored, so it has been

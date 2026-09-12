@@ -43,9 +43,12 @@ describe("the bad stamping slug redirects to the canonical URL", () => {
     const matches = nextConfig.split(`source: "${BAD}"`).length - 1;
     expect(matches, "expected exactly one redirect rule").toBe(1);
     const idx = nextConfig.indexOf(`source: "${BAD}"`);
-    const block = nextConfig.slice(idx, idx + 240);
+    const block = nextConfig.slice(idx, idx + 600);
     expect(block).toContain(`destination: "${CANONICAL}"`);
-    expect(block).toContain("permanent: true");
+    // 301 specifically: `permanent: true` would emit 308, which is permanent
+    // but not what a crawl report or SEO audit expects on a retired URL.
+    expect(block).toContain("statusCode: 301");
+    expect(block).not.toContain("permanent: true");
   });
 
   it("keeps only the canonical URL in the sitemap", () => {
