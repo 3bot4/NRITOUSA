@@ -7,24 +7,13 @@ import ResultCard from "@/components/tools/ResultCard";
 import {
   WAIVER_CLASSES,
   WAIVER_CLASS_ORDER,
+  WAIVER_COUNTRIES,
   WAIVER_EMPTY,
   checkInterviewWaiver,
   type WaiverClass,
   type WaiverInputs,
 } from "@/lib/interviewWaiver";
 import { IW_CURRENT_RULE } from "@/data/interviewWaiverData";
-
-const COUNTRIES = [
-  "India",
-  "United States",
-  "Canada",
-  "Mexico",
-  "United Kingdom",
-  "United Arab Emirates",
-  "Singapore",
-  "Australia",
-  "Other",
-];
 
 export default function InterviewWaiverChecker() {
   const [inp, setInp] = useState<WaiverInputs>(WAIVER_EMPTY);
@@ -155,10 +144,24 @@ export default function InterviewWaiverChecker() {
               </Field>
             </InputCard>
 
-            <InputCard eyebrow="Step 3" title="Refusal history">
+            <InputCard eyebrow="Step 3" title="When you will apply">
+              <Field
+                label="Date you plan to submit the application"
+                help="The 12-month window is measured to your application date. No official source says an interview appointment date controls, so this checker does not use one."
+              >
+                <input
+                  type="date"
+                  className={fieldClass}
+                  value={inp.applicationDate}
+                  onChange={(e) => set("applicationDate", e.target.value)}
+                />
+              </Field>
+            </InputCard>
+
+            <InputCard eyebrow="Step 4" title="Refusal history and eligibility">
               <Field
                 label="Have you ever been refused a US visa?"
-                help="A refusal that was later overcome does not automatically disqualify you — this is the most misread clause in the rule."
+                help="A refusal that was specifically resolved does not automatically disqualify you — but a later, unrelated issuance does not establish that."
               >
                 <select
                   className={fieldClass}
@@ -183,8 +186,8 @@ export default function InterviewWaiverChecker() {
 
               {inp.refusalType && inp.refusalType !== "none" && (
                 <Field
-                  label="Was that refusal overcome or waived?"
-                  help="Overcome means a visa was actually issued to you afterwards. A 221(g) that ended in issuance has been overcome."
+                  label="Was that same refusal resolved, or a waiver granted?"
+                  help="This asks about that specific refusal — e.g. the same application was ultimately approved, or a formal waiver was documented. A separate visa issued later does not, on its own, establish that an earlier refusal was overcome."
                 >
                   <select
                     className={fieldClass}
@@ -198,16 +201,36 @@ export default function InterviewWaiverChecker() {
                   >
                     <option value="">Select…</option>
                     <option value="yes">
-                      Yes — a visa was issued to me afterwards, or it was waived
+                      Yes — that same refusal was resolved, or a waiver was documented
                     </option>
                     <option value="no">No — still unresolved</option>
                     <option value="unsure">I am not sure</option>
                   </select>
                 </Field>
               )}
+              <Field
+                label="Does anything on your record raise a possible ineligibility?"
+                help="Arrests or convictions, overstays or unlawful presence, prior immigration violations, removal history, or any fraud or misrepresentation concern. This is an express condition of the rule and is assessed by the consular section on the whole record."
+              >
+                <select
+                  className={fieldClass}
+                  value={inp.potentialIneligibility}
+                  onChange={(e) =>
+                    set(
+                      "potentialIneligibility",
+                      e.target.value as WaiverInputs["potentialIneligibility"],
+                    )
+                  }
+                >
+                  <option value="">Select…</option>
+                  <option value="no">Nothing that I am aware of</option>
+                  <option value="yes">Yes — one or more of those applies</option>
+                  <option value="unsure">I am not sure</option>
+                </select>
+              </Field>
             </InputCard>
 
-            <InputCard eyebrow="Step 4" title="Where you are applying">
+            <InputCard eyebrow="Step 5" title="Where you are applying">
               {(
                 [
                   ["nationality", "Country of nationality"],
@@ -224,9 +247,9 @@ export default function InterviewWaiverChecker() {
                     }
                   >
                     <option value="">Select…</option>
-                    {COUNTRIES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
+                    {WAIVER_COUNTRIES.map((c) => (
+                      <option key={c.code} value={c.code}>
+                        {c.name}
                       </option>
                     ))}
                   </select>

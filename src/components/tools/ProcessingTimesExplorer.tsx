@@ -11,12 +11,34 @@ import { useState } from "react";
 
 export interface TimeItem {
   item: string;
-  typical: string;
+  /**
+   * A numeric range ONLY where it is tied to a dated, service-specific source.
+   * `null` means no verified figure exists for this row, and the UI must say so
+   * and link out rather than printing an estimate. An unverified number here
+   * previously shipped captioned as a current processing time.
+   */
+  typical: string | null;
   premium: string | null;
   source: string;
   sourceLabel: string;
   lastUpdated: string;
   todo?: boolean;
+  /** True when the row deliberately carries no figure. */
+  checkOfficial?: boolean;
+}
+
+/** Rendered wherever a row has no verified figure. */
+function NoVerifiedFigure({ row }: { row: TimeItem }) {
+  return (
+    <a
+      href={row.source}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 rounded-lg bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-700 transition hover:bg-brand-100"
+    >
+      Check the official source ↗
+    </a>
+  );
 }
 
 export interface TimeGroup {
@@ -123,7 +145,7 @@ export default function ProcessingTimesExplorer({
                     <div className="flex justify-between gap-3">
                       <dt className="text-ink-400">Typical range</dt>
                       <dd className="text-right font-medium text-ink-800">
-                        {row.typical}
+                        {row.typical ?? <NoVerifiedFigure row={row} />}
                       </dd>
                     </div>
                     <div className="flex justify-between gap-3">
@@ -163,7 +185,7 @@ export default function ProcessingTimesExplorer({
                         {row.item}
                       </td>
                       <td className="px-5 py-4 text-ink-700">
-                        {row.typical}
+                        {row.typical ?? <NoVerifiedFigure row={row} />}
                         {row.premium && (
                           <span className="mt-1 block text-xs text-emerald-600">
                             ⚡ {row.premium}

@@ -144,16 +144,34 @@ describe("Batch 4 Step 1 — the USCIS processing-times guide landed on the tool
     expect(page).toContain("import PremiumProcessingFeeTable");
   });
 
+  /*
+   * This guard originally pinned the exact FAQ questions migrated onto the tool
+   * page. Four of them were retired in the 2026-09 accuracy pass because they
+   * existed only to publish an unsourced editorial range — "What is the
+   * processing time for I-140 for Indian applicants?" and "How long does an EAD
+   * (I-765) take to process?" both answered with figures tied to no dated
+   * source, which is precisely what that pass removed. The guard now pins the
+   * questions that survived plus their corrected replacements, so it still
+   * catches an accidental loss of the migrated block without re-requiring the
+   * copy that was deliberately deleted.
+   */
   it.each([
-    "What does USCIS processing time mean?",
-    "Where do I check official USCIS processing times?",
     "What is premium processing and does it guarantee approval?",
-    "What is the processing time for I-140 for Indian applicants?",
-    "How long does an EAD (I-765) take to process?",
     "Does a case transfer reset my processing time?",
     "Can I check processing times for my specific case?",
+    "What does the number USCIS shows actually mean?",
+    "Does every I-140 get 15 business days under premium processing?",
+    "Is premium processing available for an EAD?",
+    "Do EAD renewals still get an automatic extension?",
   ])("carries the migrated FAQ %j", (q) => {
     expect(page).toContain(q);
+  });
+
+  it("no longer publishes unsourced processing-time ranges", () => {
+    // The defect this locks out: editorial ranges captioned as current USCIS
+    // processing times, disagreeing with each other across the same page.
+    expect(page).not.toMatch(/\d+\u2013\d+\s*(months|weeks)/);
+    expect(page).not.toContain("historically ranged from");
   });
 });
 

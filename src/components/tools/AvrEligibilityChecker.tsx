@@ -10,7 +10,10 @@ import {
   type AvrInputs,
   type YesNo,
 } from "@/lib/portOfEntry";
-import { AVR_NATIONALITY_EXCLUSION } from "@/data/portOfEntryData";
+import {
+  AVR_NATIONALITY_EXCLUSION,
+  adjacentIslands,
+} from "@/data/portOfEntryData";
 
 /** Compact yes/no segmented control — faster than a select on a phone. */
 function YesNoField({
@@ -68,6 +71,17 @@ export default function AvrEligibilityChecker() {
   return (
     <div id="tool" className="grid gap-5 lg:grid-cols-2">
       <div className="space-y-4">
+        <InputCard eyebrow="22 CFR 41.112(d)" title="Do you have a visa to revalidate?">
+          <YesNoField
+            label="Do you hold a nonimmigrant visa that has expired (or a visa in a classification DHS has since changed)?"
+            help="Automatic revalidation extends an existing visa or converts one after a change of status. It cannot create a visa you never held."
+            value={inp.hasRevalidatableVisa}
+            onChange={(v) => set("hasRevalidatableVisa", v)}
+            yesLabel="Yes, I hold one"
+            noLabel="No / never held one"
+          />
+        </InputCard>
+
         <InputCard eyebrow="22 CFR 41.112(d)" title="Your trip">
           <Field
             label="Your nonimmigrant classification"
@@ -90,7 +104,7 @@ export default function AvrEligibilityChecker() {
 
           <Field
             label="Where did you travel?"
-            help="Contiguous territory means Canada and Mexico only."
+            help="Contiguous territory means Canada and Mexico only. \u201cAdjacent islands\u201d is a defined statutory term \u2014 see the definition below the result."
           >
             <select
               className={fieldClass}
@@ -102,7 +116,7 @@ export default function AvrEligibilityChecker() {
               <option value="">Select…</option>
               <option value="canada-mexico">Canada or Mexico only</option>
               <option value="adjacent-island">
-                An adjacent island (not Cuba)
+                An adjacent island as defined at INA 101(b)(5) (not Cuba)
               </option>
               <option value="elsewhere">
                 Anywhere else — including India, or a connection elsewhere
@@ -127,6 +141,14 @@ export default function AvrEligibilityChecker() {
             value={inp.unexpiredI94}
             onChange={(v) => set("unexpiredI94", v)}
           />
+          {inp.statusClass === "f-j" && (
+            <YesNoField
+              label="Do you hold a current, properly endorsed I-20 (F) or DS-2019 (J)?"
+              help="A separate condition at 22 CFR 41.112(d)(2)(i) for F and J travellers and their dependants."
+              value={inp.endorsedForm}
+              onChange={(v) => set("endorsedForm", v)}
+            />
+          )}
           <YesNoField
             label="Have you maintained status, and do you intend to resume it?"
             value={inp.maintainedStatus}
@@ -241,6 +263,20 @@ export default function AvrEligibilityChecker() {
             </ul>
           </div>
         )}
+
+        <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+          <p className="text-xs font-bold uppercase tracking-wider text-ink-400">
+            What &ldquo;adjacent islands&rdquo; actually means
+          </p>
+          <p className="mt-2 text-sm italic text-ink-700">
+            &ldquo;{adjacentIslands.definition}&rdquo;
+          </p>
+          <p className="mt-1 font-mono text-[0.7rem] text-ink-500">
+            {adjacentIslands.cite}
+          </p>
+          <p className="mt-2 text-sm text-ink-600">{adjacentIslands.whoCanUseIt}</p>
+          <p className="mt-1.5 text-sm text-ink-600">{adjacentIslands.notCovered}</p>
+        </div>
 
         {result.verdict !== "incomplete" && (
           <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5 text-sm text-amber-900">

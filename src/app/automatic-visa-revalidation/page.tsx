@@ -27,17 +27,20 @@ import {
   AVR_MISCITATION_NOTE,
   AVR_NATIONALITY_EXCLUSION,
   POE_VERIFIED,
+  adjacentIslands,
   avrConditions,
   poeSources,
 } from "@/data/portOfEntryData";
+import { IW_COUNTRY_OF_RESIDENCE } from "@/data/interviewWaiverData";
 
 const PATH = "/automatic-visa-revalidation";
 const TITLE =
   "Automatic Visa Revalidation: Returning from Canada or Mexico on an Expired Visa";
 const DESC =
-  "Automatic revalidation under 22 CFR 41.112(d) lets some nonimmigrants re-enter the US on an expired visa after a trip of 30 days or less to Canada or Mexico. The seven conditions, the nationality exclusion, and the one step that destroys it.";
+  "Re-enter the US on an expired visa after a short trip to Canada or Mexico. The conditions in 22 CFR 41.112(d), and the one step that destroys it.";
 
 export const metadata: Metadata = pageMetadata({
+  category: "immigration",
   title: "Automatic Visa Revalidation",
   description: DESC,
   path: PATH,
@@ -69,12 +72,12 @@ const faq: FaqItem[] = [
   {
     question: "How long can the trip be?",
     answer:
-      "Thirty days or fewer. The regulation says an absence not exceeding 30 days, and there is no discretion in the figure and no rounding. Count from the day you depart to the day you apply for readmission, and leave yourself margin — a cancelled flight that pushes you to day 31 removes the benefit entirely.",
+      "Thirty days or fewer. The regulation specifies an absence not exceeding 30 days, so a longer absence simply falls outside the provision. Count from the day you depart to the day you apply for readmission, and leave margin — a cancelled flight that pushes you to day 31 takes you outside it. Note that satisfying the regulation's conditions is a separate question from whether you are admitted: the CBP officer decides admission on every arrival.",
   },
   {
     question: "Can I use automatic revalidation for a Caribbean cruise?",
     answer:
-      "Generally not, unless you are an F or J nonimmigrant. The adjacent-islands extension in the regulation is written only for students, exchange visitors and their accompanying spouse and children, and it never includes Cuba. In H-1B, H-4, L-1 or L-2 status the trip must be solely to contiguous territory — Canada or Mexico.",
+      "Generally not, unless you are an F or J nonimmigrant. \u201cAdjacent islands\u201d is a defined statutory term at INA 101(b)(5), not a synonym for any island: it lists Saint Pierre, Miquelon, Cuba, the Dominican Republic, Haiti, Bermuda, the Bahamas, Barbados, Jamaica, the Windward and Leeward Islands, Trinidad, Martinique and other British, French and Netherlands territory in or bordering the Caribbean Sea. The extension is written only for F and J nonimmigrants and their accompanying spouse and children, and 22 CFR 41.112(d)(2)(ii) excludes Cuba for that purpose. In H-1B, H-4, L-1 or L-2 status the absence must be solely in contiguous territory \u2014 Canada or Mexico \u2014 so a cruise does not qualify regardless of where it calls.",
   },
   {
     question: "Does my H-4 spouse get automatic revalidation too?",
@@ -322,16 +325,24 @@ export default function Page() {
               </p>
               <p className="mt-3">
                 Third-country stamping in Canada or Mexico carries its own,
-                separate problem for Indian nationals: since September 2025 the
-                Department of State has directed nonimmigrant applicants to apply
-                in their country of nationality or usual residence, and warns
-                that applying elsewhere makes it harder to qualify and that fees
-                are not refundable or transferable. That policy and the
-                interview-waiver rules are covered on{" "}
+                separate problem. {IW_COUNTRY_OF_RESIDENCE.summary} That guidance
+                and the interview-waiver rules are covered on{" "}
                 <Link href="/visa-interview-waiver" className="text-brand-600 underline">
                   the visa interview waiver page
                 </Link>
                 .
+              </p>
+              <p className="mt-2 text-xs text-ink-500">
+                Department of State guidance, last updated{" "}
+                {IW_COUNTRY_OF_RESIDENCE.lastUpdated}.{" "}
+                <a
+                  href={IW_COUNTRY_OF_RESIDENCE.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Read it on travel.state.gov ↗
+                </a>
               </p>
             </div>
           </Container>
@@ -422,6 +433,23 @@ export default function Page() {
           <Container>
             <div className="mx-auto max-w-3xl text-[15px] leading-relaxed text-ink-600">
               <h2 className="text-2xl font-bold tracking-tight text-ink-900">
+                What &ldquo;adjacent islands&rdquo; means
+              </h2>
+              <p className="mt-2">
+                Readers treat this as &ldquo;any island&rdquo;, which is how the
+                Caribbean-cruise advice keeps circulating. It is a defined
+                statutory term:
+              </p>
+              <blockquote className="mt-3 rounded-2xl border-l-4 border-sky-400 bg-sky-50/60 p-4 text-sm italic text-ink-700">
+                &ldquo;{adjacentIslands.definition}&rdquo;
+                <span className="mt-2 block font-mono text-[0.7rem] not-italic text-ink-500">
+                  {adjacentIslands.cite}
+                </span>
+              </blockquote>
+              <p className="mt-3">{adjacentIslands.whoCanUseIt}</p>
+              <p className="mt-2">{adjacentIslands.notCovered}</p>
+
+              <h2 className="mt-8 text-2xl font-bold tracking-tight text-ink-900">
                 A citation correction worth knowing
               </h2>
               <p className="mt-2">{AVR_MISCITATION_NOTE.text}</p>
@@ -566,7 +594,15 @@ export default function Page() {
                 Read {POE_VERIFIED}. Verify the current text before travelling.
               </p>
               <ul className="mt-4 space-y-3">
-                {poeSources.slice(0, 3).concat(poeSources.slice(8)).map((s) => (
+                {poeSources
+                  .filter(
+                    (x) =>
+                      x.href.indexOf("41.112") !== -1 ||
+                      x.href.indexOf("part-214") !== -1 ||
+                      x.href.indexOf("Article-1446") !== -1 ||
+                      x.href.indexOf("uscode/text/8/1101") !== -1,
+                  )
+                  .map((s) => (
                   <li key={s.href} className="text-sm">
                     <a
                       href={s.href}
@@ -601,7 +637,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

@@ -15,8 +15,8 @@ export interface ClusterLink {
 }
 
 export const POE_PUBLISHED = "2026-09-09";
-export const POE_UPDATED = "2026-09-09";
-export const POE_UPDATED_HUMAN = "9 September 2026";
+export const POE_UPDATED = "2026-09-11";
+export const POE_UPDATED_HUMAN = "11 September 2026";
 
 export const poeClusterLinks: ClusterLink[] = [
   {

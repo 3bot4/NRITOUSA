@@ -39,7 +39,10 @@ export const metadata: Metadata = {
   authors: [{ name: site.author }],
   creator: site.author,
   publisher: site.publisher,
-  category: "finance",
+  // Site-wide default. Immigration pages override this via pageMetadata's
+  // `category` option — "finance" on an H-1B port-of-entry page was simply
+  // wrong, and the tag is inherited by every route that does not set its own.
+  category: "reference",
   openGraph: {
     type: "website",
     locale: "en_US",

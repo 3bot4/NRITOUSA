@@ -46,6 +46,11 @@ interface PageMetaOptions {
   openGraph?: Record<string, unknown>;
   /** Overrides the site-wide `author`/`creator` meta tags for this page. */
   metaAuthor?: string;
+  /**
+   * Overrides the site-wide `category` meta tag. Immigration pages should pass
+   * "immigration" — inheriting the site default mislabels them.
+   */
+  category?: string;
 }
 
 /**
@@ -65,6 +70,7 @@ export function pageMetadata({
   socialDescription,
   openGraph,
   metaAuthor,
+  category,
 }: PageMetaOptions): Metadata {
   const useFileImage = image === null;
   const img = image ?? site.ogImage;
@@ -76,6 +82,7 @@ export function pageMetadata({
     ...(metaAuthor
       ? { authors: [{ name: metaAuthor }], creator: metaAuthor }
       : {}),
+    ...(category ? { category } : {}),
     alternates: { canonical: path },
     openGraph: {
       type,
@@ -94,6 +101,54 @@ export function pageMetadata({
       description: ogDescription,
       ...(useFileImage ? {} : { images: [img] }),
     },
+  };
+}
+
+/**
+ * Metadata for a page that does not exist.
+ *
+ * WHY THIS EXISTS: a dynamic route whose generateMetadata returned `{}` for an
+ * unknown slug inherited the ROOT layout's metadata — which sets
+ * `robots: { index: true, follow: true }` and a self-referencing
+ * `alternates: { canonical: "./" }`. The result was a genuine 404 that told
+ * crawlers to index it AND declared itself canonical, so a mistyped or retired
+ * URL competed with the real page instead of dropping out of the index.
+ *
+ * Returning this instead emits exactly one directive — `noindex, follow` — and
+ * suppresses the canonical entirely (Next omits the tag when canonical is null).
+ * `follow` is deliberate: the 404 page links back into the site, and we want
+ * crawlers to keep walking those links.
+ *
+ * Use it from every generateMetadata that can fail to resolve a page, and from
+ * app/not-found.tsx for the global 404.
+ */
+export function notFoundMetadata(
+  title = "Page not found",
+  opts: { omitRobots?: boolean } = {},
+): Metadata {
+  return {
+    title,
+    description:
+      "This page could not be found. It may have moved or the link may be broken.",
+    // Suppresses the tag entirely. The root layout's self-referencing "./"
+    // canonical would otherwise point at the URL that does not exist.
+    alternates: { canonical: null },
+    // MUST be set explicitly, including on app/not-found.tsx. Next emits its
+    // own bare `noindex` for the not-found boundary, so the rendered page
+    // carries two robots tags — but they agree, and both say noindex. Dropping
+    // ours to avoid the duplicate is worse: the page then inherits the ROOT
+    // layout's `index, follow`, producing a genuine contradiction on a 404.
+    // Two agreeing directives beat one contradiction.
+    // `omitRobots` exists only for a caller that has its own noindex source.
+    ...(opts.omitRobots
+      ? {}
+      : {
+          robots: {
+            index: false,
+            follow: true,
+            googleBot: { index: false, follow: true },
+          },
+        }),
   };
 }
 

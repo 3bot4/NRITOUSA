@@ -72,7 +72,43 @@ export const IV_TOOL_EXCLUSIONS = [
 ] as const;
 
 /** Date this cluster's policy statements were last checked against DOS. */
-export const IV_SCHEDULING_VERIFIED = "2026-09-09";
+export const IV_SCHEDULING_VERIFIED = "2026-09-10";
+/** Same date, human form - keeps the visible stamp and schema dateModified aligned. */
+export const IV_SCHEDULING_VERIFIED_HUMAN = "10 September 2026";
+
+/**
+ * Which petition form generates the priority date, by category. The first
+ * version told every employment applicant to look at an I-140, which is wrong
+ * for EB-4 and EB-5.
+ */
+export const PETITION_FORM_HELP: Record<string, string> = {
+  family: "Form I-130 — the priority date is the date USCIS received the petition.",
+  EB1: "Form I-140. Where a PERM labor certification was required, the priority date is the date the labor certification was filed with DOL; otherwise it is the I-140 receipt date.",
+  EB2: "Form I-140. With PERM, the priority date is the labor-certification filing date; for a National Interest Waiver (no PERM), it is the I-140 receipt date.",
+  EB3: "Form I-140, and EB-3 almost always requires PERM — so the priority date is normally the labor-certification filing date, not the I-140 receipt date.",
+  EB3Other: "Form I-140 (Other Worker). Normally PERM-based, so the labor-certification filing date governs.",
+  EB4: "Form I-360 for most special immigrants — not I-140.",
+  EB5: "Form I-526 or I-526E — not I-140.",
+  immediate:
+    "Form I-130. Immediate relatives are not subject to the annual limits, so no priority date wait applies.",
+};
+
+/**
+ * Consular posts that actually process immigrant visas for India.
+ *
+ * The Department of State's list of posts identifies Mumbai and New Delhi for
+ * Indian immigrant visa processing. Chennai, Hyderabad and Kolkata handle
+ * nonimmigrant work and were wrongly offered here — an applicant cannot pick a
+ * post in any event: NVC assigns it, and the appointment letter is
+ * authoritative.
+ */
+export const IV_POSTS_INDIA = ["Mumbai", "New Delhi"] as const;
+
+export const EB5_SETASIDE_EXCLUSION =
+  "This tool covers the EB-5 Unreserved category only. The reserved set-aside categories — Rural, High Unemployment and Infrastructure — carry their own cutoffs that move independently of Unreserved, and are not modelled here. Read them off the official Visa Bulletin.";
+
+export const IV_POST_NOTE =
+  "You do not choose your interview post and these are not interchangeable. NVC assigns the post and your appointment letter is authoritative — use that, not this list, if the two differ.";
 
 /* ─────────────────────── categories ────────────────────────────────────── */
 
@@ -83,6 +119,8 @@ export type IvCategory =
   | "IR1"
   | "IR2"
   | "IR5"
+  | "CR1"
+  | "CR2"
   // Family preference
   | "F1"
   | "F2A"
@@ -138,6 +176,20 @@ export const IV_CATEGORIES: Record<IvCategory, CategoryMeta> = {
     bulletinKey: null,
     bucket: null,
     hint: "Immediate relative — no annual visa limit, so there is no priority date wait.",
+  },
+  CR1: {
+    label: "CR1 — Spouse of a U.S. citizen (conditional, married under 2 years)",
+    path: "immediate",
+    bulletinKey: null,
+    bucket: null,
+    hint: "Immediate relative — no annual visa limit. Conditional residence applies on entry; that is a separate matter from scheduling.",
+  },
+  CR2: {
+    label: "CR2 — Child of a U.S. citizen (conditional)",
+    path: "immediate",
+    bulletinKey: null,
+    bucket: null,
+    hint: "Immediate relative — no annual visa limit. Conditional residence applies on entry.",
   },
   F1: {
     label: "F1 — Unmarried adult son/daughter of a U.S. citizen",
@@ -210,17 +262,19 @@ export const IV_CATEGORIES: Record<IvCategory, CategoryMeta> = {
     hint: "Employment fourth preference.",
   },
   EB5: {
-    label: "EB-5 — Investor (Unreserved)",
+    label: "EB-5 — Investor (Unreserved only)",
     path: "employment",
     bulletinKey: "eb5",
     bucket: "categories",
-    hint: "Unreserved EB-5. The three reserved set-asides have their own cutoffs.",
+    hint: "Unreserved EB-5 ONLY. The three reserved set-asides (Rural, High Unemployment, Infrastructure) have their own separate cutoffs and are NOT supported by this tool — read those off the official Visa Bulletin.",
   },
 };
 
 export const IV_CATEGORY_ORDER: IvCategory[] = [
   "IR1",
+  "CR1",
   "IR2",
+  "CR2",
   "IR5",
   "F1",
   "F2A",
@@ -361,10 +415,16 @@ export interface IvSchedulingInputs {
   postSchedulingMonth: string;
   /** Free-text post name, e.g. "Mumbai". Display only. */
   post: string;
+  /** Has NVC already confirmed the case is documentarily complete? */
+  alreadyDq: YesNoBlank;
 }
+
+export type YesNoBlank = "yes" | "no" | "";
 
 export type Bottleneck =
   | "incomplete"
+  | "unsupported"
+  | "dq-retrogressed"
   | "visa-availability"
   | "visa-unavailable"
   | "not-yet-invited"
@@ -395,6 +455,12 @@ export interface IvSchedulingResult {
   inquiryReasonable: boolean;
   /** Things that would change the answer. */
   caveats: string[];
+  /**
+   * How scheduling and issuance differ. NVC may schedule on expected
+   * availability; issuance requires the priority date to be earlier than the
+   * applicable Final Action Date at that time.
+   */
+  schedulingNote?: string;
 }
 
 const INCOMPLETE: IvSchedulingResult = {
@@ -427,12 +493,17 @@ export function diagnoseIvScheduling(
   inputs: IvSchedulingInputs,
 ): IvSchedulingResult {
   const { category, country, priorityDate, dqMonth, postSchedulingMonth } = inputs;
-  if (!category || !country || !priorityDate) return INCOMPLETE;
-
-  const pd = parseMonth(priorityDate);
-  if (!pd) return INCOMPLETE;
+  if (!category || !country) return INCOMPLETE;
 
   const meta = IV_CATEGORIES[category];
+
+  // Immediate relatives are not subject to the annual limits, so the Visa
+  // Bulletin is not their scheduling gate and a priority date is not needed.
+  const priorityDateRequired = meta.path !== "immediate";
+  if (priorityDateRequired && !priorityDate) return INCOMPLETE;
+
+  const pd = parseMonth(priorityDate);
+  if (priorityDateRequired && !pd) return INCOMPLETE;
   const cutoffs = getIvCutoffs(category, country);
   const caveats: string[] = [];
 
@@ -440,6 +511,29 @@ export function diagnoseIvScheduling(
   const postMonth = parseMonth(postSchedulingMonth);
   const queueGapMonths =
     dq && postMonth ? monthsBetween(postMonth, dq) : null;
+
+  /* ---- Missing data must never masquerade as "no numerical limit" ------ */
+  if (meta.path !== "immediate" && !cutoffs) {
+    return {
+      bottleneck: "unsupported",
+      headline: "This tool does not have cutoff data for that combination",
+      gateLabel: "Data unavailable",
+      tone: "neutral",
+      badge: "Unsupported",
+      detail: `No Visa Bulletin cutoff is available here for ${IV_CATEGORIES[category].label} charged to ${CHARGEABILITY_LABELS[country]}. That is a gap in this tool's data, not a statement that your category is exempt from the annual limits — it is a preference category and it is subject to them.`,
+      nextStep:
+        "Read your category and chargeability area straight off the official Visa Bulletin for the current month, then come back for the queue half of the question.",
+      finalActionStatus: null,
+      filingStatus: null,
+      finalActionCutoff: null,
+      filingCutoff: null,
+      queueGapMonths,
+      inquiryReasonable: false,
+      caveats: [
+        "Do not read an unsupported result as good news. It means this page cannot answer, not that nothing is blocking you.",
+      ],
+    };
+  }
 
   /* ---- Immediate relatives: gate 1 does not exist ---------------------- */
   if (meta.path === "immediate" || !cutoffs) {
@@ -475,6 +569,9 @@ export function diagnoseIvScheduling(
   }
 
   /* ---- Gate 1: visa availability -------------------------------------- */
+  // Preference categories always have a parsed priority date here: the
+  // required/parse checks above return INCOMPLETE otherwise.
+  if (!pd) return INCOMPLETE;
   const fadStatus = compareToCutoff(pd, cutoffs.fad);
   const dffStatus = compareToCutoff(pd, cutoffs.dff);
 
@@ -487,6 +584,29 @@ export function diagnoseIvScheduling(
   };
 
   const bulletinLabel = formatCutoffDate(bulletinMonth);
+
+  // 1a-pre. Already documentarily complete, but the chart has moved back past
+  // the priority date. DQ is not lost, and telling the user there is nothing to
+  // review would be wrong — the package stands; the visa number does not.
+  if (inputs.alreadyDq === "yes" && !cutoffQualifies(fadStatus)) {
+    return {
+      ...shared,
+      bottleneck: "dq-retrogressed",
+      headline:
+        "You are still documentarily complete — visa availability is what is blocking the interview",
+      gateLabel: "Gate 1: visa availability (DQ retained)",
+      tone: "caution",
+      badge: "DQ retained",
+      detail: `Your case is documentarily complete and it stays that way. Retrogression does not undo DQ and does not send your documents back for re-review. What it does is remove the visa number: with the ${bulletinLabel} Final Action Date at ${formatCutoffDate(cutoffs.fad)} for ${CHARGEABILITY_LABELS[country]}, an interview cannot be scheduled and a visa cannot be issued until the date moves forward past your priority date again.`,
+      nextStep:
+        "Nothing to submit and nothing to re-do. Keep passports, police certificates and medicals from lapsing, keep NVC updated on address and family changes, and watch the Final Action Date each month. Your banked DQ date is what determines your queue position when the chart reaches you.",
+      inquiryReasonable: false,
+      caveats: [
+        "Documentarily complete status is retained through retrogression — you do not start the document stage again.",
+        "Final Action Dates can move backwards as well as forwards. This reflects the " + bulletinLabel + " bulletin only.",
+      ],
+    };
+  }
 
   // 1a. No visa numbers at all this month.
   if (fadStatus === "unavailable") {
@@ -541,6 +661,8 @@ export function diagnoseIvScheduling(
       detail: `This is the position most Indian preference applicants are in, and it is the one the official tool cannot explain. Your priority date (${formatCutoffDate(priorityDate)}) is past the Dates for Filing cutoff (${formatCutoffDate(cutoffs.dff)}), so NVC invited your documents and your case can sit at "documentarily complete". But it is not yet past the ${bulletinLabel} Final Action Date of ${formatCutoffDate(cutoffs.fad)} for ${CHARGEABILITY_LABELS[country]} — and a consular interview can only be scheduled when a visa number is expected to be available at issuance. Your DQ date is banked; the queue you are actually in is the Visa Bulletin's.`,
       nextStep:
         "Do not read your post's scheduling month as your wait — it does not apply to you yet. Track the Final Action Date for your category each month. Keep passports, police certificates and civil documents valid so you are ready when it passes you, and keep NVC updated if your address or family composition changes.",
+      schedulingNote:
+        "NVC may schedule an interview based on visa availability it expects in the month of the appointment, so an appointment letter can arrive shortly before the chart reaches you. Issuance is the harder line: a consular officer cannot issue the visa unless your priority date is earlier than the applicable Final Action Date at that time.",
       inquiryReasonable: false,
       caveats: [
         "Being documentarily complete is necessary but not sufficient. Visa availability is the binding constraint here.",

@@ -105,6 +105,17 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /h1b/visa-stamping-after-selection never existed. The article lives at
+      // the ROOT url /h1b-visa-stamping-after-selection (the site's deliberate
+      // short-keyword URL convention), but the nested form is the one people
+      // and crawlers guess at, because every other H-1B guide sits under
+      // /h1b/<slug>. It was resolving through app/h1b/[slug] to a real 404.
+      // Permanent, so the guessed URL stops competing with the canonical one.
+      {
+        source: "/h1b/visa-stamping-after-selection",
+        destination: "/h1b-visa-stamping-after-selection",
+        permanent: true,
+      },
       // /uscis/notices never existed as a page — the /uscis hub shipped with
       // two cards linking to it before it was ever authored, so it has been
       // returning 404 to users and crawlers since the cluster landed. Those

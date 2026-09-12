@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   AVR_EMPTY,
-  SCORECARD_EMPTY,
+  PREP_EMPTY,
+  assessEntryPreparedness,
   checkAvr,
-  scoreEntryRisk,
   type AvrInputs,
-  type ScorecardInputs,
+  type PrepInputs,
 } from "./portOfEntry";
 import {
   avrConditions,
@@ -15,6 +15,8 @@ import {
 
 /** A fact pattern that satisfies every condition in 22 CFR 41.112(d). */
 const CLEAN_AVR: AvrInputs = {
+  hasRevalidatableVisa: "yes",
+  endorsedForm: "",
   destination: "canada-mexico",
   statusClass: "h1b-h4",
   under30Days: "yes",
@@ -27,42 +29,38 @@ const CLEAN_AVR: AvrInputs = {
   sstNational: "no",
 };
 
-/** A fact pattern with no referral triggers at all. */
-const CLEAN_SCORECARD: ScorecardInputs = {
-  employerType: "direct",
-  daysSincePayStub: "14",
-  worksiteMatchesLca: "yes",
+/** A traveller with nothing outstanding on the checklist. */
+const CLEAN_PREP: PrepInputs = {
+  visaPosture: "valid",
+  passportValid: "yes",
+  worksiteMove: "none",
   amendmentFiled: "yes",
-  worksiteChanged: "no",
+  haveLca: "yes",
+  havePayStubs: "yes",
+  haveApprovalNotice: "yes",
   employerChanged90Days: "no",
-  extensionApprovedStampExpired: "no",
-  priorRefusal: "no",
   employmentGap: "no",
   dutiesMatchPetition: "yes",
-  onlineProfileMatches: "yes",
-  carryingI797A: "yes",
+  profileAccurate: "yes",
+  priorRefusalOrRemoval: "no",
   priorCriminalHistory: "no",
+  pendingI485: "no",
   h4Travelling: "no",
 };
 
-describe("AVR checker — completeness", () => {
+describe("AVR — completeness", () => {
   it("refuses to answer until every condition is answered", () => {
     expect(checkAvr(AVR_EMPTY).verdict).toBe("incomplete");
-    expect(
-      checkAvr({ ...CLEAN_AVR, sstNational: "" }).verdict,
-    ).toBe("incomplete");
+    expect(checkAvr({ ...CLEAN_AVR, sstNational: "" }).verdict).toBe("incomplete");
   });
 
   it("does not require the refusal follow-up when no application was made", () => {
-    // visaRefused is deliberately left blank in CLEAN_AVR.
     expect(checkAvr(CLEAN_AVR).verdict).toBe("eligible");
   });
 });
 
-describe("AVR checker — 22 CFR 41.112(d)(2)(vii), the forfeiture rule", () => {
+describe("AVR — 22 CFR 41.112(d)(2)(vii), the forfeiture rule", () => {
   it("treats APPLYING as fatal, not merely being refused", () => {
-    // The central correction this cluster makes: an applicant who applied and
-    // was NOT refused still loses automatic revalidation.
     const applied = checkAvr({
       ...CLEAN_AVR,
       appliedForVisa: "yes",
@@ -73,7 +71,7 @@ describe("AVR checker — 22 CFR 41.112(d)(2)(vii), the forfeiture rule", () => 
     expect(applied.failures[0].cite).toContain("(d)(2)(vii)");
   });
 
-  it("still forfeits — with sharper wording — when the visa was refused", () => {
+  it("still forfeits when the visa was refused", () => {
     const refused = checkAvr({
       ...CLEAN_AVR,
       appliedForVisa: "yes",
@@ -83,7 +81,7 @@ describe("AVR checker — 22 CFR 41.112(d)(2)(vii), the forfeiture rule", () => 
     expect(refused.failures[0].detail).toContain("refused");
   });
 
-  it("reports plain ineligibility, not forfeiture, when other conditions also fail", () => {
+  it("reports plain ineligibility when other conditions also fail", () => {
     const r = checkAvr({
       ...CLEAN_AVR,
       appliedForVisa: "yes",
@@ -95,17 +93,18 @@ describe("AVR checker — 22 CFR 41.112(d)(2)(vii), the forfeiture rule", () => 
   });
 });
 
-describe("AVR checker — destination rules", () => {
+describe("AVR — destination rules", () => {
   it("rejects travel outside contiguous territory", () => {
     const r = checkAvr({ ...CLEAN_AVR, destination: "elsewhere" });
     expect(r.verdict).toBe("ineligible");
-    expect(r.failures[0].cite).toContain("(d)(2)(ii)");
+    expect(r.failures.some((f) => f.cite.indexOf("(d)(2)(ii)") !== -1)).toBe(true);
   });
 
   it("allows adjacent islands for F and J only", () => {
     const fj = checkAvr({
       ...CLEAN_AVR,
       statusClass: "f-j",
+      endorsedForm: "yes",
       destination: "adjacent-island",
     });
     expect(fj.verdict).toBe("eligible");
@@ -120,12 +119,11 @@ describe("AVR checker — destination rules", () => {
   });
 
   it("enforces the 30-day limit", () => {
-    const r = checkAvr({ ...CLEAN_AVR, under30Days: "no" });
-    expect(r.verdict).toBe("ineligible");
+    expect(checkAvr({ ...CLEAN_AVR, under30Days: "no" }).verdict).toBe("ineligible");
   });
 });
 
-describe("AVR checker — absolute exclusions", () => {
+describe("AVR — absolute exclusions", () => {
   it("treats the state-sponsor nationality exclusion as fatal", () => {
     const r = checkAvr({ ...CLEAN_AVR, sstNational: "yes" });
     expect(r.verdict).toBe("ineligible");
@@ -133,22 +131,18 @@ describe("AVR checker — absolute exclusions", () => {
   });
 
   it("rejects an applicant needing a 212(d)(3) waiver", () => {
-    const r = checkAvr({ ...CLEAN_AVR, needsWaiver: "yes" });
-    expect(r.verdict).toBe("ineligible");
+    expect(checkAvr({ ...CLEAN_AVR, needsWaiver: "yes" }).verdict).toBe("ineligible");
   });
 
   it("fails an expired I-94 or a lapsed status", () => {
-    expect(checkAvr({ ...CLEAN_AVR, unexpiredI94: "no" }).verdict).toBe(
-      "ineligible",
-    );
-    expect(checkAvr({ ...CLEAN_AVR, maintainedStatus: "no" }).verdict).toBe(
-      "ineligible",
-    );
+    expect(checkAvr({ ...CLEAN_AVR, unexpiredI94: "no" }).verdict).toBe("ineligible");
+    expect(checkAvr({ ...CLEAN_AVR, maintainedStatus: "no" }).verdict).toBe("ineligible");
   });
 
   it("cites a regulation for every failure it reports", () => {
     const r = checkAvr({
-      ...AVR_EMPTY,
+      hasRevalidatableVisa: "yes",
+      endorsedForm: "",
       destination: "elsewhere",
       statusClass: "h1b-h4",
       under30Days: "no",
@@ -167,103 +161,129 @@ describe("AVR checker — absolute exclusions", () => {
   });
 });
 
-describe("risk scorecard", () => {
-  it("will not band a partially answered form", () => {
-    expect(scoreEntryRisk(SCORECARD_EMPTY).band).toBe("incomplete");
+describe("AVR — you need a visa to revalidate", () => {
+  it("does not declare eligibility from an I-94 and passport alone", () => {
+    const r = checkAvr({ ...CLEAN_AVR, hasRevalidatableVisa: "no" });
+    expect(r.verdict).not.toBe("eligible");
+    expect(r.failures.some((f) => f.cite.indexOf("(d)(1)") !== -1)).toBe(true);
+  });
+});
+
+describe("AVR — F and J documentary condition", () => {
+  it("cannot pass an F/J traveller without an endorsed I-20 or DS-2019", () => {
+    const r = checkAvr({
+      ...CLEAN_AVR,
+      statusClass: "f-j",
+      endorsedForm: "no",
+    });
+    expect(r.verdict).not.toBe("eligible");
     expect(
-      scoreEntryRisk({ ...CLEAN_SCORECARD, employerType: "" }).band,
-    ).toBe("incomplete");
+      r.failures.some((f) => f.cite.indexOf("(d)(2)(i)") !== -1),
+    ).toBe(true);
   });
 
-  it("reports a clean pattern as low with no flags", () => {
-    const r = scoreEntryRisk(CLEAN_SCORECARD);
-    expect(r.band).toBe("low");
-    expect(r.score).toBe(0);
-    expect(r.flags).toHaveLength(0);
-    // The baseline document set is still returned.
+  it("will not rule at all until the F/J form question is answered", () => {
+    const r = checkAvr({ ...CLEAN_AVR, statusClass: "f-j", endorsedForm: "" });
+    expect(r.verdict).toBe("incomplete");
+  });
+
+  it("passes an F/J traveller who holds the endorsed form", () => {
+    const r = checkAvr({
+      ...CLEAN_AVR,
+      statusClass: "f-j",
+      endorsedForm: "yes",
+    });
+    expect(r.verdict).toBe("eligible");
+  });
+});
+
+describe("preparedness checklist", () => {
+  it("returns nothing outstanding for a clean traveller", () => {
+    const r = assessEntryPreparedness(CLEAN_PREP);
+    expect(r.complete).toBe(true);
+    expect(r.findings).toHaveLength(0);
     expect(r.documents.length).toBeGreaterThan(3);
   });
 
-  it("escalates as triggers stack, and never exceeds the stated maximum", () => {
-    const worst = scoreEntryRisk({
-      employerType: "third-party",
-      daysSincePayStub: "120",
-      worksiteMatchesLca: "no",
+  it("will not assess a partially answered checklist", () => {
+    expect(assessEntryPreparedness(PREP_EMPTY).complete).toBe(false);
+  });
+
+  it("treats an expired visa with no exception as a hard stop", () => {
+    const r = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      visaPosture: "expired-none",
+    });
+    expect(r.hardStops.map((f) => f.id)).toContain("visa-expired");
+  });
+
+  it("does NOT flag an expired visa when AVR conditions are met", () => {
+    const r = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      visaPosture: "expired-avr",
+    });
+    expect(r.hardStops).toHaveLength(0);
+  });
+
+  it("never treats an I-797B as inherently risky", () => {
+    // The regression this locks in: the old scorecard scored an I-797B as a
+    // risk factor. It is an ordinary consular-notification approval.
+    const r = assessEntryPreparedness(CLEAN_PREP);
+    const text = JSON.stringify(r).toLowerCase();
+    expect(text).not.toContain("i-797b");
+    expect(r.findings).toHaveLength(0);
+  });
+
+  it("only raises a worksite question when the move was outside the LCA area", () => {
+    const sameArea = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      worksiteMove: "same-area",
+    });
+    expect(sameArea.findings).toHaveLength(0);
+
+    const outside = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      worksiteMove: "outside-area",
       amendmentFiled: "no",
-      worksiteChanged: "yes",
-      employerChanged90Days: "yes",
-      extensionApprovedStampExpired: "yes",
-      priorRefusal: "yes",
-      employmentGap: "yes",
-      dutiesMatchPetition: "no",
-      onlineProfileMatches: "no",
-      carryingI797A: "no",
+    });
+    expect(outside.attorneyReview.map((f) => f.id)).toContain(
+      "worksite-material",
+    );
+  });
+
+  it("routes history and status questions to attorney review, not documents", () => {
+    const r = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      priorRefusalOrRemoval: "yes",
       priorCriminalHistory: "yes",
-      h4Travelling: "yes",
-    });
-    expect(worst.band).toBe("high");
-    expect(worst.score).toBeGreaterThan(8);
-    expect(worst.score).toBeLessThanOrEqual(worst.maxScore);
-  });
-
-  it("counts the prior-history cause once even when both triggers fire", () => {
-    const r = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      priorRefusal: "yes",
-      priorCriminalHistory: "yes",
-    });
-    const history = r.flags.filter((f) => f.causeId === "prior-history");
-    expect(history).toHaveLength(1);
-  });
-
-  it("orders flags heaviest first and attaches a question and a closer to each", () => {
-    const r = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      employerType: "third-party",
-      employerChanged90Days: "yes",
-    });
-    expect(r.flags.length).toBeGreaterThan(1);
-    for (let i = 1; i < r.flags.length; i++) {
-      expect(r.flags[i - 1].weight).toBeGreaterThanOrEqual(r.flags[i].weight);
-    }
-    for (const f of r.flags) {
-      expect(f.question.length).toBeGreaterThan(0);
-      expect(f.closer.length).toBeGreaterThan(0);
-    }
-  });
-
-  it("treats an unamended worksite change as heavier than a plain LCA mismatch", () => {
-    const unamended = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      worksiteChanged: "yes",
-      amendmentFiled: "no",
-      worksiteMatchesLca: "no",
-    });
-    const mismatch = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      worksiteChanged: "no",
-      worksiteMatchesLca: "no",
-    });
-    expect(unamended.score).toBeGreaterThan(mismatch.score);
-  });
-
-  it("adds the H-4 family guidance only when a family is travelling", () => {
-    expect(scoreEntryRisk(CLEAN_SCORECARD).h4Note).toBeNull();
-    const withFamily = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      h4Travelling: "yes",
-    });
-    expect(withFamily.h4Note).toContain("derivative");
-  });
-
-  it("never returns a duplicate document", () => {
-    const r = scoreEntryRisk({
-      ...CLEAN_SCORECARD,
-      employerType: "third-party",
-      priorRefusal: "yes",
       employmentGap: "yes",
     });
-    expect(new Set(r.documents).size).toBe(r.documents.length);
+    expect(r.attorneyReview.length).toBeGreaterThanOrEqual(3);
+    expect(r.hardStops).toHaveLength(0);
+  });
+
+  it("frames profile advice around accuracy, never concealment", () => {
+    const r = assessEntryPreparedness({
+      ...CLEAN_PREP,
+      profileAccurate: "no",
+    });
+    const f = r.documentGaps.filter((x) => x.id === "profile")[0];
+    expect(f).toBeTruthy();
+    expect(f.detail).toMatch(/truthful|accurate|misrepresentation/i);
+    expect(f.detail).toMatch(/[Nn]ever alter, conceal or delete/);
+  });
+
+  it("produces no score, band or probability anywhere in the result", () => {
+    const r = assessEntryPreparedness(CLEAN_PREP);
+    expect(r).not.toHaveProperty("score");
+    expect(r).not.toHaveProperty("band");
+    expect(r).not.toHaveProperty("maxScore");
+  });
+
+  it("surfaces the H/L I-485 exception rather than demanding advance parole", () => {
+    const r = assessEntryPreparedness({ ...CLEAN_PREP, pendingI485: "yes" });
+    expect(r.i485Note).toContain("245.2(a)(4)(ii)(C)");
+    expect(r.i485Note).toMatch(/exception/i);
   });
 });
 
@@ -287,6 +307,9 @@ describe("cluster data integrity", () => {
     const expedited = poeOutcomes.filter((o) => o.id === "expedited")[0];
     expect(withdrawal.bar).toContain("No");
     expect(expedited.bar).toContain("Five years");
+    // The bar tiers must be complete enough not to mislead.
+    expect(expedited.bar).toMatch(/20 years/);
+    expect(expedited.bar).toMatch(/aggravated felony/i);
     expect(withdrawal.removalOrder).toContain("No");
     expect(expedited.removalOrder).toContain("Yes");
   });

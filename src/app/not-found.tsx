@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import { notFoundMetadata } from "@/lib/seo";
+
+/**
+ * A genuine 404 must not tell crawlers to index it, and must not declare a
+ * canonical pointing at the URL that does not exist. Without this export the
+ * root layout's `index, follow` + self-referencing canonical applied here.
+ */
+export const metadata: Metadata = notFoundMetadata();
 
 export default function NotFound() {
   return (

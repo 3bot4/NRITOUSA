@@ -27,6 +27,7 @@ const tool = getTool("processing-times")!;
 const content = getToolHubContent("processing-times")!;
 
 export const metadata: Metadata = pageMetadata({
+  category: "immigration",
   title: tool.seoTitle,
   description: tool.seoDescription,
   path: "/tools/processing-times",
@@ -36,77 +37,57 @@ const faq: FaqItem[] = [
   {
     question: "How long does an H-1B extension or transfer take in 2026?",
     answer:
-      "A regular I-129 H-1B extension or transfer typically takes 2–4 months. Premium processing may be available and speeds up USCIS action to 15 business days — but does not guarantee approval. Fees and eligibility can change; always verify the current amount on the official USCIS Form I-907 page. For H-1B transfers, whether you can start working before the petition is approved depends on your specific facts, timing, and valid status — confirm with your employer's immigration attorney before starting work. Extensions get an automatic 240-day work authorization cushion.",
-  },
-  {
-    question: "How long does an OCI card take from the USA?",
-    answer:
-      "OCI applications filed through VFS Global in the USA typically take 6–10 weeks door to door, including the time your Indian passport-related documents spend with the consulate. Passport renewals via VFS are faster, usually 2–6 weeks.",
+      "This page does not print a figure, because USCIS publishes processing times per form, per subtype and per office, and they change monthly — a single range copied onto a web page is wrong for most readers almost immediately. Look up I-129 for your H-1B subtype and your service center on the official USCIS processing-times tool. Premium processing is a separate question: for I-129 classifications USCIS guarantees adjudicative action within 15 business days, which means an approval, denial, notice of intent to deny or request for evidence — not an approval.",
   },
   {
     question: "What is the H-1B visa stamping wait at Indian consulates?",
     answer:
-      "Interview appointment waits at Mumbai, Delhi, Hyderabad, Chennai, and Kolkata have ranged from a few weeks to a few months. Note that H-1B and H-4 lost dropbox (interview waiver) eligibility under the Department of State rule effective 1 October 2025, so plan for an in-person interview for every applicant. Waits move constantly — always check the State Department's global visa wait times page for this week's numbers before booking travel.",
+      "Appointment waits change constantly and differ by post and visa class, so no figure is printed here. The Department of State publishes live appointment wait times by post — check those on the day you plan. Note separately that H-1B and H-4 lost interview-waiver (dropbox) eligibility under the rule effective 1 October 2025, so plan for an in-person interview for every applicant.",
   },
   {
-    question: "Are these processing times guaranteed?",
+    question: "What does the number USCIS shows actually mean?",
     answer:
-      "No. They are typical published ranges from USCIS, the State Department, and VFS, and individual cases routinely run faster or slower depending on service center workload, RFEs, and security checks. Use them for planning, and check your specific receipt's status on the official case tracker.",
-  },
-  {
-    question: "How accurate are USCIS processing time estimates?",
-    answer:
-      "USCIS processing time estimates represent the range within which 80% of cases are completed. The remaining 20% fall outside — both faster and slower. Service centers vary significantly, and times can shift month to month based on staffing, RFE rates, and application volume. If your case is past the published timeframe for your service center, you may submit an official case inquiry through your myUSCIS account or the USCIS Contact Center.",
-  },
-  {
-    question: "How do I check if my USCIS case is delayed beyond the published processing time?",
-    answer:
-      "Compare your receipt date to the USCIS processing times page for your form and service center. If your receipt date is earlier than the 'received date for inquiry' shown for your form, you may submit a case inquiry. The USCIS Processing Delay Checker at /tools/uscis-processing-delay-checker provides an educational assessment of whether your case is within normal range.",
-  },
-  /* ── Migrated from /uscis/processing-times (now 301'd here). Two of that
-        page's ten FAQs were dropped as exact duplicates of entries above:
-        "Are USCIS processing times guarantees?" (see "Are these processing
-        times guaranteed?") and "When should I contact USCIS about a delayed
-        case?" (see the delay question directly above). ───────────────────── */
-  {
-    question: "What does USCIS processing time mean?",
-    answer:
-      "USCIS processing time is the range of days it currently takes USCIS to complete a specific form type at a specific service center. The dates shown on egov.uscis.gov/processing-times represent the receipt dates of cases USCIS is currently completing — not how long your case will take from today.",
-  },
-  {
-    question: "Where do I check official USCIS processing times?",
-    answer:
-      "At egov.uscis.gov/processing-times. Select your form type and the service center shown on your I-797 receipt notice. If your receipt date is earlier than the date shown, your case may be outside the normal processing window for that center.",
+      "USCIS's displayed processing time for a form and office generally represents the time within which 80% of adjudicated cases were completed over the relevant recent period. It is a descriptive statistic about cases already decided — not a target, not a queue position, and not a promise about your case. Separately, the tool returns a case inquiry date, and that date is what determines whether you can submit an outside-normal-processing-time inquiry.",
   },
   {
     question: "What is premium processing and does it guarantee approval?",
     answer:
-      "Premium processing is an optional service that allows petitioners to pay USCIS for expedited action on certain forms, primarily I-129 and I-140. USCIS guarantees action — meaning an approval, denial, Request for Evidence (RFE), or Notice of Intent to Deny — within 15 business days of accepting the premium upgrade. Premium processing does NOT guarantee approval and does not shorten interview or visa bulletin waits. Fees and eligible form types can change; always verify the current fee and eligibility on the official USCIS Form I-907 premium processing page before filing.",
+      "It is an optional paid service under Form I-907 for certain forms. USCIS guarantees adjudicative action within the applicable period or refunds the premium fee — action meaning an approval notice, denial notice, notice of intent to deny, or request for evidence, or the opening of a fraud investigation. It does not guarantee approval and does not shorten interview or visa bulletin waits. The period is not always 15 business days: it is 15 for most classifications, 30 for Form I-765 and for I-539 change-of-status requests to F, M or J status, and 45 for Form I-140 E13 multinational executive and manager and E21 national interest waiver classifications.",
   },
   {
-    question: "My H1B transfer has been pending for 4 months — is that normal?",
+    question: "Does every I-140 get 15 business days under premium processing?",
     answer:
-      "It depends on the service center and current workload. Regular processing for I-129 H1B petitions has historically ranged from 3–8 months. Compare your receipt date against the current published time at egov.uscis.gov/processing-times for your specific service center and H1B classification. If you are outside the published window, ask your employer's attorney about a case inquiry or premium processing upgrade.",
+      "No. Most I-140 classifications do — E11, E12, E31, E32, EW3 and E21 without a national interest waiver. But E13 multinational executive and manager, and E21 with a national interest waiver, carry a 45-business-day premium period. The waiver is what changes it: an E21 petition without a NIW is a 15-day classification and the same petition seeking a NIW is a 45-day one.",
   },
   {
-    question: "What is the processing time for I-140 for Indian applicants?",
+    question: "Is premium processing available for an EAD?",
     answer:
-      "Regular I-140 processing currently runs approximately 6–12+ months depending on service center and petition type. Premium processing upgrades I-140 to a 15 business day action window. Critically for Indian EB applicants — your priority date is set at I-140 receipt, not approval. Monitor uscis.gov and travel.state.gov for the visa bulletin.",
+      "Yes, for eligible Form I-765 requests, with a 30-business-day premium period rather than 15. F-1 students seeking OPT and STEM OPT extensions have been eligible for all pending and initial I-765 filings since 3 April 2023. Check current eligibility for your specific category on the USCIS premium processing page before filing.",
   },
   {
-    question: "How long does an EAD (I-765) take to process?",
+    question: "What happens to the premium processing clock if I get an RFE?",
     answer:
-      "EAD processing times vary by service center and category. Most EADs currently process in 3–7 months, though this fluctuates. File EAD renewals at least 180 days (6 months) before expiration to avoid gaps. An automatic extension of up to 540 days applies in many cases if you file on time before expiration — verify with uscis.gov and your attorney.",
+      "The premium period stops and resets. A new premium processing period begins when USCIS receives your response to the request for evidence or notice of intent to deny. Your deadline to respond is the exact date printed on the notice itself — do not work from a generic figure, because response windows vary by notice and a date computed from a blog post is not one USCIS recognises.",
   },
   {
     question: "Does a case transfer reset my processing time?",
     answer:
-      "Functionally, yes — your case joins the new service center's queue from the transfer date. Your original receipt date and priority date remain unchanged. Check the published processing time for the new center after a transfer.",
+      "No. Your receipt date does not change and your case does not start over from the transfer date. The original receipt date continues to govern your place in the queue and your case inquiry date. After a transfer, look up the processing time and inquiry date for the office now handling the case, but keep using your original receipt date when you compare.",
+  },
+  {
+    question: "My case was transferred to the National Benefits Center. Does that mean an interview?",
+    answer:
+      "Not reliably. Cases move between offices for workload and routing reasons, and a destination office is not a signal about what happens next. Read the transfer notice itself rather than inferring a meaning from where the case went.",
   },
   {
     question: "Can I check processing times for my specific case?",
     answer:
-      "Not precisely. USCIS publishes aggregate estimates by form type and service center — it does not publish individual case timelines. The best measure is to compare your receipt date to what USCIS shows on their processing times tool. Individual cases can vary from the aggregate due to complexity, RFEs, background checks, or workload spikes.",
+      "Not precisely. USCIS publishes aggregate figures by form, subtype and office — it does not publish individual case timelines. The usable test is the case inquiry date: compare your receipt date against it on the official tool. Individual cases vary from the aggregate because of complexity, requests for evidence, background checks and workload.",
+  },
+  {
+    question: "Do EAD renewals still get an automatic extension?",
+    answer:
+      "It depends when you filed. A qualifying renewal Form I-765 filed before 30 October 2025 may retain the automatic extension treatment that applied at the time of filing. A renewal filed on or after that date generally does not receive an automatic extension, following the Federal Register rule published that day, unless another law, regulation or notice provides one. Check your own filing date against the rule rather than relying on anything written earlier.",
   },
 ];
 
@@ -152,7 +133,7 @@ export default function ProcessingTimesPage() {
         icon={tool.icon}
         category={tool.group}
         title={tool.title}
-        hook="Typical current waits for H-1B, I-140, I-485, EAD/AP, OCI, passport renewal, and US visa stamping — in one table."
+        hook="Where a wait is tied to a dated official source we show it; where it is not, we send you to the official tool rather than print an estimate. Plus a delay checker built on your own USCIS case inquiry date."
         badges={["Always free", "No signup", "Official sources", "One-page view"]}
         accent={tool.accent}
         sourceNote={
@@ -237,7 +218,7 @@ export default function ProcessingTimesPage() {
               <a href="https://egov.uscis.gov/processing-times" target="_blank" rel="noopener noreferrer" className="font-medium underline">
                 egov.uscis.gov/processing-times
               </a>{" "}
-              as the authoritative source for processing time estimates. USCIS updates these times monthly. NRItoUSA does not publish, predict, or guarantee processing times — this page is educational only.{" "}
+              as the authoritative source for processing time estimates. USCIS updates these times monthly. NRItoUSA does not predict or guarantee processing times, and publishes a figure only where it is tied to a dated, service-specific official source — otherwise this page links to that source instead. Educational only.{" "}
               <strong className="font-semibold text-ink-700">NRItoUSA is not USCIS, not a law firm, and not your attorney.</strong>{" "}
               Consult a licensed immigration attorney for guidance on your specific case.
             </p>

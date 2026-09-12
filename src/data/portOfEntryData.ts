@@ -50,7 +50,7 @@
  * is cited on-page.
  */
 
-export const POE_VERIFIED = "2026-09-09";
+export const POE_VERIFIED = "2026-09-11";
 
 /* ─────────────────────── official sources ──────────────────────────────── */
 
@@ -63,54 +63,69 @@ export interface PoeSource {
 
 export const poeSources: PoeSource[] = [
   {
-    label: "22 CFR 41.112 — Validity of visa",
-    href: "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-E/part-41/subpart-K/section-41.112",
-    note: "Automatic revalidation: the 30-day limit, contiguous territory, the seven conditions, and the state-sponsor-of-terrorism exclusion.",
-  },
-  {
-    label: "8 CFR 214.1 — Requirements for admission, extension, maintenance of status",
-    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
-    note: "214.1(b) readmission for F/J/M/Q only; 214.1(l) the 10-day and 60-day periods.",
-  },
-  {
-    label: "8 CFR 235.2 — Parole for deferred inspection",
-    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-235/section-235.2",
-    note: "Deferred inspection and its statutory basis in INA 212(d)(5).",
-  },
-  {
-    label: "8 CFR 235.3 — Inadmissible aliens and expedited removal",
-    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-235/section-235.3",
-    note: "The sworn statement on Forms I-867A/I-867B, the right to correct it, and Form I-860.",
+    label: "INA 235 / 8 USC 1225 — Inspection of applicants for admission",
+    href: "https://www.law.cornell.edu/uscode/text/8/1225",
+    note: "235(a)(4), withdrawal of an application for admission, in the discretion of the Attorney General; 235(b)(1), expedited removal; 235(a)(5), statements under oath.",
   },
   {
     label: "8 CFR 235.4 — Withdrawal of application for admission",
     href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-235/section-235.4",
-    note: "Withdrawal is discretionary and confers no right.",
+    note: "Withdrawal is discretionary and confers no right; normally requires intent and ability to depart immediately.",
   },
   {
-    label: "INA 235 / 8 USC 1225 — Inspection of applicants for admission",
-    href: "https://www.law.cornell.edu/uscode/text/8/1225",
-    note: "235(a)(4) withdrawal; 235(b)(1) expedited removal.",
+    label: "8 CFR 235.3 — Inadmissible aliens and expedited removal",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-235/section-235.3",
+    note: "235.3(b)(2)(i): the sworn statement on Forms I-867A/I-867B, the requirement to sign and initial each page and each correction, and Form I-860.",
+  },
+  {
+    label: "8 CFR 235.2 — Parole for deferred inspection",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-235/section-235.2",
+    note: "Deferring an inspection at the port when the traveller may overcome a finding of inadmissibility; accomplished as parole under INA 212(d)(5).",
   },
   {
     label: "INA 212 / 8 USC 1182 — Inadmissible aliens",
     href: "https://www.law.cornell.edu/uscode/text/8/1182",
-    note: "212(a)(6)(C)(i) misrepresentation; 212(a)(7) documentation; 212(a)(9)(A)(i) the five-year bar; 212(d)(3) and (d)(5).",
+    note: "212(a)(6)(C)(i) misrepresentation; 212(a)(7)(A)(i)(I) documentation; 212(a)(9)(A)(i) the 5-year / 20-year / aggravated-felony bars; 212(d)(3) and 212(d)(5).",
+  },
+  {
+    label: "8 CFR 245.2 — Application for adjustment of status",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-245/section-245.2",
+    note: "245.2(a)(4)(ii)(C): travel by an applicant in lawful H-1 or L-1 status is not an abandonment where the stated conditions are met — the exception to the advance-parole rule.",
+  },
+  {
+    label: "USCIS — Form I-212, Permission to Reapply for Admission",
+    href: "https://www.uscis.gov/i-212",
+    note: "Consent to reapply after removal, for inadmissibility under INA 212(a)(9)(A) or (C).",
+  },
+  {
+    label: "USCIS — Form I-192, Advance Permission to Enter as a Nonimmigrant",
+    href: "https://www.uscis.gov/i-192",
+    note: "Advance permission to enter temporarily as a nonimmigrant despite a separate ground of inadmissibility.",
+  },
+  {
+    label: "CBP — Border Search of Electronic Devices",
+    href: "https://www.cbp.gov/travel/cbp-search-authority/border-search-electronic-devices",
+    note: "CBP's own statement of its authority to inspect electronic devices at the border.",
   },
   {
     label: "CBP — Deferred Inspection Sites",
     href: "https://www.cbp.gov/about/contact/ports/deferred-inspection-sites",
-    note: "The site list, Form I-546, and what deferred inspection can correct.",
-  },
-  {
-    label: "CBP — Automatic revalidation for certain temporary visitors",
-    href: "https://www.help.cbp.gov/s/article/Article-1446?language=en_US",
-    note: "CBP's operational statement of AVR, including that you cannot apply for a new visa and use AVR at the same time.",
+    note: "The post-entry site network, Form I-546, and the admission-document errors these sites can correct.",
   },
   {
     label: "CBP — I-94 Arrival/Departure Record",
     href: "https://www.cbp.gov/travel/international-visitors/i-94",
     note: "Retrieving and checking the electronic I-94 after admission.",
+  },
+  {
+    label: "22 CFR 41.112 — Validity of visa",
+    href: "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-E/part-41/subpart-K/section-41.112",
+    note: "41.112(d), automatic revalidation — the conditions, the 30-day limit and the nationality exclusion.",
+  },
+  {
+    label: "8 CFR 214.1 — Admission, extension and maintenance of status",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
+    note: "214.1(l)(1) the 10-day periods; 214.1(l)(2) the discretionary 60-day cessation-of-employment period.",
   },
 ];
 
@@ -140,11 +155,11 @@ export const poeOutcomes: OutcomeRow[] = [
     id: "withdrawal",
     name: "Withdrawal of application for admission",
     whatItIs:
-      "You ask to withdraw your request to enter and depart immediately, instead of being formally refused. CBP does not have to allow it — it is discretionary and confers no right.",
+      "Your request to enter is withdrawn and you depart immediately, instead of being formally refused. It is discretionary: an officer may offer or permit it, and 8 CFR 235.4 states expressly that nothing in it gives a traveller the right to withdraw.",
     removalOrder: "No — no removal order is issued",
     bar: "No INA 212(a)(9)(A)(i) five-year bar",
     visaEffect:
-      "The visa is normally cancelled, but without a removal order attached to your record.",
+      "Depends on the disposition. A visa may be cancelled, or left in place, depending on the ground the officer relied on and what is recorded. Check the physical stamp and any paperwork you were given rather than assuming either way.",
     laterDisclosure:
       "You were refused admission and must disclose it. You were not removed.",
     authority: "INA 235(a)(4); 8 CFR 235.4",
@@ -156,7 +171,7 @@ export const poeOutcomes: OutcomeRow[] = [
     whatItIs:
       "A formal removal order issued by a CBP officer at the port, without a hearing before an immigration judge. Documented on a sworn statement (I-867A/B) and Form I-860.",
     removalOrder: "Yes — a formal order of removal",
-    bar: "Five years' inadmissibility; 20 years for a second or subsequent removal",
+    bar: "Five years for a first removal as an arriving alien; 20 years for a second or subsequent removal; permanently inadmissible if removed after an aggravated felony conviction — INA 212(a)(9)(A)(i)",
     visaEffect:
       "Visa cancelled, and the removal order sits permanently on your immigration record.",
     laterDisclosure:
@@ -173,7 +188,7 @@ export const poeOutcomes: OutcomeRow[] = [
     removalOrder: "No — the inspection is simply not finished",
     bar: "None, provided you report as ordered and the case resolves",
     visaEffect:
-      "Visa normally untouched while the deferred inspection is pending.",
+      "Depends on the disposition. Deferring an inspection does not itself act on the visa, but nothing about the deferral guarantees the visa is untouched — read whatever paperwork you were handed.",
     laterDisclosure:
       "You were paroled for deferred inspection rather than admitted; keep the paperwork.",
     authority: "8 CFR 235.2; INA 212(d)(5); Form I-546",
@@ -412,4 +427,90 @@ export const gracePeriods = {
     cite: "8 CFR 214.1(l)(2)",
     text: "After employment ceases, an E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 or TN holder is not treated as having failed to maintain status for up to 60 consecutive days, or until the end of the authorized validity period, whichever is shorter — once during each authorized validity period. DHS may shorten or eliminate this period as a matter of discretion, and you may not work during it.",
   },
+} as const;
+
+/* ─────────────────────── I-485 travel: the H/L exception ───────────────── */
+
+/**
+ * The advance-parole rule is not universal, and saying it is misleads exactly
+ * the readers this cluster serves — H-1B holders with a pending I-485.
+ *
+ * 8 CFR 245.2(a)(4)(ii)(C), read verbatim on 2026-09-09: travel by an applicant
+ * for adjustment who is NOT in exclusion, deportation or removal proceedings and
+ * who is in lawful H-1 or L-1 status "shall not be deemed an abandonment of the
+ * application" where all of the listed conditions hold. The derivative sentence
+ * in the same subparagraph does the same for H-4 and L-2.
+ */
+export const i485TravelException = {
+  cite: "8 CFR 245.2(a)(4)(ii)(C)",
+  href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-245/section-245.2",
+  generalRule:
+    "As a general rule under 8 CFR 245.2(a)(4)(ii)(A), an adjustment applicant who departs the United States without advance parole is deemed to have abandoned the I-485.",
+  principalConditions: [
+    "You are not in exclusion, deportation or removal proceedings",
+    "You are in lawful H-1 or L-1 status",
+    "On return you remain eligible for H or L status",
+    "You are returning to resume employment with the same employer for whom you were previously authorized to work as an H-1 or L-1",
+    "You hold a valid H or L visa, if a visa is required",
+  ],
+  derivativeConditions: [
+    "You are in lawful H-4 or L-2 status",
+    "The spouse or parent through whom you hold that status is maintaining H-1 or L-1 status",
+    "You remain otherwise eligible for H-4 or L-2 status",
+    "You hold a valid H-4 or L-2 visa, if a visa is required",
+  ],
+  caution:
+    "The exception depends on every condition holding at the moment you return. Changing employers, falling out of H or L status, or returning without the required visa takes you outside it — and the consequence is the loss of a pending adjustment application, not a warning.",
+} as const;
+
+/* ─────────────────────── two different things called deferred ──────────── */
+
+/**
+ * The brief flagged this and it is a real distinction the first draft blurred:
+ * an inspection deferred AT ENTRY is not the same thing as walking into a
+ * Deferred Inspection Site after you have already been admitted.
+ */
+export const deferredInspectionKinds = [
+  {
+    id: "at-entry",
+    title: "Inspection deferred at the port of entry",
+    what: "The officer cannot complete your inspection on arrival and defers it. Under 8 CFR 235.2 the deferral is accomplished as parole under INA 212(d)(5), and you may be given Form I-546 telling you where and when to appear with specified documents.",
+    status: "Your inspection is not finished. You have not been admitted in the ordinary sense; you were paroled in so the inspection can be completed.",
+    cite: "8 CFR 235.2; INA 212(d)(5); Form I-546",
+  },
+  {
+    id: "post-entry",
+    title: "Visiting a Deferred Inspection Site after admission",
+    what: "You were admitted, but something on your admission record is wrong. CBP's Deferred Inspection Sites also provide a post-entry service to review and correct certain errors on admission documents.",
+    status: "Your inspection was completed and you were admitted. This is a records-correction visit, not an unfinished inspection.",
+    cite: "CBP Deferred Inspection Sites",
+  },
+] as const;
+
+/* ─────────────────────── counsel at inspection ─────────────────────────── */
+
+export const counselNote = {
+  summary:
+    "There is no guaranteed right to have an attorney present during primary or secondary inspection. Inspection is not a proceeding at which counsel appears, and a Form G-28 does not create a seat in the room.",
+  practical:
+    "Where an officer permits it, a traveller may contact counsel. Carry the number on paper — devices are frequently taken — and tell your employer as soon as you are able, because counsel and the employer can act from outside while you cannot.",
+} as const;
+
+/* ─────────────────────── "adjacent islands", defined ───────────────────── */
+
+/**
+ * Users read "adjacent islands" as "any island", which is how the Caribbean
+ * cruise myth survives. It is a defined statutory term, not a geography quiz.
+ *
+ * INA 101(b)(5) / 8 USC 1101(b)(5), read verbatim 2026-09-10.
+ */
+export const adjacentIslands = {
+  cite: "INA 101(b)(5); 8 USC 1101(b)(5)",
+  href: "https://www.law.cornell.edu/uscode/text/8/1101",
+  definition:
+    "The term \u201cadjacent islands\u201d includes Saint Pierre, Miquelon, Cuba, the Dominican Republic, Haiti, Bermuda, the Bahamas, Barbados, Jamaica, the Windward and Leeward Islands, Trinidad, Martinique, and other British, French, and Netherlands territory or possessions in or bordering on the Caribbean Sea.",
+  whoCanUseIt:
+    "Only F and J nonimmigrants and their accompanying spouse and children may rely on the adjacent-islands extension, and 22 CFR 41.112(d)(2)(ii) excludes Cuba for that purpose even though Cuba appears in the statutory definition. In H, L and other classifications the absence must be solely in contiguous territory — Canada or Mexico.",
+  notCovered:
+    "An island outside this definition is not an adjacent island. Neither is a cruise that calls anywhere outside it, and a cruise is in any event irrelevant to H and L travellers, who do not get the extension at all.",
 } as const;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
-import PortOfEntryRiskScorecard from "@/components/tools/PortOfEntryRiskScorecard";
+import PortOfEntryPreparednessChecklist from "@/components/tools/PortOfEntryPreparednessChecklist";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
@@ -25,8 +25,11 @@ import {
 } from "@/lib/portOfEntryCluster";
 import {
   POE_VERIFIED,
+  counselNote,
   deferredInspection,
+  deferredInspectionKinds,
   gracePeriods,
+  i485TravelException,
   i94Notes,
   poeOutcomes,
   poeSources,
@@ -38,9 +41,10 @@ const PATH = "/h1b-denied-entry-airport";
 const TITLE =
   "Denied Entry at the Airport on an Approved H-1B: What Happens, and What It Costs You";
 const DESC =
-  "An approved H-1B can still be refused admission. What happens in secondary inspection, the difference between withdrawal, expedited removal and deferred inspection, the sworn statement you are asked to sign, and what it means for your H-4 family and your green card.";
+  "An approved H-1B can still be refused entry. What happens in secondary inspection, and why withdrawal and expedited removal are not the same thing.";
 
 export const metadata: Metadata = pageMetadata({
+  category: "immigration",
   title: "H-1B Denied Entry at the Airport",
   description: DESC,
   path: PATH,
@@ -50,13 +54,13 @@ const faq: FaqItem[] = [
   {
     question: "Can an approved H-1B be denied entry at the airport?",
     answer:
-      "Yes. An approved petition and a valid visa let you travel to a port of entry and ask to be admitted; they do not admit you. Every arrival makes you an applicant for admission, and the CBP officer decides admissibility afresh each time under INA 235. The overwhelming majority of H-1B travellers are admitted in seconds, but refusal is legally available at every arrival, and neither USCIS approval nor a valid stamp forecloses it.",
+      "Yes. An approved petition and a valid visa let you travel to a port of entry and ask to be admitted; they do not admit you. Every arrival makes you an applicant for admission, and the CBP officer decides admissibility afresh each time under INA 235. Refusal is legally available at every arrival, and neither USCIS approval nor a valid visa forecloses it. Under INA 291 the burden of establishing admissibility rests on the traveller.",
   },
   {
     question:
       "What is the difference between withdrawing my application for admission and being removed?",
     answer:
-      "Withdrawal under INA 235(a)(4) means you ask to take back your request to enter and leave immediately, and no removal order is issued — so no five-year bar under INA 212(a)(9)(A)(i) attaches. Expedited removal under INA 235(b)(1) is a formal removal order issued by the officer without a hearing, and it carries a five-year bar, twenty years for a second removal. The difference between these two outcomes is the single most consequential thing that can happen in a secondary inspection room. Withdrawal is discretionary — 8 CFR 235.4 says nothing in it gives you a right to withdraw — so it is something you ask for, politely and early.",
+      "Withdrawal under INA 235(a)(4) means your request to enter is withdrawn and you depart immediately, and no removal order is issued — so no bar under INA 212(a)(9)(A)(i) attaches. Expedited removal under INA 235(b)(1) is a formal removal order issued by the officer without a hearing before an immigration judge. Under INA 212(a)(9)(A)(i) that ordinarily makes an arriving traveller inadmissible for five years, twenty years for a second or subsequent removal, and permanently where the removal followed an aggravated felony conviction — subject to the statute and to permission to reapply on Form I-212. Withdrawal is entirely discretionary: 8 CFR 235.4 says expressly that nothing in it gives a traveller the right to withdraw, so an officer may permit or offer it but you cannot insist on it.",
   },
   {
     question: "Can I refuse to sign the sworn statement?",
@@ -72,17 +76,17 @@ const faq: FaqItem[] = [
     question:
       "Does being refused entry affect my pending I-140 or I-485 and my priority date?",
     answer:
-      "A refusal of admission does not by itself revoke an approved I-140 or erase a priority date — the petition and the date belong to the petition, not to your presence. But the practical damage can be severe: a pending I-485 is generally abandoned if you leave the United States without advance parole, an expedited removal order creates an inadmissibility ground that must be waived before any future admission, and a misrepresentation finding under INA 212(a)(6)(C)(i) is a permanent ground. Get advice specific to your case — this is exactly the situation where an immigration attorney is not optional.",
+      "A refusal of admission does not by itself revoke an approved I-140 or erase a priority date — both belong to the petition, not to your presence. The practical damage can still be severe. On the I-485: the general rule at 8 CFR 245.2(a)(4)(ii)(A) is that departing without advance parole abandons a pending application, but not every applicant needs advance parole. Under 8 CFR 245.2(a)(4)(ii)(C) travel by an applicant in lawful H-1 or L-1 status is not an abandonment where the applicant remains eligible for H or L status, is returning to resume employment with the same employer, and holds a valid H or L visa where one is required; a parallel sentence covers H-4 and L-2 dependants. Separately, a removal order creates inadmissibility that must be waived before any future admission, and a misrepresentation finding under INA 212(a)(6)(C)(i) is a permanent ground. Get advice on your specific facts.",
   },
   {
     question: "What is deferred inspection, and is it a refusal?",
     answer:
-      "It is not a refusal. Under 8 CFR 235.2 a CBP officer who cannot finish your inspection at the port can defer it: you are paroled in under INA 212(d)(5) and given Form I-546, an Order to Appear, telling you to report to a deferred inspection site with specified documents. There are more than 70 such sites. They also exist to correct I-94 errors. Reporting as ordered is not optional — failing to appear turns a solvable documentation question into a status problem.",
+      "It is not a refusal. Two different things share the name. Under 8 CFR 235.2 an officer who cannot complete your inspection at the port may defer it — the deferral is accomplished as parole under INA 212(d)(5), and you may be given Form I-546 telling you where to appear with specified documents. Separately, CBP\u2019s Deferred Inspection Sites provide a post-entry service to travellers who were admitted but whose admission documents contain certain errors. The first means your inspection is unfinished; the second is a records-correction visit after a completed admission. Where you are ordered to appear, appearing is not optional.",
   },
   {
     question: "My I-94 shows a date earlier than my petition validity. Is that an error?",
     answer:
-      "Usually not. CBP routinely admits a traveller only until the expiry of their passport, so an I-94 that ends on your passport expiry date rather than your petition end date is the system working as designed, not a mistake. The remedy is a new passport followed by an extension or a fresh admission. A genuine error — the wrong visa class, a misspelled name, a wrong date of birth, or a date unrelated to your passport — is what deferred inspection sites correct.",
+      "Often not. Where CBP has lawfully limited your admission to the validity of your passport, that is not automatically a correctable CBP error — it is a lawful limitation on the admission period, and a Deferred Inspection Site is not obliged to change it. The usual route is to obtain a new passport and then either file an extension with USCIS or obtain a new admission on a later entry. Deferred inspection is the right avenue where CBP actually made an error, such as recording the wrong nonimmigrant classification, misspelling a name, or entering a wrong date of birth.",
   },
   {
     question:
@@ -93,12 +97,12 @@ const faq: FaqItem[] = [
   {
     question: "Can CBP search my phone and laptop at the border?",
     answer:
-      "Yes. Electronic device searches at the border are conducted without the warrant that would be required inside the country, and refusing to unlock a device can lead to the device being detained. What matters practically for H-1B travellers is what is found: a LinkedIn profile naming a different employer than your petition, messages about being on the bench, or a resume with a job title that does not match the I-129 are direct contradictions of the document the officer is holding. Make your public record consistent with your petition before you fly, not at the border.",
+      "Yes. CBP asserts authority to inspect electronic devices at the border without the warrant that would be required inside the country, and declining to unlock a device can lead to it being detained. The practical point for an H-1B traveller is accuracy: a profile or resume that misstates your employer or job title is a problem because it is untrue, not because it is visible. Correct anything factually wrong or out of date so your public record reflects your actual employment. Do not conceal, delete or alter information to create a misleading impression before travel — that risks a misrepresentation problem under INA 212(a)(6)(C)(i) far more serious than a stale job title.",
   },
   {
     question: "Should I have an attorney's number with me when I travel?",
     answer:
-      "Yes, memorised or on paper, not only in a phone that may be taken. You do not have a right to counsel in the inspection process itself — a Form G-28 does not give an attorney a seat in secondary inspection — but your employer and your attorney can act quickly on the outside, and the first hour matters. Tell your employer you have been referred as soon as you are able.",
+      "Yes, memorised or on paper, not only in a phone that may be taken. There is no guaranteed right to have counsel present during primary or secondary inspection, and a Form G-28 does not create one — but where an officer permits it a traveller may make contact, and your employer and attorney can act from outside while you cannot. Tell your employer you have been referred as soon as you are able.",
   },
 ];
 
@@ -326,10 +330,11 @@ export default function Page() {
                 Someone is in secondary inspection right now
               </h2>
               <p>
-                Being sent to secondary is not a refusal and is not rare. It
-                means the primary officer had a question they could not resolve
-                in the twenty seconds a primary inspection allows. Most secondary
-                referrals for H-1B travellers end in admission.
+                Being sent to secondary is not a refusal. It means the primary
+                officer had a question they could not resolve at the booth.
+                CBP does not publish outcome rates for H-1B referrals, so treat
+                any figure you read about how these usually end — including a
+                reassuring one — as unsourced.
               </p>
               <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
                 <p className="font-bold text-ink-900">
@@ -351,6 +356,10 @@ export default function Page() {
                     permanent and far worse than the underlying issue.
                   </li>
                   <li>
+                    <strong>There is no guaranteed right to counsel here.</strong>{" "}
+                    {counselNote.summary} {counselNote.practical}
+                  </li>
+                  <li>
                     <strong>Do not guess.</strong> &ldquo;I don&rsquo;t
                     remember&rdquo; or &ldquo;I would need to check&rdquo; is a
                     complete answer. An invented detail that contradicts your
@@ -365,12 +374,13 @@ export default function Page() {
                   </li>
                   <li>
                     <strong>
-                      If refusal looks likely, ask to withdraw your application
-                      for admission.
+                      Withdrawal of the application for admission may be
+                      available.
                     </strong>{" "}
-                    Ask early, ask politely, and ask explicitly. It is
-                    discretionary and it will not always be granted, but it is
-                    never granted if it is not asked for.
+                    It is entirely discretionary. An officer may raise or offer
+                    it, and a traveller may ask about it — but 8 CFR 235.4 is
+                    explicit that nothing in it gives you a right to withdraw,
+                    so it is not something you can insist on or count on.
                   </li>
                 </ul>
               </div>
@@ -381,10 +391,11 @@ export default function Page() {
                 <ul className="mt-2 space-y-2 text-sm">
                   <li>
                     Contact the company&rsquo;s immigration counsel immediately.
-                    Counsel cannot sit in the inspection, and a Form G-28 does
-                    not create a right to representation in the inspection
-                    process, but they can reach the port&rsquo;s duty officer and
-                    can prepare documents.
+                    There is no guaranteed right to have an attorney present
+                    during primary or secondary inspection, and a Form G-28 does
+                    not create one — but counsel can still prepare documents and
+                    make contact from outside, and where an officer permits it a
+                    traveller may reach them.
                   </li>
                   <li>
                     Assemble, as PDFs, ready to send: the current I-797 approval
@@ -431,7 +442,7 @@ export default function Page() {
                   {
                     n: 2,
                     t: "Referral to secondary",
-                    d: "The officer cannot resolve something at the booth. You are escorted to a separate area. This is a referral, not a refusal, and it is where most H-1B cases both begin and end.",
+                    d: "The officer cannot resolve something at the booth. You are escorted to a separate area. This is a referral, not a refusal — it means the inspection is continuing somewhere with more time and more screens.",
                   },
                   {
                     n: 3,
@@ -472,12 +483,12 @@ export default function Page() {
                 Why H-1B travellers get referred
               </h2>
               <p className="mt-2">
-                Referrals are driven by a small number of recurring fact
-                patterns. They compound: any one of these alone is ordinary, but
-                three together is the shape officers are trained to look at. For
-                Indian H-1B holders the first one on this list is the root cause
-                far more often than any other, because it describes the operating
-                model of most IT staffing firms.
+                The fact patterns below are the ones that commonly generate
+                questions for H-1B travellers, and they compound — any one alone
+                is ordinary. They are ordered by how much documentary
+                preparation each one tends to require, not by frequency: CBP
+                publishes no breakdown of what causes referrals, so nobody can
+                honestly tell you which is most common.
               </p>
               <div className="mt-5 space-y-3">
                 {referralCauses.map((c, i) => (
@@ -520,16 +531,21 @@ export default function Page() {
                   What CBP looks at on your devices
                 </p>
                 <p className="mt-2">
-                  Border device searches do not require the warrant that would be
-                  needed inland. For an H-1B traveller the risk is rarely privacy
-                  in the abstract — it is contradiction. A LinkedIn headline
-                  naming a client rather than your petitioner, a resume listing a
-                  job title that differs from the I-129, or messages about being
-                  &ldquo;on the bench&rdquo; between projects each contradict the
-                  petition the officer is reading. None of these is illegal.
-                  All of them are hard to explain at 2am in a room with no
-                  documents. Reconcile your public record with your petition
-                  before you travel.
+                  CBP asserts authority to inspect electronic devices at the
+                  border without the warrant that would be needed inland. For an
+                  H-1B traveller the issue is rarely privacy in the abstract — it
+                  is accuracy. A LinkedIn headline naming a client rather than
+                  your petitioner, or a resume listing a job title that differs
+                  from the I-129, is a problem because it is inaccurate.
+                </p>
+                <p className="mt-2">
+                  The fix is to make your public record true and current, well
+                  before you travel. It is emphatically <em>not</em> to conceal,
+                  delete or restyle information so an officer sees a tidier
+                  picture than the real one. Creating a misleading impression is
+                  how an out-of-date job title becomes a misrepresentation
+                  allegation under INA 212(a)(6)(C)(i), which is permanent and
+                  vastly worse than the thing it was meant to hide.
                 </p>
               </div>
             </div>
@@ -697,21 +713,37 @@ export default function Page() {
                 Deferred inspection: the outcome nobody explains
               </h2>
               <p className="mt-2">
-                Deferred inspection is the least understood and most benign of
-                the three outcomes. Under {deferredInspection.cite}, an officer
-                who has reason to believe you can overcome a finding of
-                inadmissibility — by producing evidence that simply is not with
-                you at the airport — may defer the rest of your inspection rather
-                than refuse you. The deferral itself is accomplished as parole
-                under INA 212(d)(5), for the time needed to finish the
-                inspection.
+                Two different things travel under this name, and conflating them
+                is the most common error in write-ups on the subject.
               </p>
-              <p className="mt-3">
-                In practice: you are released into the United States, and handed{" "}
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {deferredInspectionKinds.map((k) => (
+                  <div
+                    key={k.id}
+                    className="rounded-2xl border border-ink-900/10 bg-white p-4 shadow-card"
+                  >
+                    <p className="text-sm font-bold text-ink-900">{k.title}</p>
+                    <p className="mt-1.5 text-sm">{k.what}</p>
+                    <p className="mt-2 rounded-lg bg-ink-50 p-2.5 text-sm text-ink-700">
+                      <span className="font-semibold">Where that leaves you:</span>{" "}
+                      {k.status}
+                    </p>
+                    <p className="mt-1.5 font-mono text-[0.7rem] text-ink-500">
+                      {k.cite}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4">
+                In the first case an officer who has reason to believe you can
+                overcome a finding of inadmissibility — by producing evidence
+                that is simply not with you at the airport — defers the rest of
+                your inspection rather than refusing you, and you may be handed{" "}
                 <strong>{deferredInspection.form}</strong> telling you where and
-                when to report and what to bring. There are{" "}
-                {deferredInspection.siteCount} deferred inspection sites across
-                the United States and its territories.
+                when to report and what to bring. In the second you were already
+                admitted and are visiting to have a record corrected. There are{" "}
+                {deferredInspection.siteCount} sites across the United States and
+                its territories.
               </p>
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -801,7 +833,7 @@ export default function Page() {
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
                   <p className="text-sm font-bold text-ink-900">
-                    Usually not an error: passport truncation
+                    Often not an error: admission limited to passport validity
                   </p>
                   <p className="mt-2 text-sm">{i94Notes.passportTruncation}</p>
                 </div>
@@ -811,8 +843,10 @@ export default function Page() {
                   </p>
                   <p className="mt-2 text-sm">{i94Notes.realErrors}</p>
                   <p className="mt-2 text-sm">
-                    Take it to a deferred inspection site. That is precisely what
-                    they exist for, and it is far faster than any other route.
+                    This is what a Deferred Inspection Site can address. An
+                    admission that CBP lawfully limited to your passport validity
+                    is a different matter, and is not automatically correctable
+                    there.
                   </p>
                 </div>
               </div>
@@ -853,16 +887,18 @@ export default function Page() {
           <Container>
             <div className="mx-auto max-w-5xl">
               <h2 className="text-2xl font-bold tracking-tight text-ink-900">
-                Port-of-Entry Risk Scorecard
+                Port-of-Entry Preparedness Checklist
               </h2>
               <p className="mt-1 max-w-2xl text-sm text-ink-500">
-                Answer all fourteen and the scorecard names the specific
-                questions an officer is likely to ask you, and the document that
-                answers each one. It gives you a band, never a percentage —
-                nobody can quantify this honestly.
+                Answer every question and this sorts your facts into three
+                buckets: hard stops that should change your travel plans,
+                questions that need an attorney before you fly, and documents you
+                should be carrying. It produces no score and no probability —
+                CBP publishes no such figure, and any tool that shows you one has
+                invented it.
               </p>
               <div className="mt-5">
-                <PortOfEntryRiskScorecard />
+                <PortOfEntryPreparednessChecklist />
               </div>
             </div>
           </Container>
@@ -971,18 +1007,62 @@ export default function Page() {
               <p className="mt-2">
                 An approved I-140 is not revoked by a refusal of admission, and
                 your priority date belongs to the petition rather than to your
-                presence in the country. The real damage is elsewhere: a pending
-                I-485 is generally treated as abandoned if you leave the United
-                States without advance parole, so if you departed on an
-                unapproved trip the adjustment application is the immediate
-                casualty — see{" "}
-                <Link href="/uscis/forms/i-131" className="text-brand-600 underline">
-                  Form I-131 and advance parole
-                </Link>
-                . And an expedited removal order creates an inadmissibility
-                ground that must be waived before <em>any</em> future admission,
-                immigrant or nonimmigrant.
+                presence in the country. An expedited removal order, by contrast,
+                creates an inadmissibility ground that must be waived before{" "}
+                <em>any</em> future admission, immigrant or nonimmigrant.
               </p>
+              <div className="mt-4 rounded-2xl border border-sky-200 bg-sky-50/60 p-5">
+                <p className="text-sm font-bold text-ink-900">
+                  A pending I-485 does not always need advance parole
+                </p>
+                <p className="mt-2 text-sm">
+                  {i485TravelException.generalRule} That general rule has an
+                  express exception, and it is the one that applies to most
+                  readers of this page. Under{" "}
+                  <a
+                    href={i485TravelException.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[0.78rem] text-brand-600 underline"
+                  >
+                    {i485TravelException.cite}
+                  </a>
+                  , travel by an adjustment applicant who is not in exclusion,
+                  deportation or removal proceedings and who is in lawful H-1 or
+                  L-1 status is not an abandonment, provided all of these hold:
+                </p>
+                <ul className="mt-2 space-y-1 text-sm">
+                  {i485TravelException.principalConditions.map((c) => (
+                    <li key={c} className="flex gap-2">
+                      <span aria-hidden className="text-sky-600">&middot;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm">
+                  A parallel sentence in the same subparagraph covers H-4 and
+                  L-2 dependants:
+                </p>
+                <ul className="mt-2 space-y-1 text-sm">
+                  {i485TravelException.derivativeConditions.map((c) => (
+                    <li key={c} className="flex gap-2">
+                      <span aria-hidden className="text-sky-600">&middot;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm font-semibold text-ink-800">
+                  {i485TravelException.caution}
+                </p>
+                <p className="mt-2 text-sm">
+                  If you fall outside the exception, advance parole is the route
+                  — see{" "}
+                  <Link href="/uscis/forms/i-131" className="text-brand-600 underline">
+                    Form I-131
+                  </Link>
+                  .
+                </p>
+              </div>
 
               <h3 className="mt-6 text-lg font-bold text-ink-900">
                 The DS-160 question, forever
@@ -1151,7 +1231,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

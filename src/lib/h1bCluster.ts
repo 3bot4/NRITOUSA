@@ -744,32 +744,56 @@ Your immigration options narrow significantly after 60 days. Before the grace pe
     excerpt:
       "H1B travel to India for visa stamping carries real risk — especially after a job change, RFE, or transfer. Understand the process before you book your flight.",
     date: "2026-06-16",
-    content: `Traveling to India while on H1B status is generally permissible, but it requires careful planning. The main reason most H1B holders travel to India for immigration purposes is to get a **new H1B visa stamp** at a US consulate.
+    content: `Traveling to India while on H1B status is generally permissible, but it requires careful planning.
+
+:::info
+title: Which page you want
+This page is the **travel decision**: whether you need a visa at all, what to carry for re-entry, and the risks of going. Two companion pages cover the rest and are not repeated here.
+
+- **[H1B stamping in India after approval](/h1b/stamping-india-after-approval)** — the appointment workflow, documents, the interview, passport return and 221(g).
+- **[H1B stamping after lottery selection](/h1b-visa-stamping-after-selection)** — what selection does and does not mean, change of status versus consular notification, and when stamping enters the process at all.
+- **[Denied entry at the airport](/h1b-denied-entry-airport)** — the return leg, if CBP refers you to secondary inspection.
+:::
 
 :::info
 title: Key H1B travel facts
-- You need a valid H1B visa stamp to re-enter the US, not just an approval notice
-- The visa stamp and the H1B approval are two different things — a new I-797 approval does NOT automatically give you a new visa
+- To re-enter the US you generally need a valid visa, not just an approval notice — but see automatic revalidation below for the narrow exception covering short trips to Canada or Mexico
+- The visa and the H1B approval are two different documents — a new I-797 approval does NOT give you a new visa
 - US consulates in India include Chennai, Mumbai, Hyderabad, Kolkata, and New Delhi
-- Consular processing involves security checks that can cause delays (administrative processing)
+- Consular processing can involve administrative processing under INA 221(g), which has no guaranteed timeline
 :::
 
 ## When do you need a new H1B visa stamp
 
-You do NOT need a new visa stamp to continue working in the US — your existing visa stamp remains valid for re-entry. You need a new stamp when:
+You do NOT need a new visa stamp to continue working in the US — the visa is a travel document, not what authorises your employment. You need a new visa when:
 
-- Your existing H1B visa stamp has expired and you plan to travel internationally
-- Your H1B petition was transferred to a new employer and your existing stamp shows the old employer (though some consulates allow re-entry on an approved I-797 — rules vary)
-- You changed employers after your stamp was issued
+- Your existing H1B visa has expired and you plan to travel internationally
+- You do not hold an H-1B visa at all (for example, you changed status inside the US and have never been stamped in H-1B)
+
+:::info
+title: A visa naming a former employer is not automatically invalid
+A **valid, unexpired H-1B visa does not become invalid merely because it names a previous employer.** The classification on the visa is H-1B; the employer printed on it is not what expires. A traveller in that position can generally present the unexpired visa together with the **current employer's valid I-797 approval notice** and supporting employment documents.
+
+Two things follow from that, and both are commonly stated the wrong way round:
+
+- **An H-1B transfer or employer change does not by itself require a new visa.** There is no rule that a change of petitioner invalidates an unexpired visa.
+- **Consulates issue visas; CBP decides admission.** A consulate has no role in whether you are admitted, so a claim that "some consulates allow re-entry" on an approval notice is describing the wrong agency. Admission is decided by a CBP officer at the port of entry, on every arrival.
+:::
 
 ## The stamping process in India
 
 :::steps
-Create an appointment through the US consulate website (ustraveldocs.com for India).
-Complete Form DS-160 (nonimmigrant visa application).
-Attend the visa appointment at the US consulate.
-The consular officer reviews your documents and either approves the stamp or issues a 221(g) for additional processing.
-If approved, your passport is returned with the new H1B visa stamp.
+Complete Form DS-160, the online nonimmigrant visa application, and keep the confirmation page — the DS-160 comes first, because its confirmation number is needed to book.
+Create your applicant profile on the official India scheduling portal (currently usvisascheduling.com) and pay the visa application (MRV) fee.
+Schedule the appointment.
+Attend the appointment at the US consulate.
+The consular officer either issues the visa or refuses it under INA 221(g) pending further processing.
+If issued, your passport is returned with the visa.
+:::
+
+:::warn
+title: ustraveldocs.com is no longer the India scheduling route
+India scheduling moved off ustraveldocs.com. Use the current official portal (currently **usvisascheduling.com**) and follow the instructions on the US Mission India website — verify the portal before paying anything, as this has changed more than once.
 :::
 
 ## The 221(g) risk and administrative processing
@@ -807,7 +831,12 @@ Read the letter carefully to work out which one you have, because the correct re
 
 Check the case status on the Consular Electronic Application Center (ceac.state.gov) rather than relying on the courier's tracking. Status can sit unchanged for a long time in administrative processing, and repeated inquiries do not accelerate review.
 
-Plan on the assumption that you may not return on schedule. Tell your employer before you travel that a 221(g) is possible and agree what happens to your work and pay if it happens. Do not book non-refundable onward travel, and do not let your I-94 or petition validity become a problem while you are outside the country.
+Plan on the assumption that you may not return on schedule. Tell your employer before you travel that a 221(g) is possible and agree what happens to your work and pay if it happens. Do not book non-refundable onward travel.
+
+:::info
+title: Your I-94 is not what you are protecting while you are abroad
+The I-94 records your **authorised period of stay inside the United States**, and it is closed out when you depart. What governs your return is different: a **valid visa** (or a documented exception such as automatic revalidation) to travel and seek admission, and a **valid, unexpired petition** for the classification you are seeking. Watch those two while you are away — not the I-94 you left behind. A new I-94 is generated when you are admitted.
+:::
 
 :::warn
 title: If you are on an expired stamp, do not treat a third-country visa application as a safe option
@@ -847,7 +876,7 @@ title: H-1B dropbox ended in 2025 — verified 9 September 2026
 - From **15 December 2025**, H-1B and H-4 applicants are instructed to set all social media profiles to public for online presence review.
 :::
 
-Full eligible list, the four conditions, the policy chronology and an eligibility checker: [visa interview waiver](/visa-interview-waiver).
+Full eligible list, all applicable conditions, the policy chronology and an eligibility checker: [visa interview waiver](/visa-interview-waiver).
 
 ## Frequently asked questions
 
@@ -858,7 +887,7 @@ This depends on the airline and CBP officers. Generally, you cannot board a US-b
 If approved at interview without 221(g): passport is usually returned within a week. With 221(g) administrative processing: can take weeks to months with no guaranteed timeline.
 
 ### Is it safe to travel to India right after an H1B transfer?
-Heightened caution is advised. A recent transfer means a new employer relationship that will be scrutinized at the consulate. Many attorneys advise waiting for the transfer to be approved and for some employment history with the new employer before attempting stamping. Consult your attorney before booking.`,
+There is no official waiting period after a transfer, and no rule requires you to accumulate employment history before applying. What changes is the evidence available to you: a recent transfer means a new employer relationship with little payroll record, so the documents that demonstrate it are thinner. Confirm with your employer's immigration counsel that the petition is approved, that the facts on it match your actual role and worksite, and what you should carry. Note also that a valid, unexpired visa naming a former employer is not automatically invalid — you can generally travel on it with the current I-797.`,
   },
 
   /* ───────────────────────── TRANSFER AFTER LAYOFF ─────────────────────── */
@@ -1053,7 +1082,15 @@ Your approved I-140 supports H1B extension rights beyond 6 years and may support
     excerpt:
       "Getting an H1B visa stamp in India after your petition is approved requires a US consulate appointment. Here is what the process involves, what documents you need, and the 221(g) risk.",
     date: "2026-06-16",
-    content: `Once your H1B petition is approved by USCIS, you have an I-797 approval notice. If you need to travel to India and return to the US, you will need a valid **H1B visa stamp** in your passport — a separate step from the USCIS approval.
+    content: `Once your H1B petition is approved by USCIS, you have an I-797 approval notice. If you need to travel to India and return to the US, you will generally need a valid **visa** in your passport — a separate document from the USCIS approval.
+
+:::info
+title: Which page you want
+This page is the **India appointment workflow**: booking, documents, the interview, passport return and 221(g). Two companion pages cover the rest.
+
+- **[H1B travel to India](/h1b/travel-to-india)** — the travel decision, re-entry documents, and when a visa is or is not needed.
+- **[H1B stamping after lottery selection](/h1b-visa-stamping-after-selection)** — selection versus petition filing and approval, and where stamping fits.
+:::
 
 :::info
 title: Approval vs. visa stamp — two different things
@@ -1064,13 +1101,13 @@ title: Approval vs. visa stamp — two different things
 
 ## US consulates in India that issue H1B visa stamps
 
-- **Chennai** (commonly used by South Indians; historically known for shorter wait times)
+- **Chennai**
 - **Mumbai**
 - **Hyderabad**
 - **New Delhi**
 - **Kolkata**
 
-Each consulate has different appointment availability and administrative processing rates. Check current wait times at ustraveldocs.com.
+Appointment availability differs by post and season. The Department of State publishes live appointment wait times by post and visa class — check those rather than relying on any figure quoted on a web page, and note that DOS does not publish administrative-processing rates by post, so comparisons between consulates on that basis are not sourced.
 
 ## The visa stamping process step by step
 
@@ -1110,19 +1147,18 @@ A **221(g) refusal** means the consular officer cannot immediately approve your 
 title: 221(g) can be unpredictable and lengthy
 - There is no guaranteed timeline for 221(g) resolution — it can take weeks to months
 - Your passport may be held at the consulate during this period
-- Some H1B categories (consulting, staffing, contract roles) have higher 221(g) rates
-- A 221(g) does not mean a denial — most cases are ultimately resolved
+- A 221(g) **is** a refusal under INA 221(g), not a pause. It may later be overcome if the visa is ultimately issued, but it is not automatically resolved and it is not necessarily final either way
+- Because it is a refusal, it must be disclosed wherever a form asks whether you have ever been refused a visa
 - Plan your travel to India accordingly if your employer cannot afford a long absence
 :::
 
 ## Who is at higher risk for 221(g)
 
-Higher 221(g) risk situations include:
-- Consulting or staffing arrangements where the end client relationship is complex
-- Recent employer changes (within the last 6–12 months)
-- Previous 221(g) experiences
-- Certain technology roles that may require additional security review
-- Any discrepancy in documentation
+The Department of State does not publish 221(g) rates by employer type, role or post, so treat any claim that a particular arrangement has a "higher rate" as unsourced. What is fair to say is that administrative processing exists to resolve questions, so fact patterns that raise more questions tend to require more documentation:
+
+- Placement at a third-party client site, where the employer-employee relationship takes more evidence to show
+- A recent change of employer, where there is little payroll history yet
+- Any inconsistency between your documents, your petition and what you say
 
 ## Dropbox (interview waiver) no longer applies to H-1B
 
@@ -1141,7 +1177,7 @@ The complete eligible list, the conditions and an eligibility checker are on [vi
 title: Best practices for smooth H1B stamping
 - Bring complete, organized documentation — a well-prepared application signals compliance
 - Have your employer prepare a thorough support letter covering the nature of work, client relationship, and your role
-- Avoid stamping immediately after a job change — wait until you have meaningful employment history with the new employer
+- If you have recently changed employers, confirm the petition and employment facts with your employer's immigration counsel before you travel. There is **no official waiting period** after a job change and none is required — but the documentary picture is thinner, so make sure what you can evidence matches what you will be asked
 - If you work in consulting, have your employer prepare client letters confirming the employer-employee relationship
 - Consult your employer's attorney before traveling to ensure petition records are in order
 :::

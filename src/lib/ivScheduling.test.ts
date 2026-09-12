@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  EB5_SETASIDE_EXCLUSION,
   IV_CATEGORIES,
+  IV_POSTS_INDIA,
+  PETITION_FORM_HELP,
   IV_CATEGORY_ORDER,
   compareToCutoff,
   cutoffQualifies,
@@ -20,6 +23,7 @@ const base: IvSchedulingInputs = {
   dqMonth: "",
   postSchedulingMonth: "",
   post: "",
+  alreadyDq: "",
 };
 
 describe("date helpers", () => {
@@ -120,6 +124,7 @@ describe("diagnosis — gate 1 (visa availability) is checked before gate 2", ()
       dqMonth: "2020-01",
       postSchedulingMonth: "2026-01",
       post: "Mumbai",
+      alreadyDq: "",
     });
     const cutoffs = getIvCutoffs("EB2", "india")!;
     if (cutoffs.fad === "U") {
@@ -145,6 +150,7 @@ describe("diagnosis — gate 1 (visa availability) is checked before gate 2", ()
         dqMonth: "2019-01",
         postSchedulingMonth: "2026-06",
         post: "Mumbai",
+        alreadyDq: "",
       });
       if (blocked.indexOf(r.bottleneck) !== -1) {
         expect(r.inquiryReasonable, `${cat} should not invite an inquiry`).toBe(
@@ -175,12 +181,98 @@ describe("diagnosis — gate 1 (visa availability) is checked before gate 2", ()
         dqMonth: "2024-01",
         postSchedulingMonth: "2026-01",
         post: "Mumbai",
+        alreadyDq: "",
       });
       expect(r.bottleneck).toBe("visa-availability");
       expect(r.filingStatus).toBe("current");
       expect(r.finalActionStatus).toBe("not-current");
       expect(r.inquiryReasonable).toBe(false);
     }
+  });
+});
+
+describe("scope, data gaps and retrogression", () => {
+  it("works for immediate relatives with no priority date at all", () => {
+    const r = diagnoseIvScheduling({
+      category: "IR1",
+      country: "india",
+      priorityDate: "",
+      dqMonth: "",
+      postSchedulingMonth: "",
+      post: "Mumbai",
+      alreadyDq: "",
+    });
+    expect(r.bottleneck).not.toBe("incomplete");
+    expect(r.finalActionStatus).toBe("no-limit");
+  });
+
+  it("covers CR1 and CR2 as immediate relatives", () => {
+    for (const c of ["CR1", "CR2"] as const) {
+      expect(IV_CATEGORIES[c].path).toBe("immediate");
+      const r = diagnoseIvScheduling({
+        category: c,
+        country: "india",
+        priorityDate: "",
+        dqMonth: "",
+        postSchedulingMonth: "",
+        post: "Mumbai",
+        alreadyDq: "",
+      });
+      expect(r.finalActionStatus).toBe("no-limit");
+    }
+  });
+
+  it("returns EB-2 India as Unavailable on the September 2026 bulletin", () => {
+    const cutoffs = getIvCutoffs("EB2", "india")!;
+    expect(cutoffs.fad).toBe("U");
+    const r = diagnoseIvScheduling({
+      category: "EB2",
+      country: "india",
+      priorityDate: "2012-01-01",
+      dqMonth: "2020-01",
+      postSchedulingMonth: "2026-01",
+      post: "Mumbai",
+      alreadyDq: "no",
+    });
+    expect(r.bottleneck).toBe("visa-unavailable");
+  });
+
+  it("retains DQ when a documentarily complete case retrogresses", () => {
+    const r = diagnoseIvScheduling({
+      category: "EB2",
+      country: "india",
+      priorityDate: "2012-01-01",
+      dqMonth: "2020-01",
+      postSchedulingMonth: "2026-01",
+      post: "Mumbai",
+      alreadyDq: "yes",
+    });
+    expect(r.bottleneck).toBe("dq-retrogressed");
+    expect(r.detail).toMatch(/stays that way|retained|does not undo DQ/i);
+    expect(r.nextStep).not.toMatch(/nothing for NVC to review/i);
+  });
+
+  it("offers only real Indian IV posts", () => {
+    expect(IV_POSTS_INDIA).toEqual(["Mumbai", "New Delhi"]);
+    expect(IV_POSTS_INDIA as readonly string[]).not.toContain("Chennai");
+    expect(IV_POSTS_INDIA as readonly string[]).not.toContain("Hyderabad");
+    expect(IV_POSTS_INDIA as readonly string[]).not.toContain("Kolkata");
+  });
+
+  it("names the right petition form per category", () => {
+    // EB-4 and EB-5 must name their own forms and say plainly that I-140 is
+    // not the right one - the copy disclaims it rather than omitting it.
+    expect(PETITION_FORM_HELP.EB4).toMatch(/I-360/);
+    expect(PETITION_FORM_HELP.EB4).toMatch(/not I-140/);
+    expect(PETITION_FORM_HELP.EB5).toMatch(/I-526/);
+    expect(PETITION_FORM_HELP.EB5).toMatch(/not I-140/);
+    expect(PETITION_FORM_HELP.EB2).toMatch(/I-140/);
+    expect(PETITION_FORM_HELP.family).toMatch(/I-130/);
+  });
+
+  it("excludes EB-5 reserved set-asides explicitly", () => {
+    expect(EB5_SETASIDE_EXCLUSION).toMatch(/Rural/);
+    expect(IV_CATEGORIES.EB5.hint).toMatch(/NOT supported/i);
   });
 });
 
@@ -191,10 +283,11 @@ describe("diagnosis — gate 2 (the post's queue)", () => {
     diagnoseIvScheduling({
       category: "IR5",
       country: "india",
-      priorityDate: "2024-03-01",
+      priorityDate: "",
       dqMonth,
       postSchedulingMonth,
       post: "Mumbai",
+      alreadyDq: "",
     });
 
   it("has no priority date wait for immediate relatives", () => {

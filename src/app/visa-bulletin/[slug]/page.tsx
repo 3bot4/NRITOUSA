@@ -16,6 +16,7 @@ import {
   extractFaq,
   jsonLdGraph,
   absoluteUrl,
+  notFoundMetadata,
 } from "@/lib/seo";
 import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
@@ -36,7 +37,7 @@ export function generateMetadata({
   params: { slug: string };
 }): Metadata {
   const page = getVisaBulletinChildPage(params.slug);
-  if (!page) return {};
+  if (!page) return notFoundMetadata();
   return pageMetadata({
     title: page.seoTitle ?? page.title,
     description: page.metaDescription ?? page.excerpt,

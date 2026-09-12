@@ -26,6 +26,14 @@ export type AvrDestination =
 export type AvrStatusClass = "h1b-h4" | "l" | "f-j" | "other" | "";
 
 export interface AvrInputs {
+  /**
+   * Does the traveller actually hold a visa that could be automatically
+   * revalidated (or converted under (d)(1)(ii))? Automatic revalidation extends
+   * the validity of an EXISTING visa — it does not conjure one. An earlier
+   * version returned "eligible" from an I-94 and a passport alone, which would
+   * have told a visa-required traveller with no visa at all that they were fine.
+   */
+  hasRevalidatableVisa: YesNo;
   /** Where the traveller went. */
   destination: AvrDestination;
   /** Nonimmigrant classification, because F/J get adjacent islands. */
@@ -46,9 +54,16 @@ export interface AvrInputs {
   needsWaiver: YesNo;
   /** National of a State Sponsor of Terrorism country? */
   sstNational: YesNo;
+  /**
+   * F and J travellers only: a current, properly endorsed I-20 (F) or DS-2019
+   * (J). 22 CFR 41.112(d)(2)(i) makes this a condition in its own right, and an
+   * F/J traveller cannot pass without it.
+   */
+  endorsedForm: YesNo;
 }
 
 export const AVR_EMPTY: AvrInputs = {
+  hasRevalidatableVisa: "",
   destination: "",
   statusClass: "",
   under30Days: "",
@@ -59,6 +74,7 @@ export const AVR_EMPTY: AvrInputs = {
   visaRefused: "",
   needsWaiver: "",
   sstNational: "",
+  endorsedForm: "",
 };
 
 export type AvrVerdict =
@@ -96,6 +112,7 @@ export interface AvrResult {
  */
 export function checkAvr(inp: AvrInputs): AvrResult {
   const required: (keyof AvrInputs)[] = [
+    "hasRevalidatableVisa",
     "destination",
     "statusClass",
     "under30Days",
@@ -106,7 +123,10 @@ export function checkAvr(inp: AvrInputs): AvrResult {
     "needsWaiver",
     "sstNational",
   ];
-  const missing = required.filter((k) => !inp[k]);
+  const needsEndorsement = inp.statusClass === "f-j";
+  const missing = required
+    .filter((k) => !inp[k])
+    .concat(needsEndorsement && !inp.endorsedForm ? ["endorsedForm"] : []);
   if (missing.length > 0) {
     return {
       verdict: "incomplete",
@@ -124,13 +144,39 @@ export function checkAvr(inp: AvrInputs): AvrResult {
   const failures: AvrFailure[] = [];
   const met: string[] = [];
 
-  /* (d)(3) — nationality exclusion. Checked first: it is absolute. */
+  /* Threshold: is there a visa to revalidate at all? */
+  if (inp.hasRevalidatableVisa === "no") {
+    failures.push({
+      cite: "22 CFR 41.112(d)(1)",
+      label: "You do not hold a visa that can be revalidated",
+      detail:
+        "Automatic revalidation extends the validity of an expired nonimmigrant visa you already hold, or converts one where DHS has changed your classification. It does not create a visa. Where a visa is required for your admission and you have never held one in a classification that can be extended or converted, there is nothing for this provision to act on and you will need to apply for a visa.",
+    });
+  } else if (inp.hasRevalidatableVisa === "yes") {
+    met.push("A visa that can be automatically extended or converted");
+  }
+
+  /* F/J documentary condition. */
+  if (needsEndorsement) {
+    if (inp.endorsedForm === "no") {
+      failures.push({
+        cite: "22 CFR 41.112(d)(2)(i)",
+        label: "No current, properly endorsed I-20 or DS-2019",
+        detail:
+          "For a qualified F student the regulation requires a current Form I-20 endorsed by the issuing school official; for a J exchange visitor, a current Form DS-2019 issued and endorsed by the programme sponsor. This is a separate condition from the I-94 and an F or J traveller cannot rely on automatic revalidation without it.",
+      });
+    } else if (inp.endorsedForm === "yes") {
+      met.push("A current, properly endorsed I-20 or DS-2019");
+    }
+  }
+
+  /* (d)(3) — nationality exclusion. Checked first among the reg conditions. */
   if (inp.sstNational === "yes") {
     failures.push({
       cite: "22 CFR 41.112(d)(3)",
       label: "Nationality exclusion",
       detail:
-        "Automatic revalidation does not apply to nationals of countries designated as State Sponsors of Terrorism. This exclusion is absolute — no combination of the other conditions overcomes it.",
+        "Automatic revalidation does not apply to nationals of countries identified in the Department of State's annual terrorism report — the State Sponsors of Terrorism designation. The designated list is maintained by the Department of State and changes, so check the current official list rather than any list reproduced on a third-party page. Where it applies, the exclusion is absolute.",
     });
   }
 
@@ -163,7 +209,7 @@ export function checkAvr(inp: AvrInputs): AvrResult {
       cite: "22 CFR 41.112(d)(2)(ii)",
       label: "Absence longer than 30 days",
       detail:
-        "The absence must not exceed 30 days. There is no discretion in this figure and no rounding.",
+        "The absence must not exceed 30 days. The figure is a condition of the regulation, so an absence of 31 days simply falls outside the provision.",
     });
   } else if (inp.under30Days === "yes") {
     met.push("Absence of 30 days or less");
@@ -238,7 +284,7 @@ export function checkAvr(inp: AvrInputs): AvrResult {
       badge: "Appears eligible",
       tone: "positive",
       summary:
-        "On these answers your expired visa may be treated as automatically extended to the date you apply for readmission, under 22 CFR 41.112(d). This is not a guarantee: the officer at the port makes the admission decision, and automatic revalidation only extends the visa's validity — it does not decide your admissibility.",
+        "On these answers you appear to satisfy the conditions in 22 CFR 41.112(d), so your expired visa may be treated as automatically extended to the date you apply for readmission. Satisfying the regulation's conditions and being admitted are two separate things: automatic revalidation goes to the validity of the visa document, while admission remains a decision the CBP officer makes on your admissibility at the port, on every arrival.",
       failures: [],
       met,
       nextStep:
@@ -281,252 +327,344 @@ export function checkAvr(inp: AvrInputs): AvrResult {
   };
 }
 
-/* ════════════════════════ Port-of-entry risk scorecard ══════════════════ */
 
-export type EmployerType = "direct" | "staffing" | "third-party" | "";
+/* ════════════════════ Port-of-Entry Preparedness Checklist ══════════════ */
 
-export interface ScorecardInputs {
-  employerType: EmployerType;
-  /** Days since the most recent pay stub. */
-  daysSincePayStub: string;
-  worksiteMatchesLca: YesNo;
+/**
+ * This replaced a weighted "risk scorecard".
+ *
+ * WHY IT CHANGED: the old version summed invented ordinal weights into a
+ * 0–26 score and banded it low/moderate/elevated/high. However carefully it
+ * was captioned, a number presented next to CBP terminology reads as a
+ * probability of refusal — and no such probability exists, is published, or
+ * could be derived from thirteen self-reported answers. Worse, some weights
+ * encoded things that are simply not risk factors: an I-797B was scored as
+ * inherently risky when it is an ordinary consular-notification approval.
+ *
+ * What replaced it is a checklist that sorts a traveller's facts into three
+ * buckets that map to actual decisions:
+ *
+ *   hard-stop       — you are missing something you must have to travel, e.g.
+ *                     no valid visa where one is required and no exception.
+ *   document-gap    — you can travel, but you should be carrying a document
+ *                     you have not confirmed you have.
+ *   attorney-review — a fact that needs professional judgment before you fly,
+ *                     not a document you can print.
+ *
+ * No score, no band, no percentage. Nothing here estimates the likelihood of
+ * admission or refusal, and the UI says so.
+ */
+
+export type FindingKind = "hard-stop" | "document-gap" | "attorney-review";
+
+export interface PrepFinding {
+  id: string;
+  kind: FindingKind;
+  title: string;
+  detail: string;
+  /** What to do about it before travelling. */
+  action: string;
+}
+
+/** Does the traveller hold a valid visa, or a stated basis to travel without one? */
+export type VisaPosture =
+  | "valid" // unexpired visa in the right classification
+  | "expired-avr" // expired, but the AVR conditions are claimed to be met
+  | "expired-none" // expired with no exception — a hard stop
+  | "visa-exempt" // e.g. Canadian nationals, who are generally visa-exempt
+  | "";
+
+/** Was a worksite move material — i.e. outside the LCA area of intended employment? */
+export type WorksiteMove =
+  | "none" // no move
+  | "same-area" // moved, but within the same area of intended employment
+  | "outside-area" // moved outside the area of intended employment
+  | "unsure"
+  | "";
+
+export interface PrepInputs {
+  visaPosture: VisaPosture;
+  passportValid: YesNo;
+  worksiteMove: WorksiteMove;
   amendmentFiled: YesNo;
-  /** Has the worksite changed since the LCA was certified? */
-  worksiteChanged: YesNo;
+  haveLca: YesNo;
+  havePayStubs: YesNo;
+  haveApprovalNotice: YesNo;
   employerChanged90Days: YesNo;
-  extensionApprovedStampExpired: YesNo;
-  priorRefusal: YesNo;
   employmentGap: YesNo;
   dutiesMatchPetition: YesNo;
-  onlineProfileMatches: YesNo;
-  carryingI797A: YesNo;
+  profileAccurate: YesNo;
+  priorRefusalOrRemoval: YesNo;
   priorCriminalHistory: YesNo;
+  pendingI485: YesNo;
   h4Travelling: YesNo;
 }
 
-export const SCORECARD_EMPTY: ScorecardInputs = {
-  employerType: "",
-  daysSincePayStub: "",
-  worksiteMatchesLca: "",
+export const PREP_EMPTY: PrepInputs = {
+  visaPosture: "",
+  passportValid: "",
+  worksiteMove: "",
   amendmentFiled: "",
-  worksiteChanged: "",
+  haveLca: "",
+  havePayStubs: "",
+  haveApprovalNotice: "",
   employerChanged90Days: "",
-  extensionApprovedStampExpired: "",
-  priorRefusal: "",
   employmentGap: "",
   dutiesMatchPetition: "",
-  onlineProfileMatches: "",
-  carryingI797A: "",
+  profileAccurate: "",
+  priorRefusalOrRemoval: "",
   priorCriminalHistory: "",
+  pendingI485: "",
   h4Travelling: "",
 };
 
-export type RiskBand = "incomplete" | "low" | "moderate" | "elevated" | "high";
-
-export interface Flag {
-  /** Matches a ReferralCause id where one exists. */
-  causeId: string;
-  title: string;
-  weight: number;
-  /** What CBP is likely to ask. */
-  question: string;
-  /** The document that closes it. */
-  closer: string;
-}
-
-export interface ScorecardResult {
-  band: RiskBand;
-  score: number;
-  maxScore: number;
-  headline: string;
-  badge: string;
-  tone: "neutral" | "positive" | "caution" | "attention";
-  summary: string;
-  flags: Flag[];
-  /** De-duplicated document checklist built from the flags. */
-  documents: string[];
-  /** Extra guidance where an H-4 family is travelling. */
-  h4Note: string | null;
-  /** Answered inputs, so the reader knows the score is not a partial read. */
+export interface PrepResult {
+  complete: boolean;
   answered: number;
   total: number;
+  findings: PrepFinding[];
+  hardStops: PrepFinding[];
+  documentGaps: PrepFinding[];
+  attorneyReview: PrepFinding[];
+  /** Baseline document list, always returned. */
+  documents: string[];
+  h4Note: string | null;
+  i485Note: string | null;
+  headline: string;
+  summary: string;
+  tone: "neutral" | "positive" | "caution" | "attention";
 }
 
-const causeById = (id: string): ReferralCause | undefined =>
-  referralCauses.filter((c) => c.id === id)[0];
+/** Documents every H-1B traveller should carry regardless of their answers. */
+const BASE_DOCUMENTS = [
+  "Passport, valid well beyond your intended stay",
+  "Valid visa in the right classification, or a documented basis to travel without one",
+  "Current I-797 approval notice, plus prior I-797s",
+  "Most recent I-94 printout from i94.cbp.dhs.gov",
+  "Certified ETA-9035 LCA covering your actual worksite",
+  "Recent pay stubs",
+  "Dated employment verification letter on company letterhead",
+];
 
 /**
- * The heaviest weight each referral cause can contribute. Declared once so the
- * scorecard's maximum is derived rather than guessed — an earlier hardcoded
- * ceiling was lower than the score a worst-case answer set actually produced.
+ * Sort a traveller's answers into hard stops, document gaps and attorney-review
+ * items. Deliberately returns no score.
  */
-const MAX_WEIGHTS: Record<string, number> = {
-  "third-party": 3,
-  "employer-inactive": 3,
-  "worksite-change": 3,
-  "recent-change": 2,
-  gap: 2,
-  "stamp-expired": 3,
-  i797b: 2,
-  "duties-mismatch": 3,
-  "doc-inconsistency": 2,
-  "prior-history": 3,
-};
-
-/** Highest score any answer set can reach — each cause counts once. */
-export const SCORECARD_MAX = Object.keys(MAX_WEIGHTS).reduce(
-  (sum, k) => sum + MAX_WEIGHTS[k],
-  0,
-);
-
-/** Build a flag from the shared referral-cause taxonomy, so copy stays in one place. */
-function flagFor(id: string, weight: number): Flag {
-  const c = causeById(id);
-  return {
-    causeId: id,
-    title: c ? c.title : id,
-    weight,
-    question: c ? c.question : "",
-    closer: c ? c.closer : "",
-  };
-}
-
-/**
- * Score the traveller's fact pattern.
- *
- * Weights are ordinal, not probabilistic: they rank which facts an officer is
- * most likely to press on for an H-1B traveller, they do not estimate a
- * likelihood of refusal. The output that matters is the flag list and the
- * documents that answer each one.
- */
-export function scoreEntryRisk(inp: ScorecardInputs): ScorecardResult {
-  const keys = Object.keys(SCORECARD_EMPTY) as (keyof ScorecardInputs)[];
+export function assessEntryPreparedness(inp: PrepInputs): PrepResult {
+  const keys = Object.keys(PREP_EMPTY) as (keyof PrepInputs)[];
   const answered = keys.filter((k) => inp[k] !== "").length;
   const total = keys.length;
+  const complete = answered === total;
 
-  const flags: Flag[] = [];
+  const findings: PrepFinding[] = [];
+  const add = (f: PrepFinding) => findings.push(f);
 
-  if (inp.employerType === "third-party") flags.push(flagFor("third-party", 3));
-  else if (inp.employerType === "staffing") flags.push(flagFor("third-party", 2));
-
-  const days = Number(inp.daysSincePayStub);
-  if (inp.daysSincePayStub !== "" && !Number.isNaN(days)) {
-    if (days > 60) flags.push(flagFor("employer-inactive", 3));
-    else if (days > 30) flags.push(flagFor("employer-inactive", 2));
+  /* ---- Travel documents: the only true hard stops --------------------- */
+  if (inp.visaPosture === "expired-none") {
+    add({
+      id: "visa-expired",
+      kind: "hard-stop",
+      title: "Your visa has expired and no exception applies",
+      detail:
+        "Where a visa is required, an expired visa is a travel-document problem before it is anything else — it is generally what stops you boarding, not something argued at the border. Automatic revalidation is the main exception and it is narrow: broadly, a trip of 30 days or less solely to Canada or Mexico, with no visa application made while abroad.",
+      action:
+        "Either obtain a new visa before travelling, or confirm in detail that you meet every condition of automatic revalidation. Do not travel on the assumption that the approval notice substitutes for the visa.",
+    });
+  }
+  if (inp.passportValid === "no") {
+    add({
+      id: "passport",
+      kind: "hard-stop",
+      title: "You do not have a valid passport",
+      detail:
+        "A valid passport is required to travel and to be admitted, and your admission period can be limited to the passport's validity.",
+      action: "Renew the passport before booking travel.",
+    });
   }
 
-  if (inp.worksiteChanged === "yes" && inp.amendmentFiled === "no") {
-    flags.push(flagFor("worksite-change", 3));
-  } else if (inp.worksiteMatchesLca === "no") {
-    flags.push(flagFor("worksite-change", 2));
+  /* ---- Attorney-review items ------------------------------------------ */
+  if (inp.worksiteMove === "outside-area" && inp.amendmentFiled === "no") {
+    add({
+      id: "worksite-material",
+      kind: "attorney-review",
+      title: "Worksite moved outside the LCA area with no amendment filed",
+      detail:
+        "Not every worksite change requires an amended petition. A move within the same area of intended employment on the certified LCA generally does not. A move outside that area is the one that raises an amendment question, and an unamended material move is a status question rather than a paperwork one.",
+      action:
+        "Have your employer's immigration counsel confirm whether an amendment was required and, if so, what was filed, before you travel.",
+    });
+  } else if (inp.worksiteMove === "unsure") {
+    add({
+      id: "worksite-unsure",
+      kind: "attorney-review",
+      title: "You are not sure whether your worksite is covered by the LCA",
+      detail:
+        "The question is whether your current worksite is within the area of intended employment on a certified LCA — not simply whether your desk moved.",
+      action:
+        "Ask your employer for the certified LCA covering your current worksite and confirm the address it lists.",
+    });
+  }
+  if (inp.dutiesMatchPetition === "no") {
+    add({
+      id: "duties",
+      kind: "attorney-review",
+      title: "Your actual duties differ from the petition",
+      detail:
+        "The I-129 describes a specialty occupation. A material difference between that description and the work you actually do is a substantive petition question, and the officer has the petition on screen.",
+      action:
+        "Raise this with your employer's counsel before travelling. It is not something to resolve at a border.",
+    });
+  }
+  if (inp.priorRefusalOrRemoval === "yes") {
+    add({
+      id: "prior-refusal",
+      kind: "attorney-review",
+      title: "You have a prior refusal, removal or refused admission",
+      detail:
+        "Prior immigration history is on the officer's screen whether or not you raise it, and some outcomes — a removal order in particular — create inadmissibility that must be waived before any admission.",
+      action:
+        "Get advice on what is on your record and whether a waiver or consent to reapply is needed, before you travel.",
+    });
+  }
+  if (inp.priorCriminalHistory === "yes") {
+    add({
+      id: "criminal",
+      kind: "attorney-review",
+      title: "You have arrest or criminal history",
+      detail:
+        "Criminal history can create a separate ground of inadmissibility independent of your petition, and it does not go away because a case was dismissed or expunged.",
+      action:
+        "Speak to an immigration attorney with the certified disposition documents before travelling.",
+    });
+  }
+  if (inp.employmentGap === "yes") {
+    add({
+      id: "gap",
+      kind: "attorney-review",
+      title: "You have a gap in employment or a recent layoff",
+      detail:
+        "The 60-day period at 8 CFR 214.1(l)(2) is discretionary, runs once per authorized validity period, and is capped by the end of that period. It is not a guaranteed 60 days.",
+      action:
+        "Confirm with counsel how the gap was covered before you place yourself at a port of entry.",
+    });
+  }
+  if (inp.employerChanged90Days === "yes") {
+    add({
+      id: "recent-change",
+      kind: "attorney-review",
+      title: "You changed employers recently",
+      detail:
+        "A new petitioner means a new employment relationship with little payroll history to evidence it. There is no official waiting period after a change, and none is required — but the documentary picture is thinner, and that is worth planning around.",
+      action:
+        "Carry the new employer's I-797 (or receipt), the new LCA, and whatever payroll evidence exists. Confirm the filing status with counsel.",
+    });
   }
 
-  if (inp.employerChanged90Days === "yes") flags.push(flagFor("recent-change", 2));
-  if (inp.employmentGap === "yes") flags.push(flagFor("gap", 2));
-  if (inp.extensionApprovedStampExpired === "yes")
-    flags.push(flagFor("stamp-expired", 3));
-  if (inp.carryingI797A === "no") flags.push(flagFor("i797b", 2));
-  if (inp.dutiesMatchPetition === "no") flags.push(flagFor("duties-mismatch", 3));
-  if (inp.onlineProfileMatches === "no") flags.push(flagFor("doc-inconsistency", 2));
-  if (inp.priorRefusal === "yes") flags.push(flagFor("prior-history", 3));
-  if (inp.priorCriminalHistory === "yes") flags.push(flagFor("prior-history", 3));
-
-  // De-duplicate: prior-history can be pushed twice; keep the single heaviest.
-  const seen: Record<string, Flag> = {};
-  for (const f of flags) {
-    const prev = seen[f.causeId];
-    if (!prev || f.weight > prev.weight) seen[f.causeId] = f;
+  /* ---- Document gaps --------------------------------------------------- */
+  if (inp.haveApprovalNotice === "no") {
+    add({
+      id: "no-i797",
+      kind: "document-gap",
+      title: "You are not carrying your I-797 approval notice",
+      detail:
+        "The approval notice evidences the petition your admission is based on. Carry the current one and any prior notices.",
+      action: "Print the current I-797 and prior notices before you fly.",
+    });
   }
-  const unique = Object.keys(seen)
-    .map((k) => seen[k])
-    .sort((a, b) => b.weight - a.weight);
-
-  const score = unique.reduce((sum, f) => sum + f.weight, 0);
-  const maxScore = SCORECARD_MAX;
-
-  if (answered < total) {
-    return {
-      band: "incomplete",
-      score,
-      maxScore,
-      headline: "Answer every question for a usable read",
-      badge: `${answered} of ${total}`,
-      tone: "neutral",
-      summary:
-        "A partial answer set produces a misleadingly low score, because an unanswered question is not a clean one. Finish the list and the scorecard will name the specific questions an officer is likely to ask you.",
-      flags: unique,
-      documents: [],
-      h4Note: null,
-      answered,
-      total,
-    };
+  if (inp.haveLca === "no") {
+    add({
+      id: "no-lca",
+      kind: "document-gap",
+      title: "You are not carrying a certified LCA for your worksite",
+      detail:
+        "The certified ETA-9035 is the document that ties your work location to the petition.",
+      action: "Ask your employer for the certified LCA covering your worksite.",
+    });
   }
-
-  let band: RiskBand;
-  let headline: string;
-  let badge: string;
-  let tone: ScorecardResult["tone"];
-  let summary: string;
-
-  if (score === 0) {
-    band = "low";
-    badge = "Few flags";
-    tone = "positive";
-    headline = "Nothing here is a common referral trigger";
-    summary =
-      "None of the fact patterns that most often send an H-1B traveller to secondary inspection appear in your answers. That is not a guarantee of anything — referrals happen for reasons that have nothing to do with your file, and every traveller is an applicant for admission each time they arrive. Carry the standard document set anyway.";
-  } else if (score <= 3) {
-    band = "moderate";
-    badge = "One area to close";
-    tone = "caution";
-    headline = "One area an officer is likely to ask about";
-    summary =
-      "Your answers raise a single line of questioning. It is usually answerable on the spot with the right document in your hand rather than in an email you cannot open at the border.";
-  } else if (score <= 8) {
-    band = "elevated";
-    badge = "Several flags";
-    tone = "caution";
-    headline = "Several things here invite questions at the same time";
-    summary =
-      "More than one of the common referral triggers is present. Referrals are driven by the combination, not by any single fact — a recent employer change alone is ordinary, but a recent change plus a third-party worksite plus a thin payroll history is the pattern officers are trained to look at. Close what you can before you fly.";
-  } else {
-    band = "high";
-    badge = "Get advice before flying";
-    tone = "attention";
-    headline = "This combination warrants legal advice before you travel";
-    summary =
-      "Your answers include several of the heaviest referral triggers together. This is not a prediction that you will be refused — but it is the point at which the cost of an hour with an immigration attorney is far lower than the cost of being turned around, and where some of the underlying problems are fixable before departure and not after.";
+  if (inp.havePayStubs === "no") {
+    add({
+      id: "no-stubs",
+      kind: "document-gap",
+      title: "You are not carrying recent pay stubs",
+      detail:
+        "Pay records are the simplest evidence that the employment described in the petition is real and continuing.",
+      action: "Print recent pay stubs and carry them on paper.",
+    });
+  }
+  if (inp.profileAccurate === "no") {
+    add({
+      id: "profile",
+      kind: "document-gap",
+      title: "Your public profile or resume is inaccurate or out of date",
+      detail:
+        "A resume or profile that misstates your employer or job title is a problem because it is inaccurate, not because it is visible. The fix is to make it truthful and current — bringing your public record into line with the facts. Never alter, conceal or delete information to create a misleading impression before travel; that risks a misrepresentation problem under INA 212(a)(6)(C)(i) far more serious than an out-of-date job title.",
+      action:
+        "Correct anything that is factually wrong or stale so your public record accurately reflects your actual employment.",
+    });
   }
 
-  const documents: string[] = [];
-  const push = (d: string) => {
-    if (d && documents.indexOf(d) === -1) documents.push(d);
-  };
-  push("Valid passport and a valid visa stamp, or a documented basis for automatic revalidation");
-  push("Current I-797 approval notice, plus all prior I-797s");
-  push("Most recent I-94 printout from i94.cbp.dhs.gov");
-  push("Pay stubs for the last three to six months");
-  push("Dated employment verification letter on company letterhead");
-  push("Certified ETA-9035 LCA covering your current worksite");
-  for (const f of unique) push(f.closer);
+  /* ---- Notes ----------------------------------------------------------- */
+  const i485Note =
+    inp.pendingI485 === "yes"
+      ? "You have a pending I-485. Departing without advance parole generally abandons it under 8 CFR 245.2(a)(4)(ii)(A) — but there is an exception at 245.2(a)(4)(ii)(C) for applicants in lawful H-1 or L-1 status who remain eligible for H or L status, are returning to resume employment with the same employer, and hold a valid H or L visa where one is required. A parallel sentence covers H-4 and L-2 dependants. Confirm you are inside that exception before you travel; if you are not, you need advance parole."
+      : null;
 
   const h4Note =
     inp.h4Travelling === "yes"
-      ? "Your H-4 spouse and children are separate applicants for admission, and their status is derivative of yours. If you are referred to secondary they will normally be held with you; if you are refused admission, their H-4 admission generally cannot stand on its own, because it depends on your H-1B. Carry their own document set — marriage certificate, birth certificates, their I-797 approvals and I-94s — and make sure an adult travelling with children has the means to make arrangements independently if the family is separated at the port. Children who are US citizens cannot be refused admission, which creates its own practical problem if both parents are refused."
+      ? "Your H-4 spouse and children are separate applicants for admission and their status is derivative of yours, so if you are not admitted in H-1B there is generally nothing for the H-4 to attach to. Carry each person's own passport, visa, I-797 and I-94, plus the marriage and birth certificates evidencing the relationship. A US citizen child cannot be refused admission, which creates a practical problem worth planning for if both parents are refused."
       : null;
 
+  const hardStops = findings.filter((f) => f.kind === "hard-stop");
+  const documentGaps = findings.filter((f) => f.kind === "document-gap");
+  const attorneyReview = findings.filter((f) => f.kind === "attorney-review");
+
+  let headline: string;
+  let summary: string;
+  let tone: PrepResult["tone"];
+
+  if (!complete) {
+    headline = "Answer every question for a complete checklist";
+    summary =
+      "An unanswered question is not a cleared one. Finish the list and the checklist will separate what stops you travelling from what you should simply be carrying.";
+    tone = "neutral";
+  } else if (hardStops.length > 0) {
+    headline =
+      hardStops.length === 1
+        ? "One item should stop you travelling as planned"
+        : `${hardStops.length} items should stop you travelling as planned`;
+    summary =
+      "These are not risk factors to weigh — they are missing prerequisites. Resolve them before you book or board.";
+    tone = "attention";
+  } else if (attorneyReview.length > 0) {
+    headline = `${attorneyReview.length} ${attorneyReview.length === 1 ? "item needs" : "items need"} professional review before you fly`;
+    summary =
+      "Nothing here is a documentary gap you can close by printing something. Each one is a question of fact or status that an immigration attorney should look at, and all of them are cheaper to resolve before departure than after a refusal.";
+    tone = "caution";
+  } else if (documentGaps.length > 0) {
+    headline = `${documentGaps.length} ${documentGaps.length === 1 ? "document is" : "documents are"} worth sorting before you fly`;
+    summary =
+      "No hard stops and nothing needing legal advice on these answers. What remains is paperwork you should be carrying.";
+    tone = "caution";
+  } else {
+    headline = "Nothing on this checklist is outstanding";
+    summary =
+      "On these answers you have the documents this checklist looks for and none of the facts that warrant review. That is not a prediction about your admission: every arrival is a fresh inspection, the officer decides, and referrals happen for reasons unrelated to your file. Carry the baseline documents anyway.";
+    tone = "positive";
+  }
+
   return {
-    band,
-    score,
-    maxScore,
-    headline,
-    badge,
-    tone,
-    summary,
-    flags: unique,
-    documents,
-    h4Note,
+    complete,
     answered,
     total,
+    findings,
+    hardStops,
+    documentGaps,
+    attorneyReview,
+    documents: BASE_DOCUMENTS.slice(),
+    h4Note,
+    i485Note,
+    headline,
+    summary,
+    tone,
   };
 }

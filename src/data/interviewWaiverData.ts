@@ -23,7 +23,24 @@
  * Department's announcement disagree, the announcement governs.
  */
 
-export const IW_VERIFIED = "2026-09-09";
+export const IW_VERIFIED = "2026-09-10";
+
+/**
+ * DOS guidance on where a nonimmigrant applicant must apply. Cited from three
+ * pages, so it lives in one place.
+ *
+ * NOT INDEPENDENTLY VERIFIED: travel.state.gov returns 403 to automated
+ * fetches, so `lastUpdated` could not be read off the primary source during the
+ * edit that introduced it. Re-read the page before relying on the date.
+ */
+export const IW_COUNTRY_OF_RESIDENCE = {
+  lastUpdated: "2026-07-15",
+  href: "https://travel.state.gov/content/travel/en/News/visas-news/adjudicating-niv-applicants-in-their-country-of-residence.html",
+  summary:
+    "The Department of State directs nonimmigrant visa applicants to schedule their interview in their country of nationality or residence. Applicants who schedule outside that country may find it harder to qualify for the visa, and fees paid on such an application are neither refundable nor transferable. The guidance does not apply to A, G, C-2, C-3 and NATO applicants, to diplomatic- or official-type visa applicants, or to travel covered by the UN Headquarters Agreement.",
+  short:
+    "DOS directs nonimmigrant applicants to apply in their country of nationality or residence; applying elsewhere can make it harder to qualify, and the fee is neither refundable nor transferable.",
+} as const;
 
 /** The announcement currently in force. */
 export const IW_CURRENT_RULE = {
@@ -83,25 +100,25 @@ export const iwChronology: IwChronologyEntry[] = [
   {
     announced: "18 February 2025",
     effective: "18 February 2025",
-    headline: "Window cut from 48 months to 12",
+    headline: "Renewal window cut from 48 months to 12",
     detail:
-      "The renewal window was reduced to 12 months and the same-classification requirement was retained. Overnight, most H-1B renewals stopped qualifying.",
+      "The prior renewal window was reduced from 48 months to 12 months, with the same-classification requirement retained. This narrowed the pool sharply, but it did not itself categorically end H-1B interview waivers.",
     href: iwLinks.feb2025,
   },
   {
     announced: "25 July 2025",
     effective: "2 September 2025",
-    headline: "Waivers eliminated for most categories",
+    headline: "H-1B and H-4 categorical eligibility removed",
     detail:
-      "Nearly all nonimmigrant applicants were required to appear in person, including applicants under 14 and over 79 — whose automatic waivers were removed. Only a narrow diplomatic/official list and B-1/B-2 and Border Crossing Card renewals survived.",
+      "This is the update that ended H-1B and H-4 interview-waiver eligibility as a category. Nonimmigrant applicants generally require an in-person interview from this date, including applicants under 14 and over 79, whose automatic waivers were removed. Only a narrow diplomatic and official list, plus B-1/B-2 and Border Crossing Card renewals, remained.",
     href: iwLinks.july2025,
   },
   {
     announced: "18 September 2025",
     effective: "1 October 2025",
-    headline: "The current regime — H-2A restored",
+    headline: "The current regime — supersedes the July update; H-2A added",
     detail:
-      "Superseded the July update and added H-2A renewals within 12 months to the eligible list. This is the rule in force today; no later interview-waiver change has been announced through September 2026.",
+      "Superseded the 25 July 2025 update and added H-2A renewals within 12 months to the eligible list. It did NOT restore H-1B or H-4, which remain outside the eligible categories. This is the rule in force today; no later interview-waiver change has been announced through September 2026.",
     href: iwLinks.currentRule,
     current: true,
   },
@@ -187,12 +204,12 @@ export const iwCategoryVerdicts: IwCategoryRow[] = [
   {
     category: "H-1B",
     verdict: "not-eligible",
-    note: "NOT eligible. H-1B dropbox ended with the February 2025 window cut and the July 2025 elimination, and was not restored on 1 October 2025. Every H-1B applicant attends an in-person interview. Pages still describing 48-month H-1B dropbox eligibility are teaching a rule that has been dead since February 2025.",
+    note: "NOT eligible. The February 2025 update cut the renewal window from 48 months to 12; the update effective 2 September 2025 removed H-1B categorical eligibility altogether, and the rule effective 1 October 2025 superseded that update without restoring it. H-1B applicants generally require an in-person interview. Pages still describing a 48-month H-1B dropbox window are quoting a rule replaced in February 2025.",
   },
   {
     category: "H-4",
     verdict: "not-eligible",
-    note: "NOT eligible. Dependants interview in person too — including young children, since the under-14 automatic waiver was removed in September 2025.",
+    note: "NOT eligible. H-4 categorical eligibility was removed under the rule effective 2 September 2025 and was not restored on 1 October 2025. Dependants generally interview in person, including young children, since the under-14 automatic waiver was removed at the same time.",
   },
   {
     category: "L-1 / L-2",
@@ -302,9 +319,13 @@ export const iwFees: IwFee[] = [
 
 export const IW_INTEGRITY_FEE = {
   amount: "$250",
-  status: "Enacted — verify collection status before budgeting",
+  /** Deliberately NOT presented as a payable fee. */
+  payableNow: false,
+  status: "Statutory fee enacted in 2025 — not listed as an active fee on the DOS fee schedule",
   detail:
-    "The Visa Integrity Fee was created by the reconciliation act signed on 4 July 2025 (Public Law 119-21), applies to nonimmigrant visa issuance from fiscal year 2026, and is indexed to the Consumer Price Index annually. It is charged on issuance rather than on application, so it is not paid if the visa is refused. Immigrant visa applicants and Visa Waiver Program / ESTA travellers are exempt. Implementation has been uneven across posts, so treat it as enacted-but-verify rather than as a line item you will certainly pay. A refund mechanism exists in the statute for holders who complied with their visa conditions, but the claims process is not operational.",
+    "A Visa Integrity Fee of $250 was created by statute in 2025 (Public Law 119-21) for nonimmigrant visa issuance, with annual CPI indexing. It is not currently listed as an active, collected fee on the Department of State's Fees for Visa Services schedule, which lists the $185 and $205 application fees. Official collection and refund procedures have to be published and verified before anyone can treat it as a cost they will actually pay.",
+  budgetingRule:
+    "Do not add this to your total. Budget the application fee for your visa class, and check the official fee schedule and your post's instructions at the time you pay.",
   verified: IW_VERIFIED,
 } as const;
 
@@ -326,4 +347,17 @@ export const IW_SCREENING_NOTE = {
   detail:
     "H-1B and H-4 applicants are instructed to set the privacy settings on all of their social media profiles to public. Consular officers may review publicly available online content as part of the adjudication. This applies to the interview itself, not to the waiver question — H-1B and H-4 applicants are not dropbox-eligible in any case — but it materially affects how long an H-1B family should budget for stamping, and it drove interview cancellations and rescheduling at Indian posts when it took effect.",
   href: iwLinks.h1bScreening,
+} as const;
+
+/* ─────────────────────── reciprocity (issuance) fee ────────────────────── */
+
+/**
+ * Separate from the MRV application fee. Some nationalities pay a visa issuance
+ * ("reciprocity") fee on top; India H-visa applicants currently do not.
+ */
+export const IW_RECIPROCITY_INDIA = {
+  verified: IW_VERIFIED,
+  href: "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/reciprocity-by-country.html",
+  note:
+    "The Department of State currently lists no visa issuance (reciprocity) fee for Indian nationals in the H visa classifications. That is separate from the MRV application fee, which is payable regardless. Reciprocity schedules are country- and class-specific and do change — check yours before you travel.",
 } as const;

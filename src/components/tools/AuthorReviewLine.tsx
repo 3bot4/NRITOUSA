@@ -8,10 +8,21 @@ import { author } from "@/lib/author";
 export default function AuthorReviewLine({
   lastUpdated,
   className = "",
+  hideCredentials = false,
 }: {
   /** Optional "Last updated" stamp shown alongside the byline. */
   lastUpdated?: string;
   className?: string;
+  /**
+   * Suppress the finance credentials line.
+   *
+   * WHY: "CA, Series 65" are accountancy and investment-adviser credentials.
+   * Printing them under "Written / reviewed by" on an immigration page implies
+   * the content carries professional immigration review, which it does not —
+   * no licensed immigration attorney reviewed it. On immigration pages we show
+   * authorship only, and say plainly that it is not legal review.
+   */
+  hideCredentials?: boolean;
 }) {
   return (
     <div
@@ -25,8 +36,16 @@ export default function AuthorReviewLine({
         >
           Deepak Middha
         </Link>
-        <span className="text-ink-400"> · {author.credentials}</span>
+        {!hideCredentials && (
+          <span className="text-ink-400"> · {author.credentials}</span>
+        )}
       </p>
+      {hideCredentials && (
+        <p className="text-xs text-ink-400">
+          Author and editorial review. Not reviewed by a licensed immigration
+          attorney, and not legal advice.
+        </p>
+      )}
       {lastUpdated && (
         <p className="text-xs text-ink-400">Last updated: {lastUpdated}</p>
       )}

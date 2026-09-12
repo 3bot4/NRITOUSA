@@ -7,6 +7,7 @@ import {
   type WaiverInputs,
 } from "./interviewWaiver";
 import {
+  IW_INTEGRITY_FEE,
   iwCategoryVerdicts,
   iwChronology,
   iwConditions,
@@ -25,10 +26,12 @@ const CLEAN_B2: WaiverInputs = {
   age18AtIssuance: "yes",
   refusalType: "none",
   refusalOvercome: "",
-  nationality: "India",
-  residence: "India",
-  applyingIn: "India",
+  nationality: "IN",
+  residence: "IN",
+  applyingIn: "IN",
   identityChanged: "no",
+  potentialIneligibility: "no",
+  applicationDate: "2026-09-10",
 };
 
 describe("date helpers", () => {
@@ -94,8 +97,10 @@ describe("the renewal route", () => {
   it("clears a clean B-2 renewal and reports the window countdown", () => {
     const r = checkInterviewWaiver(CLEAN_B2, NOW);
     expect(r.verdict).toBe("likely-eligible");
-    expect(r.windowDaysRemaining).toBe(181);
-    expect(r.windowLabel).toContain("181 days");
+    // Measured to the APPLICATION date (2026-09-10), not to "today":
+    // expiry 2026-03-09 -> window closes 2027-03-09 -> 180 days.
+    expect(r.windowDaysRemaining).toBe(180);
+    expect(r.windowLabel).toContain("180 days");
     expect(r.failures).toHaveLength(0);
   });
 
@@ -154,14 +159,27 @@ describe("the renewal route", () => {
 });
 
 describe("the 'never refused unless overcome or waived' clause", () => {
-  it("does NOT disqualify a refusal that was later overcome", () => {
+  it("does NOT disqualify a refusal that was specifically resolved", () => {
     // The single most misstated sentence in the rule.
     const r = checkInterviewWaiver(
       { ...CLEAN_B2, refusalType: "214b", refusalOvercome: "yes" },
       NOW,
     );
     expect(r.verdict).toBe("likely-eligible");
-    expect(r.met.some((m) => m.indexOf("overcome") !== -1)).toBe(true);
+    expect(r.met.some((m) => /resolved|waiver/i.test(m))).toBe(true);
+  });
+
+  it("will not infer that a later issuance overcame an earlier refusal", () => {
+    // "unsure" must route to manual review, never to eligible.
+    const r = checkInterviewWaiver(
+      { ...CLEAN_B2, refusalType: "214b", refusalOvercome: "unsure" },
+      NOW,
+    );
+    expect(r.verdict).not.toBe("likely-eligible");
+    const f = r.failures.filter(
+      (x) => x.condition.indexOf("Never refused") !== -1,
+    )[0];
+    expect(f.why).toMatch(/does not by itself establish/i);
   });
 
   it("treats an unresolved refusal as failing the condition", () => {
@@ -190,27 +208,78 @@ describe("the 'never refused unless overcome or waived' clause", () => {
 
 describe("country of application", () => {
   it("flags a third-country application and explains the wider policy", () => {
-    const r = checkInterviewWaiver({ ...CLEAN_B2, applyingIn: "Canada" }, NOW);
+    const r = checkInterviewWaiver({ ...CLEAN_B2, applyingIn: "CA" }, NOW);
     expect(r.verdict).not.toBe("likely-eligible");
-    expect(r.thirdCountryWarning).toContain("6 September 2025");
+    expect(r.thirdCountryWarning).toContain("country of nationality or residence");
     expect(r.thirdCountryWarning).toContain("neither refundable nor transferable");
   });
 
   it("accepts an application in the country of usual residence", () => {
     const r = checkInterviewWaiver(
-      { ...CLEAN_B2, nationality: "India", residence: "Canada", applyingIn: "Canada" },
+      { ...CLEAN_B2, nationality: "IN", residence: "CA", applyingIn: "CA" },
       NOW,
     );
     expect(r.verdict).toBe("likely-eligible");
     expect(r.thirdCountryWarning).toBeNull();
   });
 
-  it("is not case- or whitespace-sensitive", () => {
+  it("never treats two different 'other' countries as the same country", () => {
+    // The regression this locks in: a shared "Other" option made a Brazilian
+    // national resident in Germany applying in France compare as one country.
     const r = checkInterviewWaiver(
-      { ...CLEAN_B2, nationality: "  india ", applyingIn: "INDIA" },
+      { ...CLEAN_B2, nationality: "BR", residence: "DE", applyingIn: "FR" },
       NOW,
     );
+    expect(r.verdict).not.toBe("likely-eligible");
+    expect(r.thirdCountryWarning).not.toBeNull();
+
+    const generic = checkInterviewWaiver(
+      {
+        ...CLEAN_B2,
+        nationality: "OTHER_A",
+        residence: "OTHER_B",
+        applyingIn: "OTHER_C",
+      },
+      NOW,
+    );
+    expect(generic.verdict).not.toBe("likely-eligible");
+  });
+});
+
+describe("date safety and the ineligibility gate", () => {
+  it("treats a not-yet-expired prior visa as inside the window", () => {
+    const r = checkInterviewWaiver({ ...CLEAN_B2, priorExpiry: "2027-06-01" }, NOW);
     expect(r.verdict).toBe("likely-eligible");
+    expect(r.windowLabel).toMatch(/has not (expired|started)/i);
+  });
+
+  it("never silently passes an unparseable expiry", () => {
+    const r = checkInterviewWaiver({ ...CLEAN_B2, priorExpiry: "not-a-date" }, NOW);
+    expect(r.verdict).not.toBe("likely-eligible");
+    expect(r.failures.some((f) => f.condition.indexOf("12-month") !== -1)).toBe(true);
+  });
+
+  it("measures the window to the application date", () => {
+    const early = checkInterviewWaiver({ ...CLEAN_B2, applicationDate: "2026-09-10" }, NOW);
+    const late = checkInterviewWaiver({ ...CLEAN_B2, applicationDate: "2027-06-01" }, NOW);
+    expect(early.verdict).toBe("likely-eligible");
+    expect(late.verdict).toBe("not-eligible");
+  });
+
+  it("blocks an eligible verdict when a potential ineligibility exists", () => {
+    for (const v of ["yes", "unsure"] as const) {
+      const r = checkInterviewWaiver({ ...CLEAN_B2, potentialIneligibility: v }, NOW);
+      expect(r.verdict, `potentialIneligibility=${v}`).not.toBe("likely-eligible");
+      expect(r.failures.some((f) => f.condition.indexOf("ineligibility") !== -1)).toBe(true);
+    }
+  });
+
+  it("excludes C-3 attendants while keeping other C-3 applicants eligible", () => {
+    const attendant = checkInterviewWaiver({ ...WAIVER_EMPTY, applyingFor: "c3-attendant" }, NOW);
+    expect(attendant.verdict).toBe("not-eligible");
+    expect(attendant.headline).toMatch(/attendant/i);
+    const c3 = checkInterviewWaiver({ ...WAIVER_EMPTY, applyingFor: "c3" }, NOW);
+    expect(c3.verdict).toBe("likely-eligible");
   });
 });
 
@@ -244,7 +313,7 @@ describe("data integrity", () => {
   });
 
   it("gives every condition a nuance paragraph", () => {
-    expect(iwConditions).toHaveLength(5);
+    expect(iwConditions.length).toBeGreaterThanOrEqual(5);
     for (const c of iwConditions) {
       expect(c.nuance.length, `${c.id}`).toBeGreaterThan(40);
     }
@@ -253,5 +322,11 @@ describe("data integrity", () => {
   it("publishes both fee tiers", () => {
     expect(iwFees).toHaveLength(2);
     expect(iwFees.map((f) => f.amount).sort()).toEqual(["$185", "$205"]);
+  });
+
+  it("never presents the Visa Integrity Fee as currently payable", () => {
+    expect(IW_INTEGRITY_FEE.payableNow).toBe(false);
+    expect(IW_INTEGRITY_FEE.detail).not.toMatch(/uneven implementation/i);
+    expect(IW_INTEGRITY_FEE.budgetingRule).toMatch(/Do not add this to your total/i);
   });
 });

@@ -261,12 +261,12 @@ export const tools: ToolMeta[] = [
     label: "Processing Times",
     group: "Travel & Documents",
     description:
-      "Typical current waits for H-1B extensions, I-140, I-485, EAD/AP, OCI cards, Indian passport renewal, and US visa stamping in India — in one table.",
+      "Check whether your USCIS case is outside normal processing time using your own official case inquiry date, plus premium processing periods by form and classification.",
     icon: "⏱️",
     accent: "from-amber-500 to-orange-600",
-    seoTitle: "USCIS & Visa Processing Times 2026 | H-1B, I-140, I-485, EAD, OCI for Indians",
+    seoTitle: "USCIS Processing Times & Delay Checker",
     seoDescription:
-      "Current H-1B extension, I-140, I-485, EAD, OCI card, Indian passport renewal, and visa stamping times in one table. From official USCIS and State Department data.",
+      "Is your USCIS case delayed? Check it against your official case inquiry date, and see premium processing periods by form — 15, 30 or 45 business days.",
     status: "live",
   },
   {

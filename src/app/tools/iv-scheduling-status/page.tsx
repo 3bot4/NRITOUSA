@@ -25,6 +25,7 @@ import {
 } from "@/lib/nvcCluster";
 import {
   IV_SCHEDULING_VERIFIED,
+  IV_SCHEDULING_VERIFIED_HUMAN,
   IV_TOOL_EXCLUSIONS,
   bulletinMonth,
   formatCutoffDate,
@@ -35,9 +36,10 @@ const PATH = "/tools/iv-scheduling-status";
 const TITLE =
   "IV Scheduling Status Tool: How to Read It, and Why Your Case Is Not Scheduled";
 const DESC =
-  "The Department of State IV Scheduling Status Tool shows a documentarily complete date, not a priority date. Work out which of the two gates — visa availability or your post's queue — is actually holding your immigrant visa interview.";
+  "The IV Scheduling Status Tool shows a documentarily complete date, not a priority date. Find out which gate is holding your immigrant visa interview.";
 
 export const metadata: Metadata = pageMetadata({
+  category: "immigration",
   title: "IV Scheduling Status Tool",
   description: DESC,
   path: PATH,
@@ -98,7 +100,7 @@ export default function Page() {
       headline: TITLE,
       description: DESC,
       datePublished: NVC_PUBLISHED,
-      dateModified: NVC_UPDATED,
+      dateModified: IV_SCHEDULING_VERIFIED,
     }),
     faqJsonLd(faq),
     breadcrumbJsonLd([
@@ -320,10 +322,16 @@ export default function Page() {
                       </tr>
                       <tr>
                         <td className="py-2 pr-3 font-semibold text-ink-800">
-                          Typical India EB gap
+                          How far apart they are
                         </td>
-                        <td className="py-2 pr-3">2012&ndash;2015</td>
-                        <td className="py-2">2023&ndash;2026</td>
+                        <td className="py-2 pr-3" colSpan={2}>
+                          Years apart for a backlogged category, because the
+                          priority date is set when the petition is filed and
+                          the documentarily complete date is set when NVC accepts
+                          the package much later. There is no published figure
+                          for a &ldquo;typical&rdquo; gap, so compare your own two
+                          dates rather than any number quoted elsewhere.
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -696,7 +704,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={NVC_UPDATED_HUMAN} />
+            <AuthorReviewLine lastUpdated={IV_SCHEDULING_VERIFIED_HUMAN} hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

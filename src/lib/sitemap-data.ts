@@ -253,9 +253,9 @@ export const immigrationEntries: SitemapEntry[] = [
   // Port-of-entry cluster (denied entry + automatic revalidation) and the
   // interview-waiver hub. Legal rules rather than monthly data, so these move
   // only when a statute, regulation or DOS announcement changes.
-  e("/h1b-denied-entry-airport", 0.9, "monthly", new Date("2026-09-09")),
-  e("/automatic-visa-revalidation", 0.85, "monthly", new Date("2026-09-09")),
-  e("/visa-interview-waiver", 0.9, "monthly", new Date("2026-09-09")),
+  e("/h1b-denied-entry-airport", 0.9, "monthly", new Date("2026-09-11")),
+  e("/automatic-visa-revalidation", 0.85, "monthly", new Date("2026-09-11")),
+  e("/visa-interview-waiver", 0.9, "monthly", new Date("2026-09-11")),
   // Divorce & immigration status (pillar + alimony estimator). Legal rules
   // rather than monthly data, so it moves only when a rule or figure changes.
   e("/divorce-immigration-status", 0.9, "monthly", new Date("2026-08-16")),

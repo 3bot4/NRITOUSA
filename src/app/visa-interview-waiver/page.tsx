@@ -39,9 +39,10 @@ const PATH = "/visa-interview-waiver";
 const TITLE =
   "Visa Interview Waiver (Dropbox) in 2026: Who Still Qualifies, and Who Does Not";
 const DESC =
-  "H-1B, H-4, L and F are no longer interview-waiver eligible. The complete eligible list under the rules effective 1 October 2025, the four conditions, the policy chronology, and a checker that tells you which condition failed.";
+  "H-1B, H-4, L and F are no longer dropbox-eligible. The complete eligible list under the rules effective 1 October 2025, plus an eligibility checker.";
 
 export const metadata: Metadata = pageMetadata({
+  category: "immigration",
   title: "Visa Interview Waiver (Dropbox)",
   description: DESC,
   path: PATH,
@@ -51,32 +52,32 @@ const faq: FaqItem[] = [
   {
     question: "Is H-1B dropbox still available in 2026?",
     answer:
-      "No. H-1B is not on the list of categories eligible for an interview waiver under the Department of State's update effective 1 October 2025. H-1B dropbox effectively ended on 18 February 2025, when the renewal window was cut from 48 months to 12 with a same-classification requirement, and the July 2025 update removed waivers for nearly all categories. The September 2025 update restored H-2A but not H-1B. Every H-1B applicant attends an in-person interview. Pages describing a 48-month H-1B dropbox window are quoting a rule that has not been in force since February 2025.",
+      "No. H-1B is not on the list of categories eligible for an interview waiver under the Department of State's update effective 1 October 2025. The sequence matters: the 18 February 2025 update cut the renewal window from 48 months to 12 with a same-classification requirement, which narrowed eligibility sharply but did not end it; the update effective 2 September 2025 removed H-1B categorical eligibility altogether; and the rule effective 1 October 2025 superseded that update, adding H-2A back without restoring H-1B. H-1B applicants generally require an in-person interview. Pages describing a 48-month H-1B dropbox window are quoting a rule replaced in February 2025.",
   },
   {
     question: "Which visa categories can still use the interview waiver?",
     answer:
-      "The complete list: A-1, A-2, C-3 (except attendants, servants and personal employees of accredited officials), G-1 through G-4, NATO-1 through NATO-6, TECRO E-1, and applicants for diplomatic or official-type visas; B-1, B-2, B1/B2 and Border Crossing Card renewals within 12 months of the prior visa's expiration; and H-2A renewals within the same 12-month window. Everything else requires an in-person interview.",
+      "The complete list: A-1, A-2, C-3 (except attendants, servants and personal employees of accredited officials), G-1 through G-4, NATO-1 through NATO-6, TECRO E-1, and applicants for diplomatic or official-type visas; B-1, B-2, B1/B2 and Border Crossing Card renewals within 12 months of the prior visa's expiration; and H-2A renewals within the same 12-month window. Applicants outside these categories generally require an in-person interview, and all applicable general conditions must also be met.",
   },
   {
     question: "Can my H-4 spouse or child use dropbox even if I cannot?",
     answer:
-      "No. H-4 is not an eligible category either. Since the September 2025 changes there is also no automatic interview waiver for applicants under 14 or over 79, so young children and elderly parents attend in-person interviews too. A family renewing H-1B and H-4 together should plan for interviews for every member.",
+      "No. H-4 categorical eligibility was removed under the rule effective 2 September 2025 and was not restored on 1 October 2025. There is also no longer an automatic interview waiver for applicants under 14 or over 79, so young children and elderly parents generally attend in-person interviews too. A family renewing H-1B and H-4 together should plan for interviews for every member.",
   },
   {
     question: "I was refused a visa years ago. Does that disqualify me forever?",
     answer:
-      "Not necessarily, and this is the most misread clause in the rule. The condition is that you have never been refused a visa unless the refusal was overcome or waived. A 214(b) refusal that was later followed by a successful issuance has been overcome. A 221(g) that was resolved and the visa issued has been overcome. What fails the condition is an open, unresolved refusal. The consular section makes the call, so do not treat either reading as certain.",
+      "Not necessarily, and this is the most misread clause in the rule. The condition is that you have never been refused a visa unless that refusal was overcome or waived. A 221(g) that was resolved and the visa then issued on that application has been overcome. What does NOT establish it is simply having been issued some other visa later — a separate, unrelated issuance does not resolve an earlier refusal on its own. An open or undocumented refusal fails the condition, and the consular section makes the call, so do not treat any self-assessment as a determination.",
   },
   {
     question: "Can I apply for a US visa in Canada or Mexico as an Indian citizen?",
     answer:
-      "You can book it, but two separate rules work against you. First, applying in your country of nationality or usual residence is itself a condition of the interview waiver, so a third-country application cannot be a dropbox application. Second, since 6 September 2025 the Department of State has directed nonimmigrant applicants to schedule interviews in their country of nationality or residence, and warns that applying elsewhere may make it harder to qualify for the visa at all — with fees that are neither refundable nor transferable. If you also hold an expired stamp, applying abroad destroys automatic visa revalidation.",
+      "You can book it, but two separate rules work against you. First, applying in your country of nationality or usual residence is itself a condition of the interview waiver, so a third-country application cannot be a dropbox application. Second, Department of State guidance directs nonimmigrant applicants to schedule interviews in their country of nationality or residence, warns that applying elsewhere may make it harder to qualify for the visa at all, and states that fees paid are neither refundable nor transferable. If you also hold an expired visa, applying abroad destroys automatic visa revalidation.",
   },
   {
     question: "How much does a US visa cost in 2026?",
     answer:
-      "There are two tiers and families routinely hit both. Non-petition-based visas — B-1/B-2, F, M, J — carry a $185 application fee. Petition-based visas in the H, L, O, P, Q and R categories carry $205, which covers H-1B and H-4. Separately, a $250 Visa Integrity Fee was enacted in July 2025 and applies to nonimmigrant visa issuance from fiscal year 2026, indexed annually to the Consumer Price Index. It is charged on issuance rather than application, and implementation has been uneven across posts — treat it as enacted but verify collection at your post before budgeting.",
+      "There are two tiers and families routinely hit both. Non-petition-based visas — B-1/B-2, F, M, J — carry a $185 application fee. Petition-based visas in the H, L, O, P, Q and R categories carry $205, which covers H-1B and H-4. Those are the fees the Department of State currently lists. A $250 Visa Integrity Fee was created by statute in 2025, but it is not listed as an active, collected fee on the current DOS fee schedule and its official collection and refund procedures still have to be published and verified. Do not add it to your total: budget the application fee for your class and check the official fee schedule when you pay.",
   },
   {
     question: "Do I have to make my social media public for an H-1B visa?",
@@ -550,9 +551,9 @@ export default function Page() {
                 <p>
                   <strong>Do not solve an appointment shortage with a
                   third-country booking.</strong> It fails the waiver condition,
-                  it runs against the September 2025 country-of-residence
-                  direction, the fee is not refundable or transferable, and if
-                  your stamp is expired it destroys{" "}
+                  it runs against the Department&rsquo;s country-of-residence
+                  guidance, the fee is neither refundable nor transferable, and
+                  if your visa is expired it destroys{" "}
                   <Link
                     href="/automatic-visa-revalidation"
                     className="text-brand-600 underline"
@@ -676,7 +677,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

@@ -15,9 +15,10 @@ const PAGE_PATH = "/h1b-visa-stamping-after-selection";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Visa Stamping After Selection: India Guide (2026/27)",
+  category: "immigration",
+    title: "H1B Stamping After Lottery Selection",
     description:
-      "H1B visa stamping in India: $205 MRV fee, DS-160 to interview, why dropbox no longer applies to H-1B, documents checklist, and when you don't need a stamp.",
+      "What H-1B lottery selection does and does not mean, change of status versus consular notification, and when visa stamping actually enters the process.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -65,7 +66,7 @@ const faqs: FaqItem[] = [
   {
     question: "What documents are needed for H1B visa stamping in India?",
     answer:
-      "The core set: passport valid 6+ months, DS-160 confirmation, appointment letter, MRV fee receipt ($205), one 2x2 photo, the I-797 approval notice, the I-129 petition copy with certified LCA, an employment letter, and 2–3 months of pay stubs. Third-party placements should add a client letter or statement of work. Carry originals plus copies.",
+      "The core set: passport valid 6+ months, DS-160 confirmation, appointment letter, MRV fee receipt ($205 for petition-based H/L/O/P/Q/R), one 2x2 photo, the I-797 approval notice, the I-129 petition copy with certified LCA, an employment letter, and 2–3 months of pay stubs. Third-party placements should add a client letter or statement of work. Carry originals plus copies.",
   },
   {
     question: "How much does H1B visa stamping cost?",
@@ -121,11 +122,22 @@ export default function Page() {
             {/* Key takeaways */}
             <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
               <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
+              <div className="mb-3 rounded-xl border border-sky-200 bg-sky-50/60 p-3 text-sm text-sky-900">
+                <p className="font-bold">Which page you want</p>
+                <p className="mt-1">
+                  This page covers <strong>lottery selection versus petition filing and approval</strong>, change of
+                  status versus consular notification, and where stamping enters the process. For the India
+                  appointment workflow see{" "}
+                  <Link href="/h1b/stamping-india-after-approval" className="underline">stamping in India after approval</Link>;
+                  for the travel decision and re-entry documents see{" "}
+                  <Link href="/h1b/travel-to-india" className="underline">H1B travel to India</Link>.
+                </p>
+              </div>
               <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
                 <li>• Skip the trip if you were approved as a <strong>change of status</strong> — you can work without a stamp and only need one to re-enter after travel.</li>
-                <li>• Budget the <strong>$205 DS-160 (MRV) fee</strong> per applicant and complete the DS-160 before booking any appointment, per the Department of State.</li>
+                <li>• Budget the <strong>$205 nonimmigrant visa application (MRV) fee</strong> per applicant and complete the DS-160 before booking any appointment, per the Department of State.</li>
                 <li>• <strong>Do not plan around dropbox</strong> — H-1B and H-4 lost interview-waiver eligibility in 2025 and every applicant now interviews in person, including children.</li>
-                <li>• Carry the full document set — passport (6+ months validity), I-797, DS-160 confirmation, LCA, pay records — missing paperwork is the top 221(g) trigger.</li>
+                <li>• Carry the full document set — passport, I-797, DS-160 confirmation, LCA, pay records. There is no published ranking of 221(g) causes, so treat &ldquo;the top trigger&rdquo; claims as unsourced; complete documents are simply the part you control.</li>
                 <li>• Expect consulate wait times to vary widely by city and season; confirm current slots at Mumbai, Delhi, Hyderabad, Chennai, or Kolkata before booking travel.</li>
               </ul>
             </div>
@@ -201,7 +213,7 @@ export default function Page() {
               ]}
             />
             <p className="text-sm leading-relaxed text-ink-700">
-              The complete eligible list, the four conditions, the dated policy chronology and an eligibility checker
+              The complete eligible list, all applicable conditions, the dated policy chronology and an eligibility checker
               are on{" "}
               <Link href="/visa-interview-waiver" className="text-brand-600 underline">
                 visa interview waiver
@@ -233,7 +245,7 @@ export default function Page() {
               Common H1B visa interview questions
             </SectionHeading>
             <p className="text-sm leading-relaxed text-ink-700">
-              Most interviews last under five minutes and stick to a familiar script: <em>Who is your employer and
+              Interviews are usually short and stick to a familiar script: <em>Who is your employer and
               what do they do? What is your role and daily work? What is your salary? Where will you work — client
               site or employer office? What is your highest degree and how does it relate? Have you been to the US
               before, and on what status?</em> Answer briefly and consistently with the DS-160 and petition — the

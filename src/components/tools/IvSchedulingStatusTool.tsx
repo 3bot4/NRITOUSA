@@ -14,6 +14,9 @@ import {
   formatMonthGap,
   getIvCutoffs,
   ivSchedulingLinks,
+  IV_POSTS_INDIA,
+  IV_POST_NOTE,
+  PETITION_FORM_HELP,
   type Chargeability,
   type DateStatus,
   type IvCategory,
@@ -27,17 +30,15 @@ const EMPTY: IvSchedulingInputs = {
   dqMonth: "",
   postSchedulingMonth: "",
   post: "",
+  alreadyDq: "",
 };
 
-/** Posts that handle the bulk of Indian immigrant visa cases, plus an escape. */
-const POSTS = [
-  "Mumbai",
-  "New Delhi",
-  "Chennai",
-  "Hyderabad",
-  "Kolkata",
-  "Other post",
-];
+/**
+ * Only posts that actually process immigrant visas. Chennai, Hyderabad and
+ * Kolkata were offered here previously and do not belong: they are not Indian
+ * IV posts, and an applicant cannot choose a post in any case.
+ */
+const POSTS = [...IV_POSTS_INDIA, "A post outside India"];
 
 const STATUS_LABEL: Record<DateStatus, string> = {
   "no-limit": "No numerical limit",
@@ -69,7 +70,19 @@ export default function IvSchedulingStatusTool() {
       ? getIvCutoffs(inp.category as IvCategory, inp.country as Chargeability)
       : null;
 
-  const started = Boolean(inp.category && inp.country && inp.priorityDate);
+  const meta = inp.category ? IV_CATEGORIES[inp.category as IvCategory] : null;
+  const isImmediate = meta?.path === "immediate";
+  const petitionHelp = inp.category
+    ? (PETITION_FORM_HELP[inp.category] ??
+      (isImmediate
+        ? PETITION_FORM_HELP.immediate
+        : meta?.path === "family"
+          ? PETITION_FORM_HELP.family
+          : ""))
+    : "";
+  const started = Boolean(
+    inp.category && inp.country && (isImmediate || inp.priorityDate),
+  );
 
   return (
     <div id="tool" className="grid gap-5 lg:grid-cols-2">
@@ -78,7 +91,7 @@ export default function IvSchedulingStatusTool() {
         <InputCard eyebrow="Step 1" title="Your case">
           <Field
             label="Immigrant visa category"
-            help="From the approved petition — I-130 for family, I-140 for employment."
+            help="From the approved petition. The form differs by category — see the note under the priority date field."
           >
             <select
               className={fieldClass}
@@ -138,17 +151,27 @@ export default function IvSchedulingStatusTool() {
             </select>
           </Field>
 
-          <Field
-            label="Priority date"
-            help="PERM filing date for most EB-2/EB-3 cases; I-140 receipt date where no PERM was required; I-130 receipt date for family cases."
-          >
-            <input
-              type="date"
-              className={fieldClass}
-              value={inp.priorityDate}
-              onChange={(e) => set("priorityDate", e.target.value)}
-            />
-          </Field>
+          {isImmediate ? (
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-3">
+              <p className="text-xs font-bold text-emerald-800">
+                No priority date needed
+              </p>
+              <p className="mt-1 text-xs text-emerald-900">
+                {petitionHelp} The Visa Bulletin is not the scheduling gate for
+                immediate relatives, so this tool does not ask for a priority
+                date here.
+              </p>
+            </div>
+          ) : (
+            <Field label="Priority date" help={petitionHelp}>
+              <input
+                type="date"
+                className={fieldClass}
+                value={inp.priorityDate}
+                onChange={(e) => set("priorityDate", e.target.value)}
+              />
+            </Field>
+          )}
         </InputCard>
 
         <InputCard eyebrow="Step 2" title="Your place in the post's queue">
@@ -157,10 +180,7 @@ export default function IvSchedulingStatusTool() {
             availability verdict; with them you also get a queue position.
           </p>
 
-          <Field
-            label="Consular post"
-            help="Where the interview will be held."
-          >
+          <Field label="Consular post" help={IV_POST_NOTE}>
             <select
               className={fieldClass}
               value={inp.post}
@@ -172,6 +192,23 @@ export default function IvSchedulingStatusTool() {
                   {p}
                 </option>
               ))}
+            </select>
+          </Field>
+
+          <Field
+            label="Has NVC confirmed your case is documentarily complete?"
+            help="If yes and your category has since retrogressed, DQ is retained — the tool says so explicitly."
+          >
+            <select
+              className={fieldClass}
+              value={inp.alreadyDq}
+              onChange={(e) =>
+                set("alreadyDq", e.target.value as IvSchedulingInputs["alreadyDq"])
+              }
+            >
+              <option value="">Select…</option>
+              <option value="yes">Yes — NVC confirmed DQ</option>
+              <option value="no">Not yet</option>
             </select>
           </Field>
 
@@ -237,6 +274,12 @@ export default function IvSchedulingStatusTool() {
               </p>
               <p className="mt-1 text-sm text-ink-700">{result.nextStep}</p>
             </div>
+          )}
+
+          {result.schedulingNote && (
+            <p className="rounded-xl border border-sky-200 bg-sky-50/60 p-3 text-sm text-sky-900">
+              {result.schedulingNote}
+            </p>
           )}
 
           {result.inquiryReasonable && (
