@@ -810,8 +810,8 @@ export default function EOciCardPage() {
               </li>
             </ul>
             <p className="mt-3">
-              For the full picture on re-issue at 20/50, new passports and
-              related updates, see the{" "}
+              For which changes need a paid re-issue and which are a free
+              portal upload, see the{" "}
               <Link href={ociGuidePath("renewal")} className="text-brand-600 underline">
                 OCI renewal &amp; updates
               </Link>{" "}

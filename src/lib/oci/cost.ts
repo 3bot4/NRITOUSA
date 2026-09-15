@@ -59,8 +59,8 @@ export const SERVICE_TYPE_OPTIONS: { value: GovernmentFeeKey; label: string }[] 
   [
     { value: "freshAdult", label: "Fresh OCI — adult" },
     { value: "freshMinor", label: "Fresh OCI — minor / newborn" },
-    { value: "reissue", label: "Re-issue (new passport / 20 / 50 milestone)" },
-    { value: "miscNewPassport", label: "Miscellaneous — new passport update" },
+    { value: "reissue", label: "Re-issue — new passport after age 20" },
+    { value: "miscNewPassport", label: "Miscellaneous — name / address / detail change" },
     { value: "lostDamaged", label: "Re-issue — lost / damaged card" },
     { value: "pioConversion", label: "PIO-to-OCI conversion" },
   ];

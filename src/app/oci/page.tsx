@@ -104,8 +104,8 @@ const mistakes = [
     body: "You must hold a foreign passport first. OCI replaces Indian citizenship — you can't hold both at once.",
   },
   {
-    title: "Forgetting the re-issue at 20 / 50",
-    body: "OCI must be re-issued when a minor turns 20, and once after age 50, and whenever a new passport is issued for minors. Missing it can cause boarding issues.",
+    title: "Missing the one mandatory re-issue — or paying for one you don't need",
+    body: "Exactly one change needs a paid re-issue: a new passport obtained after you turn 20. Every other new passport — up to 20, and once after 50 — needs only a free portal upload within three months. Skip the re-issue and you can be refused at boarding; pay for one you didn't need and you have wasted the fee.",
   },
   {
     title: "Booking travel against an estimate",
@@ -334,8 +334,9 @@ export default function OciHubPage() {
                   large centred face.
                 </li>
                 <li>
-                  <strong>Re-issue milestones</strong> — re-issue at 20 and once
-                  after 50, and on each new passport for minors.
+                  <strong>Re-issue vs upload</strong> — one paid re-issue, for a
+                  new passport after age 20. Everything else is a free portal
+                  upload, within three months.
                 </li>
               </ul>
               <p className="mt-4 text-xs text-ink-400">

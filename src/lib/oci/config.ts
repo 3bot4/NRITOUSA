@@ -14,7 +14,7 @@
  */
 
 /** Plain-English "as of" stamp shown next to any figure from this file. */
-export const OCI_DATA_AS_OF = "2026-07-04";
+export const OCI_DATA_AS_OF = "2026-09-14";
 
 /** Authoritative links every OCI page must cite. */
 export const VERIFY_SOURCES = {
@@ -72,27 +72,27 @@ export const GOVERNMENT_FEES: Record<string, FeeLine> = {
   },
   pioConversion: {
     id: "gov-pio",
-    label: "PIO-to-OCI conversion",
-    amount: 0,
-    note: "Conversion of a PIO card to OCI is generally free of the government fee — confirm current policy with VFS.",
+    label: "OCI registration in lieu of a PIO card",
+    amount: 100,
+    note: "Converting a PIO card to OCI — the same $100 applies whether the PIO card is valid or lost/damaged. It is NOT free.",
   },
   reissue: {
     id: "gov-reissue",
-    label: "OCI re-issue (new passport / 20-yr / 50-yr)",
-    amount: 275,
-    note: "Re-issue when a new passport is obtained, or at the under-20 / over-50 milestones.",
+    label: "OCI re-issue after a new passport at 20+",
+    amount: 25,
+    note: "The one mandatory re-issue: a new passport obtained after completing 20 years of age. Charged as an OCI Miscellaneous Service, not at the fresh-registration rate.",
   },
   miscNewPassport: {
     id: "gov-misc-passport",
-    label: "Miscellaneous service — new passport update",
-    amount: 100,
-    note: "Updating OCI with a new passport when re-issue is not mandatory.",
+    label: "Miscellaneous service — name / address / detail change",
+    amount: 25,
+    note: "OCI Miscellaneous Services rate. Simply uploading a new passport and photo to the OCI portal (required up to age 20 and once after 50) is free — this fee is for a service that must be filed through VFS.",
   },
   lostDamaged: {
     id: "gov-lost",
     label: "Re-issue — lost / damaged OCI card",
-    amount: 100,
-    note: "Replacement of a lost, stolen, or damaged OCI card.",
+    amount: 25,
+    note: "Replacement of a lost, stolen, or damaged OCI card, charged as an OCI Miscellaneous Service.",
   },
 } as const;
 
@@ -231,7 +231,7 @@ export function freshOciAllInLabel(): string {
 /** Rows for the OCI "Fast Answer" snapshot — always sourced from this config. */
 export function ociSnapshotRows(): { label: string; value: string; note?: string; highlight?: boolean }[] {
   return [
-    { label: "Fresh OCI — govt fee", value: usd(GOVERNMENT_FEES.freshAdult.amount), note: "Adult or minor; same government fee. Re-issue is also " + usd(GOVERNMENT_FEES.reissue.amount) + ".", highlight: true },
+    { label: "Fresh OCI — govt fee", value: usd(GOVERNMENT_FEES.freshAdult.amount), note: "Adult or minor; same government fee. A re-issue is only " + usd(GOVERNMENT_FEES.reissue.amount) + ", and a passport update on the portal is free.", highlight: true },
     { label: "VFS service + ICWF", value: `${usd(VFS_FEES.service.amount)} + ${usd(VFS_FEES.icwf.amount)}`, note: "Per application; plus optional return courier " + usd(VFS_FEES.courierReturn.amount) + "." },
     { label: "All-in (fresh adult)", value: freshOciAllInLabel(), note: "Govt + VFS + ICWF + return courier. Use the Cost Calculator for your exact case." },
     { label: "Processing time", value: totalWeeksLabel(), note: "Two-stage clearance (consulate + MHA in India); plan for the long end." },
