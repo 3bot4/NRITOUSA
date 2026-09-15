@@ -1,31 +1,191 @@
 {
-  "generatedAt": "2026-08-18",
+  "generatedAt": "2026-09-15",
   "note": "Outbound citation health. 'unverifiable' = host blocks automated requests (see BOT_BLOCKED_HOSTS); those must be checked by hand and are NOT failures.",
   "counts": {
-    "checked": 426,
-    "ok": 394,
-    "dead": 0,
-    "unreachable": 0,
-    "forbidden": 0,
-    "unverifiable": 31,
-    "redirected": 28
+    "checked": 563,
+    "ok": 499,
+    "dead": 8,
+    "unreachable": 5,
+    "forbidden": 8,
+    "unverifiable": 41,
+    "redirected": 36
   },
-  "dead": [],
-  "unreachable": [],
-  "forbidden": [],
+  "dead": [
+    {
+      "url": "https://my.uscis.gov/findadoctor",
+      "status": 404,
+      "title": "USCIS - myUSCIS Error Page",
+      "pages": [
+        "/i485-documents-checklist"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/20095/1/the_indian_stamp_act,_1899.pdf",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/power-of-attorney-for-india-from-usa"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/power-of-attorney-for-india-from-usa"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/22046/1/a2025-37.pdf",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/handle/123456789/1362",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/handle/123456789/1670",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/handle/123456789/2384",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://www.indiacode.nic.in/handle/123456789/2410",
+      "status": 404,
+      "title": null,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    }
+  ],
+  "unreachable": [
+    {
+      "url": "https://bsaefiling.fincen.treas.gov/main.html",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/tools/form-10f-generator"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/gold-limit-usa-to-india",
+        "/shipping-household-goods-to-india"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/customs_clearance_of_passengers_at_a_glance.pdf",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/gold-limit-usa-to-india"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/transfer_of_residence_rules-at_a_glance.pdf",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/shipping-household-goods-to-india"
+      ]
+    }
+  ],
+  "forbidden": [
+    {
+      "url": "https://content.naic.org/consumer.htm",
+      "status": 403,
+      "pages": [
+        "/visitor-insurance"
+      ]
+    },
+    {
+      "url": "https://content.naic.org/insurance-topics/life-insurance",
+      "status": 403,
+      "pages": [
+        "/indexed-universal-life-iul-for-indian-families-usa",
+        "/life-insurance-for-indian-families-usa",
+        "/term-life-insurance-for-indian-families-usa",
+        "/term-life-insurance-needs-calculator-indian-families",
+        "/term-vs-iul-for-indian-families-usa"
+      ]
+    },
+    {
+      "url": "https://content.naic.org/state-insurance-departments",
+      "status": 403,
+      "pages": [
+        "/indexed-universal-life-iul-for-indian-families-usa",
+        "/life-insurance-for-indian-families-usa",
+        "/term-life-insurance-for-indian-families-usa",
+        "/term-life-insurance-needs-calculator-indian-families",
+        "/term-vs-iul-for-indian-families-usa"
+      ]
+    },
+    {
+      "url": "https://indiankanoon.org/doc/166607072/",
+      "status": 403,
+      "pages": [
+        "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://www.exchangerates.org.uk/news/46256/2026-06-21-us-dollar-to-rupee-forecast-2026-2028-latest-survey-signals-stable-near-term-outlook.html",
+      "status": 403,
+      "pages": [
+        "/calculators/usd-inr-projection-send-now-or-wait"
+      ]
+    },
+    {
+      "url": "https://www.exchangerates.org.uk/news/46566/2026-07-20-mufg-us-dollar-to-indian-rupee-forecast-usd-inr-seen-at-95-00-by-mid-2027.html",
+      "status": 403,
+      "pages": [
+        "/calculators/usd-inr-projection-send-now-or-wait"
+      ]
+    },
+    {
+      "url": "https://www.exchangerates.org.uk/news/47106/2026-09-05-us-dollar-to-rupee-forecast-2027-bank-targets-inr-recovery-to-92.html",
+      "status": 403,
+      "pages": [
+        "/calculators/usd-inr-projection-send-now-or-wait"
+      ]
+    },
+    {
+      "url": "https://www.naic.org",
+      "status": 403,
+      "pages": [
+        "/tools/visitor-insurance-plan-comparison"
+      ]
+    }
+  ],
   "redirects": [
     {
       "url": "https://adssettings.google.com/",
       "finalUrl": "https://www.google.com/ads/preferences/html/blocked-cookies.html",
       "pages": [
         "/privacy-policy"
-      ]
-    },
-    {
-      "url": "https://content.naic.org/consumer.htm",
-      "finalUrl": "https://content.naic.org/consumer",
-      "pages": [
-        "/visitor-insurance"
       ]
     },
     {
@@ -56,6 +216,41 @@
       ]
     },
     {
+      "url": "https://twitter.com/intent/tweet?text=CPT%20vs%20OPT%20explained%20straight%2C%20including%20the%20rule%20that%20catches%20people%20out%3A%2012%20months%20of%20full-time%20CPT%20eliminates%20your%20OPT%20eligibility%20completely.",
+      "finalUrl": "https://x.com/intent/tweet?text=CPT%20vs%20OPT%20explained%20straight%2C%20including%20the%20rule%20that%20catches%20people%20out%3A%2012%20months%20of%20full-time%20CPT%20eliminates%20your%20OPT%20eligibility%20completely.",
+      "pages": [
+        "/education/cpt-vs-opt"
+      ]
+    },
+    {
+      "url": "https://twitter.com/intent/tweet?text=Free%20F-1%20student%20tax%20calculator%3A%20checks%20if%20you%20file%201040-NR%20or%201040%2C%20the%20FICA%20refund%20your%20employer%20may%20owe%20you%20(7.65%25)%2C%20and%20the%20US-India%20treaty%20standard%20deduction%20most%20Indian%20students%20never%20claim.",
+      "finalUrl": "https://x.com/intent/tweet?text=Free%20F-1%20student%20tax%20calculator%3A%20checks%20if%20you%20file%201040-NR%20or%201040%2C%20the%20FICA%20refund%20your%20employer%20may%20owe%20you%20(7.65%25)%2C%20and%20the%20US-India%20treaty%20standard%20deduction%20most%20Indian%20students%20never%20claim.",
+      "pages": [
+        "/education/f1-tax-calculator"
+      ]
+    },
+    {
+      "url": "https://twitter.com/intent/tweet?text=If%20your%20SEVIS%20record%20was%20terminated%20or%20your%20visa%20revoked%3A%20these%20are%20two%20different%20things%20with%20two%20different%20answers.%20First-48-hours%20checklist%20and%20reinstatement%20options.",
+      "finalUrl": "https://x.com/intent/tweet?text=If%20your%20SEVIS%20record%20was%20terminated%20or%20your%20visa%20revoked%3A%20these%20are%20two%20different%20things%20with%20two%20different%20answers.%20First-48-hours%20checklist%20and%20reinstatement%20options.",
+      "pages": [
+        "/education/sevis-termination-guide"
+      ]
+    },
+    {
+      "url": "https://twitter.com/intent/tweet?text=Is%20a%20US%20master&#x27;s%20actually%20worth%20it%3F%20This%20runs%2010%20years%20across%20four%20paths%20%E2%80%94%20stay%20in%20the%20US%2C%20return%20to%20India%2C%20or%20never%20go%20%E2%80%94%20with%20loan%20interest%20and%20sponsorship%20odds%20you%20can%20edit%20yourself.",
+      "finalUrl": "https://x.com/intent/tweet?text=Is%20a%20US%20master&",
+      "pages": [
+        "/education/us-degree-roi-calculator"
+      ]
+    },
+    {
+      "url": "https://twitter.com/intent/tweet?text=OPT%20calculator%20with%20every%20deadline%3A%20filing%20window%2C%20STEM%20cut-off%2C%20grace%20period%2C%20and%20an%20unemployment%20counter%20that%20uses%20the%20real%20150-day%20aggregate%20cap%20%E2%80%94%20STEM%20does%20NOT%20reset%20it%20to%20150.",
+      "finalUrl": "https://x.com/intent/tweet?text=OPT%20calculator%20with%20every%20deadline%3A%20filing%20window%2C%20STEM%20cut-off%2C%20grace%20period%2C%20and%20an%20unemployment%20counter%20that%20uses%20the%20real%20150-day%20aggregate%20cap%20%E2%80%94%20STEM%20does%20NOT%20reset%20it%20to%20150.",
+      "pages": [
+        "/education/opt-calculator"
+      ]
+    },
+    {
       "url": "https://www.acf.hhs.gov/ocs/programs/liheap",
       "finalUrl": "https://acf.gov/ocs/programs/liheap",
       "pages": [
@@ -70,6 +265,13 @@
       ]
     },
     {
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system.html",
+      "finalUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score.html",
+      "pages": [
+        "/education/us-degree-roi-calculator"
+      ]
+    },
+    {
       "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
       "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
       "pages": [
@@ -81,6 +283,21 @@
       "finalUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
       "pages": [
         "/usa-government-benefits-immigrants"
+      ]
+    },
+    {
+      "url": "https://www.federalregister.gov/d/2026-17324",
+      "finalUrl": "https://www.federalregister.gov/documents/2026/08/25/2026-17324/fee-for-certain-h-1b-petitions",
+      "pages": [
+        "/articles/opt-h1b-financial-planning-students"
+      ]
+    },
+    {
+      "url": "https://www.federalregister.gov/documents/2025/09/25/2025-18627/restriction-on-entry-of-certain-nonimmigrant-workers",
+      "finalUrl": "https://www.federalregister.gov/documents/2025/09/25/2025-18627/notice-of-ofac-sanctions-actions",
+      "pages": [
+        "/education/us-degree-roi-calculator",
+        "/h1b"
       ]
     },
     {
@@ -177,6 +394,13 @@
       ]
     },
     {
+      "url": "https://www.indianembassyusa.gov.in/",
+      "finalUrl": "https://indianembassyusa.gov.in/index",
+      "pages": [
+        "/power-of-attorney-for-india-from-usa"
+      ]
+    },
+    {
       "url": "https://www.irs.gov/individuals/individual-taxpayer-identification-number",
       "finalUrl": "https://www.irs.gov/tin/itin/individual-taxpayer-identification-number-itin",
       "pages": [
@@ -198,13 +422,6 @@
       "pages": [
         "/cookie-policy",
         "/privacy-policy"
-      ]
-    },
-    {
-      "url": "https://www.naic.org",
-      "finalUrl": "https://content.naic.org/",
-      "pages": [
-        "/tools/visitor-insurance-plan-comparison"
       ]
     },
     {
@@ -232,6 +449,13 @@
       "finalUrl": "https://www.sos.ca.gov/notary/request-apostille",
       "pages": [
         "/oci/apostille"
+      ]
+    },
+    {
+      "url": "https://www.ssa.gov/benefits/retirement/planner/applying7.html",
+      "finalUrl": "https://www.ssa.gov/family",
+      "pages": [
+        "/articles/social-security-40-credits-h1b-nri"
       ]
     },
     {

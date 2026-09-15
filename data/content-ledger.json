@@ -170,10 +170,12 @@
       "id": "semrush-mcp-out-of-api-units",
       "title": "Semrush MCP out of API units \u2014 competitor gap analysis done via live SERP recon instead",
       "area": "other",
-      "severity": "low",
+      "severity": "medium",
       "status": "open",
       "opened": "2026-08-20",
-      "nextStep": "Top up Semrush API units at semrush.com/mcp-access to restore keyword/organic reports"
+      "nextStep": "Top up units at semrush.com/mcp-access, then re-run the analysis for the demand side: organic_research on the competitors found here (visament, helpoci, manifestlaw, immigrationdirect, compareremit) and a keyword-gap pass per cluster.",
+      "detail": "Every Semrush MCP call returns 'not enough API units'. This pass therefore identified gaps from live SERPs and competitor page outlines, which finds missing subtopics and stale facts well but cannot see keyword-level demand \u2014 search volume, keyword difficulty, or which queries competitors rank for that we do not. The keyword-gap half of a competitor analysis is simply absent.",
+      "evidence": "Semrush MCP domain_overview / organic_research"
     },
     {
       "id": "part-a-leftovers-a8-college-tuition",
@@ -684,17 +686,6 @@
       "evidence": "rendered word counts from .next/server/app"
     },
     {
-      "id": "semrush-units-exhausted",
-      "title": "Semrush API units are exhausted, so the gap analysis ran on live SERPs only",
-      "area": "other",
-      "severity": "medium",
-      "status": "open",
-      "opened": "2026-09-15",
-      "detail": "Every Semrush MCP call returns 'not enough API units'. This pass therefore identified gaps from live SERPs and competitor page outlines, which finds missing subtopics and stale facts well but cannot see keyword-level demand \u2014 search volume, keyword difficulty, or which queries competitors rank for that we do not. The keyword-gap half of a competitor analysis is simply absent.",
-      "nextStep": "Top up units at semrush.com/mcp-access, then re-run the analysis for the demand side: organic_research on the competitors found here (visament, helpoci, manifestlaw, immigrationdirect, compareremit) and a keyword-gap pass per cluster.",
-      "evidence": "Semrush MCP domain_overview / organic_research"
-    },
-    {
       "id": "clusters-audited-no-gap",
       "title": "Record: clusters audited in Sep 2026 with no material gap found",
       "area": "content",
@@ -704,6 +695,17 @@
       "detail": "So the next pass does not re-audit them. Checked against live SERPs and competitor outlines, already at or above competitor depth: green card renewal (the 36-month I-90 receipt extension and the ADIT stamp are both covered, which is what competitors lead with), visa bulletin, Trump Account (9 pages), US government benefits (14,000 words), divorce and immigration (11,300), India investments (10,000), power of attorney for India (11,300), life insurance and IUL, visitor insurance (7 pages plus 6 calculators), education/F-1 (10 pages), Indian passport renewal, NVC (5 pages), India visa (7 pages), gold limit, H-1B lottery cluster. The H-1B, USCIS and visa-bulletin hubs are structurally sound; their gap is the verified-numbers backlog already tracked under fast-answer-coverage, not missing subtopics.",
       "nextStep": "Re-audit only when a rule changes or a SERP shifts. Treat this as a dated snapshot, not a permanent verdict.",
       "evidence": "live SERP checks Sep 14-15, 2026"
+    },
+    {
+      "id": "indiacode-citations-404",
+      "title": "7 indiacode.nic.in statute citations return 404",
+      "area": "links",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "ledger:links now reports 8 dead citations, down from 10 after this pass repointed two (USCIS retired its automatic-EAD-extension page after the repeal; Study in the States retired /students/reinstatement). The remaining 7 are all indiacode.nic.in \u2014 both /handle/ and /bitstream/ forms, covering the Indian Stamp Act 1899, the Registration Act 1908, a 2025 act, and four handle IDs. The host appears to have reorganised its identifiers rather than removed the statutes. The 8th is studyinthestates (now fixed but cached in that run).",
+      "nextStep": "Find each act on the current indiacode search and replace the exact URL \u2014 do not sweep the path prefix, since /handle/ and /bitstream/ IDs are unrelated to each other. Where a stable indiacode URL cannot be found, cite the relevant ministry's own copy instead. The five ENOTFOUND/timeout hosts in the same report (cbic.gov.in, incometaxindia.gov.in, bsaefiling) are the known blocked/transient set, not rot.",
+      "evidence": "npm run ledger:links \u00b7 scripts/audit/link-health.json"
     }
   ]
 }
