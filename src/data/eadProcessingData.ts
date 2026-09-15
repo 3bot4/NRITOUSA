@@ -23,15 +23,39 @@ export interface EadCategory {
   monthsLow: number;
   monthsHigh: number;
   /**
-   * Whether a timely-filed renewal in this category gets the automatic extension
-   * TODAY. A DHS interim final rule effective Oct 30, 2025 removed the automatic
-   * extension for renewals filed on or after that date, so this is now `false`
-   * for every standard category. Categories that qualified under the OLD rule are
-   * flagged via `autoExtensionPreRule` for people who filed before the cutoff.
+   * Whether a timely-filed RENEWAL in this category still gets the automatic
+   * extension under 8 CFR 274a.13(d) — the general renewal mechanism. The
+   * Oct 30, 2025 interim final rule added § 274a.13(e), which switches this off
+   * for applications USCIS received on or after that date, so it is now `false`
+   * everywhere. Categories that qualified under the old rule are flagged via
+   * `autoExtensionPreRule`, because those filings still run.
+   *
+   * IMPORTANT: this field is ONLY about § 274a.13(d). It is not the same
+   * question as "can I keep working while my application is pending" — see
+   * `pendingAuthDays` below, which is a different legal source and survived the
+   * repeal untouched.
    */
   autoExtension: boolean;
   /** Qualified for the up-to-540-day extension on renewals filed BEFORE 2025-10-30. */
   autoExtensionPreRule: boolean;
+  /**
+   * Automatic continued employment authorisation while a timely-filed
+   * application is pending, arising from somewhere OTHER than § 274a.13(d).
+   *
+   * The only category in this table with one is the STEM OPT extension:
+   * 8 CFR 274a.12(b)(6)(iv) authorises employment for up to 180 days past the
+   * EAD's expiry while a timely-filed STEM extension is pending. The Oct 30,
+   * 2025 IFR amended ONLY § 274a.13 (re-heading (d) and adding (e)), so it did
+   * not touch this provision, and § 274a.13(e) itself carves out anything
+   * "otherwise provided by law".
+   *
+   * `null` means no such authorisation exists — which for initial and
+   * post-completion OPT (c)(3)(B) is the substantive point: an F-1 student
+   * cannot work on a pending initial OPT application at all.
+   */
+  pendingAuthDays: number | null;
+  /** The provision `pendingAuthDays` comes from, for citation on-page. */
+  pendingAuthCite: string | null;
   /** Whether I-765 premium processing is available for this category. */
   premiumEligible: boolean;
 }
@@ -103,15 +127,66 @@ export const eadProcessingData: EadProcessingData = {
   advanceParoleMonthsHigh: 9,
 
   categories: [
-    { key: "c09", code: "(c)(9)", label: "Pending I-485 / adjustment of status", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
-    { key: "c26", code: "(c)(26)", label: "H-4 spouse of H-1B", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
-    { key: "a18", code: "(a)(18)", label: "L-2 spouse of L-1", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
-    { key: "c08", code: "(c)(8)", label: "Pending asylum applicant", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: true, premiumEligible: false },
-    { key: "c03b", code: "(c)(3)(B)", label: "F-1 student — post-completion OPT", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, premiumEligible: true },
-    { key: "c03c", code: "(c)(3)(C)", label: "F-1 student — STEM OPT extension", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, premiumEligible: true },
-    { key: "other", code: "varies", label: "Other / not sure", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: false, premiumEligible: false },
+    { key: "c09", code: "(c)(9)", label: "Pending I-485 / adjustment of status", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: false },
+    { key: "c26", code: "(c)(26)", label: "H-4 spouse of H-1B", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: false },
+    { key: "a18", code: "(a)(18)", label: "L-2 spouse of L-1", monthsLow: 3, monthsHigh: 8, autoExtension: false, autoExtensionPreRule: true, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: false },
+    { key: "c08", code: "(c)(8)", label: "Pending asylum applicant", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: true, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: false },
+    // Initial/post-completion OPT has NO pending-application authorisation:
+    // the student waits for the card and its start date before working.
+    { key: "c03b", code: "(c)(3)(B)", label: "F-1 student — post-completion OPT", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: true },
+    // A timely-filed STEM extension is the one category here that keeps
+    // automatic authorisation while pending — a different provision from the
+    // renewal mechanism the Oct 2025 IFR removed.
+    { key: "c03c", code: "(c)(3)(C)", label: "F-1 student — STEM OPT extension", monthsLow: 2, monthsHigh: 5, autoExtension: false, autoExtensionPreRule: false, pendingAuthDays: 180, pendingAuthCite: "8 CFR 274a.12(b)(6)(iv)", premiumEligible: true },
+    { key: "other", code: "varies", label: "Other / not sure", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: false, pendingAuthDays: null, pendingAuthCite: null, premiumEligible: false },
   ],
 };
+
+/**
+ * The STEM category, resolved once. Pages need `pendingAuthDays` and its
+ * citation together and must not re-type either.
+ */
+export const stemPendingAuth = (() => {
+  const c = eadProcessingData.categories.find((x) => x.key === "c03c");
+  if (!c || c.pendingAuthDays == null || !c.pendingAuthCite) {
+    throw new Error(
+      "STEM OPT (c)(3)(C) must carry its pending-authorisation days and citation",
+    );
+  }
+  return { ...c, pendingAuthDays: c.pendingAuthDays, pendingAuthCite: c.pendingAuthCite };
+})();
+
+/* ─────── Canonical wording for the repeal, shared by every consumer ─────── */
+
+/**
+ * The repeal has to be described the same way in visible prose, in FAQ answers
+ * and in the FAQPage JSON-LD built from those answers. When each place wrote
+ * its own sentence, the data file said the extension had ended while two pages
+ * still told readers they "currently" had up to 540 days.
+ *
+ * Three facts, always together — dropping any one of them makes the statement
+ * wrong for somebody:
+ *   1. the general renewal mechanism ended for applications RECEIVED on or
+ *      after the cutoff;
+ *   2. applications received BEFORE the cutoff keep their extension;
+ *   3. separate statutory / regulatory / Federal Register-notice authority can
+ *      still extend an EAD, and § 274a.13(e) says so on its face.
+ */
+export const EAD_AUTO_EXTENSION_SUMMARY =
+  "The general automatic extension ended for qualifying renewal applications filed on or after October 30, 2025: an interim final rule added 8 CFR 274a.13(e), under which a renewal request no longer extends an expiring EAD. Eligible applications USCIS received before that date keep the extension that applied to them under § 274a.13(d), up to 540 days. Separate statutory or regulatory authority, and extensions announced in an applicable Federal Register notice — the TPS documentation notices are the standing example — can still extend an EAD, because § 274a.13(e) applies only \"except as otherwise provided by law.\"";
+
+/** One clause for inline use where a full paragraph does not fit. */
+export const EAD_AUTO_EXTENSION_CLAUSE =
+  "ended for renewal applications filed on or after October 30, 2025, though applications filed before then keep theirs and other legal authority can still extend an EAD";
+
+/**
+ * The F-1 distinction. Grouping the two OPT categories together as "no
+ * automatic extension" is wrong and costs a STEM student real money: they may
+ * lawfully keep working while a timely-filed extension is pending, and being
+ * told otherwise means stopping work unnecessarily.
+ */
+export const EAD_OPT_VS_STEM_SUMMARY =
+  "The two F-1 categories are not the same. On initial and post-completion OPT — category (c)(3)(B) — there is no authorisation to work while the application is pending: you wait for the card and for the start date printed on it. A timely-filed STEM OPT extension — category (c)(3)(C) — is different: 8 CFR 274a.12(b)(6)(iv) authorises employment for up to 180 days past your EAD's expiry while the extension is pending, subject to meeting its conditions. That provision is not part of the renewal mechanism the October 2025 rule removed, so it is unaffected by it.";
 
 /* ───────── Automatic-extension repeal: status of the rule itself ────────── */
 

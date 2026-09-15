@@ -12,7 +12,7 @@
  * strings handled in UTC so results never shift with the viewer's timezone.
  */
 
-import { optRules } from "@/data/studentClusterData";
+import { optRules, DS_RULE_GRACE_SENTENCE } from "@/data/studentClusterData";
 
 export type OptPhase = "not-applied" | "pending" | "on-opt" | "on-stem";
 
@@ -273,7 +273,7 @@ export function buildOptTimeline(input: OptInput): OptResult {
       id: "grace-end",
       label: "Grace period ends",
       date: addDays(finalEnd, optRules.gracePeriodDays),
-      meaning: `${optRules.gracePeriodDays} days after your work authorisation ends, for a student admitted for duration of status. By this date you must have departed the US, started a new program, or have a pending change of status — you cannot work during it. A DHS final rule effective September 15, 2026 reduces this to ${optRules.gracePeriodDaysUnderFixedAdmission} days for students admitted under it, so check your I-94 rather than assuming ${optRules.gracePeriodDays}.`,
+      meaning: `${optRules.gracePeriodDays} days after your work authorisation ends. By this date you must have departed the US, started a new program, or have a pending change of status — you cannot work during it. ${DS_RULE_GRACE_SENTENCE}`,
       kind: "grace",
       critical: true,
     });
@@ -282,7 +282,7 @@ export function buildOptTimeline(input: OptInput): OptResult {
       id: "grace-end-no-opt",
       label: "Grace period ends (if you never activate OPT)",
       date: addDays(programEndDate, optRules.gracePeriodDays),
-      meaning: `Without OPT, your ${optRules.gracePeriodDays}-day grace period runs from your program end date, on a duration-of-status admission. You cannot work during it, and the September 15, 2026 fixed-admission rule cuts it to ${optRules.gracePeriodDaysUnderFixedAdmission} days for students admitted under it.`,
+      meaning: `Without OPT, your ${optRules.gracePeriodDays}-day grace period runs from your program end date. You cannot work during it. ${DS_RULE_GRACE_SENTENCE}`,
       kind: "grace",
       critical: true,
     });

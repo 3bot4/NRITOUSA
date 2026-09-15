@@ -20,6 +20,11 @@ import {
   globalMobilityFacts,
   STUDENT_DATA_VERIFIED,
 } from "./studentClusterData";
+import {
+  DS_RULE_STATUS_CLAUSE,
+  DS_RULE_STATUS_SENTENCE,
+  DS_RULE_GRACE_SENTENCE,
+} from "@/data/studentClusterData";
 import { studentPageList, shareCopy, relatedByPage } from "@/lib/studentCluster";
 
 describe("policy items can never be silently totalled", () => {
@@ -78,56 +83,77 @@ describe("policy items can never be silently totalled", () => {
 });
 
 describe("the end of duration of status", () => {
-  it("is carried as a scheduled rule that can never be treated as in force", () => {
-    expect(dsFixedAdmissionRule.status).toBe("scheduled");
+  it("is carried as blocked, and can never be treated as in force or pending", () => {
+    // It is neither "in-force" nor "scheduled": a court postponed the effective
+    // date the day before it arrived, so there is no countdown to a future date.
+    expect(dsFixedAdmissionRule.status).toBe("blocked");
     expect(dsFixedAdmissionRule.amountUsd).toBeNull();
-    expect(dsFixedAdmissionRule.statusLine).toMatch(/not yet in effect/i);
+    expect(dsFixedAdmissionRule.statusLine).toMatch(/blocked by court order/i);
+    expect(dsFixedAdmissionRule.statusLine).not.toMatch(/not yet in effect/i);
   });
 
-  it("names the effective date and the legal challenge", () => {
-    expect(dsFixedAdmissionRule.statusLine).toContain("September 15, 2026");
-    expect(dsFixedAdmissionRule.detail).toMatch(/September 9, 2026/);
-    expect(dsFixedAdmissionRule.detail).toMatch(/30-day grace period/);
+  it("never describes the rule as effective or in force", () => {
+    // The failure mode this guards: a page saying the rule "takes effect
+    // September 15, 2026" after a court has postponed it. Every mention of that
+    // date must be in the conditional.
+    const prose = `${dsFixedAdmissionRule.value} ${dsFixedAdmissionRule.statusLine} ${dsFixedAdmissionRule.detail}`;
+    expect(prose).not.toMatch(/takes effect September 15/i);
+    expect(prose).not.toMatch(/effective September 15/i);
+    expect(prose).not.toMatch(/\bis now in (effect|force)\b/i);
+    // "would have" framing is what should be there instead.
+    expect(prose).toMatch(/would have/i);
+  });
+
+  it("cites the order and distinguishes postponement from vacatur", () => {
+    // Postponed under APA 705 is not vacated under 706 — vacatur was denied
+    // without prejudice, so the rule survives and could be revived. Collapsing
+    // the two would tell readers the rule is dead.
+    expect(dsFixedAdmissionRule.detail).toContain("1:26-cv-13799");
+    expect(dsFixedAdmissionRule.detail).toMatch(/Saylor/);
+    expect(dsFixedAdmissionRule.detail).toMatch(/September 14, 2026/);
+    expect(dsFixedAdmissionRule.detail).toMatch(/705/);
+    expect(dsFixedAdmissionRule.detail).toMatch(/vacat/i);
+    expect(dsFixedAdmissionRule.detail).toMatch(/nationwide/i);
+    expect(dsFixedAdmissionRule.detail).toContain("91 Fed. Reg. 44976");
+  });
+
+  it("points at the court order as its source, not only the rule", () => {
+    expect(dsFixedAdmissionRule.source.href).toMatch(/opinion-in-DS-case|courtlistener|\.gov/);
+    expect(dsFixedAdmissionRule.source.label).toMatch(/1:26-cv-13799|order/i);
   });
 
   it("keeps the 60-day grace period as the modelled default", () => {
-    // Students already admitted for D/S keep 60 days until they travel, so the
-    // calculators must not switch to 30 before the rule reaches them.
+    // 60 days is not a legacy default any more — it is simply the law, because
+    // the rule that would have changed it never took effect.
     expect(optRules.gracePeriodDays).toBe(60);
+  });
+
+  it("keeps the 30-day figure dormant and clearly marked as such", () => {
+    // The value stays available in case the rule is revived, but nothing may
+    // present it as applying to anyone today.
     expect(optRules.gracePeriodDaysUnderFixedAdmission).toBe(30);
-  });
-});
-
-describe("OPT denial consequences follow the USCIS Policy Manual", () => {
-  it("uses the later of program end and denial date, not just the denial date", () => {
-    expect(optDenialRules.postCompletion).toMatch(/whichever is later/i);
-    expect(optDenialRules.postCompletion).toContain("60 days");
+    expect(DS_RULE_GRACE_SENTENCE).toMatch(/applies to nobody|not in effect|blocked/i);
+    expect(DS_RULE_GRACE_SENTENCE).toContain("60");
   });
 
-  it("keeps the failure-to-maintain-status carve-out attached to the rule", () => {
-    // Publishing the 60-day rule without this exception would tell a student
-    // who must leave immediately that they have two months.
-    expect(optDenialRules.postCompletionException).toMatch(/immediately/i);
-  });
-
-  it("keeps the STEM branch separate, running from the denial date", () => {
-    expect(optDenialRules.stemExtension).toMatch(/denial date/i);
-  });
-
-  it("cites the Policy Manual", () => {
-    expect(optDenialRules.source.href).toContain("policy-manual");
+  it("offers one shared framing so prose cannot drift from the data", () => {
+    expect(DS_RULE_STATUS_CLAUSE).toMatch(/blocked/i);
+    expect(DS_RULE_STATUS_CLAUSE).toMatch(/not in effect/i);
+    expect(DS_RULE_STATUS_SENTENCE).toMatch(/never took effect/i);
+    expect(DS_RULE_STATUS_SENTENCE).toMatch(/September 14, 2026/);
   });
 });
 
 describe("the fixed-admission rule's practical-training transition relief", () => {
-  it("records the March 18, 2027 I-765 window that avoids a separate I-539", () => {
-    expect(dsFixedAdmissionRule.detail).toContain("March 18, 2027");
-    expect(dsFixedAdmissionRule.detail).toMatch(/I-539/);
-  });
-
-  it("names the court, judge and docket behind the challenge", () => {
-    expect(dsFixedAdmissionRule.detail).toContain("1:26-cv-13799");
-    expect(dsFixedAdmissionRule.detail).toMatch(/Saylor/);
+  it("does not present the blocked rule's transition window as live guidance", () => {
+    // The March 18, 2027 I-765 window only ever mattered if the rule took
+    // effect. With the rule blocked there is no transition to be inside, and
+    // telling students to file by that date to avoid an I-539 is wrong.
+    const prose = `${dsFixedAdmissionRule.statusLine} ${dsFixedAdmissionRule.detail}`;
+    if (prose.includes("March 18, 2027")) {
+      expect(prose).toMatch(/would have|had it taken effect|if the rule/i);
+    }
+    expect(prose).toMatch(/blocked|postponed/i);
   });
 });
 

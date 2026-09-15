@@ -94,6 +94,12 @@ export const studentSources = {
       "Presidents' Alliance — Duration of Status litigation tracker",
     href: "https://www.presidentsalliance.org/duration-of-status-litigation/",
   },
+  dsCourtOrder: {
+    label:
+      "Presidents Alliance v. DHS, No. 1:26-cv-13799-FDS (D. Mass. Sept. 14, 2026) — memorandum and order postponing the rule's effective date",
+    href:
+      "https://www.presidentsalliance.org/wp-content/uploads/2026/09/9.14.26-opinion-in-DS-case.pdf",
+  },
   unlawfulPresenceInjunction: {
     label:
       "Guilford College v. Nielsen — order vacating the 2018 unlawful-presence memo (USCIS)",
@@ -318,28 +324,54 @@ export const h1bCapSubjectFeeProposal: PolicyItem = {
 };
 
 /**
- * The end of duration of status. This is the single most consequential change
- * scheduled for F-1 students, and unlike the two $100,000 numbers above it is
- * a real, published, final rule — it simply has not taken effect yet.
+ * The end of duration of status — published as a final rule, then stopped one
+ * day before it was due to bite.
  *
- * It matters to this cluster because it halves the grace period every page
- * here quotes. The 60-day figure remains correct for students already
- * admitted for D/S, so the calculators keep using it; every page that prints
- * it must also print this item.
+ * A court postponed the effective date nationwide under APA § 705 on
+ * September 14, 2026, so the rule NEVER took effect and duration of status is
+ * still the operative framework. It is "blocked", not "in force" and not
+ * "scheduled": there is no pending effective date to count down to.
+ *
+ * Two distinctions this cluster must not blur:
+ *   • Postponed (§ 705) is not vacated (§ 706). Vacatur was denied without
+ *     prejudice, so the rule survives with its effective date suspended and
+ *     could be revived.
+ *   • Nothing in the rule operates today — not the four-year admission cap,
+ *     not the 30-day grace period, not the I-539 transition window. The
+ *     30-day figure stays in the data as a dormant what-if
+ *     (gracePeriodDaysUnderFixedAdmission) and must never drive a calculator.
  */
 export const dsFixedAdmissionRule: PolicyItem = {
   id: "ds-fixed-admission-rule",
   label: "End of duration of status — fixed admission periods",
-  value: "Effective September 15, 2026",
+  value: "Blocked — did not take effect",
   amountUsd: null,
-  status: "scheduled",
+  status: "blocked",
   statusLine:
-    "FINAL RULE, not yet in effect — takes effect September 15, 2026 and is being challenged in federal court, with a hearing set for September 9, 2026.",
+    "BLOCKED BY COURT ORDER — a federal court postponed the rule's effective date nationwide on September 14, 2026, the day before it was due to take effect, so it never came into force. Duration of status remains the framework in place. The rule was not struck down, and the litigation continues.",
   detail:
-    "DHS published a final rule on July 17, 2026 replacing \"duration of status\" admission for F, J and I nonimmigrants with a fixed period of admission. From September 15, 2026, an F-1 student is admitted for the length of the program shown on the I-20, capped at four years, plus a 30-day grace period rather than 60 days. Staying past the I-94 date without a timely extension of stay would start unlawful presence accruing — the consequence the current duration-of-status framework does not carry. Students already admitted for duration of status before September 15, 2026 generally keep the 60-day grace period until they travel abroad and re-enter, or file an extension of stay; international travel after the effective date is what triggers conversion to a date-certain admission. There is transition relief specifically for practical training: a student who was admitted for duration of status, is in the US and maintaining status on September 15, 2026, and who timely files Form I-765 for post-completion OPT or STEM OPT on or before March 18, 2027, generally does not have to file a separate Form I-539 extension of stay for that training period. File after that window and the I-539 is generally required alongside the I-765, which is where delayed start dates and gaps in employment come from. A coalition led by NAFSA and the Presidents' Alliance sued to block the rule on August 18, 2026 (D. Mass., Presidents' Alliance v. DHS, No. 1:26-cv-13799, before Judge F. Dennis Saylor IV), the government's response is due August 31, 2026, and a hearing on the preliminary injunction is set for September 9, 2026. Nothing here is settled: confirm your own admission period with your DSO and check your most recent I-94 before relying on any grace-period figure.",
+    "DHS published a final rule on July 17, 2026 (91 Fed. Reg. 44976) that would have replaced \"duration of status\" admission for F, J and I nonimmigrants with a fixed period of admission from September 15, 2026 — an F-1 student admitted for the length of the programme on the I-20, capped at four years, with a 30-day grace period instead of 60. On September 14, 2026, the day before that date, Judge F. Dennis Saylor IV of the U.S. District Court for the District of Massachusetts postponed the rule's effective date nationwide under the Administrative Procedure Act, 5 U.S.C. § 705, and prohibited DHS and ICE from taking further steps to implement it (Presidents Alliance on Higher Education and Immigration v. DHS, No. 1:26-cv-13799-FDS, Doc. 50). The court held that the plaintiffs were likely to succeed in showing the rule was arbitrary and capricious, and that nationwide relief rather than a party-specific order was appropriate because a partial regime would generate \"chaos and confusion\" given how often students transfer between institutions. What the order did NOT do matters just as much: the plaintiffs' request to vacate the rule outright under 5 U.S.C. § 706 was denied without prejudice, so the rule still exists on the books with its effective date suspended rather than cancelled. The practical position today is therefore the pre-rule one — F-1 students are admitted for duration of status and the 60-day grace period after a programme or OPT ends is the operative figure, which is why every calculator on this site continues to model 60 days. Nothing in the rule's transition provisions, its four-year admission cap or its 30-day grace period is in effect. Because this is interim relief and not a final judgment, the position can change: the postponement could be narrowed or lifted on appeal, or the rule could be upheld and given a new effective date. Confirm your own admission period against your most recent I-94 and with your DSO before relying on any grace-period figure.",
   lastVerified: STUDENT_DATA_VERIFIED,
-  source: studentSources.dsFinalRule,
+  source: studentSources.dsCourtOrder,
 };
+
+/**
+ * One canonical way to describe the D/S rule's status, so a court development
+ * is a one-line change here rather than a hunt through prose. Every page,
+ * article, FAQ and calculator string that mentions the rule MUST use these
+ * instead of writing its own sentence — the last time this cluster carried the
+ * framing in nine separate hand-written strings, a rule change left them all
+ * asserting an effective date that a court had already postponed.
+ */
+export const DS_RULE_STATUS_CLAUSE =
+  "blocked by a nationwide court order and not in effect";
+
+export const DS_RULE_STATUS_SENTENCE =
+  "A DHS final rule would have replaced duration of status with a fixed admission period from September 15, 2026, but a federal court postponed its effective date nationwide on September 14, 2026, so it never took effect and duration of status still applies.";
+
+/** For places that also need to say what this means for the reader's number. */
+export const DS_RULE_GRACE_SENTENCE =
+  "The rule would have cut the grace period to 30 days, but because it is blocked that figure applies to nobody today — 60 days remains the operative period. The rule was postponed rather than struck down, so check your most recent I-94 and confirm with your DSO.";
 
 /* ────────────────────────── F-1 visa cost stack ────────────────────────── */
 
@@ -442,8 +474,12 @@ export const optRules = {
    */
   stemPendingAutoExtensionDays: 180,
   /**
-   * Grace period an F-1 student admitted under the September 15, 2026 fixed
-   * admission rule receives instead of 60 days. See dsFixedAdmissionRule.
+   * DORMANT. The grace period the fixed-admission rule WOULD have given,
+   * instead of 60 days. That rule was blocked before it took effect (see
+   * dsFixedAdmissionRule), so this figure currently applies to nobody and must
+   * never drive a calculator result or a headline number. It is retained only
+   * so pages can explain what was proposed, and so the value is ready if the
+   * rule is ever revived.
    */
   gracePeriodDaysUnderFixedAdmission: 30,
   /** Minimum weekly hours for STEM OPT employment to count. */
@@ -567,10 +603,10 @@ export const optDenialRules = {
  * play. Never write "unlawful presence starts immediately" — it is both wrong
  * and, on a page read by someone in a panic, actively harmful.
  *
- * IMPORTANT: the fixed-admission final rule (dsFixedAdmissionRule) is
- * designed to change exactly this for students admitted on or after
- * September 15, 2026, who would accrue unlawful presence from the day their
- * I-94 expires.
+ * IMPORTANT: the fixed-admission final rule (dsFixedAdmissionRule) was
+ * designed to change exactly this — students admitted under it would accrue
+ * unlawful presence from the day their I-94 expired. It was blocked before it
+ * took effect, so what is described here remains the current position.
  */
 export const unlawfulPresence = {
   currentRule:
@@ -578,7 +614,7 @@ export const unlawfulPresence = {
   whyItMatters:
     "Losing status and accruing unlawful presence are separate problems. Losing status is serious and needs immediate advice; accruing more than 180 days of unlawful presence is what triggers the 3-year and 10-year bars on returning to the US.",
   caveat:
-    "This is the position after Guilford College v. Nielsen vacated the 2018 policy memo nationwide. It does not make a terminated record safe, it does not authorise you to stay or work, and the fixed-admission rule taking effect September 15, 2026 is expressly intended to change it for students admitted from that date.",
+    "This is the position after Guilford College v. Nielsen vacated the 2018 policy memo nationwide. It does not make a terminated record safe, and it does not authorise you to stay or work. DHS's fixed-admission rule was expressly intended to change it, but that rule was blocked before it took effect, so the position described here is still the current one.",
   source: studentSources.unlawfulPresenceInjunction,
 } as const;
 
@@ -820,8 +856,8 @@ export const mythVsRealityFacts: ShareFact[] = [
   {
     id: "grace-period-change",
     claim: "The F-1 grace period is 60 days and always has been.",
-    reality: "It becomes 30 days under a rule effective September 15, 2026.",
-    why: "DHS's fixed-admission final rule replaces duration of status with a dated I-94 plus 30 days. Students already admitted for D/S generally keep 60 days until they travel and re-enter. The rule is being challenged in court.",
+    reality: "It is still 60 days. A rule that would have cut it to 30 was blocked before it took effect.",
+    why: "DHS's fixed-admission final rule would have replaced duration of status with a dated I-94 plus a 30-day grace period from September 15, 2026. A federal court postponed its effective date nationwide the day before, so the 30-day figure applies to nobody: 60 days remains correct. The rule was postponed, not struck down, so this could change.",
   },
   {
     id: "counter-abroad",

@@ -104,8 +104,8 @@ const mistakes = [
     body: "You must hold a foreign passport first. OCI replaces Indian citizenship — you can't hold both at once.",
   },
   {
-    title: "Missing the one mandatory re-issue — or paying for one you don't need",
-    body: "Exactly one change needs a paid re-issue: a new passport obtained after you turn 20. Every other new passport — up to 20, and once after 50 — needs only a free portal upload within three months. Skip the re-issue and you can be refused at boarding; pay for one you didn't need and you have wasted the fee.",
+    title: "Letting the three-month passport-update window lapse",
+    body: "After a new passport you update your OCI particulars online, free, within three months — no physical application and no VFS visit. Nothing prompts you, because the card keeps working until an airline asks. Miss the window and the same update costs a consular fee plus ICWF and VFS charges.",
   },
   {
     title: "Booking travel against an estimate",
@@ -334,9 +334,10 @@ export default function OciHubPage() {
                   large centred face.
                 </li>
                 <li>
-                  <strong>Re-issue vs upload</strong> — one paid re-issue, for a
-                  new passport after age 20. Everything else is a free portal
-                  upload, within three months.
+                  <strong>Passport updates</strong> — free and online within
+                  three months of a new passport. Consulates differ on the
+                  age-based detail, so update every time and check your own
+                  mission.
                 </li>
               </ul>
               <p className="mt-4 text-xs text-ink-400">

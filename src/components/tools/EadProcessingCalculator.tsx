@@ -101,7 +101,16 @@ function compute(inp: Inputs): Result {
   let autoExtValue: string;
   let autoExtDetail: string;
   let autoExtTone: Result["autoExtTone"];
-  if (inp.kind === "renewal" && cat.autoExtension) {
+  if (cat.pendingAuthDays != null && cat.pendingAuthCite) {
+    // STEM OPT (c)(3)(C). Its authorisation comes from 8 CFR 274a.12(b)(6)(iv),
+    // NOT from the § 274a.13(d) renewal mechanism the Oct 2025 rule removed, so
+    // it survives the repeal. Getting this branch wrong tells a STEM student to
+    // stop working when they are lawfully authorised to continue.
+    autoExtValue = `Up to ${cat.pendingAuthDays} days`;
+    autoExtTone = "ok";
+    const until = expiry ? addDays(expiry, cat.pendingAuthDays) : null;
+    autoExtDetail = `A timely-filed STEM OPT extension carries automatic employment authorisation for up to ${cat.pendingAuthDays} days past your current EAD's expiry${until ? ` (≈ ${monthDayYear(until)})` : ""} while it is pending, under ${cat.pendingAuthCite}. This is a different provision from the general renewal extension that ended on ${monthDayYear(parseDate(D.autoExtensionRemovedDate)!)}, so the repeal does not affect it. Two conditions matter: the extension must have been filed BEFORE your current EAD expired, and you must remain otherwise eligible. Your Form I-797C receipt with the expired card documents it for Form I-9.`;
+  } else if (inp.kind === "renewal" && cat.autoExtension) {
     autoExtValue = `Up to ${D.autoExtensionDays} days`;
     autoExtTone = "ok";
     const until = expiry ? addDays(expiry, D.autoExtensionDays) : null;
@@ -115,7 +124,7 @@ function compute(inp: Inputs): Result {
   } else if (inp.kind === "new") {
     autoExtValue = "N/A (new EAD)";
     autoExtTone = "info";
-    autoExtDetail = "The automatic extension applies to renewals, not first-time EADs. You cannot work on this category until the EAD is approved and issued.";
+    autoExtDetail = "The automatic extension applied to renewals, not first-time EADs. You cannot work on this category until the EAD is approved and issued — on initial post-completion OPT that means waiting for the card and for the start date printed on it.";
   } else {
     autoExtValue = "Select new or renewal";
     autoExtTone = "info";
@@ -126,7 +135,11 @@ function compute(inp: Inputs): Result {
   const nextSteps: string[] = [];
   if (inp.kind === "renewal") {
     nextSteps.push("File your EAD renewal as early as USCIS permits (often up to 180 days before expiry) to reduce gap risk.");
-    if (!cat.autoExtension) nextSteps.push("Renewals filed on or after October 30, 2025 get no automatic extension — plan for a gap in work authorization if the EAD expires before approval, and confirm the receipt date on your Form I-797C.");
+    if (cat.pendingAuthDays != null && cat.pendingAuthCite) {
+      nextSteps.push(`File the STEM extension BEFORE your current EAD expires — the ${cat.pendingAuthDays}-day continued authorisation under ${cat.pendingAuthCite} depends on the filing being timely. File late and you lose it and must stop work on the expiry date.`);
+    } else if (!cat.autoExtension) {
+      nextSteps.push("Renewals filed on or after October 30, 2025 get no automatic extension — plan for a gap in work authorization if the EAD expires before approval, and confirm the receipt date on your Form I-797C.");
+    }
   }
   if (cat.premiumEligible && inp.premium !== "yes") {
     nextSteps.push("Premium processing (~30 business days) is available for your category if you need the EAD faster.");

@@ -57,7 +57,7 @@ export interface FeeLine {
  * Core government service fees, by OCI service type. These are the amounts the
  * Government of India charges; VFS adds its own service charge (below).
  */
-export const GOVERNMENT_FEES: Record<string, FeeLine> = {
+export const GOVERNMENT_FEES = {
   freshAdult: {
     id: "gov-fresh-adult",
     label: "Fresh OCI registration (adult)",
@@ -76,24 +76,105 @@ export const GOVERNMENT_FEES: Record<string, FeeLine> = {
     amount: 100,
     note: "Converting a PIO card to OCI — the same $100 applies whether the PIO card is valid or lost/damaged. It is NOT free.",
   },
-  reissue: {
-    id: "gov-reissue",
-    label: "OCI re-issue after a new passport at 20+",
+  passportUpdateLate: {
+    id: "gov-passport-update-late",
+    label: "Passport-particulars update filed more than 3 months after the new passport",
     amount: 25,
-    note: "The one mandatory re-issue: a new passport obtained after completing 20 years of age. Charged as an OCI Miscellaneous Service, not at the fresh-registration rate.",
+    note: "Updating passport particulars is FREE when filed within three months of the new passport. This consular fee applies only to a late filing, and ICWF plus the VFS service charge are added on top.",
   },
   miscNewPassport: {
     id: "gov-misc-passport",
     label: "Miscellaneous service — name / address / detail change",
     amount: 25,
-    note: "OCI Miscellaneous Services rate. Simply uploading a new passport and photo to the OCI portal (required up to age 20 and once after 50) is free — this fee is for a service that must be filed through VFS.",
+    note: "OCI Miscellaneous Services rate for a change to what is recorded — a name change, for example. Not the same thing as a routine passport-particulars update, which is free when timely.",
   },
   lostDamaged: {
     id: "gov-lost",
     label: "Re-issue — lost / damaged OCI card",
-    amount: 25,
-    note: "Replacement of a lost, stolen, or damaged OCI card, charged as an OCI Miscellaneous Service.",
+    amount: 100,
+    note: "Replacement of a lost, stolen, or damaged OCI card, plus ICWF and the VFS service charge. A police report is required for a loss, and the mission generally verifies originals in person. This is NOT the $25 miscellaneous-services rate — a previous revision of this file had it at $25, which understated it fourfold.",
   },
+  // `satisfies` rather than `: Record<string, FeeLine>`: the Record annotation
+  // let a removed key (`reissue`) still type-check at every call site and go
+  // undefined at runtime. This keeps the shape check and the literal keys.
+} as const satisfies Record<string, FeeLine>;
+
+/* ─────── Passport-particulars update: the rule, and where it diverges ───── */
+
+/**
+ * Updating OCI after a new passport. This is the single most-asked question in
+ * the cluster and the hardest to state nationally, because the missions do not
+ * currently say the same thing.
+ *
+ * WHAT EVERY SOURCE CHECKED AGREES ON (safe to state as the rule):
+ *   • You update passport particulars on the OCI portal, online.
+ *   • The window is three months from receipt of the new passport.
+ *   • Filed inside that window it is FREE, with no physical application and no
+ *     VFS visit.
+ *   • You keep your existing card — no new physical card is produced for a
+ *     routine passport update.
+ *   • Filed late, a consular fee plus ICWF plus the VFS service charge applies.
+ *
+ * WHERE THEY DIVERGE (must be attributed, never presented as national):
+ *   • CGI San Francisco's advisory of June 16, 2026 and CGI Chicago say the
+ *     update is required EACH time a new passport is issued, at any age.
+ *   • The Government of India OCI portal's own miscellaneous FAQs, and CGI
+ *     Atlanta, still carry the older formulation: upload each time up to age 20
+ *     and once after completing 50.
+ *   • On the post-20 case the three differ again: the GoI portal calls it a
+ *     mandatory one-time CARD RE-ISSUE at US$25; CGI Chicago states that
+ *     re-issuance of physical OCI cards "has been discontinued"; CGI San
+ *     Francisco frames it as a BIOMETRIC enrolment obligation rather than a new
+ *     card.
+ *
+ * Because of that, this cluster states the common ground as the rule, names the
+ * divergence, and tells the reader to follow the mission for their own
+ * jurisdiction rather than presenting any one consulate as universal.
+ *
+ * HOW TO UPDATE: re-check the GoI portal FAQs plus at least two US missions
+ * before changing any of this, and only collapse the divergence when they
+ * actually agree.
+ */
+export const PASSPORT_UPDATE = {
+  verified: "2026-09-15",
+  /** Months from receipt of the new passport to file free of charge. */
+  windowMonths: 3,
+  /** Filed inside the window. */
+  timelyFeeUsd: 0,
+  /** Age after which a new passport triggers the biometric obligation. */
+  biometricsAfterAge: 20,
+  /** True while the missions do not state the same rule. */
+  jurisdictionsDiverge: true,
+  agreed: [
+    "The update is made online on the OCI portal.",
+    "The window is three months from receipt of the new passport.",
+    "Filed within that window it is free, with no physical application and no VFS visit.",
+    "No new physical card is issued for a routine passport update — your existing card stands.",
+    "Filed late, a consular fee plus ICWF and the VFS service charge apply.",
+  ],
+  diverges: [
+    {
+      question: "Is an update required after EVERY new passport?",
+      positions: [
+        "CGI San Francisco (advisory of June 16, 2026) and CGI Chicago: yes, each time a new passport is issued, at any age.",
+        "The Government of India OCI portal's miscellaneous FAQs and CGI Atlanta: each time up to age 20, and once after completing 50.",
+      ],
+    },
+    {
+      question: "What happens on a passport obtained after age 20?",
+      positions: [
+        "GoI OCI portal: a one-time card re-issue is required, at US$25, to capture adult facial features.",
+        "CGI Chicago: re-issuance of physical OCI cards has been discontinued.",
+        "CGI San Francisco: biometric information must be given to the Mission/Post or FRRO, or at the immigration post on first entry or departure.",
+      ],
+    },
+  ],
+  sources: [
+    { label: "GoI OCI portal — miscellaneous services FAQs", href: "https://ociservices.gov.in/onlineOCI/miscFAQs" },
+    { label: "CGI San Francisco — advisory on updating passport particulars (June 16, 2026)", href: "https://www.cgisf.gov.in/section/news/advisory-for-oci-cardholders-updating-passport-particulars-after-obtaining-a-new-passport/" },
+    { label: "CGI Chicago — OCI card updation (re-issuance discontinued)", href: "https://www.cgichicago.gov.in/page/oci-card-updation-reissuance-of-oci-cards-discontinued/" },
+    { label: "CGI Atlanta — when to update your OCI card", href: "https://indiainatlanta.gov.in/eoial_pages/MjYw" },
+  ],
 } as const;
 
 export type GovernmentFeeKey = keyof typeof GOVERNMENT_FEES;
@@ -231,7 +312,7 @@ export function freshOciAllInLabel(): string {
 /** Rows for the OCI "Fast Answer" snapshot — always sourced from this config. */
 export function ociSnapshotRows(): { label: string; value: string; note?: string; highlight?: boolean }[] {
   return [
-    { label: "Fresh OCI — govt fee", value: usd(GOVERNMENT_FEES.freshAdult.amount), note: "Adult or minor; same government fee. A re-issue is only " + usd(GOVERNMENT_FEES.reissue.amount) + ", and a passport update on the portal is free.", highlight: true },
+    { label: "Fresh OCI — govt fee", value: usd(GOVERNMENT_FEES.freshAdult.amount), note: "Adult or minor; same government fee. Updating passport particulars on the portal within " + PASSPORT_UPDATE.windowMonths + " months is free; a late update is " + usd(GOVERNMENT_FEES.passportUpdateLate.amount) + " plus ICWF and VFS charges.", highlight: true },
     { label: "VFS service + ICWF", value: `${usd(VFS_FEES.service.amount)} + ${usd(VFS_FEES.icwf.amount)}`, note: "Per application; plus optional return courier " + usd(VFS_FEES.courierReturn.amount) + "." },
     { label: "All-in (fresh adult)", value: freshOciAllInLabel(), note: "Govt + VFS + ICWF + return courier. Use the Cost Calculator for your exact case." },
     { label: "Processing time", value: totalWeeksLabel(), note: "Two-stage clearance (consulate + MHA in India); plan for the long end." },

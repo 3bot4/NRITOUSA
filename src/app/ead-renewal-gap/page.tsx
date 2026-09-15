@@ -30,6 +30,9 @@ import {
   EAD_ESTIMATE_DISCLAIMER,
   eadAutoExtensionRuleStatus as RULE,
   spouseIncidentToStatus as SPOUSE,
+  EAD_AUTO_EXTENSION_SUMMARY,
+  EAD_OPT_VS_STEM_SUMMARY,
+  stemPendingAuth as STEM,
 } from "@/data/eadProcessingData";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import OfficialSourceNote from "@/components/OfficialSourceNote";
@@ -52,13 +55,14 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   { question: "What is an EAD renewal gap?", answer: "A gap is any stretch where your old EAD has expired and the renewal is not yet approved. You are not authorized to work during it, and your employer must stop employing you until authorization is restored. Since the automatic extension was removed on October 30, 2025, a gap is now the default outcome whenever USCIS takes longer to decide your renewal than the time you left yourself before expiry." },
-  { question: "Does the automatic EAD extension still exist?", answer: `No — not for renewals filed today. A DHS interim final rule effective October 30, 2025 (${D.autoExtensionRuleCitation}) ended the practice of automatically extending an EAD when a renewal is timely filed. Renewals USCIS received before that date still run on the old up-to-${D.autoExtensionDays}-day extension, and extensions granted separately by statute or by a Federal Register notice (certain TPS documentation, for example) are unaffected. Everyone else now stops working on the date printed on the card.` },
+  { question: "Does the automatic EAD extension still exist?", answer: `Not through the general renewal route. ${EAD_AUTO_EXTENSION_SUMMARY} For the categories this page is about, that means work stops on the date printed on the card. One F-1 category is outside all of this: a timely-filed STEM OPT extension keeps automatic authorization under a separate provision — see the question on OPT below.` },
   { question: "How early can I file my EAD renewal?", answer: `USCIS generally accepts a renewal up to ${D.renewalFilingWindowDays} days (about six months) before your current EAD expires. With no automatic extension to fall back on, filing on the first day of that window is no longer just good practice — it is the entire buffer you get. File later and you are simply betting that USCIS beats your expiry date.` },
   { question: "What happens on Form I-9 when my EAD expires?", answer: "Your employer must reverify you on or before the expiry date printed on the card. With no automatic extension, an expired EAD plus a Form I-797C receipt notice is no longer acceptable evidence for a renewal filed on or after October 30, 2025 — so if the new card has not arrived, there is nothing to reverify with and the employer must suspend employment. Some employers offer unpaid leave; others terminate. Ask HR what their policy is before you are in the window, not after." },
   { question: "Do L-2 and E spouses need an EAD at all?", answer: `Usually no. E-1, E-2, E-3 and L-2 dependent spouses have been employment-authorized incident to status since ${formatDate(SPOUSE.sinceDate)}, and an unexpired Form I-94 showing ${SPOUSE.codes.join(", ")} is acceptable evidence for Form I-9 on its own. If that is you, the EAD renewal gap largely is not your problem — your I-94 validity is. H-4 spouses are not in this group and still need the (c)(26) EAD.` },
-  { question: "Can premium processing help avoid a gap?", answer: "Only for F-1 OPT and STEM OPT. Those (c)(3) categories can be premium processed (about 30 business days), which is a real safety valve. Premium processing is not available for the categories most affected by the repeal — H-4 (c)(26) and pending-I-485 (c)(9) — so for those, the filing date is the only lever you control." },
+  { question: "Can premium processing help avoid a gap?", answer: `Only for the F-1 (c)(3) categories, which can be premium processed in about 30 business days. It matters most on initial OPT, where nothing covers the wait for the card. It matters least on a STEM extension, which already carries up to ${STEM.pendingAuthDays} days of continued authorization while pending under ${STEM.pendingAuthCite}. Premium processing is not available for the categories most affected by the repeal — H-4 (c)(26) and pending-I-485 (c)(9) — so for those, the filing date is the only lever you control.` },
   { question: "My EAD already expired and the renewal is still pending. What now?", answer: "Stop working and tell your employer immediately — continuing to work is far more damaging than the lost pay. Then check the receipt date on your Form I-797C: if USCIS received the renewal before October 30, 2025, the old extension may still cover you. Ask your attorney whether an expedite request fits your facts, and ask HR about unpaid leave to preserve the job while you wait." },
   { question: "Could the automatic extension come back?", answer: `It might. DHS issued the removal as an interim final rule that took effect the day it published, before the comment period closed on ${formatDate(D.autoExtensionRuleCommentsClosed)}, and it is being challenged in court under the Administrative Procedure Act. ${RULE.planningAdvice}` },
+  { question: "Do F-1 OPT and STEM OPT both lose out?", answer: `No, and treating them the same is the most common mistake made about these two categories. ${EAD_OPT_VS_STEM_SUMMARY}` },
   { question: "Is this page legal advice?", answer: "No. This page is educational only and not legal advice. Work-authorization timing is high-stakes and case-specific — confirm your filing window and your status with your immigration attorney, and confirm I-9 handling with your employer." },
 ];
 
@@ -162,11 +166,18 @@ export default function Page() {
                   highlightRows={[0, 3]}
                   note={
                     <>
-                      The rule does not disturb EADs already automatically extended before
-                      October 30, 2025, or extensions granted separately by statute or by a
-                      Federal Register notice — certain TPS documentation, for example. The
-                      receipt date on your Form I-797C, not your filing date, is what
-                      decides which column you are in.
+                      This table describes the general renewal mechanism at 8 CFR
+                      § 274a.13(d), which the rule switched off for applications received
+                      on or after the cutoff by adding § 274a.13(e). Three things sit
+                      outside it: applications USCIS received <em>before</em> the cutoff,
+                      which keep their extension; anything extended by separate statutory
+                      authority or by an applicable Federal Register notice, the TPS
+                      documentation notices being the standing example; and a timely-filed
+                      STEM OPT extension, which carries up to {STEM.pendingAuthDays} days
+                      of continued authorisation under {STEM.pendingAuthCite} — a
+                      different provision the rule did not amend. The{" "}
+                      <em>receipt</em> date on your Form I-797C, not the date you posted
+                      it, decides which column you are in.
                     </>
                   }
                 />
@@ -289,13 +300,17 @@ export default function Page() {
                   </div>
                   <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
                     <p className="text-sm font-bold text-ink-900">
-                      Use premium processing where it exists — OPT and STEM OPT only
+                      Use premium processing where it exists — the F-1 (c)(3) categories only
                     </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
                       The (c)(3) student categories can be premium processed at about 30
                       business days. The categories hit hardest by the repeal — (c)(26)
                       H-4 and (c)(9) pending adjustment — cannot. Do not plan around a
-                      premium option your category does not have.
+                      premium option your category does not have. And note that the two
+                      F-1 categories are not in the same position: a timely-filed STEM
+                      extension already carries up to {STEM.pendingAuthDays} days of
+                      continued authorisation while pending under {STEM.pendingAuthCite},
+                      whereas on initial OPT nothing covers the wait for the card.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">

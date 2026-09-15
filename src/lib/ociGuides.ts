@@ -4,6 +4,7 @@ import {
   GOVERNMENT_FEES,
   OCI_BASE,
   OCI_TOOLS,
+  PASSPORT_UPDATE,
   VERIFY_SOURCES,
   totalWeeksLabel,
 } from "@/lib/oci/config";
@@ -48,7 +49,9 @@ export interface OciGuide extends OciGuideData {
 export const ociGuidePath = (slug: string) => `${OCI_BASE}/${slug}`;
 
 const FRESH_ADULT = formatUsd(GOVERNMENT_FEES.freshAdult.amount);
-const REISSUE_FEE = formatUsd(GOVERNMENT_FEES.reissue.amount);
+const LATE_UPDATE_FEE = formatUsd(GOVERNMENT_FEES.passportUpdateLate.amount);
+const LOST_FEE = formatUsd(GOVERNMENT_FEES.lostDamaged.amount);
+const PIO_FEE = formatUsd(GOVERNMENT_FEES.pioConversion.amount);
 const WEEKS = totalWeeksLabel();
 
 const rawGuides: OciGuideData[] = [
@@ -354,116 +357,114 @@ This page is an educational guide. OCI and VFS requirements can change by applic
    * =============================================================== */
   {
     slug: "renewal",
-    title: "OCI Renewal & Re-issue in the USA: What Actually Needs a New Card",
-    seoTitle: "OCI Renewal & Re-issue in the USA (2026): New Passport, Lost Card",
+    title: "OCI Passport Update in the USA: Free Online, Within Three Months",
+    seoTitle: "OCI Passport Update USA (2026): Free Within 3 Months",
     metaDescription:
-      "Only one OCI change needs a paid re-issue: a new passport after age 20. Everything else — including new passports up to 20 and once after 50 — is a free portal upload within three months. Plus lost cards, name changes and costs.",
+      "Updating OCI after a new passport is free and entirely online within three months — no physical application. Where the consulates disagree, what a late filing costs, and how lost cards and PIO conversion differ.",
     excerpt:
-      "Exactly one situation needs a paid re-issue; the rest is a free upload. Plus the three-month clock, lost cards, and name changes.",
-    navLabel: "Renewal & updates",
-    hook: "One paid re-issue, one free upload — and the three-month deadline nobody tells you about.",
+      "Free and online within three months — plus the points on which the consulates genuinely disagree, and why a lost card is a different service.",
+    navLabel: "Passport update",
+    hook: "Free and online within three months — and the three-month deadline nobody prompts you about.",
     icon: "🔄",
     date: "2026-06-27",
     updated: "2026-09-14",
-    content: `OCI is lifelong, and the good news is that keeping it current is far less work than most people are told. There is exactly **one** situation that requires a paid re-issue. Almost everything else — including a new US passport, for most holders — is a **free upload** on the OCI portal. Getting this wrong costs either money you did not need to spend or a boarding refusal you could have avoided.
+    content: `Keeping an OCI current after a new passport is far less work than most people are told — and it is now, in the ordinary case, **free and entirely online**. What it is *not* is uniform: the Government of India portal and the US consulates do not currently describe the obligation in the same terms, so the safe approach is to do the thing they all agree on, then check your own mission.
 
-:::info
-title: The whole rule in two lines
-A new passport issued **after you turn 20** needs a one-time paid re-issue. Every other new passport — up to age 20, and once after 50 — needs only a free document upload on the [OCI portal](${VERIFY_SOURCES.ociPortal.href}), within **three months**.
+:::good
+title: What every official source agrees on
+- You update passport particulars **online on the [OCI portal](${VERIFY_SOURCES.ociPortal.href})** — there is no physical application and no VFS visit for this.
+- The window is **${PASSPORT_UPDATE.windowMonths} months** from receiving the new passport.
+- Filed inside that window it is **free**.
+- You **keep your existing card** — no new physical card is produced for a routine passport update.
+- Filed late, a consular fee plus ICWF and the VFS service charge apply.
 :::
 
-## Re-issue or upload? The one distinction that matters
-:::compare
-left: Needs a paid re-issue through VFS
-right: Free portal upload — no new card
-✓ Each new passport issued up to age 20
-✓ Once, after completing 50 years of age
-✓ Upload the passport page plus a recent photo — no new card, no VFS submission, no government fee
-✗ A new passport obtained after completing 20 years of age — the one mandatory re-issue, so the card carries your adult facial features
-✗ A lost, stolen or damaged card
-✗ A name correction or other change to what is printed on the card
-:::
-
-| Your situation | What it needs | Government fee |
-| --- | --- | --- |
-| New passport, holder under 20 | Portal upload | None |
-| First new passport after turning 20 | **Re-issue** via VFS | ${REISSUE_FEE} |
-| New passport, holder 21–50, re-issue already done | Portal upload | None |
-| First new passport after turning 50 | Portal upload | None |
-| Lost / stolen / damaged card | Re-issue via VFS | ${REISSUE_FEE} |
-| Name or detail change | Re-issue via VFS | ${REISSUE_FEE} |
-
-Fees above are the Government of India service fee only; the Indian Community Welfare Fund contribution and the VFS service charge are added on top of every VFS submission. The [Cost Calculator](${OCI_TOOLS.cost.path}) totals them.
-
-:::warn
-title: Two rules you may have been told that are not the rule
-- **"You must re-issue at 50."** No. After 50 the requirement is a single **upload**, not a re-issue. Budgeting a full re-issue here is money spent for nothing.
-- **"A minor must re-issue with every new passport."** No. Up to age 20 each new passport needs an **upload**. The re-issue comes once, on the first passport issued after the 20th birthday.
-:::
-
-## The three-month clock
-Upload the new passport and photo **within three months** of receiving it. This is the part people miss, because nothing prompts you — your OCI keeps working, so the deadline passes unnoticed until an airline asks. Do it the week the new passport lands.
+## Do it within three months and it costs nothing
+This is the whole practical rule for most holders. Upload the new passport's photo page and a recent photograph (missions typically want one no more than 30 days old) under OCI Miscellaneous Services, inside ${PASSPORT_UPDATE.windowMonths} months. Nothing to post, nothing to pay.
 
 :::steps
 Sign in at the [OCI portal](${VERIFY_SOURCES.ociPortal.href}) and open OCI Miscellaneous Services.
-Upload the new passport's photo page and a recent photograph (consulates typically want one no more than 30 days old).
-Submit. For the upload path there is nothing to pay and nothing to post.
+Upload the new passport's photo page and a recent photograph.
+Submit. Inside the ${PASSPORT_UPDATE.windowMonths}-month window there is no fee and no physical application.
 Keep the acknowledgement with your travel documents.
 :::
 
-## What the airline actually checks
-This is why any of it matters. OCI is checked at boarding, and your card is linked to the passport number it was issued against. Until the new passport is on record, carry **both** the OCI card and the **old passport** it was issued against alongside the new one. Once the upload or re-issue is done, the new passport stands on its own.
+:::warn
+title: Miss the window and it stops being free
+A late update attracts a consular fee of ${LATE_UPDATE_FEE}, plus the Indian Community Welfare Fund contribution and the VFS service charge, paid online to VFS. Nothing prompts you — your card keeps working and the deadline passes unnoticed until an airline asks. Do it the week the new passport arrives.
+:::
+
+## Where the missions do not agree
+Two questions genuinely have different answers depending on which official page you read. Neither is a misprint, and this guide will not pretend otherwise.
+
+**Is an update required after every new passport?**
+- CGI San Francisco's advisory of **June 16, 2026** and CGI Chicago say **yes — each time a new passport is issued**, at any age.
+- The **Government of India OCI portal's** own miscellaneous FAQs, and CGI Atlanta, still carry the older formulation: each time **up to age 20**, and **once after completing 50**.
+
+**What happens on a passport obtained after age 20?**
+- The **GoI portal** describes a one-time **card re-issue**, at ${LATE_UPDATE_FEE}, to capture adult facial features.
+- **CGI Chicago** states that re-issuance of physical OCI cards **has been discontinued**.
+- **CGI San Francisco** frames it as a **biometric** obligation: a holder who obtains a new passport after attaining ${PASSPORT_UPDATE.biometricsAfterAge} years of age must give biometric information to the Mission, Post or FRRO, or at the immigration post on first entry or departure.
+
+:::tip
+title: How to act on a conflict
+Update after **every** new passport, within ${PASSPORT_UPDATE.windowMonths} months. It is free, it takes minutes, and it satisfies the strictest reading — so the divergence costs you nothing. Then check the page for **the mission that covers your state**, because that is the office that will process your case, and ask them directly about biometrics if your new passport was issued after ${PASSPORT_UPDATE.biometricsAfterAge}.
+:::
 
 :::bad
-title: How people get refused at check-in
-- Travelling on a brand-new passport with an OCI still linked to the old one, and without the old passport in hand.
-- Having never completed the **one** re-issue after turning 20 — the card is not valid for travel until that is done.
-- Assuming the three-month upload is optional because the card still looks fine.
+title: Two things this guide used to say, and no longer does
+- **"Re-issue is required once you cross 50."** No source supports a paid re-issue milestone at 50. Where age 50 appears at all it is an *upload*, and on the newer advisories it is not an age-based rule at all.
+- **"A minor must re-issue with every new passport."** For a minor it is an upload, not a re-issue — and the newer advisories drop the age framing entirely.
 :::
 
-## Lost, stolen or damaged card
-A lost or damaged OCI needs a re-issue rather than an upload, filed through VFS at the Miscellaneous Services rate — see the [Cost Calculator](${OCI_TOOLS.cost.path}) for the full line-by-line total including ICWF and VFS charges.
+## What the airline actually checks
+OCI is checked at boarding, and your card is linked to the passport number it was issued against. Until the new passport is on record, carry **both** the OCI card and the **old passport** it was issued against alongside the new one. Once the update is processed, the new passport stands on its own.
 
-:::steps
-Report the loss if your consulate requires it, and gather a copy of your passport plus any OCI reference number you have.
-Apply for re-issue of the OCI document through the GoI portal and VFS.
-Pay the Miscellaneous Services fee and submit your supporting documents.
-Track the case and receive the reprinted OCI by return courier.
-:::
+## Lost, stolen or damaged card — a different service
+Do not confuse this with a passport update. A lost or damaged OCI needs a genuine **re-issue**, and it is the most expensive of the miscellaneous services:
 
-## Name, address and detail changes
-- **Name change** (after marriage, for example): a re-issue with your **apostilled** US name-change or marriage document — see the [apostille guide](${OCI_BASE}/apostille), because an un-apostilled document is the usual reason these are rejected.
-- **Address change:** keep your contact details current on the portal. Your US address is not printed on the OCI card, but correspondence and courier delivery depend on it.
-- **Correcting an error** on the card (a misspelling, a wrong date): apply for re-issue with documentary proof of the correct detail.
+- Government fee **${LOST_FEE}**, plus ICWF and the VFS service charge.
+- For a loss, a **copy of the police complaint** is required.
+- The mission generally verifies **original documents**, so unlike a passport update this is not a purely online matter.
+
+See the [Cost Calculator](${OCI_TOOLS.cost.path}) for the itemised total.
+
+## PIO card conversion — also separate, and not free
+Registering as an OCI in lieu of a PIO card is a **${PIO_FEE}** government fee, plus ICWF and VFS charges, whether the PIO card is valid or lost/damaged. It is a fresh registration route, not an update.
+
+## Name and other detail changes
+- **Name change** (after marriage, for example): a miscellaneous-services application with your **apostilled** US name-change or marriage document — see the [apostille guide](${OCI_BASE}/apostille), because an un-apostilled document is the usual reason these are rejected.
+- **Address or occupation change:** keep your details current on the portal.
+- **Correcting an error** on the card: apply with documentary proof of the correct detail.
 
 ## How long each path takes
-A **re-issue** goes through the same consulate-plus-MHA route as a fresh OCI, so budget roughly **${WEEKS}** and do not book travel against it. A **portal upload** is an administrative update rather than an adjudication and is normally far quicker — but it is still not instant, which is another reason not to leave it until the week you fly. The [Timeline Calculator](${OCI_TOOLS.timeline.path}) gives a planning estimate.
+A **portal update** is an administrative change rather than an adjudication and is normally quick — but not instant, which is a reason not to leave it until the week you fly. A **re-issue** for a lost or damaged card goes through the consulate and, where applicable, MHA, so budget roughly **${WEEKS}** and do not book travel against it. The [Timeline Calculator](${OCI_TOOLS.timeline.path}) gives a planning estimate.
 
 ## Frequently asked questions
 
 ### Do I need to renew my OCI when I get a new US passport?
-Usually not in the sense of a new card. If the new passport is issued after you turned 20 and you have not yet done that one-time re-issue, you need the paid re-issue. Otherwise — a new passport up to age 20, or your first one after 50 — you only upload the new passport and a photo to the OCI portal, free, within three months.
+Not in the sense of a new card. In the ordinary case you update your passport particulars online on the OCI portal within ${PASSPORT_UPDATE.windowMonths} months, free of charge, and keep the card you already have. Missions differ on whether this is required after every new passport or only up to age 20 and once after 50 — so update every time, which satisfies either reading at no cost.
 
-### Is OCI re-issue really required at age 50?
-No, and this is the most common misconception. After completing 50 years of age the requirement is a single **upload** of your new passport and photo, not a re-issue. There is no paid re-issue milestone at 50.
+### Is OCI re-issue required at age 50?
+No. No official source supports a paid re-issue milestone at 50. The GoI portal mentions age 50 only in the context of an *upload*, and the newer consulate advisories drop the age framing altogether in favour of updating after each new passport.
 
 ### What must a minor do when their passport is renewed?
-Upload the new passport and a current photograph to the OCI portal within three months, each time. A minor does not need a paid re-issue for a new passport — that obligation arrives once, with the first passport issued after the 20th birthday.
+Update the passport particulars on the portal within ${PASSPORT_UPDATE.windowMonths} months. That is an upload, not a paid re-issue.
 
-### How much does an OCI re-issue cost?
-The mandatory post-20 re-issue is charged at the OCI Miscellaneous Services rate — ${REISSUE_FEE} in government fee, plus the Indian Community Welfare Fund contribution and the VFS service charge. That is far below the fresh-registration fee, so if you have been quoted the fresh rate for a re-issue, check what service is being applied. The [Cost Calculator](${OCI_TOOLS.cost.path}) itemises the total.
+### What happens if my new passport was issued after I turned 20?
+This is the point on which official sources diverge. The GoI portal describes a one-time card re-issue at ${LATE_UPDATE_FEE}; CGI Chicago says physical card re-issuance has been discontinued; CGI San Francisco describes a biometric requirement, satisfied at the Mission, Post, FRRO, or at the immigration post on first entry or departure. Do the online update within the window and ask the mission covering your state what it requires of you specifically.
 
-### What if I miss the three-month upload window?
-Complete it as soon as you realise. The practical risk is at the airport rather than a penalty — until the new passport is on record your OCI is tied to the old one, so carry the old passport with you if you must travel before the update is processed, and confirm your situation with the consulate.
+### How much does it cost?
+Nothing, if you update within ${PASSPORT_UPDATE.windowMonths} months of the new passport. A late update is ${LATE_UPDATE_FEE} in consular fee plus ICWF and the VFS service charge. A lost or damaged card is different and much dearer at ${LOST_FEE} plus those charges, and a PIO-to-OCI conversion is ${PIO_FEE}. The [Cost Calculator](${OCI_TOOLS.cost.path}) itemises each.
+
+### What if I miss the three-month window?
+File as soon as you realise and expect to pay the late fee. The practical risk is at the airport rather than a penalty — until the new passport is on record your OCI is tied to the old one, so carry the old passport if you must travel before the update is processed.
 
 ### How do I replace a lost or damaged OCI card?
-Apply for re-issue through the GoI portal and VFS, pay the Miscellaneous Services fee, and submit your documents. Estimate the full cost in the [Cost Calculator](${OCI_TOOLS.cost.path}).
+Apply for re-issue through the portal and VFS, pay the ${LOST_FEE} fee plus ICWF and the VFS charge, include a copy of the police complaint if the card was lost, and expect to present originals to the mission.
 
 ### How do I change my name on my OCI after marriage?
-Apply for a re-issue with your apostilled marriage or name-change document. See the [apostille guide](${OCI_BASE}/apostille) — an un-apostilled document is the most common reason these applications come back.
-
-### How long does an OCI re-issue take?
-About ${WEEKS}, because a re-issue goes through the same consulate and MHA clearance as a new OCI. A portal upload is normally much faster, as it is an update rather than a fresh adjudication.`,
+Apply under miscellaneous services with your apostilled marriage or name-change document. See the [apostille guide](${OCI_BASE}/apostille) — an un-apostilled document is the most common reason these come back.`,
   },
 ];
 

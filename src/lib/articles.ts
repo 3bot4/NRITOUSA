@@ -5482,7 +5482,7 @@ That changes the answers, not just the tone. Your paycheck is taxed differently 
 This page walks the decisions in the order you meet them. Every number is tied to the rule it comes from, and every rule is listed at the end.
 
 :::quickanswer
-**One month of cash, then the full employer match, then cash out to ${f1.unemploymentInitial} days.** On OPT your wages are usually exempt from the ${f1.fica} FICA tax — that gap is your funding source, not spending money. Size the cushion to the clocks that actually apply to you: **${f1.unemploymentInitial} days** of unemployment on post-completion OPT, **${f1.unemploymentAggregate} days in total** across OPT plus the STEM extension (an aggregate cap, not a reset), and a **${f1.grace}-day** grace period after F-1 ends — ${f1.graceFixedAdmission} days for students admitted under the fixed-admission rule taking effect September 15, 2026. Cap-gap now runs to **${f1.capGapEndsShort}** of the relevant fiscal year, not ${f1.capGapFormer}. Your take-home then changes when FICA starts on your first H-1B paycheck, and your filing position changes as your US tax residency does — the India-treaty deduction stops applying once the qualifying student period ends, though a full-year resident may instead qualify for the ordinary resident standard deduction.
+**One month of cash, then the full employer match, then cash out to ${f1.unemploymentInitial} days.** On OPT your wages are usually exempt from the ${f1.fica} FICA tax — that gap is your funding source, not spending money. Size the cushion to the clocks that actually apply to you: **${f1.unemploymentInitial} days** of unemployment on post-completion OPT, **${f1.unemploymentAggregate} days in total** across OPT plus the STEM extension (an aggregate cap, not a reset), and a **${f1.grace}-day** grace period after F-1 ends. (A rule that would have cut this to ${f1.graceFixedAdmission} days was blocked by a court before it took effect — see Decision 8.) Cap-gap now runs to **${f1.capGapEndsShort}** of the relevant fiscal year, not ${f1.capGapFormer}. Your take-home then changes when FICA starts on your first H-1B paycheck, and your filing position changes as your US tax residency does — the India-treaty deduction stops applying once the qualifying student period ends, though a full-year resident may instead qualify for the ordinary resident standard deduction.
 :::
 
 :::info
@@ -5510,7 +5510,7 @@ The same person needs different advice four times in three years. Find your row 
 title: The four clocks that will spend your savings
 - **${f1.unemploymentInitial} days** — unemployment allowed during post-completion OPT. Past that without qualifying employment and your SEVIS record is at risk.
 - **${f1.unemploymentAggregate} days** — the total allowed across post-completion OPT **and** the STEM extension. Burn 40 days on initial OPT and you have ${f1.unemploymentRemainingExample} left, not ${f1.unemploymentAggregate}.
-- **${f1.grace} days** — the F-1 grace period once OPT ends. No work is permitted during it. It becomes ${f1.graceFixedAdmission} days for students admitted under the fixed-admission rule.
+- **${f1.grace} days** — the F-1 grace period once OPT ends. No work is permitted during it. A rule that would have cut it to ${f1.graceFixedAdmission} days is blocked and not in effect.
 - **${f1.grace} days** — the H-1B grace period after a job ends. Also unpaid, also capped: the regulation gives you up to ${f1.grace} consecutive days **or the end of your petition's validity, whichever is shorter**, once per validity period.
 :::
 
@@ -5688,23 +5688,24 @@ What all three **could** affect — if the proclamation payment is reinstated on
 
 If you want to influence the newest one rather than just absorb it, the comment period is the mechanism — comments go to regulations.gov under DHS Docket No. USCIS-2026-0298 and close 30 days after publication.
 
-## Decision 8 — The date on your I-94 is about to matter more than it ever has
-The rule that has governed F-1 admission for decades is scheduled to be replaced, and it halves the grace period every page on this subject quotes — including this one.
+## Decision 8 — The rule that would have halved your grace period was stopped one day before it started
+The rule that has governed F-1 admission for decades was going to be replaced. It is not, for now.
 
 :::info
 title: Status of the fixed-admission rule
 ${dsFixedAdmissionRule.statusLine}
 :::
 
-The change: instead of being admitted for "duration of status", an F-1 student would be admitted for the length of the programme on the I-20, capped at four years, followed by a **${f1.graceFixedAdmission}-day** grace period rather than ${f1.grace} days. Overstaying a dated I-94 without a timely extension carries a consequence duration of status does not.
+What it would have done: instead of being admitted for "duration of status", an F-1 student would have been admitted for the length of the programme on the I-20, capped at four years, followed by a **${f1.graceFixedAdmission}-day** grace period rather than ${f1.grace} days, with overstaying a dated I-94 carrying a consequence duration of status does not. None of that is in force. You are admitted for duration of status and your grace period is **${f1.grace} days**.
 
-Students already admitted for duration of status generally keep the ${f1.grace}-day grace period until they travel abroad and re-enter, or file an extension of stay. There is transition relief specifically for practical training: a student in the US and maintaining status on the effective date who timely files Form I-765 for OPT or STEM OPT **on or before March 18, 2027** generally avoids a separate Form I-539.
+The distinction that matters for planning: the court **postponed the rule's effective date**; it did not strike the rule down. The request to vacate it was denied without prejudice, so the rule still exists with its start date suspended, and an appeal or a later ruling could revive it.
 
 :::warn
-title: Three things to do about it
-- **Do not treat any grace-period figure — on any site, including this one — as yours.** Read your most recent I-94 and confirm with your DSO.
-- **Plan international travel deliberately.** Re-entry after the effective date is what converts a duration-of-status admission into a date-certain one.
-- **If you are filing OPT or STEM OPT, the March 18, 2027 window is the date to organise around.** Filing after it generally pulls an I-539 into the process, which is where delayed start dates and unpaid gaps come from.
+title: What to actually do
+- **Use ${f1.grace} days, not ${f1.graceFixedAdmission}.** The ${f1.graceFixedAdmission}-day figure applies to nobody today. If you read it on a site that has not been updated since mid-September 2026, that is why.
+- **Still read your own I-94.** It is the only record of how you were actually admitted, and no article can tell you what it says.
+- **Do not organise your OPT filing around March 18, 2027.** That window was transition relief inside a rule that never took effect; there is no transition to be inside. File OPT on the normal timetable instead.
+- **Re-check before relying on this.** This is interim relief in live litigation, not a settled outcome.
 :::
 
 ## The decision table

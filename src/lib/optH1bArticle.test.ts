@@ -94,12 +94,23 @@ describe("the numbers match the cluster data", () => {
     );
   });
 
-  it("quotes both grace periods and flags the fixed-admission change", () => {
+  it("leads with the operative grace period and marks the other as blocked", () => {
     expect(article.content).toContain(`${optRules.gracePeriodDays}-day`);
+    // The 30-day figure may still be explained, but only as the blocked rule's
+    // would-be number — never as a period that applies to a reader today.
     expect(article.content).toContain(
       `${optRules.gracePeriodDaysUnderFixedAdmission} days`
     );
-    expect(article.content).toContain("September 15, 2026");
+    expect(article.content).toMatch(/blocked|not in effect|never took effect/i);
+  });
+
+  it("does not tell students to organise a filing around the blocked rule", () => {
+    // March 18, 2027 was transition relief inside a rule that never took
+    // effect. Any surviving mention must not read as live guidance.
+    const m = article.content.match(/.{0,220}March 18, 2027.{0,220}/s);
+    if (m) {
+      expect(m[0]).toMatch(/never took effect|blocked|would have|do not organise/i);
+    }
   });
 });
 

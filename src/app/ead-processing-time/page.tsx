@@ -22,7 +22,17 @@ import {
   EAD_UPDATED,
   EAD_UPDATED_HUMAN,
 } from "@/lib/eadCluster";
-import { eadProcessingData as D, EAD_DATA_NOTE, eadSnapshotRows, eadSnapshotSources, EAD_ESTIMATE_VERIFIED, EAD_ESTIMATE_DISCLAIMER } from "@/data/eadProcessingData";
+import {
+  eadProcessingData as D,
+  EAD_DATA_NOTE,
+  eadSnapshotRows,
+  eadSnapshotSources,
+  EAD_ESTIMATE_VERIFIED,
+  EAD_ESTIMATE_DISCLAIMER,
+  EAD_AUTO_EXTENSION_SUMMARY,
+  EAD_OPT_VS_STEM_SUMMARY,
+  stemPendingAuth as STEM,
+} from "@/data/eadProcessingData";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import Link from "next/link";
 import { FactTable } from "@/components/education/FactTable";
@@ -41,11 +51,11 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   { question: "How long does an EAD take?", answer: "It depends heavily on the category (the eligibility code) and the service center. Many categories currently run several months. Check the official USCIS processing-times dashboard for your exact form category and office, and use this tool for a planning estimate." },
-  { question: "Is there still an automatic EAD extension?", answer: `No — not for renewals filed today. A DHS interim final rule effective October 30, 2025 (${D.autoExtensionRuleCitation}) ended the automatic extension of work authorization for timely-filed EAD renewals. Renewals USCIS received before that date still run on the old up-to-${D.autoExtensionDays}-day extension, and extensions granted separately by statute or Federal Register notice are unaffected. For everything else, your authorization now ends on the date printed on the card. See our EAD renewal gap page for what to do instead.` },
-  { question: "Which EAD categories get the automatic extension?", answer: "None, for a renewal filed now. The categories that used to qualify — pending adjustment of status (c)(9), H-4 (c)(26), L-2 (a)(18) and pending asylum (c)(8) — all lost it on October 30, 2025; F-1 OPT and STEM OPT never had it. The table above marks which categories would have qualified under the old rule, which matters only if USCIS received your renewal before the cutoff." },
-  { question: "How do I prove work authorization while a renewal is pending?", answer: "For a renewal received on or after October 30, 2025, you cannot — there is no document combination that covers the gap, so your employer must suspend employment when the card expires. The expired-EAD-plus-Form-I-797C combination still works for Form I-9 only where USCIS received the renewal before that date and the old extension is still running. L-2 and E dependent spouses are the exception to all of this: an unexpired I-94 with an L-2S/E-1S/E-2S/E-3S code is evidence on its own." },
-  { question: "Can F-1 OPT or STEM OPT EAD be premium processed?", answer: "Yes — premium processing (about 30 business days) is available for many F-1 OPT and STEM OPT I-765 requests. It is not available for most other EAD categories. Verify current eligibility and fees on the USCIS Form I-907 page." },
-  { question: "When can I file my EAD renewal?", answer: `USCIS generally lets you file a renewal up to ${D.renewalFilingWindowDays} days before your current EAD expires. With no automatic extension to fall back on, that lead time is now the only thing standing between a slow adjudication and a work-authorization gap — so file on the first day of the window, not the last.` },
+  { question: "Is there still an automatic EAD extension?", answer: `Not through the general renewal route. ${EAD_AUTO_EXTENSION_SUMMARY} The practical effect for most people filing today is that authorization ends on the date printed on the card. The one category on this page that keeps automatic authorization while its application is pending is the STEM OPT extension, for a different legal reason — see the question below.` },
+  { question: "Which EAD categories get the automatic extension?", answer: `None get the § 274a.13(d) renewal extension on an application filed now. The categories that used to qualify — pending adjustment of status (c)(9), H-4 (c)(26), L-2 (a)(18) and pending asylum (c)(8) — lost it for applications received on or after October 30, 2025, and the table above marks which would have qualified under the old rule, which matters only if USCIS received yours before the cutoff. The F-1 categories never used that mechanism, but do not read that as "STEM OPT gets nothing": a timely-filed STEM extension carries up to ${STEM.pendingAuthDays} days of continued work authorization under ${STEM.pendingAuthCite}, which is a separate provision the October 2025 rule did not touch.` },
+  { question: "How do I prove work authorization while a renewal is pending?", answer: `It depends which category you are in, and there are three different answers. For an ordinary renewal received on or after October 30, 2025 there is no document combination that covers the gap, so employment stops when the card expires. Where USCIS received the renewal before that date, the expired EAD plus the Form I-797C receipt notice still works for Form I-9 while the old extension runs. For a timely-filed STEM OPT extension, the expired EAD together with the receipt notice documents up to ${STEM.pendingAuthDays} days of continued authorization under ${STEM.pendingAuthCite}. Separately, L-2 and E dependent spouses do not depend on an EAD at all — an unexpired I-94 bearing an L-2S, E-1S, E-2S or E-3S code is evidence on its own.` },
+  { question: "Can F-1 OPT or STEM OPT EAD be premium processed?", answer: "Yes — premium processing (about 30 business days) is available for many F-1 OPT and STEM OPT I-765 requests. It is not available for most other EAD categories. It matters far more on initial OPT than on a STEM extension: on initial OPT you cannot work at all until the card arrives, whereas a timely-filed STEM extension already carries continued authorization while it is pending. Verify current eligibility and fees on the USCIS Form I-907 page." },
+  { question: "When can I file my EAD renewal?", answer: `USCIS generally lets you file a renewal up to ${D.renewalFilingWindowDays} days before your current EAD expires. For the categories that lost the automatic extension, that lead time is now the only thing standing between a slow adjudication and a work-authorization gap — so file on the first day of the window, not the last.` },
   { question: "What is the difference between EAD and Advance Parole?", answer: "An EAD (Form I-765) authorizes you to work; Advance Parole (Form I-131) lets you travel and return while an application like I-485 is pending. Adjustment applicants often file them together and may receive a combo card." },
   { question: "Is this calculator legal advice?", answer: "No. This calculator is for educational planning only and is not legal advice. Processing times are estimates that change. Always confirm your category, timing, and work authorization with your immigration attorney." },
 ];
@@ -126,54 +136,77 @@ export default function Page() {
               </p>
 
               <FactTable
-                caption="What is different about an OPT EAD"
-                headers={["", "F-1 OPT / STEM OPT (c)(3)", "Most other EAD categories"]}
+                caption="The two F-1 categories are not the same"
+                headers={[
+                  "",
+                  "Post-completion OPT (c)(3)(B)",
+                  "STEM OPT extension (c)(3)(C)",
+                  "Most other categories",
+                ]}
                 rows={[
                   [
-                    "Automatic extension on renewal",
-                    "No — OPT categories were always excluded",
-                    "No either, since Oct 30, 2025 — it used to be up to 540 days",
+                    "Can you work while it is pending?",
+                    "No — you wait for the card and for the start date printed on it",
+                    `Yes — up to ${STEM.pendingAuthDays} days past your EAD's expiry on a timely-filed extension, under ${STEM.pendingAuthCite}`,
+                    "No, unless USCIS received the application before Oct 30, 2025",
+                  ],
+                  [
+                    "Automatic extension on renewal (§ 274a.13(d))",
+                    "Never applied to this category",
+                    "Never applied — the 180 days above comes from a different provision",
+                    "Ended for applications received on or after Oct 30, 2025",
                   ],
                   [
                     "Premium processing",
-                    "Available for many OPT and STEM OPT requests",
+                    "Available for many requests",
+                    "Available for many requests",
                     "Not available for most categories",
                   ],
                   [
                     "Filing window",
                     `Opens ${optRules.filingWindowDaysBefore} days before your program end date, closes ${optRules.filingWindowDaysAfter} days after`,
+                    `File before your current OPT EAD expires — the ${STEM.pendingAuthDays} days depend on it being timely`,
                     "Generally tied to the underlying application",
-                  ],
-                  [
-                    "Can you work while pending?",
-                    "No — you must wait for the card and its start date",
-                    "No, unless USCIS received the renewal before Oct 30, 2025",
                   ],
                   [
                     "Missing the deadline",
                     "Post-completion OPT is lost permanently",
+                    `Lose the ${STEM.pendingAuthDays}-day cushion — you must stop work when the card expires`,
                     "Usually refileable",
                   ],
                 ]}
-                highlightRows={[0, 4]}
-                note={`Category rules verified ${STUDENT_DATA_VERIFIED}. Confirm your specific category on USCIS before relying on any of this.`}
+                highlightRows={[0]}
+                note={
+                  <>
+                    {EAD_OPT_VS_STEM_SUMMARY} Category rules verified{" "}
+                    {STUDENT_DATA_VERIFIED}. Confirm your specific category on
+                    USCIS before relying on any of this.
+                  </>
+                }
               />
 
               <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
                 <h3 className="text-sm font-bold text-ink-900">
-                  The danger window
+                  The danger window — initial OPT only
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-700">
                   Between your program end date and the start date printed on
                   your EAD, you have no work authorisation. Your program has
                   ended, your status has transitioned, and you cannot legally
-                  work — however long USCIS takes. There is no automatic
-                  extension to fall back on for OPT, which is why filing on the
-                  first day of your window is the single highest-value thing you
-                  can do: every week of processing time comes directly out of
-                  your job-search runway, and your{" "}
-                  {optRules.initialUnemploymentDays}-day unemployment clock
-                  starts on your EAD start date regardless.
+                  work — however long USCIS takes. Nothing covers this gap on
+                  initial OPT, which is why filing on the first day of your
+                  window is the single highest-value thing you can do: every
+                  week of processing time comes directly out of your job-search
+                  runway, and your {optRules.initialUnemploymentDays}-day
+                  unemployment clock starts on your EAD start date regardless.
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                  This window does <strong>not</strong> exist on a timely-filed
+                  STEM extension. There, {STEM.pendingAuthCite} authorises you
+                  to keep working for up to {STEM.pendingAuthDays} days past
+                  your current EAD&rsquo;s expiry while the extension is
+                  pending — so the risk on a STEM filing is filing late, not
+                  the adjudication taking time.
                 </p>
                 <Link
                   href="/education/opt-calculator"
