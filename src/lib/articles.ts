@@ -2465,9 +2465,10 @@ Capture the full match, choose Roth if you're early-career, and don't touch it u
     title: "NRE vs. NRO Accounts: The Money-Transfer Setup Every NRI Needs",
     seoTitle: "NRE vs. NRO Accounts Explained for NRIs",
     excerpt:
-      "Which account holds your US savings, which holds your India income, and how to move money tax-efficiently.",
+      "Which account holds your US savings, which holds your India income, why \"tax-free\" only means tax-free in India, and which balance you can actually get back.",
     topic: "money-transfer",
     date: "2026-03-20",
+    updated: "2026-09-15",
     content: `Once you're earning in dollars, you'll want to send money to India — for family, savings, or investments. Doing it cleanly starts with understanding two account types: NRE and NRO.
 
 :::info
@@ -2480,22 +2481,83 @@ title: NRE vs NRO in one line
 | | NRE (Non-Resident External) | NRO (Non-Resident Ordinary) |
 |---|---|---|
 | Holds | Money earned abroad | Income earned in India |
-| Repatriable? | Fully, anytime | Capped (~$1M/year with paperwork) |
-| Interest tax (India) | Tax-free | Taxable (~30% TDS) |
-| Best for | US-earned savings you want flexible | Rent, dividends, pre-move salary |
+| Currency of the balance | Rupees, funded from foreign currency | Rupees |
+| Repatriable? | Fully, anytime | Capped (~$1M per financial year, with paperwork) |
+| Interest tax (India) | Exempt | Taxable, ~30% TDS plus surcharge and cess |
+| Interest tax (US) | **Fully taxable** | Fully taxable, with a credit for Indian tax paid |
+| Joint holding | With another NRI; with a resident close relative only on a "former or survivor" basis | Can be held jointly with a resident |
+| Best for | US-earned savings you may want back | Rent, dividends, pre-move salary, India obligations |
 
-Your US-earned savings should land in NRE if you want flexibility; India-origin income goes to NRO.
+Your US-earned savings should land in NRE if you want flexibility; India-origin income has to go to NRO.
 
-## Choosing a transfer service
-Banks give terrible exchange rates and bury fees in the spread, so specialist services consistently beat them on all-in cost. Compare the rate you actually receive, not the advertised fee — a "zero fee" transfer at a bad rate costs more than a small flat fee at the mid-market rate.
+## "Tax-free" means tax-free in India only
+This is the single most expensive misunderstanding in the table above, and it catches people for years at a time.
+
+NRE interest is exempt from Indian tax. It is **not** exempt from US tax. As a US tax resident you are taxed on worldwide income, so that interest belongs on your US return like any other interest — and because India collected nothing, there is no foreign tax credit to offset it. An NRE fixed deposit paying 7% is a fully taxable 7% to the IRS.
+
+:::bad
+title: What that does to the comparison people actually make
+Set an NRE FD at 7% against a US high-yield savings account and the FD looks like the obvious winner. But the FD is taxable to the IRS at your marginal rate with no credit, and the rupee it is denominated in has to hold its value against the dollar over the term for the headline rate to mean anything. Compare after-US-tax and in dollars, or you are not comparing.
+:::
+
+NRO interest is taxed in both countries — but there you have paid Indian tax, so the [foreign tax credit](/articles/double-taxation-dtaa-india-usa) does its job and you are not taxed twice on the same income.
+
+## Repatriation is the difference that is hard to undo
+Money in NRE can go back to the US whenever you want it, in any amount, with no certificate and no cap. That is the whole point of the account.
+
+Money in NRO cannot. Repatriating it means staying inside a limit of about **USD 1 million per financial year** out of your NRO balances, and producing a chartered accountant's certification on **Forms 15CA and 15CB** for the remittance — every time.
+
+:::warn
+title: The mistake is drift, not a decision
+Nobody chooses to trap their savings in an NRO account. What happens is that transfers go to whichever account was set up first, year after year, and the balance quietly becomes the one that needs paperwork to move. If the money is US-earned and you might want it back, it belongs in NRE from the first transfer.
+:::
+
+Use the [15CA/15CB checklist](/tools/form-15ca-15cb-checklist) before you start an NRO remittance, not after the bank asks.
+
+## Both accounts are reportable to the IRS
+Neither account is invisible. Their balances count toward the **FBAR** threshold and, separately, toward FATCA reporting on Form 8938 — and Indian banks report US-person accounts under FATCA, so the information arrives whether you file or not.
+
+The trigger is aggregate balances across all your foreign accounts, so opening a second account does not halve the problem. [Check whether you have crossed the thresholds](/tools/fbar-fatca-checker), and see the [FBAR and FATCA guide](/articles/fbar-fatca-nri-guide) for how the two filings differ.
+
+## What happens to these accounts when you move back
+Both are non-resident accounts. Once you return to India and become a resident again, they stop being the right accounts to hold, and the bank will expect you to act:
+
+- **NRO** is redesignated as a resident savings account.
+- **NRE** is redesignated too — or converted to an **RFC (Resident Foreign Currency)** account, which lets you keep the balance in foreign currency instead of converting it to rupees at whatever the rate happens to be on the day you land.
+
+That RFC option is worth knowing about before you fly, because it is a currency decision disguised as a banking formality. See [Retirement & Return to India](/return-to-india) for where it sits in the wider sequence.
+
+If you are moving in the other direction — becoming an NRI and holding a resident account you opened years ago — that has its own process, covered in [converting a resident account to NRE/NRO](/articles/convert-resident-account-to-nre-nro). You are not allowed to simply keep using the resident account.
+
+## Getting money into them cheaply
+The account decides where the money can go next; the transfer service decides how much of it arrives. Those are separate problems, and the second one has its own guide — compare the amount that lands rather than the advertised fee, because a "zero fee" transfer at a poor rate costs more than a small flat fee at the mid-market rate. The [cheapest ways to send money from the USA to India](/articles/cheapest-way-send-money-usa-india) works through the comparison properly.
 
 :::tip
 title: A clean two-account setup
 - Open both an NRE and NRO account before you need them
-- Route US-earned money to NRE for tax-free, repatriable savings
-- Route India-origin income to NRO
+- Route US-earned money to NRE — repatriable, and exempt in India
+- Route India-origin income to NRO, and expect TDS on the interest
+- Declare the interest from **both** on your US return
+- Track the aggregate balance against the FBAR and FATCA thresholds
 - Use a low-spread transfer specialist and always check the receive amount
 :::
+
+## Frequently asked questions
+
+### Can I put my US salary into an NRO account?
+You can, and it is usually the wrong choice. Once it is in NRO it is subject to the repatriation cap and the 15CA/15CB certification if you ever want it back in dollars, and the interest attracts Indian TDS. Foreign earnings belong in NRE, where none of that applies.
+
+### Is NRE interest really tax-free?
+In India, yes — it is exempt while you are a non-resident. In the US, no. It is ordinary interest income on your US return, and since India withheld nothing there is no foreign tax credit to reduce the bill. Any comparison of an NRE deposit against a US account has to be made after US tax.
+
+### How much can I send out of my NRO account?
+Up to about USD 1 million per financial year from your NRO balances, and each remittance needs Forms 15CA and 15CB — the latter certified by a chartered accountant. Build the timeline for that into any plan that depends on the money arriving by a particular date.
+
+### Can my parents in India operate my NRO account?
+An NRO account can be held jointly with a resident, which is the usual arrangement for family who manage day-to-day payments. An NRE account is different: a resident close relative can be a joint holder only on a "former or survivor" basis, meaning they can operate it only after you. Confirm the current position with your bank, as the operating conditions are set by RBI rules rather than by the bank.
+
+### Do I need to close these accounts when I return to India?
+Not close — redesignate. NRO becomes a resident account, and NRE is either redesignated or converted to an RFC account that holds the balance in foreign currency. Doing nothing is not an option: continuing to run a non-resident account after you have become resident is a compliance problem, not an oversight.
 
 :::cta
 title: Sending money to India?

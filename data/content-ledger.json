@@ -1,5 +1,5 @@
 {
-  "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
+  "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART \u2014 the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items \u2014 the log is the record of what changed and when.",
   "updated": "2026-09-15",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
@@ -10,7 +10,7 @@
       "severity": "high",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "audit:intent-numbers scores every route that answers a number question against six affordances: a Fast Answer block, a numeric estimate, a last-verified stamp, an official-source link, FAQ schema, and an Article dateModified. 79 High-priority pages are missing at least one. The H-1B lottery cluster is the weakest — most of those pages have FAQ schema and nothing else, so they make numeric claims with no stamp and no citation.",
+      "detail": "audit:intent-numbers scores every route that answers a number question against six affordances: a Fast Answer block, a numeric estimate, a last-verified stamp, an official-source link, FAQ schema, and an Article dateModified. 79 High-priority pages are missing at least one. The H-1B lottery cluster is the weakest \u2014 most of those pages have FAQ schema and nothing else, so they make numeric claims with no stamp and no citation.",
       "nextStep": "Work the High tier in cluster order (h1b-lottery first, then education, then green-card/[slug]), adding FastAnswerSnapshot + OfficialSourceNote and moving any inline figures into the cluster data file.",
       "evidence": "npm run audit:intent-numbers"
     },
@@ -21,21 +21,22 @@
       "severity": "high",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "Was 21 on 2026-09-02. Seven were re-confirmed against their official sources that day and bumped: I-90 online ($415) and paper ($465) fees, the no-separate-biometrics-fee line, the $120 Affidavit of Support review fee, the $325 family-based IV fee, the $10,000 FBAR threshold and the 10% early-withdrawal penalty. No value was found to have actually drifted — the stamps lag, the numbers were right. The remaining 14 are prose/range values (processing times, passport windows, FBAR deadline, FATCA, SS credits, FAFSA) plus the employment-based ($345) and other ($205) IV fees, none of which a script can check.",
+      "detail": "Was 21 on 2026-09-02. Seven were re-confirmed against their official sources that day and bumped: I-90 online ($415) and paper ($465) fees, the no-separate-biometrics-fee line, the $120 Affidavit of Support review fee, the $325 family-based IV fee, the $10,000 FBAR threshold and the 10% early-withdrawal penalty. No value was found to have actually drifted \u2014 the stamps lag, the numbers were right. The remaining 14 are prose/range values (processing times, passport windows, FBAR deadline, FATCA, SS credits, FAFSA) plus the employment-based ($345) and other ($205) IV fees, none of which a script can check.",
       "nextStep": "Re-verify the travel.state.gov NVC fees and the passport/VFS ranges by hand (both hosts block automated fetches), then run `npm run audit:monthly-numbers:baseline` to move the stamps and the baseline together.",
       "evidence": "npm run audit:monthly-numbers",
       "next": "Work the remaining 14 by hand; uscis.gov and travel.state.gov both 403 automated fetches, so use WebSearch with allowed_domains."
     },
     {
       "id": "pwd-planning-band",
-      "title": "PWD planning band (4–8 months) now runs ahead of DOL's own queue",
+      "title": "PWD planning band (4\u20138 months) now runs ahead of DOL's own queue",
       "area": "numbers",
       "severity": "medium",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-18",
-      "detail": "permProcessingData.ts plans prevailing-wage determinations at 4–8 months. DOL FLAG's receipt months imply faster: OEWS PERM cases filed April 2026 were being processed as of 30 June (~2–3 months), non-OEWS March 2026 (~3–4). The stored receipt months match DOL exactly, so the underlying data is right — it is the derived band whose floor sits above observed reality. Defensible as a buffer while DOL's PWD table is itself seven weeks stale, but it is the one figure where we tell readers to expect worse than they will likely get.",
+      "detail": "permProcessingData.ts plans prevailing-wage determinations at 4\u20138 months. DOL FLAG's receipt months imply faster: OEWS PERM cases filed April 2026 were being processed as of 30 June (~2\u20133 months), non-OEWS March 2026 (~3\u20134). The stored receipt months match DOL exactly, so the underlying data is right \u2014 it is the derived band whose floor sits above observed reality. Defensible as a buffer while DOL's PWD table is itself seven weeks stale, but it is the one figure where we tell readers to expect worse than they will likely get. Resolved 2026-09-15: refreshed against the FLAG dashboard as of Aug 31, 2026 \u2014 PWD is at May 2026 receipts for both wage sources and the published PERM average is 336 days, so the bands moved to 3\u20136 (PWD) and 10\u201314 (analyst review) months, with the derived totals following. siteWideVerifiedNumbers was updated in step and verifiedNumbers.consistency.test.ts held the two files together.",
       "nextStep": "Re-check flag.dol.gov/processingtimes when DOL refreshes the PWD table; if the receipt months hold, drop pwdPlanningMonthsLow to 3.",
-      "evidence": "src/data/permProcessingData.ts"
+      "evidence": "src/data/permProcessingData.ts",
+      "resolved": "2026-09-15"
     },
     {
       "id": "meta-title-length",
@@ -44,7 +45,7 @@
       "severity": "medium",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "Median indexable title is 64 characters; 223 exceed 60 and 63 exceed 80, topping out at 95. Google rewrites rather than penalises, so this is not an error — but the tail is where the keyword differentiators sit, and on a 95-character title the tail is always cut. Worst offenders are the long descriptive titles on /articles/real-estate-first-investment-immigrants, /can-h1b-parents-open-trump-account-for-child and /india-business-visa-from-usa.",
+      "detail": "Median indexable title is 64 characters; 223 exceed 60 and 63 exceed 80, topping out at 95. Google rewrites rather than penalises, so this is not an error \u2014 but the tail is where the keyword differentiators sit, and on a 95-character title the tail is always cut. Worst offenders are the long descriptive titles on /articles/real-estate-first-investment-immigrants, /can-h1b-parents-open-trump-account-for-child and /india-business-visa-from-usa.",
       "nextStep": "Trim to ~57 chars before the ' | NRI to USA' template, front-loading the keyword. Batch by cluster so sibling titles stay parallel.",
       "evidence": "npm run ledger"
     },
@@ -56,7 +57,7 @@
       "status": "open",
       "opened": "2026-08-18",
       "detail": "Median is 154 characters, but 152 pages exceed 160 and 34 exceed 200, with a 310-character outlier on /india-investments/should-nris-keep-investments-in-india. Long descriptions are simply truncated in the SERP; the risk is that the sentence carrying the click argument is the one cut.",
-      "nextStep": "Rewrite the 34 pages over 200 characters first — below that the loss is marginal.",
+      "nextStep": "Rewrite the 34 pages over 200 characters first \u2014 below that the loss is marginal.",
       "evidence": "npm run ledger"
     },
     {
@@ -66,7 +67,7 @@
       "severity": "low",
       "status": "ongoing",
       "opened": "2026-08-18",
-      "detail": "uscis.gov, travel.state.gov, vfsglobal.com, finra.org, congress.gov, migrationpolicy.org and a few others answer 403 to any automated request. link-health.js classifies these as 'unverifiable' rather than dead so they do not generate false alarms — but it also means link rot on exactly the hosts we cite most would go undetected. USCIS silently retired five paths before the 2026-08-18 audit caught them, and those were only visible because www.uscis.gov happens to answer 404 rather than 403.",
+      "detail": "uscis.gov, travel.state.gov, vfsglobal.com, finra.org, congress.gov, migrationpolicy.org and a few others answer 403 to any automated request. link-health.js classifies these as 'unverifiable' rather than dead so they do not generate false alarms \u2014 but it also means link rot on exactly the hosts we cite most would go undetected. USCIS silently retired five paths before the 2026-08-18 audit caught them, and those were only visible because www.uscis.gov happens to answer 404 rather than 403.",
       "nextStep": "Spot-check the travel.state.gov and vfsglobal citations by hand each time the monthly numbers are reconciled.",
       "evidence": "scripts/audit/link-health.json"
     },
@@ -77,9 +78,9 @@
       "severity": "low",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "Nothing here is broken today — each one 301s to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. The substantive ones: USDA renamed FNS to FNA (fns.usda.gov → fna.usda.gov, 2 citations); benefits.gov now hands off to usa.gov's benefit finder; acf.hhs.gov moved to acf.gov; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now 'exceptions-to-tax-on-early-distributions'; California's notary authentication page became request-apostille. The high-traffic ones are cosmetic (uscis.gov/forms → /forms/all-forms on 12 pages, incometax.gov.in → its portal path on 24).",
+      "detail": "Nothing here is broken today \u2014 each one 301s to live content \u2014 but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. The substantive ones: USDA renamed FNS to FNA (fns.usda.gov \u2192 fna.usda.gov, 2 citations); benefits.gov now hands off to usa.gov's benefit finder; acf.hhs.gov moved to acf.gov; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now 'exceptions-to-tax-on-early-distributions'; California's notary authentication page became request-apostille. The high-traffic ones are cosmetic (uscis.gov/forms \u2192 /forms/all-forms on 12 pages, incometax.gov.in \u2192 its portal path on 24).",
       "nextStep": "Update the agency-rename cases (USDA, ACF, benefits.gov) on the next government-benefits pass; leave the cosmetic ones. Re-check with `npm run ledger:links`.",
-      "evidence": "scripts/audit/link-health.json → redirects[]"
+      "evidence": "scripts/audit/link-health.json \u2192 redirects[]"
     },
     {
       "id": "mobile-audit-faq-accordion-breadcrumb-tap",
@@ -147,7 +148,7 @@
     },
     {
       "id": "100k-h-1b-fee-status-is",
-      "title": "$100K H-1B fee status is litigation-dependent — re-verify monthly",
+      "title": "$100K H-1B fee status is litigation-dependent \u2014 re-verify monthly",
       "area": "numbers",
       "severity": "high",
       "status": "open",
@@ -157,7 +158,7 @@
     },
     {
       "id": "proposed-100k-opt-fee-watch-for",
-      "title": "Proposed $100K OPT fee — watch for an actual published rule",
+      "title": "Proposed $100K OPT fee \u2014 watch for an actual published rule",
       "area": "numbers",
       "severity": "high",
       "status": "open",
@@ -167,7 +168,7 @@
     },
     {
       "id": "semrush-mcp-out-of-api-units",
-      "title": "Semrush MCP out of API units — competitor gap analysis done via live SERP recon instead",
+      "title": "Semrush MCP out of API units \u2014 competitor gap analysis done via live SERP recon instead",
       "area": "other",
       "severity": "low",
       "status": "open",
@@ -201,10 +202,10 @@
       "severity": "high",
       "status": "open",
       "opened": "2026-09-02",
-      "detail": "data/market.json sat at asOf 2026-07-19 until 2026-09-02 because the daily GitHub Action was retired and nothing replaced it. Per-item stale flags were all false, so the figure presented as current. Reader-visible impact is narrower than it first looked: only the usdinr row renders (usdInrCard in HomeDataSidebar) — it read 96.27 against an actual 94.95, about 1.4% off. The snapshot's gold row was 8.4% off but renders nowhere; see the sibling item on the three unused values. Fixed by re-running the pipeline and by adding a whole-file staleness gate.",
-      "nextStep": "Either restore a scheduled refresh or add a hard staleness gate — see the sibling item on whole-file age.",
+      "detail": "data/market.json sat at asOf 2026-07-19 until 2026-09-02 because the daily GitHub Action was retired and nothing replaced it. Per-item stale flags were all false, so the figure presented as current. Reader-visible impact is narrower than it first looked: only the usdinr row renders (usdInrCard in HomeDataSidebar) \u2014 it read 96.27 against an actual 94.95, about 1.4% off. The snapshot's gold row was 8.4% off but renders nowhere; see the sibling item on the three unused values. Fixed by re-running the pipeline and by adding a whole-file staleness gate.",
+      "nextStep": "Either restore a scheduled refresh or add a hard staleness gate \u2014 see the sibling item on whole-file age.",
       "evidence": "node scripts/pipeline/fetch-market.mjs",
-      "next": "Done for now — the gate in src/lib/market.ts plus revalidate on the homepage means an unrefreshed snapshot degrades visibly. Still worth deciding whether anything should refresh it on a schedule."
+      "next": "Done for now \u2014 the gate in src/lib/market.ts plus revalidate on the homepage means an unrefreshed snapshot degrades visibly. Still worth deciding whether anything should refresh it on a schedule."
     },
     {
       "id": "85-of-93-articles-cite-zero",
@@ -213,7 +214,7 @@
       "severity": "high",
       "status": "open",
       "opened": "2026-09-07",
-      "next": "Add a source box with 1–3 primary-source links to the highest-traffic /articles/* pages. The '✓ Sources verified' badge relights on its own via lib/sourceVerification — no flag to set."
+      "next": "Add a source box with 1\u20133 primary-source links to the highest-traffic /articles/* pages. The '\u2713 Sources verified' badge relights on its own via lib/sourceVerification \u2014 no flag to set."
     },
     {
       "id": "109-content-pages-still-render-no",
@@ -222,7 +223,7 @@
       "severity": "medium",
       "status": "open",
       "opened": "2026-09-07",
-      "next": "Add ReviewedByline + AuthorBioBox to ToolHub, CalculatorHub, GiftsClusterPage and the hub index routes — same unwrap already done for the uscis/h1b/green-card cluster routes."
+      "next": "Add ReviewedByline + AuthorBioBox to ToolHub, CalculatorHub, GiftsClusterPage and the hub index routes \u2014 same unwrap already done for the uscis/h1b/green-card cluster routes."
     },
     {
       "id": "revisit-i485-timeline-vs-i485-processing",
@@ -231,8 +232,8 @@
       "severity": "low",
       "status": "open",
       "opened": "2026-09-09",
-      "nextStep": "Pull GSC impressions for both URLs. Redirect /i485-timeline into /i485-processing-time ONLY if it is still under 50 Google impressions AND its Bing impressions (192 at the split, vs 61 for the processing page) have not grown — Bing currently favours the timeline 3:1 and holds the pair's only click.",
-      "detail": "The Sep 2026 consolidation pass deliberately did NOT redirect this pair: Google favours /i485-processing-time 852 impressions to 15, but Bing favours /i485-timeline 192 to 61 and holds the only click between them. They were de-duplicated instead — the timeline page now owns the ordered sequence (durations stripped) and the processing page owns durations (step list stripped).",
+      "nextStep": "Pull GSC impressions for both URLs. Redirect /i485-timeline into /i485-processing-time ONLY if it is still under 50 Google impressions AND its Bing impressions (192 at the split, vs 61 for the processing page) have not grown \u2014 Bing currently favours the timeline 3:1 and holds the pair's only click.",
+      "detail": "The Sep 2026 consolidation pass deliberately did NOT redirect this pair: Google favours /i485-processing-time 852 impressions to 15, but Bing favours /i485-timeline 192 to 61 and holds the only click between them. They were de-duplicated instead \u2014 the timeline page now owns the ordered sequence (durations stripped) and the processing page owns durations (step list stripped).",
       "evidence": "GSC + Bing Webmaster Tools, trailing 3 months as of Sep 2026."
     },
     {
@@ -246,7 +247,7 @@
     },
     {
       "id": "interview-waiver-rules-changed-4x-in",
-      "title": "Interview waiver rules changed 4x in 2 years — re-check DOS visas-news monthly and bump IW_VERIFIED",
+      "title": "Interview waiver rules changed 4x in 2 years \u2014 re-check DOS visas-news monthly and bump IW_VERIFIED",
       "area": "content",
       "severity": "high",
       "status": "open",
@@ -255,7 +256,7 @@
     },
     {
       "id": "forms-i-275-and-i-877",
-      "title": "Forms I-275 and I-877 could not be verified in 8 CFR 235 — deliberately omitted from the denied-entry page",
+      "title": "Forms I-275 and I-877 could not be verified in 8 CFR 235 \u2014 deliberately omitted from the denied-entry page",
       "area": "content",
       "severity": "low",
       "status": "open",
@@ -264,7 +265,7 @@
     },
     {
       "id": "avr-nationality-exclusion-depends-on-the",
-      "title": "AVR nationality exclusion depends on the live State Sponsors of Terrorism list — confirm before each review",
+      "title": "AVR nationality exclusion depends on the live State Sponsors of Terrorism list \u2014 confirm before each review",
       "area": "numbers",
       "severity": "low",
       "status": "open",
@@ -282,7 +283,7 @@
     },
     {
       "id": "market-json-has-no-whole-file",
-      "title": "market.json has no whole-file staleness guard — only per-item flags",
+      "title": "market.json has no whole-file staleness guard \u2014 only per-item flags",
       "area": "numbers",
       "severity": "high",
       "status": "done",
@@ -293,12 +294,12 @@
     },
     {
       "id": "homepage-nre-fd-rate-stamped-2026",
-      "title": "Homepage NRE FD rate stamped 2026-06-01 — three months old",
+      "title": "Homepage NRE FD rate stamped 2026-06-01 \u2014 three months old",
       "area": "numbers",
       "severity": "medium",
       "status": "open",
       "opened": "2026-09-02",
-      "detail": "data/homepage-config.json nreFd (7.25%, IndusInd, 1–2 yr) is manually maintained and shows an 'as of' date in HomeDataSidebar, so it ages visibly but never prompts anyone. Bank rate cards move more often than quarterly.",
+      "detail": "data/homepage-config.json nreFd (7.25%, IndusInd, 1\u20132 yr) is manually maintained and shows an 'as of' date in HomeDataSidebar, so it ages visibly but never prompts anyone. Bank rate cards move more often than quarterly.",
       "nextStep": "Re-check the top NRE FD rate and bump nreFd.updated."
     },
     {
@@ -308,28 +309,28 @@
       "severity": "medium",
       "status": "open",
       "opened": "2026-09-02",
-      "detail": "29 values in src/data/siteWideVerifiedNumbers.ts are staleness-checked. But 22 other files carry their own lastVerified/feeVerified stamps that no audit reads — including src/lib/premiumProcessing.ts (lastVerified 'June 2026'), estatePlanningData.ts, nvcData.ts, indiaVisaData.ts, goldCustomsData.ts, greenCardRenewalData.ts and governmentBenefitsData.ts. Their numbers can age indefinitely without any script noticing.",
+      "detail": "29 values in src/data/siteWideVerifiedNumbers.ts are staleness-checked. But 22 other files carry their own lastVerified/feeVerified stamps that no audit reads \u2014 including src/lib/premiumProcessing.ts (lastVerified 'June 2026'), estatePlanningData.ts, nvcData.ts, indiaVisaData.ts, goldCustomsData.ts, greenCardRenewalData.ts and governmentBenefitsData.ts. Their numbers can age indefinitely without any script noticing.",
       "nextStep": "Teach scripts/audit-monthly-numbers.ts to scan every src/data + src/lib file for a lastVerified stamp and report age, even where it cannot check the value.",
       "evidence": "grep -rln 'lastVerified\\|feeVerified' src/data/ src/lib/"
     },
     {
       "id": "hr-1-immigration-fees-inflation-adjust",
-      "title": "HR-1 immigration fees inflation-adjust every January 1 — next hit is 2027-01-01",
+      "title": "HR-1 immigration fees inflation-adjust every January 1 \u2014 next hit is 2027-01-01",
       "area": "numbers",
       "severity": "medium",
       "status": "open",
       "opened": "2026-09-02",
-      "detail": "Under HR-1 DHS must adjust certain immigration fees annually for inflation; the FY2026 round took effect 2026-01-01 and premium processing separately moved 2026-03-01 (I-129 and I-140 to $2,965, I-765/H-2B/R-1 to $1,780, I-539 to $2,075 — all currently correct on-site). This is a standing annual event, not a one-off, and it lands in the same January window as the estate-planning transfer-tax reset.",
+      "detail": "Under HR-1 DHS must adjust certain immigration fees annually for inflation; the FY2026 round took effect 2026-01-01 and premium processing separately moved 2026-03-01 (I-129 and I-140 to $2,965, I-765/H-2B/R-1 to $1,780, I-539 to $2,075 \u2014 all currently correct on-site). This is a standing annual event, not a one-off, and it lands in the same January window as the estate-planning transfer-tax reset.",
       "nextStep": "Add a January sweep: re-verify premiumProcessing.ts, the USCIS fee figures in siteWideVerifiedNumbers.ts and estatePlanningData.ts together."
     },
     {
       "id": "market-json-carries-three-values-that",
-      "title": "market.json carries three values that render nowhere — gold, nifty50, sp500",
+      "title": "market.json carries three values that render nowhere \u2014 gold, nifty50, sp500",
       "area": "other",
       "severity": "medium",
       "status": "open",
       "opened": "2026-09-02",
-      "detail": "marketTickerItem() in src/lib/market.ts is defined but never called, and tickerItems() is entirely immigration data (EB dates, processing times, bulletin countdown). Only the usdinr row reaches a reader, via usdInrCard() in HomeDataSidebar. marketSources and marketAsOfLabel are also unconsumed. This mattered on 2026-09-02: the 44-day-stale snapshot looked worse than it was because gold was 8.4% off — but no reader ever saw a gold price. Pinned by a test in src/lib/marketStaleness.test.ts so the day a ticker gains a market key, the staleness guard gets extended too.",
+      "detail": "marketTickerItem() in src/lib/market.ts is defined but never called, and tickerItems() is entirely immigration data (EB dates, processing times, bulletin countdown). Only the usdinr row reaches a reader, via usdInrCard() in HomeDataSidebar. marketSources and marketAsOfLabel are also unconsumed. This mattered on 2026-09-02: the 44-day-stale snapshot looked worse than it was because gold was 8.4% off \u2014 but no reader ever saw a gold price. Pinned by a test in src/lib/marketStaleness.test.ts so the day a ticker gains a market key, the staleness guard gets extended too.",
       "nextStep": "Decide: either surface gold/Nifty/S&P (the pipeline already fetches them) or drop them from the pipeline and delete marketTickerItem + marketSources."
     },
     {
@@ -344,12 +345,12 @@
     },
     {
       "id": "ingest-the-october-2026-visa-bulletin",
-      "title": "Ingest the October 2026 Visa Bulletin (FY2027 reset — expected release ~2026-09-12)",
+      "title": "Ingest the October 2026 Visa Bulletin (FY2027 reset \u2014 expected release ~2026-09-12)",
       "area": "other",
       "severity": "high",
       "status": "open",
       "opened": "2026-08-22",
-      "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions — EB-2 and EB-5 India should return from Unavailable on Oct 1"
+      "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions \u2014 EB-2 and EB-5 India should return from Unavailable on Oct 1"
     },
     {
       "id": "estate-planning-data-file-needs-its",
@@ -364,7 +365,7 @@
     },
     {
       "id": "indian-probate-change-s-213-omitted",
-      "title": "Indian probate change (s.213 omitted, Act 37 of 2025) — recheck how banks/registrars/societies actually apply it",
+      "title": "Indian probate change (s.213 omitted, Act 37 of 2025) \u2014 recheck how banks/registrars/societies actually apply it",
       "area": "content",
       "severity": "medium",
       "status": "open",
@@ -374,7 +375,7 @@
     },
     {
       "id": "ingest-september-2026-visa-bulletin-released",
-      "title": "Ingest September 2026 Visa Bulletin (released ~2026-08-22) — snapshot 2026-09.json + rebuild current/history/index",
+      "title": "Ingest September 2026 Visa Bulletin (released ~2026-08-22) \u2014 snapshot 2026-09.json + rebuild current/history/index",
       "area": "other",
       "severity": "high",
       "status": "done",
@@ -389,7 +390,7 @@
       "severity": "high",
       "status": "done",
       "opened": "2026-08-21",
-      "detail": "Found by building the internal link graph from 904 rendered pages in .next/server/app, counting only links inside <main> (header, footer and breadcrumbs excluded). All three confirmed 404 on production, not build artifacts: (1) /press links to /h1b-sponsors with anchor 'See the sponsor finder' — /h1b-sponsors is only a dynamic [socSlug]/[state] parent and has no page of its own; the real tool is /tools/h1b-sponsor-finder. (2) /uscis has TWO prominent cards linking to /uscis/notices ('USCIS Notice Decoder' and 'I received a USCIS notice') — that route does not exist; the live decoder is /tools/uscis-notice-decoder. (3) /tools/oci-eligibility-checker links to /tools/oci-document-checklist ('Document Checklist Generator'), which 404s; the uncommitted OCI work in the tree appears to be removing that tool, so this needs to be fixed or deleted alongside it. Note check-links.js cannot catch these — hrefs are built dynamically from data files, so a literal grep on href misses them.",
+      "detail": "Found by building the internal link graph from 904 rendered pages in .next/server/app, counting only links inside <main> (header, footer and breadcrumbs excluded). All three confirmed 404 on production, not build artifacts: (1) /press links to /h1b-sponsors with anchor 'See the sponsor finder' \u2014 /h1b-sponsors is only a dynamic [socSlug]/[state] parent and has no page of its own; the real tool is /tools/h1b-sponsor-finder. (2) /uscis has TWO prominent cards linking to /uscis/notices ('USCIS Notice Decoder' and 'I received a USCIS notice') \u2014 that route does not exist; the live decoder is /tools/uscis-notice-decoder. (3) /tools/oci-eligibility-checker links to /tools/oci-document-checklist ('Document Checklist Generator'), which 404s; the uncommitted OCI work in the tree appears to be removing that tool, so this needs to be fixed or deleted alongside it. Note check-links.js cannot catch these \u2014 hrefs are built dynamically from data files, so a literal grep on href misses them.",
       "nextStep": "Point /press at /tools/h1b-sponsor-finder, repoint the two /uscis notice cards at /tools/uscis-notice-decoder, and resolve the OCI checklist link (fix or remove with the tool removal)",
       "evidence": "curl -s -o /dev/null -w '%{http_code}' on each target",
       "resolved": "2026-08-22"
@@ -401,7 +402,7 @@
       "severity": "medium",
       "status": "open",
       "opened": "2026-08-21",
-      "detail": "The only indexable URL on the site with zero in-content inbound links (measured inside <main>, excluding header/footer/breadcrumb chrome, across 904 rendered pages). It is reachable only from the footer. That matters more than a normal orphan because /resources is one of the site's largest equity distributors — it links out to 36 /articles/* pages, the single biggest source of inbound links for the article tree. A page that hands out 36 links while receiving none passes along almost nothing.",
+      "detail": "The only indexable URL on the site with zero in-content inbound links (measured inside <main>, excluding header/footer/breadcrumb chrome, across 904 rendered pages). It is reachable only from the footer. That matters more than a normal orphan because /resources is one of the site's largest equity distributors \u2014 it links out to 36 /articles/* pages, the single biggest source of inbound links for the article tree. A page that hands out 36 links while receiving none passes along almost nothing.",
       "nextStep": "Link /resources contextually from the article template, /topics and the relevant hub pages so it receives equity, not just distributes it"
     },
     {
@@ -411,8 +412,8 @@
       "severity": "medium",
       "status": "open",
       "opened": "2026-08-21",
-      "detail": "Each of the 11 /indian-population-in-<state> pages has exactly ONE in-content inbound link and ONE outbound internal link, and in both cases it is the /indian-population-in-usa hub. Sibling links per page: 11 pages have 1, the hub has 11 — meaning zero lateral state-to-state links. StatePopulationPage.tsx has no related/nearby module; it only links back to the hub (lines 123, 201, 214). This is pure spoke-and-hub with no mesh, and it is the best effort-to-return item on the list because all 11 pages render from that one shared template.",
-      "nextStep": "Add a 'Indian population in nearby states' module to src/components/StatePopulationPage.tsx — one template edit creates roughly 50 contextual links across all 11 pages"
+      "detail": "Each of the 11 /indian-population-in-<state> pages has exactly ONE in-content inbound link and ONE outbound internal link, and in both cases it is the /indian-population-in-usa hub. Sibling links per page: 11 pages have 1, the hub has 11 \u2014 meaning zero lateral state-to-state links. StatePopulationPage.tsx has no related/nearby module; it only links back to the hub (lines 123, 201, 214). This is pure spoke-and-hub with no mesh, and it is the best effort-to-return item on the list because all 11 pages render from that one shared template.",
+      "nextStep": "Add a 'Indian population in nearby states' module to src/components/StatePopulationPage.tsx \u2014 one template edit creates roughly 50 contextual links across all 11 pages"
     },
     {
       "id": "uscis-leaves-no-chaining",
@@ -441,28 +442,28 @@
       "severity": "low",
       "status": "open",
       "opened": "2026-08-21",
-      "detail": "Mostly the literal string 'Learn more'. Four point at the homepage (no anchor-text value at all). The rest waste the signal on real targets: /h1b, /green-card, /visa-bulletin, /uscis, /uscis/processing-times, /tools/h4-ead-navigator (x2), /tools/priority-date-checker, /tools/uscis-notice-decoder, /tools/h1b-transfer-risk-checklist, /tools/green-card-stage-finder, /tools/citizenship-checklist. Low priority — no page is harmed, the descriptive-anchor signal is simply left on the table.",
+      "detail": "Mostly the literal string 'Learn more'. Four point at the homepage (no anchor-text value at all). The rest waste the signal on real targets: /h1b, /green-card, /visa-bulletin, /uscis, /uscis/processing-times, /tools/h4-ead-navigator (x2), /tools/priority-date-checker, /tools/uscis-notice-decoder, /tools/h1b-transfer-risk-checklist, /tools/green-card-stage-finder, /tools/citizenship-checklist. Low priority \u2014 no page is harmed, the descriptive-anchor signal is simply left on the table.",
       "nextStep": "Replace 'Learn more' with the destination's topic; drop the four that point at the homepage"
     },
     {
       "id": "opt-denial-grace-period-no-primary",
-      "title": "OPT-denial grace period — RESOLVED against the USCIS Policy Manual",
+      "title": "OPT-denial grace period \u2014 RESOLVED against the USCIS Policy Manual",
       "area": "content",
       "severity": "medium",
       "status": "done",
       "opened": "2026-08-20",
-      "detail": "Resolved 2026-08-20. USCIS Policy Manual Vol.2 Pt.F Ch.5: an initial post-completion OPT denial leaves F-1 status expiring 60 days from the program end date or the denial date, WHICHEVER IS LATER — except where the denial was for failure to maintain status, in which case immediate departure is expected. A STEM extension denied after the OPT EAD expired ends status 60 days from the denial date. All three branches are now encoded in optDenialRules and rendered on the OPT calculator, with tests.",
+      "detail": "Resolved 2026-08-20. USCIS Policy Manual Vol.2 Pt.F Ch.5: an initial post-completion OPT denial leaves F-1 status expiring 60 days from the program end date or the denial date, WHICHEVER IS LATER \u2014 except where the denial was for failure to maintain status, in which case immediate departure is expected. A STEM extension denied after the OPT EAD expired ends status 60 days from the denial date. All three branches are now encoded in optDenialRules and rendered on the OPT calculator, with tests.",
       "resolved": "2026-08-20"
     },
     {
       "id": "proclamation-10973-lapses-2026-09-20",
-      "title": "Proclamation 10973 lapses 2026-09-20 unless extended — recheck the $100K H-1B fee framing",
+      "title": "Proclamation 10973 lapses 2026-09-20 unless extended \u2014 recheck the $100K H-1B fee framing",
       "area": "numbers",
       "severity": "medium",
       "status": "open",
       "opened": "2026-08-20",
-      "detail": "Proclamation 10973 was written as a 12-month measure scheduled to expire 2026-09-20 unless extended, renewed or superseded. Separately, the implementing policy was vacated 2026-06-08 and the First Circuit declined to reinstate it 2026-07-24, so it is not being collected. Do NOT simplify this to 'the fee expires on Sept 20' — expiry and vacatur are independent, and either could change first.",
-      "nextStep": "Recheck on/after 2026-09-21; update h1bProclamationFee.statusLine to reflect whichever ended it — expiry and vacatur are independent tracks, do not collapse them into 'the fee expired'"
+      "detail": "Proclamation 10973 was written as a 12-month measure scheduled to expire 2026-09-20 unless extended, renewed or superseded. Separately, the implementing policy was vacated 2026-06-08 and the First Circuit declined to reinstate it 2026-07-24, so it is not being collected. Do NOT simplify this to 'the fee expires on Sept 20' \u2014 expiry and vacatur are independent, and either could change first.",
+      "nextStep": "Recheck on/after 2026-09-21; update h1bProclamationFee.statusLine to reflect whichever ended it \u2014 expiry and vacatur are independent tracks, do not collapse them into 'the fee expired'"
     },
     {
       "id": "mobile-audit-education-gpa-calculator-overflows",
@@ -491,7 +492,7 @@
       "status": "done",
       "opened": "2026-08-18",
       "resolved": "2026-08-18",
-      "detail": "governmentBenefitsData.ts cited the USCIS Public Charge Resources page, which now 301s into /archive/. That matters more than a normal redirect because this cluster tracks a public charge rule taking effect 2026-09-18 — a reader following an archived link for a rule about to change is being pointed at superseded guidance. Policy Manual Part G was already cited alongside it, so the slot now points at the USCIS rescission notice, which independently confirms the Sept 18, 2026 date the cluster carries.",
+      "detail": "governmentBenefitsData.ts cited the USCIS Public Charge Resources page, which now 301s into /archive/. That matters more than a normal redirect because this cluster tracks a public charge rule taking effect 2026-09-18 \u2014 a reader following an archived link for a rule about to change is being pointed at superseded guidance. Policy Manual Part G was already cited alongside it, so the slot now points at the USCIS rescission notice, which independently confirms the Sept 18, 2026 date the cluster carries.",
       "nextStep": "Done.",
       "evidence": "src/data/governmentBenefitsData.ts"
     },
@@ -518,6 +519,191 @@
       "detail": "src/app/tools/page.tsx hardcoded '| NRI to USA' into its title while the layout template appended it again, producing a doubled suffix. It was the only page doing this, which is why the duplicate-title rule never caught it.",
       "nextStep": "Done.",
       "evidence": "src/app/tools/page.tsx"
+    },
+    {
+      "id": "ead-auto-extension-prose",
+      "title": "EAD cluster still explained the repealed 540-day auto-extension in the present tense",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "A DHS interim final rule (90 FR 48799) effective Oct 30, 2025 ended the automatic extension of work authorization for timely-filed I-765 renewals, and it is still in force as of Sep 2026 (APA suits pending, no injunction). eadProcessingData.ts had been updated and the tools were correct, but the page prose had not: /ead-renewal-gap's FAQs described 'currently up to 540 days' and 'documents your employer needs during the extension', and /ead-processing-time told readers USCIS had increased the extension to 540 days. Readers were being pointed at a cushion that no longer exists \u2014 the worst failure mode this cluster has, because acting on it means working without authorization.",
+      "nextStep": "Done. /ead-renewal-gap rebuilt around the repeal (before/after table, which cohort you are in, Form I-9 reality, E/L spouses authorised incident to status, rule status); /ead-processing-time FAQs and comparison rows corrected. Watch for a court restoring the extension \u2014 eadProcessingData.categories[].autoExtension is the flag to flip.",
+      "evidence": "src/data/eadProcessingData.ts \u00b7 federalregister.gov/documents/2025/10/30/2025-19702"
+    },
+    {
+      "id": "oci-reissue-rules-wrong",
+      "title": "OCI guide stated two re-issue rules that do not exist, and three fees were wrong",
+      "area": "numbers",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "Official consulate guidance (CGI San Francisco; MHA) is that exactly ONE change needs a paid re-issue \u2014 a new passport obtained after completing 20 years of age \u2014 and everything else, including each new passport up to age 20 and one after 50, is a FREE portal upload within three months. /oci/renewal and the /oci hub told readers to re-issue at 50 (no such requirement) and to re-issue on every minor passport renewal (it is an upload). The fee config was wrong the same way against the published VFS USA schedule: re-issue $275 (actually $25 under Miscellaneous Services), passport update $100 (actually $25, and free via the portal), PIO-to-OCI free (actually $100). Quoting $275 for a $25 service is an 11x overstatement on the cluster's most common question, and the Cost Calculator inherited it.",
+      "nextStep": "Done. Rules and fees corrected in src/lib/oci/config.ts, src/lib/ociGuides.ts, /oci and /oci/e-oci-card. The three-month upload deadline is now stated \u2014 it was missing entirely.",
+      "evidence": "cgisf.gov.in/page/oci-reissuance-clarification \u00b7 services.vfsglobal.com OCI fee schedule"
+    },
+    {
+      "id": "i140-premium-clock-reset",
+      "title": "I-140 premium page said an RFE 'pauses' the clock; it stops and resets",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "USCIS starts a NEW premium processing period when it receives the RFE or NOID response \u2014 days already run do not carry over. 'Pauses until you respond' implies the opposite and understates the cost of an RFE on a case someone paid $2,965 to accelerate. Also missing: that the period starts on receipt of a properly completed I-907 rather than on the I-140, that missing the deadline buys a fee refund rather than a decision, and that USCIS has suspended I-140 premium processing before.",
+      "nextStep": "Done \u2014 corrected and expanded on /i140-premium-processing, plus a section on what paying cannot fix (priority date, I-485 queue, approval odds, the PERM steps ahead of it).",
+      "evidence": "uscis.gov Form I-907 guidance \u00b7 src/app/i140-premium-processing/page.tsx"
+    },
+    {
+      "id": "i693-file-with-i485",
+      "title": "I-485 pages hedged on the medical-exam rule that has been settled since Dec 2024",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "Since Dec 2, 2024 USCIS requires Form I-693 to be submitted WITH Form I-485, or the I-485 may be rejected. /i485-documents-checklist said the timing rule 'can change, so confirm current guidance', and /i485-timeline told readers a missing I-693 was 'the most common avoidable cause of an RFE at stage 5' \u2014 but the consequence is now rejection at filing, which is materially worse: no receipt number, no pending application, and no concurrently filed EAD or Advance Parole either. The validity rule was also missing (signed on/after Nov 1, 2023 = no expiry, but per the Jun 11, 2025 policy update valid only for the application it was filed with).",
+      "nextStep": "Done. Both rules now stated with sources, in src/data/i485ProcessingData.ts (i693Rules) so the cluster shares one copy.",
+      "evidence": "uscis.gov newsroom alerts on I-693 requirement and validity"
+    },
+    {
+      "id": "advance-parole-emergency-path",
+      "title": "Advance Parole page had no emergency route, which is the question people arrive with",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "The page gave the 4\u20139 month queue and a travel warning. It did not mention emergency advance parole \u2014 the USCIS Contact Center to field-office appointment route that can produce a travel document in days \u2014 nor the published expedite criteria, nor what happens if the document lapses while you are abroad, nor the real trade-off for H-1B holders (re-entering on parole means you are a parolee, so the H-1B fallback if the I-485 is denied is what you are giving up).",
+      "nextStep": "Done. All four added; the H-1B section is deliberately hedged to the practitioner position and points at an attorney.",
+      "evidence": "uscis.gov/forms/filing-guidance/expedite-requests \u00b7 src/app/advance-parole-processing-time/page.tsx"
+    },
+    {
+      "id": "wage-pages-had-no-mechanics",
+      "title": "Prevailing-wage pages explained the concept but not the mechanics",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "/h1b-prevailing-wage (917 words) and /dol-wage-levels-explained (999 words) were the thinnest pages in the employment-GC clusters and omitted everything actionable: how to look up your own figure on the DOL FLAG wage search from the SOC code and worksite on your own LCA, the annual wage vintage that makes an old LCA figure legitimately lower than today's, the four permitted wage sources (OEWS, a CBA rate, a qualifying private survey, Davis-Bacon/SCA), what underpayment and unpaid benching actually mean, and the five-step level worksheet \u2014 including that supervisory duties add no point when supervision is customary for the occupation.",
+      "nextStep": "Done. Both pages now carry the mechanics.",
+      "evidence": "dol.gov ETA Prevailing Wage Determination Policy Guidance \u00b7 flag.dol.gov"
+    },
+    {
+      "id": "return-to-india-status-gap",
+      "title": "Return-to-India cluster covered every money question and no status question",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "The biggest uncovered gap found in this pass. Grepping src/ for I-407, 're-entry permit' or 'abandonment of permanent resident' returned a single passing mention in a forms list. A green-card holder who spends a year in India can lose the status that lets them return (abandonment turns on intent, not only a day count), and one who formally hands it back can trigger the US exit tax \u2014 long-term resident at 8 of the last 15 tax years, then the $2m net worth / indexed net-income-tax / five-year certification tests, Form 8854, $10,000 penalty. Both are irreversible and neither belonged to any retirement article beneath the hub.",
+      "nextStep": "Done. New section on /return-to-india, facts in src/data/returnToIndiaStatusData.ts with the indexed expatriation threshold carrying its tax year. Consider whether this deserves its own top-level page later \u2014 it is currently a hub section.",
+      "evidence": "uscis.gov travel-as-a-permanent-resident \u00b7 irs.gov/individuals/international-taxpayers/expatriation-tax"
+    },
+    {
+      "id": "money-hubs-were-link-lists",
+      "title": "The two MoneyHub pages and /send-money-to-india had no content of their own",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "/send-money-to-india (618 words), /india-property (870) and /return-to-india (957) were heroes, snapshots and card grids. /send-money-to-india cannot out-rank Wise or CompareRemit on rates and was not saying what they omit; the two MoneyHub pages were thinner than the articles beneath them.",
+      "nextStep": "Done. MoneyHubConfig gained an optional deepDive slot (reusable, renders ahead of the link lists). /send-money-to-india now owns direction (TCS belongs to money leaving India), account choice (NRE repatriable, NRO not) and recipient taxability (the Rs 50,000 figure is a threshold, not an allowance). /india-property gets a four-situation router rather than new depth, because its cluster already owns the depth.",
+      "evidence": "src/components/MoneyHub.tsx \u00b7 src/app/send-money-to-india/page.tsx"
+    },
+    {
+      "id": "ledger-add-flag-parsing",
+      "title": "ledger:add silently swallowed space-separated flags into the item title",
+      "area": "other",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-15",
+      "resolved": "2026-09-15",
+      "detail": "CLAUDE.md documents `npm run ledger:add -- \"...\" --area content --sev high`, but scripts/audit/ledger-add.js only matched --flag=value, so the documented invocation put '--area content --sev high --next ...' into the title and filed the item as other/medium. The one failure mode a capture-first tool cannot afford, since the whole intake rule depends on it.",
+      "nextStep": "Done \u2014 both forms parse now.",
+      "evidence": "scripts/audit/ledger-add.js"
+    },
+    {
+      "id": "nre-nro-article-thin",
+      "title": "The NRE vs NRO article is 648 words and two headings, and other pages now cite it as the authority",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "/articles/nre-nro-accounts-explained has exactly two H2s ('NRE vs NRO at a glance' and 'Choosing a transfer service') on what is the most consequential account decision an NRI makes \u2014 NRE balances are freely repatriable, NRO balances are not, and the choice is close to irreversible in practice. Three money-transfer articles and now the /send-money-to-india hub all route here for the detail, so it is load-bearing and thinner than its inbound links imply.",
+      "nextStep": "Deepen to match the cluster: taxability of interest in each (NRE interest exempt for non-residents vs NRO fully taxable with TDS), the repatriation cap and Form 15CA/15CB on NRO, joint-holding rules, what happens to each account when you return to India and become resident again, and converting a resident account on becoming an NRI (there is a separate article for that last one \u2014 link, do not duplicate).",
+      "evidence": "src/lib/articles.ts \u00b7 rendered word count 648"
+    },
+    {
+      "id": "legacy-articles-thin-tier",
+      "title": "~30 legacy /articles/* pages sit at 577-860 words with the same 5-10 heading skeleton",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "The original starter article set (first-apartment-lease-guide, roth-ira-vs-traditional-nri, build-us-credit-score-from-zero, index-funds-for-beginners-nri, renters-insurance-explained and so on) is uniformly thin against a content tree whose cluster pages now run 2,000-14,000 words. They are indexable. Individually none is a competitor gap; collectively they are the weakest tier on the site and they dilute the topical signal of the hubs that link to them.",
+      "nextStep": "Decide per topic rather than per page: consolidate a group into one deep guide with redirects (the credit trio, the insurance set), or deepen the two or three with real search demand and leave the rest as supporting pages. Do not bulk-expand all thirty \u2014 that is word count, not gap closure.",
+      "evidence": "rendered word counts from .next/server/app"
+    },
+    {
+      "id": "topics-legacy-thin-indexable",
+      "title": "/topics and 14 /topics/* pages are 144-615 words, indexable, and out of the sitemap",
+      "area": "meta",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "The legacy topic taxonomy (/topics/community at 144 words, /topics/stories 150, /topics/housing 184, up to /topics/taxes 615) is one H2 and a list of article cards each. They are not in any sitemap but nothing marks them noindex, which is the exact pattern the no-permutation-URLs rule calls out: sitemap omission does not stop indexing, noindex does. The hubs have long since superseded them as the entry points.",
+      "nextStep": "Pick one: noindex the set and keep them as internal navigation, or redirect each into the hub that replaced it. Either is defensible; leaving them indexable and thin is not.",
+      "evidence": "reports/route-inventory.json \u2014 status indexable, inSitemap false"
+    },
+    {
+      "id": "calculators-education-index-thin",
+      "title": "/calculators (476 words) and /education/articles (210) are thin and in the sitemap",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "Both are navigational indexes rather than answer pages, so low word count is not automatically wrong \u2014 but /calculators is the entry point for the whole calculator tree and carries no framing at all, and /education/articles at 210 words is the thinnest page in the sitemap.",
+      "nextStep": "Give /calculators a short 'which calculator for which decision' framing (the CalculatorHub pattern already exists for the leaf pages). For /education/articles, either fold it into /education or add real index framing.",
+      "evidence": "rendered word counts; reports/route-inventory.json"
+    },
+    {
+      "id": "employment-gc-satellites-remaining",
+      "title": "Four employment-GC satellite pages are still on the ~1,000-word template",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "This pass deepened /advance-parole-processing-time, /ead-renewal-gap, /i140-premium-processing, /i485-timeline, /i485-documents-checklist, /h1b-prevailing-wage and /dol-wage-levels-explained. Still on the thin template: /i140-processing-time (1,153 words), /pwd-processing-time (1,274), /h1b-perm-max-out-calculator (989) and /i485-timeline's sibling /eb2-eb3-priority-date-india (1,226). Their numbers are correct and centrally sourced; they are short on mechanics.",
+      "nextStep": "Same treatment as the pages above: one section of real mechanics each, sourced, no overlap with the sibling that owns the adjacent question.",
+      "evidence": "rendered word counts from .next/server/app"
+    },
+    {
+      "id": "semrush-units-exhausted",
+      "title": "Semrush API units are exhausted, so the gap analysis ran on live SERPs only",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "Every Semrush MCP call returns 'not enough API units'. This pass therefore identified gaps from live SERPs and competitor page outlines, which finds missing subtopics and stale facts well but cannot see keyword-level demand \u2014 search volume, keyword difficulty, or which queries competitors rank for that we do not. The keyword-gap half of a competitor analysis is simply absent.",
+      "nextStep": "Top up units at semrush.com/mcp-access, then re-run the analysis for the demand side: organic_research on the competitors found here (visament, helpoci, manifestlaw, immigrationdirect, compareremit) and a keyword-gap pass per cluster.",
+      "evidence": "Semrush MCP domain_overview / organic_research"
+    },
+    {
+      "id": "clusters-audited-no-gap",
+      "title": "Record: clusters audited in Sep 2026 with no material gap found",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-15",
+      "detail": "So the next pass does not re-audit them. Checked against live SERPs and competitor outlines, already at or above competitor depth: green card renewal (the 36-month I-90 receipt extension and the ADIT stamp are both covered, which is what competitors lead with), visa bulletin, Trump Account (9 pages), US government benefits (14,000 words), divorce and immigration (11,300), India investments (10,000), power of attorney for India (11,300), life insurance and IUL, visitor insurance (7 pages plus 6 calculators), education/F-1 (10 pages), Indian passport renewal, NVC (5 pages), India visa (7 pages), gold limit, H-1B lottery cluster. The H-1B, USCIS and visa-bulletin hubs are structurally sound; their gap is the verified-numbers backlog already tracked under fast-answer-coverage, not missing subtopics.",
+      "nextStep": "Re-audit only when a rule changes or a SERP shifts. Treat this as a dated snapshot, not a permanent verdict.",
+      "evidence": "live SERP checks Sep 14-15, 2026"
     }
   ]
 }
