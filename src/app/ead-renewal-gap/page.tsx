@@ -364,7 +364,7 @@ export default function Page() {
                 lastVerified={RULE.verified}
                 sources={[
                   { label: "DHS interim final rule (90 FR 48799)", href: D.autoExtensionRuleUrl },
-                  { label: "USCIS automatic EAD extension", href: D.autoExtensionInfoUrl },
+                  { label: "USCIS M-274 §5.0 — automatic extensions (what an employer may accept)", href: D.autoExtensionInfoUrl },
                   { label: "USCIS Form I-765", href: "https://www.uscis.gov/i-765" },
                   { label: "USCIS Processing Times", href: D.uscisProcessingTimesUrl },
                 ]}

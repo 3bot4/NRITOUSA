@@ -10,6 +10,7 @@ import {
 } from "./permProcessingData";
 import { i140ProcessingData } from "./i140ProcessingData";
 import { i485StageEstimateRows } from "./i485ProcessingData";
+import { permTimelineRows, permPlanningSummary } from "./immigrationTimelineData";
 
 /**
  * The August 2026 reconciliation audit found the same figure written down in
@@ -28,6 +29,44 @@ describe("PERM figures agree across files", () => {
     expect(permNumbers.analystReview.value).toBe(permDerivedRanges.analystReview);
     expect(permNumbers.totalNoAudit.value).toBe(permDerivedRanges.totalNoAudit);
     expect(permNumbers.totalWithAudit.value).toBe(permDerivedRanges.totalWithAudit);
+  });
+
+  /**
+   * The Sep 2026 refresh of the DOL bands left THREE files disagreeing: the
+   * derived ranges said PWD was 3–6 months, immigrationTimelineData still said
+   * 5–7, and /pwd-processing-time's own Fast Answer snapshot said 5–7 as well —
+   * so the same site quoted two different answers to its own headline question.
+   * Both are derived now; these assertions are what stops them being re-typed.
+   */
+  it("the shared timeline table derives its PERM rows, not re-types them", () => {
+    const row = (step: string) => {
+      const r = permTimelineRows.find((x) => x.step === step);
+      expect(r, `timeline row "${step}" has been renamed or removed`).toBeDefined();
+      return r!.estimatedTime;
+    };
+    expect(row("Prevailing Wage Determination (PWD)")).toContain(permDerivedRanges.pwd);
+    expect(row("Recruitment + 30-day quiet period")).toContain(permDerivedRanges.recruitment);
+    expect(row("PERM analyst review")).toContain(permDerivedRanges.analystReview);
+    expect(row("PERM audit, if selected")).toContain(permDerivedRanges.audit);
+    expect(row("Total to PERM approval, no audit")).toContain(permDerivedRanges.totalNoAudit);
+    expect(row("Total to PERM approval, with audit")).toContain(permDerivedRanges.totalWithAudit);
+    expect(permPlanningSummary).toContain(permDerivedRanges.totalNoAudit);
+  });
+
+  it("no PERM band that moved is left quoted as a stale literal anywhere", () => {
+    // The specific values this pass replaced. If a refresh ever reinstates one
+    // of them it will be because the DOL queue really moved back, and the
+    // derived string will carry it — a hand-typed reappearance is a bug.
+    const retired = ["5–7 months", "12–16 months", "20–26 months", "4–8 months"];
+    const derived = Object.values(permDerivedRanges).join(" | ");
+    for (const r of retired) {
+      if (derived.includes(r)) continue; // legitimately current again
+      expect(
+        permTimelineRows.some((x) => x.estimatedTime.includes(r)) ||
+          permPlanningSummary.includes(r),
+        `"${r}" is a retired PERM band and must not be hard-coded`,
+      ).toBe(false);
+    }
   });
 
   it("the no-audit total really is the sum of its stages", () => {

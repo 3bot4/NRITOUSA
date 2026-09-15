@@ -71,8 +71,15 @@ export interface EadProcessingData {
 export const eadProcessingData: EadProcessingData = {
   lastUpdated: "2026-07-19",
   uscisProcessingTimesUrl: "https://egov.uscis.gov/processing-times/",
+  /**
+   * USCIS retired its own automatic-EAD-extension page after the Oct 30, 2025
+   * repeal — it now 404s, which ledger:links caught. The M-274 handbook section
+   * is the live authority and the better citation anyway: it states what an
+   * employer may actually accept for Form I-9, which is the question a reader
+   * of this cluster is really asking.
+   */
   autoExtensionInfoUrl:
-    "https://www.uscis.gov/working-in-the-united-states/automatic-employment-authorization-document-ead-extension",
+    "https://www.uscis.gov/i-9-central/form-i-9-resources/handbook-for-employers-m-274/50-automatic-extensions-of-employment-authorization-andor-employment-authorization-documents-eads-in",
   premiumInfoUrl:
     "https://www.uscis.gov/forms/all-forms/how-do-i-request-premium-processing",
   advanceParoleInfoUrl:

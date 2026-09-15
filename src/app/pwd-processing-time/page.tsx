@@ -22,6 +22,7 @@ import {
 } from "@/lib/permCluster";
 import {
   permProcessingData as D,
+  permDerivedRanges,
   permEstimateSourceLinks,
   PERM_ESTIMATE_VERIFIED,
   PERM_ESTIMATE_DISCLAIMER,
@@ -87,13 +88,13 @@ export default function Page() {
             <FastAnswerSnapshot
               title="How long does the PWD take?"
               answerLabel="Prevailing Wage Determination (planning range)"
-              answer="5–7 months"
+              answer={permDerivedRanges.pwd}
               accent="emerald"
               rows={[
-                { label: "PWD (this page)", value: "5–7 months", note: "First DOL step; gates everything after.", highlight: true },
-                { label: "Recruitment + quiet period", value: "2–3 months", note: "After PWD is issued." },
-                { label: "PERM analyst review", value: "12–16 months", note: "No premium processing." },
-                { label: "Total to PERM (no audit)", value: "~20–26 months", note: "PWD → certified, planning range." },
+                { label: "PWD (this page)", value: permDerivedRanges.pwd, note: "First DOL step; gates everything after.", highlight: true },
+                { label: "Recruitment + quiet period", value: permDerivedRanges.recruitment, note: "After PWD is issued." },
+                { label: "PERM analyst review", value: permDerivedRanges.analystReview, note: "No premium processing." },
+                { label: "Total to PERM (no audit)", value: `~${permDerivedRanges.totalNoAudit}`, note: "PWD → certified, planning range." },
               ]}
               badges={["Planning range", "Official queue on DOL FLAG"]}
               lastVerified={PERM_ESTIMATE_VERIFIED}

@@ -5,11 +5,19 @@
  *   /i485-processing-time
  *   /nvc-case-status
  *
+ * The PERM rows are DERIVED from permProcessingData's planning constants via
+ * permDerivedRanges — never hand-typed. They used to be literals here and in
+ * pwd-processing-time's own snapshot, and a Sep 2026 refresh of the DOL bands
+ * left three files disagreeing (5–7 vs 3–6 months for PWD on the same site).
+ * verifiedNumbers.consistency.test.ts now holds them together.
+ *
  * These are GENERAL PLANNING RANGES only — not guarantees, not legal advice.
  * Timelines vary by case, agency workload, category, country, documents, RFE,
  * interview, and case-specific facts. Update the rows monthly against the
  * official sources in `timelineSourceLinks` and bump TIMELINE_LAST_UPDATED*.
  */
+
+import { permDerivedRanges } from "@/data/permProcessingData";
 
 export interface TimelineRow {
   step: string;
@@ -49,13 +57,13 @@ export const TIMELINE_DISCLAIMER =
 export const permTimelineRows: TimelineRow[] = [
   {
     step: "Prevailing Wage Determination (PWD)",
-    estimatedTime: "About 5–7 months",
+    estimatedTime: `About ${permDerivedRanges.pwd}`,
     fasterPath: "No premium processing",
     whatToCheck: "DOL PWD processing queue",
   },
   {
     step: "Recruitment + 30-day quiet period",
-    estimatedTime: "About 2–3 months",
+    estimatedTime: `About ${permDerivedRanges.recruitment}`,
     fasterPath: "No shortcut; employer must follow PERM recruitment rules",
     whatToCheck: "Recruitment start/end date and attorney readiness",
   },
@@ -67,26 +75,26 @@ export const permTimelineRows: TimelineRow[] = [
   },
   {
     step: "PERM analyst review",
-    estimatedTime: "About 12–16 months, depending on current DOL queue",
+    estimatedTime: `About ${permDerivedRanges.analystReview}, depending on current DOL queue`,
     fasterPath: "No premium processing",
     whatToCheck: "DOL analyst review priority date",
   },
   {
     step: "PERM audit, if selected",
-    estimatedTime: "Can add 6–12+ months",
+    estimatedTime: `Can add ${permDerivedRanges.audit}`,
     fasterPath: "No premium processing",
     whatToCheck: "DOL audit review queue and attorney response timing",
   },
   {
     step: "Total to PERM approval, no audit",
-    estimatedTime: "Planning range: about 20–26 months",
+    estimatedTime: `Planning range: about ${permDerivedRanges.totalNoAudit}`,
     fasterPath: "No direct premium processing for PERM",
     whatToCheck: "PWD date, recruitment timing, PERM filing date, and DOL queue",
     highlight: true,
   },
   {
     step: "Total to PERM approval, with audit",
-    estimatedTime: "Could be 26–36+ months",
+    estimatedTime: `Could be ${permDerivedRanges.totalWithAudit}`,
     fasterPath: "No direct premium processing for PERM",
     whatToCheck: "Audit notice date, response date, and DOL audit queue",
     highlight: true,
@@ -108,7 +116,7 @@ export const permTimelineRows: TimelineRow[] = [
 export const permTimelineBadges = ["No premium processing", "Audit adds time", "Check DOL monthly"];
 
 export const permPlanningSummary =
-  "For many employer-sponsored EB-2 and EB-3 cases, a no-audit PERM path can easily take around 20–26 months from PWD filing to PERM approval. If the case is audited, the timeline can become much longer. After PERM approval, the employer usually files I-140, and Indian applicants may still need to wait for Visa Bulletin movement before I-485 approval.";
+  `For many employer-sponsored EB-2 and EB-3 cases, a no-audit PERM path can easily take around ${permDerivedRanges.totalNoAudit} from PWD filing to PERM approval. If the case is audited, the timeline can become much longer. After PERM approval, the employer usually files I-140, and Indian applicants may still need to wait for Visa Bulletin movement before I-485 approval.`;
 
 export const permSourceNote =
   "Planning ranges should be checked against official DOL FLAG processing times and USCIS processing times. Update this table monthly when agency data changes.";
