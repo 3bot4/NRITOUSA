@@ -31,12 +31,12 @@
       "title": "PWD planning band (4\u20138 months) now runs ahead of DOL's own queue",
       "area": "numbers",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-08-18",
       "detail": "permProcessingData.ts plans prevailing-wage determinations at 4\u20138 months. DOL FLAG's receipt months imply faster: OEWS PERM cases filed April 2026 were being processed as of 30 June (~2\u20133 months), non-OEWS March 2026 (~3\u20134). The stored receipt months match DOL exactly, so the underlying data is right \u2014 it is the derived band whose floor sits above observed reality. Defensible as a buffer while DOL's PWD table is itself seven weeks stale, but it is the one figure where we tell readers to expect worse than they will likely get. Resolved 2026-09-15: refreshed against the FLAG dashboard as of Aug 31, 2026 \u2014 PWD is at May 2026 receipts for both wage sources and the published PERM average is 336 days, so the bands moved to 3\u20136 (PWD) and 10\u201314 (analyst review) months, with the derived totals following. siteWideVerifiedNumbers was updated in step and verifiedNumbers.consistency.test.ts held the two files together.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Re-check flag.dol.gov/processingtimes when DOL refreshes the PWD table; if the receipt months hold, drop pwdPlanningMonthsLow to 3.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Re-check flag.dol.gov/processingtimes when DOL refreshes the PWD table; if the receipt months hold, drop pwdPlanningMonthsLow to 3.",
       "evidence": "src/data/permProcessingData.ts",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "meta-title-length",
@@ -191,12 +191,12 @@
       "title": "Duration-of-status final rule was blocked nationwide before it took effect",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-08-20",
       "detail": "DHS's final rule ending D/S (91 Fed. Reg. 44976, July 17, 2026) was due to take effect September 15, 2026. On September 14, 2026 Judge F. Dennis Saylor IV postponed its effective date NATIONWIDE under APA 5 U.S.C. 705 and barred DHS/ICE from implementing it (Presidents Alliance on Higher Education and Immigration v. DHS, No. 1:26-cv-13799-FDS, D. Mass., Doc. 50). The rule never came into force; duration of status and the 60-day F-1 grace period remain operative. Critically, the court POSTPONED rather than vacated \u2014 vacatur under 706 was denied without prejudice \u2014 so the rule survives with its start date suspended. The cluster is updated accordingly: status 'blocked', 60 days kept as the modelled default, the 30-day figure marked dormant, and the proposed fixed-admission calculator logic and I-94 admission-type question NOT activated.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build; mark resolved after merge to main and confirmation on the live page and its JSON-LD. Then see the dated monitoring item for what to watch next.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build; verified live on 2026-09-15 against www.nritousa.com, page and JSON-LD. Then see the dated monitoring item for what to watch next.",
       "evidence": "src/data/studentClusterData.ts \u00b7 presidentsalliance.org/wp-content/uploads/2026/09/9.14.26-opinion-in-DS-case.pdf",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "homepage-market-ticker-ran-44-days",
@@ -528,108 +528,108 @@
       "title": "EAD cluster still explained the repealed 540-day auto-extension in the present tense",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "A DHS interim final rule (90 FR 48799) effective Oct 30, 2025 ended the automatic extension of work authorization for timely-filed I-765 renewals, and it is still in force as of Sep 2026 (APA suits pending, no injunction). eadProcessingData.ts had been updated and the tools were correct, but the page prose had not: /ead-renewal-gap's FAQs described 'currently up to 540 days' and 'documents your employer needs during the extension', and /ead-processing-time told readers USCIS had increased the extension to 540 days. Readers were being pointed at a cushion that no longer exists \u2014 the worst failure mode this cluster has, because acting on it means working without authorization.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. /ead-renewal-gap rebuilt around the repeal (before/after table, which cohort you are in, Form I-9 reality, E/L spouses authorised incident to status, rule status); /ead-processing-time FAQs and comparison rows corrected. Watch for a court restoring the extension \u2014 eadProcessingData.categories[].autoExtension is the flag to flip.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. /ead-renewal-gap rebuilt around the repeal (before/after table, which cohort you are in, Form I-9 reality, E/L spouses authorised incident to status, rule status); /ead-processing-time FAQs and comparison rows corrected. Watch for a court restoring the extension \u2014 eadProcessingData.categories[].autoExtension is the flag to flip.",
       "evidence": "src/data/eadProcessingData.ts \u00b7 federalregister.gov/documents/2025/10/30/2025-19702",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "oci-reissue-rules-wrong",
       "title": "OCI guide stated two re-issue rules that do not exist, and three fees were wrong",
       "area": "numbers",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "Official consulate guidance (CGI San Francisco; MHA) is that exactly ONE change needs a paid re-issue \u2014 a new passport obtained after completing 20 years of age \u2014 and everything else, including each new passport up to age 20 and one after 50, is a FREE portal upload within three months. /oci/renewal and the /oci hub told readers to re-issue at 50 (no such requirement) and to re-issue on every minor passport renewal (it is an upload). The fee config was wrong the same way against the published VFS USA schedule: re-issue $275 (actually $25 under Miscellaneous Services), passport update $100 (actually $25, and free via the portal), PIO-to-OCI free (actually $100). Quoting $275 for a $25 service is an 11x overstatement on the cluster's most common question, and the Cost Calculator inherited it.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. Rules and fees corrected in src/lib/oci/config.ts, src/lib/ociGuides.ts, /oci and /oci/e-oci-card. The three-month upload deadline is now stated \u2014 it was missing entirely.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. Rules and fees corrected in src/lib/oci/config.ts, src/lib/ociGuides.ts, /oci and /oci/e-oci-card. The three-month upload deadline is now stated \u2014 it was missing entirely.",
       "evidence": "cgisf.gov.in/page/oci-reissuance-clarification \u00b7 services.vfsglobal.com OCI fee schedule",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "i140-premium-clock-reset",
       "title": "I-140 premium page said an RFE 'pauses' the clock; it stops and resets",
       "area": "content",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "USCIS starts a NEW premium processing period when it receives the RFE or NOID response \u2014 days already run do not carry over. 'Pauses until you respond' implies the opposite and understates the cost of an RFE on a case someone paid $2,965 to accelerate. Also missing: that the period starts on receipt of a properly completed I-907 rather than on the I-140, that missing the deadline buys a fee refund rather than a decision, and that USCIS has suspended I-140 premium processing before.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done \u2014 corrected and expanded on /i140-premium-processing, plus a section on what paying cannot fix (priority date, I-485 queue, approval odds, the PERM steps ahead of it).",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done \u2014 corrected and expanded on /i140-premium-processing, plus a section on what paying cannot fix (priority date, I-485 queue, approval odds, the PERM steps ahead of it).",
       "evidence": "uscis.gov Form I-907 guidance \u00b7 src/app/i140-premium-processing/page.tsx",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "i693-file-with-i485",
       "title": "I-485 pages hedged on the medical-exam rule that has been settled since Dec 2024",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "Since Dec 2, 2024 USCIS requires Form I-693 to be submitted WITH Form I-485, or the I-485 may be rejected. /i485-documents-checklist said the timing rule 'can change, so confirm current guidance', and /i485-timeline told readers a missing I-693 was 'the most common avoidable cause of an RFE at stage 5' \u2014 but the consequence is now rejection at filing, which is materially worse: no receipt number, no pending application, and no concurrently filed EAD or Advance Parole either. The validity rule was also missing (signed on/after Nov 1, 2023 = no expiry, but per the Jun 11, 2025 policy update valid only for the application it was filed with).",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. Both rules now stated with sources, in src/data/i485ProcessingData.ts (i693Rules) so the cluster shares one copy.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. Both rules now stated with sources, in src/data/i485ProcessingData.ts (i693Rules) so the cluster shares one copy.",
       "evidence": "uscis.gov newsroom alerts on I-693 requirement and validity",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "advance-parole-emergency-path",
       "title": "Advance Parole page had no emergency route, which is the question people arrive with",
       "area": "content",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "The page gave the 4\u20139 month queue and a travel warning. It did not mention emergency advance parole \u2014 the USCIS Contact Center to field-office appointment route that can produce a travel document in days \u2014 nor the published expedite criteria, nor what happens if the document lapses while you are abroad, nor the real trade-off for H-1B holders (re-entering on parole means you are a parolee, so the H-1B fallback if the I-485 is denied is what you are giving up).",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. All four added; the H-1B section is deliberately hedged to the practitioner position and points at an attorney.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. All four added; the H-1B section is deliberately hedged to the practitioner position and points at an attorney.",
       "evidence": "uscis.gov/forms/filing-guidance/expedite-requests \u00b7 src/app/advance-parole-processing-time/page.tsx",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "wage-pages-had-no-mechanics",
       "title": "Prevailing-wage pages explained the concept but not the mechanics",
       "area": "content",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "/h1b-prevailing-wage (917 words) and /dol-wage-levels-explained (999 words) were the thinnest pages in the employment-GC clusters and omitted everything actionable: how to look up your own figure on the DOL FLAG wage search from the SOC code and worksite on your own LCA, the annual wage vintage that makes an old LCA figure legitimately lower than today's, the four permitted wage sources (OEWS, a CBA rate, a qualifying private survey, Davis-Bacon/SCA), what underpayment and unpaid benching actually mean, and the five-step level worksheet \u2014 including that supervisory duties add no point when supervision is customary for the occupation.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. Both pages now carry the mechanics.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. Both pages now carry the mechanics.",
       "evidence": "dol.gov ETA Prevailing Wage Determination Policy Guidance \u00b7 flag.dol.gov",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "return-to-india-status-gap",
       "title": "Return-to-India cluster covered every money question and no status question",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "The biggest uncovered gap found in this pass. Grepping src/ for I-407, 're-entry permit' or 'abandonment of permanent resident' returned a single passing mention in a forms list. A green-card holder who spends a year in India can lose the status that lets them return (abandonment turns on intent, not only a day count), and one who formally hands it back can trigger the US exit tax \u2014 long-term resident at 8 of the last 15 tax years, then the $2m net worth / indexed net-income-tax / five-year certification tests, Form 8854, $10,000 penalty. Both are irreversible and neither belonged to any retirement article beneath the hub.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. New section on /return-to-india, facts in src/data/returnToIndiaStatusData.ts with the indexed expatriation threshold carrying its tax year. Consider whether this deserves its own top-level page later \u2014 it is currently a hub section.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. New section on /return-to-india, facts in src/data/returnToIndiaStatusData.ts with the indexed expatriation threshold carrying its tax year. Consider whether this deserves its own top-level page later \u2014 it is currently a hub section.",
       "evidence": "uscis.gov travel-as-a-permanent-resident \u00b7 irs.gov/individuals/international-taxpayers/expatriation-tax",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "money-hubs-were-link-lists",
       "title": "The two MoneyHub pages and /send-money-to-india had no content of their own",
       "area": "content",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "/send-money-to-india (618 words), /india-property (870) and /return-to-india (957) were heroes, snapshots and card grids. /send-money-to-india cannot out-rank Wise or CompareRemit on rates and was not saying what they omit; the two MoneyHub pages were thinner than the articles beneath them.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done. MoneyHubConfig gained an optional deepDive slot (reusable, renders ahead of the link lists). /send-money-to-india now owns direction (TCS belongs to money leaving India), account choice (NRE repatriable, NRO not) and recipient taxability (the Rs 50,000 figure is a threshold, not an allowance). /india-property gets a four-situation router rather than new depth, because its cluster already owns the depth.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done. MoneyHubConfig gained an optional deepDive slot (reusable, renders ahead of the link lists). /send-money-to-india now owns direction (TCS belongs to money leaving India), account choice (NRE repatriable, NRO not) and recipient taxability (the Rs 50,000 figure is a threshold, not an allowance). /india-property gets a four-situation router rather than new depth, because its cluster already owns the depth.",
       "evidence": "src/components/MoneyHub.tsx \u00b7 src/app/send-money-to-india/page.tsx",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "ledger-add-flag-parsing",
       "title": "ledger:add silently swallowed space-separated flags into the item title",
       "area": "other",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
       "detail": "CLAUDE.md documents `npm run ledger:add -- \"...\" --area content --sev high`, but scripts/audit/ledger-add.js only matched --flag=value, so the documented invocation put '--area content --sev high --next ...' into the title and filed the item as other/medium. The one failure mode a capture-first tool cannot afford, since the whole intake rule depends on it.",
-      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Mark resolved only after it is merged to main and confirmed on the live page AND in its JSON-LD. Done \u2014 both forms parse now.",
+      "nextStep": "Fix is committed on gap-analysis-2026-09 and verified in the rendered build. Done \u2014 both forms parse now.",
       "evidence": "scripts/audit/ledger-add.js",
-      "branch": "gap-analysis-2026-09"
+      "resolved": "2026-09-15"
     },
     {
       "id": "nre-nro-article-thin",
@@ -724,24 +724,24 @@
       "title": "STEM OPT was wrongly grouped with initial OPT as having no automatic extension",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "The EAD cluster's comparison table, FAQs and calculator treated both F-1 categories identically \u2014 'no automatic extension, wait for the card'. That is correct for initial and post-completion OPT, category (c)(3)(B), and wrong for a timely-filed STEM OPT extension, category (c)(3)(C), which carries up to 180 days of continued employment authorisation while pending under 8 CFR 274a.12(b)(6)(iv). That provision is untouched by the October 30, 2025 interim final rule, because the IFR amended only 8 CFR 274a.13 \u2014 re-heading (d) and adding (e) \u2014 and (e) itself excepts anything 'otherwise provided by law'. The calculator's branch order meant a STEM filer was told they could not work when they lawfully could, which is the most damaging thing this cluster could say.",
-      "nextStep": "Fixed on gap-analysis-2026-09: categories now carry pendingAuthDays + pendingAuthCite, the calculator branches on them BEFORE the repeal branch, the table separates (c)(3)(B) from (c)(3)(C), and a misclassification now fails the build rather than a test. Mark resolved after merge and live verification.",
-      "evidence": "src/data/eadProcessingData.test.ts \u00b7 8 CFR 274a.12(b)(6)(iv)"
+      "nextStep": "Fixed on gap-analysis-2026-09: categories now carry pendingAuthDays + pendingAuthCite, the calculator branches on them BEFORE the repeal branch, the table separates (c)(3)(B) from (c)(3)(C), and a misclassification now fails the build rather than a test. Verified live on 2026-09-15: rendered page and FAQPage JSON-LD both carry the correction.",
+      "evidence": "src/data/eadProcessingData.test.ts \u00b7 8 CFR 274a.12(b)(6)(iv)",
+      "resolved": "2026-09-15"
     },
     {
       "id": "oci-fee-lost-damaged-understated",
       "title": "Lost/damaged OCI re-issue was set to $25 when it is $100",
       "area": "numbers",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "A previous revision read the VFS one-pager's grouped 'OCI Miscellaneous Services $25' line as covering lost and damaged cards. It does not: the GoI OCI portal and the Embassy's OCI FAQ both put re-issue of a lost or damaged card at US$100 plus ICWF and the outsourcing agency's service charge, with a police report required for a loss and in-person verification of originals. The $25 figure understated it fourfold on the cluster's second most-asked question. Found by re-verifying against primary sources rather than by any audit \u2014 no script compares a fee against its source.",
-      "nextStep": "Corrected on gap-analysis-2026-09, with GOVERNMENT_FEES re-typed via `satisfies` so a removed key is a compile error rather than an undefined at runtime (which is how the previous edit slipped through). ociRules.test.ts pins every fee. Mark resolved after merge and live verification.",
-      "evidence": "src/lib/oci/ociRules.test.ts \u00b7 ociservices.gov.in/onlineOCI/miscFAQs"
+      "nextStep": "Corrected on gap-analysis-2026-09, with GOVERNMENT_FEES re-typed via `satisfies` so a removed key is a compile error rather than an undefined at runtime (which is how the previous edit slipped through). ociRules.test.ts pins every fee. Verified live on 2026-09-15: rendered page and FAQPage JSON-LD both carry the correction.",
+      "evidence": "src/lib/oci/ociRules.test.ts \u00b7 ociservices.gov.in/onlineOCI/miscFAQs",
+      "resolved": "2026-09-15"
     },
     {
       "id": "oci-mission-guidance-diverges",
@@ -759,48 +759,48 @@
       "title": "Fixed reporting thresholds were exposed to a January inflation sweep",
       "area": "numbers",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "estatePlanningData.ts carried a blanket instruction to re-verify every January because 'US transfer-tax figures reset each year'. True of the indexed amounts, false of the reporting thresholds \u2014 and dangerous in one direction, because a well-meaning sweep would 'update' figures that have no new value and invent numbers. The four that must never be bumped: the $60,000 Form 706-NA filing threshold (the IRS states expressly that it is not indexed for inflation), the $10,000 FBAR threshold, the Form 8938 thresholds, and the Form 3520 foreign-gift threshold and penalties.",
-      "nextStep": "Fixed on gap-analysis-2026-09: every figure now declares indexation as 'annual-inflation' or 'fixed-statutory', and estatePlanningData.test.ts pins each fixed value, requires the $60,000 note to say it is not indexed, and fails if a fixed threshold carries a year label or is reclassified. Mark resolved after merge.",
-      "evidence": "src/data/estatePlanningData.test.ts"
+      "nextStep": "Fixed on gap-analysis-2026-09: every figure now declares indexation as 'annual-inflation' or 'fixed-statutory', and estatePlanningData.test.ts pins each fixed value, requires the $60,000 note to say it is not indexed, and fails if a fixed threshold carries a year label or is reclassified. Verified live on 2026-09-15: rendered page and schema both carry the correction.",
+      "evidence": "src/data/estatePlanningData.test.ts",
+      "resolved": "2026-09-15"
     },
     {
       "id": "nre-nro-oversimplifications",
       "title": "NRE/NRO article over-stated the USD 1m cap and the 15CA/15CB requirement",
       "area": "content",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "Four over-simplifications, each materially wrong and each propagating because three sibling articles and the /send-money-to-india hub cite this page as the authority. (1) 'NRE interest is tax-free' \u2014 exempt in India only, and only while the holder meets the nonresident conditions. (2) 'NRO repatriation is capped at USD 1 million a year' \u2014 that is the remittance-of-assets facility for balances and other eligible assets; current income such as rent, dividends, interest and pension is freely repatriable net of tax and is not counted against it (RBI). (3) 'Forms 15CA and 15CB are both required every time' \u2014 Form 15CB is event-based, Form 15CA applies in one of four parts depending on the \u20b95 lakh threshold and taxability, and some remittances are outside 15CA entirely under Rule 37BB(3). (4) 'NRO TDS is 30%' \u2014 before surcharge and cess, before any DTAA position, and before any refund on filing.",
-      "nextStep": "Corrected on gap-analysis-2026-09 against RBI and Income Tax Department primary sources, with an Official sources section and nreNroArticle.test.ts asserting each qualification. Mark resolved after merge.",
-      "evidence": "src/lib/nreNroArticle.test.ts \u00b7 rbi.org.in \u00b7 incometaxindia.gov.in/w/rule-37bb"
+      "nextStep": "Corrected on gap-analysis-2026-09 against RBI and Income Tax Department primary sources, with an Official sources section and nreNroArticle.test.ts asserting each qualification. Verified live on 2026-09-15: rendered page and schema both carry the correction.",
+      "evidence": "src/lib/nreNroArticle.test.ts \u00b7 rbi.org.in \u00b7 incometaxindia.gov.in/w/rule-37bb",
+      "resolved": "2026-09-15"
     },
     {
       "id": "vb-october-2026-unsourced-estimate",
       "title": "Removed an unsourceable FY2026 EB-2 India issuance estimate",
       "area": "numbers",
       "severity": "medium",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "/visa-bulletin/october-2026-predictions stated that India 'in fact received an estimated ~9,300 EB-2 numbers' in FY2026, with no citation. That figure cannot be sourced: FY2026 does not end until September 30, 2026 and issuance totals come from the Department's annual Report of the Visa Office afterwards. The page also contradicted itself on the same event \u2014 'exhausted the category two months early' in the body against 'more than four months before year end' in the FAQ, for a May 22, 2026 announcement. Replaced with the derivable floor (7% of EB-2's 28.6% share of the 186,000 EB pool \u2248 3,700) plus an explicit statement of why the actual total is not yet publishable.",
       "nextStep": "When the FY2026 Report of the Visa Office publishes, add the actual EB-2 India issuance total with its citation. Until then the test blocks any 9,300 figure and any 'two months early' phrasing.",
-      "evidence": "src/lib/visaBulletinOctober2026.test.ts"
+      "evidence": "src/lib/visaBulletinOctober2026.test.ts",
+      "resolved": "2026-09-15"
     },
     {
       "id": "ledger-count-contradictions",
       "title": "Ledger contradicted itself on five headline counts",
       "area": "other",
       "severity": "high",
-      "status": "fixed-pending-deploy",
+      "status": "done",
       "opened": "2026-09-15",
-      "branch": "gap-analysis-2026-09",
       "detail": "Each count was stated twice \u2014 once in a generated tile or table and again hand-typed in an item's prose \u2014 and the two drifted the first time the audits re-ran: 79 vs 89 verified-number gaps, 223 vs 226 titles over 60, 63 vs 60 over 80, 152 vs 158 descriptions over 160, 34 vs 38 over 200. Nothing marked which half was stale, so a reader could not tell which to believe.",
       "nextStep": "Fixed on gap-analysis-2026-09: ledger.js builds one results object, item prose carries double-brace placeholders the renderer substitutes, an unknown or unavailable token throws rather than rendering literally, and every generated table reads the same object. The 60/160-character figures are now framed as house heuristics rather than Google limits, since Google truncates on pixel width and rewrites titles regardless. ledger.consistency.test.ts guards all of it.",
-      "evidence": "scripts/audit/ledger.consistency.test.ts"
+      "evidence": "scripts/audit/ledger.consistency.test.ts",
+      "resolved": "2026-09-15"
     }
   ]
 }

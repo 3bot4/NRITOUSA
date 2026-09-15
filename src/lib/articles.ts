@@ -8615,8 +8615,8 @@ Yes, if you are a U.S. person and your aggregate foreign account balances cross 
 | | NRE Account | NRO Account |
 |---|---|---|
 | Commonly used for | Parking US-to-India transfers | India-sourced income (rent, pension, dividends) |
-| Repatriable? | Yes, freely | Capped, with certification |
-| Interest tax in India | Exempt | Taxable, with TDS |
+| Repatriable? | Yes, freely | Current income: freely, net of tax. Balances and other assets: within the USD 1m per-year facility |
+| Interest tax in India | Exempt, subject to the nonresident conditions | Taxable, with TDS |
 | Interest tax in the US | **Taxable** — and no foreign tax credit, since India took nothing | Taxable, with a credit for the Indian tax |
 | Counts toward FBAR? | **Yes** | **Yes** |
 
