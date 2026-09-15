@@ -380,25 +380,57 @@ function WarnBox({ lines, keyId }: { lines: string[]; keyId: string }) {
  * Author with ✗-prefixed lines (left/avoid) and ✓-prefixed lines (right/do),
  * optional `left:` / `right:` heading directives.
  */
+/**
+ * Two-column comparison. Two authoring forms are supported:
+ *
+ *   ✓ / ✗ marked lines        → verdict form: ✗ lines fill the `left:` column
+ *                                (orange) and ✓ lines the `right:` one (green).
+ *   `left_items:` / `right_items:` sections
+ *                              → neutral form: the author is comparing two
+ *                                parties or options where neither side is the
+ *                                wrong answer, so both columns render in a
+ *                                neutral tone with a plain bullet.
+ *
+ * The neutral form was already in use in uscisFormsCluster and
+ * uscisLifePlanningCluster before it was supported, so the literal strings
+ * "left_items:" and "right_items:" rendered to readers as ✓ bullets and every
+ * item piled into one column across 7 live pages. Parsing it is the fix; the
+ * alternative was rewriting the content to fit the parser.
+ */
 function CompareBox({ lines, keyId }: { lines: string[]; keyId: string }) {
   const { directives, rest } = parseDirectives(lines);
   const bad: string[] = [];
   const good: string[] = [];
-  for (const raw of rest) {
-    const l = raw.trim();
-    if (!l) continue;
-    if (l.startsWith("✗") || /^x\s/i.test(l)) bad.push(l.replace(/^✗\s*|^x\s+/i, ""));
-    else if (l.startsWith("✓") || /^\+\s/.test(l))
-      good.push(l.replace(/^✓\s*|^\+\s+/, ""));
-    else good.push(stripBullet(l));
+
+  const sectioned = rest.some((l) => /^(left|right)_items:\s*$/.test(l.trim()));
+  if (sectioned) {
+    let bucket: string[] | null = null;
+    for (const raw of rest) {
+      const l = raw.trim();
+      if (!l) continue;
+      if (/^left_items:\s*$/.test(l)) { bucket = bad; continue; }
+      if (/^right_items:\s*$/.test(l)) { bucket = good; continue; }
+      (bucket ?? good).push(stripBullet(l).replace(/^[✓✗]\s*/, ""));
+    }
+  } else {
+    for (const raw of rest) {
+      const l = raw.trim();
+      if (!l) continue;
+      if (l.startsWith("✗") || /^x\s/i.test(l)) bad.push(l.replace(/^✗\s*|^x\s+/i, ""));
+      else if (l.startsWith("✓") || /^\+\s/.test(l))
+        good.push(l.replace(/^✓\s*|^\+\s+/, ""));
+      else good.push(stripBullet(l));
+    }
   }
+
   const col = (
     items: string[],
     side: "bad" | "good",
     heading: string
   ) => {
-    const cfg =
-      side === "good"
+    const cfg = sectioned
+      ? { bg: "#F8FAFC", border: "#94A3B8", label: "#475569", mark: "•" }
+      : side === "good"
         ? { bg: "#F0FDF4", border: "#16A34A", label: "#15803D", mark: "✓" }
         : { bg: "#FFF7ED", border: "#EA580C", label: "#C2410C", mark: "✗" };
     return (

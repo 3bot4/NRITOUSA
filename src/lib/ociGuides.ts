@@ -374,8 +374,8 @@ A new passport issued **after you turn 20** needs a one-time paid re-issue. Ever
 
 ## Re-issue or upload? The one distinction that matters
 :::compare
-left: Free portal upload
-right: Paid re-issue through VFS
+left: Needs a paid re-issue through VFS
+right: Free portal upload — no new card
 ✓ Each new passport issued up to age 20
 ✓ Once, after completing 50 years of age
 ✓ Upload the passport page plus a recent photo — no new card, no VFS submission, no government fee

@@ -8575,14 +8575,15 @@ FBAR applies to **U.S. persons** — a term with a specific legal meaning that i
 ## Do NRE and NRO accounts count for FBAR?
 Yes, if you are a U.S. person and your aggregate foreign account balances cross the FBAR threshold. Both account types are foreign financial accounts held at foreign institutions — exactly what FBAR is designed to capture. The FBAR threshold for NRE NRO accounts is the same as for any other foreign account: $10,000 aggregate peak during the year.
 
-:::compare
-left: NRE Account
-right: NRO Account
-✗ Principal is repatriable — still counts for FBAR
-✗ Interest is tax-free in India — still taxable in US and still reportable
-✓ Commonly used to park US-to-India transfers
-✓ Commonly used for India-sourced income (rent, pension, dividends)
-:::
+| | NRE Account | NRO Account |
+|---|---|---|
+| Commonly used for | Parking US-to-India transfers | India-sourced income (rent, pension, dividends) |
+| Repatriable? | Yes, freely | Capped, with certification |
+| Interest tax in India | Exempt | Taxable, with TDS |
+| Interest tax in the US | **Taxable** — and no foreign tax credit, since India took nothing | Taxable, with a credit for the Indian tax |
+| Counts toward FBAR? | **Yes** | **Yes** |
+
+Every difference in that table is an *Indian* tax or exchange-control difference. Not one of them changes the US reporting answer.
 
 The nature of the account — repatriable or not, tax-free or not in India — does not change the US reporting obligation. The test is simple: is it a foreign financial account you own or have signature authority over? If yes, it counts toward the FBAR threshold.
 
