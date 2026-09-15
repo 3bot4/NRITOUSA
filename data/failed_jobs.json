@@ -1,0 +1,10 @@
+[
+  {
+    "job": "daily-market",
+    "dataKey": "nifty50",
+    "label": "NIFTY 50",
+    "timestamp": "2026-09-02T09:04:13-04:00",
+    "error": "all sources failed → Stooq: HTTP 404 for https://stooq.com/q/l/?s=%5Ensei&f=sd2t2ohlcv&h&e=csv | Yahoo: HTTP 429 for https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?interval=1d&range=5d | Yahoo-relay: HTTP 403 for https://r.jina.ai/https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?interval=1d&range=5d",
+    "retainedStaleValue": 24334
+  }
+]
