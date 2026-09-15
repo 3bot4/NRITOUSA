@@ -224,7 +224,7 @@ export default function Page() {
             <div className="mx-auto max-w-3xl">
               <h2 className="text-xl font-bold text-ink-900">EAD by category</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                General planning ranges and automatic-extension eligibility by common category. Ranges are estimates — verify your exact category on USCIS.
+                General planning ranges and continued work authorization while an application is pending, by common category. Ranges are estimates — verify your exact category on USCIS.
               </p>
               <div className="mt-4 overflow-x-auto">
                 <table className="w-full text-left text-sm">
@@ -233,7 +233,7 @@ export default function Page() {
                       <th className="py-2 pr-3">Category</th>
                       <th className="py-2 pr-3">Code</th>
                       <th className="py-2 pr-3">Planning range</th>
-                      <th className="py-2">Auto-extension (filed on/after Oct 30, 2025)</th>
+                      <th className="py-2">Work authorization while pending (filed on/after Oct 30, 2025)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -243,11 +243,24 @@ export default function Page() {
                         <td className="py-2 pr-3 text-ink-500">{c.code}</td>
                         <td className="py-2 pr-3 text-ink-700">~{c.monthsLow}–{c.monthsHigh} mo</td>
                         <td className="py-2">
-                          <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">None</span>
-                          {c.autoExtensionPreRule && (
-                            <span className="mt-1 block text-xs text-ink-500">
-                              Up to {D.autoExtensionDays} days if received before Oct 30, 2025
-                            </span>
+                          {c.pendingAuthDays ? (
+                            <>
+                              <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
+                                Up to {c.pendingAuthDays} days
+                              </span>
+                              <span className="mt-1 block text-xs text-ink-500">
+                                on a timely filed STEM extension under {c.pendingAuthCite} — separate from the general § 274a.13(d) renewal extension
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">None</span>
+                              {c.autoExtensionPreRule && (
+                                <span className="mt-1 block text-xs text-ink-500">
+                                  Up to {D.autoExtensionDays} days if received before Oct 30, 2025
+                                </span>
+                              )}
+                            </>
                           )}
                         </td>
                       </tr>

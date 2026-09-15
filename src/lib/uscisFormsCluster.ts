@@ -178,10 +178,10 @@ const rawPages: FormsPageData[] = [
       "What is Form I-129? Your employer files I-129 to petition for your H1B, L1, O1, or TN work visa. Plain-English guide for Indian workers — what it covers, how long it takes, and what to check.",
     navLabel: "I-129 Work Visa Petition",
     excerpt:
-      "Form I-129 is the employer petition for nonimmigrant work visas including H1B, L1, O1, TN, and H4 EAD. Your employer files it — not you.",
+      "Form I-129 is the employer petition for specified nonimmigrant-worker classifications including H-1B, L-1 and O-1. Your employer files it — not you. H-4 employment authorization is not requested on Form I-129.",
     date: "2026-06-16",
     content: `:::summary
-**Form I-129** is the Petition for a Nonimmigrant Worker. Your **employer files it** — not you. It is used for H-1B, L-1, O-1, TN, H-4 EAD (as a co-filed I-539/I-765), and several other nonimmigrant work categories. You cannot sponsor yourself with an I-129.
+**Form I-129** is the employer petition used for specified nonimmigrant-worker classifications including **H-1B, L-1 and O-1**. Your **employer files it** — not you. Certain TN cases may also use I-129, although TN procedures differ by nationality and filing situation. **H-4 employment authorization is not requested on Form I-129.** You cannot sponsor yourself with an I-129.
 :::
 
 ## What I-129 is used for
@@ -194,6 +194,11 @@ title: Common I-129 visa categories for Indians
 - **O-1** — Extraordinary ability in sciences, arts, business, or athletics
 - **TN** — USMCA professionals (Canadians and Mexicans only — not available to Indians)
 - **H-2B** — Temporary non-agricultural workers
+:::
+
+:::warn
+title: H-4 employment authorization is not an I-129 benefit
+An eligible H-4 spouse requests employment authorization on **Form I-765**. An H-4 extension or change of status generally uses **Form I-539** and may sometimes be filed together with the H-1B principal's Form I-129. Filing those forms in one package does not make H-4 employment authorization something you apply for on the I-129 — each form is adjudicated separately.
 :::
 
 ## Who files it

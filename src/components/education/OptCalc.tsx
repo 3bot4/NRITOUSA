@@ -439,13 +439,17 @@ export default function OptCalc() {
           {optDenialRules.stemExtension} {optDenialRules.caveat}
         </p>
         <p className="mt-2 text-xs leading-relaxed text-ink-400">
-          These {optRules.gracePeriodDays}-day figures are for a student
-          admitted for duration of status. A DHS final rule effective September
-          15, 2026 replaces that with a dated admission plus{" "}
-          {optRules.gracePeriodDaysUnderFixedAdmission} days; students already
-          admitted for D/S generally keep{" "}
-          {optRules.gracePeriodDays} days until they travel abroad and re-enter.
-          The rule is being challenged in court. Check your latest I-94.
+          These {optRules.gracePeriodDays}-day figures apply under the
+          duration-of-status framework currently in force. A DHS final rule
+          would have replaced D/S with dated admission periods and generally
+          reduced the grace period to{" "}
+          {optRules.gracePeriodDaysUnderFixedAdmission} days beginning
+          September 15, 2026, but a federal court postponed the rule&rsquo;s
+          effective date nationwide on September 14, 2026. The rule therefore
+          did not take effect. D/S and the existing{" "}
+          {optRules.gracePeriodDays}-day grace period remain operative while the
+          litigation continues. Check the latest court and agency position and
+          your most recent I-94.
         </p>
         <p className="mt-2 text-xs leading-relaxed text-ink-400">
           {unlawfulPresence.whyItMatters}{" "}

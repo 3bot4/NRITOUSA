@@ -219,10 +219,14 @@ export default function SendMoneyToIndiaPage() {
                     <tr className="border-b border-ink-900/5">
                       <td className="px-4 py-3 font-medium text-ink-800">India → USA</td>
                       <td className="px-4 py-3 text-ink-600">
-                        This is the hard direction. TCS, the LRS annual cap, an
-                        NRO repatriation limit, and a chartered-accountant
-                        certificate on Forms 15CA/15CB before the bank will send
-                        anything.
+                        This is the harder direction. TCS and the LRS annual cap
+                        apply to residents remitting abroad. For an NRO account,
+                        current income is generally freely remittable after tax,
+                        while balances and other eligible assets use the USD1
+                        million per financial year facility. Forms 15CA/15CB are
+                        transaction-dependent under Rule 37BB — a chartered
+                        accountant&rsquo;s certificate on Form 15CB is not needed
+                        for every remittance.
                       </td>
                       <td className="px-4 py-3">
                         <Link href="/articles/tcs-india-remittance-tax" className="font-semibold text-brand-600 underline">
@@ -237,9 +241,10 @@ export default function SendMoneyToIndiaPage() {
                     <tr>
                       <td className="px-4 py-3 font-medium text-ink-800">Property or inheritance proceeds</td>
                       <td className="px-4 py-3 text-ink-600">
-                        Its own regime: TDS withheld by the buyer, proceeds
-                        forced into an NRO account, then the repatriation cap and
-                        certification on top.
+                        Its own regime: TDS withheld by the buyer, proceeds paid
+                        into an NRO account, then the USD1 million per financial
+                        year remittance-of-assets facility and any certification
+                        Rule 37BB requires.
                       </td>
                       <td className="px-4 py-3">
                         <Link href="/nri-selling-property-in-india-tds" className="font-semibold text-brand-600 underline">
@@ -267,8 +272,13 @@ export default function SendMoneyToIndiaPage() {
                 can get that money back out again. Funds in an{" "}
                 <strong>NRE</strong> account are freely repatriable — they can
                 return to the US without a cap or a certificate. Funds in an{" "}
-                <strong>NRO</strong> account are not: repatriating them runs into an
-                annual limit and the Form 15CA/15CB process, every time.
+                <strong>NRO</strong> account follow two different rules. Current
+                income such as rent, dividends, interest and pension is generally
+                freely remittable after applicable Indian taxes. NRO balances,
+                sale proceeds and other eligible assets generally fall within the
+                USD1 million per financial year remittance-of-assets facility.
+                Forms 15CA/15CB are transaction-dependent under Rule 37BB; both
+                forms are not required for every remittance.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5">

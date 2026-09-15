@@ -2474,7 +2474,7 @@ Capture the full match, choose Roth if you're early-career, and don't touch it u
 :::info
 title: NRE vs NRO in one line
 - **NRE** — money earned abroad; fully repatriable, interest tax-free in India
-- **NRO** — income earned in India (rent, dividends); interest taxable, repatriation capped
+- **NRO** — India-source income; interest taxable; current income generally freely remittable after tax, while balances and other eligible assets use the USD1 million facility
 :::
 
 ## NRE vs NRO at a glance
