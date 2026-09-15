@@ -202,7 +202,7 @@ export const EAD_OPT_VS_STEM_SUMMARY =
  * affected categories above is the flag to flip.
  */
 export const eadAutoExtensionRuleStatus = {
-  verified: "2026-09-14",
+  verified: "2026-09-15",
   inForce: true,
   form: "Interim final rule — effective on publication, comments taken afterwards",
   litigation:

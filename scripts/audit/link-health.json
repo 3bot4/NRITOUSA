@@ -2,23 +2,15 @@
   "generatedAt": "2026-09-15",
   "note": "Outbound citation health. 'unverifiable' = host blocks automated requests (see BOT_BLOCKED_HOSTS); those must be checked by hand and are NOT failures.",
   "counts": {
-    "checked": 563,
-    "ok": 499,
-    "dead": 8,
-    "unreachable": 5,
+    "checked": 568,
+    "ok": 508,
+    "dead": 7,
+    "unreachable": 1,
     "forbidden": 8,
-    "unverifiable": 41,
+    "unverifiable": 42,
     "redirected": 36
   },
   "dead": [
-    {
-      "url": "https://my.uscis.gov/findadoctor",
-      "status": 404,
-      "title": "USCIS - myUSCIS Error Page",
-      "pages": [
-        "/i485-documents-checklist"
-      ]
-    },
     {
       "url": "https://www.indiacode.nic.in/bitstream/123456789/20095/1/the_indian_stamp_act,_1899.pdf",
       "status": 404,
@@ -82,35 +74,6 @@
       "error": "UND_ERR_CONNECT_TIMEOUT",
       "pages": [
         "/articles/estate-planning-usa-india-assets"
-      ]
-    },
-    {
-      "url": "https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx",
-      "error": "ENOTFOUND",
-      "pages": [
-        "/tools/form-10f-generator"
-      ]
-    },
-    {
-      "url": "https://www.cbic.gov.in/",
-      "error": "ENOTFOUND",
-      "pages": [
-        "/gold-limit-usa-to-india",
-        "/shipping-household-goods-to-india"
-      ]
-    },
-    {
-      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/customs_clearance_of_passengers_at_a_glance.pdf",
-      "error": "ENOTFOUND",
-      "pages": [
-        "/gold-limit-usa-to-india"
-      ]
-    },
-    {
-      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/transfer_of_residence_rules-at_a_glance.pdf",
-      "error": "ENOTFOUND",
-      "pages": [
-        "/shipping-household-goods-to-india"
       ]
     }
   ],

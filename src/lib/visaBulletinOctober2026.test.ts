@@ -131,11 +131,38 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
     expect(FLAT).toMatch(/has not simply shrunk/);
   });
 
-  it("frames ~2,802 as a floor and gives India's actual FY2026 EB-2 number", () => {
+  it("frames the per-country share as a floor, not a quota", () => {
     expect(FLAT).toContain("~2,802");
     expect(FLAT).toMatch(/a floor, not what it actually receives/);
-    expect(FLAT).toMatch(/~9,300<\/span> EB-2 numbers/);
     expect(FLAT).toMatch(/otherwise unused/);
+  });
+
+  it("does not assert an FY2026 India EB-2 issuance total that cannot yet exist", () => {
+    // FY2026 ends September 30, 2026 and issuance totals come from the annual
+    // Report of the Visa Office afterwards, so any specific "India received
+    // N numbers" figure for FY2026 is unsourceable. An earlier revision
+    // asserted ~9,300 with no citation and called it what India "in fact
+    // received".
+    expect(FLAT).not.toMatch(/9,300/);
+    expect(FLAT).not.toMatch(/in fact received an estimated/i);
+    // What replaced it has to be derivable and say why the total is withheld.
+    expect(FLAT).toMatch(/28\.6%/);
+    expect(FLAT).toMatch(/Report of the Visa Office/);
+    expect(FLAT).toMatch(/not yet publishable|not yet published/i);
+  });
+
+  it("states the exhaustion date consistently across the page", () => {
+    // The page once said "two months early" in the body and "more than four
+    // months" in the FAQ for the same May 22 announcement.
+    expect(FLAT).not.toMatch(/exhausted the category two months early/);
+    const mentions = [...FLAT.matchAll(/exhaust\w*[^.]{0,80}/gi)].map((m) => m[0]);
+    for (const mention of mentions) {
+      if (/month/i.test(mention)) {
+        expect(mention, `inconsistent exhaustion timing: ${mention}`).toMatch(
+          /more than four months/i,
+        );
+      }
+    }
   });
 
   it("attributes the Cato backlog figures correctly", () => {

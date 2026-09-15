@@ -367,7 +367,7 @@ This page is an educational guide. OCI and VFS requirements can change by applic
     hook: "Free and online within three months — and the three-month deadline nobody prompts you about.",
     icon: "🔄",
     date: "2026-06-27",
-    updated: "2026-09-14",
+    updated: "2026-09-15",
     content: `Keeping an OCI current after a new passport is far less work than most people are told — and it is now, in the ordinary case, **free and entirely online**. What it is *not* is uniform: the Government of India portal and the US consulates do not currently describe the obligation in the same terms, so the safe approach is to do the thing they all agree on, then check your own mission.
 
 :::good

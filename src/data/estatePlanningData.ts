@@ -185,12 +185,32 @@ export interface EstateNumber {
   anyTimeValue?: string;
   /** Short caveat rendered wherever the number is rendered. */
   note?: string;
+  /**
+   * Whether this figure moves with annual inflation indexing, or is fixed until
+   * Congress or the agency changes it.
+   *
+   * This distinction is the whole point of the field. A blanket "re-verify
+   * every January" instruction is right for the indexed amounts and actively
+   * misleading for the fixed ones: it invites a well-meaning January sweep to
+   * "update" the $60,000 Form 706-NA threshold, the $10,000 FBAR threshold or
+   * the Form 8938 and Form 3520 thresholds to numbers that do not exist. The
+   * IRS states expressly that the $60,000 nonresident-noncitizen filing
+   * threshold is NOT indexed for inflation.
+   *
+   *   "annual-inflation" — a new figure is published each year, normally in the
+   *                        autumn revenue procedure for the following year.
+   *   "fixed-statutory"  — unchanged since enactment; only legislation or
+   *                        administrative action moves it, and a year label
+   *                        would wrongly imply otherwise.
+   */
+  indexation: "annual-inflation" | "fixed-statutory";
 }
 
 /**
- * US transfer-tax and reporting figures. Every one of these is inflation-
- * indexed or statutory and must be labelled by year in the copy — none of them
- * is permanent.
+ * US transfer-tax and reporting figures, each tagged with whether it is
+ * inflation-indexed or fixed. Read `indexation` before touching any value:
+ * the indexed ones are expected to change every January, and the fixed ones
+ * must NOT be bumped as part of a January sweep.
  */
 export const usEstateNumbers = {
   basicExclusion2026: {
@@ -198,6 +218,7 @@ export const usEstateNumbers = {
     value: "$15,000,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsInflation2026",
+    indexation: "annual-inflation",
     note: "Per person, for decedents dying in 2026. Up from $13,990,000 in 2025. Indexed annually — not a permanent figure.",
   },
   basicExclusion2025: {
@@ -205,6 +226,7 @@ export const usEstateNumbers = {
     value: "$13,990,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsEstateTax",
+    indexation: "annual-inflation",
     note: "Shown only to make the year-by-year indexing visible.",
   },
   nrncFilingThreshold: {
@@ -213,6 +235,7 @@ export const usEstateNumbers = {
     value: "$60,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsEstateNonresident",
+    indexation: "fixed-statutory",
     note: "Not indexed for inflation. Applies to a decedent neither domiciled in nor a citizen of the US. A treaty can change the result — but the US has no estate or gift tax treaty with India.",
   },
   annualGiftExclusion: {
@@ -220,6 +243,7 @@ export const usEstateNumbers = {
     value: "$19,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsInflation2026",
+    indexation: "annual-inflation",
     note: "Per donee, per year. Unchanged from 2025.",
   },
   noncitizenSpouseGiftExclusion: {
@@ -227,6 +251,7 @@ export const usEstateNumbers = {
     value: "$194,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsInflation2026",
+    indexation: "annual-inflation",
     note: "A GIFT-tax rule during life. It is not the estate-tax marital deduction and does not substitute for one.",
   },
   fbarThreshold: {
@@ -234,6 +259,7 @@ export const usEstateNumbers = {
     value: "$10,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsFbar",
+    indexation: "fixed-statutory",
     note: "Aggregate maximum value of ALL foreign financial accounts at any point in the calendar year — not a per-account test.",
   },
   form8938DomesticSingle: {
@@ -241,6 +267,7 @@ export const usEstateNumbers = {
     value: "$50,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsFatcaThresholds",
+    indexation: "fixed-statutory",
     anyTimeValue: "$75,000",
     note: "On the last day of the tax year, or more than $75,000 at any time during the year.",
   },
@@ -249,6 +276,7 @@ export const usEstateNumbers = {
     value: "$100,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsFatcaThresholds",
+    indexation: "fixed-statutory",
     anyTimeValue: "$150,000",
     note: "On the last day of the tax year, or more than $150,000 at any time during the year.",
   },
@@ -257,6 +285,7 @@ export const usEstateNumbers = {
     value: "$200,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsFatcaThresholds",
+    indexation: "fixed-statutory",
     anyTimeValue: "$300,000",
     note: "On the last day of the tax year, or more than $300,000 at any time during the year.",
   },
@@ -265,6 +294,7 @@ export const usEstateNumbers = {
     value: "$400,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsFatcaThresholds",
+    indexation: "fixed-statutory",
     anyTimeValue: "$600,000",
     note: "On the last day of the tax year, or more than $600,000 at any time during the year.",
   },
@@ -274,6 +304,7 @@ export const usEstateNumbers = {
     value: "$100,000",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsForeignGifts",
+    indexation: "fixed-statutory",
     note: "Aggregate during the tax year. Above it, each gift over $5,000 must be identified separately. Reporting only — a bequest is not itself US income.",
   },
   form3520PenaltyCap: {
@@ -281,6 +312,7 @@ export const usEstateNumbers = {
     value: "25%",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsForeignGifts",
+    indexation: "fixed-statutory",
     note: "Maximum total penalty under IRC 6039F(c) for an unreported foreign gift or bequest.",
   },
   form3520Penalty: {
@@ -288,11 +320,14 @@ export const usEstateNumbers = {
     value: "5%",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "irsForeignGifts",
+    indexation: "fixed-statutory",
     note: "Of the value of the gift or bequest for each month unreported, capped at 25%, absent reasonable cause (IRC §6039F(c)).",
   },
 } as const satisfies Record<string, EstateNumber>;
 
 /* ────────────────────────── Verified India figures ─────────────────────── */
+/* All fixed-statutory: these move when Parliament or the RBI acts, never on an
+ * annual inflation cycle, so they are out of scope for any January sweep. */
 
 export const indiaEstateNumbers = {
   remittanceOfAssetsLimit: {
@@ -300,6 +335,7 @@ export const indiaEstateNumbers = {
     value: "USD 1 million",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "rbiRemittanceFaq",
+    indexation: "fixed-statutory",
     note: "Per Indian financial year, out of NRO balances or sale proceeds of assets INCLUDING assets acquired by inheritance or legacy — subject to documentary evidence, applicable Indian taxes and the authorised dealer's review. Amounts beyond this route need RBI approval.",
   },
   willWitnessesMinimum: {
@@ -307,6 +343,7 @@ export const indiaEstateNumbers = {
     value: "2",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "indianSuccessionAct",
+    indexation: "fixed-statutory",
     note: "Section 63(c), Indian Succession Act 1925: two OR MORE. Each signs in the testator's presence, but the section expressly says it is not necessary that more than one witness be present at the same time.",
   },
   form15cbThreshold: {
@@ -314,6 +351,7 @@ export const indiaEstateNumbers = {
     value: "₹5 lakh",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "form15caFaq",
+    indexation: "fixed-statutory",
     note: "Event-based, not universal. Applicability turns on the nature of the payment and the rules in Rule 37BB — several categories are exempt entirely.",
   },
   bankNomineesMax: {
@@ -321,6 +359,7 @@ export const indiaEstateNumbers = {
     value: "4",
     lastVerified: ESTATE_DATA_VERIFIED,
     source: "bankingLawsAmendment2025",
+    indexation: "fixed-statutory",
     note: "Banking Laws (Amendment) Act 2025, in force 1 November 2025 — simultaneous (with shares) or successive for deposits; successive only for lockers and safe custody. Confirm your bank's current form.",
   },
 } as const satisfies Record<string, EstateNumber>;

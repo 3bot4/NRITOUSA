@@ -69,7 +69,9 @@ export const i693Rules = {
     "https://www.uscis.gov/newsroom/alerts/uscis-now-requires-report-of-immigration-medical-examination-and-vaccination-record-to-be-submitted",
   validityAlertUrl:
     "https://www.uscis.gov/newsroom/alerts/uscis-changes-validity-period-for-any-form-i-693-signed-on-or-after-nov-1-2023",
-  civilSurgeonLocatorUrl: "https://my.uscis.gov/findadoctor",
+  // my.uscis.gov/findadoctor 404s (caught by ledger:links); the tools path is
+  // the live locator.
+  civilSurgeonLocatorUrl: "https://www.uscis.gov/tools/find-a-civil-surgeon",
 } as const;
 
 /** I-485 document checklist groups (educational; USCIS instructions govern). */

@@ -189,6 +189,97 @@ function linkHealth() {
 const SEVERITY_ORDER = { high: 0, medium: 1, low: 2 };
 
 /*
+ * ONE results object, and every headline count comes out of it.
+ *
+ * The ledger used to state each count twice: once in a generated tile or table,
+ * and again hand-typed inside an item's title or detail. They drifted the first
+ * time the audits re-ran, and the page contradicted itself — 79 vs 89 verified
+ * number gaps, 223 vs 226 titles over 60, 63 vs 60 over 80, 152 vs 158
+ * descriptions over 160, 34 vs 38 over 200. A reader could not tell which half
+ * to believe, and neither half was marked as the stale one.
+ *
+ * So item prose may no longer contain a count. It writes `{{titleOver60}}` and
+ * the renderer substitutes the computed value. An unknown token throws rather
+ * than rendering literally, because a silent `{{typo}}` on a published page is
+ * worse than a failed build.
+ */
+function buildResults({ meta, links, seo, nums, intent, ledger }) {
+  return {
+    // metadata lengths — editorial heuristics, not hard limits (see below)
+    titleMedian: meta.titleMedian,
+    titleMax: meta.titleMax,
+    titleOver60: meta.titleOver60,
+    titleOver80: meta.titleOver80,
+    descMedian: meta.descMedian,
+    descMax: meta.descMax,
+    descOver160: meta.descOver160,
+    descOver200: meta.descOver200,
+    indexablePages: meta.indexable,
+    // verified-numbers coverage
+    fastAnswerGap: intent ? intent.incompleteHigh : null,
+    intentHigh: intent ? intent.high : null,
+    intentMatching: intent ? intent.matching : null,
+    intentScanned: intent ? intent.scanned : null,
+    // tracked numbers
+    numbersStale: nums ? nums.stale : null,
+    numbersDrifted: nums ? nums.drift : null,
+    numbersTotal: nums ? nums.tracked : null,
+    // links
+    linksDead: links ? links.counts.dead : null,
+    linksChecked: links ? links.counts.checked : null,
+    linksUnverifiable: links ? links.counts.unverifiable : null,
+    linksRedirected: links ? links.counts.redirected : null,
+    // seo audit
+    seoErrors: seo ? seo.errors : null,
+    seoWarnings: seo ? seo.warnings : null,
+    renderedPages: seo ? seo.pageCount : null,
+    // backlog
+    openItems: ledger.items.filter((i) => i.status !== "done").length,
+    resolvedItems: ledger.items.filter((i) => i.status === "done").length,
+  };
+}
+
+/*
+ * 60 characters for a title and 160 for a description are EDITORIAL
+ * HEURISTICS, not limits Google enforces. Google truncates on pixel width in a
+ * device- and query-dependent way, and it rewrites titles regardless of length.
+ * The ledger reports them as house style so nobody treats a 64-character title
+ * as a defect.
+ */
+const HEURISTIC_NOTE =
+  "House heuristics, not Google limits: Google truncates on pixel width, which varies by device and query, and rewrites titles regardless of length. Treat these as editorial targets — the reason to trim is to control which words survive, not to satisfy a character count.";
+
+function interpolate(str, results) {
+  if (typeof str !== "string") return str;
+  return str.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    if (!(key in results)) {
+      throw new Error(
+        `Ledger item references {{${key}}}, which is not in the results object. ` +
+          `Available: ${Object.keys(results).join(", ")}`,
+      );
+    }
+    const v = results[key];
+    if (v === null || v === undefined) {
+      throw new Error(
+        `Ledger item references {{${key}}}, but that audit did not run. ` +
+          `Run the full refresh (build → seo:audit → ledger:links → ledger).`,
+      );
+    }
+    return typeof v === "number" ? v.toLocaleString("en-US") : String(v);
+  });
+}
+
+function resolveItems(items, results) {
+  return items.map((it) => ({
+    ...it,
+    title: interpolate(it.title, results),
+    detail: interpolate(it.detail, results),
+    nextStep: interpolate(it.nextStep, results),
+    next: interpolate(it.next, results),
+  }));
+}
+
+/*
  * Items arrive two ways: fully worked up after an audit, or as a one-line note
  * captured the moment someone spots something. Both have to render — a capture
  * step that demands five fields is a capture step people stop using. Anything
@@ -200,9 +291,30 @@ function renderItems(items) {
     .map((it) => {
       const sev = it.severity || "unsorted";
       const done = it.status === "done";
-      const tone = done ? "good" : sev === "high" ? "dead" : sev === "medium" ? "watch" : "";
+      const tone = done
+        ? "good"
+        : it.status === "fixed-pending-deploy"
+          ? "watch"
+          : sev === "high"
+            ? "dead"
+            : sev === "medium"
+              ? "watch"
+              : "";
       const chip = tone || "info";
-      const label = done ? `Resolved ${it.resolved || ""}`.trim() : it.status === "ongoing" ? "Ongoing" : sev;
+      /*
+       * "done" means the correction is LIVE. A fix that exists only on a
+       * branch is `fixed-pending-deploy`: real work, not yet true of the site.
+       * Collapsing the two is how the ledger came to claim the OCI rules were
+       * corrected while production still served the old ones.
+       */
+      const pending = it.status === "fixed-pending-deploy";
+      const label = done
+        ? `Resolved ${it.resolved || ""}`.trim()
+        : pending
+          ? `Fixed on ${it.branch || "a branch"} — not yet live`
+          : it.status === "ongoing"
+            ? "Ongoing"
+            : sev;
       const bits = [];
       if (it.detail) bits.push(`<p>${esc(it.detail)}</p>`);
       if (!done && (it.nextStep || it.evidence)) {
@@ -239,10 +351,18 @@ function main() {
     process.exit(2);
   }
 
-  const open = ledger.items
-    .filter((i) => i.status !== "done")
-    .sort((a, b) => (SEVERITY_ORDER[a.severity] ?? 9) - (SEVERITY_ORDER[b.severity] ?? 9));
-  const done = ledger.items.filter((i) => i.status === "done");
+  const results = buildResults({ meta, links, seo, nums, intent, ledger });
+
+  const open = resolveItems(
+    ledger.items
+      .filter((i) => i.status !== "done")
+      .sort((a, b) => (SEVERITY_ORDER[a.severity] ?? 9) - (SEVERITY_ORDER[b.severity] ?? 9)),
+    results,
+  );
+  const done = resolveItems(
+    ledger.items.filter((i) => i.status === "done"),
+    results,
+  );
 
   const deadCount = links ? links.counts.dead : null;
   const linkTile = links
@@ -322,7 +442,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius
   <div class="tile"><div class="k">Metadata</div><div class="v ${seo && seo.errors === 0 ? "ok" : "bad"}">${seo ? `${seo.errors} err` : "n/a"}</div><div class="n">${seo ? `${seo.warnings} warnings across ${seo.pageCount} rendered pages.` : "Run <code>npm run seo:audit</code>."}</div></div>
   <div class="tile"><div class="k">Outbound links</div><div class="v ${linkTile.cls}">${linkTile.v}</div><div class="n">${linkTile.n}</div></div>
   <div class="tile"><div class="k">Tracked numbers</div><div class="v ${nums.stale === 0 && nums.drift === 0 ? "ok" : "mid"}">${nums.stale + nums.drift === 0 ? "current" : `${nums.stale + nums.drift} flagged`}</div><div class="n">${nums.tracked} values · ${nums.stale} stale · ${nums.drift} drifted${nums.atCliff ? ` · ${nums.atCliff} at the ${nums.staleDays}-day cliff` : ""}.</div></div>
-  <div class="tile"><div class="k">Fast Answer gap</div><div class="v ${intent.incompleteHigh === 0 ? "ok" : "mid"}">${intent.incompleteHigh}</div><div class="n">High-intent pages missing a Fast Answer block, source link or verified stamp.</div></div>
+  <div class="tile"><div class="k">Fast Answer gap</div><div class="v ${results.fastAnswerGap === 0 ? "ok" : "mid"}">${results.fastAnswerGap}</div><div class="n">High-intent pages missing a Fast Answer block, source link or verified stamp.</div></div>
 </div>
 
 <section>
@@ -333,7 +453,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius
 
 <section>
   <h2><span class="num">02</span> Content coverage</h2>
-  <p class="lede">${intent.matching} of ${intent.scanned} routes answer a question with a number in it. Those are the pages where a missing stamp or citation actually costs trust — ${intent.high} are High priority, and ${intent.incompleteHigh} of those are still missing at least one affordance.</p>
+  <p class="lede">${results.intentMatching} of ${results.intentScanned} routes answer a question with a number in it. Those are the pages where a missing stamp or citation actually costs trust — ${results.intentHigh} are High priority, and ${results.fastAnswerGap} of those are still missing at least one affordance.</p>
   <div class="scroll">
     <table>
       <thead><tr><th>Page</th><th>Gaps</th></tr></thead>
@@ -347,13 +467,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius
 
 <section>
   <h2><span class="num">03</span> Metadata health</h2>
-  <p class="lede">The <code>seo:audit</code> rules cover presence and uniqueness. These are the dimensions they do not: how much of each tag actually survives to the SERP.</p>
+  <p class="lede">The <code>seo:audit</code> rules cover presence and uniqueness. These are the dimensions they do not: how long each tag runs, measured against house style.</p>
+  <div class="note"><p>${esc(HEURISTIC_NOTE)}</p></div>
   <div class="scroll">
     <table>
       <thead><tr><th>Tag</th><th>Median</th><th>Max</th><th>Over limit</th></tr></thead>
       <tbody>
-        <tr><td>Title</td><td class="num">${meta.titleMedian}</td><td class="num">${meta.titleMax}</td><td class="num">${meta.titleOver60} &gt;60 · ${meta.titleOver80} &gt;80</td></tr>
-        <tr><td>Description</td><td class="num">${meta.descMedian}</td><td class="num">${meta.descMax}</td><td class="num">${meta.descOver160} &gt;160 · ${meta.descOver200} &gt;200</td></tr>
+        <tr><td>Title</td><td class="num">${results.titleMedian}</td><td class="num">${results.titleMax}</td><td class="num">${results.titleOver60} &gt;60 · ${results.titleOver80} &gt;80</td></tr>
+        <tr><td>Description</td><td class="num">${results.descMedian}</td><td class="num">${results.descMax}</td><td class="num">${results.descOver160} &gt;160 · ${results.descOver200} &gt;200</td></tr>
         <tr><td>Missing og:image</td><td class="num">${meta.missingOgImage}</td><td class="num">—</td><td class="num">${meta.missingOgImage === 0 ? "full coverage" : "gap"}</td></tr>
         <tr><td>Missing twitter:card</td><td class="num">${meta.missingTwCard}</td><td class="num">—</td><td class="num">${meta.missingTwCard === 0 ? "full coverage" : "gap"}</td></tr>
         <tr><td>Doubled brand suffix</td><td class="num">${meta.doubledBrand.length}</td><td class="num">—</td><td class="num">${meta.doubledBrand.length === 0 ? "clean" : esc(meta.doubledBrand.join(", "))}</td></tr>
@@ -412,7 +533,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius
   console.log(`SEO findings    ${seo ? `${seo.errors} errors · ${seo.warnings} warnings` : "not run"}`);
   console.log(`Outbound links  ${links ? `${links.counts.dead} dead of ${links.counts.checked}` : "not run"}`);
   console.log(`Numbers         ${nums.stale} stale · ${nums.drift} drifted · ${nums.atCliff} at the ${nums.staleDays}-day cliff`);
-  console.log(`Fast Answer gap ${intent.incompleteHigh} high-intent pages`);
+  console.log(`Fast Answer gap ${results.fastAnswerGap} high-intent pages`);
   console.log(`\nWrote ${relative(ROOT, OUT_FILE)}\n`);
 }
 

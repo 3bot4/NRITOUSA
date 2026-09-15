@@ -14,7 +14,7 @@
  */
 
 /** Plain-English "as of" stamp shown next to any figure from this file. */
-export const OCI_DATA_AS_OF = "2026-09-14";
+export const OCI_DATA_AS_OF = "2026-09-15";
 
 /** Authoritative links every OCI page must cite. */
 export const VERIFY_SOURCES = {

@@ -2482,40 +2482,64 @@ title: NRE vs NRO in one line
 |---|---|---|
 | Holds | Money earned abroad | Income earned in India |
 | Currency of the balance | Rupees, funded from foreign currency | Rupees |
-| Repatriable? | Fully, anytime | Capped (~$1M per financial year, with paperwork) |
-| Interest tax (India) | Exempt | Taxable, ~30% TDS plus surcharge and cess |
-| Interest tax (US) | **Fully taxable** | Fully taxable, with a credit for Indian tax paid |
+| Repatriable? | Fully, anytime | **Current income:** freely, net of tax. **Balances and other assets:** within the USD 1 million per financial year facility |
+| Interest tax (India) | Exempt, **provided you meet the nonresident conditions** for the exemption | Taxable, with TDS — commonly quoted at about 30%, but see the caveat below |
+| Interest tax (US) | **Taxable** for a US tax resident | Taxable, with a credit available for Indian tax paid |
 | Joint holding | With another NRI; with a resident close relative only on a "former or survivor" basis | Can be held jointly with a resident |
 | Best for | US-earned savings you may want back | Rent, dividends, pre-move salary, India obligations |
+
+:::warn
+title: Two figures in that table need their conditions attached
+- **"Exempt" on NRE interest is conditional.** The exemption depends on your continuing to satisfy the nonresident conditions the Income Tax Act attaches to it — broadly, being a person resident outside India under FEMA (or otherwise permitted to hold the account). Return to India and become a resident again and the basis for the exemption falls away, which is one reason the accounts have to be redesignated on your return.
+- **"About 30%" on NRO interest is a starting point, not your bill.** Surcharge and cess sit on top, so the amount actually withheld is usually higher than 30%. A treaty position under the India-US DTAA may reduce the correct rate; and where more has been withheld than you owe, the remedy is to file an Indian return and claim the refund. The withheld figure and your final liability are different numbers.
+:::
 
 Your US-earned savings should land in NRE if you want flexibility; India-origin income has to go to NRO.
 
 ## "Tax-free" means tax-free in India only
 This is the single most expensive misunderstanding in the table above, and it catches people for years at a time.
 
-NRE interest is exempt from Indian tax. It is **not** exempt from US tax. As a US tax resident you are taxed on worldwide income, so that interest belongs on your US return like any other interest — and because India collected nothing, there is no foreign tax credit to offset it. An NRE fixed deposit paying 7% is a fully taxable 7% to the IRS.
+NRE interest is exempt from Indian tax so long as you meet the nonresident conditions the exemption is given on. It is **not** exempt from US tax. A US tax resident is generally taxed on worldwide income, so NRE interest — and NRO interest — belongs on your US return like any other interest. With NRE there is the additional sting that because India collected nothing, there is no foreign tax credit to offset the US liability. An NRE fixed deposit paying 7% is, to the IRS, a taxable 7%.
 
 :::bad
 title: What that does to the comparison people actually make
 Set an NRE FD at 7% against a US high-yield savings account and the FD looks like the obvious winner. But the FD is taxable to the IRS at your marginal rate with no credit, and the rupee it is denominated in has to hold its value against the dollar over the term for the headline rate to mean anything. Compare after-US-tax and in dollars, or you are not comparing.
 :::
 
-NRO interest is taxed in both countries — but there you have paid Indian tax, so the [foreign tax credit](/articles/double-taxation-dtaa-india-usa) does its job and you are not taxed twice on the same income.
+NRO interest is taxable in both countries — but there you have paid Indian tax, so the [foreign tax credit](/articles/double-taxation-dtaa-india-usa) can relieve the double charge, subject to the usual limitation rules on how much credit you can actually use.
 
-## Repatriation is the difference that is hard to undo
-Money in NRE can go back to the US whenever you want it, in any amount, with no certificate and no cap. That is the whole point of the account.
+## Repatriation: NRE is one rule, NRO is two
+Money in NRE can go back to the US whenever you want it, in any amount, without a cap. That is the whole point of the account.
 
-Money in NRO cannot. Repatriating it means staying inside a limit of about **USD 1 million per financial year** out of your NRO balances, and producing a chartered accountant's certification on **Forms 15CA and 15CB** for the remittance — every time.
+NRO is where people go wrong, because it is governed by **two different rules** and the popular summary collapses them into one.
+
+:::compare
+left: Remitting NRO balances and other assets
+right: Remitting current income from NRO
+✗ Sits within the **USD 1 million per financial year** facility, which covers NRO balances together with your other eligible assets — including assets received by inheritance
+✗ This is the limit everyone has heard of, and it is a limit on capital, not on earnings
+✓ **Current income** — rent, dividends, interest, pension — is repatriable **freely**, net of applicable taxes
+✓ It is not counted against the USD 1 million facility
+:::
+
+So the common claim that "you can only take USD 1 million a year out of an NRO account" is wrong as a general statement. It describes the remittance-of-assets facility. Ordinary current income sits outside it.
 
 :::warn
 title: The mistake is drift, not a decision
-Nobody chooses to trap their savings in an NRO account. What happens is that transfers go to whichever account was set up first, year after year, and the balance quietly becomes the one that needs paperwork to move. If the money is US-earned and you might want it back, it belongs in NRE from the first transfer.
+Nobody chooses to trap their savings in an NRO account. What happens is that transfers go to whichever account was set up first, year after year, and the balance quietly becomes the one governed by the capital rule rather than the income rule. If the money is US-earned and you might want it back, it belongs in NRE from the first transfer.
 :::
 
-Use the [15CA/15CB checklist](/tools/form-15ca-15cb-checklist) before you start an NRO remittance, not after the bank asks.
+### The paperwork is event-based, not automatic
+It is equally wrong to say that Forms 15CA and 15CB are always both required. What applies depends on the remittance and on **Rule 37BB**:
+
+- **Form 15CA** is the remitter's information return, and it has four parts. Which one you use turns on whether the remittance (or the year's aggregate) exceeds **₹5 lakh**, whether it is chargeable to tax at all, and whether an order or certificate has been obtained from the Assessing Officer.
+- **Form 15CB**, the accountant's certificate, is **event-based** — it is required where the ₹5 lakh threshold is crossed and the Part C route applies, not on every transfer.
+- Some remittances fall outside Form 15CA altogether under Rule 37BB(3), including certain remittances by an individual that need no prior RBI approval and those falling within the specified list of purposes.
+
+Your bank will tell you which route it needs before it will process the transfer. Work through the [15CA/15CB checklist](/tools/form-15ca-15cb-checklist) first so you are not assembling a certificate you may not need — or discovering late that you do.
 
 ## Both accounts are reportable to the IRS
-Neither account is invisible. Their balances count toward the **FBAR** threshold and, separately, toward FATCA reporting on Form 8938 — and Indian banks report US-person accounts under FATCA, so the information arrives whether you file or not.
+Neither account is invisible, and the reporting obligation is separate from the tax one. A US tax resident generally reports the interest from **both** NRE and NRO accounts as part of worldwide income, and may in addition have **FBAR** and **Form 8938** filing obligations once the relevant thresholds are met. Indian banks report US-person accounts under FATCA, so the information arrives whether you file or not.
 
 The trigger is aggregate balances across all your foreign accounts, so opening a second account does not halve the problem. [Check whether you have crossed the thresholds](/tools/fbar-fatca-checker), and see the [FBAR and FATCA guide](/articles/fbar-fatca-nri-guide) for how the two filings differ.
 
@@ -2548,16 +2572,28 @@ title: A clean two-account setup
 You can, and it is usually the wrong choice. Once it is in NRO it is subject to the repatriation cap and the 15CA/15CB certification if you ever want it back in dollars, and the interest attracts Indian TDS. Foreign earnings belong in NRE, where none of that applies.
 
 ### Is NRE interest really tax-free?
-In India, yes — it is exempt while you are a non-resident. In the US, no. It is ordinary interest income on your US return, and since India withheld nothing there is no foreign tax credit to reduce the bill. Any comparison of an NRE deposit against a US account has to be made after US tax.
+In India it is exempt, but conditionally: the exemption depends on your satisfying the nonresident conditions attached to it, broadly being a person resident outside India under FEMA or otherwise permitted to hold the account. In the US it is not exempt at all. For a US tax resident it is ordinary interest income on the US return, and because India withheld nothing there is no foreign tax credit to reduce the bill. Any comparison of an NRE deposit against a US account has to be made after US tax.
 
 ### How much can I send out of my NRO account?
-Up to about USD 1 million per financial year from your NRO balances, and each remittance needs Forms 15CA and 15CB — the latter certified by a chartered accountant. Build the timeline for that into any plan that depends on the money arriving by a particular date.
+It depends on what the money is. **Current income** — rent, dividends, interest, pension — is repatriable freely, net of applicable taxes, and is not counted against any annual ceiling. **Balances and other eligible assets**, including assets received by inheritance, sit within the USD 1 million per financial year remittance-of-assets facility. The documentation is event-based rather than universal: Form 15CA applies in one of four parts depending on the amount, the taxability and whether an Assessing Officer order has been obtained, Form 15CB is required only where the ₹5 lakh threshold and the Part C route apply, and some remittances are outside Form 15CA altogether under Rule 37BB(3). Ask your bank which route your specific transfer needs.
 
 ### Can my parents in India operate my NRO account?
 An NRO account can be held jointly with a resident, which is the usual arrangement for family who manage day-to-day payments. An NRE account is different: a resident close relative can be a joint holder only on a "former or survivor" basis, meaning they can operate it only after you. Confirm the current position with your bank, as the operating conditions are set by RBI rules rather than by the bank.
 
 ### Do I need to close these accounts when I return to India?
 Not close — redesignate. NRO becomes a resident account, and NRE is either redesignated or converted to an RFC account that holds the balance in foreign currency. Doing nothing is not an option: continuing to run a non-resident account after you have become resident is a compliance problem, not an oversight.
+
+## Official sources
+Every rule above comes from one of these. Where a figure matters to a decision, read the source rather than this page — the account rules come from the RBI under FEMA, and the tax and documentation rules from the Income Tax Department.
+
+- [RBI — Accounts in India by non-residents (FAQs)](https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3)
+- [RBI — Master Circular on Non-Resident Ordinary (NRO) Rupee Accounts](https://www.rbi.org.in/commonman/english/scripts/Notification.aspx?Id=847)
+- [RBI — Master Circular on Remittance Facilities for Non-Resident Indians / PIOs](https://www.rbi.org.in/commonman/english/scripts/Notification.aspx?Id=843)
+- [Income Tax Department — Rule 37BB](https://www.incometaxindia.gov.in/w/rule-37bb)
+- [Income Tax Department — Form 15CA FAQs](https://www.incometax.gov.in/iec/foportal/help/statutory-forms/popular-forms/form-15ca-faq)
+- [Income Tax Department — Form 15CB FAQs](https://www.incometax.gov.in/iec/foportal/help/statutory-forms/popular-form/form15cb-faq)
+- [IRS — Report of Foreign Bank and Financial Accounts (FBAR)](https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar)
+- [IRS — Basic questions and answers on Form 8938](https://www.irs.gov/businesses/corporations/basic-questions-and-answers-on-form-8938)
 
 :::cta
 title: Sending money to India?

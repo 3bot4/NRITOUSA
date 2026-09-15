@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { formatDate } from "@/lib/format";
 import Link from "next/link";
 import Eb2OctoberOutlook from "@/components/Eb2OctoberOutlook";
 import {
@@ -46,7 +47,7 @@ import {
 
 const PATH = "/visa-bulletin/october-2026-predictions";
 const PUBLISHED = "2026-08-19";
-const UPDATED = "2026-08-22"; // September 2026 bulletin ingested — live tables now read September data
+const UPDATED = "2026-09-15"; // Removed the unsourceable FY2026 EB-2 issuance estimate; October bulletin still unpublished
 const TITLE =
   "October 2026 Visa Bulletin Predictions: EB-2 India Set for Its Largest October Jump in Four Years";
 const SEO_TITLE =
@@ -76,7 +77,7 @@ const FAQS: FaqItem[] = [
   {
     question: "Why did EB-2 India become Unavailable in July 2026?",
     answer:
-      "Arithmetic, not policy. It happened in two steps: the State Department announced on May 22, 2026 that all FY2026 EB-2 numbers for India had been issued, halting consular issuance immediately, and the bulletin then showed Unavailable from the July 2026 edition onward. India received an estimated 9,300 EB-2 numbers in FY2026 — roughly three times its statutory 7% floor, thanks to unused numbers falling over from other countries — and demand still exhausted them more than four months before year end. Visa numbers reset on October 1.",
+      "Arithmetic, not policy. It happened in two steps: the State Department announced on May 22, 2026 that all FY2026 EB-2 numbers for India had been issued, halting consular issuance immediately, and the bulletin then showed Unavailable from the July 2026 edition onward. India's EB-2 floor for FY2026 works out near 3,700 numbers — 7% of EB-2's 28.6% share of the 186,000 EB pool — and the otherwise-unused rule lifts India well above that floor in practice, but the exact FY2026 issuance total is not yet published: the fiscal year does not end until September 30, 2026 and the totals come from the Department's annual Report of the Visa Office. What is established is that demand exhausted the supply more than four months before year end. Visa numbers reset on October 1.",
   },
   {
     question: "When will the October 2026 Visa Bulletin be released?",
@@ -584,12 +585,18 @@ export default function October2026PredictionsPage() {
         <p className="small muted">
           The 7% figure is a <strong>ceiling applied through pro-rating</strong>,
           not a quota India is guaranteed — and per-country limits yield to the
-          &ldquo;otherwise unused&rdquo; rule. India routinely receives well above
-          the base: in FY2026 the EB pool was 186,000, putting India&rsquo;s EB-2
-          floor near 3,700, and India in fact received an estimated{" "}
-          <span className="fig">~9,300</span> EB-2 numbers — roughly three times the floor —
-          and still exhausted the category two months early. The base math is why
-          the queue moves in months per year, not years per year.
+          &ldquo;otherwise unused&rdquo; rule, so India routinely receives well
+          above the base. The derivable part: with an FY2026 EB pool of 186,000,
+          EB-2&rsquo;s 28.6% share is about 53,200 numbers, which puts
+          India&rsquo;s 7% EB-2 floor near{" "}
+          <span className="fig">3,700</span>. What India actually received on top
+          of that floor is not yet publishable — FY2026 does not end until
+          September 30, 2026, and the issuance totals come from the
+          Department&rsquo;s annual Report of the Visa Office afterwards. What is
+          already established is the outcome: the Department announced on May 22,
+          2026 that all FY2026 EB-2 numbers for India had been issued, more than
+          four months before year end. The base math is why the queue moves in
+          months per year, not years per year.
         </p>
 
         <h3>The supply squeeze journalists should watch</h3>
@@ -723,12 +730,21 @@ export default function October2026PredictionsPage() {
           even to people whose Final Action Date is nowhere close.
         </span>
 
-        <h2>Our record on this call — checked in September</h2>
+        <h2>Our record on this call — still pending</h2>
         <p>
           Predictions are cheap unless someone scores them, so here is ours,
-          pre-committed and dated. When the October 2026 bulletin publishes
-          (around September 8–15) we will fill in the right-hand column on this
-          page rather than quietly editing the forecast.
+          pre-committed and dated. The right-hand column stays{" "}
+          <strong>Pending</strong> until the bulletin actually publishes: we
+          fill it in from the published document rather than quietly editing the
+          forecast, and we do not infer a result from anything else.
+        </p>
+        <p className="small muted">
+          Status as of <strong>September 15, 2026</strong>: the Department of
+          State has not published the October 2026 Visa Bulletin. September 2026
+          remains the current edition and the October listing shows as coming
+          soon. Release usually falls in the second week of the preceding month
+          but has slipped into the third, so this page is checked rather than
+          assumed.
         </p>
         <div className="tw">
           <table>
@@ -872,9 +888,11 @@ export default function October2026PredictionsPage() {
           Backlog estimate: Cato Institute analysis of USCIS Form I-485 inventory
           and DOS data (D. Bier). Predictions are analytical estimates, not
           guarantees. Educational content, not legal advice — consult an
-          immigration attorney for case-specific decisions. Last updated August
-          22, 2026 (September 2026 bulletin: no India employment category moved;
-          EB-2 India still Unavailable through September 30). ·{" "}
+          immigration attorney for case-specific decisions. Last updated{" "}
+          {formatDate(UPDATED)} (the September 2026 bulletin moved no India
+          employment category and EB-2 India remains Unavailable through
+          September 30; the October 2026 bulletin had not published as at this
+          date). ·{" "}
           <Link href="/visa-bulletin">All visa bulletin coverage</Link>
         </footer>
       </article>
