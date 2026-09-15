@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import ArticleCard from "@/components/ArticleCard";
 import Newsletter from "@/components/Newsletter";
 import SectionHeading from "@/components/SectionHeading";
+import OfficialSourceNote from "@/components/OfficialSourceNote";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import ReturnToIndiaLeadMagnetCard from "@/components/ReturnToIndiaLeadMagnetCard";
 import { getArticle } from "@/lib/articles";
@@ -63,7 +64,130 @@ export type MoneyHubConfig = {
   };
   /** Show the Return-to-India Playbook lead-magnet card under the hero. */
   showReturnToIndiaLeadMagnet?: boolean;
+  /**
+   * Substantive prose the hub itself owns, rendered ahead of the link lists.
+   *
+   * A hub whose whole body is cards and tiles has nothing to rank for and
+   * nothing to say that its own articles do not say better. This slot is for
+   * the material that belongs to the hub and to no single article beneath
+   * it — usually the decision framework, the sequencing, or the irreversible
+   * choice a reader has to get right before any of the guides are useful.
+   * Keep it distinct from the articles: if a section would duplicate one of
+   * them, link to it instead.
+   */
+  deepDive?: HubDeepDive;
 };
+
+export type HubDeepDiveBlock =
+  /** Body paragraphs under an H3. */
+  | { kind: "prose"; heading: string; paragraphs: string[] }
+  /** A bulleted list under an H3; each item may lead with a bold lead-in. */
+  | { kind: "list"; heading: string; intro?: string; items: { lead?: string; body: string }[] }
+  /** A tinted callout, for the thing that costs money if missed. */
+  | { kind: "callout"; tone: "warn" | "info" | "good"; heading: string; paragraphs: string[] }
+  /** A simple table; `headers.length` must match each row's length. */
+  | { kind: "table"; heading: string; intro?: string; headers: string[]; rows: string[][]; note?: string };
+
+export type HubDeepDive = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  blocks: HubDeepDiveBlock[];
+  /** Verified stamp + official links for any figure quoted in the blocks. */
+  lastVerified?: string;
+  sources?: { label: string; href: string }[];
+  footnote?: string;
+};
+
+const CALLOUT_TONE: Record<"warn" | "info" | "good", string> = {
+  warn: "border-amber-200 bg-amber-50/60",
+  info: "border-blue-100 bg-blue-50/50",
+  good: "border-emerald-200 bg-emerald-50/50",
+};
+
+/** Renders the hub's own prose. Plain server markup — no client JS. */
+function DeepDive({ dd }: { dd: HubDeepDive }) {
+  return (
+    <section className="bg-white py-14 sm:py-20">
+      <Container>
+        <SectionHeading eyebrow={dd.eyebrow} title={dd.title} description={dd.description} />
+        <div className="mx-auto max-w-3xl space-y-8">
+          {dd.blocks.map((b, i) => {
+            if (b.kind === "prose") {
+              return (
+                <div key={i}>
+                  <h3 className="text-lg font-bold text-ink-900">{b.heading}</h3>
+                  {b.paragraphs.map((t, j) => (
+                    <p key={j} className="mt-3 text-sm leading-relaxed text-ink-600">{t}</p>
+                  ))}
+                </div>
+              );
+            }
+            if (b.kind === "list") {
+              return (
+                <div key={i}>
+                  <h3 className="text-lg font-bold text-ink-900">{b.heading}</h3>
+                  {b.intro && <p className="mt-3 text-sm leading-relaxed text-ink-600">{b.intro}</p>}
+                  <ul className="mt-4 space-y-2">
+                    {b.items.map((it, j) => (
+                      <li key={j} className="text-sm leading-relaxed text-ink-600">
+                        {it.lead && <strong className="text-ink-900">{it.lead} </strong>}
+                        {it.body}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            }
+            if (b.kind === "callout") {
+              return (
+                <div key={i} className={`rounded-2xl border p-5 ${CALLOUT_TONE[b.tone]}`}>
+                  <h3 className="text-base font-bold text-ink-900">{b.heading}</h3>
+                  {b.paragraphs.map((t, j) => (
+                    <p key={j} className="mt-2 text-sm leading-relaxed text-ink-700">{t}</p>
+                  ))}
+                </div>
+              );
+            }
+            return (
+              <div key={i}>
+                <h3 className="text-lg font-bold text-ink-900">{b.heading}</h3>
+                {b.intro && <p className="mt-3 text-sm leading-relaxed text-ink-600">{b.intro}</p>}
+                {/* Wide tables scroll inside their own container, never the page body. */}
+                <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10">
+                  <table className="w-full min-w-[34rem] text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 bg-slate-50/80 text-xs uppercase tracking-wide text-ink-500">
+                        {b.headers.map((h) => (
+                          <th key={h} className="px-4 py-2.5 font-semibold">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {b.rows.map((r, j) => (
+                        <tr key={j} className="border-b border-ink-900/5 last:border-0">
+                          {r.map((c, k) => (
+                            <td key={k} className={`px-4 py-3 ${k === 0 ? "font-medium text-ink-800" : "text-ink-600"}`}>{c}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {b.note && <p className="mt-3 text-xs leading-relaxed text-ink-500">{b.note}</p>}
+              </div>
+            );
+          })}
+
+          {(dd.sources?.length || dd.lastVerified) && (
+            <OfficialSourceNote lastVerified={dd.lastVerified} sources={dd.sources ?? []} />
+          )}
+          {dd.footnote && <p className="text-xs leading-relaxed text-ink-500">{dd.footnote}</p>}
+        </div>
+      </Container>
+    </section>
+  );
+}
 
 export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
   const articles = config.articleSlugs
@@ -209,6 +333,9 @@ export default function MoneyHub({ config }: { config: MoneyHubConfig }) {
           </div>
         </Container>
       </section>
+
+      {/* The hub's own substance, ahead of the link lists */}
+      {config.deepDive && <DeepDive dd={config.deepDive} />}
 
       {/* Featured guides */}
       {articles.length > 0 && (
