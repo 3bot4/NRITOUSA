@@ -71,8 +71,12 @@ export const studentSources = {
     href: "https://www.irs.gov/businesses/international-businesses/india-tax-treaty-documents",
   },
   reinstatement: {
-    label: "DHS Study in the States — Reinstatement",
-    href: "https://studyinthestates.dhs.gov/students/reinstatement",
+    // Study in the States retired /students/reinstatement (ledger:links caught
+    // the 404). Form I-539 is where reinstatement is actually requested, and
+    // the USCIS page names it, so the citation now points at the filing itself
+    // rather than at an explainer that can be reorganised away again.
+    label: "USCIS — Form I-539 (used to request reinstatement of F/M status)",
+    href: "https://www.uscis.gov/i-539",
   },
   dsFinalRule: {
     label:

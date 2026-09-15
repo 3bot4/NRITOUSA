@@ -35,7 +35,7 @@ import {
   CLUSTER_UPDATED,
   CLUSTER_UPDATED_HUMAN,
 } from "@/lib/permCluster";
-import { permProcessingData as D, DOL_DATA_NOTE } from "@/data/permProcessingData";
+import { permProcessingData as D, permDerivedRanges, DOL_DATA_NOTE } from "@/data/permProcessingData";
 
 const PATH = "/perm-processing-time-calculator";
 const TITLE = "PERM Processing Time Calculator 2026";
@@ -45,7 +45,7 @@ const DESC =
 export const metadata: Metadata = pageMetadata({
   title: "PERM Processing Time 2026: DOL Timeline Calculator",
   description:
-    "PERM processing time: plan 20–26 months from PWD filing to certification with no audit. Live DOL queue dates, stage-by-stage timeline, and a calculator.",
+    `PERM processing time: plan ${permDerivedRanges.totalNoAudit} from PWD filing to certification with no audit. Live DOL queue dates, stage-by-stage timeline, and a calculator.`,
   path: PATH,
 });
 
@@ -151,7 +151,7 @@ const faq: FaqItem[] = [
   { question: "How long does PERM take in 2026?", answer: "The total PERM stage — prevailing wage determination, recruitment, filing, and DOL analyst review — commonly spans well over a year end to end, and longer if the case is audited. Exact current queues change monthly; always check the DOL FLAG dashboard and confirm your own timeline with your employer's immigration attorney." },
   { question: "Is PWD included in PERM processing time?", answer: "Technically no. Prevailing wage determination (PWD) is a separate DOL step that must finish before PERM is filed. Many people casually include PWD, recruitment, and DOL review when they say 'PERM timeline,' but the official PERM processing queue only covers the review after the ETA-9089 is filed." },
   { question: "What is the difference between PWD and PERM?", answer: "PWD (prevailing wage determination) is the first DOL step: DOL sets the minimum wage your employer must offer for the role. PERM (labor certification) comes later, after recruitment, and is DOL's certification that no qualified U.S. worker is available. PWD must be completed before PERM can be filed." },
-  { question: "How long does PWD take for PERM?", answer: "As a planning range, a prevailing wage determination (PWD) commonly takes about 5–7 months, and it has no premium processing. PWD is a separate DOL step that must finish before PERM is filed, so it is not counted in the official PERM review queue. Times change monthly — check the DOL FLAG processing-times dashboard for the current PWD queue." },
+  { question: "How long does PWD take for PERM?", answer: `As a planning range, a prevailing wage determination (PWD) commonly takes about ${permDerivedRanges.pwd}, and it has no premium processing. PWD is a separate DOL step that must finish before PERM is filed, so it is not counted in the official PERM review queue. Times change monthly — check the DOL FLAG processing-times dashboard for the current PWD queue.` },
   { question: "How long does PERM take after recruitment?", answer: "After recruitment ends, the employer must wait at least 30 days (the quiet period) before filing PERM. Once filed, DOL analyst review currently takes many months — see the current queue on the DOL FLAG dashboard. An audit adds significant additional time." },
   { question: "Does a PERM audit add time?", answer: "Yes. If DOL selects your PERM for audit, it moves to a separate, slower review queue and can add roughly 6–12+ months as a planning range. An audit is not a denial — your attorney responds with the recruitment file and documentation — but you should plan for a longer total timeline. Check the DOL audit queue and confirm timing with your attorney." },
   { question: "What does DOL analyst review mean?", answer: "DOL analyst review is the standard adjudication: an analyst reviews the filed ETA-9089 and recruitment record and either certifies, denies, or issues an audit. DOL publishes the priority date (filing month) it is currently reviewing on the FLAG dashboard." },
@@ -223,7 +223,7 @@ export default function Page() {
             <div className="mx-auto max-w-3xl rounded-2xl border border-blue-200 bg-blue-50/50 p-5 shadow-card sm:p-6">
               <h2 className="text-lg font-bold text-ink-900">Quick Answer: How Long Does PERM Take?</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                The total PERM timeline is not only the DOL review period. Most applicants should think of the timeline as PWD + recruitment + PERM filing + DOL analyst review + possible audit + I-140. A no-audit PERM path can often take around <strong>20–26 months</strong> from PWD filing to PERM approval as a planning range. If the case is audited, it can take longer. PERM itself does not have premium processing.
+                The total PERM timeline is not only the DOL review period. Most applicants should think of the timeline as PWD + recruitment + PERM filing + DOL analyst review + possible audit + I-140. A no-audit PERM path can often take around <strong>{permDerivedRanges.totalNoAudit}</strong> from PWD filing to PERM approval as a planning range. If the case is audited, it can take longer. PERM itself does not have premium processing.
               </p>
               <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3.5">
                 <p className="text-xs leading-relaxed text-ink-700">
@@ -240,7 +240,7 @@ export default function Page() {
             <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
               <p className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Key takeaways</p>
               <ul className="space-y-2.5 text-sm leading-relaxed text-ink-700">
-                <li>• Plan <strong>20–26 months</strong> from PWD filing to PERM certification on a clean, no-audit case — the DOL review alone is only part of it.</li>
+                <li>• Plan <strong>{permDerivedRanges.totalNoAudit}</strong> from PWD filing to PERM certification on a clean, no-audit case — the DOL review alone is only part of it.</li>
                 <li>• Expect no shortcut: <strong>PERM has no premium processing</strong>, unlike the I-140 that follows it.</li>
                 <li>• Build in the mandatory <strong>30-day quiet period</strong> after recruitment ends before the ETA-9089 can be filed.</li>
                 <li>• Add several months if audited — audited cases move to a separate, slower DOL queue.</li>
@@ -256,7 +256,7 @@ export default function Page() {
                 slowest controllable part of an employment green card. This page is for H-1B workers and
                 employers tracking DOL PERM processing times across all four stages: the prevailing wage
                 determination (PWD), recruitment, the ETA-9089 filing, and analyst review or audit. The
-                headline number to plan around is <strong>20–26 months</strong> from PWD filing to
+                headline number to plan around is <strong>{permDerivedRanges.totalNoAudit}</strong> from PWD filing to
                 certification when nothing is audited, with PERM offering no premium-processing escape
                 hatch. Below you&apos;ll find a stage-by-stage PERM timeline for 2026, the live DOL FLAG
                 queue dates, what PWD processing time is running, how long a PERM audit adds, a calculator
