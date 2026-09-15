@@ -29,9 +29,9 @@ import { FactTable } from "@/components/education/FactTable";
 import { optRules, STUDENT_DATA_VERIFIED } from "@/data/studentClusterData";
 
 const PATH = "/ead-processing-time";
-const TITLE = "EAD Processing Time 2026: Work Permit Timeline & Auto-Extension";
+const TITLE = "EAD Processing Time 2026: Work Permit Timeline by Category";
 const DESC =
-  "Estimate your EAD (Form I-765) processing time by category, check automatic-extension eligibility, and avoid a work-authorization gap.";
+  "Estimate your EAD (Form I-765) processing time by category, see why the automatic extension no longer covers a renewal, and avoid a work-authorization gap.";
 
 export const metadata: Metadata = pageMetadata({
   title: "EAD Processing Time 2026",
@@ -41,11 +41,11 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   { question: "How long does an EAD take?", answer: "It depends heavily on the category (the eligibility code) and the service center. Many categories currently run several months. Check the official USCIS processing-times dashboard for your exact form category and office, and use this tool for a planning estimate." },
-  { question: "What is the automatic EAD extension?", answer: "For certain categories, if you file a renewal on time before your current EAD expires, your work authorization is automatically extended while USCIS processes the renewal. USCIS increased this automatic extension to up to 540 days for eligible categories — always verify the current figure and your category on the official USCIS page." },
-  { question: "Which EAD categories get the automatic extension?", answer: "Common eligible renewal categories include pending adjustment of status (c)(9), H-4 (c)(26), L-2 (a)(18), and pending asylum (c)(8). Some categories — like F-1 OPT and STEM OPT — do not get the automatic extension. Confirm your category on USCIS." },
-  { question: "How do I prove work authorization during the automatic extension?", answer: "You generally show your expired EAD card together with your Form I-797C receipt notice for the timely-filed renewal (and, for some categories, additional status documents). Your employer uses these for Form I-9 reverification." },
+  { question: "Is there still an automatic EAD extension?", answer: `No — not for renewals filed today. A DHS interim final rule effective October 30, 2025 (${D.autoExtensionRuleCitation}) ended the automatic extension of work authorization for timely-filed EAD renewals. Renewals USCIS received before that date still run on the old up-to-${D.autoExtensionDays}-day extension, and extensions granted separately by statute or Federal Register notice are unaffected. For everything else, your authorization now ends on the date printed on the card. See our EAD renewal gap page for what to do instead.` },
+  { question: "Which EAD categories get the automatic extension?", answer: "None, for a renewal filed now. The categories that used to qualify — pending adjustment of status (c)(9), H-4 (c)(26), L-2 (a)(18) and pending asylum (c)(8) — all lost it on October 30, 2025; F-1 OPT and STEM OPT never had it. The table above marks which categories would have qualified under the old rule, which matters only if USCIS received your renewal before the cutoff." },
+  { question: "How do I prove work authorization while a renewal is pending?", answer: "For a renewal received on or after October 30, 2025, you cannot — there is no document combination that covers the gap, so your employer must suspend employment when the card expires. The expired-EAD-plus-Form-I-797C combination still works for Form I-9 only where USCIS received the renewal before that date and the old extension is still running. L-2 and E dependent spouses are the exception to all of this: an unexpired I-94 with an L-2S/E-1S/E-2S/E-3S code is evidence on its own." },
   { question: "Can F-1 OPT or STEM OPT EAD be premium processed?", answer: "Yes — premium processing (about 30 business days) is available for many F-1 OPT and STEM OPT I-765 requests. It is not available for most other EAD categories. Verify current eligibility and fees on the USCIS Form I-907 page." },
-  { question: "When can I file my EAD renewal?", answer: "USCIS generally lets you file a renewal up to 180 days before your current EAD expires. Filing as early as allowed reduces the risk of a work-authorization gap, especially in categories without the automatic extension." },
+  { question: "When can I file my EAD renewal?", answer: `USCIS generally lets you file a renewal up to ${D.renewalFilingWindowDays} days before your current EAD expires. With no automatic extension to fall back on, that lead time is now the only thing standing between a slow adjudication and a work-authorization gap — so file on the first day of the window, not the last.` },
   { question: "What is the difference between EAD and Advance Parole?", answer: "An EAD (Form I-765) authorizes you to work; Advance Parole (Form I-131) lets you travel and return while an application like I-485 is pending. Adjustment applicants often file them together and may receive a combo card." },
   { question: "Is this calculator legal advice?", answer: "No. This calculator is for educational planning only and is not legal advice. Processing times are estimates that change. Always confirm your category, timing, and work authorization with your immigration attorney." },
 ];
@@ -131,8 +131,8 @@ export default function Page() {
                 rows={[
                   [
                     "Automatic extension on renewal",
-                    "No — OPT categories are excluded",
-                    "Often yes, for eligible renewal categories",
+                    "No — OPT categories were always excluded",
+                    "No either, since Oct 30, 2025 — it used to be up to 540 days",
                   ],
                   [
                     "Premium processing",
@@ -147,7 +147,7 @@ export default function Page() {
                   [
                     "Can you work while pending?",
                     "No — you must wait for the card and its start date",
-                    "Sometimes, under an automatic extension",
+                    "No, unless USCIS received the renewal before Oct 30, 2025",
                   ],
                   [
                     "Missing the deadline",

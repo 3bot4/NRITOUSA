@@ -17,7 +17,7 @@ export interface ClusterLink {
 }
 
 export const eadClusterLinks: ClusterLink[] = [
-  { href: "/ead-processing-time", label: "EAD Processing Time", desc: "Estimate + auto-extension by category" },
+  { href: "/ead-processing-time", label: "EAD Processing Time", desc: "Planning range by I-765 category" },
   { href: "/advance-parole-processing-time", label: "Advance Parole Processing Time", desc: "I-131 travel document timing" },
   { href: "/ead-renewal-gap", label: "EAD Renewal Gap", desc: "Avoid a work-authorization gap" },
 ];

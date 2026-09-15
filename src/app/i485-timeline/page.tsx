@@ -112,16 +112,107 @@ export default function Page() {
                 ))}
               </ol>
 
-              <div className="mt-6 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-5">
-                <h2 className="text-base font-bold text-ink-900">Before stage 1: gather your documents</h2>
+              <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
+                <h2 className="text-base font-bold text-ink-900">Before stage 1: the package has to be complete on day one</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                  Everything in the sequence above assumes a complete filing package. Work through the{" "}
-                  <Link href="/i485-documents-checklist" className="font-semibold text-emerald-700 underline">
+                  The sequence above only starts if USCIS accepts the filing, and the bar
+                  for that moved. Since December 2, 2024, Form I-693 — the sealed medical
+                  exam — must be submitted <strong>with</strong> the I-485. A package
+                  without it risks being <strong>rejected outright</strong> rather than
+                  receipted and later held for evidence, which means no receipt number, no
+                  pending application, and no concurrently filed EAD or Advance Parole
+                  either. That is a materially worse outcome than an RFE at stage 5, and it
+                  is why the medical is now a task you complete before you file.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  Work through the{" "}
+                  <Link href="/i485-documents-checklist" className="font-semibold text-rose-700 underline">
                     I-485 documents checklist
                   </Link>{" "}
-                  first — a missing medical exam (I-693) or affidavit of support is the most common
-                  avoidable cause of an RFE at stage 5.
+                  before you post anything.
                 </p>
+              </div>
+
+              <div className="mt-4">
+                <h2 className="text-lg font-bold text-ink-900">
+                  The parts of the sequence nobody explains
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  Between the seven visible stages there are a handful of events that
+                  change what you should be doing, and none of them generate an
+                  announcement. These are the ones worth knowing in advance.
+                </p>
+                <div className="mt-4 space-y-3">
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">
+                      Biometrics may be reused rather than rescheduled
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      USCIS can reuse fingerprints already on file instead of calling you
+                      in, so the absence of a biometrics notice is not evidence that your
+                      case is stalled between stages 2 and 3. If a notice does arrive,
+                      attend it — a missed appointment without rescheduling can be treated
+                      as abandonment of the application.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">
+                      Day 180 is a milestone even though nothing arrives
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      Once the I-485 has been pending 180 days, AC21 portability may let
+                      you move to a same-or-similar role without restarting the green
+                      card. Nothing in your case status marks the date, so count it
+                      yourself from the receipt date — it is the point at which a job
+                      offer stops being a threat to the case.{" "}
+                      <Link href="/h1b-layoff" className="font-semibold text-brand-600 underline">
+                        Portability and layoff options →
+                      </Link>
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">
+                      &ldquo;Ready to be scheduled for an interview&rdquo; is a queue, not a date
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      If that status appears, the service centre has finished with your
+                      file and passed it to a field office, which schedules from its own
+                      backlog. It means stage 6 is coming; it does not mean it is
+                      imminent, and the wait after it depends on the office rather than
+                      the category.{" "}
+                      <Link href="/tools/uscis-case-status-meaning" className="font-semibold text-brand-600 underline">
+                        Decode a case-status message →
+                      </Link>
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">
+                      Moving house is a filing, not an update
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      Change of address must be reported to USCIS within 10 days of
+                      moving, and a move can also transfer your case to a different field
+                      office — with a different interview backlog. An interview notice or
+                      a green card sent to an old address is one of the more avoidable
+                      ways this sequence goes wrong.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">
+                      Approval and the card in your hand are different events
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      You become a permanent resident on approval, but the physical card
+                      is produced and posted afterwards. If you need to travel or prove
+                      status before it arrives, USCIS can provide temporary evidence of
+                      permanent residence — worth asking about at the interview rather
+                      than discovering later.{" "}
+                      <Link href="/green-card-renewal" className="font-semibold text-brand-600 underline">
+                        What to do if the card never arrives →
+                      </Link>
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50/50 p-5">

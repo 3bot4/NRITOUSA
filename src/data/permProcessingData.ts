@@ -96,21 +96,21 @@ export interface PermProcessingData {
  * rule-of-thumb defaults you rarely change.
  */
 export const permProcessingData: PermProcessingData = {
-  lastUpdated: "August 2026 (FLAG dashboard data as of Aug 7, 2026)",
+  lastUpdated: "September 2026 (FLAG dashboard data as of Aug 31, 2026)",
   dolSourceUrl: "https://flag.dol.gov/processingtimes",
 
   // Monthly FLAG queue snapshots — replace each with the current
   // "processing cases filed in <MONTH YEAR>" value from the FLAG dashboard.
-  pwdPermOewsReceiptMonth: "April 2026",
-  pwdPermNonOewsReceiptMonth: "March 2026",
-  permAnalystReviewPriorityDate: "September 2025",
+  pwdPermOewsReceiptMonth: "May 2026",
+  pwdPermNonOewsReceiptMonth: "May 2026",
+  permAnalystReviewPriorityDate: "November 2025",
   permAuditReviewPriorityDate: "December 2025",
-  permReconsiderationDate: "March 2026",
+  permReconsiderationDate: "April 2026",
 
   // Published averages. DOL shows no average for audit review on the FLAG
   // dashboard at all, so that field is NOT_PUBLISHED, not null — it is not a
   // gap in our data and no monthly update will ever fill it.
-  averagePermAnalystReviewDays: 372,
+  averagePermAnalystReviewDays: 336,
   averagePermAuditReviewDays: NOT_PUBLISHED,
 
   // Rule-based / stable inputs.
@@ -125,10 +125,16 @@ export const permProcessingData: PermProcessingData = {
   standardI140EstimateMonthsHigh: i140ProcessingData.standardMonthsHigh,
 
   // General planning ranges (labelled as estimates on-page).
-  pwdPlanningMonthsLow: 4,
-  pwdPlanningMonthsHigh: 8,
-  permAnalystPlanningMonthsLow: 12,
-  permAnalystPlanningMonthsHigh: 16,
+  // Tightened Sep 2026: the FLAG queue had moved a long way from the ranges
+  // these replaced. On the Aug 31, 2026 dashboard the NPWC was processing PWD
+  // requests received May 2026 (≈3 months) for both wage sources, and DOL's
+  // published PERM average had fallen to 336 days (≈11 months) with analyst
+  // review sitting on November 2025 receipts. The ranges keep a cushion above
+  // the queue rather than tracking it exactly, because the queue can slip back.
+  pwdPlanningMonthsLow: 3,
+  pwdPlanningMonthsHigh: 6,
+  permAnalystPlanningMonthsLow: 10,
+  permAnalystPlanningMonthsHigh: 14,
   permAuditPlanningMonthsLow: 6,
   permAuditPlanningMonthsHigh: 12,
 };
@@ -168,11 +174,11 @@ export const DOL_DATA_NOTE =
  * as the top "Fast Answer" on the PERM cluster pages. These are planning
  * estimates (clearly labelled), NOT the official current FLAG queue — that
  * lives in the monthly snapshot fields above. Verify against DOL FLAG before
- * relying on any figure. lastVerified: 2026-08-09, reconciled against the FLAG
- * dashboard as of Aug 7, 2026 (analyst review averaging 372 days ≈ 12.2 months,
- * which sits at the low end of the 12–16 month planning band).
+ * relying on any figure. lastVerified: 2026-09-14, reconciled against the FLAG
+ * dashboard as of Aug 31, 2026 (analyst review averaging 336 days ≈ 11 months
+ * on November 2025 receipts, which sits inside the 10–14 month planning band).
  */
-export const PERM_ESTIMATE_VERIFIED = "2026-08-09";
+export const PERM_ESTIMATE_VERIFIED = "2026-09-14";
 
 export interface PermEstimateRow {
   stage: string;

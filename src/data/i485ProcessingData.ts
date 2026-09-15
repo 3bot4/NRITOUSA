@@ -39,6 +39,39 @@ export const i485ProcessingData: I485ProcessingData = {
   interviewExtraMonthsHigh: 6,
 };
 
+/* ───────────── Form I-693 medical exam: the two rules that changed ───────── */
+
+/**
+ * The medical exam is the most common reason a page like this goes stale, and
+ * both live rules moved recently:
+ *
+ *   • Dec 2, 2024 — USCIS requires Form I-693 to be submitted WITH Form I-485.
+ *     It is no longer something USCIS asks for later; filing without it risks
+ *     rejection of the I-485 itself.
+ *   • Nov 1, 2023 / Jun 11, 2025 — an I-693 signed by a civil surgeon on or
+ *     after Nov 1, 2023 does not expire, but per the Jun 11, 2025 Policy Manual
+ *     update it is only valid for the application it was filed with. Withdraw or
+ *     get denied, and a later I-485 needs a freshly signed I-693.
+ *
+ * HOW TO UPDATE: re-check both against the USCIS I-693 page and Policy Manual
+ * Volume 8 before bumping `verified`.
+ */
+export const i693Rules = {
+  verified: "2026-09-14",
+  /** Date the file-with-the-I-485 requirement took effect. */
+  mustFileWithI485Since: "2024-12-02",
+  /** Signing date from which an I-693 no longer carries a fixed expiry. */
+  noExpiryIfSignedOnOrAfter: "2023-11-01",
+  /** Policy Manual update tying that validity to the application it was filed with. */
+  tiedToApplicationSince: "2025-06-11",
+  formUrl: "https://www.uscis.gov/i-693",
+  requirementAlertUrl:
+    "https://www.uscis.gov/newsroom/alerts/uscis-now-requires-report-of-immigration-medical-examination-and-vaccination-record-to-be-submitted",
+  validityAlertUrl:
+    "https://www.uscis.gov/newsroom/alerts/uscis-changes-validity-period-for-any-form-i-693-signed-on-or-after-nov-1-2023",
+  civilSurgeonLocatorUrl: "https://my.uscis.gov/findadoctor",
+} as const;
+
 /** I-485 document checklist groups (educational; USCIS instructions govern). */
 export interface ChecklistGroup {
   title: string;
@@ -51,7 +84,7 @@ export const i485Checklist: ChecklistGroup[] = [
     items: [
       "Form I-485 (Application to Register Permanent Residence or Adjust Status)",
       "Form I-485 filing fee (verify current amount on USCIS)",
-      "Form I-693 medical exam (sealed, by a USCIS-designated civil surgeon)",
+      "Form I-693 medical exam — sealed, by a USCIS-designated civil surgeon, and filed WITH the I-485 (required since Dec 2, 2024)",
       "Form I-765 (EAD) and Form I-131 (Advance Parole), if filing concurrently",
     ],
   },

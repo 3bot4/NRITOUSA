@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-09",
+  "updated": "2026-09-15",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -270,6 +270,15 @@
       "status": "open",
       "opened": "2026-09-09",
       "nextStep": "Check state.gov/state-sponsors-of-terrorism; referenced by AVR_NATIONALITY_EXCLUSION"
+    },
+    {
+      "id": "competitor-gap-analysis-of-every-cluster",
+      "title": "Competitor gap analysis of every cluster/hub page; deepen thin pages without overlap",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-15",
+      "nextStep": "Per-cluster SERP gap list, close only real gaps, preview each changed page"
     },
     {
       "id": "market-json-has-no-whole-file",

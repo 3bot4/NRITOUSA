@@ -37,12 +37,14 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   { question: "What is I-140 premium processing?", answer: "It is a paid USCIS service (Form I-907) that guarantees USCIS will act on your I-140 within a set number of business days — approve, deny, or issue an RFE. It speeds up USCIS action only, not the Visa Bulletin or green card availability." },
-  { question: "How long does I-140 premium processing take?", answer: "USCIS acts within about 15 business days for most I-140 petitions, and about 45 business days for EB-1C and EB-2 NIW. If an RFE is issued, the clock pauses until you respond." },
+  { question: "How long does I-140 premium processing take?", answer: `USCIS acts within about ${D.premiumBusinessDays} business days for most I-140 petitions, and about ${D.niwEb1cPremiumBusinessDays} business days for EB-1C and EB-2 NIW. The period starts when USCIS receives a properly completed Form I-907 at the correct address — not when it received the I-140. If USCIS issues an RFE or a notice of intent to deny, the period stops and resets: a brand-new period begins when your response arrives, so an RFE costs you the full clock again rather than the days already run.` },
   { question: "How much is the I-140 premium processing fee?", answer: "The current fee is shown on this page from our maintained data. Fees change, so always confirm the exact amount on the official USCIS Form I-907 page before filing." },
   { question: "Which I-140 categories are eligible for premium processing?", answer: "Most EB-1A, EB-1C, EB-2, EB-2 NIW, and EB-3 I-140 petitions are eligible. Timelines differ (EB-1C and NIW are ~45 business days). Confirm current eligibility on the USCIS I-907 page." },
   { question: "Is premium processing worth it?", answer: "It is most worth it when timing matters — an approaching H-1B six-year max-out, a priority date about to become current, or a job change where you need the approval fast. If none of those apply, standard processing saves the fee." },
   { question: "Does premium processing help my priority date?", answer: "No. Premium processing only speeds the I-140 decision. Your priority date and the Visa Bulletin wait are unaffected — for India EB-2/EB-3 you still wait years after approval to file I-485." },
-  { question: "Can I add premium processing to a pending I-140?", answer: "Yes, in most cases you can upgrade a pending I-140 to premium processing by filing Form I-907. Confirm eligibility and current timelines with your attorney." },
+  { question: "Can I add premium processing to a pending I-140?", answer: "Yes, in most cases. You file Form I-907 on its own, referencing the pending I-140's receipt number, rather than refiling the petition. The clock runs from when USCIS receives that properly completed I-907, so a petition that has already sat in the queue for months does not get credit for the wait." },
+  { question: "What happens if USCIS misses the premium processing deadline?", answer: "USCIS refunds the premium processing fee and continues to handle the case as a premium request. You get the money back, not a decision — so premium processing buys a refund guarantee, never an outcome guarantee." },
+  { question: "Can USCIS suspend premium processing for I-140?", answer: "It has before. USCIS has suspended premium processing for I-140 petitions during periods of high volume or operational strain, sometimes at short notice. If your plan depends on a 15-business-day decision — an H-1B max-out date, for example — treat availability as something to confirm on the USCIS I-907 page on the day you file, not as a fixed feature." },
   { question: "Is this page legal advice?", answer: "No. This page is educational only and not legal advice. Verify fees and timelines on official USCIS pages and confirm your case with your employer's immigration attorney." },
 ];
 
@@ -98,7 +100,7 @@ export default function Page() {
 
         <section className="pb-10 pt-10 sm:pb-12">
           <Container>
-            <div className="mx-auto max-w-3xl space-y-6">
+            <div className="mx-auto max-w-3xl space-y-8">
               {/* fee + timeline cards */}
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-violet-200 bg-violet-50/50 p-5">
@@ -128,6 +130,105 @@ export default function Page() {
                   <li>→ You are changing employers and want the approval (and priority date protection) locked in.</li>
                   <li>→ You want certainty of timing rather than an open-ended standard queue.</li>
                 </ul>
+              </div>
+
+              {/* ── how the clock actually runs ─────────────────────── */}
+              <div>
+                <h2 className="text-xl font-bold text-ink-900">
+                  How the {D.premiumBusinessDays}-day clock actually runs
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  The guarantee is narrower than it sounds, and three details decide
+                  whether it delivers what you paid for.
+                </p>
+                <div className="mt-4 space-y-3">
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">It starts on the I-907, not the I-140</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      The period begins when USCIS receives a <em>properly completed</em>{" "}
+                      Form I-907 at the correct filing address — with the required
+                      information, a valid signature and the correct fee. A form that
+                      arrives incomplete or at the wrong address has not started anything.
+                      If you are upgrading a petition that has been pending for months,
+                      the clock starts now; the months already served earn nothing.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">An RFE resets it — it does not pause it</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      This is the detail that catches people out. If USCIS issues a request
+                      for evidence or a notice of intent to deny, the premium period{" "}
+                      <strong>stops and resets</strong>: a full new period starts when your
+                      response is received. Eleven days already run do not carry over. An
+                      RFE on a premium case therefore costs the whole clock again, plus
+                      however long you take to answer — which is why a well-documented
+                      petition matters more to your real timeline than the fee does.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-card">
+                    <p className="text-sm font-bold text-ink-900">Missing the deadline buys a refund, not a decision</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                      If USCIS does not act within the period, it refunds the premium fee
+                      and carries on processing the case as a premium request. That is the
+                      entire remedy. Premium processing is a refund guarantee on speed, not
+                      a guarantee of either speed or approval — so do not build a plan that
+                      only works if the {D.premiumBusinessDays} days hold.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── what it cannot fix ──────────────────────────────── */}
+              <div>
+                <h2 className="text-xl font-bold text-ink-900">
+                  What paying will not change
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  For an Indian applicant in EB-2 or EB-3, the I-140 is rarely the binding
+                  constraint, and it is worth being precise about which waits premium
+                  processing touches. It shortens exactly one of them.
+                </p>
+                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-600">
+                  <li>
+                    <strong className="text-ink-900">It does not move your priority date.</strong>{" "}
+                    Your date was set when the PERM (or the I-140, for categories without
+                    one) was filed. A faster approval confirms the date; it does not
+                    advance it.{" "}
+                    <Link href="/eb2-eb3-priority-date-india" className="font-semibold text-brand-600 underline">
+                      Check where India EB-2/EB-3 stands
+                    </Link>
+                    .
+                  </li>
+                  <li>
+                    <strong className="text-ink-900">It does not speed up the I-485.</strong>{" "}
+                    Filing the two concurrently does not extend premium treatment to the
+                    adjustment application, which runs on its own queue.{" "}
+                    <Link href="/i485-processing-time" className="font-semibold text-brand-600 underline">
+                      I-485 processing time
+                    </Link>
+                    .
+                  </li>
+                  <li>
+                    <strong className="text-ink-900">It does not improve your odds.</strong>{" "}
+                    The same officers apply the same standard. A thin petition adjudicated
+                    quickly is an RFE or a denial arriving quickly.
+                  </li>
+                  <li>
+                    <strong className="text-ink-900">It does not unlock the earlier steps.</strong>{" "}
+                    Nothing about I-907 touches the PERM or prevailing-wage queues that sit
+                    ahead of the I-140.{" "}
+                    <Link href="/perm-processing-time-calculator" className="font-semibold text-brand-600 underline">
+                      PERM timeline
+                    </Link>
+                    .
+                  </li>
+                </ul>
+                <p className="mt-4 text-sm leading-relaxed text-ink-600">
+                  Read against that list, the genuinely good reasons to pay are the ones
+                  where a date is bearing down on you — an H-1B max-out, a priority date
+                  about to become current, or a job change you want the approval locked in
+                  before.
+                </p>
               </div>
 
               <div className="rounded-xl border border-amber-100 bg-amber-50/50 p-4 text-sm leading-relaxed text-amber-900">

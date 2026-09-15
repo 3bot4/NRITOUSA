@@ -29,10 +29,20 @@ const SEVS = ["high", "medium", "low"];
 const argv = process.argv.slice(2);
 const flags = {};
 const positional = [];
-for (const a of argv) {
-  const m = a.match(/^--([a-zA-Z]+)(?:=([\s\S]*))?$/);
-  if (m) flags[m[1].toLowerCase()] = m[2] === undefined ? true : m[2];
-  else positional.push(a);
+/* Both `--area=meta` and `--area meta` are accepted: the documented form is the
+ * space-separated one, and swallowing its value into the title corrupts the
+ * item silently — the one failure mode a capture-first tool cannot afford. */
+const VALUE_FLAGS = ["area", "sev", "next", "ev", "detail", "id", "done"];
+for (let i = 0; i < argv.length; i++) {
+  const m = argv[i].match(/^--([a-zA-Z]+)(?:=([\s\S]*))?$/);
+  if (!m) {
+    positional.push(argv[i]);
+    continue;
+  }
+  const name = m[1].toLowerCase();
+  if (m[2] !== undefined) flags[name] = m[2];
+  else if (VALUE_FLAGS.includes(name) && argv[i + 1] && !argv[i + 1].startsWith("--")) flags[name] = argv[++i];
+  else flags[name] = true;
 }
 
 const today = new Date().toISOString().slice(0, 10);

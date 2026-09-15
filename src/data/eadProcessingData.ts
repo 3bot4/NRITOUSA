@@ -52,6 +52,14 @@ export interface EadProcessingData {
 
   /** ISO date the automatic extension was removed for new filings. */
   autoExtensionRemovedDate: string;
+  /** Federal Register citation for the removal rule. */
+  autoExtensionRuleCitation: string;
+  /** Federal Register document URL for the removal rule. */
+  autoExtensionRuleUrl: string;
+  /** Date the IFR's comment period closed (it took effect before comments). */
+  autoExtensionRuleCommentsClosed: string;
+  /** How far ahead of expiry USCIS lets you file a renewal I-765. */
+  renewalFilingWindowDays: number;
 
   /** Advance Parole (Form I-131) general planning range, months. */
   advanceParoleMonthsLow: number;
@@ -78,6 +86,11 @@ export const eadProcessingData: EadProcessingData = {
    * https://www.federalregister.gov/documents/2025/10/30/2025-19702/removal-of-the-automatic-extension-of-employment-authorization-documents
    */
   autoExtensionRemovedDate: "2025-10-30",
+  autoExtensionRuleCitation: "90 FR 48799",
+  autoExtensionRuleUrl:
+    "https://www.federalregister.gov/documents/2025/10/30/2025-19702/removal-of-the-automatic-extension-of-employment-authorization-documents",
+  autoExtensionRuleCommentsClosed: "2025-12-01",
+  renewalFilingWindowDays: 180,
 
   advanceParoleMonthsLow: 4,
   advanceParoleMonthsHigh: 9,
@@ -92,6 +105,51 @@ export const eadProcessingData: EadProcessingData = {
     { key: "other", code: "varies", label: "Other / not sure", monthsLow: 3, monthsHigh: 10, autoExtension: false, autoExtensionPreRule: false, premiumEligible: false },
   ],
 };
+
+/* ───────── Automatic-extension repeal: status of the rule itself ────────── */
+
+/**
+ * Where the removal rule stands. DHS issued it as an interim final rule — it
+ * took effect the day it published, BEFORE the comment period closed — and it
+ * is being litigated under the APA. None of that changes what an employer may
+ * accept today, which is the only thing a reader can act on, so the page says
+ * the rule is in force and treats restoration as something not to plan around.
+ *
+ * HOW TO UPDATE: re-check for a nationwide injunction or a final rule before
+ * bumping `verified`. If a court restores the extension, `autoExtension` on the
+ * affected categories above is the flag to flip.
+ */
+export const eadAutoExtensionRuleStatus = {
+  verified: "2026-09-14",
+  inForce: true,
+  form: "Interim final rule — effective on publication, comments taken afterwards",
+  litigation:
+    "Several suits (including APA challenges by affected spouses and by Public Citizen) are pending, arguing DHS skipped notice-and-comment. No court has restored the automatic extension nationwide.",
+  planningAdvice:
+    "Plan as though the extension is gone. If a court restores it, that is upside you did not need; if you plan on restoration and it does not come, you stop working.",
+} as const;
+
+/* ─────── E and L spouses: employment authorised incident to status ──────── */
+
+/**
+ * E-1/E-2/E-3 and L-2 dependent spouses have been employment-authorised
+ * *incident to status* since Nov 12, 2021, and an unexpired I-94 bearing the
+ * spouse COA code is List C evidence for Form I-9. They may hold an EAD but do
+ * not need one — which means the renewal-gap problem that now hits H-4 spouses
+ * mostly does not apply to them. Worth stating plainly: the alternative is
+ * paying the I-765 fee and waiting months for a card they can work without.
+ */
+export const spouseIncidentToStatus = {
+  verified: "2026-09-14",
+  sinceDate: "2021-11-12",
+  i94CodesSinceDate: "2022-01-30",
+  codes: ["E-1S", "E-2S", "E-3S", "L-2S"],
+  /** H-4 spouses are NOT in this group — they still need the (c)(26) EAD. */
+  excludes: "H-4",
+  policyManualUrl: "https://www.uscis.gov/policy-manual/volume-10-part-b-chapter-2",
+  i9HandbookUrl:
+    "https://www.uscis.gov/i-9-central/form-i-9-resources/handbook-for-employers-m-274/70-evidence-of-employment-authorization-for-certain-categories/79-other-temporary-workers/792-l-nonimmigrant-status",
+} as const;
 
 /** Standard educational data-source note for the EAD cluster. */
 export const EAD_DATA_NOTE =

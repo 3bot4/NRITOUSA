@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import { formatDate } from "@/lib/format";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
@@ -22,6 +23,7 @@ import {
 } from "@/lib/i485Cluster";
 import {
   i485Checklist,
+  i693Rules as MED,
   i485ProcessingData as D,
   I485_DATA_NOTE,
   i485StageEstimateRows,
@@ -44,7 +46,8 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   { question: "What documents do I need for I-485?", answer: "At a high level: Form I-485 and fee, the I-693 medical exam, proof of an approved/pending I-140 and a current priority date, two photos, birth certificate (translated), passport and visa stamps, I-94 and I-797 notices, and evidence of continuous lawful status. Family members need their own identity and relationship documents." },
-  { question: "Do I need a medical exam (I-693) to file I-485?", answer: "Yes, the I-693 medical exam (completed by a USCIS-designated civil surgeon and submitted sealed) is generally required. Timing rules for when it must be submitted can change, so confirm current guidance with your attorney." },
+  { question: "Do I need a medical exam (I-693) to file I-485?", answer: "Yes — and it now has to go in the same envelope. Since December 2, 2024, USCIS requires Form I-693 to be submitted with Form I-485; filing without it risks the I-485 being rejected rather than USCIS asking for it later. Book the civil-surgeon appointment before you plan to file, not after." },
+  { question: "Does the I-693 medical exam expire?", answer: "Not on a fixed clock any more. An I-693 signed by a civil surgeon on or after November 1, 2023 does not carry an expiry date — but under a June 11, 2025 policy update it is only valid for the application it was filed with. If that I-485 is withdrawn or denied, a later I-485 needs a newly completed I-693. Practical read: get the exam once, for the filing you are actually making." },
   { question: "Should I file EAD and Advance Parole with I-485?", answer: "Most applicants file Form I-765 (EAD) and Form I-131 (Advance Parole) concurrently with I-485 so they can work and travel while it is pending. H-1B/L-1 holders may rely on their visa instead." },
   { question: "Do I need to prove my priority date is current?", answer: "You can only file when your priority date is current under the chart USCIS honors that month. Keep your I-140 approval notice and confirm the current Visa Bulletin chart before filing." },
   { question: "What if a document is not in English?", answer: "Provide a full, certified English translation for any document not in English (for example, a birth or marriage certificate). The translator certifies competence and accuracy." },
@@ -105,7 +108,7 @@ export default function Page() {
 
         <section className="pb-10 pt-10 sm:pb-12">
           <Container>
-            <div className="mx-auto max-w-3xl space-y-5">
+            <div className="mx-auto max-w-3xl space-y-6">
               <p className="text-sm leading-relaxed text-ink-600">
                 Use this as a preparation checklist, not a substitute for the official USCIS Form I-485 instructions. Gather these before filing so your package is complete — a complete package reduces avoidable RFEs and delays.
               </p>
@@ -121,6 +124,72 @@ export default function Page() {
                   </ul>
                 </div>
               ))}
+              {/* ── the medical exam, which is now a pre-filing task ─── */}
+              <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-5">
+                <h2 className="text-lg font-bold text-ink-900">
+                  The medical exam is a pre-filing task now, not a later one
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  This is the item on the list most likely to be wrong in older advice.
+                  For years you could file the I-485 and send Form I-693 when USCIS asked
+                  for it. Since <strong>{formatDate(MED.mustFileWithI485Since)}</strong>,
+                  USCIS requires the I-693 to be submitted <strong>with</strong> the
+                  I-485 — file without it and the application may be rejected rather than
+                  held for evidence. Because a civil-surgeon appointment plus the lab work
+                  and the sealed envelope takes weeks, this has to be booked before your
+                  filing date, not after it.
+                </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-ink-900/10 bg-white p-4">
+                    <p className="text-xs font-bold uppercase tracking-wide text-ink-500">Who can do it</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-700">
+                      Only a <strong>USCIS-designated civil surgeon</strong> — not your own
+                      doctor, however well they know you. USCIS keeps a locator for finding
+                      one near you.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-ink-900/10 bg-white p-4">
+                    <p className="text-xs font-bold uppercase tracking-wide text-ink-500">Does it expire?</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-700">
+                      An I-693 signed on or after{" "}
+                      {formatDate(MED.noExpiryIfSignedOnOrAfter)} has no expiry
+                      date — but since {formatDate(MED.tiedToApplicationSince)} it is valid
+                      only for the application it was filed with. A withdrawn or denied
+                      I-485 means a fresh exam for the next one.
+                    </p>
+                  </div>
+                </div>
+                <ul className="mt-4 space-y-1.5 text-sm leading-relaxed text-ink-600">
+                  <li>
+                    → Take your <strong>vaccination records</strong> to the appointment.
+                    Missing records are the usual reason a completed exam still comes back
+                    incomplete, and repeating vaccines costs another visit.
+                  </li>
+                  <li>
+                    → The civil surgeon seals the envelope. <strong>Do not open it</strong>{" "}
+                    — a broken seal invalidates it and you pay for the exam twice.
+                  </li>
+                  <li>
+                    → The fee is the civil surgeon&rsquo;s own charge and is not a USCIS
+                    fee, so it varies by clinic and is worth ringing around for.
+                  </li>
+                </ul>
+                <p className="mt-4 text-xs leading-relaxed text-ink-500">
+                  Rules verified {formatDate(MED.verified)}. Sources:{" "}
+                  <a href={MED.requirementAlertUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    USCIS alert — I-693 required with I-485
+                  </a>{" "}
+                  ·{" "}
+                  <a href={MED.validityAlertUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    USCIS alert — I-693 validity period
+                  </a>{" "}
+                  ·{" "}
+                  <a href={MED.civilSurgeonLocatorUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    Find a civil surgeon
+                  </a>
+                </p>
+              </div>
+
               <div className="rounded-xl border border-amber-100 bg-amber-50/50 p-4 text-sm leading-relaxed text-amber-900">
                 <strong>Follow the official instructions.</strong> Fees, the medical-exam timing rule, and required evidence change. Verify everything against the{" "}
                 <a href={D.i485FormUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">official USCIS Form I-485 page</a>{" "}
