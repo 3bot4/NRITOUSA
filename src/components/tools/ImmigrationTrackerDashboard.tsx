@@ -455,7 +455,20 @@ export default function ImmigrationTrackerDashboard({
             lastUpdated={visaBulletinIndia.lastUpdated}
             sourceLabel="Estimated — not official"
             sourceUrl="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
-            note={`${bulletinTiming.latestPublishedMonthLabel} is already published; ${bulletinTiming.effectiveMonthLabel} is in effect. ${countdowns.note}`}
+            /* When nothing newer than the effective month has been published,
+             * "X is already published; X is in effect" says the same thing
+             * twice. Say it once, and name what we are waiting on instead. */
+            note={
+              bulletinTiming.latestPublishedMonthLabel === bulletinTiming.effectiveMonthLabel
+                ? `${bulletinTiming.effectiveMonthLabel} is in effect and is the latest published bulletin` +
+                  (bulletinTiming.nextExpectedMonthLabel
+                    ? `; the ${bulletinTiming.nextExpectedMonthLabel} bulletin is ${
+                        bulletinTiming.releaseOverdue ? "overdue" : "not out yet"
+                      }. `
+                    : ". ") +
+                  countdowns.note
+                : `${bulletinTiming.latestPublishedMonthLabel} is already published; ${bulletinTiming.effectiveMonthLabel} is in effect. ${countdowns.note}`
+            }
             confidence="estimate"
             confidenceNote="Estimated timing only, not an official release date."
           />
