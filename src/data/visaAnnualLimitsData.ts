@@ -47,28 +47,29 @@ export const EB_ALLOCATIONS: EbCategoryAllocation[] = [
     key: "eb1",
     label: "EB-1 (priority workers)",
     share: 0.286,
-    spillover: "Receives family-sponsored numbers unused in the prior year.",
+    spillover:
+      "Receives numbers not required for EB-4 and EB-5 — unused numbers in those categories flow UP, not down.",
     statute: "INA §203(b)(1)",
   },
   {
     key: "eb2",
     label: "EB-2 (advanced degree / exceptional ability)",
     share: 0.286,
-    spillover: "Receives EB-1 numbers left unused in the same year.",
+    spillover: "Receives numbers not required for EB-1 in the same year.",
     statute: "INA §203(b)(2)",
   },
   {
     key: "eb3",
     label: "EB-3 (skilled workers / professionals)",
     share: 0.286,
-    spillover: "Receives EB-1 and EB-2 numbers left unused in the same year.",
+    spillover: "Receives numbers not required for EB-1 and EB-2 in the same year.",
     statute: "INA §203(b)(3)",
   },
   {
     key: "eb4",
     label: "EB-4 (special immigrants)",
     share: 0.071,
-    spillover: "No downward spillover into EB-4.",
+    spillover: "Nothing spills into EB-4; its own unused numbers flow up to EB-1.",
     statute: "INA §203(b)(4)",
   },
   {
@@ -76,7 +77,7 @@ export const EB_ALLOCATIONS: EbCategoryAllocation[] = [
     label: "EB-5 (investors)",
     share: 0.071,
     spillover:
-      "Unused reserved set-aside numbers roll into the following year's same set-aside before falling to unreserved.",
+      "Unused reserved set-aside numbers roll into the following year's same set-aside before falling to unreserved; unused EB-5 numbers otherwise flow up to EB-1.",
     statute: "INA §203(b)(5)",
   },
 ];

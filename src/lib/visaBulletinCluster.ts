@@ -1483,10 +1483,14 @@ Begin preparing 2–3 months before you expect your date to become current. Civi
   {
     slug: "annual-limits",
     kind: "reference",
-    title: "How Many Employment Green Cards Are Issued Each Year?",
-    seoTitle: "Green Card Annual Limits: How Many Visas Per Year | EB Categories",
+    title: "How Many Green Cards Are Issued Each Year?",
+    // Keyword check 2026-09-16 (Semrush, US): "green card annual limit" = 0/mo,
+    // so it led the title with a phrase nobody searches. "how many green cards
+    // are issued each year" = 50/mo at KD 46, vs KD 59 for "…per year" — same
+    // volume, easier target, and it already matches the H1.
+    seoTitle: "How Many Green Cards Are Issued Each Year? | EB Limits",
     metaDescription:
-      "How many employment-based green cards the US issues each year, how INA §203(b) splits them between EB-1 to EB-5, and why the 7% per-country limit is a floor rather than a quota.",
+      "How many employment-based green cards the US issues each year, how INA §203(b) splits them between EB-1 and EB-5, how green card spillover moves unused numbers between categories, and why the 7% per-country limit is a floor rather than a quota.",
     navLabel: "Annual Limits & Visa Supply",
     excerpt:
       "Every cutoff date in the Visa Bulletin is downstream of one number: how many immigrant visas exist this year. Here is where that number comes from and who gets to use it.",
@@ -1494,7 +1498,7 @@ Begin preparing 2–3 months before you expect your date to become current. Civi
     updated: "2026-09-16",
     content: `
 :::quickanswer
-US law guarantees a minimum of **${fmt(EB_WORLDWIDE_FLOOR)} employment-based immigrant visas** per fiscal year (INA §201(d)), and the real figure is usually higher because family-sponsored numbers left unused in the prior year fall up into the employment categories. The pool was **${fmt(getFiscalYear(2026)!.ebPool!)} in FY2026**. That single number — not policy, not processing speed — is what sets every cutoff date in the Visa Bulletin.
+How many green cards are issued each year is set by statute, not by USCIS capacity: US law guarantees a minimum of **${fmt(EB_WORLDWIDE_FLOOR)} employment-based immigrant visas** per fiscal year (INA §201(d)), and the real figure is usually higher because family-sponsored numbers left unused in the prior year fall up into the employment categories. The pool was **${fmt(getFiscalYear(2026)!.ebPool!)} in FY2026**. That single number — not policy, not processing speed — is what sets every cutoff date in the Visa Bulletin.
 :::
 
 :::key
@@ -1532,7 +1536,7 @@ Those per-country figures are the ones worth pausing on. At the floor, a single 
 
 ## The 7% per-country limit is a floor, not a quota
 
-INA §202(a)(2) caps any one country at 7% of the year's total. Read carelessly, that sounds like India can never receive more than ~${fmt(perCountryFloor(0.286, EB_WORLDWIDE_FLOOR))} EB-2 numbers. It can, and it does.
+The **per country limit** for green cards — INA §202(a)(2) — caps any one country at 7% of the year's total. Read carelessly, that sounds like India can never receive more than ~${fmt(perCountryFloor(0.286, EB_WORLDWIDE_FLOOR))} EB-2 numbers. It can, and it does.
 
 The reason is INA §202(a)(5): when numbers in a category would **otherwise go unused**, they may be issued to nationals of oversubscribed countries without regard to the 7% limit. In practice most countries never come close to using their share, so the leftovers flow to India and China. India routinely receives several times its 7% floor in EB-2 and EB-3.
 
@@ -1540,23 +1544,73 @@ The reason is INA §202(a)(5): when numbers in a category would **otherwise go u
 This cuts both ways. Because India's allocation depends on **other countries' leftovers**, it is not predictable and not guaranteed. A year in which worldwide demand rises is a year in which India's share falls — without any rule changing.
 :::
 
-## Spillover: why EB-3 sometimes beats EB-2
+## Green card spillover: how unused numbers move between categories
 
-Unused numbers do not evaporate at the category boundary. They cascade:
+**Green card spillover** is the mechanism that moves immigrant visa numbers from
+a category that cannot use them to one that can. It happens twice over, at two
+different levels, and confusing the two is the usual source of bad predictions:
+
+1. **Family to employment, across years.** Family-sponsored numbers left unused
+   in one fiscal year are added to the *following* year's employment-based pool
+   under INA §201(d). This is what lifted the FY2026 pool to
+   ${fmt(getFiscalYear(2026)!.ebPool!)} from the ${fmt(EB_WORLDWIDE_FLOOR)} floor.
+2. **Between EB categories, within the same year.** INA §203(b) redistributes
+   numbers a category does not require. The direction is not symmetrical:
 
 ${EB_ALLOCATIONS.map((a) => `- **${a.label}** — ${a.spillover}`).join("\n")}
 
-When EB-1 demand is light, EB-2 gets the surplus and its date jumps. When EB-2 is oversubscribed and EB-3 is not, EB-3 can advance past EB-2 — which is what makes an [EB-2 to EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) worth considering in some years.
+Read the direction carefully: unused **EB-4 and EB-5** numbers flow *up* to
+EB-1, while EB-1 leftovers flow *down* to EB-2, and EB-1 plus EB-2 leftovers flow
+down to EB-3. Nothing flows into EB-4.
 
-## EB-5 set-asides
+That asymmetry has a practical consequence. When EB-1 demand is light, EB-2 gets
+the surplus and its date jumps. When EB-2 is oversubscribed and EB-3 is not, EB-3
+can advance past EB-2 — which is what makes an
+[EB-2 to EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) worth considering
+in some years.
 
-The EB-5 Reform and Integrity Act of 2022 reserved part of the EB-5 category for specific investment types. At the statutory floor:
+:::warn
+Spillover is why no one can promise a cutoff date. India's actual allocation
+depends on how many numbers *other* countries and *other* categories leave on the
+table, and that is not known until the year is under way.
+:::
+
+## Green card recapture: the numbers that were never used
+
+Spillover only redistributes numbers **within** the year they exist. Numbers that
+no category uses by September 30 are **lost permanently** — they do not roll into
+the next year's pool.
+
+**Recapture** is the proposal to recover those lapsed numbers from past years and
+return them to the queue. Estimates of the total run into the hundreds of
+thousands, accumulated largely in years when processing capacity, not demand, was
+the constraint. Recapture requires an act of Congress; it has been attached to
+several bills and has not passed.
+
+Why it matters for the India queue: recapture is the only realistic mechanism
+that would shorten the backlog *without* changing the 7% per-country limit,
+because it adds supply rather than reallocating it. Nothing in the monthly Visa
+Bulletin can do this — the bulletin distributes the numbers that exist.
+
+## EB-5 reserved vs unreserved set-asides
+
+The EB-5 Reform and Integrity Act of 2022 split EB-5 into **reserved** and
+**unreserved** numbers. The reserved share is set aside for specific investment
+types; at the statutory floor:
 
 | Set-aside | Reserved share | Numbers |
 | --- | --- | --- |
 ${setAsideRows(EB_WORLDWIDE_FLOOR)}
 
-The remaining 68% is the **unreserved** EB-5 category — the one the Visa Bulletin's EB-5 row refers to. Reserved numbers unused in a year roll into the same set-aside the following year before they fall to unreserved, which is why the set-aside rows often stay Current while unreserved does not.
+The remaining **68% is the unreserved** EB-5 category — the one the Visa
+Bulletin's EB-5 row refers to, and the one with an India backlog.
+
+The practical difference for an investor: reserved numbers unused in a year roll
+into the *same* set-aside the following year before they fall to unreserved. That
+carry-forward keeps the reserved pools under-subscribed, which is why the rural
+and high-unemployment rows commonly stay **Current** while unreserved EB-5 India
+does not. Investors choosing a project on timing grounds are, in effect,
+choosing which of these two queues to join.
 
 ## What actually happens on October 1
 
@@ -1598,6 +1652,9 @@ No. The Indian EB-2 and EB-3 queues are large enough that even a substantially l
 
 #### Do unused green cards carry over to the next year?
 Employment-based numbers generally do not carry over — unused numbers are lost at year end, except that unused family numbers fall up into employment for the following year, and unused EB-5 reserved numbers roll into the same set-aside. This is why the "wasted visas" debate exists.
+
+#### What is green card recapture?
+A proposal to recover immigrant visa numbers that went unused in past fiscal years and return them to the queue. Unused numbers are otherwise lost at year end. Recapture needs an act of Congress and has not passed.
 
 #### Where does the State Department publish the annual limit?
 In the Visa Bulletin itself, after the fiscal year opens. The statutory floors are in INA §201; the category shares are in INA §203(b).
