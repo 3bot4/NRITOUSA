@@ -79,7 +79,12 @@ describe("visa bulletin cluster — immigration-accuracy guards", () => {
   it("bumps dateModified on corrected pages without changing datePublished", () => {
     const pd = visaBulletinChildPages.find((p) => p.slug === "priority-date")!;
     expect(pd.date).toBe("2026-06-16"); // datePublished unchanged
-    expect(pd.updated).toBe("2026-07-19"); // dateModified bumped (2026-07 rebuild)
+    // Same invariant as eb1 below: corrected on 2026-07-19 and re-stamped on
+    // every later edit, so assert "at or after the correction" rather than a
+    // pinned date that has to be hand-edited whenever the prose changes.
+    expect(pd.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(pd.updated! >= "2026-07-19").toBe(true);
+    expect(pd.updated! >= pd.date).toBe(true);
     const eb1 = visaBulletinChildPages.find((p) => p.slug === "eb1-india")!;
     // Rebuilt in the 2026-08 monthly bulletin update and re-stamped on every
     // later bulletin ingest — assert the invariant, not a pinned date, so the

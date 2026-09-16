@@ -108,7 +108,7 @@ const rawPages: VisaBulletinPageData[] = [
     excerpt:
       "Your priority date is the most important number in your green card process — it sets your place in the queue.",
     date: "2026-06-16",
-    updated: "2026-07-19",
+    updated: "2026-09-16",
     content: `
 :::quickanswer
 Your **priority date** is your place in the green card queue — but **which filing sets it depends on your category**. For a labor-certification case (most EB-2 and EB-3) it is the date the PERM (Form ETA-9089) was filed with the Department of Labor. For categories exempt from labor certification — **EB-1A, EB-1B, EB-1C and EB-2 NIW** — it is the **I-140 receipt date**. For **EB-5** it is the **I-526/I-526E receipt date**, and for **family-based** cases the **I-130 receipt date**. You can only move forward in months when the visa bulletin cutoff for your category and country is **later** than your date. Because the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand, an India-born EB-2/EB-3 priority date typically waits **years to decades**.
@@ -185,7 +185,7 @@ Every monthly bulletin has two charts. **Final Action Dates** (Chart A) control 
 
 ## Why Is the Priority Date So Important for Indians?
 
-The US immigration system allocates employment-based green cards with a per-country 7% cap. No single country can receive more than 7% of all employment-based visas in a fiscal year.
+The US immigration system allocates employment-based green cards with a per-country 7% limit (INA §202). It is a **proration cap, not an absolute ceiling**: when numbers would otherwise go unused, INA §202(a)(5) allows them to be issued to nationals of oversubscribed countries, so India regularly receives more than a strict 7% share. See [how the annual limits work](/visa-bulletin/annual-limits) for the full allocation math.
 
 India accounts for a disproportionately large share of EB-2 and EB-3 applicants relative to that 7% cap. The result:
 
@@ -372,7 +372,7 @@ No. Table B dates in the visa bulletin are not self-executing. They require an e
     excerpt:
       "EB-1 skips PERM entirely and has a much shorter India backlog than EB-2 or EB-3 — making it the fastest employment green card path for qualifying Indians.",
     date: "2026-06-16",
-    updated: "2026-08-22",
+    updated: "2026-09-16",
     content: `
 :::quickanswer
 EB-1 is the fastest employment-based green card for India-born applicants: it needs **no PERM labor certification**, and in recent bulletins its India backlog has been measured in **a few years, not decades**. Worldwide, roughly **40,040 EB-1 visas** are available each year (28.6% of the ≥140,000 employment preference level). India is subject to the **7% per-country limit** (INA §202), but India-born EB-1 applicants routinely receive **more** than a strict per-country share because unused numbers from other countries spill into EB-1. The exact current EB-1 India priority date is in the status panel above — always confirm against the official DOS bulletin.
@@ -453,7 +453,7 @@ EB-1 India is no longer "instant" — it has developed its own cutoff for India-
 
 ## How Many EB-1 Visas Per Year for India?
 
-About **40,040 worldwide** — the EB-1 category receives 28.6% of the ≥140,000 employment-based preference level each fiscal year. India is subject to the INA §202 **7% per-country limit** (calculated across the combined family and employment preference totals, not a per-category India quota), but there is **no fixed India EB-1 allotment**: India-born applicants routinely receive **more** than a strict per-country share because unused numbers from other countries spill into EB-1, per the Department of State's annual visa statistics.
+About **40,040 worldwide** — the EB-1 category receives 28.6% of the ≥140,000 employment-based preference level each fiscal year ([how the annual limits are set](/visa-bulletin/annual-limits)). India is subject to the INA §202 **7% per-country limit** (calculated across the combined family and employment preference totals, not a per-category India quota), but there is **no fixed India EB-1 allotment**: India-born applicants routinely receive **more** than a strict per-country share because unused numbers from other countries spill into EB-1, per the Department of State's annual visa statistics.
 
 | Annual limit | Figure |
 |---|---|
@@ -526,7 +526,7 @@ No one can promise that. Cutoff movement depends on demand and spillover, and th
     excerpt:
       "EB-2 India tracks the current Final Action Date, Dates for Filing, and monthly movement — with the live cutoffs in the panel above and how to read them below.",
     date: "2026-06-16",
-    updated: "2026-08-22",
+    updated: "2026-09-16",
     content: `
 :::quickanswer
 The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in the September 2026 bulletin the category remains fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — see [how the annual limits are set](/visa-bulletin/annual-limits) — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
@@ -678,7 +678,7 @@ Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and
     excerpt:
       "EB-3 India tracks the current Final Action Date, Dates for Filing, and monthly movement — with the live cutoffs in the panel above and how to read them below.",
     date: "2026-06-16",
-    updated: "2026-08-22",
+    updated: "2026-09-16",
     content: `
 :::quickanswer
 The EB-3 India priority date is shown in the status panel above — in the **September 2026** bulletin the Final Action Date was **January 1, 2014** with Dates for Filing at **January 15, 2015**, meaning only India-born applicants who filed PERM before those dates could act. EB-3 covers professionals with a **bachelor's degree** and skilled workers with **2+ years** of experience, and it moves **independently of EB-2 India** — in September 2026 EB-3 posted a date while EB-2 India was **Unavailable**, which is exactly when a downgrade becomes worth discussing.
@@ -687,7 +687,7 @@ The EB-3 India priority date is shown in the status panel above — in the **Sep
 :::key
 - Check both charts every month — EB-3 India posted **January 1, 2014** (Final Action) while EB-2 India was Unavailable in September 2026.
 - Qualify under EB-3 with a **bachelor's degree** (professionals) or **2+ years** of training/experience (skilled workers).
-- Plan around the statutory **7% per-country limit** (INA §202) — a proration cap across the combined family and employment preference totals, **not** a fixed India EB number.
+- Plan around the statutory **7% per-country limit** (INA §202) — a proration cap across the combined family and employment preference totals, **not** a fixed India EB number ([how the annual limits work](/visa-bulletin/annual-limits)).
 - Keep your **original priority date** when downgrading: an approved EB-2 I-140 generally lets the new EB-3 petition retain the earlier date.
 - Movement has run only **1–3 months per calendar year** in recent years; for how long a given date might take, see the [wait-time scenarios](/eb2-eb3-priority-date-india).
 :::
@@ -809,7 +809,7 @@ Not necessarily. The relative movement of EB-2 and EB-3 India changes every mont
     excerpt:
       "Retrogression happens when the visa bulletin moves backward — and for Indian applicants with pending I-485, it can feel alarming. Here is exactly what it means.",
     date: "2026-06-16",
-    updated: "2026-07-20",
+    updated: "2026-09-16",
     content: `
 :::quickanswer
 **Retrogression** means the Department of State moved a visa bulletin cutoff **backward** — to an earlier date than the previous month — so priority dates that were current last month no longer are. It happens when demand for a category exceeds the visa numbers available that year. If your **I-485 is already pending, nothing bad happens**: USCIS simply cannot approve it until your date is current again, and your EAD and Advance Parole keep renewing. In the **July 2026** bulletin, EB-1 India retrogressed from Dec 15, 2022 to **Oct 15, 2022**, and EB-2 India went fully **Unavailable**.
