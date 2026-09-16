@@ -348,6 +348,45 @@ export function getBulletinLabel(): string {
   return formatBulletinMonth(bulletin.month);
 }
 
+/* ----------------------------- fiscal year ------------------------------- */
+
+/**
+ * The U.S. government fiscal year a bulletin month falls in. FY2027 runs
+ * October 1, 2026 → September 30, 2027, so the October bulletin is the first
+ * month of the NEXT fiscal year, not the last of the current one.
+ *
+ * This exists because the FY rollover is the single most error-prone moment in
+ * the monthly refresh: prose that reads "no numbers for the remainder of
+ * FY 2026" is true in September and false in October, and nothing else in the
+ * pipeline notices. Derive the year, never type it.
+ */
+export function fiscalYear(ym: string = bulletin.month): number {
+  const [y, m] = ym.split("-").map(Number);
+  return m >= 10 ? y + 1 : y;
+}
+
+/** "FY 2027" for the given bulletin month. */
+export function fiscalYearLabel(ym: string = bulletin.month): string {
+  return `FY ${fiscalYear(ym)}`;
+}
+
+/**
+ * Official DOS URL for a bulletin month.
+ *
+ * The trap: travel.state.gov files each bulletin under its FISCAL year, so the
+ * October 2026 bulletin lives under /2027/, not /2026/ — confirmed against the
+ * verified backfill (October 2025 sits under /2026/). Building this by hand
+ * each October is how a source link silently 404s.
+ */
+export function dosBulletinUrl(ym: string = bulletin.month): string {
+  const [, m] = ym.split("-").map(Number);
+  const slug = `${MONTHS_FULL[m - 1].toLowerCase()}-${ym.split("-")[0]}`;
+  return (
+    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/" +
+    `${fiscalYear(ym)}/visa-bulletin-for-${slug}.html`
+  );
+}
+
 export type AdjustmentChart = "final-action" | "dates-for-filing";
 export type AdjustmentChartStatus = "posted" | "pending";
 

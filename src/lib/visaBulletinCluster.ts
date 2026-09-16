@@ -1,5 +1,19 @@
 import { computeReadingTime } from "@/lib/format";
-import type { EbCategory } from "@/lib/visa-bulletin";
+import {
+  formatBulletinMonth,
+  getApplicableChart,
+  type EbCategory,
+} from "@/lib/visa-bulletin";
+import {
+  EB_WORLDWIDE_FLOOR,
+  EB_ALLOCATIONS,
+  EB5_SET_ASIDES,
+  getFiscalYear,
+  categoryAllocation,
+  perCountryFloor,
+  fmt,
+  pct,
+} from "@/data/visaAnnualLimitsData";
 
 export type VisaBulletinPageKind = "guide" | "reference" | "update";
 
@@ -29,6 +43,53 @@ export interface VisaBulletinPage extends VisaBulletinPageData {
 }
 
 export const VISA_BULLETIN_CLUSTER_BASE = "/visa-bulletin";
+
+/**
+ * The sentence that follows the USCIS chart-status headline. It has to branch:
+ * while a determination is pending the copy tells readers to fall back to
+ * Table A and NOT to read the silence as Table B being ruled out, but once
+ * USCIS posts, that hedge is simply wrong. Deriving it keeps the two halves of
+ * the warning from contradicting each other — which is exactly what happened
+ * when the headline was hand-written and the data had already moved on.
+ */
+/**
+ * Allocation table rows for the annual-limits page, computed from
+ * data/visaAnnualLimitsData.ts. Building these from the statute rather than
+ * typing them means a corrected share can never leave a stale figure in copy.
+ */
+function allocationRows(pool: number): string {
+  return EB_ALLOCATIONS.map(
+    (a) =>
+      `| ${a.label} | ${pct(a.share)} | ${fmt(categoryAllocation(a.share, pool))} | ${fmt(
+        perCountryFloor(a.share, pool),
+      )} |`,
+  ).join("\n");
+}
+
+function setAsideRows(pool: number): string {
+  const eb5 = EB_ALLOCATIONS.find((a) => a.key === "eb5")!;
+  const eb5Total = categoryAllocation(eb5.share, pool);
+  return EB5_SET_ASIDES.map(
+    (sa) => `| ${sa.label} | ${pct(sa.share)} of EB-5 | ${fmt(Math.round(sa.share * eb5Total))} |`,
+  ).join("\n");
+}
+
+function filingChartGuidance(): string {
+  const chart = getApplicableChart();
+  const month = formatBulletinMonth();
+  if (chart.pending) {
+    return (
+      `Until USCIS posts the ${month} determination at uscis.gov/visabulletininfo, ` +
+      "treat Table A (Final Action Dates) as the governing chart and do not assume " +
+      `Table B (Dates for Filing) is either open or ruled out for ${month}.`
+    );
+  }
+  return (
+    `USCIS has posted its ${month} determination at uscis.gov/visabulletininfo: ` +
+    `employment-based adjustment filings must use ${chart.label} (` +
+    `${chart.usingDatesForFiling ? "Table B" : "Table A"}) this month.`
+  );
+}
 
 export function visaBulletinChildPath(slug: string) {
   return `${VISA_BULLETIN_CLUSTER_BASE}/${slug}`;
@@ -233,7 +294,7 @@ Every month, the State Department publishes two priority date charts:
 Table B is often later (more favorable) than Table A, but not always — and it can only be used for adjustment of status if USCIS allows it that month. It exists to let applicants file I-485 and get work/travel authorization while waiting for their final approval.
 
 :::warn
-**September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates.** Until USCIS posts the September determination at uscis.gov/visabulletininfo, treat Table A (Final Action Dates) as the governing chart and do not assume Table B (Dates for Filing) is either open or ruled out for September.
+**${getApplicableChart().statusNote}** ${filingChartGuidance()}
 :::
 
 :::warn
@@ -468,7 +529,7 @@ No one can promise that. Cutoff movement depends on demand and spillover, and th
     updated: "2026-08-22",
     content: `
 :::quickanswer
-The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in the September 2026 bulletin the category remains fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
+The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in the September 2026 bulletin the category remains fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — see [how the annual limits are set](/visa-bulletin/annual-limits) — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
 :::
 
 :::key
@@ -757,7 +818,7 @@ Not necessarily. The relative movement of EB-2 and EB-3 India changes every mont
 :::key
 - Understand the core rule: retrogression **pauses** approvals, it never denies or abandons a pending I-485.
 - Keep renewing **EAD and Advance Parole** — both ride on the pending I-485, not on your date being current.
-- Watch **October 1**: the new fiscal year restores visa numbers, and dates often retrogress right after a summer surge.
+- Watch **October 1**: the new fiscal year restores visa numbers ([how the annual supply works](/visa-bulletin/annual-limits)), and dates often retrogress right after a summer surge.
 - Expect the extreme form too — a category can go to **"U" (Unavailable)**, meaning zero visa numbers, as EB-2 India did in July 2026 — and recover on October 1, as the [FY2027 reset analysis](/visa-bulletin/october-2026-predictions) explains.
 - Never commit to job changes, travel, or financial plans on the assumption a date will advance — check the bulletin each month when the new one posts, usually in the second week.
 :::
@@ -1417,6 +1478,129 @@ Wait for your date to become current again. You cannot file I-485 while your pri
 
 #### How far in advance should I prepare the I-485 package?
 Begin preparing 2–3 months before you expect your date to become current. Civil surgeon appointments fill up, and USCIS forms require gathering documents from your employer, birth country, and civil records. Do not wait until your date is current to start preparing.
+`,
+  },
+  {
+    slug: "annual-limits",
+    kind: "reference",
+    title: "How Many Employment Green Cards Are Issued Each Year?",
+    seoTitle: "Green Card Annual Limits: How Many Visas Per Year | EB Categories",
+    metaDescription:
+      "How many employment-based green cards the US issues each year, how INA §203(b) splits them between EB-1 to EB-5, and why the 7% per-country limit is a floor rather than a quota.",
+    navLabel: "Annual Limits & Visa Supply",
+    excerpt:
+      "Every cutoff date in the Visa Bulletin is downstream of one number: how many immigrant visas exist this year. Here is where that number comes from and who gets to use it.",
+    date: "2026-09-16",
+    updated: "2026-09-16",
+    content: `
+:::quickanswer
+US law guarantees a minimum of **${fmt(EB_WORLDWIDE_FLOOR)} employment-based immigrant visas** per fiscal year (INA §201(d)), and the real figure is usually higher because family-sponsored numbers left unused in the prior year fall up into the employment categories. The pool was **${fmt(getFiscalYear(2026)!.ebPool!)} in FY2026**. That single number — not policy, not processing speed — is what sets every cutoff date in the Visa Bulletin.
+:::
+
+:::key
+- The supply resets on **October 1**, the first day of the federal fiscal year. That is why categories that ran out of numbers can reappear with a date in the October bulletin.
+- Each category's share is fixed by statute: **${pct(0.286)} each to EB-1, EB-2 and EB-3**, ${pct(0.071)} each to EB-4 and EB-5.
+- The **7% per-country limit is a floor, not a quota.** India receives far more than 7% of EB-2 in a normal year.
+- Unused numbers **spill down** — EB-1 leftovers go to EB-2, and EB-1+EB-2 leftovers go to EB-3. This is why EB-3 sometimes moves ahead of EB-2.
+- Nobody, including the State Department, knows next year's pool in advance, because it depends on how many family numbers went unused.
+:::
+
+## Where the annual number comes from
+
+Two figures are set in statute and do not change without an act of Congress:
+
+| Category | Statutory floor | Statute |
+| --- | --- | --- |
+| Employment-based | ${fmt(EB_WORLDWIDE_FLOOR)} | INA §201(d)(1)(A) |
+| Family-sponsored | ${fmt(226000)} | INA §201(c) |
+
+The employment floor is a **minimum**, not a cap. INA §201(d) adds to it any family-sponsored numbers that went unused in the previous fiscal year. That "fall-up" is what makes the real pool move year to year — ${getFiscalYear(2026)!.basis}
+
+:::info
+This is the single most misunderstood thing about the green card queue. People assume the backlog persists because USCIS is slow. It persists because the **supply is capped by law** and demand from a few countries exceeds it by an order of magnitude. Faster adjudication would not add a single visa number.
+:::
+
+## How the pool splits between EB categories
+
+INA §203(b) divides the employment-based pool into fixed percentages. At the ${fmt(EB_WORLDWIDE_FLOOR)} statutory floor:
+
+| Category | Statutory share | Worldwide numbers | Per-country floor (7%) |
+| --- | --- | --- | --- |
+${allocationRows(EB_WORLDWIDE_FLOOR)}
+
+Those per-country figures are the ones worth pausing on. At the floor, a single country's guaranteed EB-2 allotment is about **${fmt(perCountryFloor(0.286, EB_WORLDWIDE_FLOOR))} visas** — against an Indian EB-2 queue measured in the hundreds of thousands. That arithmetic, and nothing else, is the [EB-2 India backlog](/visa-bulletin/eb2-india).
+
+## The 7% per-country limit is a floor, not a quota
+
+INA §202(a)(2) caps any one country at 7% of the year's total. Read carelessly, that sounds like India can never receive more than ~${fmt(perCountryFloor(0.286, EB_WORLDWIDE_FLOOR))} EB-2 numbers. It can, and it does.
+
+The reason is INA §202(a)(5): when numbers in a category would **otherwise go unused**, they may be issued to nationals of oversubscribed countries without regard to the 7% limit. In practice most countries never come close to using their share, so the leftovers flow to India and China. India routinely receives several times its 7% floor in EB-2 and EB-3.
+
+:::warn
+This cuts both ways. Because India's allocation depends on **other countries' leftovers**, it is not predictable and not guaranteed. A year in which worldwide demand rises is a year in which India's share falls — without any rule changing.
+:::
+
+## Spillover: why EB-3 sometimes beats EB-2
+
+Unused numbers do not evaporate at the category boundary. They cascade:
+
+${EB_ALLOCATIONS.map((a) => `- **${a.label}** — ${a.spillover}`).join("\n")}
+
+When EB-1 demand is light, EB-2 gets the surplus and its date jumps. When EB-2 is oversubscribed and EB-3 is not, EB-3 can advance past EB-2 — which is what makes an [EB-2 to EB-3 downgrade](/visa-bulletin/eb2-to-eb3-downgrade) worth considering in some years.
+
+## EB-5 set-asides
+
+The EB-5 Reform and Integrity Act of 2022 reserved part of the EB-5 category for specific investment types. At the statutory floor:
+
+| Set-aside | Reserved share | Numbers |
+| --- | --- | --- |
+${setAsideRows(EB_WORLDWIDE_FLOOR)}
+
+The remaining 68% is the **unreserved** EB-5 category — the one the Visa Bulletin's EB-5 row refers to. Reserved numbers unused in a year roll into the same set-aside the following year before they fall to unreserved, which is why the set-aside rows often stay Current while unreserved does not.
+
+## What actually happens on October 1
+
+The fiscal year turns over and the full annual supply becomes available at once. Concretely:
+
+- Categories that exhausted their numbers mid-year and went to **"U" (Unavailable)** get numbers again and normally reappear with a posted date.
+- The State Department sets the new cutoffs based on **projected demand for the whole year**, not on clearing the backlog.
+- A date can still come back **lower** than where it stood before the category ran dry, if demand analysis warrants it.
+- USCIS separately announces which filing chart applies — see [Final Action Dates vs Dates for Filing](/visa-bulletin/final-action-date-vs-date-of-filing).
+
+## Why next year's number is not knowable yet
+
+The pool depends on family-sponsored numbers unused in the year that just ended, and that count is not final until the year closes. The State Department publishes the operative annual limit in the Visa Bulletin after the fiscal year opens.
+
+Separately, the **actual visas issued** per country and category come from the annual Report of the Visa Office, which lags the fiscal year by months. Any figure claiming what India "received" in a year that has not been reported is an estimate, and should be labelled one.
+
+:::tip
+When you read a prediction — including ours — check whether it distinguishes the **statutory floor** (knowable), the **year's pool** (published after October 1), and **issuance totals** (published much later). A forecast that blurs the three is guessing. Our [October 2026 FY2027 analysis](/visa-bulletin/october-2026-predictions) keeps them separate and scores itself against what DOS actually published.
+:::
+
+## What this means for you
+
+- Your cutoff date moves because of **supply**, not because of anything in your case. A stalled date is not a problem with your petition.
+- **October is the month to watch.** More movement happens at the fiscal-year boundary than in any other single bulletin.
+- Track where you actually sit with the [priority date checker](/tools/priority-date-checker) and the [green card tracker](/tools/green-card-tracker).
+- If your date retrogresses or goes Unavailable, nothing happens to a pending I-485 — see [retrogression explained](/visa-bulletin/retrogression).
+
+#### How many employment-based green cards are issued each year?
+At least ${fmt(EB_WORLDWIDE_FLOOR)} per fiscal year by statute, plus family-sponsored numbers unused in the prior year. The FY2026 pool was ${fmt(getFiscalYear(2026)!.ebPool!)}.
+
+#### What is the 7% per-country limit?
+INA §202(a)(2) limits any single country to 7% of the year's immigrant visa numbers. It is a floor that guarantees small countries access, not a ceiling India actually hits — INA §202(a)(5) lets otherwise-unused numbers go to oversubscribed countries.
+
+#### Why does the Visa Bulletin change on October 1?
+October 1 starts the federal fiscal year and a fresh annual supply of visa numbers. Categories that exhausted their allocation become available again.
+
+#### Does a bigger annual limit clear the India backlog?
+No. The Indian EB-2 and EB-3 queues are large enough that even a substantially larger annual pool would take decades to clear at current per-country rules. Only a change to the per-country limit or a large one-time recapture would materially shorten it.
+
+#### Do unused green cards carry over to the next year?
+Employment-based numbers generally do not carry over — unused numbers are lost at year end, except that unused family numbers fall up into employment for the following year, and unused EB-5 reserved numbers roll into the same set-aside. This is why the "wasted visas" debate exists.
+
+#### Where does the State Department publish the annual limit?
+In the Visa Bulletin itself, after the fiscal year opens. The statutory floors are in INA §201; the category shares are in INA §203(b).
 `,
   },
 ];

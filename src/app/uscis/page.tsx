@@ -9,6 +9,7 @@ import { pageMetadata, breadcrumbJsonLd, faqJsonLd, jsonLdGraph, absoluteUrl } f
 import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
 import VisaBulletinAlert from "@/components/VisaBulletinAlert";
+import { getApplicableChart } from "@/lib/visa-bulletin";
 
 const PAGE_PATH = "/uscis";
 const UPDATED = "2026-08-22";
@@ -112,7 +113,9 @@ const faqs = [
   {
     question: "What happens when priority date becomes current?",
     answer:
-      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates.",
+      "When your priority date is earlier than the cutoff date in the monthly visa bulletin's Final Action Dates chart for your category and country, USCIS can approve your I-485 (and you can file, if otherwise eligible). Check both the Final Action Dates and Dates for Filing charts monthly — USCIS announces which chart applies each month. " +
+      // Derived — a hand-written chart status goes stale the day USCIS posts.
+      getApplicableChart().statusNote,
   },
   {
     question: "Do H1B workers need a myUSCIS account?",

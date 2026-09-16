@@ -220,7 +220,11 @@ function marketTickerItem(item: MarketItem): TickerItem {
 function nextBulletinTickerItem(): TickerItem | null {
   const nb = nextBulletin();
   if (!nb) return null;
-  const state = visaBulletinState(new Date(), (config.bulletinReleases as string[]) ?? []);
+  const state = visaBulletinState(
+    new Date(),
+    (config.bulletinReleases as string[]) ?? [],
+    visaBulletinCurrent.bulletinMonth,
+  );
   const monthShort = state.nextExpectedMonth
     ? new Date(`${state.nextExpectedMonth}-01T00:00:00Z`).toLocaleDateString("en-US", {
         month: "short",

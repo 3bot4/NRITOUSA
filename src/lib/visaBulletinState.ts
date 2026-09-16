@@ -21,6 +21,12 @@ export interface BulletinState {
   nextExpectedMonth: string | null;
   /** ISO date of that next expected publication (an ESTIMATE), or null. */
   nextPublicationDate: string | null;
+  /**
+   * True when `nextPublicationDate` has already passed but the bulletin has not
+   * been ingested — i.e. DOS is running late. Callers must not render a
+   * countdown to a date in the past.
+   */
+  releaseOverdue: boolean;
 }
 
 /**
@@ -69,6 +75,11 @@ export function monthLabel(key: string): string {
 export function visaBulletinState(
   today: Date,
   releases: string[],
+  /**
+   * "YYYY-MM" of the newest bulletin actually ingested into
+   * data/visa-bulletin. Optional only so existing callers/tests can omit it.
+   */
+  latestIngestedMonth?: string,
 ): BulletinState {
   const effectiveMonth = `${today.getUTCFullYear()}-${pad(today.getUTCMonth() + 1)}`;
   const t = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
@@ -91,15 +102,38 @@ export function visaBulletinState(
   const latestFromReleases = published.length
     ? published[published.length - 1].month
     : effectiveMonth;
-  const latestPublishedMonth =
+  let latestPublishedMonth =
     latestFromReleases > effectiveMonth ? latestFromReleases : effectiveMonth;
 
-  const next = upcoming[0] ?? null;
+  /*
+   * Every entry in `releases` is an ESTIMATE, and FY2026 slipped every single
+   * month (the September bulletin was forecast for Aug 14 and landed Aug 21).
+   * Once an estimated date passes, the arithmetic above starts asserting a
+   * bulletin that may not exist — on 2026-09-16 it claimed "October 2026 is
+   * already published" while DOS had published nothing.
+   *
+   * The bulletins we have actually ingested are the ceiling: we cannot have a
+   * published bulletin we have not read. This self-corrects — the cap rises the
+   * moment the monthly refresh lands.
+   */
+  if (latestIngestedMonth && latestPublishedMonth > latestIngestedMonth) {
+    latestPublishedMonth =
+      latestIngestedMonth > effectiveMonth ? latestIngestedMonth : effectiveMonth;
+  }
+
+  // The next bulletin is by definition the month after the latest published
+  // one; look up its estimated date if the schedule still has one.
+  const nextExpectedMonth = addMonths(latestPublishedMonth, 1);
+  const scheduled = pub.find((p) => p.month === nextExpectedMonth) ?? null;
 
   return {
     effectiveMonth,
     latestPublishedMonth,
-    nextExpectedMonth: next?.month ?? null,
-    nextPublicationDate: next?.date ?? null,
+    nextExpectedMonth,
+    nextPublicationDate: scheduled?.date ?? null,
+    /* True when the estimated date has come and gone without the bulletin
+     * being ingested — the UI must say "overdue", not count down to a past
+     * date. */
+    releaseOverdue: scheduled ? isPast(scheduled.date) : false,
   };
 }

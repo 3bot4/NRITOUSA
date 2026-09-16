@@ -64,12 +64,42 @@ bulletin was live while uscis.gov/visabulletininfo still showed August and
 previous determination forward as the conservative default, say so in the copy,
 and re-check within a few days — never assert a chart USCIS has not posted.
 
+**Guardrails added 2026-09-16 — read these before doing the work by hand.**
+
+- `src/lib/visaBulletinFreshness.test.ts` turns step 4 below into a **red
+  build**. It reads the bulletin month out of `current.json` and fails, file by
+  file with the offending phrase quoted, when a page still narrates the previous
+  bulletin, makes a stale `remainder of FY <year>` claim, carries a stale
+  "Updated <Month> <Year>" badge, or leaves `bulletinRefresh` behind the cycle.
+  Deliberately historical references are exempted by a cue list
+  (`example`, `previously`, `back in`, …), so the Retrogression worked example
+  and the monthly-update tracking table stay green. **If you add a new page that
+  narrates the current bulletin, add it to `NARRATES_CURRENT_BULLETIN`.**
+- `fiscalYear()` / `fiscalYearLabel()` / `dosBulletinUrl()` in
+  `src/lib/visa-bulletin.ts` derive the FY and the official source URL. **Never
+  type either by hand**: DOS files each bulletin under its FISCAL year, so the
+  October 2026 bulletin lives under `/2027/`, not `/2026/`. A freshness test
+  asserts `current.json`'s `source` equals `dosBulletinUrl(bulletinMonth)`.
+- `node scripts/scaffold-visa-bulletin-month.mjs YYYY-MM --carry` writes the
+  empty 110-row backfill file with the right derived `source_url`, and with each
+  cell's prior-month value alongside it so you can see what actually moved.
+- An unfilled scaffold is inert: `build-visa-bulletin-data.mjs` now refuses to
+  promote an incomplete month to `current.json` (it falls back to the newest
+  complete month and warns) and leaves it out of `index.json`.
+- Release dates in `data/homepage-config.json` are **estimates that are allowed
+  to pass**. `visaBulletinState()` is capped by the newest month actually
+  ingested, so a slipped date now renders an "overdue" notice instead of
+  asserting a bulletin that does not exist. (Before this fix, on 2026-09-16 the
+  tracker said "October 2026 is already published" when DOS had published
+  nothing.) You no longer need to hand-push a date forward when it slips.
+
 When the new monthly Visa Bulletin is published:
 
 1. Fetch the new month's bulletin via the `adoption.state.gov` mirror if it's
    still working, or reconstruct it via WebSearch + at least two independently
    corroborating secondary sources per cell (per the method in
-   `data/visa-bulletin/_verified-backfill/`).
+   `data/visa-bulletin/_verified-backfill/`). Build the mirror URL from
+   `dosBulletinUrl()` with the host swapped — mind the fiscal-year folder.
 2. **Add a new row-level file** at
    `data/visa-bulletin/_verified-backfill/visa-bulletin-backfill-YYYY-MM.json`
    — correction to the step below: `scripts/build-visa-bulletin-data.mjs`
@@ -169,6 +199,35 @@ When the new monthly Visa Bulletin is published:
 
 The estimator's velocity math and charts pick the new month up automatically
 once `history.json` is regenerated.
+
+### 1a. The October bulletin (fiscal-year rollover) — extra steps
+
+October is not a normal month. Everything in §1 still applies, plus:
+
+- **Source URLs move to the next FY folder.** October 2026 → `/2027/…`. Derived
+  by `dosBulletinUrl()`; the scaffold script already emits it correctly.
+- **Every "for the remainder of FY <year>" claim flips.** A category that was
+  Unavailable "for the remainder of FY 2026" is not unavailable in October — the
+  new year's numbers are what October releases. The freshness test fails on each
+  stale claim, naming the file.
+- **Categories returning from `U` are the highest-risk cells in the tracker.**
+  `src/data/immigration-tracker-data.ts` carries `movementDirection:
+  "unavailable"` and `finalActionMovementLabel: "Unavailable this month"` for
+  EB-2 and EB-5 India. When a date returns, those hand-set fields must be
+  recomputed against the prior month — `tsc` and the tests stay green while the
+  site prints a wrong movement. Run the runtime `getMovement` check in step 5.
+- **Confirm the EB-5 set-asides separately.** `eb5SetAsides` in `current.json`
+  is preserved by the build script, not re-derived, and the reserved categories
+  commonly reset at the FY boundary.
+- **`/visa-bulletin/october-2026-predictions` pre-commits a dated forecast.**
+  Its "Our record on this call" table has four `Pending` rows that must be
+  filled from the published bulletin — the page's whole credibility rests on
+  scoring it honestly rather than editing the prediction. `Eb2OctoberOutlook`'s
+  `prediction` prop also needs to become the published value.
+- **DOS publishes FY annual limits separately** from the bulletin itself, and
+  the Report of the Visa Office (with actual issuance totals) lags by months.
+  Do not assert an FY total that cannot exist yet — a freshness test on the
+  predictions page already blocks one such claim.
 
 ## 2. H-1B salaries (quarterly)
 

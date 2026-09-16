@@ -1,9 +1,9 @@
 {
-  "_comment": "Manually-maintained homepage values that are NOT part of the automated daily pipeline. Edit these by hand. nreFd = best NRE fixed-deposit rate shown in the sidebar (update from bank websites). bulletinReleases = known/estimated U.S. State Dept Visa Bulletin publication dates (ISO, ET); the sidebar shows days until the next one after today. The Visa Bulletin for a given month is published in the second week of the PRIOR month. IMPORTANT: visaBulletinState() treats any PAST date here as proof that the corresponding bulletin was published — so a date that slips by without a release makes the homepage ticker and immigration tracker assert a bulletin is out when it isn't. If a release date passes with no bulletin on travel.state.gov, push that entry forward to the next plausible business day rather than leaving it in the past. Err LATE, never early: a too-early date states a falsehood, a too-late one only understates freshness.",
+  "_comment": "Manually-maintained homepage values that are NOT part of the automated daily pipeline. Edit these by hand. nreFd = best NRE fixed-deposit rate shown in the sidebar (update from bank websites). bulletinReleases = known/estimated U.S. State Dept Visa Bulletin publication dates (ISO, ET); the sidebar shows days until the next one after today. The Visa Bulletin for a given month is published in the PRIOR month \u2014 nominally the second week, but every FY2026 release actually landed in the third (the August 2026 bulletin on Jul 20, September on Aug 21), so forward estimates target the third Thursday. These are ESTIMATES and are allowed to pass without a release: visaBulletinState() is capped by the newest month actually ingested into data/visa-bulletin, so a date slipping by now renders an 'overdue' notice instead of falsely asserting the bulletin is out. Err LATE, never early.",
   "nreFd": {
     "rate": 7.25,
     "bank": "IndusInd Bank",
-    "tenor": "1–2 yr NRE FD",
+    "tenor": "1\u20132 yr NRE FD",
     "updated": "2026-06-01",
     "source": "Bank published rate card"
   },
@@ -12,8 +12,17 @@
     "2026-07-15",
     "2026-08-21",
     "2026-09-12",
-    "2026-10-14",
-    "2026-11-13",
-    "2026-12-12"
+    "2026-10-15",
+    "2026-11-19",
+    "2026-12-17",
+    "2027-01-21",
+    "2027-02-18",
+    "2027-03-18",
+    "2027-04-15",
+    "2027-05-20",
+    "2027-06-17",
+    "2027-07-15",
+    "2027-08-19",
+    "2027-09-16"
   ]
 }

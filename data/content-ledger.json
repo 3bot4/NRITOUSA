@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -25,6 +25,48 @@
       "nextStep": "Re-verify the travel.state.gov NVC fees and the passport/VFS ranges by hand (both hosts block automated fetches), then run `npm run audit:monthly-numbers:baseline` to move the stamps and the baseline together.",
       "evidence": "npm run audit:monthly-numbers",
       "next": "Work the remaining 14 by hand; uscis.gov and travel.state.gov both 403 automated fetches, so use WebSearch with allowed_domains."
+    },
+    {
+      "id": "october-2026-fy2027-visa-bulletin-run",
+      "title": "October 2026 (FY2027) Visa Bulletin: run the monthly refresh the day it drops",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-16",
+      "nextStep": "Playbook §1 steps 1-6, plus the FY-rollover extras: source URLs move to the /2027/ folder, 'Unavailable for the remainder of FY 2026' copy goes false on Oct 1, EB-2/EB-5 India return from U so tracker movementDirection must be recomputed, EB-5 set-asides reset",
+      "evidence": "npm test + the getMovement runtime check in playbook step 5"
+    },
+    {
+      "id": "score-the-pre-committed-october-2026",
+      "title": "Score the pre-committed October 2026 forecast once DOS publishes",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-16",
+      "nextStep": "Fill the four 'Pending' rows in the 'Our record on this call' table on /visa-bulletin/october-2026-predictions from the published bulletin; flip Eb2OctoberOutlook's dashed prediction to the actual value; update the Sept 15 status paragraph",
+      "evidence": "src/lib/visaBulletinOctober2026.test.ts"
+    },
+    {
+      "id": "tracker-claimed-the-october-bulletin-was",
+      "title": "Tracker claimed the October bulletin was already published",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-16",
+      "detail": "visaBulletinState() treated any PAST estimated release date in homepage-config as proof of publication. The Oct bulletin's estimate (2026-09-12) passed with no release, so the immigration tracker rendered 'October 2026 is already published' and the homepage ticker counted down to November. Fixed by capping the state at the newest month actually ingested into data/visa-bulletin, plus a releaseOverdue flag the countdown now renders.",
+      "evidence": "src/lib/visaBulletinState.test.ts",
+      "resolved": "2026-09-16"
+    },
+    {
+      "id": "uscis-filing-chart-prose-said-pending",
+      "title": "USCIS filing-chart prose said Pending after the determination posted",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-16",
+      "detail": "current.json recorded the September determination as posted on 2026-09-02, but three hardcoded copies of the chart-status sentence (visaBulletinCluster.ts, immigration-tracker-data.ts, uscis/page.tsx) still told users it was Pending and cited the August determination. All three now derive from getApplicableChart().statusNote.",
+      "evidence": "npm test",
+      "resolved": "2026-09-16"
     },
     {
       "id": "four-corrections-survived-the-2026-09",

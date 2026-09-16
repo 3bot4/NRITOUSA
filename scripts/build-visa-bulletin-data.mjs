@@ -149,7 +149,35 @@ function main() {
     // no prior file
   }
 
-  const latestMonth = months[months.length - 1];
+  /*
+   * A month scaffolded by scripts/scaffold-visa-bulletin-month.mjs but not yet
+   * filled in is all-null. It must never become current.json: the legacy
+   * categories.{eb1,eb2,eb3,eb5}.{india,china,row} cells are typed as
+   * non-nullable strings in src/lib/visa-bulletin.ts, so publishing nulls there
+   * breaks every cutoff on the site. Fall back to the newest COMPLETE month and
+   * say so loudly.
+   */
+  const LEGACY_CATS = ["eb1", "eb2", "eb3", "eb5"];
+  const LEGACY_COUNTRIES = ["india", "china", "row"];
+  const isComplete = (snap) =>
+    LEGACY_CATS.every((c) =>
+      LEGACY_COUNTRIES.every(
+        (k) => snap.categories?.[c]?.[k]?.fad != null && snap.categories?.[c]?.[k]?.dff != null,
+      ),
+    );
+
+  const completeMonths = months.filter((m) => isComplete(byMonth.get(m)));
+  if (completeMonths.length === 0) {
+    console.error("No month has a complete set of legacy cutoffs — refusing to write current.json.");
+    process.exit(1);
+  }
+  for (const m of months) {
+    if (!isComplete(byMonth.get(m))) {
+      console.warn(`! ${m} is incomplete (unfilled scaffold?) — snapshot written, but it will not become current.json`);
+    }
+  }
+
+  const latestMonth = completeMonths[completeMonths.length - 1];
   const latestSnap = byMonth.get(latestMonth);
   const currentJson = {
     bulletinMonth: latestSnap.bulletinMonth,
@@ -184,10 +212,12 @@ function main() {
     source: DOS_ARCHIVE_URL,
     sourceLabel: "U.S. Department of State Visa Bulletin archive",
     current: latestMonth,
-    months,
+    // Only months the site can actually render. An unfilled scaffold stays out
+    // of the index so its presence in the tree is completely inert.
+    months: completeMonths,
   };
   writeFileSync(join(dataDir, "index.json"), JSON.stringify(indexJson, null, 2) + "\n");
-  console.log(`Wrote index.json (${months[0]} → ${months.at(-1)})`);
+  console.log(`Wrote index.json (${completeMonths[0]} → ${completeMonths.at(-1)})`);
 
   const logPath = join(dataDir, "ingest-log.json");
   let log = [];

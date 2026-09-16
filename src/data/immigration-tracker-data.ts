@@ -26,6 +26,7 @@ import {
   monthLabel as bulletinMonthLabel,
   immigrationLastVerifiedLabel,
 } from "@/lib/visaBulletinState";
+import { getApplicableChart } from "@/lib/visa-bulletin";
 import { getH1bPremiumFee, getPremiumFeeByForm, premiumProcessing } from "@/lib/premiumProcessing";
 
 // Premium processing fees come from the central source of truth in
@@ -67,8 +68,13 @@ export const visaBulletinIndia = {
   officialSourceUrl: currentBulletin.source,
   sourceNote:
     "September 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
+  /* The chart-determination sentence is DERIVED, never typed: USCIS posts its
+   * determination days after DOS publishes, so a hand-written "Pending" goes
+   * false without anything editing this file. */
   retrogressionNote:
-    "September 2026 update: no India employment category moved. EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from August). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. EB-4 advanced two months to Dec 15, 2022 for every country. September 2026 USCIS filing chart: Pending. The latest posted USCIS determination is for August 2026, which required Final Action Dates. Confirm at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.",
+    "September 2026 update: no India employment category moved. EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from August). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. EB-4 advanced two months to Dec 15, 2022 for every country. " +
+    `${getApplicableChart().statusNote} ` +
+    "Confirm at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.",
 
   categories: {
     EB1: {
@@ -319,6 +325,8 @@ export const processingTimes = {
 const _bulletinState = visaBulletinState(
   new Date(),
   (homepageConfig.bulletinReleases as string[]) ?? [],
+  // Ceiling: never claim a bulletin is published that we have not ingested.
+  currentBulletin.bulletinMonth,
 );
 
 export const bulletinTiming = {
@@ -328,6 +336,7 @@ export const bulletinTiming = {
     ? bulletinMonthLabel(_bulletinState.nextExpectedMonth)
     : null,
   nextPublicationDate: _bulletinState.nextPublicationDate,
+  releaseOverdue: _bulletinState.releaseOverdue,
   // Same shared verification date the homepage ticker uses.
   lastVerifiedLabel: immigrationLastVerifiedLabel,
 } as const;

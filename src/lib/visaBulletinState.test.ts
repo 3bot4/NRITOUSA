@@ -72,6 +72,48 @@ describe("just before vs after a release flips the published month", () => {
   });
 });
 
+describe("an estimated release date that passes must not invent a bulletin", () => {
+  /*
+   * The live bug: on 2026-09-16 the October bulletin was still unpublished, but
+   * the Sep 12 estimate had passed, so the tracker rendered "October 2026 is
+   * already published" and counted down to November.
+   */
+  const day = new Date(Date.UTC(2026, 8, 16));
+
+  it("without an ingest cap it over-claims (the old behaviour)", () => {
+    expect(visaBulletinState(day, RELEASES).latestPublishedMonth).toBe("2026-10");
+  });
+
+  it("capped at the ingested month, it tells the truth", () => {
+    const s = visaBulletinState(day, RELEASES, "2026-09");
+    expect(s.latestPublishedMonth).toBe("2026-09");
+    expect(s.nextExpectedMonth).toBe("2026-10");
+    expect(s.releaseOverdue).toBe(true);
+  });
+
+  it("self-corrects as soon as the new bulletin is ingested", () => {
+    const s = visaBulletinState(new Date(Date.UTC(2026, 8, 22)), RELEASES, "2026-10");
+    expect(s.latestPublishedMonth).toBe("2026-10");
+    expect(s.nextExpectedMonth).toBe("2026-11");
+    expect(s.releaseOverdue).toBe(false);
+  });
+
+  it("never caps below the effective month", () => {
+    // A stale data file must not make the site claim an older bulletin is in
+    // effect than the calendar says.
+    const s = visaBulletinState(new Date(Date.UTC(2026, 9, 5)), RELEASES, "2026-08");
+    expect(s.latestPublishedMonth).toBe("2026-10");
+    expect(s.effectiveMonth).toBe("2026-10");
+  });
+
+  it("keeps next-after-published across the whole schedule, capped", () => {
+    for (let d = new Date(Date.UTC(2026, 5, 1)); d <= new Date(Date.UTC(2026, 9, 31)); d = new Date(d.getTime() + 86_400_000)) {
+      const s = visaBulletinState(d, RELEASES, "2026-09");
+      expect(s.nextExpectedMonth! > s.latestPublishedMonth).toBe(true);
+    }
+  });
+});
+
 describe("helpers", () => {
   it("addMonths rolls over the year", () => {
     expect(addMonths("2026-11", 1)).toBe("2026-12");
