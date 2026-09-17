@@ -861,6 +861,16 @@ const CURATED: SearchItem[] = [
     keywords:
       "uscis expedite expedite processing expedite case uscis ead expedite request expedite criteria uscis expedite green card processing request expedite premium processing i-907",
   },
+  {
+    title: "EB-1A vs EB-1B vs EB-1C vs NIW",
+    description:
+      "The four green card routes that skip PERM, compared — plus a route finder and what the choice costs an India-born applicant in years.",
+    href: "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "eb1b vs eb1a eb-1a vs eb-1b eb1a vs eb1b vs eb1c eb1c vs eb1a self petitioning for a green card what is niw green card national interest waiver difference between eb1a and eb1b",
+  },
   ...PUBLISHED_MONTHS.map((m) => ({
     title: `${monthLabel(m)} Visa Bulletin`,
     description: `India EB-1, EB-2 and EB-3 cutoffs and month-over-month movement in the ${monthLabel(

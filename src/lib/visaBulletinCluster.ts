@@ -477,9 +477,11 @@ Fees, per the USCIS fee schedule: **$715** to file I-140, **$2,805** optional pr
 ## EB-1 vs EB-2 NIW for Indian researchers
 
 If you are a researcher or academic who cannot qualify for EB-1B (e.g., you don't have 3 years of experience), EB-2 National Interest Waiver (NIW) may be an option. NIW also skips PERM. However:
-- EB-2 NIW uses the India EB-2 cutoff date — much longer wait than EB-1
-- EB-1B uses the India EB-1 cutoff date — shorter wait
-- If you can qualify for EB-1B, it is generally preferable for India-born applicants
+- EB-2 NIW uses the India EB-2 cutoff date
+- EB-1B uses the India EB-1 cutoff date
+- Which of those is the shorter wait depends on the month — the two queues have crossed and re-crossed, so read the trend rather than a single bulletin
+
+For the full comparison — EB-1A, EB-1B, EB-1C and NIW side by side, with a chart of how the India EB-1 and EB-2 queues have actually moved against each other and a route finder — see [which of the four PERM-free routes fits you](/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw).
 
 ## How EB-1 India Connects to the Rest of Your Case
 
