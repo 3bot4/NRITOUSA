@@ -346,15 +346,15 @@ For India EB-2 and EB-3, Table B typically shows dates 6–18 months ahead of Ta
 Even if Table B is authorized, file I-485 only when it makes financial and strategic sense. Your attorney can advise on whether the filing fees and effort are worth it based on how close your Final Action Date is expected to be.
 :::
 
-### Frequently asked questions
+## Frequently asked questions
 
-#### What happens to my I-485 if Table B is revoked after I filed?
+### What happens to my I-485 if Table B is revoked after I filed?
 Nothing — once filed, your I-485 stays pending regardless of future bulletin changes. You cannot unfile. USCIS will approve when your Final Action Date (Table A) becomes current.
 
-#### Can USCIS deny my I-485 because I filed under Table B?
+### Can USCIS deny my I-485 because I filed under Table B?
 No — if you met the Table B filing requirement at the time of filing and USCIS authorized it that month, your filing is valid. USCIS will hold the case and not deny it solely because Table B was subsequently rescinded.
 
-#### Table B showed dates for my category but USCIS didn't authorize it. Can I still file?
+### Table B showed dates for my category but USCIS didn't authorize it. Can I still file?
 No. Table B dates in the visa bulletin are not self-executing. They require an explicit USCIS monthly authorization. Without it, Table A governs.
 `,
   },
@@ -1010,15 +1010,15 @@ After filing, USCIS will mail receipt notices (I-797) for I-485, I-131, and I-76
 Do NOT travel internationally after filing I-485 until your Advance Parole is approved and in hand. Departing the US while I-485 is pending without AP can result in USCIS treating the I-485 as abandoned. Keep your H1B status and visa stamp as a backup, but always consult your attorney before any travel.
 :::
 
-### Frequently asked questions
+## Frequently asked questions
 
-#### My priority date just became current this month — how long do I have to file?
+### My priority date just became current this month — how long do I have to file?
 Technically until the end of the month (the bulletin is valid for one calendar month). But dates can retrogress the next month, so file as fast as possible. Do not wait until the last days of the month.
 
-#### Can I file I-485 if my H1B is expiring soon?
+### Can I file I-485 if my H1B is expiring soon?
 Yes — as long as you are in valid nonimmigrant status at the time of filing. Once I-485 is filed, you are in a period of "authorized stay" and do not need to maintain underlying status to remain in the US. However, maintaining H1B status alongside pending I-485 is still advisable for job portability.
 
-#### What if USCIS schedules my interview very close to a priority date retrogression?
+### What if USCIS schedules my interview very close to a priority date retrogression?
 If USCIS schedules an interview but your priority date is not current at the time of the interview, they may postpone or hold the interview. Your I-485 does not get denied.
 `,
   },
@@ -1096,15 +1096,15 @@ Once the EB-3 I-140 is approved with the original priority date, check if EB-3 I
 **Critical:** Do NOT withdraw or abandon the original EB-2 I-140 when filing EB-3. Keep both active. If EB-3 India retrogresses, you can always use the EB-2 I-140 as a fallback when EB-2 India advances.
 :::
 
-### Frequently asked questions
+## Frequently asked questions
 
-#### Does my employer have to support the downgrade?
+### Does my employer have to support the downgrade?
 Yes — a downgrade requires employer participation. The employer files the new EB-3 I-140 (and a new PERM, if the existing labor certification can't be used) and typically pays for the process. If your employer is unwilling, a downgrade is not possible.
 
-#### Can I downgrade even if I am the same employer but in a different city/role?
+### Can I downgrade even if I am the same employer but in a different city/role?
 Possibly, but any labor certification relied on must accurately describe the actual job requirements and location. A significant change in duties can affect whether the existing certification supports the EB-3 filing and whether the earlier priority date is retained. Your attorney must evaluate this.
 
-#### I filed I-485 under EB-3. Can I also use my EB-2 I-140 if EB-2 becomes more current later?
+### I filed I-485 under EB-3. Can I also use my EB-2 I-140 if EB-2 becomes more current later?
 Yes — this is called interfiling. See the [EB-3 to EB-2 interfiling guide →](/visa-bulletin/eb3-to-eb2-interfiling).
 `,
   },
@@ -1175,15 +1175,15 @@ Interfiling makes sense when:
 Some applicants file I-485 under EB-3 specifically to apply for EAD/AP earlier (if EB-3 India Dates for Filing is authorized), then plan to interfile under EB-2 when EB-2 India Final Action Date advances to their date. This two-step approach is used by experienced immigration attorneys.
 :::
 
-### Frequently asked questions
+## Frequently asked questions
 
-#### Does interfiling reset my I-485 filing date?
+### Does interfiling reset my I-485 filing date?
 No — your I-485 retains its original filing date. You are not refiling; you are associating the existing pending I-485 with a different I-140.
 
-#### Can USCIS deny the interfile request?
+### Can USCIS deny the interfile request?
 USCIS can refuse if the conditions are not met (e.g., the EB-2 I-140 was revoked). Generally, if you have a valid approved EB-2 I-140 and EB-2 India is current, USCIS will honor the request.
 
-#### If I interfile to EB-2 and EB-2 retrogresses, what happens?
+### If I interfile to EB-2 and EB-2 retrogresses, what happens?
 Your I-485 remains pending under EB-2. USCIS cannot approve until EB-2 India is current. You cannot re-interfile back to EB-3 — so consider timing carefully with your attorney.
 `,
   },
@@ -1470,15 +1470,15 @@ Use the Priority Date Checker tool to see how your priority date compares to the
 [Open Priority Date Checker →](/tools/priority-date-checker)
 :::
 
-### Frequently asked questions
+## Frequently asked questions
 
-#### The new bulletin is published the 8th but I see it earlier online. Is it official?
+### The new bulletin is published the 8th but I see it earlier online. Is it official?
 The bulletin is sometimes leaked or pre-published on unofficial sites. Use the official travel.state.gov publication as the authoritative source.
 
-#### I missed the filing window — the dates retrogressed before I could file. What now?
+### I missed the filing window — the dates retrogressed before I could file. What now?
 Wait for your date to become current again. You cannot file I-485 while your priority date is not current (unless Table B is authorized and your date qualifies). Keep your I-140 approved and your H1B extended.
 
-#### How far in advance should I prepare the I-485 package?
+### How far in advance should I prepare the I-485 package?
 Begin preparing 2–3 months before you expect your date to become current. Civil surgeon appointments fill up, and USCIS forms require gathering documents from your employer, birth country, and civil records. Do not wait until your date is current to start preparing.
 `,
   },
@@ -1640,25 +1640,27 @@ When you read a prediction — including ours — check whether it distinguishes
 - Track where you actually sit with the [priority date checker](/tools/priority-date-checker) and the [green card tracker](/tools/green-card-tracker).
 - If your date retrogresses or goes Unavailable, nothing happens to a pending I-485 — see [retrogression explained](/visa-bulletin/retrogression).
 
-#### How many employment-based green cards are issued each year?
+## Frequently asked questions
+
+### How many employment-based green cards are issued each year?
 At least ${fmt(EB_WORLDWIDE_FLOOR)} per fiscal year by statute, plus family-sponsored numbers unused in the prior year. The FY2026 pool was ${fmt(getFiscalYear(2026)!.ebPool!)}.
 
-#### What is the 7% per-country limit?
+### What is the 7% per-country limit?
 INA §202(a)(2) limits any single country to 7% of the year's immigrant visa numbers. It is a floor that guarantees small countries access, not a ceiling India actually hits — INA §202(a)(5) lets otherwise-unused numbers go to oversubscribed countries.
 
-#### Why does the Visa Bulletin change on October 1?
+### Why does the Visa Bulletin change on October 1?
 October 1 starts the federal fiscal year and a fresh annual supply of visa numbers. Categories that exhausted their allocation become available again.
 
-#### Does a bigger annual limit clear the India backlog?
+### Does a bigger annual limit clear the India backlog?
 No. The Indian EB-2 and EB-3 queues are large enough that even a substantially larger annual pool would take decades to clear at current per-country rules. Only a change to the per-country limit or a large one-time recapture would materially shorten it.
 
-#### Do unused green cards carry over to the next year?
+### Do unused green cards carry over to the next year?
 Employment-based numbers generally do not carry over — unused numbers are lost at year end, except that unused family numbers fall up into employment for the following year, and unused EB-5 reserved numbers roll into the same set-aside. This is why the "wasted visas" debate exists.
 
-#### What is green card recapture?
+### What is green card recapture?
 A proposal to recover immigrant visa numbers that went unused in past fiscal years and return them to the queue. Unused numbers are otherwise lost at year end. Recapture needs an act of Congress and has not passed.
 
-#### Where does the State Department publish the annual limit?
+### Where does the State Department publish the annual limit?
 In the Visa Bulletin itself, after the fiscal year opens. The statutory floors are in INA §201; the category shares are in INA §203(b).
 `,
   },
