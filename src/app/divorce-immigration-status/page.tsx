@@ -308,7 +308,8 @@ export default function Page() {
                     </>,
                     <>
                       <strong>On a conditional 2-year card:</strong> you generally keep it, and
-                      file <A href="/i90-vs-i751">Form I-751</A> with a joint-filing waiver.
+                      file <A href="/uscis/forms/i-751">Form I-751</A> with a joint-filing waiver
+                      &mdash; and the 90-day window does not restrict a waiver filing.
                     </>,
                     <>
                       <strong>With an I-130 or I-485 pending:</strong> a high-risk situation —

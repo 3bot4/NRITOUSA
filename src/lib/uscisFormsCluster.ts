@@ -1011,6 +1011,14 @@ export const staticFormPages: StaticFormPage[] = [
       "The income a sponsor must show, how household size is counted, and the three ways to fix a shortfall — with a checker for your own numbers.",
     updated: "2026-09-16",
   },
+  {
+    slug: "i-751",
+    formNumber: "I-751",
+    navLabel: "I-751 Remove Conditions on a Green Card",
+    excerpt:
+      "The 90-day filing window, the current fee, the 48-month receipt-notice extension, and what happens if you miss the deadline — with a window calculator.",
+    updated: "2026-09-16",
+  },
 ];
 
 export function getFormsChildPage(slug: string): FormsPage | undefined {

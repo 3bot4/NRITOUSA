@@ -820,6 +820,16 @@ const CURATED: SearchItem[] = [
     keywords:
       "i-864p i864p i 864p 864p affidavit of support form i-864 poverty guidelines sponsor income requirements joint sponsor household size assets i-864a",
   },
+  {
+    title: "I-751: Remove Conditions on a Green Card",
+    description:
+      "The 90-day filing window, the fee, the 48-month receipt extension and the waiver route — with a calculator for your own card dates.",
+    href: "/uscis/forms/i-751",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "i-751 i751 remove the conditions on my green card removal of conditions permanent residence petition to remove conditions conditional green card fee timeline waiver joint filing 90 day window",
+  },
 ];
 
 /** Assign a priority: explicit PRIORITY map wins, else the provided base. */
