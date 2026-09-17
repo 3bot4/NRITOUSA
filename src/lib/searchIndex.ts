@@ -58,6 +58,7 @@ import { visitorInsuranceChildPages } from "@/lib/visitorInsuranceCluster";
 import { getPublishedStories } from "@/lib/successStories";
 import type { ClusterLink } from "@/lib/permCluster";
 import { liveTopics } from "@/lib/topics";
+import { PUBLISHED_MONTHS, monthLabel, monthPath } from "@/lib/visaBulletinMonths";
 import { states } from "@/data/indianPopulationData";
 
 /** Content-type badge shown on each search result. */
@@ -830,6 +831,26 @@ const CURATED: SearchItem[] = [
     keywords:
       "i-751 i751 remove the conditions on my green card removal of conditions permanent residence petition to remove conditions conditional green card fee timeline waiver joint filing 90 day window",
   },
+  {
+    title: "2026 Citizenship Test Practice",
+    description:
+      "All 128 official civics questions, a timed 20-question mock in the real format, study by topic, and the 65/20 set.",
+    href: "/tools/citizenship-test-practice",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "citizenship test questions 2026 civics practice test us citizenship test 128 questions with answers pdf naturalization n-400 65/20",
+  },
+  ...PUBLISHED_MONTHS.map((m) => ({
+    title: `${monthLabel(m)} Visa Bulletin`,
+    description: `India EB-1, EB-2 and EB-3 cutoffs and month-over-month movement in the ${monthLabel(
+      m
+    )} bulletin.`,
+    href: monthPath(m),
+    type: "Guide" as const,
+    priority: 45,
+    keywords: `visa bulletin ${monthLabel(m).toLowerCase()} ${m} india eb2 eb3 eb1 priority date final action dates for filing green card updates`,
+  })),
 ];
 
 /** Assign a priority: explicit PRIORITY map wins, else the provided base. */

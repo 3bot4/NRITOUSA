@@ -26,9 +26,34 @@ import {
   getVisaBulletinChildPage,
   VISA_BULLETIN_CLUSTER_BASE,
 } from "@/lib/visaBulletinCluster";
+import MonthIndex from "@/components/visa-bulletin/MonthIndex";
+import VisaBulletinMonthPage, {
+  monthDescription,
+  monthFaqs,
+} from "@/components/visa-bulletin/MonthPage";
+import {
+  isPublishedMonth,
+  monthLabel,
+  publishedMonthSlugs,
+  slugToMonth,
+} from "@/lib/visaBulletinMonths";
+
+/**
+ * Monthly bulletin pages (/visa-bulletin/september-2026) share this segment
+ * with the cluster's evergreen children (/visa-bulletin/eb2-india). A month
+ * slug is checked FIRST because it is the narrower shape — "september-2026"
+ * can never collide with a cluster slug, and slugToMonth returns null for
+ * anything that is not a month name plus a four-digit year.
+ */
+function publishedMonthFor(slug: string): string | null {
+  const month = slugToMonth(slug);
+  return month && isPublishedMonth(month) ? month : null;
+}
 
 export function generateStaticParams() {
-  return visaBulletinChildSlugs.map((slug) => ({ slug }));
+  return [...visaBulletinChildSlugs, ...publishedMonthSlugs()].map((slug) => ({
+    slug,
+  }));
 }
 
 export function generateMetadata({
@@ -36,6 +61,21 @@ export function generateMetadata({
 }: {
   params: { slug: string };
 }): Metadata {
+  const month = publishedMonthFor(params.slug);
+  if (month) {
+    const label = monthLabel(month);
+    return pageMetadata({
+      title: `${label} Visa Bulletin: India EB-1, EB-2, EB-3 Dates & Movement`,
+      description: monthDescription(month),
+      path: `/visa-bulletin/${params.slug}`,
+      type: "article",
+      openGraph: {
+        publishedTime: `${month}-01`,
+        modifiedTime: `${month}-01`,
+      },
+    });
+  }
+
   const page = getVisaBulletinChildPage(params.slug);
   if (!page) return notFoundMetadata();
   return pageMetadata({
@@ -55,6 +95,44 @@ export default function VisaBulletinChildPage({
 }: {
   params: { slug: string };
 }) {
+  const month = publishedMonthFor(params.slug);
+  if (month) {
+    const url = absoluteUrl(`/visa-bulletin/${params.slug}`);
+    const label = monthLabel(month);
+    const monthJsonLd = jsonLdGraph(
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: `${label} Visa Bulletin: India EB-1, EB-2 and EB-3 Movement`,
+        description: monthDescription(month),
+        datePublished: `${month}-01`,
+        dateModified: `${month}-01`,
+        author: { "@id": `${site.url}/#organization` },
+        publisher: { "@id": `${site.url}/#organization` },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        url,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+      },
+      faqJsonLd(monthFaqs(month)),
+      breadcrumbJsonLd([
+        { name: "Home", url: "/" },
+        { name: "Visa Bulletin Guide", url: VISA_BULLETIN_CLUSTER_BASE },
+        { name: "Monthly Updates", url: `${VISA_BULLETIN_CLUSTER_BASE}/monthly-update` },
+        { name: `${label} Bulletin`, url: `/visa-bulletin/${params.slug}` },
+      ])
+    );
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(monthJsonLd) }}
+        />
+        <VisaBulletinMonthPage bulletinMonth={month} />
+      </>
+    );
+  }
+
   const page = getVisaBulletinChildPage(params.slug);
   if (!page) notFound();
 
@@ -161,6 +239,10 @@ export default function VisaBulletinChildPage({
               {page.slug === "cross-chargeability" && (
                 <VisaBulletinIndiaVsRow className="mx-auto mb-8 max-w-[720px]" />
               )}
+
+              {/* /visa-bulletin/monthly-update keeps its URL and becomes the
+                  hub for the per-month bulletin pages. */}
+              {page.slug === "monthly-update" && <MonthIndex />}
 
               <ArticleBody content={page.content} />
 
