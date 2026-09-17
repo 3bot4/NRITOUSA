@@ -335,6 +335,21 @@ If your case is on premium processing, the premium clock is paused while the RFE
 ### What is a NOID vs an RFE?
 A **Notice of Intent to Deny (NOID)** is more serious — USCIS is telling you it plans to deny and giving you a chance to rebut. A NOID is not a "second RFE"; it is a separate type of notice, and its response window is typically shorter (often 30 days). USCIS does not always issue an RFE or NOID before deciding a case.
 
+### Is an RFE a good sign?
+It is a neutral sign, and treating it as either good or bad news wastes the time you have. What it tells you is narrow and useful: an officer read the file, found one or more specific requirements not yet established, and is giving you a defined window to establish them. It is not an accusation of fraud, and it says nothing about your odds beyond the fact that the case is not approvable *as filed*. A complete, on-time response that answers every numbered item is what moves it.
+
+### Can I request a copy of my RFE from USCIS?
+Yes. If the notice never arrived — the most common reason is an address change that was never filed on AR-11 — check your USCIS online account first, because RFEs are posted there for online-filed cases and can usually be downloaded immediately. If it is not there, call the USCIS Contact Center and ask for a duplicate notice. Do this the moment you learn an RFE exists: the response clock runs from the date printed on the notice, not from the day you finally read it, so a lost notice eats your window rather than pausing it.
+
+### What does the RFE envelope look like?
+A standard window envelope from a USCIS service centre, with no markings that distinguish it from an approval or a receipt notice — there is no colour coding and nothing on the outside tells you what is inside. The notice itself is Form I-797E, "Notice of Action", with "Request for Evidence" printed as the notice type. Two practical consequences: never discard USCIS mail unopened because it "looks like the last one", and make sure your address on file is current, because USCIS mails to the address it has and a returned notice does not reset the deadline.
+
+### How long does USCIS take after I respond to an RFE?
+There is no published figure for this specifically, and any number you see quoted on a third-party page is somebody's impression rather than a statistic. What is defined is the premium processing clock, which pauses while the RFE is outstanding and restarts when USCIS receives the response. For non-premium cases, check the processing time for your form and office and use your case inquiry date to judge whether the case is genuinely outside normal processing.
+
+### What if I missed the RFE deadline?
+USCIS may deny the case as abandoned, deny it on the record as it stands, or both — and because officers are prohibited by regulation from granting more time, there was never an extension available to ask for. Send the response anyway: a late response is sometimes still considered where a decision has not yet issued, and it costs nothing to try. Then get an immigration attorney involved the same day, because the next document you receive may be a denial with a limited window to act on.
+
 ## Official sources
 
 - [USCIS Policy Manual — Requests for Evidence and Notices of Intent to Deny](https://www.uscis.gov/policy-manual/volume-1-part-e-chapter-6)
