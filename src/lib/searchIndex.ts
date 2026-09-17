@@ -805,6 +805,21 @@ const CURATED: SearchItem[] = [
     priority: 40,
     keywords: "indian population usa state city demographics statistics",
   },
+
+  // ---- September 2026 competitor-gap build -------------------------------
+  // Dedicated static routes that carry a calculator/chart/diagram, so they are
+  // not reachable through any cluster array and must be listed by hand.
+  // searchIndex.coverage.test.ts asserts sitemap and index stay in step.
+  {
+    title: "I-864P Poverty Guidelines & Sponsor Income",
+    description:
+      "The current minimum income to sponsor an immigrant on Form I-864, with a checker for your own household size, location and income.",
+    href: "/uscis/forms/i-864",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "i-864p i864p i 864p 864p affidavit of support form i-864 poverty guidelines sponsor income requirements joint sponsor household size assets i-864a",
+  },
 ];
 
 /** Assign a priority: explicit PRIORITY map wins, else the provided base. */

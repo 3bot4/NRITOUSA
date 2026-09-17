@@ -247,6 +247,11 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/forms", 0.9, "monthly", immDate),
   e("/uscis/life-planning", 0.9, "monthly", immDate),
   e("/uscis/receipt-number", 0.9, "weekly", immDate),
+  // September 2026 competitor-gap build. These are dedicated static routes
+  // (they carry a calculator, charts and an SVG diagram, which the cluster
+  // `content` string cannot host), so they need their own entries here — they
+  // are not picked up by the formsChildPages spread below.
+  e("/uscis/forms/i-864", 0.9, "monthly", new Date("2026-09-16")),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),

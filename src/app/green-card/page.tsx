@@ -374,12 +374,18 @@ export default function GreenCardPage() {
               { form: "I-485 Supplement J", desc: "Employer job offer confirmation (AC21 portability)" },
               { form: "I-131", desc: "Advance Parole — travel document while I-485 is pending" },
               { form: "I-765", desc: "EAD — work permit based on pending I-485" },
-              { form: "I-864", desc: "Affidavit of Support from your employer or sponsor" },
+              { form: "I-864", desc: "Affidavit of Support — required where a relative petitioned or owns 5%+ of the employer", href: "/uscis/forms/i-864" },
               { form: "I-693", desc: "Medical examination (must be done by USCIS civil surgeon)" },
             ].map((f) => (
               <div key={f.form} className="flex gap-3 rounded-xl border border-ink-900/5 bg-white p-3.5">
                 <span className="flex-none rounded-lg bg-emerald-100 px-2 py-1 text-xs font-bold text-emerald-800">{f.form}</span>
-                <p className="text-sm text-ink-700">{f.desc}</p>
+                <p className="text-sm text-ink-700">
+                  {"href" in f && f.href ? (
+                    <Link href={f.href} className="text-brand-700 underline">{f.desc}</Link>
+                  ) : (
+                    f.desc
+                  )}
+                </p>
               </div>
             ))}
           </div>

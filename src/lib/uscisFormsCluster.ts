@@ -627,6 +627,10 @@ right_items:
 5. Visa/green card issued
 :::
 
+## The income test that comes with it
+
+Approving the I-130 establishes the relationship. It does not show that anyone can support the immigrant — that is a separate contract, **Form I-864**, and it is where family cases most often stall. The petitioner has to show income at 125% of the Federal Poverty Guidelines for a household that *includes the people being sponsored*. See the [I-864 affidavit of support and I-864P income thresholds](/uscis/forms/i-864) for the current figures and a checker for your own household.
+
 ## Indian family backlog
 
 :::warn
@@ -977,6 +981,37 @@ export const formsChildPages: FormsPage[] = rawPages.map((p) => ({
 }));
 
 export const formsChildSlugs = rawPages.map((p) => p.slug);
+
+/**
+ * Form pages that live at /uscis/forms/<slug> but are NOT cluster children.
+ *
+ * These carry a calculator, charts and an SVG diagram, which the cluster
+ * `content` string cannot host, so they are dedicated static routes under
+ * src/app/uscis/forms/<slug>/page.tsx. Next matches a static segment ahead of
+ * the [slug] segment, so the two coexist.
+ *
+ * They still need to appear in the hub's card grid, in the sitemap and in the
+ * search index — hence this list. Add a page here when you add the route, or
+ * the hub silently stops linking to it.
+ */
+export interface StaticFormPage {
+  slug: string;
+  formNumber: string;
+  navLabel: string;
+  excerpt: string;
+  updated: string;
+}
+
+export const staticFormPages: StaticFormPage[] = [
+  {
+    slug: "i-864",
+    formNumber: "I-864 / I-864P",
+    navLabel: "I-864 Affidavit of Support & I-864P Income",
+    excerpt:
+      "The income a sponsor must show, how household size is counted, and the three ways to fix a shortfall — with a checker for your own numbers.",
+    updated: "2026-09-16",
+  },
+];
 
 export function getFormsChildPage(slug: string): FormsPage | undefined {
   return formsChildPages.find((p) => p.slug === slug);
