@@ -235,6 +235,26 @@ export default function OptCalculatorPage() {
         <section className="py-10">
           <Container>
             <OptCalc />
+
+            {/* The EAD automatic extension was removed for renewals filed on or
+                after 2025-10-30. This page stays about OPT dates; the extension
+                arithmetic lives on /ead-renewal-gap. */}
+            <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50/50 p-5 text-sm">
+              <p className="font-bold text-ink-900">
+                Renewing an EAD rather than working out OPT dates?
+              </p>
+              <p className="mt-1 leading-relaxed text-ink-700">
+                The automatic extension for EAD renewals was removed for
+                applications filed on or after 30 October 2025, so a renewal no
+                longer buys you a cushion past the card&apos;s expiry. A
+                timely-filed STEM OPT extension is a separate provision and was
+                not affected.{" "}
+                <Link href="/ead-renewal-gap" className="font-semibold text-brand-700 underline">
+                  Work out whether any extension applies to you and when it ends
+                </Link>
+                .
+              </p>
+            </div>
           </Container>
         </section>
 

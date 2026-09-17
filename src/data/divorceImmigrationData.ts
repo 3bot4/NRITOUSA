@@ -374,6 +374,54 @@ export const statusImpactRows: DataRow[] = [
   },
 ];
 
+/* --- Divorce stage, for the status checker and the by-stage diagram --- */
+
+/**
+ * The stage of the divorce changes what is still available, which is why the
+ * checker asks for it separately from the immigration status. The single most
+ * useful thing on the page is that SEQUENCE matters: several options close the
+ * moment a decree is final, and some close when a petition is withdrawn rather
+ * than when the divorce concludes.
+ */
+export interface DivorceStage {
+  id: string;
+  label: string;
+  short: string;
+  /** What is still open at this stage, in general terms. */
+  window: string;
+}
+
+export const divorceStages: DivorceStage[] = [
+  {
+    id: "considering",
+    label: "We are considering separating, nothing is filed",
+    short: "Considering",
+    window:
+      "Everything is still open, and this is by far the best moment to take advice. The order in which things happen from here can change which options exist at all — including whether an immigration filing should be made before, rather than after, a divorce is filed.",
+  },
+  {
+    id: "separated",
+    label: "We are separated but no divorce has been filed",
+    short: "Separated",
+    window:
+      "Separation alone generally does not end a status that depends on the marriage, because the marriage still legally exists. It does affect evidence: joint accounts stop being joint, addresses diverge, and the paper trail a case may later need stops being generated. Preserve records now.",
+  },
+  {
+    id: "filed",
+    label: "A divorce has been filed but is not final",
+    short: "Divorce filed",
+    window:
+      "The marriage still exists until a decree issues, so derivative status generally continues for now. Some filings that depend on the marriage can still be made; some require the decree before they can be. This is the stage where the calendar starts to matter.",
+  },
+  {
+    id: "final",
+    label: "The divorce is final — we have a decree",
+    short: "Final",
+    window:
+      "The qualifying relationship has ended. Derivative statuses lose their basis, a waiver route opens where one exists, and several options that were available while the marriage continued are now closed. Act on the timeline in the decree, not on the date printed on an I-94 or an EAD.",
+  },
+];
+
 /* --- What an H-4 spouse can consider filing --- */
 export const h4OptionsCols: DataCol[] = [
   { key: "option", label: "Option" },

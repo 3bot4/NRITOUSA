@@ -4,6 +4,8 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
+import EadExtensionCalculator from "@/components/tools/EadExtensionCalculator";
+import OldVsNewRuleDiagram from "@/components/tools/ead/OldVsNewRuleDiagram";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import { FactTable } from "@/components/education/FactTable";
 import {
@@ -112,6 +114,43 @@ export default function Page() {
               sources={eadSnapshotSources}
               disclaimer={EAD_ESTIMATE_DISCLAIMER}
             />
+          </Container>
+        </section>
+
+        {/* ── Calculator ─────────────────────────────────────────────── */}
+        <section id="extension-calculator" className="scroll-mt-24 border-t border-ink-900/5 py-10 sm:py-14">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900 sm:text-2xl">
+                Does an automatic extension apply to you, and when does it end?
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                One date decides almost all of it: when USCIS <em>received</em>{" "}
+                your renewal. Put in your category and two dates and you get the
+                answer, the legal basis for it, and the exact last day you are
+                authorised to work.
+              </p>
+            </div>
+            <div className="mt-6">
+              <EadExtensionCalculator />
+            </div>
+          </Container>
+        </section>
+
+        {/* ── Old rule vs current rule ───────────────────────────────── */}
+        <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-[760px]">
+              <h2 className="text-xl font-bold text-ink-900 sm:text-2xl">
+                Old rule vs current rule, by filing date
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                Two renewals that look identical can sit on opposite sides of
+                this line, because what separates them is a receipt date rather
+                than anything about the applicant.
+              </p>
+              <OldVsNewRuleDiagram />
+            </div>
           </Container>
         </section>
 
