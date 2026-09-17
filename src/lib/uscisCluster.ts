@@ -424,6 +424,12 @@ Yes, but carry the I-797 approval notice. To re-enter on H1B, you need a valid H
 ### My I-485 is approved — when do I get the green card?
 Typically 2–4 weeks after the approval, the card enters production. You'll see "Card Is Being Produced" and then "Card Was Mailed." Allow 7–10 business days for delivery after mailing.
 
+## If it was an I-130 family petition
+
+An I-130 approval is the one that most often gets read as "we are nearly there", and it is the one where the least is finished. USCIS has confirmed the family relationship and nothing else. The case now leaves USCIS entirely and goes to the National Visa Center at the Department of State, where the fees, the DS-260, the civil documents and the affidavit of support all still have to happen before an interview is scheduled.
+
+Because that half of the process runs on a different agency's queue, it has its own page: [what happens after an I-130 is approved and how long NVC takes](/nvc-processing-time), including the currently published NVC timeframes and an estimator for each stage.
+
 ## Official sources
 
 - [Check your case status](https://egov.uscis.gov/casestatus/landing.do) — egov.uscis.gov

@@ -23,9 +23,15 @@ export const nvcLinks = {
   /** Department of State — NVC landing page. */
   nvcHome:
     "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc.html",
-  /** NVC processing timeframes (how current NVC is on case creation & review). */
+  /**
+   * NVC processing timeframes (how current NVC is on case creation & review).
+   * NOTE the path: there is no /nvc/ segment. The deeper URL 404s.
+   */
   nvcTimeframes:
-    "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/nvc-timeframes.html",
+    "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc-timeframes.html",
+  /** IV scheduling status tool — how far ahead a post is scheduling interviews. */
+  ivSchedulingStatus:
+    "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/iv-wait-times.html",
   /** CEAC immigrant visa (IV) portal — where you check NVC status and upload. */
   ceac: "https://ceac.state.gov/IV/Login.aspx",
   /** NVC public inquiry form / contact page. */
@@ -65,6 +71,51 @@ export const nvcProcessingData: NvcProcessingData = {
   docReviewWeeksHigh: 12,
   dqToInterviewMonthsLow: 1,
   dqToInterviewMonthsHigh: 12,
+};
+
+/* ────────────── published NVC timeframes (dated facts, not ranges) ──────── */
+
+/**
+ * The two figures the Department of State actually publishes, and the date each
+ * was published "as of". These are NOT estimates — they say which day's work
+ * NVC is currently on, which is the single most useful number for someone
+ * asking "is my case stuck?".
+ *
+ * ⚠️ REFRESH MONTHLY from nvcLinks.nvcTimeframes. travel.state.gov blocks
+ * automated fetches (403), so this is a manual read — open it in a browser.
+ * Do not carry a stale figure: the whole value of these numbers is that they
+ * are dated, and a stale one is worse than none because it reads as current.
+ */
+export interface PublishedTimeframe {
+  label: string;
+  /** What NVC is currently working on — an ISO date. */
+  workingOn: string;
+  /** The "as of" date DOS stamped on that figure. */
+  asOf: string;
+  note: string;
+}
+
+export const nvcPublishedTimeframes: {
+  lastVerified: string;
+  caseCreation: PublishedTimeframe;
+  documentReview: PublishedTimeframe;
+  interviewSchedulingNote: string;
+} = {
+  lastVerified: "2026-09-16",
+  caseCreation: {
+    label: "Case creation",
+    workingOn: "2026-09-01",
+    asOf: "2026-09-08",
+    note: "NVC is creating cases it received from USCIS on this date. Until your case is created you have no case number and nothing to log into.",
+  },
+  documentReview: {
+    label: "Document review",
+    workingOn: "2026-07-13",
+    asOf: "2026-08-31",
+    note: "NVC is reviewing document packages submitted on this date. If you submitted after it, you are still in the queue and not delayed.",
+  },
+  interviewSchedulingNote:
+    "NVC publishes no single interview-scheduling date. It aims to schedule within about three months of accepting all requested documents, but that is subject to the operating status and capacity of the consular section — use the IV Scheduling Status tool for your post.",
 };
 
 /** Standard educational data-source note reused across the NVC cluster. */

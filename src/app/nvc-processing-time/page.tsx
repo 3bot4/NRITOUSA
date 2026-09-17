@@ -4,6 +4,9 @@ import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
 import ToolFaq from "@/components/tools/ToolFaq";
 import NvcTimelineChecker from "@/components/tools/NvcTimelineChecker";
+import NvcTimelineEstimator from "@/components/tools/NvcTimelineEstimator";
+import ConsularPathDiagram from "@/components/tools/nvc/ConsularPathDiagram";
+import NotLegalAdvice from "@/components/tools/NotLegalAdvice";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import {
@@ -22,16 +25,23 @@ import {
   NVC_UPDATED,
   NVC_UPDATED_HUMAN,
 } from "@/lib/nvcCluster";
-import { nvcLinks, nvcProcessingData as D, nvcFees as F, NVC_DATA_NOTE } from "@/data/nvcData";
+import {
+  nvcLinks,
+  nvcProcessingData as D,
+  nvcFees as F,
+  nvcPublishedTimeframes as PT,
+  NVC_DATA_NOTE,
+} from "@/data/nvcData";
+import { formatDate } from "@/lib/format";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 const PATH = "/nvc-processing-time";
 const TITLE = "NVC Processing Time: Case Creation, Document Review & Interview Wait";
 const DESC =
-  "How long NVC takes after USCIS approval — case creation, fee and DS-260 steps, document review, and the wait from documentarily qualified to a consular interview. General planning ranges, not guarantees.";
+  "NVC processing time right now: the published timeframes for case creation and document review, what happens after your I-130 is approved, a stage-by-stage estimator, and consular processing vs adjustment of status.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "NVC Processing Time",
+  title: "NVC Processing Time & Timeframes: What Happens After I-130 Approval",
   description: DESC,
   path: PATH,
 });
@@ -50,6 +60,12 @@ const faq: FaqItem[] = [
   { question: "What does documentarily qualified mean?", answer: "Documentarily qualified (DQ) means NVC has accepted your DS-260 and all required documents, so the case is complete and ready for a consular interview. After DQ, the case waits in line for an interview appointment based on embassy availability and visa number availability for preference categories." },
   { question: "How long after DQ will I get an interview?", answer: "There is no fixed wait. After documentarily qualified, NVC schedules interviews as appointments become available at your embassy or consulate. For immediate-relative categories this can be relatively quick; for preference categories it also depends on your priority date being current. It can range from about a month to many months." },
   { question: "Why is my NVC case delayed?", answer: "Common reasons include a slow USCIS-to-NVC handoff, missing or unclear documents that need resubmission, high case volume, a priority date that is not yet current for preference categories, and limited interview appointments at your post. Check CEAC for requested items and compare against the official NVC timeframes before submitting an inquiry." },
+  { question: "What does NVC mean?", answer: "NVC is the National Visa Center, the Department of State office in Portsmouth, New Hampshire that sits between USCIS and your consulate. USCIS approves the petition; NVC then collects the fees, the DS-260 immigrant visa application, the civil documents and the affidavit of support, and schedules the interview once everything is accepted. It does not decide your case — the consular officer does." },
+  { question: "What are the NVC steps, in order?", answer: "Ten of them: the petition is approved, the case is sent to NVC, a welcome letter arrives with your case number, you pay the two fees, you file the DS-260, you upload the civil documents and the I-864, NVC reviews and marks the case documentarily qualified, the interview is scheduled, you attend the medical and then the interview, and finally the visa is issued, you enter the US and the green card is mailed to you." },
+  { question: "What are the current NVC processing times for interviews?", answer: `NVC publishes no single interview-scheduling date. ${PT.interviewSchedulingNote} What it does publish is which day's case creation and which day's document review it has reached — as of ${formatDate(PT.caseCreation.asOf)} it was creating cases received ${formatDate(PT.caseCreation.workingOn)}, and as of ${formatDate(PT.documentReview.asOf)} it was reviewing documents submitted ${formatDate(PT.documentReview.workingOn)}. For the interview end, use the IV Scheduling Status tool for your specific post.` },
+  { question: "What happens after NVC accepts my documents?", answer: "Your case becomes documentarily qualified and joins the interview queue. NVC then books an appointment at your consulate as capacity allows, and you receive an appointment letter. Before the interview you complete the medical examination with a panel physician — for India, one approved for the Mumbai consular district. Nothing further is required from you between DQ and the appointment letter, which is why this stretch feels like silence." },
+  { question: "My I-130 was approved — what is the next step?", answer: "Nothing happens immediately. USCIS forwards the approved petition to NVC, which creates a case and sends a welcome letter with your case number and invoice ID; that is the first thing you can act on. Until then there is nothing to log into and nothing to pay. Use the waiting time to order the documents that take longest on the Indian side — police clearance certificates and any birth certificate that needs a non-availability certificate behind it — and to check that the sponsor actually meets the affidavit of support income requirement." },
+  { question: "Is consular processing faster than adjustment of status?", answer: "Often, yes — a consular case is frequently decided sooner than an I-485. But speed is not the only axis. Adjustment of status lets the immigrant work on an EAD and travel on advance parole while the case is pending, and it preserves motions and appeals if it is refused; a consular refusal has very limited review. Where the immigrant is already living usually settles the question, and where it genuinely is a choice, the trade is finality against interim benefits." },
 ];
 
 export default function Page() {
@@ -93,8 +109,88 @@ export default function Page() {
         sourceNote={<>Last updated: {NVC_UPDATED_HUMAN}. {NVC_DATA_NOTE}</>}
         disclaimerExtra={<p>This is an educational tool and not legal advice. Always verify with official USCIS, Department of State, CEAC, and embassy/consulate instructions.</p>}
       >
-        {/* Fast Answer: stage ranges + fees, first */}
+        {/* ANSWER FIRST — the two dated facts DOS actually publishes. */}
         <section className="pt-6">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <p className="text-base leading-relaxed text-ink-700 sm:text-lg">
+                As of <strong>{formatDate(PT.caseCreation.asOf)}</strong>, NVC is
+                creating cases it received from USCIS on{" "}
+                <strong>{formatDate(PT.caseCreation.workingOn)}</strong>, and as
+                of <strong>{formatDate(PT.documentReview.asOf)}</strong> it is
+                reviewing document packages submitted on{" "}
+                <strong>{formatDate(PT.documentReview.workingOn)}</strong>. If
+                your own date falls after those, your case is in the queue — not
+                delayed.
+              </p>
+
+              <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                {[
+                  `NVC creating cases received ${formatDate(PT.caseCreation.workingOn)} (as of ${formatDate(PT.caseCreation.asOf)})`,
+                  `NVC reviewing documents submitted ${formatDate(PT.documentReview.workingOn)} (as of ${formatDate(PT.documentReview.asOf)})`,
+                  "NVC aims to schedule an interview within about three months of accepting your documents — subject to your consulate's capacity",
+                  `Fees: ${F.affidavitOfSupport} affidavit of support + ${F.familyIvApplication} family / ${F.employmentIvApplication} employment IV application`,
+                  "The middle of the process moves at your pace, not NVC's — fees, DS-260, civil documents",
+                  "A missing civil document sends the package back and restarts the review queue",
+                ].map((f) => (
+                  <li
+                    key={f}
+                    className="flex gap-2 rounded-xl border border-ink-900/5 bg-ink-900/[0.02] px-3.5 py-2.5 text-sm leading-relaxed text-ink-700"
+                  >
+                    <span aria-hidden className="text-brand-600">
+                      ▸
+                    </span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-50/50 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-sky-900">
+                  Published NVC timeframes
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {[PT.caseCreation, PT.documentReview].map((t) => (
+                    <div
+                      key={t.label}
+                      className="rounded-xl border border-ink-900/5 bg-white px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold text-ink-500">{t.label}</p>
+                      <p className="text-lg font-black text-sky-800">
+                        {formatDate(t.workingOn)}
+                      </p>
+                      <p className="mt-0.5 text-xs text-ink-400">
+                        as of {formatDate(t.asOf)}
+                      </p>
+                      <p className="mt-1.5 text-xs leading-relaxed text-ink-600">
+                        {t.note}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                  {PT.interviewSchedulingNote} Verified{" "}
+                  {formatDate(PT.lastVerified)} against{" "}
+                  <a
+                    href={nvcLinks.nvcTimeframes}
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="text-brand-600 underline"
+                  >
+                    the official NVC timeframes page
+                  </a>
+                  , which DOS updates regularly — check it before concluding
+                  anything about your own case.
+                </p>
+              </div>
+
+              <NotLegalAdvice className="mt-5" />
+            </div>
+          </Container>
+        </section>
+
+        {/* Fast Answer: stage ranges + fees */}
+        <section className="pt-4">
           <Container>
             <FastAnswerSnapshot
               title="How long does NVC take? (planning ranges)"
@@ -150,11 +246,65 @@ export default function Page() {
           </Container>
         </section>
 
+        {/* I-130 approved — what happens next (the whole consular path) */}
+        <section id="after-i130-approval" className="scroll-mt-24 border-t border-ink-900/5 py-10 sm:py-12">
+          <Container>
+            <div className="mx-auto max-w-[760px]">
+              <h2 className="text-xl font-bold text-ink-900 sm:text-2xl">
+                I-130 approved — what happens next
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                An approval notice feels like the end of something. It is the end
+                of the USCIS half. Everything below happens at the Department of
+                State, and the case now belongs to a different agency with a
+                different portal, different fees and a different queue. Ten
+                stages stand between that notice and a card in the mail.
+              </p>
+              <ConsularPathDiagram />
+              <p className="mt-4 text-sm leading-relaxed text-ink-600">
+                The three amber stages are the ones you control. Families
+                routinely lose more time there than NVC ever costs them — a
+                police clearance certificate ordered late, a birth certificate
+                that needs a non-availability certificate behind it, an affidavit
+                of support where the sponsor turns out to be under the income
+                line.{" "}
+                <Link href="/uscis/forms/i-864" className="text-brand-600 underline">
+                  Check the sponsor income requirement
+                </Link>{" "}
+                before you reach that stage, not after, and work the{" "}
+                <Link href="/nvc-document-checklist-india" className="text-brand-600 underline">
+                  India document checklist
+                </Link>{" "}
+                in parallel with the fees rather than after them.
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Timeline estimator */}
+        <section id="estimator" className="scroll-mt-24 border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-14">
+          <Container>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-xl font-bold text-ink-900 sm:text-2xl">
+                Estimate your own dates
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                Put your approval date in and get a dated range for each stage.
+                Every output is a range, because every input to it moves — treat
+                the late end as your plan and anything earlier as a bonus.
+              </p>
+            </div>
+            <div className="mt-6">
+              <NvcTimelineEstimator />
+            </div>
+          </Container>
+        </section>
+
         {/* Tool */}
         <section className="border-t border-ink-900/5 bg-ink-50/40 pb-12 pt-10 sm:pb-16 sm:pt-12">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl font-bold text-ink-900">Estimate your NVC stage & next step</h2>
+              <h2 className="text-xl font-bold text-ink-900">Which stage am I at, and what is my next step?</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
                 The table above gives typical ranges. Use the checker below to find your current NVC stage, your next step, and whether you may be outside the official timeframes.
               </p>
@@ -211,6 +361,66 @@ export default function Page() {
                 </p>
               </div>
 
+              <div id="consular-vs-adjustment" className="scroll-mt-24">
+                <h2 className="text-xl font-bold text-ink-900">Consular processing vs adjustment of status</h2>
+                <p className="mt-2">
+                  Everything on this page is the <strong>consular</strong> route:
+                  the immigrant is outside the United States, the case goes
+                  through NVC, and the visa is issued at a consulate. The
+                  alternative is <strong>adjustment of status</strong> — the
+                  immigrant is already in the US in a valid status and files Form
+                  I-485 with USCIS instead. NVC never touches an adjustment case.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th className="py-2 pr-3 font-bold text-ink-900">&nbsp;</th>
+                        <th className="py-2 pr-3 font-bold text-ink-900">Consular processing</th>
+                        <th className="py-2 font-bold text-ink-900">Adjustment of status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {[
+                        ["Where the immigrant is", "Outside the US", "Inside the US in a valid status"],
+                        ["Who handles it", "Department of State — NVC, then a consulate", "USCIS"],
+                        ["The form", "DS-260", "Form I-485"],
+                        ["Work permit while waiting", "No — you work once you arrive", "Yes — file I-765 with the I-485"],
+                        ["Travel while waiting", "Normal, you are not in the US", "Needs advance parole (I-131) or you abandon the case"],
+                        ["Interview", "At the consulate, usually held", "At a USCIS field office, sometimes waived"],
+                        ["If it is refused", "Very limited review", "Motions and appeals are available"],
+                      ].map((row) => (
+                        <tr key={row[0]} className="border-b border-ink-900/5">
+                          <td className="py-2.5 pr-3 font-semibold text-ink-800">{row[0]}</td>
+                          <td className="py-2.5 pr-3">{row[1]}</td>
+                          <td className="py-2.5">{row[2]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3">
+                  For an Indian family the choice is usually made for them by
+                  where the beneficiary is living. Where there genuinely is a
+                  choice — a spouse in the US on an H-4, say — the trade is
+                  speed and finality against the EAD and advance parole that come
+                  with a pending I-485. Consular cases are often decided sooner;
+                  adjustment lets you work and travel in the meantime.{" "}
+                  <Link href="/i485-timeline" className="text-brand-600 underline">
+                    The I-485 timeline
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/green-card/i-485" className="text-brand-600 underline">
+                    the adjustment of status guide
+                  </Link>{" "}
+                  cover the other side. Either way the{" "}
+                  <Link href="/uscis/forms/i-864" className="text-brand-600 underline">
+                    affidavit of support
+                  </Link>{" "}
+                  is required — it just travels with a different package.
+                </p>
+              </div>
+
               <div>
                 <h2 className="text-xl font-bold text-ink-900">When a delay is worth a public inquiry</h2>
                 <p className="mt-2">
@@ -226,9 +436,9 @@ export default function Page() {
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
             <div className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-3">
-              <Link href="#calculator" className="rounded-2xl border border-blue-200 bg-white p-4 text-sm shadow-card transition hover:shadow-sm">
-                <p className="font-bold text-ink-900">Not sure where you are?</p>
-                <p className="mt-1 text-xs text-ink-600">Use the NVC Timeline Checker →</p>
+              <Link href="#estimator" className="rounded-2xl border border-blue-200 bg-white p-4 text-sm shadow-card transition hover:shadow-sm">
+                <p className="font-bold text-ink-900">Just got the approval notice?</p>
+                <p className="mt-1 text-xs text-ink-600">Estimate your NVC dates →</p>
               </Link>
               <Link href="/nvc-document-checklist-india" className="rounded-2xl border border-emerald-200 bg-white p-4 text-sm shadow-card transition hover:shadow-sm">
                 <p className="font-bold text-ink-900">Preparing documents?</p>
