@@ -851,6 +851,16 @@ const CURATED: SearchItem[] = [
     keywords:
       "marriage based green card interview questions immigration marriage interview questions green card interview questions marriage couples answers pdf stokes second interview arranged marriage",
   },
+  {
+    title: "USCIS Expedite Request",
+    description:
+      "The five official expedite criteria, the rule that blocks an expedite wherever premium processing exists, and an eligibility checker for your form.",
+    href: "/uscis/expedite-request",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "uscis expedite expedite processing expedite case uscis ead expedite request expedite criteria uscis expedite green card processing request expedite premium processing i-907",
+  },
   ...PUBLISHED_MONTHS.map((m) => ({
     title: `${monthLabel(m)} Visa Bulletin`,
     description: `India EB-1, EB-2 and EB-3 cutoffs and month-over-month movement in the ${monthLabel(

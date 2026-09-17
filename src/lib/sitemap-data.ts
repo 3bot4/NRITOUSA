@@ -255,6 +255,7 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/forms/i-864", 0.9, "monthly", new Date("2026-09-16")),
   e("/uscis/forms/i-751", 0.9, "monthly", new Date("2026-09-16")),
   e("/green-card/marriage-interview-questions", 0.9, "monthly", new Date("2026-09-16")),
+  e("/uscis/expedite-request", 0.9, "monthly", new Date("2026-09-16")),
   // Monthly visa bulletin pages. Driven by PUBLISHED_MONTHS so a month cannot
   // reach the sitemap before its bulletin is actually released.
   ...PUBLISHED_MONTHS.map((m) =>
