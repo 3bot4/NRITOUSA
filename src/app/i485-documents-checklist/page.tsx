@@ -201,7 +201,18 @@ export default function Page() {
 
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related green card tools" links={[...i485ClusterLinks.filter((l) => l.href !== PATH), ...i485RelatedLinks]} />
+            <PermClusterLinks
+              title="Related green card tools"
+              links={[
+                {
+                  href: "/green-card/marriage-interview-questions",
+                  label: "Marriage interview questions",
+                  desc: "Example questions across the five areas officers probe, and a couple practice mode that shows only where your answers differ",
+                },
+                ...i485ClusterLinks.filter((l) => l.href !== PATH),
+                ...i485RelatedLinks,
+              ]}
+            />
           </Container>
         </section>
 

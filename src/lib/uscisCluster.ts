@@ -803,6 +803,9 @@ USCIS interview policies change. Some cases initially waived now get scheduled a
 ### How should I dress for the interview?
 Business casual is appropriate. You are going to a government office — dress professionally and respectfully.
 
+### What questions will be asked at a marriage-based interview?
+USCIS publishes no list, but the questions cluster into five areas: how you met and how it became a marriage, the ordinary mechanics of daily life at home, each other's families, how your money actually works, and shared history. The point is not knowing the right answer — it is giving the same answer your spouse gives. Work through [example questions and a couple practice mode](/green-card/marriage-interview-questions) that shows only where the two of you disagreed.
+
 ## Official sources
 
 - [USCIS Policy Manual — Interview Guidelines](https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-5)

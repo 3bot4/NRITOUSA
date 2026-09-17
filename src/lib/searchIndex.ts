@@ -841,6 +841,16 @@ const CURATED: SearchItem[] = [
     keywords:
       "citizenship test questions 2026 civics practice test us citizenship test 128 questions with answers pdf naturalization n-400 65/20",
   },
+  {
+    title: "Marriage Green Card Interview Questions",
+    description:
+      "Example questions across the five areas officers probe, plus a couple practice mode that shows only where your answers differ.",
+    href: "/green-card/marriage-interview-questions",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "marriage based green card interview questions immigration marriage interview questions green card interview questions marriage couples answers pdf stokes second interview arranged marriage",
+  },
   ...PUBLISHED_MONTHS.map((m) => ({
     title: `${monthLabel(m)} Visa Bulletin`,
     description: `India EB-1, EB-2 and EB-3 cutoffs and month-over-month movement in the ${monthLabel(
