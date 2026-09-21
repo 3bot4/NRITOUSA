@@ -151,7 +151,18 @@ export default function Page() {
         {/* internal links */}
         <section className="py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related I-140 & green card tools" links={[...i140ClusterLinks.filter((l) => l.href !== PATH), ...i140RelatedLinks]} />
+            <PermClusterLinks
+              title="Related I-140 & green card tools"
+              links={[
+                {
+                  href: "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+                  label: "EB-1A vs EB-1B vs EB-1C vs NIW",
+                  desc: "The four routes that skip PERM, a route finder, and what the choice costs an India-born applicant in years of waiting",
+                },
+                ...i140ClusterLinks.filter((l) => l.href !== PATH),
+                ...i140RelatedLinks,
+              ]}
+            />
           </Container>
         </section>
 

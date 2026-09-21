@@ -30,15 +30,34 @@ function byCheck(findings: Finding[]): Map<string, Finding[]> {
 const format = (fs: Finding[]) =>
   fs.map((f) => `  ${f.route} — ${f.detail}`).join("\n");
 
-d("rendered SEO invariants", () => {
-  const pages = loadRendered();
-  const { findings } = runAudit(pages);
-  const errors = findings.filter((f) => f.level === "error");
-  const grouped = byCheck(errors);
+/**
+ * Loaded lazily, inside the tests.
+ *
+ * `describe.skip` still RUNS its callback — it only marks the tests it
+ * registers as skipped — so reading the build output at describe-body level
+ * threw on a clean checkout instead of skipping, which is the opposite of what
+ * the header above promises. Deferring the read into the test bodies (memoised,
+ * so the audit runs once) makes the documented behaviour real.
+ */
+let cache: { pages: ReturnType<typeof loadRendered>; grouped: Map<string, Finding[]> } | null =
+  null;
 
+function audit() {
+  if (!cache) {
+    const pages = loadRendered();
+    const { findings } = runAudit(pages);
+    cache = {
+      pages,
+      grouped: byCheck(findings.filter((f) => f.level === "error")),
+    };
+  }
+  return cache;
+}
+
+d("rendered SEO invariants", () => {
   it("renders a meaningful number of pages", () => {
     // Guards the loader: an empty read would make every check below vacuous.
-    expect(pages.length).toBeGreaterThan(100);
+    expect(audit().pages.length).toBeGreaterThan(100);
   });
 
   const CHECKS = [
@@ -63,7 +82,7 @@ d("rendered SEO invariants", () => {
 
   for (const check of CHECKS) {
     it(`has no ${check}`, () => {
-      const fs = grouped.get(check) ?? [];
+      const fs = audit().grouped.get(check) ?? [];
       expect(fs.length, `\n${format(fs)}\n`).toBe(0);
     });
   }

@@ -242,7 +242,18 @@ export default function Page() {
         {/* internal links */}
         <section className="border-t border-ink-900/5 bg-ink-50/40 py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related I-140 & green card tools" links={[...i140ClusterLinks.filter((l) => l.href !== PATH), ...i140RelatedLinks]} />
+            <PermClusterLinks
+              title="Related I-140 & green card tools"
+              links={[
+                {
+                  href: "/uscis/expedite-request",
+                  label: "USCIS expedite requests",
+                  desc: "The five criteria, and why an expedite is not available at all where premium processing exists",
+                },
+                ...i140ClusterLinks.filter((l) => l.href !== PATH),
+                ...i140RelatedLinks,
+              ]}
+            />
           </Container>
         </section>
 

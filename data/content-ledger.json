@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-16",
+  "updated": "2026-09-18",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -45,6 +45,51 @@
       "opened": "2026-09-16",
       "nextStep": "Fill the four 'Pending' rows in the 'Our record on this call' table on /visa-bulletin/october-2026-predictions from the published bulletin; flip Eb2OctoberOutlook's dashed prediction to the actual value; update the Sept 15 status paragraph",
       "evidence": "src/lib/visaBulletinOctober2026.test.ts"
+    },
+    {
+      "id": "merge-the-sept-2026-immigration-keyword",
+      "title": "Merge the Sept 2026 immigration keyword-gap PR (feat/immigration-gap-sep-2026): 6 new pages, 6 upgrades, 14 commits, all gates green",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-18",
+      "nextStep": "Open the PR at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-sep-2026 using docs/seo/gap-2026-09/PULL-REQUEST.md as the body, review the Vercel preview, then merge to main"
+    },
+    {
+      "id": "360px-facebook-in-app-browser-check",
+      "title": "360px + Facebook in-app browser check on the gap-build preview, especially the I-751 .ics download",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-18",
+      "nextStep": "In-app browsers handle Blob downloads inconsistently and static analysis cannot catch it. Traps are covered by src/components/gap-2026-09.mobile.test.ts; a real render is not."
+    },
+    {
+      "id": "ping-indexnow-for-the-16-gap",
+      "title": "Ping IndexNow for the 16 gap-build URLs after the PR merges to production",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-18",
+      "nextStep": "npm run indexnow against the list in docs/seo/gap-2026-09/REPORT.md section 8. Production URLs only, never the preview."
+    },
+    {
+      "id": "audit-remaining-cluster-files-for-the",
+      "title": "Audit remaining cluster files for the extractFaq heading-level bug that silently drops FAQPage schema",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-18",
+      "nextStep": "visaBulletinCluster.ts is fixed (6 pages, 0 to 3-7 FAQ entities). Other *Cluster.ts files are unaudited. Verify with: npx next build then node scripts/audit/schema-scan.mjs <route>. Consider making extractFaq accept ###-level sections instead of failing silently."
+    },
+    {
+      "id": "re-probe-two-unverified-travel-state",
+      "title": "Re-probe two unverified travel.state.gov URLs in src/data/nvcData.ts (nvc-contact-information, nvc-fees)",
+      "area": "links",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-18",
+      "nextStep": "Their siblings under /immigrate/nvc/ proved wrong and were fixed; these two were left alone rather than changed on a guess. Run npm run ledger:links."
     },
     {
       "id": "tracker-claimed-the-october-bulletin-was",

@@ -11,7 +11,7 @@ import {
   type FaqItem,
 } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { formsChildPages } from "@/lib/uscisFormsCluster";
+import { formsChildPages, staticFormPages } from "@/lib/uscisFormsCluster";
 
 const PAGE_PATH = "/uscis/forms";
 const UPDATED = "2026-06-16";
@@ -337,7 +337,7 @@ export default function UscisFormsPage() {
               <section>
                 <h2 className="text-xl font-extrabold text-ink-900">Each form explained</h2>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  {formsChildPages.map((p) => (
+                  {[...formsChildPages, ...staticFormPages].map((p) => (
                     <Link
                       key={p.slug}
                       href={`/uscis/forms/${p.slug}`}

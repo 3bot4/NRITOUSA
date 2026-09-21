@@ -335,6 +335,21 @@ If your case is on premium processing, the premium clock is paused while the RFE
 ### What is a NOID vs an RFE?
 A **Notice of Intent to Deny (NOID)** is more serious — USCIS is telling you it plans to deny and giving you a chance to rebut. A NOID is not a "second RFE"; it is a separate type of notice, and its response window is typically shorter (often 30 days). USCIS does not always issue an RFE or NOID before deciding a case.
 
+### Is an RFE a good sign?
+It is a neutral sign, and treating it as either good or bad news wastes the time you have. What it tells you is narrow and useful: an officer read the file, found one or more specific requirements not yet established, and is giving you a defined window to establish them. It is not an accusation of fraud, and it says nothing about your odds beyond the fact that the case is not approvable *as filed*. A complete, on-time response that answers every numbered item is what moves it.
+
+### Can I request a copy of my RFE from USCIS?
+Yes. If the notice never arrived — the most common reason is an address change that was never filed on AR-11 — check your USCIS online account first, because RFEs are posted there for online-filed cases and can usually be downloaded immediately. If it is not there, call the USCIS Contact Center and ask for a duplicate notice. Do this the moment you learn an RFE exists: the response clock runs from the date printed on the notice, not from the day you finally read it, so a lost notice eats your window rather than pausing it.
+
+### What does the RFE envelope look like?
+A standard window envelope from a USCIS service centre, with no markings that distinguish it from an approval or a receipt notice — there is no colour coding and nothing on the outside tells you what is inside. The notice itself is Form I-797E, "Notice of Action", with "Request for Evidence" printed as the notice type. Two practical consequences: never discard USCIS mail unopened because it "looks like the last one", and make sure your address on file is current, because USCIS mails to the address it has and a returned notice does not reset the deadline.
+
+### How long does USCIS take after I respond to an RFE?
+There is no published figure for this specifically, and any number you see quoted on a third-party page is somebody's impression rather than a statistic. What is defined is the premium processing clock, which pauses while the RFE is outstanding and restarts when USCIS receives the response. For non-premium cases, check the processing time for your form and office and use your case inquiry date to judge whether the case is genuinely outside normal processing.
+
+### What if I missed the RFE deadline?
+USCIS may deny the case as abandoned, deny it on the record as it stands, or both — and because officers are prohibited by regulation from granting more time, there was never an extension available to ask for. Send the response anyway: a late response is sometimes still considered where a decision has not yet issued, and it costs nothing to try. Then get an immigration attorney involved the same day, because the next document you receive may be a denial with a limited window to act on.
+
 ## Official sources
 
 - [USCIS Policy Manual — Requests for Evidence and Notices of Intent to Deny](https://www.uscis.gov/policy-manual/volume-1-part-e-chapter-6)
@@ -423,6 +438,12 @@ Yes, but carry the I-797 approval notice. To re-enter on H1B, you need a valid H
 
 ### My I-485 is approved — when do I get the green card?
 Typically 2–4 weeks after the approval, the card enters production. You'll see "Card Is Being Produced" and then "Card Was Mailed." Allow 7–10 business days for delivery after mailing.
+
+## If it was an I-130 family petition
+
+An I-130 approval is the one that most often gets read as "we are nearly there", and it is the one where the least is finished. USCIS has confirmed the family relationship and nothing else. The case now leaves USCIS entirely and goes to the National Visa Center at the Department of State, where the fees, the DS-260, the civil documents and the affidavit of support all still have to happen before an interview is scheduled.
+
+Because that half of the process runs on a different agency's queue, it has its own page: [what happens after an I-130 is approved and how long NVC takes](/nvc-processing-time), including the currently published NVC timeframes and an estimator for each stage.
 
 ## Official sources
 
@@ -781,6 +802,9 @@ USCIS interview policies change. Some cases initially waived now get scheduled a
 
 ### How should I dress for the interview?
 Business casual is appropriate. You are going to a government office — dress professionally and respectfully.
+
+### What questions will be asked at a marriage-based interview?
+USCIS publishes no list, but the questions cluster into five areas: how you met and how it became a marriage, the ordinary mechanics of daily life at home, each other's families, how your money actually works, and shared history. The point is not knowing the right answer — it is giving the same answer your spouse gives. Work through [example questions and a couple practice mode](/green-card/marriage-interview-questions) that shows only where the two of you disagreed.
 
 ## Official sources
 

@@ -58,6 +58,7 @@ import { visitorInsuranceChildPages } from "@/lib/visitorInsuranceCluster";
 import { getPublishedStories } from "@/lib/successStories";
 import type { ClusterLink } from "@/lib/permCluster";
 import { liveTopics } from "@/lib/topics";
+import { PUBLISHED_MONTHS, monthLabel, monthPath } from "@/lib/visaBulletinMonths";
 import { states } from "@/data/indianPopulationData";
 
 /** Content-type badge shown on each search result. */
@@ -805,6 +806,81 @@ const CURATED: SearchItem[] = [
     priority: 40,
     keywords: "indian population usa state city demographics statistics",
   },
+
+  // ---- September 2026 competitor-gap build -------------------------------
+  // Dedicated static routes that carry a calculator/chart/diagram, so they are
+  // not reachable through any cluster array and must be listed by hand.
+  // searchIndex.coverage.test.ts asserts sitemap and index stay in step.
+  {
+    title: "I-864P Poverty Guidelines & Sponsor Income",
+    description:
+      "The current minimum income to sponsor an immigrant on Form I-864, with a checker for your own household size, location and income.",
+    href: "/uscis/forms/i-864",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "i-864p i864p i 864p 864p affidavit of support form i-864 poverty guidelines sponsor income requirements joint sponsor household size assets i-864a",
+  },
+  {
+    title: "I-751: Remove Conditions on a Green Card",
+    description:
+      "The 90-day filing window, the fee, the 48-month receipt extension and the waiver route — with a calculator for your own card dates.",
+    href: "/uscis/forms/i-751",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "i-751 i751 remove the conditions on my green card removal of conditions permanent residence petition to remove conditions conditional green card fee timeline waiver joint filing 90 day window",
+  },
+  {
+    title: "2026 Citizenship Test Practice",
+    description:
+      "All 128 official civics questions, a timed 20-question mock in the real format, study by topic, and the 65/20 set.",
+    href: "/tools/citizenship-test-practice",
+    type: "Tool",
+    priority: 55,
+    keywords:
+      "citizenship test questions 2026 civics practice test us citizenship test 128 questions with answers pdf naturalization n-400 65/20",
+  },
+  {
+    title: "Marriage Green Card Interview Questions",
+    description:
+      "Example questions across the five areas officers probe, plus a couple practice mode that shows only where your answers differ.",
+    href: "/green-card/marriage-interview-questions",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "marriage based green card interview questions immigration marriage interview questions green card interview questions marriage couples answers pdf stokes second interview arranged marriage",
+  },
+  {
+    title: "USCIS Expedite Request",
+    description:
+      "The five official expedite criteria, the rule that blocks an expedite wherever premium processing exists, and an eligibility checker for your form.",
+    href: "/uscis/expedite-request",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "uscis expedite expedite processing expedite case uscis ead expedite request expedite criteria uscis expedite green card processing request expedite premium processing i-907",
+  },
+  {
+    title: "EB-1A vs EB-1B vs EB-1C vs NIW",
+    description:
+      "The four green card routes that skip PERM, compared — plus a route finder and what the choice costs an India-born applicant in years.",
+    href: "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+    type: "Tool",
+    priority: 50,
+    keywords:
+      "eb1b vs eb1a eb-1a vs eb-1b eb1a vs eb1b vs eb1c eb1c vs eb1a self petitioning for a green card what is niw green card national interest waiver difference between eb1a and eb1b",
+  },
+  ...PUBLISHED_MONTHS.map((m) => ({
+    title: `${monthLabel(m)} Visa Bulletin`,
+    description: `India EB-1, EB-2 and EB-3 cutoffs and month-over-month movement in the ${monthLabel(
+      m
+    )} bulletin.`,
+    href: monthPath(m),
+    type: "Guide" as const,
+    priority: 45,
+    keywords: `visa bulletin ${monthLabel(m).toLowerCase()} ${m} india eb2 eb3 eb1 priority date final action dates for filing green card updates`,
+  })),
 ];
 
 /** Assign a priority: explicit PRIORITY map wins, else the provided base. */

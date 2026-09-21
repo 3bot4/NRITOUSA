@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import {
+  RegimeComparisonChart,
+  WeightedSelectionDiagram,
+} from "@/components/tools/h1b-weighted/WeightedSelection";
+import { ODDS_CONFIG, VOLUME_SCENARIOS } from "@/lib/h1b/lotteryOdds";
 import { pageMetadata, type FaqItem } from "@/lib/seo";
 import {
   H1bLotteryShell,
@@ -15,9 +20,9 @@ const PAGE_PATH = "/h1b-lottery-chances";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
-    title: "H1B Lottery Chances 2027: Odds by Year & Wage Level",
+    title: "H1B Weighted Selection: Wage-Based Odds by Level I–IV",
     description:
-      "H1B lottery chances: ~35% selected in FY 2026, ~25% in FY 2024. Year-by-year odds, FY 2027 wage-weighted rules, and the master's advantage.",
+      "How H-1B wage-weighted selection works: Level I gets 1 entry, Level IV gets 4 (90 FR 60864, effective 27 Feb 2026). Modelled odds by wage level, what it does to Level I, and the calculator.",
     path: PAGE_PATH,
     type: "article",
     openGraph: { publishedTime: LOTTERY_UPDATED, modifiedTime: LOTTERY_UPDATED },
@@ -66,6 +71,31 @@ const faqs: FaqItem[] = [
     question: "What is the H1B selection rate history?",
     answer:
       "Approximate selection rates from USCIS data: ~45% in FY 2021, ~43% in FY 2022, ~26% in FY 2023, ~25% in FY 2024, ~29% in FY 2025 (the first beneficiary-centric year), and ~35% in FY 2026. The rate rises when duplicate registrations fall or volume drops, since the 85,000-visa cap is fixed.",
+  },
+  {
+    question: "What is H-1B weighted selection, and when did it start?",
+    answer:
+      "It is the wage-based selection process DHS introduced by final rule at 90 FR 60864, published 29 December 2025 and effective 27 February 2026 — in time for the FY 2027 cap season, the first to run under it. A registration for a unique beneficiary now goes into the selection pool once if the job is at OEWS wage Level I, twice at Level II, three times at Level III and four times at Level IV. Each unique beneficiary is still counted once against the cap however many entries they hold.",
+  },
+  {
+    question: "How does wage-based H-1B selection change my odds?",
+    answer:
+      "It depends entirely on your wage level, and not in the direction everybody assumes. A Level IV registrant gains substantially. A Level I registrant ends up worse off than under the old random draw, because the same fixed number of selections is now spread across a pool containing far more entries. Weighting does not only reward the top — it redistributes, and somebody has to pay for it.",
+  },
+  {
+    question: "What salary range do I need for a good H-1B weighted selection position?",
+    answer:
+      "There is no single salary figure, and anyone quoting one is guessing. Wage levels are set per SOC occupation code and per work location against the local OEWS wage distribution, so the salary that makes Level III in one metro is Level I in another for the same job title. What matters is the level your employer certifies on the LCA, not the absolute number. Look your own role and location up in the DOL wage data rather than relying on a national figure.",
+  },
+  {
+    question: "Can my employer just file me at a higher wage level?",
+    answer:
+      "Only if the job genuinely justifies it. An employer can restructure a role, broaden its duties or raise the offered salary, and the wage level can legitimately follow. What they cannot do is certify Level IV for a Level I job — the level has to reflect the actual requirements of the actual position, and an inflated one is a misrepresentation that follows the petition into the I-129 adjudication and any later audit. Anyone offering a wage-level upgrade for a fee, or 'guaranteed' selection, is selling a fraud.",
+  },
+  {
+    question: "Does weighted selection affect the master's cap?",
+    answer:
+      "The two-draw structure is unchanged: everyone competes in the 65,000 regular cap first, and US advanced-degree holders who were not selected then compete for the remaining 20,000. What changed is that the weighting applies in both draws. So a US master's degree still helps, and it helps a Level I candidate more than anything else available to them.",
   },
   {
     question: "Will there be a second H1B lottery in 2027?",
@@ -153,6 +183,110 @@ export default function Page() {
               wage-weighted selection process gives higher OEWS wage levels more entries in the selection pool — Level I
               = 1 entry, Level II = 2, Level III = 3, and Level IV = 4. Higher wage levels get more weighted entries, but
               selection is still never guaranteed.
+            </Callout>
+
+            <SectionHeading kicker="The rule" id="weighted-selection">
+              Wage-weighted selection: the rule, and what it actually does
+            </SectionHeading>
+
+            <p className="text-sm leading-relaxed text-ink-700">
+              The change comes from a DHS final rule,{" "}
+              <a
+                href="https://www.federalregister.gov/documents/2025/12/29/2025-23853/weighted-selection-process-for-registrants-and-petitioners-seeking-to-file-cap-subject-h-1b"
+                target="_blank"
+                rel="nofollow noopener"
+                className="font-semibold text-orange-600 underline"
+              >
+                <em>Weighted Selection Process for Registrants and Petitioners Seeking To File Cap-Subject H-1B
+                Petitions</em>
+              </a>
+              , published at <strong>90 FR 60864</strong> on{" "}
+              <strong>29 December 2025</strong> (RIN 1615-AD01) and effective{" "}
+              <strong>27 February 2026</strong> — in time for the FY 2027 cap
+              season, which was the first to run under it. The mechanism is
+              simple and worth stating precisely, because almost every summary
+              of it online paraphrases loosely: a registration for a unique
+              beneficiary is entered into the selection pool{" "}
+              <strong>once for Level I, twice for Level II, three times for
+              Level III and four times for Level IV</strong>. Each unique
+              beneficiary is still counted only once against the numerical
+              allocation, however many entries they hold and however many
+              employers registered them.
+            </p>
+
+            <WeightedSelectionDiagram />
+
+            <SectionHeading kicker="The numbers" id="odds-by-wage-level">
+              What it means for a Level I vs a Level IV registrant
+            </SectionHeading>
+
+            <p className="text-sm leading-relaxed text-ink-700">
+              Here is the part most coverage skips. Weighting does not simply
+              reward the top — it redistributes. The same{" "}
+              {ODDS_CONFIG.regularCap.toLocaleString()} selections are now spread
+              across a pool with far more entries in it, so a Level IV
+              registrant gains and a <strong>Level I registrant comes out worse
+              than the old random draw left them</strong>. If you are an entry-level
+              hire, that is the honest headline, and it is the reason a backup
+              plan matters more this season than last.
+            </p>
+
+            <RegimeComparisonChart
+              totalBeneficiaries={VOLUME_SCENARIOS.baseline.totalBeneficiaries}
+            />
+
+            <p className="text-sm leading-relaxed text-ink-700">
+              Treat the heights as illustrative and the <em>shape</em> as the
+              finding. USCIS has never published a wage-level breakdown of
+              registrations, so nobody — including anyone quoting a confident
+              percentage at you — knows the true mix. What does not depend on the
+              mix is the direction: more entries beats fewer, and spreading a
+              fixed number of selections over a larger weighted pool has to cost
+              somebody.
+            </p>
+
+            <SectionHeading kicker="For F-1 students" id="opt-level-one">
+              If you are on OPT or STEM OPT
+            </SectionHeading>
+
+            <p className="text-sm leading-relaxed text-ink-700">
+              This is where the rule bites hardest for Indian students. A first
+              professional role out of a US master&rsquo;s programme is very
+              often assigned <strong>Level I</strong> — the wage level reflects
+              the job&rsquo;s requirements against the local wage distribution,
+              not how good you are — so the population most dependent on the
+              lottery is the population the weighting leaves with a single entry.
+            </p>
+
+            <p className="text-sm leading-relaxed text-ink-700">
+              Two things genuinely help, and it is worth being precise about
+              which. A qualifying <strong>US master&rsquo;s degree</strong> still
+              buys a second draw under the 20,000 advanced-degree cap, with the
+              weighting applied again — that has not changed. And{" "}
+              <strong>more attempts</strong> still help: STEM OPT&rsquo;s
+              24-month extension buys additional cap seasons, which compounds far
+              better than any single-year edge.{" "}
+              <Link href="/education/opt-calculator" className="font-semibold text-orange-600 underline">
+                Work out how many cap seasons your OPT actually covers
+              </Link>
+              , and read{" "}
+              <Link href="/h1b-lottery-not-selected-options" className="font-semibold text-orange-600 underline">
+                the options if you are not selected
+              </Link>{" "}
+              before March, not after.
+            </p>
+
+            <Callout tone="warn" title="What an employer can change, and what nobody can">
+              An employer <em>can</em> change the offered wage and, where the role
+              genuinely justifies it, the wage level it is filed at — a different
+              job title, a broader set of duties, a higher offered salary. What no
+              employer can do is file a Level IV wage level for a Level I job.
+              The level has to reflect the actual requirements of the actual
+              position, and an inflated one is a misrepresentation that follows
+              the petition into the I-129 adjudication and any later audit.
+              Anyone offering &ldquo;guaranteed selection&rdquo;, a wage-level
+              upgrade for a fee, or multiple registrations through related shell
+              companies is selling you a fraud, not an edge.
             </Callout>
 
             <SectionHeading kicker="The math" id="cap">

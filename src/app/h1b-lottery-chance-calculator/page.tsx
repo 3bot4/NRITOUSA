@@ -7,6 +7,8 @@ import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
 import ReviewedByline from "@/components/ReviewedByline";
 import AuthorBioBox from "@/components/AuthorBioBox";
 import H1bLotteryChanceCalculator from "@/components/tools/H1bLotteryChanceCalculator";
+import { RegimeComparisonChart } from "@/components/tools/h1b-weighted/WeightedSelection";
+import { VOLUME_SCENARIOS } from "@/lib/h1b/lotteryOdds";
 import {
   breadcrumbJsonLd,
   faqJsonLd,
@@ -189,6 +191,45 @@ export default function Page() {
         <section className="pb-10 pt-6 sm:pb-14">
           <Container>
             <H1bLotteryChanceCalculator />
+
+            {/* Old random draw vs the FY 2027 weighted draw, by wage level. */}
+            <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-ink-900/5 bg-white p-5 shadow-card sm:p-6">
+              <h2 className="text-lg font-bold text-ink-900">
+                What the weighting changed, level by level
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
+                The same figures the calculator uses, with the pre-FY-2027 random
+                draw alongside for comparison. A Level IV registrant gains; a{" "}
+                <strong>Level I registrant ends up below where random left
+                them</strong>, because the same fixed number of selections is now
+                spread across a pool with far more entries in it.
+              </p>
+              <div className="overflow-x-auto">
+                <div className="min-w-[360px]">
+                  <RegimeComparisonChart
+                    totalBeneficiaries={VOLUME_SCENARIOS.baseline.totalBeneficiaries}
+                  />
+                </div>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                The rule behind it is a DHS final rule at{" "}
+                <a
+                  href="https://www.federalregister.gov/documents/2025/12/29/2025-23853/weighted-selection-process-for-registrants-and-petitioners-seeking-to-file-cap-subject-h-1b"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  className="text-brand-600 underline"
+                >
+                  90 FR 60864
+                </a>
+                , published 29 December 2025 and effective 27 February 2026 —
+                first applied to the FY 2027 cap season.{" "}
+                <Link href="/h1b-lottery-chances" className="text-brand-600 underline">
+                  The full explanation of weighted selection
+                </Link>{" "}
+                covers what it means for OPT students and what an employer can
+                legitimately change.
+              </p>
+            </div>
           </Container>
         </section>
 

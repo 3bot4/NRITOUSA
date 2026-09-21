@@ -42,11 +42,15 @@ import currentData from "../../data/visa-bulletin/current.json";
 /* ─────────────────────── official sources ──────────────────────────────── */
 
 export const ivSchedulingLinks = {
-  /** The Department of State IV Scheduling Status Tool itself. */
-  tool: "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/iv-scheduling-status.html",
-  /** NVC's own published processing timeframes. */
+  /**
+   * The Department of State IV Scheduling Status Tool itself.
+   * Re-verified 2026-09-16: it lives under visa-information-resources as
+   * iv-wait-times.html, NOT under immigrate/nvc/.
+   */
+  tool: "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/iv-wait-times.html",
+  /** NVC's own published processing timeframes. No /nvc/ segment — that 404s. */
   nvcTimeframes:
-    "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/nvc-timeframes.html",
+    "https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc-timeframes.html",
   /** CEAC — where the case status and document requests actually live. */
   ceac: "https://ceac.state.gov/IV/Login.aspx",
   /** The monthly Visa Bulletin (gate 1). */

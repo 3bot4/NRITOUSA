@@ -185,6 +185,21 @@ export const tools: ToolMeta[] = [
     status: "live",
   },
   {
+    slug: "citizenship-test-practice",
+    title: "2026 US Citizenship Test Practice (128 Questions)",
+    label: "Citizenship Test Practice",
+    group: "Visa & Green Card",
+    description:
+      "Practise the 2025-version civics test with all 128 official USCIS questions: a timed 20-question mock in the real format, study by topic, the 65/20 set, and a drill of the ones you missed. Self-graded, because the real test is spoken.",
+    icon: "🇺🇸",
+    accent: "from-red-700 to-blue-700",
+    seoTitle: "Citizenship Test Questions 2026: Free Practice Test, All 128 Q&A",
+    seoDescription:
+      "Free practice for the 2026 US citizenship test — all 128 official civics questions and answers, a timed mock in the real 20-question format, 12 to pass, plus the 65/20 set. No signup.",
+    status: "live",
+    tags: [],
+  },
+  {
     slug: "citizenship-checklist",
     title: "US Citizenship (N-400) Readiness Checklist & Tracker",
     label: "Citizenship Checklist",

@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
+import RfeDeadlineCalculator from "@/components/tools/RfeDeadlineCalculator";
+import RfeFlowDiagram from "@/components/tools/rfe/RfeFlowDiagram";
+import NotLegalAdvice from "@/components/tools/NotLegalAdvice";
+import { RFE_RULES, RFE_SOURCES } from "@/data/rfeData";
 import ReviewedByline from "@/components/ReviewedByline";
 import AuthorBioBox from "@/components/AuthorBioBox";
 import Newsletter from "@/components/Newsletter";
@@ -209,7 +213,117 @@ export default function UscisChildPage({
         <div className="py-8 sm:py-10">
           <Container>
             <div className="mx-auto">
+              {/* /uscis/request-for-evidence-rfe is the general RFE page and
+                  owns the deadline arithmetic. /uscis/rfe-notice decodes the
+                  document itself and /h1b/rfe covers H-1B-specific RFE types;
+                  none of the three carries the others' H2s. */}
+              {page.slug === "request-for-evidence-rfe" && (
+                <div className="mx-auto mb-10 max-w-[720px] space-y-6">
+                  <div className="rounded-2xl border border-brand-200 bg-brand-50/40 p-5 sm:p-6">
+                    <p className="text-base leading-relaxed text-ink-700">
+                      An RFE means an officer has paused your case because the
+                      record does not yet establish that you qualify — it is not
+                      a denial and it is not an accusation. You must respond by
+                      the date on the notice, at most{" "}
+                      <strong>{RFE_RULES.maxLabel}</strong> (plus{" "}
+                      {RFE_RULES.mailGraceDays} days when it was mailed), and{" "}
+                      <strong>no extension exists</strong>. Once you respond, the
+                      status changes to &ldquo;Response To USCIS&rsquo; Request
+                      For Evidence Was Received&rdquo; — a receipt, not a verdict.
+                    </p>
+                    <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                      {[
+                        `Maximum response period: ${RFE_RULES.maxLabel}`,
+                        `Form ${RFE_RULES.shortForms.join(" and Form ")}: ${RFE_RULES.shortFormDays} days`,
+                        `Mailed service adds ${RFE_RULES.mailGraceDays} days — so 87 days is the outer limit`,
+                        "Officers are prohibited from granting more time",
+                        "USCIS counts receipt, not postmark",
+                        "A partial response is treated as asking for a decision on the record",
+                      ].map((f) => (
+                        <li
+                          key={f}
+                          className="flex gap-2 rounded-xl border border-ink-900/5 bg-white px-3.5 py-2.5 text-sm leading-relaxed text-ink-700"
+                        >
+                          <span aria-hidden className="text-brand-600">
+                            ▸
+                          </span>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-4 text-xs leading-relaxed text-ink-500">
+                      Rules read from the{" "}
+                      <a
+                        href={RFE_SOURCES.policyManualEvidence}
+                        target="_blank"
+                        rel="nofollow noopener"
+                        className="text-brand-600 underline"
+                      >
+                        USCIS Policy Manual, Vol. 1, Pt. E, Ch. 6
+                      </a>{" "}
+                      on {RFE_RULES.lastVerified}.
+                    </p>
+                  </div>
+                  <NotLegalAdvice />
+                </div>
+              )}
+
+              {page.slug === "request-for-evidence-rfe" && (
+                <div className="mx-auto mb-10 max-w-[720px]">
+                  <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                    How an RFE actually runs
+                  </h2>
+                  <RfeFlowDiagram />
+                </div>
+              )}
+
               <ArticleBody content={page.content} />
+
+              {page.slug === "request-for-evidence-rfe" && (
+                <section id="rfe-deadline" className="mt-12 scroll-mt-24">
+                  <div className="mx-auto max-w-[720px]">
+                    <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                      RFE deadline calculator
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                      Two things off the notice — the date at the top and the
+                      response period near the end — and you get the last day
+                      USCIS will accept the response, a countdown, and a
+                      last-safe-post date. Nothing is stored and we never ask for
+                      a receipt number.
+                    </p>
+                  </div>
+                  <div className="mt-6">
+                    <RfeDeadlineCalculator />
+                  </div>
+
+                  <div className="mx-auto mt-8 max-w-[720px] rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                    <p className="text-sm font-bold text-ink-900">
+                      What changed on {RFE_RULES.discretionPolicy.effective}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                      {RFE_RULES.discretionPolicy.summary}{" "}
+                      {RFE_RULES.discretionPolicy.consequence} In practice that
+                      shifts where the effort belongs: a thin filing that would
+                      once have drawn an RFE can now simply be refused, so the
+                      initial evidence matters more than the ability to fix it
+                      later.
+                    </p>
+                    <p className="mt-2 text-xs text-ink-500">
+                      Source:{" "}
+                      <a
+                        href={RFE_SOURCES.evidentiaryStandardsAlert}
+                        target="_blank"
+                        rel="nofollow noopener"
+                        className="text-brand-600 underline"
+                      >
+                        USCIS policy alert, 5 August 2026
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </section>
+              )}
 
               <AuthorBioBox
                 className="mt-8"

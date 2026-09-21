@@ -209,7 +209,18 @@ export default function Page() {
 
         <section className="py-10 sm:py-12">
           <Container>
-            <PermClusterLinks title="Related Green Card Renewal Tools" links={[...gcRenewalClusterLinks.filter((l) => l.href !== PATH), ...gcRenewalRelatedLinks]} />
+            <PermClusterLinks
+              title="Related Green Card Renewal Tools"
+              links={[
+                {
+                  href: "/uscis/forms/i-751",
+                  label: "Form I-751 — the full guide",
+                  desc: "Filing window calculator, the current fee, the 48-month receipt extension, evidence and the waiver route",
+                },
+                ...gcRenewalClusterLinks.filter((l) => l.href !== PATH),
+                ...gcRenewalRelatedLinks,
+              ]}
+            />
           </Container>
         </section>
 

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
 import ToolFirstLayout from "@/components/tools/ToolFirstLayout";
+import DivorceStatusChecker from "@/components/tools/DivorceStatusChecker";
+import DivorceByStageDiagram from "@/components/tools/divorce/DivorceByStageDiagram";
 import ToolFaq from "@/components/tools/ToolFaq";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -84,6 +86,8 @@ export const metadata: Metadata = pageMetadata({
  * ------------------------------------------------------------------ */
 const JUMP = [
   { id: "quick-answer", label: "Quick answer" },
+  { id: "by-stage", label: "What it disturbs" },
+  { id: "status-checker", label: "Check my status" },
   { id: "status-table", label: "Effect by status" },
   { id: "h4", label: "If you are on H-4" },
   { id: "h1b", label: "If you are the H-1B holder" },
@@ -308,7 +312,8 @@ export default function Page() {
                     </>,
                     <>
                       <strong>On a conditional 2-year card:</strong> you generally keep it, and
-                      file <A href="/i90-vs-i751">Form I-751</A> with a joint-filing waiver.
+                      file <A href="/uscis/forms/i-751">Form I-751</A> with a joint-filing waiver
+                      &mdash; and the 90-day window does not restrict a waiver filing.
                     </>,
                     <>
                       <strong>With an I-130 or I-485 pending:</strong> a high-risk situation —
@@ -316,6 +321,31 @@ export default function Page() {
                     </>,
                   ]}
                 />
+              </section>
+
+              {/* ---------------- By-stage diagram ---------------- */}
+              <section id="by-stage" className="scroll-mt-24 space-y-4">
+                <H2>What a divorce disturbs, stage by stage</H2>
+                <P>
+                  Ordered by how much it actually disturbs, least first. The
+                  ordering is the point: a divorce does not cost you a green card
+                  you already hold in your own right. What it disturbs is status
+                  that depends on the marriage continuing, and petitions that
+                  have not yet concluded.
+                </P>
+                <DivorceByStageDiagram />
+              </section>
+
+              {/* ---------------- Status checker ---------------- */}
+              <section id="status-checker" className="scroll-mt-24 space-y-4">
+                <H2>What happens to my status?</H2>
+                <P>
+                  Two questions — your own status, and how far the divorce has
+                  got. The stage matters more than people expect, because several
+                  options close the moment a decree is final rather than when the
+                  divorce is filed. Nothing is stored or sent.
+                </P>
+                <DivorceStatusChecker />
               </section>
 
               {/* ---------------- Status matrix ---------------- */}

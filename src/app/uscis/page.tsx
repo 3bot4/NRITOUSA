@@ -543,6 +543,9 @@ export default function UscisHubPage() {
                     { label: "Visa Bulletin Explained", href: "/visa-bulletin" },
                     { label: "Visa & Green Card Tools Hub", href: "/tools/visa-green-card" },
                     { label: "Immigration Attorney Cost Guide", href: "/immigration-attorney-lawyer-cost" },
+                    { label: "USCIS Expedite Requests", href: "/uscis/expedite-request" },
+                    { label: "Form I-864 & Sponsor Income", href: "/uscis/forms/i-864" },
+                    { label: "Form I-751 — Remove Conditions", href: "/uscis/forms/i-751" },
                   ].map((l) => (
                     <Link key={l.href} href={l.href}
                       className="rounded-xl border border-ink-900/5 bg-white px-4 py-3 font-medium text-brand-600 hover:border-brand-300 hover:text-brand-700 transition">

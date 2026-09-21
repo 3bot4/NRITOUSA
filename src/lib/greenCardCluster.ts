@@ -607,6 +607,10 @@ title: EB-2 NIW requirements (Dhanasar standard)
 
 NIW applicants are often researchers, scientists, physicians (especially in underserved areas), engineers, and entrepreneurs. The self-petition aspect is valuable — no employer dependency — but the same India per-country backlog applies for the wait time.
 
+## The routes that skip PERM entirely
+
+EB-2 with a national interest waiver is one of four routes that need no labour certification at all — the others are EB-1A (extraordinary ability, self-petitioned), EB-1B (outstanding professor or researcher, which needs a permanent academic or research offer) and EB-1C (multinational manager or executive). For an India-born applicant these are not just different paperwork: EB-1 and EB-2 are separate queues with separate per-country limits, so the choice is also a choice between two waits. [Compare EB-1A, EB-1B, EB-1C and NIW side by side](/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw), including the India wait comparison and a route finder.
+
 ## Which category should I apply under?
 
 There is no universal answer. Factors to consider:

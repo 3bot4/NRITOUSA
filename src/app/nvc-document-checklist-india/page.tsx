@@ -139,7 +139,7 @@ export default function Page() {
             <div className="mx-auto max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-card sm:p-6">
               <h2 className="text-lg font-bold text-ink-900">Quick answer</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                For NVC, each Indian applicant typically uploads a <strong>birth certificate, passport, marriage certificate (if applicable), and Police Clearance Certificate</strong>, plus certified English translations where needed. The petitioner uploads the <strong>Affidavit of Support (I-864)</strong> with tax returns and income evidence. You also submit the <strong>DS-260</strong> and pay NVC fees. Requirements vary by case — always confirm the exact list in CEAC.
+                For NVC, each Indian applicant typically uploads a <strong>birth certificate, passport, marriage certificate (if applicable), and Police Clearance Certificate</strong>, plus certified English translations where needed. The petitioner uploads the <strong><Link href="/uscis/forms/i-864" className="text-brand-600 underline">Affidavit of Support (I-864)</Link></strong> with tax returns and income evidence &mdash; check the income threshold for your household size before you upload, because a shortfall found here stops the case. You also submit the <strong>DS-260</strong> and pay NVC fees. Requirements vary by case — always confirm the exact list in CEAC.
               </p>
             </div>
           </Container>

@@ -90,7 +90,19 @@ export interface OddsResult {
   assumptionsUsed: string[];
 }
 
-const clampProb = (p: number) => Math.min(0.99, Math.max(0.001, p));
+const clampProb = (p: number) =>
+  Number.isFinite(p) ? Math.min(0.99, Math.max(0.001, p)) : 0.001;
+
+/**
+ * Floors a beneficiary count at 1.
+ *
+ * `Math.max(1, NaN)` is NaN, not 1 — so guarding a hostile input with Math.max
+ * alone let a NaN propagate all the way through to a rendered "NaN%" odds
+ * figure. Every entry point into this model runs its count through here.
+ */
+function safeCount(n: number): number {
+  return Number.isFinite(n) && n > 1 ? Math.floor(n) : 1;
+}
 const pct = (p: number) => `${Math.round(p * 100)}%`;
 
 /** Average weighted tickets per beneficiary given a wage distribution. */
@@ -105,8 +117,11 @@ function averageWeight(dist: WageDistribution, w: OddsConfig["weights"]): number
 export function calculateH1BOdds(input: OddsInput): OddsResult {
   const cfg = input.config ?? ODDS_CONFIG;
   const dist = input.wageDistribution ?? cfg.wageDistribution;
-  const attempts = Math.min(4, Math.max(1, Math.round(input.attempts || 1)));
-  const N = Math.max(1, input.totalBeneficiaries);
+  const rawAttempts = Math.round(input.attempts || 1);
+  const attempts = Number.isFinite(rawAttempts)
+    ? Math.min(4, Math.max(1, rawAttempts))
+    : 1;
+  const N = safeCount(input.totalBeneficiaries);
 
   const avgW = averageWeight(dist, cfg.weights);
   const isUnknown = input.wageLevel === "unknown";
@@ -199,3 +214,76 @@ export function calculateH1BOdds(input: OddsInput): OddsResult {
 
 /** Format a probability 0–1 as an integer percent string (exported for UI). */
 export const formatPct = pct;
+
+/* ────────────────── random draw vs weighted draw comparison ─────────────── */
+
+/**
+ * The OLD regime, for comparison: a single entry per unique beneficiary,
+ * drawn at random. Under it, wage level made no difference at all — which is
+ * precisely what the weighted rule changed.
+ *
+ * Same shape as the weighted model so the two can be charted against each
+ * other honestly: both use 1 − (1 − p)^weight, the random regime simply fixes
+ * weight at 1 and the ticket pool at one per beneficiary.
+ */
+export function randomRegimeChance(
+  totalBeneficiaries: number,
+  degreeCategory: DegreeCategory,
+  config: OddsConfig = ODDS_CONFIG
+): number {
+  const N = safeCount(totalBeneficiaries);
+  const regular = clampProb(config.regularCap / N);
+  if (degreeCategory !== "masters") return regular;
+
+  const remainingMasters = Math.max(
+    1,
+    N * config.mastersShare * (1 - clampProb(config.regularCap / N))
+  );
+  const adv = clampProb(config.mastersCap / remainingMasters);
+  return clampProb(regular + (1 - regular) * adv);
+}
+
+export interface RegimeComparisonRow {
+  level: Exclude<WageLevel, "unknown">;
+  weight: number;
+  /** Selection chance under the pre-FY-2027 random draw (identical at every level). */
+  random: number;
+  /** Selection chance under the FY 2027+ weighted draw. */
+  weighted: number;
+}
+
+/**
+ * One row per wage level: what the random draw gave everybody, against what
+ * the weighted draw gives that level.
+ *
+ * This is the chart the whole page exists for. It is a MODEL, built on the
+ * assumptions in ODDS_CONFIG, not a USCIS projection — USCIS has not published
+ * a wage-level breakdown of registrations, and inventing one would be worse
+ * than showing the working.
+ */
+export function compareSelectionRegimes(
+  totalBeneficiaries: number,
+  degreeCategory: DegreeCategory = "regular",
+  config: OddsConfig = ODDS_CONFIG
+): RegimeComparisonRow[] {
+  const random = randomRegimeChance(totalBeneficiaries, degreeCategory, config);
+  const levels: Exclude<WageLevel, "unknown">[] = ["I", "II", "III", "IV"];
+
+  return levels.map((level) => {
+    const r = calculateH1BOdds({
+      degreeCategory,
+      wageLevel: level,
+      totalBeneficiaries,
+      attempts: 1,
+      config,
+    });
+    return {
+      level,
+      weight: config.weights[level],
+      random,
+      // Midpoint of the published band — the chart shows a single comparable
+      // figure, and the page states the band alongside it.
+      weighted: (r.oneYearLow + r.oneYearHigh) / 2,
+    };
+  });
+}

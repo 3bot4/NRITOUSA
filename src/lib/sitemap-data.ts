@@ -44,6 +44,7 @@ import { lifePlanningChildPages } from "@/lib/uscisLifePlanningCluster";
 import { h1bChildPages } from "@/lib/h1bCluster";
 import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
+import { PUBLISHED_MONTHS, monthPath } from "@/lib/visaBulletinMonths";
 import {
   visitorInsuranceChildPages,
   VISITOR_INSURANCE_BASE,
@@ -247,6 +248,20 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/uscis/forms", 0.9, "monthly", immDate),
   e("/uscis/life-planning", 0.9, "monthly", immDate),
   e("/uscis/receipt-number", 0.9, "weekly", immDate),
+  // September 2026 competitor-gap build. These are dedicated static routes
+  // (they carry a calculator, charts and an SVG diagram, which the cluster
+  // `content` string cannot host), so they need their own entries here — they
+  // are not picked up by the formsChildPages spread below.
+  e("/uscis/forms/i-864", 0.9, "monthly", new Date("2026-09-16")),
+  e("/uscis/forms/i-751", 0.9, "monthly", new Date("2026-09-16")),
+  e("/green-card/marriage-interview-questions", 0.9, "monthly", new Date("2026-09-16")),
+  e("/uscis/expedite-request", 0.9, "monthly", new Date("2026-09-16")),
+  e("/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw", 0.9, "monthly", new Date("2026-09-16")),
+  // Monthly visa bulletin pages. Driven by PUBLISHED_MONTHS so a month cannot
+  // reach the sitemap before its bulletin is actually released.
+  ...PUBLISHED_MONTHS.map((m) =>
+    e(monthPath(m), 0.9, "monthly", new Date(`${m}-01`)),
+  ),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),
   e("/immigration-attorney-lawyer-cost", 0.8, "monthly"),
