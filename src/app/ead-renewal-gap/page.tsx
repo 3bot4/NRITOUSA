@@ -223,6 +223,95 @@ export default function Page() {
               </div>
 
               {/* ── Which column are you in ────────────────────────────── */}
+              <div id="by-category" className="scroll-mt-24">
+                <h2 className="text-xl font-bold text-ink-900">
+                  By category code, because the answer is not the same for everyone
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  The code in the eligibility-category box on your EAD decides
+                  three separate things: whether you ever had an automatic
+                  extension to lose, whether anything authorises you to work
+                  while the application is pending, and whether premium
+                  processing is even an option. Most summaries collapse all EADs
+                  into one answer, and the collapse is wrong in both directions.
+                </p>
+                <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+                  <table className="w-full min-w-[700px] border-collapse text-left text-sm">
+                    <caption className="sr-only">
+                      EAD categories, whether an automatic extension applied
+                      before the repeal, authorisation while pending, and
+                      premium eligibility
+                    </caption>
+                    <thead>
+                      <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                        <th scope="col" className="p-3 font-semibold">Code</th>
+                        <th scope="col" className="p-3 font-semibold">Who it is</th>
+                        <th scope="col" className="p-3 font-semibold">
+                          Auto-extension before {formatDate(D.autoExtensionRemovedDate)}
+                        </th>
+                        <th scope="col" className="p-3 font-semibold">
+                          Authorised while pending now?
+                        </th>
+                        <th scope="col" className="p-3 font-semibold">Premium?</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-ink-900/5 bg-white">
+                      {D.categories
+                        .filter((c) => c.key !== "other")
+                        .map((c) => (
+                          <tr key={c.key} className="align-top">
+                            <th scope="row" className="p-3 text-left font-semibold text-ink-900">
+                              {c.code}
+                            </th>
+                            <td className="p-3 text-ink-600">{c.label}</td>
+                            <td className="p-3">
+                              {c.autoExtensionPreRule ? (
+                                <span className="font-semibold text-amber-700">
+                                  Yes — up to {D.autoExtensionDays} days, now gone
+                                </span>
+                              ) : (
+                                <span className="text-ink-400">
+                                  Never had one
+                                </span>
+                              )}
+                            </td>
+                            <td className="p-3">
+                              {c.pendingAuthDays ? (
+                                <span className="font-semibold text-emerald-700">
+                                  Yes — up to {c.pendingAuthDays} days
+                                  <span className="mt-0.5 block text-xs font-normal text-ink-400">
+                                    {c.pendingAuthCite}
+                                  </span>
+                                </span>
+                              ) : (
+                                <span className="font-semibold text-rose-700">No</span>
+                              )}
+                            </td>
+                            <td className="p-3 text-ink-600">
+                              {c.premiumEligible ? "Yes" : "No"}
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                  Read the last two columns together. The (c)(3)(C) row is the
+                  only one here that still has anything holding it up while the
+                  application sits with USCIS, and it is a different provision
+                  from the renewal mechanism the October 2025 rule switched off
+                  — which is why it survived. The H-4 and adjustment-based rows
+                  are the ones that lost the most: they had up to{" "}
+                  {D.autoExtensionDays} days of cover and now have none, and
+                  they have no premium option to buy their way out with. For
+                  those,{" "}
+                  <Link href="/uscis/expedite-request" className="text-brand-600 underline">
+                    an expedite request
+                  </Link>{" "}
+                  is the only lever left, and it is a weak one.
+                </p>
+              </div>
+
               <div>
                 <h2 className="text-xl font-bold text-ink-900">Which column are you in?</h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-600">

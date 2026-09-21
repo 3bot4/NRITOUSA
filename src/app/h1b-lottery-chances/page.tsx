@@ -5,7 +5,12 @@ import {
   RegimeComparisonChart,
   WeightedSelectionDiagram,
 } from "@/components/tools/h1b-weighted/WeightedSelection";
-import { ODDS_CONFIG, VOLUME_SCENARIOS } from "@/lib/h1b/lotteryOdds";
+import {
+  ODDS_CONFIG,
+  VOLUME_SCENARIOS,
+  compareSelectionRegimes,
+  formatPct,
+} from "@/lib/h1b/lotteryOdds";
 import { pageMetadata, type FaqItem } from "@/lib/seo";
 import {
   H1bLotteryShell,
@@ -234,6 +239,72 @@ export default function Page() {
             <RegimeComparisonChart
               totalBeneficiaries={VOLUME_SCENARIOS.baseline.totalBeneficiaries}
             />
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[580px] border-collapse text-sm">
+                <caption className="sr-only">
+                  Weighted entries and modelled selection chance by OEWS wage
+                  level, random draw against weighted draw
+                </caption>
+                <thead>
+                  <tr className="border-b border-ink-900/10 text-left">
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      OEWS wage level
+                    </th>
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      Entries in the pool
+                    </th>
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      Old random draw
+                    </th>
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      Weighted draw
+                    </th>
+                    <th scope="col" className="py-2 font-bold text-ink-900">
+                      Change
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="text-ink-600">
+                  {compareSelectionRegimes(
+                    VOLUME_SCENARIOS.baseline.totalBeneficiaries
+                  ).map((r) => {
+                    const delta = r.weighted - r.random;
+                    return (
+                      <tr key={r.level} className="border-b border-ink-900/5">
+                        <th scope="row" className="py-2.5 pr-3 text-left font-semibold text-ink-800">
+                          Level {r.level}
+                        </th>
+                        <td className="py-2.5 pr-3">
+                          {r.weight} {r.weight === 1 ? "entry" : "entries"}
+                        </td>
+                        <td className="py-2.5 pr-3">{formatPct(r.random)}</td>
+                        <td className="py-2.5 pr-3 font-semibold text-ink-900">
+                          {formatPct(r.weighted)}
+                        </td>
+                        <td
+                          className={`py-2.5 font-semibold ${
+                            delta >= 0 ? "text-emerald-700" : "text-rose-700"
+                          }`}
+                        >
+                          {delta >= 0 ? "+" : "−"}
+                          {formatPct(Math.abs(delta))}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-ink-400">
+              A model, not a USCIS projection. Modelled at{" "}
+              {VOLUME_SCENARIOS.baseline.totalBeneficiaries.toLocaleString()}{" "}
+              unique beneficiaries and the regular cap, with the wage-level mix
+              stated in the assumptions. The entries column is the only column
+              that is not modelled — it is the rule itself, from the final rule
+              at 90 FR 60864. Read the last column rather than the third: the
+              direction is what survives a different mix.
+            </p>
 
             <p className="text-sm leading-relaxed text-ink-700">
               Treat the heights as illustrative and the <em>shape</em> as the

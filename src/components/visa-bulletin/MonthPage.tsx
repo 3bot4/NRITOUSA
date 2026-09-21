@@ -307,6 +307,69 @@ export default function VisaBulletinMonthPage({
               chartStatus={chart.pending ? "pending" : "posted"}
               chartMonthLabel={chart.determinationMonthLabel}
             />
+
+            <h3 className="mt-8 text-base font-bold text-ink-900">
+              How to read a cell in the tables below
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              Three things can appear in a bulletin cell, and only one of them
+              is a date. The other two are the ones that get misread.
+            </p>
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full min-w-[600px] border-collapse text-sm">
+                <caption className="sr-only">
+                  What each value in a visa bulletin cell means
+                </caption>
+                <thead>
+                  <tr className="border-b border-ink-900/10 text-left">
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      You see
+                    </th>
+                    <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                      It means
+                    </th>
+                    <th scope="col" className="py-2 font-bold text-ink-900">
+                      You may act if
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="text-ink-600">
+                  {[
+                    {
+                      v: "A date",
+                      m: "The cut-off. Only cases with a priority date earlier than this one are reached.",
+                      a: "Your priority date is strictly earlier than the date shown. The same day is not earlier.",
+                    },
+                    {
+                      v: "C — current",
+                      m: "No cut-off at all this month. Every priority date in this category and country is reached.",
+                      a: "Always, while it stays C. This can reverse in a later bulletin.",
+                    },
+                    {
+                      v: "U — unavailable",
+                      m: "No visa numbers are being issued in this category and country this month. It is not a very old date; it is a closed door.",
+                      a: "Not at all this month, whatever your priority date is.",
+                    },
+                  ].map((r) => (
+                    <tr key={r.v} className="border-b border-ink-900/5 align-top">
+                      <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                        {r.v}
+                      </th>
+                      <td className="py-3 pr-3">{r.m}</td>
+                      <td className="py-3 text-ink-500">{r.a}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+              Two more things a cell cannot tell you. A date moving forward is
+              not a promise that it keeps moving — categories retrogress, and
+              the change column below shows direction for one month only. And a
+              date becoming current does not mean a decision is imminent; it
+              means a visa number is available, which is the constraint, not the
+              queue.
+            </p>
           </div>
         </Container>
       </section>
