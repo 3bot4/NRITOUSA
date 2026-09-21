@@ -11,6 +11,10 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import I751WindowCalculator from "@/components/tools/I751WindowCalculator";
 import { I751TimelineDiagram } from "@/components/tools/i751/timeline";
 import {
+  ExtensionCoverageChart,
+  WaiverGroundDiagram,
+} from "@/components/tools/i751/I751Visuals";
+import {
   absoluteUrl,
   breadcrumbJsonLd,
   faqJsonLd,
@@ -87,6 +91,24 @@ const faqs: FaqItem[] = [
     question: "Is Form I-751 the same as Form I-90?",
     answer:
       "No, and filing the wrong one wastes months and a fee. I-751 removes the conditions from a two-year card. I-90 replaces or renews a ten-year card that is expiring, lost or damaged. If your card says it is valid for two years, I-751 is your form.",
+  },
+  {
+    question: "Can I apply for citizenship while my I-751 is pending?",
+    answer:
+      "You can file the N-400, but it cannot be approved while the I-751 is pending — in most cases USCIS must have approved the petition to remove conditions before it may naturalise a conditional resident. What USCIS does instead of making you wait and then start is adjudicate the I-751 before, or at the same time as, the N-400, and the two are often combined into a single interview. A conditional resident married to and living with the same US citizen reaches N-400 eligibility three years after admission as a permanent resident, so the overlap is normal rather than a sign anything has gone wrong. Narrow exceptions exist for certain military applicants under INA 329 and certain spouses of US citizens employed abroad under INA 319(b). Source: USCIS Policy Manual, Vol. 12, Pt. G, Ch. 5.",
+  },
+  {
+    question: "How much does it cost to remove conditions on a green card?",
+    answer: `${I751_FACTS.onlineFee} filing online, or ${I751_FACTS.paperFee} by mail — the $50 difference buys nothing except the paper. Biometrics is included in both; there is no separate biometrics fee, so any page still quoting "plus $85" is out of date. A conditional resident filing a waiver based on battery or extreme cruelty pays nothing, and does not need to request a fee waiver for it. Source: USCIS fee schedule, ${I751_FACTS.feeEdition}.`,
+  },
+  {
+    question:
+      "My conditional green card expired while the I-751 is pending. What do I do?",
+    answer: `Nothing — that is the expected state, and it is what the receipt notice is for. When you file, USCIS issues a receipt notice that extends your conditional permanent resident status and your employment authorisation for ${I751_FACTS.extensionMonths} months beyond the expiry date printed on the card, a length in force since ${I751_FACTS.extensionSince}. Carry the receipt notice together with the expired card: that pair is your evidence of status for an employer, for the DMV and for re-entry to the United States. Keep a scan, because replacing a lost receipt notice usually means an appointment at a field office for an I-551 stamp.`,
+  },
+  {
+    question: "What are the most common I-751 mistakes?",
+    answer: `Filing before the window opens, which gets the petition rejected outright; assuming a missed window has shut you out when you are actually on a waiver ground, where the window never applied; submitting a thick file of evidence that all dates from one short period rather than spanning the whole two years; throwing away the receipt notice that is now your status document; and not filing AR-11 after a move, so the biometrics appointment notice goes to the old address and the missed appointment can be treated as abandonment.`,
   },
 ];
 
@@ -296,6 +318,91 @@ export default function I751Page() {
                   The whole path, start to finish
                 </h2>
                 <I751TimelineDiagram />
+
+                <h3 className="mt-8 text-base font-bold text-ink-900">
+                  The card expires long before the petition is decided
+                </h3>
+                <p className="mt-2">
+                  This is the part that causes real-world trouble — a driver&apos;s
+                  licence renewal refused, an employer asking for an unexpired
+                  card, a trip to India booked against a card that ran out.
+                  Drawn to scale, the answer is obvious: after you file, the
+                  receipt notice is your status document, not the card.
+                </p>
+                <ExtensionCoverageChart />
+
+                <h3 className="mt-8 text-base font-bold text-ink-900">
+                  What it costs to file
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          How you file
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Fee
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What is included
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      <tr className="border-b border-ink-900/5 align-top">
+                        <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                          Online
+                        </th>
+                        <td className="py-3 pr-3 font-semibold text-emerald-700">
+                          {I751_FACTS.onlineFee}
+                        </td>
+                        <td className="py-3">
+                          Biometrics included. Cheapest route, and the receipt
+                          notice posts to your account rather than waiting on the
+                          post.
+                        </td>
+                      </tr>
+                      <tr className="border-b border-ink-900/5 align-top">
+                        <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                          By mail
+                        </th>
+                        <td className="py-3 pr-3 font-semibold text-ink-800">
+                          {I751_FACTS.paperFee}
+                        </td>
+                        <td className="py-3">
+                          Biometrics included. $50 more than filing online, for
+                          the same adjudication.
+                        </td>
+                      </tr>
+                      <tr className="border-b border-ink-900/5 align-top">
+                        <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                          Waiver based on battery or extreme cruelty
+                        </th>
+                        <td className="py-3 pr-3 font-semibold text-emerald-700">$0</td>
+                        <td className="py-3">
+                          No fee, and no fee waiver request needed — the
+                          exemption is built into the form.
+                        </td>
+                      </tr>
+                      <tr className="border-b border-ink-900/5 align-top">
+                        <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                          A separate biometrics fee
+                        </th>
+                        <td className="py-3 pr-3 font-semibold text-ink-400">None</td>
+                        <td className="py-3">
+                          Pages still quoting &ldquo;plus $85 biometrics&rdquo;
+                          are out of date. There is no separate charge.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-sm text-ink-500">
+                  Source: USCIS fee schedule, {I751_FACTS.feeEdition}. Read{" "}
+                  {formatDate(I751_FACTS.lastVerified)}. Fees change by rule — confirm on
+                  the official form page before paying.
+                </p>
               </div>
 
               <div>
@@ -325,6 +432,8 @@ export default function I751Page() {
                     </div>
                   ))}
                 </div>
+                <WaiverGroundDiagram />
+
                 <h3 className="mt-6 text-base font-bold text-ink-900">
                   The waiver grounds
                 </h3>
@@ -486,6 +595,159 @@ export default function I751Page() {
                   </Link>{" "}
                   has been running the whole time.
                 </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  Applying for citizenship while the I-751 is pending
+                </h2>
+                <p className="mt-3">
+                  This interaction catches a lot of people, and it catches them
+                  precisely because they did everything right. A conditional
+                  resident married to a US citizen becomes eligible to apply for
+                  naturalisation three years after being admitted as a permanent
+                  resident. The I-751 is routinely still pending at that point.
+                  So you end up holding two live applications at once, and
+                  wondering which one blocks which.
+                </p>
+                <p className="mt-3">
+                  The answer from the USCIS Policy Manual is clear, and it is
+                  better news than most people expect. In most cases a
+                  conditional resident must have an <em>approved</em> I-751
+                  before USCIS may naturalise them — an N-400 cannot be approved
+                  while a petition to remove conditions is still pending. But you
+                  are not made to wait and then start: where an N-400 is pending,
+                  USCIS adjudicates the I-751 before, or at the same time as,
+                  the N-400, and the two can be handled in a combined interview.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[580px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Question
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What actually happens
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {[
+                        [
+                          "Can I file the N-400 while the I-751 is pending?",
+                          "Yes. Filing is not blocked; approval is.",
+                        ],
+                        [
+                          "Which one gets decided first?",
+                          "The I-751. Where an N-400 is pending, USCIS adjudicates the I-751 before or at the same time as the N-400.",
+                        ],
+                        [
+                          "Will I have two interviews?",
+                          "Often one. The two can be combined into a single interview covering both the marriage evidence and the naturalisation requirements.",
+                        ],
+                        [
+                          "When am I eligible on the 3-year rule?",
+                          "Three years after admission as a permanent resident, if you are still married to and living with the same US citizen. The conditional card counts as permanent residence for that clock.",
+                        ],
+                        [
+                          "What if the marriage ended?",
+                          "The 3-year spousal rule is no longer available to you and the ordinary 5-year rule applies. The I-751 becomes a waiver filing.",
+                        ],
+                        [
+                          "Are there exceptions to needing the I-751 approved first?",
+                          "Narrow ones — certain military applicants under INA 329, and certain spouses of US citizens employed abroad by qualifying organisations under INA 319(b).",
+                        ],
+                      ].map(([q, a]) => (
+                        <tr key={q} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {q}
+                          </th>
+                          <td className="py-3">{a}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-sm text-ink-500">
+                  Source: USCIS Policy Manual, Vol. 12, Pt. G, Ch. 5 —
+                  conditional permanent resident spouses and naturalisation.
+                  Read {formatDate(I751_FACTS.lastVerified)}. If you are getting
+                  close to the interview,{" "}
+                  <Link href="/tools/citizenship-test-practice" className="text-brand-600 underline">
+                    the civics test practice tool
+                  </Link>{" "}
+                  covers the naturalisation half.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  The mistakes that cost the most time
+                </h2>
+                <p className="mt-3">
+                  Ranked by how much they actually cost, not by how often they
+                  are listed.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[620px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          The mistake
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What it costs
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          Instead
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {[
+                        [
+                          "Filing before the window opens",
+                          "Outright rejection and the fee returned — and by the time it comes back, weeks of the window are gone.",
+                          `Use the calculator above. USCIS accepts it only in the ${I751_FACTS.windowDays} days before the card expires.`,
+                        ],
+                        [
+                          "Assuming a missed window has ended it",
+                          "Months of doing nothing, on a waiver ground where the window never applied.",
+                          "Check which basis you are filing on before you check the date.",
+                        ],
+                        [
+                          "Evidence from one month of one year",
+                          "The single most common reason a case draws an interview: a thick file that proves one moment rather than a continuous life.",
+                          "Two or three documents from every six-month block across the whole conditional period.",
+                        ],
+                        [
+                          "Throwing away the receipt notice",
+                          `It is your status document for ${I751_FACTS.extensionMonths} months. Replacing it means an InfoPass appointment to get an I-551 stamp.`,
+                          "Scan it, keep the original with the expired card, and carry both.",
+                        ],
+                        [
+                          "Not filing AR-11 after moving",
+                          "The biometrics appointment notice goes to the old address. A missed appointment can be treated as abandonment.",
+                          "File the change of address within 10 days, and update it in the online account too.",
+                        ],
+                        [
+                          "Travelling on the expired card alone",
+                          "Boarding refused, or secondary inspection on arrival.",
+                          "Carry the receipt notice with the card. Together they are the evidence of status.",
+                        ],
+                      ].map((row) => (
+                        <tr key={row[0]} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {row[0]}
+                          </th>
+                          <td className="py-3 pr-3">{row[1]}</td>
+                          <td className="py-3 text-ink-500">{row[2]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div>
