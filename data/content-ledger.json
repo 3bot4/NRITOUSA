@@ -136,6 +136,15 @@
       "nextStep": "Still outstanding from the September build too. The traps are encoded in src/components/gap-2026-09.mobile.test.ts; a real render is not."
     },
     {
+      "id": "open-merge-the-depth-pass-pr",
+      "title": "Open + merge the depth-pass PR (feat/immigration-gap-depth-sep-2026): 24 tables, 10 figures, 34 FAQs across the 13 gap pages, no new URLs",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "Open at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-depth-sep-2026 using docs/seo/gap-2026-09/depth-pass/PULL-REQUEST.md as the body, review the Vercel preview (especially 360px on the six new SVG figures), then merge"
+    },
+    {
       "id": "tracker-claimed-the-october-bulletin-was",
       "title": "Tracker claimed the October bulletin was already published",
       "area": "content",
