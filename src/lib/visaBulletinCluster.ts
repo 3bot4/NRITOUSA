@@ -1480,6 +1480,18 @@ Wait for your date to become current again. You cannot file I-485 while your pri
 
 ### How far in advance should I prepare the I-485 package?
 Begin preparing 2–3 months before you expect your date to become current. Civil surgeon appointments fill up, and USCIS forms require gathering documents from your employer, birth country, and civil records. Do not wait until your date is current to start preparing.
+
+### When is the visa bulletin released each month?
+The Department of State normally publishes the next month's bulletin in the second week of the preceding month — so the October bulletin appears around the second week of September. There is no fixed date and it slips, so treat "around the 8th to the 15th" as the window rather than a schedule. USCIS then separately announces which chart it will accept for adjustment-of-status filings that month, and that announcement can come days after the bulletin itself. A month page appears here once the bulletin is actually published; nothing is posted in advance of it.
+
+### Why does each month get its own page here?
+Because the question "what happened in this month's bulletin" is a different question from "what is the EB-2 India backlog", and answering both on one page serves neither. A month page states what moved and by how much, for every category and country, against the previous month. The [category pages](/visa-bulletin/eb2-india) carry the standing explanation of what a category means and how its queue behaves. The month pages link into them rather than repeating them.
+
+### What is the difference between the Final Action chart and the Dates for Filing chart?
+Final Action dates control when a green card can actually be approved and issued. Dates for Filing control when you may submit the application — and they are usually further forward, sometimes by months. The trap is that the Dates for Filing chart is only usable for adjustment of status if USCIS says so for that month; USCIS makes that call separately, each month, and can pick either chart. Every month page here states which chart USCIS accepted and for what.
+
+### Do cut-off dates only move forward?
+No. A category can retrogress — the cut-off moves backwards — and it happens most often late in a fiscal year when demand has consumed the annual supply, and at the start of a fiscal year when the numbers reset and the queue is re-measured. A date that became current can also go back to a date, or to unavailable. This is why a month page shows a change column: direction for one month is a fact, and direction for the next month is a forecast.
 `,
   },
   {
