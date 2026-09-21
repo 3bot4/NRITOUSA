@@ -221,3 +221,145 @@ export const PREMIUM_AVAILABILITY: PremiumAvailability[] = [
     note: "No premium option. The receipt notice already extends status 48 months, which is usually the real answer to the worry behind the request.",
   },
 ];
+
+/* ═══════════════ the escalation ladder (depth pass, 2026-09-20) ══════════ */
+
+/**
+ * What to do when no expedite criterion applies — which is most readers, and
+ * which the page previously left as a dead end.
+ *
+ * These are four DIFFERENT mechanisms, not four flavours of "asking nicely".
+ * They have different prerequisites, different deciders and different powers,
+ * and the order below is the order they unlock in: you cannot skip to the
+ * Ombudsman without having gone through USCIS first, by the Ombudsman's own
+ * rule.
+ *
+ * Verified 2026-09-20 against the sources in ESCALATION_SOURCES.
+ * Educational only. Not legal advice — a mandamus action in particular is
+ * federal litigation and is not something this site is advising anyone to file.
+ */
+
+export const ESCALATION_SOURCES = {
+  eRequestOnpt:
+    "https://egov.uscis.gov/e-request/displayONPTForm.do;entryPoint=init&sroPageType=onpt",
+  srmtPolicy: "https://www.uscis.gov/policy-manual/volume-1-part-a-chapter-4",
+  processingTimesFaq:
+    "https://egov.uscis.gov/processing-times/processing-times-faqs",
+  ombudsmanHow: "https://www.dhs.gov/case-assistance",
+  ombudsmanForm: "https://www.dhs.gov/publication/form-dhs-7001-instructions",
+  findRepresentative: "https://www.house.gov/representatives/find-your-representative",
+  findSenator: "https://www.senate.gov/senators/senators-contact.htm",
+  privacyAct: "https://www.law.cornell.edu/uscode/text/5/552a",
+  mandamusStatute: "https://www.law.cornell.edu/uscode/text/28/1361",
+  courtFees: "https://www.uscourts.gov/court-programs/fees/district-court-miscellaneous-fee-schedule",
+  filingFeeStatute: "https://www.law.cornell.edu/uscode/text/28/1914",
+} as const;
+
+export const ESCALATION_UPDATED = "2026-09-20";
+
+export interface EscalationRung {
+  id: string;
+  /** Order on the ladder, 1 = try first. */
+  step: number;
+  name: string;
+  /** Who actually decides / acts. */
+  decider: string;
+  /** What you have to have done before this one is open to you. */
+  prerequisite: string;
+  /** Out-of-pocket cost. */
+  cost: string;
+  /** Published turnaround, or the honest absence of one. */
+  timeframe: string;
+  /** What it can actually achieve. */
+  canDo: string;
+  /** What it cannot, however well you argue it. */
+  cannotDo: string;
+  /** Which source this rung was read from. */
+  sourceKey: keyof typeof ESCALATION_SOURCES;
+}
+
+export const ESCALATION_RUNGS: EscalationRung[] = [
+  {
+    id: "onpt",
+    step: 1,
+    name: "Case inquiry — outside normal processing time",
+    decider: "The USCIS office holding your file",
+    prerequisite:
+      "Your receipt date must be earlier than the case inquiry date USCIS publishes for your form, category and office. If your form is not listed at all, six months pending is the fallback.",
+    cost: "Free",
+    timeframe:
+      "USCIS sets a target completion date by category and states a general goal of 15 business days to resolve a service request.",
+    canDo:
+      "Puts a service request in front of the officer and produces a written answer about where the case stands.",
+    cannotDo:
+      "It is not an expedite. It does not move you up the queue, and a very common reply is simply that the case remains within normal processing time.",
+    sourceKey: "srmtPolicy",
+  },
+  {
+    id: "congressional",
+    step: 2,
+    name: "Congressional inquiry",
+    decider: "Your Representative's or Senator's casework staff, who ask USCIS",
+    prerequisite:
+      "You must live in the district or state. Every office requires your written consent before USCIS may discuss your file with them — the Privacy Act bars the disclosure without it.",
+    cost: "Free",
+    timeframe:
+      "No published standard. Each office runs its own casework process and its own queue.",
+    canDo:
+      "Reaches a dedicated USCIS congressional liaison rather than the general Contact Center, which is why it often produces a more specific answer than rung 1 did.",
+    cannotDo:
+      "It confers no legal priority. A member of Congress cannot instruct USCIS to approve, deny or reorder anything.",
+    sourceKey: "privacyAct",
+  },
+  {
+    id: "ombudsman",
+    step: 3,
+    name: "CIS Ombudsman — DHS Form 7001",
+    decider:
+      "The DHS Office of the Citizenship and Immigration Services Ombudsman, independent of USCIS",
+    prerequisite:
+      "You must have contacted USCIS within the last 90 days and given USCIS at least 60 days to resolve the problem. Rung 1 is how most people satisfy that, so keep your service request numbers.",
+    cost: "Free",
+    timeframe:
+      "No published decision timeframe. The Ombudsman asks USCIS to look again; it does not run its own clock.",
+    canDo:
+      "Independent review of a case that is stuck, and the office that is best placed to surface an actual USCIS error.",
+    cannotDo:
+      "It cannot decide your case, overrule USCIS, or make a legal determination. It is an escalation, not an appeal.",
+    sourceKey: "ombudsmanHow",
+  },
+  {
+    id: "mandamus",
+    step: 4,
+    name: "Mandamus action in federal district court",
+    decider: "A federal judge",
+    prerequisite:
+      "A clear duty USCIS owes you that it has unreasonably failed to perform. In practice this means genuine, documented delay and a lawyer — this is federal litigation, not a form.",
+    cost:
+      "$350 statutory filing fee under 28 U.S.C. § 1914(a) plus a $55 administrative fee, before any legal representation.",
+    timeframe:
+      "Set by the court's schedule. The government has 60 days to respond to a complaint against a federal agency.",
+    canDo:
+      "Compels USCIS to make a decision on a case it has unreasonably delayed.",
+    cannotDo:
+      "It cannot compel a favourable decision. A court can order USCIS to decide; the decision it then makes may be a denial.",
+    sourceKey: "mandamusStatute",
+  },
+];
+
+/**
+ * The honest framing the whole section hangs on. Three of the four rungs are
+ * free, none of them is an expedite, and the first one is the only one most
+ * people ever need.
+ */
+export const ESCALATION_FACTS = {
+  srmtGoal: "15 business days",
+  ombudsmanContactWindowDays: 90,
+  ombudsmanUscisDays: 60,
+  mandamusFilingFee: 350,
+  mandamusAdminFee: 55,
+  get mandamusTotalFee() {
+    return this.mandamusFilingFee + this.mandamusAdminFee;
+  },
+  lastVerified: ESCALATION_UPDATED,
+} as const;

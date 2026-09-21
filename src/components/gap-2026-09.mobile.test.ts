@@ -40,6 +40,7 @@ const NEW_SVG_FILES = [
   "components/tools/h1b-weighted/WeightedSelection.tsx",
   "components/tools/marriage/InterviewDayDiagram.tsx",
   "components/tools/expedite/ExpediteDecisionTree.tsx",
+  "components/tools/expedite/EscalationLadder.tsx",
   "components/tools/divorce/DivorceByStageDiagram.tsx",
   "components/tools/ead/OldVsNewRuleDiagram.tsx",
   "components/tools/eb1/Eb1Visuals.tsx",
