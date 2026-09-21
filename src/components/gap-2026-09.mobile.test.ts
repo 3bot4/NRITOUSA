@@ -37,6 +37,7 @@ const NEW_SVG_FILES = [
   "components/visa-bulletin/MonthCharts.tsx",
   "components/tools/nvc/ConsularPathDiagram.tsx",
   "components/tools/rfe/RfeFlowDiagram.tsx",
+  "components/tools/rfe/RfeVisuals.tsx",
   "components/tools/h1b-weighted/WeightedSelection.tsx",
   "components/tools/marriage/InterviewDayDiagram.tsx",
   "components/tools/expedite/ExpediteDecisionTree.tsx",
