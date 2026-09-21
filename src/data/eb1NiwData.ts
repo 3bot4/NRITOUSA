@@ -221,3 +221,241 @@ export const MATRIX_ROWS: { label: string; values: Record<RouteId, string> }[] =
     values: { eb1a: "3 of 10", eb1b: "2 of 6", eb1c: "1 yr abroad", niw: "3 prongs" },
   },
 ];
+
+/* ═══════════ the regulatory criteria, verbatim (depth pass 2026-09-20) ═══ */
+
+/**
+ * The searcher comparing EB-1A and EB-1B is, nine times out of ten, trying to
+ * work out which list of boxes they can tick. Describing the lists is not the
+ * same as showing them, so here they are, quoted from the regulation rather
+ * than paraphrased.
+ *
+ * Read from 8 CFR 204.5 on 2026-09-20. `plain` is our own gloss and is clearly
+ * separated from the regulation's own words in `text`.
+ */
+
+export interface RegCriterion {
+  /** The regulation's own enumerator, e.g. "(i)" or "(A)". */
+  ref: string;
+  /** The regulation's own words. */
+  text: string;
+  /** What it means in practice, and what typically satisfies it. */
+  plain: string;
+}
+
+/** 8 CFR 204.5(h)(3) — meet at least three, unless you hold a major award. */
+export const EB1A_CRITERIA: RegCriterion[] = [
+  {
+    ref: "(i)",
+    text: "Receipt of lesser nationally or internationally recognized prizes or awards for excellence in the field of endeavor",
+    plain:
+      "Awards below the one-time major award standard. The award has to be for excellence in the field and recognised beyond the body that gave it — an internal company award rarely lands.",
+  },
+  {
+    ref: "(ii)",
+    text: "Membership in associations in the field which require outstanding achievements of their members, as judged by recognized national or international experts",
+    plain:
+      "The membership must be gated on achievement. Anything you can join by paying a fee or holding a degree does not count, which excludes most professional bodies.",
+  },
+  {
+    ref: "(iii)",
+    text: "Published material about the alien in professional or major trade publications or other major media, relating to the alien's work in the field",
+    plain:
+      "Coverage about you and your work, not written by you. Press releases from your own employer are the usual weak spot.",
+  },
+  {
+    ref: "(iv)",
+    text: "Participation, either individually or on a panel, as a judge of the work of others in the same or an allied field",
+    plain:
+      "Peer review, conference programme committees, grant panels, judging competitions. This is the criterion most working researchers already meet and most forget to document.",
+  },
+  {
+    ref: "(v)",
+    text: "Original scientific, scholarly, artistic, athletic, or business-related contributions of major significance in the field",
+    plain:
+      "The heaviest of the ten, and the one that drives the final merits determination. Major significance means impact others can point to, evidenced by citation, adoption or independent expert letters.",
+  },
+  {
+    ref: "(vi)",
+    text: "Authorship of scholarly articles in the field, in professional or major trade publications or other major media",
+    plain:
+      "Publication itself, separate from its impact. Common for academics, rare for industry practitioners.",
+  },
+  {
+    ref: "(vii)",
+    text: "Display of the alien's work in the field at artistic exhibitions or showcases",
+    plain: "An arts criterion. Not available to most technical filers.",
+  },
+  {
+    ref: "(viii)",
+    text: "Performance in a leading or critical role for organizations or establishments that have a distinguished reputation",
+    plain:
+      "Two halves, and both must be evidenced: your role was leading or critical, and the organisation itself is distinguished. An org chart plus letters from people above you is the usual proof.",
+  },
+  {
+    ref: "(ix)",
+    text: "Command of a high salary or other significantly high remuneration for services, in relation to others in the field",
+    plain:
+      "Comparative, not absolute. A strong US salary means little without wage data showing where it sits in the field and geography.",
+  },
+  {
+    ref: "(x)",
+    text: "Commercial successes in the performing arts, as shown by box office receipts or record, cassette, compact disk, or video sales",
+    plain: "A performing-arts criterion. Not available to most technical filers.",
+  },
+];
+
+/** 8 CFR 204.5(i)(3)(i) — meet at least two. */
+export const EB1B_CRITERIA: RegCriterion[] = [
+  {
+    ref: "(A)",
+    text: "Receipt of major prizes or awards for outstanding achievement in the academic field",
+    plain: "A higher bar than the EB-1A equivalent: 'major', not 'lesser'.",
+  },
+  {
+    ref: "(B)",
+    text: "Membership in associations in the academic field which require outstanding achievements of their members",
+    plain: "Same achievement-gated test as EB-1A, read within the academic field.",
+  },
+  {
+    ref: "(C)",
+    text: "Published material in professional publications written by others about the alien's work in the academic field",
+    plain:
+      "Note the narrowing against EB-1A: professional publications, and written by others.",
+  },
+  {
+    ref: "(D)",
+    text: "Participation, either individually or on a panel, as the judge of the work of others in the same or an allied academic field",
+    plain: "Peer review and programme committees, as in EB-1A.",
+  },
+  {
+    ref: "(E)",
+    text: "Original scientific or scholarly research contributions to the academic field",
+    plain:
+      "Note what is missing against the EB-1A version: no 'of major significance'. This is the single biggest reason a strong academic record can clear EB-1B and not EB-1A.",
+  },
+  {
+    ref: "(F)",
+    text: "Authorship of scholarly books or articles (in scholarly journals with international circulation) in the academic field",
+    plain: "International circulation is explicit here, and is checked.",
+  },
+];
+
+/** The two EB-1B requirements that sit outside the six criteria. */
+export const EB1B_EXTRA_REQUIREMENTS: { label: string; detail: string; cite: string }[] = [
+  {
+    label: "Three years of experience",
+    detail:
+      "At least three years of experience in teaching and/or research in the academic field. Work done toward a doctorate can count in limited circumstances.",
+    cite: "8 CFR 204.5(i)(3)(iii)",
+  },
+  {
+    label: "A qualifying offer",
+    detail:
+      "A tenured or tenure-track teaching offer, a comparable permanent research position at a university, or a permanent research position at a private employer.",
+    cite: "8 CFR 204.5(i)(3)(iv)",
+  },
+  {
+    label: "If the employer is private",
+    detail:
+      "The research department must employ at least three persons full-time in research positions and have documented accomplishments in the academic field.",
+    cite: "8 CFR 204.5(i)(3)(iv)(C)",
+  },
+];
+
+/** Matter of Dhanasar, as applied by the USCIS Policy Manual. */
+export const DHANASAR_PRONGS: { n: number; prong: string; asks: string; fails: string }[] = [
+  {
+    n: 1,
+    prong: "The proposed endeavour has both substantial merit and national importance",
+    asks:
+      "Describe the endeavour specifically — not your occupation, but the work you propose to do — and show why its implications reach beyond your employer or region.",
+    fails:
+      "Describing a job rather than an endeavour. 'I am a machine learning engineer' is an occupation; the endeavour is what you will build and who it serves.",
+  },
+  {
+    n: 2,
+    prong: "You are well positioned to advance the proposed endeavour",
+    asks:
+      "Your record, skills, progress to date, and interest from those who would use or fund the work.",
+    fails:
+      "This is where most NIW petitions die. The prong asks for evidence you have already advanced this endeavour, not that you are qualified to attempt it. A good CV plus a plan is not enough.",
+  },
+  {
+    n: 3,
+    prong:
+      "On balance, it would be beneficial to the United States to waive the job offer and labour certification requirements",
+    asks:
+      "Why requiring a labour certification would be impractical or against the national interest in your case — for example self-employment, or urgency in the field.",
+    fails:
+      "Treating it as a formality. It is a separate balancing test and it has to be argued on its own terms.",
+  },
+];
+
+/** The extended side-by-side grid, rendered as a real table. */
+export const COMPARISON_TABLE: {
+  label: string;
+  values: Record<RouteId, string>;
+  note?: string;
+}[] = [
+  {
+    label: "Preference category",
+    values: { eb1a: "EB-1", eb1b: "EB-1", eb1c: "EB-1", niw: "EB-2" },
+    note: "This is the row that decides the wait for an India-born applicant.",
+  },
+  {
+    label: "Who files",
+    values: {
+      eb1a: "You, for yourself",
+      eb1b: "Your employer",
+      eb1c: "Your US employer",
+      niw: "You, for yourself",
+    },
+  },
+  {
+    label: "Job offer required",
+    values: { eb1a: "No", eb1b: "Yes — permanent or tenure-track", eb1c: "Yes", niw: "No — waived" },
+  },
+  {
+    label: "PERM labour certification",
+    values: { eb1a: "No", eb1b: "No", eb1c: "No", niw: "No — waived" },
+    note: "All four skip PERM. That is the whole appeal of this group of routes.",
+  },
+  {
+    label: "The evidentiary test",
+    values: {
+      eb1a: "3 of 10 criteria, or one major award",
+      eb1b: "2 of 6 criteria",
+      eb1c: "1 year managerial or executive abroad",
+      niw: "EB-2 eligibility, then 3 Dhanasar prongs",
+    },
+  },
+  {
+    label: "Is there a second-stage test?",
+    values: {
+      eb1a: "Yes — final merits determination",
+      eb1b: "Yes — final merits determination",
+      eb1c: "No — capacity is the test",
+      niw: "The three prongs are the test",
+    },
+    note: "Ticking the boxes is necessary and not sufficient for EB-1A and EB-1B.",
+  },
+  {
+    label: "Prior US status needed",
+    values: {
+      eb1a: "None",
+      eb1b: "None",
+      eb1c: "None, but the L-1A route is the common path",
+      niw: "None",
+    },
+  },
+  {
+    label: "Regulation or guidance",
+    values: {
+      eb1a: "8 CFR 204.5(h)",
+      eb1b: "8 CFR 204.5(i)",
+      eb1c: "8 CFR 204.5(j)",
+      niw: "Policy Manual Vol. 6, Pt. F, Ch. 5",
+    },
+  },
+];
