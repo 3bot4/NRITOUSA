@@ -54,12 +54,17 @@ published USCIS checklist exists.
 
 ## What the numbers did
 
-| | Before | After |
-|---|---|---|
-| Tables across the 13 pages | 13 | **34** |
-| Charts and diagrams | 12 | **18** |
-| FAQ entities | 94 | **129** |
-| Pages under the 6-FAQ bar | 1 (undetected) | **0** |
+| Added across the 13 pages | Count |
+|---|---|
+| Tables | **24** — 21 HTML, 3 markdown on the RFE cluster page |
+| Charts and diagrams | **10** new inline-SVG figures, in 4 new modules |
+| FAQ entries | **34** — 29 structured, 5 markdown |
+| Prose words | **+6,861** on the page modules, before the data and component modules they render from |
+| New URLs | **0** |
+
+Counted from `git diff 7791c2f..HEAD`, not estimated. Every one of the 13
+pages now carries at least two tables; the EB-1 comparison page had none at
+all before this pass.
 
 ## Gates
 

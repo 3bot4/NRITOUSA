@@ -31,10 +31,16 @@ figures are counted across the page and every module it renders from.
 | 10a | `/divorce-immigration-status` | — | +1 | 1 | existing | The four stages as a grid |
 | 10b | `/ead-renewal-gap` | 1,522 → **1,644** | 2 → **3** | 1 | existing | EAD category-code table |
 
-Every page clears the 1,500-word bar on its own module before the data and
+Every page clears the 1,500-word bar on its own module, before the data and
 component modules it renders from are counted. Nothing was padded: each
 addition is a table, a figure or a section answering a question the competitor
 answers and we did not.
+
+Totalled from `git diff 7791c2f..HEAD` rather than estimated: **24 tables**
+added (21 HTML, 3 markdown on the RFE cluster page), **10 new inline-SVG
+figures** in four new modules, **34 FAQ entries** (29 structured, 5 markdown),
+**+6,861 prose words**, and **no new URLs**. The EB-1 comparison page had no
+table at all before this pass; every one of the thirteen now has at least two.
 
 ---
 
