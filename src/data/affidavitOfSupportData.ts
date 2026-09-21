@@ -226,3 +226,172 @@ export const I864_FACTS = {
   feeSourceUrl: I864_SOURCES.i864p,
   lastVerified: I864P.lastVerified,
 } as const;
+
+/* ══════════ exemptions and the document list (depth pass 2026-09-20) ══════ */
+
+export const I864_EXEMPTION_SOURCES = {
+  i864w: "https://www.uscis.gov/i-864w",
+  i864wTips:
+    "https://www.uscis.gov/forms/tips-for-filing-form-i-864w-request-exemption-intending-immigrants-affidavit-support",
+  policyManualSponsorship:
+    "https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-13",
+  i864Instructions:
+    "https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf",
+} as const;
+
+/**
+ * Who does not need an I-864 at all.
+ *
+ * The procedural half of this changed on 10 December 2024: the exemption is now
+ * requested on the Form I-485 itself rather than by filing a separate Form
+ * I-864W alongside it. That is exactly the kind of change that leaves correct-
+ * sounding but stale instructions all over the internet, which is why it is
+ * called out by date on the page rather than quietly folded in.
+ *
+ * Read from uscis.gov/i-864w and Policy Manual Vol. 8 Pt. G on 2026-09-20.
+ */
+export const I864_EXEMPTION_CHANGE = {
+  date: "2024-12-10",
+  summary:
+    "Since 10 December 2024, an adjustment applicant requests the exemption on Form I-485 itself rather than by filing a separate Form I-864W.",
+} as const;
+
+export interface I864Exemption {
+  id: string;
+  who: string;
+  why: string;
+  /** What actually has to be evidenced. */
+  evidence: string;
+}
+
+export const I864_EXEMPTIONS: I864Exemption[] = [
+  {
+    id: "quarters",
+    who: "You have 40 qualifying quarters of Social Security coverage",
+    why: "Roughly ten years of covered work. Quarters worked by a spouse during the marriage, and by a parent while you were under 18, can be credited to you.",
+    evidence:
+      "A Social Security Administration earnings statement showing the quarters, plus proof of the marriage or the parent–child relationship where the quarters are borrowed.",
+  },
+  {
+    id: "cca",
+    who: "A child who becomes a US citizen on admission",
+    why: "A child of a US citizen who will acquire citizenship automatically under the Child Citizenship Act of 2000 on admission to the United States is exempt.",
+    evidence:
+      "Evidence of the qualifying parent–child relationship and of the parent's US citizenship. If the intending immigrant is under 14, the US citizen parent may sign the request.",
+  },
+  {
+    id: "self-petition",
+    who: "Certain self-petitioners and employment cases",
+    why: "Employment-based cases generally need no I-864 at all, unless a relative filed the petition or owns a significant interest in the petitioning business.",
+    evidence:
+      "Nothing to file for most employment cases — the requirement simply does not attach.",
+  },
+  {
+    id: "widow",
+    who: "Widows and widowers of US citizens self-petitioning",
+    why: "The affidavit requirement does not attach to the self-petition.",
+    evidence: "The self-petition itself.",
+  },
+];
+
+/** What actually goes in the package, and who provides it. */
+export interface I864Document {
+  item: string;
+  who: "Sponsor" | "Joint sponsor" | "Household member" | "Either";
+  required: boolean;
+  note: string;
+}
+
+export const I864_DOCUMENTS: I864Document[] = [
+  {
+    item: "Form I-864, signed",
+    who: "Sponsor",
+    required: true,
+    note: "A separate complete I-864 from every joint sponsor. An unsigned form is the single most common outright rejection.",
+  },
+  {
+    item: "Federal tax return or IRS transcript, most recent year",
+    who: "Either",
+    required: true,
+    note: "A tax transcript is safer than a copy: it is complete by definition, and a copy must include every schedule.",
+  },
+  {
+    item: "W-2s and 1099s for that year",
+    who: "Either",
+    required: true,
+    note: "Required with a photocopied return. Not needed if you submit an IRS transcript instead.",
+  },
+  {
+    item: "The two earlier tax years",
+    who: "Either",
+    required: false,
+    note: "Optional, and worth adding only when it helps — for example when the most recent year was unusually low.",
+  },
+  {
+    item: "A written explanation if you did not file",
+    who: "Either",
+    required: false,
+    note: "Required in place of the return where you were not obliged to file. Saying nothing is treated as an omission, not as an answer.",
+  },
+  {
+    item: "Proof of current employment and income",
+    who: "Either",
+    required: false,
+    note: "An employer letter and recent pay slips. Not formally required, but this is what bridges a low prior-year return to a current income figure.",
+  },
+  {
+    item: "Proof of US citizenship, LPR status or national status",
+    who: "Sponsor",
+    required: true,
+    note: "Passport biographic page, birth certificate, naturalisation certificate or green card.",
+  },
+  {
+    item: "Proof of US domicile, where it is not obvious",
+    who: "Sponsor",
+    required: false,
+    note: "The one that catches sponsors living in India: a US lease or deed kept on, US tax returns filed as a resident, bank accounts, a licence, voter registration.",
+  },
+  {
+    item: "Form I-864A, signed by the household member",
+    who: "Household member",
+    required: false,
+    note: "Only where you are counting a household member's income. Their tax return and W-2s go with it.",
+  },
+  {
+    item: "Evidence of the value of assets, where used",
+    who: "Either",
+    required: false,
+    note: "Net value, not gross — a property valuation minus the outstanding mortgage, dated and documented.",
+  },
+];
+
+/** The four ways the obligation ends. Nothing else ends it. */
+export const I864_OBLIGATION_END: { event: string; detail: string }[] = [
+  {
+    event: "The immigrant naturalises",
+    detail: "Becomes a US citizen. The most common ending.",
+  },
+  {
+    event: "40 qualifying quarters of work",
+    detail:
+      "Roughly ten years of covered work, credited to the immigrant. Quarters worked by their spouse during the marriage count.",
+  },
+  {
+    event: "The immigrant permanently leaves the US",
+    detail: "Formally abandons permanent residence. Visiting India does not do this.",
+  },
+  {
+    event: "Either of you dies",
+    detail:
+      "The obligation does not transfer to your estate for support falling due afterwards, but arrears already owed can still be claimed.",
+  },
+];
+
+/** What does NOT end it — the half people get wrong. */
+export const I864_OBLIGATION_NOT_END: string[] = [
+  "Divorce. The affidavit is a contract with the government, not a term of the marriage.",
+  "The immigrant getting a job, or becoming financially independent.",
+  "Falling out with the family, or losing contact entirely.",
+  "The immigrant moving to another state, or moving back to India temporarily.",
+  "Bankruptcy. The obligation is not dischargeable.",
+];

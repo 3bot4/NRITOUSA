@@ -211,3 +211,111 @@ export const INTERVIEW_DAY: { t: string; d: string }[] = [
   { t: "Separate interviews — only sometimes", d: "If the officer has doubts, you are questioned apart and the answers compared. This is the 'second-stage' or Stokes interview." },
   { t: "Outcome", d: "Approved on the day, an RFE for more evidence, a case continued for review, or a denial." },
 ];
+
+/* ══════════ scrutiny factors and the second interview (2026-09-20) ═══════ */
+
+/**
+ * What raises scrutiny, and — just as important — what does not.
+ *
+ * Written deliberately as two columns rather than as a "red flags" list. The
+ * lists circulating online frighten genuine couples about things that are not
+ * problems at all (an age gap, an arranged marriage, a short courtship), while
+ * saying nothing about the thing that actually decides it: whether the paper
+ * record shows two people running one life.
+ *
+ * These are patterns in how cases are examined, not a published USCIS
+ * checklist, and the page says so. Educational only. Not legal advice.
+ */
+
+export interface ScrutinyFactor {
+  factor: string;
+  /** Why it draws a closer look. */
+  why: string;
+  /** What answers it. */
+  answer: string;
+}
+
+export const SCRUTINY_FACTORS: ScrutinyFactor[] = [
+  {
+    factor: "Very little documentary overlap",
+    why: "No joint account, no joint lease, no shared insurance, nothing with both names on it. This is the single biggest driver of a second look.",
+    answer:
+      "Whatever genuinely exists, across time rather than from one week — and an honest explanation where a normal document is missing.",
+  },
+  {
+    factor: "The couple has not lived together",
+    why: "Common and legitimate — a posting, a visa, an elderly parent — but it removes most of the evidence officers usually rely on.",
+    answer:
+      "Travel records, call and message logs, remittances, leases at both addresses, and a clear account of why and for how long.",
+  },
+  {
+    factor: "Answers that diverge on ordinary facts",
+    why: "Not the memorable things. The side of the bed, the brand of toothpaste, who took the bins out.",
+    answer:
+      "Nothing to fix in advance except not rehearsing. Rehearsed couples diverge more, not less, because they agree a script and then improvise under pressure.",
+  },
+  {
+    factor: "The marriage came very soon after a status problem",
+    why: "A filing that closely follows an expiring status or a removal proceeding invites the question of sequence.",
+    answer:
+      "The timeline as it actually happened, documented — and the relationship evidence that predates the status event.",
+  },
+  {
+    factor: "A prior marriage-based petition",
+    why: "A second marriage-based filing by the same petitioner is examined more closely by design.",
+    answer: "Complete documentation of how the earlier marriage began and ended.",
+  },
+  {
+    factor: "Inconsistencies between the forms and the answers",
+    why: "Addresses, employment dates and travel that do not match what is on the I-130, the I-485 or the DS-260.",
+    answer:
+      "Re-read your own filings the week before. Most inconsistencies are clerical, and correcting one yourself is far better than being corrected.",
+  },
+];
+
+/** Things widely repeated as "red flags" that are not, on their own, problems. */
+export const NOT_RED_FLAGS: { thing: string; reality: string }[] = [
+  {
+    thing: "An arranged marriage",
+    reality:
+      "Officers see them constantly and the legal test is unchanged: was the marriage entered into in good faith. How you met is not the question.",
+  },
+  {
+    thing: "A short courtship",
+    reality:
+      "Nothing in the law sets a minimum. What a short courtship does is leave less evidence, which is a documentation problem, not a credibility one.",
+  },
+  {
+    thing: "A large age difference",
+    reality: "Not a ground for anything by itself.",
+  },
+  {
+    thing: "Living apart for part of the marriage",
+    reality:
+      "Extremely common in immigration cases by definition. It needs explaining, not defending.",
+  },
+  {
+    thing: "Being nervous",
+    reality:
+      "Everybody is. Officers conduct these interviews daily and nerves are the baseline, not a signal.",
+  },
+  {
+    thing: "Not remembering a date",
+    reality:
+      "Saying you do not remember is a better answer than guessing. A wrong confident answer is what creates a discrepancy.",
+  },
+];
+
+/** The second interview, by the name people search for. */
+export const STOKES = {
+  name: "Stokes interview",
+  alsoCalled: "second-stage interview, or simply 'separate interviews'",
+  whatItIs:
+    "Each spouse is questioned separately, on the same questions, and the two sets of answers are compared. It follows a joint interview where the officer was not satisfied.",
+  whatItIsNot:
+    "It is not a denial, and it is not a fraud finding. It is a request for better evidence, delivered as questions rather than as an RFE.",
+  whatHappens:
+    "One spouse waits outside. The officer works through daily-life detail in depth, records the answers, then repeats the process with the other spouse. Differences are put to you for explanation rather than held back.",
+  howToPrepare:
+    "The same way you prepare for the first one, which is to say barely at all — know your own life, re-read your own forms, and do not agree on a version of anything.",
+} as const;

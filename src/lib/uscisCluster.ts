@@ -261,15 +261,35 @@ An RFE means USCIS needs more evidence to make a decision. Respond completely an
 
 ## Why USCIS sends RFEs
 
-:::info
-title: Common reasons Indians receive RFEs
-- **I-129 H1B:** Specialty occupation (SOC code, degree match, job duties), employer-employee relationship, Level 1 wage concerns
-- **I-140 EB-2 NIW:** Substantial merit and national importance, well-positioned to advance the endeavor
-- **I-140 EB-2 / EB-3:** Job offer legitimacy, employer's ability to pay
-- **I-485:** Medical exam issues, inadmissibility grounds, missing forms, prior visa overstay
-- **I-765 EAD:** Category eligibility documentation
-- **N-400:** Tax records, prior travel, criminal history clarification
-:::
+An RFE is not a generic "send more paperwork" notice. It is aimed at a specific requirement the officer could not find established in the file, and which requirement that is depends almost entirely on what you filed. The table below is the map most people want first: find your form, and you will usually recognise your own RFE in the middle column before you have finished reading the notice.
+
+| Filing | What the officer could not establish | What generally answers it |
+|---|---|---|
+| **I-129 (H-1B)** | That the role is a specialty occupation — SOC code, the degree-to-duties match, and whether the degree field is specific enough | A detailed duty breakdown tied to the degree field, an expert opinion letter, comparable job postings, the LCA and org chart |
+| **I-129 (H-1B), third-party worksite** | The employer–employee relationship, and who directs the work day to day | End-client and vendor letters, statements of work, the contract chain, and itineraries for the full requested period |
+| **I-140 (EB-2 NIW)** | Substantial merit and national importance, or that you are well positioned to advance the endeavour | Independent expert letters, citation and adoption evidence, funding or letters of interest, and a specific endeavour rather than a job title |
+| **I-140 (EB-2 / EB-3)** | The employer's ability to pay the offered wage from the priority date onward | Annual reports, federal tax returns, audited financials, or W-2s showing the wage already paid |
+| **I-140 (EB-1A / EB-1B)** | That the evidence meets the criteria, or survives the final merits determination | Evidence mapped criterion by criterion, plus context showing the field's own standards — see the [EB-1 and NIW route comparison](/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw) |
+| **I-485** | Medical exam validity, an inadmissibility ground, a missing form, or a prior overstay or status gap | A new or completed I-693 in a sealed envelope, the missing form, and a documented status history |
+| **I-864 (affidavit of support)** | That the sponsor's income or assets meet the requirement for the household size | The correct household count, the most recent tax return and W-2s, and — where needed — an I-864A, qualifying assets or a joint sponsor. See the [I-864 income checker](/uscis/forms/i-864) |
+| **I-765 (EAD)** | Eligibility for the specific category code claimed | The underlying eligibility document for that category — an I-797 for the principal, an I-20 endorsement, or the I-485 receipt |
+| **I-130 (family)** | That the relationship is bona fide | Joint financial and residential evidence, photographs across the relationship, and affidavits from people who know you both |
+| **N-400** | Tax compliance, the travel history, or a criminal or good-moral-character question | Tax transcripts or an IRS payment plan, a complete trip list, and certified court dispositions |
+
+The three most common across all forms are the same three every year: evidence that was sent but not *labelled* as answering the requirement, a relationship or a role described rather than documented, and a financial figure with no primary-source document behind it.
+
+## How long you have to respond
+
+The period is set by the form, printed on the notice, and — this is the part people assume is negotiable and is not — cannot be extended. Officers are prohibited by regulation from granting more time, so there is no extension to request.
+
+| Filing | Response period | If USCIS mailed the notice | Outer limit | Extension available? |
+|---|---|---|---|---|
+| **Most forms** | 84 days (12 weeks) | + 3 mailing days | 87 days from the notice date | No |
+| **I-539** | 30 days | + 3 mailing days | 33 days from the notice date | No |
+| **I-601A** | 30 days | + 3 mailing days | 33 days from the notice date | No |
+| **Recipients outside the US** | May be longer | Set on the notice | Per the notice | No |
+
+Two things this table cannot tell you, and the notice can. First, USCIS may set a *shorter* period than the maximum, and the printed date is always the one that controls. Second, the clock runs from the date printed on the notice, not the day it reached you — so a notice lost in the post eats your window rather than pausing it. [Work out your own date](#rfe-deadline) with the calculator below.
 
 ## What the RFE notice contains
 
@@ -287,6 +307,21 @@ Have your attorney draft a cover letter that addresses each RFE issue directly.
 Assemble the complete response package, make copies, and mail before the deadline via trackable courier.
 Monitor your case status — next update should be "Response to RFE Was Received."
 :::
+
+### What actually goes in the response package
+
+Assembly matters more than volume. An officer coming back to your file has the RFE in front of them and is looking for each numbered item; anything they have to hunt for is a risk you introduced.
+
+| In the package | Why it is there |
+|---|---|
+| **The original RFE notice**, on top | USCIS routes the response by it. A response without it can be separated from the file. |
+| **A cover letter that mirrors the RFE's own numbering** | Item 1 of the RFE answered under a heading marked Item 1. This single choice is what makes a response easy to adjudicate. |
+| **An exhibit index**, with each exhibit tabbed or labelled | Lets the officer confirm an item is answered without reading the whole package. |
+| **Every item, in one submission** | A partial response is treated as a request to decide on the record as it stands. There is no "rest to follow". |
+| **Originals only where the notice asks for them** | Otherwise copies. Sending an original that was not requested risks a document you cannot replace. |
+| **Proof of delivery** | USCIS must *receive* the response by the deadline; a timely postmark is generally not enough, so a trackable courier is the only sensible method. |
+
+What does not help: re-sending everything already in the file, evidence that answers a requirement the RFE did not raise, or a longer letter. The response is measured against the numbered items and nothing else.
 
 ## RFE response outcomes
 

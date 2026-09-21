@@ -9,7 +9,11 @@ import NotLegalAdvice from "@/components/tools/NotLegalAdvice";
 import OfficialSourceBox from "@/components/tools/OfficialSourceBox";
 import ToolFaq from "@/components/tools/ToolFaq";
 import I864SponsorIncomeChecker from "@/components/tools/I864SponsorIncomeChecker";
-import { SponsorDecisionDiagram } from "@/components/tools/i864/charts";
+import {
+  SponsorDecisionDiagram,
+  LocationComparisonChart,
+  ObligationTimelineDiagram,
+} from "@/components/tools/i864/charts";
 import {
   absoluteUrl,
   breadcrumbJsonLd,
@@ -26,6 +30,10 @@ import {
   I864_FACTS,
   I864_TABLES,
   ASSET_RULE_LIST,
+  I864_EXEMPTIONS,
+  I864_EXEMPTION_CHANGE,
+  I864_EXEMPTION_SOURCES,
+  I864_DOCUMENTS,
 } from "@/data/affidavitOfSupportData";
 import { requiredIncome } from "@/lib/calc/i864Income";
 
@@ -127,6 +135,33 @@ const faqs: FaqItem[] = [
     question: "I am sponsoring my parents from India. Anything different?",
     answer:
       "The income rules are identical, but two things bite harder. First, both parents usually immigrate, so your household size goes up by two at once — that is often the step that pushes a comfortable income under the line. Second, the 3× asset concession does not apply: parents fall in the 'every other case' bucket, so assets have to be worth five times the shortfall. Many families end up using an adult sibling as a joint sponsor for exactly this reason.",
+  },
+  {
+    question: "Who is exempt from filing Form I-864?",
+    answer: `Four groups. An intending immigrant credited with 40 qualifying quarters of Social Security coverage — roughly ten years of covered work, and quarters earned by a spouse during the marriage or by a parent while you were under 18 can be credited to you. A child of a US citizen who acquires citizenship automatically under the Child Citizenship Act of 2000 on admission. Most employment-based cases, unless a relative filed the petition or owns a significant interest in the petitioning business. And widows or widowers of US citizens self-petitioning. One procedural point that dates most instructions you will find: since ${I864_EXEMPTION_CHANGE.date}, an adjustment applicant requests the exemption on Form I-485 itself rather than by filing a separate Form I-864W alongside it.`,
+  },
+  {
+    question: "Is an I-864 required for a K-1 fiancé visa?",
+    answer:
+      "Not at the K-1 stage. A K-1 fiancé visa applicant is a nonimmigrant, and the petitioner files Form I-134 for that step. The I-864 arrives later: after the marriage, when the K-1 holder files Form I-485 to adjust status, the US citizen spouse files a full I-864 with it and must meet the 125% requirement then. Worth knowing in advance, because a petitioner who scraped through the I-134 may not meet the I-864 standard a few months later — and that is the point at which a joint sponsor has to be found.",
+  },
+  {
+    question: "What happens if my income drops after I sign the I-864?",
+    answer: `Nothing changes about the obligation. The affidavit is a contract, and the income figure on it is evidence for the adjudication, not a condition of the promise. If your income falls afterwards you remain liable at 125% of the poverty line for your household size, and the obligation still ends only on the four events: the immigrant naturalises, is credited with ${I864_FACTS.quartersToEnd} qualifying quarters, permanently leaves the United States, or one of you dies. If the drop happens before the case is decided, USCIS or the consulate can ask for current evidence of income, which is where an employer letter and recent pay slips matter more than last year's return — and where a joint sponsor may become necessary.`,
+  },
+  {
+    question: "Can my parents, siblings or a friend be a joint sponsor?",
+    answer:
+      "Yes — a joint sponsor does not have to be related to the immigrant or to you at all. What they must be is a US citizen, national or permanent resident, at least 18, domiciled in the United States, and able to meet the full requirement for their own household size on their own income, counting the immigrant in that household. They are not topping up your shortfall; they are meeting the whole requirement independently, and they file a complete I-864 of their own with their own tax return and supporting documents. Two joint sponsors are permitted for a single case only where different immigrants on it are being sponsored by each.",
+  },
+  {
+    question: "Does the I-864 income requirement differ in Alaska or Hawaii?",
+    answer: `Yes, and by a lot. Form I-864P prints three separate tables — one for the 48 contiguous states, DC, Puerto Rico, the US Virgin Islands, Guam and the Northern Mariana Islands, one for Alaska and one for Hawaii. Alaska and Hawaii are both higher. The table that applies is the one for where the sponsor lives, not where the immigrant will live, and reading the wrong column is a common way to file short and find out months later. The chart on this page compares all three across household sizes 2 to 8.`,
+  },
+  {
+    question: "What documents do I have to submit with the I-864?",
+    answer:
+      "Required in every case: the signed I-864 itself, your federal tax return or IRS transcript for the most recent year, the W-2s and 1099s that go with a photocopied return, and proof of your US citizenship, national or permanent resident status. Add where they apply: a written explanation if you were not required to file, evidence of US domicile if you are living abroad, a signed I-864A from any household member whose income you are counting, evidence of the net value of assets you are relying on, and — most importantly — a complete separate I-864 with its own documents from each joint sponsor. Submitting an IRS tax transcript rather than a photocopy is the single easiest way to remove a whole class of rejection.",
   },
 ];
 
@@ -591,6 +626,163 @@ export default function I864Page() {
                     the NRI investments analysis
                   </Link>{" "}
                   covers the wider trade-off.
+                </p>
+              </div>
+
+              <div id="exemptions" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  Who does not need an I-864 at all
+                </h2>
+                <p className="mt-3">
+                  Worth checking before anything else on this page, because the
+                  answer for some families is that none of it applies. Four
+                  groups are exempt, and one of them — the 40-quarters route —
+                  is checked far less often than it should be, because most
+                  people do not realise quarters can be borrowed.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[640px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Who is exempt
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Why
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What has to be evidenced
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {I864_EXEMPTIONS.map((e) => (
+                        <tr key={e.id} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {e.who}
+                          </th>
+                          <td className="py-3 pr-3">{e.why}</td>
+                          <td className="py-3 text-ink-500">{e.evidence}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50/60 px-4 py-3 text-sm">
+                  <strong className="font-semibold text-ink-900">
+                    How you claim it changed on {formatDate(I864_EXEMPTION_CHANGE.date)}.
+                  </strong>{" "}
+                  {I864_EXEMPTION_CHANGE.summary} Form I-864W still exists and
+                  is still the right form in some contexts, but instructions
+                  telling an adjustment applicant to file one alongside the
+                  I-485 describe the old process. Check the{" "}
+                  <a
+                    href={I864_EXEMPTION_SOURCES.i864w}
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="text-brand-600 underline"
+                  >
+                    current I-864W page
+                  </a>{" "}
+                  against your own filing route before following any checklist,
+                  this one included.
+                </p>
+                <p className="mt-3">
+                  On the 40 quarters: a quarter is a unit of Social Security
+                  coverage, and forty of them is roughly ten years of covered
+                  work. What most people miss is that they need not all be your
+                  own — quarters earned by your spouse during the marriage count
+                  toward yours, and so do quarters earned by a parent while you
+                  were under 18. A parent immigrating to join adult children who
+                  have each worked in the US for years is the case where this
+                  quietly resolves the whole question.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  What actually goes in the package
+                </h2>
+                <p className="mt-3">
+                  The affidavit is refused far more often for a missing document
+                  than for an income figure. Note the who column: a joint
+                  sponsor files a complete I-864 of their own with their own
+                  supporting documents, not a signature on yours.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[660px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Item
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Who provides it
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Required?
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          The part that trips people
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {I864_DOCUMENTS.map((d) => (
+                        <tr key={d.item} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {d.item}
+                          </th>
+                          <td className="py-3 pr-3 whitespace-nowrap">{d.who}</td>
+                          <td className="py-3 pr-3 whitespace-nowrap font-semibold">
+                            {d.required ? (
+                              <span className="text-rose-700">Required</span>
+                            ) : (
+                              <span className="text-ink-400">If it applies</span>
+                            )}
+                          </td>
+                          <td className="py-3">{d.note}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  Alaska and Hawaii are not a footnote
+                </h2>
+                <p className="mt-3">
+                  Form I-864P prints three tables, and almost every summary of it
+                  reproduces one. The gap is not small: at a household of four
+                  the Alaska requirement is thousands of dollars above the
+                  contiguous figure, and a sponsor who reads the wrong column
+                  files short and finds out months later.
+                </p>
+                <LocationComparisonChart />
+              </div>
+
+              <div id="how-long" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  How long you are on the hook
+                </h2>
+                <p className="mt-3">
+                  This is the part of the I-864 that deserves more attention than
+                  it gets, and the part a joint sponsor being asked for a favour
+                  most needs to understand. It is an enforceable contract with
+                  the United States government. The immigrant can sue on it
+                  directly, and so can an agency that pays them a means-tested
+                  benefit. It ends on four events and nothing else.
+                </p>
+                <ObligationTimelineDiagram />
+                <p className="mt-4">
+                  The consequence worth stating plainly: if you are asked to be a
+                  joint sponsor for a family friend&apos;s parent, you are being
+                  asked to guarantee that person&apos;s support at 125% of the
+                  poverty line, potentially for a decade, with no way out short
+                  of their naturalising or working forty quarters. That is not a
+                  reason to refuse. It is a reason to know what the signature is.
                 </p>
               </div>
 

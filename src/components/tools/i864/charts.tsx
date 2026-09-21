@@ -12,7 +12,12 @@
 
 import { thresholdSeries } from "@/lib/calc/i864Income";
 import type { I864Location } from "@/data/affidavitOfSupportData";
-import { I864_TABLES, I864P } from "@/data/affidavitOfSupportData";
+import {
+  I864_TABLES,
+  I864P,
+  I864_OBLIGATION_END,
+  I864_OBLIGATION_NOT_END,
+} from "@/data/affidavitOfSupportData";
 
 const usd0 = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 const usdK = (n: number) => `$${Math.round(n / 1000)}k`;
@@ -357,6 +362,206 @@ export function SponsorDecisionDiagram() {
             the requirement on their own income.
           </li>
         </ol>
+      </figcaption>
+    </figure>
+  );
+}
+
+/* ══════════ C. The three location tables, compared ══════════ */
+
+/**
+ * Alaska and Hawaii are not a footnote — at a household of four the Alaska
+ * requirement is thousands of dollars above the contiguous one, and a sponsor
+ * who read the wrong column files short. Drawn from the same official tables
+ * the calculator uses.
+ */
+export function LocationComparisonChart() {
+  const sizes = [2, 3, 4, 5, 6, 7, 8];
+  const locations: { key: I864Location; label: string; fill: string }[] = [
+    { key: "contiguous", label: "48 states, DC & territories", fill: "#4338ca" },
+    { key: "alaska", label: "Alaska", fill: "#0284c7" },
+    { key: "hawaii", label: "Hawaii", fill: "#059669" },
+  ];
+
+  const series = locations.map((loc) => ({
+    ...loc,
+    values: sizes.map((n) => thresholdSeries(loc.key, false).find((p) => p.size === n)?.required ?? 0),
+  }));
+
+  const max = Math.max(...series.flatMap((s) => s.values)) * 1.1;
+
+  const W = 720;
+  const H = 300;
+  const m = { top: 30, right: 16, bottom: 62, left: 54 };
+  const plotW = W - m.left - m.right;
+  const plotH = H - m.top - m.bottom;
+  const groupW = plotW / sizes.length;
+  const barW = (groupW - 16) / locations.length;
+
+  const y = (v: number) => m.top + plotH - (v / max) * plotH;
+
+  return (
+    <figure className="mt-5">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Grouped bar chart comparing the 125 percent income requirement across the 48 contiguous states, Alaska and Hawaii, for household sizes 2 to 8. Written out below."
+        className="h-auto w-full"
+      >
+        <text x="8" y="18" fontSize="13.5" fontWeight="700" fill="#0f172a">
+          The same household size, three different requirements
+        </text>
+
+        {[0, 0.25, 0.5, 0.75, 1].map((t) => {
+          const v = max * t;
+          return (
+            <g key={t}>
+              <line x1={m.left} y1={y(v)} x2={W - m.right} y2={y(v)} stroke="#e2e8f0" strokeWidth="1" />
+              <text x={m.left - 6} y={y(v) + 4} textAnchor="end" fontSize="11" fill="#94a3b8">
+                {usdK(v)}
+              </text>
+            </g>
+          );
+        })}
+
+        {sizes.map((n, gi) => (
+          <g key={n}>
+            {series.map((s, si) => {
+              const v = s.values[gi];
+              const x = m.left + gi * groupW + 8 + si * barW;
+              return (
+                <rect
+                  key={s.key}
+                  x={x}
+                  y={y(v)}
+                  width={barW - 2}
+                  height={Math.max(2, m.top + plotH - y(v))}
+                  rx={2}
+                  fill={s.fill}
+                />
+              );
+            })}
+            <text
+              x={m.left + gi * groupW + groupW / 2}
+              y={m.top + plotH + 18}
+              textAnchor="middle"
+              fontSize="12"
+              fill="#475569"
+            >
+              {n}
+            </text>
+          </g>
+        ))}
+
+        <text
+          x={m.left + plotW / 2}
+          y={m.top + plotH + 36}
+          textAnchor="middle"
+          fontSize="11.5"
+          fill="#94a3b8"
+        >
+          Household size
+        </text>
+
+        {series.map((s, i) => (
+          <g key={s.key}>
+            <rect x={m.left + i * 210} y={H - 18} width={11} height={11} rx={2} fill={s.fill} />
+            <text x={m.left + i * 210 + 16} y={H - 8} fontSize="11.5" fill="#475569">
+              {s.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+      <figcaption className="mt-2 text-xs text-ink-400">
+        125% of the Federal Poverty Guidelines by household size and location.
+        At a household of four the Alaska figure is{" "}
+        {usd0(
+          (thresholdSeries("alaska", false).find((p) => p.size === 4)?.required ?? 0) -
+            (thresholdSeries("contiguous", false).find((p) => p.size === 4)?.required ?? 0)
+        )}{" "}
+        above the contiguous one — a sponsor who reads the wrong column files
+        short. Source: Form I-864P, effective {I864P.effective}.
+      </figcaption>
+    </figure>
+  );
+}
+
+/* ══════════ D. How long the obligation lasts ══════════ */
+
+export function ObligationTimelineDiagram() {
+  const W = 720;
+  const endH = 44;
+  const top = 96;
+  const H = top + I864_OBLIGATION_END.length * (endH + 8) + 116;
+
+  return (
+    <figure className="mt-5">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Diagram of the four events that end an I-864 obligation, and the five things that do not. Written out below."
+        className="h-auto w-full"
+      >
+        <rect x={8} y={8} width={W - 16} height={54} rx={10} fill="#eef2ff" stroke="#a5b4fc" strokeWidth="1.5" />
+        <text x={28} y={32} fontSize="15" fontWeight="700" fill="#0f172a">
+          You sign. The obligation starts when the immigrant becomes a permanent resident.
+        </text>
+        <text x={28} y={52} fontSize="12.5" fill="#475569">
+          It is enforceable by the immigrant, and by any agency that pays them a means-tested benefit.
+        </text>
+
+        <text x={8} y={86} fontSize="13" fontWeight="700" fill="#047857">
+          It ends on exactly four events
+        </text>
+
+        {I864_OBLIGATION_END.map((e, i) => {
+          const y = top + i * (endH + 8);
+          return (
+            <g key={e.event}>
+              <rect x={8} y={y} width={344} height={endH} rx={8} fill="#ecfdf5" stroke="#6ee7b7" strokeWidth="1.5" />
+              <text x={24} y={y + 20} fontSize="12.5" fontWeight="700" fill="#0f172a">
+                {e.event}
+              </text>
+              <text x={24} y={y + 36} fontSize="11.5" fill="#475569">
+                {e.detail.length > 52 ? `${e.detail.slice(0, 51)}…` : e.detail}
+              </text>
+            </g>
+          );
+        })}
+
+        <text x={376} y={86} fontSize="13" fontWeight="700" fill="#b91c1c">
+          It does not end on any of these
+        </text>
+        {I864_OBLIGATION_NOT_END.map((t, i) => {
+          const y = top + i * 30;
+          return (
+            <g key={t}>
+              <text x={376} y={y + 16} fontSize="12" fill="#7f1d1d">
+                ✕
+              </text>
+              <text x={394} y={y + 16} fontSize="12" fill="#475569">
+                {t.split(".")[0]}
+              </text>
+            </g>
+          );
+        })}
+
+        <rect x={8} y={H - 60} width={W - 16} height={50} rx={10} fill="#fff7ed" stroke="#fdba74" strokeWidth="1.5" />
+        <text x={28} y={H - 36} fontSize="13" fontWeight="700" fill="#9a3412">
+          The one people are most often wrong about: divorce.
+        </text>
+        <text x={28} y={H - 18} fontSize="12" fill="#7c2d12">
+          The affidavit is a contract with the US government, not a term of the marriage.
+        </text>
+      </svg>
+      <figcaption className="mt-3 text-xs text-ink-500">
+        <strong className="font-semibold text-ink-700">In words:</strong> the
+        obligation begins when the immigrant becomes a permanent resident and
+        ends on one of exactly four events —{" "}
+        {I864_OBLIGATION_END.map((e) => `${e.event.toLowerCase()} (${e.detail})`).join("; ")}.
+        It does not end on any of the following:{" "}
+        {I864_OBLIGATION_NOT_END.join(" ")} Source: 8 CFR 213a.2 and USCIS
+        Policy Manual Vol. 8, Pt. G.
       </figcaption>
     </figure>
   );

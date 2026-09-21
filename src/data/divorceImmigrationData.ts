@@ -962,3 +962,52 @@ export const DISCLAIMER_POINTS: string[] = [
   "If there is abuse in your situation, speak to an immigration attorney or a DOJ-accredited representative before doing anything else. The safest route often depends on facts this page cannot see.",
   "For your own case you are likely to need three professionals: a licensed immigration attorney, a family lawyer in your US state, and — where India is involved — an advocate practising before the relevant Indian court.",
 ];
+
+/* --- The stages as a scannable grid (depth pass 2026-09-20) --- */
+
+export const divorceStageCols: DataCol[] = [
+  { key: "stage", label: "Stage" },
+  { key: "marriage", label: "Does the marriage still legally exist?" },
+  { key: "open", label: "What is still open" },
+  { key: "move", label: "The move that matters here" },
+];
+
+/**
+ * A grid of the same four stages the diagram walks through. The diagram shows
+ * the shape; this shows the two columns the shape cannot carry — whether the
+ * marriage still legally exists at each point, and what that leaves open.
+ *
+ * General information about how these stages usually work. It is not advice
+ * about any particular case, and the order of events in a real one can change
+ * which options exist at all.
+ */
+export const divorceStageRows: DataRow[] = [
+  {
+    stage: "Considering, nothing filed",
+    marriage: "Yes",
+    open:
+      "Everything. No status has changed and no filing deadline has been triggered.",
+    move: "Take advice before anything is filed — in either forum. Sequencing is the one thing that is fully in your control now and will not be later.",
+  },
+  {
+    stage: "Separated, no divorce filed",
+    marriage: "Yes",
+    open:
+      "Status that depends on the marriage generally continues, because the marriage legally exists.",
+    move: "Preserve the paper trail. Joint accounts stop being joint and addresses diverge, so the evidence a later filing may need stops being generated from this point on.",
+  },
+  {
+    stage: "Divorce filed, not final",
+    marriage: "Yes, until the decree issues",
+    open:
+      "Derivative status generally continues. Some marriage-dependent filings can still be made; others need the decree first.",
+    move: "Work out which of your options needs a decree and which is closed by one. That answer, not the court calendar, is what should drive timing.",
+  },
+  {
+    stage: "Decree issued — divorce final",
+    marriage: "No",
+    open:
+      "Waiver routes where one exists. A green card already held in your own right is not disturbed.",
+    move: "Act on dates in the decree rather than dates on an I-94 or an EAD. The relationship that supported a derivative status has ended even though the document has not expired.",
+  },
+];

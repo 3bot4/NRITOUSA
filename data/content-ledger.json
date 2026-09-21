@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-18",
+  "updated": "2026-09-21",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -90,6 +90,59 @@
       "status": "open",
       "opened": "2026-09-18",
       "nextStep": "Their siblings under /immigrate/nvc/ proved wrong and were fixed; these two were left alone rather than changed on a guess. Run npm run ledger:links."
+    },
+    {
+      "id": "re-verify-nvc-fee-amounts-by",
+      "title": "Re-verify NVC fee amounts by hand - travel.state.gov 403s every automated fetch and the new /nvc-processing-time fee table renders values stamped 2026-07-04",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "Open the DOS visa fee page in a browser, confirm the AoS review fee and the three IV application fees, then bump nvcFees.lastVerified in src/data/nvcData.ts"
+    },
+    {
+      "id": "add-src-data-nvcdata-ts-to",
+      "title": "Add src/data/nvcData.ts to audit:monthly-numbers coverage - /nvc-processing-time now renders a fee table and nothing watches it for staleness",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "Extend scripts/audit-monthly-numbers.ts to read nvcFees.lastVerified against the 45-day window"
+    },
+    {
+      "id": "watch-whether-uscis-expedite-request-starts",
+      "title": "Watch whether /uscis/expedite-request starts ranking for delay and mandamus terms now that it carries the full escalation ladder",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "If it does, decide whether the ladder deserves its own URL rather than a section. It does not today - one page, one intent."
+    },
+    {
+      "id": "re-read-uscis-rfe-notice-and",
+      "title": "Re-read /uscis/rfe-notice and /h1b/rfe against the general RFE page - it grew a reasons-by-filing table in the depth pass and the three were last confirmed distinct in September",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-21"
+    },
+    {
+      "id": "360px-facebook-in-app-browser-check-2",
+      "title": "360px + Facebook in-app browser check on the depth-pass preview - six new inline-SVG figures, four of them wide diagrams",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "Still outstanding from the September build too. The traps are encoded in src/components/gap-2026-09.mobile.test.ts; a real render is not."
+    },
+    {
+      "id": "open-merge-the-depth-pass-pr",
+      "title": "Open + merge the depth-pass PR (feat/immigration-gap-depth-sep-2026): 24 tables, 10 figures, 34 FAQs across the 13 gap pages, no new URLs",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-21",
+      "nextStep": "Open at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-depth-sep-2026 using docs/seo/gap-2026-09/depth-pass/PULL-REQUEST.md as the body, review the Vercel preview (especially 360px on the six new SVG figures), then merge"
     },
     {
       "id": "tracker-claimed-the-october-bulletin-was",

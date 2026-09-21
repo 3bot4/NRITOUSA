@@ -22,7 +22,17 @@ import {
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { formatDate } from "@/lib/format";
-import { ROUTES, EB1_NIW_SOURCES as SRC, EB1_NIW_UPDATED as UPDATED } from "@/data/eb1NiwData";
+import {
+  ROUTES,
+  ROUTE_BY_ID,
+  COMPARISON_TABLE,
+  EB1A_CRITERIA,
+  EB1B_CRITERIA,
+  EB1B_EXTRA_REQUIREMENTS,
+  DHANASAR_PRONGS,
+  EB1_NIW_SOURCES as SRC,
+  EB1_NIW_UPDATED as UPDATED,
+} from "@/data/eb1NiwData";
 import { bulletin, formatCutoff, getCutoffs } from "@/lib/visa-bulletin";
 import { monthLabel } from "@/lib/visaBulletinMonths";
 
@@ -91,6 +101,35 @@ const faqs: FaqItem[] = [
     question: "Can I file more than one of these at the same time?",
     answer:
       "Yes. There is no rule against having concurrent I-140 petitions in different categories, and people with a genuine case for two routes often do file both — an EB-1A alongside an EB-2 NIW, say. Each is adjudicated on its own record, and your priority date is retained from the earlier petition. It costs two filing fees and two evidentiary packages, so it is a decision about time and money rather than about eligibility.",
+  },
+  {
+    question: "What are the ten EB-1A criteria?",
+    answer: `8 CFR 204.5(h)(3) lists them: ${EB1A_CRITERIA.map(
+      (c) => c.text.charAt(0).toLowerCase() + c.text.slice(1)
+    ).join(
+      "; "
+    )}. You need at least three, unless you hold a one-time major internationally recognised award. Meeting three is necessary but not sufficient — USCIS then applies a final merits determination to the record as a whole.`,
+  },
+  {
+    question: "How many criteria do I need for EB-1B, and what are they?",
+    answer: `Two of the six in 8 CFR 204.5(i)(3)(i): ${EB1B_CRITERIA.map(
+      (c) => c.text.charAt(0).toLowerCase() + c.text.slice(1)
+    ).join(
+      "; "
+    )}. Three further requirements sit outside that list: at least three years of teaching or research experience, a tenured, tenure-track or permanent research offer, and — if the employer is private — a research department employing at least three full-time researchers with documented accomplishments.`,
+  },
+  {
+    question: "What are the three prongs of a national interest waiver?",
+    answer: `${DHANASAR_PRONGS.map(
+      (p) => `${p.n}. ${p.prong}`
+    ).join(
+      ". "
+    )}. All three must be satisfied. In practice the second is where petitions fail: it asks for evidence that you have already advanced this specific endeavour, not that you are qualified to attempt it, so a strong CV and a credible plan on their own are not enough.`,
+  },
+  {
+    question: "Why can the same evidence pass EB-1B and fail EB-1A?",
+    answer:
+      "Because of one phrase in the regulation. The EB-1A research criterion at 8 CFR 204.5(h)(3)(v) asks for contributions 'of major significance'; the EB-1B equivalent at 204.5(i)(3)(i)(E) asks only for 'original scientific or scholarly research contributions to the academic field'. EB-1A also needs three criteria to EB-1B's two, and both then face a final merits determination on the whole record. The trade is that EB-1B requires an employer to file and to offer a permanent or tenure-track position, which is exactly what most industry researchers cannot produce.",
   },
 ];
 
@@ -225,6 +264,207 @@ export default function Eb1VsNiwPage() {
                   The four routes side by side
                 </h2>
                 <ComparisonMatrix />
+
+                <p className="mt-6">
+                  The same comparison in full, with the rows the diagram has no
+                  room for. Read it top to bottom: the first row is the one that
+                  decides the answer for most India-born applicants, and the
+                  second-to-last is the one that catches people who assumed
+                  ticking boxes was the whole test.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[720px] border-collapse text-sm">
+                    <caption className="sr-only">
+                      EB-1A, EB-1B, EB-1C and EB-2 NIW compared across eight
+                      dimensions
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          &nbsp;
+                        </th>
+                        {ROUTES.map((r) => (
+                          <th
+                            key={r.id}
+                            scope="col"
+                            className="py-2 pr-3 font-bold text-ink-900"
+                          >
+                            {r.short}
+                            <span className="block text-[0.7rem] font-normal text-ink-500">
+                              {r.label}
+                            </span>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {COMPARISON_TABLE.map((row) => (
+                        <tr key={row.label} className="border-b border-ink-900/5 align-top">
+                          <th
+                            scope="row"
+                            className="py-3 pr-3 text-left font-semibold text-ink-800"
+                          >
+                            {row.label}
+                            {row.note ? (
+                              <span className="mt-1 block text-[0.7rem] font-normal text-ink-400">
+                                {row.note}
+                              </span>
+                            ) : null}
+                          </th>
+                          {ROUTES.map((r) => (
+                            <td key={r.id} className="py-3 pr-3">
+                              {row.values[r.id]}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div id="criteria" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  The criteria themselves, as the regulation writes them
+                </h2>
+                <p className="mt-3">
+                  Almost everything written about &ldquo;EB-1A vs EB-1B&rdquo;
+                  describes these lists. Here they are instead. Read the two
+                  side by side and the real difference shows up in the wording,
+                  not in the count: EB-1A asks for contributions{" "}
+                  <em>of major significance</em>, and EB-1B does not. That one
+                  phrase is why a solid academic record can clear EB-1B and fail
+                  EB-1A on the same evidence.
+                </p>
+
+                <h3 className="mt-6 text-base font-bold text-ink-900">
+                  EB-1A — meet three of these ten
+                </h3>
+                <p className="mt-1 text-sm text-ink-500">
+                  8 CFR 204.5(h)(3). You can skip the list entirely with a
+                  one-time major internationally recognised award — a Nobel, an
+                  Olympic medal, an Academy Award. Almost nobody does.
+                </p>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[640px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          #
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What 8 CFR 204.5(h)(3) says
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What it takes in practice
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {EB1A_CRITERIA.map((c) => (
+                        <tr key={c.ref} className="border-b border-ink-900/5 align-top">
+                          <td className="py-3 pr-3 font-semibold text-ink-800">{c.ref}</td>
+                          <td className="py-3 pr-3 italic">{c.text}</td>
+                          <td className="py-3">{c.plain}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="mt-8 text-base font-bold text-ink-900">
+                  EB-1B — meet two of these six
+                </h3>
+                <p className="mt-1 text-sm text-ink-500">
+                  8 CFR 204.5(i)(3)(i), plus three requirements that sit outside
+                  the list.
+                </p>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[640px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          #
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What 8 CFR 204.5(i)(3)(i) says
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What it takes in practice
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {EB1B_CRITERIA.map((c) => (
+                        <tr key={c.ref} className="border-b border-ink-900/5 align-top">
+                          <td className="py-3 pr-3 font-semibold text-ink-800">{c.ref}</td>
+                          <td className="py-3 pr-3 italic">{c.text}</td>
+                          <td className="py-3">{c.plain}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                  <p className="text-sm font-bold text-ink-900">
+                    And three things the six criteria do not cover
+                  </p>
+                  <dl className="mt-2 space-y-2.5">
+                    {EB1B_EXTRA_REQUIREMENTS.map((r) => (
+                      <div key={r.cite}>
+                        <dt className="text-sm font-semibold text-ink-800">{r.label}</dt>
+                        <dd className="text-sm text-ink-600">
+                          {r.detail}{" "}
+                          <span className="text-xs text-ink-400">{r.cite}</span>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-3 text-sm text-ink-600">
+                    The offer requirement, not the criteria, is what rules most
+                    industry researchers out of EB-1B — which is why so many of
+                    them end up choosing between EB-1A and{" "}
+                    {ROUTE_BY_ID.niw.short} instead.
+                  </p>
+                </div>
+
+                <h3 className="mt-8 text-base font-bold text-ink-900">
+                  EB-2 NIW — the three Dhanasar prongs
+                </h3>
+                <p className="mt-1 text-sm text-ink-500">
+                  USCIS Policy Manual Vol. 6, Pt. F, Ch. 5, applying Matter of
+                  Dhanasar. All three must be satisfied; they are not a
+                  three-of-three checklist so much as three separate arguments.
+                </p>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[680px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Prong
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What it asks for
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          How petitions fail it
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {DHANASAR_PRONGS.map((p) => (
+                        <tr key={p.n} className="border-b border-ink-900/5 align-top">
+                          <td className="py-3 pr-3">
+                            <span className="font-semibold text-ink-800">{p.n}.</span>{" "}
+                            {p.prong}
+                          </td>
+                          <td className="py-3 pr-3">{p.asks}</td>
+                          <td className="py-3 text-ink-500">{p.fails}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div>

@@ -35,6 +35,8 @@ import {
   divorceFacts,
   statusImpactCols,
   statusImpactRows,
+  divorceStageCols,
+  divorceStageRows,
   h4OptionsCols,
   h4OptionsRows,
   i751WaiverCols,
@@ -334,6 +336,12 @@ export default function Page() {
                   have not yet concluded.
                 </P>
                 <DivorceByStageDiagram />
+                <DataTable
+                  columns={divorceStageCols}
+                  rows={divorceStageRows}
+                  caption="The same four stages as a grid. The column people skip is the second one — whether the marriage still legally exists — because that, and not how the relationship feels, is what a derivative status actually rests on."
+                  keyRows={["Decree issued — divorce final"]}
+                />
               </section>
 
               {/* ---------------- Status checker ---------------- */}

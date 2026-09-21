@@ -5,6 +5,10 @@ import Container from "@/components/Container";
 import ArticleBody from "@/components/ArticleBody";
 import RfeDeadlineCalculator from "@/components/tools/RfeDeadlineCalculator";
 import RfeFlowDiagram from "@/components/tools/rfe/RfeFlowDiagram";
+import {
+  RfeResponseWindowChart,
+  RfeOrNotDiagram,
+} from "@/components/tools/rfe/RfeVisuals";
 import NotLegalAdvice from "@/components/tools/NotLegalAdvice";
 import { RFE_RULES, RFE_SOURCES } from "@/data/rfeData";
 import ReviewedByline from "@/components/ReviewedByline";
@@ -274,6 +278,24 @@ export default function UscisChildPage({
                     How an RFE actually runs
                   </h2>
                   <RfeFlowDiagram />
+
+                  <h2 className="mt-10 text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                    An RFE is one of four things that can happen
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                    Worth seeing before anything else on this page, because it
+                    reframes the question people usually arrive with. An RFE is
+                    not the step before a decision — it is one of four decisions
+                    an officer can take, and since{" "}
+                    {RFE_RULES.discretionPolicy.effective} the fourth branch is
+                    fully open to them.
+                  </p>
+                  <RfeOrNotDiagram />
+
+                  <h2 className="mt-10 text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                    The response window, to scale
+                  </h2>
+                  <RfeResponseWindowChart />
                 </div>
               )}
 
