@@ -44,8 +44,8 @@ export function ExtensionCoverageChart() {
           The card runs out long before the petition is decided
         </text>
         <text x="8" y="37" fontSize="12" fill="#64748b">
-          Which is why the receipt notice, not the card, is the document that
-          matters after you file.
+          Which is why the receipt notice, with the expired card, is what
+          evidences your status once you have filed.
         </text>
 
         {[0, 12, 24, 36, 48, 60, 72].filter((m) => m <= totalMonths).map((m) => (
@@ -68,10 +68,10 @@ export function ExtensionCoverageChart() {
 
         {/* the filing window */}
         <text x={8} y={132} fontSize="12.5" fontWeight="700" fill="#0f172a">
-          Filing window
+          Joint-filing window
         </text>
         <text x={8} y={148} fontSize="11" fill="#64748b">
-          joint filers only
+          joint petitions only
         </text>
         <rect
           x={x(windowStartMonths)}
@@ -119,13 +119,17 @@ export function ExtensionCoverageChart() {
       <figcaption className="mt-3 text-xs text-ink-500">
         <strong className="font-semibold text-ink-700">In words:</strong> the
         conditional card is valid for {I751_FACTS.conditionalYears} years. A
-        joint filer must file in the {I751_FACTS.windowDays} days immediately
-        before it expires — the amber band. On filing, USCIS issues a receipt
-        notice that extends conditional permanent resident status and employment
-        authorisation for {extMonths} months beyond the card&apos;s expiry date,
-        a length in force since {I751_FACTS.extensionSince}. Carry the receipt
-        notice with the expired card: together they are your evidence of status
-        for work, for travel and at the DMV.
+        joint petition must be filed in the {I751_FACTS.windowDays} days
+        immediately before conditional residence expires — the amber band; that
+        band does not govern an individual or waiver filing. Once USCIS accepts
+        the petition it issues a receipt notice extending conditional permanent
+        resident status and employment authorisation for {extMonths} months
+        beyond the card&apos;s expiry date, a length in force since{" "}
+        {I751_FACTS.extensionSince}. Carry the receipt notice with the expired
+        card: while that extension is valid, together they are your temporary
+        evidence of status for work, for travel and at the DMV. If the extension
+        itself runs out before a decision, ask USCIS for current temporary proof
+        of permanent resident status.
       </figcaption>
     </figure>
   );
@@ -145,7 +149,7 @@ export function WaiverGroundDiagram() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Decision diagram: joint filing versus the four waiver grounds, and which of them the 90-day filing window applies to. Written out below."
+        aria-label="Decision diagram: joint filing versus individual filing on the four waiver grounds, and which of them the 90-day joint-filing window governs. Written out below."
         className="h-auto w-full"
       >
         <defs>
@@ -184,10 +188,10 @@ export function WaiverGroundDiagram() {
         <line x1={W / 2 + 100} y1={56} x2={W - 190} y2={74} stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#i751w-arrow)" />
         <rect x={W - boxW - 8} y={78} width={boxW} height={groundH} rx={10} fill="#ecfdf5" stroke="#6ee7b7" strokeWidth="1.5" />
         <text x={W - boxW + 8} y={100} fontSize="13.5" fontWeight="700" fill="#0f172a">
-          No — request a waiver
+          No — file individually / request a waiver
         </text>
         <text x={W - boxW + 8} y={118} fontSize="12" fill="#047857">
-          The window does not apply. File any time as a conditional resident.
+          A different timing rule applies — see the note below.
         </text>
 
         {I751_WAIVER_GROUNDS.map((g, i) => {
@@ -222,7 +226,7 @@ export function WaiverGroundDiagram() {
                 strokeWidth="1.5"
               />
               <text x={W - boxW + 50} y={y + 25} fontSize="12.5" fill="#0f172a">
-                {g.title.length > 44 ? `${g.title.slice(0, 43)}…` : g.title}
+                {g.short}
               </text>
             </g>
           );
@@ -232,7 +236,7 @@ export function WaiverGroundDiagram() {
           The mistake this diagram exists to stop:
         </text>
         <text x={8} y={H - 10} fontSize="12" fill="#475569">
-          assuming a missed window has shut you out. On a waiver ground, it has not.
+          assuming a missed window has shut you out. It is not the rule that governs a waiver filing.
         </text>
       </svg>
       <figcaption className="mt-3 text-xs text-ink-500">
@@ -245,10 +249,15 @@ export function WaiverGroundDiagram() {
             expires.
           </li>
           <li>
-            If you are not, you request a waiver of the joint filing
-            requirement. The {I751_FACTS.windowDays}-day window does not apply
-            to a waiver request: it can be filed at any time after you become a
-            conditional resident, up until a final removal order.
+            If you are not, you may file individually, requesting a waiver of the
+            joint filing requirement. The {I751_FACTS.windowDays}-day window is
+            not the governing rule on that route: the Form I-751 instructions say
+            an eligible petition may be filed at any time after conditional
+            resident status is granted and before the person is removed from the
+            United States. That is the general rule, not a finding that any
+            particular petition is timely — if your status has already expired or
+            you are in removal proceedings, get individualised advice from a
+            qualified immigration lawyer before filing.
           </li>
           {I751_WAIVER_GROUNDS.map((g) => (
             <li key={g.title}>

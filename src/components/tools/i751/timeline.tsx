@@ -12,16 +12,16 @@ import { I751_FACTS } from "@/data/i751Data";
 
 const MAIN = [
   {
-    t: "Conditional card issued",
-    d: `Valid ${I751_FACTS.conditionalYears} years from the day you became a conditional resident.`,
+    t: "Conditional card issued — marriage-based",
+    d: `Valid ${I751_FACTS.conditionalYears} years. EB-5 investors hold one too, but their form is I-829.`,
   },
   {
     t: "21 months of ordinary life",
-    d: "The two years of documents an officer will later read are being created now — joint accounts, a shared lease, tax returns filed together.",
+    d: "Joint accounts, a shared lease, joint tax returns — the record is being made now.",
   },
   {
-    t: `Filing window opens — ${I751_FACTS.windowDays} days before expiry`,
-    d: "File earlier and USCIS rejects the petition outright.",
+    t: `Joint-filing window opens — ${I751_FACTS.windowDays} days before expiry`,
+    d: "Filed earlier, a joint petition is rejected. Waiver filings follow a different rule.",
   },
   {
     t: "File Form I-751",
@@ -31,8 +31,14 @@ const MAIN = [
     t: `Receipt notice extends status ${I751_FACTS.extensionMonths} months`,
     d: "Form I-797C with the expired card is your evidence of status and work authorisation.",
   },
-  { t: "Biometrics appointment", d: "Fingerprints and photo at an application support centre." },
-  { t: "Interview — only if USCIS asks for one", d: "It is not automatic." },
+  {
+    t: "Biometrics — if USCIS asks for them",
+    d: "USCIS may schedule an appointment, or reuse biometrics it already holds.",
+  },
+  {
+    t: "Interview — only if USCIS asks for one",
+    d: "Not automatic, and not guaranteed to be waived — USCIS decides case by case.",
+  },
   { t: "10-year green card", d: "Conditions removed. The card is now renewable on Form I-90." },
 ];
 
@@ -48,7 +54,7 @@ export function I751TimelineDiagram() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Timeline from a conditional green card to a ten-year green card, with a branch for filing without a spouse. The same sequence is written out below the diagram."
+        aria-label="Timeline from a marriage-based conditional green card to a ten-year green card, with a branch for filing individually without a spouse. The same sequence is written out below the diagram."
         className="h-auto w-full"
       >
         <defs>
@@ -136,7 +142,7 @@ export function I751TimelineDiagram() {
             Divorce, annulment, the death of your spouse, or battery or extreme cruelty.
           </text>
           <text x="28" y={MAIN.length * (rowH + gap) + 80} fontSize="14" fill="#78350f">
-            The 90-day window does not apply — you may file at any time before a final removal order.
+            The {I751_FACTS.windowDays}-day window is not the governing rule here — see below.
           </text>
         </g>
       </svg>
@@ -154,9 +160,14 @@ export function I751TimelineDiagram() {
               Branch — filing without your spouse.
             </strong>{" "}
             If the marriage ended in divorce or annulment, your spouse died, or
-            you or your child suffered battery or extreme cruelty, you file the
-            same form requesting a waiver of the joint filing requirement. The
-            90-day window does not restrict a waiver filing.
+            you or your conditional resident child suffered battery or extreme
+            cruelty, you may file the same form individually, requesting a waiver
+            of the joint filing requirement. The {I751_FACTS.windowDays}-day
+            window is not the governing rule for that route: the Form I-751
+            instructions say an eligible petition may be filed at any time after
+            conditional resident status is granted and before the person is
+            removed from the United States. Expired status or pending removal
+            proceedings need individualised legal advice.
           </li>
         </ol>
       </figcaption>

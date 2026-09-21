@@ -48,16 +48,20 @@ const TONE: Record<
     badge: "Not yet",
     title: "Too early to file — but now is when the evidence gets built",
   },
-  open: { tone: "positive", badge: "Open now", title: "Your filing window is open" },
+  open: {
+    tone: "positive",
+    badge: "Open now",
+    title: "Your joint-filing window is open",
+  },
   closing: {
     tone: "caution",
     badge: "Closing",
-    title: "Your window is closing — file now",
+    title: "Your joint-filing window is closing",
   },
   expired: {
     tone: "attention",
     badge: "Passed",
-    title: "The card has already expired",
+    title: "The date on the card has passed",
   },
 };
 
@@ -83,7 +87,7 @@ export default function I751WindowCalculator() {
     const ics = buildIcs({
       start: result.opens,
       summary: "Form I-751 filing window opens",
-      description: `The 90-day window to file Form I-751 opens today. Your conditional green card expires ${result.deadline}. Filing fee: ${I751_FACTS.onlineFee} online or ${I751_FACTS.paperFee} on paper. Details: ${I751_SOURCES.form}`,
+      description: `The ${I751_FACTS.windowDays}-day window to file a joint Form I-751 opens today. Your conditional green card expires ${result.deadline}. Filing fee: ${I751_FACTS.onlineFee} online or ${I751_FACTS.paperFee} on paper. Submit the required initial evidence with the petition. Details: ${I751_SOURCES.form}`,
       uid: `i751-${result.opens}-${result.deadline}@nritousa.com`,
     });
     if (!ics) return;
@@ -102,6 +106,14 @@ export default function I751WindowCalculator() {
     <div className="mx-auto max-w-4xl">
       <div className="grid gap-5 lg:grid-cols-2">
         <InputCard eyebrow="Your card" title="Read one date off your green card">
+          <p className="rounded-xl border border-brand-200 bg-brand-50/50 px-3.5 py-3 text-xs leading-relaxed text-ink-600">
+            For conditional permanent residents who obtained status{" "}
+            <strong className="font-semibold text-ink-900">through marriage</strong>,
+            who use Form I-751. If you obtained conditional residence through
+            EB-5 investment, your form is Form I-829 and this calculator does not
+            apply to you.
+          </p>
+
           <Field
             label="Which date is easier for you to find?"
             help='Both are printed on the front of a conditional card. "Resident Since" is the date your two years started.'
@@ -141,7 +153,7 @@ export default function I751WindowCalculator() {
 
           <Field
             label="How will you be filing?"
-            help="This changes whether the 90-day window restricts you at all."
+            help={`This decides which timing rule applies — the ${I751_FACTS.windowDays}-day window governs joint petitions only.`}
           >
             <select
               value={basis}
@@ -170,36 +182,46 @@ export default function I751WindowCalculator() {
               title="Enter the date from your card"
             >
               <p>
-                We will work out the first day USCIS will accept your petition,
-                the last day before your status lapses, and how long a receipt
-                notice would carry your status.
+                We will work out the {I751_FACTS.windowDays}-day joint-filing
+                window for your card, the date conditional residence ends, and
+                how long a receipt notice would carry your status. It does not
+                assess your eligibility.
               </p>
             </ResultCard>
           ) : waiver ? (
             <ResultCard
               tone="info"
-              eyebrow="Waiver filing"
-              title="The 90-day window does not apply to you"
-              badge="File any time"
+              eyebrow="Individual / waiver filing"
+              title={`The ${I751_FACTS.windowDays}-day joint-filing window is not the rule that governs you`}
+              badge="Different timing rule"
             >
               <p>
-                Because you are requesting a waiver of the joint filing
-                requirement, you are not restricted to the 90 days before the
-                card expires. USCIS accepts a waiver request at any time after
-                you became a conditional resident and up until a final removal
-                order is issued.
+                On an individual filing or a request to waive the joint filing
+                requirement, the {I751_FACTS.windowDays} days before the card
+                expires is not your deadline. The Form I-751 instructions say an
+                eligible petition of this kind may be filed at any time after you
+                are granted conditional resident status and before you are removed
+                from the United States.
               </p>
               <p>
-                Your card still expires on{" "}
+                That describes the general timing rule — it does not establish
+                that your own petition is timely or that you meet a waiver ground.
+                If your status has already expired, or you are in removal
+                proceedings, those facts need individualised advice from a
+                qualified immigration lawyer before you file.
+              </p>
+              <p>
+                Your conditional residence still ends on{" "}
                 <strong className="text-ink-900">{longDate(result.deadline)}</strong>
-                , and filing still produces a receipt notice that extends your
-                status and work authorisation for {result.extensionMonths} months
-                — to roughly {longDate(result.extensionEnds)}. Do not wait for a
-                window that does not bind you.
+                , and filing still produces a receipt notice that extends status
+                and work authorisation by {result.extensionMonths} months — to
+                about {longDate(result.extensionEnds)}. There is no advantage in
+                waiting for a window that does not bind you.
               </p>
               <p>
-                If the divorce is not final yet, that is the usual reason a
-                waiver cannot be filed today — see{" "}
+                The divorce or annulment ground generally calls for a final
+                decree, so a divorce still in progress is the usual reason this
+                route is not yet available — see{" "}
                 <Link href="/divorce-immigration-status" className="text-brand-600 underline">
                   divorce and your immigration status
                 </Link>
@@ -250,22 +272,26 @@ export default function I751WindowCalculator() {
                       </strong>{" "}
                       left before the card expires.{" "}
                       {result.status === "closing"
-                        ? "That is tight. File first and supplement the evidence later if you must — a late petition terminates your status, an imperfect one does not."
+                        ? "Do not miss the filing deadline. Submit the required initial evidence with the petition whenever possible; an incomplete filing may result in a request for evidence or denial. If the deadline is imminent or the case is complicated, obtain qualified legal advice promptly."
                         : "File once the joint evidence is assembled; there is no advantage in using the whole window."}
                     </p>
                   )}
                   {result.status === "expired" && (
                     <p className="text-sm text-ink-700">
-                      The card expired{" "}
+                      The date on the card passed{" "}
                       <strong className="text-ink-900">
                         {Math.abs(result.daysUntilDeadline).toLocaleString("en-US")} days
                       </strong>{" "}
-                      ago. Conditional status terminates automatically when the
-                      window closes, and USCIS may issue a Notice to Appear. A
-                      late petition is still accepted if you include a written
-                      explanation and USCIS finds good cause — this is the point
-                      at which talking to an immigration attorney stops being
-                      optional.
+                      ago. Conditional permanent residence terminates at the end
+                      of the conditional period, and USCIS may issue a Notice to
+                      Appear. A late petition can still be filed with a written
+                      explanation asking USCIS to excuse the late filing: you have
+                      to demonstrate, when you file, that the delay was due to
+                      extraordinary circumstances beyond your control and that the
+                      length of the delay was reasonable. USCIS decides whether to
+                      excuse it — nothing is accepted automatically. This is the
+                      point at which talking to a qualified immigration lawyer
+                      stops being optional.
                     </p>
                   )}
                 </div>
@@ -322,7 +348,9 @@ export default function I751WindowCalculator() {
           )}
 
           <p className="text-xs leading-relaxed text-ink-400">
-            Educational tool, not legal advice. USCIS publishes its own{" "}
+            Educational tool for marriage-based conditional residents, not legal
+            advice, and it does not decide eligibility or whether any particular
+            filing is timely. USCIS publishes its own{" "}
             <a
               href={I751_SOURCES.whenToFile}
               target="_blank"

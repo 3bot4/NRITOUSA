@@ -114,6 +114,49 @@ describe("computeI751Window", () => {
     expect(w.extensionEnds).toBe("2031-06-10");
   });
 
+  it("clamps a leap-day Resident Since to the last day of February", () => {
+    // 29 Feb + 24 months has no 29 Feb to land on in 2030.
+    const w = computeI751Window({ residentSince: "2028-02-29", today: at("2029-01-01") })!;
+    expect(w.expiry).toBe("2030-02-28");
+    expect(w.opens).toBe("2029-11-30");
+    expect(daysBetween(at(w.opens), at(w.expiry))).toBe(I751_FACTS.windowDays);
+  });
+
+  it("keeps a month-end Resident Since on the month end two years later", () => {
+    const aug = computeI751Window({ residentSince: "2026-08-31", today: at("2027-01-01") })!;
+    expect(aug.expiry).toBe("2028-08-31");
+    expect(aug.opens).toBe("2028-06-02");
+
+    const jan = computeI751Window({ residentSince: "2026-01-31", today: at("2027-01-01") })!;
+    expect(jan.expiry).toBe("2028-01-31");
+    expect(jan.opens).toBe("2027-11-02");
+  });
+
+  it("counts the window across a leap day when the expiry is given directly", () => {
+    // 1 Dec 2027 to 29 Feb 2028 is 90 days only because 2028 has a 29 February.
+    const w = computeI751Window({ expiry: "2028-02-29", today: at("2027-12-01") })!;
+    expect(w.opens).toBe("2027-12-01");
+    expect(w.status).toBe("open");
+    expect(w.daysUntilDeadline).toBe(I751_FACTS.windowDays);
+  });
+
+  it("rolls a year-end Resident Since over the new year correctly", () => {
+    const w = computeI751Window({ residentSince: "2025-12-31", today: at("2027-10-02") })!;
+    expect(w.expiry).toBe("2027-12-31");
+    expect(w.opens).toBe("2027-10-02");
+    expect(w.status).toBe("open");
+  });
+
+  it("clamps the 48-month extension off a leap-day expiry, keeping 29 Feb where it exists", () => {
+    // 2032 is a leap year, so 29 Feb 2028 + 48 months is 29 Feb 2032.
+    const leap = computeI751Window({ expiry: "2028-02-29", today: at("2027-12-01") })!;
+    expect(leap.extensionEnds).toBe("2032-02-29");
+
+    // But a 29 Feb start landing on a non-leap year has to clamp.
+    const clamped = computeI751Window({ residentSince: "2028-02-29", today: at("2029-01-01") })!;
+    expect(clamped.extensionEnds).toBe("2034-02-28");
+  });
+
   it("returns null for unusable input instead of a confident wrong answer", () => {
     expect(computeI751Window({ today: at("2026-09-16") })).toBeNull();
     expect(computeI751Window({ residentSince: "not a date", today: at("2026-09-16") })).toBeNull();
