@@ -51,9 +51,10 @@
       "title": "Merge the Sept 2026 immigration keyword-gap PR (feat/immigration-gap-sep-2026): 6 new pages, 6 upgrades, 14 commits, all gates green",
       "area": "content",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-09-18",
-      "nextStep": "Open the PR at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-sep-2026 using docs/seo/gap-2026-09/PULL-REQUEST.md as the body, review the Vercel preview, then merge to main"
+      "nextStep": "Open the PR at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-sep-2026 using docs/seo/gap-2026-09/PULL-REQUEST.md as the body, review the Vercel preview, then merge to main",
+      "resolved": "2026-09-21"
     },
     {
       "id": "360px-facebook-in-app-browser-check",
@@ -128,21 +129,22 @@
     },
     {
       "id": "360px-facebook-in-app-browser-check-2",
-      "title": "360px + Facebook in-app browser check on the depth-pass preview - six new inline-SVG figures, four of them wide diagrams",
+      "title": "360px + Facebook in-app browser check across all 13 gap pages - now LIVE on production, not a preview",
       "area": "content",
       "severity": "high",
       "status": "open",
       "opened": "2026-09-21",
-      "nextStep": "Still outstanding from the September build too. The traps are encoded in src/components/gap-2026-09.mobile.test.ts; a real render is not."
+      "nextStep": "Supersedes the September preview item (360px-facebook-in-app-browser-check): both builds are on prod now. 18 inline-SVG figures and 34 tables across the 13 pages, plus the I-751 .ics download, which in-app browsers handle inconsistently. Traps are encoded in src/components/gap-2026-09.mobile.test.ts; a real render is not."
     },
     {
       "id": "open-merge-the-depth-pass-pr",
       "title": "Open + merge the depth-pass PR (feat/immigration-gap-depth-sep-2026): 24 tables, 10 figures, 34 FAQs across the 13 gap pages, no new URLs",
       "area": "content",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-09-21",
-      "nextStep": "Open at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-depth-sep-2026 using docs/seo/gap-2026-09/depth-pass/PULL-REQUEST.md as the body, review the Vercel preview (especially 360px on the six new SVG figures), then merge"
+      "nextStep": "Open at github.com/3bot4/NRITOUSA/pull/new/feat/immigration-gap-depth-sep-2026 using docs/seo/gap-2026-09/depth-pass/PULL-REQUEST.md as the body, review the Vercel preview (especially 360px on the six new SVG figures), then merge",
+      "resolved": "2026-09-21"
     },
     {
       "id": "tracker-claimed-the-october-bulletin-was",
