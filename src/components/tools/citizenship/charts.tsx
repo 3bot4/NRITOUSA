@@ -5,7 +5,7 @@
  */
 
 import type { CategoryScore } from "@/lib/citizenshipTest";
-import { CIVICS } from "@/lib/citizenshipTest";
+import { CIVICS, listCategories } from "@/lib/citizenshipTest";
 
 export function CategoryScoreChart({ rows }: { rows: CategoryScore[] }) {
   if (rows.length === 0) return null;
@@ -213,6 +213,145 @@ export function NaturalisationPathDiagram() {
             {CIVICS.interview.retestWindowDays[1]} days after the first interview.
           </li>
         </ol>
+      </figcaption>
+    </figure>
+  );
+}
+
+/* ══════════ C. What the 128 questions actually cover ══════════ */
+
+/**
+ * A study-weighting chart, not a decoration. The 20 questions you are asked are
+ * drawn from the pool, so the pool's own shape tells you where your revision
+ * time should go — and it is far more lopsided than people expect. Built by
+ * walking the question bank, so a new USCIS edition cannot leave it stale.
+ */
+export function PoolCompositionChart() {
+  const cats = listCategories();
+  const sections: { name: string; count: number; fill: string }[] = [];
+  for (const c of cats) {
+    const found = sections.filter((s) => s.name === c.section)[0];
+    if (found) found.count += c.count;
+    else
+      sections.push({
+        name: c.section,
+        count: c.count,
+        fill: ["#4338ca", "#0284c7", "#059669"][sections.length % 3],
+      });
+  }
+
+  const total = CIVICS.format.poolSize as number;
+  const asked = CIVICS.format.questionsAsked as number;
+
+  const W = 720;
+  const barY = 56;
+  const barH = 40;
+  const plotX = 8;
+  const plotW = W - 16;
+  const rowTop = 136;
+  const rowH = 30;
+  const H = rowTop + cats.length * rowH + 44;
+  const maxCat = Math.max(...cats.map((c) => c.count));
+
+  let cursor = 0;
+
+  return (
+    <figure className="mt-5">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label={`Composition of the ${total}-question civics pool by section and category. Written out in full below.`}
+        className="h-auto w-full"
+      >
+        <text x="8" y="20" fontSize="14" fontWeight="700" fill="#0f172a">
+          Where the {total} questions actually are
+        </text>
+        <text x="8" y="37" fontSize="12" fill="#64748b">
+          Your {asked} questions are drawn from this pool, so this is also where
+          your study time should go.
+        </text>
+
+        {sections.map((s) => {
+          const w = (s.count / total) * plotW;
+          const x = plotX + cursor;
+          cursor += w;
+          return (
+            <g key={s.name}>
+              <rect x={x} y={barY} width={w} height={barH} rx={4} fill={s.fill} />
+              <text
+                x={x + w / 2}
+                y={barY + 18}
+                textAnchor="middle"
+                fontSize="12.5"
+                fontWeight="700"
+                fill="#ffffff"
+              >
+                {s.count}
+              </text>
+              <text
+                x={x + w / 2}
+                y={barY + 33}
+                textAnchor="middle"
+                fontSize="10.5"
+                fill="#ffffff"
+                opacity={0.9}
+              >
+                {Math.round((s.count / total) * 100)}%
+              </text>
+              <text
+                x={x + w / 2}
+                y={barY + barH + 16}
+                textAnchor="middle"
+                fontSize="11"
+                fill="#475569"
+              >
+                {s.name.length > 22 ? `${s.name.slice(0, 21)}…` : s.name}
+              </text>
+            </g>
+          );
+        })}
+
+        <text x="8" y={rowTop - 10} fontSize="12.5" fontWeight="700" fill="#0f172a">
+          Broken down by topic
+        </text>
+
+        {cats.map((c, i) => {
+          const y = rowTop + i * rowH;
+          const w = (c.count / maxCat) * 300;
+          const fill = sections.filter((s) => s.name === c.section)[0]?.fill ?? "#4338ca";
+          return (
+            <g key={c.id}>
+              <text x={8} y={y + 16} fontSize="11.5" fill="#475569">
+                {c.label.length > 46 ? `${c.label.slice(0, 45)}…` : c.label}
+              </text>
+              <rect x={368} y={y + 4} width={Math.max(2, w)} height={16} rx={3} fill={fill} />
+              <text x={368 + w + 7} y={y + 17} fontSize="11.5" fontWeight="700" fill="#0f172a">
+                {c.count}
+              </text>
+            </g>
+          );
+        })}
+
+        <text x="8" y={H - 12} fontSize="11.5" fill="#64748b">
+          Source: USCIS {CIVICS.sourceEdition}, counted from the question bank.
+          Verified {CIVICS.lastVerified}.
+        </text>
+      </svg>
+      <figcaption className="mt-3 text-xs text-ink-500">
+        <strong className="font-semibold text-ink-700">In words:</strong>{" "}
+        {sections
+          .map(
+            (s) =>
+              `${s.name}: ${s.count} questions (${Math.round(
+                (s.count / total) * 100
+              )}%)`
+          )
+          .join("; ")}
+        . By topic:{" "}
+        {cats.map((c) => `${c.label} — ${c.count}`).join("; ")}. The practical
+        reading: {sections[0]?.name.toLowerCase()} is more than half the pool, so
+        a study plan that gives each topic equal time is spending it in the
+        wrong places.
       </figcaption>
     </figure>
   );

@@ -11,7 +11,17 @@ import AuthorBioBox from "@/components/AuthorBioBox";
 import CitizenshipTestPractice, {
   CivicsPrintableList,
 } from "@/components/tools/CitizenshipTestPractice";
-import { NaturalisationPathDiagram } from "@/components/tools/citizenship/charts";
+import {
+  NaturalisationPathDiagram,
+  PoolCompositionChart,
+} from "@/components/tools/citizenship/charts";
+import {
+  AGE_TIME_EXCEPTIONS,
+  ENGLISH_PORTION,
+  N648,
+  NAT_EXCEPTION_SOURCES,
+  NAT_EXCEPTIONS_UPDATED,
+} from "@/data/naturalisationExceptions";
 import { getTool } from "@/lib/tools";
 import { CIVICS, QUESTIONS, listCategories } from "@/lib/citizenshipTest";
 import { site } from "@/lib/site";
@@ -80,6 +90,32 @@ const faqs: FaqItem[] = [
   {
     question: "What else is tested besides civics?",
     answer: `English, in three parts. Reading: ${CIVICS.interview.englishReading} Writing: ${CIVICS.interview.englishWriting} Speaking: ${CIVICS.interview.englishSpeaking} For most people who have lived and worked in the United States for five years the English portion is the straightforward part and the civics questions are the ones worth drilling.`,
+  },
+  {
+    question: "Do I have to take the citizenship test in English?",
+    answer: `Not always. Three age-and-residence exceptions remove the English requirement: 50/20 (age 50 or older and a permanent resident for 20 or more years), 55/15 (55 or older, 15 or more years) and 65/20 (65 or older, 20 or more years). Eligibility is measured when you file the N-400, not at the interview. Note what the exception does and does not cover: on 50/20 and 55/15 you still take the full civics test, simply in the language of your choice with an interpreter. Only 65/20 also reduces the civics requirement — to ${F.senior.poolSize} questions, ${F.senior.questionsAsked} asked and ${F.senior.correctToPass} to pass.`,
+  },
+  {
+    question: "What is the 65/20 rule for the citizenship test?",
+    answer: `If you are ${AGE_TIME_EXCEPTIONS[2].minAge} or older and have been a lawful permanent resident for at least ${AGE_TIME_EXCEPTIONS[2].minYearsLpr} years when you file Form N-400, you are exempt from the English requirement and you get special consideration on civics. USCIS marks a reduced set of ${F.senior.poolSize} questions in its own publication; you are asked ${F.senior.questionsAsked} of them and need ${F.senior.correctToPass} correct, and you may answer in the language of your choice. The practice tool on this page has a 65/20 mode that draws only from that marked set.`,
+  },
+  {
+    question: "What is on the English portion of the naturalisation test?",
+    answer:
+      "Three parts. Reading: you read one of three sentences aloud correctly. Writing: you write one of three sentences correctly. Both are drawn from vocabulary lists USCIS publishes in advance, and you get up to three attempts at each. Speaking is not a separate exercise at all — the officer assesses it through the eligibility interview itself, from how you answer the questions on your N-400. That last point is worth knowing before you walk in: the interview has already started scoring you before anyone mentions a test.",
+  },
+  {
+    question: "What is Form N-648, and who needs it?",
+    answer: `${N648.form} — ${N648.title} — requests an exception to the English requirement, the civics requirement, or both, on the basis of ${N648.condition.toLowerCase()} ${N648.certifier} The impairment cannot be the direct effect of illegal drug use. It is filed with the N-400 where possible, or brought to the interview, and there is no fee for the form. It is a different mechanism from the age-and-residence exceptions and is not limited by age. Separately from all of this, USCIS provides disability accommodations at the interview — a sign-language interpreter, an accessible site, extended time — and requesting one of those does not require ${N648.form}.`,
+  },
+  {
+    question: "Which civics topics should I study first?",
+    answer: `Weight your time the way the pool is weighted, because your ${F.questionsAsked} questions are drawn from it. ${listCategories()
+      .slice()
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 4)
+      .map((c) => `${c.label} (${c.count} questions)`)
+      .join(", ")} — those four alone are most of the bank. American government is more than half of the whole pool, so a study plan giving every topic equal time is spending most of it in the wrong places. The chart on this page shows the full breakdown, and the practice tool has a study-by-topic mode that follows it.`,
   },
 ];
 
@@ -293,6 +329,60 @@ export default function CitizenshipTestPracticePage() {
                   </Link>{" "}
                   works out which version applies from your filing date.
                 </p>
+                <div className="mt-5 overflow-x-auto">
+                  <table className="w-full min-w-[520px] border-collapse text-sm">
+                    <caption className="sr-only">
+                      The {P.version} civics test compared with the {CIVICS.version} version
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          &nbsp;
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          {P.version} version
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          {CIVICS.version} version
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {[
+                        ["Questions in the pool", `${P.poolSize}`, `${F.poolSize}`],
+                        ["Questions asked", `${P.questionsAsked}`, `${F.questionsAsked}`],
+                        ["Correct answers to pass", `${P.correctToPass}`, `${F.correctToPass}`],
+                        [
+                          "Wrong answers that end it",
+                          "5",
+                          `${F.incorrectToFail}`,
+                        ],
+                        [
+                          "Who takes it",
+                          `N-400 filed before ${formatDate(F.appliesToFilingsOnOrAfter)}`,
+                          `N-400 filed on or after ${formatDate(F.appliesToFilingsOnOrAfter)}`,
+                        ],
+                        [
+                          "65/20 reduced set",
+                          "20 questions, 10 asked, 6 to pass",
+                          `${F.senior.poolSize} questions, ${F.senior.questionsAsked} asked, ${F.senior.correctToPass} to pass`,
+                        ],
+                      ].map((row) => (
+                        <tr key={row[0]} className="border-b border-ink-900/5">
+                          <th scope="row" className="py-2.5 pr-3 text-left font-semibold text-ink-800">
+                            {row[0]}
+                          </th>
+                          <td className="py-2.5 pr-3">{row[1]}</td>
+                          <td className="py-2.5 font-semibold text-ink-900">{row[2]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-sm text-ink-500">
+                  Source: USCIS {CIVICS.sourceEdition} and the 2025 civics test
+                  pages, read {formatDate(CIVICS.lastVerified)}.
+                </p>
               </div>
 
               <div>
@@ -358,9 +448,140 @@ export default function CitizenshipTestPracticePage() {
                     </tbody>
                   </table>
                 </div>
+                <PoolCompositionChart />
                 <p className="mt-3 text-sm text-ink-500">
                   Use &ldquo;study by topic&rdquo; in the tool above to work
                   through one row at a time, then take a mixed mock test.
+                </p>
+              </div>
+
+              <div id="english" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  The English half, and who does not have to take it
+                </h2>
+                <p className="mt-3">
+                  Almost everything written about the naturalisation test is
+                  about civics, which is odd, because the English requirement is
+                  the one that worries people more — and it is the one with real
+                  exceptions attached. Start with what it actually is: three
+                  parts, and one of them is not a separate exercise at all.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Part
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What you do
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          How it is judged
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {ENGLISH_PORTION.map((e) => (
+                        <tr key={e.part} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {e.part}
+                          </th>
+                          <td className="py-3 pr-3">{e.what}</td>
+                          <td className="py-3 text-ink-500">{e.howJudged}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="mt-7 text-base font-bold text-ink-900">
+                  The age-and-residence exceptions
+                </h3>
+                <p className="mt-2">
+                  Three of them, and they are usually written as a pair of
+                  numbers: your age, and your years as a permanent resident.
+                  Eligibility is measured at the time you <em>file</em> the
+                  N-400, not at the interview — so a few weeks either side of a
+                  birthday can genuinely change which rule you file under.
+                </p>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[640px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Rule
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          You must be
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          English test
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          Civics test
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {AGE_TIME_EXCEPTIONS.map((e) => (
+                        <tr key={e.id} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {e.name}
+                          </th>
+                          <td className="py-3 pr-3">
+                            {e.minAge} or older, and a permanent resident for{" "}
+                            {e.minYearsLpr}+ years
+                          </td>
+                          <td className="py-3 pr-3 font-semibold text-emerald-700">
+                            {e.englishRequired ? "Required" : "Exempt"}
+                          </td>
+                          <td className="py-3">
+                            {e.civics}
+                            <span className="mt-1 block text-xs text-ink-400">
+                              {e.note}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-4">
+                  Read the civics column carefully, because this is where people
+                  get it wrong in both directions. An English exception is not a
+                  civics exception: on 50/20 and 55/15 you still take the full
+                  civics test, you simply take it in your own language with an
+                  interpreter. Only 65/20 reduces what you have to learn — to{" "}
+                  {F.senior.poolSize} questions, {F.senior.questionsAsked} asked,{" "}
+                  {F.senior.correctToPass} to pass. The practice tool above has a
+                  65/20 mode that uses exactly that set.
+                </p>
+
+                <h3 className="mt-7 text-base font-bold text-ink-900">
+                  The medical exception, Form {N648.form}
+                </h3>
+                <p className="mt-2">
+                  A different mechanism, and not age-based. Form {N648.form},{" "}
+                  {N648.title}, requests an exception to {N648.covers.toLowerCase()}{" "}
+                  It rests on {N648.condition.toLowerCase()} {N648.certifier}{" "}
+                  {N648.excludes} {N648.filedWith}
+                </p>
+                <p className="mt-3 text-sm text-ink-500">
+                  Sources:{" "}
+                  <a
+                    href={NAT_EXCEPTION_SOURCES.exceptions}
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="text-brand-600 underline"
+                  >
+                    USCIS exceptions and accommodations
+                  </a>
+                  , Policy Manual Vol. 12, Pt. E, Ch. 2 and Ch. 3. Read{" "}
+                  {formatDate(NAT_EXCEPTIONS_UPDATED)}. USCIS also provides
+                  disability accommodations — a sign-language interpreter, an
+                  accessible site, extended time — separately from any of these
+                  exceptions, and requesting one does not require {N648.form}.
                 </p>
               </div>
 
