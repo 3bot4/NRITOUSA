@@ -28,6 +28,9 @@ import {
   DOCUMENT_ROWS,
   MARRIAGE_INTERVIEW_SOURCES as SRC,
   MARRIAGE_INTERVIEW_UPDATED as UPDATED,
+  SCRUTINY_FACTORS,
+  NOT_RED_FLAGS,
+  STOKES,
 } from "@/data/marriageInterviewData";
 
 const PAGE_PATH = "/green-card/marriage-interview-questions";
@@ -86,6 +89,25 @@ const faqs: FaqItem[] = [
     question: "What happens after the interview?",
     answer:
       "One of four things: approval on the day, a request for evidence if something specific is missing, the case continued while the officer reviews or verifies something, or a denial. If the marriage was less than two years old when the green card is approved, you receive a two-year conditional card and the same good-faith question comes back around on Form I-751 before it expires.",
+  },
+  {
+    question: "What is a Stokes interview?",
+    answer: `${STOKES.whatItIs} ${STOKES.whatHappens} ${STOKES.whatItIsNot} Preparation is the same as for the first interview, which is to say barely any: know your own life, re-read your own forms, and do not agree on a version of anything — rehearsed couples diverge more under pressure, not less, because they improvise off a script instead of remembering.`,
+  },
+  {
+    question: "What are the red flags in a marriage green card interview?",
+    answer:
+      "The honest answer is that most lists circulating on this are wrong. What genuinely draws a closer look is thin documentary overlap — no joint account, lease, insurance or anything with both names — a couple who have not lived together, answers that diverge on ordinary daily facts rather than memorable ones, a marriage filed very soon after a status problem, a prior marriage-based petition by the same petitioner, and inconsistencies between the interview answers and the forms already filed. What is not a red flag on its own: an arranged marriage, a short courtship, a large age gap, living apart for part of the marriage, being nervous, or not remembering a date. Saying you do not remember is a better answer than guessing.",
+  },
+  {
+    question: "Is an arranged marriage a problem at the green card interview?",
+    answer:
+      "No. Officers see arranged marriages constantly and the legal test does not change: was the marriage entered into in good faith. How you met is simply not the question being asked. What an arranged marriage often does mean in practice is a shorter courtship and therefore a thinner pre-wedding record — which is a documentation problem with a documentation answer. Lead with what you do have: the families' involvement, the engagement and wedding documentation, the registration certificate, photographs across both families, and the financial and residential record you have built since.",
+  },
+  {
+    question: "What happens if my spouse and I give different answers?",
+    answer:
+      "A difference is not a finding. Officers expect some divergence — two people genuinely do remember the same evening differently — and what they are looking for is a pattern of divergence on ordinary daily facts, not a single mismatch. Differences are normally put to you for explanation rather than held back, so you get to answer. The worst thing you can do is guess confidently at something you do not know: that creates a discrepancy where 'I don't remember' would have created nothing.",
   },
 ];
 
@@ -264,6 +286,51 @@ export default function MarriageInterviewQuestionsPage() {
                   individual questions in it, because the officer will ask
                   something you have not seen.
                 </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[600px] border-collapse text-sm">
+                    <caption className="sr-only">
+                      The five question areas, what each tests, and how many
+                      practice questions this page gives for it
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Area
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What the officer is testing
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          Questions here
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {QUESTION_CATEGORIES.map((c) => (
+                        <tr key={c.id} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {c.label}
+                          </th>
+                          <td className="py-3 pr-3">{c.testing}</td>
+                          <td className="py-3 whitespace-nowrap font-semibold text-ink-800">
+                            {c.questions.length}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr className="align-top">
+                        <th scope="row" className="py-3 pr-3 text-left font-bold text-ink-900">
+                          Total
+                        </th>
+                        <td className="py-3 pr-3 text-ink-400">
+                          Across all five areas
+                        </td>
+                        <td className="py-3 font-bold text-ink-900">
+                          {TOTAL_QUESTIONS}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <div className="mt-5 space-y-6">
                   {QUESTION_CATEGORIES.map((c) => (
                     <div
@@ -287,6 +354,113 @@ export default function MarriageInterviewQuestionsPage() {
                     USCIS list.
                   </span>
                 </div>
+              </div>
+
+              <div id="scrutiny" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  What draws a closer look — and what genuinely does not
+                </h2>
+                <p className="mt-3">
+                  Every other page on this subject has a &ldquo;red flags&rdquo;
+                  list, and most of them are wrong in a way that does real harm:
+                  they frighten couples about an age gap or an arranged marriage
+                  while saying nothing about the thing that actually decides
+                  cases. So here it is in two halves, and the second half
+                  matters more than the first.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[660px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          What raises scrutiny
+                        </th>
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Why
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What answers it
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {SCRUTINY_FACTORS.map((f) => (
+                        <tr key={f.factor} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {f.factor}
+                          </th>
+                          <td className="py-3 pr-3">{f.why}</td>
+                          <td className="py-3 text-ink-500">{f.answer}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="mt-7 text-base font-bold text-ink-900">
+                  And six things that are not problems, whatever you have read
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b border-ink-900/10 text-left">
+                        <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                          Widely repeated
+                        </th>
+                        <th scope="col" className="py-2 font-bold text-ink-900">
+                          What is actually true
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-ink-600">
+                      {NOT_RED_FLAGS.map((n) => (
+                        <tr key={n.thing} className="border-b border-ink-900/5 align-top">
+                          <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                            {n.thing}
+                          </th>
+                          <td className="py-3">{n.reality}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-4 text-sm text-ink-500">
+                  These are patterns in how cases are examined, not a published
+                  USCIS checklist — no such list exists, and anyone presenting
+                  one as official is guessing. The legal test itself is single
+                  and unchanged: was the marriage entered into in good faith.
+                </p>
+              </div>
+
+              <div id="stokes" className="scroll-mt-24">
+                <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                  The {STOKES.name}, by the name people search for
+                </h2>
+                <p className="mt-3">
+                  Also called a {STOKES.alsoCalled}. {STOKES.whatItIs}
+                </p>
+                <p className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/50 px-4 py-3 text-sm">
+                  <strong className="font-semibold text-ink-900">
+                    What it is not:
+                  </strong>{" "}
+                  {STOKES.whatItIsNot}
+                </p>
+                <p className="mt-3">
+                  <strong className="font-semibold text-ink-900">
+                    What happens on the day.
+                  </strong>{" "}
+                  {STOKES.whatHappens}
+                </p>
+                <p className="mt-3">
+                  <strong className="font-semibold text-ink-900">
+                    How to prepare.
+                  </strong>{" "}
+                  {STOKES.howToPrepare} The couple practice mode at the top of
+                  this page is built for exactly this: it shows you where your
+                  answers diverge, which is the only preparation that
+                  transfers — not so you can agree on an answer, but so you know
+                  which parts of your own life you have never actually discussed.
+                </p>
               </div>
 
               <div>
