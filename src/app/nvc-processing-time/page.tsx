@@ -6,6 +6,7 @@ import ToolFaq from "@/components/tools/ToolFaq";
 import NvcTimelineChecker from "@/components/tools/NvcTimelineChecker";
 import NvcTimelineEstimator from "@/components/tools/NvcTimelineEstimator";
 import ConsularPathDiagram from "@/components/tools/nvc/ConsularPathDiagram";
+import NvcStageChart from "@/components/tools/nvc/NvcStageChart";
 import NotLegalAdvice from "@/components/tools/NotLegalAdvice";
 import PermClusterLinks from "@/components/tools/PermClusterLinks";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
@@ -242,6 +243,167 @@ export default function Page() {
                 </table>
               </div>
               <p className="mt-3 text-xs text-ink-500">{NVC_DATA_NOTE}</p>
+
+              <NvcStageChart />
+
+              <h3 className="mt-10 text-lg font-bold text-ink-900">
+                What you pay, and when
+              </h3>
+              <p className="mt-1.5 text-sm text-ink-500">
+                Both fees are paid through CEAC, not to USCIS, and both are per
+                the row below rather than per case. Allow{" "}
+                {F.feePaymentClearDays} for a payment to clear before the next
+                step unlocks — a surprising amount of &ldquo;NVC is slow&rdquo;
+                is really a fee that has not posted yet.
+              </p>
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+                <table className="w-full min-w-[620px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                      <th className="p-3 font-semibold">Fee</th>
+                      <th className="p-3 font-semibold">Amount</th>
+                      <th className="p-3 font-semibold">Charged</th>
+                      <th className="p-3 font-semibold">When it is due</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink-900/5 bg-white">
+                    {[
+                      {
+                        fee: "Affidavit of Support review",
+                        amount: F.affidavitOfSupport,
+                        per: "Per financial sponsor",
+                        when: "First, before the I-864 can be submitted. Not charged where no affidavit is required.",
+                      },
+                      {
+                        fee: "Immigrant visa application — family-based",
+                        amount: F.familyIvApplication,
+                        per: "Per applicant",
+                        when: "Before the DS-260 unlocks. A family of four pays it four times.",
+                      },
+                      {
+                        fee: "Immigrant visa application — employment-based",
+                        amount: F.employmentIvApplication,
+                        per: "Per applicant",
+                        when: "Same stage, different rate.",
+                      },
+                      {
+                        fee: "Other immigrant visa categories",
+                        amount: F.otherIvApplication,
+                        per: "Per applicant",
+                        when: "Diversity visa and certain special categories.",
+                      },
+                    ].map((r) => (
+                      <tr key={r.fee} className="align-top">
+                        <td className="p-3 font-semibold text-ink-900">{r.fee}</td>
+                        <td className="p-3 font-semibold text-blue-700">{r.amount}</td>
+                        <td className="p-3 text-ink-600">{r.per}</td>
+                        <td className="p-3 text-ink-600">{r.when}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-ink-500">
+                Department of State fees, last verified {formatDate(F.lastVerified)}.
+                These are not USCIS fees and they are separate from the medical
+                examination, the police clearance certificates and the document
+                costs on the Indian side.{" "}
+                <a
+                  href={nvcLinks.fees}
+                  target="_blank"
+                  rel="nofollow noopener"
+                  className="text-brand-600 underline"
+                >
+                  Confirm the current amounts
+                </a>{" "}
+                before paying — visa fees change by rule, not by announcement.
+              </p>
+
+              <h3 className="mt-10 text-lg font-bold text-ink-900">
+                What actually goes wrong, stage by stage
+              </h3>
+              <p className="mt-1.5 text-sm text-ink-500">
+                Almost none of the delay families experience at this stage is
+                NVC being slow. It is a document that was ordered late, or one
+                that does not match another document.
+              </p>
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-ink-900/10 shadow-card">
+                <table className="w-full min-w-[680px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-ink-50/70 text-xs uppercase tracking-wide text-ink-500">
+                      <th className="p-3 font-semibold">Stage</th>
+                      <th className="p-3 font-semibold">What goes wrong</th>
+                      <th className="p-3 font-semibold">What it costs you</th>
+                      <th className="p-3 font-semibold">What prevents it</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink-900/5 bg-white">
+                    {[
+                      {
+                        stage: "Waiting for the welcome letter",
+                        wrong: "The address or email USCIS holds is out of date, so the letter with the case number never arrives.",
+                        cost: "Weeks of silence that look like NVC being slow.",
+                        prevent: "File AR-11 the moment you move, and watch for the email as well as the post.",
+                      },
+                      {
+                        stage: "Paying the fees",
+                        wrong: "Paying and then immediately trying to file the DS-260.",
+                        cost: "Confusion rather than real time — the step simply stays locked.",
+                        prevent: `Allow ${F.feePaymentClearDays} for the payment to post.`,
+                      },
+                      {
+                        stage: "Civil documents (India)",
+                        wrong: "A birth certificate that does not exist, or that shows a different name spelling from the passport.",
+                        cost: "A full review cycle, and a non-availability certificate takes weeks to obtain.",
+                        prevent: "Order the certificate — and the non-availability certificate behind it if needed — while you are still waiting for the case number.",
+                      },
+                      {
+                        stage: "Police clearance certificates",
+                        wrong: "Ordering the PCC late, or missing one for a country lived in for 12 months or more since age 16.",
+                        cost: "A review cycle plus the issuing authority's own queue.",
+                        prevent: "List every country of residence first, then order all of them in parallel.",
+                      },
+                      {
+                        stage: "Translations",
+                        wrong: "A document in a regional language submitted without a certified English translation.",
+                        cost: "An automatic request for the missing translation.",
+                        prevent: "Every non-English document needs a translation and the translator's certification, both uploaded.",
+                      },
+                      {
+                        stage: "Affidavit of support",
+                        wrong: "The sponsor is under the income line, or the household size was counted wrong.",
+                        cost: "The largest single source of restarts at this stage — it can mean finding a joint sponsor from scratch.",
+                        prevent: "Check the requirement before submitting anything.",
+                      },
+                      {
+                        stage: "After documentarily qualified",
+                        wrong: "Assuming silence means a problem and filing an inquiry.",
+                        cost: "Nothing, except your own time — but it does not speed anything.",
+                        prevent: "Check the IV scheduling status for your post instead.",
+                      },
+                    ].map((r) => (
+                      <tr key={r.stage} className="align-top">
+                        <td className="p-3 font-semibold text-ink-900">{r.stage}</td>
+                        <td className="p-3 text-ink-600">{r.wrong}</td>
+                        <td className="p-3 text-ink-600">{r.cost}</td>
+                        <td className="p-3 text-ink-600">{r.prevent}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-sm text-ink-600">
+                The affidavit row is worth its own page, and has one —{" "}
+                <Link href="/uscis/forms/i-864" className="text-brand-600 underline">
+                  check the sponsor against the I-864P income requirement
+                </Link>{" "}
+                before the case reaches NVC, not after. The India-specific
+                document list is on the{" "}
+                <Link href="/nvc-document-checklist-india" className="text-brand-600 underline">
+                  NVC document checklist for India
+                </Link>
+                .
+              </p>
             </div>
           </Container>
         </section>
