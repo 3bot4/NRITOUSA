@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-09-28",
+  "pagesScanned": 914,
+  "linksChecked": 63053,
+  "broken": [],
+  "redirected": [],
+  "badAnchors": [],
+  "noindexTargets": [
+    {
+      "from": "/nri-wealth-checkup",
+      "path": "/nri-wealth-checkup/profile"
+    },
+    {
+      "from": "/tools/uscis-life-decision-checklist",
+      "path": "/community/nri-uscis-decisions"
+    }
+  ],
+  "orphans": []
+}

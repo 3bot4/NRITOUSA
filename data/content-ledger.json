@@ -47,6 +47,18 @@
       "evidence": "src/lib/visaBulletinOctober2026.test.ts"
     },
     {
+      "id": "wrong-federal-register-citation-for-proclamation",
+      "title": "Wrong Federal Register citation for Proclamation 10973: doc 2025-18627 is 'Notice of OFAC Sanctions Actions', not the H-1B nonimmigrant-entry proclamation",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-21",
+      "nextStep": "",
+      "evidence": "FR API: 2025-18627 = Notice of OFAC Sanctions Actions (2025-09-25); 2025-18601 = Restriction on Entry of Certain Nonimmigrant Workers, Presidential Document 10973 (2025-09-24)",
+      "resolved": "2026-09-28",
+      "detail": "Fixed 2026-09-28. src/data/studentClusterData.ts cited Federal Register document 2025-18627 under the label \"Proclamation 10973\". The FR API shows 2025-18627 is \"Notice of OFAC Sanctions Actions\" (Notice, published 2025-09-25) — a reader following the citation landed on an unrelated sanctions notice. The real instrument is document 2025-18601, \"Restriction on Entry of Certain Nonimmigrant Workers\", a Presidential Document published 2025-09-24 whose presidential_document_number is 10973, matching the label exactly. Rendered on /h1b and /education/us-degree-roi-calculator. Found by the rendered-HTML link audit, which flagged it as a redirect to a different slug — the doc-number mismatch was only visible because Federal Register redirects a wrong slug to the real title rather than 404ing."
+    },
+    {
       "id": "merge-the-sept-2026-immigration-keyword",
       "title": "Merge the Sept 2026 immigration keyword-gap PR (feat/immigration-gap-sep-2026): 6 new pages, 6 upgrades, 14 commits, all gates green",
       "area": "content",
@@ -231,8 +243,8 @@
       "severity": "low",
       "status": "open",
       "opened": "2026-08-18",
-      "detail": "Nothing here is broken today — each one 301s to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. The substantive ones: USDA renamed FNS to FNA (fns.usda.gov → fna.usda.gov, 2 citations); benefits.gov now hands off to usa.gov's benefit finder; acf.hhs.gov moved to acf.gov; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now 'exceptions-to-tax-on-early-distributions'; California's notary authentication page became request-apostille. The high-traffic ones are cosmetic (uscis.gov/forms → /forms/all-forms on 12 pages, incometax.gov.in → its portal path on 24).",
-      "nextStep": "Update the agency-rename cases (USDA, ACF, benefits.gov) on the next government-benefits pass; leave the cosmetic ones. Re-check with `npm run ledger:links`.",
+      "detail": "Re-measured 2026-09-21: 39 redirects, 32 of them substantive (the other 7 are social share/opt-out endpoints). Nothing here is broken today — each resolves to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. Substantive cases: benefits.gov now hands off to usa.gov's benefit finder; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now exceptions-to-tax-on-early-distributions; California's notary authentication page became request-apostille; SSA's applying7.html is now /family and /ssnumber/ is /number-card; both cited eCFR sections gained a /subpart-A/ segment; two Federal Register /d/ short links expand to full document paths. The high-traffic ones are cosmetic (uscis.gov/forms -> /forms/all-forms, incometax.gov.in -> its portal path). The USDA fns.usda.gov -> fna.usda.gov pair is a live alias, not a rename to chase: both hostnames answered 200 on 2026-09-21.",
+      "nextStep": "Update the agency-reorganisation cases (benefits.gov, IRS, SSA, eCFR, the two Federal Register short links) on the next government-benefits pass; leave the cosmetic ones. Full list in scripts/audit/link-health.json -> redirects[]. Re-check with npm run ledger:links.",
       "evidence": "scripts/audit/link-health.json → redirects[]"
     },
     {
@@ -854,12 +866,13 @@
       "id": "indiacode-citations-404",
       "title": "7 indiacode.nic.in statute citations return 404",
       "area": "links",
-      "severity": "medium",
-      "status": "open",
+      "severity": "high",
+      "status": "done",
       "opened": "2026-09-15",
-      "detail": "ledger:links now reports 8 dead citations, down from 10 after this pass repointed two (USCIS retired its automatic-EAD-extension page after the repeal; Study in the States retired /students/reinstatement). The remaining 7 are all indiacode.nic.in — both /handle/ and /bitstream/ forms, covering the Indian Stamp Act 1899, the Registration Act 1908, a 2025 act, and four handle IDs. The host appears to have reorganised its identifiers rather than removed the statutes. The 8th is studyinthestates (now fixed but cached in that run).",
-      "nextStep": "Find each act on the current indiacode search and replace the exact URL — do not sweep the path prefix, since /handle/ and /bitstream/ IDs are unrelated to each other. Where a stable indiacode URL cannot be found, cite the relevant ministry's own copy instead. The five ENOTFOUND/timeout hosts in the same report (cbic.gov.in, incometaxindia.gov.in, bsaefiling) are the known blocked/transient set, not rot.",
-      "evidence": "npm run ledger:links · scripts/audit/link-health.json"
+      "detail": "Fixed 2026-09-28. Root cause was a domain AND identifier migration, not individual page removal: India Code moved from www.indiacode.nic.in to indiacode.gov.in and re-minted every DSpace handle (old 4-digit handles like 2384 are now 6-digit, e.g. 496068). That is why a prefix sweep could never have worked. Both hosts defeat naive checking — the old host 403s automated requests and the new one is an Angular SPA that returns an identical 6,762-byte shell for every path including .pdf, so a 200 proves nothing. Resolved instead through the new site's DSpace 9.1 REST API (indiacode.gov.in/server/api), using /pid/find?id=hdl:... to confirm each handle resolves to the right Act with a matching act number and year. One citation was also mislabelled at the source: handle 1362 is the \"Central Act Legislation\" collection container, never the Indian Succession Act. New handles: Succession 1925 = 496435, Repealing+Amending 2025 = 496453, Registration 1908 = 496068, Hindu Succession 1956 = 496402, Insurance 1938 = 496320, Indian Stamp 1899 = 496294 (cross-confirmed against the refact pointer on its state-adopted copies).",
+      "nextStep": "Watch for the migration settling: item URIs still read test1.indiacode.nic.in, so re-run npm run ledger:links after the next India Code change. Note link-health cannot verify this host either way — it is an SPA, so treat a clean run on indiacode.gov.in as unproven.",
+      "evidence": "npm run ledger:links · scripts/audit/link-health.json · re-probed by hand 2026-09-21",
+      "resolved": "2026-09-28"
     },
     {
       "id": "ds-litigation-monitoring",

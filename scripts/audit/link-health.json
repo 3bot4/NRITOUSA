@@ -1,79 +1,112 @@
 {
-  "generatedAt": "2026-09-15",
+  "generatedAt": "2026-09-28",
   "note": "Outbound citation health. 'unverifiable' = host blocks automated requests (see BOT_BLOCKED_HOSTS); those must be checked by hand and are NOT failures.",
   "counts": {
-    "checked": 568,
-    "ok": 508,
-    "dead": 7,
-    "unreachable": 1,
-    "forbidden": 8,
-    "unverifiable": 42,
-    "redirected": 36
+    "checked": 605,
+    "ok": 543,
+    "dead": 0,
+    "unreachable": 12,
+    "forbidden": 7,
+    "unverifiable": 41,
+    "redirected": 39
   },
-  "dead": [
-    {
-      "url": "https://www.indiacode.nic.in/bitstream/123456789/20095/1/the_indian_stamp_act,_1899.pdf",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/power-of-attorney-for-india-from-usa"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/power-of-attorney-for-india-from-usa"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/bitstream/123456789/22046/1/a2025-37.pdf",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/articles/estate-planning-usa-india-assets"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/handle/123456789/1362",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/articles/estate-planning-usa-india-assets"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/handle/123456789/1670",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/articles/estate-planning-usa-india-assets"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/handle/123456789/2384",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/articles/estate-planning-usa-india-assets"
-      ]
-    },
-    {
-      "url": "https://www.indiacode.nic.in/handle/123456789/2410",
-      "status": 404,
-      "title": null,
-      "pages": [
-        "/articles/estate-planning-usa-india-assets"
-      ]
-    }
-  ],
+  "dead": [],
   "unreachable": [
     {
       "url": "https://bsaefiling.fincen.treas.gov/main.html",
       "error": "UND_ERR_CONNECT_TIMEOUT",
       "pages": [
         "/articles/estate-planning-usa-india-assets"
+      ]
+    },
+    {
+      "url": "https://indiawest.com/trump-accounts-and-birthright-citizenship-what-h-1b-families-should-know/",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/about-deepak"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/gold-limit-usa-to-india",
+        "/shipping-household-goods-to-india"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/customs_clearance_of_passengers_at_a_glance.pdf",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/gold-limit-usa-to-india"
+      ]
+    },
+    {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/transfer_of_residence_rules-at_a_glance.pdf",
+      "error": "ENOTFOUND",
+      "pages": [
+        "/shipping-household-goods-to-india"
+      ]
+    },
+    {
+      "url": "https://www.migrationpolicy.org/article/indian-immigrants-united-states",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/indian-population-in-california",
+        "/indian-population-in-florida",
+        "/indian-population-in-georgia",
+        "/indian-population-in-illinois",
+        "/indian-population-in-maryland",
+        "/indian-population-in-massachusetts",
+        "/indian-population-in-new-jersey",
+        "/indian-population-in-new-york",
+        "/indian-population-in-texas",
+        "/indian-population-in-usa",
+        "/indian-population-in-virginia",
+        "/indian-population-in-washington"
+      ]
+    },
+    {
+      "url": "https://www.naic.org",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/tools/visitor-insurance-plan-comparison"
+      ]
+    },
+    {
+      "url": "https://www.nass.org/",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/power-of-attorney-for-india-from-usa"
+      ]
+    },
+    {
+      "url": "https://www.nj.gov/treasury/revenue/apostilles.shtml",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/oci/apostille"
+      ]
+    },
+    {
+      "url": "https://www.nycourts.gov/divorce/whats-new-matrimonial-legislation-court-rules-and-forms",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/divorce-immigration-status"
+      ]
+    },
+    {
+      "url": "https://www.optionleo.com",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/partnerships",
+        "/tools"
+      ]
+    },
+    {
+      "url": "https://www.optionleo.com/?utm_source=nritousa&utm_medium=house_ad&utm_campaign=nritousa_options_pages&utm_content=article%2Fh4-l2-dependent-health-insurance",
+      "error": "UND_ERR_CONNECT_TIMEOUT",
+      "pages": [
+        "/articles/h4-l2-dependent-health-insurance"
       ]
     }
   ],
@@ -133,13 +166,6 @@
       "status": 403,
       "pages": [
         "/calculators/usd-inr-projection-send-now-or-wait"
-      ]
-    },
-    {
-      "url": "https://www.naic.org",
-      "status": 403,
-      "pages": [
-        "/tools/visitor-insurance-plan-comparison"
       ]
     }
   ],
@@ -235,6 +261,13 @@
       ]
     },
     {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/section-204.5",
+      "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5",
+      "pages": [
+        "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw"
+      ]
+    },
+    {
       "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
       "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
       "pages": [
@@ -253,14 +286,6 @@
       "finalUrl": "https://www.federalregister.gov/documents/2026/08/25/2026-17324/fee-for-certain-h-1b-petitions",
       "pages": [
         "/articles/opt-h1b-financial-planning-students"
-      ]
-    },
-    {
-      "url": "https://www.federalregister.gov/documents/2025/09/25/2025-18627/restriction-on-entry-of-certain-nonimmigrant-workers",
-      "finalUrl": "https://www.federalregister.gov/documents/2025/09/25/2025-18627/notice-of-ofac-sanctions-actions",
-      "pages": [
-        "/education/us-degree-roi-calculator",
-        "/h1b"
       ]
     },
     {
@@ -429,6 +454,13 @@
       ]
     },
     {
+      "url": "https://www.uscis.gov/citizenship/testupdates",
+      "finalUrl": "https://www.uscis.gov/citizenship/find-study-materials-and-resources/check-for-test-updates",
+      "pages": [
+        "/tools/citizenship-test-practice"
+      ]
+    },
+    {
       "url": "https://www.uscis.gov/forms",
       "finalUrl": "https://www.uscis.gov/forms/all-forms",
       "pages": [
@@ -450,13 +482,29 @@
       "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates",
       "finalUrl": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-and-priority-dates",
       "pages": [
-        "/visa-bulletin/priority-date"
+        "/visa-bulletin/priority-date",
+        "/visa-bulletin/september-2026"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/i-9-central/form-i-9-related-news/form-i-751-and-i-829-48-month-extension",
+      "finalUrl": "https://www.uscis.gov/i-9-central/form-i-9-related-news/policy-related-news-archive/form-i-751-and-i-829-48-month-extension",
+      "pages": [
+        "/uscis/forms/i-751"
+      ]
+    },
+    {
+      "url": "https://www.uscis.gov/newsroom/alerts/uscis-extends-green-card-validity-for-conditional-permanent-residents-with-a-pending-form-i-751-or",
+      "finalUrl": "https://www.uscis.gov/archive/uscis-extends-green-card-validity-for-conditional-permanent-residents-with-a-pending-form-i-751-or",
+      "pages": [
+        "/uscis/forms/i-751"
       ]
     },
     {
       "url": "https://www.uscis.gov/visabulletininfo",
       "finalUrl": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin",
       "pages": [
+        "/visa-bulletin/annual-limits",
         "/visa-bulletin/cross-chargeability",
         "/visa-bulletin/eb1-india",
         "/visa-bulletin/eb2-india",

@@ -121,24 +121,24 @@ export const estateSources = {
   },
   indianSuccessionAct: {
     label: "India Code — The Indian Succession Act, 1925",
-    href: "https://www.indiacode.nic.in/handle/123456789/1362",
+    href: "https://indiacode.gov.in/handle/123456789/496435",
   },
   repealingAmendingAct2025: {
     label:
       "India Code — The Repealing and Amending Act, 2025 (Act 37 of 2025)",
-    href: "https://www.indiacode.nic.in/bitstream/123456789/22046/1/a2025-37.pdf",
+    href: "https://indiacode.gov.in/handle/123456789/496453",
   },
   registrationAct: {
     label: "India Code — The Registration Act, 1908",
-    href: "https://www.indiacode.nic.in/handle/123456789/2384",
+    href: "https://indiacode.gov.in/handle/123456789/496068",
   },
   hinduSuccessionAct: {
     label: "India Code — The Hindu Succession Act, 1956",
-    href: "https://www.indiacode.nic.in/handle/123456789/1670",
+    href: "https://indiacode.gov.in/handle/123456789/496402",
   },
   insuranceAct: {
     label: "India Code — The Insurance Act, 1938 (nomination, section 39)",
-    href: "https://www.indiacode.nic.in/handle/123456789/2410",
+    href: "https://indiacode.gov.in/handle/123456789/496320",
   },
   bankingLawsAmendment2025: {
     label:

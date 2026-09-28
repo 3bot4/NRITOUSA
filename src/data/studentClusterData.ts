@@ -257,7 +257,7 @@ export const h1bProclamationFee: PolicyItem = {
   lastVerified: STUDENT_DATA_VERIFIED,
   source: {
     label: "Proclamation 10973 (Federal Register)",
-    href: "https://www.federalregister.gov/documents/2025/09/25/2025-18627/restriction-on-entry-of-certain-nonimmigrant-workers",
+    href: "https://www.federalregister.gov/documents/2025/09/24/2025-18601/restriction-on-entry-of-certain-nonimmigrant-workers",
   },
 };
 

@@ -789,8 +789,8 @@ export const poaKeywordClusters: {
 export const poaSources = {
   meaApostille: "https://www.mea.gov.in/apostille-menu",
   hcchIndia: "https://www.hcch.net/en/news-archive/details/?varevent=102",
-  registrationAct: "https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
-  stampAct: "https://www.indiacode.nic.in/bitstream/123456789/20095/1/the_indian_stamp_act,_1899.pdf",
+  registrationAct: "https://indiacode.gov.in/handle/123456789/496068",
+  stampAct: "https://indiacode.gov.in/handle/123456789/496294",
   rbiNriAccountsFaq:
     "https://www.rbi.org.in/commonman/Upload/English/FAQs/PDFs/Accountresidents16012025.pdf",
   femaDepositRegs: "https://rbidocs.rbi.org.in/rdocs/notification/PDFs/13255.pdf",
