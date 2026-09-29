@@ -919,7 +919,7 @@ Retrogression means the Department of State moved a category's cutoff date backw
 No. A pending I-485 is simply held — never denied, abandoned, or required to be refiled. USCIS resumes adjudication when your priority date is current again, and your EAD and Advance Parole remain renewable throughout.
 
 ### What is the difference between retrogression and "Unavailable"?
-Retrogression moves the cutoff to an earlier date, so a smaller group can still be approved. "U" (Unavailable) means no visa numbers exist for that category and country that month, so nobody can be approved regardless of priority date. EB-2 India was Unavailable in July 2026 — for what happens when the fiscal year turns over, see the [October 2026 predictions](/visa-bulletin/october-2026).
+Retrogression moves the cutoff to an earlier date, so a smaller group can still be approved. "U" (Unavailable) means no visa numbers exist for that category and country that month, so nobody can be approved regardless of priority date. EB-2 India was Unavailable in July 2026 — for what happens when the fiscal year turns over, see the [October 2026 FY2027 reset analysis](/visa-bulletin/october-2026).
 
 ### My priority date was current last month, but this month's bulletin shows retrogression. Will USCIS still approve my I-485 this month?
 If USCIS already adjudicated your case in the prior month (when your date was current), approval may still happen. If not, USCIS will hold the case until your date is current again. Ask your attorney to check your specific case status.
@@ -1407,7 +1407,7 @@ The State Department publishes a new visa bulletin in the second week of each mo
 
 ## When is the visa bulletin published?
 
-- **Publication date:** Usually the second week; recent releases have slipped to the third week (the October 2026 bulletin is expected in early-to-mid September — see the [FY2027 reset analysis](/visa-bulletin/october-2026))
+- **Publication date:** Usually the second week; recent releases have slipped to the third week (the October 2026 bulletin published in September 2026 — see the [FY2027 reset analysis](/visa-bulletin/october-2026))
 - **Effective month:** The following month (bulletin published in June is for July)
 - **Where:** travel.state.gov → visa bulletin section
 

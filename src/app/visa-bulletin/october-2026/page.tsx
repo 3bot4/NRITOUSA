@@ -79,51 +79,6 @@ export function generateMetadata(): Metadata {
   });
 }
 
-const FAQS: FaqItem[] = [
-  {
-    question: "Will EB-2 India jump back to July 2014 in October 2026?",
-    answer:
-      "Most likely, but it is not guaranteed. The State Department said it is “likely” that in October the final action date will advance to at least the final action date announced in the May 2026 Visa Bulletin, which was July 15, 2014. DOS attached an explicit condition: the date depends on demand for EB-2 numbers by Indian applicants and on the FY2027 annual limit for employment-based visas. No specific date has been promised.",
-  },
-  {
-    question: "Why did EB-2 India become Unavailable in July 2026?",
-    answer:
-      "Arithmetic, not policy. It happened in two steps: the State Department announced on May 22, 2026 that all FY2026 EB-2 numbers for India had been issued, halting consular issuance immediately, and the bulletin then showed Unavailable from the July 2026 edition onward. India's EB-2 floor for FY2026 works out near 3,700 numbers — 7% of EB-2's 28.6% share of the 186,000 EB pool — and the otherwise-unused rule lifts India well above that floor in practice, but the exact FY2026 issuance total is not yet published: the fiscal year does not end until September 30, 2026 and the totals come from the Department's annual Report of the Visa Office. What is established is that demand exhausted the supply more than four months before year end. Visa numbers reset on October 1.",
-  },
-  {
-    question: "When will the October 2026 Visa Bulletin be released?",
-    answer:
-      "It is already out. The Department of State published the October 2026 Visa Bulletin — the first edition of FY 2027 — in September 2026, and USCIS has since confirmed that applicants may use the Dates for Filing chart for both employment-based and family-sponsored adjustment of status in October 2026. DOS typically publishes each month’s bulletin in the second week of the preceding month, though release has slipped into the third and fourth weeks during FY 2026.",
-  },
-  {
-    question: "Does the October reset mean I get my green card sooner?",
-    answer:
-      "The reset restores visa availability; it does not shrink the queue. If USCIS adopts the Dates for Filing chart, applicants with earlier priority dates can file I-485 and receive interim benefits (EAD, Advance Parole) — but the green card itself is only issued when the Final Action Date passes their priority date. This is the Filing vs. Issuance Gap.",
-  },
-  {
-    question:
-      "If my priority date is after July 15, 2014, can I still file an I-485 in October?",
-    answer:
-      "Possibly — that is the difference between the two charts. If the Final Action Date returns to July 15, 2014 and Dates for Filing stays at January 15, 2015, applicants whose priority date falls between those two dates can file an I-485 in any month USCIS honours the Dates for Filing chart, which it has usually done early in a fiscal year. Filing is not approval: that group receives EAD and Advance Parole and then waits for the Final Action Date to reach them. USCIS announces which chart applies within a few days of each bulletin.",
-  },
-  {
-    question: "Can EB-2 India retrogress again after October 2026?",
-    answer:
-      "Yes, and it historically does. The pattern has been a strong October reset, gradual advancement through winter and spring, then retrogression or unavailability the following summer once India’s annual share is consumed. An October date is a starting position for the fiscal year, not a floor that holds all year.",
-  },
-  {
-    question: "Does “Unavailable” affect my pending I-485, EAD or Advance Parole?",
-    answer:
-      "No. Unavailability stops final action — issuance and approval — not the rest of the process. A pending I-485 stays pending, biometrics and interviews continue to be scheduled, and EAD and Advance Parole applications and renewals are adjudicated on their own timelines regardless of visa number availability.",
-  },
-];
-
-/* ---------------------------------------------------------------- *
- * Everything below resolves from data/visa-bulletin, so the current
- * cutoffs and the October history refresh with the monthly data drop
- * instead of ageing in hand-typed JSX.
- * ---------------------------------------------------------------- */
-
 const PREDICTED_FAD = "2014-07-15";
 const MONTHS_LONG = [
   "January", "February", "March", "April", "May", "June",
@@ -193,6 +148,51 @@ function octoberRows() {
     };
   });
 }
+
+const FAQS: FaqItem[] = [
+  {
+    question: "Did EB-2 India jump back to July 2014 in October 2026?",
+    answer:
+      `No. The published October 2026 bulletin re-opened EB-2 India at ${indiaNow("eb2").fad} — availability returned after three months Unavailable, but roughly 8.5 months short of July 15, 2014. The State Department had said in advance only that it was “likely” the final action date would advance to at least the date announced in the May 2026 bulletin, which was July 15, 2014, and it attached an explicit condition: the outcome depended on demand for EB-2 numbers by Indian applicants and on the FY2027 annual limit. That condition is what bound. No specific date had been promised.`,
+  },
+  {
+    question: "Why did EB-2 India become Unavailable in July 2026?",
+    answer:
+      "Arithmetic, not policy. It happened in two steps: the State Department announced on May 22, 2026 that all FY2026 EB-2 numbers for India had been issued, halting consular issuance immediately, and the bulletin then showed Unavailable from the July 2026 edition onward. India's EB-2 floor for FY2026 works out near 3,700 numbers — 7% of EB-2's 28.6% share of the 186,000 EB pool — and the otherwise-unused rule lifts India well above that floor in practice, but the exact FY2026 issuance total is not yet published: the fiscal year does not end until September 30, 2026 and the totals come from the Department's annual Report of the Visa Office. What is established is that demand exhausted the supply more than four months before year end. Visa numbers reset on October 1.",
+  },
+  {
+    question: "When will the October 2026 Visa Bulletin be released?",
+    answer:
+      "It is already out. The Department of State published the October 2026 Visa Bulletin — the first edition of FY 2027 — in September 2026, and USCIS has since confirmed that applicants may use the Dates for Filing chart for both employment-based and family-sponsored adjustment of status in October 2026. DOS typically publishes each month’s bulletin in the second week of the preceding month, though release has slipped into the third and fourth weeks during FY 2026.",
+  },
+  {
+    question: "Does the October reset mean I get my green card sooner?",
+    answer:
+      "The reset restores visa availability; it does not shrink the queue. If USCIS adopts the Dates for Filing chart, applicants with earlier priority dates can file I-485 and receive interim benefits (EAD, Advance Parole) — but the green card itself is only issued when the Final Action Date passes their priority date. This is the Filing vs. Issuance Gap.",
+  },
+  {
+    question:
+      "If my priority date is after November 1, 2013, can I still file an I-485 in October 2026?",
+    answer:
+      `Yes, if it is before ${indiaNow("eb2").dff} — that is the difference between the two charts. EB-2 India published a Final Action Date of ${indiaNow("eb2").fad} and a Dates for Filing date of ${indiaNow("eb2").dff}, and USCIS confirmed that applicants may use the Dates for Filing chart for both employment-based and family-sponsored adjustment of status in October 2026 — a switch from September, when employment-based filings had to use Final Action Dates. Applicants whose priority date falls between those two dates can therefore file. Filing is not approval: that group receives EAD and Advance Parole and then waits for the Final Action Date to reach them.`,
+  },
+  {
+    question: "Can EB-2 India retrogress again after October 2026?",
+    answer:
+      "Yes, and it historically does. The pattern has been a strong October reset, gradual advancement through winter and spring, then retrogression or unavailability the following summer once India’s annual share is consumed. An October date is a starting position for the fiscal year, not a floor that holds all year.",
+  },
+  {
+    question: "Does “Unavailable” affect my pending I-485, EAD or Advance Parole?",
+    answer:
+      "No. Unavailability stops final action — issuance and approval — not the rest of the process. A pending I-485 stays pending, biometrics and interviews continue to be scheduled, and EAD and Advance Parole applications and renewals are adjudicated on their own timelines regardless of visa number availability.",
+  },
+];
+
+/* ---------------------------------------------------------------- *
+ * Everything below resolves from data/visa-bulletin, so the current
+ * cutoffs and the October history refresh with the monthly data drop
+ * instead of ageing in hand-typed JSX.
+ * ---------------------------------------------------------------- */
 
 const CSS = `
 .vboct{--vb-bg:#fff;--vb-surface:#f6f8fa;--vb-ink:#1f2328;--vb-ink2:#57606a;--vb-line:#d0d7de;--vb-accent:#0a5adb;--vb-accent-bg:#eef4ff;
@@ -278,6 +278,20 @@ export default function October2026PredictionsPage() {
       : null,
     PREDICTED_FAD
   );
+  /*
+   * Measured October-over-October, the same convention every other row in the
+   * resets table uses. Measuring against September instead would be meaningless
+   * — July through September were Unavailable, and there is no arithmetic
+   * between "U" and a date.
+   */
+  const actualMove = movement(
+    getSeries("eb2", "india")
+      ? cutoffAt(getSeries("eb2", "india")!.fad, "2025-10")
+      : null,
+    getSeries("eb2", "india")
+      ? cutoffAt(getSeries("eb2", "india")!.fad, "2026-10")
+      : null
+  );
   const bulletinLabel = formatBulletinMonth(bulletin.month);
 
   const crumbs = [
@@ -338,8 +352,9 @@ export default function October2026PredictionsPage() {
             The October 2026 bulletin has now published: EB-2 India re-opened at{" "}
             <span className="fig">{eb2.fad}</span>
           </strong>{" "}
-          — availability returned, but roughly 8.5 months short of the date DOS
-          flagged as likely, and behind last October&rsquo;s {lastOctFad}. Dates
+          — availability returned, and ahead of last October&rsquo;s{" "}
+          {lastOctFad}, but roughly 8.5 months short of the date DOS flagged as
+          likely. Dates
           for Filing held at <span className="fig">{eb2.dff}</span>. We score
           that call in full below. The reset restores availability; it does not
           shrink the queue.
@@ -366,10 +381,11 @@ export default function October2026PredictionsPage() {
             </div>
           </div>
           <div className="tile tile-info">
-            <div className="n">+15.5 mo</div>
+            <div className="n">{eb2.fad}</div>
             <div className="l">
-              Predicted October snapback for EB-2 India Final Action — largest
-              since FY2024
+              Published EB-2 India Final Action Date for October 2026 — about
+              8.5 months short of the July 15, 2014 date DOS had flagged as
+              likely
             </div>
           </div>
           <div className="tile tile-bad">
@@ -530,24 +546,29 @@ export default function October2026PredictionsPage() {
                 </tr>
               ))}
               <tr className="hl">
-                <td>Oct 2026 (FY2027) — predicted</td>
-                <td>≥ {longDate(PREDICTED_FAD)}</td>
-                <td>≈ {eb2.dff}</td>
+                <td>Oct 2026 (FY2027) — published</td>
+                <td>{eb2.fad}</td>
+                <td>{eb2.dff}</td>
                 <td>
-                  <span className="up">{predictedMove} months</span> (largest of
-                  the series)
+                  <span className="up">{actualMove} months</span>, re-opening
+                  from Unavailable. We had predicted ≥{" "}
+                  {longDate(PREDICTED_FAD)} — see the scoreboard below.
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="small muted">
-          Why the big jump? During FY2026, EB-2 India had already advanced to
-          July 15, 2014 — reached in the <strong>April 2026</strong> bulletin and
-          held through May — before the June retrogression and July
-          unavailability. The October reset restores the high-water mark rather
-          than resuming from last October&rsquo;s date — the{" "}
-          <strong>Fiscal Year Reset Snapback</strong>.
+          Why not further? The <strong>Fiscal Year Reset Snapback</strong> is
+          real — the reset resumes well ahead of last October&rsquo;s{" "}
+          {lastOctFad} rather than crawling on from it — but it did not restore
+          FY2026&rsquo;s high-water mark. EB-2 India had reached July 15, 2014 in
+          the <strong>April 2026</strong> bulletin and held it through May,
+          before the June retrogression and July unavailability. October 2026
+          came back roughly 8.5 months below that peak, which is what the
+          snapback thesis got wrong: a reset restores <em>supply</em>, and the
+          cutoff it can support still depends on how much demand is already
+          queued at each priority date.
         </p>
 
         <h2>
@@ -680,18 +701,24 @@ export default function October2026PredictionsPage() {
           Indian.
         </p>
 
-        <h2>Who could actually file an I-485 in October</h2>
+        <h2>Who can actually file an I-485 in October</h2>
         <p>
           This is the part most October coverage skips. The Final Action Date
           decides who gets <em>approved</em>; the Dates for Filing chart decides
           who gets to <em>apply</em> — and only in months USCIS says it will
           honour that chart. October is historically the month it most often
-          does.
+          does, and it did again.
         </p>
         <p>
-          If both our predictions hold — Final Action returning to{" "}
-          {longDate(PREDICTED_FAD)} and Dates for Filing staying at {eb2.dff} —
-          then EB-2 India splits into three groups:
+          With the bulletin published — Final Action at {eb2.fad}, Dates for
+          Filing at {eb2.dff}, and USCIS confirming the Dates for Filing chart
+          for both employment-based and family-sponsored adjustment — EB-2 India
+          splits into three groups. Note that the middle band is wider than our
+          forecast implied: because the Final Action Date came back at{" "}
+          {eb2.fad} rather than the {longDate(PREDICTED_FAD)} we predicted,
+          applicants between those two dates can file but{" "}
+          <strong>cannot</strong> be approved, where our forecast had them
+          approvable.
         </p>
         <div className="tw">
           <table>
@@ -704,7 +731,7 @@ export default function October2026PredictionsPage() {
             </thead>
             <tbody>
               <tr className="hl">
-                <td>Before {longDate(PREDICTED_FAD)}</td>
+                <td>Before {eb2.fad}</td>
                 <td><span className="pill pill-good">Yes</span></td>
                 <td>
                   <span className="pill pill-good">Yes</span> — your date is past
@@ -713,11 +740,11 @@ export default function October2026PredictionsPage() {
               </tr>
               <tr>
                 <td>
-                  Between {longDate(PREDICTED_FAD)} and {eb2.dff}
+                  Between {eb2.fad} and {eb2.dff}
                 </td>
                 <td>
-                  <span className="pill pill-warn">Maybe</span> — only if USCIS
-                  honours Dates for Filing
+                  <span className="pill pill-good">Yes</span> — USCIS confirmed
+                  the Dates for Filing chart for October
                 </td>
                 <td>
                   <span className="pill pill-bad">No</span> — you get EAD and
@@ -734,10 +761,11 @@ export default function October2026PredictionsPage() {
         </div>
         <p className="small muted">
           That middle band is the group October actually changes something for,
-          and it is the one worth preparing a package for now. Note what it
-          stacks on: a predicted Final Action Date, a predicted filing chart, and
-          a USCIS chart decision that is not announced until after the bulletin
-          drops. Any of the three can move.
+          and all three inputs it depends on are now published rather than
+          forecast: the Final Action Date, the Dates for Filing date, and the
+          USCIS chart determination. What is not fixed is next month — a chart
+          determination applies to one bulletin at a time, and a later bulletin
+          can retrogress either date.
         </p>
         <span className="note">
           A pending I-485 is worth having even when approval is years away: it
@@ -836,19 +864,26 @@ export default function October2026PredictionsPage() {
 
         <h2>What this means for you</h2>
         <p>
-          <strong>Priority date before July 15, 2014 (EB-2 India):</strong> your
-          case can resume moving in October. If your I-485 is pending, watch for
-          USCIS&rsquo;s chart decision (below).
+          <strong>Priority date before {eb2.fad} (EB-2 India):</strong> your case
+          can resume moving in October — this is the published Final Action Date,
+          so approval is possible.
         </p>
         <p>
-          <strong>Waiting to file:</strong> whether you can file I-485 in October
-          depends on which chart USCIS adopts.
+          <strong>
+            Priority date between {eb2.fad} and {eb2.dff}:
+          </strong>{" "}
+          you can file I-485 in October but cannot be approved yet. USCIS
+          confirmed the Dates for Filing chart for both employment-based and
+          family-sponsored adjustment, so this is the group the reset actually
+          opens a window for.
         </p>
         <span className="note">
-          USCIS typically announces whether it will accept <em>Dates for Filing</em>{" "}
-          or <em>Final Action Dates</em> within about 2–3 days of the State
-          Department&rsquo;s bulletin release. In the first months of a fiscal
-          year, USCIS has usually adopted Dates for Filing.
+          USCIS announces whether it will accept <em>Dates for Filing</em> or{" "}
+          <em>Final Action Dates</em> within about 2–3 days of the State
+          Department&rsquo;s bulletin release, and the determination covers one
+          month at a time. For October 2026 it chose Dates for Filing — a switch
+          from September, when employment-based filings had to use Final Action
+          Dates. Re-check it before filing in any later month.
         </span>
         <p>
           <strong>Date years away:</strong> the honest math doesn&rsquo;t change.

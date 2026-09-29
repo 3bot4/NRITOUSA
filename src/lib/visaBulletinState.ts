@@ -36,7 +36,7 @@ export interface BulletinState {
  * bulletin effective month — do not conflate them. Shared by the homepage
  * ticker and the immigration tracker so both show the same "last verified".
  */
-export const IMMIGRATION_LAST_VERIFIED = "2026-08-22";
+export const IMMIGRATION_LAST_VERIFIED = "2026-09-29";
 
 /** Human label, e.g. "Jul 20, 2026". */
 export const immigrationLastVerifiedLabel = (() => {

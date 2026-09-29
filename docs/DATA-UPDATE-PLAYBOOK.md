@@ -219,11 +219,35 @@ October is not a normal month. Everything in §1 still applies, plus:
 - **Confirm the EB-5 set-asides separately.** `eb5SetAsides` in `current.json`
   is preserved by the build script, not re-derived, and the reserved categories
   commonly reset at the FY boundary.
-- **`/visa-bulletin/october-2026-predictions` pre-commits a dated forecast.**
-  Its "Our record on this call" table has four `Pending` rows that must be
-  filled from the published bulletin — the page's whole credibility rests on
-  scoring it honestly rather than editing the prediction. `Eb2OctoberOutlook`'s
-  `prediction` prop also needs to become the published value.
+- **`/visa-bulletin/october-2026` pre-commits a dated forecast.** Its "Our
+  record on this call" table has `Pending` rows that must be filled from the
+  published bulletin — the page's whole credibility rests on scoring the call
+  honestly rather than editing the prediction.
+
+  The forecast constant therefore SURVIVES publication, and that is the trap.
+  The 2026-09-29 refresh updated the data layer, the tracker and the page lead,
+  but left `PREDICTED_FAD` driving the FAQ schema, the lead stat tile, the
+  resets table, the filing-eligibility table and the "what this means for you"
+  block — so the page told everyone between the published Final Action Date and
+  the predicted one that they could be **approved**, when they could only file.
+  Nothing failed: `tsc`, the tests and the build were all green.
+
+  So after ingesting a bulletin that a prediction page covers:
+
+  ```bash
+  grep -n "PREDICTED_FAD\|<the forecast date>" src/app/visa-bulletin/<month>/page.tsx
+  ```
+
+  Every hit must read as a forecast ("we predicted", "DOS called it likely",
+  "short of"). Any hit used as a threshold — a table cell, an eligibility
+  boundary, an advice line — is a live error and must move to the published
+  value. `visaBulletinOctober2026.test.ts` now pins this: it walks every mention
+  of the forecast date and fails unless forecast-framing words sit near it.
+- **`Eb2OctoberOutlook` flips to predicted-vs-actual, it does not lose the
+  prediction.** Widen the caller's `to` prop to the prediction month and the
+  component detects the published cutoff itself, plotting both values in that
+  column tied by a dashed line whose length is the error. Do not overwrite the
+  `prediction` prop with the published value — that erases the miss.
 - **DOS publishes FY annual limits separately** from the bulletin itself, and
   the Report of the Visa Office (with actual issuance totals) lags by months.
   Do not assert an FY total that cannot exist yet — a freshness test on the

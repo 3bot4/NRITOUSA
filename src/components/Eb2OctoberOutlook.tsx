@@ -12,14 +12,22 @@ import {
 
 /**
  * EB-2 India Final Action Date, plotted from the October 2023 bulletin (the
- * FY2024 reset) through the predicted October 2026 bulletin (the FY2027 reset).
+ * FY2024 reset) through the October 2026 bulletin (the FY2027 reset).
  *
  * Every published value resolves from data/visa-bulletin/history.json +
  * current.json via getSeries() step carry-forward — there are no hand-written
  * historical dates in this component, so the chart re-draws itself on each
- * monthly data refresh. The single forward-looking value is the `prediction`
- * prop, which is drawn dashed and hollow and labelled "predicted" everywhere
- * it appears (line, marker, tooltip, aria description).
+ * monthly data refresh. The one hand-written value is the `prediction` prop,
+ * which is drawn dashed and hollow in a distinct colour and labelled
+ * "predicted" everywhere it appears (line, marker, tooltip, aria description).
+ *
+ * `predictionMonth` has two lives. Before DOS publishes it the chart shows a
+ * dashed forecast running off the end of the published series. Once the caller
+ * widens `to` far enough that the month resolves to a real cutoff, the chart
+ * flips to predicted-vs-actual: both values plot in that column, tied by a
+ * dashed line whose length IS the forecast error. The prediction is never
+ * silently dropped — the host page commits to scoring its calls in public, so
+ * a miss has to stay visible.
  *
  * The chart is an enhancement, never the only way to read the numbers: the
  * page renders the same series as a table below it.
@@ -31,7 +39,8 @@ type Month = { ym: string; cutoff: Cutoff | null };
 const PLOT = { w: 760, h: 340, l: 68, r: 28, t: 22, b: 40 };
 
 const C = {
-  line: "#1e40f5", // brand-600
+  line: "#1e40f5", // brand-600 — published values
+  miss: "#b45309", // amber-700 — our forecast, so a miss never reads as data
   grid: "#e5e7eb",
   axis: "#6b7280", // ink-400
   ink: "#0b1120", // ink-900
@@ -180,15 +189,36 @@ export default function Eb2OctoberOutlook({
     monthIndex(b.cutoff) > monthIndex(a.cutoff) ? b : a
   );
 
+  /*
+   * Once DOS publishes `predictionMonth`, the same month carries two values:
+   * what we forecast and what actually landed. The chart must show both — the
+   * page's whole premise is scoring the call rather than quietly editing it —
+   * so `actual` drives a predicted-vs-actual pair instead of the pre-publication
+   * dashed bridge. Before publication `actual` is null and nothing changes.
+   */
+  const actual =
+    months.find((m) => m.ym === predictionMonth && m.cutoff && m.cutoff !== "U" && m.cutoff !== "C")
+      ?.cutoff ?? null;
+  /** The last published point the dashed forecast line should depart from. */
+  const forecastAnchor = actual
+    ? dated[dated.length - 2] ?? dated[dated.length - 1]
+    : lastDated;
+
   const bandW = (PLOT.w - PLOT.l - PLOT.r) / (targets.length || 1);
 
   const ariaLabel =
     `Line chart: EB-2 India Final Action Date by visa bulletin month, ` +
     `${formatBulletinMonth(from)} to ${formatBulletinMonth(predictionMonth)}. ` +
     `It advances from ${formatCutoff(dated[0].cutoff)} to a FY2026 high of ` +
-    `${formatCutoff(peak.cutoff)}, retrogresses to ${formatCutoff(lastDated.cutoff)}, ` +
-    `is Unavailable ${band ? band.label : ""}, and is predicted by NRItoUSA to return to ` +
-    `${formatCutoff(prediction)} in the ${formatBulletinMonth(predictionMonth)} bulletin. ` +
+    `${formatCutoff(peak.cutoff)}, retrogresses, ` +
+    `is Unavailable ${band ? band.label : ""}, and ` +
+    (actual
+      ? `returned at ${formatCutoff(actual)} in the published ` +
+        `${formatBulletinMonth(predictionMonth)} bulletin — short of the ` +
+        `${formatCutoff(prediction)} NRItoUSA had predicted, which is plotted ` +
+        `alongside it for comparison. `
+      : `is predicted by NRItoUSA to return to ${formatCutoff(prediction)} in the ` +
+        `${formatBulletinMonth(predictionMonth)} bulletin. `) +
     `The same values are listed in the table below this chart.`;
 
   return (
@@ -199,8 +229,9 @@ export default function Eb2OctoberOutlook({
             EB-2 India Final Action Date — three fiscal-year resets
           </h3>
           <p className="mt-0.5 text-xs text-ink-400">
-            Published cutoffs from the Department of State bulletin, plus our
-            October 2026 estimate.
+            {actual
+              ? `Published cutoffs from the Department of State bulletin, with our ${formatBulletinMonth(predictionMonth)} forecast plotted against what actually landed.`
+              : `Published cutoffs from the Department of State bulletin, plus our ${formatBulletinMonth(predictionMonth)} estimate.`}
           </p>
         </div>
 
@@ -289,21 +320,36 @@ export default function Eb2OctoberOutlook({
               />
             ))}
 
-            {/* dashed bridge to the predicted point */}
+            {/* dashed forecast line, departing from the last point that was
+                published when the call was made */}
             <path
-              d={`M ${X(lastDated.ym)} ${Y(lastDated.cutoff)} L ${X(predictionMonth)} ${Y(prediction)}`}
+              d={`M ${X(forecastAnchor.ym)} ${Y(forecastAnchor.cutoff)} L ${X(predictionMonth)} ${Y(prediction)}`}
               fill="none"
-              stroke={C.line}
+              stroke={C.miss}
               strokeWidth={2}
               strokeDasharray="3 6"
               strokeLinecap="round"
               opacity={0.85}
             />
 
-            {/* selective direct labels: the FY2026 peak and the prediction */}
-            {/* The peak and the prediction are the same date, so labelling both
-                with it just prints the value twice. The peak carries the
-                context instead; the prediction carries the date. */}
+            {/* the miss: a vertical tie between what we predicted and what
+                published, so the size of the error is the visible thing */}
+            {actual && (
+              <line
+                x1={X(predictionMonth)}
+                y1={Y(prediction)}
+                x2={X(predictionMonth)}
+                y2={Y(actual)}
+                stroke={C.miss}
+                strokeWidth={1.5}
+                strokeDasharray="2 3"
+                opacity={0.7}
+              />
+            )}
+
+            {/* selective direct labels: the FY2026 peak, the prediction and,
+                once published, the actual. Before publication the peak and the
+                prediction share a date, so only the prediction carries it. */}
             <text
               x={X(peak.ym) - 10}
               y={Y(peak.cutoff) + 4}
@@ -320,10 +366,22 @@ export default function Eb2OctoberOutlook({
               textAnchor="end"
               fontSize={11.5}
               fontWeight={700}
-              fill={C.line}
+              fill={C.miss}
             >
               Predicted {formatCutoff(prediction)}
             </text>
+            {actual && (
+              <text
+                x={X(predictionMonth) + 8}
+                y={Y(actual) + 18}
+                textAnchor="end"
+                fontSize={11.5}
+                fontWeight={700}
+                fill={C.line}
+              >
+                Published {formatCutoff(actual)}
+              </text>
+            )}
 
             {/* peak marker */}
             <circle
@@ -340,9 +398,20 @@ export default function Eb2OctoberOutlook({
               cy={Y(prediction)}
               r={5}
               fill={C.surface}
-              stroke={C.line}
+              stroke={C.miss}
               strokeWidth={2.5}
             />
+            {/* published marker — solid, matching the published step line */}
+            {actual && (
+              <circle
+                cx={X(predictionMonth)}
+                cy={Y(actual)}
+                r={5}
+                fill={C.line}
+                stroke={C.surface}
+                strokeWidth={2}
+              />
+            )}
 
             {/* hover crosshair + marker */}
             {active && active.cutoff && active.cutoff !== "U" && active.cutoff !== "C" && (
@@ -361,25 +430,43 @@ export default function Eb2OctoberOutlook({
                   cy={Y(active.cutoff)}
                   r={5}
                   fill={active.predicted ? C.surface : C.line}
-                  stroke={active.predicted ? C.line : C.surface}
+                  stroke={active.predicted ? C.miss : C.surface}
                   strokeWidth={2.5}
                 />
               </>
             )}
 
-            {/* generous invisible hit bands — one per month */}
-            {targets.map((t, i) => (
-              <rect
-                key={`${uid}-hit-${t.ym}`}
-                x={X(t.ym) - bandW / 2}
-                y={PLOT.t}
-                width={bandW}
-                height={PLOT.h - PLOT.t - PLOT.b}
-                fill="transparent"
-                onMouseEnter={() => setHover(i)}
-                onTouchStart={() => setHover(i)}
-              />
-            ))}
+            {/* Generous invisible hit bands — one per month. Once the
+                prediction month publishes, two targets share an X, so that
+                column is split horizontally at the midpoint between the two
+                values: the upper band is whichever sits higher. A full-width
+                band for each would stack them and make the published value
+                unreachable. */}
+            {targets.map((t, i) => {
+              const split =
+                actual && t.ym === predictionMonth
+                  ? (Y(prediction) + Y(actual)) / 2
+                  : null;
+              const above = split !== null && Y(t.cutoff as Cutoff) < split;
+              return (
+                <rect
+                  key={`${uid}-hit-${t.ym}-${t.predicted ? "p" : "a"}`}
+                  x={X(t.ym) - bandW / 2}
+                  y={split === null || above ? PLOT.t : split}
+                  width={bandW}
+                  height={
+                    split === null
+                      ? PLOT.h - PLOT.t - PLOT.b
+                      : above
+                        ? split - PLOT.t
+                        : PLOT.h - PLOT.b - split
+                  }
+                  fill="transparent"
+                  onMouseEnter={() => setHover(i)}
+                  onTouchStart={() => setHover(i)}
+                />
+              );
+            })}
           </svg>
 
           {/* tooltip */}
@@ -439,6 +526,15 @@ export default function Eb2OctoberOutlook({
             </svg>
             NRItoUSA prediction
           </span>
+          {actual && (
+            <span className="flex items-center gap-1.5">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ background: C.line }}
+              />
+              Published {formatBulletinMonth(predictionMonth)}
+            </span>
+          )}
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-4 rounded-sm bg-ink-400/25" />
             Category Unavailable
@@ -457,8 +553,11 @@ export default function Eb2OctoberOutlook({
         >
           U.S. Department of State Visa Bulletin
         </a>
-        . The October 2026 point is our estimate, not a published date — every
-        value also appears in the table below.
+        .{" "}
+        {actual
+          ? `Two values are plotted at ${formatBulletinMonth(predictionMonth)}: the solid marker is the cutoff DOS published (${formatCutoff(actual)}) and the hollow marker is the forecast NRItoUSA committed to beforehand (${formatCutoff(prediction)}). The gap between them is our error, left on the chart rather than edited out.`
+          : `The ${formatBulletinMonth(predictionMonth)} point is our estimate, not a published date.`}{" "}
+        Every value also appears in the table below.
       </figcaption>
     </figure>
   );

@@ -27,6 +27,75 @@
       "next": "Work the remaining 14 by hand; uscis.gov and travel.state.gov both 403 automated fetches, so use WebSearch with allowed_domains."
     },
     {
+      "id": "october-2026-sweep-found-the-lead",
+      "title": "October 2026 sweep found the lead of /visa-bulletin/october-2026 asserting the published FAD was 'behind last October' — Oct 2025 was Apr 1 2013 and Oct 2026 is Nov 1 2013, i.e. ~7 months AHEAD. Corrected in the same pass",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-29",
+      "nextStep": "Monthly refresh: when comparing a reset month to the prior October, derive the direction from the data rather than typing it"
+    },
+    {
+      "id": "monthly-refresh-checklist-gap-the-october",
+      "title": "Monthly-refresh checklist gap: the October 2026 data drop updated the data layer and the tracker but left the analysis page's prediction-era prose (FAQ schema, lead tile, resets table, filing-eligibility table, 'what this means for you') asserting the forecast FAD as the approval threshold",
+      "area": "other",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Add a step to docs/DATA-UPDATE-PLAYBOOK.md section 1: after ingesting a bulletin, grep the matching analysis page for the prediction constant and confirm every hit is framed as a forecast (now pinned by a test in visaBulletinOctober2026.test.ts)",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "october-2026-bulletin-eb2octoberoutlook-still-draws",
+      "title": "October 2026 bulletin: Eb2OctoberOutlook still draws a dashed 'Predicted Jul 15, 2014' point at 2026-10 while the page now passes to=2026-10, so the published Nov 1, 2013 value plots at the same X — two Oct-26 markers, and the figcaption still says 'The October 2026 point is our estimate, not a published date'",
+      "area": "other",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Flip the prediction to a scored predicted-vs-actual pair (distinct legend entry) or drop the prediction prop and revert to=2026-09",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "visa-bulletin-october-2026-faqpage-schema",
+      "title": "/visa-bulletin/october-2026 FAQPage schema still has two future-tense prediction FAQs: 'Will EB-2 India jump back to July 2014 in October 2026?' answered 'Most likely', and 'If my priority date is after July 15, 2014...' answered 'If the Final Action Date returns to July 15, 2014' — both falsified (actual Nov 1, 2013) while the sibling release-date FAQ was updated",
+      "area": "other",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Rewrite both answers in past tense against the published Nov 1, 2013 FAD and the confirmed Dates-for-Filing determination; the preserved-forecast policy covers the scoring section, not the FAQ schema",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "visa-bulletin-october-2026-lead-tiles",
+      "title": "/visa-bulletin/october-2026 lead tiles still show '+15.5 mo — Predicted October snapback' and the October-resets table still ends on a row 'Oct 2026 (FY2027) — predicted / >= July 15, 2014' instead of the published Nov 1, 2013 (+2 mo vs the last posted June 2026 date)",
+      "area": "other",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Replace the tile stat and the table's final row with the published values; keep the prediction only inside the 'Our record on this call — scored' section",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "immigration-last-verified-in-src-lib",
+      "title": "IMMIGRATION_LAST_VERIFIED in src/lib/visaBulletinState.ts is still 2026-08-22, so the homepage ticker reads 'as of Aug 22, 2026' and the immigration tracker reads 'October 2026 DOS Visa Bulletin data ... Last verified: Aug 22, 2026' — the October bulletin was verified 2026-09-29",
+      "area": "other",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Bump to 2026-09-29 and add it to the monthly refresh checklist in docs/DATA-UPDATE-PLAYBOOK.md section 1",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "visabulletincluster-ts-line-1410-still-says",
+      "title": "visaBulletinCluster.ts line ~1410 still says 'the October 2026 bulletin is expected in early-to-mid September' (published), and line ~922 links the page as '[October 2026 predictions]' though it is now the scored FY2027 reset analysis",
+      "area": "other",
+      "severity": "low",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Rewrite the publication-date bullet in past tense and relabel the link text",
+      "resolved": "2026-09-29"
+    },
+    {
       "id": "october-2026-fy2027-visa-bulletin-run",
       "title": "October 2026 (FY2027) Visa Bulletin: run the monthly refresh the day it drops",
       "area": "numbers",

@@ -105,7 +105,7 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
     expect(cutoffAt(series.fad, "2026-04")).toBe("2014-07-15");
     expect(cutoffAt(series.fad, "2026-05")).toBe("2014-07-15");
     expect(FLAT).toContain("July 15, 2014");
-    expect(FLAT).toMatch(/April 2026<\/strong> bulletin and held through May/);
+    expect(FLAT).toMatch(/April 2026<\/strong> bulletin and held it through May/);
   });
 
   it("dates the Unavailable stretch to July 2026, as the page states", () => {
@@ -202,12 +202,45 @@ describe("October 2026 predictions — numbers come from the bulletin data", () 
 
 describe("October 2026 predictions — added sections", () => {
   it("explains who can actually file an I-485 in October", () => {
-    expect(FLAT).toMatch(/Who could actually file an I-485 in October/);
+    expect(FLAT).toMatch(/Who can actually file an I-485 in October/);
     // The three-way split is the point of the section.
     expect(FLAT).toMatch(/Can you file I-485\?/);
     expect(FLAT).toMatch(/Can you be approved\?/);
-    // ...and it must not present a stacked prediction as settled.
-    expect(FLAT).toMatch(/Any of the three can move/);
+    /*
+     * Before publication this section was built on the predicted Final Action
+     * Date and had to carry an "any of the three can move" caveat. Now that the
+     * bulletin is out it must key off the PUBLISHED cutoffs instead — quoting
+     * the prediction here would tell the band between the published date and
+     * the predicted one that it can be approved, which it cannot.
+     */
+    expect(FLAT).not.toMatch(/Before July 15, 2014<\/td>/);
+    expect(FLAT).toMatch(/all three inputs it depends on are now published/);
+    // The forward-looking risk is now next month's bulletin, not this one.
+    expect(FLAT).toMatch(/a later bulletin\s*can retrogress either date/);
+  });
+
+  it("never presents the forecast FAD as an approval threshold once published", () => {
+    /*
+     * The page keeps its Jul 15, 2014 forecast on purpose — it scores its own
+     * calls rather than editing them. But the forecast may only ever appear as
+     * a forecast. The published Final Action Date came back ~8.5 months BELOW
+     * it, so any table or sentence that treats Jul 15, 2014 as the approval
+     * line tells the band between Nov 1, 2013 and Jul 15, 2014 they can be
+     * approved when they can only file. That is the exact regression this
+     * pins.
+     */
+    const publishedFad = cutoffAt(getSeries("eb2", "india")!.fad, "2026-10");
+    expect(publishedFad).toBe("2013-11-01");
+    expect(FLAT).toMatch(/<td>Before \{eb2\.fad\}<\/td>/);
+    expect(FLAT).toMatch(/Between \{eb2\.fad\} and \{eb2\.dff\}/);
+    expect(FLAT).not.toMatch(/<td>Before \{longDate\(PREDICTED_FAD\)\}<\/td>/);
+    // Every surviving mention of the forecast is marked as one.
+    for (const m of FLAT.matchAll(/July 15, 2014/g)) {
+      const around = FLAT.slice(Math.max(0, m.index - 400), m.index + 400);
+      expect(around).toMatch(
+        /predict|forecast|likely|estimate|high-water|scored|short of|May 2026/i
+      );
+    }
   });
 
   it("scores the pre-committed forecast against the published bulletin", () => {
