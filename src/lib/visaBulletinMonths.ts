@@ -61,10 +61,21 @@ const SNAPSHOTS: Record<string, BulletinSnapshot> = {
  * Bulletin months that have a live page, newest first.
  *
  * ⚠️ Add a month ONLY after the State Department publishes that bulletin.
+ *
  * As of 2026-09-29 the latest published bulletin is October 2026, the first of
- * FY 2027. It is deliberately NOT listed here yet: adding it mints a new month
- * page, which is a separate content decision from the data refresh. The October
- * figures are already live everywhere that reads data/visa-bulletin.
+ * FY 2027, and it is deliberately NOT listed here — but the reason is now a
+ * COLLISION, not just a content decision. monthSlug("2026-10") is
+ * "october-2026", and /visa-bulletin/october-2026 is already a real static
+ * route: the FY2027-reset analysis moved there from
+ * /visa-bulletin/october-2026-predictions once the bulletin published. A static
+ * route wins over /visa-bulletin/[slug] in the App Router, so adding "2026-10"
+ * here would put the month page in the sitemap and the hub index while the
+ * static page kept serving the URL — a sitemap entry pointing at a different
+ * document than the one it describes, with nothing failing.
+ *
+ * If you want a generated month page for October 2026, retire or rename the
+ * static route in the same change. The October figures are already live
+ * everywhere that reads data/visa-bulletin.
  */
 export const PUBLISHED_MONTHS: string[] = ["2026-09"];
 

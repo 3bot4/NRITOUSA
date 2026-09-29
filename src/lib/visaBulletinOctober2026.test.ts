@@ -5,9 +5,9 @@ import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { getSeries, monthIndex, type SeriesPoint, type Cutoff } from "@/lib/visa-bulletin";
 
 const SRC = join(__dirname, "..");
-const PATH = "/visa-bulletin/october-2026-predictions";
+const PATH = "/visa-bulletin/october-2026";
 const PAGE = readFileSync(
-  join(SRC, "app/visa-bulletin/october-2026-predictions/page.tsx"),
+  join(SRC, "app/visa-bulletin/october-2026/page.tsx"),
   "utf8"
 );
 /** JSX wraps prose across lines, so match copy against a flattened copy. */
@@ -24,11 +24,11 @@ function cutoffAt(points: SeriesPoint[], ym: string): Cutoff | null {
   return v;
 }
 
-describe("October 2026 predictions — standalone route, not a cluster child", () => {
+describe("October 2026 bulletin page — standalone route, not a cluster child", () => {
   it("is NOT registered as a /visa-bulletin/[slug] child", () => {
     // Both routes would otherwise claim the same URL.
     expect(
-      visaBulletinChildPages.some((p) => p.slug === "october-2026-predictions")
+      visaBulletinChildPages.some((p) => p.slug === "october-2026")
     ).toBe(false);
   });
 

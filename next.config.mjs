@@ -105,6 +105,24 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /visa-bulletin/october-2026-predictions was published 2026-08-19 as a
+      // forward-looking analysis, while the October bulletin was still weeks
+      // away. The bulletin published in September 2026, so "predictions" became
+      // the wrong identity for the URL: the page now leads with the actual
+      // FY2027 cutoffs and keeps the August forecast below it, scored. Renaming
+      // it to the month it documents also makes it the canonical October 2026
+      // page, which is what people and crawlers search for.
+      //
+      // Keep this rule indefinitely — the old URL was live for six weeks, is
+      // cited from /press, and accumulated external links while it was the only
+      // FY2027-reset analysis on the site.
+      {
+        source: "/visa-bulletin/october-2026-predictions",
+        destination: "/visa-bulletin/october-2026",
+        // 301, matching the convention below: Next's `permanent` flag emits 308,
+        // which passes equity but is not what crawl reports expect.
+        statusCode: 301,
+      },
       // /h1b/visa-stamping-after-selection never existed. The article lives at
       // the ROOT url /h1b-visa-stamping-after-selection (the site's deliberate
       // short-keyword URL convention), but the nested form is the one people

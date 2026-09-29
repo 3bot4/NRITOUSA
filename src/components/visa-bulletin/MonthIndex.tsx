@@ -27,12 +27,12 @@ export default function MonthIndex() {
         A page per published bulletin, newest first — India cutoffs, the
         month-over-month change for every category and country, and which chart
         USCIS is accepting. We publish a month only once the Department of State
-        has actually released it; forecasts live on the{" "}
+        has actually released it. The FY2027 reset gets its own analysis on the{" "}
         <Link
-          href="/visa-bulletin/october-2026-predictions"
+          href="/visa-bulletin/october-2026"
           className="text-brand-700 underline"
         >
-          predictions page
+          October 2026 bulletin page
         </Link>
         .
       </p>

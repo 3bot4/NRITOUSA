@@ -108,7 +108,7 @@ describe("hard-coded bulletin prose tracks the data files", () => {
 
 /**
  * The "contains" check above is a backstop and can be satisfied by an
- * incidental mention (a link to /visa-bulletin/october-2026-predictions, a doc
+ * incidental mention (a link to /visa-bulletin/october-2026, a doc
  * comment naming a month). What actually goes stale is a PRESENT-TENSE claim
  * about which bulletin is in force, so match those framings specifically and
  * require every one of them to name the current month.

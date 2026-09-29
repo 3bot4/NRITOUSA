@@ -15,7 +15,7 @@ describe("/press — the route the analysis pages cite", () => {
 
   it("is reachable from every page that links to it", () => {
     const october = readFileSync(
-      join(SRC, "app/visa-bulletin/october-2026-predictions/page.tsx"),
+      join(SRC, "app/visa-bulletin/october-2026/page.tsx"),
       "utf8"
     );
     expect(october).toContain('href="/press"');

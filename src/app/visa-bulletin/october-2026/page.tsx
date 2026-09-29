@@ -24,7 +24,7 @@ import {
 } from "@/lib/visa-bulletin";
 
 /**
- * /visa-bulletin/october-2026-predictions — a standalone analysis page, not a
+ * /visa-bulletin/october-2026 — a standalone analysis page, not a
  * cluster child. It deliberately does NOT use the shared visa-bulletin article
  * template (hero, ArticleBody fences, status card, movement table): this is a
  * press/citation-oriented document with its own layout — kicker, quick answer,
@@ -43,17 +43,28 @@ import {
  * Figures carry the corrections verified against DOS and Cato sources — most
  * importantly that DOS called the October advance "likely" and conditioned it,
  * rather than committing to it.
+ *
+ * It began life at /visa-bulletin/october-2026-predictions and moved here once
+ * the bulletin published (301 in next.config.mjs). It is now the October 2026
+ * bulletin page: it leads with the published cutoffs and keeps the August 19
+ * forecast intact below, scored. The forecast copy is deliberately NOT edited
+ * to match the outcome — the scoreboard is the whole point.
+ *
+ * NOTE: "october-2026" is a valid month slug, so monthSlug("2026-10") resolves
+ * to this same URL. This static route would silently shadow a /visa-bulletin/
+ * [slug] month page if "2026-10" were ever added to PUBLISHED_MONTHS. Pick one
+ * owner for the URL before doing that.
  */
 
-const PATH = "/visa-bulletin/october-2026-predictions";
+const PATH = "/visa-bulletin/october-2026";
 const PUBLISHED = "2026-08-19";
 const UPDATED = "2026-09-29"; // October 2026 bulletin published — scored the four pre-committed predictions against it
 const TITLE =
-  "October 2026 Visa Bulletin Predictions: EB-2 India Set for Its Largest October Jump in Four Years";
+  "October 2026 Visa Bulletin: EB-2 India Re-Opens at November 1, 2013 in the FY2027 Reset";
 const SEO_TITLE =
-  "October 2026 Visa Bulletin Predictions: EB-2 India FY2027 Reset Analysis";
+  "October 2026 Visa Bulletin: EB-2 India Reopens at Nov 1, 2013";
 const DESCRIPTION =
-  "EB-2 India is Unavailable until Sept 30, 2026. Our FY2027 reset analysis: DOS says a return to at least July 15, 2014 is likely — the largest October advancement in four years. Statutory math, verified historical data, and what it means for your priority date.";
+  "The first bulletin of FY2027 reopens EB-2 India at Nov 1, 2013 after three months Unavailable, advances EB-1 India to Feb 1, 2023, and retrogresses Rest of World EB-2 and EB-3 — plus how our pre-committed forecast actually scored.";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
@@ -63,7 +74,7 @@ export function generateMetadata(): Metadata {
     type: "article",
     openGraph: {
       publishedTime: PUBLISHED,
-      modifiedTime: PUBLISHED,
+      modifiedTime: UPDATED,
     },
   });
 }
@@ -431,7 +442,7 @@ export default function October2026PredictionsPage() {
           keeps coming up as a backlog escape route for Indian applicants.
         </p>
 
-        <h2>Our October 2026 (FY2027) predictions</h2>
+        <h2>What we predicted on August 19, 2026, before publication</h2>
         <div className="tw">
           <table>
             <thead>

@@ -692,12 +692,12 @@ export default function VisaBulletinPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {/* The FY2027-reset analysis is a standalone route rather than a
                 cluster child, so it is surfaced here explicitly. */}
-            <Link href="/visa-bulletin/october-2026-predictions"
+            <Link href="/visa-bulletin/october-2026"
               className="group rounded-2xl border border-blue-200 bg-blue-50/40 p-5 transition hover:border-blue-300 hover:shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-blue-700 mb-0.5">Analysis · FY2027 reset</p>
-              <h3 className="font-semibold text-ink-900 group-hover:text-blue-700">October 2026 Predictions</h3>
+              <h3 className="font-semibold text-ink-900 group-hover:text-blue-700">October 2026 Visa Bulletin</h3>
               <p className="mt-1.5 text-sm text-ink-500 line-clamp-2">
-                EB-2 India is Unavailable until Sept 30. What the October bulletin should bring, and the statutory math behind it.
+                EB-2 India re-opens at Nov 1, 2013 in the FY2027 reset. The published cutoffs, the statutory math, and how our forecast scored.
               </p>
             </Link>
             {visaBulletinChildPages.map((p) => (

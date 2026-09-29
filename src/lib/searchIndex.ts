@@ -316,10 +316,10 @@ const SUPPORTING: SearchItem[] = [
     keywords: "e-oci card digital download generate oci services portal reissue",
   },
   {
-    title: "October 2026 Visa Bulletin Predictions",
+    title: "October 2026 Visa Bulletin (FY2027 reset)",
     description:
       "The FY2027 reset analysis for EB-2 India: Unavailable from July through September 2026, re-opened at November 1, 2013 in the October 2026 bulletin — with our pre-committed forecast scored against it.",
-    href: "/visa-bulletin/october-2026-predictions",
+    href: "/visa-bulletin/october-2026",
     type: "Guide",
     priority: 0,
     keywords: "october 2026 visa bulletin predictions eb2 india fy2027 reset priority date forecast unavailable",

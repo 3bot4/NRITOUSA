@@ -51,7 +51,7 @@ describe("derived allocations reproduce the published figures", () => {
 
   it("agrees with the October predictions page, which quotes both", () => {
     const page = readFileSync(
-      join(__dirname, "..", "app", "visa-bulletin", "october-2026-predictions", "page.tsx"),
+      join(__dirname, "..", "app", "visa-bulletin", "october-2026", "page.tsx"),
       "utf8",
     );
     expect(page).toContain(fmt(categoryAllocation(eb2.share, EB_WORLDWIDE_FLOOR)));

@@ -17,7 +17,7 @@ import {
 /**
  * /press — the media and data page the analysis pages cite.
  *
- * It exists because /visa-bulletin/october-2026-predictions links here twice
+ * It exists because /visa-bulletin/october-2026 links here twice
  * (byline and citation box) and the route was a 404.
  *
  * Two attribution rules this page has to hold, because its whole job is making
@@ -95,8 +95,8 @@ const DATASETS = [
 const ANALYSES = [
   {
     title: "October 2026 Visa Bulletin: the FY2027 reset",
-    body: "Why EB-2 India went Unavailable, what the October reset should restore, and the statutory math behind the annual cliff.",
-    href: "/visa-bulletin/october-2026-predictions",
+    body: "Why EB-2 India went Unavailable, what the FY2027 reset actually restored, and the statutory math behind the annual cliff.",
+    href: "/visa-bulletin/october-2026",
   },
   {
     title: "EB-2 & EB-3 India wait scenarios",

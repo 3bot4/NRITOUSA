@@ -342,7 +342,7 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/visa-bulletin", 0.9, "monthly", bulletinRefresh),
   // Standalone FY2027-reset analysis — its own route, not a /visa-bulletin/[slug]
   // cluster child, so it is listed explicitly here.
-  e("/visa-bulletin/october-2026-predictions", 0.85, "monthly", bulletinRefresh),
+  e("/visa-bulletin/october-2026", 0.85, "monthly", bulletinRefresh),
   e("/immigration-tracker", 0.8, "weekly"),
   e("/oci", 0.9, "weekly"),
   ...ociGuides.map((g) => e(ociGuidePath(g.slug), 0.8, "monthly")),
