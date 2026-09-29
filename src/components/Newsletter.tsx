@@ -52,8 +52,7 @@ export default function Newsletter() {
               Get practical immigrant finance guides every week
             </h2>
             <p className="mt-3 text-ink-400">
-              Simple, useful guides about money, housing, cars, taxes, and life
-              in the USA. No spam, unsubscribe anytime.
+              Money, housing, taxes and life in the USA. No spam.
             </p>
 
             <form
@@ -104,8 +103,7 @@ export default function Newsletter() {
               </p>
             )}
             <p className="mt-3 text-xs leading-relaxed text-ink-500">
-              By submitting, you agree to receive emails from NRItoUSA. You can
-              unsubscribe anytime. See our{" "}
+              Unsubscribe anytime. See our{" "}
               <Link
                 href="/privacy-policy"
                 className="underline hover:text-ink-300"

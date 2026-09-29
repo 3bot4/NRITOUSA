@@ -1249,7 +1249,7 @@ export default function IndiaTaxCompliancePage() {
             eyebrow="Calculators & tools"
             title="Run the numbers, then check compliance"
             description="The decisions that move the most money — capital gains, repatriation, residency timing, transfer costs, and foreign-account reporting."
-            action={{ label: "All calculators", href: "/calculators" }}
+            action={{ label: "All calculators", href: "/tools" }}
           />
           <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {calcs.map((c) => (

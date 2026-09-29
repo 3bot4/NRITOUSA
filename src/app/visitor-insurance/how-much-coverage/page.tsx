@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AuthorReviewLine from "@/components/tools/AuthorReviewLine";
-import VisitorInsurancePolicyMaximumCalculator from "@/components/tools/VisitorInsurancePolicyMaximumCalculator";
 import { pageMetadata, faqJsonLd, type FaqItem } from "@/lib/seo";
 import {
   VISITOR_INSURANCE_BASE,
@@ -96,10 +95,17 @@ export default function HowMuchCoveragePage() {
           <section id="policy-maximum-tool" className="scroll-mt-24">
             <h2 className="text-xl font-bold text-ink-900 mb-2">See how a specific maximum behaves</h2>
             <p className="text-sm leading-relaxed text-ink-600 mb-4">
-              Enter a policy maximum (and, if your certificate states one, an out-of-pocket maximum) alongside a realistic claim amount to see the remaining benefit, whether any amount falls above the maximum, and whether this plan has a genuine contractual ceiling
-              on your liability at all.
+              Put your own numbers in — a policy maximum, an out-of-pocket maximum
+              if your certificate states one, and a realistic claim amount — and the
+              calculator shows the remaining benefit, how much falls above the
+              maximum, and whether the plan caps your liability at all.
             </p>
-            <VisitorInsurancePolicyMaximumCalculator />
+            <Link
+              href="/tools/visitor-insurance-policy-maximum-calculator"
+              className="inline-flex items-center gap-2 rounded-xl border border-brand-300 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700 transition hover:border-brand-400"
+            >
+              Open the policy maximum calculator →
+            </Link>
           </section>
 
           <section>

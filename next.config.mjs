@@ -329,6 +329,19 @@ const nextConfig = {
         destination: "/green-card-renewal",
         permanent: true,
       },
+      // /calculators was a 458-word hub whose entire body — all eight calculator
+      // cards with their deks, verbatim — already rendered on /tools. A content
+      // overlap audit measured 91% of its words present on /tools, and over half
+      // of what remained was site chrome, so it carried essentially nothing
+      // unique. /tools is the broader hub (it also covers the immigration and
+      // USCIS tools), so it is the one that survives. NOTE: this matches the
+      // hub path only — the /calculators/[slug] calculator pages are separate
+      // routes, are untouched, and now use /tools as their breadcrumb parent.
+      {
+        source: "/calculators",
+        destination: "/tools",
+        permanent: true,
+      },
     ];
   },
 };

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Container from "@/components/Container";
-import UscisProcessingDelayChecker from "@/components/tools/UscisProcessingDelayChecker";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 
 /**
@@ -217,20 +216,29 @@ export default function UscisProcessingTimesGuide() {
         </Container>
       </section>
 
-      {/* delay checker tool */}
+      {/* delay checker — linked, not embedded.
+          Rendering the checker here put its entire form and service-center
+          catalogue (~450 words of option labels) on this page as well as on
+          /tools/uscis-processing-delay-checker, making the two read as the
+          same page to a crawler. */}
       <section className="py-10 sm:py-14">
         <Container>
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-5 text-xl font-bold tracking-tight text-ink-900">
-              Processing Delay Checker
+          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-900/10 bg-white p-6 shadow-card">
+            <h2 className="text-xl font-bold tracking-tight text-ink-900">
+              Is your case actually delayed?
             </h2>
-            <UscisProcessingDelayChecker />
-            <p className="mt-3 text-center text-xs text-ink-400">
-              Want the full standalone tool?{" "}
-              <Link href="/tools/uscis-processing-delay-checker" className="font-medium text-blue-600 underline">
-                Open USCIS Processing Delay Checker →
-              </Link>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              Your receipt date has to be earlier than the date USCIS is currently
+              processing before you can raise an inquiry. The delay checker takes
+              your form, service center and receipt date and tells you whether you
+              are outside normal processing time yet, and what to do if you are.
             </p>
+            <Link
+              href="/tools/uscis-processing-delay-checker"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl border border-blue-300 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400"
+            >
+              Open the USCIS Processing Delay Checker →
+            </Link>
           </div>
         </Container>
       </section>

@@ -126,7 +126,7 @@ describe("Batch 4 Step 1 — the USCIS processing-times guide landed on the tool
   });
 
   it.each([
-    ["the Processing Delay Checker", "UscisProcessingDelayChecker"],
+    ["a route to the Processing Delay Checker", "/tools/uscis-processing-delay-checker"],
     ["how USCIS calculates published times", "receipt dates of cases USCIS is currently completing"],
     ["the 80th-percentile mechanic", "80% of completed cases"],
     ["the outside-normal inquiry procedure", "outside normal processing time"],
@@ -134,6 +134,16 @@ describe("Batch 4 Step 1 — the USCIS processing-times guide landed on the tool
     ["the regular-vs-premium comparison", "Regular vs. premium processing"],
   ])("keeps %s", (_label, needle) => {
     expect(guide).toContain(needle);
+  });
+
+  it("links to the delay checker instead of embedding it", () => {
+    // Embedding the checker here put its whole form + service-center catalogue
+    // (~450 words of option labels) on this page as well as on
+    // /tools/uscis-processing-delay-checker, so the two pages measured 47%
+    // duplicate against each other. Same rule as the fee table below: the page
+    // that owns a widget renders it, everyone else links.
+    expect(guide).not.toContain("import UscisProcessingDelayChecker");
+    expect(guide).not.toContain("<UscisProcessingDelayChecker />");
   });
 
   it("does not duplicate the premium fee table the tool page already renders", () => {

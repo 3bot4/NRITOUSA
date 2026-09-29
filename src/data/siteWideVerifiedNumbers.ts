@@ -360,7 +360,7 @@ export const TAX_COMPLIANCE_DISCLAIMER =
  */
 export const INDIA_TAX_VERIFIED = "2026-07-04";
 export const INDIA_TAX_DISCLAIMER =
-  "India and US tax rates, thresholds, forms, and due dates change and vary with surcharge, cess, DTAA, and your specific facts. These are general planning figures — not tax or legal advice. Confirm with the Income Tax Department / RBI / IRS or a qualified cross-border CA/CPA before acting.";
+  "General planning figures, not tax or legal advice — they vary with surcharge, cess, DTAA and your own facts. Confirm with a cross-border CA/CPA before acting.";
 
 export const tdsSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
   { label: "NRO interest — TDS", value: "30%", note: "Plus surcharge & cess. NRE/FCNR interest is tax-free.", highlight: true },
@@ -383,6 +383,55 @@ export const repatSnapshotRows: { label: string; value: string; note?: string; h
   { label: "Form 15CB", value: "Above ₹5 lakh / FY", note: "CA certificate required when remittances exceed ₹5 lakh in the year." },
   { label: "NRE / FCNR", value: "Freely repatriable", note: "No 1M cap; NRO is the capped / CA-certified route." },
 ];
+
+/**
+ * Per-page overrides for the repatriation cluster's key-numbers block.
+ *
+ * `repatSnapshotRows` above is the pillar's full set. Rendering all four rows
+ * on all five cluster pages put an identical ~137-word block on each of them,
+ * and it was also wrong on its own terms: a page about Form 15CB should not
+ * lead with the NRO remittance cap. A slug absent from this map falls back to
+ * the full set.
+ */
+export const repatSnapshotRowsBySlug: Record<string, typeof repatSnapshotRows> = {
+  "form-15ca-for-nri": [
+    { label: "Form 15CA", value: "Online self-declaration", note: "Filed by the remitter on the income-tax portal before money leaves India.", highlight: true },
+    { label: "Which part applies", value: "Part A / B / C / D", note: "Chosen by the amount, whether the remittance is taxable, and whether a 15CB or an AO order backs it." },
+    { label: "Acknowledgement", value: "Goes to your bank", note: "The authorised-dealer bank will not process the transfer without it." },
+  ],
+  "form-15cb-ca-certificate-nri": [
+    { label: "Form 15CB", value: "Above \u20b95 lakh / FY", note: "A Chartered Accountant certificate is required once taxable remittances pass this point in the year.", highlight: true },
+    { label: "Who signs it", value: "A practising CA", note: "Certifying the nature of the remittance, the tax deducted, and the treaty position applied." },
+    { label: "Order of filing", value: "15CB, then 15CA", note: "The 15CB acknowledgement number is an input to Form 15CA Part C." },
+  ],
+  "nro-to-usa-transfer-documents": [
+    { label: "NRO repatriation limit", value: "USD 1 million / FY", note: "Per financial year from NRO balances, with documentation.", highlight: true },
+    { label: "NRE / FCNR", value: "Freely repatriable", note: "No cap and far less paperwork \u2014 which is why the account the money sits in matters." },
+    { label: "What the bank checks", value: "Tax + FEMA", note: "That tax has been accounted for, and that the source of funds is permitted under FEMA." },
+  ],
+  "repatriating-property-sale-proceeds-india-usa": [
+    { label: "Sale-proceeds route", value: "NRO first", note: "Indian property sale proceeds are credited to an NRO account, then repatriated from there.", highlight: true },
+    { label: "Annual cap", value: "USD 1 million / FY", note: "The sale proceeds count against the same NRO limit as any other repatriation." },
+    { label: "TDS on the sale", value: "Deducted by the buyer", note: "Your repatriation paperwork has to evidence it \u2014 keep the challan and Form 16A." },
+  ],
+};
+
+/**
+ * Per-page overrides for the ITR cluster. Same reasoning as above: an ITR-3
+ * page and an ITR-2 page were rendering byte-identical due-date tables.
+ */
+export const itrSnapshotRowsBySlug: Record<string, typeof itrSnapshotRows> = {
+  "itr-2-for-nri": [
+    { label: "ITR-2 due date (non-audit)", value: "Jul 31", note: "AY 2026-27: Jul 31, 2026. Extensions happen \u2014 verify each year.", highlight: true },
+    { label: "Who files ITR-2", value: "No business income", note: "Salary, pension, house property, capital gains and other sources \u2014 but nothing from a business or profession." },
+    { label: "Schedule FA", value: "Foreign assets", note: "Resident filers report foreign assets here; an NRI generally does not, which is why residency status is settled first." },
+  ],
+  "itr-3-for-nri": [
+    { label: "ITR-3 due date (non-audit)", value: "Aug 31", note: "AY 2026-27: Aug 31, 2026 \u2014 a month later than ITR-2.", highlight: true },
+    { label: "Who files ITR-3", value: "Business or profession", note: "Any income from a business or profession pushes you off ITR-2 and onto this form." },
+    { label: "Books of account", value: "Balance sheet + P&L", note: "ITR-3 asks for them; ITR-2 does not. This is the practical difference between the two forms." },
+  ],
+};
 
 export const giftsSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
   { label: "US Form 3520 threshold", value: "> $100,000 / year", note: "Report foreign gifts/bequests from a nonresident individual or estate.", highlight: true },

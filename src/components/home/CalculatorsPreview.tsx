@@ -23,7 +23,7 @@ export default function CalculatorsPreview() {
           eyebrow="Free tools"
           title="Cross-border calculators"
           description="Built for the variables generic calculators ignore — visa horizons, dual-currency shifts, and India–US tax rules."
-          action={{ label: "All calculators", href: "/calculators" }}
+          action={{ label: "All calculators", href: "/tools" }}
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((c) => (

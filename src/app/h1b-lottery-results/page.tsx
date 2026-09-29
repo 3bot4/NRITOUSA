@@ -95,7 +95,7 @@ const relatedLinks = [
   { href: "/trump-account-h1b-immigrant-families", label: "Trump Account for H-1B Families", desc: "Child savings account rules for immigrant families" },
   { href: "/free-immigrant-wealth-guide", label: "Free Immigrant Wealth Guide", desc: "Money playbook for Indian immigrants in the USA" },
   { href: "/nri-wealth-checkup", label: "NRI Wealth Checkup", desc: "Educational US–India money and reporting checklist" },
-  { href: "/calculators", label: "NRI Calculators & Tools", desc: "Every free calculator and checklist in one place" },
+  { href: "/tools", label: "NRI Calculators & Tools", desc: "Every free calculator and checklist in one place" },
 ];
 
 const statusTableRows: (string | React.ReactNode)[][] = [

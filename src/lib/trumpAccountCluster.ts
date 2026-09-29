@@ -85,7 +85,7 @@ export const trumpAccountRelatedLinks: ClusterLink[] = [
   { href: "/india-tax-compliance", label: "India Tax Compliance for NRIs", desc: "What Indian tax residency means when you return" },
   { href: "/free-immigrant-wealth-guide", label: "Immigrant Wealth Guide", desc: "Long-term money planning for immigrant families" },
   { href: "/h1b", label: "H-1B Resource Center", desc: "H-1B status, timelines, and family planning" },
-  { href: "/calculators", label: "Financial Calculators", desc: "Plan contributions, growth, and family goals" },
+  { href: "/tools", label: "Financial Calculators", desc: "Plan contributions, growth, and family goals" },
 ];
 
 export function otherTrumpAccountLinks(currentHref: string): ClusterLink[] {

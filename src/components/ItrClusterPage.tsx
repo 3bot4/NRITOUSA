@@ -6,6 +6,7 @@ import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
   itrSnapshotRows,
+  itrSnapshotRowsBySlug,
   indiaIncomeTaxSources,
   INDIA_TAX_VERIFIED,
   INDIA_TAX_DISCLAIMER,
@@ -138,8 +139,7 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
             <FastAnswerSnapshot
               title="NRI ITR filing — key dates & forms"
               accent="brand"
-              rows={itrSnapshotRows}
-              badges={["ITR-2 due Jul 31", "ITR-3 due Aug 31", "Non-audit cases"]}
+              rows={itrSnapshotRowsBySlug[page.slug] ?? itrSnapshotRows}
               lastVerified={INDIA_TAX_VERIFIED}
               sources={indiaIncomeTaxSources}
               disclaimer={INDIA_TAX_DISCLAIMER}
@@ -153,24 +153,10 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
               <ArticleBody content={page.content} />
 
               <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-slate-50/60 p-6 text-sm leading-relaxed text-ink-500">
-                <strong className="font-semibold text-ink-700">
-                  Educational disclaimer:
-                </strong>{" "}
-                This guide is for educational purposes only and is not financial,
-                legal, tax, or investment advice. {site.name} is owned by{" "}
-                {site.owner}. Indian assessment-year forms, eligibility, deadlines,
-                and tax rules change over time and vary by individual situation.
-                Always verify the current rules on the official{" "}
-                <a
-                  href="https://www.incometax.gov.in"
-                  className="text-brand-600 underline"
-                  rel="nofollow noopener"
-                  target="_blank"
-                >
-                  Income Tax portal
-                </a>{" "}
-                and consult a qualified Chartered Accountant (CA) or tax
-                professional for your situation. See our{" "}
+                Educational only — not tax or investment advice. Indian forms,
+                deadlines and rules change by assessment year. Verify on the
+                income-tax portal and check your own case with a Chartered
+                Accountant. See our{" "}
                 <Link href="/disclaimer" className="text-brand-600 underline">
                   full disclaimer
                 </Link>
@@ -222,9 +208,6 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
                   <h3 className="mt-2.5 font-semibold text-ink-900 group-hover:text-brand-700">
                     {p.navLabel}
                   </h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-ink-500">
-                    {p.excerpt}
-                  </p>
                 </Link>
               ))}
             </div>

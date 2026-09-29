@@ -6,6 +6,7 @@ import RecommendedToolsAd from "@/components/RecommendedToolsAd";
 import FastAnswerSnapshot from "@/components/FastAnswerSnapshot";
 import {
   repatSnapshotRows,
+  repatSnapshotRowsBySlug,
   repatriationSources,
   INDIA_TAX_VERIFIED,
   INDIA_TAX_DISCLAIMER,
@@ -142,8 +143,7 @@ export default function RepatriationClusterPage({ page }: { page: RepatPage }) {
             <FastAnswerSnapshot
               title="Repatriation & 15CA/15CB — key numbers"
               accent="brand"
-              rows={repatSnapshotRows}
-              badges={["NRO limit USD 1M / FY", "15CB above ₹5 lakh"]}
+              rows={repatSnapshotRowsBySlug[page.slug] ?? repatSnapshotRows}
               lastVerified={INDIA_TAX_VERIFIED}
               sources={repatriationSources}
               disclaimer={INDIA_TAX_DISCLAIMER}
@@ -157,34 +157,9 @@ export default function RepatriationClusterPage({ page }: { page: RepatPage }) {
               <ArticleBody content={page.content} />
 
               <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-slate-50/60 p-6 text-sm leading-relaxed text-ink-500">
-                <strong className="font-semibold text-ink-700">
-                  Educational disclaimer:
-                </strong>{" "}
-                This guide is for educational purposes only and is not financial,
-                legal, tax, or FEMA advice. {site.name} is owned by {site.owner}.
-                The forms, thresholds, the Form 15CA Part A/B/C/D split, and
-                repatriation limits change over time and depend on your
-                situation. Always confirm what applies to your remittance with a
-                qualified Chartered Accountant (CA) and your authorised-dealer
-                bank, and verify current rules on the official{" "}
-                <a
-                  href="https://www.incometax.gov.in"
-                  className="text-brand-600 underline"
-                  rel="nofollow noopener"
-                  target="_blank"
-                >
-                  Income Tax portal
-                </a>{" "}
-                and with the{" "}
-                <a
-                  href="https://www.rbi.org.in"
-                  className="text-brand-600 underline"
-                  rel="nofollow noopener"
-                  target="_blank"
-                >
-                  RBI
-                </a>
-                . See our{" "}
+                Educational only \u2014 not financial, legal, tax or FEMA advice.
+                Thresholds and forms change. Confirm your remittance with a
+                Chartered Accountant and your authorised-dealer bank. See our{" "}
                 <Link href="/disclaimer" className="text-brand-600 underline">
                   full disclaimer
                 </Link>
@@ -236,9 +211,6 @@ export default function RepatriationClusterPage({ page }: { page: RepatPage }) {
                   <h3 className="mt-2.5 font-semibold text-ink-900 group-hover:text-brand-700">
                     {p.navLabel}
                   </h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-ink-500">
-                    {p.excerpt}
-                  </p>
                 </Link>
               ))}
             </div>

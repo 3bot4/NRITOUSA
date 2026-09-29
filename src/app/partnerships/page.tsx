@@ -300,7 +300,7 @@ export default function PartnershipsPage() {
                 cross-border tax guides
               </Link>
               ,{" "}
-              <Link href="/calculators" className="text-brand-600 underline">
+              <Link href="/tools" className="text-brand-600 underline">
                 calculators
               </Link>
               , checklists, and decision tools.

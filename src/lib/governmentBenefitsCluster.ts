@@ -101,7 +101,7 @@ export const relatedTools: ClusterLink[] = [
     desc: "Every calculator and checker on the site",
   },
   {
-    href: "/calculators",
+    href: "/tools",
     label: "All calculators",
     desc: "Money, tax and planning calculators for immigrant families",
   },

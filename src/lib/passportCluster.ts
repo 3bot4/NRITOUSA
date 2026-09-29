@@ -297,68 +297,32 @@ href: /topics
     excerpt:
       "Renewing your Indian passport in Chicago — the VFS Global center, the Consulate jurisdiction it serves, and how to book and apply from the Midwest.",
     date: "2026-06-14",
-    content: `If you live in the Midwest, your Indian passport renewal runs through the **Consulate General of India, Chicago** and its VFS Global Passport Seva Center. The process is identical to the rest of the country — you just file under Chicago's jurisdiction. This page covers the Chicago-specific bits; the [full step-by-step process is in the main guide](/indian-passport-renewal-usa).
+    content: `Chicago's VFS Global Passport Seva Center handles Indian passport renewals for most of the Midwest. Fees, forms and photo specifications are national and do not change by city — [the main guide covers all of that](/indian-passport-renewal-usa). What follows is only what is different because you are filing through Chicago.
 
-:::warn
-title: Verify before applying
-- Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
-:::
+## Which states file under Chicago
+The Consulate General of India, Chicago holds passport jurisdiction for a large block of Midwestern states — generally Illinois, Indiana, Iowa, Kansas, Michigan, Minnesota, Missouri, Nebraska, North Dakota, South Dakota, Ohio and Wisconsin.
 
-:::summary
-Chicago's consulate covers most of the **Midwest**. Complete your application on **Passport Seva/GPSP**, then follow the **VFS portal instructions for payment and appointment** at the Chicago center, and submit in person. Confirm the current center address and hours on the **official VFS site** — they move occasionally. Everything else (documents, fees, photos) follows the national process.
-:::
+Jurisdiction follows the state on your US address, not the consulate you happen to live nearest. Someone who moved from Indiana to Pennsylvania last year now files through New York even though Chicago is a shorter drive. A wrong-jurisdiction application is caught after you have paid, not before, so check the current list on the VFS USA site first.
 
-## Who files under Chicago
-The Consulate General of India, Chicago handles passport jurisdiction for a large block of Midwestern states — generally including Illinois, Indiana, Iowa, Kansas, Michigan, Minnesota, Missouri, Nebraska, North Dakota, South Dakota, Ohio, and Wisconsin.
+## When Midwest slots are tight
+Chicago demand peaks twice: November through February, around winter travel and weddings in India, and again June through August. Outside those windows three to six weeks of lead time is usually enough. Inside them, start looking earlier — and check first thing in the morning, when cancelled slots are released back into the pool.
 
-:::info
-title: Confirm your jurisdiction first
-- VFS routes by **the state you live in**, not the closest city
-- If you've moved between states, file under your **current** state's consulate
-- The authoritative state list is on the Chicago consulate and VFS websites — check before booking
-:::
+## Indian-spec photos in Chicago
+The 2"x2" white-background format is not what a US drugstore booth produces, and a rejected photo costs you the whole appointment. Photo studios along Devon Avenue shoot to Indian specification as a matter of routine, as do the Indian grocery stores out in Naperville, Schaumburg and Aurora.
 
-## Booking the Chicago VFS center
-Appointments are booked online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa). Choose the **Chicago Passport Seva Center**, pick a slot, and print the confirmation.
-
-:::tip
-- Book **3–6 weeks ahead** — Chicago slots fill fast, especially Nov–Feb and Jun–Aug
-- Check for slots early morning; cancellations free up
-- Get your **Indian-spec photos** from an Indian grocery/photo shop in Devon Avenue or the suburbs, not a US drugstore
-:::
-
-## What to bring
-Identical to the national checklist — originals **plus** self-attested photocopies of each. See the [complete documents page](/indian-passport-renewal-usa/documents) for the situation-by-situation list (name change, F1/OPT, dependents, lost passport).
-
-:::warn
-- **Confirm the center address on the official VFS site the week of your appointment** — VFS locations and hours change
-- Bring your **printed ARN form, fee receipt, and appointment letter**
-- Carry proof of **valid US status** (I-797/I-94, Green Card, F1 + I-20)
-:::
-
-## Timeline from Chicago
-Processing isn't faster or slower by city — it follows the [national processing times](/indian-passport-renewal-usa/processing-time): roughly **6–12 weeks normal**, **3–5 weeks Tatkal**. The new passport returns by speed post to your mailing address.
+## Before you travel to the center
+Confirm the address and opening hours on the official VFS site during the week of your appointment. The Chicago center has relocated before, and printed directions copied from an older forum post are how people end up outside the wrong building on the morning of their slot.
 
 ## Frequently asked questions
 
-### Do I have to go to Chicago in person?
-Yes — VFS requires an in-person appointment for biometrics; walk-ins aren't accepted. Some applicants in remote areas use VFS mail-in options where offered, but confirm eligibility on the VFS site.
+### Do I have to appear in person in Chicago?
+Yes. Biometrics are captured at the appointment and walk-ins are not accepted. Mail-in handling exists for some categories in some jurisdictions — check whether yours qualifies on the VFS site rather than assuming it does.
 
-### I live in Ohio/Michigan — is that Chicago's jurisdiction?
-Generally yes, but jurisdictions are occasionally re-drawn. Verify on the VFS USA site before booking so you don't file under the wrong consulate.
+### I live in Ohio. Do I file under Chicago?
+Generally yes, but jurisdiction maps are redrawn from time to time and Ohio has shifted between consulates before. Confirm on the VFS USA site the week you book.
 
-### Where do I get Indian-spec passport photos in Chicago?
-Indian grocery and photo shops (e.g. along Devon Avenue) know the 2"x2" white-background format. Avoid US drugstore "passport photo" booths.
-
-## The bottom line
-Chicago renewals are the standard national process filed under the Midwest consulate. Confirm your state falls under Chicago, book the VFS slot early, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for the rest.
-
-:::cta
-title: Stay ahead of your renewal
-body: Explore more NRI guides, or sign up for monthly visa bulletin updates and passport renewal alerts.
-button: Browse NRI guides
-href: /topics
-:::`,
+### Is a renewal filed in Chicago faster than one filed in New York?
+No. The application is processed in India, so the centre you filed through does not change it. The only thing that varies by city is how long you wait for an appointment.`,
   },
   {
     slug: "new-york",
@@ -372,68 +336,32 @@ href: /topics
     excerpt:
       "Renewing your Indian passport in New York — the VFS Global center, the Consulate jurisdiction it serves, and how to book and apply from the Northeast.",
     date: "2026-06-14",
-    content: `If you live in the Northeast, your Indian passport renewal runs through the **Consulate General of India, New York** and its VFS Global Passport Seva Center. The steps match the rest of the country; you just file under New York's jurisdiction. This page covers the NY-specific bits — the [full process is in the main guide](/indian-passport-renewal-usa).
+    content: `The New York Passport Seva Center is the busiest Indian passport operation in the United States, and that single fact shapes almost everything that is different about renewing here. The process itself — forms, fees, photo specification — is the same nationwide and is set out in [the main guide](/indian-passport-renewal-usa).
 
-:::warn
-title: Verify before applying
-- Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
-:::
+## Which states file under New York
+The Consulate General of India, New York generally covers the Northeast: New York, New Jersey, Connecticut, Pennsylvania, Massachusetts, Rhode Island, New Hampshire, Vermont, Maine and others in the region.
 
-:::summary
-New York's consulate covers much of the **Northeast**. Complete your application on **Passport Seva/GPSP**, then follow the **VFS portal instructions for payment and appointment** at the New York center, and submit in person. NY is one of the busiest centers, so book early and confirm the current address/hours on the **official VFS site**.
-:::
+The boundary that catches people is Washington DC. Several mid-Atlantic states sit under the DC consulate rather than New York, and proximity is no guide — what counts is the state printed on your US address. Confirm against the VFS USA list before you pay the fee.
 
-## Who files under New York
-The Consulate General of India, New York generally handles jurisdiction for the Northeastern states — including New York, New Jersey, Connecticut, Pennsylvania, Massachusetts, Rhode Island, New Hampshire, Vermont, Maine, and others in the region.
+## Booking against high volume
+Appointment slots here go faster than anywhere else in the country. Four to six weeks of lead time is a realistic plan, and longer if you are trying to renew before a trip in the December or summer peaks. Slots are released and cancelled continuously, so checking daily beats checking weekly, and a morning check tends to surface more than an evening one.
 
-:::info
-title: Confirm your jurisdiction first
-- VFS routes by **the state you live in**, not the closest city
-- Some nearby states fall under Washington DC's consulate, not New York — check the list
-- The authoritative state list is on the NY consulate and VFS websites
-:::
+## Indian-spec photos around New York
+Jackson Heights in Queens has more studios that shoot to the Indian 2"x2" specification than anywhere else on the East Coast, and the Oak Tree Road strip in Edison and Iselin is the equivalent for New Jersey applicants. A US drugstore passport booth uses a different crop and background and its output is routinely rejected.
 
-## Booking the New York VFS center
-Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa). Choose the **New York Passport Seva Center**, select a slot, and print the confirmation.
-
-:::tip
-- NY is high-volume — book **4–6 weeks ahead** and check mornings for released slots
-- Plan for travel/parking in Manhattan; arrive 10–15 minutes early
-- Get **Indian-spec photos** from a South-Asian photo shop (Jackson Heights, Edison NJ, Oak Tree Road) — not a US drugstore
-:::
-
-## What to bring
-Identical to the national checklist — originals **plus** self-attested photocopies of each. The situation-by-situation list (name change, F1/OPT, dependents, lost passport) is on the [documents page](/indian-passport-renewal-usa/documents).
-
-:::warn
-- **Confirm the center address on the official VFS site the week of your appointment**
-- Bring your **printed ARN form, fee receipt, and appointment letter**
-- Carry proof of **valid US status** (I-797/I-94, Green Card, F1 + I-20)
-:::
-
-## Timeline from New York
-Processing follows the [national processing times](/indian-passport-renewal-usa/processing-time) — about **6–12 weeks normal**, **3–5 weeks Tatkal** — though high-volume centers can sit at the longer end in peak season. The new passport returns by speed post.
+## Getting there on the day
+Manhattan travel is the part people underestimate. Parking near the centre is expensive and scarce, transit is usually the better choice, and arriving ten to fifteen minutes early leaves room for building security. Check the current address on the VFS site the week you go.
 
 ## Frequently asked questions
 
-### I live in New Jersey — do I use the New York center?
-Generally yes; NJ falls under the New York consulate. Confirm on the VFS USA site before booking.
+### I live in New Jersey. Do I file in New York?
+Yes — New Jersey falls under the New York consulate for passport services, so Edison and Jersey City residents book the New York centre.
 
-### Is the New York center busier than others?
-Yes — it's one of the busiest, so appointments can be harder to get and peak-season processing slower. Book as early as possible.
+### Can I book a New York slot if I live outside the Northeast?
+No. Jurisdiction is assigned by your state of residence, and booking outside it means the application is rejected after payment.
 
-### Where do I get Indian-spec photos near NYC?
-South-Asian photo shops in Jackson Heights (Queens), Edison and the Oak Tree Road area (NJ) know the 2"x2" white-background format.
-
-## The bottom line
-New York renewals are the standard national process filed under the Northeast consulate. Verify your state, book the busy VFS slot early, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for everything else.
-
-:::cta
-title: Stay ahead of your renewal
-body: Explore more NRI guides, or sign up for monthly visa bulletin updates and passport renewal alerts.
-button: Browse NRI guides
-href: /topics
-:::`,
+### Does the New York backlog affect how long my passport takes?
+Only at the front end. A long wait for a slot delays when you file; once filed, processing runs on the same national timeline as everywhere else.`,
   },
   {
     slug: "san-francisco",
@@ -449,125 +377,34 @@ href: /topics
     date: "2026-06-14",
     updated: "2026-07-19",
     content: `:::quickanswer
-To renew an Indian passport in San Francisco, apply on Passport Seva (choose "Reissue"), then pay and book a VFS Global appointment at the **San Francisco Passport Seva Center**, which serves the **Consulate General of India, San Francisco** jurisdiction — Northern California and much of the Western US. Total cost is about **$146** for a standard 36-page booklet ($125 + $19 VFS + $2 ICWF), or roughly **$271 with Tatkal**. Processing typically takes **6–12 weeks** normal and **3–5 weeks** Tatkal, and Bay Area slots often fill **4–6 weeks** out.
+San Francisco is the highest-demand Indian passport jurisdiction in the United States. The application itself is the standard national process — the difference is that Bay Area appointment slots commonly run four to six weeks out, and that Southern California does **not** file here.
 :::
 
-:::key
-- Budget **$146** total for a normal 36-page renewal in San Francisco, or **$271** with Tatkal, per current VFS USA fees.
-- Book **4–6 weeks ahead** — the Bay Area is the highest-demand Indian passport jurisdiction in the US.
-- Confirm your state falls under **San Francisco**, not Houston or New York: Northern California, Oregon, Washington, Nevada and neighbours generally do; Southern California may not.
-- Expect **6–12 weeks** for normal processing and **3–5 weeks** for Tatkal, returned by speed post.
-- Bring **originals plus self-attested photocopies** of every document and two **2"x2" Indian-spec photos** — US drugstore photos are rejected.
-:::
+Renewals from the West Coast run through the **Consulate General of India, San Francisco** and its VFS Global Passport Seva Center. Forms, fees and photo specification are national; [the main guide covers them](/indian-passport-renewal-usa) and the [fees and timelines page](/indian-passport-renewal-usa/processing-time) has the current numbers. This page is about what is specific to filing in the Bay Area.
 
-If you live on the West Coast, your Indian passport renewal in San Francisco runs through the **Consulate General of India, San Francisco** and its VFS Global Passport Seva Center. This page is for Bay Area and Northern California residents on H-1B, L-1, F-1/OPT, H4, or a green card who need SFO-specific details — the consulate jurisdiction, VFS booking, fees in USD, and realistic processing time — rather than the generic national walkthrough. The number that matters most locally: appointment slots at the San Francisco center commonly run 4–6 weeks out, so book before you need to travel. Below: exactly who files under San Francisco, how to book the VFS appointment, the full 2026 fee table, what to bring, timelines, and where to get Indian-spec photos in the Bay Area. The [full nationwide process is in the main guide](/indian-passport-renewal-usa).
+## Which states file under San Francisco
+The Consulate General of India, San Francisco generally covers the Western US — Northern California, Oregon, Washington, Nevada, Idaho, Montana, Utah, Wyoming, Alaska and Hawaii among them.
 
-:::warn
-title: Verify before applying
-- Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
-:::
+Southern California is the classic trap. Los Angeles, Orange County and San Diego residents frequently assume that the nearest Indian consulate in California is theirs, and it often is not. Jurisdiction is assigned by your state and, in California's case, by region — check the boundary on the VFS USA site before paying, because the fee is not refunded when an application is filed in the wrong jurisdiction.
 
-## Which States Fall Under the San Francisco Indian Consulate?
-The Consulate General of India, San Francisco generally covers the Western US. Jurisdiction follows **the state you live in**, not the nearest city — and Southern California is the classic trap, since it commonly falls under a different consulate.
+## The Bay Area appointment problem
+Nowhere else in the country has this ratio of applicants to slots. Four to six weeks out is normal, and the window stretches further ahead of the summer and December travel peaks. Two things help: check in the early morning, when cancelled appointments return to the pool, and treat a booked slot as fixed, because rebooking means going to the back of the same queue.
 
-| Typically under San Francisco | Usually a different consulate |
-| --- | --- |
-| Northern California | Southern California (verify — often another post) |
-| Oregon, Washington | Texas, Oklahoma → Houston |
-| Nevada, Idaho, Montana | Georgia, Florida → Atlanta |
-| Wyoming, Utah, Colorado | New York, New Jersey → New York |
-| Alaska, Hawaii | Illinois, Michigan, Ohio → Chicago |
+If you have travel booked and cannot get a slot in time, look at the Tatkal route before assuming you have to change your flights.
 
-> Jurisdiction lists change. Confirm your exact state and region on the SF consulate and VFS USA sites before booking — applying at the wrong center means starting over.
-
-:::info
-title: Confirm your jurisdiction first
-- VFS routes by **the state you live in**, not the closest city
-- Northern vs Southern California can differ — verify which consulate covers your address
-- The authoritative state list is on the SF consulate and VFS websites
-:::
-
-## How Do You Book a VFS Appointment in San Francisco?
-Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) after completing your Passport Seva application. Choose the **San Francisco Passport Seva Center**, select a slot, and print the confirmation. Walk-ins are not accepted.
-
-:::tip
-- The Bay Area is high-demand — book **4–6 weeks ahead** and check mornings for released slots
-- Get **Indian-spec photos** from a South-Asian photo shop (Fremont, Sunnyvale, Artesia) — not a US drugstore
-- Build in travel time; confirm parking near the center in advance
-:::
-
-## What Does Indian Passport Renewal Cost in San Francisco?
-The same national VFS USA fee schedule applies — about **$146 all-in** for a normal 36-page booklet. Fees below were last verified July 2026; confirm on VFS before paying.
-
-| Item | 36-page booklet | 60-page (jumbo) |
-| --- | --- | --- |
-| Passport booklet fee (normal) | $125 | $175 |
-| Tatkal surcharge (if chosen) | +$125 | +$125 |
-| ICWF contribution | $2 | $2 |
-| VFS Global service charge | $19 | $19 |
-| **Total — normal** | **$146** | **$196** |
-| **Total — Tatkal** | **$271** | **$321** |
-
-> Return courier is extra and online payment adds a ~3.75% convenience charge. Lost, damaged, and minor booklets are priced differently.
-
-## What Documents Do You Need to Bring?
-Identical to the national checklist — originals **plus** self-attested photocopies of each. The full situation-by-situation list (name change, F1/OPT, dependents, lost passport) is on the [documents page](/indian-passport-renewal-usa/documents).
-
-:::warn
-- **Confirm the center address on the official VFS site the week of your appointment**
-- Bring your **printed ARN form, fee receipt, and appointment letter**
-- Carry proof of **valid US status** (I-797/I-94, Green Card, F1 + I-20)
-:::
-
-## How Long Does Indian Passport Renewal Take in San Francisco?
-Processing follows the [national processing times](/indian-passport-renewal-usa/processing-time) — about **6–12 weeks normal**, **3–5 weeks Tatkal**, measured from VFS submission to delivery by speed post. Add the appointment lead time on the front, which in the Bay Area is often the longest single wait.
-
-| Stage | Typical time (SFO) |
-| --- | --- |
-| Getting a VFS appointment slot | 4–6 weeks |
-| VFS document intake to dispatch | 1–2 weeks |
-| Passport processing (normal) | 6–12 weeks total |
-| Passport processing (Tatkal) | 3–5 weeks total |
-| Speed post return delivery | 3–7 days |
-
-## How This Connects to Your Other Filings
-Time the renewal around what comes next. If you need **US visa stamping** in India — for example [H-1B stamping after selection](/h1b-visa-stamping-after-selection) — renew first, since consulates expect at least 6 months of passport validity and your old passport with the valid visa travels alongside the new booklet. Bay Area families applying for an [OCI card](/oci) should note the passport number on file changes with a new booklet, and anyone filing [I-485 adjustment of status](/i485-documents-checklist) needs a current passport in the evidence set.
+## Indian-spec photos in the Bay Area
+Photo studios in Fremont, Sunnyvale and along Santa Clara's El Camino corridor shoot the 2"x2" white-background Indian format daily. US drugstore passport booths use the American crop, and those photos are routinely rejected at the counter — a cheap mistake that costs an appointment.
 
 ## Frequently asked questions
 
-### How long does Indian passport renewal take in San Francisco?
-Typically 6–12 weeks for normal processing and 3–5 weeks for Tatkal from VFS submission, plus 4–6 weeks to get an appointment slot in the Bay Area. Plan 3–4 months ahead of any travel.
+### I live in Los Angeles. Do I file in San Francisco?
+Often not. Southern California commonly falls outside the San Francisco jurisdiction, and this is the single most common filing error on the West Coast. Confirm your county against the current VFS list.
 
-### How much does Indian passport renewal cost in San Francisco?
-About $146 total for a normal 36-page booklet ($125 fee + $19 VFS service + $2 ICWF), or about $271 with Tatkal. A 60-page jumbo booklet is $196 normal / $321 Tatkal, per VFS USA as of July 2026.
+### I have a flight in three weeks and no slot. What are my options?
+Tatkal shortens processing once filed, but it does not create an appointment. Keep checking for morning cancellations, and if nothing opens, speak to VFS about emergency provisions before rebooking travel.
 
-### I live in Southern California — is that San Francisco's jurisdiction?
-Not always. Parts of Southern California and the Southwest can fall under a different consulate. Verify your state and region on the VFS USA site before booking, since applying at the wrong center means starting over.
-
-### Which states does the San Francisco Indian consulate cover?
-Generally Northern California, Oregon, Washington, Nevada, Idaho, Montana, Wyoming, Utah, Colorado, Alaska, and Hawaii. Texas routes to Houston, the Southeast to Atlanta, the Northeast to New York, and the Midwest to Chicago. Always confirm on the official list.
-
-### Are Bay Area VFS appointments hard to get?
-They can be, given the large Indian tech community. Book 4–6 weeks ahead and watch for released morning slots.
-
-### Where do I get Indian-spec photos in the Bay Area?
-South-Asian photo shops in Fremont, Sunnyvale, and similar areas know the 2"x2" white-background format. US drugstore passport photos use the wrong background and framing and are commonly rejected.
-
-### Can I renew my Indian passport in San Francisco if it has already expired?
-Yes. There is no deadline to renew an expired Indian passport, and the same reissue process applies. You just cannot travel internationally until the new booklet arrives.
-
-### Do I need to visit the VFS center in person?
-Yes. Walk-ins are not accepted and the appointment is mandatory, because VFS captures biometrics and verifies your original documents in person.
-
-## The bottom line
-San Francisco renewals are the standard national process filed under the Western consulate. Confirm your state (Northern vs Southern California matters), book the in-demand VFS slot early, budget about $146 normal or $271 Tatkal, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for the rest.
-
-:::cta
-title: Stay ahead of your renewal
-body: Explore more NRI guides, or sign up for monthly visa bulletin updates and passport renewal alerts.
-button: Browse NRI guides
-href: /topics
-:::`,
+### I am on H-1B and my I-797 is being extended. Should I wait?
+You submit proof of valid US status at the appointment. If your current status document is still valid on the day you file, you do not need to wait for the new one to arrive — but carry both if you have them.`,
   },
   {
     slug: "houston-texas",
@@ -581,68 +418,32 @@ href: /topics
     excerpt:
       "Renewing your Indian passport in Houston — the VFS Global center, the Consulate jurisdiction it serves, and how to book and apply from Texas and the South.",
     date: "2026-06-14",
-    content: `If you live in Texas or the south-central US, your Indian passport renewal runs through the **Consulate General of India, Houston** and its VFS Global Passport Seva Center. The steps are the same nationwide; you just file under Houston's jurisdiction. This page covers the Houston-specific bits — the [full process is in the main guide](/indian-passport-renewal-usa).
+    content: `Houston serves the largest Indian community in the South, and its VFS Global Passport Seva Center covers Texas and much of the south-central United States. The national process — application on Passport Seva, payment, appointment, biometrics — does not change here; [the main guide walks through it](/indian-passport-renewal-usa). This page is the Houston-specific layer.
 
-:::warn
-title: Verify before applying
-- Official sources: [passportindia.gov.in](https://passportindia.gov.in) · [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa) · your consulate jurisdiction page
-:::
+## Which states file under Houston
+The Consulate General of India, Houston generally holds jurisdiction for Texas, Oklahoma, Arkansas, Louisiana, Mississippi, Alabama, Tennessee, New Mexico and Arizona, among others in the region.
 
-:::summary
-Houston's consulate covers Texas and much of the **south-central US**. Complete your application on **Passport Seva/GPSP**, then follow the **VFS portal instructions for payment and appointment** at the Houston center, and submit in person. Confirm the current address/hours on the **official VFS site** before you go.
-:::
+The frequent mix-up is with Atlanta. Several Southeastern states that feel closer to Houston than to New York actually file through the Atlanta consulate, and applicants in Alabama and Tennessee in particular should check rather than assume. Jurisdiction is determined by your state of residence and is listed on the VFS USA site.
 
-## Who files under Houston
-The Consulate General of India, Houston generally handles jurisdiction for Texas and neighboring states — commonly including Texas, Oklahoma, Arkansas, Louisiana, Mississippi, Alabama, Tennessee, New Mexico, Arizona, Oklahoma, and others in the region.
+## Lead time from Texas
+DFW, Houston and Austin between them feed a very large volume of applications into one centre. Three to six weeks ahead is a sensible booking window, stretching further before the December holidays and the summer travel season. Applicants driving in from Dallas or Austin should also allow for the fact that a missed slot means repeating a long journey, not a short one.
 
-:::info
-title: Confirm your jurisdiction first
-- VFS routes by **the state you live in**, not the closest city
-- Some Southeastern states fall under the Atlanta consulate, not Houston — check the list
-- The authoritative state list is on the Houston consulate and VFS websites
-:::
+## Indian-spec photos in Houston
+The Hillcroft Avenue corridor — the city-designated Mahatma Gandhi District — has studios and grocery stores that produce the 2"x2" Indian format correctly and cheaply. Photos from a US pharmacy booth use a different crop and are commonly refused at submission.
 
-## Booking the Houston VFS center
-Book online at [visa.vfsglobal.com/usa](https://visa.vfsglobal.com/usa). Choose the **Houston Passport Seva Center**, select a slot, and print the confirmation.
-
-:::tip
-- Book **3–6 weeks ahead** — Houston serves a large Indian community and slots fill fast
-- Get **Indian-spec photos** from a South-Asian photo shop (Hillcroft / Mahatma Gandhi District) — not a US drugstore
-- Confirm parking and arrive 10–15 minutes early
-:::
-
-## What to bring
-Identical to the national checklist — originals **plus** self-attested photocopies of each. The situation-by-situation list (name change, F1/OPT, dependents, lost passport) is on the [documents page](/indian-passport-renewal-usa/documents).
-
-:::warn
-- **Confirm the center address on the official VFS site the week of your appointment**
-- Bring your **printed ARN form, fee receipt, and appointment letter**
-- Carry proof of **valid US status** (I-797/I-94, Green Card, F1 + I-20)
-:::
-
-## Timeline from Houston
-Processing follows the [national processing times](/indian-passport-renewal-usa/processing-time) — about **6–12 weeks normal**, **3–5 weeks Tatkal**. The new passport returns by speed post.
+## On the day
+Confirm the centre's address and hours on the official VFS site in the week of your appointment, and plan parking in advance. Bring the printed confirmation rather than relying on a phone screen.
 
 ## Frequently asked questions
 
-### I live in Georgia/Florida — do I use Houston?
-Probably not — much of the Southeast falls under the Atlanta consulate. Verify your state on the VFS USA site before booking.
+### I live in Dallas or Austin. Do I still file through Houston?
+Yes. The whole of Texas falls under the Houston consulate, so the appointment is in Houston regardless of where in the state you live.
 
-### Where do I get Indian-spec photos in Houston?
-South-Asian photo shops around the Hillcroft / Mahatma Gandhi District know the 2"x2" white-background format.
+### Is Tatkal available at the Houston centre?
+Tatkal is a processing category rather than a city-level service, so eligibility and cost are the same here as anywhere in the US. Check the current criteria before selecting it.
 
-### Is the process different in Texas?
-No — it's the same national VFS process; only the jurisdiction and center differ. Follow the [main guide](/indian-passport-renewal-usa).
-
-## The bottom line
-Houston renewals are the standard national process filed under the south-central consulate. Confirm your state isn't actually Atlanta's, book the VFS slot early, bring Indian-spec photos and full photocopies, and follow the [main guide](/indian-passport-renewal-usa) for everything else.
-
-:::cta
-title: Stay ahead of your renewal
-body: Explore more NRI guides, or sign up for monthly visa bulletin updates and passport renewal alerts.
-button: Browse NRI guides
-href: /topics
-:::`,
+### My family and I all need renewals. Do we book separately?
+Each applicant needs their own application and their own appointment slot. Families usually try to book consecutive slots on the same morning, which is easier to do the further ahead you look.`,
   },
 
   /* ------------------------- CONTENT PAGES ------------------------- */
@@ -887,10 +688,19 @@ href: /topics
   },
 ];
 
+/**
+ * The fee/timeline snapshot renders on the hub only. It used to render on
+ * every page in the cluster, which put the same ~190-word block on all seven
+ * URLs and made them read as near-duplicates of each other. /processing-time
+ * states the same timelines in its own prose, so it does not need the table as
+ * well — that one block was 18% of that page's words.
+ */
+const FEE_SNAPSHOT_SLUGS = new Set([""]);
+
 export const clusterPages: ClusterPage[] = rawPages.map((p) => ({
   ...p,
   readingTime: computeReadingTime(p.content),
-  feeSnapshot: passportFeeSnapshot,
+  feeSnapshot: FEE_SNAPSHOT_SLUGS.has(p.slug) ? passportFeeSnapshot : undefined,
 }));
 
 export const clusterHub: ClusterPage = clusterPages.find(

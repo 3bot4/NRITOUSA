@@ -156,12 +156,8 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
               <ArticleBody content={page.content} />
 
               <div className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
-                <strong className="font-semibold text-ink-700">
-                  A quick note:
-                </strong>{" "}
-                This guide is educational and reflects general information, not
-                personalized legal or immigration advice. Consular rules, fees,
-                and VFS center details change — always confirm on the official{" "}
+                Educational information, not legal advice. Consular rules, fees and
+                VFS center details change — confirm on{" "}
                 <a
                   href="https://passportindia.gov.in"
                   className="text-brand-600 underline"
@@ -179,7 +175,7 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
                 >
                   VFS Global
                 </a>{" "}
-                sites before applying.
+                before you apply.
               </div>
 
               {!isHub && (
@@ -231,9 +227,6 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
                   <h3 className="mt-1 font-semibold text-ink-900 group-hover:text-brand-700">
                     {p.navLabel}
                   </h3>
-                  <p className="mt-1.5 text-sm text-ink-500 line-clamp-2">
-                    {p.excerpt}
-                  </p>
                 </Link>
               ))}
             </div>

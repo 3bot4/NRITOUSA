@@ -72,7 +72,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Processing Times", href: "/tools/processing-times" },
       { label: "Flight Price Guide", href: "/tools/flight-price-guide" },
       { label: "FBAR / FATCA Checker", href: "/tools/fbar-fatca-checker" },
-      { label: "Calculators", href: "/calculators" },
+      { label: "Calculators", href: "/tools" },
       { label: "IUL vs 401(k) article", href: "/articles/iul-vs-401k-honest-comparison" },
       { label: "Resources", href: "/resources" },
     ],

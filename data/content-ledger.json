@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-21",
+  "updated": "2026-09-29",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -45,6 +45,96 @@
       "opened": "2026-09-16",
       "nextStep": "Fill the four 'Pending' rows in the 'Our record on this call' table on /visa-bulletin/october-2026-predictions from the published bulletin; flip Eb2OctoberOutlook's dashed prediction to the actual value; update the Sept 15 status paragraph",
       "evidence": "src/lib/visaBulletinOctober2026.test.ts"
+    },
+    {
+      "id": "five-visitor-insurance-calculators-share-one",
+      "title": "Five visitor-insurance calculators share one engine UI (19-39% overlap)",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-09-29",
+      "nextStep": "Give each tool its own toolHubContent entry (ToolIntro/ToolDeepDive) so unique copy outweighs the shared form/result chrome — do NOT trim the insurance compliance caveats",
+      "evidence": "post-fix audit: deductible-coinsurance <> hospital-bill 39%, <> policy-maximum 39%, <> network-cost 38%"
+    },
+    {
+      "id": "indian-population-state-pages-are-72",
+      "title": "Indian population state pages are 72% identical to each other",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Move the 361w methodology + 142w verification note to the /indian-population-in-usa pillar; give each state metros, employers, visa mix, community density",
+      "evidence": "node scratchpad overlap audit: 11 pages, every pair 57-62% editorial overlap",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "passport-city-pages-are-80-the",
+      "title": "Passport city pages are ~80% the national guide",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "City pages keep VFS address/hours/jurisdiction/slot patterns only; fees + checklist live on the hub and /documents",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "calculators-is-91-contained-in-tools",
+      "title": "/calculators is 91% contained in /tools",
+      "area": "content",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Merge or redirect one hub; /calculators has almost no unique copy (458w, 54% of it site chrome)",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "visitor-insurance-calculator-ui-renders-in",
+      "title": "Visitor insurance calculator UI renders in full on the how-much-coverage guide",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Guide should link to the tool, or embed a cut-down widget without the 11-scenario library",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "two-competing-uscis-processing-time-tools",
+      "title": "Two competing USCIS processing-time tools overlap 47%",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Fold /tools/uscis-processing-delay-checker into /tools/processing-times, or reduce it to the inquiry-eligibility step",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "15ca-15cb-cluster-shares-one-identical",
+      "title": "15CA/15CB cluster shares one identical fast-answer block across 5 pages",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Scope each fast-answer to that page's own question; grow the unique middle",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "itr-2-and-itr-3-nri",
+      "title": "ITR-2 and ITR-3 NRI pages overlap 41%",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-09-29",
+      "nextStep": "Lead with the choose-your-form decision, then commit each page to one form's specifics",
+      "resolved": "2026-09-29"
+    },
+    {
+      "id": "395w-author-bio-3-stacked-disclaimers",
+      "title": "395w author bio + 3 stacked disclaimers repeat on 85-116 pages each",
+      "area": "content",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-09-29",
+      "nextStep": "Shorten bio to a byline + link and collapse the three disclaimers into one; this alone clears /uscis/forms, /h1b, /green-card and India-visa families off the duplicate radar"
     },
     {
       "id": "wrong-federal-register-citation-for-proclamation",

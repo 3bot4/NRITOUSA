@@ -128,7 +128,7 @@ export default function SendMoneyToIndiaPage() {
               eyebrow="Calculator"
               title="Start with the true cost of your transfer"
               description="Most transfers lose money to the exchange-rate margin, not the upfront fee. See the net amount that actually lands in India after fees, spread, and TCS."
-              action={{ label: "All calculators", href: "/calculators" }}
+              action={{ label: "All calculators", href: "/tools" }}
             />
             <Link
               href={`/calculators/${remittance.slug}`}

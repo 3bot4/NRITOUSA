@@ -149,7 +149,7 @@ export default function CalculatorPage({
     },
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
-      { name: "Calculators", url: "/calculators" },
+      { name: "Tools & Calculators", url: "/tools" },
       { name: calc.label, url: `/calculators/${calc.slug}` },
     ]),
     // FAQPage — only when page-specific FAQs are actually rendered below.
@@ -174,7 +174,7 @@ export default function CalculatorPage({
         toolSlug={calc.slug}
         breadcrumb={[
           { label: "Home", href: "/" },
-          { label: "Calculators", href: "/calculators" },
+          { label: "Tools & Calculators", href: "/tools" },
           { label: calc.label },
         ]}
         icon={calc.icon}

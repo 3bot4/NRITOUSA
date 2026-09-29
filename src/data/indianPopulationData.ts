@@ -848,6 +848,12 @@ export interface StateChild {
   communityGroups: { group: string; note: string }[];
   /** Economic-contribution sentence (hedged). */
   economy: string;
+  /** Named Indian-American commercial / cultural corridors in this state. */
+  anchors: { place: string; note: string }[];
+  /** Who actually does the hiring in this state — named employers and industries. */
+  employers: string;
+  /** How this state treats a newcomer's money. Qualitative only: no rates, no thresholds. */
+  moneyNote: string;
   /** Verified 2020-vs-2010 Census snapshot for this state. See {@link CENSUS_STATE_METHODOLOGY}. */
   census: CensusStateSnapshot;
 }
@@ -886,6 +892,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Gujarati", note: "Business and hospitality across the state." },
     ],
     economy: "Indian Americans in California are heavily represented in senior tech, startups, medicine, and business, so their local economic contribution is significant — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Pioneer Boulevard, Artesia", note: "Southern California's Little India — a few blocks of saree houses, jewellers, and sweet shops that serve the whole LA basin." },
+      { place: "Fremont and Union City", note: "Among the highest Indian shares of any US city; groceries, temples, and weekend dance and language classes sit inside the neighbourhoods people already live in." },
+      { place: "El Camino Real, Sunnyvale to Santa Clara", note: "A dense strip of South Indian restaurants and grocery chains serving the Apple, Nvidia, and Google campuses." },
+    ],
+    employers:
+      "Hiring concentrates in Bay Area technology — Google, Apple, Meta, Nvidia, Intel, Cisco — plus the IT-services firms that staff them, Kaiser and the university hospital systems in medicine, and biotech clusters in South San Francisco and San Diego.",
+    moneyNote:
+      "California has the country's highest top-bracket state income tax and taxes long-term capital gains as ordinary income, which matters if you vest RSUs or sell Indian property while you are a California resident. Property tax rates are comparatively low and their growth is capped, but Bay Area purchase prices are the highest in the US.",
     census: { count2020: 830259, count2010: 528176, pctOfState2020: "2.1%", growthLabel: "+57%", rankLabel: "#1", rankNote: "Largest total Asian-Indian-alone population of any U.S. state." },
   },
   TX: {
@@ -906,6 +921,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families, especially Houston/DFW." },
     ],
     economy: "With heavy representation in IT, energy, healthcare, and small business, Indian Americans contribute significantly to the Texas economy, but exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Mahatma Gandhi District, Hillcroft Avenue, Houston", note: "A city-designated South Asian district and the largest concentration of Indian businesses in the South." },
+      { place: "MacArthur Boulevard, Irving", note: "Groceries, restaurants, and services built around the DFW consulting and IT-services workforce." },
+      { place: "Frisco and Plano", note: "The newer suburban cluster — supermarkets, tutoring centres, and some of the best-attended cricket grounds in the country." },
+    ],
+    employers:
+      "Work splits three ways: DFW technology and IT services (Toyota, AT&T, Capital One, TCS, Infosys, Cognizant), Houston energy and the Texas Medical Center, and Austin semiconductors and software at Samsung, Dell, Applied Materials, and Apple.",
+    moneyNote:
+      "Texas levies no state income tax, which is a large part of why families move here from California and the North-east. The trade-off is property tax among the highest rates in the country, so the saving shrinks once you buy — run both numbers on the same salary before assuming the move pays for itself.",
     census: { count2020: 480566, count2010: 245981, pctOfState2020: "1.65%", growthLabel: "+95%", rankLabel: "#2", rankNote: "Second-largest total count nationally; among the fastest-growing of the large states." },
   },
   NJ: {
@@ -927,6 +951,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families statewide." },
     ],
     economy: "New Jersey's Indian community is dense in pharma, finance, IT, medicine, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Oak Tree Road, Edison and Iselin", note: "The densest Indian commercial strip on the East Coast — groceries, jewellers, and restaurants along roughly a mile and a half of road." },
+      { place: "Newark Avenue, Jersey City", note: "India Square, the older of the state's two hubs, and still the centre of the Diwali and Holi street celebrations." },
+      { place: "Route 1 through North and South Brunswick", note: "Where much of the newer professional migration settled, within reach of the Princeton pharma corridor." },
+    ],
+    employers:
+      "Pharma and life sciences anchor the state — Johnson & Johnson, Merck, Bristol Myers Squibb, Novartis — alongside Manhattan finance commuting from Jersey City and Hoboken, and a large IT-services and telecom base around Route 1 and Parsippany.",
+    moneyNote:
+      "New Jersey has both a graduated state income tax and the highest average property tax bill in the country, and the two together are the main reason families compare Edison against Frisco or Bellevue. If you commute into Manhattan you also file a New York non-resident return — check you are claiming the resident credit so the same income is not taxed twice.",
     census: { count2020: 415342, count2010: 292256, pctOfState2020: "4.47%", growthLabel: "+42%", rankLabel: "#3 (highest share)", rankNote: "Third-largest total count, but the highest Indian share of any state's population (4.47%)." },
   },
   NY: {
@@ -947,6 +980,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "South Indian", note: "Tamil, Telugu, and Malayali communities across Queens and Long Island." },
     ],
     economy: "New York's Indian community spans finance, medicine, hospitality, and dense small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "74th Street, Jackson Heights, Queens", note: "The historic South Asian district of the East Coast, and still the widest range of Indian retail in one place anywhere in the US." },
+      { place: "Hicksville and Floral Park, Long Island", note: "Where much of the Queens community moved as families bought houses; groceries and temples now anchor both towns." },
+      { place: "Westchester and Rockland", note: "Northern-suburb clusters tied to the hospital systems and to Manhattan finance." },
+    ],
+    employers:
+      "New York work is finance and medicine first — the major banks, Mount Sinai, NewYork-Presbyterian, Northwell — plus a growing technology presence and a deep small-business and franchise base across the outer boroughs.",
+    moneyNote:
+      "New York State and New York City both levy income tax, so a Manhattan job with a city address is one of the highest combined tax situations in the country. Living in New Jersey or Connecticut and commuting changes that calculation, but you still file a New York non-resident return on the income you earn there.",
     census: { count2020: 387376, count2010: 313620, pctOfState2020: "1.92%", growthLabel: "+23%", rankLabel: "#4", rankNote: "Fourth-largest total count; slower growth than the newer tech-hub states." },
   },
   IL: {
@@ -967,6 +1009,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Punjabi", note: "Historic presence around Devon Avenue." },
     ],
     economy: "Indian Americans in Illinois are active in IT, healthcare, finance, and small business, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Devon Avenue, Chicago", note: "Signposted as Gandhi Marg — the Midwest's oldest Indian commercial street, and still where people drive in for groceries and gold." },
+      { place: "Naperville and Aurora", note: "The western-suburb centre of gravity: schools, temples, and a large second generation." },
+      { place: "Schaumburg and Hoffman Estates", note: "North-west suburban cluster tied to the consulting and telecom employers along the I-90 corridor." },
+    ],
+    employers:
+      "Consulting and finance in the Loop (the large accounting and strategy firms, CME, Citadel), healthcare across the Northwestern and Rush systems, pharma and medical devices at Abbott and AbbVie in the northern suburbs, and a substantial IT-services presence in the western corridor.",
+    moneyNote:
+      "Illinois taxes income at a single flat rate rather than a graduated one, which tends to favour higher earners relative to New Jersey or California. Property taxes in Cook and DuPage counties are high enough to reverse that for a family buying in the suburbs.",
     census: { count2020: 260055, count2010: 188328, pctOfState2020: "2.03%", growthLabel: "+38%", rankLabel: "#5", rankNote: "Fifth-largest total count nationally." },
   },
   WA: {
@@ -986,6 +1037,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Sizable professional community on the Eastside." },
     ],
     economy: "Washington's Indian community is concentrated in senior tech roles, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Crossroads and Factoria, Bellevue", note: "Eastside groceries, restaurants, and weekend classes within reach of the Microsoft and Amazon campuses." },
+      { place: "Redmond and Sammamish", note: "Newer family settlement chosen mostly for the schools; among the fastest-growing Indian populations in the country." },
+      { place: "Bothell and Renton", note: "Where the same jobs are bought at a lower entry price — increasingly common as Eastside housing has climbed." },
+    ],
+    employers:
+      "Almost everything routes through Microsoft and Amazon and their vendor and contract-staffing ecosystem, with Boeing, T-Mobile, Expedia, and a growing cloud-infrastructure presence filling in the rest.",
+    moneyNote:
+      "Washington has no state income tax, which is why a Seattle offer often nets more than a Bay Area one at the same headline salary. It does tax large capital gains above an annual threshold and has high sales tax, so the advantage is real but smaller than the zero-income-tax headline suggests.",
     census: { count2020: 140817, count2010: 61124, pctOfState2020: "1.83%", growthLabel: "+130%", rankLabel: "≈10th", rankNote: "Smaller total count than the top states, but the fastest 2010→2020 growth rate of this cluster — tech hiring drove more than a doubling in a decade." },
   },
   GA: {
@@ -1005,6 +1065,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Tamil", note: "Engineering and IT families across north Atlanta." },
     ],
     economy: "Indian Americans in Georgia are active in IT, hospitality, healthcare, and business, contributing significantly to the Atlanta-metro economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Global Mall and the Jimmy Carter Boulevard corridor, Norcross", note: "The metro's long-standing Indian retail concentration, north-east of the city." },
+      { place: "Alpharetta and Johns Creek", note: "Where the professional migration of the last two decades settled, chosen almost entirely for the school districts." },
+      { place: "Decatur and Clarkston", note: "An older and more mixed South Asian presence east of Atlanta." },
+    ],
+    employers:
+      "Atlanta runs on telecom, logistics, and payments — AT&T, Delta, UPS, Home Depot, NCR, and the payments cluster around Alpharetta that is large enough locally to be nicknamed Transaction Alley — plus the IT-services firms that staff them.",
+    moneyNote:
+      "Georgia's state income tax is moderate and has been moving toward a flat rate, and housing across the north-Atlanta suburbs is markedly cheaper than the coastal hubs people usually move from. That cost gap, more than any tax rule, is what shows up in the household budget after the move.",
     census: { count2020: 165895, count2010: 96116, pctOfState2020: "1.55%", growthLabel: "+73%", rankLabel: "#7", rankNote: "Seventh-largest total count, with growth well above the ~57% California/national-scale pace." },
   },
   FL: {
@@ -1024,6 +1093,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Malayali", note: "Healthcare and nursing families." },
     ],
     economy: "Florida's Indian community is active in healthcare, hospitality, business, and IT, contributing meaningfully to local economies — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "New Tampa and Wesley Chapel", note: "The fastest-growing Indian cluster in the state, tied to healthcare and IT employers along I-75." },
+      { place: "Orlando's south-west suburbs", note: "Hospitality, healthcare, and a growing simulation and technology sector near UCF." },
+      { place: "Broward and Palm Beach", note: "Older professional and business communities north of Miami." },
+    ],
+    employers:
+      "Healthcare systems employ more Indian professionals here than anything else — AdventHealth, HCA, BayCare — alongside hospitality and franchise ownership, finance relocating from the North-east, and a growing technology presence in Tampa and Orlando.",
+    moneyNote:
+      "Florida levies no state income tax and no estate tax, which is the main draw for people relocating from New York and New Jersey. Property insurance, not property tax, is the cost that surprises newcomers — premiums in coastal counties can exceed what the same family paid in state income tax elsewhere.",
     census: { count2020: 187236, count2010: 128735, pctOfState2020: "0.87%", growthLabel: "+45%", rankLabel: "#6", rankNote: "Sixth-largest total count, but the lowest share of state population among this cluster — Florida's overall population is simply much larger." },
   },
   VA: {
@@ -1043,6 +1121,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Sizable community across Fairfax and Loudoun." },
     ],
     economy: "Northern Virginia's Indian community is concentrated in tech, cybersecurity, and contracting, contributing significantly to the regional economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Lee Highway through Fairfax", note: "The long-standing Northern Virginia retail strip — groceries, restaurants, and services for the whole NoVA community." },
+      { place: "Ashburn and Herndon", note: "Loudoun County settlement built around the data-centre and contracting economy, and the schools." },
+      { place: "Chantilly and Centreville", note: "Dense, newer suburban clusters with their own temples and grocery anchors." },
+    ],
+    employers:
+      "Northern Virginia work is government contracting and cloud — Amazon Web Services, Booz Allen, Leidos, General Dynamics, Accenture Federal — plus the Loudoun County data-centre corridor that carries a large share of the world's internet traffic.",
+    moneyNote:
+      "Virginia's income tax is middling but its top bracket starts at a low income level, so most professional households pay the top rate. Security clearance is the real financial variable here: many of the best-paying contracting roles require US citizenship, which shapes career timing for families still in the green-card queue.",
     census: { count2020: 157635, count2010: 103916, pctOfState2020: "1.83%", growthLabel: "+52%", rankLabel: "≈8th", rankNote: "Essentially tied with Pennsylvania for 8th–9th nationally by total count (within a few hundred residents)." },
   },
   MD: {
@@ -1062,6 +1149,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "Punjabi", note: "Established community in the Baltimore-DC corridor." },
     ],
     economy: "Maryland's Indian community is strong in medicine, research, and IT, contributing significantly to the local economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Rockville Pike and Gaithersburg", note: "Montgomery County's Indian retail and restaurant spine, close to NIH and the biotech corridor." },
+      { place: "Germantown and Clarksburg", note: "Newer family settlement further up I-270, chosen for space and schools." },
+      { place: "Columbia and Ellicott City", note: "Between Baltimore and DC, with an established professional community of its own." },
+    ],
+    employers:
+      "Medicine and research dominate — NIH, Johns Hopkins, the University of Maryland systems, and the biotech corridor along I-270 — with federal agencies, defence contractors, and the cybersecurity employers near Fort Meade making up much of the rest.",
+    moneyNote:
+      "Maryland is one of the few states where counties levy their own income tax on top of the state rate, so a Montgomery County address costs more than the state table suggests. It also has both an estate tax and an inheritance tax, which is worth knowing if you expect to inherit from, or leave assets to, family in another state or in India.",
     census: { count2020: 104617, count2010: 79051, pctOfState2020: "1.69%", growthLabel: "+32%", rankLabel: "≈14th", rankNote: "Maryland's own total count is more modest nationally than its 'high concentration' reputation suggests — it ranks behind Pennsylvania, Washington, Massachusetts, Michigan, and North Carolina by raw count. Its outsized profile comes from being one half of the combined Washington-DC metro (with Northern Virginia next door) and from a dense, high-income cluster around Montgomery County, not from Maryland alone having one of the largest state totals." },
   },
   MA: {
@@ -1081,6 +1177,15 @@ export const stateChild: Record<string, StateChild> = {
       { group: "North Indian / Hindi-belt", note: "Growing professional community in the suburbs." },
     ],
     economy: "Massachusetts' Indian community is concentrated in biotech, academia, medicine, and software, contributing significantly to the innovation economy — though exact tax contribution by state is not published as a simple official number.",
+    anchors: [
+      { place: "Route 9 through Shrewsbury and Westborough", note: "Central Massachusetts' Indian commercial strip, serving the Worcester and MetroWest communities." },
+      { place: "Burlington and Woburn", note: "North-of-Boston clusters tied to the Route 128 technology and biotech employers." },
+      { place: "Cambridge and Somerville", note: "Student and postdoc heavy, turning over every few years with the academic calendar." },
+    ],
+    employers:
+      "Biotech and pharma lead — Moderna, Vertex, Takeda, Biogen and the wider Kendall Square cluster — alongside the teaching hospitals, the universities themselves as employers, and a deep-tech and robotics base along Route 128.",
+    moneyNote:
+      "Massachusetts taxes income at a flat rate with an additional surtax on income above an annual threshold, which now catches senior engineering and medical households that used to sit under it. Rents in Cambridge and Somerville are among the highest in the country, and many families move out to the Route 9 or 128 suburbs once children arrive.",
     census: { count2020: 125534, count2010: 77177, pctOfState2020: "1.79%", growthLabel: "+63%", rankLabel: "≈11th", rankNote: "Just outside the top 10 by total count nationally, but a high per-capita concentration in the Boston research corridor." },
   },
 };

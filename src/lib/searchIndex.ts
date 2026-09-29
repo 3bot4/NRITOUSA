@@ -336,15 +336,6 @@ const SUPPORTING: SearchItem[] = [
 
   // ---- Section indexes --------------------------------------------------
   {
-    title: "All Calculators",
-    description:
-      "Every cross-border calculator: RNOR residency, India property gains, 401(k) cash-out, backdoor Roth, rent vs buy and more.",
-    href: "/calculators",
-    type: "Hub",
-    priority: 0,
-    keywords: "all calculators index list cross border nri immigrant tools",
-  },
-  {
     title: "All Guides by Topic",
     description:
       "Browse every NRI to USA guide by topic — finance, taxes, credit, housing, cars, investing, immigration and community.",

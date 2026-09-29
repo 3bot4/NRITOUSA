@@ -3,17 +3,21 @@ import Link from "next/link";
 /** Anchor id the compact top disclaimer scroll-links to. */
 export const FULL_DISCLAIMER_ID = "full-disclaimer";
 
+/*
+ * Kept deliberately short. The previous version ran ~130 words of intro plus
+ * seven bullets that restated it ("not legal advice", "not tax advice", "not
+ * financial advice", "not immigration advice"), and it renders on ~116 tool
+ * pages — enough identical text to make unrelated calculators read as
+ * near-duplicates of each other. Substance is unchanged: educational only,
+ * things change, verify, get advice.
+ */
 const DEFAULT_INTRO =
-  "This tool is for general education and planning only. It does not replace advice from a CPA, attorney, financial advisor, USCIS, IRS, State Department, or other official source. Rules, limits, forms, fees, dates, and government processing information may change. Always verify before filing, investing, or making immigration, tax, or financial decisions.";
+  "Educational and planning use only. This is not legal, tax, financial, or immigration advice, and it does not replace a CPA, an attorney, or the relevant agency.";
 
 const POINTS = [
-  "For educational use only — not legal advice.",
-  "Not tax advice.",
-  "Not financial advice.",
-  "Not immigration advice.",
-  "Numbers, forms, fees, dates, rules, and limits may change at any time.",
-  "Always verify with official sources before acting.",
-  "Consult a CPA, attorney, financial advisor, or the relevant official agency (USCIS, IRS, State Department) when it matters to your situation.",
+  "Numbers, forms, fees, dates, rules, and limits change at any time.",
+  "Verify with the official source before you file, pay, or invest.",
+  "Consult a CPA, attorney, financial advisor, or the relevant agency (USCIS, IRS, State Department) when it matters to your situation.",
 ];
 
 /**

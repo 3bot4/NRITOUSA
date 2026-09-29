@@ -116,7 +116,6 @@ export const pagesEntries: SitemapEntry[] = [
   e("/", 1, "weekly"),
   e("/topics", 0.9, "weekly"),
   e("/tools", 0.9, "weekly"),
-  e("/calculators", 0.8, "monthly"),
   e("/education", 0.9, "weekly"),
   e("/education/articles", 0.8, "weekly"),
   e("/resources", 0.7, "monthly"),
