@@ -7,13 +7,16 @@
  * processing-times.json, i485-inventory/current.json). The fields marked
  * MANUALLY MAINTAINED must be updated each month alongside those files.
  *
- * September 2026 status: EB-1 India holds at Oct 15, 2022 (unchanged since
- * July); EB-2 India is Unavailable for the rest of FY 2026; EB-3 India holds
- * at Jan 1, 2014 (unchanged since July); EB-5 India Unreserved is Unavailable.
- * EB-4 advanced two months to Dec 15, 2022 worldwide — the only employment
- * Final Action movement in the September bulletin. USCIS's latest posted
- * determination (August 2026) directs employment-based filers to Final Action
- * Dates; the September determination was not yet posted on 2026-08-22.
+ * October 2026 status (first bulletin of FY 2027): EB-1 India advances about
+ * 3.5 months to Feb 1, 2023 (from Oct 15, 2022) and its Dates for Filing jumps
+ * to Jul 1, 2024 (from Dec 1, 2023); EB-2 India re-opens at Nov 1, 2013 after
+ * three months Unavailable, Dates for Filing unchanged at Jan 15, 2015; EB-3
+ * India holds at Jan 1, 2014 (Dates for Filing Jan 15, 2015); EB-5 India
+ * Unreserved re-opens at Dec 1, 2023 and the set-asides stay Current. Rest of
+ * World retrogressed (EB-2 to Jan 1, 2025; EB-3 to May 15, 2024) to hold
+ * issuance within FY 2027 limits. USCIS posted its October 2026 determination:
+ * Dates for Filing applies to BOTH employment-based and family-sponsored
+ * adjustment of status.
  */
 
 import currentBulletin from "../../data/visa-bulletin/current.json";
@@ -44,13 +47,14 @@ const _eb3 = currentBulletin.categories.eb3.india;
  * Movement labels are MANUALLY MAINTAINED and must reflect the verified
  * difference vs. the previous official bulletin. We never compute or invent a
  * movement amount unless previousFinalActionDate / previousDatesForFiling are
- * present AND verified. September 2026 vs. August 2026: EB-1 unchanged (Oct
- * 15, 2022 both months); EB-2 India remains Unavailable; EB-3 unchanged (Jan
- * 1, 2014 both months) — no India category moved this bulletin.
+ * present AND verified. October 2026 vs. September 2026: EB-1 advanced (Oct 15,
+ * 2022 → Feb 1, 2023); EB-2 India returned from Unavailable to a posted Nov 1,
+ * 2013, so there is no dated September value to measure against; EB-3 unchanged
+ * (Jan 1, 2014 both months).
  */
 
 /**
- * "August 2026" — the bulletin the `previous*` fields below are measured
+ * "September 2026" — the bulletin the `previous*` fields below are measured
  * against, derived from the current bulletin month so it can never drift out
  * of sync the way a hardcoded month name did.
  */
@@ -63,16 +67,16 @@ export const visaBulletinIndia = {
   month: currentBulletin.bulletinMonth,
   year: currentBulletin.bulletinMonth.split("-")[0],
   lastUpdated: currentBulletin.lastUpdated,
-  lastVerified: "September 2026",
+  lastVerified: "October 2026",
   officialSourceName: "U.S. Department of State Visa Bulletin",
   officialSourceUrl: currentBulletin.source,
   sourceNote:
-    "September 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
+    "October 2026 Department of State Visa Bulletin data. Verify all dates against the official DOS Visa Bulletin before filing or making immigration decisions.",
   /* The chart-determination sentence is DERIVED, never typed: USCIS posts its
    * determination days after DOS publishes, so a hand-written "Pending" goes
    * false without anything editing this file. */
   retrogressionNote:
-    "September 2026 update: no India employment category moved. EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the rest of FY 2026. EB-3 India holds at Jan 1, 2014 (unchanged from August). EB-5 India Unreserved is Unavailable. EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. EB-4 advanced two months to Dec 15, 2022 for every country. " +
+    "October 2026 update: the first bulletin of FY 2027 brings a fresh annual supply of visa numbers. EB-2 India re-opens at Nov 1, 2013 after three months Unavailable, with Dates for Filing unchanged at Jan 15, 2015. EB-1 India advances about 3.5 months to Feb 1, 2023, and EB-1 India Dates for Filing jumps to Jul 1, 2024. EB-3 India holds at Jan 1, 2014. EB-5 India Unreserved re-opens at Dec 1, 2023; the EB-5 set-asides (Rural, High Unemployment, Infrastructure) remain Current. Rest of World retrogressed — EB-2 to Jan 1, 2025 and EB-3 to May 15, 2024 — which DOS says is necessary to keep issuance within FY 2027 quarterly and annual limits. " +
     `${getApplicableChart().statusNote} ` +
     "Confirm at uscis.gov/visabulletininfo. Always verify with the official Department of State Visa Bulletin.",
 
@@ -80,32 +84,33 @@ export const visaBulletinIndia = {
     EB1: {
       currentFinalActionDate: _eb1.fad,
       currentDatesForFiling: _eb1.dff,
-      // Verified August 2026 Final Action Date (official DOS bulletin) — unchanged in September.
+      // Verified September 2026 values (official DOS bulletin); both charts advanced in October.
       previousFinalActionDate: "2022-10-15",
-      previousDatesForFiling: null,
-      movementDirection: "unchanged" as MovementDirection,
-      finalActionMovementLabel: "No change vs. last bulletin",
-      datesForFilingMovementLabel: "Verify vs. last bulletin",
+      previousDatesForFiling: "2023-12-01",
+      movementDirection: "forward" as MovementDirection,
+      finalActionMovementLabel: "Advanced about 3.5 months",
+      datesForFilingMovementLabel: "Advanced about 7 months vs. last bulletin",
     },
     EB2: {
       currentFinalActionDate: _eb2.fad,
       currentDatesForFiling: _eb2.dff,
-      // August and September 2026 are both Unavailable ("U") — no dated "previous" value.
+      // September 2026 was Unavailable ("U"), so there is no dated "previous" Final
+      // Action value to measure the October re-opening against.
       previousFinalActionDate: null,
-      previousDatesForFiling: null,
-      movementDirection: "unavailable" as MovementDirection,
-      finalActionMovementLabel: "Unavailable this month",
-      datesForFilingMovementLabel: "Verify vs. last bulletin",
+      previousDatesForFiling: "2015-01-15",
+      movementDirection: "forward" as MovementDirection,
+      finalActionMovementLabel: "Re-opened at Nov 1, 2013 after being Unavailable",
+      datesForFilingMovementLabel: "No change vs. last bulletin",
     },
     EB3: {
       currentFinalActionDate: _eb3.fad,
       currentDatesForFiling: _eb3.dff,
-      // Verified August 2026 Final Action Date (official DOS bulletin) — unchanged in September.
+      // Verified September 2026 values (official DOS bulletin) — both charts unchanged in October.
       previousFinalActionDate: "2014-01-01",
-      previousDatesForFiling: null,
+      previousDatesForFiling: "2015-01-15",
       movementDirection: "unchanged" as MovementDirection,
       finalActionMovementLabel: "No change vs. last bulletin",
-      datesForFilingMovementLabel: "Verify vs. last bulletin",
+      datesForFilingMovementLabel: "No change vs. last bulletin",
     },
   },
 } as const;

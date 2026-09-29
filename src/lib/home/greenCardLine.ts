@@ -131,5 +131,5 @@ export const h1bOddsDisplay: string = (() => {
   return `~${Math.round((latest.selected / latest.registrations) * 100)}%`;
 })();
 
-/** "September 2026" — the bulletin month the card's cutoffs come from. */
+/** "October 2026" — the bulletin month the card's cutoffs come from. */
 export const greenCardLineMonth: string = formatBulletinMonth(bulletin.month);

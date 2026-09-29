@@ -47,7 +47,7 @@ import {
 
 const PATH = "/visa-bulletin/october-2026-predictions";
 const PUBLISHED = "2026-08-19";
-const UPDATED = "2026-09-15"; // Removed the unsourceable FY2026 EB-2 issuance estimate; October bulletin still unpublished
+const UPDATED = "2026-09-29"; // October 2026 bulletin published — scored the four pre-committed predictions against it
 const TITLE =
   "October 2026 Visa Bulletin Predictions: EB-2 India Set for Its Largest October Jump in Four Years";
 const SEO_TITLE =
@@ -82,7 +82,7 @@ const FAQS: FaqItem[] = [
   {
     question: "When will the October 2026 Visa Bulletin be released?",
     answer:
-      "The Department of State typically publishes each month’s bulletin in the second week of the preceding month, so expect the October 2026 bulletin around the second week of September 2026. Release has occasionally slipped into the third week. USCIS then announces within a few days whether it will accept Dates for Filing or Final Action Dates for adjustment of status filings.",
+      "It is already out. The Department of State published the October 2026 Visa Bulletin — the first edition of FY 2027 — in September 2026, and USCIS has since confirmed that applicants may use the Dates for Filing chart for both employment-based and family-sponsored adjustment of status in October 2026. DOS typically publishes each month’s bulletin in the second week of the preceding month, though release has slipped into the third and fourth weeks during FY 2026.",
   },
   {
     question: "Does the October reset mean I get my green card sooner?",
@@ -319,14 +319,19 @@ export default function October2026PredictionsPage() {
           on <span className="fig">May 22, 2026</span>, and the category showed{" "}
           <span className="pill pill-bad">Unavailable</span> from the July 2026
           bulletin — India&rsquo;s annual visa numbers had run out. On October 1,
-          FY2027 numbers reset, and DOS has said it is <strong>likely</strong>{" "}
-          EB-2 India will advance to at least{" "}
+          FY2027 numbers reset, and DOS had said it was <strong>likely</strong>{" "}
+          EB-2 India would advance to at least{" "}
           <span className="fig">{longDate(PREDICTED_FAD)}</span> — while warning
-          the outcome is conditional. Measured against last October&rsquo;s date
-          ({lastOctFad}), that would be a{" "}
-          <span className="fig">{predictedMove} months</span>, the largest October
-          jump for EB-2 India in four years. The reset restores availability; it
-          does not shrink the queue.
+          the outcome was conditional on demand and the FY2027 annual limit.{" "}
+          <strong>
+            The October 2026 bulletin has now published: EB-2 India re-opened at{" "}
+            <span className="fig">{eb2.fad}</span>
+          </strong>{" "}
+          — availability returned, but roughly 8.5 months short of the date DOS
+          flagged as likely, and behind last October&rsquo;s {lastOctFad}. Dates
+          for Filing held at <span className="fig">{eb2.dff}</span>. We score
+          that call in full below. The reset restores availability; it does not
+          shrink the queue.
         </p>
 
         <div className="quote">
@@ -366,7 +371,7 @@ export default function October2026PredictionsPage() {
         </div>
 
         <h2>EB-2 India Final Action Date — the whole story in one chart</h2>
-        <Eb2OctoberOutlook className="!max-w-full" />
+        <Eb2OctoberOutlook className="!max-w-full" to="2026-10" />
 
         <h2>Where things stand now ({bulletinLabel})</h2>
         <div className="tw">
@@ -730,21 +735,18 @@ export default function October2026PredictionsPage() {
           even to people whose Final Action Date is nowhere close.
         </span>
 
-        <h2>Our record on this call — still pending</h2>
+        <h2>Our record on this call — scored</h2>
         <p>
           Predictions are cheap unless someone scores them, so here is ours,
-          pre-committed and dated. The right-hand column stays{" "}
-          <strong>Pending</strong> until the bulletin actually publishes: we
-          fill it in from the published document rather than quietly editing the
-          forecast, and we do not infer a result from anything else.
+          pre-committed and dated. The right-hand column is filled in from the
+          published document rather than by quietly editing the forecast — two
+          of the four calls landed, one missed, and one came close.
         </p>
         <p className="small muted">
-          Status as of <strong>September 15, 2026</strong>: the Department of
-          State has not published the October 2026 Visa Bulletin. September 2026
-          remains the current edition and the October listing shows as coming
-          soon. Release usually falls in the second week of the preceding month
-          but has slipped into the third, so this page is checked rather than
-          assumed.
+          Status as of <strong>September 29, 2026</strong>: the Department of
+          State has published the October 2026 Visa Bulletin, the first edition
+          of FY2027. The predictions below are left exactly as they were written
+          on August 19, 2026 and scored against it.
         </p>
         <div className="tw">
           <table>
@@ -759,19 +761,34 @@ export default function October2026PredictionsPage() {
                 <td>
                   EB-2 India Final Action ≥ {longDate(PREDICTED_FAD)}
                 </td>
-                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
+                <td>
+                  <span className="pill pill-bad">Missed</span> — published at{" "}
+                  {eb2.fad}. The category did re-open, but about 8.5
+                  months short of the threshold we set.
+                </td>
               </tr>
               <tr>
                 <td>EB-2 India Dates for Filing unchanged at {eb2.dff}</td>
-                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
+                <td>
+                  <span className="pill pill-good">Correct</span> — held at{" "}
+                  {eb2.dff}.
+                </td>
               </tr>
               <tr>
                 <td>EB-1 India recovers toward April 1, 2023</td>
-                <td><span className="pill pill-mute">Pending</span> — October bulletin</td>
+                <td>
+                  <span className="pill pill-warn">Close</span> — published at{" "}
+                  {eb1.fad}, a recovery of about 3.5 months but two
+                  months short of the date we named.
+                </td>
               </tr>
               <tr>
                 <td>USCIS honours the Dates for Filing chart in October</td>
-                <td><span className="pill pill-mute">Pending</span> — USCIS announcement</td>
+                <td>
+                  <span className="pill pill-good">Correct</span> — USCIS accepts
+                  Dates for Filing for both employment-based and
+                  family-sponsored adjustment of status in October 2026.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -878,7 +895,8 @@ export default function October2026PredictionsPage() {
           <strong>Methodology &amp; sources:</strong> Final Action and Dates for
           Filing figures verified against the official U.S. Department of State
           Visa Bulletins for October 2023, October 2024, October 2025, April/May
-          2026, and August/September 2026 (travel.state.gov). The October outlook follows
+          2026, August/September 2026, and October 2026 (travel.state.gov). The
+          October outlook, written before publication, followed
           the DOS notice &ldquo;India Per-Country Limit Reached in the EB-2
           Category,&rdquo; which states an advance to at least the May 2026 final
           action date is likely, dependent on India EB-2 demand and the FY2027
@@ -889,10 +907,12 @@ export default function October2026PredictionsPage() {
           and DOS data (D. Bier). Predictions are analytical estimates, not
           guarantees. Educational content, not legal advice — consult an
           immigration attorney for case-specific decisions. Last updated{" "}
-          {formatDate(UPDATED)} (the September 2026 bulletin moved no India
-          employment category and EB-2 India remains Unavailable through
-          September 30; the October 2026 bulletin had not published as at this
-          date). ·{" "}
+          {formatDate(UPDATED)} — the October 2026 bulletin has published and the
+          four pre-committed predictions above are now scored against it: EB-2
+          India re-opened at {eb2.fad} rather than the ≥{" "}
+          {longDate(PREDICTED_FAD)} we forecast, Dates for Filing held at{" "}
+          {eb2.dff}, EB-1 India recovered to {eb1.fad}, and USCIS did adopt the
+          Dates for Filing chart. ·{" "}
           <Link href="/visa-bulletin">All visa bulletin coverage</Link>
         </footer>
       </article>

@@ -57,6 +57,15 @@
       "evidence": "post-fix audit: deductible-coinsurance <> hospital-bill 39%, <> policy-maximum 39%, <> network-cost 38%"
     },
     {
+      "id": "october-2026-visa-bulletin-fy2027-data",
+      "title": "October 2026 Visa Bulletin (FY2027) data refresh shipped — EB-2 India re-opened at 01NOV13, ROW EB-2/EB-3 retrogressed, USCIS switched to Dates for Filing for both EB and FB",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-09-29",
+      "nextStep": "Consider adding 2026-10 to PUBLISHED_MONTHS to mint the October month page (deliberately skipped: creates a new page)"
+    },
+    {
       "id": "indian-population-state-pages-are-72",
       "title": "Indian population state pages are 72% identical to each other",
       "area": "content",

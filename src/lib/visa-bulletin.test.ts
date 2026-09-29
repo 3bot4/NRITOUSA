@@ -140,14 +140,26 @@ describe("synthetic bulletins: a category going Unavailable mid-series", () => {
   });
 
   it("estimateWait against a U cutoff is 'unavailable', not a NaN range", () => {
-    // Drive through the public API: any category whose current FAD is U.
-    const unavailable = CATEGORIES.flatMap((c) =>
-      COUNTRIES.map((co) => ({ c, co, fad: getCutoffs(c, co).fad }))
-    ).filter((x) => isUnavailableVisaValue(x.fad));
-    // July 2026 has at least EB-2 India + EB-5 India Unavailable.
-    expect(unavailable.length).toBeGreaterThan(0);
-    for (const { c, co } of unavailable) {
-      expect(estimateWait("2015-01-01", c, co).status).toBe("unavailable");
+    // Drive through the public API. The October 2026 (FY2027) reset cleared
+    // every Unavailable cell, so some months there are none to find — the
+    // invariant still has to hold whenever one returns, and no live category
+    // may produce a NaN number in the meantime. Asserting "a U exists" would
+    // make this test a hostage to whichever bulletin is loaded.
+    for (const c of CATEGORIES) {
+      for (const co of COUNTRIES) {
+        const est = estimateWait("2015-01-01", c, co);
+        if (isUnavailableVisaValue(getCutoffs(c, co).fad)) {
+          expect(est.status).toBe("unavailable");
+        }
+        for (const n of [
+          est.monthsBehind,
+          est.optimisticMonths,
+          est.pessimisticMonths,
+          est.velocityPerMonth,
+        ]) {
+          if (n !== null) expect(Number.isNaN(n)).toBe(false);
+        }
+      }
     }
   });
 
@@ -157,7 +169,7 @@ describe("synthetic bulletins: a category going Unavailable mid-series", () => {
   });
 });
 
-describe("EB-5 set-aside categories (July 2026)", () => {
+describe("EB-5 set-aside categories", () => {
   it("exposes all three set-asides", () => {
     expect(EB5_SETASIDE_ORDER).toEqual([
       "rural",
@@ -166,9 +178,10 @@ describe("EB-5 set-aside categories (July 2026)", () => {
     ]);
   });
 
-  it("all India set-asides are Current (separate from Unavailable Unreserved)", () => {
-    // EB-5 India Unreserved is "U" this month...
-    expect(getCutoffs("eb5", "india").fad).toBe("U");
+  it("all India set-asides are Current, independent of the Unreserved cutoff", () => {
+    // EB-5 India Unreserved re-opened at Dec 1, 2023 in the October 2026
+    // bulletin after three months Unavailable...
+    expect(getCutoffs("eb5", "india").fad).toBe("2023-12-01");
     // ...but the reserved set-asides remain Current.
     for (const key of EB5_SETASIDE_ORDER) {
       const cut = getEb5SetAside(key, "india");
@@ -247,15 +260,15 @@ describe("getMovement is C/U-safe and consistent across every category", () => {
     }
   });
 
-  it("EB-1 India held steady August-2026 (no-movement) after the June→July retrogression", () => {
-    // History: EB-1 India FAD 2026-06 = 2022-12-15, 2026-07 = 2022-10-15 (retrogressed),
-    // 2026-08 = 2022-10-15 (unchanged from July — no category retrogressed July→August;
-    // verified by diffing all 110 tracked cells between the two months).
+  it("EB-1 India advanced October-2026 on the FY2027 reset", () => {
+    // History: EB-1 India FAD 2026-07 through 2026-09 = 2022-10-15, then
+    // 2026-10 = 2023-02-01 — the first bulletin of FY2027 advanced the cutoff
+    // about 3.5 months (verified by diffing all 110 tracked cells Sep→Oct).
     const m = getMovement("eb1", "india");
-    expect(m.status).toBe("no-movement");
+    expect(m.status).toBe("advanced");
     expect(m.priorFad).toBe("2022-10-15");
     expect(m.monthsMoved).not.toBeNull();
-    expect(m.monthsMoved!).toBeCloseTo(0, 5);
+    expect(m.monthsMoved!).toBeCloseTo(3.53, 1);
   });
 });
 

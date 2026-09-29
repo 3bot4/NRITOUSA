@@ -650,9 +650,9 @@ Theoretically yes — a different employer can sponsor an EB-3 PERM. But this in
     excerpt:
       "The India green card backlog exists because the statutory 7% per-country limit caps India's share of EB visas — while India produces far more qualified applicants than that share allows each year.",
     date: "2026-06-16",
-    updated: "2026-08-22",
+    updated: "2026-09-29",
     content: `:::quickanswer
-The India green card backlog exists because US law sets a worldwide employment-based limit of **at least 140,000 a year** and, under INA §202, limits any one country to **7% of the combined family-sponsored and employment-based preference limits** (a combined per-country cap of **25,620 for FY2026**). That per-country limit is applied through category-allocation and prorating rules — it is **not** a fixed India EB quota — and India-born demand runs many times its actual share, so the queue now runs to a million or more including dependents. Practically: **EB-2 and EB-3 India cutoffs sit around 2014–2015**, EB-2 India is **Unavailable** in the September 2026 bulletin, and new filings in those categories should be planned in **decades, not years**.
+The India green card backlog exists because US law sets a worldwide employment-based limit of **at least 140,000 a year** and, under INA §202, limits any one country to **7% of the combined family-sponsored and employment-based preference limits** (a combined per-country cap of **25,620 for FY2026**). That per-country limit is applied through category-allocation and prorating rules — it is **not** a fixed India EB quota — and India-born demand runs many times its actual share, so the queue now runs to a million or more including dependents. Practically: **EB-2 and EB-3 India cutoffs sit around 2013–2015** — in the October 2026 bulletin EB-2 India is **November 1, 2013** (re-opened after three months Unavailable) and EB-3 India is **January 1, 2014** — and new filings in those categories should be planned in **decades, not years**.
 :::
 
 :::key
@@ -701,16 +701,16 @@ title: India green card wait — general education only
 - Always check the current official visa bulletin at [travel.state.gov](https://travel.state.gov) for the most accurate current state
 :::
 
-Where the categories actually stood in the September 2026 bulletin:
+Where the categories actually stood in the October 2026 bulletin:
 
 | Category (India) | Final Action Date | Dates for Filing | Practical read |
 |---|---|---|---|
-| EB-1 India | October 15, 2022 | December 1, 2023 | Years, not decades — fastest route |
-| EB-2 India | Unavailable | January 15, 2015 | No approvals that month at all |
-| EB-3 India | January 1, 2014 | January 15, 2015 | Posted a date while EB-2 could not |
-| EB-5 India (Unreserved) | Unavailable | May 1, 2024 | Set-aside categories were Current |
+| EB-1 India | February 1, 2023 | July 1, 2024 | Years, not decades — fastest route |
+| EB-2 India | November 1, 2013 | January 15, 2015 | Re-opened after being Unavailable |
+| EB-3 India | January 1, 2014 | January 15, 2015 | Held; about two months ahead of EB-2 |
+| EB-5 India (Unreserved) | December 1, 2023 | May 1, 2024 | Re-opened; set-asides remain Current |
 
-> Source: U.S. Department of State Visa Bulletin, September 2026. These change monthly — check the live [EB-1](/visa-bulletin/eb1-india), [EB-2](/visa-bulletin/eb2-india) and [EB-3](/visa-bulletin/eb3-india) status pages for the current month.
+> Source: U.S. Department of State Visa Bulletin, October 2026. These change monthly — check the live [EB-1](/visa-bulletin/eb1-india), [EB-2](/visa-bulletin/eb2-india) and [EB-3](/visa-bulletin/eb3-india) status pages for the current month.
 
 ## What Does the Backlog Mean for You Practically?
 
@@ -751,7 +751,7 @@ The backlog is not just a waiting problem — it shapes every other decision. Be
 ## Frequently asked questions
 
 ### How long is the green card wait for Indians?
-It depends on category and priority date. EB-1 India has recently run a few years; EB-2 and EB-3 India cutoffs sit around 2014–2015, which means new filings in those categories face waits measured in decades under current law. EB-2 India is Unavailable entirely in the September 2026 bulletin.
+It depends on category and priority date. EB-1 India has recently run a few years; EB-2 and EB-3 India cutoffs sit around 2013–2015, which means new filings in those categories face waits measured in decades under current law. In the October 2026 bulletin EB-2 India is back at November 1, 2013 after three months of being Unavailable.
 
 ### How many Indians are waiting for a green card?
 Estimates from published analyses of USCIS and State Department inventory data put the India-born employment-based queue in the range of a million or more once dependents (derivatives) are counted — but the exact figure varies by analysis, methodology, and year, so treat any single number as an estimate rather than an official count. Because dependents consume visa numbers too, the effective queue is far longer than the count of principal applicants alone.

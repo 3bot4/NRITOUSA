@@ -103,7 +103,12 @@ export function getSeries(
   category: EbCategory,
   country: BulletinCountry
 ): { fad: SeriesPoint[]; dff: SeriesPoint[] } | null {
-  if (country === "row") return null; // ROW has been Current throughout
+  // ROW used to be Current throughout, and this returned null for it. That
+  // stopped being true: EB-3 ROW has carried a posted cutoff since 2025 and the
+  // October 2026 (FY2027) reset retrogressed EB-2 ROW off Current to Jan 1,
+  // 2025. history.json carries a full change-point series for every ROW
+  // category, so short-circuiting here left the estimator answering "no data"
+  // for the one chart a Rest-of-World applicant actually needs.
   const series = historyData.series as unknown as Record<
     string,
     { fad: SeriesPoint[]; dff: SeriesPoint[] }
@@ -409,7 +414,7 @@ export interface ApplicableChart {
   determinationMonthLabel: string;
   /** Short copy for badges/table cells, e.g. "Pending USCIS determination". */
   badgeLabel: string;
-  /** Bold lead-in, e.g. "September 2026 USCIS filing chart:". */
+  /** Bold lead-in, e.g. "October 2026 USCIS filing chart:". */
   statusHeadline: string;
   /** The value that follows the headline — "Pending. The latest posted…" or "Final Action Dates." */
   statusValue: string;
@@ -468,7 +473,7 @@ export function getApplicableChart(): ApplicableChart {
  * Update (or clear) this whenever a new bulletin is configured.
  */
 export const currentBulletinNote =
-  "September 2026 Visa Bulletin: EB-1 India holds at Oct 15, 2022 (unchanged from August). EB-2 India is Unavailable for the remainder of FY 2026. EB-3 India holds at Jan 1, 2014. EB-4 advanced two months to Dec 15, 2022 for every country — the only employment-based Final Action movement this month. EB-5 India Unreserved is also Unavailable; EB-5 set-aside categories (Rural, High Unemployment, Infrastructure) remain Current. " +
+  "October 2026 Visa Bulletin: the first bulletin of FY 2027, so a fresh annual supply of visa numbers is available. EB-2 India re-opens at Nov 1, 2013 after being Unavailable in September; its Dates for Filing is unchanged at Jan 15, 2015. EB-1 India advances about three and a half months to Feb 1, 2023, and EB-1 India Dates for Filing jumps to Jul 1, 2024. EB-3 India holds at Jan 1, 2014 (Dates for Filing Jan 15, 2015). EB-5 India Unreserved re-opens at Dec 1, 2023; the EB-5 set-asides (Rural, High Unemployment, Infrastructure) remain Current. Rest of World retrogressed — EB-2 from Current to Jan 1, 2025 and EB-3 from Sep 1, 2024 to May 15, 2024 — which the State Department says is necessary to keep issuance within FY 2027 quarterly and annual limits. " +
   `${getApplicableChart().statusNote} ` +
   "Always verify with the official Department of State Visa Bulletin.";
 
@@ -479,7 +484,7 @@ export const currentBulletinNote =
  * files. Single source of truth for the standing alert wording.
  */
 export const bulletinAlert =
-  "EB-2 India and EB-5 India Unreserved are Unavailable for the remainder of FY 2026. EB-1 India holds at October 15, 2022. EB-3 India holds at January 1, 2014. EB-4 advanced to December 15, 2022 worldwide. " +
+  "October 2026 Visa Bulletin: FY 2027 numbers re-open EB-2 India at November 1, 2013 and EB-5 India Unreserved at December 1, 2023, both of which were Unavailable in September. EB-1 India advances to February 1, 2023. EB-3 India holds at January 1, 2014. Rest-of-World EB-2 (January 1, 2025) and EB-3 (May 15, 2024) retrogressed to stay within FY 2027 limits. " +
   getApplicableChart().statusNote;
 
 /** Official U.S. Department of State Visa Bulletin landing page. */

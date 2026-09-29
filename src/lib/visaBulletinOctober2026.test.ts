@@ -108,10 +108,13 @@ describe("October 2026 predictions — figures match the bulletin data", () => {
     expect(FLAT).toMatch(/April 2026<\/strong> bulletin and held through May/);
   });
 
-  it("EB-2 India is Unavailable in the current bulletin, as the page states", () => {
+  it("dates the Unavailable stretch to July 2026, as the page states", () => {
     expect(cutoffAt(series.fad, "2026-07")).toBe("U");
     // "Unavailable" is now a status pill, so the phrase spans markup.
     expect(FLAT).toMatch(/pill-bad">Unavailable<\/span> from the July 2026\s*bulletin/);
+    // ...and the FY2027 reset ended it — the page must report the published
+    // October value rather than leaving the category described as Unavailable.
+    expect(cutoffAt(series.fad, "2026-10")).toBe("2013-11-01");
   });
 
   it("the stated month movements match the data", () => {
@@ -207,10 +210,17 @@ describe("October 2026 predictions — added sections", () => {
     expect(FLAT).toMatch(/Any of the three can move/);
   });
 
-  it("pre-commits the forecast for post-bulletin scoring", () => {
+  it("scores the pre-committed forecast against the published bulletin", () => {
     expect(FLAT).toMatch(/Our record on this call/);
-    expect(FLAT).toMatch(/Pending<\/span> — October bulletin/);
     expect(FLAT).toMatch(/What DOS published/);
+    // The forecast itself must survive verbatim — scoring happens in the
+    // right-hand column, never by editing the prediction.
+    expect(FLAT).toMatch(/EB-2 India Final Action ≥ \{longDate\(PREDICTED_FAD\)\}/);
+    // Every row is resolved: no "Pending" placeholders left behind.
+    expect(FLAT).not.toMatch(/Pending<\/span> — October bulletin/);
+    expect(FLAT).not.toMatch(/Pending<\/span> — USCIS announcement/);
+    // ...and the miss is reported as a miss.
+    expect(FLAT).toMatch(/pill-bad">Missed<\/span>/);
   });
 
   it("separates the May 22 issuance halt from the July bulletin 'U'", () => {

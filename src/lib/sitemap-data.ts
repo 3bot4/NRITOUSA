@@ -85,8 +85,8 @@ export interface SitemapEntry {
  */
 export const CONTENT_BASELINE = new Date("2026-07-20");
 
-/** Routes re-stamped by the September 2026 Visa Bulletin refresh (2026-08-22). */
-const bulletinRefresh = new Date("2026-08-22");
+/** Routes re-stamped by the October 2026 Visa Bulletin refresh (2026-09-29). */
+const bulletinRefresh = new Date("2026-09-29");
 
 const e = (
   path: string,

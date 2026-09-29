@@ -37,5 +37,18 @@
       "unverified": 33
     },
     "errors": []
+  },
+  {
+    "runAt": "2026-09-29T13:41:28.505Z",
+    "trigger": "manual-backfill-2021-08_2026-07",
+    "monthsProcessed": 63,
+    "rowsWritten": 6897,
+    "rowsSkippedUnavailable": 33,
+    "confidenceCounts": {
+      "high": 6591,
+      "medium": 306,
+      "unverified": 33
+    },
+    "errors": []
   }
 ]

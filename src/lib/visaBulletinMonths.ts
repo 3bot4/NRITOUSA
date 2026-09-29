@@ -61,8 +61,10 @@ const SNAPSHOTS: Record<string, BulletinSnapshot> = {
  * Bulletin months that have a live page, newest first.
  *
  * ⚠️ Add a month ONLY after the State Department publishes that bulletin.
- * As of 2026-09-16 the latest published bulletin is September 2026; October
- * 2026 is the first FY-2027 bulletin and was not out yet.
+ * As of 2026-09-29 the latest published bulletin is October 2026, the first of
+ * FY 2027. It is deliberately NOT listed here yet: adding it mints a new month
+ * page, which is a separate content decision from the data refresh. The October
+ * figures are already live everywhere that reads data/visa-bulletin.
  */
 export const PUBLISHED_MONTHS: string[] = ["2026-09"];
 

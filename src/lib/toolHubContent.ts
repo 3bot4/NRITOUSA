@@ -420,7 +420,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
     takeaways: [
       "Expect the India queue to be governed by one rule: the INA §202 7% per-country limit, calculated across the combined family and employment preference totals and applied by category and prorating — which holds India's usage share far below its demand (it is not a fixed India quota).",
       "Compare against both charts each month — Final Action Dates control approval, Dates for Filing control when you may submit the I-485.",
-      "Treat any wait estimate as a scenario, not a promise: cutoffs can retrogress, and EB-2 India was marked Unavailable in the September 2026 bulletin.",
+      "Treat any wait estimate as a scenario, not a promise: cutoffs can retrogress or go Unavailable, as EB-2 India did from July through September 2026 before re-opening at November 1, 2013 in the October 2026 bulletin.",
       "Check the new bulletin when it posts, usually the second week; it takes effect the following month.",
       "Keep your I-140 approved — it lets you retain your priority date across employers and categories, including an EB-3 downgrade.",
     ],
@@ -475,7 +475,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "How long is the green card wait time for India?",
         answer:
-          "It depends entirely on your category and priority date. EB-1 India has recently sat a few years back, while EB-2 and EB-3 India cutoffs sit around a decade or more back — and EB-2 India was marked Unavailable in the September 2026 bulletin. The structural cause is the INA §202 7% per-country limit, which holds India's usage share far below its demand (a proration cap across the combined family and employment preference totals, not a fixed India quota).",
+          "It depends entirely on your category and priority date. EB-1 India has recently sat a few years back, while EB-2 and EB-3 India cutoffs sit around a decade or more back — in the October 2026 bulletin EB-2 India is at November 1, 2013 and EB-3 India at January 1, 2014. The structural cause is the INA §202 7% per-country limit, which holds India's usage share far below its demand (a proration cap across the combined family and employment preference totals, not a fixed India quota).",
       },
       {
         question: "How is the green card wait time calculated?",

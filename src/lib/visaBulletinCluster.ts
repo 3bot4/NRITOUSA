@@ -490,7 +490,7 @@ Your EB-1 priority date is set when the I-140 is filed (see [what a priority dat
 ## Frequently asked questions
 
 ### What is the EB-1 priority date for India right now?
-It changes monthly — the status panel at the top of this page shows the current month's EB-1 India Final Action Date and Dates for Filing straight from the DOS bulletin, plus the recent movement history. As of the September 2026 bulletin the Final Action Date sat in late 2022 (October 15, 2022 — unchanged from August).
+It changes monthly — the status panel at the top of this page shows the current month's EB-1 India Final Action Date and Dates for Filing straight from the DOS bulletin, plus the recent movement history. As of the October 2026 bulletin the Final Action Date is February 1, 2023 — an advance of about three and a half months from September's October 15, 2022, with Dates for Filing at July 1, 2024.
 
 ### How long does EB-1 take for India-born applicants?
 Typically 3–5 years end to end as of mid-2026: about 6–10 months for the I-140 (or 15 business days with premium processing), the priority-date wait shown in the status panel, then 8–14 months of I-485 processing. That compares to a decade-plus in EB-2 India.
@@ -508,7 +508,7 @@ Possibly, if you have exceptional achievements — patents, major open-source co
 Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C, for $2,805. USCIS acts within **15 business days** for EB-1A and EB-1B, but **45 business days** for EB-1C (E13 multinational executives/managers). It speeds the petition decision only; it does not advance your priority date.
 
 ### Is EB-1 faster than EB-2 for India?
-Yes, dramatically. EB-1 India's cutoff has recently sat a few years back, while EB-2 India's sits over a decade back — and EB-2 India was marked Unavailable in the September 2026 bulletin. If you can credibly qualify for any EB-1 sub-category, it is usually worth pursuing.
+Yes, dramatically. In the October 2026 bulletin EB-1 India sits at February 1, 2023 while EB-2 India sits at November 1, 2013 — more than nine years further back. If you can credibly qualify for any EB-1 sub-category, it is usually worth pursuing.
 
 ### Will EB-1 India become current in 2026?
 No one can promise that. Cutoff movement depends on demand and spillover, and the Department of State does not pre-announce dates. Watch the monthly bulletin (or the [monthly update tracker](/visa-bulletin/monthly-update)) rather than relying on prediction posts.
@@ -531,13 +531,13 @@ No one can promise that. Cutoff movement depends on demand and spillover, and th
     updated: "2026-09-16",
     content: `
 :::quickanswer
-The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in the September 2026 bulletin the category remains fully **Unavailable** (no visa numbers) for the rest of FY 2026, with Dates for Filing at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — see [how the annual limits are set](/visa-bulletin/annual-limits) — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
+The EB-2 India priority date moves monthly and is shown in the status panel above, straight from the Department of State bulletin — in the October 2026 bulletin the category **re-opens at November 1, 2013** after being Unavailable in September, with Dates for Filing unchanged at **January 15, 2015**. The structural cause: the statutory **7% per-country limit** (INA §202) holds India's usage share far below its demand across all EB categories — see [how the annual limits are set](/visa-bulletin/annual-limits) — so the EB-2 India wait for new filings is measured in **decades**, not years. To model how many years a given date might take, use the [wait-time scenarios](/eb2-eb3-priority-date-india).
 :::
 
 :::key
 - Read the **current EB-2 India Final Action Date and Dates for Filing** in the live panel above — this page owns the current cutoff and its movement.
 - The EB-2 India Final Action Date, when posted at all, has sat in the **early-to-mid 2010s** and moved **1–3 months per calendar year** in recent years.
-- Watch **October 1** — the new fiscal year restores visa numbers after an "Unavailable" stretch like the one running through September 2026, the last month of FY 2026. See [what the October 2026 bulletin should bring](/visa-bulletin/october-2026-predictions).
+- **October 1 restores visa numbers**, and it did exactly that: the FY 2027 reset ended the Unavailable stretch that ran from July through September 2026 and brought EB-2 India back at November 1, 2013. See [how the October 2026 bulletin turned out](/visa-bulletin/october-2026-predictions).
 - Get the I-140 approved even while backlogged — an approved I-140 can support **H-1B extensions past six years** (AC21 §104(c), when a visa number is unavailable).
 - Compare charts monthly with the [Priority Date Checker](/tools/priority-date-checker) — EB-3 India sometimes moves ahead of EB-2; weigh the choice in [EB-2 vs EB-3 for India](/green-card/eb2-vs-eb3-india).
 - If your **spouse was born outside India**, [cross-chargeability](/visa-bulletin/cross-chargeability) may move you to the "All Other Countries" row — often worth a decade or more.
@@ -581,19 +581,19 @@ The INA §202 per-country limit (7% of the combined family and employment prefer
 | Actual India EB-2 visas used per year | varies by demand, derivatives & spillover |
 | Pending India-born EB-2/EB-3 applicants (with dependents) | estimated in the hundreds of thousands, per published analyses of USCIS/DOS inventory data |
 
-The result: when a cutoff date is posted at all, the EB-2 India Final Action Date has sat in the early-to-mid 2010s for years, moving slowly at 1–3 months per calendar year in recent good years and retrogressing in bad years. Since July 2026 the category has been fully **Unavailable** (no numbers) for the remainder of FY 2026 — a more severe form of the same supply problem, still in effect as of the September 2026 bulletin — the final month of FY 2026.
+The result: when a cutoff date is posted at all, the EB-2 India Final Action Date has sat in the early-to-mid 2010s for years, moving slowly at 1–3 months per calendar year in recent good years and retrogressing in bad years. From July through September 2026 the category was fully **Unavailable** (no numbers) — a more severe form of the same supply problem — and the FY 2027 reset brought it back at **November 1, 2013** in the October 2026 bulletin.
 
 ## What Drives EB-2 India Movement
 
 Nobody — including paid prediction services — can promise where the EB-2 India cutoff will be next quarter, and nothing here is a forecast. What the recent pattern (see the movement table above) does illustrate:
 
-- **New fiscal years help.** Visa numbers reset every **October 1**; an Unavailable category regains numbers, and early-FY bulletins often show the year's best movement — see the [October 2026 (FY2027) reset analysis](/visa-bulletin/october-2026-predictions).
+- **New fiscal years help.** Visa numbers reset every **October 1**; an Unavailable category regains numbers, and early-FY bulletins often show the year's best movement — as EB-2 India's return to a posted cutoff in October 2026 shows. See the [October 2026 (FY2027) reset analysis](/visa-bulletin/october-2026-predictions).
 - **Movement is asymmetric.** Advances come in small steps (weeks to a few months); retrogressions can erase years overnight when demand spikes.
 - **Spillover is the wildcard.** Unused family-based or ROW employment numbers can accelerate India dates in some years — and vanish the next.
 - **For new filings, the honest math is decades** at the current supply level unless Congress changes per-country caps. Plan careers, H-1B extensions, and children's CSPA timelines around that reality, not around prediction posts.
 
 :::bad
-If you filed PERM in 2018, 2020, 2022, or 2024, your wait for EB-2 India could be 10–30+ years from the time of filing, based on historical movement — and in months like September 2026 when the category is Unavailable, no approvals happen at all. Always verify current dates with the official visa bulletin.
+If you filed PERM in 2018, 2020, 2022, or 2024, your wait for EB-2 India could be 10–30+ years from the time of filing, based on historical movement — and in months when the category goes Unavailable, as it did from July through September 2026, no approvals happen at all. Always verify current dates with the official visa bulletin.
 :::
 
 ## EB-2 NIW: self-petition without PERM
@@ -642,10 +642,10 @@ Your EB-2 priority date is set the day your employer files PERM (see [what a pri
 ## Frequently asked questions
 
 ### What is the current EB-2 India Final Action Date?
-It changes monthly — the status panel at the top of this page shows the current value straight from the DOS bulletin. In the September 2026 bulletin, EB-2 India was marked Unavailable (no numbers), with Dates for Filing at January 15, 2015.
+It changes monthly — the status panel at the top of this page shows the current value straight from the DOS bulletin. In the October 2026 bulletin, the EB-2 India Final Action Date is November 1, 2013, with Dates for Filing at January 15, 2015.
 
-### Why is EB-2 India "Unavailable"?
-The category's annual visa numbers ran out before the fiscal year ended, so the Department of State stopped issuing them. Numbers reset on October 1 with the new fiscal year, and the category then reappears with posted cutoff dates. For what DOS has said about the FY2027 reset specifically, see the [October 2026 bulletin analysis](/visa-bulletin/october-2026-predictions).
+### Why was EB-2 India "Unavailable"?
+The category's annual visa numbers ran out before the fiscal year ended, so the Department of State stopped issuing them — that is what happened from July through September 2026. Numbers reset on October 1 with the new fiscal year, and the category reappears with a posted cutoff date, as it did in October 2026 at November 1, 2013. For what DOS said about the FY2027 reset specifically, see the [October 2026 bulletin analysis](/visa-bulletin/october-2026-predictions).
 
 ### When will EB-2 India become current?
 For new filings, honest math says decades at current supply — India's prorated 7% share cannot clear hundreds of thousands of pending applicants quickly. No service can credibly predict monthly cutoffs; watch the bulletin itself or the [monthly update tracker](/visa-bulletin/monthly-update), and see the [wait-time scenarios](/eb2-eb3-priority-date-india) for illustrative estimates.
@@ -683,11 +683,11 @@ Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and
     updated: "2026-09-16",
     content: `
 :::quickanswer
-The EB-3 India priority date is shown in the status panel above — in the **September 2026** bulletin the Final Action Date was **January 1, 2014** with Dates for Filing at **January 15, 2015**, meaning only India-born applicants who filed PERM before those dates could act. EB-3 covers professionals with a **bachelor's degree** and skilled workers with **2+ years** of experience, and it moves **independently of EB-2 India** — in September 2026 EB-3 posted a date while EB-2 India was **Unavailable**, which is exactly when a downgrade becomes worth discussing.
+The EB-3 India priority date is shown in the status panel above — in the **October 2026** bulletin the Final Action Date is **January 1, 2014** with Dates for Filing at **January 15, 2015**, both unchanged from September, meaning only India-born applicants who filed PERM before those dates can act. EB-3 covers professionals with a **bachelor's degree** and skilled workers with **2+ years** of experience, and it moves **independently of EB-2 India** — in September 2026 EB-3 posted a date while EB-2 India was **Unavailable**, which is exactly when a downgrade becomes worth discussing.
 :::
 
 :::key
-- Check both charts every month — EB-3 India posted **January 1, 2014** (Final Action) while EB-2 India was Unavailable in September 2026.
+- Check both charts every month — in October 2026 EB-3 India posted **January 1, 2014** (Final Action) while EB-2 India re-opened just behind it at **November 1, 2013**.
 - Qualify under EB-3 with a **bachelor's degree** (professionals) or **2+ years** of training/experience (skilled workers).
 - Plan around the statutory **7% per-country limit** (INA §202) — a proration cap across the combined family and employment preference totals, **not** a fixed India EB number ([how the annual limits work](/visa-bulletin/annual-limits)).
 - Keep your **original priority date** when downgrading: an approved EB-2 I-140 generally lets the new EB-3 petition retain the earlier date.
@@ -710,7 +710,7 @@ Most Indian H1B workers qualify as **Professionals**. Skilled Worker and Profess
 
 ### Other Workers (EW) India — currently the same date as EB-3 India
 
-A persistent myth holds that the Other Workers queue for India always runs years behind the main EB-3 row. That is not the current state. In the **September 2026** bulletin, **EW India and EB-3 India carry the identical Final Action Date of January 1, 2014**, with Dates for Filing also identical at January 15, 2015.
+A persistent myth holds that the Other Workers queue for India always runs years behind the main EB-3 row. That is not the current state. In the **October 2026** bulletin, **EW India and EB-3 India carry the identical Final Action Date of January 1, 2014**, with Dates for Filing also identical at January 15, 2015.
 
 :::warn
 Read this as a **current fact, not a permanent rule.** The two rows are set independently by the Department of State and have diverged in the past — EW carries its own annual allocation (a 10,000-visa worldwide sub-limit within EB-3), so it can move differently when demand shifts. Check both rows in the current bulletin rather than assuming either that they track each other or that EW is always worse.
@@ -718,14 +718,14 @@ Read this as a **current fact, not a permanent rule.** The two rows are set inde
 
 ## What Is the EB-3 India Priority Date Right Now?
 
-The status panel at the top of this page shows the current EB-3 India Final Action Date and Dates for Filing from the latest Department of State bulletin, with recent months' movement in the table beneath it. As of the September 2026 bulletin:
+The status panel at the top of this page shows the current EB-3 India Final Action Date and Dates for Filing from the latest Department of State bulletin, with recent months' movement in the table beneath it. As of the October 2026 bulletin:
 
-| Chart (September 2026) | EB-3 India | EB-2 India | Rest of World |
+| Chart (October 2026) | EB-3 India | EB-2 India | Rest of World |
 |---|---|---|---|
-| Final Action Date | January 1, 2014 | Unavailable | September 1, 2024 |
-| Dates for Filing | January 15, 2015 | January 15, 2015 | Current |
+| Final Action Date | January 1, 2014 | November 1, 2013 | May 15, 2024 (EB-3) |
+| Dates for Filing | January 15, 2015 | January 15, 2015 | August 1, 2024 (EB-3) |
 
-> Source: U.S. Department of State Visa Bulletin, September 2026. Cutoffs change monthly — the status panel above reflects the bulletin month stored in this site's data.
+> Source: U.S. Department of State Visa Bulletin, October 2026. Cutoffs change monthly — the status panel above reflects the bulletin month stored in this site's data.
 
 ## Why Is the EB-3 India Backlog So Long?
 
@@ -777,10 +777,10 @@ Your EB-3 priority date is set the day the employer files [PERM](/perm-timeline)
 ## Frequently asked questions
 
 ### What is the EB-3 India priority date right now?
-It changes monthly. In the September 2026 bulletin, the EB-3 India Final Action Date was January 1, 2014 and Dates for Filing was January 15, 2015 — the status panel at the top of this page always shows the current month straight from the DOS bulletin.
+It changes monthly. In the October 2026 bulletin, the EB-3 India Final Action Date is January 1, 2014 and Dates for Filing is January 15, 2015 — both unchanged from September. The status panel at the top of this page always shows the current month straight from the DOS bulletin.
 
 ### Is EB-3 India faster than EB-2 India?
-Sometimes. The two move independently and leapfrog each other: in September 2026 EB-3 India posted a January 1, 2014 Final Action Date while EB-2 India was Unavailable, making EB-3 the only one of the two where cases could be approved that month. Compare both rows in the current bulletin before deciding anything.
+Sometimes. The two move independently and leapfrog each other: in the October 2026 bulletin EB-3 India's Final Action Date (January 1, 2014) sits about two months ahead of EB-2 India's (November 1, 2013), and the two share the same January 15, 2015 Dates for Filing. Compare both rows in the current bulletin before deciding anything.
 
 ### How long is the EB-3 India wait for a new filing?
 At the recent historical pace of roughly 1–3 months of cutoff movement per calendar year, against India's prorated 7% share of the combined preference limits, a new EB-3 India filing should be planned in decades rather than years. This is an illustrative estimate, not a forecast — no service can credibly predict monthly movement. See the [wait-time scenarios](/eb2-eb3-priority-date-india) for the methodology.
@@ -1293,13 +1293,13 @@ The live comparison table at the top of this page shows the current gap for EB-1
 **Facts.** Priya was born in Chennai. Her husband Arun was born in Muscat, Oman, where his Indian parents were working at the time. Priya's employer filed PERM in **March 2015**, so that is her priority date. She holds an approved EB-2 I-140. Arun is in H-4 status and will adjust with her as her derivative.
 
 :::steps
-1. **Without cross-chargeability**, Priya reads the **EB-2 India** row. In the September 2026 bulletin that row is **Unavailable** — no visa numbers exist for EB-2 India for the remainder of the fiscal year, so her case cannot be approved at all, regardless of her 2015 date.
+1. **Without cross-chargeability**, Priya reads the **EB-2 India** row. In the October 2026 bulletin that row sits at **November 1, 2013** — more than a year behind her March 2015 priority date, so her case cannot be approved yet.
 2. **With cross-chargeability under §202(b)(2)**, Priya is charged to **Oman** — which is not separately listed and therefore falls in **"All Chargeability Areas Except Those Listed."** She now reads that row instead.
 3. **The result.** Her priority date is still March 2015. Her category is still EB-2. Her I-140 is unchanged. But the row she is measured against is a completely different queue — see the table above for the current figures on both sides.
 :::
 
 :::good
-The **cross chargeability green card** benefit here is not a faster adjudication. It is the difference between being in a queue that is moving and being in one that has stopped. For a family with children approaching 21, that difference is often decisive under CSPA.
+The **cross chargeability green card** benefit here is not a faster adjudication. It is the difference between two queues more than a decade apart: in the October 2026 bulletin the EB-2 "All Chargeability Areas" Final Action Date is **January 1, 2025** while EB-2 India is **November 1, 2013**, so Priya's March 2015 date is current on one row and over a decade short on the other. For a family with children approaching 21, that difference is often decisive under CSPA.
 :::
 
 :::warn
@@ -1443,9 +1443,10 @@ Keep a simple log of the India EB-1, EB-2, and EB-3 dates each month:
 | June 2026 | Dec 15, 2022 | Sep 1, 2013 | Dec 15, 2013 | Jan 15, 2015 | No (Final Action Dates) |
 | July 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
 | August 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
-| September 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | Pending USCIS determination |
+| September 2026 | Oct 15, 2022 | Unavailable | Jan 1, 2014 | Jan 15, 2015 | No (Final Action Dates) |
+| October 2026 | Feb 1, 2023 | Nov 1, 2013 | Jan 1, 2014 | Jan 15, 2015 | Yes (Dates for Filing) |
 
-This makes retrogression and forward movement immediately visible — note EB-1 India's June→July retrogression (Dec 15 → Oct 15, 2022) followed by no movement into August or September. The only employment-based Final Action movement in the September bulletin was EB-4, which advanced two months to December 15, 2022 for every country.
+This makes retrogression and forward movement immediately visible — note EB-1 India's June→July retrogression (Dec 15 → Oct 15, 2022), the flat stretch through August and September, then the FY 2027 reset in October 2026: EB-1 India advanced about 3.5 months to February 1, 2023 and EB-2 India returned from Unavailable at November 1, 2013. October is also the first month in this log where USCIS accepts the Dates for Filing chart.
 
 ## Setting up alerts
 

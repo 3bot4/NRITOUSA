@@ -58,40 +58,41 @@ describe("parseCutoff sentinels", () => {
   });
 });
 
-describe("September 2026 canonical data (from current.json)", () => {
-  it("bulletin is September 2026", () => {
-    expect(CURRENT_VISA_BULLETIN.month).toBe("September");
+describe("October 2026 canonical data (from current.json)", () => {
+  it("bulletin is October 2026", () => {
+    expect(CURRENT_VISA_BULLETIN.month).toBe("October");
     expect(CURRENT_VISA_BULLETIN.year).toBe(2026);
   });
 
-  it("India Final Action Dates match the September 2026 source of truth", () => {
+  it("India Final Action Dates match the October 2026 source of truth", () => {
     const fa = CURRENT_VISA_BULLETIN.finalActionDates;
-    expect(fa.EB1.india).toBe("2022-10-15"); // 15OCT22, unchanged from August
-    expect(fa.EB2.india).toBe("U"); // Unavailable
-    expect(fa.EB3.india).toBe("2014-01-01"); // 01JAN14, unchanged from August
+    expect(fa.EB1.india).toBe("2023-02-01"); // 01FEB23, advanced from 15OCT22
+    expect(fa.EB2.india).toBe("2013-11-01"); // 01NOV13, re-opened from Unavailable
+    expect(fa.EB3.india).toBe("2014-01-01"); // 01JAN14, unchanged from September
   });
 
-  it("ROW ('Other') Final Action Dates match the September 2026 source of truth", () => {
+  it("ROW ('Other') Final Action Dates match the October 2026 source of truth", () => {
+    // The FY2027 reset retrogressed Rest of World to hold issuance inside the
+    // new year's quarterly and annual limits — EB-2 ROW is no longer Current.
     const fa = CURRENT_VISA_BULLETIN.finalActionDates;
     expect(fa.EB1.other).toBe("C");
-    expect(fa.EB2.other).toBe("C");
-    expect(fa.EB3.other).toBe("2024-09-01"); // 01SEP24, unchanged from August
+    expect(fa.EB2.other).toBe("2025-01-01"); // 01JAN25, retrogressed from Current
+    expect(fa.EB3.other).toBe("2024-05-15"); // 15MAY24, retrogressed from 01SEP24
   });
 
-  it("reports the posted September 2026 USCIS chart determination", () => {
+  it("reports the posted October 2026 USCIS chart determination", () => {
     // USCIS posts its determination after DOS publishes the bulletin; until it
     // does, filingChartPending stays true so no UI asserts a chart for the
-    // current month. USCIS posted the September 2026 determination on
-    // uscis.gov/visabulletininfo (verified 2026-09-02): employment-based
-    // filings use Final Action Dates. usingDatesForFiling therefore stays
-    // false, but now because Table B was actually ruled out, not because the
-    // determination is outstanding.
-    expect(CURRENT_VISA_BULLETIN.usingDatesForFiling).toBe(false);
+    // current month. USCIS posted the October 2026 determination (verified
+    // 2026-09-29): applicants may use Dates for Filing for BOTH employment-based
+    // and family-sponsored adjustment of status — a switch from September 2026,
+    // when employment-based filings had to use Final Action Dates.
+    expect(CURRENT_VISA_BULLETIN.usingDatesForFiling).toBe(true);
     expect(CURRENT_VISA_BULLETIN.filingChartPending).toBe(false);
-    expect(CURRENT_VISA_BULLETIN.filingChartDeterminationMonthLabel).toBe("September 2026");
-    expect(CURRENT_VISA_BULLETIN.filingChartBadgeLabel).toBe("Final Action Dates");
+    expect(CURRENT_VISA_BULLETIN.filingChartDeterminationMonthLabel).toBe("October 2026");
+    expect(CURRENT_VISA_BULLETIN.filingChartBadgeLabel).toBe("Dates for Filing");
     expect(CURRENT_VISA_BULLETIN.filingChartStatusNote).toBe(
-      "September 2026 USCIS filing chart: Final Action Dates."
+      "October 2026 USCIS filing chart: Dates for Filing."
     );
   });
 
@@ -105,11 +106,13 @@ describe("September 2026 canonical data (from current.json)", () => {
     }
   });
 
-  it("EB-2 India is unavailable for every priority date this month", () => {
-    for (const iso of ["2008-01-01", "2013-09-01", "2015-01-01"]) {
-      expect(
-        comparePriorityDate(pd(iso), CURRENT_VISA_BULLETIN.finalActionDates.EB2.india)
-      ).toBe("unavailable");
+  it("EB-2 India admits priority dates before the re-opened Nov 1, 2013 cutoff", () => {
+    const eb2India = CURRENT_VISA_BULLETIN.finalActionDates.EB2.india;
+    for (const iso of ["2008-01-01", "2013-09-01"]) {
+      expect(comparePriorityDate(pd(iso), eb2India)).toBe("current");
+    }
+    for (const iso of ["2013-12-01", "2015-01-01"]) {
+      expect(comparePriorityDate(pd(iso), eb2India)).toBe("not-current");
     }
   });
 });

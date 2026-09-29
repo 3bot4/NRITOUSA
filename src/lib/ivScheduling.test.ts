@@ -222,9 +222,12 @@ describe("scope, data gaps and retrogression", () => {
     }
   });
 
-  it("returns EB-2 India as Unavailable on the September 2026 bulletin", () => {
+  it("tracks the live bulletin: EB-2 India re-opened on the October 2026 chart", () => {
+    // The FY2027 reset replaced September's "U" with a posted Nov 1, 2013
+    // cutoff, so a 2012 priority date is no longer behind a hard stop. The
+    // Unavailable branch is still asserted below for whichever cells carry "U".
     const cutoffs = getIvCutoffs("EB2", "india")!;
-    expect(cutoffs.fad).toBe("U");
+    expect(cutoffs.fad).toBe("2013-11-01");
     const r = diagnoseIvScheduling({
       category: "EB2",
       country: "india",
@@ -234,14 +237,37 @@ describe("scope, data gaps and retrogression", () => {
       post: "Mumbai",
       alreadyDq: "no",
     });
-    expect(r.bottleneck).toBe("visa-unavailable");
+    expect(r.bottleneck).not.toBe("visa-unavailable");
+  });
+
+  it("reports a hard stop for any category the current bulletin marks Unavailable", () => {
+    // Month-agnostic: no cell is "U" in October 2026, but when one returns the
+    // diagnosis must be the numerical-limits hard stop, not a post-queue story.
+    for (const category of ["EB1", "EB2", "EB3", "EB5"] as const) {
+      for (const country of ["india", "china", "row"] as const) {
+        const cutoffs = getIvCutoffs(category, country);
+        if (cutoffs?.fad !== "U") continue;
+        const r = diagnoseIvScheduling({
+          category,
+          country,
+          priorityDate: "2012-01-01",
+          dqMonth: "2020-01",
+          postSchedulingMonth: "2026-01",
+          post: "Mumbai",
+          alreadyDq: "no",
+        });
+        expect(r.bottleneck).toBe("visa-unavailable");
+      }
+    }
   });
 
   it("retains DQ when a documentarily complete case retrogresses", () => {
+    // Priority date must sit BEHIND the live cutoff for this branch — EB-2
+    // India is Nov 1, 2013 on the October 2026 chart, so 2015 is not current.
     const r = diagnoseIvScheduling({
       category: "EB2",
       country: "india",
-      priorityDate: "2012-01-01",
+      priorityDate: "2015-01-01",
       dqMonth: "2020-01",
       postSchedulingMonth: "2026-01",
       post: "Mumbai",

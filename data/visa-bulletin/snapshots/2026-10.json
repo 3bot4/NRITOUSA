@@ -1,12 +1,7 @@
 {
   "bulletinMonth": "2026-10",
-  "lastUpdated": "2026-09-29",
-  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-october-2026.html",
-  "sourceLabel": "U.S. Department of State Visa Bulletin (October 2026)",
-  "adjustmentOfStatusChart": "dates-for-filing",
-  "adjustmentOfStatusChartStatus": "posted",
-  "adjustmentOfStatusChartMonth": "2026-10",
-  "notes": "fad = Final Action Dates (when a green card can actually be approved). dff = Dates for Filing (when an I-485 can be submitted, in months USCIS accepts the DFF chart). 'C' = Current (no backlog). 'U' = Unavailable (no visa numbers available this month). The eb5 entry is the EB-5 Unreserved category; eb5SetAsides holds the three reserved set-aside categories (Rural, High Unemployment, Infrastructure), all Current in this bulletin. All values verified cell-by-cell against the official October 2026 bulletin (Number 19, Volume XI), the first bulletin of FY2027. adjustmentOfStatusChart is the chart required by the LATEST POSTED USCIS determination, and adjustmentOfStatusChartMonth is the bulletin month that determination covers \u2014 when adjustmentOfStatusChartStatus is pending those two describe a PRIOR month, not this one, and the UI must say so rather than asserting a chart for the current bulletin. USCIS posted its October 2026 determination: applicants may use the Dates for Filing chart for BOTH employment-based and family-sponsored adjustment of status (a switch from September 2026, when employment-based filings had to use Final Action Dates). Verified 2026-09-29.",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+  "sourceLabel": "U.S. Department of State Visa Bulletin archive",
   "categories": {
     "eb1": {
       "row": {
@@ -250,50 +245,6 @@
       "philippines": {
         "fad": "2008-05-15",
         "dff": "2009-03-22"
-      }
-    }
-  },
-  "eb5SetAsides": {
-    "rural": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "highUnemployment": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
-      }
-    },
-    "infrastructure": {
-      "india": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "china": {
-        "fad": "C",
-        "dff": "C"
-      },
-      "row": {
-        "fad": "C",
-        "dff": "C"
       }
     }
   }

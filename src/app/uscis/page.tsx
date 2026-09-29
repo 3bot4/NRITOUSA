@@ -135,7 +135,7 @@ const faqs = [
   {
     question: "How long is the EB-2 India green card wait time?",
     answer:
-      "As of the September 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in September 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
+      "As of the October 2026 Visa Bulletin — the first of FY 2027 — EB-2 India has a posted Final Action Date of November 1, 2013, having re-opened after being Unavailable from July through September 2026. Dates for Filing is unchanged at January 15, 2015. A priority date earlier than November 1, 2013 can be approved now; anything later still faces a wait measured in decades, and future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many applicants are ahead of you.",
   },
   {
     question: "Can I file I-485 while my priority date is not yet current?",

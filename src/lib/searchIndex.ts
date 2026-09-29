@@ -318,7 +318,7 @@ const SUPPORTING: SearchItem[] = [
   {
     title: "October 2026 Visa Bulletin Predictions",
     description:
-      "The FY2027 reset analysis for EB-2 India, which is Unavailable until 30 September 2026 — and why a return to at least July 2014 looks likely.",
+      "The FY2027 reset analysis for EB-2 India: Unavailable from July through September 2026, re-opened at November 1, 2013 in the October 2026 bulletin — with our pre-committed forecast scored against it.",
     href: "/visa-bulletin/october-2026-predictions",
     type: "Guide",
     priority: 0,

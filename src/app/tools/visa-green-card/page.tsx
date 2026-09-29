@@ -226,7 +226,7 @@ const faqs: FaqItem[] = [
   {
     question: "How long is the EB-2 India green card wait time in 2026?",
     answer:
-      "As of the September 2026 Visa Bulletin, EB-2 India is Unavailable. No EB-2 India immigrant visa numbers are authorized for the remainder of FY 2026, so EB-2 India applicants cannot receive final green card approval in September 2026 regardless of priority date. The category is expected to reset in FY 2027, but future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many people are ahead of you.",
+      "As of the October 2026 Visa Bulletin — the first of FY 2027 — EB-2 India has a posted Final Action Date of November 1, 2013, having re-opened after being Unavailable from July through September 2026. Dates for Filing is unchanged at January 15, 2015. A priority date earlier than November 1, 2013 can be approved now; anything later still faces a wait measured in decades, and future movement depends on demand and annual limits. The Green Card Wait Time Tracker at /tools/green-card-tracker uses USCIS I-485 inventory data to show how many people are ahead of you.",
   },
   {
     question: "What does IOE, LIN, SRC, EAC, WAC, or MSC mean on my USCIS receipt number?",
@@ -328,7 +328,7 @@ export default function VisaGreenCardToolsPage() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-700 to-indigo-600 px-3 py-1 text-xs font-semibold text-white">
               🛂 Visa &amp; Green Card
             </span>
-            <span>Updated September 2026</span>
+            <span>Updated October 2026</span>
           </div>
 
           <h1 className="text-[2rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2.5rem]">

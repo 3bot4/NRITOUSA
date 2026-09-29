@@ -100,6 +100,36 @@ function ChangeTable({ rows, caption }: { rows: MovementRow[]; caption: string }
   );
 }
 
+/**
+ * Chart copy for ONE month's page.
+ *
+ * The site tracks exactly one USCIS chart determination — the current
+ * bulletin's, in data/visa-bulletin/current.json. An archive month page must
+ * therefore never present that determination as its own: the first time the
+ * bulletin rolled over (September → October 2026) the September page answered
+ * "Which chart do I use to file in September 2026?" with October's Dates for
+ * Filing determination, which is exactly the mistake the page warns gets an
+ * I-485 rejected. When this page's month is not the tracked month, name the
+ * month the determination covers instead of asserting one for this one.
+ */
+function chartCopyFor(bulletinMonth: string) {
+  const chart = getApplicableChart();
+  const isTracked = chart.determinationMonth === bulletinMonth;
+  const label = monthLabel(bulletinMonth);
+  return {
+    ...chart,
+    isTracked,
+    /** Full sentence for the hero and the FAQ. */
+    sentence: isTracked
+      ? `${chart.statusHeadline} ${chart.statusValue}`
+      : `This is the ${label} bulletin archive. USCIS makes its adjustment-of-status chart determination month by month, and this page does not carry ${label}'s — the determination tracked site-wide is for ${chart.determinationMonthLabel}: ${chart.label}. Confirm ${label} against uscis.gov/visabulletininfo before relying on it.`,
+    /** Short value for the "Chart USCIS accepts" tile. */
+    badge: isTracked
+      ? chart.badgeLabel
+      : `${chart.determinationMonthLabel}: ${chart.badgeLabel}`,
+  };
+}
+
 export function monthFaqs(bulletinMonth: string): FaqItem[] {
   const label = monthLabel(bulletinMonth);
   const prevLabel = monthLabel(previousMonth(bulletinMonth));
@@ -108,7 +138,7 @@ export function monthFaqs(bulletinMonth: string): FaqItem[] {
   const eb1 = pick("eb1");
   const eb2 = pick("eb2");
   const eb3 = pick("eb3");
-  const chart = getApplicableChart();
+  const chart = chartCopyFor(bulletinMonth);
 
   const line = (r: MovementRow | undefined, name: string) =>
     r
@@ -122,7 +152,7 @@ export function monthFaqs(bulletinMonth: string): FaqItem[] {
     },
     {
       question: `Which chart do I use to file in ${label}?`,
-      answer: `${chart.statusHeadline} ${chart.statusValue} USCIS makes this determination separately from the bulletin each month, and it can differ between employment-based and family-sponsored cases. Check it before you file — using the wrong chart gets an I-485 rejected, not held.`,
+      answer: `${chart.sentence} USCIS makes this determination separately from the bulletin each month, and it can differ between employment-based and family-sponsored cases. Check it before you file — using the wrong chart gets an I-485 rejected, not held.`,
     },
     {
       question: "What does U mean in the visa bulletin?",
@@ -176,7 +206,7 @@ export default function VisaBulletinMonthPage({
   const india = indiaEmploymentMovement(bulletinMonth);
   const employment = movementTable(bulletinMonth, "categories");
   const family = movementTable(bulletinMonth, "family");
-  const chart = getApplicableChart();
+  const chart = chartCopyFor(bulletinMonth);
   const faqs = monthFaqs(bulletinMonth);
   const pick = (c: string) => india.filter((r) => r.category === c)[0];
   const otherMonths = publishedMonthSlugs().filter(
@@ -232,7 +262,7 @@ export default function VisaBulletinMonthPage({
             {". "}
             {headline(pick("eb1"), "EB-1 is")}
             {". "}
-            {chart.statusHeadline} {chart.statusValue}
+            {chart.sentence}
           </p>
 
           <ul className="mt-5 grid max-w-3xl gap-2 sm:grid-cols-2">
@@ -257,7 +287,7 @@ export default function VisaBulletinMonthPage({
                 Chart USCIS accepts
               </span>
               <span className="text-sm font-bold text-ink-900">
-                {chart.badgeLabel}
+                {chart.badge}
               </span>
             </li>
           </ul>
