@@ -31,20 +31,22 @@
       "title": "October 2026 (FY2027) Visa Bulletin: run the monthly refresh the day it drops",
       "area": "numbers",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-09-16",
       "nextStep": "Playbook §1 steps 1-6, plus the FY-rollover extras: source URLs move to the /2027/ folder, 'Unavailable for the remainder of FY 2026' copy goes false on Oct 1, EB-2/EB-5 India return from U so tracker movementDirection must be recomputed, EB-5 set-asides reset",
-      "evidence": "npm test + the getMovement runtime check in playbook step 5"
+      "evidence": "npm test + the getMovement runtime check in playbook step 5",
+      "resolved": "2026-09-29"
     },
     {
       "id": "score-the-pre-committed-october-2026",
       "title": "Score the pre-committed October 2026 forecast once DOS publishes",
       "area": "content",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-09-16",
       "nextStep": "Fill the four 'Pending' rows in the 'Our record on this call' table on /visa-bulletin/october-2026-predictions from the published bulletin; flip Eb2OctoberOutlook's dashed prediction to the actual value; update the Sept 15 status paragraph",
-      "evidence": "src/lib/visaBulletinOctober2026.test.ts"
+      "evidence": "src/lib/visaBulletinOctober2026.test.ts",
+      "resolved": "2026-09-29"
     },
     {
       "id": "five-visitor-insurance-calculators-share-one",
@@ -61,9 +63,10 @@
       "title": "October 2026 Visa Bulletin (FY2027) data refresh shipped — EB-2 India re-opened at 01NOV13, ROW EB-2/EB-3 retrogressed, USCIS switched to Dates for Filing for both EB and FB",
       "area": "other",
       "severity": "low",
-      "status": "open",
+      "status": "done",
       "opened": "2026-09-29",
-      "nextStep": "Consider adding 2026-10 to PUBLISHED_MONTHS to mint the October month page (deliberately skipped: creates a new page)"
+      "nextStep": "Consider adding 2026-10 to PUBLISHED_MONTHS to mint the October month page (deliberately skipped: creates a new page)",
+      "resolved": "2026-09-29"
     },
     {
       "id": "indian-population-state-pages-are-72",
@@ -361,8 +364,9 @@
       "title": "Refresh /visa-bulletin/october-2026-predictions the day the October 2026 bulletin drops (~Sept 8-15): replace the predicted FAD with the published one and mark whether the DOS 'at least May 2026 date' guidance held",
       "area": "other",
       "severity": "high",
-      "status": "open",
-      "opened": "2026-08-19"
+      "status": "done",
+      "opened": "2026-08-19",
+      "resolved": "2026-09-29"
     },
     {
       "id": "formatdate-in-src-lib-format-ts",
@@ -377,8 +381,9 @@
       "title": "Fill in the 'Our record on this call' scoreboard on /visa-bulletin/october-2026-predictions once the October 2026 bulletin publishes - the page publicly commits to scoring its own forecast rather than editing it",
       "area": "other",
       "severity": "high",
-      "status": "open",
-      "opened": "2026-08-19"
+      "status": "done",
+      "opened": "2026-08-19",
+      "resolved": "2026-09-29"
     },
     {
       "id": "poa-page-consular-fees-state-stamp",
@@ -615,9 +620,10 @@
       "title": "Ingest the October 2026 Visa Bulletin (FY2027 reset — expected release ~2026-09-12)",
       "area": "other",
       "severity": "high",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-22",
-      "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions — EB-2 and EB-5 India should return from Unavailable on Oct 1"
+      "nextStep": "Follow docs/DATA-UPDATE-PLAYBOOK.md section 1: pull the bulletin via the adoption.state.gov mirror, write _verified-backfill/visa-bulletin-backfill-2026-10.json (110 rows), run build-visa-bulletin-data.mjs, patch current.json source/sourceLabel/notes, sweep the month-named prose, then fill in the results column on /visa-bulletin/october-2026-predictions — EB-2 and EB-5 India should return from Unavailable on Oct 1",
+      "resolved": "2026-09-29"
     },
     {
       "id": "estate-planning-data-file-needs-its",
