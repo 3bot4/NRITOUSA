@@ -228,7 +228,7 @@ export default function NriTaxFilingRoadmapPage() {
                       <dd>{card.row.documents}</dd>
                     </div>
                   </dl>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-ink-900/5 pt-3 text-xs font-semibold">
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-3 border-t border-ink-900/5 pt-3 text-xs font-semibold">
                     <Link href={FORMS_LIMITS_PATH} className="text-brand-600 hover:text-brand-700">
                       Forms &amp; Limits Center →
                     </Link>

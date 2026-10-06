@@ -372,7 +372,7 @@ export const tdsSnapshotRows: { label: string; value: string; note?: string; hig
 export const itrSnapshotRows: { label: string; value: string; note?: string; highlight?: boolean }[] = [
   { label: "ITR-1 / ITR-2 due date (non-audit)", value: "Jul 31", note: "Salaried, pension, capital gains — no business income. AY 2026-27: Jul 31, 2026. Extensions happen — verify each year.", highlight: true },
   { label: "ITR-3 / ITR-4 due date (non-audit)", value: "Aug 31", note: "Business or professional income not requiring an audit. AY 2026-27: Aug 31, 2026 — a month later than ITR-2.", highlight: true },
-  { label: "ITR due date (audit)", value: "Oct 31", note: "Cases requiring a tax audit." },
+  { label: "ITR due date (audit)", value: "Nov 21, 2026", note: "AY 2026-27, extended from Oct 31 by CBDT Circular 7/2026 (tax audit report due Oct 21). Statutory date is Oct 31; transfer-pricing cases Nov 30." },
   { label: "Which form", value: "ITR-2 / ITR-3", note: "ITR-2: no business income; ITR-3: business/profession income — note the different due dates above." },
   { label: "Reconcile first", value: "26AS / AIS / TIS", note: "Match TDS & income before filing to avoid notices." },
 ];
@@ -460,7 +460,7 @@ export const wealthNumbers: NumberGroup = {
     value: "10%",
     lastVerified: "2026-09-02",
     sourceName: "IRS",
-    sourceUrl: "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
+    sourceUrl: "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-exceptions-to-tax-on-early-distributions",
     note: "Plus ordinary income tax and possible US withholding; exceptions apply.",
   },
   ssCredits: {
@@ -503,8 +503,8 @@ export const educationNumbers: NumberGroup = {
   },
   fafsaOpens: {
     label: "FAFSA opening date",
-    value: "Oct 1 (aid year)",
-    lastVerified: "2026-07-04",
+    value: "By Oct 1 (2027–28 opened Sep 23, 2026)",
+    lastVerified: "2026-10-06",
     sourceName: "Federal Student Aid",
     sourceUrl: officialSources.fafsa,
   },
@@ -515,7 +515,7 @@ export const educationSnapshotRows: { label: string; value: string; note?: strin
   { label: "SAT registration fee", value: educationNumbers.satFee.value, note: "Fee waivers for eligible low-income US students (via school counselor).", highlight: true },
   { label: "FAFSA opens", value: educationNumbers.fafsaOpens.value, note: "Federal financial aid application at studentaid.gov." },
   { label: "College application fee", value: "~$50–90 each", note: "Varies by school; many waive fees for eligible applicants." },
-  { label: "ACT registration fee", value: "$68", note: "Alternative to the SAT; optional writing/science add-ons cost extra. Waivers available." },
+  { label: "ACT registration fee", value: "$70", note: "Alternative to the SAT; optional writing/science add-ons cost extra. Waivers available." },
 ];
 
 export const educationSnapshotSources: { label: string; href: string }[] = [

@@ -287,7 +287,7 @@ For minor or newborn OCI applications, use a certified government-issued birth c
 Fees and turnaround change — always confirm on the official page linked for your state.
 
 ### California
-Issued by the **California Secretary of State** (Notary Public & Special Filings / Authentication). Mail-in and limited in-person (Sacramento/LA) service. Official: [California SOS authentication](https://www.sos.ca.gov/notary/authentication).
+Issued by the **California Secretary of State** (Notary Public & Special Filings / Authentication). Mail-in and limited in-person (Sacramento/LA) service. Official: [California SOS authentication](https://www.sos.ca.gov/notary/request-apostille).
 
 ### Texas
 Issued by the **Texas Secretary of State**, Authentications Unit. Mail-in, with expedited options. Official: [Texas SOS authentication](https://www.sos.state.tx.us/authinfo.shtml).

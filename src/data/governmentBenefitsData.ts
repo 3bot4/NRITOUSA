@@ -92,7 +92,7 @@ export interface SourceLink {
 }
 
 export const officialSourceLinks: SourceLink[] = [
-  { label: "Benefits.gov — find benefits you may be eligible for", href: "https://www.benefits.gov/" },
+  { label: "Benefits.gov — find benefits you may be eligible for", href: "https://www.usa.gov/benefit-finder" },
   { label: "USA.gov — government benefits", href: "https://www.usa.gov/benefits" },
   // USCIS archived its Public Charge Resources page (it now 301s into /archive/),
   // and Policy Manual Part G below already covers the standing guidance. This
@@ -115,7 +115,7 @@ export const officialSourceLinks: SourceLink[] = [
   { label: "StudentAid.gov — federal aid for non-U.S. citizens", href: "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens" },
   { label: "DOL — unemployment insurance by state", href: "https://www.dol.gov/general/topic/unemployment-insurance" },
   { label: "USCIS — Affidavit of Support (Form I-864)", href: "https://www.uscis.gov/i-864" },
-  { label: "HHS LIHEAP — energy assistance", href: "https://www.acf.hhs.gov/ocs/programs/liheap" },
+  { label: "HHS LIHEAP — energy assistance", href: "https://acf.gov/ocs/programs/liheap" },
   { label: "HUD — Housing Choice Voucher program", href: "https://www.hud.gov/helping-americans/housing-choice-vouchers" },
   { label: "HRSA — find a community health center", href: "https://findahealthcenter.hrsa.gov/" },
   { label: "DOJ — find free/low-cost legal help (accredited reps)", href: "https://www.justice.gov/eoir/list-pro-bono-legal-service-providers" },
@@ -382,7 +382,7 @@ export const keyDates: KeyDate[] = [
     what: "DHS removes the 2022 rule's regulations (8 CFR 212.20–212.23). Officers return to a discretionary, case-by-case totality-of-the-circumstances test with no regulatory list limiting which means-tested benefits they may weigh. Benefits received BEFORE this date are still judged under the narrow 2022 standard.",
     who: "People applying for admission, or filing adjustment of status, on or after the effective date — and who are not in an exempt category.",
     sourceName: "DHS final rule, 91 FR (doc. 2026-14539)",
-    sourceUrl: "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility",
+    sourceUrl: "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
     lastVerified: RULES_LAST_VERIFIED,
   },
   {
@@ -481,9 +481,9 @@ export const publicCharge = {
     "Government pensions",
     "Veterans' benefits",
   ],
-  /** USCIS has said more guidance is coming; do not present this as settled. */
+  /** Points readers to the Policy Manual for implementation detail; do not present this page as the final word. */
   guidanceNotice:
-    "USCIS has stated that additional implementation guidance will be issued on or before September 18, 2026. This page will be reviewed again when that guidance is published.",
+    "The rule took effect on September 18, 2026, and USCIS implementation guidance now sits in the USCIS Policy Manual. Check the Policy Manual for the current version before relying on any detail here.",
   filingDateProtection:
     "Adjustment-of-status applications properly postmarked or electronically submitted and accepted before September 18, 2026 continue under the 2022 rule, even if they remain pending after that date.",
   noDisenrollNotice:

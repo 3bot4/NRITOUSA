@@ -222,7 +222,7 @@ Typically **6–12 weeks** for a normal renewal, measured from VFS submission to
 Usually not. A straightforward renewal where your Indian address is unchanged and you have no pending cases needs **no police verification**. It's only triggered for fresh passports, a changed Indian address, lost/stolen cases, or a criminal record — in which case the consulate routes it to your local police station in India.
 
 ## Tatkal vs Normal: Which Should You Choose?
-Tatkal ("immediate") is faster but costs ~$70–80 more and needs an extra self-declaration (Annexure F). Neither option guarantees a specific date.
+Tatkal ("immediate") is faster but costs $125 more and needs an extra self-declaration (Annexure F). Neither option guarantees a specific date.
 
 :::compare
 left: Choose Normal if
@@ -641,7 +641,7 @@ Normal renewal runs **6–12 weeks**, Tatkal **3–5 weeks**, and lost-passport 
 :::
 
 ## Tatkal: faster, not instant
-Tatkal cuts the queue for ~$70–80 more plus an Annexure F self-declaration. Choose it for confirmed near-term travel or an emergency — but treat even Tatkal dates as estimates and apply as early as you can.
+Tatkal cuts the queue for $125 more plus an Annexure F self-declaration. Choose it for confirmed near-term travel or an emergency — but treat even Tatkal dates as estimates and apply as early as you can.
 
 :::compare
 left: Normal is fine if

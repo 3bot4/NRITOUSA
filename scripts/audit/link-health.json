@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-28",
+  "generatedAt": "2026-10-06",
   "note": "Outbound citation health. 'unverifiable' = host blocks automated requests (see BOT_BLOCKED_HOSTS); those must be checked by hand and are NOT failures.",
   "counts": {
-    "checked": 605,
-    "ok": 543,
+    "checked": 603,
+    "ok": 546,
     "dead": 0,
-    "unreachable": 12,
-    "forbidden": 7,
-    "unverifiable": 41,
-    "redirected": 39
+    "unreachable": 4,
+    "forbidden": 8,
+    "unverifiable": 43,
+    "redirected": 24
   },
   "dead": [],
   "unreachable": [
@@ -20,15 +20,8 @@
       ]
     },
     {
-      "url": "https://indiawest.com/trump-accounts-and-birthright-citizenship-what-h-1b-families-should-know/",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/about-deepak"
-      ]
-    },
-    {
       "url": "https://www.cbic.gov.in/",
-      "error": "ENOTFOUND",
+      "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
       "pages": [
         "/gold-limit-usa-to-india",
         "/shipping-household-goods-to-india"
@@ -36,77 +29,16 @@
     },
     {
       "url": "https://www.cbic.gov.in/resources/htdocs-cbec/customs_clearance_of_passengers_at_a_glance.pdf",
-      "error": "ENOTFOUND",
+      "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
       "pages": [
         "/gold-limit-usa-to-india"
       ]
     },
     {
       "url": "https://www.cbic.gov.in/resources/htdocs-cbec/transfer_of_residence_rules-at_a_glance.pdf",
-      "error": "ENOTFOUND",
+      "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
       "pages": [
         "/shipping-household-goods-to-india"
-      ]
-    },
-    {
-      "url": "https://www.migrationpolicy.org/article/indian-immigrants-united-states",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/indian-population-in-california",
-        "/indian-population-in-florida",
-        "/indian-population-in-georgia",
-        "/indian-population-in-illinois",
-        "/indian-population-in-maryland",
-        "/indian-population-in-massachusetts",
-        "/indian-population-in-new-jersey",
-        "/indian-population-in-new-york",
-        "/indian-population-in-texas",
-        "/indian-population-in-usa",
-        "/indian-population-in-virginia",
-        "/indian-population-in-washington"
-      ]
-    },
-    {
-      "url": "https://www.naic.org",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/tools/visitor-insurance-plan-comparison"
-      ]
-    },
-    {
-      "url": "https://www.nass.org/",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/power-of-attorney-for-india-from-usa"
-      ]
-    },
-    {
-      "url": "https://www.nj.gov/treasury/revenue/apostilles.shtml",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/oci/apostille"
-      ]
-    },
-    {
-      "url": "https://www.nycourts.gov/divorce/whats-new-matrimonial-legislation-court-rules-and-forms",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/divorce-immigration-status"
-      ]
-    },
-    {
-      "url": "https://www.optionleo.com",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/partnerships",
-        "/tools"
-      ]
-    },
-    {
-      "url": "https://www.optionleo.com/?utm_source=nritousa&utm_medium=house_ad&utm_campaign=nritousa_options_pages&utm_content=article%2Fh4-l2-dependent-health-insurance",
-      "error": "UND_ERR_CONNECT_TIMEOUT",
-      "pages": [
-        "/articles/h4-l2-dependent-health-insurance"
       ]
     }
   ],
@@ -166,6 +98,13 @@
       "status": 403,
       "pages": [
         "/calculators/usd-inr-projection-send-now-or-wait"
+      ]
+    },
+    {
+      "url": "https://www.naic.org",
+      "status": 403,
+      "pages": [
+        "/tools/visitor-insurance-plan-comparison"
       ]
     }
   ],
@@ -240,41 +179,6 @@
       ]
     },
     {
-      "url": "https://www.acf.hhs.gov/ocs/programs/liheap",
-      "finalUrl": "https://acf.gov/ocs/programs/liheap",
-      "pages": [
-        "/usa-government-benefits-immigrants"
-      ]
-    },
-    {
-      "url": "https://www.benefits.gov/",
-      "finalUrl": "https://www.usa.gov/benefit-finder?utm_source=usa_benefits-gov&utm_medium=redirect&utm_campaign=redirect_benefits-gov&modal=b-welcome-1899",
-      "pages": [
-        "/usa-government-benefits-immigrants"
-      ]
-    },
-    {
-      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system.html",
-      "finalUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score.html",
-      "pages": [
-        "/education/us-degree-roi-calculator"
-      ]
-    },
-    {
-      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/section-204.5",
-      "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5",
-      "pages": [
-        "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw"
-      ]
-    },
-    {
-      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
-      "finalUrl": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
-      "pages": [
-        "/divorce-immigration-status"
-      ]
-    },
-    {
       "url": "https://www.federalregister.gov/d/2026-14539",
       "finalUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
       "pages": [
@@ -286,13 +190,6 @@
       "finalUrl": "https://www.federalregister.gov/documents/2026/08/25/2026-17324/fee-for-certain-h-1b-petitions",
       "pages": [
         "/articles/opt-h1b-financial-planning-students"
-      ]
-    },
-    {
-      "url": "https://www.federalregister.gov/public-inspection/2026-14539/public-charge-ground-of-inadmissibility",
-      "finalUrl": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
-      "pages": [
-        "/usa-government-benefits-immigrants"
       ]
     },
     {
@@ -389,30 +286,6 @@
       ]
     },
     {
-      "url": "https://www.irs.gov/individuals/individual-taxpayer-identification-number",
-      "finalUrl": "https://www.irs.gov/tin/itin/individual-taxpayer-identification-number-itin",
-      "pages": [
-        "/articles/moving-to-usa-from-india-checklist"
-      ]
-    },
-    {
-      "url": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
-      "finalUrl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-exceptions-to-tax-on-early-distributions",
-      "pages": [
-        "/long-term-nri-wealth",
-        "/nri-wealth-checkup",
-        "/return-to-india"
-      ]
-    },
-    {
-      "url": "https://www.microsoft.com/privacy/privacystatement",
-      "finalUrl": "https://www.microsoft.com/en-us/privacy/privacystatement",
-      "pages": [
-        "/cookie-policy",
-        "/privacy-policy"
-      ]
-    },
-    {
       "url": "https://www.passportindia.gov.in",
       "finalUrl": "https://www.passportindia.gov.in/psp",
       "pages": [
@@ -423,34 +296,7 @@
       "url": "https://www.passportindia.gov.in/",
       "finalUrl": "https://www.passportindia.gov.in/psp",
       "pages": [
-        "/indian-passport-renewal-usa",
-        "/indian-passport-renewal-usa/chicago",
-        "/indian-passport-renewal-usa/documents",
-        "/indian-passport-renewal-usa/houston-texas",
-        "/indian-passport-renewal-usa/new-york",
-        "/indian-passport-renewal-usa/processing-time",
-        "/indian-passport-renewal-usa/san-francisco"
-      ]
-    },
-    {
-      "url": "https://www.sos.ca.gov/notary/authentication",
-      "finalUrl": "https://www.sos.ca.gov/notary/request-apostille",
-      "pages": [
-        "/oci/apostille"
-      ]
-    },
-    {
-      "url": "https://www.ssa.gov/benefits/retirement/planner/applying7.html",
-      "finalUrl": "https://www.ssa.gov/family",
-      "pages": [
-        "/articles/social-security-40-credits-h1b-nri"
-      ]
-    },
-    {
-      "url": "https://www.ssa.gov/ssnumber/",
-      "finalUrl": "https://www.ssa.gov/number-card",
-      "pages": [
-        "/articles/moving-to-usa-from-india-checklist"
+        "/indian-passport-renewal-usa"
       ]
     },
     {
@@ -458,32 +304,6 @@
       "finalUrl": "https://www.uscis.gov/citizenship/find-study-materials-and-resources/check-for-test-updates",
       "pages": [
         "/tools/citizenship-test-practice"
-      ]
-    },
-    {
-      "url": "https://www.uscis.gov/forms",
-      "finalUrl": "https://www.uscis.gov/forms/all-forms",
-      "pages": [
-        "/tools/uscis-form-finder",
-        "/uscis/forms",
-        "/uscis/forms/ar-11-change-address",
-        "/uscis/forms/i-129",
-        "/uscis/forms/i-130",
-        "/uscis/forms/i-131",
-        "/uscis/forms/i-140",
-        "/uscis/forms/i-485",
-        "/uscis/forms/i-539",
-        "/uscis/forms/i-765",
-        "/uscis/forms/i-907-premium-processing",
-        "/uscis/forms/n-400"
-      ]
-    },
-    {
-      "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates",
-      "finalUrl": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-and-priority-dates",
-      "pages": [
-        "/visa-bulletin/priority-date",
-        "/visa-bulletin/september-2026"
       ]
     },
     {
@@ -523,13 +343,6 @@
       "finalUrl": "https://www.uscis.gov/employment-authorization",
       "pages": [
         "/tools/h4-ead-navigator"
-      ]
-    },
-    {
-      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-cap-season",
-      "finalUrl": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-cap-season",
-      "pages": [
-        "/tools/h1b-lottery-timeline"
       ]
     }
   ]

@@ -237,7 +237,7 @@ Fees below are the current USCIS amounts for the stages that remain after I-140 
 | I-765 EAD (with I-485) | Filed with I-485 | Employee |
 | I-131 Advance Parole (with I-485) | Filed with I-485 | Employee |
 | New I-140, if ever refiled | $715 | Employer |
-| I-140 premium processing (optional) | $2,805 | Employer |
+| I-140 premium processing (optional) | $2,965 | Employer |
 
 > Per the USCIS fee schedule (Form G-1055). Always confirm the current amount on uscis.gov before paying.
 

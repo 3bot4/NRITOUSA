@@ -141,7 +141,7 @@ export default function SatGuidePage() {
               title="SAT fee & key dates"
               accent="sky"
               rows={educationSnapshotRows}
-              badges={["SAT ~$68", "FAFSA opens Oct 1"]}
+              badges={["SAT ~$68", "FAFSA opens by Oct 1"]}
               lastVerified={EDUCATION_VERIFIED}
               sources={educationSnapshotSources}
               disclaimer={EDUCATION_DISCLAIMER}

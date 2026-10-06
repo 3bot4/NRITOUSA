@@ -145,7 +145,7 @@ For most Indian H1B workers pursuing EB-2 or EB-3 green cards:
 | EB-5 investor | **I-526 / I-526E receipt date** | I-526 receipt/approval notice |
 | Family-based (F1–F4, IR) | **I-130 receipt date** | I-130 receipt/approval notice |
 
-Source: [USCIS — Visa Availability and Priority Dates](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates).
+Source: [USCIS — Visa Availability and Priority Dates](https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-and-priority-dates).
 
 :::info
 **Where to look, in order.** The authoritative record is the **Priority Date box on your Form I-797 Notice of Action** for the I-140, I-130 or I-526 — that is what USCIS and the consulate work from. The ETA-9089 itself is *evidence* of the underlying PERM filing date for labor-certification cases, but it is not where the operative date is recorded, and Section O of the ETA-9089 is not the place to look.
@@ -260,7 +260,7 @@ A denied PERM does not establish a priority date. If the PERM was refiled, the n
 Check the current visa bulletin Final Action Date for India EB-2. Based on historical patterns, a 2020 priority date for India EB-2 is likely not current yet — but verify with the official bulletin since dates change monthly.
 
 ### Does premium processing move my priority date forward?
-No. Premium processing ($2,805) speeds only the I-140 decision — generally 15 business days for most classifications, but 45 business days for E13 multinational executives/managers and E21 national-interest-waiver cases. Your priority date — and the visa-bulletin wait behind it — is completely unaffected.
+No. Premium processing ($2,965) speeds only the I-140 decision — generally 15 business days for most classifications, but 45 business days for E13 multinational executives/managers and E21 national-interest-waiver cases. Your priority date — and the visa-bulletin wait behind it — is completely unaffected.
 `,
   },
 
@@ -380,7 +380,7 @@ EB-1 is the fastest employment-based green card for India-born applicants: it ne
 
 :::key
 - Expect an EB-1 India queue of **a few years** (the cutoff above shows exactly where it stands) versus **decades** in EB-2/EB-3 India.
-- Budget **$715** for the I-140 filing fee and **$2,805** more if you want premium processing (15 business days), per the USCIS fee schedule.
+- Budget **$715** for the I-140 filing fee and **$2,965** more if you want premium processing (15 business days), per the USCIS fee schedule.
 - Plan around **~40,040 EB-1 visas per year worldwide**; India is subject to the 7% per-country limit but routinely uses **more than that share** thanks to spillover of unused numbers.
 - Qualify under one of three doors: **EB-1A** (3 of 10 criteria, self-petition), **EB-1B** (2 of 6 criteria + 3 years' experience), or **EB-1C** (1 year as a multinational manager/executive).
 - File I-485 only when your priority date clears the applicable chart — track it with the [Priority Date Checker](/tools/priority-date-checker).
@@ -468,11 +468,11 @@ Typically **3–5 years end to end** for a new India-born filing as of mid-2026 
 
 | Stage | Typical time | Can you speed it up? |
 |---|---|---|
-| I-140 petition | ~6–10 months regular | Yes — premium: 15 business days (EB-1A/EB-1B) or 45 (EB-1C), $2,805 |
+| I-140 petition | ~6–10 months regular | Yes — premium: 15 business days (EB-1A/EB-1B) or 45 (EB-1C), $2,965 |
 | Priority-date wait (India) | A few years (see status panel above) | No — set by the monthly visa bulletin |
 | I-485 adjustment of status | ~8–14 months typically | Interview waivers sometimes shorten it |
 
-Fees, per the USCIS fee schedule: **$715** to file I-140, **$2,805** optional premium processing, and **$1,440** for each adult I-485. Premium processing speeds only the I-140 decision — it does **not** move your priority date.
+Fees, per the USCIS fee schedule: **$715** to file I-140, **$2,965** optional premium processing, and **$1,440** for each adult I-485. Premium processing speeds only the I-140 decision — it does **not** move your priority date.
 
 ## EB-1 vs EB-2 NIW for Indian researchers
 
@@ -505,7 +505,7 @@ Yes. H1B status is compatible with filing an EB-1A self-petition. Your H1B emplo
 Possibly, if you have exceptional achievements — patents, major open-source contributions, invited conference presentations, peer-reviewed publications, or very high compensation relative to your peers. Most standard software engineers do not qualify. An immigration attorney can evaluate your specific profile.
 
 ### Does premium processing help EB-1?
-Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C, for $2,805. USCIS acts within **15 business days** for EB-1A and EB-1B, but **45 business days** for EB-1C (E13 multinational executives/managers). It speeds the petition decision only; it does not advance your priority date.
+Yes — premium processing is available for I-140, including EB-1A/EB-1B/EB-1C, for $2,965. USCIS acts within **15 business days** for EB-1A and EB-1B, but **45 business days** for EB-1C (E13 multinational executives/managers). It speeds the petition decision only; it does not advance your priority date.
 
 ### Is EB-1 faster than EB-2 for India?
 Yes, dramatically. In the October 2026 bulletin EB-1 India sits at February 1, 2023 while EB-2 India sits at November 1, 2013 — more than nine years further back. If you can credibly qualify for any EB-1 sub-category, it is usually worth pursuing.
@@ -663,7 +663,7 @@ Yes — you can file I-485 under whichever has the more favorable current priori
 No. NIW skips PERM (no employer or recruitment needed), but your case still uses the same EB-2 India cutoff dates — the per-country queue applies in full.
 
 ### How much does an EB-2 green card cost in USCIS fees?
-Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and $2,805 if you add I-140 premium processing. PERM itself has no filing fee, and US regulations require the employer to bear PERM costs.
+Per the USCIS fee schedule: $715 for the I-140, $1,440 for each adult I-485, and $2,965 if you add I-140 premium processing. PERM itself has no filing fee, and US regulations require the employer to bear PERM costs.
 `,
   },
 

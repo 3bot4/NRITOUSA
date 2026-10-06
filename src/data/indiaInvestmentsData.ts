@@ -91,7 +91,7 @@ export const residentVsNriRows: ComparisonRow[] = [
   {
     feature: "Equity capital gains (India)",
     values: {
-      resident: "LTCG ~12.5% above ₹1.25L/yr; STCG ~20% (2026 rules).",
+      resident: "LTCG ~12.5% above ₹1.25L/yr; STCG ~20% (rates in force since 23 Jul 2024).",
       nri: "Same rates, but TDS is deducted before you receive the money; refund via ITR if over-withheld.",
     },
   },
@@ -271,7 +271,7 @@ export const capitalGainsRows: DataRow[] = [
   },
   {
     asset: "Real estate",
-    india: "LTCG after 24 months (2026 rules changed indexation); buyer must deduct TDS on an NRI seller — often over-withheld.",
+    india: "LTCG after 24 months (indexation removed for NRIs from 23 Jul 2024; flat 12.5%); buyer must deduct TDS on an NRI seller — often over-withheld.",
     us: "Capital gain on your 1040; foreign tax credit for Indian tax; currency affects the USD gain.",
   },
   {
@@ -678,7 +678,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How is the sale of Indian property taxed for NRIs?",
     answer:
-      "India taxes the capital gain (long-term after 24 months, with 2026 rule changes to indexation), and the buyer must deduct TDS from an NRI seller — often at a high rate that over-withholds. You can seek a lower-deduction certificate or recover excess via an Indian return. The US taxes the gain in dollars, with a foreign tax credit for Indian tax, and repatriation needs 15CA/15CB.",
+      "India taxes the capital gain (long-term after 24 months, taxed at a flat 12.5% without indexation for sales from 23 July 2024), and the buyer must deduct TDS from an NRI seller — often at a high rate that over-withholds. You can seek a lower-deduction certificate or recover excess via an Indian return. The US taxes the gain in dollars, with a foreign tax credit for Indian tax, and repatriation needs 15CA/15CB.",
   },
   {
     question: "Should I keep investing through SIPs in Indian mutual funds?",

@@ -142,22 +142,22 @@ export default function QueueHeroBand({
 
         {/* Pin 1: current cutoff */}
         <div
-          className="absolute top-1/2 flex -translate-y-1/2 flex-col items-center transition-all duration-700 ease-out motion-reduce:transition-none"
+          className="absolute top-1/2 flex -translate-y-1/2 flex-col items-start transition-all duration-700 ease-out motion-reduce:transition-none"
           style={{ left: "0%" }}
         >
           <span className="h-4 w-4 -translate-x-1/2 rounded-full border-2 border-white bg-brand-600 shadow" />
-          <span className="mt-1.5 -translate-x-1/2 whitespace-nowrap text-[11px] font-semibold text-ink-700">
+          <span className="mt-1.5 whitespace-nowrap text-[11px] font-semibold text-ink-700">
             Cutoff: {cutoffMonthLabel}
           </span>
         </div>
 
         {/* Pin 2: user's priority date */}
         <div
-          className="absolute top-1/2 flex -translate-y-1/2 flex-col items-center transition-all duration-700 ease-out motion-reduce:transition-none"
+          className="absolute top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center transition-all duration-700 ease-out motion-reduce:transition-none"
           style={{ left: `${pin2Pct}%` }}
         >
-          <span className="h-4 w-4 -translate-x-1/2 rounded-full border-2 border-white bg-ink-900 shadow" />
-          <span className="mt-1.5 -translate-x-1/2 whitespace-nowrap text-[11px] font-semibold text-ink-700">
+          <span className="h-4 w-4 rounded-full border-2 border-white bg-ink-900 shadow" />
+          <span className="mt-1.5 whitespace-nowrap text-[11px] font-semibold text-ink-700">
             You: {priorityLabel}
           </span>
         </div>
@@ -165,11 +165,11 @@ export default function QueueHeroBand({
         {/* End marker: projected reach month */}
         {projectedMonths !== null && projectedMonthLabel && (
           <div
-            className="absolute top-1/2 flex -translate-y-1/2 flex-col items-center transition-all duration-700 ease-out motion-reduce:transition-none"
+            className="absolute top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center transition-all duration-700 ease-out motion-reduce:transition-none"
             style={{ left: `${endPct}%` }}
           >
-            <span className="h-3 w-3 -translate-x-1/2 rounded-full border-2 border-white bg-emerald-500 shadow" />
-            <span className="mt-1.5 -translate-x-1/2 whitespace-nowrap text-[11px] font-semibold text-emerald-700">
+            <span className="h-3 w-3 rounded-full border-2 border-white bg-emerald-500 shadow" />
+            <span className="mt-1.5 whitespace-nowrap text-[11px] font-semibold text-emerald-700">
               {projectedMonthLabel.startsWith("beyond") ? "" : "~"}{projectedMonthLabel}
             </span>
           </div>

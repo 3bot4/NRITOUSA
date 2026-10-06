@@ -552,7 +552,7 @@ export default function VisaBulletinMonthPage({
               { label: `Official ${label} visa bulletin`, href: snapshot.source },
               { label: "Visa bulletin archive (Department of State)", href: BULLETIN_ARCHIVE_URL },
               { label: "USCIS — adjustment of status filing charts", href: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin" },
-              { label: "USCIS — visa availability and priority dates", href: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates" },
+              { label: "USCIS — visa availability and priority dates", href: "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-and-priority-dates" },
             ]}
           />
 

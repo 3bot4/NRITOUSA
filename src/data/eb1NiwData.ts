@@ -11,7 +11,7 @@
  */
 
 export const EB1_NIW_SOURCES = {
-  cfr2045: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/section-204.5",
+  cfr2045: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5",
   eb1: "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-first-preference-eb-1",
   eb2: "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-second-preference-eb-2",
   niwPolicyManual: "https://www.uscis.gov/policy-manual/volume-6-part-f-chapter-5",

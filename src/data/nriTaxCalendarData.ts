@@ -184,7 +184,7 @@ export const taxCalendar: TaxCalendarEntry[] = [
     system: "india",
     title: "ITR due date — audit cases",
     detail:
-      "Due date where a tax audit applies, typically business or professional income above the audit thresholds. The audit report itself is due earlier. Most salaried and investment-income NRIs are not in this bucket.",
+      "Due date where a tax audit applies, typically business or professional income above the audit thresholds. The audit report itself is due earlier. For AY 2026-27 only, CBDT Circular 7/2026 extended this to 21 November 2026 (audit report to 21 October). Most salaried and investment-income NRIs are not in this bucket.",
     appliesTo:
       "Indian FY that ended the previous 31 March — i.e. AY = this calendar year",
   },

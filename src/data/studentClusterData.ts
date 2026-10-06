@@ -130,7 +130,7 @@ export const studentSources = {
   },
   expressEntry: {
     label: "IRCC — Express Entry: Comprehensive Ranking System",
-    href: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system.html",
+    href: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score.html",
   },
   eca: {
     label: "IRCC — Educational credential assessment",
@@ -241,8 +241,8 @@ export const STATUS_BADGE: Record<
 /**
  * The $100,000 H-1B fee. Vacated June 8 2026; the First Circuit declined to
  * restore it on July 24 2026, so it is not being collected as of the
- * verification date. Proclamation 10973 is a 12-month measure that lapses
- * September 20 2026 unless extended.
+ * verification date. A Sept 18 2026 proclamation extended the requirement to
+ * September 21 2027; the court vacatur still blocks collection.
  */
 export const h1bProclamationFee: PolicyItem = {
   id: "h1b-proclamation-fee",
@@ -253,7 +253,7 @@ export const h1bProclamationFee: PolicyItem = {
   statusLine:
     "Vacated by a federal court on June 8, 2026 and NOT currently collected — the First Circuit declined to reinstate it on July 24, 2026 while the government's appeal proceeds.",
   detail:
-    "Proclamation 10973 (September 21, 2025) directed a $100,000 payment tied to certain new H-1B petitions for beneficiaries outside the United States. A federal district court vacated the implementing policy on June 8, 2026, holding it functioned as an unlawful tax. A brief administrative stay put it back in force in mid-June; on July 24, 2026 the First Circuit denied the government's motion to stay, so the vacatur stands and employers are not paying it while the appeal runs. Separately, the proclamation was written as a 12-month measure expiring September 20, 2026 unless extended. It never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it fell on the employer, not the worker.",
+    "Proclamation 10973 (September 21, 2025) directed a $100,000 payment tied to certain new H-1B petitions for beneficiaries outside the United States. A federal district court vacated the implementing policy on June 8, 2026, holding it functioned as an unlawful tax. A brief administrative stay put it back in force in mid-June; on July 24, 2026 the First Circuit denied the government's motion to stay, so the vacatur stands and employers are not paying it while the appeal runs. On September 18, 2026 a new proclamation extended the requirement through September 21, 2027, but the court order still blocks collection. It never applied to students already in the US changing status from F-1 to H-1B, and where it did apply it fell on the employer, not the worker.",
   lastVerified: STUDENT_DATA_VERIFIED,
   source: {
     label: "Proclamation 10973 (Federal Register)",

@@ -169,7 +169,7 @@ export default function PrivacyPolicyPage() {
             ; we will request consent where required. For more information
             about how Microsoft collects and uses data, see the{" "}
             <a
-              href="https://www.microsoft.com/privacy/privacystatement"
+              href="https://www.microsoft.com/en-us/privacy/privacystatement"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-600 underline"

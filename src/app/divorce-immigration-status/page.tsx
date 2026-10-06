@@ -184,7 +184,7 @@ function SrcNote({
   items: { name: string; href: string }[];
 }) {
   return (
-    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg border border-ink-900/10 bg-slate-50/70 px-3 py-2 text-xs text-ink-600">
+    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-3 rounded-lg border border-ink-900/10 bg-slate-50/70 px-3 py-2 text-xs text-ink-600">
       <span className="font-bold uppercase tracking-wide text-ink-500">{label}:</span>
       {items.map((s, i) => (
         <span key={s.href}>

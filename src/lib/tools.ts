@@ -210,7 +210,7 @@ export const tools: ToolMeta[] = [
     accent: "from-emerald-500 to-teal-600",
     seoTitle: "US Citizenship Checklist 2026: N-400 Documents & Fees",
     seoDescription:
-      "N-400 citizenship checklist: $760 online fee, 5-year (or 3-year) residence rule, earliest filing date, and the full document list for your interview.",
+      "N-400 citizenship checklist: $710 online fee, 5-year (or 3-year) residence rule, earliest filing date, and the full document list for your interview.",
     status: "live",
   },
   {

@@ -72,7 +72,7 @@ export default function H1bLotteryTimelinePage() {
           <>
             Data source:{" "}
             <a
-              href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-cap-season"
+              href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations/h-1b-cap-season"
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="font-medium underline"

@@ -238,7 +238,7 @@ export const divorceFacts: Record<string, VerifiedFact> = {
     year: "8 CFR § 214.1(l)(2)",
     jurisdiction: "Federal",
     sourceName: "eCFR — 8 CFR § 214.1",
-    sourceUrl: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
+    sourceUrl: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
     lastVerified: RULES_LAST_VERIFIED,
     note: "The regulation covers an individual in E-1, E-2, E-3, H-1B, H-1B1, L-1, O-1 or TN classification 'and his or her dependents', for up to 60 consecutive days once during each authorized validity period — but the trigger it names is CESSATION OF THE EMPLOYMENT on which the classification was based. It does not expressly create a 60-day period for a dependent whose qualifying marriage has ended, so it should not be assumed to apply after a divorce. DHS may also shorten or eliminate the period as a matter of discretion, and it does not by itself authorize work.",
   },
@@ -720,7 +720,7 @@ export const officialSourceLinks: { label: string; href: string }[] = [
   { label: "USCIS — Form I-539, Change of Nonimmigrant Status", href: "https://www.uscis.gov/i-539" },
   {
     label: "eCFR — 8 CFR § 214.1 (nonimmigrant general requirements)",
-    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/section-214.1",
+    href: "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-214/subpart-A/section-214.1",
   },
   { label: "IRS Topic No. 452 — Alimony and Separate Maintenance", href: "https://www.irs.gov/taxtopics/tc452" },
   {

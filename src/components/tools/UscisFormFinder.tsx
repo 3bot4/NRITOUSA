@@ -366,7 +366,7 @@ export default function UscisFormFinder() {
           <div className="rounded-xl border border-ink-900/5 bg-ink-50/60 px-4 py-3 text-xs text-ink-500">
             This is educational guidance only — not legal or immigration advice. USCIS forms, fees, and eligibility requirements change frequently.
             Always verify with the official{" "}
-            <a href="https://www.uscis.gov/forms" target="_blank" rel="noopener noreferrer" className="underline">
+            <a href="https://www.uscis.gov/forms/all-forms" target="_blank" rel="noopener noreferrer" className="underline">
               USCIS forms page
             </a>{" "}
             and consult a licensed immigration attorney before filing anything.

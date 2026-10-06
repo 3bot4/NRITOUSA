@@ -1,11 +1,10 @@
 {
-  "total": 154,
+  "total": 210,
   "dupTitles": [
     [
       "«title»",
       [
         "/about",
-        "/calculators",
         "/contact",
         "/contribute",
         "/contributors",
@@ -30,23 +29,27 @@
     [
       "«page.seoTitle»",
       [
+        "/education/cpt-vs-opt",
+        "/education/f1-tax-calculator",
+        "/education/opt-calculator",
+        "/education/sevis-termination-guide",
+        "/education/us-degree-roi-calculator",
         "/green-card/[slug]",
         "/h1b/[slug]",
         "/indian-passport-renewal-usa/[page]",
         "/uscis/[slug]",
-        "/uscis/forms/[slug]",
-        "/visa-bulletin/[slug]"
+        "/uscis/forms/[slug]"
       ]
     ],
     [
       "«tool.seoTitle»",
       [
         "/tools/citizenship-checklist",
+        "/tools/citizenship-test-practice",
         "/tools/fbar-fatca-checker",
         "/tools/flight-price-guide",
         "/tools/form-10f-generator",
         "/tools/form-15ca-15cb-checklist",
-        "/tools/form-3520-india-gift-checker",
         "/tools/green-card-stage-finder",
         "/tools/green-card-tracker",
         "/tools/h1b-lottery-timeline",
@@ -67,7 +70,13 @@
         "/tools/uscis-notice-decoder",
         "/tools/uscis-processing-delay-checker",
         "/tools/uscis-receipt-number-decoder",
-        "/tools/visa-free-countries"
+        "/tools/visa-free-countries",
+        "/tools/visitor-insurance-cost-calculator",
+        "/tools/visitor-insurance-deductible-coinsurance-calculator",
+        "/tools/visitor-insurance-hospital-bill-calculator",
+        "/tools/visitor-insurance-network-cost-calculator",
+        "/tools/visitor-insurance-plan-comparison",
+        "/tools/visitor-insurance-policy-maximum-calculator"
       ]
     ]
   ],
@@ -76,7 +85,6 @@
       "«description»",
       [
         "/about",
-        "/calculators",
         "/contact",
         "/contribute",
         "/contributors",
@@ -99,25 +107,34 @@
       ]
     ],
     [
+      "«page.seoDescription»",
+      [
+        "/education/cpt-vs-opt",
+        "/education/f1-tax-calculator",
+        "/education/opt-calculator",
+        "/education/sevis-termination-guide",
+        "/education/us-degree-roi-calculator"
+      ]
+    ],
+    [
       "«page.metaDescription»",
       [
         "/green-card/[slug]",
         "/h1b/[slug]",
         "/indian-passport-renewal-usa/[page]",
         "/uscis/[slug]",
-        "/uscis/forms/[slug]",
-        "/visa-bulletin/[slug]"
+        "/uscis/forms/[slug]"
       ]
     ],
     [
       "«tool.seoDescription»",
       [
         "/tools/citizenship-checklist",
+        "/tools/citizenship-test-practice",
         "/tools/fbar-fatca-checker",
         "/tools/flight-price-guide",
         "/tools/form-10f-generator",
         "/tools/form-15ca-15cb-checklist",
-        "/tools/form-3520-india-gift-checker",
         "/tools/green-card-stage-finder",
         "/tools/green-card-tracker",
         "/tools/h1b-lottery-timeline",
@@ -138,7 +155,13 @@
         "/tools/uscis-notice-decoder",
         "/tools/uscis-processing-delay-checker",
         "/tools/uscis-receipt-number-decoder",
-        "/tools/visa-free-countries"
+        "/tools/visa-free-countries",
+        "/tools/visitor-insurance-cost-calculator",
+        "/tools/visitor-insurance-deductible-coinsurance-calculator",
+        "/tools/visitor-insurance-hospital-bill-calculator",
+        "/tools/visitor-insurance-network-cost-calculator",
+        "/tools/visitor-insurance-plan-comparison",
+        "/tools/visitor-insurance-policy-maximum-calculator"
       ]
     ]
   ],
@@ -147,6 +170,16 @@
       "route": "/about-deepak",
       "issue": "description not statically found",
       "val": "src/app/about-deepak/page.tsx"
+    },
+    {
+      "route": "/affiliate-disclosure",
+      "issue": "title not statically found",
+      "val": "src/app/affiliate-disclosure/page.tsx"
+    },
+    {
+      "route": "/affiliate-disclosure",
+      "issue": "description not statically found",
+      "val": "src/app/affiliate-disclosure/page.tsx"
     },
     {
       "route": "/can-h1b-parents-open-trump-account-for-child",
@@ -160,28 +193,48 @@
     },
     {
       "route": "/community/nri-uscis-decisions",
+      "issue": "description too long (238)",
+      "val": "A preview of the community insights page for what life decisions Indian immigran…"
+    },
+    {
+      "route": "/cookie-policy",
+      "issue": "title not statically found",
+      "val": "src/app/cookie-policy/page.tsx"
+    },
+    {
+      "route": "/cookie-policy",
+      "issue": "description not statically found",
+      "val": "src/app/cookie-policy/page.tsx"
+    },
+    {
+      "route": "/disclaimer",
+      "issue": "title not statically found",
+      "val": "src/app/disclaimer/page.tsx"
+    },
+    {
+      "route": "/disclaimer",
+      "issue": "description not statically found",
+      "val": "src/app/disclaimer/page.tsx"
+    },
+    {
+      "route": "/divorce-immigration-status",
+      "issue": "title too long (80 w/ suffix)",
+      "val": "Divorce and Immigration Status: H-4, H-1B, Green Card & Citizenship"
+    },
+    {
+      "route": "/divorce-immigration-status",
+      "issue": "description too long (180)",
+      "val": "What divorce does to H-4 status and its EAD, H-1B, a conditional or 10-year gree…"
+    },
+    {
+      "route": "/ead-renewal-gap",
       "issue": "description too long (192)",
-      "val": "Anonymous aggregated data on what life decisions Indian immigrants in the US are…"
+      "val": "The automatic EAD extension ended for renewals filed on or after October 30, 202…"
     },
     {
-      "route": "/cookie-policy",
-      "issue": "title not statically found",
-      "val": "src/app/cookie-policy/page.tsx"
-    },
-    {
-      "route": "/cookie-policy",
-      "issue": "description not statically found",
-      "val": "src/app/cookie-policy/page.tsx"
-    },
-    {
-      "route": "/disclaimer",
-      "issue": "title not statically found",
-      "val": "src/app/disclaimer/page.tsx"
-    },
-    {
-      "route": "/disclaimer",
-      "issue": "description not statically found",
-      "val": "src/app/disclaimer/page.tsx"
+      "route": "/eb2-eb3-priority-date-india",
+      "issue": "description too long (224)",
+      "val": "How long until an EB-2 or EB-3 India priority date is current? Illustrative wait…"
     },
     {
       "route": "/entry-visa-india-from-usa",
@@ -194,9 +247,29 @@
       "val": "Understand when Entry Visa India may be needed for Indian-origin U.S. citizens, …"
     },
     {
-      "route": "/expired-green-card",
-      "issue": "title too long (75 w/ suffix)",
-      "val": "Expired Green Card: What to Do Before Travel, Work, or Renewal"
+      "route": "/gold-limit-usa-to-india",
+      "issue": "title too long (71 w/ suffix)",
+      "val": "How Much Gold Can I Carry From USA to India? (2026 Limits)"
+    },
+    {
+      "route": "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+      "issue": "title too long (66 w/ suffix)",
+      "val": "EB-1A vs EB-1B vs EB-1C vs NIW: Which Route Fits You?"
+    },
+    {
+      "route": "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+      "issue": "description too long (222)",
+      "val": "All four skip PERM. What separates them is whether you can self-petition, whethe…"
+    },
+    {
+      "route": "/green-card/marriage-interview-questions",
+      "issue": "title too long (74 w/ suffix)",
+      "val": "Marriage Green Card Interview Questions: Practise as a Couple"
+    },
+    {
+      "route": "/green-card/marriage-interview-questions",
+      "issue": "description too long (243)",
+      "val": "${TOTAL_QUESTIONS} example questions across the five areas an officer actually p…"
     },
     {
       "route": "/green-card-renewal",
@@ -205,13 +278,8 @@
     },
     {
       "route": "/green-card-renewal-fee",
-      "issue": "title too long (79 w/ suffix)",
-      "val": "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)"
-    },
-    {
-      "route": "/green-card-renewal-fee",
-      "issue": "description too long (181)",
-      "val": "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $5…"
+      "issue": "title too long (65 w/ suffix)",
+      "val": "Green Card Renewal Fee 2026: $415 Online, $465 Paper"
     },
     {
       "route": "/h1b-layoff",
@@ -224,19 +292,119 @@
       "val": "Laid off on H-1B? Use this educational checklist for Indian workers in the USA: …"
     },
     {
+      "route": "/h1b-lottery-chance-calculator",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "H-1B Lottery Chance Calculator 2027: Estimate Your Odds"
+    },
+    {
+      "route": "/h1b-lottery-chances",
+      "issue": "title too long (66 w/ suffix)",
+      "val": "H1B Weighted Selection: Wage-Based Odds by Level I–IV"
+    },
+    {
+      "route": "/h1b-lottery-chances",
+      "issue": "description too long (189)",
+      "val": "How H-1B wage-weighted selection works: Level I gets 1 entry, Level IV gets 4 (9…"
+    },
+    {
+      "route": "/h1b-lottery-multiple-registrations",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "H-1B Multiple Registrations 2027: One Person, One Entry"
+    },
+    {
+      "route": "/h1b-lottery-not-selected-options",
+      "issue": "title too long (73 w/ suffix)",
+      "val": "H1B Not Selected: Your Options (2026/2027 Guide for Indians)"
+    },
+    {
+      "route": "/h1b-lottery-not-selected-options",
+      "issue": "description too long (227)",
+      "val": "Not selected in the H1B lottery? Practical, realistic options for Indian applica…"
+    },
+    {
+      "route": "/h1b-lottery-results",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "H1B Lottery Results FY 2027: Dates, Status & Next Steps"
+    },
+    {
+      "route": "/h1b-lottery-results-date",
+      "issue": "title too long (76 w/ suffix)",
+      "val": "H1B Lottery Results Date 2026/2027: When Are Results Announced?"
+    },
+    {
+      "route": "/h1b-lottery-results-date",
+      "issue": "description too long (197)",
+      "val": "When are H1B lottery results announced? The typical registration and selection t…"
+    },
+    {
+      "route": "/h1b-lottery-results-for-f1-opt-students",
+      "issue": "title too long (76 w/ suffix)",
+      "val": "H1B Lottery Results for F-1 OPT & STEM OPT Students (2026/2027)"
+    },
+    {
+      "route": "/h1b-lottery-results-for-f1-opt-students",
+      "issue": "description too long (202)",
+      "val": "What H1B lottery results mean for F-1 OPT and STEM OPT students: your OPT end da…"
+    },
+    {
+      "route": "/h1b-lottery-results-for-h4-families",
+      "issue": "title too long (67 w/ suffix)",
+      "val": "H1B Lottery Results for H-4 Families (2026/2027 Guide)"
+    },
+    {
+      "route": "/h1b-lottery-results-for-h4-families",
+      "issue": "description too long (218)",
+      "val": "What H1B lottery results mean for H-4 spouses and immigrant families: spouse pla…"
+    },
+    {
+      "route": "/h1b-lottery-selected-next-steps",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "H1B Lottery Selected: Next Steps After Selection (2026/2027 Guide)"
+    },
+    {
+      "route": "/h1b-lottery-selected-next-steps",
+      "issue": "description too long (244)",
+      "val": "You were selected in the H1B lottery — now what? A practical next-steps checklis…"
+    },
+    {
+      "route": "/h1b-registration-status-meaning",
+      "issue": "title too long (86 w/ suffix)",
+      "val": "H1B Registration Status Meaning: Submitted, Selected, Not Selected & More"
+    },
+    {
+      "route": "/h1b-registration-status-meaning",
+      "issue": "description too long (189)",
+      "val": "What each H1B registration status means in plain language: Submitted, Selected, …"
+    },
+    {
+      "route": "/h1b-second-lottery",
+      "issue": "title too long (70 w/ suffix)",
+      "val": "Will There Be a Second H1B Lottery? (2026/2027 Explained)"
+    },
+    {
+      "route": "/h1b-second-lottery",
+      "issue": "description too long (217)",
+      "val": "Will USCIS run a second H1B lottery this year? How additional selection rounds w…"
+    },
+    {
       "route": "/h1b-sponsors/[socSlug]/[state]",
       "issue": "title too long (71 w/ suffix)",
       "val": "Top H-1B Sponsors for ${data.soc_title} in ${place} (2026)"
     },
     {
       "route": "/how-to-apply-for-trump-account-form-4547",
-      "issue": "title too long (79 w/ suffix)",
-      "val": "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide"
+      "issue": "title too long (66 w/ suffix)",
+      "val": "How to Apply for a Trump Account: IRS Form 4547 Guide"
     },
     {
-      "route": "/how-to-apply-for-trump-account-form-4547",
-      "issue": "description too long (193)",
-      "val": "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide f…"
+      "route": "/i140-processing-time",
+      "issue": "title too long (155 w/ suffix)",
+      "val": "I-140 Processing Time 2026: ~${i140ProcessingData.standardMedianMonths} Months Regular, ${i140ProcessingData.premiumBusinessDays} Days Premium"
+    },
+    {
+      "route": "/i485-processing-time",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "I-485 Processing Time 2026: Typical 8-14 Month Timeline"
     },
     {
       "route": "/i90-vs-i751",
@@ -254,6 +422,11 @@
       "val": "The immigration hub for Indians in the USA. Start by situation, then use free to…"
     },
     {
+      "route": "/immigration-attorney-lawyer-cost",
+      "issue": "title too long (70 w/ suffix)",
+      "val": "Immigration Attorney Cost 2026: $100–$15,000 by Case Type"
+    },
+    {
       "route": "/immigration-tracker",
       "issue": "title too long (82 w/ suffix)",
       "val": "NRI Immigration Tracker | Visa Bulletin, Green Card, USCIS & H1B Data"
@@ -262,6 +435,11 @@
       "route": "/immigration-tracker",
       "issue": "description too long (173)",
       "val": "Track EB1, EB2, EB3 India visa bulletin dates, green card backlog, I-485 invento…"
+    },
+    {
+      "route": "/indexed-universal-life-iul-for-indian-families-usa",
+      "issue": "description too long (268)",
+      "val": "A plain-English, education-only guide to IUL for Indian and NRI families in the …"
     },
     {
       "route": "/india-business-visa-from-usa",
@@ -284,9 +462,24 @@
       "val": "Learn who can apply for India eVisa from the USA, including eTourist, eBusiness …"
     },
     {
+      "route": "/india-investments/should-nris-keep-investments-in-india",
+      "issue": "title too long (80 w/ suffix)",
+      "val": "Should NRIs Keep Investments in India? India vs US Tax Guide (2026)"
+    },
+    {
+      "route": "/india-investments/should-nris-keep-investments-in-india",
+      "issue": "description too long (310)",
+      "val": "A practical, educational guide for NRIs deciding whether to keep investments in …"
+    },
+    {
       "route": "/india-property",
       "issue": "title too long (95 w/ suffix)",
       "val": "India Property Planning for NRIs — Sell vs Hold, Capital Gains, TDS & Repatriation"
+    },
+    {
+      "route": "/india-property",
+      "issue": "description too long (175)",
+      "val": "For Indians in the USA with property in India: sell vs hold, capital gains and T…"
     },
     {
       "route": "/india-tax-compliance/nri-tax-forms-limits",
@@ -405,13 +598,8 @@
     },
     {
       "route": "/indian-population-in-usa",
-      "issue": "title too long (80 w/ suffix)",
-      "val": "How Many Indians Live in America? Indian Population in USA by State"
-    },
-    {
-      "route": "/indian-population-in-usa",
-      "issue": "description too long (190)",
-      "val": "See how many Indians live in America, where Indian Americans live by state and c…"
+      "issue": "title too long (64 w/ suffix)",
+      "val": "Indian Population in USA 2026: 4.9 Million by State"
     },
     {
       "route": "/indian-population-in-virginia",
@@ -434,9 +622,19 @@
       "val": "src/app/indian-population-in-washington/page.tsx"
     },
     {
-      "route": "/nri-estate-planning",
-      "issue": "title too long (90 w/ suffix)",
-      "val": "NRI Estate Planning — Wills, Trusts, Beneficiaries & Cross-Border Inheritance"
+      "route": "/invitation-letter-for-parents-to-visit-usa",
+      "issue": "title too long (81 w/ suffix)",
+      "val": "Invitation Letter for Parents to Visit USA — Free Generator + Sample"
+    },
+    {
+      "route": "/life-insurance-for-indian-families-usa",
+      "issue": "description too long (264)",
+      "val": "An educational hub on life insurance for Indian and NRI families in the U.S.: wh…"
+    },
+    {
+      "route": "/nri-selling-property-in-india-tds",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "NRI Selling Property in India: TDS Rates & How to Reduce It (2026)"
     },
     {
       "route": "/nri-wealth-checkup/assets",
@@ -475,8 +673,8 @@
     },
     {
       "route": "/nvc-case-status",
-      "issue": "description too long (187)",
-      "val": "Check what your NVC case status means, how long each stage may take, and what to…"
+      "issue": "title too long (65 w/ suffix)",
+      "val": "NVC Case Status 2026: Timeline, Meaning & Timeframes"
     },
     {
       "route": "/nvc-document-checklist-india",
@@ -485,13 +683,28 @@
     },
     {
       "route": "/nvc-processing-time",
-      "issue": "description too long (203)",
-      "val": "How long NVC takes after USCIS approval — case creation, fee and DS-260 steps, d…"
+      "issue": "title too long (80 w/ suffix)",
+      "val": "NVC Processing Time & Timeframes: What Happens After I-130 Approval"
+    },
+    {
+      "route": "/nvc-processing-time",
+      "issue": "description too long (214)",
+      "val": "NVC processing time right now: the published timeframes for case creation and do…"
     },
     {
       "route": "/nvc-public-inquiry",
       "issue": "description too long (169)",
       "val": "When to submit an NVC public inquiry, how to contact the National Visa Center, w…"
+    },
+    {
+      "route": "/oci/e-oci-card",
+      "issue": "title too long (83 w/ suffix)",
+      "val": "e-OCI Card Guide for Indians in USA: How to Download, Use & Fix Issues"
+    },
+    {
+      "route": "/oci/e-oci-card",
+      "issue": "description too long (181)",
+      "val": "Learn how to download your e-OCI card, whether it replaces your physical OCI boo…"
     },
     {
       "route": "/oci-vs-india-visa",
@@ -509,9 +722,34 @@
       "val": "src/app/partnerships/page.tsx"
     },
     {
-      "route": "/privacy",
-      "issue": "no metadata export",
-      "val": ""
+      "route": "/perm-processing-time-calculator",
+      "issue": "title too long (63 w/ suffix)",
+      "val": "PERM Processing Time 2026: DOL Timeline Calculator"
+    },
+    {
+      "route": "/perm-processing-time-calculator",
+      "issue": "description too long (173)",
+      "val": "PERM processing time: plan ${permDerivedRanges.totalNoAudit} from PWD filing to …"
+    },
+    {
+      "route": "/power-of-attorney-for-india-from-usa",
+      "issue": "title too long (84 w/ suffix)",
+      "val": "Power of Attorney for India From USA: Sell Property, Notary & Apostille"
+    },
+    {
+      "route": "/power-of-attorney-for-india-from-usa",
+      "issue": "description too long (229)",
+      "val": "How to make a power of attorney for India from USA: the notary vs apostille vs c…"
+    },
+    {
+      "route": "/press",
+      "issue": "title too long (79 w/ suffix)",
+      "val": "Press & Data | NRItoUSA — Immigration and NRI Data for Journalists"
+    },
+    {
+      "route": "/press",
+      "issue": "description too long (236)",
+      "val": "Data, analysis, and expert comment for journalists covering Indian immigration t…"
     },
     {
       "route": "/privacy-policy",
@@ -522,11 +760,6 @@
       "route": "/privacy-policy",
       "issue": "description not statically found",
       "val": "src/app/privacy-policy/page.tsx"
-    },
-    {
-      "route": "/renew-green-card-online",
-      "issue": "title too long (66 w/ suffix)",
-      "val": "Renew Green Card Online: Form I-90 Step-by-Step Guide"
     },
     {
       "route": "/replace-green-card",
@@ -539,6 +772,66 @@
       "val": "Retirement & Return to India — 401(k), IRA, Social Security, RNOR & Currency"
     },
     {
+      "route": "/return-to-india",
+      "issue": "description too long (206)",
+      "val": "Planning to move back to India? Keeping or abandoning your green card, the US ex…"
+    },
+    {
+      "route": "/return-to-india-checklist",
+      "issue": "title too long (72 w/ suffix)",
+      "val": "Free 2026 Return-to-India Checklist PDF for NRIs | NRItoUSA"
+    },
+    {
+      "route": "/return-to-india-checklist",
+      "issue": "description too long (186)",
+      "val": "Download the free 2026 Return-to-India Playbook: a personal, financial, tax, 401…"
+    },
+    {
+      "route": "/shipping-household-goods-to-india",
+      "issue": "title too long (78 w/ suffix)",
+      "val": "Shipping Household Goods to India: Cost + Customs Duty Calculator"
+    },
+    {
+      "route": "/shipping-household-goods-to-india",
+      "issue": "description too long (189)",
+      "val": "What will it actually cost to ship your household goods from the USA to India? C…"
+    },
+    {
+      "route": "/success-stories/editorial-methodology",
+      "issue": "title not statically found",
+      "val": "src/app/success-stories/editorial-methodology/page.tsx"
+    },
+    {
+      "route": "/success-stories/editorial-methodology",
+      "issue": "description not statically found",
+      "val": "src/app/success-stories/editorial-methodology/page.tsx"
+    },
+    {
+      "route": "/term-life-insurance-for-indian-families-usa",
+      "issue": "title too long (64 w/ suffix)",
+      "val": "Term Life Insurance for Indian Families in the U.S."
+    },
+    {
+      "route": "/term-life-insurance-for-indian-families-usa",
+      "issue": "description too long (234)",
+      "val": "How Indian and NRI families in the U.S. can think about term life insurance: who…"
+    },
+    {
+      "route": "/term-life-insurance-needs-calculator-indian-families",
+      "issue": "title too long (69 w/ suffix)",
+      "val": "Term Life Insurance Needs Calculator for Indian Families"
+    },
+    {
+      "route": "/term-life-insurance-needs-calculator-indian-families",
+      "issue": "description too long (199)",
+      "val": "Educational calculator to estimate term life insurance needs for Indian and NRI …"
+    },
+    {
+      "route": "/term-vs-iul-for-indian-families-usa",
+      "issue": "description too long (252)",
+      "val": "Side-by-side comparison of term life insurance and indexed universal life (IUL) …"
+    },
+    {
       "route": "/terms-and-conditions",
       "issue": "title not statically found",
       "val": "src/app/terms-and-conditions/page.tsx"
@@ -549,19 +842,9 @@
       "val": "src/app/terms-and-conditions/page.tsx"
     },
     {
-      "route": "/terms-of-use",
-      "issue": "no metadata export",
-      "val": ""
-    },
-    {
-      "route": "/tools/nri-global-wealth-tax-organizer",
-      "issue": "no metadata export",
-      "val": ""
-    },
-    {
       "route": "/tools",
-      "issue": "title too long (92 w/ suffix)",
-      "val": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA"
+      "issue": "title too long (79 w/ suffix)",
+      "val": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA"
     },
     {
       "route": "/tools",
@@ -589,14 +872,24 @@
       "val": "Check who qualifies for the $1,000 Trump Account pilot contribution, including U…"
     },
     {
-      "route": "/trump-account-h1b-immigrant-families",
-      "issue": "title too long (94 w/ suffix)",
-      "val": "Trump Accounts for H1B Visa Holders: Complete Guide for Immigrant Families (2026)"
+      "route": "/trump-account-age-18-withdrawal-roth-conversion",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "Trump Account at 18: Withdrawal Rules & Roth Conversion"
     },
     {
-      "route": "/trump-account-h1b-immigrant-families",
-      "issue": "description too long (196)",
-      "val": "Can H-1B parents open a Trump Account for a U.S.-born child? Learn eligibility, …"
+      "route": "/trump-account-age-18-withdrawal-roth-conversion",
+      "issue": "description too long (244)",
+      "val": "What happens to a Trump Account at 18: the exact calendar-year withdrawal trigge…"
+    },
+    {
+      "route": "/trump-account-generational-wealth-for-kids",
+      "issue": "title too long (91 w/ suffix)",
+      "val": "Trump Account Generational Wealth: How $5,000 a Year Could Grow for Your Child"
+    },
+    {
+      "route": "/trump-account-generational-wealth-for-kids",
+      "issue": "description too long (202)",
+      "val": "Learn how a Trump Account could help families build generational wealth for chil…"
     },
     {
       "route": "/trump-account-ssn-itin-child",
@@ -609,6 +902,16 @@
       "val": "A valid SSN is required for Trump Account eligibility. Learn why ITIN does not q…"
     },
     {
+      "route": "/trump-account-tax-planning-immigrant-families",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "Trump Account Tax Planning Guide for Immigrant Families"
+    },
+    {
+      "route": "/trump-account-tax-planning-immigrant-families",
+      "issue": "description too long (232)",
+      "val": "A practical Trump Account planning guide for immigrant and NRI families: a quick…"
+    },
+    {
       "route": "/trump-account-vs-529-for-h1b-families",
       "issue": "title too long (85 w/ suffix)",
       "val": "Trump Account vs 529 Plan for H-1B and Indian Families: Which Is Better?"
@@ -619,9 +922,49 @@
       "val": "Compare Trump Accounts and 529 plans for H-1B and Indian immigrant families. See…"
     },
     {
+      "route": "/usa-government-benefits-immigrants",
+      "issue": "title too long (81 w/ suffix)",
+      "val": "Government Benefits for Immigrants: Visa, Green Card & Citizen Guide"
+    },
+    {
+      "route": "/usa-government-benefits-immigrants",
+      "issue": "description too long (166)",
+      "val": "Check which U.S. benefits may be available to visa holders, Green Card holders, …"
+    },
+    {
       "route": "/uscis/case-status",
-      "issue": "title too long (75 w/ suffix)",
-      "val": "USCIS Case Status Meaning for Indians | H1B, I-140, I-485, EAD"
+      "issue": "title too long (66 w/ suffix)",
+      "val": "USCIS Case Status Meaning 2026: Every Message Decoded"
+    },
+    {
+      "route": "/uscis/expedite-request",
+      "issue": "title too long (84 w/ suffix)",
+      "val": "USCIS Expedite Request: The 5 Criteria, and When to Use Premium Instead"
+    },
+    {
+      "route": "/uscis/expedite-request",
+      "issue": "description too long (187)",
+      "val": "How to expedite a USCIS case: the five official criteria, the rule that blocks a…"
+    },
+    {
+      "route": "/uscis/forms/i-751",
+      "issue": "title too long (91 w/ suffix)",
+      "val": "Form I-751: Remove Conditions on a Marriage Green Card — Window, Fee, Timeline"
+    },
+    {
+      "route": "/uscis/forms/i-751",
+      "issue": "description too long (412)",
+      "val": "Form I-751 removes the conditions from a marriage-based ${I751_FACTS.conditional…"
+    },
+    {
+      "route": "/uscis/forms/i-864",
+      "issue": "title too long (95 w/ suffix)",
+      "val": "Form I-864P Poverty Guidelines ${I864P.guidelineYear}: Sponsor Income Requirements"
+    },
+    {
+      "route": "/uscis/forms/i-864",
+      "issue": "description too long (258)",
+      "val": "The I-864P minimum income to sponsor an immigrant is ${usd( MIN_2 )} for a house…"
     },
     {
       "route": "/uscis/forms",
@@ -649,9 +992,89 @@
       "val": "USCIS Guide for Indians: Case Status, Receipt Numbers, H1B & Green Card Tools"
     },
     {
-      "route": "/uscis/processing-times",
-      "issue": "title too long (82 w/ suffix)",
-      "val": "USCIS Processing Times Explained for Indians | H1B, I-140, I-485, EAD"
+      "route": "/uscis/receipt-number",
+      "issue": "title too long (64 w/ suffix)",
+      "val": "USCIS Receipt Number: Format & Prefix Meanings 2026"
+    },
+    {
+      "route": "/visa-bulletin/[slug]",
+      "issue": "title too long (76 w/ suffix)",
+      "val": "${label} Visa Bulletin: India EB-1, EB-2, EB-3 Dates & Movement"
+    },
+    {
+      "route": "/visa-bulletin/october-2026",
+      "issue": "title too long (74 w/ suffix)",
+      "val": "October 2026 Visa Bulletin: EB-2 India Reopens at Nov 1, 2013"
+    },
+    {
+      "route": "/visa-bulletin/october-2026",
+      "issue": "description too long (230)",
+      "val": "The first bulletin of FY2027 reopens EB-2 India at Nov 1, 2013 after three month…"
+    },
+    {
+      "route": "/visa-bulletin",
+      "issue": "title too long (64 w/ suffix)",
+      "val": "Visa Bulletin Explained for Indians: How to Read It"
+    },
+    {
+      "route": "/visitor-insurance/fixed-benefit-vs-comprehensive",
+      "issue": "title too long (75 w/ suffix)",
+      "val": "Fixed-Benefit vs Comprehensive Visitor Insurance: What Changes"
+    },
+    {
+      "route": "/visitor-insurance/fixed-benefit-vs-comprehensive",
+      "issue": "description too long (180)",
+      "val": "Fixed-benefit (scheduled) vs comprehensive visitor insurance: why two plans with…"
+    },
+    {
+      "route": "/visitor-insurance/glossary",
+      "issue": "title too long (75 w/ suffix)",
+      "val": "Visitor Insurance Glossary: Every Term, Explained With Numbers"
+    },
+    {
+      "route": "/visitor-insurance/glossary",
+      "issue": "description too long (173)",
+      "val": "Plain-English visitor insurance glossary — deductible, coinsurance, policy maxim…"
+    },
+    {
+      "route": "/visitor-insurance/how-much-coverage",
+      "issue": "description too long (170)",
+      "val": "How much visitor insurance coverage do you need? A decision framework — not a fi…"
+    },
+    {
+      "route": "/visitor-insurance/methodology",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "How the Visitor Insurance Calculators Work: Methodology"
+    },
+    {
+      "route": "/visitor-insurance",
+      "issue": "title too long (73 w/ suffix)",
+      "val": "Visitor Insurance USA: Cost, Liability & How It Works (2026)"
+    },
+    {
+      "route": "/visitor-insurance",
+      "issue": "description too long (196)",
+      "val": "Visitor medical insurance for the USA, explained with numbers: premium vs. liabi…"
+    },
+    {
+      "route": "/visitor-insurance/parents-visiting-usa",
+      "issue": "title too long (76 w/ suffix)",
+      "val": "Insurance for Parents Visiting the USA: Cost & Age Rules (2026)"
+    },
+    {
+      "route": "/visitor-insurance/parents-visiting-usa",
+      "issue": "description too long (187)",
+      "val": "Insurance for parents visiting USA, explained: how age affects availability and …"
+    },
+    {
+      "route": "/visitor-insurance/pre-existing-conditions-acute-onset",
+      "issue": "title too long (68 w/ suffix)",
+      "val": "Visitor Insurance Pre-Existing Conditions & Acute Onset"
+    },
+    {
+      "route": "/visitor-insurance/pre-existing-conditions-acute-onset",
+      "issue": "description too long (171)",
+      "val": "Visitor insurance pre-existing conditions and acute onset, explained in plain En…"
     },
     {
       "route": "/what-is-nvc-case-number",
@@ -688,6 +1111,15 @@
       "canonical": "/advance-parole-processing-time"
     },
     {
+      "route": "/affiliate-disclosure",
+      "file": "src/app/affiliate-disclosure/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/affiliate-disclosure"
+    },
+    {
       "route": "/articles/[slug]",
       "file": "src/app/articles/[slug]/page.tsx",
       "dynamic": true,
@@ -706,6 +1138,15 @@
       "canonical": "/author/${author.slug}"
     },
     {
+      "route": "/automatic-visa-revalidation",
+      "file": "src/app/automatic-visa-revalidation/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Automatic Visa Revalidation",
+      "description": "Re-enter the US on an expired visa after a short trip to Canada or Mexico. The conditions in 22 CFR 41.112(d), and the one step that destroys it.",
+      "canonical": "/automatic-visa-revalidation"
+    },
+    {
       "route": "/calculators/[slug]",
       "file": "src/app/calculators/[slug]/page.tsx",
       "dynamic": true,
@@ -713,15 +1154,6 @@
       "title": "«calc.seoTitle»",
       "description": "«calc.seoDescription»",
       "canonical": "/calculators/${calc.slug}"
-    },
-    {
-      "route": "/calculators",
-      "file": "src/app/calculators/page.tsx",
-      "dynamic": false,
-      "hasMeta": true,
-      "title": "«title»",
-      "description": "«description»",
-      "canonical": "/calculators"
     },
     {
       "route": "/can-h1b-parents-open-trump-account-for-child",
@@ -738,7 +1170,7 @@
       "dynamic": false,
       "hasMeta": true,
       "title": "NRI USCIS Life Decisions: Community Insights",
-      "description": "Anonymous aggregated data on what life decisions Indian immigrants in the US are navigating — job changes, house buying, travel, H-4 EAD, kids aging out. Contributed by the NRItoUSA community.",
+      "description": "A preview of the community insights page for what life decisions Indian immigrants in the US are navigating — job changes, house buying, travel, H-4 EAD, kids aging out. Currently showing placeholder figures while responses are collected.",
       "canonical": "/community/nri-uscis-decisions"
     },
     {
@@ -787,6 +1219,15 @@
       "canonical": "/disclaimer"
     },
     {
+      "route": "/divorce-immigration-status",
+      "file": "src/app/divorce-immigration-status/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Divorce and Immigration Status: H-4, H-1B, Green Card & Citizenship",
+      "description": "What divorce does to H-4 status and its EAD, H-1B, a conditional or 10-year green card, a pending I-485, naturalization and the I-864 — plus whether a US divorce is valid in India.",
+      "canonical": "«DIV_PATH»"
+    },
+    {
       "route": "/dol-processing-times",
       "file": "src/app/dol-processing-times/page.tsx",
       "dynamic": false,
@@ -810,7 +1251,7 @@
       "dynamic": false,
       "hasMeta": true,
       "title": "EAD Processing Time 2026",
-      "description": "Estimate your EAD (Form I-765) processing time by category, check automatic-extension eligibility, and avoid a work-authorization gap.",
+      "description": "Estimate your EAD (Form I-765) processing time by category, see why the automatic extension no longer covers a renewal, and avoid a work-authorization gap.",
       "canonical": "/ead-processing-time"
     },
     {
@@ -819,7 +1260,7 @@
       "dynamic": false,
       "hasMeta": true,
       "title": "EAD Renewal Gap: How to Avoid It",
-      "description": "How to avoid a gap in work authorization when renewing your EAD — filing windows, the automatic extension, and what employers need.",
+      "description": "The automatic EAD extension ended for renewals filed on or after October 30, 2025. What that means for your filing date, your employer's Form I-9, and the categories that still have a way out.",
       "canonical": "/ead-renewal-gap"
     },
     {
@@ -827,8 +1268,8 @@
       "file": "src/app/eb2-eb3-priority-date-india/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "EB2 EB3 Priority Date India Tracker",
-      "description": "Understand where your EB-2 or EB-3 India priority date stands, Final Action vs Dates for Filing, and when you can file I-485.",
+      "title": "EB-2 & EB-3 India Wait-Time Scenarios (Estimates)",
+      "description": "How long until an EB-2 or EB-3 India priority date is current? Illustrative wait-time scenarios based on historical visa-bulletin movement — clearly labeled estimates, not predictions — plus what actually drives the numbers.",
       "canonical": "/eb2-eb3-priority-date-india"
     },
     {
@@ -850,6 +1291,24 @@
       "canonical": "/education/college-rankings"
     },
     {
+      "route": "/education/cpt-vs-opt",
+      "file": "src/app/education/cpt-vs-opt/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.seoDescription»",
+      "canonical": "«page.path»"
+    },
+    {
+      "route": "/education/f1-tax-calculator",
+      "file": "src/app/education/f1-tax-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.seoDescription»",
+      "canonical": "«page.path»"
+    },
+    {
       "route": "/education/gpa-calculator",
       "file": "src/app/education/gpa-calculator/page.tsx",
       "dynamic": false,
@@ -866,6 +1325,15 @@
       "title": "«calc.seoTitle»",
       "description": "«calc.seoDescription»",
       "canonical": "/education/grade-finder"
+    },
+    {
+      "route": "/education/opt-calculator",
+      "file": "src/app/education/opt-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.seoDescription»",
+      "canonical": "«page.path»"
     },
     {
       "route": "/education",
@@ -886,6 +1354,15 @@
       "canonical": "/education/sat-guide"
     },
     {
+      "route": "/education/sevis-termination-guide",
+      "file": "src/app/education/sevis-termination-guide/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.seoDescription»",
+      "canonical": "«page.path»"
+    },
+    {
       "route": "/education/tuition-calculator",
       "file": "src/app/education/tuition-calculator/page.tsx",
       "dynamic": false,
@@ -893,6 +1370,15 @@
       "title": "«calc.seoTitle»",
       "description": "«calc.seoDescription»",
       "canonical": "/education/tuition-calculator"
+    },
+    {
+      "route": "/education/us-degree-roi-calculator",
+      "file": "src/app/education/us-degree-roi-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«page.seoTitle»",
+      "description": "«page.seoDescription»",
+      "canonical": "«page.path»"
     },
     {
       "route": "/entry-visa-india-from-usa",
@@ -904,15 +1390,6 @@
       "canonical": "/entry-visa-india-from-usa"
     },
     {
-      "route": "/expired-green-card",
-      "file": "src/app/expired-green-card/page.tsx",
-      "dynamic": false,
-      "hasMeta": true,
-      "title": "Expired Green Card: What to Do Before Travel, Work, or Renewal",
-      "description": "An expired green card doesn't end your status, but it affects travel, work, and DMV. See what to do, receipt-notice extensions, and how to renew with Form I-90.",
-      "canonical": "/expired-green-card"
-    },
-    {
       "route": "/free-immigrant-wealth-guide",
       "file": "src/app/free-immigrant-wealth-guide/page.tsx",
       "dynamic": false,
@@ -922,6 +1399,15 @@
       "canonical": "/free-immigrant-wealth-guide"
     },
     {
+      "route": "/gold-limit-usa-to-india",
+      "file": "src/app/gold-limit-usa-to-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "How Much Gold Can I Carry From USA to India? (2026 Limits)",
+      "description": "Duty-free jewellery limits for eligible passengers flying USA to India, customs duty rates, declaration rules, and a free duty calculator. Updated 2026.",
+      "canonical": "/gold-limit-usa-to-india"
+    },
+    {
       "route": "/green-card/[slug]",
       "file": "src/app/green-card/[slug]/page.tsx",
       "dynamic": true,
@@ -929,6 +1415,24 @@
       "title": "«page.seoTitle»",
       "description": "«page.metaDescription»",
       "canonical": "/green-card/${page.slug}"
+    },
+    {
+      "route": "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw",
+      "file": "src/app/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "EB-1A vs EB-1B vs EB-1C vs NIW: Which Route Fits You?",
+      "description": "All four skip PERM. What separates them is whether you can self-petition, whether an employer must offer you a job, and what record you can evidence — plus what the choice costs an India-born applicant in years of waiting.",
+      "canonical": "/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw"
+    },
+    {
+      "route": "/green-card/marriage-interview-questions",
+      "file": "src/app/green-card/marriage-interview-questions/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Marriage Green Card Interview Questions: Practise as a Couple",
+      "description": "${TOTAL_QUESTIONS} example questions across the five areas an officer actually probes, plus a couple practice mode that shows only where your answers differ. What to bring, what happens on the day, and the India-specific evidence that matters.",
+      "canonical": "/green-card/marriage-interview-questions"
     },
     {
       "route": "/green-card",
@@ -953,8 +1457,8 @@
       "file": "src/app/green-card-renewal-fee/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "Green Card Renewal Fee 2026: $415 Online vs $465 Paper (Form I-90)",
-      "description": "Green card renewal costs $415 online or $465 by paper (Form I-90) — online is $50 cheaper. See the fee snapshot, fee-waiver basics, last-verified date, and official USCIS fee links.",
+      "title": "Green Card Renewal Fee 2026: $415 Online, $465 Paper",
+      "description": "Green card renewal costs $415 online or $465 by paper (Form I-90) — online saves $50. Fee snapshot, fee-waiver basics, and USCIS sources.",
       "canonical": "/green-card-renewal-fee"
     },
     {
@@ -985,6 +1489,15 @@
       "canonical": "/h1b"
     },
     {
+      "route": "/h1b-denied-entry-airport",
+      "file": "src/app/h1b-denied-entry-airport/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "H-1B Denied Entry at the Airport",
+      "description": "An approved H-1B can still be refused entry. What happens in secondary inspection, and why withdrawal and expedited removal are not the same thing.",
+      "canonical": "/h1b-denied-entry-airport"
+    },
+    {
       "route": "/h1b-layoff",
       "file": "src/app/h1b-layoff/page.tsx",
       "dynamic": true,
@@ -992,6 +1505,87 @@
       "title": "H-1B Layoff Checklist for Indians in the USA | NRItoUSA",
       "description": "Laid off on H-1B? Use this educational checklist for Indian workers in the USA: 60-day planning window, I-94, I-797, H-1B transfer, I-140, H-4 dependents, documents, money checklist, and LayoffNext tools.",
       "canonical": "/h1b-layoff"
+    },
+    {
+      "route": "/h1b-lottery-chance-calculator",
+      "file": "src/app/h1b-lottery-chance-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "H-1B Lottery Chance Calculator 2027: Estimate Your Odds",
+      "description": "Estimate your FY 2027 H-1B odds against the 85,000 cap. Wage level (Level I=1 entry to Level IV=4), master's cap, and multi-year attempts.",
+      "canonical": "/h1b-lottery-chance-calculator"
+    },
+    {
+      "route": "/h1b-lottery-chances",
+      "file": "src/app/h1b-lottery-chances/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Weighted Selection: Wage-Based Odds by Level I–IV",
+      "description": "How H-1B wage-weighted selection works: Level I gets 1 entry, Level IV gets 4 (90 FR 60864, effective 27 Feb 2026). Modelled odds by wage level, what it does to Level I, and the calculator.",
+      "canonical": "/h1b-lottery-chances"
+    },
+    {
+      "route": "/h1b-lottery-multiple-registrations",
+      "file": "src/app/h1b-lottery-multiple-registrations/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H-1B Multiple Registrations 2027: One Person, One Entry",
+      "description": "Can multiple employers register you for the H-1B lottery? Yes — but you still get one entry. The beneficiary-centric rule, duplicates, and Denied status.",
+      "canonical": "/h1b-lottery-multiple-registrations"
+    },
+    {
+      "route": "/h1b-lottery-not-selected-options",
+      "file": "src/app/h1b-lottery-not-selected-options/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Not Selected: Your Options (2026/2027 Guide for Indians)",
+      "description": "Not selected in the H1B lottery? Practical, realistic options for Indian applicants: stay on F-1 OPT/STEM OPT, cap-exempt H-1B employers, L-1, O-1, H-4/H-4 EAD, avoiding risky shortcuts, and building a financial emergency plan.",
+      "canonical": "/h1b-lottery-not-selected-options"
+    },
+    {
+      "route": "/h1b-lottery-results",
+      "file": "src/app/h1b-lottery-results/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Lottery Results FY 2027: Dates, Status & Next Steps",
+      "description": "H1B lottery results FY 2027: late-March release, ~35% selection rate last season, what Selected/Submitted mean, second-round odds, and next steps.",
+      "canonical": "/h1b-lottery-results"
+    },
+    {
+      "route": "/h1b-lottery-results-date",
+      "file": "src/app/h1b-lottery-results-date/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Lottery Results Date 2026/2027: When Are Results Announced?",
+      "description": "When are H1B lottery results announced? The typical registration and selection timeline, when Indian applicants usually hear back, how to tell if results are out, and what happens after each stage.",
+      "canonical": "/h1b-lottery-results-date"
+    },
+    {
+      "route": "/h1b-lottery-results-for-f1-opt-students",
+      "file": "src/app/h1b-lottery-results-for-f1-opt-students/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Lottery Results for F-1 OPT & STEM OPT Students (2026/2027)",
+      "description": "What H1B lottery results mean for F-1 OPT and STEM OPT students: your OPT end date, STEM OPT eligibility, cap-gap basics, an employer communication checklist, and backup planning if you're not selected.",
+      "canonical": "/h1b-lottery-results-for-f1-opt-students"
+    },
+    {
+      "route": "/h1b-lottery-results-for-h4-families",
+      "file": "src/app/h1b-lottery-results-for-h4-families/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Lottery Results for H-4 Families (2026/2027 Guide)",
+      "description": "What H1B lottery results mean for H-4 spouses and immigrant families: spouse planning, H-4 EAD considerations, children's school continuity, health insurance and emergency fund, and moving-back-to-India considerations.",
+      "canonical": "/h1b-lottery-results-for-h4-families"
+    },
+    {
+      "route": "/h1b-lottery-selected-next-steps",
+      "file": "src/app/h1b-lottery-selected-next-steps/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Lottery Selected: Next Steps After Selection (2026/2027 Guide)",
+      "description": "You were selected in the H1B lottery — now what? A practical next-steps checklist for Indian applicants: confirm your employer, gather documents, the LCA and Form I-129 process, filing window, premium processing, start date, and travel caution.",
+      "canonical": "/h1b-lottery-selected-next-steps"
     },
     {
       "route": "/h1b-perm-max-out-calculator",
@@ -1012,6 +1606,24 @@
       "canonical": "/h1b-prevailing-wage"
     },
     {
+      "route": "/h1b-registration-status-meaning",
+      "file": "src/app/h1b-registration-status-meaning/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Registration Status Meaning: Submitted, Selected, Not Selected & More",
+      "description": "What each H1B registration status means in plain language: Submitted, Selected, Not Selected, Denied, and Invalidated-Failed Payment — and exactly what Indian applicants should do for each.",
+      "canonical": "/h1b-registration-status-meaning"
+    },
+    {
+      "route": "/h1b-second-lottery",
+      "file": "src/app/h1b-second-lottery/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "Will There Be a Second H1B Lottery? (2026/2027 Explained)",
+      "description": "Will USCIS run a second H1B lottery this year? How additional selection rounds work, why they happen, whether you need to re-register, and what Indian applicants should watch for while a second round remains possible.",
+      "canonical": "/h1b-second-lottery"
+    },
+    {
       "route": "/h1b-sponsors/[socSlug]/[state]",
       "file": "src/app/h1b-sponsors/[socSlug]/[state]/page.tsx",
       "dynamic": true,
@@ -1021,22 +1633,22 @@
       "canonical": "/h1b-sponsors/${params.socSlug}/${data.stateCode.toLowerCase()}"
     },
     {
+      "route": "/h1b-visa-stamping-after-selection",
+      "file": "src/app/h1b-visa-stamping-after-selection/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "H1B Stamping After Lottery Selection",
+      "description": "What H-1B lottery selection does and does not mean, change of status versus consular notification, and when visa stamping actually enters the process.",
+      "canonical": "/h1b-visa-stamping-after-selection"
+    },
+    {
       "route": "/how-to-apply-for-trump-account-form-4547",
       "file": "src/app/how-to-apply-for-trump-account-form-4547/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "How to Apply for a Trump Account: IRS Form 4547 Step-by-Step Guide",
-      "description": "Learn how to apply for a Trump Account using IRS Form 4547. Step-by-step guide for parents, eligibility checks, SSN rules, $1,000 contribution request, scam warnings, and official source links.",
+      "title": "How to Apply for a Trump Account: IRS Form 4547 Guide",
+      "description": "How to apply for a Trump Account with IRS Form 4547: 5 stages, SSN rules, the $1,000 pilot contribution window, and what immigrant families need to check.",
       "canonical": "/how-to-apply-for-trump-account-form-4547"
-    },
-    {
-      "route": "/i140-approved-what-next",
-      "file": "src/app/i140-approved-what-next/page.tsx",
-      "dynamic": false,
-      "hasMeta": true,
-      "title": "I-140 Approved — What Next?",
-      "description": "Your I-140 is approved — what now? Priority date, when you can file I-485, H-1B extensions, and job changes explained.",
-      "canonical": "/i140-approved-what-next"
     },
     {
       "route": "/i140-premium-processing",
@@ -1052,7 +1664,7 @@
       "file": "src/app/i140-processing-time/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "I-140 Processing Time 2026",
+      "title": "I-140 Processing Time 2026: ~${i140ProcessingData.standardMedianMonths} Months Regular, ${i140ProcessingData.premiumBusinessDays} Days Premium",
       "description": "Estimate your I-140 decision window — standard vs premium processing (15 business days), the fee, and what happens after approval.",
       "canonical": "/i140-processing-time"
     },
@@ -1070,8 +1682,8 @@
       "file": "src/app/i485-processing-time/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "I-485 Processing Time 2026",
-      "description": "Check typical I-485 green card processing timelines, what affects your case, and estimate your personal wait by category, field office, and priority date.",
+      "title": "I-485 Processing Time 2026: Typical 8-14 Month Timeline",
+      "description": "I-485 processing typically runs 8-14 months for employment-based cases. Stage-by-stage timeline, delay causes, and a personal estimate calculator.",
       "canonical": "/i485-processing-time"
     },
     {
@@ -1102,6 +1714,15 @@
       "canonical": "/immigration"
     },
     {
+      "route": "/immigration-attorney-lawyer-cost",
+      "file": "src/app/immigration-attorney-lawyer-cost/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Immigration Attorney Cost 2026: $100–$15,000 by Case Type",
+      "description": "Immigration lawyer cost in the USA: $100–$400 a consultation, $1,500–$5,000 H-1B, $3,000–$8,000 marriage green card, $5,000–$15,000 employment green card.",
+      "canonical": "/immigration-attorney-lawyer-cost"
+    },
+    {
       "route": "/immigration-tracker",
       "file": "src/app/immigration-tracker/page.tsx",
       "dynamic": false,
@@ -1109,6 +1730,15 @@
       "title": "NRI Immigration Tracker | Visa Bulletin, Green Card, USCIS & H1B Data",
       "description": "Track EB1, EB2, EB3 India visa bulletin dates, green card backlog, I-485 inventory, H1B lottery odds, USCIS processing times, EAD, advance parole and priority date movement.",
       "canonical": "/immigration-tracker"
+    },
+    {
+      "route": "/indexed-universal-life-iul-for-indian-families-usa",
+      "file": "src/app/indexed-universal-life-iul-for-indian-families-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Indexed Universal Life (IUL) for Indian Families",
+      "description": "A plain-English, education-only guide to IUL for Indian and NRI families in the U.S.: how index-linked crediting, caps, floors, and policy charges actually work, what “tax-free” really means, MEC risk, lapse risk, who may consider a review, and who should be cautious.",
+      "canonical": "/indexed-universal-life-iul-for-indian-families-usa"
     },
     {
       "route": "/india-business-visa-from-usa",
@@ -1129,12 +1759,21 @@
       "canonical": "/india-evisa-for-us-citizens"
     },
     {
+      "route": "/india-investments/should-nris-keep-investments-in-india",
+      "file": "src/app/india-investments/should-nris-keep-investments-in-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Should NRIs Keep Investments in India? India vs US Tax Guide (2026)",
+      "description": "A practical, educational guide for NRIs deciding whether to keep investments in India after moving to the US: stocks, mutual funds (PFIC), FDs, NRE vs NRO, dividend and capital-gains tax, DTAA, the foreign tax credit, FBAR/FATCA, currency risk, and returning to India — with tables, case studies, and 40+ FAQs.",
+      "canonical": "/india-investments/should-nris-keep-investments-in-india"
+    },
+    {
       "route": "/india-property",
       "file": "src/app/india-property/page.tsx",
       "dynamic": false,
       "hasMeta": true,
       "title": "India Property Planning for NRIs — Sell vs Hold, Capital Gains, TDS & Repatriation",
-      "description": "For Indians in the USA with property in India: sell vs hold, capital gains and TDS, repatriating sale proceeds, and inheritance — with US/India tax in mind.",
+      "description": "For Indians in the USA with property in India: sell vs hold, capital gains and TDS, repatriating sale proceeds, power of attorney, and inheritance — with US/India tax in mind.",
       "canonical": "«config.path»"
     },
     {
@@ -1304,8 +1943,8 @@
       "file": "src/app/indian-population-in-usa/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "How Many Indians Live in America? Indian Population in USA by State",
-      "description": "See how many Indians live in America, where Indian Americans live by state and city, income levels, occupations, education, visa status, student trends, and economic contribution to the U.S.",
+      "title": "Indian Population in USA 2026: 4.9 Million by State",
+      "description": "About 4.9 million people of Indian origin live in the USA. Population by state and metro, income, jobs, visa status, and growth data with sources.",
       "canonical": "/indian-population-in-usa"
     },
     {
@@ -1327,6 +1966,24 @@
       "canonical": null
     },
     {
+      "route": "/invitation-letter-for-parents-to-visit-usa",
+      "file": "src/app/invitation-letter-for-parents-to-visit-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Invitation Letter for Parents to Visit USA — Free Generator + Sample",
+      "description": "Generate a properly formatted B-2 invitation letter for your parents in 2 minutes. Free PDF download, sample letter, and document checklist. No signup.",
+      "canonical": "/invitation-letter-for-parents-to-visit-usa"
+    },
+    {
+      "route": "/life-insurance-for-indian-families-usa",
+      "file": "src/app/life-insurance-for-indian-families-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Life Insurance for Indian Families in the U.S.",
+      "description": "An educational hub on life insurance for Indian and NRI families in the U.S.: why coverage matters after immigrating, common H-1B and green-card protection gaps, term vs permanent insurance, where IUL fits, employer-coverage limits, and every guide in the cluster.",
+      "canonical": "/life-insurance-for-indian-families-usa"
+    },
+    {
       "route": "/long-term-nri-wealth",
       "file": "src/app/long-term-nri-wealth/page.tsx",
       "dynamic": false,
@@ -1336,13 +1993,13 @@
       "canonical": "/long-term-nri-wealth"
     },
     {
-      "route": "/nri-estate-planning",
-      "file": "src/app/nri-estate-planning/page.tsx",
+      "route": "/nri-selling-property-in-india-tds",
+      "file": "src/app/nri-selling-property-in-india-tds/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "NRI Estate Planning — Wills, Trusts, Beneficiaries & Cross-Border Inheritance",
-      "description": "Family and legacy planning for Indians in the USA: wills and trusts across US and India assets, beneficiaries, children as US citizens, and parents in India.",
-      "canonical": "«config.path»"
+      "title": "NRI Selling Property in India: TDS Rates & How to Reduce It (2026)",
+      "description": "TDS rates when an NRI sells property in India, how to apply for a lower-TDS certificate (Form 13), capital gains, US tax reporting & repatriation. 2026 guide.",
+      "canonical": "/nri-selling-property-in-india-tds"
     },
     {
       "route": "/nri-wealth-checkup/assets",
@@ -1403,8 +2060,8 @@
       "file": "src/app/nvc-case-status/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "NVC Case Status & Timeline",
-      "description": "Check what your NVC case status means, how long each stage may take, and what to do after USCIS approval, fee payment, document submission, DQ, interview scheduling, and embassy transfer.",
+      "title": "NVC Case Status 2026: Timeline, Meaning & Timeframes",
+      "description": "NVC case status explained: what each CEAC stage means, official NVC timeframes, how long after documentarily qualified the interview takes, and next steps.",
       "canonical": "/nvc-case-status"
     },
     {
@@ -1421,8 +2078,8 @@
       "file": "src/app/nvc-processing-time/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "NVC Processing Time",
-      "description": "How long NVC takes after USCIS approval — case creation, fee and DS-260 steps, document review, and the wait from documentarily qualified to a consular interview. General planning ranges, not guarantees.",
+      "title": "NVC Processing Time & Timeframes: What Happens After I-130 Approval",
+      "description": "NVC processing time right now: the published timeframes for case creation and document review, what happens after your I-130 is approved, a stage-by-stage estimator, and consular processing vs adjustment of status.",
       "canonical": "/nvc-processing-time"
     },
     {
@@ -1442,6 +2099,15 @@
       "title": "«guide.seoTitle»",
       "description": "«guide.metaDescription»",
       "canonical": "«ociGuidePath»"
+    },
+    {
+      "route": "/oci/e-oci-card",
+      "file": "src/app/oci/e-oci-card/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "e-OCI Card Guide for Indians in USA: How to Download, Use & Fix Issues",
+      "description": "Learn how to download your e-OCI card, whether it replaces your physical OCI booklet, how to use it for travel, what to do after passport renewal, and how to fix email/login issues.",
+      "canonical": "/oci/e-oci-card"
     },
     {
       "route": "/oci",
@@ -1467,7 +2133,7 @@
       "dynamic": false,
       "hasMeta": true,
       "title": "NRI to USA — Free Immigration, Tax & Wealth Tools",
-      "description": "Free calculators, checklists and guides for Indians in the USA: U.S. income, India assets, taxes, retirement, FBAR/FATCA and return-to-India planning.",
+      "description": "Free calculators and guides for Indians in the USA: H-1B and green card timelines, the India visa bulletin, USCIS case status, FBAR/FATCA and India tax.",
       "canonical": "/"
     },
     {
@@ -1484,8 +2150,8 @@
       "file": "src/app/perm-processing-time-calculator/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "PERM Processing Time Calculator 2026",
-      "description": "Check the current PERM timeline, PWD processing, recruitment, DOL review, audit risk, and I-140 timing, then estimate your personal case.",
+      "title": "PERM Processing Time 2026: DOL Timeline Calculator",
+      "description": "PERM processing time: plan ${permDerivedRanges.totalNoAudit} from PWD filing to certification with no audit. Live DOL queue dates, stage-by-stage timeline, and a calculator.",
       "canonical": "/perm-processing-time-calculator"
     },
     {
@@ -1498,6 +2164,24 @@
       "canonical": "/perm-timeline"
     },
     {
+      "route": "/power-of-attorney-for-india-from-usa",
+      "file": "src/app/power-of-attorney-for-india-from-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Power of Attorney for India From USA: Sell Property, Notary & Apostille",
+      "description": "How to make a power of attorney for India from USA: the notary vs apostille vs consulate routes, a power of attorney to sell property in India, whether it must be registered, stamp duty, validity, revocation and specimen formats.",
+      "canonical": "/power-of-attorney-for-india-from-usa"
+    },
+    {
+      "route": "/press",
+      "file": "src/app/press/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Press & Data | NRItoUSA — Immigration and NRI Data for Journalists",
+      "description": "Data, analysis, and expert comment for journalists covering Indian immigration to the US: visa bulletin history, H-1B sponsorship records, Census-based Indian population figures, and processing timelines. Same-day custom cuts available.",
+      "canonical": "/press"
+    },
+    {
       "route": "/prevailing-wage-calculator",
       "file": "src/app/prevailing-wage-calculator/page.tsx",
       "dynamic": false,
@@ -1505,15 +2189,6 @@
       "title": "Prevailing Wage Calculator 2026",
       "description": "Estimate your DOL wage level (I–IV) and check whether an offered wage meets the prevailing wage for PERM or H-1B.",
       "canonical": "/prevailing-wage-calculator"
-    },
-    {
-      "route": "/privacy",
-      "file": "src/app/privacy/page.tsx",
-      "dynamic": false,
-      "hasMeta": false,
-      "title": null,
-      "description": null,
-      "canonical": null
     },
     {
       "route": "/privacy-policy",
@@ -1532,15 +2207,6 @@
       "title": "PWD Processing Time 2026 for PERM",
       "description": "Learn current PWD processing time for PERM and what happens after prevailing wage approval.",
       "canonical": "/pwd-processing-time"
-    },
-    {
-      "route": "/renew-green-card-online",
-      "file": "src/app/renew-green-card-online/page.tsx",
-      "dynamic": false,
-      "hasMeta": true,
-      "title": "Renew Green Card Online: Form I-90 Step-by-Step Guide",
-      "description": "Renew or replace your green card online with Form I-90. See the step-by-step USCIS online filing process, documents, fees, and a readiness checklist tool.",
-      "canonical": "/renew-green-card-online"
     },
     {
       "route": "/replace-green-card",
@@ -1566,8 +2232,17 @@
       "dynamic": false,
       "hasMeta": true,
       "title": "Retirement & Return to India — 401(k), IRA, Social Security, RNOR & Currency",
-      "description": "Planning to move back to India? What happens to your 401(k), IRA, and Social Security, how RNOR status works, and how to plan currency timing for NRIs.",
+      "description": "Planning to move back to India? Keeping or abandoning your green card, the US exit tax on giving it up, what happens to your 401(k), IRA and Social Security, how RNOR status works, and how to time the move.",
       "canonical": "«config.path»"
+    },
+    {
+      "route": "/return-to-india-checklist",
+      "file": "src/app/return-to-india-checklist/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Free 2026 Return-to-India Checklist PDF for NRIs | NRItoUSA",
+      "description": "Download the free 2026 Return-to-India Playbook: a personal, financial, tax, 401(k), RNOR, property, repatriation, immigration, and first-90-days checklist for NRIs moving back to India.",
+      "canonical": "/return-to-india-checklist"
     },
     {
       "route": "/send-money-to-india",
@@ -1579,6 +2254,69 @@
       "canonical": "/send-money-to-india"
     },
     {
+      "route": "/shipping-household-goods-to-india",
+      "file": "src/app/shipping-household-goods-to-india/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Shipping Household Goods to India: Cost + Customs Duty Calculator",
+      "description": "What will it actually cost to ship your household goods from the USA to India? Compare courier, air, and sea freight cost ranges alongside estimated Indian customs duty — in one calculator.",
+      "canonical": "/shipping-household-goods-to-india"
+    },
+    {
+      "route": "/success-stories/[slug]",
+      "file": "src/app/success-stories/[slug]/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "«story.seoTitle»",
+      "description": "«story.metaDescription»",
+      "canonical": "«storyPath»"
+    },
+    {
+      "route": "/success-stories/editorial-methodology",
+      "file": "src/app/success-stories/editorial-methodology/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": null,
+      "description": null,
+      "canonical": "/success-stories/editorial-methodology"
+    },
+    {
+      "route": "/success-stories",
+      "file": "src/app/success-stories/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "NRI Success Stories | Indian Immigrant Journeys",
+      "description": "Original interviews with Indian immigrant professionals, physicians, executives and founders sharing career, money and life lessons from America.",
+      "canonical": "/success-stories"
+    },
+    {
+      "route": "/term-life-insurance-for-indian-families-usa",
+      "file": "src/app/term-life-insurance-for-indian-families-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Term Life Insurance for Indian Families in the U.S.",
+      "description": "How Indian and NRI families in the U.S. can think about term life insurance: who may need it, a plain-English framework for estimating coverage, choosing a 10/20/30-year term, common mistakes, and questions for a state-licensed agent.",
+      "canonical": "/term-life-insurance-for-indian-families-usa"
+    },
+    {
+      "route": "/term-life-insurance-needs-calculator-indian-families",
+      "file": "src/app/term-life-insurance-needs-calculator-indian-families/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Term Life Insurance Needs Calculator for Indian Families",
+      "description": "Educational calculator to estimate term life insurance needs for Indian and NRI families in the U.S., including income replacement, mortgage, children's education, and India/home-country obligations.",
+      "canonical": "/term-life-insurance-needs-calculator-indian-families"
+    },
+    {
+      "route": "/term-vs-iul-for-indian-families-usa",
+      "file": "src/app/term-vs-iul-for-indian-families-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Term vs IUL for Indian Families in the U.S.",
+      "description": "Side-by-side comparison of term life insurance and indexed universal life (IUL) for Indian and NRI families in the U.S.: purpose, cost, cash value, complexity, tax treatment, best fit, main risks — plus example planning paths and a pre-agent checklist.",
+      "canonical": "/term-vs-iul-for-indian-families-usa"
+    },
+    {
       "route": "/terms-and-conditions",
       "file": "src/app/terms-and-conditions/page.tsx",
       "dynamic": false,
@@ -1588,15 +2326,6 @@
       "canonical": "/terms-and-conditions"
     },
     {
-      "route": "/terms-of-use",
-      "file": "src/app/terms-of-use/page.tsx",
-      "dynamic": false,
-      "hasMeta": false,
-      "title": null,
-      "description": null,
-      "canonical": null
-    },
-    {
       "route": "/tools/citizenship-checklist",
       "file": "src/app/tools/citizenship-checklist/page.tsx",
       "dynamic": false,
@@ -1604,6 +2333,15 @@
       "title": "«tool.seoTitle»",
       "description": "«tool.seoDescription»",
       "canonical": "/tools/citizenship-checklist"
+    },
+    {
+      "route": "/tools/citizenship-test-practice",
+      "file": "src/app/tools/citizenship-test-practice/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/citizenship-test-practice"
     },
     {
       "route": "/tools/fbar-fatca-checker",
@@ -1646,8 +2384,8 @@
       "file": "src/app/tools/form-3520-india-gift-checker/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "«tool.seoTitle»",
-      "description": "«tool.seoDescription»",
+      "title": "Form 3520 Gift Checker for India | Free Tool",
+      "description": "Check whether a gift or inheritance from India may trigger Form 3520, foreign-trust, FBAR/FATCA or PFIC review. No signup or personal data.",
       "canonical": "/tools/form-3520-india-gift-checker"
     },
     {
@@ -1714,13 +2452,13 @@
       "canonical": "/tools/h4-ead-navigator"
     },
     {
-      "route": "/tools/nri-global-wealth-tax-organizer",
-      "file": "src/app/tools/nri-global-wealth-tax-organizer/page.tsx",
+      "route": "/tools/iv-scheduling-status",
+      "file": "src/app/tools/iv-scheduling-status/page.tsx",
       "dynamic": false,
-      "hasMeta": false,
-      "title": null,
-      "description": null,
-      "canonical": null
+      "hasMeta": true,
+      "title": "IV Scheduling Status Tool",
+      "description": "The IV Scheduling Status Tool shows a documentarily complete date, not a priority date. Find out which gate is holding your immigrant visa interview.",
+      "canonical": "/tools/iv-scheduling-status"
     },
     {
       "route": "/tools/nri-tax-filing-roadmap",
@@ -1772,7 +2510,7 @@
       "file": "src/app/tools/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA | NRI to USA",
+      "title": "Free Immigration, Wealth, Tax & Money Tools for Indians in the USA",
       "description": "Free tools for Indians in the USA: NRI Wealth Checkup, FBAR/FATCA checker, green card tracker, H-1B salaries, USCIS tools, India tax calculators, and retirement planning.",
       "canonical": "/tools"
     },
@@ -1867,6 +2605,60 @@
       "canonical": "/tools/visa-green-card"
     },
     {
+      "route": "/tools/visitor-insurance-cost-calculator",
+      "file": "src/app/tools/visitor-insurance-cost-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-cost-calculator"
+    },
+    {
+      "route": "/tools/visitor-insurance-deductible-coinsurance-calculator",
+      "file": "src/app/tools/visitor-insurance-deductible-coinsurance-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-deductible-coinsurance-calculator"
+    },
+    {
+      "route": "/tools/visitor-insurance-hospital-bill-calculator",
+      "file": "src/app/tools/visitor-insurance-hospital-bill-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-hospital-bill-calculator"
+    },
+    {
+      "route": "/tools/visitor-insurance-network-cost-calculator",
+      "file": "src/app/tools/visitor-insurance-network-cost-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-network-cost-calculator"
+    },
+    {
+      "route": "/tools/visitor-insurance-plan-comparison",
+      "file": "src/app/tools/visitor-insurance-plan-comparison/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-plan-comparison"
+    },
+    {
+      "route": "/tools/visitor-insurance-policy-maximum-calculator",
+      "file": "src/app/tools/visitor-insurance-policy-maximum-calculator/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "«tool.seoTitle»",
+      "description": "«tool.seoDescription»",
+      "canonical": "/tools/visitor-insurance-policy-maximum-calculator"
+    },
+    {
       "route": "/topics/[slug]",
       "file": "src/app/topics/[slug]/page.tsx",
       "dynamic": true,
@@ -1894,12 +2686,30 @@
       "canonical": "/trump-account-1000-eligibility"
     },
     {
+      "route": "/trump-account-age-18-withdrawal-roth-conversion",
+      "file": "src/app/trump-account-age-18-withdrawal-roth-conversion/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account at 18: Withdrawal Rules & Roth Conversion",
+      "description": "What happens to a Trump Account at 18: the exact calendar-year withdrawal trigger, how it becomes a traditional IRA, withdrawal tax and the 10% penalty, penalty exceptions, and the Roth conversion window — with the immigrant/cross-border angle.",
+      "canonical": "/trump-account-age-18-withdrawal-roth-conversion"
+    },
+    {
+      "route": "/trump-account-generational-wealth-for-kids",
+      "file": "src/app/trump-account-generational-wealth-for-kids/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account Generational Wealth: How $5,000 a Year Could Grow for Your Child",
+      "description": "Learn how a Trump Account could help families build generational wealth for children through early investing, tax-deferred growth, the $1,000 federal contribution, and yearly contributions up to $5,000.",
+      "canonical": "/trump-account-generational-wealth-for-kids"
+    },
+    {
       "route": "/trump-account-h1b-immigrant-families",
       "file": "src/app/trump-account-h1b-immigrant-families/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "Trump Accounts for H1B Visa Holders: Complete Guide for Immigrant Families (2026)",
-      "description": "Can H-1B parents open a Trump Account for a U.S.-born child? Learn eligibility, $1,000 pilot contribution rules, SSN vs ITIN, Form 4547, taxes, and what happens if your family moves back to India.",
+      "title": "Trump Accounts for H1B Visa Holders: 2026 Rules",
+      "description": "Can H-1B parents open a Trump Account for a U.S.-born child? Eligibility, the $1,000 federal pilot contribution, SSN vs ITIN, and Form 4547.",
       "canonical": "/trump-account-h1b-immigrant-families"
     },
     {
@@ -1921,6 +2731,15 @@
       "canonical": "/trump-account-ssn-itin-child"
     },
     {
+      "route": "/trump-account-tax-planning-immigrant-families",
+      "file": "src/app/trump-account-tax-planning-immigrant-families/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Trump Account Tax Planning Guide for Immigrant Families",
+      "description": "A practical Trump Account planning guide for immigrant and NRI families: a quick decision box, an age-by-age timeline, 25+ tax scenarios, multi-year and bracket planning, state and status-based tables, 20 case studies, and 40+ FAQs.",
+      "canonical": "/trump-account-tax-planning-immigrant-families"
+    },
+    {
       "route": "/trump-account-tax-rules-immigrants",
       "file": "src/app/trump-account-tax-rules-immigrants/page.tsx",
       "dynamic": false,
@@ -1939,6 +2758,15 @@
       "canonical": "/trump-account-vs-529-for-h1b-families"
     },
     {
+      "route": "/usa-government-benefits-immigrants",
+      "file": "src/app/usa-government-benefits-immigrants/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Government Benefits for Immigrants: Visa, Green Card & Citizen Guide",
+      "description": "Check which U.S. benefits may be available to visa holders, Green Card holders, citizens and mixed-status families based on state, income, work history and household.",
+      "canonical": "«GB_PATH»"
+    },
+    {
       "route": "/uscis/[slug]",
       "file": "src/app/uscis/[slug]/page.tsx",
       "dynamic": true,
@@ -1952,9 +2780,18 @@
       "file": "src/app/uscis/case-status/page.tsx",
       "dynamic": true,
       "hasMeta": true,
-      "title": "USCIS Case Status Meaning for Indians | H1B, I-140, I-485, EAD",
-      "description": "Understand common USCIS case status messages in simple language for H1B, I-140, I-485, EAD, Advance Parole, green card and Indian applicants.",
+      "title": "USCIS Case Status Meaning 2026: Every Message Decoded",
+      "description": "Decode every USCIS case status message: check it with your 13-character receipt number at egov.uscis.gov. What each status means and when to worry.",
       "canonical": "/uscis/case-status"
+    },
+    {
+      "route": "/uscis/expedite-request",
+      "file": "src/app/uscis/expedite-request/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "USCIS Expedite Request: The 5 Criteria, and When to Use Premium Instead",
+      "description": "How to expedite a USCIS case: the five official criteria, the rule that blocks an expedite wherever premium processing exists, how to submit, and a free eligibility checker for your form.",
+      "canonical": "/uscis/expedite-request"
     },
     {
       "route": "/uscis/forms/[slug]",
@@ -1964,6 +2801,24 @@
       "title": "«page.seoTitle»",
       "description": "«page.metaDescription»",
       "canonical": "/uscis/forms/${page.slug}"
+    },
+    {
+      "route": "/uscis/forms/i-751",
+      "file": "src/app/uscis/forms/i-751/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Form I-751: Remove Conditions on a Marriage Green Card — Window, Fee, Timeline",
+      "description": "Form I-751 removes the conditions from a marriage-based ${I751_FACTS.conditionalYears}-year green card (EB-5 investors file Form I-829). Joint petitions are filed in the ${I751_FACTS.windowDays} days before conditional residence expires; fee ${I751_FACTS.onlineFee} online or ${I751_FACTS.paperFee} paper, and the receipt notice extends status ${I751_FACTS.extensionMonths} months. Free filing-window calculator.",
+      "canonical": "/uscis/forms/i-751"
+    },
+    {
+      "route": "/uscis/forms/i-864",
+      "file": "src/app/uscis/forms/i-864/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Form I-864P Poverty Guidelines ${I864P.guidelineYear}: Sponsor Income Requirements",
+      "description": "The I-864P minimum income to sponsor an immigrant is ${usd( MIN_2 )} for a household of two in the 48 contiguous states, effective ${formatDate( I864P.effective )}. Free sponsor income checker, the full threshold table, and the three ways to fix a shortfall.",
+      "canonical": "/uscis/forms/i-864"
     },
     {
       "route": "/uscis/forms",
@@ -2002,21 +2857,12 @@
       "canonical": "/uscis"
     },
     {
-      "route": "/uscis/processing-times",
-      "file": "src/app/uscis/processing-times/page.tsx",
-      "dynamic": false,
-      "hasMeta": true,
-      "title": "USCIS Processing Times Explained for Indians | H1B, I-140, I-485, EAD",
-      "description": "Understand USCIS processing times, receipt dates, service centers, premium processing, delays, case inquiries, and what Indian applicants should check.",
-      "canonical": "/uscis/processing-times"
-    },
-    {
       "route": "/uscis/receipt-number",
       "file": "src/app/uscis/receipt-number/page.tsx",
       "dynamic": false,
       "hasMeta": true,
-      "title": "USCIS Receipt Number Explained: Prefix Meanings",
-      "description": "What a USCIS receipt number is, where to find it on your I-797, and what the IOE, LIN, SRC, EAC, WAC and MSC prefixes mean, with Indian H-1B examples.",
+      "title": "USCIS Receipt Number: Format & Prefix Meanings 2026",
+      "description": "A USCIS receipt number is 13 characters on your I-797, like LIN2412345678. What IOE, LIN, SRC, EAC, WAC and MSC mean, and where to find yours.",
       "canonical": "/uscis/receipt-number"
     },
     {
@@ -2024,18 +2870,99 @@
       "file": "src/app/visa-bulletin/[slug]/page.tsx",
       "dynamic": true,
       "hasMeta": true,
-      "title": "«page.seoTitle»",
-      "description": "«page.metaDescription»",
-      "canonical": "/visa-bulletin/${page.slug}"
+      "title": "${label} Visa Bulletin: India EB-1, EB-2, EB-3 Dates & Movement",
+      "description": "«monthDescription»",
+      "canonical": "/visa-bulletin/${params.slug}"
+    },
+    {
+      "route": "/visa-bulletin/october-2026",
+      "file": "src/app/visa-bulletin/october-2026/page.tsx",
+      "dynamic": true,
+      "hasMeta": true,
+      "title": "October 2026 Visa Bulletin: EB-2 India Reopens at Nov 1, 2013",
+      "description": "The first bulletin of FY2027 reopens EB-2 India at Nov 1, 2013 after three months Unavailable, advances EB-1 India to Feb 1, 2023, and retrogresses Rest of World EB-2 and EB-3 — plus how our pre-committed forecast actually scored.",
+      "canonical": "/visa-bulletin/october-2026"
     },
     {
       "route": "/visa-bulletin",
       "file": "src/app/visa-bulletin/page.tsx",
       "dynamic": true,
       "hasMeta": true,
-      "title": "Visa Bulletin for Indians: EB1–EB3 Priority Dates",
-      "description": "A simple guide to the visa bulletin for Indians: EB1, EB2 and EB3 priority dates, final action vs. filing dates, retrogression and green-card waits.",
+      "title": "Visa Bulletin Explained for Indians: How to Read It",
+      "description": "Visa bulletin explained: how to read the India EB-1/EB-2/EB-3 charts, dates for filing vs final action, and this month's cutoff dates.",
       "canonical": "/visa-bulletin"
+    },
+    {
+      "route": "/visa-interview-waiver",
+      "file": "src/app/visa-interview-waiver/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Visa Interview Waiver (Dropbox)",
+      "description": "H-1B, H-4, L and F are no longer dropbox-eligible. The complete eligible list under the rules effective 1 October 2025, plus an eligibility checker.",
+      "canonical": "/visa-interview-waiver"
+    },
+    {
+      "route": "/visitor-insurance/fixed-benefit-vs-comprehensive",
+      "file": "src/app/visitor-insurance/fixed-benefit-vs-comprehensive/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Fixed-Benefit vs Comprehensive Visitor Insurance: What Changes",
+      "description": "Fixed-benefit (scheduled) vs comprehensive visitor insurance: why two plans with the same policy maximum can pay very different amounts on the same bill. Compare with real numbers.",
+      "canonical": "/visitor-insurance/fixed-benefit-vs-comprehensive"
+    },
+    {
+      "route": "/visitor-insurance/glossary",
+      "file": "src/app/visitor-insurance/glossary/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Visitor Insurance Glossary: Every Term, Explained With Numbers",
+      "description": "Plain-English visitor insurance glossary — deductible, coinsurance, policy maximum, allowed charge, balance billing, acute onset, PPO, and more, each with a numeric example.",
+      "canonical": "/visitor-insurance/glossary"
+    },
+    {
+      "route": "/visitor-insurance/how-much-coverage",
+      "file": "src/app/visitor-insurance/how-much-coverage/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "How Much Visitor Insurance Coverage Do You Need?",
+      "description": "How much visitor insurance coverage do you need? A decision framework — not a fixed number — based on age, trip length, health history, and what your family could absorb.",
+      "canonical": "/visitor-insurance/how-much-coverage"
+    },
+    {
+      "route": "/visitor-insurance/methodology",
+      "file": "src/app/visitor-insurance/methodology/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "How the Visitor Insurance Calculators Work: Methodology",
+      "description": "The exact calculation sequence, source hierarchy, rounding method, and known limitations behind every visitor insurance calculator on NRI to USA.",
+      "canonical": "/visitor-insurance/methodology"
+    },
+    {
+      "route": "/visitor-insurance",
+      "file": "src/app/visitor-insurance/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Visitor Insurance USA: Cost, Liability & How It Works (2026)",
+      "description": "Visitor medical insurance for the USA, explained with numbers: premium vs. liability, deductible, coinsurance, policy maximum, networks, and pre-existing-condition wording — plus free calculators.",
+      "canonical": "«VISITOR_INSURANCE_BASE»"
+    },
+    {
+      "route": "/visitor-insurance/parents-visiting-usa",
+      "file": "src/app/visitor-insurance/parents-visiting-usa/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Insurance for Parents Visiting the USA: Cost & Age Rules (2026)",
+      "description": "Insurance for parents visiting USA, explained: how age affects availability and premium, coverage amounts, deductible choices, and pre-existing-condition wording — plus a free calculator.",
+      "canonical": "/visitor-insurance/parents-visiting-usa"
+    },
+    {
+      "route": "/visitor-insurance/pre-existing-conditions-acute-onset",
+      "file": "src/app/visitor-insurance/pre-existing-conditions-acute-onset/page.tsx",
+      "dynamic": false,
+      "hasMeta": true,
+      "title": "Visitor Insurance Pre-Existing Conditions & Acute Onset",
+      "description": "Visitor insurance pre-existing conditions and acute onset, explained in plain English — plus a free policy-language analyzer. Educational only, never a coverage guarantee.",
+      "canonical": "/visitor-insurance/pre-existing-conditions-acute-onset"
     },
     {
       "route": "/what-is-nvc-case-number",

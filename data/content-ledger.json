@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-09-29",
+  "updated": "2026-10-06",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -34,6 +34,195 @@
       "status": "open",
       "opened": "2026-09-29",
       "nextStep": "Monthly refresh: when comparing a reset month to the prior October, derive the direction from the data rather than typing it"
+    },
+    {
+      "id": "india-forms-15ca-15cb-26qb-renamed",
+      "title": "India Forms 15CA/15CB/26QB renamed Forms 145/146/141 from 1 Apr 2026 (Income-tax Act 2025) — ~40 files never mention the new names",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Add 'now Form 145 (formerly 15CA)' framing across form15Checklist, repatriation cluster, 15CA/15CB pillar + tool; ₹5L threshold unchanged (Rule 220)",
+      "evidence": "incometaxindia.gov.in form-145-faqs, fn-146, fn-141"
+    },
+    {
+      "id": "hardcoded-88-usd-in-goldcustomsdata-ts",
+      "title": "Hardcoded ₹88/USD in goldCustomsData.ts:135 and shippingIndiaRatesData.ts:100 vs live ~₹96.4 — duty rupee figures and ToR USD caps ~9% off",
+      "area": "numbers",
+      "severity": "high",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Read USD/INR from market.json (or a single FX constant) instead of 88; also refresh usdInrForecastData FX_USDINR (94.66, Sep 6)"
+    },
+    {
+      "id": "trump-account-site-says-no-official",
+      "title": "Trump Account: site says no official employer figure, but Notice 2025-68 caps tax-free employer contributions at $2,500/yr per employee (counts toward $5,000)",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Owner decision: header compliance rule in trumpAccountData.ts forbids employer $ figures — relax it to state the statutory cap",
+      "evidence": "irs.gov/pub/irs-drop/n-25-68.pdf"
+    },
+    {
+      "id": "india-revised-return-deadline-may-now",
+      "title": "India revised-return deadline may now be 31 Mar (Budget 2026) not 31 Dec — unconfirmed (CBDT FAQ 403)",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Confirm, then fix nriTaxCalendarData.ts:69,76,202-205 and india-tax-compliance/page.tsx:114"
+    },
+    {
+      "id": "uscis-fy2027-h-r-1-inflation",
+      "title": "USCIS FY2027 H.R.1 inflation-adjusted fees effective Oct 16, 2026 (parole/asylum/TPS EAD, I-94 $24)",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Recheck pages quoting those fees after Oct 16 against G-1055"
+    },
+    {
+      "id": "online-uscis-fees-never-shown-i",
+      "title": "Online USCIS fees never shown: I-140 $665, I-485 $1,390 ($900 <14), I-131 AP $580 — site shows paper fees as the only fee",
+      "area": "numbers",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Add online/paper split to uscisFormsCluster + cluster data"
+    },
+    {
+      "id": "h-4-ead-never-had-automatic",
+      "title": "H-4 EAD 'never had automatic extension' lines (UscisFormFinder.tsx:110, UscisLifeDecisionChecklist.tsx:325) wrong on history (Shergill 2021 → Oct 29 2025)",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Reframe around the Oct 30 2025 end of auto-extension"
+    },
+    {
+      "id": "income-tax-act-2025-framing-91",
+      "title": "Income-tax Act 2025 framing: ~91 refs cite 1961-Act sections; correct for AY 2026-27 but tax year 2026-27 onward uses new Act numbering",
+      "area": "content",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06"
+    },
+    {
+      "id": "title-cannibalization-topics-long-term-nri",
+      "title": "Title cannibalization: /topics/long-term-nri-wealth vs /long-term-nri-wealth",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "301 topic hub → /long-term-nri-wealth (richer page) with rationale comment"
+    },
+    {
+      "id": "title-cannibalization-trump-account-tax-rules",
+      "title": "Title cannibalization: /trump-account-tax-rules-immigrants vs /trump-account-tax-planning-immigrant-families",
+      "area": "other",
+      "severity": "medium",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Merge rules into planning (301) or retitle rules to contribution/gift-tax intent"
+    },
+    {
+      "id": "cluster-sibling-cards-h1b-uscis-green",
+      "title": "Cluster sibling cards (h1b/uscis/green-card/visa-bulletin [slug]) push pairs to 25–37% overlap",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Optional: drop excerpts from 'Also in this guide' cards"
+    },
+    {
+      "id": "baggage-duty-38-5-stated-as",
+      "title": "Baggage duty 38.5% stated as fact in goldCustomsData but TODO/conflicting in shippingIndiaRatesData",
+      "area": "numbers",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06"
+    },
+    {
+      "id": "fbar-penalty-figures-16-000-160",
+      "title": "FBAR penalty figures (~$16,000 / ~$160,000) slightly below 2025 inflation-adjusted $16,536 / $165,353",
+      "area": "numbers",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "Confirm on FinCEN, then update articles.ts:683,729-730,8678-8679"
+    },
+    {
+      "id": "tap-targets-disclaimer-details-links-on",
+      "title": "Tap targets: disclaimer details links on /tools/form-3520-india-gift-checker and /tools/visitor-insurance-plan-comparison fail WCAG 24px spacing at 393–430",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-06",
+      "nextStep": "add py-1 to the links"
+    },
+    {
+      "id": "audit-2026-10-market",
+      "title": "market.json refreshed 2026-10-06 (USD/INR 96.42); staleness test green",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-gifts-overlap",
+      "title": "Inherited property / PFIC pages get own snapshot rows (were 40% overlap)",
+      "area": "content",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-links",
+      "title": "~20 moved gov citations updated to final URLs; /calculators links → /tools; GU sponsor 404 no longer prerendered",
+      "area": "links",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-misc-numbers",
+      "title": "Tatkal +$125, 540-day EAD line on /green-card, I-765/I-129 fee notes, $100K proclamation extension to Sep 2027, indexation dated 2024 not 2026, DTAA dividend 25%, ACT $70, FAFSA opens by Oct 1, backdoor Roth example at $7,500, public-charge notice",
+      "area": "numbers",
+      "severity": "medium",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-itr-audit-date",
+      "title": "ITR audit-case due date AY 2026-27 → Nov 21, 2026 (CBDT Circular 7/2026)",
+      "area": "numbers",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-n400-swap",
+      "title": "N-400 online/paper fees swapped in toolHubContent + tools.ts ($710 online / $760 paper)",
+      "area": "numbers",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
+    },
+    {
+      "id": "audit-2026-10-premium-fee",
+      "title": "Premium processing $2,805 → $2,965 in prose (visaBulletinCluster ×6, greenCardCluster, attorney-cost page)",
+      "area": "numbers",
+      "severity": "high",
+      "status": "done",
+      "opened": "2026-10-06",
+      "resolved": "2026-10-06"
     },
     {
       "id": "monthly-refresh-checklist-gap-the-october",
@@ -412,11 +601,12 @@
       "title": "29 citations still resolve, but only through a redirect",
       "area": "links",
       "severity": "low",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-18",
       "detail": "Re-measured 2026-09-21: 39 redirects, 32 of them substantive (the other 7 are social share/opt-out endpoints). Nothing here is broken today — each resolves to live content — but a redirect is a warning shot, and several are agency reorganisations that will eventually be dropped. Substantive cases: benefits.gov now hands off to usa.gov's benefit finder; the IRS ITIN page moved under /tin/itin/ and its early-distributions page is now exceptions-to-tax-on-early-distributions; California's notary authentication page became request-apostille; SSA's applying7.html is now /family and /ssnumber/ is /number-card; both cited eCFR sections gained a /subpart-A/ segment; two Federal Register /d/ short links expand to full document paths. The high-traffic ones are cosmetic (uscis.gov/forms -> /forms/all-forms, incometax.gov.in -> its portal path). The USDA fns.usda.gov -> fna.usda.gov pair is a live alias, not a rename to chase: both hostnames answered 200 on 2026-09-21.",
       "nextStep": "Update the agency-reorganisation cases (benefits.gov, IRS, SSA, eCFR, the two Federal Register short links) on the next government-benefits pass; leave the cosmetic ones. Full list in scripts/audit/link-health.json -> redirects[]. Re-check with npm run ledger:links.",
-      "evidence": "scripts/audit/link-health.json → redirects[]"
+      "evidence": "scripts/audit/link-health.json → redirects[]",
+      "resolved": "2026-10-06"
     },
     {
       "id": "mobile-audit-faq-accordion-breadcrumb-tap",
@@ -802,10 +992,11 @@
       "title": "Proclamation 10973 lapses 2026-09-20 unless extended — recheck the $100K H-1B fee framing",
       "area": "numbers",
       "severity": "medium",
-      "status": "open",
+      "status": "done",
       "opened": "2026-08-20",
       "detail": "Proclamation 10973 was written as a 12-month measure scheduled to expire 2026-09-20 unless extended, renewed or superseded. Separately, the implementing policy was vacated 2026-06-08 and the First Circuit declined to reinstate it 2026-07-24, so it is not being collected. Do NOT simplify this to 'the fee expires on Sept 20' — expiry and vacatur are independent, and either could change first.",
-      "nextStep": "Recheck on/after 2026-09-21; update h1bProclamationFee.statusLine to reflect whichever ended it — expiry and vacatur are independent tracks, do not collapse them into 'the fee expired'"
+      "nextStep": "Recheck on/after 2026-09-21; update h1bProclamationFee.statusLine to reflect whichever ended it — expiry and vacatur are independent tracks, do not collapse them into 'the fee expired'",
+      "resolved": "2026-10-06"
     },
     {
       "id": "mobile-audit-education-gpa-calculator-overflows",

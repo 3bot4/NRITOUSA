@@ -27,7 +27,11 @@ type Params = { socSlug: string; state: string };
 
 export async function generateStaticParams() {
   const pairs = await topRoleStatePairs(500);
-  return pairs.map((p) => ({ socSlug: p.socSlug, state: p.state.toLowerCase() }));
+  // Same validator resolve() uses — otherwise a territory pair (e.g. GU) is
+  // prerendered as a 404.
+  return pairs
+    .filter((p) => isValidState(p.state.toUpperCase()))
+    .map((p) => ({ socSlug: p.socSlug, state: p.state.toLowerCase() }));
 }
 
 /* ── shared resolver ────────────────────────────────────────────────────── */

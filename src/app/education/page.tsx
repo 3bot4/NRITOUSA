@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const stats = [
   { value: "56M", label: "K-12 students in the US" },
   { value: "Free", label: "Public K-12 for all children" },
-  { value: "Oct 1", label: "FAFSA opens each year" },
+  { value: "By Oct 1", label: "FAFSA opens each year" },
   { value: "12 mo", label: "Green card → in-state eligible" },
 ];
 
@@ -71,7 +71,7 @@ const faq: FaqItem[] = [
   {
     question: "Who is eligible for FAFSA and federal financial aid?",
     answer:
-      "US citizens and eligible non-citizens — including green card holders, refugees, asylees, and certain other statuses — can file the FAFSA for federal grants and loans. Students on F-1, H-4, or other temporary visas generally cannot receive federal aid, but may qualify for institutional scholarships or state Dream Act aid (in CA, TX, NY, IL, WA and others). FAFSA opens October 1 each year at studentaid.gov.",
+      "US citizens and eligible non-citizens — including green card holders, refugees, asylees, and certain other statuses — can file the FAFSA for federal grants and loans. Students on F-1, H-4, or other temporary visas generally cannot receive federal aid, but may qualify for institutional scholarships or state Dream Act aid (in CA, TX, NY, IL, WA and others). FAFSA opens by October 1 each year at studentaid.gov (the 2027–28 form opened September 23, 2026).",
   },
   {
     question: "What GPA and SAT score do US colleges expect?",
@@ -155,7 +155,7 @@ export default function EducationHubPage() {
             title="Education fees & key dates at a glance"
             accent="sky"
             rows={educationSnapshotRows}
-            badges={["SAT ~$68", "FAFSA opens Oct 1"]}
+            badges={["SAT ~$68", "FAFSA opens by Oct 1"]}
             lastVerified={EDUCATION_VERIFIED}
             sources={educationSnapshotSources}
             disclaimer={EDUCATION_DISCLAIMER}

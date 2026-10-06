@@ -406,7 +406,7 @@ export default function GreenCardPage() {
               <ul className="space-y-1 text-sm text-emerald-800">
                 <li>• Authorizes work for any employer — not tied to a specific job</li>
                 <li>• Usually issued 3–6 months after I-485 filing</li>
-                <li>• 540-day automatic extension available if you timely renew</li>
+                <li>• No automatic extension for renewals filed on or after Oct 30, 2025 — file up to 180 days early</li>
                 <li>• Can continue H1B alongside EAD — discuss with attorney</li>
               </ul>
             </div>

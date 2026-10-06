@@ -980,7 +980,7 @@ export default function Page() {
               <Link href="/i140-processing-time" className="font-semibold text-brand-700 underline underline-offset-2">
                 I-140 processing time
               </Link>
-              ), an optional <strong>$2,805</strong> for premium processing, and <strong>$1,440</strong> per
+              ), an optional <strong>$2,965</strong> for premium processing, and <strong>$1,440</strong> per
               adult{" "}
               <Link href="/i485-processing-time" className="font-semibold text-brand-700 underline underline-offset-2">
                 I-485

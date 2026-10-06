@@ -88,7 +88,7 @@ export default function UscisFormFinderPage() {
           <p>
             No personal data collected. Verify at{" "}
             <a
-              href="https://www.uscis.gov/forms"
+              href="https://www.uscis.gov/forms/all-forms"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold underline"

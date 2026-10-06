@@ -457,6 +457,15 @@ The gift itself is not an account, but once it is sitting in — or routed throu
     icon: "🏠",
     accent: "from-amber-500 to-orange-600",
     date: "2026-06-22",
+    // Own rows, not the pillar's: both inherited pages used to fall back to the
+    // cluster-wide widget and read as 40% duplicates of each other.
+    snapshotTitle: "Inherited Indian property — what to know",
+    snapshotRows: [
+      { label: "US tax on inheriting", value: "Generally none", note: "Tax arrives later — on rent, and above all on sale.", highlight: true },
+      { label: "What drives the tax", value: "Cost basis", note: "The value documented at inheritance sets the gain when you sell." },
+      { label: "Form 3520", value: `Bequests > ${USD_100K} / year`, note: "From a foreign estate or individual; a disclosure, not a tax." },
+      { label: "Getting money out", value: "NRO → USD 1M / FY", note: "Sale proceeds are repatriated with CA-certified paperwork." },
+    ],
     excerpt:
       "Inheriting Indian property isn't taxable in the US when you inherit it — tax enters only when you sell, driven by your cost basis. Here's the documentation to gather, the Form 3520 angle, and the path to repatriation.",
     content: `Inheriting a flat, a house, or land in India is, for US tax purposes, **not a taxable event when you inherit it**. The tax questions arrive **later** — when the property earns rent, and especially when you **sell** — and they turn on your **cost basis** and the **capital gain**. Before any of that, the job is **documentation**: proving you inherited it and establishing the value.
@@ -559,6 +568,13 @@ Real estate held directly is generally not an FBAR or FATCA account item by itse
     icon: "📈",
     accent: "from-violet-500 to-purple-600",
     date: "2026-06-22",
+    snapshotTitle: "Inherited Indian mutual funds — what to know",
+    snapshotRows: [
+      { label: "US status", value: "Generally PFICs", note: "Indian mutual funds are treated as passive foreign investment companies.", highlight: true },
+      { label: "Annual filing", value: "Form 8621 per fund", note: "Each PFIC generally needs its own form, with detailed calculations." },
+      { label: "Default regime", value: "Excess distribution", note: "Highest rates plus an interest charge — punitive by design." },
+      { label: "Elections", value: "QEF / mark-to-market", note: "Can soften the result but have strict timing; decide with a CPA before selling." },
+    ],
     excerpt:
       "Inheriting Indian mutual funds is the one asset where the US tax tail wags the dog. They're generally PFICs — meaning Form 8621 and punitive default tax rules. Here's the trap, in plain English, and what to ask before you sell.",
     content: `Of everything you might inherit from India, **mutual funds are the one to slow down on.** Indian mutual funds are generally treated as **PFICs (Passive Foreign Investment Companies)** for US tax — a regime designed to be **punitive by default**. Inheriting them isn't taxable, but how you **hold and sell** them can trigger ugly tax and a fiddly form (**Form 8621**). Get US advice **before** you act.

@@ -1,5 +1,11 @@
 {
-  "orphans": [],
+  "orphans": [
+    {
+      "route": "/calculators",
+      "incoming": 0,
+      "type": "calculator"
+    }
+  ],
   "low": [
     {
       "route": "/education/grade-finder",
@@ -38,10 +44,6 @@
       "incoming": 1
     },
     {
-      "route": "/indian-population-in-texas",
-      "incoming": 1
-    },
-    {
       "route": "/indian-population-in-virginia",
       "incoming": 1
     },
@@ -50,19 +52,27 @@
       "incoming": 1
     },
     {
-      "route": "/partnerships",
+      "route": "/nri-estate-planning",
       "incoming": 1
     },
     {
-      "route": "/resources",
+      "route": "/uscis/processing-times",
+      "incoming": 1
+    },
+    {
+      "route": "/i140-approved-what-next",
+      "incoming": 2
+    },
+    {
+      "route": "/indian-population-in-texas",
+      "incoming": 2
+    },
+    {
+      "route": "/renew-green-card-online",
       "incoming": 2
     },
     {
       "route": "/tools/flight-price-guide",
-      "incoming": 2
-    },
-    {
-      "route": "/tools/h1b-sponsor-finder",
       "incoming": 2
     }
   ],

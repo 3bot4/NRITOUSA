@@ -113,7 +113,7 @@ export default function CookiePolicyPage() {
             including heatmaps and session replay, so we can improve the user
             experience. Clarity data is processed according to the{" "}
             <a
-              href="https://www.microsoft.com/privacy/privacystatement"
+              href="https://www.microsoft.com/en-us/privacy/privacystatement"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-600 underline"

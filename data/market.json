@@ -1,18 +1,18 @@
 {
   "_comment": "Generated daily by scripts/pipeline/fetch-market.mjs (GitHub Actions). The frontend reads ONLY this static file — no client-side API calls. Per item: value, previous, changePct (vs previous snapshot), source, fetchedAt (ET), stale. Schema documented in README.md.",
-  "asOf": "2026-09-02T09:04:13-04:00",
-  "asOfLabel": "Sep 2, 2026, 9:04 AM ET",
+  "asOf": "2026-10-06T10:41:31-04:00",
+  "asOfLabel": "Oct 6, 2026, 10:41 AM ET",
   "items": [
     {
       "key": "usdinr",
       "label": "USD/INR",
-      "value": 94.95,
-      "previous": 95.17,
-      "changePct": -0.23,
+      "value": 96.42,
+      "previous": 96.3,
+      "changePct": 0.12,
       "unit": "₹",
       "decimals": 2,
       "source": "ECB reference rate via Frankfurter",
-      "fetchedAt": "2026-09-02T09:04:13-04:00",
+      "fetchedAt": "2026-10-06T10:41:31-04:00",
       "stale": false
     },
     {
@@ -30,33 +30,29 @@
     {
       "key": "sp500",
       "label": "S&P 500",
-      "value": 7631,
-      "previous": 7686,
-      "changePct": -0.72,
+      "value": 7774,
+      "previous": 7723,
+      "changePct": 0.66,
       "unit": "",
       "decimals": 0,
       "source": "FRED (S&P 500 index)",
-      "fetchedAt": "2026-09-02T09:04:13-04:00",
+      "fetchedAt": "2026-10-06T10:41:31-04:00",
       "stale": false
     },
     {
       "key": "gold",
       "label": "Gold",
-      "value": 4339,
-      "previous": 4002,
-      "changePct": 8.42,
+      "value": 4150,
+      "previous": 4339,
+      "changePct": -4.36,
       "unit": "$",
       "decimals": 0,
       "source": "gold-api.com spot price",
-      "fetchedAt": "2026-09-02T09:04:13-04:00",
+      "fetchedAt": "2026-10-06T10:41:31-04:00",
       "stale": false
     }
   ],
   "usdinrHistory": [
-    {
-      "date": "2026-05-26",
-      "value": 95.69
-    },
     {
       "date": "2026-05-27",
       "value": 95.69
@@ -172,6 +168,10 @@
     {
       "date": "2026-09-02",
       "value": 94.95
+    },
+    {
+      "date": "2026-10-06",
+      "value": 96.42
     }
   ]
 }

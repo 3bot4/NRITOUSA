@@ -188,7 +188,7 @@ export default function UscisFormChildPage({
                 <strong className="font-semibold text-ink-700">Educational guide — not legal advice.</strong>{" "}
                 USCIS form fees, procedures, and eligibility requirements change. Always verify at the official{" "}
                 <a
-                  href="https://www.uscis.gov/forms"
+                  href="https://www.uscis.gov/forms/all-forms"
                   className="text-brand-600 underline"
                   rel="nofollow noopener"
                   target="_blank"

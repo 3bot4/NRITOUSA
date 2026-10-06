@@ -457,7 +457,7 @@ export default function UscisFormsPage() {
               <section className="rounded-2xl border border-ink-900/5 bg-white p-6 text-sm text-ink-500">
                 <strong className="font-semibold text-ink-700">Educational guide — not legal advice.</strong>{" "}
                 USCIS form numbers, fees, filing procedures, and eligibility requirements change. Always verify with the official{" "}
-                <a href="https://www.uscis.gov/forms" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline">
+                <a href="https://www.uscis.gov/forms/all-forms" target="_blank" rel="noopener noreferrer" className="text-brand-600 underline">
                   USCIS forms page
                 </a>{" "}
                 and consult a licensed immigration attorney for your specific situation.

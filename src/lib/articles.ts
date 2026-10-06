@@ -1576,7 +1576,7 @@ If your family's benefit is load-bearing in your plan, **the residency history i
 | **Divorced spouse** | Generally up to 50%, or up to 100% as a survivor, where the marriage lasted 10+ years and the other conditions are met | Same two-part analysis; the U.S. residence must fall within the spousal relationship |
 | **Child under 18/19 (or disabled before 22)** | Generally up to 50% on a living parent, up to 75% as a survivor | Same two-part analysis; a child who cannot meet the residency requirement personally is generally deemed to meet it if both parents do |
 
-**Sources:** [SSA POMS RS 02610.025 — 5-year residency requirement for alien dependents and survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025), [RS 02610.030 — 5-year residency for spouses, children and parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030) and [SSA — Benefits for family members](https://www.ssa.gov/benefits/retirement/planner/applying7.html).
+**Sources:** [SSA POMS RS 02610.025 — 5-year residency requirement for alien dependents and survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025), [RS 02610.030 — 5-year residency for spouses, children and parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030) and [SSA — Benefits for family members](https://www.ssa.gov/family/eligibility).
 
 ## Social Security disability is a different system — and you may already be uninsured
 **Disability benefits add a recent-work test on top of lifetime credits.** Being fully insured with 40 credits is generally necessary but not sufficient. For workers who become disabled at 31 or older, insured status for disability generally also requires about **20 credits earned in the 40-calendar-quarter (10-year) period ending with the quarter the disability begins.** Younger workers face proportionally smaller requirements.
@@ -1712,7 +1712,7 @@ Payments outside the United States
 - [SSA — Country List 4](https://www.ssa.gov/international/countrylist4.htm)
 
 Family members
-- [SSA — Benefits for family members](https://www.ssa.gov/benefits/retirement/planner/applying7.html)
+- [SSA — Benefits for family members](https://www.ssa.gov/family/eligibility)
 - [SSA POMS RS 02610.025 — 5-year residency requirement for alien dependents and survivors](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610025) and [RS 02610.030 — Spouses, children and parents](https://secure.ssa.gov/apps10/poms.nsf/lnx/0302610030)
 
 Disability and SSI
@@ -3884,7 +3884,7 @@ Because you contributed after-tax money and converted quickly, there's **little 
 ## The pro-rata trap (read this twice)
 Here's where people get burned. The IRS doesn't let you cherry-pick which IRA dollars you convert. It treats **all your Traditional, SEP, and SIMPLE IRAs as one pool** and taxes the conversion **proportionally** to how much of that pool is pre-tax.
 
-Example: you make a $7,000 non-deductible contribution, but you also have a **$63,000 pre-tax [rollover IRA](/articles/what-happens-to-401k-leaving-usa)** from an old 401(k). Now your IRA pool is $70,000, only 10% of which is your new after-tax money. So **90% of your conversion is taxable** — a nasty surprise.
+Example: you make a $7,500 non-deductible contribution (the 2026 limit), but you also have a **$67,500 pre-tax [rollover IRA](/articles/what-happens-to-401k-leaving-usa)** from an old 401(k). Now your IRA pool is $75,000, only 10% of which is your new after-tax money. So **90% of your conversion is taxable** — a nasty surprise.
 
 :::note
 **The fix:** before doing a backdoor Roth, **roll any existing pre-tax IRA balances into your current employer's 401(k)** (if the plan accepts roll-ins). That empties the Traditional IRA pool of pre-tax money, so your backdoor conversion is clean and (nearly) tax-free. Timing matters — the pool is measured at year-end.
@@ -8071,7 +8071,7 @@ This single distinction can change your bill by $60,000 over four years. Public 
 Because the rules are state-specific and change, always confirm with the university's residency office in writing before you assume a rate.
 
 ## Who qualifies for FAFSA and federal aid
-The [FAFSA](https://studentaid.gov) (Free Application for Federal Student Aid) is the gateway to federal grants, work-study, and low-interest loans. It opens **October 1** each year. Eligibility by status:
+The [FAFSA](https://studentaid.gov) (Free Application for Federal Student Aid) is the gateway to federal grants, work-study, and low-interest loans. It opens **by October 1** each year — the 2027–28 form opened early, on September 23, 2026. Eligibility by status:
 
 - **US citizens** and **green card holders** — fully eligible.
 - **Refugees, asylees, and certain other statuses** — eligible as "eligible non-citizens."
@@ -8784,7 +8784,7 @@ Carry your Indian driving licence and an International Driving Permit if you pla
 ## Week 1: SSN, SIM, and bank
 
 ### Social Security Number
-Apply for your SSN at a [Social Security Administration](https://www.ssa.gov/ssnumber/) office as soon as your visa status is active (H-1B on your employment start date; F-1 only if you have an eligible employment authorisation — see the F-1 section below). Bring:
+Apply for your SSN at a [Social Security Administration](https://www.ssa.gov/number-card) office as soon as your visa status is active (H-1B on your employment start date; F-1 only if you have an eligible employment authorisation — see the F-1 section below). Bring:
 - Passport and visa stamp
 - I-94 arrival record — print from [i94.cbp.dhs.gov](https://i94.cbp.dhs.gov) (the stamp in your passport is not sufficient)
 - Employment offer letter or I-20 (as applicable)
@@ -8832,7 +8832,7 @@ Driving rules vary by state. Some states permit a foreign licence for a limited 
 | Written test + driving test + vision test | Most states |
 | Full test regardless of prior licence | A few states with no exemptions |
 
-Get your SSN first — most states require it or a denial letter from the [SSA](https://www.ssa.gov/ssnumber/) before they will issue a licence. Book your DMV appointment early; slots fill weeks out in most metro areas.
+Get your SSN first — most states require it or a denial letter from the [SSA](https://www.ssa.gov/number-card) before they will issue a licence. Book your DMV appointment early; slots fill weeks out in most metro areas.
 
 ### Health insurance
 If your employer provides health insurance, enroll during the **onboarding window** (usually 30–60 days from start). Missing this window means waiting until open enrollment unless you have a qualifying life event.
@@ -8863,7 +8863,7 @@ Compare remittance services before you transfer — rates vary significantly on 
 Be aware of **TCS (Tax Collected at Source)** in India: remittances above ₹10 lakh per year attract 20% TCS, which you can reclaim in India via ITR but ties up cash. See [TCS on India remittances explained](/articles/tcs-india-remittance-tax).
 
 ### ITIN (if applicable)
-If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using [IRS Form W-7](https://www.irs.gov/individuals/individual-taxpayer-identification-number) submitted with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.
+If your spouse cannot get an SSN (e.g., H-4 without EAD), they need an **ITIN** to file taxes jointly with you. Apply using [IRS Form W-7](https://www.irs.gov/tin/itin/individual-taxpayer-identification-number-itin) submitted with your tax return. Filing jointly often reduces your tax liability significantly — worth doing from year one.
 
 ### Parallel India obligations
 Moving abroad does not end your India filing obligations if you have income there:
@@ -8898,7 +8898,7 @@ Arriving with a spouse, children, or both adds several additional tasks to your 
 :::steps
 Gather **school enrollment documents** for your children — vaccination records, previous school transcripts, birth certificate, and proof of residence are typically required for K-12 public school enrollment.
 Find a **pediatrician or primary care doctor** promptly — pediatric appointments are booked weeks out in many cities. Check that the provider is in-network for your insurance plan.
-Clarify your **spouse's SSN or ITIN situation** — H-4 spouses without an EAD cannot get an SSN. They will need an [ITIN](https://www.irs.gov/individuals/individual-taxpayer-identification-number) (Form W-7) to file jointly on your tax return.
+Clarify your **spouse's SSN or ITIN situation** — H-4 spouses without an EAD cannot get an SSN. They will need an [ITIN](https://www.irs.gov/tin/itin/individual-taxpayer-identification-number-itin) (Form W-7) to file jointly on your tax return.
 Review **apartment lease requirements** before signing — some landlords require all adult occupants to be listed and may ask for an income-to-rent ratio based on the working spouse's salary only.
 Enrol **dependents in health insurance** during your employer's onboarding window — adding dependents later is only possible during open enrollment or a qualifying life event.
 :::

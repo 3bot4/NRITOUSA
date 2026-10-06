@@ -234,14 +234,14 @@ export const toolHubContent: Record<string, ToolHubContent> = {
         ["Continuous residence", "Unbroken for the full period", "Unbroken for the full period"],
         ["Earliest filing", "90 days before you complete 5 years", "90 days before you complete 3 years"],
         ["State/district residence", "3 months before filing", "3 months before filing"],
-        ["N-400 filing fee", "$760 online / $710 paper", "$760 online / $710 paper"],
+        ["N-400 filing fee", "$710 online / $760 paper", "$710 online / $760 paper"],
         ["Tests at interview", "English + civics (6 of 10 correct)", "English + civics (6 of 10 correct)"],
       ],
     },
     updated: "2026-07-19",
     expertiseTags: ["Naturalization & N-400", "USCIS filing requirements", "Green card to citizenship"],
     takeaways: [
-      "Budget $760 to file Form N-400 online ($710 by paper), which includes biometrics, per the USCIS fee schedule.",
+      "Budget $710 to file Form N-400 online ($760 by paper), which includes biometrics, per the USCIS fee schedule.",
       "Meet the residence rule first: 5 years as a permanent resident, or 3 years if you are married to and living with a US citizen.",
       "Count your days — you need physical presence in the US for at least half the qualifying period (30 months of 5 years, or 18 months of 3).",
       "File up to 90 days early: USCIS accepts the N-400 three months before you complete the residence requirement.",
@@ -296,7 +296,7 @@ export const toolHubContent: Record<string, ToolHubContent> = {
       {
         question: "What documents do I need for the N-400 citizenship application?",
         answer:
-          "At minimum: a copy of both sides of your green card, the $760 online filing fee, and evidence for anything that applies to you — marriage certificate and your spouse's proof of citizenship for the 3-year path, divorce decrees, legal name-change documents, tax transcripts if you owe or filed late, selective service registration for men who lived here between 18 and 26, and a full list of trips outside the US.",
+          "At minimum: a copy of both sides of your green card, the $710 online filing fee ($760 by paper), and evidence for anything that applies to you — marriage certificate and your spouse's proof of citizenship for the 3-year path, divorce decrees, legal name-change documents, tax transcripts if you owe or filed late, selective service registration for men who lived here between 18 and 26, and a full list of trips outside the US.",
       },
       {
         question: "What are the naturalization requirements in 2026?",

@@ -198,7 +198,7 @@ There is an annual due date for filing an individual's ITR for a given assessmen
 title: ITR-2 and ITR-3 do not share a deadline
 - **ITR-1 / ITR-2, no audit:** the earlier deadline — **31 July** for AY 2026-27.
 - **ITR-3 / ITR-4, no audit:** a month later — **31 August** for AY 2026-27. This is the one NRIs with business, professional, or partnership income need.
-- **Audit cases:** **31 October**; transfer-pricing cases later still.
+- **Audit cases:** statutorily **31 October** — but for AY 2026-27 CBDT Circular 7/2026 extended it to **21 November 2026** (audit report due 21 October); transfer-pricing cases 30 November.
 - Do not rely on last year's date — **confirm the current-AY due date** on the [Income Tax portal](https://www.incometax.gov.in).
 - Filing after the due date can mean **late fees, interest, and loss of some carry-forward benefits**.
 :::
@@ -254,7 +254,7 @@ href: /nri-wealth-checkup
 - **Match the records:** [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri)
 - **Gather the paperwork:** [NRI India tax documents checklist](/india-tax-compliance/nri-india-tax-documents-checklist)
 - **Related guides:** [DTAA](/articles/double-taxation-dtaa-india-usa) · [Indian income on a US return](/articles/indian-income-us-tax-return) · [NRE/NRO accounts](/articles/nre-nro-accounts-explained) · [Repatriating property-sale proceeds](/articles/repatriate-india-property-sale-usa) · [Form 3520 on foreign gifts](/india-tax-compliance/gift-from-parents-india-to-usa) · [PFIC & Indian mutual funds](/articles/pfic-indian-mutual-funds-trap) · [FBAR / FATCA](/articles/fbar-fatca-nri-guide)
-- **Tools:** [Form 10F generator](/tools/form-10f-generator) · [all calculators](/calculators)
+- **Tools:** [Form 10F generator](/tools/form-10f-generator) · [all calculators](/tools)
 
 ## Frequently asked questions
 
@@ -699,7 +699,7 @@ href: /india-tax-compliance/nri-itr-filing-usa
 
 - **Pick your form:** [ITR-2 for NRIs](/india-tax-compliance/itr-2-for-nri) · [ITR-3 for NRIs](/india-tax-compliance/itr-3-for-nri)
 - **Match records:** [Form 26AS, AIS & TIS for NRIs](/india-tax-compliance/form-26as-ais-tis-nri)
-- **Tools:** [Form 10F generator](/tools/form-10f-generator) · [all calculators](/calculators)
+- **Tools:** [Form 10F generator](/tools/form-10f-generator) · [all calculators](/tools)
 
 ## Frequently asked questions
 

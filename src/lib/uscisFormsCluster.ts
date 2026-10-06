@@ -72,7 +72,7 @@ export const USCIS_FEE_CALCULATOR = "https://www.uscis.gov/feecalculator";
  */
 export const formSnapshots: Record<string, FormSnapshot> = {
   "i-129": {
-    filingFee: "$780 (H-1B) + $600 Asylum Program Fee",
+    filingFee: "$780 paper / $730 online (H-1B) + $600 Asylum Program Fee",
     feeNote: "Asylum Program Fee is $300 for employers with ≤25 FTE, $0 for nonprofits. Other I-129 classifications differ.",
     processingTime: "2–6 months regular; 15 business days with premium",
     premiumProcessing: "Yes — I-907, 15 business days",
@@ -103,7 +103,7 @@ export const formSnapshots: Record<string, FormSnapshot> = {
   },
   "i-765": {
     filingFee: "$520 paper / $470 online",
-    feeNote: "Standalone filing. $0 for some categories (e.g. with a pending I-485). Verify your category.",
+    feeNote: "Standalone filing. With a pending I-485: $260 if the I-485 was filed on or after Apr 1, 2024 ($0 only if filed and paid before then). Verify your category.",
     processingTime: "Several months (varies by category)",
     premiumProcessing: "Limited — available for some categories (e.g. certain F-1 OPT) at a separate fee",
     whoFiles: "The applicant (work authorization)",
@@ -259,7 +259,7 @@ Q: How do I know if my I-129 was approved?
 A: Your employer receives the I-797A approval notice. Ask your employer or attorney for a copy — you need it for travel, visa stamping, and future H-1B extensions.
 
 Q: What is the I-129 filing fee?
-A: Base fee is $730, plus a $600 Asylum Program Fee for employers with 26+ employees, and optional premium processing (verify current fee at uscis.gov/i-907). Some fees vary by employer size. Always verify current fees at uscis.gov before filing.
+A: Base fee is $780 by paper or $730 online, plus a $600 Asylum Program Fee for employers with 26+ employees, and optional premium processing (verify current fee at uscis.gov/i-907). Some fees vary by employer size. Always verify current fees at uscis.gov before filing.
 
 Q: My I-129 got an RFE — is that a denial?
 A: No. An RFE (Request for Evidence) means USCIS needs more documentation. Your employer's attorney must respond by the exact deadline on the notice — for I-129, the standard maximum is generally up to about 84 days (≈87 with US mailing time). Many RFE cases are ultimately approved.

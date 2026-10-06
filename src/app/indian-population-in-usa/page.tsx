@@ -297,7 +297,7 @@ export default function Page() {
       {/* ---------------------------------------------------------- TOC */}
       <div className="border-b border-ink-900/5 bg-white">
         <Container className="py-4">
-          <nav aria-label="On this page" className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
+          <nav aria-label="On this page" className="flex flex-wrap gap-x-4 gap-y-3 text-xs">
             {TOC.map((t) => (
               <a key={t.id} href={`#${t.id}`} className="font-medium text-ink-500 hover:text-brand-600">
                 {t.label}

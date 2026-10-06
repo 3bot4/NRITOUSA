@@ -62,7 +62,7 @@ const INCOME_TYPES: {
     value: "dividends",
     label: "Dividends (Indian shares / funds)",
     basket: "passive",
-    note: "Passive-category income on Form 1116 — treaty caps India tax on dividends at 25% (often 15%).",
+    note: "Passive-category income on Form 1116 — the India–US treaty caps India tax on dividends at 25% for individuals (15% only for a company holding 10%+ of the voting stock).",
   },
   {
     value: "capgains",

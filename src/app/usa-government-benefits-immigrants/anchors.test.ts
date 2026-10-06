@@ -255,7 +255,10 @@ describe("public-charge legal accuracy", () => {
   });
 
   it("carries the guidance-monitoring notice", () => {
-    expect(dataSrc).toMatch(/additional implementation guidance will be issued on or before September 18, 2026/i);
+    // The rule took effect 2026-09-18; the notice now points readers to the
+    // Policy Manual rather than promising guidance still to come.
+    expect(dataSrc).toMatch(/took effect on September 18, 2026/i);
+    expect(dataSrc).toMatch(/USCIS Policy Manual/);
   });
 
   it("cites the final rule by document number and links a primary source", () => {
