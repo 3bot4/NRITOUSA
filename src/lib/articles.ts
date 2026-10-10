@@ -6947,6 +6947,14 @@ The practical goal is not "get a will." It is to make ownership, beneficiaries, 
 - Estate planning is **coordination**, not paperwork volume: documents, ownership, beneficiaries, executors, trustees, guardians, tax, FEMA, and access instructions all have to agree.
 :::
 
+:::cta
+title: Need the U.S. side done? Start with a state-specific U.S. will.
+body: For a simple U.S. estate, USLegalWills.com lets you write a will, power of attorney and living will online. Use it for your U.S. assets only, and have your Indian will drafted separately so neither one cancels the other.
+button: Write your U.S. will — 10% off
+href: https://www.uslegalwills.com/?refcode=a702220370
+fineprint: We earn a commission if you buy through this link, at no extra cost to you.
+:::
+
 ## At a glance: the same five questions, answered twice
 
 Every asset you own raises the same five questions. The answers differ by country, and the gap between the two answers is where families actually get hurt.
@@ -7187,14 +7195,6 @@ title: Section 213 was omitted with effect from ${estate.s213Date}
 The Repealing and Amending Act, 2025 (Act 37 of 2025) omitted section 213 of the Indian Succession Act and made consequential changes to sections 3(1) and 370. The practical effect is that probate or letters of administration is no longer a mandatory precondition to establishing a right under the wills that section 213 used to catch.
 
 Three caveats matter more than the headline. A will still has to be **proved** — removing a procedural bar is not the same as removing the burden of proof. Probate remains **available** where it is useful, and it often still is. And the Act's savings clause preserves anything already done and any proceeding already pending. Because the change is recent, how registrars, banks, depositories, and housing societies actually apply it is still settling — confirm current practice for your specific assets with Indian counsel rather than relying on any general statement, including this one.
-:::
-
-:::cta
-title: Need the U.S. side done? Start with a state-specific U.S. will.
-body: For a simple U.S. estate, USLegalWills.com lets you write a will, power of attorney and living will online. Use it for your U.S. assets only, and have your Indian will drafted separately so neither one cancels the other.
-button: Write your U.S. will — 10% off
-href: https://www.uslegalwills.com/?refcode=a702220370
-fineprint: We earn a commission if you buy through this link, at no extra cost to you.
 :::
 
 ## What Indian succession law actually turns on
