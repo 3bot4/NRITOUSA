@@ -6928,6 +6928,10 @@ Cross-border estate planning is not a document. It is the work of making eight t
 **This guide is educational. It is not legal advice, and it has not been reviewed by an attorney.** Estate, succession, and inheritance rules differ between the US and India, between US states, and by personal law within India — and they change. Several statements below depend entirely on facts this page cannot know: your citizenship, your domicile, where an asset sits, how it was originally funded, and who else has a claim. Work with a US estate-planning attorney, an Indian succession lawyer, and a cross-border tax professional before you act on anything here.
 :::
 
+:::disclosure
+This article contains [affiliate links](/affiliate-disclosure). If you buy through them we may earn a commission at no cost to you.
+:::
+
 :::quickanswer
 A US will does not automatically solve the administration of Indian assets, and an Indian nomination is generally not a substitute for a succession plan. Meanwhile, the accounts most NRI families hold the most money in — retirement plans and life insurance — usually pass by **beneficiary designation**, outside the will entirely.
 
@@ -7185,6 +7189,14 @@ The Repealing and Amending Act, 2025 (Act 37 of 2025) omitted section 213 of the
 Three caveats matter more than the headline. A will still has to be **proved** — removing a procedural bar is not the same as removing the burden of proof. Probate remains **available** where it is useful, and it often still is. And the Act's savings clause preserves anything already done and any proceeding already pending. Because the change is recent, how registrars, banks, depositories, and housing societies actually apply it is still settling — confirm current practice for your specific assets with Indian counsel rather than relying on any general statement, including this one.
 :::
 
+:::cta
+title: Need the U.S. side done? Start with a state-specific U.S. will.
+body: For a simple U.S. estate, USLegalWills.com lets you write a will, power of attorney and living will online. Use it for your U.S. assets only, and have your Indian will drafted separately so neither one cancels the other.
+button: Write your U.S. will — 10% off
+href: https://www.uslegalwills.com/?refcode=a702220370
+fineprint: We earn a commission if you buy through this link, at no extra cost to you.
+:::
+
 ## What Indian succession law actually turns on
 
 If there is no valid will, the outcome is determined by law rather than by intention — and "Indian succession law" is not one statute.
@@ -7266,6 +7278,8 @@ What to actually decide:
 title: Never name a minor directly as a beneficiary or nominee
 A minor generally cannot take legal control of a meaningful asset. Naming one directly on an account or policy usually forces a court-supervised process or a custodial arrangement you did not choose, at exactly the moment the family is least able to deal with it. Name a trust, or a properly structured custodial arrangement, and say who manages it.
 :::
+
+A U.S. will is where you name a guardian for your children. If you do not have one yet, you can [write one online at USLegalWills.com (10% off)](https://www.uslegalwills.com/?refcode=a702220370).
 
 ## Indian property, agricultural land, and US trusts
 
@@ -7433,6 +7447,7 @@ title: Within 60 days: advise and draft
 Meet a US estate-planning attorney in your own state
 Get India-specific succession advice on your actual title documents and family tree
 Coordinate the two wills, or the will-and-trust structure, with both lawyers seeing both drafts
+If your U.S. situation is simple, draft the U.S. will online with [USLegalWills.com (10% off)](https://www.uslegalwills.com/?refcode=a702220370) and take it to your attorney for review alongside the Indian will
 Work through the noncitizen-spouse and minor-child questions specifically
 Document how cost basis and date-of-death valuations will be established
 :::

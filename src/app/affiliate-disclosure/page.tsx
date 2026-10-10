@@ -62,6 +62,24 @@ export default function AffiliateDisclosurePage() {
       ),
     },
     {
+      id: "partners",
+      heading: "Partners we may earn commission from",
+      body: (
+        <>
+          <p>
+            We currently have affiliate relationships with the following
+            partners. Links to them are marked as sponsored.
+          </p>
+          <ul className="list-disc space-y-1 pl-5">
+            <li>
+              <strong>USLegalWills.com</strong> — online U.S. wills, powers of
+              attorney and living wills
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    {
       id: "editorial-independence",
       heading: "Affiliate relationships do not change our content",
       body: (

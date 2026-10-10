@@ -23,7 +23,8 @@ import { headingId } from "@/lib/seo";
  *  - :::warn     → ⚠️ Warning / common-mistakes box (amber)
  *  - :::compare  → two-column ✓ / ✗ comparison box
  *  - :::steps    → numbered circled steps (① ② ③)
- *  - :::cta      → inline call-to-action card
+ *  - :::cta      → inline call-to-action card (optional `fineprint:` line under the button)
+ *  - :::disclosure → small italic disclosure line (e.g. affiliate notice)
  *
  * Inline syntax (inside paragraphs, list items, headings, cells, callouts):
  *  - **bold**
@@ -31,6 +32,25 @@ import { headingId } from "@/lib/seo";
  *
  * Dependency-free on purpose; swap for MDX when content moves to a CMS.
  */
+
+/**
+ * Hosts we hold an affiliate relationship with. Links to these carry
+ * rel="sponsored nofollow noopener" (Google's paid-link guidance) instead of
+ * the default external rel. Keep in sync with /affiliate-disclosure.
+ */
+const AFFILIATE_HOSTS = ["uslegalwills.com"];
+
+function isAffiliateHref(href: string): boolean {
+  try {
+    const host = new URL(href).hostname.replace(/^www\./, "");
+    return AFFILIATE_HOSTS.includes(host);
+  } catch {
+    return false;
+  }
+}
+
+const externalRel = (href: string) =>
+  isAffiliateHref(href) ? "sponsored nofollow noopener" : "noopener noreferrer";
 
 /** Parse inline **bold** and [text](url) into React nodes. */
 function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
@@ -67,7 +87,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
             key={`${keyPrefix}-l-${i}`}
             href={href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={externalRel(href)}
             className="font-medium text-brand-600 underline decoration-brand-300 underline-offset-2 hover:text-brand-700"
           >
             {label}
@@ -105,7 +125,7 @@ function parseDirectives(lines: string[]) {
   const rest: string[] = [];
   for (const l of lines) {
     const m = l.match(/^\s*([a-z]+):\s+(.*)$/);
-    if (m && ["left", "right", "title", "body", "button", "href"].includes(m[1])) {
+    if (m && ["left", "right", "title", "body", "button", "href", "fineprint"].includes(m[1])) {
       directives[m[1]] = m[2].trim();
     } else {
       rest.push(l);
@@ -545,11 +565,16 @@ function CtaCard({ lines, keyId }: { lines: string[]; keyId: string }) {
         {isInternal ? (
           <Link href={href}>{btn}</Link>
         ) : (
-          <a href={href} target="_blank" rel="noopener noreferrer">
+          <a href={href} target="_blank" rel={externalRel(href)}>
             {btn}
           </a>
         )}
       </div>
+      {directives.fineprint && (
+        <p className="mt-2 text-xs leading-snug text-ink-500">
+          {renderInline(directives.fineprint, `${keyId}-cf`)}
+        </p>
+      )}
     </div>
   );
 }
@@ -635,6 +660,13 @@ export default function ArticleBody({ content }: { content: string }) {
           break;
         case "cta":
           elements.push(<CtaCard key={keyId} lines={buf} keyId={keyId} />);
+          break;
+        case "disclosure":
+          elements.push(
+            <p key={keyId} className="my-4 text-sm italic leading-snug text-ink-500">
+              {renderInline(buf.join(" ").trim(), keyId)}
+            </p>
+          );
           break;
         case "quickanswer":
           elements.push(<QuickAnswerBox key={keyId} lines={buf} keyId={keyId} />);
