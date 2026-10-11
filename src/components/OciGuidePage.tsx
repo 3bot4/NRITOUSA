@@ -15,6 +15,7 @@ import { site } from "@/lib/site";
 import { OCI_BASE, OCI_TOOLS } from "@/lib/oci/config";
 import { ociGuides, ociGuidePath, type OciGuide } from "@/lib/ociGuides";
 import OciApostilleChecker from "@/components/tools/OciApostilleChecker";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Renders one OCI pillar guide: dense article body + breadcrumb/FAQ schema,
@@ -105,6 +106,7 @@ export default function OciGuidePage({ guide }: { guide: OciGuide }) {
                 <span>{guide.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(guide.updated ?? guide.date)}</span>
+                <NumbersChecked path={ociGuidePath(guide.slug)} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

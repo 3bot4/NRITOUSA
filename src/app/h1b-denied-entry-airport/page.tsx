@@ -1231,7 +1231,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} path="/h1b-denied-entry-airport" hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

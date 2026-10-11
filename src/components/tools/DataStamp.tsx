@@ -1,6 +1,11 @@
 /**
- * "Last updated · Source" stamp rendered on every tool that reads a /data
+ * "Data as of · Source" stamp rendered on every tool that reads a /data
  * JSON file. Keeps the freshness + provenance promise visible to users.
+ *
+ * Labelled "Data as of", not "Last updated": the date is when the DATASET was
+ * refreshed, not when the page changed. Calling it "Last updated" put a second,
+ * different "Last updated" date on pages whose byline (and the homepage
+ * "Latest updates and checks" list) already show the page's real update date.
  */
 export default function DataStamp({
   lastUpdated,
@@ -15,7 +20,7 @@ export default function DataStamp({
 }) {
   return (
     <p className={`text-xs text-ink-400 ${className}`}>
-      Last updated: <time dateTime={lastUpdated}>{lastUpdated}</time> · Source:{" "}
+      Data as of <time dateTime={lastUpdated}>{lastUpdated}</time> · Source:{" "}
       <a
         href={source}
         target="_blank"

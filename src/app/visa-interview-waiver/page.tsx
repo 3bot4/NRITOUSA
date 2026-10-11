@@ -677,7 +677,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} path="/visa-interview-waiver" hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

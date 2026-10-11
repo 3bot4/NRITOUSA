@@ -34,6 +34,7 @@ import {
   giftSupportPages,
   type GiftPage,
 } from "@/lib/giftsCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /** Primary official sources shown on every retained cluster guide (Phase 7). */
 const PRIMARY_SOURCES: { label: string; href: string }[] = [
@@ -170,6 +171,7 @@ export default function GiftsClusterPage({ page }: { page: GiftPage }) {
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={giftPath(page.slug)} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

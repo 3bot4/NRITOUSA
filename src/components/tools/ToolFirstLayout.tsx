@@ -6,6 +6,7 @@ import { categoryForToolSlug } from "@/lib/recommendedToolsConfig";
 import BottomDisclaimer, {
   FULL_DISCLAIMER_ID,
 } from "@/components/tools/BottomDisclaimer";
+import NumbersChecked from "@/components/NumbersChecked";
 
 export interface Crumb {
   label: string;
@@ -196,6 +197,13 @@ export default function ToolFirstLayout({
               {sourceNote}
             </p>
           )}
+          {/* Weekly numbers check logged for this tool (data/page-checks.json);
+              renders nothing until one is recorded. Keyed by the /tools path,
+              so non-tool pages that share this layout never match. */}
+          <NumbersChecked
+            path={`/tools/${toolSlug}`}
+            className="mt-1 block text-xs text-ink-400"
+          />
         </Container>
       </header>
 

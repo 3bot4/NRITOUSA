@@ -21,7 +21,8 @@ import {
 
 const tool = getTool("form-15ca-15cb-checklist")!;
 const content = getToolHubContent("form-15ca-15cb-checklist")!;
-const LAST_UPDATED = "2026-06-22";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const LAST_UPDATED = getTool("form-15ca-15cb-checklist")!.updated!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,

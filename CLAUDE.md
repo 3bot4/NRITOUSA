@@ -50,6 +50,7 @@ The ledger is the standing record of pending content work, link rot and verified
 ### Other scripts
 
 - `npm run indexnow` — pings IndexNow after publishing new/changed URLs.
+- `npm run mark-checked -- <path…> [--date YYYY-MM-DD]` — after the weekly numbers audit, logs a "Numbers checked" date for the named pages only, in `data/page-checks.json`. It feeds the homepage "Latest updates and checks" list (`src/lib/latestUpdates.ts`) and each page's visible `<NumbersChecked>` stamp. A check is not an update: it never touches `updated`, `dateModified` or sitemap lastmod. Page dates must never come from the build/deploy clock (enforced by `latestUpdates.test.ts`).
 - `npm run audit:intent-numbers` / `npm run audit:monthly-numbers` — verify hardcoded numbers/dates in content against source-of-truth data files (see "Verified-numbers system" below).
 - `scripts/pipeline/fetch-market.mjs` — the homepage market-data pipeline (see below); the GitHub Actions workflow that used to run this daily has been **retired and removed** (`.github/workflows/` no longer exists) — treat `data/market.json` as manually refreshed unless a new automation is added.
 - `scripts/build-h1b-data.py`, `scripts/build-visa-snapshots.mjs` — data ETL for the H-1B sponsor finder and visa bulletin, run manually against upstream source files (not in CI).

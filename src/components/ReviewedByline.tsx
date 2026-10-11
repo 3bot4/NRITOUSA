@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { author, authorInitials } from "@/lib/author";
 import { formatDate } from "@/lib/format";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Compact byline row for non-article pages (cluster pages, tool pages,
@@ -10,10 +11,16 @@ import { formatDate } from "@/lib/format";
  */
 export default function ReviewedByline({
   date,
+  path,
   className = "",
 }: {
   /** ISO date (page.updated ?? page.date) — rendered human-readable. */
   date: string;
+  /**
+   * The page's own path. When given, a logged weekly numbers check
+   * (data/page-checks.json) renders after the "Updated" date.
+   */
+  path?: string;
   className?: string;
 }) {
   const year = date.slice(0, 4);
@@ -37,6 +44,7 @@ export default function ReviewedByline({
       </span>
       <span aria-hidden>·</span>
       <span>Updated {formatDate(date)}</span>
+      {path && <NumbersChecked path={path} separator />}
       <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-700">
         <span aria-hidden>✓</span> {year} verified
       </span>

@@ -21,7 +21,8 @@ import {
 
 const tool = getTool("form-3520-india-gift-checker")!;
 const content = getToolHubContent("form-3520-india-gift-checker")!;
-const LAST_UPDATED = "2026-07-15";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const LAST_UPDATED = getTool("form-3520-india-gift-checker")!.updated!;
 const TITLE = "Form 3520 India Gift and Inheritance Checker";
 const SEO_TITLE = "Form 3520 Gift Checker for India | Free Tool";
 const SEO_DESCRIPTION =

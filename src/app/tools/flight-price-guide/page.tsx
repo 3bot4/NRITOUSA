@@ -17,7 +17,8 @@ import {
 } from "@/lib/seo";
 
 const tool = getTool("flight-price-guide")!;
-const LAST_UPDATED = "2026-06-10";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const LAST_UPDATED = getTool("flight-price-guide")!.updated!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,

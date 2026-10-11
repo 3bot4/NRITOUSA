@@ -37,7 +37,8 @@ import {
 
 const tool = getTool("citizenship-test-practice")!;
 const PATH = "/tools/citizenship-test-practice";
-const UPDATED = "2026-09-16";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const UPDATED = getTool("citizenship-test-practice")!.updated!;
 
 const F = CIVICS.format;
 const P = CIVICS.priorVersion;

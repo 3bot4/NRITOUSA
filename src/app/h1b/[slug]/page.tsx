@@ -28,6 +28,7 @@ import {
   H1B_SNAPSHOT_DISCLAIMER,
   h1bSnapshotSources,
 } from "@/lib/h1bCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /* ── static params ──────────────────────────────────────────────────────── */
 
@@ -133,6 +134,7 @@ export default function H1bChildPage({
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={`/h1b/${page.slug}`} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

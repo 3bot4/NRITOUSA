@@ -29,6 +29,7 @@ import {
   itrSupportPages,
   type ItrPage,
 } from "@/lib/itrCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Renders one page of the "NRI India ITR Filing from USA" cluster (pillar or
@@ -122,6 +123,7 @@ export default function ItrClusterPage({ page }: { page: ItrPage }) {
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={itrPath(page.slug)} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

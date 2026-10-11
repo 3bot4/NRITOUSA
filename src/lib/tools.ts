@@ -32,6 +32,15 @@ export interface ToolMeta {
    * & Compliance hub and the related-tools strip at the foot of each page.
    */
   tags?: string[];
+  /**
+   * ISO date this tool's content or rules were last changed by a person.
+   * Rendered as the tool page's visible "Last updated" stamp AND read by the
+   * homepage "Latest updates and checks" feed (src/lib/latestUpdates.ts), so
+   * the two can never disagree. Tools whose hub content carries `updated`
+   * (src/lib/toolHubContent.ts) use that instead — never set both. Never set
+   * this from a build or deploy date.
+   */
+  updated?: string;
 }
 
 export const tools: ToolMeta[] = [
@@ -186,6 +195,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "citizenship-test-practice",
+    updated: "2026-09-16",
     title: "2026 US Citizenship Test Practice (128 Questions)",
     label: "Citizenship Test Practice",
     group: "Visa & Green Card",
@@ -300,6 +310,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "flight-price-guide",
+    updated: "2026-06-10",
     title: "USA ↔ India Flight Price Guide",
     label: "Flight Price Guide",
     group: "Travel & Documents",
@@ -345,6 +356,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "form-10f-generator",
+    updated: "2026-06-14",
     title: "Form 10F Generator for DTAA Treaty Benefits",
     label: "Form 10F Generator",
     group: "Money & Finance",
@@ -360,6 +372,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "nri-tds-refund-checklist",
+    updated: "2026-06-22",
     title: "NRI TDS Refund Checklist",
     label: "TDS Refund Checklist",
     group: "Money & Finance",
@@ -375,6 +388,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "form-15ca-15cb-checklist",
+    updated: "2026-06-22",
     title: "Form 15CA / 15CB Checklist",
     label: "15CA / 15CB Checklist",
     group: "Money & Finance",
@@ -390,6 +404,7 @@ export const tools: ToolMeta[] = [
   },
   {
     slug: "form-3520-india-gift-checker",
+    updated: "2026-07-15",
     title: "Form 3520 India Gift and Inheritance Checker",
     label: "Form 3520 Gift Checker",
     group: "Money & Finance",

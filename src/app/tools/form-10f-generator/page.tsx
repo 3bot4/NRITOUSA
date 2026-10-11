@@ -22,7 +22,8 @@ import {
 
 const tool = getTool("form-10f-generator")!;
 const content = getToolHubContent("form-10f-generator")!;
-const LAST_UPDATED = "2026-06-14";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const LAST_UPDATED = getTool("form-10f-generator")!.updated!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,

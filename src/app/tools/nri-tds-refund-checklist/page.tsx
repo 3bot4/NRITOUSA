@@ -21,7 +21,8 @@ import {
 
 const tool = getTool("nri-tds-refund-checklist")!;
 const content = getToolHubContent("nri-tds-refund-checklist")!;
-const LAST_UPDATED = "2026-06-22";
+// Single source: the tool catalog (also feeds the homepage updates list).
+const LAST_UPDATED = getTool("nri-tds-refund-checklist")!.updated!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,

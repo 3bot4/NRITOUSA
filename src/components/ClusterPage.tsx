@@ -22,6 +22,7 @@ import {
   clusterPath,
   type ClusterPage as ClusterPageData,
 } from "@/lib/passportCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Renders one page of the passport-renewal topic cluster (hub or child).
@@ -118,6 +119,7 @@ export default function ClusterPage({ page }: { page: ClusterPageData }) {
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={clusterPath(page.slug)} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { author } from "@/lib/author";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Compact "Written / reviewed by" credibility line for the PERM cluster pages.
@@ -9,7 +10,13 @@ export default function AuthorReviewLine({
   lastUpdated,
   className = "",
   hideCredentials = false,
+  path,
 }: {
+  /**
+   * The page's own path. When given, a logged weekly numbers check
+   * (data/page-checks.json) renders beside "Last updated".
+   */
+  path?: string;
   /** Optional "Last updated" stamp shown alongside the byline. */
   lastUpdated?: string;
   className?: string;
@@ -47,7 +54,10 @@ export default function AuthorReviewLine({
         </p>
       )}
       {lastUpdated && (
-        <p className="text-xs text-ink-400">Last updated: {lastUpdated}</p>
+        <p className="text-xs text-ink-400">
+          Last updated: {lastUpdated}
+          {path && <NumbersChecked path={path} className="block" />}
+        </p>
       )}
     </div>
   );

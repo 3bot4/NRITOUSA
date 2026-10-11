@@ -37,6 +37,7 @@ import {
   publishedMonthSlugs,
   slugToMonth,
 } from "@/lib/visaBulletinMonths";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Monthly bulletin pages (/visa-bulletin/september-2026) share this segment
@@ -202,6 +203,7 @@ export default function VisaBulletinChildPage({
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={`/visa-bulletin/${page.slug}`} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

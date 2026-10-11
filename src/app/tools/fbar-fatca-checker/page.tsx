@@ -34,7 +34,10 @@ import {
 
 const tool = getTool("fbar-fatca-checker")!;
 const content = getToolHubContent("fbar-fatca-checker")!;
-const LAST_UPDATED = "2026-06-10";
+// Was a separate "2026-06-10" constant while the byline above showed the hub's
+// 2026-07-19 — two "last updated" dates on one page. The hub date is the one
+// the homepage updates list reads, so the page uses it everywhere.
+const LAST_UPDATED = content.updated!;
 
 export const metadata: Metadata = pageMetadata({
   title: tool.seoTitle,

@@ -213,7 +213,7 @@ export default function MarriageInterviewQuestionsPage() {
               ))}
             </ul>
 
-            <ReviewedByline date={UPDATED} className="mt-5" />
+            <ReviewedByline date={UPDATED} path="/green-card/marriage-interview-questions" className="mt-5" />
             <NotLegalAdvice className="mt-4 max-w-3xl" />
           </Container>
         </header>

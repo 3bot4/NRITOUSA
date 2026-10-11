@@ -41,6 +41,7 @@ import {
   getLifePlanningChildPage,
   LIFE_PLANNING_HUB,
 } from "@/lib/uscisLifePlanningCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /* ── static params ──────────────────────────────────────────────────────── */
 
@@ -200,6 +201,7 @@ export default function UscisChildPage({
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={`/uscis/${page.slug}`} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

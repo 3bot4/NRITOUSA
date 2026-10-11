@@ -23,6 +23,7 @@ import {
   getFormsChildPage,
   USCIS_FORMS_HUB,
 } from "@/lib/uscisFormsCluster";
+import NumbersChecked from "@/components/NumbersChecked";
 
 export function generateStaticParams() {
   return formsChildSlugs.map((slug) => ({ slug }));
@@ -133,6 +134,7 @@ export default function UscisFormChildPage({
                 <span>{page.readingTime} min read</span>
                 <span aria-hidden>·</span>
                 <span>{formatDate(page.updated ?? page.date)}</span>
+                <NumbersChecked path={`/uscis/forms/${page.slug}`} separator />
               </div>
 
               <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-tight text-ink-900 sm:text-[2rem]">

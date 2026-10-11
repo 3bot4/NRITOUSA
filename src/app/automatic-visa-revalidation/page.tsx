@@ -637,7 +637,7 @@ export default function Page() {
 
         <section className="pb-12">
           <Container>
-            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} hideCredentials />
+            <AuthorReviewLine lastUpdated={POE_UPDATED_HUMAN} path="/automatic-visa-revalidation" hideCredentials />
           </Container>
         </section>
       </ToolFirstLayout>

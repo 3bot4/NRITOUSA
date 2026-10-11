@@ -223,7 +223,7 @@ export default function ExpediteRequestPage() {
               ))}
             </ul>
 
-            <ReviewedByline date={UPDATED} className="mt-5" />
+            <ReviewedByline date={UPDATED} path="/uscis/expedite-request" className="mt-5" />
             <NotLegalAdvice className="mt-4 max-w-3xl" />
           </Container>
         </header>

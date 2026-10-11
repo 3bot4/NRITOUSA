@@ -34,6 +34,7 @@ import RemittanceCalculator from "@/components/calculators/RemittanceCalculator"
 import DtaaReliefCalculator from "@/components/calculators/DtaaReliefCalculator";
 import FcnrVsHysaCalculator from "@/components/calculators/FcnrVsHysaCalculator";
 import UsdInrProjectionCalculator from "@/components/calculators/UsdInrProjectionCalculator";
+import { getPageDates } from "@/lib/latestUpdates";
 
 const REGISTRY: Record<string, React.ComponentType> = {
   "rnor-tax-residency": RnorCalculator,
@@ -109,6 +110,11 @@ export default function CalculatorPage({
   if (!Calculator) notFound();
 
   const content = getCalculatorContent(calc.slug);
+  // The calculator's own `dataChecked` merged with any later weekly check
+  // logged via `npm run mark-checked` — the same value the homepage
+  // "Latest updates and checks" list shows for this page.
+  const dataChecked =
+    getPageDates(`/calculators/${calc.slug}`)?.lastChecked ?? calc.dataChecked;
 
   const related = calc.related
     .map((slug) => getArticle(slug))
@@ -186,7 +192,7 @@ export default function CalculatorPage({
         sourceNote={
           <>
             Source: {calc.officialSource} · data last checked{" "}
-            <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>. Verify
+            <time dateTime={dataChecked}>{dataChecked}</time>. Verify
             before making decisions.
           </>
         }
@@ -242,7 +248,7 @@ export default function CalculatorPage({
               <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-ink-900/10 bg-slate-50/70 px-5 py-4 text-xs text-ink-500">
                 <p>
                   Reviewed for 2026 · data last checked{" "}
-                  <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>.
+                  <time dateTime={dataChecked}>{dataChecked}</time>.
                   Source: {calc.officialSource}. Figures are estimates and may
                   change — verify before acting.
                 </p>
@@ -263,7 +269,7 @@ export default function CalculatorPage({
                 <div>
                   <dt className="font-semibold text-ink-500">Data last checked</dt>
                   <dd className="mt-0.5 text-ink-700">
-                    <time dateTime={calc.dataChecked}>{calc.dataChecked}</time>
+                    <time dateTime={dataChecked}>{dataChecked}</time>
                   </dd>
                 </div>
                 <div className="sm:col-span-2">

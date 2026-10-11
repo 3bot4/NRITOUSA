@@ -4,6 +4,7 @@ import { author as owner, authorInitials as ownerInitials } from "@/lib/author";
 import { resolveByline } from "@/lib/byline";
 import { formatDate } from "@/lib/format";
 import { hasPrimarySource } from "@/lib/sourceVerification";
+import NumbersChecked from "@/components/NumbersChecked";
 
 /**
  * Author byline rendered under the title of every article.
@@ -68,7 +69,9 @@ export default function ArticleByline({ article }: { article: Article }) {
               <span aria-hidden>·</span>
             </>
           )}
-          <span>Last reviewed {formatDate(date)}</span>
+          {/* Same field the homepage "Latest updates and checks" list reads. */}
+          <span>Last updated {formatDate(date)}</span>
+          <NumbersChecked path={`/articles/${article.slug}`} separator />
           {sourcesVerified && (
             <>
               <span aria-hidden>·</span>

@@ -1,0 +1,4 @@
+{
+  "_about": "Weekly numbers-audit log: page path -> ISO date a person last re-checked that page's figures and rules against official sources, with no content change. Written ONLY by `npm run mark-checked` (scripts/mark-checked.ts) — never by a build or deploy. Read by the homepage 'Latest updates and checks' list and by each page's visible 'Numbers checked' stamp.",
+  "checks": {}
+}

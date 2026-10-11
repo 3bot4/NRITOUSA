@@ -22,6 +22,9 @@ import {
   type SeriesPoint,
   type EbCategory,
 } from "@/lib/visa-bulletin";
+import { VB_OCT_2026_PUBLISHED, VB_OCT_2026_UPDATED } from "@/lib/visaBulletinOctober2026";
+import NumbersChecked from "@/components/NumbersChecked";
+import { pageCheckedOn } from "@/lib/pageChecks";
 
 /**
  * /visa-bulletin/october-2026 — a standalone analysis page, not a
@@ -57,8 +60,8 @@ import {
  */
 
 const PATH = "/visa-bulletin/october-2026";
-const PUBLISHED = "2026-08-19";
-const UPDATED = "2026-09-29"; // October 2026 bulletin published — scored the four pre-committed predictions against it
+const PUBLISHED = VB_OCT_2026_PUBLISHED;
+const UPDATED = VB_OCT_2026_UPDATED;
 const TITLE =
   "October 2026 Visa Bulletin: EB-2 India Re-Opens at November 1, 2013 in the FY2027 Reset";
 const SEO_TITLE =
@@ -335,6 +338,8 @@ export default function October2026PredictionsPage() {
         <p className="byline">
           By Deepak Middha, NRItoUSA.com · Published August 19, 2026 · Updated
           with each State Department release ·{" "}
+          <NumbersChecked path={PATH} />
+          {pageCheckedOn(PATH) && " · "}
           <Link href="/press">Press &amp; data inquiries</Link>
         </p>
 
