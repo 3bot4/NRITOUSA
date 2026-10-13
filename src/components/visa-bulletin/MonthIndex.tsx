@@ -6,17 +6,28 @@ import {
   monthPath,
 } from "@/lib/visaBulletinMonths";
 import { formatCutoff } from "@/lib/visa-bulletin";
+import {
+  PROJECTED_MONTHS,
+  indiaEbProjections,
+} from "@/lib/visaBulletinProjections";
 
 /**
- * Index of every published monthly bulletin page, newest first.
+ * Index of every monthly bulletin page, newest first.
  *
  * Rendered at the top of /visa-bulletin/monthly-update, which keeps its URL and
- * becomes the hub for the month pages. Driven by PUBLISHED_MONTHS, so a month
- * appears here the moment it is published and never before.
+ * becomes the hub for the month pages.
+ *
+ * TWO LISTS, KEPT VISIBLY APART. PUBLISHED_MONTHS are released bulletins with
+ * real cutoffs. PROJECTED_MONTHS are forecast pages at the same clean month
+ * URLs, which become the official page for their month on release. They are
+ * grouped and styled separately, and each projected row says so, because a
+ * single undifferentiated list is how a reader comes away thinking a forecast
+ * was a bulletin.
  */
 export default function MonthIndex() {
   const months = PUBLISHED_MONTHS.slice().sort().reverse();
-  if (months.length === 0) return null;
+  const projected = PROJECTED_MONTHS.slice().sort().reverse();
+  if (months.length === 0 && projected.length === 0) return null;
 
   return (
     <div className="mx-auto mb-10 max-w-[720px] rounded-2xl border border-brand-200 bg-brand-50/40 p-5 sm:p-6">
@@ -61,6 +72,44 @@ export default function MonthIndex() {
           );
         })}
       </ul>
+
+      {projected.length > 0 && (
+        <>
+          <h3 className="mt-6 text-sm font-black uppercase tracking-wide text-amber-700">
+            Not yet published
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-ink-600">
+            A page per upcoming month, at the URL it will keep. Each one carries
+            projected <strong>ranges</strong> built from the published archive,
+            with the method and the sample size stated, and becomes the official
+            bulletin page for that month on release.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {projected.map((m) => {
+              const india = indiaEbProjections(m);
+              const eb2 = india.filter((r) => r.category === "eb2")[0];
+              const eb3 = india.filter((r) => r.category === "eb3")[0];
+              return (
+                <li key={m}>
+                  <Link
+                    href={monthPath(m)}
+                    className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-xl border border-amber-200 bg-amber-50/60 px-4 py-3 transition hover:border-amber-400"
+                  >
+                    <span className="text-sm font-bold text-amber-800">
+                      {monthLabel(m)} projection →
+                    </span>
+                    <span className="text-xs text-ink-500">
+                      {eb2 && <>EB-2 India {eb2.fad.rangeLabel}</>}
+                      {eb2 && eb3 && " · "}
+                      {eb3 && <>EB-3 India {eb3.fad.rangeLabel}</>}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
     </div>
   );
 }

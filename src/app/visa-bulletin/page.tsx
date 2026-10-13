@@ -15,6 +15,8 @@ import {
 } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
+import { PROJECTED_MONTHS } from "@/lib/visaBulletinProjections";
+import { monthLabel, monthPath } from "@/lib/visaBulletinMonths";
 import { CURRENT_VISA_BULLETIN } from "@/lib/visaBulletinDates";
 import {
   currentBulletinNote,
@@ -700,6 +702,19 @@ export default function VisaBulletinPage() {
                 EB-2 India re-opens at Nov 1, 2013 in the FY2027 reset. The published cutoffs, the statutory math, and how our forecast scored.
               </p>
             </Link>
+            {/* Projected months, at their permanent clean URLs. Labelled as
+                projections here as well as on the page itself — a hub card that
+                read like a published month would undo that labelling. */}
+            {PROJECTED_MONTHS.map((m) => (
+              <Link key={m} href={monthPath(m)}
+                className="group rounded-2xl border border-amber-200 bg-amber-50/40 p-5 transition hover:border-amber-300 hover:shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-0.5">Projection · not yet published</p>
+                <h3 className="font-semibold text-ink-900 group-hover:text-amber-800">{monthLabel(m)} Visa Bulletin</h3>
+                <p className="mt-1.5 text-sm text-ink-500 line-clamp-2">
+                  Projected India EB-1, EB-2 and EB-3 ranges with the method stated, beside the published October 2026 cutoffs they are built from.
+                </p>
+              </Link>
+            ))}
             {visaBulletinChildPages.map((p) => (
               <Link key={p.slug} href={`/visa-bulletin/${p.slug}`}
                 className="group rounded-2xl border border-ink-900/10 bg-white p-5 transition hover:border-blue-300 hover:shadow-sm">

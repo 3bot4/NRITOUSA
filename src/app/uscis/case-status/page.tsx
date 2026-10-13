@@ -628,6 +628,36 @@ export default function UscisStatusHubPage() {
                 </p>
               </section>
 
+              {/* Added by the October 2026 cluster build: a short Related box.
+                  Links only — no existing copy on this page was changed. */}
+              <section>
+                <h2 className="text-xl font-bold text-ink-900 mb-3">Related</h2>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    {
+                      href: "/uscis/a-number",
+                      label: "Your A-Number",
+                      desc: "The identifier that follows you rather than the case, where it is printed, and the six numbers it gets confused with.",
+                    },
+                    {
+                      href: "/uscis/i-94",
+                      label: "Your I-94 and travel history",
+                      desc: "The document that governs your authorised stay, how to pull it, and the four limits on the travel history.",
+                    },
+                  ].map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="block h-full rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm"
+                      >
+                        <p className="text-sm font-semibold text-ink-900">{l.label}</p>
+                        <p className="mt-0.5 text-xs text-ink-500">{l.desc}</p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
               <AuthorBioBox
                 tags={["USCIS case processing", "Receipt numbers & RFEs", "Green card stages"]}
               />

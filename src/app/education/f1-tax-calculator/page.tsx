@@ -35,6 +35,18 @@ const page = getStudentPage("f1-tax-calculator")!;
 const share = getShareCopy("f1-tax-calculator");
 const related = getRelated("f1-tax-calculator");
 
+/**
+ * Added by the October 2026 cluster build: the I-94 travel history is where
+ * the day count behind this calculator actually comes from, and its own page
+ * documents the limits on that record.
+ */
+const I94_LINK = {
+  href: "/uscis/i-94",
+  label: "Your I-94 travel history, and a day counter",
+  blurb:
+    "Where the days behind this calculator actually come from — plus the four limits CBP puts on the record, and what D/S on your I-94 means.",
+};
+
 export const metadata: Metadata = {
   ...pageMetadata({
     title: page.seoTitle,
@@ -335,7 +347,7 @@ export default function F1TaxCalculatorPage() {
                 Where to go next
               </h2>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {related.map((l) => (
+                {[...related, I94_LINK].map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}

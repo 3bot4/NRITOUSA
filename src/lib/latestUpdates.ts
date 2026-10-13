@@ -51,6 +51,19 @@ import {
   VB_OCT_2026_PUBLISHED,
   VB_OCT_2026_UPDATED,
 } from "@/lib/visaBulletinOctober2026";
+import {
+  PROJECTED_MONTHS,
+  VB_PROJECTION_PUBLISHED,
+} from "@/lib/visaBulletinProjections";
+import { monthLabel, monthPath } from "@/lib/visaBulletinMonths";
+import { O1_PUBLISHED, O1_UPDATED } from "@/data/o1VisaData";
+import { L1_PUBLISHED, L1_UPDATED } from "@/data/l1VisaData";
+import { A_NUMBER_PUBLISHED, A_NUMBER_UPDATED } from "@/data/aNumberData";
+import { I94_PUBLISHED, I94_UPDATED } from "@/data/i94Data";
+import {
+  GC_TRAVEL_PUBLISHED,
+  GC_TRAVEL_UPDATED,
+} from "@/data/greenCardTravelData";
 import { PAGE_CHECKS } from "@/lib/pageChecks";
 
 export type PageKind = "article" | "guide" | "tool" | "calculator";
@@ -141,6 +154,54 @@ const STANDALONE: Omit<PageDates, "lastChecked">[] = [
     published: POE_PUBLISHED,
     updated: POE_UPDATED,
   },
+  // October 2026 immigration cluster. Each page renders the same constant as
+  // its ReviewedByline date, so the homepage and the page cannot disagree.
+  {
+    path: "/o1-visa",
+    title: "O-1 Visa: Three Standards, Eight Criteria, No Lottery",
+    kind: "guide",
+    published: O1_PUBLISHED,
+    updated: O1_UPDATED,
+  },
+  {
+    path: "/l1-visa",
+    title: "L-1 Visa: One Year Abroad, and a Clock Your H-1B Already Started",
+    kind: "guide",
+    published: L1_PUBLISHED,
+    updated: L1_UPDATED,
+  },
+  {
+    path: "/uscis/a-number",
+    title: "Your A-Number, and the Six Numbers It Is Not",
+    kind: "guide",
+    published: A_NUMBER_PUBLISHED,
+    updated: A_NUMBER_UPDATED,
+  },
+  {
+    path: "/uscis/i-94",
+    title: "Your I-94, and the Four Things the Travel History Leaves Out",
+    kind: "guide",
+    published: I94_PUBLISHED,
+    updated: I94_UPDATED,
+  },
+  {
+    path: "/green-card/travel-rules",
+    title: "Green Card Travel Rules & ICE Detention Tracker",
+    kind: "guide",
+    published: GC_TRAVEL_PUBLISHED,
+    updated: GC_TRAVEL_UPDATED,
+  },
+  // Projected bulletin months. The title carries the status, so a feed row
+  // cannot read as though the bulletin had been published. The date is the
+  // projection's own committed constant — never a clock, which
+  // latestUpdates.test.ts enforces site-wide.
+  ...PROJECTED_MONTHS.map((m) => ({
+    path: monthPath(m),
+    title: `${monthLabel(m)} Visa Bulletin — projection`,
+    kind: "guide" as const,
+    published: VB_PROJECTION_PUBLISHED,
+    updated: VB_PROJECTION_PUBLISHED,
+  })),
 ];
 
 /**

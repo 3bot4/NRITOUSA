@@ -662,6 +662,8 @@ export default function Eb1VsNiwPage() {
                   { href: "/i140-processing-time", label: "I-140 processing time" },
                   { href: "/i140-premium-processing", label: "I-140 premium processing" },
                   { href: "/green-card/change-jobs-after-i140", label: "Changing jobs after an I-140" },
+                  { href: "/o1-visa", label: "O-1 visa — the nonimmigrant route an EB-1A record also supports" },
+                  { href: "/l1-visa", label: "L-1 visa — the status EB-1C is usually filed from" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link

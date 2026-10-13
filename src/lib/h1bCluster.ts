@@ -887,7 +887,12 @@ This depends on the airline and CBP officers. Generally, you cannot board a US-b
 If approved at interview without 221(g): passport is usually returned within a week. With 221(g) administrative processing: can take weeks to months with no guaranteed timeline.
 
 ### Is it safe to travel to India right after an H1B transfer?
-There is no official waiting period after a transfer, and no rule requires you to accumulate employment history before applying. What changes is the evidence available to you: a recent transfer means a new employer relationship with little payroll record, so the documents that demonstrate it are thinner. Confirm with your employer's immigration counsel that the petition is approved, that the facts on it match your actual role and worksite, and what you should carry. Note also that a valid, unexpired visa naming a former employer is not automatically invalid — you can generally travel on it with the current I-797.`,
+There is no official waiting period after a transfer, and no rule requires you to accumulate employment history before applying. What changes is the evidence available to you: a recent transfer means a new employer relationship with little payroll record, so the documents that demonstrate it are thinner. Confirm with your employer's immigration counsel that the petition is approved, that the facts on it match your actual role and worksite, and what you should carry. Note also that a valid, unexpired visa naming a former employer is not automatically invalid — you can generally travel on it with the current I-797.
+
+## Related
+
+- [Your I-94 and travel history](/uscis/i-94) — the record that is closed out when you leave and regenerated on your return, how to check it after every entry, and what to do when the admit-until date is wrong.
+- [Green card travel rules](/green-card/travel-rules) — the same trip once you hold a green card, where the thresholds are days rather than documents.`,
   },
 
   /* ───────────────────────── TRANSFER AFTER LAYOFF ─────────────────────── */

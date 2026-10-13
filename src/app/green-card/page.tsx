@@ -509,6 +509,9 @@ export default function GreenCardPage() {
               { href: "/tools/processing-times", label: "USCIS Processing Times", desc: "Current I-140, I-485, EAD processing ranges" },
               { href: "/uscis/case-status", label: "USCIS Case Status Guide", desc: "What your USCIS case status message means" },
               { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "What a lawyer typically charges for employment green card cases, and when to hire one" },
+              { href: "/green-card/travel-rules", label: "Green Card Travel Rules", desc: "Absence thresholds, reentry permits, Form I-407 and a dated ICE detention tracker" },
+              { href: "/o1-visa", label: "O-1 Visa Guide", desc: "The cap-free status with no six-year wall, which an EB-1A record often also supports" },
+              { href: "/l1-visa", label: "L-1 Visa Guide", desc: "Intracompany transfer, and the EB-1C route it feeds without PERM" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
                 className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-green-400 hover:shadow-sm">

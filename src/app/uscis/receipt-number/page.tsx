@@ -701,6 +701,11 @@ export default function ReceiptNumberPage() {
                   desc: "Standalone tool for IOE/LIN/SRC/EAC/WAC/MSC prefix lookup",
                 },
                 {
+                  href: "/uscis/a-number",
+                  label: "Your A-Number",
+                  desc: "The USCIS # on a green card, and the six identifiers it gets confused with",
+                },
+                {
                   href: "/uscis",
                   label: "USCIS Hub",
                   desc: "Full overview of USCIS processes for Indian applicants",

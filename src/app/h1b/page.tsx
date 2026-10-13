@@ -753,6 +753,9 @@ export default function H1bHubPage() {
                 { href: "/h1b-lottery-results", label: "H-1B Lottery Results Hub", desc: "How to check your registration status and what each result means" },
                 { href: "/tools/h1b-sponsor-finder", label: "H-1B Sponsor Finder", desc: "Search which employers actually file H-1B petitions" },
                 { href: "/immigration-attorney-lawyer-cost", label: "Immigration Attorney Cost Guide", desc: "Typical lawyer fees for H-1B cases and RFEs, and when hiring one is worth it" },
+                { href: "/o1-visa", label: "O-1 Visa Guide", desc: "The cap-free extraordinary-ability route: three standards, eight criteria, and no six-year wall" },
+                { href: "/l1-visa", label: "L-1 Visa Guide", desc: "Intracompany transfer — and the cap that counts your H-1B years against it" },
+                { href: "/uscis/i-94", label: "Your I-94 and Travel History", desc: "The document that governs your stay, and the four things the history leaves out" },
               ].map((g) => (
                 <Link key={g.href} href={g.href} className="group rounded-xl border border-ink-900/10 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
                   <p className="text-sm font-semibold text-ink-900 group-hover:text-brand-700">{g.label}</p>

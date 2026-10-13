@@ -116,6 +116,8 @@ const relatedLinks = [
   { href: "/h1b-lottery-not-selected-options", label: "Not Selected: Options", desc: "Backup paths if the odds don't fall your way" },
   { href: "/h1b-lottery-results-for-f1-opt-students", label: "For F-1 OPT Students", desc: "Use STEM OPT for more lottery attempts" },
   { href: "/h1b-lottery-results-date", label: "Results Date", desc: "When selections are announced" },
+  { href: "/o1-visa", label: "O-1 Visa", desc: "No cap and no lottery — the extraordinary-ability route, with the eight criteria verbatim" },
+  { href: "/l1-visa", label: "L-1 Visa", desc: "No cap and no lottery, but it needs a year abroad with the same company group first" },
 ];
 
 export default function Page() {

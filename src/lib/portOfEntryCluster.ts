@@ -38,6 +38,16 @@ export const poeClusterLinks: ClusterLink[] = [
  */
 export const poeRelatedLinks: ClusterLink[] = [
   {
+    href: "/uscis/i-94",
+    label: "Your I-94 and Travel History",
+    desc: "How to pull the record, what D/S means, and the four limits on the history",
+  },
+  {
+    href: "/green-card/travel-rules",
+    label: "Green Card Travel Rules",
+    desc: "The same inspection, from a permanent resident's side: INA 101(a)(13)(C) and Form I-407",
+  },
+  {
     href: "/h1b/travel-to-india",
     label: "H-1B Travel to India",
     desc: "The outbound leg: stamping, 221(g) risk, and when not to go",

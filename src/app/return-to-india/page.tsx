@@ -46,6 +46,12 @@ const config: MoneyHubConfig = {
   primaryCta: { label: "Model your 401(k) move", href: "/calculators/401k-return-to-india" },
   relatedGuides: [
     {
+      label: "Green card travel rules, and what a long trip actually costs",
+      href: "/green-card/travel-rules",
+      blurb:
+        "Before the permanent decision, the trip version: the absence thresholds, the reentry permit, the N-470 that protects your naturalisation clock and closes at twelve months, and why filing taxes as a nonresident raises a presumption you gave the card up.",
+    },
+    {
       label: "Should NRIs keep their investments in India?",
       href: "/india-investments/should-nris-keep-investments-in-india",
       blurb:

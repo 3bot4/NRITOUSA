@@ -46,6 +46,15 @@ import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { PUBLISHED_MONTHS, monthPath } from "@/lib/visaBulletinMonths";
 import {
+  PROJECTED_MONTHS,
+  VB_PROJECTION_PUBLISHED,
+} from "@/lib/visaBulletinProjections";
+import { O1_UPDATED } from "@/data/o1VisaData";
+import { L1_UPDATED } from "@/data/l1VisaData";
+import { A_NUMBER_UPDATED } from "@/data/aNumberData";
+import { I94_UPDATED } from "@/data/i94Data";
+import { GC_TRAVEL_UPDATED } from "@/data/greenCardTravelData";
+import {
   visitorInsuranceChildPages,
   VISITOR_INSURANCE_BASE,
   VISITOR_INSURANCE_UPDATED,
@@ -256,10 +265,28 @@ export const immigrationEntries: SitemapEntry[] = [
   e("/green-card/marriage-interview-questions", 0.9, "monthly", new Date("2026-09-16")),
   e("/uscis/expedite-request", 0.9, "monthly", new Date("2026-09-16")),
   e("/green-card/eb1a-vs-eb1b-vs-eb1c-vs-niw", 0.9, "monthly", new Date("2026-09-16")),
+  // October 2026 immigration cluster. Dedicated static routes, each with a
+  // calculator, charts and a diagram, so they are not picked up by any cluster
+  // spread below and need their own entries here — the same reason
+  // /uscis/forms/i-864 and /uscis/expedite-request are listed explicitly.
+  e("/o1-visa", 0.9, "monthly", new Date(O1_UPDATED)),
+  e("/l1-visa", 0.9, "monthly", new Date(L1_UPDATED)),
+  e("/uscis/a-number", 0.9, "monthly", new Date(A_NUMBER_UPDATED)),
+  e("/uscis/i-94", 0.9, "monthly", new Date(I94_UPDATED)),
+  e("/green-card/travel-rules", 0.9, "monthly", new Date(GC_TRAVEL_UPDATED)),
   // Monthly visa bulletin pages. Driven by PUBLISHED_MONTHS so a month cannot
   // reach the sitemap before its bulletin is actually released.
   ...PUBLISHED_MONTHS.map((m) =>
     e(monthPath(m), 0.9, "monthly", new Date(`${m}-01`)),
+  ),
+  // PROJECTED month pages, at the same clean month URLs. These are legitimate,
+  // clearly-labelled forecast pages at their permanent address — a page becomes
+  // the official bulletin page for that month, at this same URL, on release, so
+  // the sitemap entry never has to move. Priority is lower than a published
+  // month deliberately: a projection is a weaker document than a bulletin.
+  // lastmod is the projection's own published constant, never the build clock.
+  ...PROJECTED_MONTHS.map((m) =>
+    e(monthPath(m), 0.7, "weekly", new Date(VB_PROJECTION_PUBLISHED)),
   ),
   e("/h1b", 0.9, "weekly", immDate),
   e("/h1b-layoff", 0.85, "monthly", immDate),

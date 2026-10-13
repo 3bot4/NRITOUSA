@@ -120,6 +120,11 @@ Yes. "USCIS account number," "USCIS online account number," and "online account 
 - [How to Create a USCIS Online Account](https://www.uscis.gov/file-online/how-to-create-a-uscis-online-account)
 - [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
 
+## Related
+
+- [Your A-Number, and the six numbers it is not](/uscis/a-number) — the permanent identifier this account number is most often confused with, where it is printed on each document, and whether the federal registration rule applies to you.
+- [USCIS receipt numbers and prefixes](/uscis/receipt-number) — the third number in the set, and what the three letters mean.
+
 :::cta
 title: Learn how to add a paper-filed case to your account
 body: Once you have your online account number, adding your paper petition to myUSCIS takes a few steps.
@@ -654,6 +659,11 @@ Contact your immigration attorney immediately. Priority date errors on the I-797
 - [Check your case status](https://egov.uscis.gov/casestatus/landing.do)
 - [Official CBP I-94 website](https://i94.cbp.dhs.gov/) — verify or reprint your I-94
 - USCIS Contact Center: **1-800-375-5283**
+
+## Related
+
+- [Your I-94 and travel history](/uscis/i-94) — what the tear-off at the bottom of an I-797A actually governs, how to pull the record, and the four limits CBP puts on the travel history.
+- [Your A-Number, and the six numbers it is not](/uscis/a-number) — the A# in the top-right of a notice, and why it is not the receipt number beside it.
 
 :::cta
 title: Understand what your USCIS notice means

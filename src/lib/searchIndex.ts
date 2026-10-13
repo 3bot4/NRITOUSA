@@ -59,6 +59,7 @@ import { getPublishedStories } from "@/lib/successStories";
 import type { ClusterLink } from "@/lib/permCluster";
 import { liveTopics } from "@/lib/topics";
 import { PUBLISHED_MONTHS, monthLabel, monthPath } from "@/lib/visaBulletinMonths";
+import { PROJECTED_MONTHS } from "@/lib/visaBulletinProjections";
 import { states } from "@/data/indianPopulationData";
 
 /** Content-type badge shown on each search result. */
@@ -872,6 +873,71 @@ const CURATED: SearchItem[] = [
     priority: 45,
     keywords: `visa bulletin ${monthLabel(m).toLowerCase()} ${m} india eb2 eb3 eb1 priority date final action dates for filing green card updates`,
   })),
+  // PROJECTED months. The title says so: a search result that read the same as
+  // a published month would undo the labelling the page itself is careful
+  // about. Priority sits below a published month for the same reason.
+  ...PROJECTED_MONTHS.map((m) => ({
+    title: `${monthLabel(m)} Visa Bulletin — projection`,
+    description: `Projected India EB-1, EB-2 and EB-3 ranges for ${monthLabel(
+      m
+    )}, with the method stated. The official bulletin is not published yet.`,
+    href: monthPath(m),
+    type: "Guide" as const,
+    priority: 40,
+    keywords: `visa bulletin ${monthLabel(m).toLowerCase()} ${m} prediction projection forecast india eb2 eb3 eb1 priority date family visa priority dates uscis green card updates`,
+  })),
+
+  // ---- October 2026 immigration cluster -------------------------------
+  {
+    title: "O-1 Visa: Extraordinary Ability",
+    description:
+      "Three evidentiary standards, not two. The eight O-1A criteria verbatim, the mandatory advisory opinion, the current fee stack, uncapped one-year extensions, and why Indian nationals are 4% of O-1 admissions against 56% of H-1B.",
+    href: "/o1-visa",
+    type: "Guide",
+    priority: 50,
+    keywords:
+      "o1 visa o-1 visa o1a o1b o-1a o-1b o2 o3 extraordinary ability visa 8 criteria advisory opinion consultation letter agent petitioner itinerary o1 visa cost o1 visa requirements h1b alternative no lottery cap free extraordinary achievement distinction comparable evidence",
+  },
+  {
+    title: "L-1 Visa: Intracompany Transfer",
+    description:
+      "One continuous year abroad, then five or seven years here — and the cap counts H-1B time too. Blanket L and its unappealable consular denial, the $4,500 fee now on renewals, and L-2 spouses who work without an EAD.",
+    href: "/l1-visa",
+    type: "Guide",
+    priority: 50,
+    keywords:
+      "l1 visa l 1 l1a l1b l-1a l-1b intracompany transferee blanket l i-129s one year in three qualifying relationship specialized knowledge managerial executive new office l1 max stay 7 years 5 years l2 l2s spouse work authorization eb1c 50/50 employer public law 114-113",
+  },
+  {
+    title: "A-Number (Alien Registration Number)",
+    description:
+      "The USCIS # on your green card is your A-number. Where it sits on each document, the six identifiers it is not, and whether the federal registration rule applies to you — for most visa holders it does not.",
+    href: "/uscis/a-number",
+    type: "Guide",
+    priority: 50,
+    keywords:
+      "a number a a-number alien registration number uscis number on green card alien number 8 or 9 digits where to find a number g-325r alien registration requirement registration rule canadian snowbirds fingerprinted visa control number sevis id receipt number vs a number two a numbers foia g-639",
+  },
+  {
+    title: "I-94 and Travel History",
+    description:
+      "The I-94 governs your stay, not your visa. How to download the record and the travel history, what D/S means, and the four limits CBP puts on the history — including that green card holders cannot use the site at all.",
+    href: "/uscis/i-94",
+    type: "Guide",
+    priority: 50,
+    keywords:
+      "i-94 travel history i 94 history i94 what does d/s mean duration of status i94 cbp dhs gov get most recent i-94 admit until date class of admission i-94 vs visa expiry i-102 replace i-94 240 day rule substantial presence test day count ten years land border",
+  },
+  {
+    title: "Green Card Travel Rules & ICE Detention Tracker",
+    description:
+      "A returning permanent resident is not an applicant for admission unless one of six conditions in INA 101(a)(13)(C) applies. Absence thresholds, the reentry permit and N-470, Form I-407 at the airport, and a dated tracker with ICE's own figures.",
+    href: "/green-card/travel-rules",
+    type: "Guide",
+    priority: 50,
+    keywords:
+      "green card travel rules green card travelling can you travel with a green card green card holder ice detention ice detained green card applicant green card applicant detained airport 180 days 6 months one year abroad reentry permit i-131 i-327 n-470 sb-1 returning resident i-407 abandonment seeking admission secondary inspection know your rights",
+  },
 ];
 
 /** Assign a priority: explicit PRIORITY map wins, else the provided base. */

@@ -582,7 +582,12 @@ A: Currently 5–12+ months. File as early as possible. Do NOT book internationa
 
 Q: My Advance Parole expired during my trip — can I still return?
 A: This is a serious situation. Contact your immigration attorney immediately. CBP may still parole you in depending on circumstances, but there is no guarantee. Keep AP expiration dates well ahead of planned return dates.
-:::`,
+:::
+
+## Related
+
+- [Green card travel rules](/green-card/travel-rules) — the other thing Form I-131 produces: a reentry permit for a permanent resident, the absence thresholds it covers, and the Form N-470 it does **not** replace.
+- [Your I-94 and travel history](/uscis/i-94) — what gets recorded when you re-enter on advance parole, and how to check it.`,
   },
 
   /* ── 6. I-130 ─────────────────────────────────────────────────────────── */

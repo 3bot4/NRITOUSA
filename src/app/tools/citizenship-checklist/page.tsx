@@ -206,6 +206,20 @@ export default function CitizenshipChecklistPage() {
       <section className="bg-white py-12 sm:py-16">
         <Container>
           <RelatedGuides
+            extras={[
+              {
+                href: "/green-card/travel-rules",
+                title: "Green card travel rules and continuous residence",
+                description:
+                  "The two thresholds an N-400 turns on — six months and one year — the four facts that rebut the presumption, and the Form N-470 that has to be filed before an absence reaches twelve months.",
+              },
+              {
+                href: "/uscis/i-94",
+                title: "Your I-94 travel history, and a day counter",
+                description:
+                  "Where the trip dates for your N-400 come from, the four limits on the record, and why as a permanent resident you have to file a FOIA request to get it at all.",
+              },
+            ]}
             slugs={[
               "substantial-presence-test-explained",
               "indian-income-us-tax-return",

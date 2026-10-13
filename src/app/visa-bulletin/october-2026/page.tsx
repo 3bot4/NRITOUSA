@@ -23,6 +23,8 @@ import {
   type EbCategory,
 } from "@/lib/visa-bulletin";
 import { VB_OCT_2026_PUBLISHED, VB_OCT_2026_UPDATED } from "@/lib/visaBulletinOctober2026";
+import { PROJECTED_MONTHS } from "@/lib/visaBulletinProjections";
+import { monthLabel, monthPath } from "@/lib/visaBulletinMonths";
 import NumbersChecked from "@/components/NumbersChecked";
 import { pageCheckedOn } from "@/lib/pageChecks";
 
@@ -964,7 +966,14 @@ export default function October2026PredictionsPage() {
           {longDate(PREDICTED_FAD)} we forecast, Dates for Filing held at{" "}
           {eb2.dff}, EB-1 India recovered to {eb1.fad}, and USCIS did adopt the
           Dates for Filing chart. ·{" "}
-          <Link href="/visa-bulletin">All visa bulletin coverage</Link>
+          <Link href="/visa-bulletin">All visa bulletin coverage</Link> ·{" "}
+          <strong>Next months:</strong>{" "}
+          {PROJECTED_MONTHS.map((m, i) => (
+            <span key={m}>
+              {i > 0 && " · "}
+              <Link href={monthPath(m)}>{monthLabel(m)} projection</Link>
+            </span>
+          ))}
         </footer>
       </article>
     </>
