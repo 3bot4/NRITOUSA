@@ -692,3 +692,11 @@ export const L1_STEPS: L1Step[] = [
       "Up to three years. Download the I-94 after every entry: for an L-2 spouse the annotation has to read L-2S for the work authorization to be usable on Form I-9.",
   },
 ];
+
+/**
+ * The caption for the combined-clock diagram. Lives here rather than in the
+ * component so the sentence that carries the page's most consequential fact is
+ * next to the regulation quote it comes from.
+ */
+export const L1_CAP_MONTHS_NOTE =
+  "8 CFR 214.2(l)(12)(i) caps time spent in the United States “under section 101(a)(15)(L) and/or (H)” — one clock, two statuses. Six years on an H-1B leaves one year of L-1A and no L-1B time at all. Nothing about changing employer, changing company group or changing classification resets it; only a year of residence and physical presence abroad does.";
