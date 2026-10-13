@@ -1,6 +1,6 @@
 {
   "note": "Living content ledger for NRITOUSA.com. THIS FILE IS THE HAND-MAINTAINED PART — the backlog of content work we know about. Everything else in the rendered ledger (link health, meta stats, verified-number status, the Fast Answer coverage gap) is regenerated from the audit scripts each run, so it can never drift from reality. Regenerate with `npm run ledger` (needs a prior `next build`). Add an item when an audit surfaces work we are not doing today; move it to status:done with a `resolved` date when it ships. Do not delete resolved items — the log is the record of what changed and when.",
-  "updated": "2026-10-06",
+  "updated": "2026-10-13",
   "artifactUrl": "https://claude.ai/code/artifact/f0350257-9195-4efb-a091-c997f9011976",
   "items": [
     {
@@ -160,6 +160,24 @@
       "status": "open",
       "opened": "2026-10-06",
       "nextStep": "add py-1 to the links"
+    },
+    {
+      "id": "sweep-the-word-caveat-from-20",
+      "title": "Sweep the word 'caveat' from 20 pre-existing pages (list in docs/seo/oct-2026-cluster/final-report.md §5)",
+      "area": "content",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-13",
+      "nextStep": "Replace with a plain alternative on each; the Oct 2026 cluster pages are already clean and test-guarded"
+    },
+    {
+      "id": "o-1-and-l-1-denial",
+      "title": "O-1 and L-1 denial/RFE rates: USCIS I-129 adjudication data is published but not machine-fetchable here, and travel.state.gov 403s everything",
+      "area": "other",
+      "severity": "low",
+      "status": "open",
+      "opened": "2026-10-13",
+      "nextStep": "Pull the I-129 denial-rate series by hand from the USCIS data page and add it to o1VisaData/l1VisaData; both pages currently say the figure is unverified rather than quoting a secondary one"
     },
     {
       "id": "audit-2026-10-market",
