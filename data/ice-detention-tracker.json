@@ -1,0 +1,157 @@
+{
+  "_about": "Dated log of policy changes and REPORTED CASE PATTERNS affecting green card holders and green card applicants at ports of entry and in ICE custody, 2025-2026. Rendered on https://www.nritousa.com/green-card/travel-rules. Hand-maintained: add an entry, commit, deploy. The page's 'last updated' line reads `lastUpdated` below.",
+  "_rules": [
+    "NEVER name a private individual. Entries describe patterns and policy, not people. If an entry can only be written by naming someone, do not write it.",
+    "Every entry needs a `sources` array with at least one URL, and a `kind`: 'official' (a statute, regulation, Federal Register document or agency page), 'statistic' (published agency data) or 'reported-pattern' (a pattern described by major news outlets or by practitioners, where no official source states it).",
+    "A 'reported-pattern' entry must say who is reporting it and must not assert it as established agency policy. The distinction is the whole point of the `kind` field.",
+    "No speculation and no prediction. If an entry would need the word 'may increase' or 'is expected to', it does not belong here.",
+    "`date` is the date the thing happened or took effect, not the date you added the row. Keep entries newest-first.",
+    "Sort order and the 'last updated' stamp are derived in src/lib/iceDetentionTracker.ts. Do not add a display order field."
+  ],
+  "lastUpdated": "2026-10-13",
+  "entries": [
+    {
+      "id": "ice-adp-fy2026",
+      "date": "2026-07-20",
+      "kind": "statistic",
+      "category": "Detention capacity",
+      "title": "ICE average daily detention population reaches the highest level in the published series",
+      "summary": "ICE's own detention statistics workbook, dated 20 July 2026, records an average daily population of 64,508 across October 2025 to July 2026, against 48,404 for FY2025 and 19,254 for FY2021. The same workbook records 65,765 people in ICE custody at the data date. The published data is not broken down by immigration status, so it says nothing directly about how many of those in custody are lawful permanent residents.",
+      "affects": "Everyone in ICE custody. Not a per-person risk figure for any status.",
+      "sources": [
+        {
+          "label": "ICE Detention Statistics, FY2026 workbook (ice.gov)",
+          "href": "https://www.ice.gov/detain/detention-management"
+        }
+      ]
+    },
+    {
+      "id": "public-charge-2026",
+      "date": "2026-09-18",
+      "kind": "official",
+      "category": "Admissibility",
+      "title": "USCIS public charge guidance takes effect",
+      "summary": "New USCIS guidance on the public charge ground of inadmissibility took effect on 18 September 2026. It is an admissibility question, which means it reaches a returning permanent resident only where INA 101(a)(13)(C) has already put them in the position of seeking admission — not on an ordinary re-entry.",
+      "affects": "Green card applicants directly. Returning permanent residents only where one of the six conditions in INA 101(a)(13)(C) applies.",
+      "sources": [
+        {
+          "label": "USCIS policy alerts and updates",
+          "href": "https://www.uscis.gov/newsroom/all-news/policy-alerts"
+        },
+        {
+          "label": "NRItoUSA — government benefits and public charge",
+          "href": "https://www.nritousa.com/usa-government-benefits-immigrants"
+        }
+      ]
+    },
+    {
+      "id": "alien-registration-final-2026",
+      "date": "2026-06-29",
+      "kind": "official",
+      "category": "Registration",
+      "title": "DHS adopts the alien registration interim rule as final",
+      "summary": "DHS adopted its March 2025 interim final rule on alien registration as a final rule, with procedural and technical changes, and updated the list of forms that satisfy the requirement. Permanent residents hold evidence of registration already — the Form I-551 is listed at 8 CFR 264.1(b) — so the rule creates no new filing for them, but the duty to carry that evidence under INA 264(e) is part of the same scheme.",
+      "affects": "Chiefly people with no existing registration record. Permanent residents are already registered.",
+      "sources": [
+        {
+          "label": "USCIS — Alien Registration Requirement",
+          "href": "https://www.uscis.gov/alienregistration"
+        },
+        {
+          "label": "Federal Register — Alien Registration Form and Evidence of Registration",
+          "href": "https://www.federalregister.gov/documents/2025/03/12/2025-03944/alien-registration-form-and-evidence-of-registration"
+        }
+      ]
+    },
+    {
+      "id": "casa-injunction-2026",
+      "date": "2026-09-02",
+      "kind": "official",
+      "category": "Litigation",
+      "title": "Injunction limits a September 2026 registration rule for a certified class",
+      "summary": "DHS has stated that, given the injunction in Casa Inc. v. Trump, No. 8:25-cv-00201 (D. Md., 2 September 2026), it will not implement its 4 September 2026 interim final rule on registration of certain United States-born children of foreign government employees for any member of the certified class, unless it obtains relief from the injunction. The affected group is narrow and the general registration requirement is unchanged.",
+      "affects": "A narrow class. Included because readers encounter headlines about it and assume a broader change.",
+      "sources": [
+        {
+          "label": "USCIS — Alien Registration Requirement",
+          "href": "https://www.uscis.gov/alienregistration"
+        }
+      ]
+    },
+    {
+      "id": "pattern-old-convictions",
+      "date": "2026-08-01",
+      "kind": "reported-pattern",
+      "category": "Port-of-entry inspection",
+      "title": "Reported pattern: returning residents held over decades-old convictions",
+      "summary": "Immigration practitioners and national news outlets have reported cases of long-settled lawful permanent residents being held on return from abroad because of criminal convictions many years old, including convictions the traveller believed were resolved. The legal mechanism is not new: INA 101(a)(13)(C)(v) brings a returning resident who has committed an offence identified in INA 212(a)(2) inside the definition of seeking admission, and that subsection carries no time limit. In at least one case reported by a national broadcaster, a permanent resident was held for close to three months before an immigration judge allowed them to remain. No official source describes this as a change of policy, and the figure of cases is not published.",
+      "affects": "Permanent residents with any criminal history, however old, and however it was disposed of.",
+      "whatToDo": "Get advice from an immigration lawyer before booking international travel if there is any arrest or charge in your history — including anything dismissed, expunged or resolved without a custodial sentence. The analysis turns on how the offence maps onto INA 212(a)(2), which is not the same as how it was treated in state court.",
+      "sources": [
+        {
+          "label": "INA 101(a)(13)(C) / 8 U.S.C. 1101(a)(13)(C)",
+          "href": "https://www.law.cornell.edu/uscode/text/8/1101"
+        },
+        {
+          "label": "INA 212(a)(2) / 8 U.S.C. 1182(a)(2)",
+          "href": "https://www.law.cornell.edu/uscode/text/8/1182"
+        }
+      ]
+    },
+    {
+      "id": "pattern-i407-pressure",
+      "date": "2026-08-01",
+      "kind": "reported-pattern",
+      "category": "Form I-407",
+      "title": "Reported pattern: permanent residents asked to sign Form I-407 at a port of entry",
+      "summary": "Practitioners have reported permanent residents being asked to sign Form I-407, Record of Abandonment of Lawful Permanent Resident Status, during inspection after a long absence. The form records a voluntary abandonment; there is no obligation to sign it at a port of entry, and abandonment of permanent residence is determined in removal proceedings before an immigration judge rather than conclusively by an officer at the border. No official source describes asking for the form as a change of practice.",
+      "affects": "Permanent residents returning after a long absence, particularly absences approaching or past one year.",
+      "whatToDo": "You may decline to sign, say that you do not wish to abandon your status, and ask for the question to be decided by an immigration judge. There is no practical way to undo a signed Form I-407.",
+      "sources": [
+        {
+          "label": "USCIS — Form I-407",
+          "href": "https://www.uscis.gov/i-407"
+        },
+        {
+          "label": "INA 240 — removal proceedings",
+          "href": "https://www.law.cornell.edu/uscode/text/8/1229a"
+        }
+      ]
+    },
+    {
+      "id": "pattern-secondary-volume",
+      "date": "2026-06-01",
+      "kind": "reported-pattern",
+      "category": "Port-of-entry inspection",
+      "title": "Reported pattern: more referrals to secondary inspection",
+      "summary": "Law firms and travel-industry reporting describe an increase in referrals of permanent residents to secondary inspection, and longer waits in secondary. CBP does not publish referral counts by immigration status, so the scale is not verifiable from an official source. A referral to secondary is an inspection step and is not a refusal of admission.",
+      "affects": "Travellers generally. Permanent residents returning after long absences are among those described.",
+      "whatToDo": "Carry your evidence of continuing US ties in your hand luggage rather than checked baggage, allow time for a connection, and carry an attorney's number on paper.",
+      "sources": [
+        {
+          "label": "CBP — deferred inspection sites",
+          "href": "https://www.cbp.gov/about/contact/ports/deferred-inspection-sites"
+        },
+        {
+          "label": "NRItoUSA — denied entry at the airport, with citations",
+          "href": "https://www.nritousa.com/h1b-denied-entry-airport"
+        }
+      ]
+    },
+    {
+      "id": "biometric-fee-extensions",
+      "date": "2026-09-09",
+      "kind": "official",
+      "category": "Fees",
+      "title": "9-11 Response and Biometric Entry-Exit fee extended to extension petitions",
+      "summary": "DHS's final rule, published 10 August 2026 and effective 9 September 2026, extends the Public Law 114-113 fee to extension petitions for employers with 50 or more US employees of whom more than 50 percent are in H-1B, L-1A or L-1B status. The fee is $4,000 for H-1B and $4,500 for L-1. It has no direct bearing on permanent residents and is logged here because it changes the cost of the nonimmigrant statuses many green card applicants hold while they wait.",
+      "affects": "H-1B and L-1 petitioners that meet the 50/50 test, and their employees indirectly.",
+      "sources": [
+        {
+          "label": "Federal Register — 9-11 Response and Biometric Entry-Exit Fee for H-1B and L-1 Visas",
+          "href": "https://www.federalregister.gov/documents/2026/08/10/2026-16231/9-11-response-and-biometric-entry-exit-fee-for-h-1b-and-l-1-visas"
+        }
+      ]
+    }
+  ]
+}
