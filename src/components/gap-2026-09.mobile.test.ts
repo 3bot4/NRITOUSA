@@ -47,6 +47,11 @@ const NEW_SVG_FILES = [
   "components/tools/divorce/DivorceByStageDiagram.tsx",
   "components/tools/ead/OldVsNewRuleDiagram.tsx",
   "components/tools/eb1/Eb1Visuals.tsx",
+  // October 2026 immigration-cluster build. Added here rather than only to
+  // gap-2026-10.mobile.test.ts because they live in components/visa-bulletin,
+  // which the coverage guard below watches — and because the fluid-SVG
+  // assertions in this file are exactly the ones they should pass.
+  "components/visa-bulletin/ProjectedMonthCharts.tsx",
 ];
 
 /** New dedicated page routes added by this build. */
@@ -186,7 +191,15 @@ describe("every new component file is actually covered by this test", () => {
         if (name.endsWith(".tsx")) found.push(`${d}/${name}`);
       }
     }
-    const listed = new Set([...NEW_SVG_FILES, "components/visa-bulletin/MonthPage.tsx", "components/visa-bulletin/MonthIndex.tsx"]);
+    const listed = new Set([
+      ...NEW_SVG_FILES,
+      "components/visa-bulletin/MonthPage.tsx",
+      "components/visa-bulletin/MonthIndex.tsx",
+      // A page shell rather than a chart file: its figures come from
+      // ProjectedMonthCharts.tsx, which is listed in NEW_SVG_FILES above and
+      // carries the fluid-SVG assertions.
+      "components/visa-bulletin/ProjectedMonthPage.tsx",
+    ]);
     const unlisted = found.filter((f) => !listed.has(f));
     expect(unlisted, "new visual components not covered above").toEqual([]);
   });

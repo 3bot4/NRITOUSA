@@ -52,7 +52,8 @@ export default function TripRiskChecker() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <div className="grid gap-5 lg:grid-cols-2">
+      {/* min-w-0 — see the note in O1CriteriaSelfCheck. */}
+      <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
         <InputCard eyebrow="Nothing stored, nothing sent" title="The trip you are planning">
           <p className="-mt-2 text-xs leading-relaxed text-ink-500">
             Seven questions. The useful output is not a score — it is which of

@@ -63,7 +63,9 @@ export default function O1CriteriaSelfCheck() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <div className="grid gap-5 lg:grid-cols-[1.15fr_1fr]">
+      {/* min-w-0: a `1fr` track is minmax(auto,1fr), so a long unbroken
+          string in a result card widens it past a 390px viewport. */}
+      <div className="grid gap-5 lg:grid-cols-[1.15fr_1fr] [&>*]:min-w-0">
         <InputCard
           eyebrow={`${O1A_TOTAL} criteria · 8 CFR 214.2(o)(3)(iii)(B)`}
           title="Which of these can you evidence?"

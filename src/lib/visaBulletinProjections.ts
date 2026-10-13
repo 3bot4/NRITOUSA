@@ -527,3 +527,13 @@ export function projectedMonthDescription(bulletinMonth: string): string {
     eb3 ? eb3.fad.rangeLabel : "see table"
   } — ranges, not dates, with the method stated and the 12-month movement history behind them.`;
 }
+
+/**
+ * The date the projected month pages were first published. Deliberately a
+ * committed constant and never the build clock — latestUpdates.test.ts forbids
+ * clock-derived page dates site-wide, and a forecast page that restamps itself
+ * on every deploy is exactly the signal that test exists to stop.
+ *
+ * Bump this when the projection method changes, not when a deploy happens.
+ */
+export const VB_PROJECTION_PUBLISHED = "2026-10-13";

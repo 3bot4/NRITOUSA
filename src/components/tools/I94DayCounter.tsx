@@ -74,7 +74,8 @@ export default function I94DayCounter() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr]">
+      {/* min-w-0 — see the note in O1CriteriaSelfCheck. */}
+      <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr] [&>*]:min-w-0">
         <InputCard eyebrow="Nothing leaves your browser" title="Your trips">
           <p className="-mt-2 text-xs leading-relaxed text-ink-500">
             Enter arrival and departure dates, or paste your CBP travel history
@@ -168,7 +169,7 @@ export default function I94DayCounter() {
                 help="One crossing per line, with a date and the word Arrival or Departure. Formats like 2026-01-05, 5 Jan 2026 and 01/05/2026 all work."
               >
                 <textarea
-                  className={`${fieldClass} min-h-[180px] font-mono text-xs`}
+                  className={`${fieldClass} min-h-[180px] font-mono sm:text-xs`}
                   value={pasted}
                   onChange={(e) => setPasted(e.target.value)}
                   placeholder={"2026-01-05  Arrival   JFK\n2026-02-10  Departure  JFK\n2026-05-01  Arrival   SFO"}
@@ -264,7 +265,11 @@ export default function I94DayCounter() {
                   title={`${Math.floor(result.spt.weightedDays)} weighted days against ${SPT_THRESHOLD}`}
                   badge={result.spt.meetsOnDaysAlone ? "Met on days" : "Not met on days"}
                 >
-                  <table className="w-full text-xs">
+                  {/* The weighting table has four columns and sits inside a
+                      result card, so it needs its own scroll wrapper at 390px
+                      rather than relying on the page's. */}
+                  <div className="overflow-x-auto">
+                  <table className="w-full min-w-[320px] text-xs">
                     <caption className="sr-only">
                       The weighted day count behind the substantial presence
                       estimate
@@ -304,6 +309,7 @@ export default function I94DayCounter() {
                       </tr>
                     </tbody>
                   </table>
+                  </div>
                   <p className="mt-2.5">{result.spt.verdict}</p>
                   <p className="mt-2 text-xs">
                     Both conditions are required: at least{" "}

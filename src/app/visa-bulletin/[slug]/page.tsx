@@ -37,6 +37,16 @@ import {
   publishedMonthSlugs,
   slugToMonth,
 } from "@/lib/visaBulletinMonths";
+import {
+  PROJECTED_BANNER,
+  VB_PROJECTION_PUBLISHED,
+  projectedMonthDescription,
+  projectedMonthForSlug,
+  projectedMonthSlugs,
+} from "@/lib/visaBulletinProjections";
+import ProjectedMonthPage, {
+  projectedMonthFaqs,
+} from "@/components/visa-bulletin/ProjectedMonthPage";
 import NumbersChecked from "@/components/NumbersChecked";
 
 /**
@@ -45,6 +55,16 @@ import NumbersChecked from "@/components/NumbersChecked";
  * slug is checked FIRST because it is the narrower shape — "september-2026"
  * can never collide with a cluster slug, and slugToMonth returns null for
  * anything that is not a month name plus a four-digit year.
+ *
+ * A month resolves one of three ways, checked in this order:
+ *   1. PUBLISHED — a real snapshot exists, rendered by VisaBulletinMonthPage.
+ *   2. PROJECTED — the bulletin is not out, rendered by ProjectedMonthPage with
+ *      a banner and a PROJECTED badge on every value.
+ *   3. Neither — notFound().
+ * A month can never be both; visaBulletinProjections.test.ts asserts it. The
+ * URL is identical in cases 1 and 2, which is the whole point: a projected page
+ * becomes the official page by a data edit, with no redirect and no split
+ * history.
  */
 function publishedMonthFor(slug: string): string | null {
   const month = slugToMonth(slug);
@@ -52,9 +72,11 @@ function publishedMonthFor(slug: string): string | null {
 }
 
 export function generateStaticParams() {
-  return [...visaBulletinChildSlugs, ...publishedMonthSlugs()].map((slug) => ({
-    slug,
-  }));
+  return [
+    ...visaBulletinChildSlugs,
+    ...publishedMonthSlugs(),
+    ...projectedMonthSlugs(),
+  ].map((slug) => ({ slug }));
 }
 
 export function generateMetadata({
@@ -73,6 +95,23 @@ export function generateMetadata({
       openGraph: {
         publishedTime: `${month}-01`,
         modifiedTime: `${month}-01`,
+      },
+    });
+  }
+
+  const projected = projectedMonthForSlug(params.slug);
+  if (projected) {
+    const label = monthLabel(projected);
+    return pageMetadata({
+      // "Projected" in the title, never in the URL. The title changes on
+      // release; the path does not.
+      title: `${label} Visa Bulletin Projection: India EB-1, EB-2, EB-3 Ranges`,
+      description: projectedMonthDescription(projected),
+      path: `/visa-bulletin/${params.slug}`,
+      type: "article",
+      openGraph: {
+        publishedTime: VB_PROJECTION_PUBLISHED,
+        modifiedTime: VB_PROJECTION_PUBLISHED,
       },
     });
   }
@@ -130,6 +169,49 @@ export default function VisaBulletinChildPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(monthJsonLd) }}
         />
         <VisaBulletinMonthPage bulletinMonth={month} />
+      </>
+    );
+  }
+
+  const projected = projectedMonthForSlug(params.slug);
+  if (projected) {
+    const url = absoluteUrl(`/visa-bulletin/${params.slug}`);
+    const label = monthLabel(projected);
+    const projectedJsonLd = jsonLdGraph(
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: `${label} visa bulletin: projected India EB-1, EB-2 and EB-3 movement`,
+        description: projectedMonthDescription(projected),
+        datePublished: VB_PROJECTION_PUBLISHED,
+        dateModified: VB_PROJECTION_PUBLISHED,
+        author: { "@id": `${site.url}/#organization` },
+        publisher: { "@id": `${site.url}/#organization` },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        url,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        // The schema says out loud that the figures are projections. An
+        // Article describing unpublished data as if it were published would be
+        // the structured-data version of the same dishonesty the banner exists
+        // to prevent.
+        disambiguatingDescription: PROJECTED_BANNER,
+      },
+      faqJsonLd(projectedMonthFaqs(projected)),
+      breadcrumbJsonLd([
+        { name: "Home", url: "/" },
+        { name: "Visa Bulletin Guide", url: VISA_BULLETIN_CLUSTER_BASE },
+        { name: "Monthly Updates", url: `${VISA_BULLETIN_CLUSTER_BASE}/monthly-update` },
+        { name: `${label} Bulletin`, url: `/visa-bulletin/${params.slug}` },
+      ]),
+    );
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectedJsonLd) }}
+        />
+        <ProjectedMonthPage bulletinMonth={projected} />
       </>
     );
   }

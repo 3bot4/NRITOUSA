@@ -62,7 +62,8 @@ export default function L1EligibilityCalculator() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <div className="grid gap-5 lg:grid-cols-2">
+      {/* min-w-0 — see the note in O1CriteriaSelfCheck. */}
+      <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
         <InputCard eyebrow="Months in, months out" title="Your L-1 position">
           <p className="-mt-2 text-xs leading-relaxed text-ink-500">
             Two separate questions: whether you qualify at all, and how long you

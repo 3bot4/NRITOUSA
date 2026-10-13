@@ -49,7 +49,8 @@ export default function WhichNumberIsThis() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="grid gap-5 lg:grid-cols-2">
+      {/* min-w-0: a pasted identifier is an unbroken string. */}
+      <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
         <InputCard eyebrow="Nothing leaves your browser" title="Identify a number">
           <p className="-mt-2 text-xs leading-relaxed text-ink-500">
             Type the number as it appears on the document. The check reads only
