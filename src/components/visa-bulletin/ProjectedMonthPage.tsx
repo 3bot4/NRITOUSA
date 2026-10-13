@@ -10,6 +10,7 @@ import PriorityDateChecker from "@/components/tools/PriorityDateChecker";
 import {
   ProjectedMovementChart,
   ProjectionMethodDiagram,
+  SameMonthHistoryChart,
 } from "@/components/visa-bulletin/ProjectedMonthCharts";
 import { formatCutoff, getApplicableChart } from "@/lib/visa-bulletin";
 import { monthLabel, monthPath, publishedMonthSlugs, slugToMonth, BULLETIN_ARCHIVE_URL } from "@/lib/visaBulletinMonths";
@@ -21,9 +22,15 @@ import {
   WINDOW,
   fiscalStage,
   indiaEbProjections,
+  NOINDEX_REASON,
+  isIndexableProjectedMonth,
+  methodOwnerMonth,
+  monthCharacter,
   monthsBetween,
+  ownsMethod,
   projectCutoff,
   projectionTable,
+  sameMonthHistory,
   type Projection,
   type ProjectionRow,
 } from "@/lib/visaBulletinProjections";
@@ -172,6 +179,8 @@ export function projectedMonthFaqs(bulletinMonth: string): FaqItem[] {
   const chart = getApplicableChart();
   const stage = fiscalStage(bulletinMonth);
   const horizon = monthsBetween(LAST_PUBLISHED_MONTH, bulletinMonth);
+  const same = sameMonthHistory(bulletinMonth);
+  const character = monthCharacter(bulletinMonth);
 
   return [
     {
@@ -197,33 +206,58 @@ export function projectedMonthFaqs(bulletinMonth: string): FaqItem[] {
       } These are ranges rather than dates, their floor is no movement, and they are this site's arithmetic rather than a government figure. Verify against the Department of State once the bulletin is out.`,
     },
     {
-      question: "How is the projection calculated?",
-      answer: `From the site's own snapshot archive of published bulletins. For each category and country we take the month-over-month change in the cutoff across the trailing ${WINDOW} bulletins, excluding every month the category was Current or Unavailable — those are states rather than dates, and treating "U" as an old date is how movement trackers produce a confident "retrogressed 4,000 days". The low bound of the range is no movement, which is the most common single outcome in the archive. The high bound applies the 75th-percentile observed advance per bulletin across the ${horizon}-bulletin horizon, then holds it at the bulletin's own month, because a cutoff that reaches the present means there is no queue left. Every row on this page shows its own sample size.`,
+      question: `Does ${label} usually move?`,
+      answer: `${same.summary} ${
+        character ? character.whatIsDifferent : ""
+      } That is a base rate from the archive rather than a forecast, and it is the most useful single thing to know about a ${
+        same.monthName
+      } bulletin before the figures arrive.`,
     },
+    {
+      question: `What should I be doing in ${label}?`,
+      answer: character
+        ? character.whatToDo
+        : "Check whether your priority date is current on the chart USCIS is accepting, and have the filing package assembled before it is.",
+    },
+    {
+      question: `How much weight does a ${label} projection deserve?`,
+      answer: character
+        ? character.horizonNote
+        : `${label} is ${horizon} bulletin${horizon === 1 ? "" : "s"} past the last published one, so the range widens accordingly.`,
+    },
+    ...(ownsMethod(bulletinMonth)
+      ? [
+          {
+            question: "How is the projection calculated?",
+            answer: `From the site's own snapshot archive of published bulletins. For each category and country we take the month-over-month change in the cutoff across the trailing ${WINDOW} bulletins, excluding every month the category was Current or Unavailable — those are states rather than dates, and treating "U" as an old date is how movement trackers produce a confident "retrogressed 4,000 days". The low bound of the range is no movement, which is the most common single outcome in the archive. The high bound applies the 75th-percentile observed advance per bulletin across the horizon, then holds it at the bulletin's own month, because a cutoff that reaches the present means there is no queue left. Every row on this page shows its own sample size.`,
+          },
+          {
+            question: `What is the FY2027 annual limit?`,
+            answer: `The Department of State has not published it. The statutory floor for the worldwide employment-based level is ${fmtNum(
+              EB_WORLDWIDE_FLOOR,
+            )} under INA 201(d)(1)(A), and the per-country ceiling is ${pct(
+              PER_COUNTRY_SHARE,
+            )} of the year's total under INA 202(a)(2) — but the actual pool is the floor plus family-sponsored numbers unused in the prior year, which is not knowable in advance. Any page quoting a specific FY2027 employment-based total is quoting an estimate. That is also why these projections are not anchored on a supply figure.`,
+          },
+          {
+            question: "Why is this page at a clean URL instead of a predictions URL?",
+            answer: `Because the URL is the month, and the month does not change when the bulletin is published — only the page's status does. Putting a forecast word in the path would mean moving the page later, splitting the links and the history across two URLs for no reason. Each of these pages carries a projected status today and becomes the official bulletin page for its month at that same address on release.`,
+          },
+          {
+            question:
+              "What is the difference between final action dates and dates for filing?",
+            answer:
+              "Dates for Filing is the earlier of the two charts and controls when you may submit an I-485, along with the EAD and advance parole applications that go with it. Final Action Dates is the later chart and controls when a green card can actually be approved and a visa number issued. Being current on Dates for Filing gets you a work permit and a travel document; only Final Action ends the wait.",
+          },
+        ]
+      : []),
     {
       question: `Which chart will USCIS accept for filing in ${label}?`,
       answer: `We do not know, and no honest page can tell you. USCIS makes that determination month by month and publishes it separately from the bulletin. The determination tracked site-wide covers ${chart.determinationMonthLabel}, where the answer is: ${chart.label}. That is a different month from this one. Check uscis.gov/visabulletininfo before you file — using the wrong chart gets an I-485 rejected rather than held.`,
     },
     {
-      question: `What is the FY2027 annual limit?`,
-      answer: `The Department of State has not published it. The statutory floor for the worldwide employment-based level is ${fmtNum(
-        EB_WORLDWIDE_FLOOR,
-      )} under INA 201(d)(1)(A), and the per-country ceiling is ${pct(
-        PER_COUNTRY_SHARE,
-      )} of the year's total under INA 202(a)(2) — but the actual pool is the floor plus family-sponsored numbers unused in the prior year, which is not knowable in advance. Any page quoting a specific FY2027 employment-based total is quoting an estimate. That is also why these projections are not anchored on a supply figure.`,
-    },
-    {
       question: `Could the dates retrogress in ${label} instead?`,
       answer: `Yes, and the ranges on this page do not capture it — a range with a floor of "no movement" cannot. ${stage.note} India EB-2 is the live example from the last fiscal year: it advanced to 15 July 2014 by April 2026, retrogressed in June, and went Unavailable from July through September before resetting at 1 November 2013 in the October 2026 bulletin. Retrogression and a category going Unavailable are both real possibilities and neither is forecastable from a trend.`,
-    },
-    {
-      question: "Why is this page at a clean URL instead of a predictions URL?",
-      answer: `Because the URL is the month, and the month does not change when the bulletin is published — only the page's status does. Putting a forecast word in the path would mean moving the page later, splitting the links and the history across two URLs for no reason. This page carries a projected status today and becomes the official ${label} bulletin page at this same address on release.`,
-    },
-    {
-      question: "What is the difference between final action dates and dates for filing?",
-      answer:
-        "Dates for Filing is the earlier of the two charts and controls when you may submit an I-485, along with the EAD and advance parole applications that go with it. Final Action Dates is the later chart and controls when a green card can actually be approved and a visa number issued. Being current on Dates for Filing gets you a work permit and a travel document; only Final Action ends the wait.",
     },
   ];
 }
@@ -243,6 +277,23 @@ export default function ProjectedMonthPage({
   const horizon = monthsBetween(LAST_PUBLISHED_MONTH, bulletinMonth);
   const faqs = projectedMonthFaqs(bulletinMonth);
   const fy2027 = getFiscalYear(2027);
+  const same = sameMonthHistory(bulletinMonth);
+  const character = monthCharacter(bulletinMonth);
+  const isMethodOwner = ownsMethod(bulletinMonth);
+  const isIndexable = isIndexableProjectedMonth(bulletinMonth);
+  const methodOwner = methodOwnerMonth();
+  // Nine distinct archive-derived summaries across the three projected pages:
+  // three categories x three months, each about that month and that category.
+  const sameMonthByCategory = (
+    [
+      { category: "eb1", label: "EB-1" },
+      { category: "eb2", label: "EB-2" },
+      { category: "eb3", label: "EB-3" },
+    ] as const
+  ).map((c) => ({
+    ...c,
+    history: sameMonthHistory(bulletinMonth, c.category, "india", "fad"),
+  }));
 
   const pick = (c: string) => india.filter((r) => r.category === c)[0];
   const otherMonths = PROJECTED_MONTHS.filter((m) => m !== bulletinMonth);
@@ -290,6 +341,18 @@ export default function ProjectedMonthPage({
                 {PROJECTED_BANNER}
               </span>
             </p>
+            {!isIndexable && (
+              <p className="mt-2 rounded-xl bg-amber-100/80 p-3 text-sm leading-relaxed text-amber-900">
+                <strong>Not submitted for search indexing yet. </strong>
+                {NOINDEX_REASON}{" "}
+                {methodOwner && (
+                  <Link href={monthPath(methodOwner)} className="font-semibold underline">
+                    The {monthLabel(methodOwner)} projection is the nearer one
+                  </Link>
+                )}
+                .
+              </p>
+            )}
             <p className="mt-2 text-sm leading-relaxed text-amber-900/90">
               The newest bulletin the Department of State has published is{" "}
               <Link
@@ -330,7 +393,7 @@ export default function ProjectedMonthPage({
             )}
             Ranges, not dates &mdash; {label} is {horizon} bulletin
             {horizon === 1 ? "" : "s"} beyond the last published one, and the
-            floor of every range is no movement.
+            floor of every range is no movement. {same.summary}
           </p>
 
           <ul className="mt-5 grid max-w-3xl gap-2 sm:grid-cols-2">
@@ -395,23 +458,49 @@ export default function ProjectedMonthPage({
         </Container>
       </section>
 
-      {/* ── The method ────────────────────────────────────────── */}
+      {/* ── The method ────────────────────────────────────────────
+          Owned by the nearest projected month. The others carry a short
+          summary and a link, which is the same ownership rule the rest of
+          this build applies — and the thing that brought three near-identical
+          pages down to genuinely separate ones. ──────────────────────── */}
       <section id="method" className="scroll-mt-24 py-10 sm:py-12">
         <Container>
           <div className="mx-auto max-w-[800px]">
             <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
-              The method, stated
+              {isMethodOwner ? "The method, stated" : "Where these ranges come from"}
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-600">
-              Every prediction page we checked asserts movement without stating
-              a basis. Here is ours, and it is derived in code from the snapshot
-              archive rather than typed into copy, so it cannot quietly go stale.
-            </p>
-            <div className="overflow-x-auto">
-              <div className="min-w-[520px]">
-                <ProjectionMethodDiagram targetMonth={bulletinMonth} />
-              </div>
-            </div>
+            {isMethodOwner ? (
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  Every prediction page we checked asserts movement without
+                  stating a basis. Here is ours, and it is derived in code from
+                  the snapshot archive rather than typed into copy, so it cannot
+                  quietly go stale.
+                </p>
+                <div className="overflow-x-auto">
+                  <div className="min-w-[520px]">
+                    <ProjectionMethodDiagram targetMonth={bulletinMonth} />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                Trailing {WINDOW} published bulletins, with every month the
+                category was Current or Unavailable excluded because those are
+                states rather than dates. The floor of each range is no
+                movement; the ceiling applies the 75th-percentile observed
+                advance across the horizon and holds it at the bulletin&rsquo;s
+                own month.{" "}
+                {methodOwner && (
+                  <Link href={monthPath(methodOwner)} className="font-semibold text-brand-600 underline">
+                    The {monthLabel(methodOwner)} page sets the method out in
+                    full
+                  </Link>
+                )}
+                , including a worked example and why the floor is what it is.
+                The per-row basis for {label} is below.
+              </p>
+            )}
 
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[700px] border-collapse text-sm">
@@ -470,6 +559,7 @@ export default function ProjectedMonthPage({
               <p className="mt-2 text-sm leading-relaxed text-ink-600">{stage.note}</p>
             </div>
 
+            {isMethodOwner && (
             <div className="mt-4 rounded-2xl border border-ink-900/5 bg-ink-900/[0.02] p-5">
               <p className="text-sm font-bold text-ink-900">
                 What the projection is NOT anchored on
@@ -489,6 +579,7 @@ export default function ProjectedMonthPage({
                 has the statutory arithmetic.
               </p>
             </div>
+            )}
           </div>
         </Container>
       </section>
@@ -504,37 +595,64 @@ export default function ProjectedMonthPage({
               <p className="text-sm font-bold text-ink-900">
                 Nobody knows yet, including us
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                USCIS decides month by month whether adjustment-of-status
-                applicants may use the Dates for Filing chart or must use Final
-                Action Dates, and it publishes that determination separately from
-                the bulletin. The determination this site tracks covers{" "}
-                <strong>{chart.determinationMonthLabel}</strong>, where the
-                answer is: {chart.label}. That is a different month from{" "}
-                {label}, and asserting it for {label} is exactly the mistake that
-                gets an I-485 rejected rather than held. Confirm at{" "}
-                <a
-                  href="https://www.uscis.gov/visabulletininfo"
-                  target="_blank"
-                  rel="nofollow noopener"
-                  className="text-brand-600 underline"
-                >
-                  uscis.gov/visabulletininfo
-                </a>{" "}
-                before you file.
-              </p>
-              <p className="mt-2.5 text-sm leading-relaxed text-ink-600">
-                The determination can also differ between employment-based and
-                family-sponsored cases in the same month, which is a second
-                reason not to read one answer off the other.{" "}
-                <Link
-                  href="/visa-bulletin/final-action-date-vs-date-of-filing"
-                  className="text-brand-600 underline"
-                >
-                  Final action dates versus dates for filing
-                </Link>{" "}
-                explains what the two charts control.
-              </p>
+              {isMethodOwner ? (
+                <>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                    USCIS decides month by month whether adjustment-of-status
+                    applicants may use the Dates for Filing chart or must use
+                    Final Action Dates, and it publishes that determination
+                    separately from the bulletin. The determination this site
+                    tracks covers{" "}
+                    <strong>{chart.determinationMonthLabel}</strong>, where the
+                    answer is: {chart.label}. That is a different month from{" "}
+                    {label}, and asserting it for {label} is exactly the mistake
+                    that gets an I-485 rejected rather than held. Confirm at{" "}
+                    <a
+                      href="https://www.uscis.gov/visabulletininfo"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="text-brand-600 underline"
+                    >
+                      uscis.gov/visabulletininfo
+                    </a>{" "}
+                    before you file.
+                  </p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-ink-600">
+                    The determination can also differ between employment-based
+                    and family-sponsored cases in the same month, which is a
+                    second reason not to read one answer off the other.{" "}
+                    <Link
+                      href="/visa-bulletin/final-action-date-vs-date-of-filing"
+                      className="text-brand-600 underline"
+                    >
+                      Final action dates versus dates for filing
+                    </Link>{" "}
+                    explains what the two charts control.
+                  </p>
+                </>
+              ) : (
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  The determination this site tracks covers{" "}
+                  <strong>{chart.determinationMonthLabel}</strong> &mdash; not{" "}
+                  {label}. Check{" "}
+                  <a
+                    href="https://www.uscis.gov/visabulletininfo"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="text-brand-600 underline"
+                  >
+                    uscis.gov/visabulletininfo
+                  </a>{" "}
+                  before filing, and read{" "}
+                  <Link
+                    href="/visa-bulletin/final-action-date-vs-date-of-filing"
+                    className="text-brand-600 underline"
+                  >
+                    what the two charts control
+                  </Link>
+                  .
+                </p>
+              )}
             </div>
           </div>
         </Container>
@@ -601,6 +719,130 @@ export default function ProjectedMonthPage({
         </Container>
       </section>
 
+      {/* ── What is specific about THIS month ─────────────────── */}
+      <section id="this-month" className="scroll-mt-24 border-t border-ink-900/5 bg-white py-12 sm:py-16">
+        <Container>
+          <div className="mx-auto max-w-[760px] space-y-8 text-[0.975rem] leading-relaxed text-ink-700">
+            <div>
+              <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
+                What is specific about a {same.monthName} bulletin
+              </h2>
+              {character && <p className="mt-3">{character.whatIsDifferent}</p>}
+              <p className="mt-3">
+                That is not a forecast, it is a base rate, and it is the part of
+                this page that could not be written about any other month. The
+                three India EB categories have behaved differently in a{" "}
+                {same.monthName} too, so here is each of them across every{" "}
+                {same.monthName} in the archive:
+              </p>
+              <ul className="mt-3 space-y-2">
+                {sameMonthByCategory.map((h) => (
+                  <li
+                    key={h.category}
+                    className="rounded-xl border border-ink-900/10 bg-white px-4 py-3"
+                  >
+                    <p className="text-sm font-bold text-ink-900">
+                      {h.label} India in a {same.monthName}
+                    </p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-ink-600">
+                      {h.history.summary}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <div className="overflow-x-auto">
+                <div className="min-w-[480px]">
+                  <SameMonthHistoryChart targetMonth={bulletinMonth} />
+                </div>
+              </div>
+              {sameMonthByCategory.map((h) => (
+              <div key={h.category} className="mt-4 overflow-x-auto">
+                <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-ink-500">
+                  {h.label} India &mdash; final action, every {same.monthName}
+                </p>
+                <table className="w-full min-w-[620px] border-collapse text-sm">
+                  <caption className="sr-only">
+                    Every {same.monthName} in the archive, and what the India{" "}
+                    {h.label} final action date did in it
+                  </caption>
+                  <thead>
+                    <tr className="border-b border-ink-900/10 text-left">
+                      <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                        {same.monthName}
+                      </th>
+                      <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                        From
+                      </th>
+                      <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                        To
+                      </th>
+                      <th scope="col" className="py-2 font-bold text-ink-900">
+                        What happened
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-ink-600">
+                    {h.history.events.map((e) => (
+                      <tr key={e.month} className="border-b border-ink-900/5 align-top">
+                        <th scope="row" className="py-2.5 pr-3 text-left font-semibold text-ink-800">
+                          {same.monthName} {e.year}
+                        </th>
+                        <td className="py-2.5 pr-3 whitespace-nowrap">{formatCutoff(e.from)}</td>
+                        <td className="py-2.5 pr-3 whitespace-nowrap">{formatCutoff(e.to)}</td>
+                        <td
+                          className={`py-2.5 font-medium ${
+                            e.kind === "advanced"
+                              ? "text-emerald-700"
+                              : e.kind === "retrogressed"
+                                ? "text-rose-700"
+                                : e.kind === "state-change"
+                                  ? "text-amber-700"
+                                  : "text-ink-500"
+                          }`}
+                        >
+                          {e.label}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              ))}
+              <p className="mt-3 text-xs text-ink-400">
+                Final action dates only, one row per year in the archive.
+                Source: the snapshot archive in <code>data/visa-bulletin/</code>,
+                derived cell by cell from the official Department of State
+                bulletins. A month the category was Current or Unavailable is
+                shown as a state change rather than as a number of days.
+                {sameMonthByCategory.some((h) => h.history.hasOutlier) &&
+                  " At least one advance in this window was a one-off reset of more than a year rather than a pace — read the medians with that in mind."}
+              </p>
+            </div>
+
+            {character && (
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-5">
+                  <p className="text-sm font-bold text-ink-900">
+                    What to do in {label}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                    {character.whatToDo}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                  <p className="text-sm font-bold text-ink-900">
+                    How much weight this projection deserves
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                    {character.horizonNote}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </Container>
+      </section>
+
       {/* ── What it means for you ─────────────────────────────── */}
       <section className="bg-ink-900/[0.02] py-12 sm:py-16">
         <Container>
@@ -612,7 +854,9 @@ export default function ProjectedMonthPage({
               <p className="mt-3">
                 Four worked cases against the ranges above. Each one assumes the
                 projection lands somewhere inside its band, which is an
-                assumption and not a forecast.
+                assumption and not a forecast &mdash; and the weight that
+                assumption deserves in {label} specifically is{" "}
+                {character ? character.horizonNote.charAt(0).toLowerCase() + character.horizonNote.slice(1) : "set out above."}
               </p>
               <div className="mt-4 overflow-x-auto">
                 <table className="w-full min-w-[720px] border-collapse text-sm">
@@ -650,7 +894,9 @@ export default function ProjectedMonthPage({
                               pick("eb2").fad.low,
                             )} and the ceiling ${formatCutoff(pick("eb2").fad.high)}.`
                           : "Not projectable this month.",
-                        d: "Have the medical, the documents and the attorney engagement ready now rather than when the bulletin lands. A month of movement is a month, and the window between a date becoming current and a chart changing again is not under your control.",
+                        d: character
+                          ? character.whatToDo
+                          : "Have the medical, the documents and the attorney engagement ready now rather than when the bulletin lands.",
                       },
                       {
                         s: "EB-3 India, considering a downgrade from EB-2",
@@ -682,6 +928,7 @@ export default function ProjectedMonthPage({
               </div>
             </div>
 
+            {isMethodOwner && (
             <div>
               <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
                 The explainers, which this page deliberately does not repeat
@@ -715,6 +962,7 @@ export default function ProjectedMonthPage({
                 ))}
               </ul>
             </div>
+            )}
 
             <div>
               <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">

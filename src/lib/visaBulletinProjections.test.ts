@@ -14,8 +14,15 @@ import {
   projectedMonthSlugs,
   projectionTable,
   readSeries,
+  monthCharacter,
+  sameMonthHistory,
+  NOINDEX_REASON,
+  indexableProjectedMonths,
+  isIndexableProjectedMonth,
+  methodOwnerMonth,
+  ownsMethod,
 } from "./visaBulletinProjections";
-import { PUBLISHED_MONTHS, monthSlug, slugToMonth } from "./visaBulletinMonths";
+import { PUBLISHED_MONTHS, monthPath, monthSlug, slugToMonth } from "./visaBulletinMonths";
 
 describe("status lists cannot contradict each other", () => {
   // The flip from projected to official is a data edit. If someone adds a
@@ -269,5 +276,116 @@ describe("page copy honesty", () => {
   it("never asserts a USCIS chart determination in projected copy", () => {
     const blob = PROJECTED_MONTHS.map((m) => JSON.stringify(indiaEbProjections(m))).join(" ");
     expect(blob).not.toMatch(/USCIS (is accepting|accepts|will accept)/i);
+  });
+});
+
+describe("the three projected months are not the same page", () => {
+  // The first build of these pages shared 81% of their 7-word shingles,
+  // because three months rendered from one component differ only in a name.
+  // These assertions lock in the per-month content that fixed it.
+  it("gives each calendar month its own character text", () => {
+    const texts = PROJECTED_MONTHS.map((m) => monthCharacter(m));
+    for (const c of texts) {
+      expect(c).toBeDefined();
+      expect(c!.whatIsDifferent.length).toBeGreaterThan(200);
+      expect(c!.whatToDo.length).toBeGreaterThan(120);
+      expect(c!.horizonNote.length).toBeGreaterThan(100);
+    }
+    // All three fields distinct across all three months.
+    for (const field of ["whatIsDifferent", "whatToDo", "horizonNote"] as const) {
+      const values = texts.map((c) => c![field]);
+      expect(new Set(values).size, `${field} is templated`).toBe(values.length);
+    }
+  });
+
+  it("reads a real same-calendar-month history for each", () => {
+    for (const m of PROJECTED_MONTHS) {
+      const h = sameMonthHistory(m);
+      expect(h.events.length, `no ${h.monthName} history`).toBeGreaterThan(2);
+      expect(h.summary).toContain(h.monthName);
+    }
+  });
+
+  it("finds the per-month difference the archive actually shows", () => {
+    // November has been the quiet month and December the one that moves —
+    // the asymmetry these pages are built on. If the archive ever stops
+    // showing it, the prose in MONTH_CHARACTER is no longer true and this
+    // test is the thing that says so.
+    const nov = sameMonthHistory("2026-11");
+    const dec = sameMonthHistory("2026-12");
+    const jan = sameMonthHistory("2027-01");
+    expect(nov.advanced + nov.retrogressed).toBeLessThan(
+      dec.advanced + dec.retrogressed,
+    );
+    expect(jan.advanced).toBeGreaterThan(nov.advanced);
+    // December is the only one of the three with a reversal in the window.
+    expect(dec.retrogressed).toBeGreaterThan(0);
+    expect(nov.retrogressed).toBe(0);
+    expect(jan.retrogressed).toBe(0);
+  });
+
+  it("excludes C and U from the day arithmetic here too", () => {
+    for (const m of PROJECTED_MONTHS) {
+      for (const e of sameMonthHistory(m).events) {
+        if (e.kind === "state-change") {
+          expect(e.days).toBeNull();
+        } else {
+          expect(e.days).not.toBeNull();
+          expect(Math.abs(e.days as number)).toBeLessThan(1000);
+        }
+      }
+    }
+  });
+
+  it("produces a different summary sentence per month", () => {
+    const summaries = PROJECTED_MONTHS.map((m) => sameMonthHistory(m).summary);
+    expect(new Set(summaries).size).toBe(summaries.length);
+  });
+});
+
+describe("indexability of projected months", () => {
+  it("indexes the nearest projected month and no other", () => {
+    const indexable = indexableProjectedMonths();
+    expect(indexable).toHaveLength(1);
+    expect(indexable[0]).toBe(PROJECTED_MONTHS.slice().sort()[0]);
+  });
+
+  it("agrees with ownsMethod, so one flag drives both", () => {
+    for (const m of PROJECTED_MONTHS) {
+      expect(isIndexableProjectedMonth(m)).toBe(ownsMethod(m));
+    }
+  });
+
+  it("keeps the noindex months out of the sitemap", async () => {
+    const sitemap = await import("./sitemap-data");
+    const paths = Object.values(sitemap)
+      .filter((v): v is { path: string }[] => Array.isArray(v))
+      .flat()
+      .map((e) => e?.path);
+    for (const m of PROJECTED_MONTHS) {
+      const p = monthPath(m);
+      if (isIndexableProjectedMonth(m)) {
+        expect(paths, `${p} should be in a sitemap`).toContain(p);
+      } else {
+        // The rule at the top of sitemap-data.ts: never submit a noindex URL.
+        expect(paths, `${p} is noindex and must not be in a sitemap`).not.toContain(p);
+      }
+    }
+  });
+
+  it("keeps the noindex months out of the search index too", async () => {
+    const { searchIndex } = await import("./searchIndex");
+    const hrefs = searchIndex.map((i) => i.href);
+    for (const m of PROJECTED_MONTHS) {
+      const p = monthPath(m);
+      if (!isIndexableProjectedMonth(m)) {
+        expect(hrefs, `${p} is noindex and must not be a search result`).not.toContain(p);
+      }
+    }
+  });
+
+  it("states the reason in words, not only in a meta tag", () => {
+    expect(NOINDEX_REASON).toMatch(/not submitted for indexing/i);
+    expect(NOINDEX_REASON).toMatch(/URL does not change/i);
   });
 });

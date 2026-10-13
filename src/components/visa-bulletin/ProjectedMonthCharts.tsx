@@ -24,6 +24,7 @@ import {
   WINDOW,
   projectCutoff,
   readSeries,
+  sameMonthHistory,
   type Chart,
 } from "@/lib/visaBulletinProjections";
 import { monthLabel } from "@/lib/visaBulletinMonths";
@@ -402,6 +403,118 @@ export function ProjectionMethodDiagram({ targetMonth }: { targetMonth: string }
         assumption. The ceiling is held at the bulletin&rsquo;s own month: a
         cutoff that reaches the present means there is no queue left, which the
         bulletin prints as C rather than as a future date.
+      </figcaption>
+    </figure>
+  );
+}
+
+/**
+ * What this CALENDAR month has actually done, across every year in the
+ * archive. The figure that makes a November page about November.
+ */
+export function SameMonthHistoryChart({ targetMonth }: { targetMonth: string }) {
+  const h = sameMonthHistory(targetMonth);
+  if (h.events.length === 0) {
+    return (
+      <p className="mt-4 text-sm text-ink-400">
+        The archive holds no comparable {h.monthName} for this row.
+      </p>
+    );
+  }
+
+  const W = 720;
+  const rowH = 44;
+  const H = 70 + h.events.length * rowH;
+  const m = { left: 70, right: 24 };
+  const plotW = W - m.left - m.right;
+  const mid = m.left + plotW * 0.42;
+
+  const maxAbs = Math.max(
+    30,
+    ...h.events.map((e) => Math.abs(e.days ?? 0)),
+  );
+  const scale = (days: number) => (days / maxAbs) * (plotW * 0.5);
+
+  return (
+    <figure className="mt-4">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label={`Chart of what the India EB-2 final action date did in every ${h.monthName} in the archive. ${h.events
+          .map((e) => `${e.year}: ${e.label}`)
+          .join("; ")}. ${h.summary}`}
+        className="h-auto w-full"
+      >
+        <line x1={mid} y1={30} x2={mid} y2={H - 34} stroke="#cbd5e1" strokeWidth="1.5" />
+        <text x={mid} y={22} textAnchor="middle" fontSize="10.5" fill="#94a3b8">
+          no movement
+        </text>
+        <text x={mid - 60} y={22} textAnchor="end" fontSize="10.5" fill="#e11d48">
+          ← backwards
+        </text>
+        <text x={mid + 60} y={22} fontSize="10.5" fill="#059669">
+          forwards →
+        </text>
+
+        {h.events.map((e, i) => {
+          const y = 42 + i * rowH;
+          const d = e.days ?? 0;
+          const w = Math.abs(scale(d));
+          const forward = d > 0;
+          return (
+            <g key={e.month}>
+              <text x={16} y={y + 18} fontSize="12.5" fontWeight="700" fill="#0f172a">
+                {h.monthName.slice(0, 3)} {e.year}
+              </text>
+              {e.kind === "static" ? (
+                <>
+                  <circle cx={mid} cy={y + 13} r="5" fill="#94a3b8" />
+                  <text x={mid + 14} y={y + 18} fontSize="11.5" fill="#64748b">
+                    no movement
+                  </text>
+                </>
+              ) : e.kind === "state-change" ? (
+                <>
+                  <rect x={mid - 4} y={y + 3} width={8} height={20} rx="2" fill="#f59e0b" />
+                  <text x={mid + 14} y={y + 18} fontSize="11.5" fill="#92400e">
+                    {e.label}
+                  </text>
+                </>
+              ) : (
+                <>
+                  <rect
+                    x={forward ? mid : mid - w}
+                    y={y + 4}
+                    width={Math.max(2, w)}
+                    height={18}
+                    rx="3"
+                    fill={forward ? "#059669" : "#e11d48"}
+                  />
+                  <text
+                    x={forward ? mid + w + 8 : mid - w - 8}
+                    y={y + 18}
+                    textAnchor={forward ? "start" : "end"}
+                    fontSize="11.5"
+                    fontWeight="700"
+                    fill="#0f172a"
+                  >
+                    {Math.abs(d)} days
+                  </text>
+                </>
+              )}
+            </g>
+          );
+        })}
+        <text x={16} y={H - 12} fontSize="10.5" fill="#94a3b8">
+          India EB-2 final action, {h.monthName} only, one row per year in the archive.
+        </text>
+      </svg>
+      <figcaption className="mt-2 text-xs leading-relaxed text-ink-400">
+        {h.summary} Built from the snapshot archive in{" "}
+        <code>data/visa-bulletin/</code>, derived from the official Department of
+        State bulletins. Months the category was Current or Unavailable are shown
+        as state changes rather than as a number of days, because they are states
+        and not dates.
       </figcaption>
     </figure>
   );

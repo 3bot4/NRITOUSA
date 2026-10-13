@@ -52,8 +52,8 @@ import {
   VB_OCT_2026_UPDATED,
 } from "@/lib/visaBulletinOctober2026";
 import {
-  PROJECTED_MONTHS,
   VB_PROJECTION_PUBLISHED,
+  indexableProjectedMonths,
 } from "@/lib/visaBulletinProjections";
 import { monthLabel, monthPath } from "@/lib/visaBulletinMonths";
 import { O1_PUBLISHED, O1_UPDATED } from "@/data/o1VisaData";
@@ -195,7 +195,9 @@ const STANDALONE: Omit<PageDates, "lastChecked">[] = [
   // cannot read as though the bulletin had been published. The date is the
   // projection's own committed constant — never a clock, which
   // latestUpdates.test.ts enforces site-wide.
-  ...PROJECTED_MONTHS.map((m) => ({
+  // Indexable months only — the homepage feed should not advertise a page we
+  // have asked Google not to index.
+  ...indexableProjectedMonths().map((m) => ({
     path: monthPath(m),
     title: `${monthLabel(m)} Visa Bulletin — projection`,
     kind: "guide" as const,

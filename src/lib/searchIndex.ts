@@ -59,7 +59,7 @@ import { getPublishedStories } from "@/lib/successStories";
 import type { ClusterLink } from "@/lib/permCluster";
 import { liveTopics } from "@/lib/topics";
 import { PUBLISHED_MONTHS, monthLabel, monthPath } from "@/lib/visaBulletinMonths";
-import { PROJECTED_MONTHS } from "@/lib/visaBulletinProjections";
+import { indexableProjectedMonths } from "@/lib/visaBulletinProjections";
 import { states } from "@/data/indianPopulationData";
 
 /** Content-type badge shown on each search result. */
@@ -876,7 +876,11 @@ const CURATED: SearchItem[] = [
   // PROJECTED months. The title says so: a search result that read the same as
   // a published month would undo the labelling the page itself is careful
   // about. Priority sits below a published month for the same reason.
-  ...PROJECTED_MONTHS.map((m) => ({
+  // Only the indexable projected month. searchIndex.coverage.test.ts asserts
+  // this index and the sitemap agree in BOTH directions, so a noindex month
+  // listed here would be an orphan result pointing at a page we have asked
+  // Google not to index.
+  ...indexableProjectedMonths().map((m) => ({
     title: `${monthLabel(m)} Visa Bulletin — projection`,
     description: `Projected India EB-1, EB-2 and EB-3 ranges for ${monthLabel(
       m

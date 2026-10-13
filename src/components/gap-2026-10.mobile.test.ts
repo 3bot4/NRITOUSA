@@ -335,3 +335,25 @@ describe("the coverage lists cannot drift", () => {
     }
   });
 });
+
+describe("the projected months' robots directives", () => {
+  // A silent bug this build shipped once: `robots` was passed INTO
+  // pageMetadata, which does not accept it, and an object spread inside a call
+  // argument disables excess-property checking — so all three months went out
+  // as index, follow. It has to be applied to the returned metadata.
+  it("applies robots to the returned metadata, not to pageMetadata's options", () => {
+    const src = read("app/visa-bulletin/[slug]/page.tsx");
+    // The fixed shape: build the metadata, then spread it with robots.
+    expect(src).toMatch(/const meta = pageMetadata\(\{/);
+    expect(src).toMatch(/\.\.\.meta,\s*\n\s*robots: \{/);
+    // And the broken shape must not come back.
+    const badSpread = /pageMetadata\(\{[\s\S]*?\.\.\.\([^)]*robots/;
+    expect(src, "robots passed into pageMetadata again").not.toMatch(badSpread);
+  });
+
+  it("drives index and noindex from one predicate", () => {
+    const src = read("app/visa-bulletin/[slug]/page.tsx");
+    expect(src).toContain("isIndexableProjectedMonth");
+    expect(src).toContain("follow: true");
+  });
+});

@@ -46,8 +46,8 @@ import { greenCardChildPages } from "@/lib/greenCardCluster";
 import { visaBulletinChildPages } from "@/lib/visaBulletinCluster";
 import { PUBLISHED_MONTHS, monthPath } from "@/lib/visaBulletinMonths";
 import {
-  PROJECTED_MONTHS,
   VB_PROJECTION_PUBLISHED,
+  indexableProjectedMonths,
 } from "@/lib/visaBulletinProjections";
 import { O1_UPDATED } from "@/data/o1VisaData";
 import { L1_UPDATED } from "@/data/l1VisaData";
@@ -279,13 +279,19 @@ export const immigrationEntries: SitemapEntry[] = [
   ...PUBLISHED_MONTHS.map((m) =>
     e(monthPath(m), 0.9, "monthly", new Date(`${m}-01`)),
   ),
-  // PROJECTED month pages, at the same clean month URLs. These are legitimate,
-  // clearly-labelled forecast pages at their permanent address — a page becomes
-  // the official bulletin page for that month, at this same URL, on release, so
-  // the sitemap entry never has to move. Priority is lower than a published
-  // month deliberately: a projection is a weaker document than a bulletin.
-  // lastmod is the projection's own published constant, never the build clock.
-  ...PROJECTED_MONTHS.map((m) =>
+  // PROJECTED month pages, at the same clean month URLs. A page becomes the
+  // official bulletin page for that month, at this same URL, on release, so the
+  // sitemap entry never has to move. Priority is lower than a published month
+  // deliberately: a projection is a weaker document than a bulletin, and lastmod
+  // is the projection's own committed constant rather than the build clock.
+  //
+  // Only the INDEXABLE projected month is listed. The further-horizon months
+  // carry robots noindex (see isIndexableProjectedMonth), and the rule at the
+  // top of this file is that a noindex URL must never appear in a sitemap — the
+  // two decisions have to agree. They are still linked from the hub and the
+  // month index, and they join the sitemap automatically as the horizon
+  // shortens.
+  ...indexableProjectedMonths().map((m) =>
     e(monthPath(m), 0.7, "weekly", new Date(VB_PROJECTION_PUBLISHED)),
   ),
   e("/h1b", 0.9, "weekly", immDate),

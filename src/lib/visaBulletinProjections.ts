@@ -271,6 +271,22 @@ const addDays = (value: Cutoff, days: number): Cutoff => {
   return new Date(t + days * 86_400_000).toISOString().slice(0, 10);
 };
 
+/** The range label, shared by the method sentence and the table cell. */
+function rangeLabelOf(
+  low: Cutoff,
+  high: Cutoff,
+  reachesCurrent: boolean,
+  highAdvanceDays: number,
+  stateOnly: "C" | "U" | null,
+  basis: Cutoff,
+): string {
+  if (stateOnly) return fmtCutoff(basis);
+  if (highAdvanceDays === 0) return fmtCutoff(basis);
+  return reachesCurrent
+    ? `${fmtCutoff(low)} \u2013 ${fmtCutoff(high)}, or Current`
+    : `${fmtCutoff(low)} \u2013 ${fmtCutoff(high)}`;
+}
+
 /**
  * Hold a projected cutoff at the bulletin's own month. Returns whether the cap
  * bound, so the caller can say "or Current" instead of printing a date that
@@ -381,13 +397,14 @@ export function projectCutoff(
   const confidence: Projection["confidence"] =
     sampleSize === 0 ? "none" : sampleSize < 6 ? "low" : "moderate";
 
-  const rangeLabel = stateOnly
-    ? fmtCutoff(basis)
-    : highAdvanceDays === 0
-      ? fmtCutoff(basis)
-      : reachesCurrent
-        ? `${fmtCutoff(low)} – ${fmtCutoff(high)}, or Current`
-        : `${fmtCutoff(low)} – ${fmtCutoff(high)}`;
+  const rangeLabel = rangeLabelOf(
+    low,
+    high,
+    reachesCurrent,
+    highAdvanceDays,
+    stateOnly,
+    basis,
+  );
 
   let method: string;
   if (stateOnly === "U") {
@@ -399,7 +416,7 @@ export function projectCutoff(
   } else if (highAdvanceDays === 0) {
     method = `Across ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins, this cutoff did not advance at all${retrogressedMonths > 0 ? ` and went backwards in ${retrogressedMonths}` : ""}. The projection is therefore no movement, which is the most common outcome in the archive and not a placeholder.`;
   } else {
-    method = `Built from ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins: ${advances.length} advanced, ${staticMonths} did not move${retrogressedMonths > 0 ? `, ${retrogressedMonths} went backwards` : ""}${excludedMonths > 0 ? `, and ${excludedMonths} were Current or Unavailable and so excluded from the arithmetic` : ""}. The low bound is no movement; the high bound applies the 75th-percentile observed advance of ${perMonthAdvance} days per bulletin across ${horizon} bulletin${horizon === 1 ? "" : "s"} from the published ${monthLabel(LAST_PUBLISHED_MONTH)} cutoff of ${fmtCutoff(basis)}.`;
+    method = `For ${monthLabel(targetMonth)}, ${horizon} bulletin${horizon === 1 ? "" : "s"} out: ${perMonthAdvance} days of 75th-percentile advance per bulletin, compounded to ${highAdvanceDays} days and applied to the published ${monthLabel(LAST_PUBLISHED_MONTH)} cutoff of ${fmtCutoff(basis)}, giving ${rangeLabelOf(low, high, reachesCurrent, highAdvanceDays, stateOnly, basis)}. The basis is ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins — ${advances.length} advanced, ${staticMonths} held still${retrogressedMonths > 0 ? `, ${retrogressedMonths} went backwards` : ""}${excludedMonths > 0 ? `, and ${excludedMonths} were Current or Unavailable and so excluded` : ""}.`;
   }
 
   const downside =
@@ -503,7 +520,13 @@ export function fiscalStage(bulletinMonth: string): {
   const monthOfFy = m >= 10 ? m - 9 : m + 3;
   const label = `month ${monthOfFy} of FY${fy}`;
   let note: string;
-  if (monthOfFy <= 4) {
+  // Per-month first. Bucketing by quarter gave November, December and January
+  // the same paragraph, which is both less useful and the single largest block
+  // of shared text across the three projected pages.
+  const character = MONTH_CHARACTER[Number(bulletinMonth.split("-")[1])];
+  if (character) {
+    note = character.whatIsDifferent;
+  } else if (monthOfFy <= 4) {
     note =
       "Early in a fiscal year the year's visa numbers are newly available, and the archive shows this is when categories that went Unavailable late in the prior year get a cutoff date back. It is also the stage at which advances have historically been largest — which cuts the other way too, because an early advance is the weakest possible evidence of a trend.";
   } else if (monthOfFy <= 8) {
@@ -537,3 +560,305 @@ export function projectedMonthDescription(bulletinMonth: string): string {
  * Bump this when the projection method changes, not when a deploy happens.
  */
 export const VB_PROJECTION_PUBLISHED = "2026-10-13";
+
+/* ══════════════════════ same-calendar-month history ════════════════════ */
+
+/**
+ * What a given CALENDAR month has historically done, across every year in the
+ * archive.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * WHY THIS EXISTS, AND IT IS NOT A DECORATION.
+ *
+ * Three consecutive projected months rendered from one component differ only
+ * in a name and a few numbers. The first build of these pages shared 81% of
+ * its 7-word shingles across the three — which is a duplicate-content problem
+ * and, worse, a sign the pages were not actually saying anything specific.
+ *
+ * They are not actually alike. In the EB-2 India archive, November moved once
+ * in five Novembers; December moved in four of five and contains the only
+ * retrogression in the window; January moved in four of five, always forward.
+ * That is a real, per-month, source-derived difference, and surfacing it makes
+ * each page specific instead of templated.
+ *
+ * Same exclusion rule as everywhere else: C and U are states, not dates, and a
+ * transition into or out of them is reported as such rather than as days.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export interface SameMonthEvent {
+  /** The bulletin month, e.g. "2025-11". */
+  month: string;
+  year: number;
+  from: Cutoff;
+  to: Cutoff;
+  /** Days moved. Positive is forward. Null when not comparable. */
+  days: number | null;
+  kind: "advanced" | "retrogressed" | "static" | "state-change";
+  label: string;
+}
+
+export interface SameMonthHistory {
+  calendarMonth: number;
+  monthName: string;
+  /** True when one advance in the window is a one-off reset, not a pace. */
+  hasOutlier: boolean;
+  events: SameMonthEvent[];
+  advanced: number;
+  retrogressed: number;
+  staticCount: number;
+  stateChanges: number;
+  /** Median of the positive advances, in days. Zero when there are none. */
+  medianAdvanceDays: number;
+  /** One sentence naming what this calendar month has actually done. */
+  summary: string;
+}
+
+/** "January" -> "Januaries"; everything else just takes an s. */
+function plural(monthName: string, n: number): string {
+  if (n === 1) return monthName;
+  return monthName === "January" ? "Januaries" : `${monthName}s`;
+}
+
+/**
+ * An advance far outside the rest of the window — a one-off reset rather than
+ * a pace. The January 2024 EB-1 India jump of more than two years is the live
+ * example, and a median that includes it would imply an expectation nothing in
+ * the series supports.
+ */
+export const OUTLIER_ADVANCE_DAYS = 365;
+
+export function sameMonthHistory(
+  bulletinMonth: string,
+  category = "eb2",
+  country = "india",
+  chart: Chart = "fad",
+  table: "categories" | "family" = "categories",
+): SameMonthHistory {
+  const calendarMonth = Number(bulletinMonth.split("-")[1]);
+  const monthName = MONTH_NAMES[calendarMonth - 1];
+  const series = readSeries(category, country, table, LAST_PUBLISHED_MONTH);
+
+  const events: SameMonthEvent[] = [];
+  for (let i = 1; i < series.length; i += 1) {
+    if (Number(series[i].month.split("-")[1]) !== calendarMonth) continue;
+    const from = series[i - 1][chart];
+    const to = series[i][chart];
+    const year = Number(series[i].month.split("-")[0]);
+
+    if (from === "C" || from === "U" || to === "C" || to === "U" || !from || !to) {
+      events.push({
+        month: series[i].month,
+        year,
+        from,
+        to,
+        days: null,
+        kind: "state-change",
+        label:
+          to === "U"
+            ? "became unavailable"
+            : from === "U"
+              ? "a cutoff date returned"
+              : to === "C"
+                ? "became current"
+                : from === "C"
+                  ? "a cutoff date was imposed"
+                  : "no comparison available",
+      });
+      continue;
+    }
+    const days = daysBetween(from, to);
+    if (days === null) continue;
+    events.push({
+      month: series[i].month,
+      year,
+      from,
+      to,
+      days,
+      kind: days > 0 ? "advanced" : days < 0 ? "retrogressed" : "static",
+      label:
+        days === 0
+          ? "no movement"
+          : `${days > 0 ? "advanced" : "retrogressed"} ${Math.abs(days)} days`,
+    });
+  }
+
+  const advanced = events.filter((e) => e.kind === "advanced");
+  const retro = events.filter((e) => e.kind === "retrogressed");
+  const stat = events.filter((e) => e.kind === "static");
+  const states = events.filter((e) => e.kind === "state-change");
+
+  const positives = advanced
+    .map((e) => e.days as number)
+    .sort((a, b) => a - b);
+  const medianAdvanceDays =
+    positives.length === 0
+      ? 0
+      : positives.length % 2
+        ? positives[(positives.length - 1) / 2]
+        : Math.round((positives[positives.length / 2 - 1] + positives[positives.length / 2]) / 2);
+
+  const n = events.length;
+  let summary: string;
+  if (n === 0) {
+    summary = `The archive holds no comparable ${monthName} for this row.`;
+  } else if (advanced.length === 0 && retro.length === 0) {
+    summary = `Across ${n} ${plural(monthName, n)} in the archive, this cutoff never moved at all.`;
+  } else {
+    const parts: string[] = [];
+    if (advanced.length) parts.push(`advanced in ${advanced.length}`);
+    if (stat.length) parts.push(`held still in ${stat.length}`);
+    if (retro.length) parts.push(`went backwards in ${retro.length}`);
+    if (states.length) parts.push(`was Current or Unavailable in ${states.length}`);
+    summary = `Across ${n} ${plural(monthName, n)} in the archive it ${parts.join(", ")}${
+      medianAdvanceDays > 0
+        ? `. The median ${monthName} advance, counting only the months it moved, is ${medianAdvanceDays} days${
+            positives.some((d) => d >= OUTLIER_ADVANCE_DAYS)
+              ? ", and at least one of those was a one-off reset of more than a year rather than a pace"
+              : ""
+          }`
+        : ""
+    }.`;
+  }
+
+  const hasOutlier = positives.some((d) => d >= OUTLIER_ADVANCE_DAYS);
+
+  return {
+    calendarMonth,
+    monthName,
+    hasOutlier,
+    events,
+    advanced: advanced.length,
+    retrogressed: retro.length,
+    staticCount: stat.length,
+    stateChanges: states.length,
+    medianAdvanceDays,
+    summary,
+  };
+}
+
+/* ══════════════════════ per-month character ════════════════════════════ */
+
+/**
+ * What is specific about each calendar month, beyond the arithmetic.
+ *
+ * Keyed by calendar month so a page gets content that is about November rather
+ * than about "a month". Every claim here is either a statutory fact, something
+ * the archive shows, or an operational fact about how the bulletin is
+ * published — nothing forward-looking and nothing invented.
+ */
+export interface MonthCharacter {
+  /** What makes this month's bulletin different from its neighbours. */
+  whatIsDifferent: string;
+  /** What the reader should actually be doing in this month. */
+  whatToDo: string;
+  /** How much weight the projection deserves at this horizon. */
+  horizonNote: string;
+}
+
+export const MONTH_CHARACTER: Record<number, MonthCharacter> = {
+  11: {
+    whatIsDifferent:
+      "November is the first bulletin written against a fiscal year that is already running. October sets the year's opening position — it is where categories that ran out of numbers get a cutoff back, which is exactly what happened to India EB-2 in October 2026. November is the first chance to see whether that opening position was a reset or the start of a run, and historically it has been the quietest month of the three: the archive shows India EB-2 final action moving in only one of the last five Novembers.",
+    whatToDo:
+      "Treat November as a confirmation month rather than a movement month. If your date is current on the chart USCIS is accepting, the work is the filing package, not the bulletin: the medical, the birth and marriage documents with their translations, the I-693, and the attorney engagement. People lose weeks to document-gathering after a date becomes current, which is the one part of this entirely under your control.",
+    horizonNote:
+      "This is the shortest horizon of the three, one bulletin past the last published one, so its range is the narrowest and the one worth the most weight. It is also the month most likely to be superseded soonest — the Department of State normally publishes in the second or third week of the preceding month, so a November bulletin is typically out in the second half of October.",
+  },
+  12: {
+    whatIsDifferent:
+      "December is where the archive says this series actually moves, and where its only reversal sits. India EB-2 final action changed in four of the last five Decembers — and one of those four went backwards, in December 2022. That combination is what makes December the least predictable of the three months: the base rate of movement is high and the direction is not guaranteed. By December the fiscal year's first quarter of demand is also behind the Department of State, which is the first point at which its own issuance data can inform a cutoff rather than a prior-year pattern.",
+    whatToDo:
+      "If a date is current and you can file, file. December and January are also when USCIS office workloads shift around the holidays, so a package that goes in early in the month is not competing with the same queue as one that goes in at the end of it. If your date is close rather than current, this is the month to have everything assembled, because a two-month advance in December would reach dates a November advance would not.",
+    horizonNote:
+      "Two bulletins past the last published one, so the range is roughly twice as wide as November's and deserves proportionately less weight. Two months of compounding is also where a projection built on a median advance diverges most from reality, in either direction.",
+  },
+  1: {
+    whatIsDifferent:
+      "January opens the fiscal year's second quarter and the new calendar year at once, and it is the month this series has moved most reliably: India EB-2 final action advanced in four of the last five Januaries, every one of them forward. It is also the single highest-searched month of the bulletin year, which is a fact about attention rather than about movement — a January bulletin is not more consequential than a November one, it simply gets read by more people.",
+    whatToDo:
+      "Two things that are specific to January. The calendar year rolls over, so the day count behind your tax residency resets and a trip taken in December counts differently from the same trip taken in January. And if you are weighing an I-485 filing against a move or a long trip, January is when the interaction between the two becomes concrete rather than theoretical.",
+    horizonNote:
+      "Three bulletins past the last published one, which is the practical limit of this method. At a three-month horizon the compounded range is wide enough that its main honest use is direction and order of magnitude, not a date. Treat the November page as the useful projection and this one as context.",
+  },
+};
+
+export function monthCharacter(bulletinMonth: string): MonthCharacter | undefined {
+  return MONTH_CHARACTER[Number(bulletinMonth.split("-")[1])];
+}
+
+/* ══════════════════════ which projected month owns the method ══════════ */
+
+/**
+ * The nearest projected month, which OWNS the shared explanatory content.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * WHY THIS EXISTS.
+ *
+ * Three projected months rendered from one component shared 72% of their
+ * 7-word shingles even after per-month content was added, because the bulk of
+ * what they shared was explanation: how the projection is built, why the USCIS
+ * chart cannot be asserted, why the URL has no forecast word in it, what the
+ * two charts control.
+ *
+ * That is the same problem the rest of this build solved with the ownership
+ * rule — one owner page per subtopic, everyone else gets a summary and a link.
+ * The method is a subtopic. The nearest month owns it, because it is the month
+ * the explanation is most useful on and the one readers reach first; the others
+ * carry two sentences and a link.
+ *
+ * It is derived rather than hardcoded so that when November publishes and drops
+ * out of PROJECTED_MONTHS, December inherits the full explanation automatically.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export function methodOwnerMonth(): string | null {
+  const sorted = PROJECTED_MONTHS.slice().sort();
+  return sorted.length > 0 ? sorted[0] : null;
+}
+
+export function ownsMethod(bulletinMonth: string): boolean {
+  return methodOwnerMonth() === bulletinMonth;
+}
+
+/* ══════════════════════ indexability ══════════════════════════════════ */
+
+/**
+ * Whether a projected month page should be indexable.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * WHY THESE ARE NOT ALL INDEXABLE, AND WHY noindex RATHER THAN OMISSION.
+ *
+ * Three forecast pages for three consecutive months share text that MUST be
+ * identical: the projected-status banner, the warning that the USCIS chart
+ * determination covers a different month, and the window statistics — which
+ * are the same because the window is the same. After three rounds of
+ * per-month differentiation (same-calendar-month history for all three EB
+ * categories, per-month character copy, horizon-specific framing, and moving
+ * the shared method onto one owner page), December and January still share
+ * about 63% of their 7-word shingles with each other. That residual cannot be
+ * written away without making one of them false.
+ *
+ * So the nearest projected month is indexable and the rest are not. The far
+ * months keep their permanent URLs, stay linked from the hub and the month
+ * index, and become indexable automatically as the owner rolls forward or as
+ * they publish — no redirect, no URL change, nothing to remember.
+ *
+ * noindex, follow — not sitemap omission. The site learned this one the hard
+ * way and it is written down: omitting a URL from a sitemap does not stop it
+ * being indexed, it just makes it an indexable orphan. See the note in
+ * src/lib/sitemap-data.ts about never submitting a noindex URL in a sitemap:
+ * the two decisions have to agree, so a noindex month is also absent from the
+ * sitemap, and sitemap.index.test.ts holds that invariant.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export function isIndexableProjectedMonth(bulletinMonth: string): boolean {
+  return ownsMethod(bulletinMonth);
+}
+
+/** Projected months that belong in a sitemap: the indexable ones only. */
+export function indexableProjectedMonths(): string[] {
+  return PROJECTED_MONTHS.filter(isIndexableProjectedMonth);
+}
+
+/** The reason a far-horizon month is not indexed, for the page to state. */
+export const NOINDEX_REASON =
+  "This page is not submitted for indexing yet. It is the second or third bulletin ahead of the last published one, so its projected ranges are wide and much of its explanatory content is shared with the nearer month. It becomes indexable automatically once it is the nearest unpublished bulletin, or once the official bulletin is released — the URL does not change either way.";

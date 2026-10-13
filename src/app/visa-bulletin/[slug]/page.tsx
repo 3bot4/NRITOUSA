@@ -40,6 +40,7 @@ import {
 import {
   PROJECTED_BANNER,
   VB_PROJECTION_PUBLISHED,
+  isIndexableProjectedMonth,
   projectedMonthDescription,
   projectedMonthForSlug,
   projectedMonthSlugs,
@@ -102,7 +103,7 @@ export function generateMetadata({
   const projected = projectedMonthForSlug(params.slug);
   if (projected) {
     const label = monthLabel(projected);
-    return pageMetadata({
+    const meta = pageMetadata({
       // "Projected" in the title, never in the URL. The title changes on
       // release; the path does not.
       title: `${label} Visa Bulletin Projection: India EB-1, EB-2, EB-3 Ranges`,
@@ -114,6 +115,26 @@ export function generateMetadata({
         modifiedTime: VB_PROJECTION_PUBLISHED,
       },
     });
+    // Only the nearest unpublished bulletin is indexable. The further ones
+    // share too much required-identical text with it to be submitted as
+    // separate pages, and they flip to indexable on their own as the horizon
+    // shortens. `follow` is deliberate: the links still carry.
+    //
+    // This is applied to the RETURN value, not passed into pageMetadata:
+    // `robots` is not one of its options, and an object spread inside a call
+    // argument disables excess-property checking, so passing it there is
+    // silently dropped. It was, and the first build shipped all three months
+    // as index, follow.
+    return isIndexableProjectedMonth(projected)
+      ? meta
+      : {
+          ...meta,
+          robots: {
+            index: false,
+            follow: true,
+            googleBot: { index: false, follow: true },
+          },
+        };
   }
 
   const page = getVisaBulletinChildPage(params.slug);
