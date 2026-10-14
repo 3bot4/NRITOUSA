@@ -138,20 +138,20 @@ const faqs: FaqItem[] = [
   },
   {
     question: "Do Indians get O-1 visas?",
-    answer: `Rarely, relative to every other route. In FY2024 there were ${SHARE.o1Total.toLocaleString(
+    answer: `Indian nationals account for a much smaller share of recorded O-1 admissions than of recorded H-1B admissions. In FY2024 DHS recorded ${SHARE.o1Total.toLocaleString(
       "en-US",
-    )} O-1 admissions to the United States, of which ${SHARE.o1India.toLocaleString(
+    )} O-1 admissions, of which ${SHARE.o1India.toLocaleString(
       "en-US",
     )} were Indian nationals — about ${((SHARE.o1India / SHARE.o1Total) * 100).toFixed(
       1,
-    )}%. The same population accounted for ${SHARE.h1bIndia.toLocaleString(
+    )}% — against ${SHARE.h1bIndia.toLocaleString(
       "en-US",
     )} of ${SHARE.h1bTotal.toLocaleString("en-US")} H-1B admissions, or ${(
       (SHARE.h1bIndia / SHARE.h1bTotal) *
       100
     ).toFixed(
       1,
-    )}%. Canada alone had four times India's O-1 admissions. Those are DHS figures and they are admissions rather than people, but the gap is too large to be an artefact.`,
+    )}%. Read those carefully: they are I-94 admissions, meaning border events rather than people, so they do not tell you how many Indian nationals hold O-1 status or how many would qualify for one. Someone who changes status inside the United States never appears in them at all. The share gap is real and large; the explanation for it is not something the published data settles.`,
   },
   {
     question: "Do I need an advisory opinion for an O-1 visa?",
@@ -239,9 +239,9 @@ export default function O1VisaPage() {
               award. It has <strong>no cap and no lottery</strong>, and{" "}
               <strong>no six-year wall</strong> — extensions run in one-year
               increments indefinitely. An employer or a US agent has to file it,
-              your spouse cannot work on O-3, and in FY2024 Indian nationals were{" "}
-              {indiaO1Share}% of O-1 admissions against {indiaH1bShare}% of H-1B
-              admissions.
+              your spouse cannot work on O-3, and in FY2024 Indian nationals
+              accounted for {indiaO1Share}% of recorded O-1 admissions against{" "}
+              {indiaH1bShare}% of recorded H-1B admissions.
             </p>
 
             <p className="mt-3 max-w-3xl text-sm text-ink-500">
@@ -303,10 +303,11 @@ export default function O1VisaPage() {
               {/* ── 1. The thesis ── */}
               <div>
                 <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
-                  The thing about the O-1 that the data makes obvious
+                  Indian nationals take a far smaller share of O-1 admissions
+                  than of H-1B admissions
                 </h2>
                 <p className="mt-3">
-                  Start with a number that should be strange. In fiscal year
+                  Start with a number worth sitting with. In fiscal year
                   2024 the United States recorded{" "}
                   {SHARE.o1Total.toLocaleString("en-US")} O-1 admissions. Indian
                   nationals accounted for {SHARE.o1India.toLocaleString("en-US")}{" "}
@@ -319,27 +320,60 @@ export default function O1VisaPage() {
                   O-1 admissions.
                 </p>
                 <O1VsH1bShareChart />
+                <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/50 p-5">
+                  <p className="text-sm font-bold text-ink-900">
+                    What these numbers are, and what they are not
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                    These are <strong>I-94 admissions</strong> — border events,
+                    not people. DHS counts an admission each time someone is
+                    admitted, so one person who enters four times in a year
+                    appears four times, and someone who changes to O-1 status
+                    inside the United States without travelling does not appear
+                    at all. Nothing here is a count of visas issued, petitions
+                    approved, or individuals holding a status.
+                  </p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-ink-700">
+                    So the comparison above supports exactly one claim:{" "}
+                    <strong>
+                      Indian nationals account for a much smaller share of
+                      recorded O-1 admissions than of recorded H-1B admissions.
+                    </strong>{" "}
+                    It does not tell you how many Indian nationals hold O-1
+                    status, how many would qualify for one, or why the shares
+                    differ. Travel frequency alone could move these numbers:
+                    if O-1 holders and H-1B holders cross the border at
+                    different rates, the admission shares diverge without any
+                    difference in how many people hold each status.
+                  </p>
+                </div>
                 <p className="mt-3">
-                  There is no quota making this happen. The O-1 has no cap, no
-                  per-country limit and no lottery, so nothing in the statute
-                  produces that gap. It is a behavioural gap: the Indian
-                  immigration conversation is organised around the H-1B, the
-                  employers that sponsor Indian engineers at scale have H-1B
-                  processes rather than O-1 processes, and the people who would
-                  qualify mostly never look.
+                  What can be said with confidence is structural rather than
+                  statistical: nothing in the statute produces this gap. The O-1
+                  has no cap, no per-country limit and no lottery, so unlike the
+                  H-1B there is no rationing mechanism to point at.
                 </p>
                 <p className="mt-3">
-                  That does not mean most H-1B applicants would qualify for an
-                  O-1. Most would not, and anyone selling the O-1 as a
-                  straightforward H-1B substitute is misdescribing it. But the
-                  population that produces{" "}
-                  {SHARE.h1bIndia.toLocaleString("en-US")} H-1B admissions a year
-                  contains more than{" "}
-                  {SHARE.o1India.toLocaleString("en-US")} people with
-                  nationally-recognised prizes, granted patents that others
-                  build on, senior roles at distinguished organisations and
-                  salaries well above the occupational data. The gap between
-                  those two numbers is the only reason this page exists.
+                  Beyond that we are into <strong>hypothesis</strong>, and it is
+                  worth labelling as such. One plausible explanation is
+                  attention: the Indian immigration conversation is organised
+                  around the H-1B, and the employers that sponsor Indian
+                  engineers at scale have H-1B processes rather than O-1
+                  processes. Another is eligibility — it may simply be that
+                  fewer Indian nationals in the relevant population meet the
+                  evidentiary standard. The published data cannot distinguish
+                  between those, and we have not seen a source that can.
+                </p>
+                <p className="mt-3">
+                  What this page does <em>not</em> claim is that most H-1B
+                  applicants would qualify for an O-1. Most would not, and
+                  anyone selling the O-1 as a straightforward H-1B substitute is
+                  misdescribing it. The reason the page exists is narrower and
+                  more useful: the O-1 is a cap-free route with no six-year wall,
+                  it is reached through an evidentiary record rather than a
+                  lottery, and it is worth checking against your own record
+                  rather than dismissing — which is what the self-check above is
+                  for.
                 </p>
                 <div className="overflow-x-auto">
                   <div className="min-w-[380px]">

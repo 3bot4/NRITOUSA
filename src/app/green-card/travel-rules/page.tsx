@@ -43,6 +43,7 @@ import {
   ICE_ADP_SOURCE,
   INSTRUMENTS,
   LAWYER_TIMING,
+  N470_ELIGIBILITY,
   ONE_YEAR_MECHANIC,
   RIGHTS,
   SB1_REQUIREMENTS,
@@ -138,7 +139,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: "What is Form N-470 and why does nobody mention it?",
-    answer: `Form N-470 preserves continuous residence for naturalisation through an absence of a year or more for qualifying employment abroad, under INA 316(b). The fee is $420. It is the only instrument that protects the naturalisation clock, and a reentry permit does not do it. The reason to know about it in advance is the deadline: 8 CFR 316.5(d)(1)(i) requires it to be filed before you have been absent for a continuous period of one year. Once the absence reaches twelve months the route has closed, and there is no late filing.`,
+    answer: `Form N-470 preserves continuous residence for naturalisation through an absence of a year or more, under INA 316(b). The fee is $420, and it is the only instrument that protects the naturalisation clock — a reentry permit does not. But it is narrower than most summaries suggest, and that is the main thing to know: it requires a year of unbroken US presence first, and it requires qualifying employment with one of four specific kinds of employer — the US Government, an American institution of research, an American firm engaged in developing US foreign trade and commerce (or a majority-owned subsidiary), or a public international organisation the US belongs to — plus certain religious work. A transfer to your employer's Indian entity, a job with an Indian company, a spouse's posting or family care are not qualifying employment, however long the absence. Two further limits: it does not replace a reentry permit, and it does not waive the separate physical-presence requirement unless the employment is by or under contract with the US Government.`,
   },
   {
     question: "Are green card holders being detained at the airport?",
@@ -170,7 +171,7 @@ const faqs: FaqItem[] = [
   {
     question: "Does a reentry permit protect my citizenship application?",
     answer:
-      "No, and conflating the two is the costliest mistake in this area. A reentry permit answers the document question: it gets you back in. Continuous residence for naturalisation is a separate regime under 8 CFR 316.5(c), with its own six-month and one-year thresholds, and an absence of a year or more breaks it whether or not you held a permit. The only instrument that protects the naturalisation clock is Form N-470, and it has to be filed before the absence reaches twelve months.",
+      "No, and conflating the two is the costliest mistake in this area. A reentry permit answers the document question: it gets you back in. Continuous residence for naturalisation is a separate regime under 8 CFR 316.5(c), with its own six-month and one-year thresholds, and an absence of a year or more breaks it whether or not you held a permit. The only instrument that protects the naturalisation clock is Form N-470 — and because N-470 is limited to specific qualifying employment, many people in this position have no instrument at all and are looking at filing four years and one day after they return.",
   },
 ];
 
@@ -598,6 +599,104 @@ export default function GreenCardTravelRulesPage() {
                   parole for a pending I-485 is the same form with a different
                   box ticked, and the two get confused.
                 </p>
+
+                <div id="n470" className="mt-7 scroll-mt-24 rounded-2xl border-2 border-emerald-300 bg-emerald-50/50 p-5">
+                  <h3 className="text-base font-bold text-ink-900">
+                    Who Form N-470 is actually for
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                    This is the part most summaries of N-470 leave out, including
+                    an earlier version of this page. It is{" "}
+                    <strong>not</strong> a form every permanent resident facing a
+                    long absence can file. {N470_ELIGIBILITY.lead}
+                  </p>
+                  <ol className="mt-3 space-y-2.5">
+                    {N470_ELIGIBILITY.requirements.map((r) => (
+                      <li key={r.n} className="flex gap-2.5">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[0.65rem] font-bold text-white">
+                          {r.n}
+                        </span>
+                        <span className="text-sm leading-relaxed">
+                          <strong className="text-ink-900">{r.label}. </strong>
+                          <span className="text-ink-600">{r.detail}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+
+                  <p className="mt-4 text-sm font-bold text-ink-900">
+                    The qualifying employers, which is where most cases are decided
+                  </p>
+                  <div className="mt-2 overflow-x-auto">
+                    <table className="w-full min-w-[560px] border-collapse text-sm">
+                      <caption className="sr-only">
+                        The categories of qualifying employment for Form N-470
+                        under INA 316(b)
+                      </caption>
+                      <thead>
+                        <tr className="border-b border-emerald-300 text-left">
+                          <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
+                            Employer
+                          </th>
+                          <th scope="col" className="py-2 font-bold text-ink-900">
+                            What the category actually requires
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-ink-600">
+                        {N470_ELIGIBILITY.qualifyingEmployers.map((q) => (
+                          <tr key={q.who} className="border-b border-emerald-200/60 align-top">
+                            <th scope="row" className="py-3 pr-3 text-left font-semibold text-ink-800">
+                              {q.who}
+                            </th>
+                            <td className="py-3">{q.detail}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50/70 p-4">
+                    <p className="text-sm font-bold text-ink-900">
+                      What does NOT qualify
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-700">
+                      {N470_ELIGIBILITY.doesNotQualify}
+                    </p>
+                  </div>
+
+                  <dl className="mt-4 space-y-2.5 text-sm">
+                    <div>
+                      <dt className="font-semibold text-ink-800">
+                        It does not replace a reentry permit
+                      </dt>
+                      <dd className="text-ink-600">
+                        {N470_ELIGIBILITY.stillNeedReentryPermit}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold text-ink-800">
+                        It does not waive physical presence
+                      </dt>
+                      <dd className="text-ink-600">
+                        {N470_ELIGIBILITY.physicalPresenceNote}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold text-ink-800">Your family</dt>
+                      <dd className="text-ink-600">{N470_ELIGIBILITY.family}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold text-ink-800">
+                        If you are the spouse of a US citizen
+                      </dt>
+                      <dd className="text-ink-600">
+                        {N470_ELIGIBILITY.spouseOfCitizenException}
+                      </dd>
+                    </div>
+                  </dl>
+                  <p className="mt-3 text-xs text-ink-400">{N470_ELIGIBILITY.cite}</p>
+                </div>
 
                 <h3 className="mt-7 text-base font-bold text-ink-900">
                   The SB-1, and the condition that decides it
@@ -1031,7 +1130,7 @@ export default function GreenCardTravelRulesPage() {
                         {
                           s: "A spouse posted to India for two years, family goes too",
                           l: "Past a year. Card is not the entry document, and continuous residence breaks.",
-                          d: "File Form I-131 for a reentry permit while still in the US. Then — separately — file Form N-470 BEFORE the absence hits twelve months if naturalisation matters. Most families do the first and not the second.",
+                          d: "File Form I-131 for a reentry permit while still in the US — that is the part that gets you back. On the naturalisation clock, check the N-470 gate above before counting on it: a posting to your employer's Indian entity, or to an Indian company, is not qualifying employment under INA 316(b), so for most families in this scenario N-470 is simply not available and the realistic plan is the four-years-and-one-day reset after you return.",
                         },
                         {
                           s: "Already in India, eleven months gone, no permit",

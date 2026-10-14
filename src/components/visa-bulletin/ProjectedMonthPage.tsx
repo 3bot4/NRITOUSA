@@ -19,6 +19,7 @@ import {
   PROJECTED_BADGE,
   PROJECTED_BANNER,
   PROJECTED_MONTHS,
+  SCENARIO_DISCLAIMER,
   WINDOW,
   fiscalStage,
   indiaEbProjections,
@@ -118,9 +119,9 @@ function ProjectionTable({
               </span>
             </th>
             <th scope="col" className="py-2 pr-3 font-bold text-amber-800">
-              Projected range
+              Scenario
               <span className="block text-[0.65rem] font-normal text-amber-700">
-                final action &mdash; not official
+                final action &mdash; not official, not a probability interval
               </span>
             </th>
             <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
@@ -130,9 +131,9 @@ function ProjectionTable({
               </span>
             </th>
             <th scope="col" className="py-2 font-bold text-amber-800">
-              Projected range
+              Scenario
               <span className="block text-[0.65rem] font-normal text-amber-700">
-                dates for filing &mdash; not official
+                dates for filing &mdash; not official, not a probability interval
               </span>
             </th>
           </tr>
@@ -228,8 +229,8 @@ export function projectedMonthFaqs(bulletinMonth: string): FaqItem[] {
     ...(ownsMethod(bulletinMonth)
       ? [
           {
-            question: "How is the projection calculated?",
-            answer: `From the site's own snapshot archive of published bulletins. For each category and country we take the month-over-month change in the cutoff across the trailing ${WINDOW} bulletins, excluding every month the category was Current or Unavailable — those are states rather than dates, and treating "U" as an old date is how movement trackers produce a confident "retrogressed 4,000 days". The low bound of the range is no movement, which is the most common single outcome in the archive. The high bound applies the 75th-percentile observed advance per bulletin across the horizon, then holds it at the bulletin's own month, because a cutoff that reaches the present means there is no queue left. Every row on this page shows its own sample size.`,
+            question: "How is the scenario calculated, and how much should I trust it?",
+            answer: `From the site's own snapshot archive of published bulletins. For each category and country we take the month-over-month change in the cutoff across the trailing ${WINDOW} bulletins, excluding every month the category was Current or Unavailable — those are states rather than dates, and treating "U" as an old date is how movement trackers produce a confident "retrogressed 4,000 days". The low bound is no movement, which is the most common single outcome in the archive. The high bound applies the 75th-percentile observed advance per bulletin across the horizon, then holds it at the bulletin's own month, because a cutoff that reaches the present means there is no queue left. On how much to trust it: ${SCENARIO_DISCLAIMER} Each row rests on roughly a dozen observations, the bounds are chosen rather than fitted, and the method has not been back-tested. Treat it as "here is what this row has done recently, applied forward", not as a forecast with a known error rate.`,
           },
           {
             question: `What is the FY2027 annual limit?`,
@@ -353,6 +354,9 @@ export default function ProjectedMonthPage({
                 .
               </p>
             )}
+            <p className="mt-2 rounded-xl bg-amber-100/70 p-3 text-sm font-semibold leading-relaxed text-amber-900">
+              {SCENARIO_DISCLAIMER}
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-amber-900/90">
               The newest bulletin the Department of State has published is{" "}
               <Link
@@ -475,7 +479,13 @@ export default function ProjectedMonthPage({
                   Every prediction page we checked asserts movement without
                   stating a basis. Here is ours, and it is derived in code from
                   the snapshot archive rather than typed into copy, so it cannot
-                  quietly go stale.
+                  quietly go stale. It is also worth being plain about what it is
+                  not: <strong>{SCENARIO_DISCLAIMER}</strong> The sample is about
+                  a dozen month-over-month observations per row, the upper bound
+                  is a compounded historical percentile rather than a fitted
+                  model, the lower bound is a choice, and nothing here has been
+                  back-tested against how these pages would have performed in
+                  prior years.
                 </p>
                 <div className="overflow-x-auto">
                   <div className="min-w-[520px]">
@@ -516,7 +526,7 @@ export default function ProjectedMonthPage({
                       Sample
                     </th>
                     <th scope="col" className="py-2 pr-3 font-bold text-ink-900">
-                      Confidence
+                      Basis depth
                     </th>
                     <th scope="col" className="py-2 font-bold text-ink-900">
                       How this range was built
@@ -535,8 +545,12 @@ export default function ProjectedMonthPage({
                           {r.fad.excludedMonths} excluded as C or U
                         </span>
                       </td>
-                      <td className="py-3 pr-3 whitespace-nowrap capitalize">
-                        {r.fad.confidence}
+                      <td className="py-3 pr-3 whitespace-nowrap">
+                        {r.fad.basisDepth === "full-window"
+                          ? "Full window"
+                          : r.fad.basisDepth === "thin"
+                            ? "Thin"
+                            : "No basis"}
                       </td>
                       <td className="py-3">
                         {r.fad.method}
@@ -689,9 +703,9 @@ export default function ProjectedMonthPage({
                 Employment-based: every category and country
               </h2>
               <p className="mt-2 text-sm text-ink-600">
-                The two amber columns are projections. The two plain columns are
+                The two amber columns are scenarios. The two plain columns are
                 the published {lastLabel} figures they are built from. India rows
-                are highlighted.
+                are highlighted. {SCENARIO_DISCLAIMER}
               </p>
               <ProjectionTable
                 rows={employment}

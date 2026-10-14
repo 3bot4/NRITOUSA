@@ -178,7 +178,7 @@ export function calculateL1Stay(input: L1StayInput): L1StayResult {
     "Time spent outside the United States does not count against the cap, so days abroad can be recaptured. Your I-94 travel history is the evidence, and it only goes back ten years.",
   );
   notes.push(
-    "The L-1 is tied to the company group. There is no transfer to an unrelated employer, which is the structural difference from an H-1B and the reason the cap matters so much more here.",
+    "The L-1 is tied to the company group: an existing approval cannot be used to work for an unrelated employer, which is the structural difference from a portable H-1B and the reason the cap matters so much more here. Moving between qualifying entities inside the group is possible, but it needs an amended or new petition — or a fresh Form I-129S under a blanket — and a reassignment to materially different duties needs one even between listed entities.",
   );
 
   return {

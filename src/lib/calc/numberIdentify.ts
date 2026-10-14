@@ -12,11 +12,15 @@
  * the real value to leave the page.
  *
  * AMBIGUITY IS A RESULT, NOT A FAILURE. Several of these shapes overlap: an
- * 11-digit string is an I-94 number, a 12-digit string is a USCIS online
+ * 11-character string is an I-94 number, a 12-digit string is a USCIS online
  * account number, and a bare 9-digit string could be an A-number without its
  * prefix. The function returns every shape that matches, ordered by how
  * distinctive the match is, because telling someone "this is one of two things,
  * and here is how to tell them apart" is more useful than guessing.
+ *
+ * The I-94 pattern accepts BOTH formats CBP has issued: 11 digits (before May
+ * 2019) and nine digits + a letter + a digit (from May 2019). A pattern that
+ * only took digits rejected every currently-issued I-94 number.
  */
 
 import { NUMBER_TYPES, type NumberType } from "@/data/aNumberData";
@@ -127,7 +131,9 @@ function whyMatched(type: NumberType, normalized: string, hasPrefix: boolean): s
     case "online-account":
       return `12 digits with no prefix fits a USCIS online account number.`;
     case "i94-number":
-      return `11 digits with no prefix fits an I-94 admission record number.`;
+      return /[A-Z]/i.test(normalized)
+        ? `Nine digits, a letter, then a digit — the format CBP has issued for I-94 admission records since May 2019.`
+        : `11 digits fits an I-94 admission record number in the numeric format CBP issued before May 2019. Those stay valid until their admit-until date.`;
     case "sevis-id":
       return `It starts with N followed by 10 digits, which only a SEVIS ID does.`;
     case "visa-control":

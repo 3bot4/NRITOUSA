@@ -219,7 +219,9 @@ export default function L1VisaPage() {
               CFR 214.2(l)(12)(i) counts your L <em>and H</em> time in the United
               States together, so four years on an H-1B leaves three of L-1A, not
               seven. No cap, no lottery, no labour condition application. Your
-              spouse can work from the day they land. You cannot change employer.
+              spouse can work without an EAD once admitted in L-2S status with an
+              I-94 that says so. You cannot take the approval to an unrelated
+              employer.
             </p>
 
             <p className="mt-3 max-w-3xl text-sm text-ink-500">
@@ -232,10 +234,10 @@ export default function L1VisaPage() {
               {[
                 "The 5- and 7-year caps count L and H time in the US together",
                 "US time for the same group does not count toward the qualifying year",
-                "L-2 spouses work incident to status, no EAD — unlike H-4",
+                "L-2 spouses work with no EAD once admitted L-2S — unlike H-4",
                 "A consular denial under a blanket L is final and unappealable",
                 "A 50/50 employer now pays $4,500 on renewals too, from 9 Sep 2026",
-                "No portability: the status belongs to the company group, not to you",
+                "No portability to an unrelated employer; moves inside the group need a filing",
               ].map((f) => (
                 <li
                   key={f}
@@ -966,12 +968,17 @@ export default function L1VisaPage() {
                   </table>
                 </div>
                 <p className="mt-4">
-                  The row that decides it for most people is portability. An
-                  H-1B moves with you: a new employer files a transfer and your
-                  status continues. An L-1 does not move at all. If the company
-                  group restructures, if the Indian entity is sold, or if you
-                  simply want to leave, there is no L-1 transfer to an unrelated
-                  employer &mdash; the route out is a change of status to
+                  The row that decides it for most people is portability, and it
+                  is worth stating precisely rather than as a slogan. An H-1B
+                  moves with you to any employer: a new one files a transfer and
+                  your status continues. An L-1 approval cannot be used to work
+                  for an <strong>unrelated</strong> employer at all. Inside the
+                  qualifying corporate group you can move &mdash; an amended or
+                  new petition, or a fresh Form I-129S under a blanket, and a
+                  reassignment to materially different duties needs one even
+                  between listed entities. What has no route is leaving the group:
+                  if it restructures, if the Indian entity is sold, or if you
+                  simply want out, the way forward is a change of status to
                   something else, which means a cap-subject H-1B and its lottery,
                   or an O-1 if your record supports one. See{" "}
                   <Link href="/h1b-lottery-chances" className="text-brand-600 underline">

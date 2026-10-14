@@ -280,7 +280,7 @@ export default function ANumberPage() {
                         { k: "Example (invented)", v: A_NUMBER_BASICS.examples.join(" or ") },
                         { k: "Identifies", v: "You, as a person, for life" },
                         { k: "Changes when", v: "Never. One number per person, however many cases you file" },
-                        { k: "Appears on an I-94?", v: "No. An I-94 carries its own 11-digit admission record number" },
+                        { k: "Appears on an I-94?", v: "No. An I-94 carries its own 11-character admission record number, which may be alphanumeric" },
                         { k: "Sensitivity", v: "High. It is the key to your immigration file" },
                       ].map((r) => (
                         <tr key={r.k} className="border-b border-ink-900/5 align-top">

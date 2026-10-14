@@ -194,3 +194,37 @@ describe("output hygiene", () => {
     expect(JSON.stringify(r).toLowerCase()).not.toContain("caveat");
   });
 });
+
+describe("N-470 is not presented as universally available", () => {
+  // The review that produced this test: the first version told anyone facing a
+  // year-plus absence to file N-470 if naturalisation mattered. INA 316(b)
+  // limits it to four categories of employer, and an ordinary corporate
+  // posting abroad is not one of them.
+  const long = assessTripRisk({
+    ...base,
+    departure: "2026-01-01",
+    plannedReturn: "2027-06-01",
+    hasReentryPermit: true,
+  });
+
+  it("names the qualifying-employment gate wherever it mentions N-470", () => {
+    const n470 = long.actions.filter((a) => a.includes("N-470"));
+    expect(n470.length).toBeGreaterThan(0);
+    for (const a of n470) {
+      expect(a).toMatch(/qualifying employment|INA 316\(b\)/);
+      expect(a).toMatch(/does not qualify|not qualify/);
+    }
+  });
+
+  it("names the prior-US-presence precondition", () => {
+    expect(long.actions.join(" ")).toMatch(/unbroken US presence|uninterrupted/i);
+  });
+
+  it("gives the fallback for someone who does not qualify", () => {
+    expect(long.actions.join(" ")).toMatch(/four years and one day/i);
+  });
+
+  it("still states the filing deadline", () => {
+    expect(long.actions.join(" ")).toMatch(/BEFORE the absence reaches one continuous year/);
+  });
+});

@@ -204,3 +204,20 @@ describe("guard rails", () => {
     expect(Number.isFinite(r.remainingMonths)).toBe(true);
   });
 });
+
+describe("the employer-change claim is precise, not a slogan", () => {
+  // The review that produced this test: "you cannot change employer" is
+  // overbroad. An existing L-1 approval cannot be used for an UNRELATED
+  // employer; movement inside the qualifying group is possible with a filing.
+  it("limits the restriction to an unrelated employer", () => {
+    const notes = calculateL1Stay(base).notes.join(" ");
+    expect(notes).toMatch(/unrelated employer/);
+    expect(notes).not.toMatch(/you cannot change employer/i);
+  });
+
+  it("says movement inside the group needs a filing rather than being barred", () => {
+    const notes = calculateL1Stay(base).notes.join(" ");
+    expect(notes).toMatch(/amended or new petition|I-129S/);
+    expect(notes).toMatch(/inside the group|between listed entities/);
+  });
+});

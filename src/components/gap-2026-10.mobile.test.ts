@@ -357,3 +357,79 @@ describe("the projected months' robots directives", () => {
     expect(src).toContain("follow: true");
   });
 });
+
+describe("post-review factual corrections stay corrected", () => {
+  // Nine errors were found by a content review after these pages went live.
+  // These lock the four that are easiest to silently regress.
+  const ALL_SOURCES = [
+    ...PAGES,
+    "data/o1VisaData.ts",
+    "data/l1VisaData.ts",
+    "data/aNumberData.ts",
+    "data/i94Data.ts",
+    "data/greenCardTravelData.ts",
+  ];
+
+  it("never calls an I-94 number 11 digits", () => {
+    for (const f of ALL_SOURCES) {
+      const src = code(f);
+      expect(src, `${f}: "11-digit" I-94`).not.toMatch(/11-digit admission/i);
+      expect(src, `${f}: "Eleven digits" I-94`).not.toMatch(/Eleven digits, new for every admission/i);
+    }
+    // And the shape that is stated is the character-based one.
+    expect(read("data/aNumberData.ts")).toMatch(/11 characters/);
+  });
+
+  it("never offers N-470 without naming the qualifying-employment gate", () => {
+    // Any file that mentions N-470 must also say it is limited.
+    for (const f of ALL_SOURCES.concat("lib/calc/gcTripRisk.ts")) {
+      const src = code(f);
+      if (!/N-470/.test(src)) continue;
+      expect(src, `${f}: N-470 with no eligibility gate`).toMatch(
+        /qualifying employment|INA 316\(b\)|does not qualify|not qualify/,
+      );
+    }
+    // The gate itself carries all four requirements and the two limits.
+    const gc = read("data/greenCardTravelData.ts");
+    expect(gc).toContain("N470_ELIGIBILITY");
+    expect(gc).toMatch(/uninterrupted period, without any absences/);
+    expect(gc).toMatch(/does not replace a reentry permit|still apply for a reentry permit/i);
+    expect(gc).toMatch(/physical presence|physicalPresenceNote/);
+    expect(gc).toMatch(/religious/i);
+  });
+
+  it("does not assert causation from I-94 admissions data", () => {
+    // Collapse whitespace: JSX wraps prose across lines, so a multi-word
+    // phrase will not match the raw source.
+    const o1 = code("app/o1-visa/page.tsx").replace(/\s+/g, " ");
+    // The sentences the review flagged.
+    expect(o1).not.toMatch(/It is a behavioural gap/);
+    expect(o1).not.toMatch(/the people who would qualify mostly never look/i);
+    // And it says what admissions are.
+    expect(o1).toMatch(/border events, not people|admissions, not people/i);
+    expect(o1).toMatch(/hypothesis/i);
+  });
+
+  it("never labels a projection with a statistical confidence", () => {
+    const page = read("components/visa-bulletin/ProjectedMonthPage.tsx");
+    expect(page).not.toMatch(/\.confidence\b/);
+    expect(page).toContain("SCENARIO_DISCLAIMER");
+    expect(page).toMatch(/not a probability interval/);
+  });
+
+  it("states the I-797A exception to the I-94 rule", () => {
+    const src = read("app/uscis/i-94/page.tsx") + read("data/i94Data.ts");
+    expect(src).toMatch(/I-797A/);
+    expect(src).toMatch(/most recent I-94/i);
+    // The absolute form must not come back.
+    expect(code("app/uscis/i-94/page.tsx")).not.toMatch(
+      /not your visa, not your I-797\./,
+    );
+  });
+
+  it("conditions L-2 work authorisation on the L-2S annotation", () => {
+    const src = read("app/l1-visa/page.tsx") + read("data/l1VisaData.ts");
+    expect(src).toMatch(/L-2S/);
+    expect(code("app/l1-visa/page.tsx")).not.toMatch(/work from the day they land/i);
+  });
+});

@@ -21,6 +21,7 @@ import {
   isIndexableProjectedMonth,
   methodOwnerMonth,
   ownsMethod,
+  SCENARIO_DISCLAIMER,
 } from "./visaBulletinProjections";
 import { PUBLISHED_MONTHS, monthPath, monthSlug, slugToMonth } from "./visaBulletinMonths";
 
@@ -214,7 +215,7 @@ describe("the method", () => {
     for (const row of indiaEbProjections("2026-11")) {
       expect(row.fad.sampleSize).toBeGreaterThanOrEqual(0);
       expect(row.fad.sampleSize).toBeLessThanOrEqual(WINDOW);
-      expect(["none", "low", "moderate"]).toContain(row.fad.confidence);
+      expect(["none", "thin", "full-window"]).toContain(row.fad.basisDepth);
     }
   });
 
@@ -387,5 +388,39 @@ describe("indexability of projected months", () => {
   it("states the reason in words, not only in a meta tag", () => {
     expect(NOINDEX_REASON).toMatch(/not submitted for indexing/i);
     expect(NOINDEX_REASON).toMatch(/URL does not change/i);
+  });
+});
+
+describe("the output is not presented as a statistical interval", () => {
+  // The review that produced this test: the pages reported "Moderate"
+  // confidence from a sample-size bucket, which implied a validated interval.
+  // The sample is ~12 observations, the bounds are chosen rather than fitted,
+  // retrogression is outside the band, and nothing is back-tested.
+  it("has no field named confidence", () => {
+    const p = projectCutoff("eb2", "india", "fad", PROJECTED_MONTHS[0]);
+    expect("confidence" in p).toBe(false);
+    expect(["none", "thin", "full-window"]).toContain(p.basisDepth);
+  });
+
+  it("never labels a basis as a confidence level", () => {
+    for (const m of PROJECTED_MONTHS) {
+      for (const row of indiaEbProjections(m)) {
+        expect(row.fad.basisDepth).not.toMatch(/moderate|high|95%/i);
+      }
+    }
+  });
+
+  it("says in terms that it is not a probability interval or a prediction", () => {
+    expect(SCENARIO_DISCLAIMER).toMatch(/not a probability interval/i);
+    expect(SCENARIO_DISCLAIMER).toMatch(/not a prediction/i);
+    expect(SCENARIO_DISCLAIMER).toMatch(/outside this range/i);
+    expect(SCENARIO_DISCLAIMER).toMatch(/retrogression|unavailable/i);
+  });
+
+  it("admits in the method sentence that the band excludes retrogression", () => {
+    const eb2 = projectCutoff("eb2", "india", "fad", PROJECTED_MONTHS[0]);
+    expect(eb2.retrogressedMonths).toBeGreaterThan(0);
+    expect(eb2.method).toMatch(/cannot express the retrogression|cannot express retrogression/);
+    expect(eb2.method).toMatch(/not a statistical sample/);
   });
 });

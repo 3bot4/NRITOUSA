@@ -196,13 +196,13 @@ export const ABSENCE_TIERS: AbsenceTier[] = [
     cardValid:
       "The permit, not the card, is your entry document — Form I-327, listed at 8 CFR 211.1(a)(3).",
     continuousResidence:
-      "Still broken for naturalisation unless an approved Form N-470 covers the absence. A reentry permit protects re-entry; it does not protect the naturalisation clock. These are the two regimes, and this is where the difference bites hardest.",
+      "Still broken for naturalisation unless an approved Form N-470 covers the absence — and N-470 is limited to specific qualifying employment, so most people in this position cannot use it. A reentry permit protects re-entry; it does not protect the naturalisation clock. These are the two regimes, and this is where the difference bites hardest.",
     seekingAdmission:
       "Yes, on length. The permit answers the document question, not the intent question — abandonment can still be asserted on the facts.",
     whatToDo: [
       "Carry the permit and the card",
       "Keep filing US tax returns as a resident for every year of the absence",
-      "If naturalisation matters to you, you needed N-470 as well, and it had to be filed before the absence reached one year",
+      "If naturalisation matters AND your employment abroad is in one of the four qualifying categories, Form N-470 had to be filed before the absence reached one year. Ordinary employment with a foreign company does not qualify",
     ],
   },
 ];
@@ -278,17 +278,18 @@ export const INSTRUMENTS: Instrument[] = [
     name: "Preservation of residence for naturalisation",
     form: "Form N-470",
     what:
-      "An application under INA 316(b) to have an absence of a year or more treated as not disrupting continuous residence, for qualifying employment abroad.",
+      "An application under INA 316(b) to have an absence of a year or more treated as not disrupting continuous residence. It is NOT open to every permanent resident going abroad — it is limited to a specific list of qualifying employers, and an ordinary corporate transfer does not qualify just because it is long. See the eligibility gate below before planning around it.",
     protects:
-      "The naturalisation clock through a long absence — the thing a reentry permit does not touch.",
+      "The naturalisation clock through a long absence, where you qualify — the thing a reentry permit does not touch.",
     doesNotProtect:
-      "Your entry document. You still need a reentry permit, or you still face the one-year rule at the border.",
+      "Your entry document, so you still need a reentry permit. And, unless you are employed by or under contract with the US Government, it does not waive the physical-presence requirement for naturalisation either.",
     fee: "$420",
-    mustFileFrom: "Either before or after the qualifying employment commences.",
+    mustFileFrom:
+      "Either before or after the qualifying employment begins, and you do not have to be in the United States to file — but you must have already completed a year of unbroken US presence, and you must file before the absence reaches one continuous year.",
     deadline:
-      "Before you have been absent from the United States for a continuous period of one year. That is the cliff — 8 CFR 316.5(d)(1)(i). Once the absence reaches twelve months, this route has closed.",
+      "Before you have been absent from the United States for a continuous period of one year. That is the cliff — 8 CFR 316.5(d)(1)(i) and the Form N-470 instructions. Once the absence reaches twelve months, this route has closed.",
     validity: "Covers the period of the qualifying employment, as approved on Form N-472",
-    cite: "8 CFR 316.5(d)(1); Form G-1055 ed. 10/07/26",
+    cite: "INA 316(b) / 8 U.S.C. 1427(b); 8 CFR 316.5(d)(1); Form N-470 instructions ed. 04/01/24; Form G-1055 ed. 10/07/26",
   },
   {
     id: "sb1",
@@ -320,6 +321,97 @@ export const SB1_REQUIREMENTS = {
     "\"Reasons beyond your control\" is doing the work. A medical emergency, a family member's terminal illness, a travel ban or a government closure are the kinds of facts that fit. A job that went well, a business that took longer than planned, or children settling into school in India generally do not, however reasonable they were as decisions.",
   alsoNeeded:
     "An SB-1 applicant is also treated as an immigrant visa applicant, which means a medical examination and the ordinary admissibility requirements.",
+} as const;
+
+/* ══════════════ 3b. Who N-470 is actually for ═══════════════════════════ */
+
+/**
+ * The N-470 eligibility gate.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * THE CORRECTION THIS BLOCK EXISTS FOR.
+ *
+ * The first version of this page implied that any permanent resident facing an
+ * absence of a year or more should file N-470 if naturalisation mattered to
+ * them. That is materially misleading. INA 316(b) limits the benefit to four
+ * categories of employer, and an ordinary posting to a foreign company — which
+ * is the case most readers of this page are actually in — does not qualify.
+ *
+ * Two further limits that the Form N-470 instructions state and that no summary
+ * of this form should omit:
+ *   • N-470 does NOT replace a reentry permit. You still need one.
+ *   • N-470 does NOT waive the physical-presence requirement for
+ *     naturalisation, unless the employment is by or under contract with the
+ *     US Government.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export const N470_ELIGIBILITY = {
+  cite: "INA 316(b) / 8 U.S.C. 1427(b); Form N-470 instructions, edition 04/01/24",
+  lead:
+    "All four of these have to hold. The third is the one that rules most people out.",
+  requirements: [
+    {
+      n: 1,
+      label: "A year of unbroken US presence first",
+      detail:
+        "You must have been physically present and residing in the United States for an uninterrupted period, without any absences, for at least one year after your admission as a permanent resident. Religious workers are excepted from this.",
+    },
+    {
+      n: 2,
+      label: "The absence will be a year or more",
+      detail:
+        "N-470 is for an absence of one year or more. A shorter absence does not need it, and cannot use it.",
+    },
+    {
+      n: 3,
+      label: "Qualifying employment — the real gate",
+      detail:
+        "You must be going abroad for employment with one of a specific list of employers. Ordinary employment with a foreign company is not on that list.",
+    },
+    {
+      n: 4,
+      label: "Filed before the absence reaches a year",
+      detail:
+        "8 CFR 316.5(d)(1)(i). You do not have to be inside the United States to file, but once the absence reaches twelve continuous months the route has closed.",
+    },
+  ],
+  /** The statutory list. This is the part that decides most cases. */
+  qualifyingEmployers: [
+    {
+      who: "The US Government",
+      detail:
+        "Employed by, or under contract with, the Government of the United States. This is also the only category for which an approved N-470 additionally preserves PHYSICAL PRESENCE, not just continuous residence.",
+    },
+    {
+      who: "An American institution of research",
+      detail: "Recognised as such by the Attorney General.",
+    },
+    {
+      who: "An American firm or corporation engaged in the development of US foreign trade and commerce",
+      detail:
+        "Engaged in whole or in part in developing the foreign trade and commerce of the United States — or a subsidiary of such a firm more than 50 percent of whose stock it owns. This is the category people assume covers an ordinary overseas posting, and the qualifier is doing real work: the employer has to be an American firm developing US foreign trade, not simply a multinational with a US office.",
+    },
+    {
+      who: "A public international organisation of which the US is a member",
+      detail:
+        "By treaty or statute — and only where you took the employment after becoming a permanent resident.",
+    },
+    {
+      who: "Certain religious work",
+      detail:
+        "Performing ministerial or priestly functions for a religious denomination with a bona fide organisation in the United States, or serving as a missionary, brother, nun or sister. Religious workers may file before departing, after departing, or after returning, and are not required to have completed a prior period of US residence.",
+    },
+  ],
+  doesNotQualify:
+    "A transfer to your employer's Indian entity, a job with an Indian company, a spouse's posting, running your own business abroad, study, family care, or retirement. None of these is qualifying employment under INA 316(b), however long the absence and however genuine the reason. If your situation is not clearly inside one of the categories above, assume N-470 is not available and plan on the reentry permit plus the four-years-and-one-day reset instead.",
+  stillNeedReentryPermit:
+    "An approved N-470 does not get you back into the country. The Form N-470 instructions say in terms that you must still apply for a reentry permit in advance of a trip you expect to last a year or more. The two forms do different jobs and you may need both.",
+  physicalPresenceNote:
+    "An approved N-470 preserves CONTINUOUS RESIDENCE. It does not exempt you from the separate PHYSICAL PRESENCE requirement for naturalisation — half the statutory period spent in the United States — unless you are employed by, or under contract with, the US Government. For everyone else in a qualifying category, a long absence can leave continuous residence intact and physical presence still short.",
+  family:
+    "If USCIS approves your N-470, your spouse and dependent unmarried sons and daughters get the same benefit for the same period, provided they are members of your household and residing with you while you are outside the United States.",
+  spouseOfCitizenException:
+    "A spouse of a US citizen who qualifies under INA 319(b) does not need N-470 at all — such spouses are exempt from establishing the naturalisation residence and physical-presence requirements in the first place.",
 } as const;
 
 /* ══════════════ 4. Documents by situation ═══════════════════════════════ */

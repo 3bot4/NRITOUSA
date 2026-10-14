@@ -104,8 +104,10 @@ export const A_NUMBER_LOCATIONS: DocumentLocation[] = [
     doc: "Immigrant Data Summary",
     label: "A-Number",
     where:
-      "At the top of the sheet. If you did consular processing, this came stapled to the front of the sealed immigrant visa package handed to you at the consulate in Delhi, Mumbai, Chennai, Hyderabad or Kolkata.",
-    always: true,
+      "At the top of the sheet, where you have one. If your consular case produced a physical sealed immigrant visa package, this may have come stapled to the front of it at the consulate in Delhi, Mumbai, Chennai, Hyderabad or Kolkata.",
+    note:
+      "Not universal. Many immigrant visa cases are now processed electronically and never involve a physical sealed packet, in which case there is no Immigrant Data Summary to find — the Registration Number on the visa foil itself is the reliable place to look instead.",
+    always: false,
   },
   {
     doc: "Form I-797 notices",
@@ -133,7 +135,7 @@ export const A_NUMBER_LOCATIONS: DocumentLocation[] = [
     doc: "Form I-94 record",
     label: "Not shown",
     where:
-      "An I-94 does not display your A-number. It carries its own 11-digit admission record number.",
+      "An I-94 does not display your A-number. It carries its own 11-character admission record number, which may be all digits or nine digits followed by a letter and a digit.",
     note:
       "Worth knowing because the I-94 is where people look first. It is also, under 8 CFR 264.1, your registration record — the number on it just is not the A-number.",
     always: false,
@@ -211,15 +213,19 @@ export const NUMBER_TYPES: NumberType[] = [
   {
     id: "i94-number",
     name: "I-94 admission record number",
-    shape: "11 digits",
-    example: "00000000001",
+    // 11 CHARACTERS, not 11 digits. Records issued before May 2019 are
+    // numeric; from May 2019 CBP issues nine digits, then a letter, then a
+    // digit. Both are 11 characters and both are current — an unexpired
+    // numeric-format I-94 stays valid until its admit-until date.
+    shape: "11 characters — digits, or 9 digits + a letter + a digit",
+    example: "012345678A1",
     identifies: "One admission to the United States",
     issuedBy: "CBP, at the port of entry",
     whereFound: "Your I-94 record at i94.cbp.dhs.gov, or the tear-off on an I-797A",
     lifetime: "One entry. Every admission generates a new one",
     sensitive: "medium",
     ownerPath: "/uscis/i-94",
-    pattern: /^\d{11}$/,
+    pattern: /^(\d{11}|\d{9}[A-Z]\d)$/i,
   },
   {
     id: "sevis-id",

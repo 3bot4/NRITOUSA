@@ -137,7 +137,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: "Does my travel history matter for N-400 and citizenship?",
-    answer: `Yes, in two ways. Form N-400 asks about trips outside the United States, and the thresholds in 8 CFR 316.5(c)(1) are a single absence of more than six months, which disrupts continuous residence unless you rebut it, and one year or more, which breaks it. The day counter on this page flags both. What the thresholds mean and the N-470 route past them are on our green card travel rules page. The awkward part is that as a permanent resident you cannot get the history from the I-94 site at all.`,
+    answer: `Yes, in two ways. Form N-400 asks about trips outside the United States, and the thresholds in 8 CFR 316.5(c)(1) are a single absence of more than six months, which disrupts continuous residence unless you rebut it, and one year or more, which breaks it. The day counter on this page flags both. What the thresholds mean, and who the narrow N-470 route is actually open to — it requires qualifying employment under INA 316(b), which an ordinary posting to a foreign company is not — are on our green card travel rules page. The awkward part is that as a permanent resident you cannot get the history from the I-94 site at all.`,
   },
 ];
 
@@ -193,8 +193,10 @@ export default function I94Page() {
             </h1>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-700 sm:text-lg">
-              The I-94 is the document that governs how long you may stay &mdash;
-              not your visa, not your I-797. Get it at{" "}
+              Your authorised stay is set by your current I-94 &mdash; including
+              an updated I-94 attached to the bottom of a Form I-797A &mdash; not
+              by the visa expiry date and not by an approval notice with no I-94
+              on it. Get it at{" "}
               <strong>i94.cbp.dhs.gov</strong>. The travel history goes back{" "}
               <strong>ten years</strong>, omits <strong>most land
               crossings</strong>, is <strong>not an official record</strong>, and
@@ -260,6 +262,23 @@ export default function I94Page() {
                 <h2 className="text-xl font-black tracking-tight text-ink-900 sm:text-2xl">
                   What the I-94 is, and why it outranks your visa
                 </h2>
+                <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50/50 p-5">
+                  <p className="text-sm font-bold text-ink-900">
+                    One precision worth getting right
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                    &ldquo;The I-94 governs, not the I-797&rdquo; is a useful
+                    shorthand and slightly wrong. When USCIS approves a change or
+                    extension of status it issues{" "}
+                    <strong>Form I-797A with a new I-94 attached</strong> at the
+                    bottom, and that attached I-94 becomes your current record —
+                    no border crossing involved. What is always true is narrower:
+                    your authorised stay is set by your{" "}
+                    <strong>most recent I-94</strong>, whether CBP created it at a
+                    port of entry or USCIS issued it on an I-797A. An approval
+                    notice with no I-94 on it does not extend your stay.
+                  </p>
+                </div>
                 <p className="mt-3">{I94_BASICS.what}</p>
                 <p className="mt-3">
                   <strong>Electronic by default. </strong>
@@ -489,7 +508,7 @@ export default function I94Page() {
                         },
                         {
                           f: "Admission (record) Number",
-                          d: "Eleven digits, new for every admission. Not your A-number.",
+                          d: "Eleven characters, new for every admission, and not your A-number. Records issued before May 2019 are all digits; from May 2019 CBP issues nine digits, then a letter, then a digit — 012345678A1 is the shape. A form that rejects a letter here is a form with a stale validation rule, not a wrong I-94.",
                         },
                         {
                           f: "Most Recent Date of Entry",
@@ -855,8 +874,8 @@ export default function I94Page() {
                   <Link href="/green-card/travel-rules" className="text-brand-600 underline">
                     green card travel rules
                   </Link>
-                  , which also covers the N-470 route and its one-year filing
-                  cliff.
+                  , which also covers who the narrow N-470 route is open to and
+                  its one-year filing cliff.
                 </p>
 
                 <h3 className="mt-7 text-base font-bold text-ink-900">

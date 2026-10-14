@@ -55,8 +55,9 @@ export const I94_SOURCES = {
 export const I94_BASICS = {
   fullName: "Form I-94, Arrival/Departure Record",
   what:
-    "The record of your admission to the United States. It states the class of admission you were given and the date to which you were admitted — and that date, not your visa and not your petition, is what governs how long you may stay.",
-  numberShape: "An 11-digit admission record number, new for every admission.",
+    "The record of your admission to the United States. It states the class of admission you were given and the date to which you were admitted, and that date is what governs how long you may stay — rather than your visa's expiry or your petition's validity. Note the one case people get wrong in the other direction: when USCIS approves a change or extension of status it issues Form I-797A with a NEW I-94 attached at the bottom, and that attached I-94 is then your current one. So the rule is not \"never the I-797\" — it is always your most recent I-94, wherever it came from.",
+  numberShape:
+    "An 11-character admission record number, new for every admission. Records issued before May 2019 are 11 digits; from May 2019 CBP issues nine digits, then a letter, then a digit — for example 012345678A1. An unexpired numeric-format number stays valid until its admit-until date.",
   electronic:
     "For almost everyone it is now electronic. CBP builds the record from your travel documents and you retrieve or print it yourself from i94.cbp.dhs.gov or the CBP Link app. At the land border travellers are issued I-94s electronically and no longer receive a paper stub.",
   paper:
@@ -353,11 +354,11 @@ export const N400_TRIP_RULES = {
   rebuttable:
     "A single absence of between six months and one year disrupts continuous residence unless you can establish otherwise to the satisfaction of USCIS.",
   breaks:
-    "A single absence of one year or more disrupts continuous residence, with the N-470 route the only way around it.",
+    "A single absence of one year or more disrupts continuous residence. Form N-470 is the only instrument that preserves it — and it is narrow: it needs a year of unbroken prior US presence plus qualifying employment under INA 316(b), which an ordinary posting to a foreign company is not. For most people in this position there is no instrument, and the route is to file for naturalisation four years and one day after returning.",
   cite: "8 CFR 316.5(c)(1)",
   ownerPath: "/green-card/travel-rules",
   note:
-    "The day counter on this page flags trips at those two thresholds. What the thresholds mean, how a presumption is rebutted and what N-470 does are on the green card travel rules page, which owns them.",
+    "The day counter on this page flags trips at those two thresholds. What the thresholds mean, how a presumption is rebutted, and who the narrow N-470 route is actually open to are on the green card travel rules page, which owns them.",
 } as const;
 
 export const RECAPTURE_NOTE =

@@ -179,7 +179,7 @@ export const O1A_CRITERIA: O1Criterion[] = [
     plain:
       "Membership in a body that admits people on the strength of achievement, judged by recognised experts. Paying a subscription is not membership in this sense.",
     indiaExample:
-      "IEEE Senior Member or Fellow; ACM Distinguished Member; a national academy fellowship. Ordinary IEEE or ACM membership does not qualify — the elevated grades are the ones with an achievement-based review.",
+      "An elevated professional grade such as IEEE Senior Member or Fellow, ACM Distinguished Member, or a national academy fellowship MAY support this criterion, depending on what the body's documented admission requirements actually are. The title alone does not settle it: USCIS looks at whether admission genuinely requires outstanding achievements judged by recognised national or international experts, so the petition has to put the association's own published criteria and review process in evidence. Ordinary IEEE or ACM membership, which anyone may join by subscription, does not support it.",
     reach: "buildable",
   },
   {

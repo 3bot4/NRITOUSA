@@ -110,6 +110,19 @@ export function projectedMonthForSlug(slug: string): string | null {
 export const PROJECTED_BANNER =
   "Projected — the official bulletin has not been published yet. We will update this page on release.";
 
+/**
+ * What the output of this module is, in one sentence, for every place that
+ * displays it.
+ *
+ * It is NOT a probability interval and the module must never describe it as
+ * one: the sample is a dozen month-over-month pairs, the upper bound is a
+ * compounded historical percentile, the lower bound is a choice, and
+ * retrogression is deliberately outside the band. Actual dates can and do fall
+ * outside it in both directions.
+ */
+export const SCENARIO_DISCLAIMER =
+  "Historical movement scenario — not a probability interval and not a prediction. Actual dates may fall outside this range in either direction, including through retrogression or a category becoming unavailable.";
+
 export const PROJECTED_BADGE = "PROJECTED";
 
 /* ══════════════════════ the archive ═════════════════════════════════════ */
@@ -248,7 +261,19 @@ export interface Projection {
   stateOnly: "C" | "U" | null;
   /** How many comparable month-over-month pairs the arithmetic rests on. */
   sampleSize: number;
-  confidence: "none" | "low" | "moderate";
+  /**
+   * How deep the basis is — a description of the SAMPLE, not a statistical
+   * confidence level.
+   *
+   * This was called `confidence` and reported "moderate" at 6+ pairs, which
+   * implied a validated interval. It is not one: the sample is 8-12
+   * month-over-month pairs, the upper bound is a compounded 75th-percentile
+   * historical move, the lower bound is set to zero by choice, and
+   * retrogression is excluded from the displayed band even where it occurred
+   * in the window. Nothing here has been back-tested. Renamed so the UI
+   * cannot imply otherwise.
+   */
+  basisDepth: "none" | "thin" | "full-window";
   /** The range as display text, e.g. "1 Nov 2013 – 15 Dec 2013". */
   rangeLabel: string;
   /** One sentence of method, specific to this row. */
@@ -394,8 +419,8 @@ export function projectCutoff(
   const high: Cutoff = capped.value;
   const reachesCurrent = capped.clamped;
 
-  const confidence: Projection["confidence"] =
-    sampleSize === 0 ? "none" : sampleSize < 6 ? "low" : "moderate";
+  const basisDepth: Projection["basisDepth"] =
+    sampleSize === 0 ? "none" : sampleSize < 6 ? "thin" : "full-window";
 
   const rangeLabel = rangeLabelOf(
     low,
@@ -416,7 +441,7 @@ export function projectCutoff(
   } else if (highAdvanceDays === 0) {
     method = `Across ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins, this cutoff did not advance at all${retrogressedMonths > 0 ? ` and went backwards in ${retrogressedMonths}` : ""}. The projection is therefore no movement, which is the most common outcome in the archive and not a placeholder.`;
   } else {
-    method = `For ${monthLabel(targetMonth)}, ${horizon} bulletin${horizon === 1 ? "" : "s"} out: ${perMonthAdvance} days of 75th-percentile advance per bulletin, compounded to ${highAdvanceDays} days and applied to the published ${monthLabel(LAST_PUBLISHED_MONTH)} cutoff of ${fmtCutoff(basis)}, giving ${rangeLabelOf(low, high, reachesCurrent, highAdvanceDays, stateOnly, basis)}. The basis is ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins — ${advances.length} advanced, ${staticMonths} held still${retrogressedMonths > 0 ? `, ${retrogressedMonths} went backwards` : ""}${excludedMonths > 0 ? `, and ${excludedMonths} were Current or Unavailable and so excluded` : ""}.`;
+    method = `For ${monthLabel(targetMonth)}, ${horizon} bulletin${horizon === 1 ? "" : "s"} out: ${perMonthAdvance} days of 75th-percentile historical advance per bulletin, compounded to ${highAdvanceDays} days and applied to the published ${monthLabel(LAST_PUBLISHED_MONTH)} cutoff of ${fmtCutoff(basis)}, giving ${rangeLabelOf(low, high, reachesCurrent, highAdvanceDays, stateOnly, basis)}. That rests on ${sampleSize} comparable month-over-month pairs in the trailing ${WINDOW} bulletins — ${advances.length} advanced, ${staticMonths} held still${retrogressedMonths > 0 ? `, ${retrogressedMonths} went backwards` : ""}${excludedMonths > 0 ? `, and ${excludedMonths} were Current or Unavailable and so excluded` : ""} — which is a dozen observations, not a statistical sample. ${retrogressedMonths > 0 ? "Note that the backwards months are excluded from the band shown: the floor is no movement, so the band cannot express the retrogression this row has actually had." : "The floor is no movement, so the band cannot express retrogression."}`;
   }
 
   const downside =
@@ -443,7 +468,7 @@ export function projectCutoff(
     excludedMonths,
     stateOnly,
     sampleSize,
-    confidence,
+    basisDepth,
     rangeLabel,
     method,
     downside,

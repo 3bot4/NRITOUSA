@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { NUMBER_TYPES } from "@/data/aNumberData";
 import {
   identifyNumber,
   maskNumber,
@@ -120,5 +121,45 @@ describe("privacy", () => {
     const r = identifyNumber("A012345678");
     expect(r.masked).not.toContain("012345");
     expect(r.masked.endsWith("678")).toBe(true);
+  });
+});
+
+describe("I-94 numbers in both CBP formats", () => {
+  // CBP issued 11 numeric digits before May 2019 and nine digits + a letter +
+  // a digit from May 2019. The first version of this matcher only took digits,
+  // so it rejected every currently-issued I-94 number — a real bug, not a
+  // wording slip.
+  it("identifies the current alphanumeric format", () => {
+    const r = identifyNumber("012345678A1");
+    expect(r.matches.map((m) => m.type.id)).toContain("i94-number");
+    expect(r.matches.find((m) => m.type.id === "i94-number")!.why).toMatch(
+      /since May 2019|letter/i,
+    );
+  });
+
+  it("still identifies the legacy numeric format", () => {
+    const r = identifyNumber("12345678901");
+    expect(r.matches.map((m) => m.type.id)).toContain("i94-number");
+    expect(r.matches.find((m) => m.type.id === "i94-number")!.why).toMatch(
+      /before May 2019|11 digits/i,
+    );
+  });
+
+  it("accepts the alphanumeric format under the I-94 document type", () => {
+    const r = identifyNumber("012345678A1", "I-94 record");
+    expect(r.mismatch).toBeUndefined();
+  });
+
+  it("describes the shape as characters, not digits", () => {
+    const t = NUMBER_TYPES.find((x) => x.id === "i94-number")!;
+    expect(t.shape).toMatch(/character/i);
+    expect(t.shape).not.toMatch(/^11 digits$/);
+  });
+
+  it("does not confuse an I-94 number with a SEVIS ID", () => {
+    // SEVIS is N + 10 digits; an I-94 letter is in position 10, not position 1.
+    const sevis = identifyNumber("N0012345678");
+    expect(sevis.matches[0].type.id).toBe("sevis-id");
+    expect(sevis.matches.map((m) => m.type.id)).not.toContain("i94-number");
   });
 });

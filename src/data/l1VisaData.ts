@@ -458,7 +458,7 @@ export const L2_SPOUSE = {
   children:
     "Children are admitted L-2Y. Children have no work authorization incident to status at any age.",
   whyItMatters:
-    "An H-4 spouse generally cannot work until the principal has an approved I-140 or qualifies under AC21, and then only with an EAD that has to be applied for and renewed. An L-2 spouse works from the day they are admitted, with no application and no fee. For a two-income family choosing between an H-1B transfer and an L-1 transfer, that is usually the largest single financial difference between the routes — and it is missing from every L-1-versus-H-1B table we checked.",
+    "An H-4 spouse generally cannot work until the principal has an approved I-140 or qualifies under AC21, and then only with an EAD that has to be applied for and renewed. An L-2 spouse who has been properly admitted in L-2S status, and whose I-94 carries that annotation, works with no application and no fee. For a two-income family choosing between an H-1B transfer and an L-1 transfer, that is usually the largest single financial difference between the routes — and it is missing from every L-1-versus-H-1B table we checked. The condition is not a formality: the authorisation runs with the L-2S class of admission and the annotation is what an employer's I-9 process relies on, so check the I-94 after every admission and after every approved extension or change of status.",
 } as const;
 
 /* ══════════════════ 10. Dual intent ═════════════════════════════════════ */
@@ -562,11 +562,11 @@ export const L1_COMPARISON: L1CompareRow[] = [
   {
     label: "Can you change employer?",
     values: {
-      l1a: "No — the status belongs to the company group",
-      l1b: "No",
-      h1b: "Yes, through a transfer petition",
+      l1a: "Not to an unrelated employer. Within the group, with a filing",
+      l1b: "Not to an unrelated employer. Within the group, with a filing",
+      h1b: "Yes, to any employer, through a transfer petition",
     },
-    note: "The L-1's defining limitation. An H-1B is portable; an L-1 is not.",
+    note: "The L-1's defining limitation, stated precisely: you cannot use an existing L-1 approval to work for an unrelated employer. Moving between qualifying entities in the same corporate group is possible — it needs an amended or new petition, or a fresh Form I-129S under a blanket, and a reassignment to materially different duties needs one even inside the group.",
   },
   {
     label: "Maximum stay",
@@ -587,11 +587,11 @@ export const L1_COMPARISON: L1CompareRow[] = [
   {
     label: "Spouse work authorisation",
     values: {
-      l1a: "Yes — L-2S, incident to status, no EAD needed",
-      l1b: "Yes — L-2S, incident to status, no EAD needed",
+      l1a: "Yes, with no EAD — but only once admitted in L-2S status, with an I-94 annotated L-2S",
+      l1b: "Same",
       h1b: "H-4 EAD only, and only after I-140 approval or AC21",
     },
-    note: "Usually the biggest financial difference between the two routes for a family.",
+    note: "Usually the biggest financial difference between the two routes for a family — and it turns on the annotation, not on being married to an L-1 holder. An I-94 reading plain L-2 is not sufficient evidence on its own for Form I-9.",
   },
   {
     label: "Green card route it feeds",

@@ -363,3 +363,50 @@ nothing in `next.config.mjs` references it.
 `PUBLISHED_MONTHS`, then remove it from `PROJECTED_MONTHS`. December inherits
 indexability automatically. The URL does not change, the sitemap entry does not
 move, and no redirect is needed.
+
+
+
+---
+
+## 7. Post-review corrections (2026-10-13, after publication)
+
+A content review after the pages went live found nine substantive errors. All
+were fixed and redeployed; the two that changed behaviour rather than wording
+are marked.
+
+| # | Error | Correction | Guard |
+| --- | --- | --- | --- |
+| 1 | I-94 number described as "11 digits". **The matcher's regex also rejected every currently-issued I-94 number** — a real bug, not a wording slip. | 11 **characters**: 11 digits before May 2019, and nine digits + a letter + a digit from May 2019 (e.g. `012345678A1`). Both formats remain valid. | `numberIdentify.test.ts` tests both formats |
+| 2 | **N-470 presented as available to any permanent resident facing a year-plus absence.** Materially misleading. | Added the full INA 316(b) gate: a year of unbroken prior US presence, the four qualifying employer categories plus religious work, an explicit "what does not qualify" list naming the ordinary corporate transfer, and the two limits the form instructions state — it does **not** replace a reentry permit, and it does **not** waive physical presence unless the employment is by or under contract with the US Government. | `gcTripRisk.test.ts` |
+| 3 | O-1 page drew behavioural conclusions from I-94 admissions data. | Admissions are border events, not people. The page now claims only the share difference, states what the data cannot show (unique holders, who would qualify, causation — travel frequency alone could move the shares), and labels the explanations as hypotheses. | — |
+| 4 | Projections labelled "Moderate confidence", implying a validated interval. | `confidence` renamed `basisDepth` (it was only a sample-size bucket). Columns relabelled "Scenario … not a probability interval". A `SCENARIO_DISCLAIMER` now appears in the banner, above the tables, in the method section and in the FAQ, and the method sentence admits the band cannot express the retrogression the row has actually had. | `visaBulletinProjections.test.ts` asserts no `confidence` field survives |
+| 5 | "The I-94 governs … not your I-797" too absolute. | An I-797A carries a new I-94 at the bottom which becomes the current record. Rewritten to "your most recent I-94, whether CBP created it or USCIS issued it on an I-797A", with its own callout. | — |
+| 6 | IEEE Senior Member treated as satisfying the membership criterion. | "May support this criterion, depending on the body's documented admission requirements" — the petition has to put the published criteria and review process in evidence. | — |
+| 7 | "You cannot change employer" on L-1 overbroad. | An existing approval cannot be used for an **unrelated** employer; movement inside the qualifying group is possible with an amended or new petition, or a fresh I-129S under a blanket. | `l1Stay.test.ts` |
+| 8 | "Your spouse can work from the day they land." | Conditioned on being admitted in L-2S status with an I-94 carrying that annotation; a plain "L-2" annotation is not sufficient for Form I-9. | — |
+| 9 | Immigrant Data Summary described as universal. | Changed to "may have" and flagged that many immigrant cases are processed electronically with no physical sealed packet, pointing to the visa foil's Registration Number instead. | — |
+
+### Two review items not actioned, and why
+
+**The byline reads "Updated October 13, 2026 ✓ 2026 verified".** This is the
+shared `ReviewedByline` component, which renders an "Updated {date}" string and
+a separate green "✓ {year} verified" pill. It appears on roughly 200 live pages
+and predates this build. Visually the two are distinct elements; the duplication
+only reads as such in extracted text. Changing it alters site-wide chrome, which
+is the owner's call — the fix is to drop the year from the pill in
+`src/components/ReviewedByline.tsx` (one line).
+
+**IndexNow wording in this report.** Corrected: an HTTP 200 from IndexNow
+confirms that the submission was **received**, not that anything will be
+indexed. IndexNow states this explicitly. The accurate statement is: *IndexNow
+successfully received the six URL submissions; indexing remains at each search
+engine's discretion.*
+
+### Review items confirmed already correct
+
+The `$1,055` paper O-petition base fee and the conditional `$4,500` Public Law
+114-113 L-1 fee were checked and are correctly qualified in the articles. The
+projected-status labelling on the bulletin pages was found prominent and clear,
+and the Department of State still lists October 2026 as current with the
+upcoming bulletin "Coming Soon", so the November–January pages remain correctly
+marked as not official.

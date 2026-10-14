@@ -181,7 +181,7 @@ export function assessTripRisk(input: TripRiskInput): TripRiskResult {
       "An absence of one year or more disrupts continuous residence under 8 CFR 316.5(c)(1)(ii). After returning to resume permanent residence, a five-year applicant may file four years and one day later, and a three-year applicant two years and one day later. A reentry permit does not change this — the two regimes are separate, and this is where that distinction costs the most.";
     tier = worst(tier, "serious");
     actions.push(
-      "If the naturalisation clock matters and the absence is for qualifying employment abroad, Form N-470 is the only instrument that preserves it — and 8 CFR 316.5(d)(1)(i) requires it to be filed BEFORE the absence reaches one continuous year. After twelve months that door has closed.",
+      "Form N-470 is the only instrument that preserves the naturalisation clock, and it is narrow: it needs a year of unbroken US presence first AND qualifying employment under INA 316(b) — the US Government, an American institution of research, an American firm developing US foreign trade (or a majority-owned subsidiary), a public international organisation the US belongs to, or certain religious work. An ordinary posting to a foreign company does not qualify. If you are inside one of those categories, 8 CFR 316.5(d)(1)(i) requires the filing BEFORE the absence reaches one continuous year; after twelve months that door has closed. If you are not, the realistic plan is to file for naturalisation four years and one day after you return.",
     );
   }
 
