@@ -60,6 +60,7 @@ import {
   VISITOR_INSURANCE_UPDATED,
 } from "@/lib/visitorInsuranceCluster";
 import { getPublishedStories, storyPath } from "@/lib/successStories";
+import { getLatestUpdates } from "@/lib/latestUpdates";
 import { site } from "@/lib/site";
 
 export interface SitemapEntry {
@@ -121,8 +122,28 @@ const clusterDate = (p: { updated?: string; date: string }) =>
 /* ------------------------------------------------------------------ *
  * 1. Pages — home, hubs, topic landing pages, legal
  * ------------------------------------------------------------------ */
+/**
+ * The homepage's own lastmod, derived rather than inherited.
+ *
+ * The homepage renders "Latest updates and checks" from latestUpdates.ts, so
+ * its visible content changes every time a page is published or re-verified.
+ * It used to fall back to CONTENT_BASELINE, which meant the sitemap claimed the
+ * homepage had not changed since 2026-07-20 while the feed on it was listing
+ * pages published today.
+ *
+ * Deriving it from the feed's newest real date is the fix the CONTENT_BASELINE
+ * comment above asks for — give a page its own date rather than bumping a
+ * constant shared by ~117 others. It is still never the build clock: every date
+ * in that feed is hand-entered and rendered by the page itself, which is what
+ * latestUpdates.test.ts enforces.
+ */
+function homepageLastModified(): Date {
+  const newest = getLatestUpdates(1)[0]?.date;
+  return newest ? new Date(newest) : CONTENT_BASELINE;
+}
+
 export const pagesEntries: SitemapEntry[] = [
-  e("/", 1, "weekly"),
+  e("/", 1, "weekly", homepageLastModified()),
   e("/topics", 0.9, "weekly"),
   e("/tools", 0.9, "weekly"),
   e("/education", 0.9, "weekly"),

@@ -156,3 +156,36 @@ function walkForNoindex(): string[] {
       );
     });
 }
+
+describe("the homepage carries its own lastmod, not the shared baseline", () => {
+  // It used to inherit CONTENT_BASELINE, so the sitemap claimed the homepage
+  // had not changed since July while the "Latest updates" feed on it was
+  // listing pages published that day.
+  it("derives the homepage lastmod from the latest-updates feed", async () => {
+    const { pagesEntries, CONTENT_BASELINE } = await import("./sitemap-data");
+    const { getLatestUpdates } = await import("./latestUpdates");
+    const home = pagesEntries.find((e) => e.path === "/");
+    expect(home).toBeDefined();
+    const newest = getLatestUpdates(1)[0]?.date;
+    expect(newest).toBeTruthy();
+    expect(home!.lastModified.toISOString().slice(0, 10)).toBe(newest);
+    // And it is genuinely not the baseline any more.
+    expect(home!.lastModified.getTime()).toBeGreaterThan(
+      CONTENT_BASELINE.getTime(),
+    );
+  });
+
+  it("never lets the homepage lastmod run ahead of the newest real page date", () => {
+    // A homepage lastmod in the future would be the clock leaking in.
+    return import("./sitemap-data").then(async ({ pagesEntries }) => {
+      const { pageDatesCatalog } = await import("./latestUpdates");
+      const home = pagesEntries.find((e) => e.path === "/")!;
+      const allDates = pageDatesCatalog()
+        .flatMap((p) => [p.published, p.updated, p.lastChecked])
+        .filter((d): d is string => !!d)
+        .sort();
+      const newest = allDates[allDates.length - 1];
+      expect(home.lastModified.toISOString().slice(0, 10) <= newest).toBe(true);
+    });
+  });
+});
